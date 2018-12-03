@@ -97,7 +97,7 @@ We also require a bound on the squared coalescence rate, obtained by a similar s
 \begin{align*}
 \E[c_N(t)^2] &= \frac{1}{(N)_2^2} \E\left[ \left( \sum_{i=1}^N (\vt{i})_2\right)^2\right] \\
 &= \frac{1}{(N)_2^2} \left\{ \sum_{i=1}^N \E[(\vt{i})_2^2] + \sum_{i=1}^N\sum_{j\neq i} \E[(\vt{i})_2(\vt{j})_2] \right\} \\
-&= \frac{1}{(N)_2^2} \left\{ (N)_4 \sum_{i=1}^N \E[(\wt{i})^4] + 4(N)_3 \sum_{i=1}^N \E[(\wt{i})^3] + 11(N)_2 \sum_{i=1}^N \E[(\wt{i})^2] -3N\sum_{i=1}^N \E[\wt{i}] \right\} \\
+&= \frac{1}{(N)_2^2} \left\{ (N)_4 \sum_{i=1}^N \E[(\wt{i})^4] + 4(N)_3 \sum_{i=1}^N \E[(\wt{i})^3] + 2(N)_2 \sum_{i=1}^N \E[(\wt{i})^2] \right\} \\
 &\qquad + \frac{1}{(N)_2^2}(N)_4 \sum_{i=1}^N\sum_{j\neq i} \E[(\wt{i})^2(\wt{j})^2]
 \end{align*}
 and
@@ -106,13 +106,13 @@ and
 &= \frac{1}{(N)_2^2} \left\{ \sum_{i=1}^N \E[(\vttilde{i})_2^2] 
 + \sum_{i=1}^N\sum_{j\neq i} \E[(\vttilde{i})_2(\vttilde{j})_2] \right\} \\
 &= \frac{1}{(N)_2^2} \left\{ \sum_{i=2}^N \E[(\vttilde{i})_2^2] +\E[(\vttilde{1})_2^2] 
-+ \sum_{i=2}^N\sum_{1\neq j\neq i} \E[(\vttilde{i})_2(\vttilde{j})_2] + 2\sum_{i=1}^N \E[(\vttilde{1})2(\vttilde{i})2] \right\} \\
-&= \frac{1}{(N)_2^2} \left\{ (N-1)_4 \sum_{i=1}^N \E[(\wt{i})^4] + 4(N-1)_3 \sum_{i=1}^N \E[(\wt{i})^3] + 11(N-1)_2 \sum_{i=1}^N \E[(\wt{i})^2] -3(N-1)\sum_{i=1}^N \E[\wt{i}] \right\} \\
++ \sum_{i=2}^N\sum_{1\neq j\neq i} \E[(\vttilde{i})_2(\vttilde{j})_2] + 2\sum_{i=1}^N \E[(\vttilde{1})_2(\vttilde{i})_2] \right\} \\
+&= \frac{1}{(N)_2^2} \left\{ (N-1)_4 \sum_{i=1}^N \E[(\wt{i})^4] + 4(N-1)_3 \sum_{i=1}^N \E[(\wt{i})^3] + 2(N-1)_2 \sum_{i=1}^N \E[(\wt{i})^2] \right\} \\
 &\qquad + \frac{1}{(N)_2^2} \left\{ (N-1)_4 \sum_{i=1}^N\sum_{j\neq i} \E[(\wt{i})^2(\wt{j})^2] 
-+ 4(N-1)_3 \E[(\wt{1})^3] + 13(N-1)_2\E[(\wt{1})^2] + 17(N-1)\E[\wt{1}] \right\} \\
-&\qquad +\frac{1}{(N)_2^2} \left\{ 4(N-1)_3 \sum_{i=2}^N \E[\wt{1}(\wt{i})^2] + 4(N-1)_2 \sum_{i=2}^N \E[\wt{1}\wt{i}] \right\} \\
-&\leq  \E[c_N(t)^2] + \frac{1}{(N)_2^2} \left\{4(N-1)_3 \E[(\wt{1})^3] + 13(N-1)_2\E[(\wt{1})^2] + 17(N-1)\E[\wt{1}] \right\} \\
-&\qquad +\frac{1}{(N)_2^2} \left\{ 4(N-1)_3 \sum_{i=2}^N \E[\wt{1}(\wt{i})^2] + 4(N-1)_2 \sum_{i=2}^N \E[\wt{1}\wt{i}] \right\}.
++ 4(N-1)_3 \E[(\wt{1})^3] + 12(N-1)_2\E[(\wt{1})^2] + 4(N-1)\E[\wt{1}] \right\} \\
+&\qquad +\frac{1}{(N)_2^2} \left\{ 2(N-1)_3 \sum_{i=2}^N \E[\wt{1}(\wt{i})^2] \right\} \\
+&\leq  \E[c_N(t)^2] + \frac{1}{(N)_2^2} \left\{4(N-1)_3 \E[(\wt{1})^3] + 12(N-1)_2\E[(\wt{1})^2] + 4(N-1)\E[\wt{1}]
++ 2(N-1)_3 \sum_{i=2}^N \E[\wt{1}(\wt{i})^2] \right\}
 \end{align*}
 \myrule
 
