@@ -1,0 +1,267 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=2cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\title{Some updated calculations for conditional SMC}
+\author{Suzie Brown}
+\date{\today}
+
+%\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage[round, sort&compress]{natbib}
+\usepackage{har2nat} %%% Harvard reference style
+\bibliographystyle{agsm}
+
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\PR}{\mathbb{P}}
+\newcommand{\V}{\operatorname{Var}}
+\newcommand{\vt}[2][t]{v_{#1}^{(#2)}}
+\newcommand{\vttilde}[2][t]{\tilde{v}_{#1}^{(#2)}}
+\newcommand{\wt}[2][t]{w_{#1}^{(#2)}}
+\newcommand{\eqdist}{\overset{d}{=}}
+\newcommand{\Bin}{\operatorname{Bin}}
+\newcommand{\N}{\mathcal{N}}
+\newtheorem{thm}{Theorem}
+
+\begin{document}
+\maketitle
+\section*{Expected coalescence rates}
+
+Standard SMC with multinomial resampling has marginal offspring distributions
+\begin{equation*}
+\vt{i} \eqdist \Bin (N, \wt{i}), \qquad i=1,\dots,N.
+\end{equation*}
+
+The coalescence rate is given by % what's the pairwise coalescence rate?
+\begin{equation}
+c_N(t) := \frac{1}{(N)_2} \sum_{i=1}^{N} \E\left[ (\vt{i})_2 \right].
+\end{equation}
+In the case of multinomial resampling we have
+\begin{equation*}
+\E[c_N(t)] = \sum_{i=1}^{N} \E\left[(\wt{i})^2\right].
+\end{equation*}
+In the conditional SMC case, to ensure the immortal line survives, individual 1 in each time step necessarily produces at least one offspring. (Exchangeability means we can label the immortal particle as particle 1 in each generation). It is straightforward to check that under this conditioning, the remaining $N-1$ offspring are assigned multinomially to the $N$ possible parents as usual, giving the following offspring distributions:
+\begin{align*}
+& \vttilde{1} \eqdist 1 + \Bin(N-1, \wt{1}) \\
+& \vttilde{i} \eqdist \Bin(N-1, \wt{i}), \qquad i=2,\dots,N.
+\end{align*}
+%We therefore have the following moments (using the tower property):
+%\begin{align*}
+%& \E[\vttilde{i}] = (N-1)\E[\wt{i}] &\\
+%& \E[(\vttilde{i})^2] = (N-1) \left( \E[\wt{i}] + (N-2)\E[(\wt{i})^2] \right) & \\
+%& \E[(\vttilde{i})^3] = (N-1) \left( \E[\wt{i}] + 3(N-2)\E[(\wt{i})^2] + (N-2)(N-3)\E[(\wt{i})^3] \right) &\qquad i=2,\dots,N\\
+%& \E[\vttilde{1}] = 1 + (N-1)\E[\wt{1}] &\\
+%& \E[(\vttilde{1})^2] = 1 + (N-1) \left( 3\E[\wt{1}] + (N-2)\E[(\wt{1})^2] \right) & \\
+%& \E[(\vttilde{1})^3] = 1 + (N-1) \left( 7\E[\wt{1}] + 6(N-2)\E[(\wt{1})^2] + (N-2)(N-3)\E[(\wt{1})^3] \right) & 
+%\end{align*}
+
+and we can derive the altered coalescence rate:
+\begin{align}
+\E[\tilde{c}_N(t)] &= \frac{1}{(N)_2} \sum_{i=1}^{N} \E\left[ (\vttilde{i})_2 \right] \notag\\
+&= \frac{1}{(N)_2} \E\left[ (\vttilde{1})^2 - \vttilde{1} \right] + \frac{1}{(N)_2}\sum_{i=2}^{N} \E\left[ (\vttilde{i})^2 - \vttilde{i} \right] \notag\\
+&= \frac{1}{(N)_2}\left[ (N-1)(N-2)\E[(\wt{1})^2] + 2(N-1)\E[\wt{1}] \right] + \frac{1}{(N)_2} \sum_{i=2}^{N} (N-1)(N-2)\E[(\wt{i})^2] \notag\\
+&= \frac{1}{(N)_2} \sum_{i=1}^{N} (N-1)(N-2)\E[(\wt{i})^2] + \frac{1}{(N)_2} 2(N-1)\E[\wt{1}] \notag\\
+&= \frac{N-2}{N} \E[c_N(t)] + \frac{2}{N} \E[\wt{1}]
+%&\overset{N\to\infty}{\longrightarrow} c_N(t) \notag
+\end{align}
+
+\rule{\textwidth}{1pt}
+
+The rate of super-binary mergers is bounded above by
+\begin{equation}
+D_N(t) := \frac{1}{N(N)_2} \sum_{i=1}^N (\vt{i})_2 \left( \vt{i} + \frac{1}{N} \sum_{j\neq i} (\vt{j})^2 \right).
+\end{equation}
+%In the case of multinomial resampling we have
+%\begin{align}
+%\E[D_N(t)] &= \frac{1}{N} \sum_{i=1}^N 4\E[(\wt{i})^2] + (N-2)\E[(\wt{i})^3] \notag\\
+%&+ \frac{1}{N^2}\sum_{i=1}^N\sum_{j\neq i} \left( (N-2)(N-3)\E[(\wt{i})^2(\wt{j})^2] - (N-2)\E[(\wt{i})^2\wt{j}] - 2(N-2)\E[\wt{i}(\wt{j})^2] - 2\E[\wt{i}\wt{j}] \right).
+%\end{align}
+%If we also assume exchangeability of particles, this simplifies to
+%\begin{equation}
+%\E[D_N(t)] = \frac{2(N+1)}{N}\E[(\wt{i})^2] + \frac{(N-2)(3-2N)}{N} \E[(\wt{i})^3] + \frac{(N-1)(N-2)(N-3)}{N} \E[(\wt{i})^4]
+%\end{equation}
+%where the $\wt{i}$ are identically distributed.
+
+%%% to be moved further up (or somewhere?) once complete...
+From the definition, first separate the terms involving particle 1 (which is special in the conditional model).
+\begin{align}
+D_N(t) &:= \frac{1}{N(N)_2} \sum_{i=1}^N (\vt{i})_2 \left( \vt{i} + \frac{1}{N} \sum_{j\neq i} (\vt{j})^2 \right) \notag\\
+&= \frac{1}{N(N)_2} (\vt{1})_2 \left(\vt{1} + \frac{1}{N} \sum_{j\neq 1} (\vt{j})^2 \right) \notag\\
+&\qquad+ \frac{1}{N(N)_2} \sum_{i\neq 1} (\vt{i})_2 \left( \vt{i} + \frac{1}{N}(\vt{1})^2 + \frac{1}{N} \sum_{1\neq j\neq i} (\vt{j})^2 \right) \notag\\
+&= \frac{1}{N(N)_2} \left( (\vt{1})^3 - (\vt{1})^2 \right) 
++ \frac{1}{N(N)_2}\sum_{i\neq 1} \left( \frac{1}{N} (\vt{1})^2(\vt{i})^2 - \frac{1}{N}\vt{1}(\vt{i})^2 \right) \notag\\
+&\qquad+ \frac{1}{N(N)_2}\sum_{i\neq 1} \left( (\vt{i})^3 - (\vt{i})^2 + \frac{1}{N}(\vt{i})^2(\vt{1})^2 - \frac{1}{N}(\vt{1})^2\vt{i} \right) \notag\\
+&\qquad+ \frac{1}{N^2(N)_2}\sum_{i\neq 1}\sum_{1\neq j \neq i} \left( (\vt{i})^2(\vt{j})^2 - \vt{i}(\vt{j})^2 \right)
+\end{align}
+Let us consider the terms separately:
+\begin{align*}
+A &:= (\vt{1})^3 - (\vt{1})^2 \\
+B &:= \frac{1}{N} (\vt{1})^2(\vt{i})^2 - \frac{1}{N}\vt{1}(\vt{i})^2 &\qquad i>1 \\
+C &:= (\vt{i})^3 - (\vt{i})^2 &\qquad i>1 \\
+D &:= \frac{1}{N}(\vt{i})^2(\vt{1})^2 - \frac{1}{N}(\vt{1})^2\vt{i} &\qquad i>1 \\
+E &:= (\vt{i})^2(\vt{j})^2 - \vt{i}(\vt{j})^2 &\qquad i,j>1; i\neq j
+\end{align*}
+Notice that $A$ depends only on particle 1; $C$ and $E$ do not depend on particle 1; and $B$ and $D$ depend on particle 1 and others.
+The terms $C$ and $E$ will be the same in the standard and conditional cases, except that $N$ is replaced by $N-1$ for conditional resampling.
+In the standard case, expressions involving particle 1 will be the same as the corresponding terms for other particles, but this is not the case for conditional resampling.
+
+Let $X_1,\dots, X_k \sim \operatorname{MN}(n, (p_1, \dots, p_k))$. Then we have the following moments (due to REF):
+\begin{align*}
+&\E[X_i] = np_i \\
+&\E[X_i^2] = np_i((n-1)p_i + 1) \\
+&\E[X_i^3] = np_i((n-1)(n-2)p_i^2 + 3(n-1)p_i +4) \\
+&\E[X_iX_j] = n(n-1)p_ip_j \\
+&\E[X_i^2X_j] = n(n-1)p_ip_j((n-2)p_i +1) \\
+&\E[X_i^2X_j^2] = n(n-1)p_ip_j((n-2)(n-3)p_ip_j + (n-2)(p_i+p_j) +1)
+\end{align*}
+We can now calculate the quantities A--E above (first in the standard SMC case):
+\begin{align*}
+&\E[A] = N \left( (N-1)(N-2)\E[(\wt{1})^3] + 2(N-1)\E[(\wt{1})^2] +3\E[\wt{1}] \right) \\
+&\E[B] = (N-1)(N-2) \left( (N-3)\E[(\wt{1})^2(\wt{i})^2] +\E[(\wt{1})^2\wt{i}] \right) \\
+&\E[C] = N \left( (N-1)(N-2)\E[(\wt{i})^3] + 2(N-1)\E[(\wt{i})^2] +3\E[\wt{i}] \right) \\
+&\E[D] = (N-1)(N-2) \left( (N-3)\E[(\wt{1})^2(\wt{i})^2]+\E[\wt{1}(\wt{i})^2] \right) \\
+&\E[E] = N(N-1)(N-2) \left( (N-3)\E(\wt{i})^2(\wt{j})^2] +\E[(\wt{i})^2\wt{j}] \right)
+\end{align*}
+We find therefore that
+\begin{align*}
+\E[D_N(t)] &= \frac{1}{N}\sum_{i=1}^N \left( (N-2)\E[(\wt{i})^3] + 2\E[(\wt{i})^2] + \frac{3}{N-1}\E[\wt{i}] \right) \\
+&\qquad + \frac{N-2}{N^2} \sum_{i=1}^N\sum_{j\neq i} \left( (N-3) \E[(\wt{i})^2(\wt{j})^2] +  \E[(\wt{i})^2\wt{j}]  \right)
+\end{align*}
+% (This can only be slightly simplified - removing sums but not decreasing number of terms - by assuming exchangeability.)
+
+%%%...
+
+
+
+Let us calculate the expectations of A--E in the conditional case:
+\begin{align*}
+&\E[\tilde{A}] = (N-1)\left( (N-2)(N-3)\E[(\wt{1})^3] + 5(N-2)\E[(\wt{1})^2] + 4\E[\wt{1}] \right) \\
+&\E[\tilde{B}] = \frac{1}{N}(N-1)(N-2) \left( (N-3)(N-4)\E[(\wt{1})^2(\wt{i})^2] + (N-3)\E[(\wt{1})^2\wt{i}] 
++ 2(N-3)\E[\wt{1}(\wt{i})^2] + 2\E[\wt{1}\wt{i}] \right) \\
+&\E[\tilde{C}] = (N-1) \left( (N-2)(N-3)\E[(\wt{i})^3] + 2(N-2)\E[(\wt{i})^2] + 3\E[\wt{i}] \right) \\
+&\E[\tilde{D}] = \frac{(N-1)(N-2)}{N} \left( (N-3)(N-4)\E[(\wt{1})^2(\wt{i})^2] + 3(N-3)\E[\wt{1}(\wt{i})^2] + \E[(\wt{i})^2] \right) \\
+&\E[\tilde{E}] = (N-1)(N-2)(N-3) \left( (N-4)\E[(\wt{i})^2(\wt{j})^2] + \E[(\wt{i})^2\wt{j}] \right)
+\end{align*}
+
+We find therefore that
+\begin{align*}
+\E[\tilde{D}_N(t)] &= \frac{N-2}{N^2} \sum_{i=1}^N \left( (N-3)\E[(\wt{i})^3] + \left( 2 + \frac{1}{N}\right) \E[(\wt{i})^2] + \frac{3}{N-2}\E[\wt{i}] \right) \\
+&\qquad + \frac{(N-2)(N-3)}{N^3} \sum_{i=1}^N\sum_{j\neq i} \left( (N-4)\E[(\wt{i})^2(\wt{j})^2] +  \E[(\wt{i})^2\wt{j}] \right) \\
+&\qquad + \frac{1}{N^2} \E[\wt{1}] + \left(3 - \frac{1}{N} \right)\frac{(N-2)}{N^2}\E[(\wt{1})^2] +
+\frac{2(N-2)}{N^3} \sum_{i=2}^N \E[\wt{1}\wt{i}] + \frac{4(N-2)(N-3)}{N^3} \sum_{i=2}^N \E[\wt{1}(\wt{i})^2]
+\end{align*}
+Using repeatedly that $(N-k)/N \leq 1)$, we find the upper bound in terms of $D_N(t)$:
+\begin{equation*}
+\E[\tilde{D}_N(t)] \leq \E[D_N(t)] + \frac{1}{N^3}\sum_{i=1}^N \E[(\wt{i})^2] + \frac{1}{N^2} \E[\wt{1}] + \frac{3}{N}\E[(\wt{1})^2] +
+\frac{2}{N^2} \sum_{i=2}^N \E[\wt{1}\wt{i}] + \frac{4}{N} \sum_{i=2}^N \E[\wt{1}(\wt{i})^2]
+\end{equation*}
+For all but the last term it is enough that the weights are bounded in $[0,1]$ for them to vanish as $N\to\infty$. We can ensure the last term also vanishes by applying the strong but standard assumptions of KJJS Lemma 3. We then have in the limit as $N\to\infty$
+\begin{equation*}
+\E[\tilde{D}_N(t)] \leq \E[D_N(t)] + O(N^{-3}).
+\end{equation*}
+
+\rule{\textwidth}{1pt}
+
+%% missing a lot of conditioning in this part and elsewhere
+%% just say that all expectations are conditonal on F_{t-1}, but omitted for notational simplicity.
+We also need an upper bound on the squared coalescence rate...
+\begin{align*}
+\E[c_N(t)^2] &= \frac{1}{(N)_2^2} \E\left[ \left( \sum_{i=1}^N (\vt{i})_2\right)^2\right] \\
+&= \frac{1}{(N)_2^2} \left\{ \sum_{i=1}^N \E[(\vt{i})_2^2] + \sum_{i=1}^N\sum_{j\neq i} \E[(\vt{i})_2(\vt{j})_2] \right\} \\
+&= \frac{1}{(N)_2^2} \left\{ (N)_4 \sum_{i=1}^N \E[(\wt{i})^4] + 4(N)_3 \sum_{i=1}^N \E[(\wt{i})^3] + 11(N)_2 \sum_{i=1}^N \E[(\wt{i})^2] -3N\sum_{i=1}^N \E[\wt{i}] \right\} \\
+&\qquad + \frac{1}{(N)_2^2}(N)_4 \sum_{i=1}^N\sum_{j\neq i} \E[(\wt{i})^2(\wt{j})^2]
+\end{align*}
+
+In the conditional case we have...
+\begin{align*}
+\E[\tilde{c}_N(t)^2] 
+&= \frac{1}{(N)_2^2} \left\{ \sum_{i=1}^N \E[(\vttilde{i})_2^2] 
++ \sum_{i=1}^N\sum_{j\neq i} \E[(\vttilde{i})_2(\vttilde{j})_2] \right\} \\
+&= \frac{1}{(N)_2^2} \left\{ \sum_{i=2}^N \E[(\vttilde{i})_2^2] +\E[(\vttilde{1})_2^2] 
++ \sum_{i=2}^N\sum_{1\neq j\neq i} \E[(\vttilde{i})_2(\vttilde{j})_2] + 2\sum_{i=1}^N \E[(\vttilde{1})2(\vttilde{i})2] \right\} \\
+&= \frac{1}{(N)_2^2} \left\{ (N-1)_4 \sum_{i=1}^N \E[(\wt{i})^4] + 4(N-1)_3 \sum_{i=1}^N \E[(\wt{i})^3] + 11(N-1)_2 \sum_{i=1}^N \E[(\wt{i})^2] -3(N-1)\sum_{i=1}^N \E[\wt{i}] \right\} \\
+&\qquad + \frac{1}{(N)_2^2} \left\{ (N-1)_4 \sum_{i=1}^N\sum_{j\neq i} \E[(\wt{i})^2(\wt{j})^2] 
++ 4(N-1)_3 \E[(\wt{1})^3] + 13(N-1)_2\E[(\wt{1})^2] + 17(N-1)\E[\wt{1}] \right\} \\
+&\qquad +\frac{1}{(N)_2^2} \left\{ 4(N-1)_3 \sum_{i=2}^N \E[\wt{1}(\wt{i})^2] + 4(N-1)_2 \sum_{i=2}^N \E[\wt{1}\wt{i}] \right\} \\
+&\leq  \E[c_N(t)^2] + \frac{1}{(N)_2^2} \left\{4(N-1)_3 \E[(\wt{1})^3] + 13(N-1)_2\E[(\wt{1})^2] + 17(N-1)\E[\wt{1}] \right\} \\
+&\qquad +\frac{1}{(N)_2^2} \left\{ 4(N-1)_3 \sum_{i=2}^N \E[\wt{1}(\wt{i})^2] + 4(N-1)_2 \sum_{i=2}^N \E[\wt{1}\wt{i}] \right\} \\
+&=  \E[c_N(t)^2] + O(N^{-3})
+\end{align*}
+
+
+\rule{\textwidth}{1pt}
+
+\section*{Proof of Lemma 3}
+We still assume the conditions (18) and (19) from KJJS.
+The conditional independence structure of the process (with time labelled backwards) gives us that, for any integrable function $f$,
+%%% draw the DAG
+\begin{equation*}
+\E[f(\mathbf{a}_t) \mid \mathcal{F}_{t-1}] = 
+\E[ \E[f(\mathbf{a}_t) \mid \mathbf{a}_{t+1}, \mathbf{X}_{t+1}, \mathbf{X}_{t}, \mathbf{X}_{t-1}, \mathbf{w}_{t-1}]\mid \mathcal{F}_{t-1}]
+\end{equation*}
+as in KJJS.
+In the conditional case with multinomial resampling, we have
+\begin{equation*}
+\PR(\mathbf{a}_t = \mathbf{a} \mid \mathbf{a}_{t+1}, \mathbf{X}_{t+1}, \mathbf{X}_{t}, \mathbf{X}_{t-1}, \mathbf{w}_{t-1} )
+\propto \mathbb{I}\{a_1 =1\} \prod_{i=2}^N g_t(X_{t+1}^{(a_{t+1}^{a_i})}, X_t^{(a_i)}) q_{t-1}(X_t^{(a_i)}, X_{t-1}^{(i)})
+\end{equation*}
+That is,
+\begin{align*}
+& a_t^{(1)} \mid \mathbf{a}_{t+1}, \mathbf{X}_{t+1}, \mathbf{X}_{t}, \mathbf{X}_{t-1}, \mathbf{w}_{t-1} = 1 \\
+& a_t^{(i)} \mid \mathbf{a}_{t+1}, \mathbf{X}_{t+1}, \mathbf{X}_{t}, \mathbf{X}_{t-1}, \mathbf{w}_{t-1} \sim \operatorname{Categorical}\left( g_t(X_{t+1}^{(a_{t+1}^{a_i})}, X_t^{(1)}) q_{t-1}(X_t^{(1)}, X_{t-1}^{(i)}), \dots,  g_t(X_{t+1}^{(a_{t+1}^{a_i})}, X_t^{(N)}) q_{t-1}(X_t^{(N)}, X_{t-1}^{(i)}) \right)\\
+& \qquad \text{for } i=2,\dots,N
+\end{align*}
+By formulating the definition of $I$-increasing in terms of the modified (conditional) ancestral process, we still have that $f_i(\mathbf{a}_t) := (\vt{i})_2$ is $\{i\}$-increasing for all $i$, but we need to modify the consequent result.
+
+To get a result of the form $\E[f(\mathbf{a}_t)\mid \mathbf{a}_{t+1}, \mathbf{X}_{t+1}, \mathbf{X}_{t}, \mathbf{X}_{t-1}, \mathbf{w}_{t-1}] \leq \E[f(\tilde{\mathbf{a}}_t)]$, we need to modify the distribution of $\tilde{\mathbf{a}}_t$. We require that the probability of assigning to a parent $i$ is higher under $\tilde{\mathbf{a}}_t$ than under $\mathbf{a}_t$ if and only if $i \in I$. So, by the same balls-in-bins argument of KJJS, the following distribution will work (using $a$ and $\varepsilon$ from the bounds (18) and (19)):
+\begin{align*}
+& \tilde{a}_t^{(1)} = 1\\
+& \tilde{a}_t^{(i)} = \operatorname{Categorical}\left( \left(\frac{a}{\varepsilon}\right)^{\mathbb{I}\{1\in I\} - \mathbb{I}\{1\notin I\}}, \dots, \left(\frac{a}{\varepsilon}\right)^{\mathbb{I}\{N\in I\} - \mathbb{I}\{N\notin I\}} \right), \qquad i=2,\dots,N
+\end{align*}
+Can't write that as a multinomial offspring distribution, which is a bit troublesome...
+Anyway, carrying this through we have
+\begin{align*}
+\E[\tilde{c}_N(t)\mid \mathcal{F}_{t-1}] &= \frac{1}{(N)_2} \sum_{i=1}^N \E[(\vt{i})_2\mid \mathcal{F}_{t-1}] \\
+&=: \frac{1}{(N)_2} \sum_{i=1}^N \E[f_i(\mathbf{a}_t) \mid \mathcal{F}_{t-1}]\\
+&\leq \frac{1}{(N)_2} \sum_{i=1}^N \E[f_i(\tilde{\mathbf{a}}_t)] \\
+&= \frac{1}{(N)_2} \E[f_i(\tilde{a}_t^{(1)})] + \frac{1}{(N)_2} \sum_{i=2}^N \E[f_i(\tilde{a}_t^{(i)})] \\
+&= ...
+\end{align*}
+
+\rule{\textwidth}{1pt}
+
+Actually, we can probably just plug in the results from (2) and such above:
+\begin{align*}
+\E[\tilde{c}_N(t)\mid \mathcal{F}_{t-1}] &= \frac{N-2}{N} \E[c_N(t)\mid \mathcal{F}_{t-1}] + \frac{2}{N} \E[\wt{1}] \\
+& \leq \E[c_N(t)\mid \mathcal{F}_{t-1}] + \frac{2}{N} \E[\wt{1}] \\
+&\leq \frac{a^4}{N\varepsilon^4} +  \frac{2}{N} \E[\wt{1}] \\
+&= \frac{a^4}{N\varepsilon^4} + O(N^{-2})
+\end{align*}
+And for the lower bound:
+\begin{align*}
+\E[\tilde{c}_N(t)\mid \mathcal{F}_{t-1}] &= \frac{N-2}{N} \E[c_N(t)] + \frac{2}{N} \E[\wt{1}] \\
+& \geq  \frac{N-2}{N}\frac{\varepsilon^4}{Na^4} + O(N^{-2}) \\
+& = \frac{\varepsilon^4}{Na^4} - \frac{2\varepsilon^4}{N^2a^4} + O(N^{-2}) \\
+& = \frac{\varepsilon^4}{Na^4} + O(N^{-2})
+\end{align*}
+Now for the bound on $D_N(t)$:
+\begin{align*}
+\E[\tilde{D}_N(t)\mid \mathcal{F}_{t-1}] &\leq \E[D_N(t)\mid \mathcal{F}_{t-1}] + O(N^{-3}) \\
+&\leq \frac{C}{N} \E[c_N(t)\mid \mathcal{F}_{t-1}] + O(N^{-3}) \\
+&\sim \frac{C}{N} \E[\tilde{c}_N(t)\mid \mathcal{F}_{t-1}]
+\end{align*}
+%%% ohhhh actually the last equality (now ~) above isn't true, because it should be an inequality the wrong way around - can fudge it with the O() though I think... 
+% i.e. we actually need a LOWER bound on ctilde in terms of c - this should be possible using the U/L bounds already shown in the lemma (or maybe part of the calcn thereof).
+%Same for the case below:
+And the bound on $(c_N(t))^2$:
+\begin{align*}
+\E[\tilde{c}_N^2(t)\mid \mathcal{F}_{t-1}] &\leq \E[c_N^2(t)\mid \mathcal{F}_{t-1}] + O(N^{-3}) \\
+&\leq \frac{C}{N} \E[c_N(t)\mid \mathcal{F}_{t-1}] + O(N^{-3}) \\
+&\sim \frac{C}{N} \E[\tilde{c}_N(t)\mid \mathcal{F}_{t-1}]
+\end{align*}
+
+
+%\bibliography{smc.bib}
+\end{document}
