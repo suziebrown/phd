@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass[fleqn]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[margin=1.5cm]{geometry}
 \usepackage{amsmath}
@@ -51,12 +51,12 @@ In the following we will make extensive use of the formula for factorial moments
 \end{equation*}
 where $(X_1,\dots X_k) \sim \Mn(n, \mathbf{p})$.
 To take advantage of this convenient expression we will convert any regular moments appearing in the calculations into factorial moments, using the identities summarised in Table \ref{tab:fact_powers}.
-Let us denote the random variables
-\begin{align*}
-& X_1,\dots, X_N \sim \Mn(N, \mathbf{w}) \\
-& \tilde{X}_1,\dots, \tilde{X}_N \sim \Mn(N-1, \mathbf{w}) \\
-& \mathbf{w} := (\wt{1},\dots, \wt{N})
-\end{align*}
+%Let us denote the random variables
+%\begin{align*}
+%& X_1,\dots, X_N \sim \Mn(N, \mathbf{w}) \\
+%& \tilde{X}_1,\dots, \tilde{X}_N \sim \Mn(N-1, \mathbf{w}) \\
+%& \mathbf{w} := (\wt{1},\dots, \wt{N})
+%\end{align*}
 \myrule
 
 \begin{table}
@@ -83,20 +83,23 @@ The coalescence rate is given by
 c_N(t) := \frac{1}{(N)_2} \sum_{i=1}^{N} \E\left[ (\vt{i})_2 \right].
 \end{equation*}
 In the following, all expectations are conditional on $\F$ but the conditioning is omitted for notational brevity.\\
-In the standard case we have
+In the standard case we have, using the tower rule and the multinomial moments,
 \begin{equation*}
-\E[c_N(t)] 
-%= \frac{1}{(N)_2} \sum_{i=1}^{N} \E\left[ \E\left[ (\vt{i})_2 \right] |\F \right]= \frac{1}{(N)_2} \sum_{i=1}^{N} \E[\E[(X_i)_2]|\F] 
-=\frac{1}{(N)_2} \sum_{i=1}^{N} (N)_2 \E\left[(\wt{i})^2\right] 
-= \sum_{i=1}^{N} \E\left[(\wt{i})^2\right]
+\E[c_N(t) |\F] 
+= \frac{1}{(N)_2} \sum_{i=1}^{N} \E\left[ \E[ (\vt{i})_2 ] |\F \right]
+=\frac{1}{(N)_2} \sum_{i=1}^{N} \E\left[(N)_2 (\wt{i})^2 |\F \right] 
+= \sum_{i=1}^{N} \E\left[(\wt{i})^2 |\F \right]
 \end{equation*}
 The corresponding quantity in the conditional case is
+\begin{equation*}
+\tilde{c}_N(t) = \frac{1}{(N)_2} \sum_{i=1}^{N} \E\left[ (\vttilde{i})_2 \right] 
+= \frac{1}{(N)_2} \E\left[ (\vttilde{1})_2 \right] + \frac{1}{(N)_2}\sum_{i=2}^{N} \E\left[ (\vttilde{i})_2 \right] \\
+\end{equation*}
+Then applying the tower rule and factorial moments as before we obtain
 \begin{align*}
-\E[\tilde{c}_N(t)] &= \frac{1}{(N)_2} \sum_{i=1}^{N} \E\left[ (\vttilde{i})_2 \right] \\
-&= \frac{1}{(N)_2} \E\left[ (\vttilde{1})^2 - \vttilde{1} \right] + \frac{1}{(N)_2}\sum_{i=2}^{N} \E\left[ (\vttilde{i})^2 - \vttilde{i} \right] \\
-&= \frac{1}{(N)_2}\left[ (N-1)_2\E[(\wt{1})^2] + 2(N-1)\E[\wt{1}] \right] + \frac{1}{(N)_2} \sum_{i=2}^{N} (N-1)_2\E[(\wt{i})^2] \\
-&= \frac{1}{(N)_2} \sum_{i=1}^{N} (N-1)_2\E[(\wt{i})^2] + \frac{1}{(N)_2} 2(N-1)\E[\wt{1}] \\
-&= \frac{N-2}{N} \E[c_N(t)] + \frac{2}{N} \E[\wt{1}].
+\E[\tilde{c}_N(t) |\F] &= \frac{1}{(N)_2} \left\{ (N-1)_2\E[(\wt{1})^2 |\F] + 2(N-1)\E[\wt{1} |\F] + \sum_{i=2}^{N} (N-1)_2\E[(\wt{i})^2 |\F] \right\}\\
+&= \frac{(N-1)_2}{(N)_2} \sum_{i=1}^{N} \E[(\wt{i})^2 |\F] + \frac{2(N-1)}{(N)_2} \E[\wt{1} |\F] \\
+&= \frac{N-2}{N} \E[c_N(t) |\F] + \frac{2}{N} \E[\wt{1} |\F]
 \end{align*}
 \myrule
 
