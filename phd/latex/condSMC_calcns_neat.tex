@@ -104,10 +104,18 @@ Then applying the tower rule and factorial moments as before we obtain
 \myrule
 
 The rate of super-binary mergers is bounded above by
-\begin{equation*}
-D_N(t) := \frac{1}{N(N)_2} \sum_{i=1}^N (\vt{i})_2 \left( \vt{i} + \frac{1}{N} \sum_{j\neq i} (\vt{j})^2 \right).
-\end{equation*}
-We then separate the terms involving particle 1 (the decomposition is the same for $\tilde{D}_N(t)$):
+\begin{align*}
+D_N(t) &:= \frac{1}{N(N)_2} \sum_{i=1}^N (\vt{i})_2 \left( \vt{i} + \frac{1}{N} \sum_{j\neq i} (\vt{j})^2 \right) \\
+&= \frac{1}{N(N)_2} \sum_{i=1}^N \left\{ (\vt{i})_2\vt{i} + \frac{1}{N}\sum_{j\neq i} (\vt{i})_2(\vt{j})^2 \right\} \\
+&= \frac{1}{N(N)_2} \sum_{i=1}^N \left\{ (\vt{i})_3 + 2(\vt{i})_2 + \frac{1}{N}\sum_{j\neq i} \left( (\vt{i})_2(\vt{j})_2 + (\vt{i})_2\vt{j} \right) \right\}
+\end{align*}
+We therefore find
+\begin{align*}
+\E[D_N(t) |\F] &= \frac{1}{N(N)_2} \sum_{i=1}^N \left\{ (N)_3\E[(\wt{i})^3 |\F] + 2(N)_2\E[(\wt{i})^2 |\F] \right\} \\
+&\qquad + \frac{1}{N^2(N)_2} \sum_{i=1}^N \sum_{j\neq i} \left\{ (N)_4\E[(\wt{i})^2(\wt{j})^2 |\F] + (N)_3\E[(\wt{i})^2\wt{j} |\F] \right\}
+\end{align*}
+
+For the conditional case, we separate the terms involving particle 1:
 \begin{align*}
 D_N(t) &= \frac{1}{N(N)_2} (\vt{1})_2 \left(\vt{1} + \frac{1}{N} \sum_{j\neq 1} (\vt{j})^2 \right) \\
 &\qquad+ \frac{1}{N(N)_2} \sum_{i\neq 1} (\vt{i})_2 \left( \vt{i} + \frac{1}{N}(\vt{1})^2 + \frac{1}{N} \sum_{1\neq j\neq i} (\vt{j})^2 \right)\\
@@ -116,12 +124,9 @@ D_N(t) &= \frac{1}{N(N)_2} (\vt{1})_2 \left(\vt{1} + \frac{1}{N} \sum_{j\neq 1} 
 &\qquad+ \frac{1}{N(N)_2}\sum_{i\neq 1} \left( (\vt{i})^3 - (\vt{i})^2 + \frac{1}{N}(\vt{i})^2(\vt{1})^2 - \frac{1}{N}(\vt{1})^2\vt{i} \right) \\
 &\qquad+ \frac{1}{N^2(N)_2}\sum_{i\neq 1}\sum_{1\neq j \neq i} \left( (\vt{i})^2(\vt{j})^2 - \vt{i}(\vt{j})^2 \right).
 \end{align*}
-After a lot of algebra, we find
-\begin{align*}
-\E[D_N(t)] &= \frac{1}{N}\sum_{i=1}^N \left( (N-2)\E[(\wt{i})^3] + 2\E[(\wt{i})^2] + \frac{3}{N-1}\E[\wt{i}] \right) \\
-&\qquad + \frac{N-2}{N^2} \sum_{i=1}^N\sum_{j\neq i} \left( (N-3) \E[(\wt{i})^2(\wt{j})^2] +  \E[(\wt{i})^2\wt{j}]  \right)
-\end{align*}
-and correspondingly
+
+
+...and correspondingly
 \begin{align*}
 \E[\tilde{D}_N(t)] &= \frac{N-2}{N^2} \sum_{i=1}^N \left( (N-3)\E[(\wt{i})^3] + \left( 2 + \frac{1}{N}\right) \E[(\wt{i})^2] + \frac{3}{N-2}\E[\wt{i}] \right) \\
 &\qquad + \frac{(N-2)(N-3)}{N^3} \sum_{i=1}^N\sum_{j\neq i} \left( (N-4)\E[(\wt{i})^2(\wt{j})^2] +  \E[(\wt{i})^2\wt{j}] \right) \\
