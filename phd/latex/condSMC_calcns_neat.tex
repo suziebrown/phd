@@ -1,6 +1,6 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
-\usepackage[margin=2cm]{geometry}
+\usepackage[margin=1.5cm]{geometry}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsthm}
@@ -22,6 +22,7 @@
 \newcommand{\wt}[2][t]{w_{#1}^{(#2)}}
 \newcommand{\eqdist}{\overset{d}{=}}
 \newcommand{\Bin}{\operatorname{Bin}}
+\newcommand{\Mn}{\operatorname{Multinomial}}
 \newcommand{\N}{\mathcal{N}}
 \newcommand{\F}{\mathcal{F}_{t-1}}
 \newcommand{\myrule}{\\ \rule{\textwidth}{1pt}}
@@ -44,7 +45,19 @@ In conditional SMC we condition on the immortal line surviving each resampling s
 where we write $\vttilde{i}$ to distinguish from $\vt{i}$. Similarly, any other quantities written with tilde are the conditional SMC analogues of the corresponding untilded quantities.
 \myrule
 
-In the following we will make extensive use of the formula for factorial moments of the multinomial distribution given in \citet{mosimann1962}, which have a very convenient form. For this reason we will convert any moments appearing in the calculations into factorial moments, using the identities summarised in Table \ref{tab:fact_powers}.
+In the following we will make extensive use of the formula for factorial moments of the multinomial distribution given in \citet[p.67]{mosimann1962}, which has the convenient form
+\begin{equation*}
+\E[(X_i)_a(X_j)_b] = (n)_{a+b}\, p_i^a p_j^b
+\end{equation*}
+where $(X_1,\dots X_k) \sim \Mn(n, \mathbf{p})$.
+To take advantage of this convenient expression we will convert any regular moments appearing in the calculations into factorial moments, using the identities summarised in Table \ref{tab:fact_powers}.
+Let us denote the random variables
+\begin{align*}
+& X_1,\dots, X_N \sim \Mn(N, \mathbf{w}) \\
+& \tilde{X}_1,\dots, \tilde{X}_N \sim \Mn(N-1, \mathbf{w}) \\
+& \mathbf{w} := (\wt{1},\dots, \wt{N})
+\end{align*}
+\myrule
 
 \begin{table}
 \centering
@@ -72,14 +85,17 @@ c_N(t) := \frac{1}{(N)_2} \sum_{i=1}^{N} \E\left[ (\vt{i})_2 \right].
 In the following, all expectations are conditional on $\F$ but the conditioning is omitted for notational brevity.\\
 In the standard case we have
 \begin{equation*}
-\E[c_N(t)] = \frac{1}{(N)_2} \sum_{i=1}^{N} (N)_2 \E\left[(\wt{i})^2\right] = \sum_{i=1}^{N} \E\left[(\wt{i})^2\right].
+\E[c_N(t)] 
+%= \frac{1}{(N)_2} \sum_{i=1}^{N} \E\left[ \E\left[ (\vt{i})_2 \right] |\F \right]= \frac{1}{(N)_2} \sum_{i=1}^{N} \E[\E[(X_i)_2]|\F] 
+=\frac{1}{(N)_2} \sum_{i=1}^{N} (N)_2 \E\left[(\wt{i})^2\right] 
+= \sum_{i=1}^{N} \E\left[(\wt{i})^2\right]
 \end{equation*}
 The corresponding quantity in the conditional case is
 \begin{align*}
 \E[\tilde{c}_N(t)] &= \frac{1}{(N)_2} \sum_{i=1}^{N} \E\left[ (\vttilde{i})_2 \right] \\
 &= \frac{1}{(N)_2} \E\left[ (\vttilde{1})^2 - \vttilde{1} \right] + \frac{1}{(N)_2}\sum_{i=2}^{N} \E\left[ (\vttilde{i})^2 - \vttilde{i} \right] \\
-&= \frac{1}{(N)_2}\left[ (N-1)(N-2)\E[(\wt{1})^2] + 2(N-1)\E[\wt{1}] \right] + \frac{1}{(N)_2} \sum_{i=2}^{N} (N-1)(N-2)\E[(\wt{i})^2] \\
-&= \frac{1}{(N)_2} \sum_{i=1}^{N} (N-1)(N-2)\E[(\wt{i})^2] + \frac{1}{(N)_2} 2(N-1)\E[\wt{1}] \\
+&= \frac{1}{(N)_2}\left[ (N-1)_2\E[(\wt{1})^2] + 2(N-1)\E[\wt{1}] \right] + \frac{1}{(N)_2} \sum_{i=2}^{N} (N-1)_2\E[(\wt{i})^2] \\
+&= \frac{1}{(N)_2} \sum_{i=1}^{N} (N-1)_2\E[(\wt{i})^2] + \frac{1}{(N)_2} 2(N-1)\E[\wt{1}] \\
 &= \frac{N-2}{N} \E[c_N(t)] + \frac{2}{N} \E[\wt{1}].
 \end{align*}
 \myrule
