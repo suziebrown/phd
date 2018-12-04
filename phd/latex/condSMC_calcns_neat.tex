@@ -44,12 +44,32 @@ In conditional SMC we condition on the immortal line surviving each resampling s
 where we write $\vttilde{i}$ to distinguish from $\vt{i}$. Similarly, any other quantities written with tilde are the conditional SMC analogues of the corresponding untilded quantities.
 \myrule
 
+In the following we will make extensive use of the formula for factorial moments of the multinomial distribution given in \citet{mosimann1962}, which have a very convenient form. For this reason we will convert any moments appearing in the calculations into factorial moments, using the identities summarised in Table \ref{tab:fact_powers}.
+
+\begin{table}
+\centering
+\begin{tabular}{r c l}
+\hline
+$x$ & $=$ & $(x)_1$ \\
+$x^2$ & $=$ & $(x)_2 + (x)_1$ \\
+$x^3$ & $=$ & $(x)_3 + 3(x)_2 + (x)_1$ \\
+$x^4$ & $=$ & $(x)_4 + 6(x)_3 + 7(x)_2 + (x)_1$ \\
+\hline
+$xy$ & $=$ & $(x)_1(y)_1$ \\
+$x^2y$ & $=$ & $(x)_2(y)_1 + (x)_1(y)_1$ \\
+$xy^2$ & $=$ & $(x)_1(y)_2 + (x)_1(y)_1$ \\
+$x^2y^2$ & $=$ & $(x)_2(y)_2 + (x)_2(y)_1 + (x)_1(y)_2 +  (x)_1(y)_1$ \\
+\hline
+\end{tabular}
+\caption{Conversion of regular powers into falling factorial powers}
+\label{tab:fact_powers}
+\end{table}
+
 The coalescence rate is given by
 \begin{equation*}
 c_N(t) := \frac{1}{(N)_2} \sum_{i=1}^{N} \E\left[ (\vt{i})_2 \right].
 \end{equation*}
-In the following, all expectations are conditional on $\F$ but the conditioning is omitted for notational brevity.
-We will make extensive use of the formula for factorial moments of the multinomial distribution given in \citet{mosimann1962}.\\
+In the following, all expectations are conditional on $\F$ but the conditioning is omitted for notational brevity.\\
 In the standard case we have
 \begin{equation*}
 \E[c_N(t)] = \frac{1}{(N)_2} \sum_{i=1}^{N} (N)_2 \E\left[(\wt{i})^2\right] = \sum_{i=1}^{N} \E\left[(\wt{i})^2\right].
