@@ -116,20 +116,22 @@ We therefore find
 \end{align*}
 For the conditional case, we separate the terms involving particle 1:
 \begin{align*}
-\tilde{D}_N(t) &= \frac{1}{N(N)_2} (\vttilde{1})_2 \left(\vttilde{1} + \frac{1}{N} \sum_{j\neq 1} (\vttilde{j})^2 \right) 
+\tilde{D}_N(t) &= \frac{1}{N(N)_2} (\vttilde{1})_2 \left(\vttilde{1} + \frac{1}{N} \sum_{j\neq 1} (\vttilde{j})^2 \right)
 + \frac{1}{N(N)_2} \sum_{i\neq 1} (\vttilde{i})_2 \left( \vttilde{i} + \frac{1}{N}(\vttilde{1})^2 + \frac{1}{N} \sum_{1\neq j\neq i} (\vttilde{j})^2 \right)\\
-&= \frac{1}{N(N)_2} \left\{ (\vt{1})_2\vt{1} + \frac{1}{N}\sum_{j\neq 1} (\vt{1})_2(\vt{j})^2 + \frac{1}{N}\sum_{i\neq 1} (\vt{i})_2(\vt{1})^2 \right\} \\
-&\qquad + \frac{1}{N(N)_2} \sum_{i\neq 1} \left\{ (\vt{i})_2\vt{i} + \frac{1}{N}\sum_{1\neq j\neq i} (\vt{i})_2(\vt{j})^2 \right\} \\
-&= \frac{1}{N(N)_2} \left\{ (\vt{1})_2\vt{1} + \frac{1}{N}\sum_{i\neq 1} \left( (\vt{1})_2(\vt{i})^2 + (\vt{i})_2(\vt{1})^2 \right) \right\} \\
-&\qquad + \frac{1}{N(N)_2} \sum_{i\neq 1} \left\{ (\vt{i})_3 + 2(\vt{i})_2 + \frac{1}{N}\sum_{1\neq j\neq i} \left( (\vt{i})_2(\vt{j})_2 + (\vt{i})_2\vt{j} \right) \right\}
+&= \frac{1}{N(N)_2} \left\{ (\vttilde{1})_2\vt{1} + \frac{1}{N}\sum_{j\neq 1} (\vttilde{1})_2(\vttilde{j})^2 + \frac{1}{N}\sum_{i\neq 1} (\vttilde{i})_2(\vttilde{1})^2 \right\} \\
+&\qquad + \frac{1}{N(N)_2} \sum_{i\neq 1} \left\{ (\vttilde{i})_2\vttilde{i} + \frac{1}{N}\sum_{1\neq j\neq i} (\vttilde{i})_2(\vttilde{j})^2 \right\} \\
+&= \frac{1}{N(N)_2} \left\{ (\vttilde{1})_2\vttilde{1} + \frac{1}{N}\sum_{i\neq 1} \left( (\vttilde{1})_2(\vttilde{i})^2 + (\vttilde{i})_2(\vttilde{1})^2 \right) \right\} \\
+&\qquad + \frac{1}{N(N)_2} \sum_{i\neq 1} \left\{ (\vttilde{i})_3 + 2(\vttilde{i})_2 + \frac{1}{N}\sum_{1\neq j\neq i} \left( (\vttilde{i})_2(\vttilde{j})_2 + (\vttilde{i})_2\vttilde{j} \right) \right\}
 \end{align*}
-and we find the expectation..... (now corrected but needs typesetting help and then double-checking against notes in book)
+and we find the expectation..... (now collapse 1 terms into sum, then give bound in terms of E(D).) not convinced the next equality is right in book...
 \begin{align*}
-\E[\tilde{D}_N(t) |\F] &= \frac{1}{N(N)_2} \left\{ (N-1)_3\E[(\wt{1})^3] + 5(N-1)_2\E[(\wt{1})^2] +  4(N-1)\E[\wt{1}] 
-+ \frac{1}{N} \sum_{i=2}^N \left( 2(N-1)_4\E[(\wt{1})^2(\wt{i})^2] + 2(N-1)_3 \E[\wt{1}(\wt{i})^2] -2(N-1)_2\E[\wt{1}\wt{i}] + (N-1)2\E[(\wt{i})^2] \right) \right\} \\
+\E[\tilde{D}_N(t) |\F] &= \frac{1}{N(N)_2} \left\{ (N-1)_3\E[(\wt{1})^3 |\F] + 5(N-1)_2\E[(\wt{1})^2 |\F] +  4(N-1)\E[\wt{1} |\F] \right\} \\
+&\qquad + \frac{1}{N^2(N)_2} \sum_{i=2}^N \left\{ 2(N-1)_4\E[(\wt{1})^2(\wt{i})^2 |\F] + 2(N-1)_3 \E[\wt{1}(\wt{i})^2 |\F] \right.\\
+&\hspace{160pt} \left. -2(N-1)_2\E[\wt{1}\wt{i} |\F] + (N-1)_2\E[(\wt{i})^2 |\F] \right\} \\
 &\qquad + \frac{1}{N(N)_2} \sum_{i=2}^N \left\{ 
-(N-1)_3\E[(\wt{i})^3] + 2(N-1)_2\E[(\wt{i})^2] 
-+ \frac{1}{N}\sum_{1\neq j\neq i} \left( (N-1)_4\E[(\wt{i})^2(\wt{j})^2 |\F] + (N-1)_3\E[(\wt{i})^2\wt{j} |\F] \right) \right\}
+(N-1)_3\E[(\wt{i})^3 |\F] + 2(N-1)_2\E[(\wt{i})^2 |\F] \right\} \\
+&\qquad + \frac{1}{N^2(N)_2} \sum_{i=2}^N \sum_{1\neq j\neq i} \left\{ (N-1)_4\E[(\wt{i})^2(\wt{j})^2 |\F] + (N-1)_3\E[(\wt{i})^2\wt{j} |\F] \right\} \\
+&=
 \end{align*}
 \myrule
 

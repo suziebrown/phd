@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  4 DEC 2018 16:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  7 DEC 2018 12:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -223,13 +223,8 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 32.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-{/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Overfull \hbox (365.32681pt too wide) detected at line 133
-[]
- []
-
-[2]
-Overfull \hbox (47.95288pt too wide) detected at line 156
+{/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
+Overfull \hbox (47.95288pt too wide) detected at line 158
 []
  []
 
@@ -237,11 +232,11 @@ Overfull \hbox (47.95288pt too wide) detected at line 156
 Here is how much of TeX's memory you used:
  2161 strings out of 492649
  27275 string characters out of 6129623
- 108517 words of memory out of 5000000
+ 110517 words of memory out of 5000000
  6034 multiletter control sequences out of 15000+600000
  12161 words of font info for 47 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 27i,10n,32p,455b,197s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 27i,11n,32p,455b,197s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/te
 xlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/tex
 live/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texl
@@ -256,7 +251,7 @@ f-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/texmf
 -dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2018/texmf-d
 ist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2018/texmf-di
 st/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on condSMC_calcns_neat.pdf (4 pages, 143393 bytes).
+Output written on condSMC_calcns_neat.pdf (4 pages, 143392 bytes).
 PDF statistics:
  69 PDF objects out of 1000 (max. 8388607)
  49 compressed objects within 1 object stream
