@@ -238,7 +238,7 @@ This is a generalised inverse of $\tilde{c}_N(t)$, so in particular we have the 
 \end{equation}
 Next we must check that conditional SMC with multinomial resampling satisfies the conditions of Theorem 1 from \citet{koskela2018}:
 \begin{description}
-\item{\textbf{Standing assumption}} holds by exchangeability of multinomial resampling?
+\item{\textbf{(Standing Assumption)}} Holds by exchangeability ???
 \item{\textbf{(4)}} Using \eqref{eq:cN_upper} and applying the tower rule, we find
 \begin{equation*}
 \E[\tilde{c}_N(t)] = \E[\E[\tilde{c}_N(t) |\F]] \leq \frac{a^4}{N\varepsilon^4} + O(N^{-2}) \Ntoinfty 0
@@ -263,8 +263,8 @@ Next we must check that conditional SMC with multinomial resampling satisfies th
 = \E\left[ \sum_{r=\tilde{\tau}_N(s)}^{\tilde{\tau}_N(t)} \frac{\E[\tilde{c}_N(r) |\F]}{\E[\tilde{c}_N(r) |\F]} \right] 
 = \frac{1}{\E[\tilde{c}_N(r) |\F]} \E\left[ \sum_{r=\tilde{\tau}_N(s)}^{\tilde{\tau}_N(t)} \E[\tilde{c}_N(r) |\F] \right] \\
 &= \frac{1}{\E[\tilde{c}_N(r) |\F]} \E\left[ \sum_{r=\tilde{\tau}_N(s)}^{\tilde{\tau}_N(t)} \tilde{c}_N(r) \right]
-\leq \frac{t-s+1}{\frac{\varepsilon^4}{Na^4	}+O(N^{-2})} = \frac{(t-s+1)a^4 N}{\varepsilon^4 + O(N^{-3})} 
-\sim C_{t,s} N.
+\leq \frac{t-s+1}{\frac{\varepsilon^4}{Na^4	}+O(N^{-2})} = \frac{(t-s+1)a^4 N}{\varepsilon^4 + O(N^{-1})} 
+\sim C_{t,s} N^2 ???
 \end{align*}
 \end{description}
 
