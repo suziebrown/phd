@@ -25,6 +25,7 @@
 \newcommand{\Mn}{\operatorname{Multinomial}}
 \newcommand{\N}{\mathcal{N}}
 \newcommand{\F}{\mathcal{F}_{t-1}}
+\newcommand{\Ntoinfty}{\overset{N\to\infty}{\longrightarrow}}
 \newcommand{\myrule}{\\ \rule{\textwidth}{1pt}}
 \newtheorem{thm}{Theorem}
 
@@ -190,39 +191,82 @@ We still assume the conditions (18) and (19) of the lemma, which control the wei
 & \E[\tilde{c}_N(t)^2 |\F] \leq \E[c_N(t)^2 |\F] + O(N^{-3})
 \end{align*}
 Therefore we get the upper bound
-\begin{align*}
-\E[\tilde{c}_N(t) |\F] &= \frac{N-2}{N} \E[c_N(t) |\F] + \frac{2}{N} \E[\wt{1} |\F] \\
-& \leq \E[c_N(t) |\F] + \frac{2}{N} \E[\wt{1} |\F] \\
-&\leq \frac{a^4}{N\varepsilon^4} +  \frac{2}{N} \E[\wt{1} |\F] \\
+\begin{align}\label{eq:cN_upper}
+\E[\tilde{c}_N(t) |\F] &= \frac{N-2}{N} \E[c_N(t) |\F] + \frac{2}{N} \E[\wt{1} |\F] \notag\\
+& \leq \E[c_N(t) |\F] + \frac{2}{N} \E[\wt{1} |\F] \notag\\
+&\leq \frac{a^4}{N\varepsilon^4} +  \frac{2}{N} \E[\wt{1} |\F] \notag\\
 &= \frac{a^4}{N\varepsilon^4} + O(N^{-2})
-\end{align*}
+\end{align}
 and lower bound
-\begin{align*}
-\E[\tilde{c}_N(t) |\F] &= \frac{N-2}{N} \E[c_N(t) |\F] + \frac{2}{N} \E[\wt{1} |\F] \\
-& \geq  \frac{N-2}{N}\frac{\varepsilon^4}{Na^4} + O(N^{-2}) \\
-& = \frac{\varepsilon^4}{Na^4} - \frac{2\varepsilon^4}{N^2a^4} + O(N^{-2}) \\
+\begin{align}\label{eq:cN_lower}
+\E[\tilde{c}_N(t) |\F] &= \frac{N-2}{N} \E[c_N(t) |\F] + \frac{2}{N} \E[\wt{1} |\F] \notag\\
+& \geq  \frac{N-2}{N}\frac{\varepsilon^4}{Na^4} + O(N^{-2}) \notag\\
+& = \frac{\varepsilon^4}{Na^4} - \frac{2\varepsilon^4}{N^2a^4} + O(N^{-2}) \notag\\
 & = \frac{\varepsilon^4}{Na^4} + O(N^{-2})
-\end{align*}
+\end{align}
 as in \citet{koskela2018}, but with the addition of an error term.
 Using that (22) in the lemma implies $\E[c_N(t)] = O(N^{-1})$, we also have the reverse inequality
 \begin{equation*}
 \E[\tilde{c}_N(t) |\F] = \E[c_N(t) |\F] - \frac{2}{N}\E[c_N(t) |\F] + O(N^{-2}) \geq \E[c_N(t) |\F] + O(N^{-2})
 \end{equation*}
 which allows us to deduce the following upper bounds:
-\begin{align*}
-\E[\tilde{D}_N(t) |\F] &\leq \E[D_N(t) |\F] + O(N^{-3}) \\
-&\leq \frac{C}{N} \E[c_N(t) |\F] + O(N^{-3}) \\
+\begin{align}\label{eq:DN_upper}
+\E[\tilde{D}_N(t) |\F] &\leq \E[D_N(t) |\F] + O(N^{-3}) \notag\\
+&\leq \frac{C}{N} \E[c_N(t) |\F] + O(N^{-3}) \notag\\
 &= \frac{C}{N} \E[\tilde{c}_N(t) |\F] + O(N^{-3})
-\end{align*}
+\end{align}
 and
-\begin{align*}
-\E[\tilde{c}_N(t)^2 |\F] &\leq \E[c_N(t)^2 |\F] + O(N^{-3}) \\
-&\leq \frac{C}{N} \E[c_N(t) |\F] + O(N^{-3}) \\
+\begin{align}\label{eq:cN2_upper}
+\E[\tilde{c}_N(t)^2 |\F] &\leq \E[c_N(t)^2 |\F] + O(N^{-3}) \notag\\
+&\leq \frac{C}{N} \E[c_N(t) |\F] + O(N^{-3}) \notag\\
 &= \frac{C}{N} \E[\tilde{c}_N(t) |\F] + O(N^{-3})
-\end{align*}
+\end{align}
 These correspond to (20) and (21) respectively in the statement of the lemma, again with additional error terms. $C$ indicates an arbitrary constant which may change from one line to the next.
 
 We conclude an analogous result to \citet[Lemma 3]{koskela2018} for conditional SMC, involving the tilded quantities and with the addition of some vanishing errors that should not affect the further analysis.
+\myrule
+
+The proof of Lemma 2 in \citet{koskela2018} applies to a general class of functions which includes our tilded ones, so that result can be applied in the following without modification.
+
+At this point we define the modified time-rescaling.
+\begin{equation*}
+\tilde{\tau}_N(t) := \min\left\{ s\geq 1 : \sum_{r=1}^s \tilde{c}_N(r) \geq t \right\}
+\end{equation*}
+This is a generalised inverse of $\tilde{c}_N(t)$, so in particular we have the property
+\begin{equation}\label{eq:sum_tau_cN_upper}
+\sum_{r=\tilde{\tau}_N(s)}^{\tilde{\tau}_N(t)} \tilde{c}_N(r) \leq t-s +1 .
+\end{equation}
+Next we must check that conditional SMC with multinomial resampling satisfies the conditions of Theorem 1 from \citet{koskela2018}:
+\begin{description}
+\item{\textbf{Standing assumption}} holds by exchangeability of multinomial resampling?
+\item{\textbf{(4)}} Using \eqref{eq:cN_upper} and applying the tower rule, we find
+\begin{equation*}
+\E[\tilde{c}_N(t)] = \E[\E[\tilde{c}_N(t) |\F]] \leq \frac{a^4}{N\varepsilon^4} + O(N^{-2}) \Ntoinfty 0
+\end{equation*}
+\item{\textbf{(5)}} Using \citet[Lemma 2]{koskela2018} along with \eqref{eq:cN2_upper} and \eqref{eq:sum_tau_cN_upper},
+\begin{align*}
+\E\left[ \sum_{r=\tilde{\tau}_N(s)}^{\tilde{\tau}_N(t)} \tilde{c}_N(r)^2 \right] 
+&= \E\left[ \sum_{r=\tilde{\tau}_N(s)}^{\tilde{\tau}_N(t)} \E[\tilde{c}_N(r) |\F] \right]
+\leq \frac{C}{N}  \E\left[ \sum_{r=\tilde{\tau}_N(s)}^{\tilde{\tau}_N(t)} \E[\tilde{c}_N(t) |\F] + O(N^{-3}) \right] \\
+&= \frac{C}{N}  \E\left[ \sum_{r=\tilde{\tau}_N(s)}^{\tilde{\tau}_N(t)} \E[\tilde{c}_N(t) |\F] \right] + O(N^{-3})
+= \frac{C}{N}  \E\left[ \sum_{r=\tilde{\tau}_N(s)}^{\tilde{\tau}_N(t)} \tilde{c}_N(r) \right] + O(N^{-3}) \\
+&\leq \frac{C}{N}(t-s+1) + O(N^{-3}) \Ntoinfty 0
+\end{align*}
+\item{\textbf{(3)}} The above caluclation replacing \eqref{eq:cN2_upper} with \eqref{eq:DN_upper} yields
+\begin{equation*}
+\E\left[ \sum_{r=\tilde{\tau}_N(s)}^{\tilde{\tau}_N(t)} \tilde{D}_N(r) \right] \Ntoinfty 0
+\end{equation*}
+\item{\textbf{(6)}} Using \eqref{eq:cN_lower}, \eqref{eq:sum_tau_cN_upper} and \citet[Lemma 2]{koskela2018},
+\begin{align*}
+\E[\tau_N(t) - \tau_N(s)] 
+&= \E\left[ \sum_{r=\tilde{\tau}_N(s)}^{\tilde{\tau}_N(t)} 1 \right] 
+= \E\left[ \sum_{r=\tilde{\tau}_N(s)}^{\tilde{\tau}_N(t)} \frac{\E[\tilde{c}_N(r) |\F]}{\E[\tilde{c}_N(r) |\F]} \right] 
+= \frac{1}{\E[\tilde{c}_N(r) |\F]} \E\left[ \sum_{r=\tilde{\tau}_N(s)}^{\tilde{\tau}_N(t)} \E[\tilde{c}_N(r) |\F] \right] \\
+&= \frac{1}{\E[\tilde{c}_N(r) |\F]} \E\left[ \sum_{r=\tilde{\tau}_N(s)}^{\tilde{\tau}_N(t)} \tilde{c}_N(r) \right]
+\leq \frac{t-s+1}{\frac{\varepsilon^4}{Na^4	}+O(N^{-2})} = \frac{(t-s+1)a^4 N}{\varepsilon^4 + O(N^{-3})} 
+\sim C_{t,s} N.
+\end{align*}
+\end{description}
 
 \bibliography{smc.bib}
 \end{document}
