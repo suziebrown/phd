@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  12 DEC 2018 15:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  15 DEC 2018 11:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -224,20 +224,20 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Overfull \hbox (29.98422pt too wide) detected at line 145
+Overfull \hbox (29.98422pt too wide) detected at line 150
 []
  []
 
 [2] [3]
-Overfull \hbox (13.95369pt too wide) detected at line 183
+Overfull \hbox (13.95369pt too wide) detected at line 188
 []
  []
 
 [4] [5] (./condSMC_calcns_neat.bbl) [6] (./condSMC_calcns_neat.aux) ) 
 Here is how much of TeX's memory you used:
  2167 strings out of 492649
- 27357 string characters out of 6129623
- 116568 words of memory out of 5000000
+ 27362 string characters out of 6129623
+ 117568 words of memory out of 5000000
  6040 multiletter control sequences out of 15000+600000
  12161 words of font info for 47 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -258,7 +258,7 @@ xmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2018/texmf
 dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2018/texmf-di
 st/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2018/texmf-dis
 t/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on condSMC_calcns_neat.pdf (6 pages, 170783 bytes).
+Output written on condSMC_calcns_neat.pdf (6 pages, 172740 bytes).
 PDF statistics:
  83 PDF objects out of 1000 (max. 8388607)
  59 compressed objects within 1 object stream

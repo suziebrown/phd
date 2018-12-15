@@ -74,6 +74,11 @@ $x^2y$ & $=$ & $(x)_2(y)_1 + (x)_1(y)_1$ \\
 $xy^2$ & $=$ & $(x)_1(y)_2 + (x)_1(y)_1$ \\
 $x^2y^2$ & $=$ & $(x)_2(y)_2 + (x)_2(y)_1 + (x)_1(y)_2 +  (x)_1(y)_1$ \\
 \hline
+$(x+1)_2$ & $=$ & $(x)_2 + 2(x)_1$ \\
+$(x+1)^2$ & $=$ & $(x)_2 + 3(x)_1 + 1$ \\
+$(x+1)_2(x+1)$ & $=$ & $(x)_3 + 5(x)_2 + 4(x)_1$ \\
+$(x+1)_2^2$ & $=$ & $(x)_4 + 8(x)_3 + 14(x)_2 + 4(x)_1$ \\
+\hline
 \end{tabular}
 \caption{Conversion of ordinary powers into falling factorial powers}
 \label{tab:fact_powers}
@@ -162,7 +167,7 @@ In the conditional version, the calculations follow the same structure as those 
 \tilde{c}_N(t)^2 &= \frac{1}{(N)_2^2} \left\{ \sum_{i=1}^N \E[(\vttilde{i})_2^2] 
 + \sum_{i=1}^N\sum_{j\neq i} \E[(\vttilde{i})_2(\vttilde{j})_2] \right\} \\
 &= \frac{1}{(N)_2^2} \left\{ \sum_{i=2}^N \E[(\vttilde{i})_2^2] +\E[(\vttilde{1})_2^2] 
-+ \sum_{i=2}^N\sum_{1\neq j\neq i} \E[(\vttilde{i})_2(\vttilde{j})_2] + 2\sum_{i=1}^N \E[(\vttilde{1})_2(\vttilde{i})_2] \right\} \\
++ \sum_{i=2}^N\sum_{1\neq j\neq i} \E[(\vttilde{i})_2(\vttilde{j})_2] + 2\sum_{i=2}^N \E[(\vttilde{1})_2(\vttilde{i})_2] \right\} \\
 \end{align*}
 And we find the following expectation, using the same techniques as before:
 \begin{align*}
@@ -233,39 +238,60 @@ At this point we define the modified time-rescaling.
 \tilde{\tau}_N(t) := \min\left\{ s\geq 1 : \sum_{r=1}^s \tilde{c}_N(r) \geq t \right\}
 \end{equation*}
 This is a generalised inverse of $\tilde{c}_N(t)$, so in particular we have the property
-\begin{equation}\label{eq:sum_tau_cN_upper}
-\sum_{r=\tilde{\tau}_N(s)}^{\tilde{\tau}_N(t)} \tilde{c}_N(r) \leq t-s +1 .
+\begin{equation}\label{eq:sum_tau_cN_upperlower}
+t-s-1 \leq \sum_{r=\tilde{\tau}_N(s)+1}^{\tilde{\tau}_N(t)} \tilde{c}_N(r) \leq t-s +1 .
 \end{equation}
 Next we must check that conditional SMC with multinomial resampling satisfies the conditions of Theorem 1 from \citet{koskela2018}:
 \begin{description}
-\item{\textbf{(Standing Assumption)}} Holds by exchangeability ???
+\item{\textbf{(Standing Assumption)}} Holds by exchangeability ??
 \item{\textbf{(4)}} Using \eqref{eq:cN_upper} and applying the tower rule, we find
 \begin{equation*}
 \E[\tilde{c}_N(t)] = \E[\E[\tilde{c}_N(t) |\F]] \leq \frac{a^4}{N\varepsilon^4} + O(N^{-2}) \Ntoinfty 0
 \end{equation*}
-\item{\textbf{(5)}} Using \citet[Lemma 2]{koskela2018} along with \eqref{eq:cN2_upper} and \eqref{eq:sum_tau_cN_upper},
+\item{\textbf{(5)}} Using \citet[Lemma 2]{koskela2018} along with \eqref{eq:cN2_upper} and the upper bound in \eqref{eq:sum_tau_cN_upperlower},
 \begin{align*}
-\E\left[ \sum_{r=\tilde{\tau}_N(s)}^{\tilde{\tau}_N(t)} \tilde{c}_N(r)^2 \right] 
-&= \E\left[ \sum_{r=\tilde{\tau}_N(s)}^{\tilde{\tau}_N(t)} \E[\tilde{c}_N(r) |\F] \right]
-\leq \frac{C}{N}  \E\left[ \sum_{r=\tilde{\tau}_N(s)}^{\tilde{\tau}_N(t)} \E[\tilde{c}_N(t) |\F] + O(N^{-3}) \right] \\
-&= \frac{C}{N}  \E\left[ \sum_{r=\tilde{\tau}_N(s)}^{\tilde{\tau}_N(t)} \E[\tilde{c}_N(t) |\F] \right] + O(N^{-3})
-= \frac{C}{N}  \E\left[ \sum_{r=\tilde{\tau}_N(s)}^{\tilde{\tau}_N(t)} \tilde{c}_N(r) \right] + O(N^{-3}) \\
-&\leq \frac{C}{N}(t-s+1) + O(N^{-3}) \Ntoinfty 0
+\E\left[ \sum_{r=\tilde{\tau}_N(s)+1}^{\tilde{\tau}_N(t)} \tilde{c}_N(r)^2 \right] 
+&= \E\left[ \sum_{r=\tilde{\tau}_N(s)+1}^{\tilde{\tau}_N(t)} \E[\tilde{c}_N(r)^2 |\F] \right]
+\leq  \E\left[ \sum_{r=\tilde{\tau}_N(s)+1}^{\tilde{\tau}_N(t)} \left( \frac{C}{N}\E[\tilde{c}_N(t) |\F] + O(N^{-3})\right) \right] \\
+&= \frac{C}{N}  \E\left[ \sum_{r=\tilde{\tau}_N(s)+1}^{\tilde{\tau}_N(t)} \E[\tilde{c}_N(t) |\F] \right] + O(N^{-2})
+= \frac{C}{N}  \E\left[ \sum_{r=\tilde{\tau}_N(s)+1}^{\tilde{\tau}_N(t)} \tilde{c}_N(r) \right] + O(N^{-2}) \\
+&\leq \frac{C}{N}(t-s+1) + O(N^{-2}) \Ntoinfty 0
 \end{align*}
-\item{\textbf{(3)}} The above caluclation replacing \eqref{eq:cN2_upper} with \eqref{eq:DN_upper} yields
+\item{\textbf{(3)}} The above calculation replacing \eqref{eq:cN2_upper} with \eqref{eq:DN_upper} yields
+\begin{align*}
+\E\left[ \sum_{r=\tilde{\tau}_N(s)+1}^{\tilde{\tau}_N(t)} \tilde{D}_N(r) \right]
+&= \E\left[ \sum_{r=\tilde{\tau}_N(s)+1}^{\tilde{\tau}_N(t)} \E[\tilde{D}_N(r) |\F] \right] \\
+&\leq  \E\left[ \sum_{r=\tilde{\tau}_N(s)+1}^{\tilde{\tau}_N(t)} \left( \frac{C}{N}\E[\tilde{c}_N(t) |\F] + O(N^{-3})\right) \right] 
+\Ntoinfty 0
+\end{align*}
+\item{\textbf{(6)}} Using \eqref{eq:cN_lower}, the upper bound in \eqref{eq:sum_tau_cN_upperlower} and \citet[Lemma 2]{koskela2018},
+\begin{align*}
+\E[\tilde{\tau}_N(t) - \tilde{\tau}_N(s)] 
+&= \E\left[ \sum_{r=\tilde{\tau}_N(s)+1}^{\tilde{\tau}_N(t)} 1 \right] 
+= \E\left[ \sum_{r=\tilde{\tau}_N(s)+1}^{\tilde{\tau}_N(t)} \frac{\E[\tilde{c}_N(r) |\F]}{\E[\tilde{c}_N(r) |\F]} \right] 
+\leq \E\left[ \sum_{r=\tilde{\tau}_N(s)+1}^{\tilde{\tau}_N(t)} \frac{\E[\tilde{c}_N(r) |\F]}{\frac{\varepsilon^4}{Na^4}+O(N^{-2})} \right] \\
+&= \frac{1}{\frac{\varepsilon^4}{Na^4}+O(N^{-2})} \E\left[ \sum_{r=\tilde{\tau}_N(s)+1}^{\tilde{\tau}_N(t)} \E[\tilde{c}_N(r) |\F] \right] 
+= \frac{1}{\frac{\varepsilon^4}{Na^4}+O(N^{-2})} \E\left[ \sum_{r=\tilde{\tau}_N(s)+1}^{\tilde{\tau}_N(t)} \tilde{c}_N(r) \right] \\
+&\leq \frac{t-s+1}{\frac{\varepsilon^4}{Na^4	}+O(N^{-2})} = \frac{(t-s+1)a^4 N}{\varepsilon^4 + O(N^{-1})} 
+= (t-s+1)\frac{a^4}{\varepsilon^4}N + O(1)
+\end{align*}
+where the last equality follows by a Taylor expansion of the denominator.
+Similarly we derive a lower bound using \eqref{eq:cN_upper}, the lower bound in \eqref{eq:sum_tau_cN_upperlower} and \citet[Lemma 2]{koskela2018}:
+\begin{align*}
+\E[\tilde{\tau}_N(t) - \tilde{\tau}_N(s)] 
+&= \E\left[ \sum_{r=\tilde{\tau}_N(s)+1}^{\tilde{\tau}_N(t)} 1 \right] 
+= \E\left[ \sum_{r=\tilde{\tau}_N(s)+1}^{\tilde{\tau}_N(t)} \frac{\E[\tilde{c}_N(r) |\F]}{\E[\tilde{c}_N(r) |\F]} \right] 
+\geq \E\left[ \sum_{r=\tilde{\tau}_N(s)+1}^{\tilde{\tau}_N(t)} \frac{\E[\tilde{c}_N(r) |\F]}{\frac{a^4}{N\varepsilon^4}+O(N^{-2})} \right] \\
+&= \frac{1}{\frac{a^4}{N\varepsilon^4}+O(N^{-2})} \E\left[ \sum_{r=\tilde{\tau}_N(s)+1}^{\tilde{\tau}_N(t)} \E[\tilde{c}_N(r) |\F] \right] 
+= \frac{1}{\frac{a^4}{N\varepsilon^4}+O(N^{-2})} \E\left[ \sum_{r=\tilde{\tau}_N(s)+1}^{\tilde{\tau}_N(t)} \tilde{c}_N(r) \right] \\
+&\geq \frac{t-s-1}{\frac{a^4}{N\varepsilon^4}+O(N^{-2})} = \frac{(t-s-1)\varepsilon^4 N}{a^4 + O(N^{-1})} 
+= (t-s-1)\frac{\varepsilon^4}{a^4}N + O(1)
+\end{align*}
+Therefore we have as required
 \begin{equation*}
-\E\left[ \sum_{r=\tilde{\tau}_N(s)}^{\tilde{\tau}_N(t)} \tilde{D}_N(r) \right] \Ntoinfty 0
+\E[\tilde{\tau}_N(t) - \tilde{\tau}_N(s)] \sim C_{t,s} N
 \end{equation*}
-\item{\textbf{(6)}} Using \eqref{eq:cN_lower}, \eqref{eq:sum_tau_cN_upper} and \citet[Lemma 2]{koskela2018},
-\begin{align*}
-\E[\tau_N(t) - \tau_N(s)] 
-&= \E\left[ \sum_{r=\tilde{\tau}_N(s)}^{\tilde{\tau}_N(t)} 1 \right] 
-= \E\left[ \sum_{r=\tilde{\tau}_N(s)}^{\tilde{\tau}_N(t)} \frac{\E[\tilde{c}_N(r) |\F]}{\E[\tilde{c}_N(r) |\F]} \right] 
-= \frac{1}{\E[\tilde{c}_N(r) |\F]} \E\left[ \sum_{r=\tilde{\tau}_N(s)}^{\tilde{\tau}_N(t)} \E[\tilde{c}_N(r) |\F] \right] \\
-&= \frac{1}{\E[\tilde{c}_N(r) |\F]} \E\left[ \sum_{r=\tilde{\tau}_N(s)}^{\tilde{\tau}_N(t)} \tilde{c}_N(r) \right]
-\leq \frac{t-s+1}{\frac{\varepsilon^4}{Na^4	}+O(N^{-2})} = \frac{(t-s+1)a^4 N}{\varepsilon^4 + O(N^{-1})} 
-\sim C_{t,s} N^2 ???
-\end{align*}
+as $N\to\infty$.
 \end{description}
 
 \bibliography{smc.bib}
