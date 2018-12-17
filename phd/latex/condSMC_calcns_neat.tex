@@ -148,6 +148,7 @@ and we find the expectation:
 &\leq \E[D_N(t) |\F] + \frac{3}{N} \E[(\wt{1})^2 |\F] +  \frac{4}{N^2}\E[\wt{1} |\F] \\
 &\qquad+ \frac{4}{N}\sum_{i=2}^N \E[\wt{1}(\wt{i})^2 |\F] +\frac{2}{N^2}\sum_{i=2}^N \E[\wt{1}\wt{i} |\F] + \frac{1}{N^2} \sum_{i=2}^N \E[(\wt{i})^2 |\F] 
 \end{align*}
+The second line of the first equality follows from multiplying the relevant terms in Table \ref{tab:fact_powers}.
 For the second equality we recombine the particle 1 terms into the sum, and the upper bounds follow from bounding e.g.\ $N-1$ by $N$.
 \myrule
 
@@ -275,7 +276,7 @@ Next we must check that conditional SMC with multinomial resampling satisfies th
 &\leq \frac{t-s+1}{\frac{\varepsilon^4}{Na^4	}+O(N^{-2})} = \frac{(t-s+1)a^4 N}{\varepsilon^4 + O(N^{-1})} 
 = (t-s+1)\frac{a^4}{\varepsilon^4}N + O(1)
 \end{align*}
-where the last equality follows by a Taylor expansion of the denominator.
+where the last equality follows by a Taylor expansion of $(\frac{\varepsilon^4}{Na^4	}+O(N^{-2}))^{-1}$.\\
 Similarly we derive a lower bound using \eqref{eq:cN_upper}, the lower bound in \eqref{eq:sum_tau_cN_upperlower} and \citet[Lemma 2]{koskela2018}:
 \begin{align*}
 \E[\tilde{\tau}_N(t) - \tilde{\tau}_N(s)] 
