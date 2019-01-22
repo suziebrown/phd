@@ -1,0 +1,78 @@
+\documentclass[fleqn]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=2cm]{geometry}
+
+\usepackage{enumitem}
+
+% maths
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+% pseudocode
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+
+% bibliography
+\usepackage[round, sort&compress]{natbib}
+\usepackage{har2nat}
+\bibliographystyle{agsm}
+
+% project-specific commands
+\newcommand{\Cat}{\operatorname{Categorical}}
+
+\title{Conditional SMC definition}
+\author{Suzie Brown}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+Aim: to settle on a definition of conditional SMC with multinomial resampling from which to base results, preferably a definition that is compatible with the standing assumption of \citet{koskela2018}.
+
+The quantities we know upfront are described below. The setting of this algorithm within particle MCMC \citep{andrieu2010} is as a single run of the particle filter within one step of the MCMC algorithm: the `immortal trajectory' on which we are conditioning is sampled from the preceding step.
+
+\begin{description}[style=multiline,leftmargin=2.5cm]
+\item [$N$] number of particles
+\item [$T$] number of SMC iterations
+\item [$\{K_t\}_{t=1,\dots,T}$] Markov kernels
+\item [$\{g_t\}_{t=0,\dots,T}$] potentials
+\item [$\mu$] initial distribution
+\item [$x_{0:T}^*$] positions of immortal trajectory
+\item [$a_{0:T}^*$] indices of immortal trajectory
+\end{description}
+
+\hrule
+\begin{algorithmic}[1]
+\Require $N, T, \{K_t\}, \{g_t\}, \mu, x_{0:T}^*, a_{0:T}^*$
+\For{$i \in \{1,\dots,N\}$} 
+	\State Sample $X_0^{(i)} \sim \mu$ 
+\EndFor
+\State $X_0^{(a_0^*)} \gets x_0^*$
+\For{$i \in \{1,\dots,N\}$}
+	\State $w_0^{(i)} \gets \frac{g_0(X_0^{(i)})}{\sum_{j=1}^N g_0(X_0^{(j)})}$
+\EndFor
+\For{$t \in \{0,\dots, T-1$}
+	\State Sample $a_t^{(1:N)} \sim \Cat(\{1,\dots,N\}, w_t^{(1:N)})$
+	\State $a_t^{(a_{t+1}^*)} \gets a_t^*$
+	\For{$i \in \{1,\dots,N\}$}
+		\State Sample $X_{t+1}^{(i)} \sim K_{t+1}(X_t^{(a_t^{(i)})}, \cdot)$
+	\EndFor
+	\State $X_{t+1}^{(a_{t+1}^*)} \gets X_{t+1}^*$
+	\For{$i \in \{1,\dots,N\}$}
+		\State $w_{t+1}^{(i)} \gets \frac{g_{t+1}(X_t^{(a_t^{(i)})} , X_{t+1}^{(i)})}{\sum_{j=1}^N g_{t+1}(X_t^{(a_t^{(j)})} , X_{t+1}^{(j)})}$
+	\EndFor
+\EndFor
+\end{algorithmic}
+\hrule
+
+\begin{itemize}
+\item Lines 9--10 okay since marginal of Categorical distribution is still Categorical (so we can sample all N indices and just overwrite the immortal particle's parent index).
+\item This algorithm assumes the indices of the immortal line are given, as well as its positions. This is the situation described in \citet{andrieu2010}.
+\item For our purposes we can therefore suppose that the immortal line comprises particle 1 in each generation.
+\item This can be achieved even in a real scenario by simply relabelling the particles after resampling so that the immortal particle takes the label 1.
+\end{itemize}
+
+\bibliography{smc.bib}
+\end{document}
+
