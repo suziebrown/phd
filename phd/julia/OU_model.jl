@@ -1,6 +1,6 @@
 using Random, Distributions
 
-function ousim(T, delta, sigma)
+function ousim(T::Int64, delta::Float64, sigma::Float64, returnstates::Bool)
     # pre-allocate arrays
     states = Array{Float64}(undef, T+1)
     observations = Array{Float64}(undef, T+1)
@@ -19,7 +19,12 @@ function ousim(T, delta, sigma)
         observations[t] = states[t] + obs_noise[t]
     end
 
-    return (states = states, observations = observations)
+    if returnstates
+        return (states = states, observations = observations)
+    else
+        return observations
+    end
+
 end
 
 
@@ -27,6 +32,9 @@ end
 using Plots
 gr()
 
-x = ousim(10, 0.1, 1)
+x = ousim(10, 0.1, 1.0, true)
 plot(0:10, x.states, label="states")
 plot!(0:10, x.observations, label="observations")
+
+x = ousim(10, 0.1, 1.0, false)
+plot(0:10, x, label="observations")
