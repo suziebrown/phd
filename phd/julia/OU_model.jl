@@ -24,11 +24,24 @@ function ousim(T::Int64, delta::Float64, sigma::Float64, returnstates::Bool)
     else
         return observations
     end
+end
 
+function ouinit(N::Int64, delta::Float64, sigma::Float64)
+    rand(Normal(0, delta^(0.5)), N)
+end
+
+function outransition(oldpos::Float64, delta::Float64, sigma::Float64)
+    N = length(oldpos)
+    rand(Normal((1-delta).*oldpos, delta^(0.5)), N)
+end
+
+function oupotential(pos::Float64, obs::Float64, delta::Float64, sigma::Float64)
+    (2*pi)^(-0.5) * sigma^(-1) * exp(-(obs-pos)^2 / (2*sigma^2))
 end
 
 
-# TEST
+#= TEST
+
 using Plots
 gr()
 
@@ -38,3 +51,5 @@ plot!(0:10, x.observations, label="observations")
 
 x = ousim(10, 0.1, 1.0, false)
 plot(0:10, x, label="observations")
+
+=#
