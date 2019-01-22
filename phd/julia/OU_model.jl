@@ -1,5 +1,6 @@
 using Random, Distributions
 
+# generate a sequence of observations from an Orstein-Uhlenbeck process
 function ousim(T::Int64, delta::Float64, sigma::Float64, returnstates::Bool)
     # pre-allocate arrays
     states = Array{Float64}(undef, T+1)
@@ -26,15 +27,18 @@ function ousim(T::Int64, delta::Float64, sigma::Float64, returnstates::Bool)
     end
 end
 
+# sample initial particle positions
 function ouinit(N::Int64, delta::Float64, sigma::Float64)
     rand(Normal(0, delta^(0.5)), N)
 end
 
+# propagate states: sample new positions from current ones
 function outransition(oldpos::Float64, delta::Float64, sigma::Float64)
     N = length(oldpos)
     rand(Normal((1-delta).*oldpos, delta^(0.5)), N)
 end
 
+# calculate potentials between particle positions and observations (to compute weights)
 function oupotential(pos::Float64, obs::Float64, delta::Float64, sigma::Float64)
     (2*pi)^(-0.5) * sigma^(-1) * exp(-(obs-pos)^2 / (2*sigma^2))
 end
