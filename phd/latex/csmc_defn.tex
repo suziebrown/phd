@@ -53,7 +53,7 @@ The quantities we know upfront are described below. The setting of this algorith
 \For{$i \in \{1,\dots,N\}$}
 	\State $w_0^{(i)} \gets \frac{g_0(X_0^{(i)})}{\sum_{j=1}^N g_0(X_0^{(j)})}$
 \EndFor
-\For{$t \in \{0,\dots, T-1$}
+\For{$t \in \{0,\dots, T-1\}$}
 	\State Sample $a_t^{(1:N)} \sim \Cat(\{1,\dots,N\}, w_t^{(1:N)})$
 	\State $a_t^{(a_{t+1}^*)} \gets a_t^*$
 	\For{$i \in \{1,\dots,N\}$}
@@ -88,7 +88,7 @@ We can fix this by considering a slightly different framework (which can just as
 \For{$i \in \{1,\dots,N\}$}
 	\State $w_0^{(i)} \gets \frac{g_0(X_0^{(i)})}{\sum_{j=1}^N g_0(X_0^{(j)})}$
 \EndFor
-\For{$t \in \{0,\dots, T-1$}
+\For{$t \in \{0,\dots, T-1\}$}
 	\State Sample $a_t^{(1:N)} \sim \Cat(\{1,\dots,N\}, w_t^{(1:N)})$
 	\State Sample $a_{t+1}^* \sim \Unif(\{1,\dots,N\})$
 	\State $a_t^{(a_{t+1}^*)} \gets a_t^*$
