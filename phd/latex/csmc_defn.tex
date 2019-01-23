@@ -20,6 +20,7 @@
 
 % project-specific commands
 \newcommand{\Cat}{\operatorname{Categorical}}
+\newcommand{\Unif}{\operatorname{Uniform}}
 
 \title{Conditional SMC definition}
 \author{Suzie Brown}
@@ -72,6 +73,35 @@ The quantities we know upfront are described below. The setting of this algorith
 \item For our purposes we can therefore suppose that the immortal line comprises particle 1 in each generation.
 \item This can be achieved even in a real scenario by simply relabelling the particles after resampling so that the immortal particle takes the label 1.
 \end{itemize}
+
+However, this method for the resampling is not consistent with the standing assumption because, given the immortal indices, the assignment of offspring is biased towards the (fixed) immortal parent.
+We can fix this by considering a slightly different framework (which can just as well be applied in practice) where the immortal index is not pre-specified, but is instead sampled uniformly at each generation.\\
+
+\hrule
+\begin{algorithmic}[1]
+\Require $N, T, \mu, \{K_t\}, \{g_t\}, x_{0:T}^*$
+\For{$i \in \{1,\dots,N\}$} 
+	\State Sample $X_0^{(i)} \sim \mu$ 
+\EndFor
+\State Sample $a_0^* \sim \Unif(\{1,\dots,N\})$
+\State $X_0^{(a_0^*)} \gets x_0^*$
+\For{$i \in \{1,\dots,N\}$}
+	\State $w_0^{(i)} \gets \frac{g_0(X_0^{(i)})}{\sum_{j=1}^N g_0(X_0^{(j)})}$
+\EndFor
+\For{$t \in \{0,\dots, T-1$}
+	\State Sample $a_t^{(1:N)} \sim \Cat(\{1,\dots,N\}, w_t^{(1:N)})$
+	\State Sample $a_{t+1}^* \sim \Unif(\{1,\dots,N\})$
+	\State $a_t^{(a_{t+1}^*)} \gets a_t^*$
+	\For{$i \in \{1,\dots,N\}$}
+		\State Sample $X_{t+1}^{(i)} \sim K_{t+1}(X_t^{(a_t^{(i)})}, \cdot)$
+	\EndFor
+	\State $X_{t+1}^{(a_{t+1}^*)} \gets X_{t+1}^*$
+	\For{$i \in \{1,\dots,N\}$}
+		\State $w_{t+1}^{(i)} \gets \frac{g_{t+1}(X_t^{(a_t^{(i)})} , X_{t+1}^{(i)})}{\sum_{j=1}^N g_{t+1}(X_t^{(a_t^{(j)})} , X_{t+1}^{(j)})}$
+	\EndFor
+\EndFor
+\end{algorithmic}
+\hrule
 
 \bibliography{smc.bib}
 \end{document}
