@@ -1,14 +1,9 @@
 # requires Random, Distributions, StatsBase
 
 function csmc(N::Int64, T::Int64, observations::Array{Float64,1} initialsam::Function, transition::Function, potential::Function, immortal_positions::Array{Float64,1})
-    # pre-allocate memory
-    immortal_indices = Array{Int64, 1}(undef, T+1) # probably doesn't need initialising
-    positions = Array{Float64, 1}(undef, N)  # probably doesn't need initialising
-    # (also need to store ancestry tree but haven't worked out an efficient way to update it yet.)
-    weights = Array{Float64,1}(undef, N)
-
     # set OU process parameters
-    # should find a more flexible way to write this function, really for any model...
+    # (should find a more flexible way to write this function, really for any model...)
+    # (allow a (named) vector (any length) of 'parameters' as input)
     delta = 1.0
     sigma = 0.1
 
@@ -36,3 +31,14 @@ function csmc(N::Int64, T::Int64, observations::Array{Float64,1} initialsam::Fun
 
     # RETURN ANCESTRAL TREE
 end
+
+
+#= building ancestral tree...
+
+Can use 
+    findall(x->x==i, parents)
+to return the children indices of a particular parent i.
+But idk how to add these as TreeNodes to parent.children in a vectorised way.
+Maybe just use a loop for now.
+
+=#
