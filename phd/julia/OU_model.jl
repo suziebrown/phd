@@ -39,8 +39,8 @@ function outransition(oldpos::Float64, delta::Float64, sigma::Float64)
 end
 
 # calculate potentials between particle positions and observations (to compute weights)
-function oupotential(pos::Float64, obs::Float64, delta::Float64, sigma::Float64)
-    (2*pi)^(-0.5) * sigma^(-1) * exp(-(obs-pos)^2 / (2*sigma^2))
+function oupotential(pos::Array{Float64,1}, obs::Float64, delta::Float64, sigma::Float64)
+    (2*pi)^(-0.5) * sigma^(-1) * exp.(-(obs .- pos).^2 / (2*sigma^2))
 end
 
 
