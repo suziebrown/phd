@@ -4,7 +4,7 @@ import AbstractTrees: children, printnode, print_tree, Leaves
 struct TreeNode
     generation::Int64
     index::Int64
-    children::Vector{TreeNode3}
+    children::Array{TreeNode3,1}
 end
 
 # make a tree:
