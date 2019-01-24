@@ -1,11 +1,14 @@
 # requires Random, Distributions, StatsBase
 
-function csmc(N::Int64, T::Int64, observations::Array{Float64,1} initialsam::Function, transition::Function, potential::Function, immortal_positions::Array{Float64,1})
+function csmc_fullstore(N::Int64, T::Int64, observations::Array{Float64,1} initialsam::Function, transition::Function, potential::Function, immortal_positions::Array{Float64,1})
     # set OU process parameters
     # (should find a more flexible way to write this function, really for any model...)
     # (allow a (named) vector (any length) of 'parameters' as input)
     delta = 1.0
     sigma = 0.1
+
+    # INITIALISE ANCESTRAL TREE - but how??
+    parents = Array{Int64, 2}(undef, N, T)
 
     # initialise
     positions = initialsam(N, delta, sigma)
@@ -16,12 +19,12 @@ function csmc(N::Int64, T::Int64, observations::Array{Float64,1} initialsam::Fun
 
     for t in 1:T # note: index t+1 corresponds to generation t
         # choose parents
-        parents = sample(1:N, Weights(weights), N)
-        parents[immortal_indices[t+1]] = immortal_indices[t]
+        parents[t, :] = sample(1:N, Weights(weights), N)
+        parents[t, immortal_indices[t+1]] = immortal_indices[t]
         # STORE TO ANCESTRAL TREE
 
         # update positions
-        positions = outransition(positions[parents], delta, sigma)
+        positions = outransition(positions[parents[t, :]], delta, sigma)
         positions[immortal_indices[t+1]] = immortal_positions[t+1]
 
         # compute weights
@@ -29,16 +32,19 @@ function csmc(N::Int64, T::Int64, observations::Array{Float64,1} initialsam::Fun
         weights = weights / sum(weights)
     end
 
+    return parents
     # RETURN ANCESTRAL TREE
 end
 
 
 #= building ancestral tree...
 
-Can use 
+Can use
     findall(x->x==i, parents)
 to return the children indices of a particular parent i.
 But idk how to add these as TreeNodes to parent.children in a vectorised way.
 Maybe just use a loop for now.
-
+Concatenate arrays using
+    vcat(A,B)
+:)
 =#
