@@ -21,9 +21,20 @@ function csmc(N::Int64, T::Int64, observations::Array{Float64,1} initialsam::Fun
     end
     weights = weights./sum(weights) # normalise weights
 
-    for t in 0:T-1 #from here still in draft...
+    for t in 0:T-1 # indexing could be wrong because vectors start at 1...
+        # choose parents
         parents = sample(1:N, Weights(weights), N)
         parents[immortal_indices[t+1]] = immortal_indices[t]
+        # and store to tree structure
 
+        # update positions
+        positions = outransition(positions[parents], delta, sigma)
+        positions[immortal_indices[t+1]] = immortal_positions[t+1]
+
+        # compute weights
+        for i in 1:N
+            weights[i] = potential(positions[i], observations[t+1], delta, sigma) # VECTORISE ME
+        end
+        weights = weights./sum(weights) # normalise weights
     end
 end
