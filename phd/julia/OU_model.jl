@@ -33,9 +33,9 @@ function ouinit(N::Int64, delta::Float64, sigma::Float64)
 end
 
 # propagate states: sample new positions from current ones
-function outransition(oldpos::Float64, delta::Float64, sigma::Float64)
+function outransition(oldpos::Array{Float64,1}, delta::Float64, sigma::Float64)
     N = length(oldpos)
-    rand(Normal((1-delta).*oldpos, delta^(0.5)), N)
+    rand(Normal(), N) .* delta^(0.5) .+ (1-delta) .* oldpos
 end
 
 # calculate potentials between particle positions and observations (to compute weights)
