@@ -16,3 +16,7 @@ function mrca_fullstore(ancestry::Array{Int64,2}, leaves::Array{Int64,1})
     end
     return mrca
 end
+
+#= for tree-stored ancestry version, just need to change tht type of the
+argument, and use the 'parent' property of the selected nodes in place of
+the matrix indexing =#
