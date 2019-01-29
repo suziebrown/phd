@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  29 JAN 2019 16:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  29 JAN 2019 17:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -234,15 +234,15 @@ LaTeX Font Info:    ... okay on input line 35.
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: 
-* h-part:(L,W,R)=(56.9055pt, 500.484pt, 56.9055pt)
-* v-part:(T,H,B)=(56.9055pt, 681.15898pt, 56.9055pt)
+* h-part:(L,W,R)=(42.67912pt, 528.93675pt, 42.67912pt)
+* v-part:(T,H,B)=(42.67912pt, 709.61174pt, 42.67912pt)
 * \paperwidth=614.295pt
 * \paperheight=794.96999pt
-* \textwidth=500.484pt
-* \textheight=681.15898pt
-* \oddsidemargin=-15.36449pt
-* \evensidemargin=-15.36449pt
-* \topmargin=-52.36449pt
+* \textwidth=528.93675pt
+* \textheight=709.61174pt
+* \oddsidemargin=-29.59087pt
+* \evensidemargin=-29.59087pt
+* \topmargin=-66.59087pt
 * \headheight=12.0pt
 * \headsep=25.0pt
 * \topskip=10.0pt
@@ -275,13 +275,13 @@ No file kalman_rts.bbl.
 {/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 (./kalman_rts.aux) ) 
 Here is how much of TeX's memory you used:
- 2871 strings out of 492649
- 37206 string characters out of 6129623
- 110984 words of memory out of 5000000
- 6726 multiletter control sequences out of 15000+600000
+ 2872 strings out of 492649
+ 37215 string characters out of 6129623
+ 115004 words of memory out of 5000000
+ 6727 multiletter control sequences out of 15000+600000
  11242 words of font info for 44 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 28i,10n,43p,472b,272s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 28i,10n,43p,483b,272s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsf
 onts/cm/cmbx10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfo
 nts/cm/cmmi10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfon
@@ -297,7 +297,7 @@ usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></u
 sr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr
 /local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/l
 ocal/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on kalman_rts.pdf (1 page, 145835 bytes).
+Output written on kalman_rts.pdf (1 page, 150225 bytes).
 PDF statistics:
  68 PDF objects out of 1000 (max. 8388607)
  49 compressed objects within 1 object stream

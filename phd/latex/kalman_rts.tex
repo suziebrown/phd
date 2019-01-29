@@ -1,6 +1,6 @@
 \documentclass[fleqn]{article}
 \usepackage[utf8]{inputenc}
-\usepackage[margin=2cm]{geometry}
+\usepackage[margin=1.5cm]{geometry}
 
 % maths
 \usepackage{amsmath}
@@ -42,7 +42,7 @@ The discretised Ornstein-Uhlenbeck model is a hidden Markov model where the hidd
 & X_{t+1} | X_t \sim \N((1-\Delta)X_t, \Delta) \\
 & Y_t | X_t \sim \N(X_t, \sigma^2)
 \end{align*}
-Since this is a linear Gaussian model, the filtering distributions $p(x_t | y_{1:t})$ are available exactly and can be efficiently computed using the \emph{Kalman filter}. Furthermore, the smoothing distributions $p(x_{1:t} | y_{1:t})$ are also available exactly and can be computed using a forward pass of the Kalman filter (Algorithm \ref{alg:kalman}) followed by a backward pass of the Rauch-Tung-Striebel (RTS) smoother (Algorithm ??).
+Since this is a linear Gaussian model, the filtering distributions $p(x_t | y_{1:t})$ are available exactly and can be efficiently computed using the \emph{Kalman filter}. Furthermore, the smoothing distributions $p(x_{1:t} | y_{1:t})$ are also available exactly and can be computed using a forward pass of the Kalman filter (Algorithm \ref{alg:kalman}) followed by a backward pass of the Rauch-Tung-Striebel (RTS) smoother (Algorithm \ref{alg:rts}).
 
 The filtering distribution at each time is Gaussian, so we need only compute the sequence of means and variances, and the same goes for the smoothing distributions. Our model is univariate, but both the Kalman filter and the RTS smoother readily generalise to multivariate processes.
 
@@ -50,7 +50,7 @@ The filtering distribution at each time is Gaussian, so we need only compute the
 \caption{Kalman filter for OU process}
 \label{alg:kalman}
 \begin{algorithmic}[1]
-\Require $\Delta, \sigma, y_{1:T}$
+\Require $\Delta, \sigma, (y_1, \dots, y_T)$
 \State $\hat{x}_{0|-1} \gets 0$
 \State $\Sigma_{0|-1} \gets 1$
 \For{$t = 0, \dots, T-1$}
@@ -62,6 +62,25 @@ The filtering distribution at each time is Gaussian, so we need only compute the
 \State $\hat{x}_{T|T} \gets \hat{x}_{T|T-1} + \frac{\Sigma_{T|T-1}}{\Sigma_{T|T-1} + \sigma^2}(y_T - \hat{x}_{T|T-1})$
 \State $\Sigma_{T|T} \gets \Sigma_{T|T-1} - \frac{\Sigma_{T|T-1}^2}{\Sigma_{T|T-1} + \sigma^2}$
 \State\Return $(\hat{x}_{0|0}, \hat{x}_{1|1}, \dots, \hat{x}_{T|T}), (\Sigma_{0|0}, \Sigma_{1|1}, \dots, \Sigma_{T|T})$
+\end{algorithmic}
+\end{algorithm}
+
+Algorithm \ref{alg:kalman} gives the recursion for the Kalman filter. Lines 4--5 are usually called the \emph{measurement update}, while lines 6--7 are called the \emph{time update}. 
+Algorithm \ref{alg:rts} gives the recursion for the RTS smoother. It requires as inputs the sequence of means and variances computed with the Kalman filter.
+
+\begin{algorithm}
+\caption{Rauch-Tung-Striebel smoother for OU process}
+\label{alg:rts}
+\begin{algorithmic}[1]
+\Require $\Delta, \sigma, (\hat{x}_{0|0}, \hat{x}_{1|1}, \dots, \hat{x}_{T|T}), (\Sigma_{0|0}, \Sigma_{1|1}, \dots, \Sigma_{T|T})$
+\State $\hat{x}_T \gets \hat{x}_{T|T}$
+\State $\Sigma_T \gets \Sigma_{T|T}$
+\For{$t = T-1, \dots, 0$}
+	\State $a_t \gets \frac{(1-\Delta) \Sigma_{t|t)}}{(1-\Delta)^2 \Sigma_{t|t}+ \Delta}$
+	\State $\hat{x}_t \gets a_t (\hat{x}_{t+1} - (1-\Delta)\hat{x}_{t|t})$
+	\State $\Sigma_t \gets a_t (a_t \Sigma_{t+1} - (1-\Delta) \Sigma_{t|t})$
+\EndFor
+\State\Return $(\hat{x}_0, \dots, \hat{x}_T), (\Sigma_0, \dots, \Sigma_T)$
 \end{algorithmic}
 \end{algorithm}
 
