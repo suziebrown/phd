@@ -42,8 +42,8 @@ function ourts(delta::Float64, sigmain::Float64, observations::Array{Float64,1})
     for i in 1:T
         t = T+1 - i # reverse time
         a = (1-delta) * sigma[t] / ((1-delta)^2 * sigma[t] + delta)
-        xhat[t] = a * (xhat[t+1] - (1-delta) * xhat[t])
-        sigma[t] = a * (a * sigma[t+1] - (1-delta) * sigma[t])
+        xhat[t] = xhat[t] + a * (xhat[t+1] - (1-delta) * xhat[t])
+        sigma[t] = sigma[t] + a^2 * (sigma[t+1] - (1-delta) * sigma[t] - delta)
     end
 
     return (mean = xhat, variance = sigma)
