@@ -66,6 +66,9 @@ The filtering distribution at each time is Gaussian, so we need only compute the
 \end{algorithmic}
 \end{algorithm}
 
+% the means xhat are maximum a posteriori estimate in each case (Gaussian => mean=mode).
+% smoother provides smooth trajectory, filter just optimises for current time point.
+
 Algorithm \ref{alg:kalman} gives the recursion for the Kalman filter. Lines 4--5 are usually called the \emph{measurement update}, while lines 6--7 are called the \emph{time update}. 
 Algorithm \ref{alg:rts} gives the recursion for the RTS smoother. It requires as inputs the sequence of means and variances computed with the Kalman filter.
 
