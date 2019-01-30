@@ -35,10 +35,9 @@ mrca_fullstore(testres.parents, [1,2,4])
 
 using Plots
 
-delta = 0.1 # noise in AR(1) process
-sigma = 1.0 # noise in observations
-T = 10
-
+delta = 0.04 # noise variance in AR(1) process
+sigma = 0.2 # noise s.d. in observations
+T = 25
 testobs = ousim(T, delta, sigma, true)
 kalman = oukalman(delta, sigma, testobs.observations)
 rts = ourts(delta, sigma, testobs.observations)
