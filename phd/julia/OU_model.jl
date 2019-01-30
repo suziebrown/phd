@@ -42,18 +42,3 @@ end
 function oupotential(pos::Array{Float64,1}, obs::Float64, delta::Float64, sigma::Float64)
     (2*pi)^(-0.5) * sigma^(-1) * exp.(-(obs .- pos).^2 / (2*sigma^2))
 end
-
-
-#= TEST
-
-using Plots
-gr()
-
-x = ousim(10, 0.1, 1.0, true)
-plot(0:10, x.states, label="states")
-plot!(0:10, x.observations, label="observations")
-
-x = ousim(10, 0.1, 1.0, false)
-plot(0:10, x, label="observations")
-
-=#
