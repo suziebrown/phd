@@ -81,8 +81,8 @@ Algorithm \ref{alg:rts} gives the recursion for the RTS smoother. It requires as
 \State $\Sigma_T \gets \Sigma_{T|T}$
 \For{$t = T-1, \dots, 0$}
 	\State $a_t \gets \frac{(1-\Delta) \Sigma_{t|t)}}{(1-\Delta)^2 \Sigma_{t|t}+ \Delta}$
-	\State $\hat{x}_t \gets a_t (\hat{x}_{t+1} - (1-\Delta)\hat{x}_{t|t})$
-	\State $\Sigma_t \gets a_t (a_t \Sigma_{t+1} - (1-\Delta) \Sigma_{t|t})$
+	\State $\hat{x}_t \gets \hat{x}_{t|t} + a_t (\hat{x}_{t+1} - (1-\Delta)\hat{x}_{t|t})$
+	\State $\Sigma_t \gets \Sigma_{t|t} + a_t^2 (\Sigma_{t+1} - (1-\Delta)^2 \Sigma_{t|t} - \Delta)$
 \EndFor
 \State\Return $(\hat{x}_0, \dots, \hat{x}_T), (\Sigma_0, \dots, \Sigma_T)$
 \end{algorithmic}
