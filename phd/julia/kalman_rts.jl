@@ -3,29 +3,29 @@
 function oukalman(delta::Float64, sigma::Float64, observations::Array{Float64,1})
     T = length(observations) - 1
 
-    # assign memory PREDICTS CAN BE OVERWRITTEN EACH ITERATION
-    predict = Array{Float64, 1}(undef, T+1) # x_{k|k-1}
-    filter = Array{Float64, 1}(undef, T+1) # x_{k|k}
-    predictvar = Array{Float64, 1}(undef, T+1) # sigma_{k|k-1}
-    filtervar = Array{Float64,1}(undef, T+1) # sigma_{k|k}
+    # assign memory
+    xhat = Array{Float64, 1}(undef, T+1) # means \hat{x}_{k|k}
+    sigma = Array{Float64,1}(undef, T+1) # variances \Sigma_{k|k}
 
     # initialise
-    predict[1] = 0
-    predictvar[1] = 1
+    tempx = 0
+    tempsigma = 1
 
     # recursion
     for t in 1:T
-        a = predictvar[t] / (predictvar[t] + sigma^2)
-        filter[t] = predict[t] + a * (observations[t] - predict[t])
-        filtervar[t] = predictvar[t] * (1 - a)
-        predict[t+1] = (1-delta) * filter[t]
-        predictvar[t+1] = (1-delta)^2 * filtervar[t] + delta
+        a = tempsigma / (tempsigma + sigma^2)
+        xhat[t] = tempx + a * (observations[t] - tempx)
+        sigma[t] = tempsigma * (1 - a)
+        tempx = (1-delta) * xhat[t]
+        tempsigma = (1-delta)^2 * sigma[t] + delta
     end
 
     # final filter state
-    a = predictvar[T+1] / (predictvar[T+1] + sigma^2)
-    filter[T+1] = predict[T+1] + a * (observations[T+1] - predict[T+1])
-    filtervar[T+1] = predictvar[T+1] * (1 - a)
+    a = tempsigma / (tempsigma + sigma^2)
+    xhat[T+1] = tempx + a * (observations[T+1] - tempx)
+    sigma[T+1] = tempsigma * (1 - a)
+
+    return (mean = xhat, variance = sigma)
 end
 
 function ourts(delta::Float64, sigma::Float64, observations::Array{Float64,1})
