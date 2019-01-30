@@ -1,6 +1,6 @@
 \documentclass[fleqn]{article}
 \usepackage[utf8]{inputenc}
-\usepackage[margin=1.5cm]{geometry}
+\usepackage[margin=2.5cm]{geometry}
 
 % maths
 \usepackage{amsmath}
@@ -54,8 +54,9 @@ The filtering distribution at each time is Gaussian, so we need only compute the
 \State $\hat{x}_{0|-1} \gets 0$
 \State $\Sigma_{0|-1} \gets 1$
 \For{$t = 0, \dots, T-1$}
-	\State $\hat{x}_{t|t} \gets \hat{x}_{t|t-1} + \frac{\Sigma_{t|t-1}}{\Sigma_{t|t-1} + \sigma^2}(y_t - \hat{x}_{t|t-1})$
-	\State $\Sigma_{t|t} \gets \Sigma_{t|t-1} - \frac{\Sigma_{t|t-1}^2}{\Sigma_{t|t-1} + \sigma^2}$
+	\State $a_t \gets \frac{\Sigma_{t|t-1}}{\Sigma_{t|t-1} + \sigma^2}$
+	\State $\hat{x}_{t|t} \gets \hat{x}_{t|t-1} + a_t (y_t - \hat{x}_{t|t-1})$
+	\State $\Sigma_{t|t} \gets \Sigma_{t|t-1} (1-a_t)$
 	\State $\hat{x}_{t+1|t} \gets (1-\Delta)\hat{x}_{t|t}$
 	\State $\Sigma_{t+1|t} \gets (1-\Delta)^2 \Sigma_{t|t} + \Delta$
 \EndFor
