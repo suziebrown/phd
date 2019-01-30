@@ -17,8 +17,15 @@ function oukalman(delta::Float64, sigma::Float64, observations::Array{Float64,1}
     for t in 1:T
         a = predictvar[t] / (predictvar[t] + sigma^2)
         filter[t] = predict[t] + a * (observations[t] - predict[t])
-        # NOT FINISHED
+        filtervar[t] = predictvar[t] * (1 - a)
+        predict[t+1] = (1-delta) * filter[t]
+        predictvar[t+1] = (1-delta)^2 * filtervar[t] + delta
     end
+
+    # final filter state
+    a = predictvar[T+1] / (predictvar[T+1] + sigma^2)
+    filter[T+1] = predict[T+1] + a * (observations[T+1] - predict[T+1])
+    filtervar[T+1] = predictvar[T+1] * (1 - a)
 end
 
 function ourts(delta::Float64, sigma::Float64, observations::Array{Float64,1})
