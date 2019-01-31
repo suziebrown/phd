@@ -34,6 +34,7 @@ mrca_fullstore(testres.parents, [1,2,4])
 ##--- testing kalman & rts functions
 
 using Plots
+gr()
 
 delta = 0.04 # noise variance in AR(1) process
 sigma = 0.2 # noise s.d. in observations

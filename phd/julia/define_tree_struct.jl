@@ -2,9 +2,10 @@ import AbstractTrees: children, printnode, print_tree, Leaves
 
 # define data structure for trees:
 struct TreeNode
-    generation::Int64
-    index::Int64
-    children::Array{TreeNode3,1}
+    generation::UInt64
+    index::UInt16
+    parent::UInt16
+    children::Array{UInt16,1}
 end
 
 # make a tree:
