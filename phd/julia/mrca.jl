@@ -4,7 +4,7 @@
 allequal(x) = all(y->y==x[1],x)
 
 # should be called treeheight or something really
-function mrca_fullstore(ancestry::Array{UInt16,2}, leaves::Array{UInt16,1})
+function mrca_fullstore(ancestry::Array{UInt16,2}, leaves::Array{Int64,1})
     T = size(ancestry)[1]
     mrca = T
     for t in 1:T

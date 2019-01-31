@@ -1,6 +1,6 @@
 # requires Random, Distributions, StatsBase
 
-function csmc_fullstore(N::UInt16, T::UInt64, observations::Array{Float64,1}, initialsam::Function, transition::Function, potential::Function, immortal_positions::Array{Float64,1})
+function csmc_fullstore(N::UInt16, T::Int64, observations::Array{Float64,1}, initialsam::Function, transition::Function, potential::Function, immortal_positions::Array{Float64,1})
     # set OU process parameters
     # (should find a more flexible way to write this function, really for any model...)
     # (allow a (named) vector (any length) of 'parameters' as input)
