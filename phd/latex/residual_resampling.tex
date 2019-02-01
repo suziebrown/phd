@@ -82,10 +82,18 @@ The inner expectation comes out as
 \end{align*}
 so we get
 \begin{align*}
-\E[c_N(t) |\F] &=  \frac{1}{(N)_2} \E\left[ \sum_{i=1}^{N} \E[(\vt{i})_2] |\F \right] \\
-&= \frac{N}{N-1} \sum_{i=1}^{N} \E[(\wt{i})^2 |\F] - \frac{1}{(N)_2} \sum_{i=1}^{N} \E\left[ \frac{r_i^2}{N-k} |\F \right] - \frac{1}{(N)_2} \E[k |\F]
+\E[c^r_N(t) |\F] &=  \frac{1}{(N)_2} \E\left[ \sum_{i=1}^{N} \E[(\vt{i})_2] |\F \right] \\
+&= \frac{N}{N-1} \sum_{i=1}^{N} \E[(\wt{i})^2 |\F] - \frac{1}{(N)_2} \sum_{i=1}^{N} \E\left[ \frac{r_i^2}{N-k} |\F \right] - \frac{1}{(N)_2} \E[k |\F] \\
+&= \E[c^{m}_N(t) |\F] \left( 1 + \frac{1}{N-1} \right) - \frac{1}{(N)_2}  \E\left[ \frac{\sum_{i=1}^{N} (N\wt{i} - \lfloor N\wt{i}\rfloor)^2}{\sum_{j=1}^{N} (N\wt{j} - \lfloor N\wt{j}\rfloor)} |\F \right] \\
+&\qquad -\frac{1}{(N)_2} \E \left[ \sum_{i=1}^{N} \lfloor N\wt{i}\rfloor |\F \right]
 \end{align*}
-The first term resembles the expected coalescence rate for multinomial resampling, except for the factor of $\frac{N}{N-1}$. The second term captures the variance of the residuals, and the third term captures the expected number of deterministically assigned offspring.
+%The first term resembles the expected coalescence rate for multinomial resampling, except for the factor of $\frac{N}{N-1}$. The second term captures the variance of the residuals, and the third term captures the expected number of deterministically assigned offspring.
+\textbf{Sanity check:}\\
+When the weights are all equal, $\wt{i} \equiv 1/N$, we should have $\E[c^r_N(t) |\F] = 0$ since each particle will have exactly one offspring so it is impossible for any lineages to coalesce. In this case we have $\E[c^{m}_N(t) |\F] = \sum_{i=1}^{N} \E[(\wt{i})^2 |\F] = 1/N$ for multinomial resampling. We also have that $N\wt{i} \equiv \lfloor N\wt{i} \rfloor \equiv 1$ and hence $r_i = 0$ and $k=N$. Thus the RHS comes out as
+\begin{equation*}
+\frac{1}{N}\frac{N}{N-1} - 0 - \frac{1}{(N)_2} N = \frac{1}{N-1} - \frac{1}{N-1} = 0
+\end{equation*}
+as expected.
 
 \bibliography{smc.bib}
 \end{document}
