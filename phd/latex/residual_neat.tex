@@ -41,7 +41,7 @@ The offspring counts are sampled according to:
 & \vt{i} = \lfloor N \wt{i} \rfloor + X_i \\
 & X_i \sim \Mn (N-k, (\wbar{1}, \dots, \wbar{N}))
 \end{align*}
-where $k := \sum_{i=1}^N \lfloor N \wt{i} \rfloor$ is the number of offspring assigned deterministically, and $\wbar{i} := \frac{N\wt{i} - \lfloor N \wt{i} \rfloor}{N - k}$ are the residual weights. Let us also define the residuals $r_i := N\wt{i} - \lfloor N \wt{i} \rfloor$.
+where $k := \sum_{i=1}^N \lfloor N \wt{i} \rfloor$ is the number of offspring assigned deterministically, and $\wbar{i} := \frac{N\wt{i} - \lfloor N \wt{i} \rfloor}{N - k}$ are the residual weights. Let us also define the residuals $r_i := N\wt{i} - \lfloor N \wt{i} \rfloor$. So $\sum_{i=1}^N r_i = N-k$.
 
 The coalescence rate is defined as
 \begin{equation*}
