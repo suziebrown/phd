@@ -57,14 +57,14 @@ In residual resampling, the first $k := \sum_{i=1}^N \lfloor N\wt{i} \rfloor$ of
 
 This distribution can be achieved by doing multinomial resampling as usual, but then overwriting the parental indices of $k$ offspring (to be chosen at random) with the $k$ deterministic assignments (since the offspring are exchangeable and marginals of the Multinomial/Categorical distribution are Multinomial/Categorical).\\
 
-The probability that a randomly chosen pair of children share the same parent is, with multinomial resampling
+The probability that a randomly chosen pair of children share the same parent is, with multinomial resampling:
 \begin{equation*}
 p^m = \sum_{i=1}^N (\wt{i})^2
 \end{equation*}
-and with residual resampling
+and with residual resampling (by partitioning over the common parent and into the cases of deterministic assignment and random assignment):
 \begin{align*}
 p^r &= \sum_{i=1}^N  \left[ \frac{N-k}{N} \wt{i} \left( \frac{N-k-1}{N} \wt{i} + \frac{\lfloor N\wt{i}\rfloor}{N}\right) + \frac{\lfloor N\wt{i}\rfloor}{N} \left(\frac{N-k}{N} \wt{i} + \frac{k-1}{k} \frac{\lfloor N\wt{i}\rfloor -1}{N} \right) \right] \\
-&= \sum_{i=1}^N \left[ \frac{1}{N^2} \left( \wt{i} (N-k) + \lfloor N\wt{i}\rfloor \right)^2 - (N-k) (\wt{i})^2 - \frac{k-1}{k} \lfloor N\wt{i}\rfloor - \frac{1}{k}  \lfloor N\wt{i}\rfloor^2 \right] \\
+&= \sum_{i=1}^N \frac{1}{N^2} \left[ \left( \wt{i} (N-k) + \lfloor N\wt{i}\rfloor \right)^2 - (N-k) (\wt{i})^2 - \frac{k-1}{k} \lfloor N\wt{i}\rfloor - \frac{1}{k}  \lfloor N\wt{i}\rfloor^2 \right] \\
 &\leq \sum_{i=1}^N \frac{1}{N^2} \left( (N-k) \wt{i} + \lfloor N\wt{i}\rfloor \right)^2
 \end{align*}
 
