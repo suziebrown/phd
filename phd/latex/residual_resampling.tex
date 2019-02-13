@@ -26,6 +26,7 @@
 \newcommand{\Mn}{\operatorname{Multinomial}}
 \newcommand{\vt}[2][t]{v_{#1}^{(#2)}}
 \newcommand{\wt}[2][t]{w_{#1}^{(#2)}}
+\newcommand{\fnw}[1][i]{\lfloor N\wt{#1} \rfloor}
 \newcommand{\wbar}[2][t]{\bar{w}_{#1}^{(#2)}}
 
 \title{Residual resampling in SMC}
@@ -94,6 +95,22 @@ When the weights are all equal, $\wt{i} \equiv 1/N$, we should have $\E[c^r_N(t)
 \frac{1}{N}\frac{N}{N-1} - 0 - \frac{1}{(N)_2} N = \frac{1}{N-1} - \frac{1}{N-1} = 0
 \end{equation*}
 as expected.
+
+\section{Squared coalescence rate and other awful expressions}
+First let's write down various moments that will be needed.
+\begin{align*}
+\E[(\vt{i})^2] &= \fnw^2 + 2\fnw N\wt{i} + (N)_2(\wt{I})^2 \\
+\E[(\vt{i})^3] &= \fnw^3 + 3\fnw^2 N\wt{i} + 3\fnw (N)_2(\wt{i})^2 +(N)_3(\wt{i})^3 \\
+\E[(\vt{i})^4]&= \fnw^4 + 4\fnw^3 N\wt{i} + 6\fnw^2 (N)_2 (\wt{i})^2 + 4\fnw (N)_3(\wt{i})^3 + (N)_4(\wt{i})^4 \\
+\E[\vt{i}\vt{j}] &= \fnw\fnw[j] + \fnw N\wt{j} + \fnw[j] N\wt{i} + (N)_2\wt{i}\wt{j} \\
+\E[(\vt{i})^2\vt{j}] &= \fnw^2\fnw[j] + \fnw^2 N\wt{j} + 2\fnw\fnw[j] N\wt{i} + 2\fnw (N)_2 \wt{i}\wt{j} \\
+&\qquad + \fnw[j] (N)_2(\wt{i})^2 + (N)_3(\wt{i})^2\wt{j}\\
+\E[(\vt{i})^2(\vt{j})^2] &= \fnw^2\fnw[j]^2 +2\fnw^2\fnw[j] N\wt{j} + 2\fnw\fnw[j]^2 N\wt{i} \\
+&\qquad + \fnw^2 (N)_2 (\wt{j})^2 + 4\fnw\fnw[j](N)_2\wt{i}\wt{j} + \fnw[j]^2 (N)_2(\wt{i})^2 \\
+&\qquad + 2\fnw (N)_3\wt{i}(\wt{j})^2 + 2\fnw[j] (N)_3 (\wt{i})^2\wt{j} + (N)_4 (\wt{i})^2(\wt{j})^2
+\end{align*}
+
+
 
 \bibliography{smc.bib}
 \end{document}
