@@ -2,6 +2,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage[margin=2cm]{geometry}
 
+\usepackage{xcolor}
+
 % maths
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -57,6 +59,10 @@ In residual resampling, the first $k := \sum_{i=1}^N \lfloor N\wt{i} \rfloor$ of
 
 This distribution can be achieved by doing multinomial resampling as usual, but then overwriting the parental indices of $k$ offspring (to be chosen at random) with the $k$ deterministic assignments (since the offspring are exchangeable and marginals of the Multinomial/Categorical distribution are Multinomial/Categorical).\\
 
+\color{red}
+Actually that's not true. Counterexample: suppose the weights are $\wt{1} = 1/2$ and $\wt{i} = 1/(2N-2)$ for $i=2,\dots,N$. Then we have $\E[v_1^m] = N/2$ as expected. But if we then just overwrite some indices as suggested above, we get $\E[v_1^r] = N/2 + (N-N/2)/2 = 3N/4$, where the first term is the expected number of offspring assigned by the original multinomial resampling, and the second term is the expected number of additional offspring assigned by overwriting with the deterministic assignments. The problem is that we are accounting doubly for the high weight of parent 1.\\
+
+\color{black}
 The probability that a randomly chosen pair of children share the same parent is, with multinomial resampling:
 \begin{equation*}
 p^m = \sum_{i=1}^N (\wt{i})^2
