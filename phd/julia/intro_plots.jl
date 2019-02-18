@@ -160,7 +160,7 @@ end
 # set constants
 delta = 0.1 # noise variance in AR(1) process
 sigma = 0.1 # noise s.d. in observations
-T = Int64(11) # number of generations/time steps
+T = Int64(23) # number of generations/time steps
 N = UInt16(20) # total number of particles
 
 # generate observations & immortal trajectory
@@ -171,5 +171,9 @@ smcout = smc_example(N, T, observations, ouinit, outransition, oupotential)
 
 
 ##--- make plots ---
-scatter(smcout.positions, color=:black, ms=smcout.weights*N/2, leg=false, grid=:x, xaxis=("time", (0,T+2), 1:1:T+1), ylabel="position")
+scatter(smcout.positions, color=:black, ms=smcout.weights*N/2, grid=:x, xaxis=("time", (0,T+2), 1:1:T+1), legend=false, axis=("position", (-1.25,0.5)), size=(600,250))
 plot!(rtsout.mean, color=:purple, ribbon=(2*rtsout.variance .^0.5, 2*rtsout.variance .^0.5), fillalpha=0.3)
+
+
+##--- save most recent plot ---
+savefig("smc_kalman_2.pdf")
