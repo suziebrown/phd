@@ -171,9 +171,36 @@ smcout = smc_example(N, T, observations, ouinit, outransition, oupotential)
 
 
 ##--- make plots ---
+# particle approximation vs exact solution
 scatter(smcout.positions, color=:black, ms=smcout.weights*N/2, grid=:x, xaxis=("time", (0,T+2), 1:1:T+1), legend=false, axis=("position", (-1.25,0.5)), size=(600,250))
 plot!(rtsout.mean, color=:purple, ribbon=(2*rtsout.variance .^0.5, 2*rtsout.variance .^0.5), fillalpha=0.3)
 
+# ancestral degeneracy demo
+scatter(smcout.positions, color=:black, grid=:x, xaxis=("time", (0,T+2), 1:1:T+1), legend=false, axis=("position", (-1.25,0.5)), size=(600,250))
+
 
 ##--- save most recent plot ---
-savefig("smc_kalman_2.pdf")
+savefig("smc_kalman_3.pdf")
+
+#--- plotting a genealogical tree (not actually needed?) ---
+ypts = ones(T+1, N)
+for i in 1:N
+    for j in 1:T+1
+        ypts[j,i] = i
+    end
+end
+
+scatter(ypts, marker=(:circle, 0.3, :black), leg=false)
+scatter!(24*ones(N), ypts[N,:], color=:black)
+#
+# par=Array(1:N)
+# for trev in 1:23
+#     t = 24-trev
+#     println(t)
+#     println(par)
+#     parnext = smcout.parents[t,par]
+#     println(t)
+#     npt = length(unique(parnext))
+#     scatter!(t*ones(npt), parnext, color = purple)
+#     par = parnext
+# end
