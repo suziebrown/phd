@@ -2,16 +2,48 @@
 \usepackage[utf8]{inputenc}
 \usepackage[orientation=portrait, size=a1, scale=1.5]{beamerposter}
 
+% set widths
+\newlength{\colwidth}
+\setlength{\colwidth}{0.435\paperwidth}
+
+% block style
+\setbeamercolor{block title}{fg=black,bg=white}
+\setbeamercolor{block body}{fg=black,bg=white}
+
+\setbeamertemplate{block begin}
+{
+  \par\vskip\medskipamount
+  \vskip1.4cm
+  \begin{beamercolorbox}[colsep*=0.5ex,dp={2ex},center]{block title}
+     \vskip-1cm
+    \usebeamerfont{block title}\Large\insertblocktitle
+  \end{beamercolorbox}
+  {\parskip0pt\par}
+  \ifbeamercolorempty[bg]{block title}
+  {}
+  {\ifbeamercolorempty[bg]{block body}{}{\nointerlineskip\vskip-0.5pt}}
+  \vskip0.5cm
+  \usebeamerfont{block body}
+  \vskip-0.5cm
+  \begin{beamercolorbox}[colsep*=0ex,vmode]{block body}
+}
+\setbeamertemplate{block end}
+{
+  \end{beamercolorbox}
+  \vskip\smallskipamount
+}
+
+% title section
 \title{Genealogies of Sequential Monte Carlo Algorithms}
 \author{Suzie Brown, Jere Koskela, Adam Johansen}
 \institute{Department of Statistics, University of Warwick}
 \date{}
 
-\begin{document}
 
+\begin{document}
 \begin{frame}
 
-\vspace*{-1433pt}
+\vspace*{-1340pt}
 
 \centering
 \makebox[\textwidth]{\includegraphics[width=\paperwidth]{warwickhead2.png}}
@@ -20,9 +52,22 @@
 
 \huge{\inserttitle}\\[10pt]
 \Large{\insertauthor}\\[7pt]
-\normalsize{\insertinstitute}\\[30pt]
+\normalsize{\insertinstitute}\\[35pt]
 \hrule
+
+\begin{columns}
+\begin{column}{\colwidth}
+\begin{block}{SMC something something}
+
+\end{block}
+\end{column}
+
+\begin{column}{\colwidth}
+\begin{block}{Something something}
+
+\end{block}
+\end{column}
+\end{columns}
+
 \end{frame}
-
-
 \end{document}
