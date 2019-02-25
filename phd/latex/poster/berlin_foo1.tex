@@ -50,7 +50,7 @@
 \begin{document}
 \begin{frame}
 
-\vspace*{-440pt}
+\vspace*{-245pt}
 
 \centering
 \makebox[\textwidth]{\includegraphics[width=\paperwidth]{warwickhead2.png}}
@@ -101,13 +101,16 @@ The figure shows how the population of particles looks at each step, before resa
 \end{figure}
 \end{block}
 
-\begin{block}{Ancestral degeneracy}
+\begin{block}{Ancestral Degeneracy}
 However, these particles cannot approximate the smoothing distributions. For that we need a sample of \emph{trajectories} covering all $t$ time steps, not just a sample of particles at each time step.\\[10pt]
 
 We have a sample of $N$ such trajectories: the ancestral trajectories of each of the $N$ particles alive at time $t$.
-But due to the resampling mechanism that generates these ancestries, they coalesce backwards in time, leaving much fewer than $N$ distinct samples at time 0.
+But due to the resampling mechanism that generates these ancestries, they coalesce backwards in time, leaving much fewer than $N$ distinct samples at time 0. 
 
 %%% insert plot from Paris report %%%
+\vspace{200pt}
+
+This phenomenon is known as \emph{ancestral degeneracy}. It can be somewhat mitigated by alterations to the resampling procedure, but it cannot be eradicated.
 
 \end{block}
 \end{column}
