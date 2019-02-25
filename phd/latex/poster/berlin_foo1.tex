@@ -2,14 +2,21 @@
 \usepackage[utf8]{inputenc}
 \usepackage[orientation=portrait, size=a1, scale=1.5]{beamerposter}
 
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
 % set widths
 \newlength{\colwidth}
 \setlength{\colwidth}{0.435\paperwidth}
 
-% block style
+% fonts
 \setbeamercolor{block title}{fg=black,bg=white}
 \setbeamercolor{block body}{fg=black,bg=white}
+\setbeamercolor{item}{fg=black}
+\setbeamerfont{caption}{size=\normalsize, series=\bfseries}
+\renewcommand{\figurename}{\color{black}{Figure}}
 
+% block style
 \setbeamertemplate{block begin}
 {
   \par\vskip\medskipamount
@@ -43,7 +50,7 @@
 \begin{document}
 \begin{frame}
 
-\vspace*{-1340pt}
+\vspace*{-440pt}
 
 \centering
 \makebox[\textwidth]{\includegraphics[width=\paperwidth]{warwickhead2.png}}
@@ -57,13 +64,56 @@
 
 \begin{columns}
 \begin{column}{\colwidth}
-\begin{block}{SMC something something}
+\begin{block}{Sequential Monte Carlo}
+Suppose we have a hidden Markov model:
+
+% add f and g to arrows
+\begin{center}
+\begin{tikzpicture}
+\node (yt) {$Y_t$};
+\node (thet) [below=of yt] {$X_t$};
+\node (yt1) [left=of yt] {$Y_{t-1}$};
+\node (thet1) [below=of yt1] {$X_{t-1}$};
+\node (dot1) [left=of thet1] {$\dots$};
+\node (dot2) [right=of thet] {$\dots$};
+\draw[->](thet.north)--(yt.south);
+\draw[->](thet1.north)--(yt1.south);
+\draw[->](thet1.east)--(thet.west);
+\draw[->](dot1.east)--(thet1.west);
+\draw[->](thet.east)--(dot2.west);
+\end{tikzpicture}
+\end{center}
+where $Y_{0:T}$ are noisy observations of the unobservable states $X_{0:T}$.
+We may want to infer the filtering distributions $p(x_t | y_{1:t})$, or the smoothing distributions $p(x_{0:t} | y_{0:t})$. 
+In general, none of these are available analytically, except for linear Gaussian models. \\[12pt]
+
+SMC generates samples from the posterior distributions by starting with a sample of $N$ particles from the prior distribution and then iterating the following steps:
+\begin{enumerate}
+\item \textbf{Propagate:} 
+\item \textbf{Calculate weights:}
+\item \textbf{Resample:}
+\end{enumerate}
+
+The figure shows how the population of particles looks at each step, before resampling.
+\begin{figure}
+\includegraphics[width=\colwidth]{smc_kalman.pdf}
+\caption{exact posterior (purple) and weighted SMC particles before resampling (black) for a linear Gaussian model.}
+\end{figure}
+\end{block}
+
+\begin{block}{Ancestral degeneracy}
+However, these particles cannot approximate the smoothing distributions. For that we need a sample of \emph{trajectories} covering all $t$ time steps, not just a sample of particles at each time step.\\[10pt]
+
+We have a sample of $N$ such trajectories: the ancestral trajectories of each of the $N$ particles alive at time $t$.
+But due to the resampling mechanism that generates these ancestries, they coalesce backwards in time, leaving much fewer than $N$ distinct samples at time 0.
+
+%%% insert plot from Paris report %%%
 
 \end{block}
 \end{column}
 
 \begin{column}{\colwidth}
-\begin{block}{Something something}
+\begin{block}
 
 \end{block}
 \end{column}
