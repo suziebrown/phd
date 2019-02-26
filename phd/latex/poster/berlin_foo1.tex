@@ -20,7 +20,7 @@
 \setbeamertemplate{block begin}
 {
   \par\vskip\medskipamount
-  \vskip1.4cm
+  \vskip0.8cm
   \begin{beamercolorbox}[colsep*=0.5ex,dp={2ex},center]{block title}
      \vskip-1cm
     \usebeamerfont{block title}\Large\insertblocktitle
@@ -50,7 +50,7 @@
 \begin{document}
 \begin{frame}
 
-\vspace*{-100pt}
+\vspace*{-35pt}
 
 \centering
 \makebox[\textwidth]{\includegraphics[width=\paperwidth]{warwickhead2.png}}
@@ -62,13 +62,15 @@
 \normalsize{\insertinstitute}\\[35pt]
 \hrule
 
+\vspace*{15pt}
+
 \begin{columns}
 \begin{column}{\colwidth}
 \begin{block}{Sequential Monte Carlo}
 Suppose we have a hidden Markov model:
 
-% add f and g to arrows
 \begin{center}
+\resizebox{0.5\colwidth}{!}{%
 \begin{tikzpicture}
 \node (yt) {$Y_t$};
 \node (thet) [below=of yt] {$X_t$};
@@ -76,28 +78,33 @@ Suppose we have a hidden Markov model:
 \node (thet1) [below=of yt1] {$X_{t-1}$};
 \node (dot1) [left=of thet1] {$\dots$};
 \node (dot2) [right=of thet] {$\dots$};
-\draw[->](thet.north)--(yt.south);
-\draw[->](thet1.north)--(yt1.south);
-\draw[->](thet1.east)--(thet.west);
-\draw[->](dot1.east)--(thet1.west);
-\draw[->](thet.east)--(dot2.west);
+\draw[->](thet.north)--(yt.south) node[midway, right] {\footnotesize{$g$}};
+\draw[->](thet1.north)--(yt1.south) node[midway, right] {\footnotesize{$g$}};
+\draw[->](thet1.east)--(thet.west) node[midway, above] {\footnotesize{$f$}};
+\draw[->](dot1.east)--(thet1.west) node[midway, above] {\footnotesize{$f$}};
+\draw[->](thet.east)--(dot2.west) node[midway, above] {\footnotesize{$f$}};
 \end{tikzpicture}
+}
 \end{center}
-where $Y_{0:T}$ are noisy observations of the unobservable states $X_{0:T}$.
-We may want to infer the filtering distributions $p(x_t | y_{1:t})$, or the smoothing distributions $p(x_{0:t} | y_{0:t})$. 
-In general, none of these are available analytically, except for linear Gaussian models. \\[12pt]
+\vspace*{-20pt}
 
-SMC generates samples from the posterior distributions by starting with a sample of $N$ particles from the prior distribution and then iterating the following steps:
+where $Y_{0:T}$ are noisy observations of unobservable states $X_{0:T}$.
+We may want to infer filtering distributions $p(x_t | y_{1:t})$, or smoothing distributions $p(x_{0:t} | y_{0:t})$. 
+These are not available analytically, except in linear Gaussian models. \\[12pt]
+
+SMC approximates the posterior distributions by drawing a sample of $N$ particles from the prior distribution and iterating the following steps:
 \begin{enumerate}
-\item \textbf{Propagate:} 
-\item \textbf{Calculate weights:}
-\item \textbf{Resample:}
+\item \textbf{Propagate:} move particles according to the Markov kernel $f$
+\item \textbf{Calculate weights:} weight particles according to how likely they are to produce the observations through $g$
+\item \textbf{Resample:} duplicate high-weight particles and kill off low-weight particles to obtain a new sample of size $N$.
 \end{enumerate}
+
+\vspace*{10pt}
 
 The figure shows how the population of particles looks at each step, before resampling.
 \begin{figure}
 \includegraphics[width=\colwidth]{smc_kalman.pdf}
-\caption{exact posterior (purple) and weighted SMC particles before resampling (black) for a linear Gaussian model.}
+\caption{Exact posterior (purple) and weighted SMC particles before resampling (black) for a linear Gaussian model.}
 \end{figure}
 \end{block}
 
@@ -109,11 +116,11 @@ But due to the resampling mechanism that generates these ancestries, they coales
 
 %% crop off axis titles
 \begin{figure}
-\includegraphics[width=\colwidth]{degeneracy.pdf}
-\caption{blah blah}
+\includegraphics[width=0.9\colwidth]{degeneracy.pdf}
+\caption{Trajectories arising from a sample of N=6 particles. Except at the last few time steps there are no more than two distinct lineages.}
 \end{figure}
 
-This phenomenon is known as \emph{ancestral degeneracy}. It can be somewhat mitigated by alterations to the resampling procedure, but it cannot be eradicated.
+This phenomenon is known as \emph{ancestral degeneracy}. It can be mitigated by changing the resampling procedure, but it cannot be eradicated.
 
 \end{block}
 \end{column}
