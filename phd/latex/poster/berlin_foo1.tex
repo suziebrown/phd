@@ -1,6 +1,7 @@
 \documentclass[final, 12pt]{beamer}
 \usepackage[utf8]{inputenc}
 \usepackage[orientation=portrait, size=a1, scale=1.5]{beamerposter}
+\usenavigationsymbolstemplate{\beamertemplatenavigationsymbolsempty}
 
 \usepackage{tikz}
 \usetikzlibrary{positioning}
@@ -42,7 +43,7 @@
 
 % title section
 \title{Genealogies of Sequential Monte Carlo Algorithms}
-\author{Suzie Brown, Jere Koskela, Adam Johansen}
+\author{Suzie Brown}
 \institute{Department of Statistics, University of Warwick}
 \logo{\includegraphics[scale=2]{oxwasp.png}}
 \date{}
@@ -60,6 +61,7 @@
 
 \huge{\inserttitle}\\[10pt]
 \Large{\insertauthor}\\[7pt]
+\normalsize{supervised by Jere Koskela, Adam Johansen, Paul Jenkins, Dario Span\'o}\\[7pt]
 \normalsize{\insertinstitute}\\[35pt]
 \hrule
 
@@ -68,6 +70,10 @@
 \begin{columns}
 \begin{column}{\colwidth}
 \begin{block}{Sequential Monte Carlo}
+
+%%% find a generic reference for the following %%%
+%%% remove some words %%%
+%%% change spacing as required once content is finalised %%%
 Suppose we have a hidden Markov model:
 
 \begin{center}
@@ -89,8 +95,8 @@ Suppose we have a hidden Markov model:
 \end{center}
 \vspace*{-20pt}
 
-where $Y_{0:T}$ are noisy observations of unobservable states $X_{0:T}$.
-We may want to infer filtering distributions $p(x_t | y_{1:t})$, or smoothing distributions $p(x_{0:t} | y_{0:t})$. 
+where $Y_{1:T}$ are noisy observations of unobservable states $X_{1:T}$.
+We may want to infer filtering distributions $p(x_t | y_{1:t})$, or smoothing distributions $p(x_{1:t} | y_{1:t})$. 
 These are not available analytically, except in linear Gaussian models. \\[12pt]
 
 SMC approximates the posterior distributions by drawing a sample of $N$ particles from the prior distribution and iterating the following steps:
@@ -102,7 +108,7 @@ SMC approximates the posterior distributions by drawing a sample of $N$ particle
 
 \vspace*{10pt}
 
-The figure shows how the population of particles looks at each step, before resampling.
+The figure shows how the population of particles looks at each step, before resampling. The purple ribbon shows the exact posterior mode and 95\% credible interval.
 \begin{figure}
 \includegraphics[width=\colwidth]{smc_kalman.pdf}
 \caption{Exact posterior (purple) and weighted SMC particles before resampling (black) for a linear Gaussian model.}
@@ -127,8 +133,16 @@ This phenomenon is known as \emph{ancestral degeneracy}. It can be mitigated by 
 \end{column}
 
 \begin{column}{\colwidth}
-\begin{block} %{Kingman Coalescent}
+\begin{block}{Kingman Coalescent}
+The Kingman coalescent is a continuous-time process which describes the asymptotic coalescents of many population models.
 
+Each pair of lineages merges with rate 1, meaning that more mergers happen when there are more distinct lineages. The process starts with a population of size $N$ and ends when all of the lineages have merged into one.
+
+ The resulting coalescent has many lineages for only a short time, and spends most of its time with just two or three distinct lineages.
+
+%%% Kingman coalescent example diagram %%%
+ 
+ 
 %Viewed backwards in time, the genealogy of the particles is a \emph{coalescent process}. Population genetics provides us with a limiting model which is known to describe the coalescents of a wide class of population models. \\[10pt]
 %
 %We consider asymptotic behaviour as $N\to\infty$, and choose a suitable time scale which depends on $N$.
