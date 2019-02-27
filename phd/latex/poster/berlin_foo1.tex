@@ -59,10 +59,10 @@
 
 \vspace*{-160pt}
 
-\huge{\inserttitle}\\[10pt]
+\huge{\inserttitle}\\[2pt]
 \Large{\insertauthor}\\[7pt]
-\normalsize{supervised by Jere Koskela, Adam Johansen, Paul Jenkins, Dario Span\'o}\\[7pt]
-\normalsize{\insertinstitute}\\[35pt]
+\large{supervised by Jere Koskela, Adam Johansen, Paul Jenkins and Dario Span\`o}\\[7pt]
+\normalsize{\insertinstitute}\\[25pt]
 \hrule
 
 \vspace*{15pt}
@@ -74,7 +74,7 @@
 %%% find a generic reference for the following %%%
 %%% remove some words %%%
 %%% change spacing as required once content is finalised %%%
-Suppose we have a hidden Markov model:
+Suppose we have a hidden Markov model with noisy observations $Y_{1:T}$ of unobservable states $X_{1:T}$.
 
 \begin{center}
 \resizebox{0.5\colwidth}{!}{%
@@ -95,11 +95,10 @@ Suppose we have a hidden Markov model:
 \end{center}
 \vspace*{-20pt}
 
-where $Y_{1:T}$ are noisy observations of unobservable states $X_{1:T}$.
 We may want to infer filtering distributions $p(x_t | y_{1:t})$, or smoothing distributions $p(x_{1:t} | y_{1:t})$. 
 These are not available analytically, except in linear Gaussian models. \\[12pt]
 
-SMC approximates the posterior distributions by drawing a sample of $N$ particles from the prior distribution and iterating the following steps:
+SMC [1] approximates the posterior distributions by sampling $N$ particles from the prior distribution and iterating the following steps:
 \begin{enumerate}
 \item \textbf{Propagate:} move particles according to the Markov kernel $f$
 \item \textbf{Calculate weights:} weight particles according to how likely they are to produce the observations through $g$
@@ -119,35 +118,60 @@ The figure shows how the population of particles looks at each step, before resa
 However, these particles cannot approximate the smoothing distributions. For that we need a sample of \emph{trajectories} covering all $t$ time steps, not just a sample of particles at each time step.\\[10pt]
 
 We have a sample of $N$ such trajectories: the ancestral trajectories of each of the $N$ particles alive at time $t$.
-But due to the resampling mechanism that generates these ancestries, they coalesce backwards in time, leaving much fewer than $N$ distinct samples at time 0. 
+But due to the resampling mechanism, these ancestries coalesce backwards in time, leaving many fewer than $N$ distinct samples at time 0. 
 
-%% crop off axis titles
-\begin{figure}
+\begin{figure} %%% remake this plot with a less weird realisation? %%%
 \includegraphics[width=0.9\colwidth]{degeneracy.pdf}
-\caption{Trajectories arising from a sample of N=6 particles. Except at the last few time steps there are no more than two distinct lineages.}
+\caption{Trajectories from a sample of N=6 particles. For most of the time there are just one or two distinct lineages.}
 \end{figure}
 
-This phenomenon is known as \emph{ancestral degeneracy}. It can be mitigated by changing the resampling procedure, but it cannot be eradicated.
-
+This phenomenon is known as \emph{ancestral degeneracy} [2]. It can be mitigated by changing the resampling procedure, but it cannot be eradicated.
 \end{block}
 \end{column}
 
 \begin{column}{\colwidth}
-\begin{block}{Kingman Coalescent}
-The Kingman coalescent is a continuous-time process which describes the asymptotic coalescents of many population models.
 
-Each pair of lineages merges with rate 1, meaning that more mergers happen when there are more distinct lineages. The process starts with a population of size $N$ and ends when all of the lineages have merged into one.
+\vspace*{-75pt}
 
- The resulting coalescent has many lineages for only a short time, and spends most of its time with just two or three distinct lineages.
+\begin{block}{The Kingman Coalescent}
+The Kingman coalescent [3] is a continuous-time process which describes the asymptotic coalescents of many population models.\\[10pt]
 
-%%% Kingman coalescent example diagram %%%
- 
- 
-%Viewed backwards in time, the genealogy of the particles is a \emph{coalescent process}. Population genetics provides us with a limiting model which is known to describe the coalescents of a wide class of population models. \\[10pt]
-%
-%We consider asymptotic behaviour as $N\to\infty$, and choose a suitable time scale which depends on $N$.
-
+The process starts with a population of size $N$ and ends when all of the lineages have merged into one.
+Each pair of lineages merges with rate 1, meaning that the total merger rate is higher when there are more distinct lineages. 
+\begin{figure}
+\includegraphics[width=0.8\colwidth]{kingman.png}
+\caption{A realisation of the Kingman coalescent for a population of size N=50. \textmd{(Source: Wikimedia Commons)}}
+\end{figure}
+The resulting coalescent has many lineages for only a short time, and spends most of its time with just two or three distinct lineages.
 \end{block}
+
+\vspace*{15pt}
+
+\begin{block}{Asymptotic SMC Genealogies}
+The rate of coalescence of SMC genealogies depends on the resampling scheme used. 
+Schemes giving higher variance offspring numbers produce faster coalescence.\\[10pt]
+
+To obtain convergence to the Kingman coalescent, which has rate 1, we rescale time by the inverse coalescence rate, and consider the asymptotic regime as  $N\to\infty$.\\[10pt]
+
+Convergence to the Kingman coalescent is only proved for the simple case of multinomial resampling [4]. We have since extended this result to cover conditional SMC with multinomial resampling.\\[10pt]
+
+Next we would like to analyse the case of alternative resampling schemes such as residual and stratified resampling. These schemes reduce the offspring variance and hence the coalescence rate, and are therefore more popular for practical use.
+\end{block}
+
+\vspace*{50pt}
+
+\hrule
+\begin{block}{References}
+\small{
+\begin{enumerate}
+\item Del Moral, P., Doucet, A., \& Jasra, A. (2006). Sequential Monte Carlo samplers. \textit{Journal of the Royal Statistical Society: Series B (Statistical Methodology)}, 68(3), 411-436.
+\item Doucet, A., \& Johansen, A. M. (2009). A tutorial on particle filtering and smoothing: Fifteen years later. \textit{Handbook of nonlinear filtering}, 12(656-704), 3.
+\item Kingman, J.F.C. (1982). The coalescent. \textit{Stochastic processes and their applications}, 13(3), pp.235-248.
+\item Koskela, J. et al. (2018).  Asymptotic genealogies of interacting particle systems with an application to sequential Monte Carlo. \textit{arXiv preprint} arXiv:1804.01811.
+\end{enumerate}
+}
+\end{block}
+
 \end{column}
 \end{columns}
 
