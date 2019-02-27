@@ -172,7 +172,7 @@ smcout = smc_example(N, T, observations, ouinit, outransition, oupotential)
 
 ##--- make plots ---
 # particle approximation vs exact solution
-scatter(smcout.positions, color=:black, ms=smcout.weights*N/2, grid=:x, xaxis=("time", (0,T+2), 1:1:T+1), legend=false, axis=("position", (-1.25,0.5)), size=(600,250))
+scatter(smcout.positions, color=:black, ms=smcout.weights*N/2, grid=:x, xaxis=("time", (0,T+2), 1:1:T+1), legend=false, yaxis=("position", (-1,1.5)), size=(600,250))
 plot!(rtsout.mean, color=:purple, ribbon=(2*rtsout.variance .^0.5, 2*rtsout.variance .^0.5), fillalpha=0.3)
 
 # ancestral degeneracy demo
