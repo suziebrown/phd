@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  27 FEB 2019 13:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  27 FEB 2019 13:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1043,10 +1043,10 @@ File: ot1mathkerncmss.fd 2013/03/27 Fontinst v1.933 font definitions for OT1/ma
 thkerncmss.
 )
 LaTeX Font Info:    Calculating math sizes for size <18.32> on input line 175.
-<smc_kalman.pdf, id=15, 602.25pt x 250.9375pt>
-File: smc_kalman.pdf Graphic file (type pdf)
-<use smc_kalman.pdf>
-Package pdftex.def Info: smc_kalman.pdf  used on input line 175.
+<smc_kalman_3.pdf, id=15, 602.25pt x 250.9375pt>
+File: smc_kalman_3.pdf Graphic file (type pdf)
+<use smc_kalman_3.pdf>
+Package pdftex.def Info: smc_kalman_3.pdf  used on input line 175.
 (pdftex.def)             Requested size: 735.18655pt x 306.35771pt.
 
 
@@ -1072,8 +1072,8 @@ Package pdftex.def Info: oxwasp.png  used on input line 175.
 [1
 
 {/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./oxwas
-p.png> <./warwickhead2.png> <./smc_kalman.pdf> <./degeneracy.pdf> <./kingman.pn
-g>]
+p.png> <./warwickhead2.png> <./smc_kalman_3.pdf> <./degeneracy.pdf> <./kingman.
+png>]
 \tf@nav=\write6
 \openout6 = `berlin_foo1.nav'.
 
@@ -1093,8 +1093,8 @@ Package rerunfilecheck Info: File `berlin_foo1.out' has not changed.
  ) 
 Here is how much of TeX's memory you used:
  20804 strings out of 492649
- 403892 string characters out of 6129623
- 537312 words of memory out of 5000000
+ 403902 string characters out of 6129623
+ 537326 words of memory out of 5000000
  24200 multiletter control sequences out of 15000+600000
  18164 words of font info for 65 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1105,7 +1105,7 @@ Here is how much of TeX's memory you used:
 ></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi17.pfb
 ></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
 
-Output written on berlin_foo1.pdf (1 page, 390516 bytes).
+Output written on berlin_foo1.pdf (1 page, 389331 bytes).
 PDF statistics:
  63 PDF objects out of 1000 (max. 8388607)
  39 compressed objects within 1 object stream
