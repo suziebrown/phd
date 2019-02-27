@@ -125,16 +125,16 @@ But due to the resampling mechanism, these ancestries coalesce backwards in time
 \caption{Trajectories from a sample of N=6 particles. For most of the time there are just one or two distinct lineages.}
 \end{figure}
 
-This phenomenon is known as \emph{ancestral degeneracy} [2]. It can be mitigated by changing the resampling procedure, but it cannot be eradicated.
+This phenomenon is known as \emph{ancestral degeneracy} [1]. It can be mitigated by changing the resampling procedure, but it cannot be eradicated.
 \end{block}
 \end{column}
 
 \begin{column}{\colwidth}
 
-\vspace*{-75pt}
+\vspace*{-80pt}
 
 \begin{block}{The Kingman Coalescent}
-The Kingman coalescent [3] is a continuous-time process which describes the asymptotic coalescents of many population models.\\[10pt]
+The Kingman coalescent [2] is a continuous-time process which describes the asymptotic genealogies of many population models.\\[10pt]
 
 The process starts with a population of size $N$ and ends when all of the lineages have merged into one.
 Each pair of lineages merges with rate 1, meaning that the total merger rate is higher when there are more distinct lineages. 
@@ -153,23 +153,20 @@ Schemes giving higher variance offspring numbers produce faster coalescence.\\[1
 
 To obtain convergence to the Kingman coalescent, which has rate 1, we rescale time by the inverse coalescence rate, and consider the asymptotic regime as  $N\to\infty$.\\[10pt]
 
-Convergence to the Kingman coalescent is only proved for the simple case of multinomial resampling [4]. We have since extended this result to cover conditional SMC with multinomial resampling.\\[10pt]
+Convergence to the Kingman coalescent is only proved for the simple case of multinomial resampling [3]. We have since extended this result to cover conditional SMC with multinomial resampling.\\[10pt]
 
-Next we would like to analyse the case of alternative resampling schemes such as residual and stratified resampling. These schemes reduce the offspring variance and hence the coalescence rate, and are therefore more popular for practical use.
+Next we would like to analyse the coalescents induced by alternative resampling schemes such as residual and stratified resampling. These schemes reduce the offspring variance and hence the coalescence rate, and are more popular among practitioners.
 \end{block}
 
 \vspace*{50pt}
 
 \hrule
 \begin{block}{References}
-\small{
 \begin{enumerate}
-\item Del Moral, P., Doucet, A., \& Jasra, A. (2006). Sequential Monte Carlo samplers. \textit{Journal of the Royal Statistical Society: Series B (Statistical Methodology)}, 68(3), 411-436.
 \item Doucet, A., \& Johansen, A. M. (2009). A tutorial on particle filtering and smoothing: Fifteen years later. \textit{Handbook of nonlinear filtering}, 12(656-704), 3.
 \item Kingman, J.F.C. (1982). The coalescent. \textit{Stochastic processes and their applications}, 13(3), pp.235-248.
 \item Koskela, J. et al. (2018).  Asymptotic genealogies of interacting particle systems with an application to sequential Monte Carlo. \textit{arXiv preprint} arXiv:1804.01811.
 \end{enumerate}
-}
 \end{block}
 
 \end{column}
