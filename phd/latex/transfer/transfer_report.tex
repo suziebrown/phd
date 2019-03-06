@@ -1,0 +1,116 @@
+\documentclass[fleqn]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=2cm]{geometry}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usepackage{xcolor}
+
+% maths
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+% bibliography
+\usepackage[round, sort&compress]{natbib}
+\usepackage{har2nat}
+\bibliographystyle{agsm}
+
+% custom header/footer
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+\fancyhf{}
+\rfoot{\textsf{\thepage}}
+\lfoot{\textsf{Suzie Brown}}
+
+% useful math symbols
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\eqdist}{\overset{d}{=}}
+\newcommand{\I}[1]{\mathbb{I}\{#1\}}
+\newcommand{\indep}{\perp}
+
+% project-specific commands
+\newcommand{\F}{\mathcal{F}_{t-1}}
+\newcommand{\Mn}{\operatorname{Multinomial}}
+\newcommand{\vt}[2][t]{v_{#1}^{(#2)}}
+\newcommand{\wt}[2][t]{w_{#1}^{(#2)}}
+\newcommand{\wbar}[2][t]{\bar{w}_{#1}^{(#2)}}
+
+\title{Asymptotic analysis of genealogies induced by sequential Monte Carlo algorithms}
+\author{Suzie Brown}
+\date{\today}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+
+\section{Introduction}
+\textcolor{red}{
+- what is SMC and what is it used for?\\
+- basic SMC algorithm\\
+- the three main tasks: prediction, filtering, smoothing\\
+- the problem with smoothing: ancestral vs. weight degeneracy\\
+- motivating plots\\
+- organisation of the report
+}
+
+....
+
+For our purposes it is sufficient to describe sequential Monte Carlo algorithms in the context of inference on a time-homogeneous hidden Markov model.
+Consider the following model:
+\begin{align*}
+& X_0 \sim \mu(\cdot) \\
+& X_{t+1} \mid (X_t = x_t) \sim f(\cdot | x_t)  \qquad t=0,\dots,T-1 \\
+& Y_t \mid (X_t = x_t) \sim g(\cdot | x_t) \qquad t=0,\dots,T
+\end{align*}
+where $\{X_t\}_{t=0}^T$ is an unobservable Markov chain and the observables $\{Y_t\}_{t=0}^T$ satisfy $Y_t \indep \{Y_{-t}, X_{-t}\} \mid X_t$. 
+The conditional independence structure is described by the following graphical model.
+\begin{center}
+\begin{tikzpicture}
+\node (yt) {$Y_t$};
+\node (thet) [below=of yt] {$X_t$};
+\node (yt1) [left=of yt] {$Y_{t-1}$};
+\node (thet1) [below=of yt1] {$X_{t-1}$};
+\node (dot1) [left=of thet1] {$\dots$};
+\node (dot2) [right=of thet] {$\dots$};
+\draw[->](thet.north)--(yt.south) node[midway, right] {\footnotesize{$g$}};
+\draw[->](thet1.north)--(yt1.south) node[midway, right] {\footnotesize{$g$}};
+\draw[->](thet1.east)--(thet.west) node[midway, above] {\footnotesize{$f$}};
+\draw[->](dot1.east)--(thet1.west) node[midway, above] {\footnotesize{$f$}};
+\draw[->](thet.east)--(dot2.west) node[midway, above] {\footnotesize{$f$}};
+\end{tikzpicture}
+\end{center}
+We assume that the \emph{transition} and \emph{emission} kernels have densities which are denoted by $f$ and $g$ respectively, but this is not necessary in general.
+We only require that we can sample from $\mu(\cdot)$ and $f(\cdot | x)$, and calculate \emph{unnormalised} potentials $g(y|x)$, for all $x,y$.
+
+
+\section{SMC as a coalescent}
+- k-coalescent \& Kingman coalescent\\
+- pop gen literature about large population cts time limits of various models\\
+- resampling viewed backwards in time: branching process $\to$ coalescent process\\
+- asymptotic properties of SMC lit review: CLT, path storage, coalescence etc.\\
+- the gap in knowledge that we aim to fill\\
+- (remark: although SMC has other problems in high dimension, the coalescence rate doesn't depend on the dimension...)
+
+\section{Conditional SMC}
+- motivation: particle MCMC, need for multiple lineages\\
+- conditional (multinomial) SMC algorithm and its context within particle Gibbs\\
+- result: coalescence rate etc in terms of standard multinomial one; verification of assumptions of KJJS theorem (but exile horrible calculations to appendix)\\
+- simulations \& conclusions thence
+
+\section{Alternative resampling schemes}
+- multinomial not really used in practice, but other schemes hard to analyse\\
+- overview of the main variance-reducing schemes\\
+- results: theorem for residual resampling (hopefully)\\
+- maybe results for other schemes\\
+- simulation comparing all of them, and conclusions thence\\
+
+\section{Discussion}
+- results so far\\
+- impact of this work: to practitioners, to enriching the SMC literature, interpretation within pop gen.\\
+- future directions
+
+
+\bibliography{smc.bib}
+\end{document}
