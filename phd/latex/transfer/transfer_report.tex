@@ -11,6 +11,11 @@
 \usepackage{amssymb}
 \usepackage{amsthm}
 
+% pseudocode
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+
 % bibliography
 \usepackage[round, sort&compress]{natbib}
 \usepackage{har2nat}
@@ -30,9 +35,13 @@
 \newcommand{\I}[1]{\mathbb{I}\{#1\}}
 \newcommand{\indep}{\perp}
 
+% distributions
+\newcommand{\Cat}{\operatorname{Categorical}}
+\newcommand{\Unif}{\operatorname{Uniform}}
+\newcommand{\Mn}{\operatorname{Multinomial}}
+
 % project-specific commands
 \newcommand{\F}{\mathcal{F}_{t-1}}
-\newcommand{\Mn}{\operatorname{Multinomial}}
 \newcommand{\vt}[2][t]{v_{#1}^{(#2)}}
 \newcommand{\wt}[2][t]{w_{#1}^{(#2)}}
 \newcommand{\wbar}[2][t]{\bar{w}_{#1}^{(#2)}}
@@ -47,28 +56,34 @@
 
 \section{Introduction}
 \textcolor{red}{
-- what is SMC and what is it used for?\\
-- basic SMC algorithm\\
-- the three main tasks: prediction, filtering, smoothing\\
-- the problem with smoothing: ancestral vs. weight degeneracy\\
-- motivating plots\\
 - organisation of the report\\
 }
 
-[SMC is super useful for loads of stuff...]
+Sequential Monte Carlo has become a popular tool, particularly in applications such as object tracking, where there is a natural sequential component and we wish to infer underlying states from noisy observations.
+While particle methods can be very effective for filtering, it is more difficult to apply them to smoothing because they typically suffer very badly from ancestral degeneracy in the particle genealogies.
 
-[Define subscript notation (-t) and (s:t)]
+When attempting to mitigate this problem, one often encounters a trade-off between ancestral degeneracy (arising from resampling) and weight degeneracy (arising from sequential importance sampling). However, while weight degeneracy is a reasonably well-quantified problem, there exists little in the way of tools for quantifying ancestral degeneracy a priori. There have been some simulation studies attempting to cast light on the magnitude of this problem, but analytical findings remain elusive, since the complexity of the most commonly used particle methods makes it difficult to obtain any rigorous results.
+Consequently, there is a wealth of pertinent open questions in this area. This work attempts to extend a first result for a standard class of SMC algorithms to the more sophisticated algorithms which are typically used in practice.
+
+Throughout this document we will use the compact notation $X_{m:n}$ as shorthand for $X_m, X_{m+1}, \dots, X_n$, as well as $X_{-n} := X_0, \dots, X_{n-1}, X_{n+1}, \dots X_{N}$.
+
+\section{Foo}
+\textcolor{red}{
+- the problem with smoothing: ancestral vs. weight degeneracy\\
+- motivating plots\\
+}
+
+References for this section are \citet{doucet2001}, \citet{delmoral2006}, and \citet{doucet2009}.
 
 \subsection{Class of models}
-For our purposes it is sufficient to describe sequential Monte Carlo (SMC) algorithms in the context of inference on a time-homogeneous state space model.
-Consider the following model:
+Although sequential Monte Carlo (SMC) methods can be applied in a much more general setting, they are particularly easy to motivate in the setting of state space models, where the ``sequential'' nature follows naturally from the discrete time steps present in the model. 
+For the purposes of presenting the algorithm, let us consider a time-homogeneous state space model consisting of an unobservable discrete-time Markov process $X_{0:T}$ and observables $Y_{0:T}$, satisfying the conditional independence structure
 \begin{align*}
-& X_0 \sim \mu(\cdot) \\
-& X_{t+1} \mid (X_t = x_t) \sim f(\cdot | x_t)  \qquad t=0,\dots,T-1 \\
-& Y_t \mid (X_t = x_t) \sim g(\cdot | x_t) \qquad t=0,\dots,T
+& X_{t+1} \perp X_{0:t-1}, X_{t+2:T} \mid X_t \\
+& Y_t \perp Y_{-t}, X_{-t} \mid X_t
 \end{align*}
-where $(X_t)_{t=0}^T$ is an unobservable discrete-time Markov process and the observables $(Y_t)_{t=0}^T$ satisfy $Y_t \indep \{Y_{-t}, X_{-t}\} \mid X_t$. 
-The conditional independence structure is described by the following graphical model.
+for all $t \in \{0,1,\dots, T\}$, as represented by the graphical model below.
+
 \begin{center}
 \begin{tikzpicture}
 \node (yt) {$Y_t$};
@@ -84,6 +99,17 @@ The conditional independence structure is described by the following graphical m
 \draw[->](thet.east)--(dot2.west) node[midway, above] {\footnotesize{$f$}};
 \end{tikzpicture}
 \end{center}
+
+We assume for notational convenience that $x_0,\dots,x_T$ take values in a common state space $\mathcal{X}$, and $y_0,\dots,y_T$ in a common state space $\mathcal{Y}$, but these assumptions can be dropped. 
+
+Suppose we have the following model:
+\begin{align*}
+& X_0 \sim \mu(\cdot) \\
+& X_{t+1} \mid (X_t = x_t) \sim f(\cdot | x_t)  \qquad t=0,\dots,T-1 \\
+& Y_t \mid (X_t = x_t) \sim g(\cdot | x_t) \qquad t=0,\dots,T
+\end{align*}
+where $(X_t)_{t=0}^T$ is an unobservable discrete-time Markov process and the observables $(Y_t)_{t=0}^T$ satisfy $Y_t \indep \{Y_{-t}, X_{-t}\} \mid X_t$. 
+
 We assume that the \emph{transition} and \emph{emission} kernels have densities which are denoted by $f$ and $g$ respectively, but this is not necessary in general.
 We only require that we can sample from $\mu(\cdot)$ and $f(\cdot | x)$, and calculate \emph{unnormalised} potentials $g(y|x)$, for all $x,y$.
 
@@ -95,16 +121,64 @@ The three main inference problems are:
 \item[Prediction] (where will it go next?) $p(x_{t+1} | y_{0:t})$
 \item[Smoothing] (where has it been?) $p(x_{0:t} | y_{0:t})$
 \end{description}
-In the on-line setting, we take as our prior the posterior distribution from the previous time step $t-1$, and update it using the new observation $y_t$. The inference must be fast enough to keep up with the rate of arrival of observations, so in particular the complexity of our inference algorithm must not increase with $T$.
+In the on-line setting, we take as our prior the posterior distribution from the previous time step $t-1$, and update it using the new observation $y_t$. The inference must be fast enough to keep up with the rate of arrival of observations, so in particular the complexity of the update must not increase with $T$.
 In the off-line setting, we take $\mu$ as the prior distribution, and infer the set of posteriors once all $T+1$ observations have arrived.
 
 Prediction and filtering are essentially equivalent, because given a filtering distribution, the corresponding predictive distribution can be obtained by applying the transition kernel $f$.
 Smoothing is considered a harder task because it requires us to infer many more parameters from the same amount of information; indeed the dimension of the problem increases linearly with $T$.
-In general it is not possible to infer the smoothing distributions on-line, because this would require using all of the previous observations at each time step, so the complexity would increase at each step. Algorithms that exist for on-line smoothing [REFs] are typically either approximate or computationally expensive.
+%In general it is not possible to infer the smoothing distributions on-line, because this would require using all of the previous observations at each time step, so the complexity would increase at each step. Algorithms that exist for on-line smoothing [REFs] are typically either approximate or computationally expensive.
 
-In the case of linear Gaussian state space models (i.e.\ where $f$ and $g$ are Gaussian densities that depend only linearly on their arguments), the posterior distributions of interest are available analytically, by way of the Kalman filter [REF] and Rauch-Tung-Striebel (RTS) smoother recursions [REF].
-The other analytic case occurs if the state space of $(X_t)_{t=0}^\infty$ is finite, in which case the forward-backward algorithm [REF] yields the exact posteriors.
+In the case of linear Gaussian state space models (i.e.\ where $f$ and $g$ are Gaussian densities that depend only linearly on their arguments), the posterior distributions of interest are available analytically, by way of the Kalman filter \citep{kalman1960} and Rauch-Tung-Striebel (RTS) smoother recursions \citep{rauch1965}.
+The other analytic case occurs if the state space of $(X_t)_{t=0}^\infty$ is finite, in which case the forward-backward algorithm \citep{baum1972} yields the exact posteriors.
 
+\subsection{Sequential Monte Carlo}
+In more complex models such techniques are not feasible, and we are forced to resort to Monte Carlo methods.
+For state space models, Markov chain Monte Carlo methods are not very effective due to the high dimension of the parameter space. But we can exploit the sequential nature of the underlying dynamics to decompose the problem into a sequence of inferences of more manageable dimension.
+This is the motivation behind sequential Monte Carlo (SMC) methods.
+
+The conditional independence structure in the model implies that the (joint) marginal distribution of the hidden states $X_{0:t}$ is given by
+\begin{equation*} \label{eq:hmm_marginal}
+p(x_{0:t}) = \mu(x_0) \prod_{i=1}^t f(x_i \mid x_{i-1})
+\end{equation*}
+and that the likelihood of the observations $y_{0:t}$ given the underlying states $x_{0:t}$ takes the form
+\begin{equation*} \label{eq:hmm_likelihood}
+p(y_{0:t} \mid x_{0:t}) = \prod_{i=0}^t g(y_i \mid x_i).
+\end{equation*}
+
+The smoothing distribution $p(x_{t} \mid y_{0:T})$ is obtained from $p(x_{0:T} \mid y_{0:T})$ by marginalising. Using the conditional independence structure, we can write
+\begin{align}
+p(x_{0:t} \mid y_{0:t}) &\propto g(y_t \mid x_t) f(x_t\mid x_{t-1}) p(x_{0:t-1}\mid y_{0:t-1}) \label{eq:smooth_recursion}\\
+&\propto \mu(x_0) g(y_0\mid x_0) \prod_{i=1}^t f(x_i \mid x_{i-1}) g(y_i\mid x_i) \label{eq:smooth_recursion2}
+\end{align}
+for $t = 0,\dots,M$, where the one-step recursion \eqref{eq:smooth_recursion} is obtained using Bayes rule, and \eqref{eq:smooth_recursion2} is obtained by applying \eqref{eq:smooth_recursion} $t$ times. 
+The filtering distribution $p(x_t \mid y_{0:t})$ can be obtained from \eqref{eq:smooth_recursion} by marginalising out $x_{0:t-1}$, which is straightforward if Monte Carlo samples are available.
+The predictive distributions can also be derived from the smoothing distributions using
+\begin{equation*}
+p(x_{t+1}\mid y_{0:t}) = g(x_{t+1} \mid x_t) p(x_{0:t} \mid y_{0:t}).
+\end{equation*}
+
+SMC provides a method to approximate to \eqref{eq:smooth_recursion}, given a model specification and a sequence of observations. Like the underlying process, the algorithm proceeds sequentially, returning its approximation to the smoothing distribution at each time step.
+A generic SMC algorithm is presented below.
+
+\begin{algorithm}
+	\caption{Standard SMC}\label{alg:SMC}
+	\begin{algorithmic}[0]
+    	\State \textbf{Inputs:} $\mu:\mathcal{X}\to[0,1];\quad f:\mathcal{X}\times\mathcal{X}\to[0,1];\quad g:\mathcal{Y}\times\mathcal{X}\to[0,1];\quad y_{0:M}\in\mathcal{Y}^T;\quad N\in\mathbb{N}$
+		\For{$i = 1,\dots,N$}		
+			\State $x_0^{(i)} \sim \mu(\cdot)$ \Comment initialise
+			\State $\tilde{w}_0^{(i)} \gets g(y_0 \mid x_0^{(i)})$
+			\State $w_0^{(i)} \gets \tilde{w}_0^{(i)} / \sum \tilde{w}_0^{(j)}$
+		\EndFor
+		\For{$t=1,\dots,T$}
+        	\For{$i = 1,\dots,N$}
+        		\State $\tilde{x}_t^{(i)} \gets$ {\footnotesize RESAMPLE}($\mathbf{x}_{t-1}, \mathbf{w}_{t-1}$) \Comment resample particles
+				\State $x_t^{(i)} \sim f(\cdot \mid \tilde{x}_t^{(i)})$ \Comment propagate particles
+				\State $\tilde{w}_t^{(i)} \gets g(y_t \mid x_t^{(i)})$ \Comment calculate weights
+				\State $w_t^{(i)} \gets \tilde{w}_t^{(i)} / \sum \tilde{w}_t^{(j)}$ \Comment normalise weights
+        	\EndFor
+        \EndFor
+	\end{algorithmic}
+\end{algorithm}
 
 \section{SMC as a coalescent}
 \textcolor{red}{
@@ -124,6 +198,34 @@ The other analytic case occurs if the state space of $(X_t)_{t=0}^\infty$ is fin
 - simulations \& conclusions thence
 }
 
+\begin{algorithm}
+\begin{algorithmic}[1]
+\Require $N, T, \mu, \{K_t\}, \{g_t\}, x_{0:T}^*$
+\For{$i \in \{1,\dots,N\}$} 
+	\State Sample $X_0^{(i)} \sim \mu$ 
+\EndFor
+\State Sample $a_0^* \sim \Unif(\{1,\dots,N\})$
+\State $X_0^{(a_0^*)} \gets x_0^*$
+\For{$i \in \{1,\dots,N\}$}
+	\State $w_0^{(i)} \gets \frac{g_0(X_0^{(i)})}{\sum_{j=1}^N g_0(X_0^{(j)})}$
+\EndFor
+\For{$t \in \{0,\dots, T-1\}$}
+	\State Sample $a_t^{(1:N)} \sim \Cat(\{1,\dots,N\}, w_t^{(1:N)})$
+	\State Sample $a_{t+1}^* \sim \Unif(\{1,\dots,N\})$
+	\State $a_t^{(a_{t+1}^*)} \gets a_t^*$
+	\For{$i \in \{1,\dots,N\}$}
+		\State Sample $X_{t+1}^{(i)} \sim K_{t+1}(X_t^{(a_t^{(i)})}, \cdot)$
+	\EndFor
+	\State $X_{t+1}^{(a_{t+1}^*)} \gets X_{t+1}^*$
+	\For{$i \in \{1,\dots,N\}$}
+		\State $w_{t+1}^{(i)} \gets \frac{g_{t+1}(X_t^{(a_t^{(i)})} , X_{t+1}^{(i)})}{\sum_{j=1}^N g_{t+1}(X_t^{(a_t^{(j)})} , X_{t+1}^{(j)})}$
+	\EndFor
+\EndFor
+\end{algorithmic}
+\caption{Conditional SMC with multinomial resampling}
+\label{alg:condSMC}
+\end{algorithm}
+
 \section{Alternative resampling schemes}
 \textcolor{red}{
 - multinomial not really used in practice, but other schemes hard to analyse\\
@@ -141,5 +243,5 @@ The other analytic case occurs if the state space of $(X_t)_{t=0}^\infty$ is fin
 }
 
 
-\bibliography{smc.bib}
+\bibliography{../smc.bib}
 \end{document}

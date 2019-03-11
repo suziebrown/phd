@@ -1,0 +1,36 @@
+\begin{thebibliography}{xx}
+
+\harvarditem{Baum}{1972}{baum1972}
+Baum, L.  \harvardyearleft 1972\harvardyearright , `An inequality and
+  associated maximization technique occurring in the statistical analysis of
+  probabilistic functions of markov chains', {\em Inequalities,} {\bf 3},~1--8.
+
+\harvarditem[Del~Moral et~al.]{Del~Moral, Doucet \harvardand\
+  Jasra}{2006}{delmoral2006}
+Del~Moral, P., Doucet, A. \harvardand\ Jasra, A.  \harvardyearleft
+  2006\harvardyearright , `Sequential monte carlo samplers', {\em Journal of
+  the Royal Statistical Society: Series B (Statistical Methodology)} {\bf
+  68}(3),~411--436.
+
+\harvarditem[Doucet et~al.]{Doucet, De~Freitas \harvardand\
+  Gordon}{2001}{doucet2001}
+Doucet, A., De~Freitas, N. \harvardand\ Gordon, N.  \harvardyearleft
+  2001\harvardyearright , An introduction to sequential monte carlo methods,
+  {\em in} `Sequential Monte Carlo methods in practice', Springer, pp.~3--14.
+
+\harvarditem{Doucet \harvardand\ Johansen}{2009}{doucet2009}
+Doucet, A. \harvardand\ Johansen, A.~M.  \harvardyearleft 2009\harvardyearright
+  , `A tutorial on particle filtering and smoothing: Fifteen years later', {\em
+  Handbook of nonlinear filtering} {\bf 12}(656-704),~3.
+
+\harvarditem{Kalman}{1960}{kalman1960}
+Kalman, R.~E.  \harvardyearleft 1960\harvardyearright , `A new approach to
+  linear filtering and prediction problems', {\em Journal of basic Engineering}
+  {\bf 82}(1),~35--45.
+
+\harvarditem[Rauch et~al.]{Rauch, Striebel \harvardand\ Tung}{1965}{rauch1965}
+Rauch, H.~E., Striebel, C. \harvardand\ Tung, F.  \harvardyearleft
+  1965\harvardyearright , `Maximum likelihood estimates of linear dynamic
+  systems', {\em AIAA journal} {\bf 3}(8),~1445--1450.
+
+\end{thebibliography}
