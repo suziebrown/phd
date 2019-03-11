@@ -31,6 +31,7 @@
 
 % useful math symbols
 \newcommand{\E}{\mathbb{E}}
+\newcommand{\V}{\operatorname{Var}}
 \newcommand{\eqdist}{\overset{d}{=}}
 \newcommand{\I}[1]{\mathbb{I}\{#1\}}
 \newcommand{\indep}{\perp}
@@ -67,12 +68,7 @@ Consequently, there is a wealth of pertinent open questions in this area. This w
 
 Throughout this document we will use the compact notation $X_{m:n}$ as shorthand for $X_m, X_{m+1}, \dots, X_n$, as well as $X_{-n} := X_0, \dots, X_{n-1}, X_{n+1}, \dots X_{N}$.
 
-\section{Foo}
-\textcolor{red}{
-- the problem with smoothing: ancestral vs. weight degeneracy\\
-- motivating plots\\
-}
-
+\section{foo}
 References for this section are \citet{doucet2001}, \citet{delmoral2006}, and \citet{doucet2009}.
 
 \subsection{Class of models}
@@ -145,16 +141,16 @@ and that the likelihood of the observations $y_{0:t}$ given the underlying state
 p(y_{0:t} \mid x_{0:t}) = \prod_{i=0}^t g(y_i \mid x_i).
 \end{equation*}
 
-The smoothing distribution $p(x_{t} \mid y_{0:T})$ is obtained from $p(x_{0:T} \mid y_{0:T})$ by marginalising. Using the conditional independence structure, we can write
+The smoothing distribution $p(x_{t} | y_{0:T})$ is obtained from $p(x_{0:T} | y_{0:T})$ by marginalising. Using the conditional independence structure, we can write
 \begin{align}
-p(x_{0:t} \mid y_{0:t}) &\propto g(y_t \mid x_t) f(x_t\mid x_{t-1}) p(x_{0:t-1}\mid y_{0:t-1}) \label{eq:smooth_recursion}\\
-&\propto \mu(x_0) g(y_0\mid x_0) \prod_{i=1}^t f(x_i \mid x_{i-1}) g(y_i\mid x_i) \label{eq:smooth_recursion2}
+p(x_{0:t} | y_{0:t}) &\propto g(y_t | x_t) f(x_t | x_{t-1}) p(x_{0:t-1} | y_{0:t-1}) \label{eq:smooth_recursion}\\
+&\propto \mu(x_0) g(y_0 | x_0) \prod_{i=1}^t f(x_i | x_{i-1}) g(y_i | x_i) \label{eq:smooth_recursion2}
 \end{align}
 for $t = 0,\dots,M$, where the one-step recursion \eqref{eq:smooth_recursion} is obtained using Bayes rule, and \eqref{eq:smooth_recursion2} is obtained by applying \eqref{eq:smooth_recursion} $t$ times. 
-The filtering distribution $p(x_t \mid y_{0:t})$ can be obtained from \eqref{eq:smooth_recursion} by marginalising out $x_{0:t-1}$, which is straightforward if Monte Carlo samples are available.
+The filtering distribution $p(x_t | y_{0:t})$ can be obtained from \eqref{eq:smooth_recursion} by marginalising out $x_{0:t-1}$, which is straightforward if Monte Carlo samples are available.
 The predictive distributions can also be derived from the smoothing distributions using
 \begin{equation*}
-p(x_{t+1}\mid y_{0:t}) = g(x_{t+1} \mid x_t) p(x_{0:t} \mid y_{0:t}).
+p(x_{t+1} | y_{0:t}) = g(x_{t+1} | x_t) p(x_{0:t} | y_{0:t}).
 \end{equation*}
 
 SMC provides a method to approximate to \eqref{eq:smooth_recursion}, given a model specification and a sequence of observations. Like the underlying process, the algorithm proceeds sequentially, returning its approximation to the smoothing distribution at each time step.
@@ -163,22 +159,34 @@ A generic SMC algorithm is presented below.
 \begin{algorithm}
 	\caption{Standard SMC}\label{alg:SMC}
 	\begin{algorithmic}[0]
-    	\State \textbf{Inputs:} $\mu:\mathcal{X}\to[0,1];\quad f:\mathcal{X}\times\mathcal{X}\to[0,1];\quad g:\mathcal{Y}\times\mathcal{X}\to[0,1];\quad y_{0:M}\in\mathcal{Y}^T;\quad N\in\mathbb{N}$
+    	\State \textbf{Inputs:} $\mu:\mathcal{X}\to[0,1];\quad f:\mathcal{X}\times\mathcal{X}\to[0,1];\quad g:\mathcal{Y}\times\mathcal{X}\to[0,1];\quad y_{0:T}\in\mathcal{Y}^T;\quad N\in\mathbb{N}$
 		\For{$i = 1,\dots,N$}		
 			\State $x_0^{(i)} \sim \mu(\cdot)$ \Comment initialise
-			\State $\tilde{w}_0^{(i)} \gets g(y_0 \mid x_0^{(i)})$
+			\State $\tilde{w}_0^{(i)} \gets g(y_0 | x_0^{(i)})$
 			\State $w_0^{(i)} \gets \tilde{w}_0^{(i)} / \sum \tilde{w}_0^{(j)}$
 		\EndFor
 		\For{$t=1,\dots,T$}
         	\For{$i = 1,\dots,N$}
         		\State $\tilde{x}_t^{(i)} \gets$ {\footnotesize RESAMPLE}($\mathbf{x}_{t-1}, \mathbf{w}_{t-1}$) \Comment resample particles
-				\State $x_t^{(i)} \sim f(\cdot \mid \tilde{x}_t^{(i)})$ \Comment propagate particles
-				\State $\tilde{w}_t^{(i)} \gets g(y_t \mid x_t^{(i)})$ \Comment calculate weights
+				\State $x_t^{(i)} \sim f(\cdot | \tilde{x}_t^{(i)})$ \Comment propagate particles
+				\State $\tilde{w}_t^{(i)} \gets g(y_t | x_t^{(i)})$ \Comment calculate weights
 				\State $w_t^{(i)} \gets \tilde{w}_t^{(i)} / \sum \tilde{w}_t^{(j)}$ \Comment normalise weights
         	\EndFor
         \EndFor
 	\end{algorithmic}
 \end{algorithm}
+
+If only the latest filtering distribution is required, we can marginalise out $\mathbf{x}_{0:t-1}$ at each step by simply throwing away the particle histories and keeping only the particle approximation $\mathbf{x}_{t}$ to the filtering distribution at the current time $t$. 
+The algorithm progresses in a Markovian fashion, only ever referring to the particles at the immediately previous step, so filtering distributions can be approximated with minimal memory usage. 
+If, say, the mean and variance of $X_{t} \mid y_{0:t}$ at each time $t$ are required, we can store just these summary statistics, plus the two most recent generations of particles, and throw away all other information about the particles at previous time steps. This is vital if one wishes to carry out filtering in an on-line fashion, as it prevents the memory requirements accumulating more than necessary.
+
+The choice of the {\footnotesize RESAMPLE} function in Algorithm \ref{alg:SMC} is discussed in Chapter [?].
+
+\subsection{Ancestral degeneracy}
+\textcolor{red}{
+- the problem with smoothing: ancestral vs. weight degeneracy\\
+- motivating plots
+}
 
 \section{SMC as a coalescent}
 \textcolor{red}{
@@ -190,13 +198,48 @@ A generic SMC algorithm is presented below.
 - (remark: although SMC has other problems in high dimension, the coalescence rate doesn't depend on the dimension...)
 }
 
+\subsection{Kingman's coalescent}
+Imagine we have a population with fixed size $N$ over discrete generations, where each individual is descended from one individual of the previous generation. Then for each individual in the present generation, we can trace their \emph{lineage} back through the generations. 
+If we trace two lineages back in time, at some generation they may descend from the same individual, at which point we say they have \emph{coalesced}. Once two lineages have coalesced they will stay together going backwards in time.
+The combined lineages of $n\leq N$ of the present individuals therefore forms a tree, or several non-overlapping trees, the entirety of which we refer to as the \emph{ancestry} or \emph{genealogy} of those $n$ individuals.
+
+Kingman's $n$-coalescent provides a model for such genealogies. Kingman showed in \citep{kingman1982gene, kingman1982coal, kingman1982exch} that  the $n$-coalescent is the limiting process for samples from a wide class of population models as $N\to\infty$.
+
+The defining feature of the model is that each pair of lineages merges with unit rate. This means that many coalescences occur while there are many distinct lineages present.
+In particular, the $n$-coalescent can be formulated as a Poisson process where pairs of lineages coalesce independently at rate 1, with the pair to coalesce being chosen uniformly at random \citep[Section 3.2]{wakeley2009}.
+
+In the notation of \citet{wakeley2009}, let $T_i;\, i=2,\dots,n$ be the $i^{th}$ coalescence time, that is, the length of time for which there are exactly $i$ branches in the sample genealogy. The $n$-coalescent is the process in which these times are distributed as independent Exponentials with rate $\binom{i}{2}$.
+
+%%% formal definition of coalescent processes in terms of equivalence classes
+
+\citet{mohle1998} writes the same process in terms of the infinitesimal generator $Q$ of a Markov process on the set of equivalence relations on $n$ elements, having entries
+\begin{equation*}
+q_{\xi\eta} =
+\begin{cases}
+-\binom{b}{2} &\text{if }\xi=\eta \\
+1 & \text{if }\xi \prec\eta \\
+0 & \text{otherwise}
+\end{cases}
+\end{equation*}
+where $b$ is the number of equivalence classes of $\xi$, and $\xi \prec \eta$ means that $\eta$ is a state with exactly one more pair of lineages coalesced compared to $\xi$.
+ 
+%%% connection between Kingman coalescent and n-coalescent
+
 \section{Conditional SMC}
 \textcolor{red}{
 - motivation: particle MCMC, need for multiple lineages\\
-- conditional (multinomial) SMC algorithm and its context within particle Gibbs\\
 - result: coalescence rate etc in terms of standard multinomial one; verification of assumptions of KJJS theorem (but exile horrible calculations to appendix)\\
-- simulations \& conclusions thence
 }
+
+Conditional SMC differs from the standard algorithm in that one predetermined trajectory (that is, a sequence of particle positions and the corresponding ancestral line) is conditioned to survive all of the propagation and resampling steps. 
+We will refer to this sequence as the \emph{immortal trajectory}, following the terminology used for conditioned Galton-Watson processes, and the \emph{immortal particle} will refer to the particle in a particular generation that is part of the immortal trajectory.
+
+The conditional SMC algorithm was proposed by \citet{andrieu2010} for use in the \emph{particle Gibbs} sampler, which they introduce as part of a more general class of particle MCMC methods. 
+In the particle Gibbs sampler, the standard SMC algorithm does not admit the desired target distribution, so this conditional version must be used instead.
+
+When used as a component of the particle Gibbs algorithm, the immortal trajectory $x_{0:T}^*$ for each SMC run is sampled from the trajectories output from the previous run \citep[Section 2.4.3]{andrieu2010}. However, for our purposes we just consider a single SMC run for which the immortal trajectory is fixed.
+
+A conditional SMC algorithm employing multinomial resampling is described in Algorithm \ref{alg:condSMC}.
 
 \begin{algorithm}
 \begin{algorithmic}[1]
@@ -231,8 +274,7 @@ A generic SMC algorithm is presented below.
 - multinomial not really used in practice, but other schemes hard to analyse\\
 - overview of the main variance-reducing schemes\\
 - results: theorem for residual resampling (hopefully)\\
-- maybe results for other schemes\\
-- simulation comparing all of them, and conclusions thence
+- maybe results for other schemes
 }
 
 \section{Discussion}

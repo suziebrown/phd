@@ -7,45 +7,47 @@ Repeated entry---line 207 of file ../smc.bib
  : @article{rauch1965
  :                   ,
 I'm skipping whatever remains of this entry
-You've used 6 entries,
+Warning--there's a number but no series in wakeley2009
+Warning--empty publisher in wakeley2009
+You've used 10 entries,
             2909 wiz_defined-function locations,
-            681 strings with 5761 characters,
-and the built_in function-call counts, 21650 in all, are:
-= -- 3462
-> -- 305
-< -- 0
-+ -- 1627
-- -- 91
-* -- 1857
-:= -- 4406
-add.period$ -- 6
-call.type$ -- 6
-change.case$ -- 84
-chr.to.int$ -- 6
-cite$ -- 6
-duplicate$ -- 102
-empty$ -- 213
-format.name$ -- 110
-if$ -- 3877
+            707 strings with 6200 characters,
+and the built_in function-call counts, 33003 in all, are:
+= -- 5256
+> -- 447
+< -- 1
++ -- 2439
+- -- 133
+* -- 2807
+:= -- 6774
+add.period$ -- 10
+call.type$ -- 10
+change.case$ -- 139
+chr.to.int$ -- 10
+cite$ -- 12
+duplicate$ -- 166
+empty$ -- 348
+format.name$ -- 161
+if$ -- 5895
 int.to.chr$ -- 5
 int.to.str$ -- 0
-missing$ -- 6
-newline$ -- 21
-num.names$ -- 63
-pop$ -- 20
+missing$ -- 11
+newline$ -- 33
+num.names$ -- 104
+pop$ -- 36
 preamble$ -- 1
-purify$ -- 90
+purify$ -- 150
 quote$ -- 0
-skip$ -- 86
+skip$ -- 135
 stack$ -- 0
-substring$ -- 4852
-swap$ -- 20
-text.length$ -- 84
+substring$ -- 7348
+swap$ -- 31
+text.length$ -- 141
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 24
-warning$ -- 0
-while$ -- 138
+type$ -- 38
+warning$ -- 2
+while$ -- 228
 width$ -- 0
-write$ -- 82
+write$ -- 132
 (There was 1 error message)
