@@ -180,22 +180,21 @@ If only the latest filtering distribution is required, we can marginalise out $\
 The algorithm progresses in a Markovian fashion, only ever referring to the particles at the immediately previous step, so filtering distributions can be approximated with minimal memory usage. 
 If, say, the mean and variance of $X_{t} \mid y_{0:t}$ at each time $t$ are required, we can store just these summary statistics, plus the two most recent generations of particles, and throw away all other information about the particles at previous time steps. This is vital if one wishes to carry out filtering in an on-line fashion, as it prevents the memory requirements accumulating more than necessary.
 
-The choice of the {\footnotesize RESAMPLE} function in Algorithm \ref{alg:SMC} is discussed in Chapter [?].
+The form of the {\footnotesize RESAMPLE} function in Algorithm \ref{alg:SMC} is discussed in Section \ref{sec:resampling}.
 
 \subsection{Ancestral degeneracy}
 \textcolor{red}{
-- the problem with smoothing: ancestral vs. weight degeneracy\\
+- the problem with smoothing: ancestral vs.\ weight degeneracy\\
 - motivating plots
 }
 
 \section{SMC as a coalescent}
 \textcolor{red}{
-- k-coalescent \& Kingman coalescent\\
 - pop gen literature about large population cts time limits of various models\\
 - resampling viewed backwards in time: branching process $\to$ coalescent process\\
 - asymptotic properties of SMC lit review: CLT, path storage, coalescence etc.\\
 - the gap in knowledge that we aim to fill\\
-- (remark: although SMC has other problems in high dimension, the coalescence rate doesn't depend on the dimension...)
+%- (remark: although SMC has other problems in high dimension, the coalescence rate doesn't depend on the dimension...)
 }
 
 \subsection{Kingman's coalescent}
@@ -203,7 +202,7 @@ Imagine we have a population with fixed size $N$ over discrete generations, wher
 If we trace two lineages back in time, at some generation they may descend from the same individual, at which point we say they have \emph{coalesced}. Once two lineages have coalesced they will stay together going backwards in time.
 The combined lineages of $n\leq N$ of the present individuals therefore forms a tree, or several non-overlapping trees, the entirety of which we refer to as the \emph{ancestry} or \emph{genealogy} of those $n$ individuals.
 
-Kingman's $n$-coalescent provides a model for such genealogies. Kingman showed in \citep{kingman1982gene, kingman1982coal, kingman1982exch} that  the $n$-coalescent is the limiting process for samples from a wide class of population models as $N\to\infty$.
+Kingman's \emph{$n$-coalescent} provides a model for such genealogies. Kingman showed in \citep{kingman1982gene, kingman1982coal, kingman1982exch} that  the $n$-coalescent is the limiting process for samples from a wide class of population models as $N\to\infty$.
 
 The defining feature of the model is that each pair of lineages merges with unit rate. This means that many coalescences occur while there are many distinct lineages present.
 In particular, the $n$-coalescent can be formulated as a Poisson process where pairs of lineages coalesce independently at rate 1, with the pair to coalesce being chosen uniformly at random \citep[Section 3.2]{wakeley2009}.
@@ -223,7 +222,7 @@ q_{\xi\eta} =
 \end{equation*}
 where $b$ is the number of equivalence classes of $\xi$, and $\xi \prec \eta$ means that $\eta$ is a state with exactly one more pair of lineages coalesced compared to $\xi$.
  
-%%% connection between Kingman coalescent and n-coalescent
+The \emph{Kingman coalescent} is the process on the whole population of size $N\to\infty$, such that the genealogy of any sample of size $n<N$ individuals from the present generation is an $n$-coalescent.
 
 \section{Conditional SMC}
 \textcolor{red}{
@@ -269,13 +268,15 @@ A conditional SMC algorithm employing multinomial resampling is described in Alg
 \label{alg:condSMC}
 \end{algorithm}
 
-\section{Alternative resampling schemes}
+\section{Alternative resampling schemes}\label{sec:resampling}
 \textcolor{red}{
-- multinomial not really used in practice, but other schemes hard to analyse\\
 - overview of the main variance-reducing schemes\\
 - results: theorem for residual resampling (hopefully)\\
 - maybe results for other schemes
 }
+
+There is a great deal of flexibility in the function referred to as {\footnotesize RESAMPLE} in Algorithm \ref{alg:SMC}. The most straightforward choice is multinomial resampling \citep{efron1994}, which is also the easiest to analyse. However, multinomial resampling is well known to be sub-optimal in terms of the resulting Monte Carlo variance, and is rarely used in practice. For instance, \citet{douc2005} proves that both residual resampling and stratified resampling yield lower variance. 
+In this section we will present some resampling schemes that claim to perform better than multinomial resampling.
 
 \section{Discussion}
 \textcolor{red}{

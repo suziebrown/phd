@@ -19,6 +19,12 @@ Del~Moral, P., Doucet, A. \harvardand\ Jasra, A.  \harvardyearleft
   the Royal Statistical Society: Series B (Statistical Methodology)} {\bf
   68}(3),~411--436.
 
+\harvarditem{Douc \harvardand\ Capp{\'e}}{2005}{douc2005}
+Douc, R. \harvardand\ Capp{\'e}, O.  \harvardyearleft 2005\harvardyearright ,
+  Comparison of resampling schemes for particle filtering, {\em in} `Image and
+  Signal Processing and Analysis, 2005. ISPA 2005. Proceedings of the 4th
+  International Symposium on', IEEE, pp.~64--69.
+
 \harvarditem[Doucet et~al.]{Doucet, De~Freitas \harvardand\
   Gordon}{2001}{doucet2001}
 Doucet, A., De~Freitas, N. \harvardand\ Gordon, N.  \harvardyearleft
@@ -30,14 +36,30 @@ Doucet, A. \harvardand\ Johansen, A.~M.  \harvardyearleft 2009\harvardyearright
   , `A tutorial on particle filtering and smoothing: Fifteen years later', {\em
   Handbook of nonlinear filtering} {\bf 12}(656-704),~3.
 
+\harvarditem{Efron \harvardand\ Tibshirani}{1994}{efron1994}
+Efron, B. \harvardand\ Tibshirani, R.~J.  \harvardyearleft
+  1994\harvardyearright , {\em An introduction to the bootstrap}, CRC press.
+
 \harvarditem{Kalman}{1960}{kalman1960}
 Kalman, R.~E.  \harvardyearleft 1960\harvardyearright , `A new approach to
   linear filtering and prediction problems', {\em Journal of basic Engineering}
   {\bf 82}(1),~35--45.
 
-\harvarditem{Kingman}{1982}{kingman1982gene}
-Kingman, J.  \harvardyearleft 1982\harvardyearright , `On the genealogy of
-  large populations', {\em Journal of Applied Probability} {\bf 19}(A),~27--43.
+\harvarditem{Kingman}{1982{\em a}}{kingman1982coal}
+Kingman, J.  \harvardyearleft 1982{\em a}\harvardyearright , `The coalescent',
+  {\em Stochastic processes and their applications} {\bf 13}(3),~235--248.
+
+\harvarditem{Kingman}{1982{\em b}}{kingman1982exch}
+Kingman, J.  \harvardyearleft 1982{\em b}\harvardyearright , Exchangeability
+  and the evolution of large populations, {\em in} `Proceedings of the
+  International Conference on Exchangeability in Probability and Statistics,
+  Rome, 6th-9th April, 1981, in Honour of Professor Bruno de Finetti',
+  North-Holland, Amsterdam.
+
+\harvarditem{Kingman}{1982{\em c}}{kingman1982gene}
+Kingman, J.  \harvardyearleft 1982{\em c}\harvardyearright , `On the genealogy
+  of large populations', {\em Journal of Applied Probability} {\bf
+  19}(A),~27--43.
 
 \harvarditem{M{\"o}hle}{1998}{mohle1998}
 M{\"o}hle, M.  \harvardyearleft 1998\harvardyearright , `Robustness results for
