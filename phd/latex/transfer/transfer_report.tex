@@ -2,21 +2,6 @@
 \usepackage[utf8]{inputenc}
 \usepackage[margin=2cm]{geometry}
 
-\usepackage{tikz}
-\usetikzlibrary{positioning}
-\usepackage{xcolor}
-
-% maths
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{amsthm}
-\newtheorem{corollary}{Corollary}
-
-% pseudocode
-\usepackage{algorithm}
-\usepackage{algorithmicx}
-\usepackage{algpseudocode}
-
 % bibliography
 \usepackage[round, sort&compress]{natbib}
 \usepackage{har2nat}
@@ -29,6 +14,25 @@
 \fancyhf{}
 \rfoot{\textsf{\thepage}}
 \lfoot{\textsf{Suzie Brown}}
+
+% miscellaneous formatting
+\usepackage{xcolor}
+\usepackage[font=small]{caption}
+
+% tikz
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+% pseudocode
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+
+% maths
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\newtheorem{corollary}{Corollary}
 
 % useful math symbols
 \newcommand{\E}{\mathbb{E}}
@@ -164,7 +168,9 @@ This approximation is the empirical distribution of the particles:
 \end{equation}
 The particle approximation is justified by various convergence results - see for example \citet{delmoral2013} for details.
 
-A generic SMC algorithm is presented in Algorithm \ref{alg:SMC}. Figure \ref{fig:SMC_vs_kalman} shows the resulting particles in a linear Gaussian model, with the exact posterior for reference.
+A generic SMC algorithm is presented in Algorithm \ref{alg:SMC}. For the state space model described above, we can take $K_{t+1}(x_t, \cdot) \equiv f(\cdot | x_t)$ and $g_{t+1}(x_t, x_{t+1}) \equiv g(y_{t+1} | x_{t+1})$.
+
+Figure \ref{fig:SMC_vs_kalman} illustrates the particle approximation arising from such an algorithm on a linear Gaussian model, with the exact posterior for reference.
 
 %\begin{algorithm}
 %	\caption{SMC}\label{alg:SMC}
@@ -185,7 +191,6 @@ A generic SMC algorithm is presented in Algorithm \ref{alg:SMC}. Figure \ref{fig
 %        \EndFor
 %	\end{algorithmic}
 %\end{algorithm}
-
 \begin{algorithm}
 \caption{Standard SMC}\label{alg:SMC}
 \begin{algorithmic}[1]
