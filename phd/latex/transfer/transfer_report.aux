@@ -11,39 +11,56 @@
 \citation{baum1972}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Inference in state space models}{2}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Sequential Monte Carlo}{2}}
+\citation{delmoral2013}
 \newlabel{eq:smooth_recursion}{{1}{3}}
 \newlabel{eq:smooth_recursion2}{{2}{3}}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Standard SMC}}{3}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces SMC}}{3}}
 \newlabel{alg:SMC}{{1}{3}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Ancestral degeneracy}{3}}
-\@writefile{toc}{\contentsline {section}{\numberline {3}SMC as a coalescent}{3}}
 \citation{kingman1982gene,kingman1982coal,kingman1982exch}
 \citation{wakeley2009}
 \citation{wakeley2009}
 \citation{mohle1998}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces SMC particles before resampling for a linear Gaussian model. The purple ribbon shows the exact posterior mode and 95\% credible interval, computed using the Kalman filter and RTS smoother. The black dots show the positions of the SMC particles, with size proportional to weight. After resampling all particles have equal weights but some are duplicated.}}{4}}
+\newlabel{fig:SMC_vs_kalman}{{1}{4}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}SMC as a coalescent}{4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Kingman's coalescent}{4}}
 \citation{andrieu2010}
 \citation{andrieu2010}
+\citation{koskela2018}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Conditional SMC}{5}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {2}{\ignorespaces Conditional SMC with multinomial resampling}}{5}}
+\newlabel{alg:condSMC}{{2}{5}}
+\citation{koskela2018}
+\citation{koskela2018}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Genealogies of conditional SMC algorithms}{6}}
+\newlabel{eq:cNtilde}{{4}{6}}
+\newlabel{eq:DNtilde}{{5}{6}}
+\newlabel{eq:cNtilde2}{{6}{6}}
+\citation{koskela2018}
+\citation{koskela2018}
+\citation{koskela2018}
 \citation{efron1994}
 \citation{douc2005}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Kingman's coalescent}{4}}
-\@writefile{toc}{\contentsline {section}{\numberline {4}Conditional SMC}{4}}
-\@writefile{toc}{\contentsline {section}{\numberline {5}Alternative resampling schemes}{4}}
-\newlabel{sec:resampling}{{5}{4}}
 \bibdata{../smc.bib}
 \bibcite{andrieu2010}{{1}{2010}{{Andrieu et~al.}}{{Andrieu, Doucet and\ Holenstein}}}
 \bibcite{baum1972}{{2}{1972}{{Baum}}{{}}}
-\bibcite{delmoral2006}{{3}{2006}{{Del~Moral et~al.}}{{Del~Moral, Doucet and\ Jasra}}}
-\bibcite{douc2005}{{4}{2005}{{Douc and\ Capp{\'e}}}{{}}}
-\bibcite{doucet2001}{{5}{2001}{{Doucet et~al.}}{{Doucet, De~Freitas and\ Gordon}}}
-\bibcite{doucet2009}{{6}{2009}{{Doucet and\ Johansen}}{{}}}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {2}{\ignorespaces Conditional SMC with multinomial resampling}}{5}}
-\newlabel{alg:condSMC}{{2}{5}}
-\@writefile{toc}{\contentsline {section}{\numberline {6}Discussion}{5}}
-\bibcite{efron1994}{{7}{1994}{{Efron and\ Tibshirani}}{{}}}
-\bibcite{kalman1960}{{8}{1960}{{Kalman}}{{}}}
-\bibcite{kingman1982coal}{{9}{1982{\em  a}}{{Kingman}}{{}}}
-\bibcite{kingman1982exch}{{10}{1982{\em  b}}{{Kingman}}{{}}}
-\bibcite{kingman1982gene}{{11}{1982{\em  c}}{{Kingman}}{{}}}
-\bibcite{mohle1998}{{12}{1998}{{M{\"o}hle}}{{}}}
-\bibcite{rauch1965}{{13}{1965}{{Rauch et~al.}}{{Rauch, Striebel and\ Tung}}}
-\bibcite{wakeley2009}{{14}{2009}{{Wakeley}}{{}}}
+\bibcite{delmoral2013}{{3}{2013}{{Del~Moral}}{{}}}
+\bibcite{delmoral2006}{{4}{2006}{{Del~Moral et~al.}}{{Del~Moral, Doucet and\ Jasra}}}
+\bibcite{douc2005}{{5}{2005}{{Douc and\ Capp{\'e}}}{{}}}
+\bibcite{doucet2001}{{6}{2001}{{Doucet et~al.}}{{Doucet, De~Freitas and\ Gordon}}}
+\bibcite{doucet2009}{{7}{2009}{{Doucet and\ Johansen}}{{}}}
+\bibcite{efron1994}{{8}{1994}{{Efron and\ Tibshirani}}{{}}}
+\bibcite{kalman1960}{{9}{1960}{{Kalman}}{{}}}
+\newlabel{eq:tau_tilde}{{7}{7}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Alternative resampling schemes}{7}}
+\newlabel{sec:resampling}{{5}{7}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Discussion}{7}}
+\bibcite{kingman1982coal}{{10}{1982{\em  a}}{{Kingman}}{{}}}
+\bibcite{kingman1982exch}{{11}{1982{\em  b}}{{Kingman}}{{}}}
+\bibcite{kingman1982gene}{{12}{1982{\em  c}}{{Kingman}}{{}}}
+\bibcite{koskela2018}{{13}{2018}{{Koskela et~al.}}{{Koskela, Jenkins, Johansen and\ Spano}}}
+\bibcite{mohle1998}{{14}{1998}{{M{\"o}hle}}{{}}}
+\bibcite{mosimann1962}{{15}{1962}{{Mosimann}}{{}}}
+\bibcite{rauch1965}{{16}{1965}{{Rauch et~al.}}{{Rauch, Striebel and\ Tung}}}
+\bibcite{wakeley2009}{{17}{2009}{{Wakeley}}{{}}}

@@ -10,6 +10,7 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsthm}
+\newtheorem{corollary}{Corollary}
 
 % pseudocode
 \usepackage{algorithm}
@@ -40,12 +41,14 @@
 \newcommand{\Cat}{\operatorname{Categorical}}
 \newcommand{\Unif}{\operatorname{Uniform}}
 \newcommand{\Mn}{\operatorname{Multinomial}}
+\newcommand{\Bin}{\operatorname{Binomial}}
 
 % project-specific commands
 \newcommand{\F}{\mathcal{F}_{t-1}}
 \newcommand{\vt}[2][t]{v_{#1}^{(#2)}}
 \newcommand{\wt}[2][t]{w_{#1}^{(#2)}}
 \newcommand{\wbar}[2][t]{\bar{w}_{#1}^{(#2)}}
+\newcommand{\vttilde}[2][t]{\tilde{v}_{#1}^{(#2)}}
 
 \title{Asymptotic analysis of genealogies induced by sequential Monte Carlo algorithms}
 \author{Suzie Brown}
@@ -67,6 +70,7 @@ When attempting to mitigate this problem, one often encounters a trade-off betwe
 Consequently, there is a wealth of pertinent open questions in this area. This work attempts to extend a first result for a standard class of SMC algorithms to the more sophisticated algorithms which are typically used in practice.
 
 Throughout this document we will use the compact notation $X_{m:n}$ as shorthand for $X_m, X_{m+1}, \dots, X_n$, as well as $X_{-n} := X_0, \dots, X_{n-1}, X_{n+1}, \dots X_{N}$.
+We denote falling factorial powers $(x)_a := x(x-1)\dots(x-a+1)$, with the convention $(x)_0 = 1$.
 
 \section{foo}
 References for this section are \citet{doucet2001}, \citet{delmoral2006}, and \citet{doucet2009}.
@@ -153,11 +157,17 @@ The predictive distributions can also be derived from the smoothing distribution
 p(x_{t+1} | y_{0:t}) = g(x_{t+1} | x_t) p(x_{0:t} | y_{0:t}).
 \end{equation*}
 
-SMC provides a method to approximate to \eqref{eq:smooth_recursion}, given a model specification and a sequence of observations. Like the underlying process, the algorithm proceeds sequentially, returning its approximation to the smoothing distribution at each time step.
-A generic SMC algorithm is presented below.
+SMC provides a particle method to approximate to \eqref{eq:smooth_recursion}, given a model specification and a sequence of observations. Like the underlying process, the algorithm proceeds sequentially, returning its approximation to the smoothing distribution at each time step.
+This approximation is the empirical distribution of the particles:
+\begin{equation}
+\hat{p}(x_{0:t}|y_{0:t}) = \frac{1}{N} \sum_{i=1}^N \delta_{x_{0:t}^{(i)}}
+\end{equation}
+The particle approximation is justified by various convergence results - see for example \citet{delmoral2013} for details.
+
+A generic SMC algorithm is presented in Algorithm \ref{alg:SMC}. Figure \ref{fig:SMC_vs_kalman} shows the resulting particles in a linear Gaussian model, with the exact posterior for reference.
 
 \begin{algorithm}
-	\caption{Standard SMC}\label{alg:SMC}
+	\caption{SMC}\label{alg:SMC}
 	\begin{algorithmic}[0]
     	\State \textbf{Inputs:} $\mu:\mathcal{X}\to[0,1];\quad f:\mathcal{X}\times\mathcal{X}\to[0,1];\quad g:\mathcal{Y}\times\mathcal{X}\to[0,1];\quad y_{0:T}\in\mathcal{Y}^T;\quad N\in\mathbb{N}$
 		\For{$i = 1,\dots,N$}		
@@ -181,6 +191,13 @@ The algorithm progresses in a Markovian fashion, only ever referring to the part
 If, say, the mean and variance of $X_{t} \mid y_{0:t}$ at each time $t$ are required, we can store just these summary statistics, plus the two most recent generations of particles, and throw away all other information about the particles at previous time steps. This is vital if one wishes to carry out filtering in an on-line fashion, as it prevents the memory requirements accumulating more than necessary.
 
 The form of the {\footnotesize RESAMPLE} function in Algorithm \ref{alg:SMC} is discussed in Section \ref{sec:resampling}.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.9\textwidth]{smc_kalman.pdf}
+\caption{SMC particles before resampling for a linear Gaussian model. The purple ribbon shows the exact posterior mode and 95\% credible interval, computed using the Kalman filter and RTS smoother. The black dots show the positions of the SMC particles, with size proportional to weight. After resampling all particles have equal weights but some are duplicated.}
+\label{fig:SMC_vs_kalman}
+\end{figure}
 
 \subsection{Ancestral degeneracy}
 \textcolor{red}{
@@ -226,8 +243,7 @@ The \emph{Kingman coalescent} is the process on the whole population of size $N\
 
 \section{Conditional SMC}
 \textcolor{red}{
-- motivation: particle MCMC, need for multiple lineages\\
-- result: coalescence rate etc in terms of standard multinomial one; verification of assumptions of KJJS theorem (but exile horrible calculations to appendix)\\
+- result: coalescence rate etc in terms of standard multinomial one; verification of assumptions of KJJS theorem (but exile horrible calculations to appendix)
 }
 
 Conditional SMC differs from the standard algorithm in that one predetermined trajectory (that is, a sequence of particle positions and the corresponding ancestral line) is conditioned to survive all of the propagation and resampling steps. 
@@ -267,6 +283,78 @@ A conditional SMC algorithm employing multinomial resampling is described in Alg
 \caption{Conditional SMC with multinomial resampling}
 \label{alg:condSMC}
 \end{algorithm}
+
+In the particle Gibbs sampler, it is crucial that the conditional SMC output maintains at least two distinct trajectories. 
+The immortal trajectory will of course be among the surviving trajectories, but additionally, the new immortal trajectory (for the next SMC run) is chosen from among the surviving trajectories.
+Thus if all the trajectories coalesce onto the immortal trajectory, we are forced to choose the same immortal trajectory for the next run, at least for some early time steps.
+One can imagine that if there was a high probability of full coalescence on each run, we could easily end up with samples from $p(x_{0:T}|y_{0:T})$ that are identical in some coordinates $0:t$, which would not lead to good results overall.
+
+\subsection{Genealogies of conditional SMC algorithms}
+In this section we calculate various quantities related to the genealogical process induced by conditional SMC with multinomial resampling. By writing these in terms of the corresponding quantities for standard SMC with multinomial resampling, we are able to apply results from \citet{koskela2018}. In this way we will show that the genealogical process converges to the Kingman coalescent, in the sense of finite-dimensional distributions, as the number of particles $N\to\infty$.
+
+In standard SMC with multinomial resampling, the marginal offspring distributions, conditioned on the filtration $\F$ generated by the previous offspring counts, are
+\begin{equation*}
+\vt{i} \eqdist \Bin (N, \wt{i}), \qquad i=1,\dots,N
+\end{equation*}
+where $\vt{i}$ is the number of offspring in generation $t+1$ of the $i$th particle in generation $t$, $N$ is the number of particles and $\wt{i}$ is the weight associated with the $i$th particle in generation $t$.
+
+In conditional SMC we condition on the immortal line surviving each resampling step. By exchangeability we can set without loss of generality that the immortal line consists of particle 1 in each generation. At each resampling step, particle 1 must therefore choose particle 1 as its parent, while the remaining $N-1$ offspring are assigned multinomially to the $N$ possible parents. The marginal offspring distributions are then
+\begin{align*}
+& \vttilde{1} \eqdist 1 + \Bin(N-1, \wt{1}) \\
+& \vttilde{i} \eqdist \Bin(N-1, \wt{i}), \qquad i=2,\dots,N
+\end{align*}
+where we write $\vttilde{i}$ to distinguish from $\vt{i}$. Similarly, any other quantities written with tilde are the conditional SMC analogues of the corresponding untilded quantities.\\
+
+%To derive the following expressions we make extensive use of the formula for factorial moments of the multinomial distribution given in \citet[p.67]{mosimann1962}:
+%\begin{equation*}
+%\E[(X_i)_a(X_j)_b] = (n)_{a+b}\, p_i^a p_j^b
+%\end{equation*}
+%where $(X_1,\dots X_k) \sim \Mn(n, \mathbf{p})$.
+The derivations of the expressions \eqref{eq:cNtilde}, \eqref{eq:DNtilde}, \eqref{eq:cNtilde2}, along with details of the application of results from \citet{koskela2018}, are relegated to the appendix. Below is an overview of the proof.
+To prove convergence to the Kingman coalescent, we must control the rates of different types of mergers. In particular, we ensure that in the large population limit (under an appropriate time-scaling), pairwise mergers happen at the correct rate, and larger mergers never occur.
+
+Firstly, we have the expected coalescence rate:
+\begin{equation}\label{eq:cNtilde}
+\E[\tilde{c}_N(t) |\F] = \frac{N-2}{N} \E[c_N(t) |\F] + \frac{2}{N} \E[\wt{1} |\F]
+\end{equation}
+Then the expected rate of super-binary mergers (that is, more than two lineages merging simultaneously into one or more lineages) is bounded above by:
+\begin{align}\label{eq:DNtilde}
+\E[\tilde{D}_N(t) |\F] 
+&\leq \E[D_N(t) |\F] + \frac{3}{N} \E[(\wt{1})^2 |\F] +  \frac{4}{N^2}\E[\wt{1} |\F] \notag\\
+&\qquad+ \frac{4}{N}\sum_{i=2}^N \E[\wt{1}(\wt{i})^2 |\F] +\frac{2}{N^2}\sum_{i=2}^N \E[\wt{1}\wt{i} |\F] + \frac{1}{N^2} \sum_{i=2}^N \E[(\wt{i})^2 |\F] 
+\end{align}
+And lastly the expectation of the squared coalescence rate is bounded above by:
+\begin{align}\label{eq:cNtilde2}
+\E[\tilde{c}_N(t)^2 |\F] 
+&\leq \E[c_N(t)^2 |\F] + \frac{4}{N}\E[(\wt{1})^3 |\F] + \frac{12}{N^2} \E[(\wt{1})^2 |\F] + \frac{4}{N(N)_2} \E[\wt{1} |\F] \notag\\
+&\qquad + \frac{4}{N} \sum_{i=2}^N \E[\wt{1}(\wt{i})^2 |\F]
+\end{align}
+%Under conditions (18) and (19) of \citet{koskela2018},  as $N\to\infty$ the weights are $\wt{i} = O(N^{-1})$, so we have:
+%\begin{align*}
+%& \E[\tilde{c}_N(t) |\F] \leq \E[c_N(t) |\F] + O(N^{-2}) \\
+%& \E[\tilde{D}_N(t) |\F] \leq \E[D_N(t) |\F] +O(N^{-3}) \\
+%& \E[\tilde{c}_N(t)^2 |\F] \leq \E[c_N(t)^2 |\F] + O(N^{-3})
+%\end{align*}
+We then apply Lemma 3 of \citet{koskela2018} to obtain the more tractable expressions
+\begin{align*}
+& \frac{\varepsilon^4}{Na^4} + O(N^{-2}) \leq \E[\tilde{c}_N(t) |\F]  \leq \frac{a^4}{N\varepsilon^4} + O(N^{-2}) \\
+& \E[\tilde{D}_N(t) |\F] \leq \frac{C}{N} \E[\tilde{c}_N(t) |\F] + O(N^{-3}) \\
+& \E[\tilde{c}_N(t)^2 |\F] \leq \frac{C}{N} \E[\tilde{c}_N(t) |\F] + O(N^{-3})
+\end{align*}
+and define the time-scaling
+\begin{equation}\label{eq:tau_tilde}
+\tilde{\tau}_N(t) := \min\left\{ s\geq 1 : \sum_{r=1}^s \tilde{c}_N(r) \geq t \right\}
+\end{equation}
+which satisfies
+\begin{equation*}
+t-s-1 \leq \sum_{r=\tilde{\tau}_N(s)+1}^{\tilde{\tau}_N(t)} \tilde{c}_N(r) \leq t-s +1 .
+\end{equation*}
+Then, using \citet[Lemma 2]{koskela2018}, which readily generalises to our modified quantities, we are able to verify the four conditions of \citet[Theorem 1]{koskela2018}. Finally we are able to conclude the following.
+
+\begin{corollary}
+Under the conditions of \citet[Lemma 3]{koskela2018}, the genealogy of any $n$ particles from a conditional SMC algorithm with multinomial resampling converges to Kingman's $n$-coalescent in the sense of finite-dimensional distributions, under the time-scaling defined in \eqref{eq:tau_tilde}.
+\end{corollary}
+
 
 \section{Alternative resampling schemes}\label{sec:resampling}
 \textcolor{red}{
