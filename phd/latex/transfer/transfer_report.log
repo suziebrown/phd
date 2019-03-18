@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  18 MAR 2019 17:16
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  18 MAR 2019 18:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -566,15 +566,15 @@ LaTeX Font Info:    ... okay on input line 64.
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: 
-* h-part:(L,W,R)=(56.9055pt, 500.484pt, 56.9055pt)
-* v-part:(T,H,B)=(56.9055pt, 681.15898pt, 56.9055pt)
+* h-part:(L,W,R)=(71.13188pt, 472.03123pt, 71.13188pt)
+* v-part:(T,H,B)=(71.13188pt, 652.70622pt, 71.13188pt)
 * \paperwidth=614.295pt
 * \paperheight=794.96999pt
-* \textwidth=500.484pt
-* \textheight=681.15898pt
-* \oddsidemargin=-15.36449pt
-* \evensidemargin=-15.36449pt
-* \topmargin=-52.36449pt
+* \textwidth=472.03123pt
+* \textheight=652.70622pt
+* \oddsidemargin=-1.1381pt
+* \evensidemargin=-1.1381pt
+* \topmargin=-38.1381pt
 * \headheight=12.0pt
 * \headsep=25.0pt
 * \topskip=10.0pt
@@ -677,24 +677,70 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 <smc_kalman.pdf, id=26, 602.25pt x 250.9375pt>
 File: smc_kalman.pdf Graphic file (type pdf)
 <use smc_kalman.pdf>
-Package pdftex.def Info: smc_kalman.pdf  used on input line 223.
-(pdftex.def)             Requested size: 450.43253pt x 187.68573pt.
- [3] [4 <./smc_kalman.pdf>] [5] [6] [7] [8] [9]
-Overfull \hbox (8.43057pt too wide) detected at line 509
+Package pdftex.def Info: smc_kalman.pdf  used on input line 224.
+(pdftex.def)             Requested size: 424.82523pt x 177.01816pt.
+<degeneracy.pdf, id=27, 728.48161pt x 385.92181pt>
+File: degeneracy.pdf Graphic file (type pdf)
+<use degeneracy.pdf>
+Package pdftex.def Info: degeneracy.pdf  used on input line 236.
+(pdftex.def)             Requested size: 377.62642pt x 200.0504pt.
+ [3]
+<kingman.png, id=35, 377.41pt x 341.275pt>
+File: kingman.png Graphic file (type png)
+<use kingman.png>
+Package pdftex.def Info: kingman.png  used on input line 259.
+(pdftex.def)             Requested size: 283.22162pt x 256.10141pt.
+ [4 <./smc_kalman.pdf>] [5 <./degeneracy.pdf> <./kingman.png>] [6] [7] [8]
+Overfull \hbox (8.04799pt too wide) detected at line 446
 []
  []
 
-[10] [11] [12] (./transfer_report.bbl [13]) [14] (./transfer_report.aux)
+[9]
+Overfull \hbox (7.93095pt too wide) detected at line 490
+[]
+ []
+
+
+Overfull \hbox (23.69243pt too wide) detected at line 511
+[]
+ []
+
+[10]
+Overfull \hbox (36.88333pt too wide) detected at line 525
+[]
+ []
+
+[11]
+Overfull \hbox (7.12737pt too wide) detected at line 550
+[]
+ []
+
+[12] [13] [14]
+Overfull \hbox (26.89339pt too wide) detected at line 620
+[]
+ []
+
+
+Overfull \hbox (24.85626pt too wide) detected at line 638
+[]
+ []
+
+
+Overfull \hbox (23.73724pt too wide) detected at line 650
+[]
+ []
+
+[15] (./transfer_report.bbl [16]) [17] (./transfer_report.aux)
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
- 15179 strings out of 492649
- 289646 string characters out of 6129623
- 349032 words of memory out of 5000000
- 18753 multiletter control sequences out of 15000+600000
- 13072 words of font info for 50 fonts, out of 8000000 for 9000
+ 15206 strings out of 492649
+ 290002 string characters out of 6129623
+ 353050 words of memory out of 5000000
+ 18771 multiletter control sequences out of 15000+600000
+ 15283 words of font info for 58 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,15n,54p,635b,595s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
@@ -705,23 +751,25 @@ b></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
 ></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><
 /usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></u
 sr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr
-/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/l
-ocal/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/loc
-al/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local
-/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/te
-xlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texli
-ve/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/
-2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/201
-8/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2018
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2018/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2018/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2018/texmf
--dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on transfer_report.pdf (14 pages, 309329 bytes).
+/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/l
+ocal/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/loc
+al/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local
+/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/t
+exlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texl
+ive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive
+/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/20
+18/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2018/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2018/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2018/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2018/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2018/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2018/texmf-dis
+t/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on transfer_report.pdf (17 pages, 374424 bytes).
 PDF statistics:
- 142 PDF objects out of 1000 (max. 8388607)
- 102 compressed objects within 2 object streams
+ 169 PDF objects out of 1000 (max. 8388607)
+ 119 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 18 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 28 words of extra memory for PDF output out of 10000 (max. 10000000)
 

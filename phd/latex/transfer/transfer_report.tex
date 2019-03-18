@@ -1,6 +1,6 @@
 \documentclass[fleqn]{article}
 \usepackage[utf8]{inputenc}
-\usepackage[margin=2cm]{geometry}
+\usepackage[margin=2.5cm]{geometry}
 
 % bibliography
 \usepackage[round, sort&compress]{natbib}
@@ -81,6 +81,7 @@ We denote falling factorial powers $(x)_a := x(x-1)\dots(x-a+1)$, with the conve
 
 \section{Sequential Monte Carlo}
 References for this section are \citet{doucet2001}, \citet{delmoral2006}, and \citet{doucet2009}.
+%%% illustrate the model with the target-tracking/radar analogy....
 
 \subsection{Class of models}
 Although sequential Monte Carlo (SMC) methods can be applied in a much more general setting, they are particularly easy to motivate in the setting of state space models, where the ``sequential'' nature follows naturally from the discrete time steps present in the model. 
@@ -227,9 +228,15 @@ The form of the {\footnotesize RESAMPLE} function in Algorithm \ref{alg:SMC} is 
 
 \subsection{Ancestral degeneracy}
 \textcolor{red}{
-- the problem with smoothing: ancestral vs.\ weight degeneracy\\
-- motivating plots
+- the problem with smoothing: ancestral vs.\ weight degeneracy
 }
+
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{degeneracy.pdf}
+\caption{A sample of $N=6$ trajectories, illustrating ancestral degeneracy. At the ``present'' time there are six distinct lineages, but just three steps back they have coalesced onto only two lineages, and it takes less than 20 steps back before only one lineage remains.}
+\label{fig:degeneracy}
+\end{figure}
 
 \section{SMC genealogies as coalescents}
 \textcolor{red}{
@@ -246,6 +253,15 @@ If we trace two lineages back in time, at some generation they may descend from 
 The combined lineages of $n\leq N$ of the present individuals therefore forms a tree, or several non-overlapping trees, the entirety of which we refer to as the \emph{ancestry} or \emph{genealogy} of those $n$ individuals.
 
 Kingman's \emph{$n$-coalescent} provides a model for such genealogies. Kingman showed in \citep{kingman1982gene, kingman1982coal, kingman1982exch} that  the $n$-coalescent is the limiting process for samples from a wide class of population models as $N\to\infty$.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.6\textwidth]{kingman.png}
+\caption{A realisation of Kingman's $n$-coalescent for a sample of size $n=50$. At first there are many distinct lineages, and mergers happen rapidly. Once there are fewer distinct lineages left, they take longer to merge. The process spends about half of its time with just two or three distinct lineages. \textit{(Source: Wikimedia Commons)}}
+\label{fig:kingman}
+\end{figure}
+
+%%% how to deal with the difference between Kingman (time stops once all coalesced) and SMC genealogies (fixed time frame T)?
 
 The defining feature of the model is that each pair of lineages merges with unit rate. This means that many coalescences occur while there are many distinct lineages present.
 In particular, the $n$-coalescent can be formulated as a Poisson process where pairs of lineages coalesce independently at rate 1, with the pair to coalesce being chosen uniformly at random \citep[Section 3.2]{wakeley2009}.
