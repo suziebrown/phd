@@ -3,51 +3,44 @@ Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: transfer_report.aux
 The style file: agsm.bst
 Database file #1: ../smc.bib
-Repeated entry---line 214 of file ../smc.bib
- : @article{rauch1965
- :                   ,
-I'm skipping whatever remains of this entry
-Warning--there's a number but no series in wakeley2009
-Warning--empty publisher in wakeley2009
-You've used 17 entries,
+You've used 18 entries,
             2909 wiz_defined-function locations,
-            748 strings with 7349 characters,
-and the built_in function-call counts, 55450 in all, are:
-= -- 8857
-> -- 728
-< -- 1
-+ -- 4109
-- -- 217
-* -- 4678
-:= -- 11383
-add.period$ -- 17
-call.type$ -- 17
-change.case$ -- 235
-chr.to.int$ -- 15
-cite$ -- 19
-duplicate$ -- 285
-empty$ -- 578
-format.name$ -- 268
-if$ -- 9919
+            755 strings with 7553 characters,
+and the built_in function-call counts, 62816 in all, are:
+= -- 10061
+> -- 842
+< -- 0
++ -- 4698
+- -- 252
+* -- 5328
+:= -- 12797
+add.period$ -- 18
+call.type$ -- 18
+change.case$ -- 249
+chr.to.int$ -- 16
+cite$ -- 18
+duplicate$ -- 311
+empty$ -- 636
+format.name$ -- 303
+if$ -- 11269
 int.to.chr$ -- 7
 int.to.str$ -- 0
-missing$ -- 20
-newline$ -- 54
-num.names$ -- 175
-pop$ -- 76
+missing$ -- 21
+newline$ -- 57
+num.names$ -- 187
+pop$ -- 83
 preamble$ -- 1
-purify$ -- 255
+purify$ -- 270
 quote$ -- 0
-skip$ -- 226
+skip$ -- 251
 stack$ -- 0
-substring$ -- 12352
-swap$ -- 52
-text.length$ -- 239
+substring$ -- 14100
+swap$ -- 60
+text.length$ -- 252
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 62
-warning$ -- 2
-while$ -- 382
+type$ -- 66
+warning$ -- 0
+while$ -- 406
 width$ -- 0
-write$ -- 221
-(There was 1 error message)
+write$ -- 239

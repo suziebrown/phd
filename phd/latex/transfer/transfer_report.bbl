@@ -3,55 +3,59 @@
 \harvarditem[Andrieu et~al.]{Andrieu, Doucet \harvardand\
   Holenstein}{2010}{andrieu2010}
 Andrieu, C., Doucet, A. \harvardand\ Holenstein, R.  \harvardyearleft
-  2010\harvardyearright , `Particle markov chain monte carlo methods', {\em
-  Journal of the Royal Statistical Society: Series B (Statistical Methodology)}
-  {\bf 72}(3),~269--342.
+  2010\harvardyearright , `Particle {Markov} chain {Monte} {Carlo} methods',
+  {\em Journal of the Royal Statistical Society: Series B (Statistical
+  Methodology)} {\bf 72}(3),~269--342.
 
-\harvarditem{Baum}{1972}{baum1972}
-Baum, L.  \harvardyearleft 1972\harvardyearright , `An inequality and
-  associated maximization technique occurring in the statistical analysis of
-  probabilistic functions of markov chains', {\em Inequalities,} {\bf 3},~1--8.
+\harvarditem[Baum et~al.]{Baum, Petrie, Soules \harvardand\
+  Weiss}{1970}{baum1970}
+Baum, L.~E., Petrie, T., Soules, G. \harvardand\ Weiss, N.  \harvardyearleft
+  1970\harvardyearright , `A maximization technique occurring in the
+  statistical analysis of probabilistic functions of {Markov} chains', {\em The
+  Annals of Mathematical Statistics} {\bf 41},~164--171.
 
 \harvarditem{Del~Moral}{2013}{delmoral2013}
-Del~Moral, P.  \harvardyearleft 2013\harvardyearright , {\em Mean field
-  simulation for Monte Carlo integration}, Chapman and Hall/CRC.
+Del~Moral, P.  \harvardyearleft 2013\harvardyearright , {\em Mean Field
+  Simulation for {Monte} {Carlo} Integration}, Chapman and Hall/CRC.
 
 \harvarditem[Del~Moral et~al.]{Del~Moral, Doucet \harvardand\
   Jasra}{2006}{delmoral2006}
 Del~Moral, P., Doucet, A. \harvardand\ Jasra, A.  \harvardyearleft
-  2006\harvardyearright , `Sequential monte carlo samplers', {\em Journal of
-  the Royal Statistical Society: Series B (Statistical Methodology)} {\bf
+  2006\harvardyearright , `Sequential {Monte} {Carlo} samplers', {\em Journal
+  of the Royal Statistical Society: Series B (Statistical Methodology)} {\bf
   68}(3),~411--436.
 
-\harvarditem{Douc \harvardand\ Capp{\'e}}{2005}{douc2005}
-Douc, R. \harvardand\ Capp{\'e}, O.  \harvardyearleft 2005\harvardyearright ,
-  Comparison of resampling schemes for particle filtering, {\em in} `Image and
-  Signal Processing and Analysis, 2005. ISPA 2005. Proceedings of the 4th
-  International Symposium on', IEEE, pp.~64--69.
+\harvarditem[Douc et~al.]{Douc, Capp{\'e} \harvardand\
+  Moulines}{2005}{douc2005}
+Douc, R., Capp{\'e}, O. \harvardand\ Moulines, E.  \harvardyearleft
+  2005\harvardyearright , Comparison of resampling schemes for particle
+  filtering, {\em in} `Image and Signal Processing and Analysis, 2005. ISPA
+  2005. Proceedings of the 4th International Symposium on', IEEE, pp.~64--69.
 
 \harvarditem[Doucet et~al.]{Doucet, De~Freitas \harvardand\
   Gordon}{2001}{doucet2001}
 Doucet, A., De~Freitas, N. \harvardand\ Gordon, N.  \harvardyearleft
-  2001\harvardyearright , An introduction to sequential monte carlo methods,
-  {\em in} `Sequential Monte Carlo methods in practice', Springer, pp.~3--14.
+  2001\harvardyearright , An introduction to sequential {Monte} {Carlo}
+  methods, {\em in} `Sequential Monte Carlo methods in Practice', Springer,
+  pp.~3--14.
 
-\harvarditem{Doucet \harvardand\ Johansen}{2009}{doucet2009}
-Doucet, A. \harvardand\ Johansen, A.~M.  \harvardyearleft 2009\harvardyearright
-  , `A tutorial on particle filtering and smoothing: Fifteen years later', {\em
-  Handbook of nonlinear filtering} {\bf 12}(656-704),~3.
+\harvarditem{Doucet \harvardand\ Johansen}{2011}{doucet2009}
+Doucet, A. \harvardand\ Johansen, A.~M.  \harvardyearleft 2011\harvardyearright
+  , A tutorial on particle filtering and smoothing: Fifteen years later, {\em
+  in} `Handbook of nonlinear filtering', OUP, pp.~656--704.
 
 \harvarditem{Efron \harvardand\ Tibshirani}{1994}{efron1994}
 Efron, B. \harvardand\ Tibshirani, R.~J.  \harvardyearleft
-  1994\harvardyearright , {\em An introduction to the bootstrap}, CRC press.
+  1994\harvardyearright , {\em An Introduction to the Bootstrap}, CRC press.
 
 \harvarditem{Kalman}{1960}{kalman1960}
 Kalman, R.~E.  \harvardyearleft 1960\harvardyearright , `A new approach to
-  linear filtering and prediction problems', {\em Journal of basic Engineering}
+  linear filtering and prediction problems', {\em Journal of Basic Engineering}
   {\bf 82}(1),~35--45.
 
 \harvarditem{Kingman}{1982{\em a}}{kingman1982coal}
 Kingman, J.  \harvardyearleft 1982{\em a}\harvardyearright , `The coalescent',
-  {\em Stochastic processes and their applications} {\bf 13}(3),~235--248.
+  {\em Stochastic Processes and Their Applications} {\bf 13}(3),~235--248.
 
 \harvarditem{Kingman}{1982{\em b}}{kingman1982exch}
 Kingman, J.  \harvardyearleft 1982{\em b}\harvardyearright , Exchangeability
@@ -66,15 +70,15 @@ Kingman, J.  \harvardyearleft 1982{\em c}\harvardyearright , `On the genealogy
   19}(A),~27--43.
 
 \harvarditem[Koskela et~al.]{Koskela, Jenkins, Johansen \harvardand\
-  Spano}{2018}{koskela2018}
-Koskela, J., Jenkins, P.~A., Johansen, A.~M. \harvardand\ Spano, D.
+  Span\`o}{2018}{koskela2018}
+Koskela, J., Jenkins, P.~A., Johansen, A.~M. \harvardand\ Span\`o, D.
   \harvardyearleft 2018\harvardyearright , `Asymptotic genealogies of
-  interacting particle systems with an application to sequential monte carlo',
-  {\em arXiv preprint arXiv:1804.01811} .
+  interacting particle systems with an application to sequential {Monte}
+  {Carlo}', {\em arXiv preprint arXiv:1804.01811} .
 
 \harvarditem{M{\"o}hle}{1998}{mohle1998}
 M{\"o}hle, M.  \harvardyearleft 1998\harvardyearright , `Robustness results for
-  the coalescent', {\em Journal of applied probability} {\bf 35}(2),~438--447.
+  the coalescent', {\em Journal of Applied Probability} {\bf 35}(2),~438--447.
 
 \harvarditem{Mosimann}{1962}{mosimann1962}
 Mosimann, J.~E.  \harvardyearleft 1962\harvardyearright , `On the compound
@@ -84,10 +88,16 @@ Mosimann, J.~E.  \harvardyearleft 1962\harvardyearright , `On the compound
 \harvarditem[Rauch et~al.]{Rauch, Striebel \harvardand\ Tung}{1965}{rauch1965}
 Rauch, H.~E., Striebel, C. \harvardand\ Tung, F.  \harvardyearleft
   1965\harvardyearright , `Maximum likelihood estimates of linear dynamic
-  systems', {\em AIAA journal} {\bf 3}(8),~1445--1450.
+  systems', {\em AIAA Journal} {\bf 3}(8),~1445--1450.
+
+\harvarditem{Vidoni}{1999}{vidoni1999}
+Vidoni, P.  \harvardyearleft 1999\harvardyearright , `Exponential family state
+  space models based on a conjugate latent process', {\em Journal of the Royal
+  Statistical Society: Series B (Statistical Methodology)} {\bf
+  61}(1),~213--221.
 
 \harvarditem{Wakeley}{2009}{wakeley2009}
-Wakeley, J.  \harvardyearleft 2009\harvardyearright , {\em Coalescent theory:
-  an introduction}, number 575: 519.2 WAK.
+Wakeley, J.  \harvardyearleft 2009\harvardyearright , {\em Coalescent Theory:
+  An Introduction}, Roberts \& Co. Publishers.
 
 \end{thebibliography}

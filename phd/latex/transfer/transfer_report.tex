@@ -40,6 +40,8 @@
 \newcommand{\eqdist}{\overset{d}{=}}
 \newcommand{\I}[1]{\mathbb{I}\{#1\}}
 \newcommand{\indep}{\perp}
+\newcommand{\Ntoinfty}{\overset{N\to\infty}{\longrightarrow}}
+\newcommand{\limNtoinfty}{\underset{N\to\infty}{\lim}}
 
 % distributions
 \newcommand{\Cat}{\operatorname{Categorical}}
@@ -132,8 +134,8 @@ Prediction and filtering are essentially equivalent, because given a filtering d
 Smoothing is considered a harder task because it requires us to infer many more parameters from the same amount of information; indeed the dimension of the problem increases linearly with $T$.
 %In general it is not possible to infer the smoothing distributions on-line, because this would require using all of the previous observations at each time step, so the complexity would increase at each step. Algorithms that exist for on-line smoothing [REFs] are typically either approximate or computationally expensive.
 
-In the case of linear Gaussian state space models, the posterior distributions of interest are available analytically, by way of the Kalman filter \citep{kalman1960} and Rauch-Tung-Striebel (RTS) smoother recursions \citep{rauch1965}.
-The other analytic case occurs if the state space of $(X_t)_{t=0}^\infty$ is finite, in which case the forward-backward algorithm \citep{baum1972} yields the exact posteriors.
+In the case of linear Gaussian state space models, the posterior distributions of interest are available analytically, by way of the Kalman filter \citep{kalman1960} and Rauch-Tung-Striebel (RTS) smoother recursions \citep{rauch1965}. Recursions are also available for some other conjugate models: see for example \citet{vidoni1999}.
+The other analytic case occurs if the state space of $(X_t)_{t=0}^\infty$ is finite, in which case the forward-backward algorithm \citep{baum1970} yields the exact posteriors.
 
 \subsection{Particle approximation}
 In more complex models such techniques are not feasible, and we are forced to resort to Monte Carlo methods.
@@ -353,12 +355,8 @@ We then apply Lemma 3 of \citet{koskela2018} to obtain the more tractable expres
 \end{align*}
 and define the time-scaling
 \begin{equation}\label{eq:tau_tilde}
-\tilde{\tau}_N(t) := \min\left\{ s\geq 1 : \sum_{r=1}^s \tilde{c}_N(r) \geq t \right\}
+\tilde{\tau}_N(t) := \min\left\{ s\geq 1 : \sum_{r=1}^s \tilde{c}_N(r) \geq t \right\}.
 \end{equation}
-which satisfies
-\begin{equation*}
-t-s-1 \leq \sum_{r=\tilde{\tau}_N(s)+1}^{\tilde{\tau}_N(t)} \tilde{c}_N(r) \leq t-s +1 .
-\end{equation*}
 Then, using \citet[Lemma 2]{koskela2018}, which readily generalises to our modified quantities, we are able to verify the four conditions of \citet[Theorem 1]{koskela2018}. Finally we are able to conclude the following.
 
 \begin{corollary}\label{thm:condSMC_kingman}
@@ -469,7 +467,8 @@ while in the conditional case, again separating the terms involving particle 1,
 \end{align*}
 and so by applying the moments from \eqref{eq:mn_moments} and Table \ref{tab:fact_powers} we find the expectation
 \begin{align*}
-\E[\tilde{D}_N(t) |\F] &= \frac{1}{N(N)_2} \left\{ (N-1)_3\E[(\wt{1})^3 |\F] + 5(N-1)_2\E[(\wt{1})^2 |\F] +  4(N-1)\E[\wt{1} |\F] \right\} \\
+&\E[\tilde{D}_N(t) |\F]= \\ 
+&= \frac{1}{N(N)_2} \left\{ (N-1)_3\E[(\wt{1})^3 |\F] + 5(N-1)_2\E[(\wt{1})^2 |\F] +  4(N-1)\E[\wt{1} |\F] \right\} \\
 &\qquad + \frac{1}{N^2(N)_2} \sum_{i=2}^N \left\{ 2(N-1)_4\E[(\wt{1})^2(\wt{i})^2 |\F] + (N-1)_3 \E[(\wt{1})^2\wt{i} |\F] \right.\\
 &\qquad\qquad + 5(N-1)_3\E[\wt{1}(\wt{i})^2 |\F] 
  \left. +2(N-1)_2\E[\wt{1}\wt{i} |\F] + (N-1)_2\E[(\wt{i})^2 |\F] \right\} \\
@@ -488,6 +487,151 @@ and so by applying the moments from \eqref{eq:mn_moments} and Table \ref{tab:fac
 &\qquad+ \frac{4}{N}\sum_{i=2}^N \E[\wt{1}(\wt{i})^2 |\F] +\frac{2}{N^2}\sum_{i=2}^N \E[\wt{1}\wt{i} |\F] + \frac{1}{N^2} \sum_{i=2}^N \E[(\wt{i})^2 |\F] 
 \end{align*}
 The second line of the first equality relies on multiplying the relevant terms in Table \ref{tab:fact_powers}. For the second equality we recombine the terms in particle 1 into the sum. The inequalities follow by bounding e.g.\ $N-1$ by $N$, and identifying the first two lines with $\E[D_N(t) |\F]$. This gives us the inequality \eqref{eq:DNtilde}.
+
+We also need control of the squared coalescence rate:
+\begin{align*}
+c_N(t)^2 &= \frac{1}{(N)_2^2} \left( \sum_{i=1}^N (\vt{i})_2\right)^2 = \frac{1}{(N)_2^2} \left\{ \sum_{i=1}^N \E[(\vt{i})_2^2] + \sum_{i=1}^N\sum_{j\neq i} \E[(\vt{i})_2(\vt{j})_2] \right\}
+\end{align*}
+A bound on its expected value is proved in \citet{koskela2018}, but here we will use a different, more explicit bound to allow direct comparison between the standard and conditional cases.
+For standard SMC we have:
+\begin{align*}
+\E[c_N(t)^2 |\F] &= \frac{1}{(N)_2^2} \left\{ (N)_4 \sum_{i=1}^N \E[(\wt{i})^4 |\F] + 4(N)_3 \sum_{i=1}^N \E[(\wt{i})^3 |\F] + 2(N)_2 \sum_{i=1}^N \E[(\wt{i})^2 |\F] \right\} \\
+&\qquad + \frac{1}{(N)_2^2}(N)_4 \sum_{i=1}^N\sum_{j\neq i} \E[(\wt{i})^2(\wt{j})^2 |\F] \\
+&= \frac{1}{(N)_2} \left\{ (N-2)_2 \sum_{i=1}^N \E[(\wt{i})^4 |\F] + 4(N-2) \sum_{i=1}^N \E[(\wt{i})^3 |\F] + 2 \sum_{i=1}^N \E[(\wt{i})^2 |\F] \right. \\
+&\hspace{230pt}+ \left. (N-2)_2 \sum_{i=1}^N\sum_{j\neq i} \E[(\wt{i})^2(\wt{j})^2 |\F] \right\}
+\end{align*}
+For conditional SMC, we again separate the terms involving particle 1:
+\begin{align*}
+\tilde{c}_N(t)^2 &= \frac{1}{(N)_2^2} \left\{ \sum_{i=1}^N \E[(\vttilde{i})_2^2] 
++ \sum_{i=1}^N\sum_{j\neq i} \E[(\vttilde{i})_2(\vttilde{j})_2] \right\} \\
+&= \frac{1}{(N)_2^2} \left\{ \sum_{i=2}^N \E[(\vttilde{i})_2^2] +\E[(\vttilde{1})_2^2] 
++ \sum_{i=2}^N\sum_{1\neq j\neq i} \E[(\vttilde{i})_2(\vttilde{j})_2] + 2\sum_{i=2}^N \E[(\vttilde{1})_2(\vttilde{i})_2] \right\} \\
+\end{align*}
+and then use the same techniques as for $\tilde{D}_N(t)$ to calculate the expectation:
+\begin{align*}
+&\E[\tilde{c}_N(t)^2 |\F]= \\ 
+&= \frac{1}{(N)_2^2} \left\{ (N-1)_4 \sum_{i=2}^N \E[(\wt{i})^4 |\F] + 4(N-1)_3 \sum_{i=2}^N \E[(\wt{i})^3 |\F] + 2(N-1)_2 \sum_{i=2}^N \E[(\wt{i})^2 |\F] \right\}  \\
+&\qquad + \frac{1}{(N)_2^2} \left\{ (N-1)_4\E[(\wt{1})^4 |\F] + 8(N-1)_3\E[(\wt{1})^3 |\F] + 14(N-1)_2\E[(\wt{1})^2 |\F] \right\} \\
+&\qquad +  \frac{1}{(N)_2^2}4(N-1)\E[\wt{1} |\F]
++ \frac{1}{(N)_2^2}  (N-1)_4 \sum_{i=2}^N \sum_{1\neq j \neq i} \E[(\wt{i})^2(\wt{j})^2 |\F] \\
+&\qquad +\frac{2}{(N)_2^2} \sum_{i=2}^N \left( (N-1)_4 \E[(\wt{1})^2(\wt{i})^2 |\F] + 2(N-1)_3 \E[\wt{1}(\wt{i})^2 |\F] \right) \\
+&= \frac{1}{(N)_2^2} \left\{ (N-1)_4 \sum_{i=1}^N \E[(\wt{i})^4 |\F] + 4(N-1)_3 \sum_{i=1}^N \E[(\wt{i})^3 |\F] + 2(N-1)_2 \sum_{i=1}^N \E[(\wt{i})^2 |\F] \right\} \\
+&\qquad + \frac{(N-1)_4}{(N)_2^2} \sum_{i=1}^N\sum_{j\neq i} \E[(\wt{i})^2(\wt{j})^2 |\F] \\
+&\qquad +\frac{1}{(N)_2^2} \left\{ 4(N-1)_3 \E[(\wt{1})^3 |\F] + 12(N-1)_2\E[(\wt{1})^2 |\F] + 4(N-1)\E[\wt{1} |\F] \right\} \\
+&\qquad +\frac{1}{(N)_2^2} \left\{ 4(N-1)_3 \sum_{i=2}^N \E[\wt{1}(\wt{i})^2 |\F] \right\} \\
+&\leq  \E[c_N(t)^2 |\F] + \frac{1}{(N)_2^2} \left\{4(N-1)_3 \E[(\wt{1})^3 |\F] + 12(N-1)_2 \E[(\wt{1})^2 |\F] \right\}\\
+&\qquad +\frac{1}{(N)_2^2} \left\{ 4(N-1)\E[\wt{1} |\F]
++ 4(N-1)_3 \sum_{i=2}^N \E[\wt{1}(\wt{i})^2 |\F] \right\} \\
+&\leq \E[c_N(t)^2 |\F] + \frac{4}{N}\E[(\wt{1})^3 |\F] + \frac{12}{N^2} \E[(\wt{1})^2 |\F] + \frac{4}{N(N)_2} \E[\wt{1} |\F]\\
+&\qquad + \frac{4}{N} \sum_{i=2}^N \E[\wt{1}(\wt{i})^2 |\F]
+\end{align*}
+The conditions (18) and (19) of \citet[Lemma 3]{koskela2018} give us control over the weights so that we have $\wt{i} = O(1)$ for all $i$. Under these conditions, in the limit as $N\to\infty$, the three modified expectations derived above simplify to:
+\begin{align*}
+& \E[\tilde{c}_N(t) |\F] \leq \E[c_N(t) |\F] + O(N^{-2}) \\
+& \E[\tilde{D}_N(t) |\F] \leq \E[D_N(t) |\F] +O(N^{-3}) \\
+& \E[\tilde{c}_N(t)^2 |\F] \leq \E[c_N(t)^2 |\F] + O(N^{-3})
+\end{align*}
+This shows that each of these quantities for conditional SMC is bounded above by the corresponding standard SMC quantity, plus some vanishing error term. This will allow us to apply \citet[Theorem 1]{koskela2018}, as we will show in the following.
+
+Next we apply the result of \citet[Lemma 3]{koskela2018}, so that for our modified quantity $\tilde{c}_N(t)$ we have the upper bound:
+\begin{align}\label{eq:cN_upper}
+\E[\tilde{c}_N(t) |\F] &= \frac{N-2}{N} \E[c_N(t) |\F] + \frac{2}{N} \E[\wt{1} |\F] \notag\\
+& \leq \E[c_N(t) |\F] + \frac{2}{N} \E[\wt{1} |\F] \notag\\
+&\leq \frac{a^4}{N\varepsilon^4} +  \frac{2}{N} \E[\wt{1} |\F] \notag\\
+&= \frac{a^4}{N\varepsilon^4} + O(N^{-2})
+\end{align}
+and lower bound:
+\begin{align}\label{eq:cN_lower}
+\E[\tilde{c}_N(t) |\F] &= \frac{N-2}{N} \E[c_N(t) |\F] + \frac{2}{N} \E[\wt{1} |\F] \notag\\
+& \geq  \frac{N-2}{N}\frac{\varepsilon^4}{Na^4} + O(N^{-2}) \notag\\
+& = \frac{\varepsilon^4}{Na^4} - \frac{2\varepsilon^4}{N^2a^4} + O(N^{-2}) \notag\\
+& = \frac{\varepsilon^4}{Na^4} + O(N^{-2})
+\end{align}
+corresponding to (22) in \citet{koskela2018}, except for the addition of a vanishing error term.
+Furthermore, we obtain for the other quantities (where the constant $C$ may change from one line to the next):
+\begin{align}\label{eq:DN_upper}
+\E[\tilde{D}_N(t) |\F] &\leq \E[D_N(t) |\F] + O(N^{-3}) \notag\\
+&\leq \frac{C}{N} \E[c_N(t) |\F] + O(N^{-3}) \notag\\
+&= \frac{C}{N} \E[\tilde{c}_N(t) |\F] + O(N^{-3})
+\end{align}
+and
+\begin{align}\label{eq:cN2_upper}
+\E[\tilde{c}_N(t)^2 |\F] &\leq \E[c_N(t)^2 |\F] + O(N^{-3}) \notag\\
+&\leq \frac{C}{N} \E[c_N(t) |\F] + O(N^{-3}) \notag\\
+&= \frac{C}{N} \E[\tilde{c}_N(t) |\F] + O(N^{-3})
+\end{align}
+according to equations (20) and (21) in \citet{koskela2018}, again with additional error terms.
+
+Now let us define the time-scaling:
+\begin{equation*}
+\tilde{\tau}_N(t) := \min\left\{ s\geq 1 : \sum_{r=1}^s \tilde{c}_N(r) \geq t \right\}
+\end{equation*}
+which is a generalised inverse of $\tilde{c}_N(t)$ and thus satisfies the property:
+\begin{equation}\label{eq:sum_tau_cN_upperlower}
+t-s-1 \leq \sum_{r=\tilde{\tau}_N(s)+1}^{\tilde{\tau}_N(t)} \tilde{c}_N(r) \leq t-s +1 .
+\end{equation}
+
+We are finally ready to verify the conditions of \citet[Theorem 1]{koskela2018}. The conditions are the following.
+\begin{description}
+\item[(Standing Assumption)] The conditional distribution of parental indices $a_t^{(1:N)}$ given offspring counts $v_t^{(1:N)}$ is uniform over all valid assignments.
+\item[(A)] $\limNtoinfty \E\left[ \sum_{r=\tilde{\tau}_N(s)+1}^{\tilde{\tau}_N(t)} \tilde{D}_N(r) \right] =0$
+\item[(B)] $\limNtoinfty \E[\tilde{c}_N(t)] =0$
+\item[(C)] $\limNtoinfty \E\left[ \sum_{r=\tilde{\tau}_N(s)+1}^{\tilde{\tau}_N(t)} \tilde{c}_N(r)^2 \right] =0$
+\item[(D)] $\E[\tilde{\tau}_N(t) - \tilde{\tau}_N(s)] \leq C_{t,s}N$
+\end{description}
+These five conditions are verified below.
+\begin{description}
+\item{\textbf{(Standing Assumption)}} This holds by the conditional exchangeability of offspring assignments arising from Algorithm \ref{alg:condSMC}, where ``valid assignments'' require that the resampling preserves the immortal line (i.e.\ the immortal child is assigned to the immortal parent).
+\item{\textbf{(B)}} Using \eqref{eq:cN_upper} and applying the tower rule, we find
+\begin{equation*}
+\E[\tilde{c}_N(t)] = \E[\E[\tilde{c}_N(t) |\F]] \leq \frac{a^4}{N\varepsilon^4} + O(N^{-2}) \Ntoinfty 0
+\end{equation*}
+\item{\textbf{(C)}} Using \citet[Lemma 2]{koskela2018} along with \eqref{eq:cN2_upper} and the upper bound in \eqref{eq:sum_tau_cN_upperlower},
+\begin{align*}
+\E\left[ \sum_{r=\tilde{\tau}_N(s)+1}^{\tilde{\tau}_N(t)} \tilde{c}_N(r)^2 \right] 
+&= \E\left[ \sum_{r=\tilde{\tau}_N(s)+1}^{\tilde{\tau}_N(t)} \E[\tilde{c}_N(r)^2 |\F] \right]
+\leq  \E\left[ \sum_{r=\tilde{\tau}_N(s)+1}^{\tilde{\tau}_N(t)} \left( \frac{C}{N}\E[\tilde{c}_N(t) |\F] + O(N^{-3})\right) \right] \\
+&= \frac{C}{N}  \E\left[ \sum_{r=\tilde{\tau}_N(s)+1}^{\tilde{\tau}_N(t)} \E[\tilde{c}_N(t) |\F] \right] + O(N^{-2})
+= \frac{C}{N}  \E\left[ \sum_{r=\tilde{\tau}_N(s)+1}^{\tilde{\tau}_N(t)} \tilde{c}_N(r) \right] + O(N^{-2}) \\
+&\leq \frac{C}{N}(t-s+1) + O(N^{-2}) \Ntoinfty 0
+\end{align*}
+\item{\textbf{(A)}} The above calculation replacing \eqref{eq:cN2_upper} with \eqref{eq:DN_upper} yields
+\begin{align*}
+\E\left[ \sum_{r=\tilde{\tau}_N(s)+1}^{\tilde{\tau}_N(t)} \tilde{D}_N(r) \right]
+&= \E\left[ \sum_{r=\tilde{\tau}_N(s)+1}^{\tilde{\tau}_N(t)} \E[\tilde{D}_N(r) |\F] \right] \\
+&\leq  \E\left[ \sum_{r=\tilde{\tau}_N(s)+1}^{\tilde{\tau}_N(t)} \left( \frac{C}{N}\E[\tilde{c}_N(t) |\F] + O(N^{-3})\right) \right] 
+\Ntoinfty 0
+\end{align*}
+\item{\textbf{(D)}} Using \eqref{eq:cN_lower}, the upper bound in \eqref{eq:sum_tau_cN_upperlower} and \citet[Lemma 2]{koskela2018},
+\begin{align*}
+\E[\tilde{\tau}_N(t) - \tilde{\tau}_N(s)] 
+&= \E\left[ \sum_{r=\tilde{\tau}_N(s)+1}^{\tilde{\tau}_N(t)} 1 \right] 
+= \E\left[ \sum_{r=\tilde{\tau}_N(s)+1}^{\tilde{\tau}_N(t)} \frac{\E[\tilde{c}_N(r) |\F]}{\E[\tilde{c}_N(r) |\F]} \right] 
+\leq \E\left[ \sum_{r=\tilde{\tau}_N(s)+1}^{\tilde{\tau}_N(t)} \frac{\E[\tilde{c}_N(r) |\F]}{\frac{\varepsilon^4}{Na^4}+O(N^{-2})} \right] \\
+&= \frac{1}{\frac{\varepsilon^4}{Na^4}+O(N^{-2})} \E\left[ \sum_{r=\tilde{\tau}_N(s)+1}^{\tilde{\tau}_N(t)} \E[\tilde{c}_N(r) |\F] \right] 
+= \frac{1}{\frac{\varepsilon^4}{Na^4}+O(N^{-2})} \E\left[ \sum_{r=\tilde{\tau}_N(s)+1}^{\tilde{\tau}_N(t)} \tilde{c}_N(r) \right] \\
+&\leq \frac{t-s+1}{\frac{\varepsilon^4}{Na^4	}+O(N^{-2})} = \frac{(t-s+1)a^4 N}{\varepsilon^4 + O(N^{-1})} 
+= (t-s+1)\frac{a^4}{\varepsilon^4}N + O(1)
+\end{align*}
+where the last equality follows by a Taylor expansion of $(\frac{\varepsilon^4}{Na^4	}+O(N^{-2}))^{-1}$.\\
+Similarly we derive a lower bound using \eqref{eq:cN_upper}, the lower bound in \eqref{eq:sum_tau_cN_upperlower} and \citet[Lemma 2]{koskela2018}:
+\begin{align*}
+\E[\tilde{\tau}_N(t) - \tilde{\tau}_N(s)] 
+&= \E\left[ \sum_{r=\tilde{\tau}_N(s)+1}^{\tilde{\tau}_N(t)} 1 \right] 
+= \E\left[ \sum_{r=\tilde{\tau}_N(s)+1}^{\tilde{\tau}_N(t)} \frac{\E[\tilde{c}_N(r) |\F]}{\E[\tilde{c}_N(r) |\F]} \right] 
+\geq \E\left[ \sum_{r=\tilde{\tau}_N(s)+1}^{\tilde{\tau}_N(t)} \frac{\E[\tilde{c}_N(r) |\F]}{\frac{a^4}{N\varepsilon^4}+O(N^{-2})} \right] \\
+&= \frac{1}{\frac{a^4}{N\varepsilon^4}+O(N^{-2})} \E\left[ \sum_{r=\tilde{\tau}_N(s)+1}^{\tilde{\tau}_N(t)} \E[\tilde{c}_N(r) |\F] \right] 
+= \frac{1}{\frac{a^4}{N\varepsilon^4}+O(N^{-2})} \E\left[ \sum_{r=\tilde{\tau}_N(s)+1}^{\tilde{\tau}_N(t)} \tilde{c}_N(r) \right] \\
+&\geq \frac{t-s-1}{\frac{a^4}{N\varepsilon^4}+O(N^{-2})} = \frac{(t-s-1)\varepsilon^4 N}{a^4 + O(N^{-1})} 
+= (t-s-1)\frac{\varepsilon^4}{a^4}N + O(1)
+\end{align*}
+Therefore we have as required
+\begin{equation*}
+\E[\tilde{\tau}_N(t) - \tilde{\tau}_N(s)] \sim C_{t,s} N
+\end{equation*}
+as $N\to\infty$.
+\end{description}
+This concludes the proof of Corollary \ref{thm:condSMC_kingman}. \qed
 
 \bibliography{../smc.bib}
 \end{document}
