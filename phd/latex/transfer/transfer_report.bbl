@@ -48,6 +48,21 @@ Doucet, A. \harvardand\ Johansen, A.~M.  \harvardyearleft 2011\harvardyearright
 Efron, B. \harvardand\ Tibshirani, R.~J.  \harvardyearleft
   1994\harvardyearright , {\em An Introduction to the Bootstrap}, CRC press.
 
+\harvarditem{Etheridge}{2011}{etheridge2011}
+Etheridge, A.  \harvardyearleft 2011\harvardyearright , {\em Some Mathematical
+  Models from Population Genetics: {\'E}cole D'{\'E}t{\'e} de Probabilit{\'e}s
+  de Saint-Flour XXXIX-2009}, Springer.
+
+\harvarditem{Fisher}{1923}{fisher1923}
+Fisher, R.~A.  \harvardyearleft 1923\harvardyearright , `On the dominance
+  ratio', {\em Proceedings of the Royal Society of Edinburgh} {\bf
+  42},~321--341.
+
+\harvarditem{Fisher}{1930}{fisher1930}
+Fisher, R.~A.  \harvardyearleft 1930\harvardyearright , `The distribution of
+  gene ratios for rare mutations', {\em Proceedings of the Royal Society of
+  Edinburgh} {\bf 50},~205--220.
+
 \harvarditem{Kalman}{1960}{kalman1960}
 Kalman, R.~E.  \harvardyearleft 1960\harvardyearright , `A new approach to
   linear filtering and prediction problems', {\em Journal of Basic Engineering}
@@ -80,6 +95,11 @@ Koskela, J., Jenkins, P.~A., Johansen, A.~M. \harvardand\ Span\`o, D.
 M{\"o}hle, M.  \harvardyearleft 1998\harvardyearright , `Robustness results for
   the coalescent', {\em Journal of Applied Probability} {\bf 35}(2),~438--447.
 
+\harvarditem{Moran}{1958}{moran1958}
+Moran, P. A.~P.  \harvardyearleft 1958\harvardyearright , Random processes in
+  genetics, {\em in} `Mathematical Proceedings of the Cambridge Philosophical
+  Society', Vol.~54, Cambridge University Press, pp.~60--71.
+
 \harvarditem{Mosimann}{1962}{mosimann1962}
 Mosimann, J.~E.  \harvardyearleft 1962\harvardyearright , `On the compound
   multinomial distribution, the multivariate $\beta$-distribution, and
@@ -99,5 +119,9 @@ Vidoni, P.  \harvardyearleft 1999\harvardyearright , `Exponential family state
 \harvarditem{Wakeley}{2009}{wakeley2009}
 Wakeley, J.  \harvardyearleft 2009\harvardyearright , {\em Coalescent Theory:
   An Introduction}, Roberts \& Co. Publishers.
+
+\harvarditem{Wright}{1931}{wright1931}
+Wright, S.  \harvardyearleft 1931\harvardyearright , `Evolution in mendelian
+  populations', {\em Genetics} {\bf 16}(2),~97--159.
 
 \end{thebibliography}

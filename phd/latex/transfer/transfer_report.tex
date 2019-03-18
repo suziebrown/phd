@@ -39,9 +39,10 @@
 \newcommand{\V}{\operatorname{Var}}
 \newcommand{\eqdist}{\overset{d}{=}}
 \newcommand{\I}[1]{\mathbb{I}\{#1\}}
-\newcommand{\indep}{\perp}
 \newcommand{\Ntoinfty}{\overset{N\to\infty}{\longrightarrow}}
 \newcommand{\limNtoinfty}{\underset{N\to\infty}{\lim}}
+\newcommand\indep{\protect\mathpalette{\protect\independenT}{\perp}}
+\def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
 
 % distributions
 \newcommand{\Cat}{\operatorname{Categorical}}
@@ -85,8 +86,8 @@ References for this section are \citet{doucet2001}, \citet{delmoral2006}, and \c
 Although sequential Monte Carlo (SMC) methods can be applied in a much more general setting, they are particularly easy to motivate in the setting of state space models, where the ``sequential'' nature follows naturally from the discrete time steps present in the model. 
 For the purposes of presenting the algorithm, let us consider a time-homogeneous state space model consisting of an unobservable discrete-time Markov process $X_{0:T}$ and observables $Y_{0:T}$, satisfying the conditional independence structure
 \begin{align*}
-& X_{t+1:T} \perp X_{0:t-1} \mid X_t \\
-& Y_t \perp Y_{-t}, X_{-t} \mid X_t
+& (X_{t+1:T} \indep X_{0:t-1}) \mid X_t \\
+& (Y_t \indep Y_{-t}, X_{-t}) \mid X_t
 \end{align*}
 for all $t \in \{0,1,\dots, T\}$, as represented by the graphical model below.
 
@@ -267,7 +268,13 @@ where $b$ is the number of equivalence classes of $\xi$, and $\xi \prec \eta$ me
 The \emph{Kingman coalescent} is the process on the whole population of size $N\to\infty$, such that the genealogy of any sample of size $n<N$ individuals from the present generation is an $n$-coalescent.
 
 \subsection{Existing results}
+The first results showing convergence of population models to the Kingman coalescent appear in Kingman's original paper \citep{kingman1982gene} introducing the Kingman coalescent. This includes, but is not limited to, the neutral Wright-Fisher model \citep{fisher1923, fisher1930, wright1931} and the Moran model \citep{moran1958}.
+It is known that a general class of exchangeable models known as neutral Cannings models converge to the Kingman coalescent \citep[Section 2.2]{etheridge2011}.
+\citet{mohle1998} proved convergence for a larger class, including some non-exchangeable models.
 
+\citet{koskela2018} presents the first application of this type of analysis to SMC genealogies. Their result relies heavily on the methods introduced by \citet{mohle1998}.
+They were able to prove convergence to the Kingman coalescent for genealogies induced by standard SMC algorithms with multinomial resampling.
+In the following sections we attempt to extend their result to cover some other SMC algorithms.
 
 \section{Conditional SMC}
 Conditional SMC differs from the standard algorithm in that one predetermined trajectory (that is, a sequence of particle positions and the corresponding ancestral line) is conditioned to survive all of the propagation and resampling steps. 
