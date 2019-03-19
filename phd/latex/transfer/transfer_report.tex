@@ -70,7 +70,7 @@
 - organisation of the report\\
 }
 
-Sequential Monte Carlo has become a popular tool, particularly in applications such as object tracking, where there is a natural sequential component and we wish to infer underlying states from noisy observations.
+Sequential Monte Carlo has become a popular tool, particularly in applications such as target tracking, where there is a natural sequential component and we wish to infer underlying states from noisy observations.
 While particle methods can be very effective for filtering, it is more difficult to apply them to smoothing because they typically suffer very badly from ancestral degeneracy in the particle genealogies.
 
 When attempting to mitigate this problem, one often encounters a trade-off between ancestral degeneracy (arising from resampling) and weight degeneracy (arising from sequential importance sampling). However, while weight degeneracy is a reasonably well-quantified problem, there exists little in the way of tools for quantifying ancestral degeneracy a priori. There have been some simulation studies attempting to cast light on the magnitude of this problem, but analytical findings remain elusive, since the complexity of the most commonly used particle methods makes it difficult to obtain any rigorous results.
@@ -122,7 +122,7 @@ We assume that the \emph{transition} and \emph{emission} kernels have densities 
 We only require that we can sample from $\mu(\cdot)$ and $f(\cdot | x)$, and calculate \emph{unnormalised} potentials $g(y|x)$, for all $x,y$.
 
 As a concrete example, let us consider the application of target tracking. Suppose we 
-are using radar to track the position of an aeroplane. The true trajectory of the plane is unknown and is represented by $X_{0:T}$ (perhaps a sequence of positions in $\mathbb{R}^3$), with $f$ encoding our model for how an aeroplane moves (perhaps some differential equations). What we observe is the output $Y_{0:T}$ of our radar equipment, which has some measurement uncertainty that is encoded in $g$.
+are using radar to track the position of an aeroplane. The true trajectory of the aeroplane is unknown and is represented by $X_{0:T}$ (perhaps a sequence of positions in $\mathbb{R}^3$), with $f$ encoding our model for how an aeroplane moves (perhaps some differential equations). What we observe is the output $Y_{0:T}$ of our radar equipment, which has some measurement uncertainty that is encoded in $g$.
 
 \subsection{Inference in state space models}
 Suppose we are in a Bayesian setting, where $\mu$ is our prior distribution at time 0, observations $y_t$ arrive sequentially, and we want to infer information about the hidden states (either on- or off-line).
@@ -210,7 +210,11 @@ Figure \ref{fig:SMC_vs_kalman} illustrates the particle approximation arising fr
 	\State Sample $a_t^{(1:N)} \sim $ {\footnotesize RESAMPLE}$(\{1,\dots ,N\}, \wt{1:N}$) \Comment resample particles
 	\For{$i \in \{1,\dots,N\}$}
 		\State Sample $X_{t+1}^{(i)} \sim K_{t+1}(X_t^{(a_t^{(i)})}, \cdot)$ \Comment propagate particles
-		\State $w_{t+1}^{(i)} \gets \frac{g_{t+1}(X_t^{(a_t^{(i)})} , X_{t+1}^{(i)})}{\sum_{j=1}^N g_{t+1}(X_t^{(a_t^{(j)})} , X_{t+1}^{(j)})}$ \Comment calculate weights
+		\State $w_{t+1}^{(i)} \gets g_{t+1}(X_t^{(a_t^{(i)})} , X_{t+1}^{(i)})$ \Comment calculate weights
+	\EndFor
+	\State $W \gets \sum_{j=1}^N w_{t+1}^{(j)}$
+	\For{$i \in \{1,\dots, N\}$}	
+		\State $w_{t+1}^{(i)} \gets \frac{1}{W}w_{t+1}^{(i)}$ \Comment normalise weights
 	\EndFor
 \EndFor
 \end{algorithmic}
@@ -325,8 +329,12 @@ A conditional SMC algorithm employing multinomial resampling is described in Alg
 		\State Sample $X_{t+1}^{(i)} \sim K_{t+1}(X_t^{(a_t^{(i)})}, \cdot)$ \Comment propagate particles
 	\EndFor
 	\State $X_{t+1}^{(a_{t+1}^*)} \gets X_{t+1}^*$
-	\For{$i \in \{1,\dots,N\}$}
-		\State $w_{t+1}^{(i)} \gets \frac{g_{t+1}(X_t^{(a_t^{(i)})} , X_{t+1}^{(i)})}{\sum_{j=1}^N g_{t+1}(X_t^{(a_t^{(j)})} , X_{t+1}^{(j)})}$ \Comment calculate weights
+	\For{$i \in \{1,\dots, N\}$}	
+		\State $w_{t+1}^{(i)} \gets g_{t+1}(X_t^{(a_t^{(i)})} , X_{t+1}^{(i)})$ \Comment calculate weights
+	\EndFor
+	\State $W \gets \sum_{j=1}^N w_{t+1}^{(j)}$
+	\For{$i \in \{1,\dots, N\}$}	
+		\State $w_{t+1}^{(i)} \gets \frac{1}{W}w_{t+1}^{(i)}$ \Comment normalise weights
 	\EndFor
 \EndFor
 \end{algorithmic}
