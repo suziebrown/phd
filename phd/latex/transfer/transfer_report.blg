@@ -3,46 +3,47 @@ Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: transfer_report.aux
 The style file: agsm.bst
 Database file #1: ../smc.bib
+Warning--can't use both volume and number fields in gordon1993
 Warning--can't use both volume and number fields in moran1958
-You've used 23 entries,
+You've used 24 entries,
             2909 wiz_defined-function locations,
-            785 strings with 8135 characters,
-and the built_in function-call counts, 73290 in all, are:
-= -- 11662
-> -- 962
-< -- 1
-+ -- 5376
-- -- 287
-* -- 6144
-:= -- 15067
-add.period$ -- 23
-call.type$ -- 23
-change.case$ -- 318
-chr.to.int$ -- 21
-cite$ -- 24
-duplicate$ -- 398
-empty$ -- 813
-format.name$ -- 348
-if$ -- 13125
+            793 strings with 8336 characters,
+and the built_in function-call counts, 78443 in all, are:
+= -- 12502
+> -- 1032
+< -- 2
++ -- 5773
+- -- 308
+* -- 6591
+:= -- 16071
+add.period$ -- 24
+call.type$ -- 24
+change.case$ -- 332
+chr.to.int$ -- 22
+cite$ -- 26
+duplicate$ -- 423
+empty$ -- 859
+format.name$ -- 372
+if$ -- 14069
 int.to.chr$ -- 7
 int.to.str$ -- 0
-missing$ -- 27
-newline$ -- 72
-num.names$ -- 237
-pop$ -- 106
+missing$ -- 28
+newline$ -- 75
+num.names$ -- 248
+pop$ -- 110
 preamble$ -- 1
-purify$ -- 345
+purify$ -- 360
 quote$ -- 0
-skip$ -- 320
+skip$ -- 345
 stack$ -- 0
-substring$ -- 16274
-swap$ -- 79
-text.length$ -- 323
+substring$ -- 17458
+swap$ -- 90
+text.length$ -- 338
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 84
-warning$ -- 1
-while$ -- 520
+type$ -- 88
+warning$ -- 2
+while$ -- 544
 width$ -- 0
-write$ -- 302
-(There was 1 warning)
+write$ -- 319
+(There were 2 warnings)

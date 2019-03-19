@@ -81,7 +81,6 @@ We denote falling factorial powers $(x)_a := x(x-1)\dots(x-a+1)$, with the conve
 
 \section{Sequential Monte Carlo}
 References for this section are \citet{doucet2001}, \citet{delmoral2006}, and \citet{doucet2009}.
-%%% illustrate the model with the target-tracking/radar analogy....
 
 \subsection{Class of models}
 Although sequential Monte Carlo (SMC) methods can be applied in a much more general setting, they are particularly easy to motivate in the setting of state space models, where the ``sequential'' nature follows naturally from the discrete time steps present in the model. 
@@ -179,25 +178,6 @@ A generic SMC algorithm is presented in Algorithm \ref{alg:SMC}. For the state s
 
 Figure \ref{fig:SMC_vs_kalman} illustrates the particle approximation arising from such an algorithm on a linear Gaussian model, with the exact posterior for reference.
 
-%\begin{algorithm}
-%	\caption{SMC}\label{alg:SMC}
-%	\begin{algorithmic}[0]
-%    	\State \textbf{Inputs:} $\mu:\mathcal{X}\to[0,1];\quad f:\mathcal{X}\times\mathcal{X}\to[0,1];\quad g:\mathcal{Y}\times\mathcal{X}\to[0,1];\quad y_{0:T}\in\mathcal{Y}^T;\quad N\in\mathbb{N}$
-%		\For{$i = 1,\dots,N$}		
-%			\State $x_0^{(i)} \sim \mu(\cdot)$ \Comment initialise
-%			\State $\tilde{w}_0^{(i)} \gets g(y_0 | x_0^{(i)})$
-%			\State $w_0^{(i)} \gets \tilde{w}_0^{(i)} / \sum \tilde{w}_0^{(j)}$
-%		\EndFor
-%		\For{$t=1,\dots,T$}
-%        	\For{$i = 1,\dots,N$}
-%        		\State $\tilde{x}_t^{(i)} \gets$ {\footnotesize RESAMPLE}($\mathbf{x}_{t-1}, \mathbf{w}_{t-1}$) \Comment resample particles
-%				\State $x_t^{(i)} \sim f(\cdot | \tilde{x}_t^{(i)})$ \Comment propagate particles
-%				\State $\tilde{w}_t^{(i)} \gets g(y_t | x_t^{(i)})$ \Comment calculate weights
-%				\State $w_t^{(i)} \gets \tilde{w}_t^{(i)} / \sum \tilde{w}_t^{(j)}$ \Comment normalise weights
-%        	\EndFor
-%        \EndFor
-%	\end{algorithmic}
-%\end{algorithm}
 \begin{algorithm}
 \caption{Standard SMC}\label{alg:SMC}
 \begin{algorithmic}[1]
@@ -233,28 +213,15 @@ The form of the {\footnotesize RESAMPLE} function in Algorithm \ref{alg:SMC} is 
 \label{fig:SMC_vs_kalman}
 \end{figure}
 
-\subsection{Ancestral degeneracy}
 \textcolor{red}{
-- the problem with smoothing: ancestral vs.\ weight degeneracy
-}
+Add a section including theoretical justification for SMC...?
+}\\
 
-\begin{figure}
-\centering
-\includegraphics[width=0.8\textwidth]{degeneracy.pdf}
-\caption{A sample of $N=6$ trajectories, illustrating ancestral degeneracy. At the ``present'' time there are six distinct lineages, but just three steps back they have coalesced onto only two lineages, and it takes less than 20 steps back before only one lineage remains.}
-\label{fig:degeneracy}
-\end{figure}
-
-\section{SMC genealogies as coalescents}
-\textcolor{red}{
-- pop gen literature about large population cts time limits of various models\\
-- resampling viewed backwards in time: branching process $\to$ coalescent process\\
-- asymptotic properties of SMC lit review: CLT, path storage, coalescence etc.\\
-- the gap in knowledge that we aim to fill\\
-%- (remark: although SMC has other problems in high dimension, the coalescence rate doesn't depend on the dimension...)
-}
-
+\section{Coalescent Theory}
 \subsection{Kingman's coalescent}
+\textcolor{red}{
+formal definition of coalescent processes in terms of equivalence classes...?
+}\\
 Imagine we have a population with fixed size $N$ over discrete generations, where each individual is descended from one randomly chosen individual of the previous generation. Then for each individual in the present generation, we can trace their \emph{lineage} back through the generations. 
 If we trace two lineages back in time, at some generation they may descend from the same individual, at which point we say they have \emph{coalesced}. Once two lineages have coalesced they will stay together going backwards in time.
 The combined lineages of $n\leq N$ of the present individuals therefore forms a tree, or several non-overlapping trees, the entirety of which we refer to as the \emph{ancestry} or \emph{genealogy} of those $n$ individuals.
@@ -268,14 +235,10 @@ Kingman's \emph{$n$-coalescent} provides a model for such genealogies. Kingman s
 \label{fig:kingman}
 \end{figure}
 
-%%% how to deal with the difference between Kingman (time stops once all coalesced) and SMC genealogies (fixed time frame T)?
-
 The defining feature of the model is that each pair of lineages merges with unit rate. This means that many coalescences occur while there are many distinct lineages present.
 In particular, the $n$-coalescent can be formulated as a Poisson process where pairs of lineages coalesce independently at rate 1, with the pair to coalesce being chosen uniformly at random \citep[Section 3.2]{wakeley2009}.
 
 In the notation of \citet{wakeley2009}, let $T_i;\, i=2,\dots,n$ be the $i^{th}$ coalescence time, that is, the length of time for which there are exactly $i$ branches in the sample genealogy. The $n$-coalescent is the process in which these times are distributed as independent Exponentials with rate $\binom{i}{2}$.
-
-%%% formal definition of coalescent processes in terms of equivalence classes
 
 \citet{mohle1998} writes the same process in terms of the infinitesimal generator $Q$ of a Markov process on the set of equivalence relations on $n$ elements, having entries
 \begin{equation*}
@@ -290,7 +253,53 @@ where $b$ is the number of equivalence classes of $\xi$, and $\xi \prec \eta$ me
  
 The \emph{Kingman coalescent} is the process on the whole population of size $N\to\infty$, such that the genealogy of any sample of size $n<N$ individuals from the present generation is an $n$-coalescent.
 
+
+\section{SMC genealogies as coalescents}
+\textcolor{red}{
+- pop gen literature about large population cts time limits of various models\\
+- resampling viewed backwards in time: branching process $\to$ coalescent process\\
+- asymptotic properties of SMC lit review: CLT, path storage, coalescence etc.\\
+- the gap in knowledge that we aim to fill\\
+- why the simple SSM described at start is sufficient to demonstrate coalescence\\
+- how to deal with the difference between Kingman (time stops once all coalesced) and SMC genealogies (fixed time frame T)
+}
+
+\subsection{Ancestral degeneracy}
+The resampling step in Algorithm \ref{alg:SMC} induces a genealogical tree.
+During resampling, some particles have multiple offspring while others have none. The particles with no offspring ``die out''; they are not in the lineage of any time $T$ particle. So unless the offspring variance is low, the $N$ time $T$ particles are likely to originate from only a few distinct time $0$ ancestors.
+An example of this is shown in Figure \ref{fig:WF_tree}.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{eg_WF.pdf}
+\caption{Genelaogical tree induced by resampling over 12 generations with $N=10$ particles. At each resampling step, any particles with no offspring ``die out''; they are not in the lineage of any time $T$ particle. In this realisation, the $N$ particles at time $T$ all originate from the same time $0$ ancestor. ``Dead'' particles/lineages are coloured black/grey, while the ``live'' tree is highlighted in purple.}
+\label{fig:WF_tree}
+\end{figure}
+
+In order to estimate filtering distributions $p(x_t | y_{0:t})$, we only require a sample of particles at the current time step, so if $\mathcal{X}$ is continuous we typically have $N$ distinct positions given by the $N$ particles. Then the empirical measure has mass in $N$ locations, and the Monte Carlo error for estimating expectations under $p(x_t | y_{0:t})$ scales as $O(N^{-1/2})$ [REF].
+
+However, we do not achieve the same performance in the case of estimating the  smoothing distributions $p(x_{0:t} | y_{0:t})$. In this case we require a sample of trajectories over times $0:t$ as opposed to a sample of particles at time $t$.
+The coalescence of lineages is an unavoidable effect of resampling, and it causes more and more of these trajectories to coincide the further into the past we look.
+The resulting empirical measure typically consists of $N$ distinct masses, but the marginals at early times may just consist of a single mass repeated $N$ times.
+This phenomenon, known as \emph{ancestral degeneracy}, is illustrated in Figure \ref{fig:degeneracy}.
+
+So if we are really interested in the smoothed states a long way into the past, the estimation variance will be huge. This problem was identified even in the early literature \citep{gordon1993}, where some ad hoc methods were proposed to reduce it. Since then there has been a lot of work towards mitigating ancestral degeneracy, some of which are discussed in Section \ref{sec:resampling}.\\
+\textcolor{red}{
+- Ancestral vs.\ weight degeneracy\\
+- More discussion of general techniques to mitigate it
+}\\
+
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{degeneracy.pdf}
+\caption{A sample of $N=6$ trajectories, illustrating ancestral degeneracy. At the ``present'' time there are six distinct lineages, but just three steps back they have coalesced onto only two lineages, and it takes less than 20 steps back before only one lineage remains.}
+\label{fig:degeneracy}
+\end{figure}
+
 \subsection{Existing results}
+\textcolor{red}{
+Rewrite this section after adding details in Sec 3...
+}\\
 The first results showing convergence of population models to the Kingman coalescent appear in Kingman's original paper \citep{kingman1982gene} introducing the Kingman coalescent. This includes, but is not limited to, the neutral Wright-Fisher model \citep{fisher1923, fisher1930, wright1931} and the Moran model \citep{moran1958}.
 It is known that a general class of exchangeable models known as neutral Cannings models converge to the Kingman coalescent \citep[Section 2.2]{etheridge2011}.
 \citet{mohle1998} proved convergence for a larger class, including some non-exchangeable models.
@@ -298,6 +307,7 @@ It is known that a general class of exchangeable models known as neutral Canning
 \citet{koskela2018} presents the first application of this type of analysis to SMC genealogies. Their result relies heavily on the methods introduced by \citet{mohle1998}.
 They were able to prove convergence to the Kingman coalescent for genealogies induced by standard SMC algorithms with multinomial resampling.
 In the following sections we attempt to extend their result to cover some other SMC algorithms.
+
 
 \section{Conditional SMC}
 Conditional SMC differs from the standard algorithm in that one predetermined trajectory (that is, a sequence of particle positions and the corresponding ancestral line) is conditioned to survive all of the propagation and resampling steps. 
@@ -615,7 +625,7 @@ We are finally ready to verify the conditions of \citet[Theorem 1]{koskela2018}.
 \end{description}
 These five conditions are verified below.
 \begin{description}
-\item{\textbf{(Standing Assumption)}} This holds by the conditional exchangeability of offspring assignments arising from Algorithm \ref{alg:condSMC}, where ``valid assignments'' require that the resampling preserves the immortal line (i.e.\ the immortal child is assigned to the immortal parent).
+\item{\textbf{(Standing Assumption)}} This holds by the exchangeability of offspring assignments arising from Algorithm \ref{alg:condSMC}.
 \item{\textbf{(B)}} Using \eqref{eq:cN_upper} and applying the tower rule, we find
 \begin{equation*}
 \E[\tilde{c}_N(t)] = \E[\E[\tilde{c}_N(t) |\F]] \leq \frac{a^4}{N\varepsilon^4} + O(N^{-2}) \Ntoinfty 0
