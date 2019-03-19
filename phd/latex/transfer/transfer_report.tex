@@ -121,6 +121,9 @@ where $(X_t)_{t=0}^T$ is an unobservable discrete-time Markov process and the ob
 We assume that the \emph{transition} and \emph{emission} kernels have densities which are denoted by $f$ and $g$ respectively, but this is not necessary in general.
 We only require that we can sample from $\mu(\cdot)$ and $f(\cdot | x)$, and calculate \emph{unnormalised} potentials $g(y|x)$, for all $x,y$.
 
+As a concrete example, let us consider the application of target tracking. Suppose we 
+are using radar to track the position of an aeroplane. The true trajectory of the plane is unknown and is represented by $X_{0:T}$ (perhaps a sequence of positions in $\mathbb{R}^3$), with $f$ encoding our model for how an aeroplane moves (perhaps some differential equations). What we observe is the output $Y_{0:T}$ of our radar equipment, which has some measurement uncertainty that is encoded in $g$.
+
 \subsection{Inference in state space models}
 Suppose we are in a Bayesian setting, where $\mu$ is our prior distribution at time 0, observations $y_t$ arrive sequentially, and we want to infer information about the hidden states (either on- or off-line).
 The three main inference problems are:
