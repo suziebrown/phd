@@ -68,6 +68,9 @@
 \section{Introduction}
 \textcolor{red}{
 - organisation of the report\\
+- move most of this to become intro to a later section\\
+- general motivation for SMC\\
+- see notes on back of Adam's scribbled-on copy\\
 }
 
 Sequential Monte Carlo has become a popular tool, particularly in applications such as target tracking, where there is a natural sequential component and we wish to infer underlying states from noisy observations.
@@ -155,7 +158,8 @@ and that the likelihood of the observations $y_{0:t}$ given the underlying state
 p(y_{0:t} \mid x_{0:t}) = \prod_{i=0}^t g(y_i \mid x_i).
 \end{equation*}
 
-The smoothing distribution $p(x_{t} | y_{0:T})$ is obtained from $p(x_{0:T} | y_{0:T})$ by marginalising. Using the conditional independence structure, we can write
+%The smoothing distribution $p(x_{t} | y_{0:T})$ is obtained from $p(x_{0:T} | y_{0:T})$ by marginalising. %%% what did I even mean here?
+Using the conditional independence structure, we can write
 \begin{align}
 p(x_{0:t} | y_{0:t}) &\propto g(y_t | x_t) f(x_t | x_{t-1}) p(x_{0:t-1} | y_{0:t-1}) \label{eq:smooth_recursion}\\
 &\propto \mu(x_0) g(y_0 | x_0) \prod_{i=1}^t f(x_i | x_{i-1}) g(y_i | x_i) \label{eq:smooth_recursion2}
@@ -218,10 +222,12 @@ Add a section including theoretical justification for SMC...?
 }\\
 
 \section{Coalescent Theory}
-\subsection{Kingman's coalescent}
 \textcolor{red}{
-formal definition of coalescent processes in terms of equivalence classes...?
-}\\
+- formal definition of coalescent processes in terms of equivalence classes...?\\
+- asymptotic coalescents for various population models
+}
+
+\subsection{Kingman's coalescent}
 Imagine we have a population with fixed size $N$ over discrete generations, where each individual is descended from one randomly chosen individual of the previous generation. Then for each individual in the present generation, we can trace their \emph{lineage} back through the generations. 
 If we trace two lineages back in time, at some generation they may descend from the same individual, at which point we say they have \emph{coalesced}. Once two lineages have coalesced they will stay together going backwards in time.
 The combined lineages of $n\leq N$ of the present individuals therefore forms a tree, or several non-overlapping trees, the entirety of which we refer to as the \emph{ancestry} or \emph{genealogy} of those $n$ individuals.
@@ -251,7 +257,8 @@ q_{\xi\eta} =
 \end{equation*}
 where $b$ is the number of equivalence classes of $\xi$, and $\xi \prec \eta$ means that $\eta$ is a state with exactly one more pair of lineages coalesced compared to $\xi$.
  
-The \emph{Kingman coalescent} is the process on the whole population of size $N\to\infty$, such that the genealogy of any sample of size $n<N$ individuals from the present generation is an $n$-coalescent.
+%The \emph{Kingman coalescent} is the process on the whole population of size $N\to\infty$, such that the genealogy of any sample of size $n<N$ individuals from the present generation is an $n$-coalescent.
+%%% not true - fix this!
 
 
 \section{SMC genealogies as coalescents}
@@ -310,6 +317,11 @@ In the following sections we attempt to extend their result to cover some other 
 
 
 \section{Conditional SMC}
+\textcolor{red}{
+- Introduce particle MCMC (perhaps including basic algorithm)\\
+- Then motivate conditional SMC as update in PMCMC\\
+}
+
 Conditional SMC differs from the standard algorithm in that one predetermined trajectory (that is, a sequence of particle positions and the corresponding ancestral line) is conditioned to survive all of the propagation and resampling steps. 
 We will refer to this sequence as the \emph{immortal trajectory}, following the terminology used for conditioned Galton-Watson processes, and the \emph{immortal particle} will refer to the particle in a particular generation that is part of the immortal trajectory.
 
@@ -410,9 +422,11 @@ Under the conditions of \citet[Lemma 3]{koskela2018}, the genealogy of any $n$ p
 
 \section{Alternative resampling schemes}\label{sec:resampling}
 \textcolor{red}{
-- overview of the main variance-reducing schemes\\
-- results: theorem for residual resampling (hopefully)\\
-- maybe results for other schemes
+- multinomial, residual, stratified, systematic\\
+- Gerber et al's optimal scheme\\
+- any others...?\\
+- results: theorem for residual resampling (hopefully) - haha you wish\\
+- maybe results for other schemes (wow, so ambitious)\\
 }
 
 There is a great deal of flexibility in the function referred to as {\footnotesize RESAMPLE} in Algorithm \ref{alg:SMC}. The most straightforward choice is multinomial resampling \citep{efron1994}, which is also the easiest to analyse. However, multinomial resampling is well known to be sub-optimal in terms of the resulting Monte Carlo variance, and is rarely used in practice. For instance, \citet{douc2005} proves that both residual resampling and stratified resampling yield lower variance. 

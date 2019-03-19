@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  19 MAR 2019 15:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  19 MAR 2019 15:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -673,75 +673,76 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 65.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-{/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
-<smc_kalman.pdf, id=34, 602.25pt x 250.9375pt>
+{/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
+<smc_kalman.pdf, id=26, 602.25pt x 250.9375pt>
 File: smc_kalman.pdf Graphic file (type pdf)
 <use smc_kalman.pdf>
-Package pdftex.def Info: smc_kalman.pdf  used on input line 211.
+Package pdftex.def Info: smc_kalman.pdf  used on input line 215.
 (pdftex.def)             Requested size: 424.82523pt x 177.01816pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 218--219
+Underfull \hbox (badness 10000) in paragraph at lines 222--223
 
  []
 
-<kingman.png, id=35, 377.41pt x 341.275pt>
+[3] [4 <./smc_kalman.pdf>]
+<kingman.png, id=42, 377.41pt x 341.275pt>
 File: kingman.png Graphic file (type png)
 <use kingman.png>
-Package pdftex.def Info: kingman.png  used on input line 233.
+Package pdftex.def Info: kingman.png  used on input line 239.
 (pdftex.def)             Requested size: 283.22162pt x 256.10141pt.
-[4 <./smc_kalman.pdf>]
-<eg_WF.pdf, id=43, 451.6875pt x 385.19911pt>
+ [5 <./kingman.png>]
+<eg_WF.pdf, id=49, 451.6875pt x 385.19911pt>
 File: eg_WF.pdf Graphic file (type pdf)
 <use eg_WF.pdf>
-Package pdftex.def Info: eg_WF.pdf  used on input line 274.
+Package pdftex.def Info: eg_WF.pdf  used on input line 281.
 (pdftex.def)             Requested size: 377.62642pt x 322.06036pt.
- [5 <./kingman.png>] [6 <./eg_WF.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 286--291
+ [6 <./eg_WF.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 293--298
 
  []
 
 <degeneracy.pdf, id=60, 728.48161pt x 385.92181pt>
 File: degeneracy.pdf Graphic file (type pdf)
 <use degeneracy.pdf>
-Package pdftex.def Info: degeneracy.pdf  used on input line 294.
+Package pdftex.def Info: degeneracy.pdf  used on input line 301.
 (pdftex.def)             Requested size: 377.62642pt x 200.0504pt.
 [7 <./degeneracy.pdf>] [8] [9] [10]
-Overfull \hbox (8.04799pt too wide) detected at line 467
+Overfull \hbox (8.04799pt too wide) detected at line 481
 []
  []
 
 
-Overfull \hbox (7.93095pt too wide) detected at line 511
+Overfull \hbox (7.93095pt too wide) detected at line 525
 []
  []
 
 [11]
-Overfull \hbox (23.69243pt too wide) detected at line 532
+Overfull \hbox (23.69243pt too wide) detected at line 546
 []
  []
 
 [12]
-Overfull \hbox (36.88333pt too wide) detected at line 546
+Overfull \hbox (36.88333pt too wide) detected at line 560
 []
  []
 
 [13]
-Overfull \hbox (7.12737pt too wide) detected at line 571
+Overfull \hbox (7.12737pt too wide) detected at line 585
 []
  []
 
 [14] [15] [16]
-Overfull \hbox (26.89339pt too wide) detected at line 641
+Overfull \hbox (26.89339pt too wide) detected at line 655
 []
  []
 
 
-Overfull \hbox (24.85626pt too wide) detected at line 659
+Overfull \hbox (24.85626pt too wide) detected at line 673
 []
  []
 
 
-Overfull \hbox (23.73724pt too wide) detected at line 671
+Overfull \hbox (23.73724pt too wide) detected at line 685
 []
  []
 
@@ -778,7 +779,7 @@ pe1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2018/texmf-dist/fonts/type
 public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/p
 ublic/amsfonts/cm/cmti9.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/pub
 lic/amsfonts/symbols/msbm10.pfb>
-Output written on transfer_report.pdf (19 pages, 472241 bytes).
+Output written on transfer_report.pdf (19 pages, 472272 bytes).
 PDF statistics:
  184 PDF objects out of 1000 (max. 8388607)
  129 compressed objects within 2 object streams
