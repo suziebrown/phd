@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  19 MAR 2019 15:20
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  21 MAR 2019 12:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -541,22 +541,23 @@ Package: amsthm 2017/10/31 v2.20.4
 \dth@everypar=\toks43
 )
 \c@corollary=\count133
+\c@defn=\count134
 
 (./transfer_report.aux)
 \openout1 = `transfer_report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 64.
-LaTeX Font Info:    ... okay on input line 64.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 64.
-LaTeX Font Info:    ... okay on input line 64.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 64.
-LaTeX Font Info:    ... okay on input line 64.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 64.
-LaTeX Font Info:    ... okay on input line 64.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 64.
-LaTeX Font Info:    ... okay on input line 64.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 64.
-LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -594,16 +595,16 @@ LaTeX Font Info:    ... okay on input line 64.
 
 (/usr/local/texlive/2018/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count134
+\scratchcounter=\count135
 \scratchdimen=\dimen176
 \scratchbox=\box41
-\nofMPsegments=\count135
-\nofMParguments=\count136
+\nofMPsegments=\count136
+\nofMParguments=\count137
 \everyMPshowfont=\toks44
-\MPscratchCnt=\count137
+\MPscratchCnt=\count138
 \MPscratchDim=\dimen177
-\MPnumerator=\count138
-\makeMPintoPDFobject=\count139
+\MPnumerator=\count139
+\makeMPintoPDFobject=\count140
 \everyMPtoPDFconversion=\toks45
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
@@ -662,25 +663,36 @@ Package caption Info: float package is loaded.
 Package caption Info: End \AtBeginDocument code.
 
 ABD: EveryShipout initializing macros
-LaTeX Font Info:    Try loading font information for U+msa on input line 65.
+LaTeX Font Info:    Try loading font information for U+msa on input line 68.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 65.
+LaTeX Font Info:    Try loading font information for U+msb on input line 68.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [1
+)
+Underfull \hbox (badness 10000) in paragraph at lines 80--81
 
-{/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 82--86
+
+ []
+
+[1
+
+{/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+[2]
 <smc_kalman.pdf, id=26, 602.25pt x 250.9375pt>
 File: smc_kalman.pdf Graphic file (type pdf)
 <use smc_kalman.pdf>
-Package pdftex.def Info: smc_kalman.pdf  used on input line 215.
+Package pdftex.def Info: smc_kalman.pdf  used on input line 227.
 (pdftex.def)             Requested size: 424.82523pt x 177.01816pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 222--223
+Underfull \hbox (badness 10000) in paragraph at lines 235--236
 
  []
 
@@ -688,73 +700,83 @@ Underfull \hbox (badness 10000) in paragraph at lines 222--223
 <kingman.png, id=42, 377.41pt x 341.275pt>
 File: kingman.png Graphic file (type png)
 <use kingman.png>
-Package pdftex.def Info: kingman.png  used on input line 239.
+Package pdftex.def Info: kingman.png  used on input line 264.
 (pdftex.def)             Requested size: 283.22162pt x 256.10141pt.
- [5 <./kingman.png>]
-<eg_WF.pdf, id=49, 451.6875pt x 385.19911pt>
+ [5]
+<eg_WF.pdf, id=47, 451.6875pt x 385.19911pt>
 File: eg_WF.pdf Graphic file (type pdf)
 <use eg_WF.pdf>
-Package pdftex.def Info: eg_WF.pdf  used on input line 281.
+Package pdftex.def Info: eg_WF.pdf  used on input line 306.
 (pdftex.def)             Requested size: 377.62642pt x 322.06036pt.
- [6 <./eg_WF.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 293--298
+
+Underfull \hbox (badness 10000) in paragraph at lines 318--323
 
  []
 
-<degeneracy.pdf, id=60, 728.48161pt x 385.92181pt>
+<degeneracy.pdf, id=48, 728.48161pt x 385.92181pt>
 File: degeneracy.pdf Graphic file (type pdf)
 <use degeneracy.pdf>
-Package pdftex.def Info: degeneracy.pdf  used on input line 301.
+Package pdftex.def Info: degeneracy.pdf  used on input line 326.
 (pdftex.def)             Requested size: 377.62642pt x 200.0504pt.
-[7 <./degeneracy.pdf>] [8] [9] [10]
-Overfull \hbox (8.04799pt too wide) detected at line 481
-[]
- []
+[6 <./kingman.png>] [7 <./eg_WF.pdf> <./degeneracy.pdf
 
-
-Overfull \hbox (7.93095pt too wide) detected at line 525
-[]
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./degeneracy.pdf): PDF inclu
+sion: multiple pdfs with page group included in a single page
+>] [8] [9] [10]
+Overfull \hbox (0.18306pt too wide) in paragraph at lines 466--469
+[]\OT1/cmr/m/n/10 (Efron and Tib-shi-rani, 1994) This is the sim-plest way to d
+o re-sam-pling. Parental
  []
 
 [11]
-Overfull \hbox (23.69243pt too wide) detected at line 546
+Overfull \hbox (8.04799pt too wide) detected at line 523
 []
  []
 
 [12]
-Overfull \hbox (36.88333pt too wide) detected at line 560
+Overfull \hbox (7.93095pt too wide) detected at line 567
+[]
+ []
+
+
+Overfull \hbox (23.69243pt too wide) detected at line 588
 []
  []
 
 [13]
-Overfull \hbox (7.12737pt too wide) detected at line 585
+Overfull \hbox (36.88333pt too wide) detected at line 602
 []
  []
 
-[14] [15] [16]
-Overfull \hbox (26.89339pt too wide) detected at line 655
+[14]
+Overfull \hbox (7.12737pt too wide) detected at line 627
+[]
+ []
+
+[15] [16] [17]
+Overfull \hbox (26.89339pt too wide) detected at line 697
 []
  []
 
 
-Overfull \hbox (24.85626pt too wide) detected at line 673
+Overfull \hbox (24.85626pt too wide) detected at line 715
 []
  []
 
 
-Overfull \hbox (23.73724pt too wide) detected at line 685
+Overfull \hbox (23.73724pt too wide) detected at line 727
 []
  []
 
-[17] (./transfer_report.bbl [18]) [19] (./transfer_report.aux) ) 
+[18] (./transfer_report.bbl [19]) [20] (./transfer_report.aux) ) 
 Here is how much of TeX's memory you used:
- 15215 strings out of 492649
- 290157 string characters out of 6129623
- 349119 words of memory out of 5000000
- 18779 multiletter control sequences out of 15000+600000
+ 15232 strings out of 492649
+ 290366 string characters out of 6129623
+ 350264 words of memory out of 5000000
+ 18796 multiletter control sequences out of 15000+600000
  15283 words of font info for 58 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,15n,54p,635b,595s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,15n,54p,697b,595s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/tex
 live/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texl
 ive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texli
@@ -778,11 +800,12 @@ pe1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2018/texmf-dist/fonts/type
 1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/
 public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/p
 ublic/amsfonts/cm/cmti9.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/pub
-lic/amsfonts/symbols/msbm10.pfb>
-Output written on transfer_report.pdf (19 pages, 472272 bytes).
+lic/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1
+/public/amsfonts/symbols/msbm7.pfb>
+Output written on transfer_report.pdf (20 pages, 480518 bytes).
 PDF statistics:
- 184 PDF objects out of 1000 (max. 8388607)
- 129 compressed objects within 2 object streams
+ 190 PDF objects out of 1000 (max. 8388607)
+ 133 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  33 words of extra memory for PDF output out of 10000 (max. 10000000)
 

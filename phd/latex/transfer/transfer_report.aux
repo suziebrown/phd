@@ -1,10 +1,12 @@
 \relax 
 \bibstyle{agsm}
+\citation{gordon1993}
 \citation{doucet2001}
 \citation{delmoral2006}
 \citation{doucet2009}
 \@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}}
 \@writefile{toc}{\contentsline {section}{\numberline {2}Sequential Monte Carlo}{1}}
+\newlabel{sec:SMC}{{2}{1}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Class of models}{1}}
 \citation{kalman1960}
 \citation{rauch1965}
@@ -15,62 +17,68 @@
 \citation{delmoral2013}
 \newlabel{eq:smooth_recursion}{{1}{3}}
 \newlabel{eq:smooth_recursion2}{{2}{3}}
-\@writefile{toc}{\contentsline {section}{\numberline {3}Coalescent Theory}{3}}
 \@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Standard SMC\relax }}{4}}
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
 \newlabel{alg:SMC}{{1}{4}}
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces SMC particles before resampling for a linear Gaussian model. The purple ribbon shows the exact posterior mode and 95\% credible interval, computed using the Kalman filter and RTS smoother. The black dots show the positions of the SMC particles, with size proportional to weight. After resampling all particles have equal weights but some are duplicated.\relax }}{4}}
 \newlabel{fig:SMC_vs_kalman}{{1}{4}}
+\citation{mohle1998}
 \citation{kingman1982gene,kingman1982coal,kingman1982exch}
 \citation{wakeley2009}
 \citation{wakeley2009}
 \citation{mohle1998}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces A realisation of Kingman's $n$-coalescent for a sample of size $n=50$. At first there are many distinct lineages, and mergers happen rapidly. Once there are fewer distinct lineages left, they take longer to merge. The process spends about half of its time with just two or three distinct lineages. \textit  {(Source: Wikimedia Commons)}\relax }}{5}}
-\newlabel{fig:kingman}{{2}{5}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Coalescent Theory}{5}}
+\newlabel{sec:coalescent_theory}{{3}{5}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Kingman's coalescent}{5}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Genelaogical tree induced by resampling over 12 generations with $N=10$ particles. At each resampling step, any particles with no offspring ``die out''; they are not in the lineage of any time $T$ particle. In this realisation, the $N$ particles at time $T$ all originate from the same time $0$ ancestor. ``Dead'' particles/lineages are coloured black/grey, while the ``live'' tree is highlighted in purple.\relax }}{6}}
-\newlabel{fig:WF_tree}{{3}{6}}
-\@writefile{toc}{\contentsline {section}{\numberline {4}SMC genealogies as coalescents}{6}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Ancestral degeneracy}{6}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}SMC genealogies as coalescents}{5}}
 \citation{gordon1993}
 \citation{kingman1982gene}
 \citation{fisher1923,fisher1930,wright1931}
 \citation{moran1958}
 \citation{etheridge2011}
 \citation{mohle1998}
-\citation{koskela2018}
-\citation{mohle1998}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces A realisation of Kingman's $n$-coalescent for a sample of size $n=50$. At first there are many distinct lineages, and mergers happen rapidly. Once there are fewer distinct lineages left, they take longer to merge. The process spends about half of its time with just two or three distinct lineages. \textit  {(Source: Wikimedia Commons)}\relax }}{6}}
+\newlabel{fig:kingman}{{2}{6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Ancestral degeneracy}{6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Existing results}{6}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Genelaogical tree induced by resampling over 12 generations with $N=10$ particles. At each resampling step, any particles with no offspring ``die out''; they are not in the lineage of any time $T$ particle. In this realisation, the $N$ particles at time $T$ all originate from the same time $0$ ancestor. ``Dead'' particles/lineages are coloured black/grey, while the ``live'' tree is highlighted in purple.\relax }}{7}}
+\newlabel{fig:WF_tree}{{3}{7}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces A sample of $N=6$ trajectories, illustrating ancestral degeneracy. At the ``present'' time there are six distinct lineages, but just three steps back they have coalesced onto only two lineages, and it takes less than 20 steps back before only one lineage remains.\relax }}{7}}
 \newlabel{fig:degeneracy}{{4}{7}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Existing results}{7}}
-\@writefile{toc}{\contentsline {section}{\numberline {5}Conditional SMC}{7}}
+\citation{koskela2018}
+\citation{mohle1998}
 \citation{andrieu2010}
 \citation{andrieu2010}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {2}{\ignorespaces Conditional SMC with multinomial resampling\relax }}{8}}
-\newlabel{alg:condSMC}{{2}{8}}
+\citation{koskela2018}
+\citation{koskela2018}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Conditional SMC}{8}}
+\newlabel{sec:conditionalSMC}{{5}{8}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Genealogies of conditional SMC algorithms}{8}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {2}{\ignorespaces Conditional SMC with multinomial resampling\relax }}{9}}
+\newlabel{alg:condSMC}{{2}{9}}
 \citation{koskela2018}
 \citation{koskela2018}
 \citation{koskela2018}
 \citation{koskela2018}
-\citation{koskela2018}
-\citation{koskela2018}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Genealogies of conditional SMC algorithms}{9}}
-\newlabel{eq:cNtilde}{{4}{9}}
-\newlabel{eq:DNtilde}{{5}{9}}
-\newlabel{eq:cNtilde2}{{6}{9}}
-\newlabel{eq:tau_tilde}{{7}{9}}
-\citation{efron1994}
-\citation{douc2005}
-\citation{mosimann1962}
+\newlabel{eq:cNtilde}{{4}{10}}
+\newlabel{eq:DNtilde}{{5}{10}}
+\newlabel{eq:cNtilde2}{{6}{10}}
+\newlabel{eq:tau_tilde}{{7}{10}}
 \newlabel{thm:condSMC_kingman}{{1}{10}}
 \@writefile{toc}{\contentsline {section}{\numberline {6}Alternative resampling schemes}{10}}
 \newlabel{sec:resampling}{{6}{10}}
-\@writefile{toc}{\contentsline {section}{\numberline {7}Discussion}{10}}
-\@writefile{toc}{\contentsline {section}{\numberline {A}Proof of Corollary 1\hbox {}}{10}}
-\newlabel{eq:mn_moments}{{8}{10}}
+\citation{efron1994}
+\citation{douc2005}
+\citation{efron1994}
+\citation{liu1998,whitley1994}
+\citation{mosimann1962}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Discussion}{11}}
+\newlabel{sec:discussion}{{7}{11}}
+\@writefile{toc}{\contentsline {section}{\numberline {A}Proof of Corollary 1\hbox {}}{11}}
+\newlabel{eq:mn_moments}{{8}{11}}
 \citation{koskela2018}
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Conversion of ordinary powers into falling factorial powers\relax }}{11}}
-\newlabel{tab:fact_powers}{{1}{11}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Conversion of ordinary powers into falling factorial powers\relax }}{12}}
+\newlabel{tab:fact_powers}{{1}{12}}
 \citation{koskela2018}
 \citation{koskela2018}
 \citation{koskela2018}
@@ -78,11 +86,11 @@
 \citation{koskela2018}
 \citation{koskela2018}
 \citation{koskela2018}
-\newlabel{eq:cN_upper}{{9}{16}}
-\newlabel{eq:cN_lower}{{10}{16}}
-\newlabel{eq:DN_upper}{{11}{16}}
-\newlabel{eq:cN2_upper}{{12}{16}}
-\newlabel{eq:sum_tau_cN_upperlower}{{13}{16}}
+\newlabel{eq:cN_upper}{{9}{17}}
+\newlabel{eq:cN_lower}{{10}{17}}
+\newlabel{eq:DN_upper}{{11}{17}}
+\newlabel{eq:cN2_upper}{{12}{17}}
+\newlabel{eq:sum_tau_cN_upperlower}{{13}{17}}
 \citation{koskela2018}
 \citation{koskela2018}
 \citation{koskela2018}
@@ -104,10 +112,12 @@
 \bibcite{kingman1982exch}{{15}{1982{\em  b}}{{Kingman}}{{}}}
 \bibcite{kingman1982gene}{{16}{1982{\em  c}}{{Kingman}}{{}}}
 \bibcite{koskela2018}{{17}{2018}{{Koskela et~al.}}{{Koskela, Jenkins, Johansen and\ Span\`o}}}
-\bibcite{mohle1998}{{18}{1998}{{M{\"o}hle}}{{}}}
-\bibcite{moran1958}{{19}{1958}{{Moran}}{{}}}
-\bibcite{mosimann1962}{{20}{1962}{{Mosimann}}{{}}}
-\bibcite{rauch1965}{{21}{1965}{{Rauch et~al.}}{{Rauch, Striebel and\ Tung}}}
-\bibcite{vidoni1999}{{22}{1999}{{Vidoni}}{{}}}
-\bibcite{wakeley2009}{{23}{2009}{{Wakeley}}{{}}}
-\bibcite{wright1931}{{24}{1931}{{Wright}}{{}}}
+\bibcite{liu1998}{{18}{1998}{{Liu and\ Chen}}{{}}}
+\bibcite{mohle1998}{{19}{1998}{{M{\"o}hle}}{{}}}
+\bibcite{moran1958}{{20}{1958}{{Moran}}{{}}}
+\bibcite{mosimann1962}{{21}{1962}{{Mosimann}}{{}}}
+\bibcite{rauch1965}{{22}{1965}{{Rauch et~al.}}{{Rauch, Striebel and\ Tung}}}
+\bibcite{vidoni1999}{{23}{1999}{{Vidoni}}{{}}}
+\bibcite{wakeley2009}{{24}{2009}{{Wakeley}}{{}}}
+\bibcite{whitley1994}{{25}{1994}{{Whitley}}{{}}}
+\bibcite{wright1931}{{26}{1931}{{Wright}}{{}}}

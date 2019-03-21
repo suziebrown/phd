@@ -33,8 +33,11 @@
 \usepackage{amssymb}
 \usepackage{amsthm}
 \newtheorem{corollary}{Corollary}
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
 
 % useful math symbols
+\newcommand{\PR}{\mathbb{P}}
 \newcommand{\E}{\mathbb{E}}
 \newcommand{\V}{\operatorname{Var}}
 \newcommand{\eqdist}{\overset{d}{=}}
@@ -66,23 +69,32 @@
 \thispagestyle{fancy}
 
 \section{Introduction}
-\textcolor{red}{
-- organisation of the report\\
-- move most of this to become intro to a later section\\
-- general motivation for SMC\\
-- see notes on back of Adam's scribbled-on copy\\
-}
+Since its introduction to the statistics literature by \citet{gordon1993}, sequential Monte Carlo (SMC) has found a huge range of applications and has become an indispensible tool to practitioners from many fields. 
+It is particularly useful in applications such as target tracking, where the model has a natural sequential structure.
+However, the sequential nature of SMC is helpful not only in inherently sequential settings, but in any setting where the quantity to be inferred has highly correlated components.
 
-Sequential Monte Carlo has become a popular tool, particularly in applications such as target tracking, where there is a natural sequential component and we wish to infer underlying states from noisy observations.
-While particle methods can be very effective for filtering, it is more difficult to apply them to smoothing because they typically suffer very badly from ancestral degeneracy in the particle genealogies.
+In these cases the more traditional Markov chain Monte Carlo methods are essentially useless because the strong dependence structure causes them to mix extremely slowly.
+Conversely, SMC exploits this dependence structure to create recursive Monte Carlo algorithms that can be efficient in this difficult setting.
+SMC allows a much wider class of models to be solved beyond the few cases where we can find an exact analytic solution.
 
-When attempting to mitigate this problem, one often encounters a trade-off between ancestral degeneracy (arising from resampling) and weight degeneracy (arising from sequential importance sampling). However, while weight degeneracy is a reasonably well-quantified problem, there exists little in the way of tools for quantifying ancestral degeneracy a priori. There have been some simulation studies attempting to cast light on the magnitude of this problem, but analytical findings remain elusive, since the complexity of the most commonly used particle methods makes it difficult to obtain any rigorous results.
-Consequently, there is a wealth of pertinent open questions in this area. This work attempts to extend a first result for a standard class of SMC algorithms to the more sophisticated algorithms which are typically used in practice.
+The method is not without its problems, and it is one of these problems that we will examine in this work.\\
 
-Throughout this document we will use the compact notation $X_{m:n}$ as shorthand for $X_m, X_{m+1}, \dots, X_n$, as well as $X_{-n} := X_0, \dots, X_{n-1}, X_{n+1}, \dots X_{N}$.
+Sections \ref{sec:SMC} and \ref{sec:coalescent_theory} explain the background material on SMC and coalescent theory respectively. With these in place we are then able to explain the contribution of this work in the context of the SMC literature.
+In Section \ref{sec:conditionalSMC} we present the first novel result of this work with an outline proof; the full proof is in the Appendix.
+Section \ref{sec:resampling} introduces the next focus of this work, for which nothing is proved yet.
+Finally we summarise future directions of the work, and its potential impact, in Section \ref{sec:discussion}.\\
+
+%%%%
+%While particle methods can be very effective for filtering, it is more difficult to apply them to smoothing because they typically suffer very badly from ancestral degeneracy in the particle genealogies.
+%
+%When attempting to mitigate this problem, one often encounters a trade-off between ancestral degeneracy (arising from resampling) and weight degeneracy (arising from sequential importance sampling). However, while weight degeneracy is a reasonably well-quantified problem, there exists little in the way of tools for quantifying ancestral degeneracy a priori. There have been some simulation studies attempting to cast light on the magnitude of this problem, but analytical findings remain elusive, since the complexity of the most commonly used particle methods makes it difficult to obtain any rigorous results.
+%Consequently, there is a wealth of pertinent open questions in this area. This work attempts to extend a first result for a standard class of SMC algorithms to the more sophisticated algorithms which are typically used in practice.
+%%%%
+
+Throughout the document we will use the compact notation $X_{m:n}$ as shorthand for $X_m, X_{m+1}, \dots, X_n$, as well as $X_{-n} := X_0, \dots, X_{n-1}, X_{n+1}, \dots X_{N}$.
 We denote falling factorial powers $(x)_a := x(x-1)\dots(x-a+1)$, with the convention $(x)_0 = 1$.
 
-\section{Sequential Monte Carlo}
+\section{Sequential Monte Carlo}\label{sec:SMC}
 References for this section are \citet{doucet2001}, \citet{delmoral2006}, and \citet{doucet2009}.
 
 \subsection{Class of models}
@@ -218,14 +230,27 @@ The form of the {\footnotesize RESAMPLE} function in Algorithm \ref{alg:SMC} is 
 \end{figure}
 
 \textcolor{red}{
-Add a section including theoretical justification for SMC...?
+- Add a section including theoretical justification for SMC...?\\
+- If so, rearrange to have Sec: State Space Models $\rightarrow$ Sub: Class of Models; Inference Problems; Methods (non-SMC) + Sec: SMC $\rightarrow$ Sub: SMC for SSMs; Theoretical Justification for SMC.
 }\\
 
-\section{Coalescent Theory}
+\section{Coalescent Theory}\label{sec:coalescent_theory}
 \textcolor{red}{
-- formal definition of coalescent processes in terms of equivalence classes...?\\
-- asymptotic coalescents for various population models
+- asymptotic coalescents for various population models\\
+- time is going backwards now...\\
+- Cannings model: exchangeability, also a key assumption for our SMC tings\\
+- without exchangeability, can't even expect Markov process
 }
+
+\begin{defn}[\citet{mohle1998}]
+Let $\mathcal{E}_n$ denote the set of equivalence relations on $\{1,\dots,n\}$.
+A \emph{discrete-time coalescent} is a stochastic process $(R_t)_{t\in\mathbb{N}}$ taking values in $\mathcal{E}_n$ such that 
+$R_0 = \{(1,1),(2,2),\dots,(n,n)\}$ and $\PR[R_{t+1} = \eta \mid R_{0:t-1}, R_{t} = \xi] > 0$ only if $\xi \subseteq \eta$.
+\end{defn}
+That is, the initial state is the trivial relation where each index is in its own equivalence class, and the only possible forward-in-time transitions are staying the same or merging some equivalence classes together.
+An obvious consequence of this is that the state where all of the indices are in the same equivalence class is an absorbing state for the process.
+
+The genealogical interpretation of the equivalence relations is that $(i,j) \in R_t$ if and only if individuals $i$ and $j$ share a common ancestor in generation $t$.
 
 \subsection{Kingman's coalescent}
 Imagine we have a population with fixed size $N$ over discrete generations, where each individual is descended from one randomly chosen individual of the previous generation. Then for each individual in the present generation, we can trace their \emph{lineage} back through the generations. 
@@ -263,7 +288,7 @@ where $b$ is the number of equivalence classes of $\xi$, and $\xi \prec \eta$ me
 
 \section{SMC genealogies as coalescents}
 \textcolor{red}{
-- pop gen literature about large population cts time limits of various models\\
+- motivate the work: see notes on back of Adam's scribbled-on copy \& commented paragraph in intro\\
 - resampling viewed backwards in time: branching process $\to$ coalescent process\\
 - asymptotic properties of SMC lit review: CLT, path storage, coalescence etc.\\
 - the gap in knowledge that we aim to fill\\
@@ -316,7 +341,7 @@ They were able to prove convergence to the Kingman coalescent for genealogies in
 In the following sections we attempt to extend their result to cover some other SMC algorithms.
 
 
-\section{Conditional SMC}
+\section{Conditional SMC}\label{sec:conditionalSMC}
 \textcolor{red}{
 - Introduce particle MCMC (perhaps including basic algorithm)\\
 - Then motivate conditional SMC as update in PMCMC\\
@@ -422,9 +447,13 @@ Under the conditions of \citet[Lemma 3]{koskela2018}, the genealogy of any $n$ p
 
 \section{Alternative resampling schemes}\label{sec:resampling}
 \textcolor{red}{
-- multinomial, residual, stratified, systematic\\
+- stratified, systematic\\
 - Gerber et al's optimal scheme\\
+- Del Moral's toy scheme?\\
 - any others...?\\
+- need to be explicit about how the Unif RV is employed in the resampling\\
+- residual resmapling when weights are equal doesn't resample\\
+- stratified/systematic resampling: dependence on order of particles\\
 - results: theorem for residual resampling (hopefully) - haha you wish\\
 - maybe results for other schemes (wow, so ambitious)\\
 }
@@ -432,7 +461,20 @@ Under the conditions of \citet[Lemma 3]{koskela2018}, the genealogy of any $n$ p
 There is a great deal of flexibility in the function referred to as {\footnotesize RESAMPLE} in Algorithm \ref{alg:SMC}. The most straightforward choice is multinomial resampling \citep{efron1994}, which is also the easiest to analyse. However, multinomial resampling is well known to be sub-optimal in terms of the resulting Monte Carlo variance, and is rarely used in practice. For instance, \citet{douc2005} proves that both residual resampling and stratified resampling yield lower variance. 
 In this section we will present some resampling schemes that claim to perform better than multinomial resampling.
 
-\section{Discussion}
+
+\begin{description}
+\item[Multinomial resampling.] \citep{efron1994} This is the simplest way to do resampling. 
+Parental indices are chosen independently from $\{1, \dots, N\}$, each with probability given by the weight of the corresponding particle $\wt{i}$. That is, $a_t^{(1:N)} \sim \Cat(\{1,\dots, N\}, \wt{1:N})$.
+This implies the joint distribution of the offspring counts is $\vt{1:N} \eqdist \operatorname{Multinomial}(N, \wt{1:N})$. Note that in this case the parental indices are chosen independently, but the resulting offspring counts are negatively correlated.
+\item[Residual resampling.] \citep{liu1998, whitley1994} Each particle $x_{t}^{(i)}$ is deterministically assigned $\lfloor N \wt{i} \rfloor$ offspring, and the remaining $R := N- \sum \lfloor N w_{t}^{(i)} \rfloor$ offspring are assigned multinomially in proportion to the unaccounted-for weight. This yields offspring counts $\vt{1:N} \eqdist \lfloor N \wt{1:N} \rfloor +  \operatorname{Multinomial}(R, (N \wt{1:N} - \lfloor N \wt{1:N}\rfloor)/R)$. This scheme incorporates a deterministic part which ensures that every particle with weight $>1/N$ is guaranteed to survive. This is a desirable property as it prevents the random loss of promising particles.
+\end{description}
+%Stratified and systematic resampling amount to altering the $\operatorname{U}(0,1)$ random number generator that underlies a multinomial resampling scheme.
+%\begin{description}
+%\item[Stratified resampling] \citep{kitagawa1996} Instead of sampling $N$ independent numbers from $\operatorname{U}(0,1)$, one number is sampled uniformly from each subinterval of length $1/N$, that is $U_i \sim \operatorname{U}((i-1)/N, i/N)$. This intuitively reduces the potential variance arising from random clustering.
+%\item[Systematic resampling] \citep{carpenter1999, whitley1994} Sample one random number $U \sim \operatorname{U}(0,1/N)$ and use it to deterministically select $N$ evenly spaced numbers $U_i = U + (i-1)/N$. Like in residual resampling, it is intuitive that this scheme should reduce the variance because much of the randomness is replaced by deterministic operations.
+%\end{description}
+
+\section{Discussion}\label{sec:discussion}
 \textcolor{red}{
 - results so far\\
 - impact of this work: to practitioners, to enriching the SMC literature, interpretation within pop gen.\\
