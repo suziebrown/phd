@@ -18,6 +18,7 @@
 % miscellaneous formatting
 \usepackage{xcolor}
 \usepackage[font=small]{caption}
+\usepackage{subfig}
 
 % tikz
 \usepackage{tikz}
@@ -473,6 +474,124 @@ This implies the joint distribution of the offspring counts is $\vt{1:N} \eqdist
 %\item[Stratified resampling] \citep{kitagawa1996} Instead of sampling $N$ independent numbers from $\operatorname{U}(0,1)$, one number is sampled uniformly from each subinterval of length $1/N$, that is $U_i \sim \operatorname{U}((i-1)/N, i/N)$. This intuitively reduces the potential variance arising from random clustering.
 %\item[Systematic resampling] \citep{carpenter1999, whitley1994} Sample one random number $U \sim \operatorname{U}(0,1/N)$ and use it to deterministically select $N$ evenly spaced numbers $U_i = U + (i-1)/N$. Like in residual resampling, it is intuitive that this scheme should reduce the variance because much of the randomness is replaced by deterministic operations.
 %\end{description}
+
+\begin{figure}
+\centering
+\subfloat[Multinomial resampling]{
+\begin{tikzpicture}
+%parallel lines
+\draw[thick] (0,0) -- (12,0);
+\draw (0,2) -- (12,2);
+% tick marks at ends
+\draw[thick] (0,0.1) --(0,-0.1);
+\draw[thick] (12,0.1) --(12,-0.1);
+\draw (0,2.1) --(0,1.9);
+\draw (12,2.1) --(12,1.9);
+% tick marks indicating weights
+\draw[thick] (3,0.1) --(3,-0.1);
+\draw[thick] (5,0.1) --(5,-0.1);
+\draw[thick] (11,0.1) --(11,-0.1);
+% weight labels
+\node at (1.5,-0.3) {$w_1$};
+\node at (4,-0.3) {$w_2$};
+\node at (8,-0.3) {$w_3$};
+\node at (11.5,-0.3) {$w_4$};
+% endpoint labels
+\node at (-0.2,2) {$0$};
+\node at (12.2,2) {$1$};
+% uniform points
+\filldraw[violet] (10.94,2) circle (2pt);
+\filldraw[violet] (1.06,2) circle (2pt);
+\filldraw[violet] (8.82,2) circle (2pt);
+\filldraw[violet] (3.16,2) circle (2pt);
+% arrows from random points
+\draw[thick, violet, ->] (10.94,2) -- (10.94,0);
+\draw[thick, violet, ->] (1.06,2) -- (1.06,0);
+\draw[thick, violet, ->] (8.82,2) -- (8.82,0);
+\draw[thick, violet, ->] (3.16,2) -- (3.16,0);
+\end{tikzpicture}
+}\\
+\subfloat[Stratified resampling]{
+\begin{tikzpicture}
+%parallel lines
+\draw[thick] (0,0) -- (12,0);
+\draw (0,2) -- (12,2);
+% tick marks at ends
+\draw[thick] (0,0.1) --(0,-0.1);
+\draw[thick] (12,0.1) --(12,-0.1);
+\draw (0,2.1) --(0,1.9);
+\draw (12,2.1) --(12,1.9);
+% tick marks indicating weights
+\draw[thick] (3,0.1) --(3,-0.1);
+\draw[thick] (5,0.1) --(5,-0.1);
+\draw[thick] (11,0.1) --(11,-0.1);
+% tick marks indicating sampling intervals:
+\draw (3,2.1) --(3,1.9);
+\draw (6,2.1) --(6,1.9);
+\draw (9,2.1) --(9,1.9);
+% weight labels
+\node at (1.5,-0.3) {$w_1$};
+\node at (4,-0.3) {$w_2$};
+\node at (8,-0.3) {$w_3$};
+\node at (11.5,-0.3) {$w_4$};
+% endpoint labels
+\node at (-0.2,2) {$0$};
+\node at (12.2,2) {$1$};
+% stratified points
+\filldraw[violet] (2.735,2) circle (2pt);
+\filldraw[violet] (3.265,2) circle (2pt);
+\filldraw[violet] (8.205,2) circle (2pt);
+\filldraw[violet] (9.79,2) circle (2pt);
+% arrows from random points
+\draw[thick, violet, ->] (2.735,2) -- (2.735,0);
+\draw[thick, violet, ->] (3.265,2) -- (3.265,0);
+\draw[thick, violet, ->] (8.205,2) -- (8.205,0);
+\draw[thick, violet, ->] (9.79,2) -- (9.79,0);
+\end{tikzpicture}
+}\\
+\subfloat[Systematic resampling]{
+\begin{tikzpicture}
+%parallel lines
+\draw[thick] (0,0) -- (12,0);
+\draw (0,2) -- (12,2);
+% tick marks at ends
+\draw[thick] (0,0.1) --(0,-0.1);
+\draw[thick] (12,0.1) --(12,-0.1);
+\draw (0,2.1) --(0,1.9);
+\draw (12,2.1) --(12,1.9);
+% tick marks indicating weights
+\draw[thick] (3,0.1) --(3,-0.1);
+\draw[thick] (5,0.1) --(5,-0.1);
+\draw[thick] (11,0.1) --(11,-0.1);
+% tick marks indicating sampling intervals:
+\draw (3,2.1) --(3,1.9);
+\draw (6,2.1) --(6,1.9);
+\draw (9,2.1) --(9,1.9);
+% weight labels
+\node at (1.5,-0.3) {$w_1$};
+\node at (4,-0.3) {$w_2$};
+\node at (8,-0.3) {$w_3$};
+\node at (11.5,-0.3) {$w_4$};
+% endpoint labels
+\node at (-0.2,2) {$0$};
+\node at (12.2,2) {$1$};
+% stratified points
+\filldraw[violet] (2.735,2) circle (2pt);
+\filldraw[violet] (5.735,2) circle (2pt);
+\filldraw[violet] (8.735,2) circle (2pt);
+\filldraw[violet] (11.735,2) circle (2pt);
+% arrows from random points
+\draw[thick, violet, ->] (2.735,2) -- (2.735,0);
+\draw[thick, violet, ->] (5.735,2) -- (5.735,0);
+\draw[thick, violet, ->] (8.735,2) -- (8.735,0);
+\draw[thick, violet, ->] (11.735,2) -- (11.735,0);
+\end{tikzpicture}
+}\\
+\caption{Illustrations of the way parental indices are sampled in three different resampling schemes. In each case the indices are assigned by sampling from $\Unif(0,1)$ and seeing which subinterval the samples land in, where the length of the subinterval corresponding to each index is given by its weight. The same $\Unif(0,1)$ samples are used in each case.\\
+\textbf{(a)} For Multinomial resampling, we just sample $N$  independent $\Unif(0,1)$ random variables. In this example the sampled offspring counts are $(1,1,2,0)$.\\
+\textbf{(b)} For stratified resampling, the $\Unif(0,1)$ samples are transformed to Uniform draws from the intervals (0,0.25), (0.25,0.5), (0.5, 0.75), (0.75,1). In this example the sampled offspring counts are $(1,1,2,0)$.\\
+\textbf{(c)} For systematic resampling, we use only the first draw and transform as in (b) to get a sample from $\Unif(0,0.25)$. For the subsequent draws, we just add 0.25 each time to obtain a sample in each interval. In this example the sampled offspring counts are $(1,0,2,1)$.}
+\end{figure}
 
 \section{Discussion}\label{sec:discussion}
 \textcolor{red}{
