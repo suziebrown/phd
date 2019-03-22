@@ -28,6 +28,8 @@
 \newcommand{\wt}[2][t]{w_{#1}^{(#2)}}
 \newcommand{\wbar}[2][t]{\bar{w}_{#1}^{(#2)}}
 
+\newcommand{\myrule}{\\ \rule{\textwidth}{1pt}}
+
 \title{Residual resampling in SMC}
 \author{Suzie Brown}
 \date{\today}
@@ -56,18 +58,52 @@ The expectation then comes out as
 &= \E[ (N\wt{i})^2 |\F] - \E[ \lfloor N\wt{i} \rfloor |\F] - \E\left[ \frac{r_i^2}{N-k} |\F \right]
 \end{align*}
 so we get
-\begin{align*}
-\E[c^r_N(t) |\F] &=  \frac{1}{(N)_2}  \sum_{i=1}^{N} \E[(\vt{i})_2 |\F ]\\
-&= \frac{N}{N-1} \sum_{i=1}^{N} \E[(\wt{i})^2 |\F] - \frac{1}{(N)_2} \sum_{i=1}^{N} \E\left[ \frac{r_i^2}{N-k} |\F \right] - \frac{1}{(N)_2} \E[k |\F] \\
-&= \E[c^{m}_N(t) |\F] \left( 1 + \frac{1}{N-1} \right) - \frac{1}{(N)_2}  \E\left[ \frac{\sum_{i=1}^{N} (N\wt{i} - \lfloor N\wt{i}\rfloor)^2}{\sum_{j=1}^{N} (N\wt{j} - \lfloor N\wt{j}\rfloor)} |\F \right] \\
-&\qquad -\frac{1}{(N)_2} \E \left[ \sum_{i=1}^{N} \lfloor N\wt{i}\rfloor |\F \right]
-\end{align*}
+\begin{align}
+\E[c^r_N(t) |\F] &=  \frac{1}{(N)_2}  \sum_{i=1}^{N} \E[(\vt{i})_2 |\F ]\notag\\
+&= \frac{N}{N-1} \sum_{i=1}^{N} \E[(\wt{i})^2 |\F] - \frac{1}{(N)_2} \sum_{i=1}^{N} \E\left[ \frac{r_i^2}{N-k} |\F \right] - \frac{1}{(N)_2} \E[k |\F] \notag\\
+&= \E[c^{m}_N(t) |\F] \left( 1 + \frac{1}{N-1} \right) - \frac{1}{(N)_2}  \E\left[ \frac{\sum_{i=1}^{N} (N\wt{i} - \lfloor N\wt{i}\rfloor)^2}{\sum_{j=1}^{N} (N\wt{j} - \lfloor N\wt{j}\rfloor)} \middle|\F \right] \notag\\
+&\qquad -\frac{1}{(N)_2} \E \left[ \sum_{i=1}^{N} \lfloor N\wt{i}\rfloor \middle|\F \right]
+\label{eq:cNt_1}
+\end{align}
 \textbf{Sanity check:}\\
 When the weights are all equal, $\wt{i} \equiv 1/N$, we should have $\E[c^r_N(t) |\F] = 0$ since each particle will have exactly one offspring so it is impossible for any lineages to coalesce. In this case we have $\E[c^{m}_N(t) |\F] = \sum_{i=1}^{N} \E[(\wt{i})^2 |\F] = 1/N$ for multinomial resampling. We also have that $N\wt{i} \equiv \lfloor N\wt{i} \rfloor \equiv 1$ and hence $r_i = 0$ and $k=N$. Thus the RHS comes out as
 \begin{equation*}
 \frac{1}{N}\frac{N}{N-1} - 0 - \frac{1}{(N)_2} N = \frac{1}{N-1} - \frac{1}{N-1} = 0
 \end{equation*}
 as expected.
+\myrule \\%-------------------------------
+We can write it in a different form by combining the second and third terms of \eqref{eq:cNt_1}:
+\begin{align*}
+&- \frac{1}{(N)_2}  \E\left[ \frac{\sum_{i=1}^{N} (N\wt{i} - \lfloor N\wt{i}\rfloor)^2}{\sum_{j=1}^{N} (N\wt{j} - \lfloor N\wt{j}\rfloor)} |\F \right] 
+-\frac{1}{(N)_2} \E \left[ \sum_{i=1}^{N} \lfloor N\wt{i}\rfloor \middle|\F \right] \\
+&=: - \frac{1}{(N)_2} \E[A |\F]
+\end{align*}
+Then
+\begin{align*}
+A &=
+ \frac{\sum_{i=1}^{N} (N\wt{i} - \lfloor N\wt{i}\rfloor)^2}{\sum_{j=1}^{N} (N\wt{j} - \lfloor N\wt{j}\rfloor)} 
++ \sum_{i=1}^{N} \lfloor N\wt{i}\rfloor \\
+&= \frac{\sum_{i=1}^{N} (N\wt{i} - \lfloor N\wt{i}\rfloor)^2 + \sum_{i=1}^N\sum_{k=1}^N \lfloor N\wt{k} \rfloor (N\wt{i}- \lfloor N\wt{i} \rfloor)}{\sum_{j=1}^{N} (N\wt{j} - \lfloor N\wt{j}\rfloor)} \\
+&=: \frac{A^\prime}{\sum_{j=1}^{N} (N\wt{j} - \lfloor N\wt{j}\rfloor)} 
+\end{align*}
+Then
+\begin{align*}
+A^\prime &=
+\sum_{i=1}^{N} (N\wt{i} - \lfloor N\wt{i}\rfloor)^2 + \sum_{i=1}^N\sum_{k=1}^N \lfloor N\wt{k} \rfloor (N\wt{i}- \lfloor N\wt{i} \rfloor)\\
+&= \sum_{i=1}^{N} \left\{ \left(N\wt{i} - \lfloor N\wt{i}\rfloor \right)^2 + \lfloor N\wt{i} \rfloor \left(N\wt{i} - \lfloor N\wt{i}\rfloor \right)
++ \sum_{k\neq i} \lfloor N\wt{k} \rfloor \left(N\wt{i} - \lfloor N\wt{i}\rfloor \right) \right\}\\
+&= \sum_{i=1}^{N} \left\{ (N\wt{i})^2 - N\wt{i} \lfloor N\wt{i} \rfloor 
++ \sum_{k\neq i} \lfloor N\wt{k} \rfloor \left(N\wt{i} - \lfloor N\wt{i}\rfloor \right) \right\}\\
+ &= \sum_{i=1}^{N} \left\{ \left(N\wt{i} - \lfloor N\wt{i} \rfloor \right) \left( N\wt{i} + \sum_{k\neq i} \lfloor N\wt{k} \rfloor \right) \right\}
+\end{align*}
+So we have
+%\begin{equation*}
+%A = \frac{\sum_{i=1}^{N} \left\{ \left(N\wt{i} - \lfloor N\wt{i} \rfloor \right) \left( N\wt{i} + \sum_{k\neq i} \lfloor N\wt{i} \rfloor \right) \right\}}{\sum_{j=1}^{N} (N\wt{j} - \lfloor N\wt{j}\rfloor)} 
+%\end{equation*}
+\begin{align*}
+\E[c^r_N(t) |\F] &=  \E[c^{m}_N(t) |\F] \left( 1 + \frac{1}{N-1} \right) \\
+&\qquad- \frac{1}{(N)_2}  \E\left[ \frac{\sum_{i=1}^{N} \left(N\wt{i} - \lfloor N\wt{i} \rfloor \right) \left( N\wt{i} + \sum_{k\neq i} \lfloor N\wt{k} \rfloor \right) }{\sum_{j=1}^{N} \left(N\wt{j} - \lfloor N\wt{j}\rfloor\right)} \middle|\F \right]  
+\end{align*}
 
 \bibliography{smc.bib}
 \end{document}
