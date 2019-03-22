@@ -158,6 +158,11 @@ In the case of linear Gaussian state space models, the posterior distributions o
 The other analytic case occurs if the state space of $(X_t)_{t=0}^\infty$ is finite, in which case the forward-backward algorithm \citep{baum1970} yields the exact posteriors.
 
 \subsection{Particle approximation}
+\textcolor{red}{
+- Add a section including theoretical justification for SMC...?\\
+- If so, rearrange to have Sec: State Space Models $\rightarrow$ Sub: Class of Models; Inference Problems; Methods (non-SMC) + Sec: SMC $\rightarrow$ Sub: SMC for SSMs; Theoretical Justification for SMC.\\
+}
+
 In more complex models such techniques are not feasible, and we are forced to resort to Monte Carlo methods.
 For state space models, Markov chain Monte Carlo methods are not very effective due to the high dimension of the parameter space. But we can exploit the sequential nature of the underlying dynamics to decompose the problem into a sequence of inferences of more manageable dimension.
 This is the motivation behind sequential Monte Carlo (SMC) methods.
@@ -230,10 +235,6 @@ The form of the {\footnotesize RESAMPLE} function in Algorithm \ref{alg:SMC} is 
 \label{fig:SMC_vs_kalman}
 \end{figure}
 
-\textcolor{red}{
-- Add a section including theoretical justification for SMC...?\\
-- If so, rearrange to have Sec: State Space Models $\rightarrow$ Sub: Class of Models; Inference Problems; Methods (non-SMC) + Sec: SMC $\rightarrow$ Sub: SMC for SSMs; Theoretical Justification for SMC.
-}\\
 
 \section{Coalescent Theory}\label{sec:coalescent_theory}
 \textcolor{red}{
@@ -319,8 +320,8 @@ This phenomenon, known as \emph{ancestral degeneracy}, is illustrated in Figure 
 So if we are really interested in the smoothed states a long way into the past, the estimation variance will be huge. This problem was identified even in the early literature \citep{gordon1993}, where some ad hoc methods were proposed to reduce it. Since then there has been a lot of work towards mitigating ancestral degeneracy, some of which are discussed in Section \ref{sec:resampling}.\\
 \textcolor{red}{
 - Ancestral vs.\ weight degeneracy\\
-- More discussion of general techniques to mitigate it
-}\\
+- More discussion of general techniques to mitigate it?\\
+}
 
 \begin{figure}
 \centering
@@ -448,32 +449,68 @@ Under the conditions of \citet[Lemma 3]{koskela2018}, the genealogy of any $n$ p
 
 \section{Alternative resampling schemes}\label{sec:resampling}
 \textcolor{red}{
-- stratified, systematic\\
+- rewrite the intro paragraph\\
 - Gerber et al's optimal scheme\\
 - Del Moral's toy scheme?\\
-- any others...?\\
-- need to be explicit about how the Unif RV is employed in the resampling\\
-- residual resmapling when weights are equal doesn't resample\\
-- stratified/systematic resampling: dependence on order of particles\\
-- results: theorem for residual resampling (hopefully) - haha you wish\\
-- maybe results for other schemes (wow, so ambitious)\\
+- any other interesting properties of the various schemes\\
+- properties we will require from resampling schemes, eg unbiased\\
 }
 
 There is a great deal of flexibility in the function referred to as {\footnotesize RESAMPLE} in Algorithm \ref{alg:SMC}. The most straightforward choice is multinomial resampling \citep{efron1994}, which is also the easiest to analyse. However, multinomial resampling is well known to be sub-optimal in terms of the resulting Monte Carlo variance, and is rarely used in practice. For instance, \citet{douc2005} proves that both residual resampling and stratified resampling yield lower variance. 
 In this section we will present some resampling schemes that claim to perform better than multinomial resampling.
 
+\subsection{Multinomial resampling}
+Multinomial resampling \citep{efron1994} is one of the simplest resampling schemes, and the one first appearing in the literature.
+ 
+The parental indices are chosen independently from $\{1, \dots, N\}$, each with probability given by the weight of the corresponding particle $\wt{i}$. 
+That is, 
+\begin{equation*}
+a_t^{(1:N)} \sim \Cat(\{1,\dots, N\}, \wt{1:N}) .
+\end{equation*}
+This implies the joint distribution of the offspring counts is 
+\begin{equation*}
+\vt{1:N} \eqdist \operatorname{Multinomial}(N, \wt{1:N}) .
+\end{equation*}
+Note that in this case the parental indices are chosen independently, but the resulting offspring counts are negatively correlated.
 
-\begin{description}
-\item[Multinomial resampling.] \citep{efron1994} This is the simplest way to do resampling. 
-Parental indices are chosen independently from $\{1, \dots, N\}$, each with probability given by the weight of the corresponding particle $\wt{i}$. That is, $a_t^{(1:N)} \sim \Cat(\{1,\dots, N\}, \wt{1:N})$.
-This implies the joint distribution of the offspring counts is $\vt{1:N} \eqdist \operatorname{Multinomial}(N, \wt{1:N})$. Note that in this case the parental indices are chosen independently, but the resulting offspring counts are negatively correlated.
-\item[Residual resampling.] \citep{liu1998, whitley1994} Each particle $x_{t}^{(i)}$ is deterministically assigned $\lfloor N \wt{i} \rfloor$ offspring, and the remaining $R := N- \sum \lfloor N w_{t}^{(i)} \rfloor$ offspring are assigned multinomially in proportion to the unaccounted-for weight. This yields offspring counts $\vt{1:N} \eqdist \lfloor N \wt{1:N} \rfloor +  \operatorname{Multinomial}(R, (N \wt{1:N} - \lfloor N \wt{1:N}\rfloor)/R)$. This scheme incorporates a deterministic part which ensures that every particle with weight $>1/N$ is guaranteed to survive. This is a desirable property as it prevents the random loss of promising particles.
-\end{description}
-%Stratified and systematic resampling amount to altering the $\operatorname{U}(0,1)$ random number generator that underlies a multinomial resampling scheme.
-%\begin{description}
-%\item[Stratified resampling] \citep{kitagawa1996} Instead of sampling $N$ independent numbers from $\operatorname{U}(0,1)$, one number is sampled uniformly from each subinterval of length $1/N$, that is $U_i \sim \operatorname{U}((i-1)/N, i/N)$. This intuitively reduces the potential variance arising from random clustering.
-%\item[Systematic resampling] \citep{carpenter1999, whitley1994} Sample one random number $U \sim \operatorname{U}(0,1/N)$ and use it to deterministically select $N$ evenly spaced numbers $U_i = U + (i-1)/N$. Like in residual resampling, it is intuitive that this scheme should reduce the variance because much of the randomness is replaced by deterministic operations.
-%\end{description}
+In practice, a common way to sample the parental indices is the following: divide the unit interval into $N$ subintervals each of which will correspond to a certain index $i$ and has length equal to the weight $\wt{i}$; then draw $N$ samples from $\Unif(0,1)$ and classify them according to which of these subintervals they fall in. This is illustrated in Figure \ref{fig:resampling_mn}.
+
+\subsection{Residual resampling}
+Residual resampling is described in \citet{liu1998} and also in \citet{whitley1994} where it is called ``remainder stochastic sampling''.
+
+Each particle $x_{t}^{(i)}$ is deterministically assigned $\lfloor N \wt{i} \rfloor$ offspring, and the remaining $R := N- \sum \lfloor N w_{t}^{(i)} \rfloor$ offspring are assigned multinomially in proportion to the unaccounted-for weight. 
+This yields offspring counts
+\begin{equation*}
+\vt{1:N} \eqdist \lfloor N \wt{1:N} \rfloor +  \operatorname{Multinomial}(R, (N \wt{1:N} - \lfloor N \wt{1:N}\rfloor)/R) .
+\end{equation*}
+The deterministic part ensures that every particle with weight $>1/N$ is guaranteed to survive. This is a desirable property as it prevents the random loss of high-weighted particles.
+
+\subsection{Stratified resampling}
+Stratified resampling is introduced in \cite{kitagawa1996}.
+
+The scheme proceeds like Multinomial resampling, except that the Uniform samples that are fed in to do the Categorical sampling are produced in a different way.
+Instead of sampling $N$ independent numbers from $\operatorname{U}(0,1)$, one number is sampled uniformly from each subinterval of length $1/N$. 
+That is, 
+\begin{equation*}
+U_i \sim \Unif \left(\frac{i-1}{N}, \frac{i}{N} \right) .
+\end{equation*}
+(Of course this means that the offspring distribution is no longer Multinomial, since parental indices are not chosen independently.)
+This scheme ensures that the samples are ``well spread out'', again reducing the probability of randomly losing high-weighted particles.
+The method is illustrated in Figure \ref{fig:resampling_stratified}.
+
+\subsection{Systematic resampling}
+Systematic resampling is described in \citet{carpenter1999} and also in \citet{whitley1994} where it is called ``stochastic universal sampling''.
+
+Like stratified resampling, it constitutes a change to the random number generator for sampling from the Categorical distriubtion. 
+In this scheme, only one Uniform sample is drawn, $U \sim \operatorname{U}(0,1/N)$, and the other $N-1$ samples are generated deterministically by setting
+\begin{equation*}
+U_i = U + \frac{i-1}{N}
+\end{equation*}
+for each $i \in \{1, \dots, N\}$.
+This scheme again ensures the random numbers are ``well spread out'', even more so than with stratified resampling.
+The method is illustrated in Figure \ref{fig:resampling_systematic}.
+
+Systematic resampling is often preferred among practitioners because it is extremely easy to implement and also computationally efficient, requiring only one random number to be generated.
 
 \begin{figure}
 \centering
@@ -510,6 +547,7 @@ This implies the joint distribution of the offspring counts is $\vt{1:N} \eqdist
 \draw[thick, violet, ->] (8.82,2) -- (8.82,0);
 \draw[thick, violet, ->] (3.16,2) -- (3.16,0);
 \end{tikzpicture}
+\label{fig:resampling_mn}
 }\\
 \subfloat[Stratified resampling]{
 \begin{tikzpicture}
@@ -548,6 +586,7 @@ This implies the joint distribution of the offspring counts is $\vt{1:N} \eqdist
 \draw[thick, violet, ->] (8.205,2) -- (8.205,0);
 \draw[thick, violet, ->] (9.79,2) -- (9.79,0);
 \end{tikzpicture}
+\label{fig:resampling_stratified}
 }\\
 \subfloat[Systematic resampling]{
 \begin{tikzpicture}
@@ -586,12 +625,41 @@ This implies the joint distribution of the offspring counts is $\vt{1:N} \eqdist
 \draw[thick, violet, ->] (8.735,2) -- (8.735,0);
 \draw[thick, violet, ->] (11.735,2) -- (11.735,0);
 \end{tikzpicture}
+\label{fig:resampling_systematic}
 }\\
-\caption{Illustrations of the way parental indices are sampled in three different resampling schemes. In each case the indices are assigned by sampling from $\Unif(0,1)$ and seeing which subinterval the samples land in, where the length of the subinterval corresponding to each index is given by its weight. The same $\Unif(0,1)$ samples are used in each case.\\
+\caption{Illustration of the way parental indices are sampled in three different resampling schemes. For this example $N=4$ and the weights are $\wt{1:4} = \frac{1}{N}(1,\frac{2}{3},2,\frac{1}{3})$. In each case the indices are assigned by sampling from $\Unif(0,1)$ and seeing which subinterval the samples land in, where the length of the subinterval corresponding to each index is given by its weight. The same $\Unif(0,1)$ samples are used in each case.\\
 \textbf{(a)} For Multinomial resampling, we just sample $N$  independent $\Unif(0,1)$ random variables. In this example the sampled offspring counts are $(1,1,2,0)$.\\
 \textbf{(b)} For stratified resampling, the $\Unif(0,1)$ samples are transformed to Uniform draws from the intervals (0,0.25), (0.25,0.5), (0.5, 0.75), (0.75,1). In this example the sampled offspring counts are $(1,1,2,0)$.\\
 \textbf{(c)} For systematic resampling, we use only the first draw and transform as in (b) to get a sample from $\Unif(0,0.25)$. For the subsequent draws, we just add 0.25 each time to obtain a sample in each interval. In this example the sampled offspring counts are $(1,0,2,1)$.}
 \end{figure}
+
+\subsection{Remarks on performance}
+\subsubsection{Support of offspring numbers}
+First consider the support of the marginal offspring distributions in each scheme, given the corresponding weight. Condition on the $i^{th}$ weight lying in the interval $\wt{i} \in [k/N, (k+1)/N]$, but leave the other weights unknown. By considering the best and worst cases for each scheme, we have: 
+\begin{description}
+\item[Multinomial:] $\vt{i} \in \{0,\dots, N\}$
+\item[Residual:] $\vt{i} \in \{k,\dots, N\}$
+\item[Stratified:] $\vt{i} \in \{k-1, k+2\}$
+\item[Systematic:] $\vt{i} \in \{k, k+1\}$
+\end{description}
+We see that multinomial resampling allows the possibility of very good particles having $0$ offspring, and of very bad particles having $N$ offspring (although the probabilities associated to these events are low).
+Residual resampling ensures that good particles do not die out, but still allows bad particles to possibly have many offspring.
+Stratified resampling is more restrictive, although it allows the possibility of a particle with weight $>1/N$ leaving no offspring.
+Systematic resampling is more restrictive still, allowing the number of offspring of each particle to vary only by one.
+
+\subsubsection{Permutation invariance}
+A strange property of stratified and systematic resampling is that they are sensitive to the order in which the subintervals are placed. For example, in Figures \ref{fig:resampling_stratified} and \ref{fig:resampling_systematic} if the intervals $w_2$ and $w_4$ were swapped, the number of offspring assigned to particles 2 and 4 would be swapped in each case. 
+We can also see that because $w_1$ has weight $\geq 1/N$ and is placed first, it is guaranteed at least one offspring.
+
+This property can lead to pathological behaviour, but is easily avoided by applying a random permutation to the order of the subintervals.
+
+\subsubsection{Equal weights}
+Suppose we somehow end up in the situation where all the weights are equal (i.e.\ $\wt{i} = 1/N$ for all $i$).
+In this case, residual resampling will result in a deterministic assignment only: each particle will be assigned one offspring, and there will be no remainder left to assign randomly. This behaviour cannot be avoided, however the event that all weights are equal typically has zero measure.
+
+In fact, stratified and systematic resampling will have the same result: the intervals for sampling will correspond exactly to the weighted subintervals, so no matter which random numbers are sampled, exactly one will fall in each subinterval.
+
+In the case of stratified resampling this behaviour can be avoided by shifting the sampling intervals by a random amount. In fact this random shift is inherent in all of the resampling schemes as described by \citet{whitley1994}; he imagines subdivisions of a circle rather than an interval, and then ``spins the roulette wheel'' around it.
 
 \section{Discussion}\label{sec:discussion}
 \textcolor{red}{

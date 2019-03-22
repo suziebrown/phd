@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  21 MAR 2019 17:51
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  22 MAR 2019 11:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -706,94 +706,78 @@ Underfull \hbox (badness 10000) in paragraph at lines 83--87
 <smc_kalman.pdf, id=26, 602.25pt x 250.9375pt>
 File: smc_kalman.pdf Graphic file (type pdf)
 <use smc_kalman.pdf>
-Package pdftex.def Info: smc_kalman.pdf  used on input line 228.
+Package pdftex.def Info: smc_kalman.pdf  used on input line 233.
 (pdftex.def)             Requested size: 424.82523pt x 177.01816pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 236--237
-
- []
-
-[3] [4 <./smc_kalman.pdf>]
+ [3] [4 <./smc_kalman.pdf>]
 <kingman.png, id=42, 377.41pt x 341.275pt>
 File: kingman.png Graphic file (type png)
 <use kingman.png>
-Package pdftex.def Info: kingman.png  used on input line 265.
+Package pdftex.def Info: kingman.png  used on input line 266.
 (pdftex.def)             Requested size: 283.22162pt x 256.10141pt.
  [5]
 <eg_WF.pdf, id=47, 451.6875pt x 385.19911pt>
 File: eg_WF.pdf Graphic file (type pdf)
 <use eg_WF.pdf>
-Package pdftex.def Info: eg_WF.pdf  used on input line 307.
+Package pdftex.def Info: eg_WF.pdf  used on input line 308.
 (pdftex.def)             Requested size: 377.62642pt x 322.06036pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 319--324
-
- []
-
 <degeneracy.pdf, id=48, 728.48161pt x 385.92181pt>
 File: degeneracy.pdf Graphic file (type pdf)
 <use degeneracy.pdf>
-Package pdftex.def Info: degeneracy.pdf  used on input line 327.
+Package pdftex.def Info: degeneracy.pdf  used on input line 328.
 (pdftex.def)             Requested size: 377.62642pt x 200.0504pt.
-[6 <./kingman.png>] [7 <./eg_WF.pdf> <./degeneracy.pdf
+ [6 <./kingman.png>] [7 <./eg_WF.pdf> <./degeneracy.pdf
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./degeneracy.pdf): PDF inclu
 sion: multiple pdfs with page group included in a single page
->] [8] [9] [10]
-Overfull \hbox (0.18306pt too wide) in paragraph at lines 467--470
-[]\OT1/cmr/m/n/10 (Efron and Tib-shi-rani, 1994) This is the sim-plest way to d
-o re-sam-pling. Parental
- []
-
-[11] [12]
-Overfull \hbox (8.04799pt too wide) detected at line 642
-[]
- []
-
-[13]
-Overfull \hbox (7.93095pt too wide) detected at line 686
-[]
- []
-
-
-Overfull \hbox (23.69243pt too wide) detected at line 707
+>] [8] [9] [10] [11] [12] [13]
+Overfull \hbox (8.04799pt too wide) detected at line 710
 []
  []
 
 [14]
-Overfull \hbox (36.88333pt too wide) detected at line 721
+Overfull \hbox (7.93095pt too wide) detected at line 754
+[]
+ []
+
+
+Overfull \hbox (23.69243pt too wide) detected at line 775
 []
  []
 
 [15]
-Overfull \hbox (7.12737pt too wide) detected at line 746
+Overfull \hbox (36.88333pt too wide) detected at line 789
 []
  []
 
-[16] [17] [18]
-Overfull \hbox (26.89339pt too wide) detected at line 816
+[16]
+Overfull \hbox (7.12737pt too wide) detected at line 814
+[]
+ []
+
+[17] [18] [19]
+Overfull \hbox (26.89339pt too wide) detected at line 884
 []
  []
 
 
-Overfull \hbox (24.85626pt too wide) detected at line 834
+Overfull \hbox (24.85626pt too wide) detected at line 902
 []
  []
 
 
-Overfull \hbox (23.73724pt too wide) detected at line 846
+Overfull \hbox (23.73724pt too wide) detected at line 914
 []
  []
 
-[19] (./transfer_report.bbl [20]) [21] (./transfer_report.aux) ) 
+[20] (./transfer_report.bbl [21]) [22] (./transfer_report.aux) ) 
 Here is how much of TeX's memory you used:
- 15391 strings out of 492649
- 292985 string characters out of 6129623
- 360080 words of memory out of 5000000
- 18951 multiletter control sequences out of 15000+600000
+ 15403 strings out of 492649
+ 293266 string characters out of 6129623
+ 364048 words of memory out of 5000000
+ 18963 multiletter control sequences out of 15000+600000
  15283 words of font info for 58 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,15n,54p,1253b,746s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,15n,54p,1357b,746s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/tex
 live/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texl
 ive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texli
@@ -802,28 +786,30 @@ ve/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/local/texlive
 2018/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/local/texli
 ve/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texliv
 e/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/
-2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/20
-18/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2018
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2018/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2018/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2018/texmf
--dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2018/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2018/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2018/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2018/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2018/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2018/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmti10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmti9.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/publi
-c/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/p
-ublic/amsfonts/symbols/msbm7.pfb>
-Output written on transfer_report.pdf (21 pages, 496121 bytes).
+2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/20
+18/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2018
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2018/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2018/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2018/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2018/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2018/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2018/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2018/texmf-dist/font
+s/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2018/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmss10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmti10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmti9.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/ams
+fonts/symbols/msbm10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public
+/amsfonts/symbols/msbm7.pfb>
+Output written on transfer_report.pdf (22 pages, 520018 bytes).
 PDF statistics:
- 197 PDF objects out of 1000 (max. 8388607)
- 138 compressed objects within 2 object streams
+ 208 PDF objects out of 1000 (max. 8388607)
+ 146 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  33 words of extra memory for PDF output out of 10000 (max. 10000000)
 
