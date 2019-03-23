@@ -75,14 +75,14 @@ as expected.
 We can write it in a different form by combining the second and third terms of \eqref{eq:cNt_1}:
 \begin{align*}
 &- \frac{1}{(N)_2}  \E\left[ \frac{\sum_{i=1}^{N} (N\wt{i} - \lfloor N\wt{i}\rfloor)^2}{\sum_{j=1}^{N} (N\wt{j} - \lfloor N\wt{j}\rfloor)} |\F \right] 
--\frac{1}{(N)_2} \E \left[ \sum_{i=1}^{N} \lfloor N\wt{i}\rfloor \middle|\F \right] \\
+-\frac{1}{(N)_2} \E \left[ \sum_{k=1}^{N} \lfloor N\wt{k}\rfloor \middle|\F \right] \\
 &=: - \frac{1}{(N)_2} \E[A |\F]
 \end{align*}
 Then
 \begin{align*}
 A &=
  \frac{\sum_{i=1}^{N} (N\wt{i} - \lfloor N\wt{i}\rfloor)^2}{\sum_{j=1}^{N} (N\wt{j} - \lfloor N\wt{j}\rfloor)} 
-+ \sum_{i=1}^{N} \lfloor N\wt{i}\rfloor \\
++ \sum_{k=1}^{N} \lfloor N\wt{k}\rfloor \\
 &= \frac{\sum_{i=1}^{N} (N\wt{i} - \lfloor N\wt{i}\rfloor)^2 + \sum_{i=1}^N\sum_{k=1}^N \lfloor N\wt{k} \rfloor (N\wt{i}- \lfloor N\wt{i} \rfloor)}{\sum_{j=1}^{N} (N\wt{j} - \lfloor N\wt{j}\rfloor)} \\
 &=: \frac{A^\prime}{\sum_{j=1}^{N} (N\wt{j} - \lfloor N\wt{j}\rfloor)} 
 \end{align*}
