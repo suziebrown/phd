@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  28 MAR 2019 16:25
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  28 MAR 2019 16:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -730,42 +730,42 @@ Package pdftex.def Info: degeneracy.pdf  used on input line 337.
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./degeneracy.pdf): PDF inclu
 sion: multiple pdfs with page group included in a single page
 >] [8] [9] [10] [11] [12] [13] [14]
-Overfull \hbox (8.04799pt too wide) detected at line 741
+Overfull \hbox (8.04799pt too wide) detected at line 753
 []
  []
 
 [15]
-Overfull \hbox (7.93095pt too wide) detected at line 785
+Overfull \hbox (7.93095pt too wide) detected at line 797
 []
  []
 
 
-Overfull \hbox (23.69243pt too wide) detected at line 806
+Overfull \hbox (23.69243pt too wide) detected at line 818
 []
  []
 
 [16]
-Overfull \hbox (36.88333pt too wide) detected at line 820
+Overfull \hbox (36.88333pt too wide) detected at line 832
 []
  []
 
 [17]
-Overfull \hbox (7.12737pt too wide) detected at line 845
+Overfull \hbox (7.12737pt too wide) detected at line 857
 []
  []
 
 [18] [19] [20]
-Overfull \hbox (26.89339pt too wide) detected at line 915
+Overfull \hbox (26.89339pt too wide) detected at line 927
 []
  []
 
 
-Overfull \hbox (24.85626pt too wide) detected at line 933
+Overfull \hbox (24.85626pt too wide) detected at line 945
 []
  []
 
 
-Overfull \hbox (23.73724pt too wide) detected at line 945
+Overfull \hbox (23.73724pt too wide) detected at line 957
 []
  []
 
@@ -773,7 +773,7 @@ Overfull \hbox (23.73724pt too wide) detected at line 945
 Here is how much of TeX's memory you used:
  15414 strings out of 492649
  293498 string characters out of 6129623
- 362104 words of memory out of 5000000
+ 364571 words of memory out of 5000000
  18974 multiletter control sequences out of 15000+600000
  15283 words of font info for 58 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -806,7 +806,7 @@ amsfonts/cm/cmti10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/a
 msfonts/cm/cmti9.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/ams
 fonts/symbols/msbm10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public
 /amsfonts/symbols/msbm7.pfb>
-Output written on transfer_report.pdf (23 pages, 524270 bytes).
+Output written on transfer_report.pdf (23 pages, 525289 bytes).
 PDF statistics:
  211 PDF objects out of 1000 (max. 8388607)
  148 compressed objects within 2 object streams

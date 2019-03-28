@@ -457,13 +457,8 @@ Under the conditions of \citet[Lemma 3]{koskela2018}, the genealogy of any $n$ p
 
 
 \section{Alternative resampling schemes}\label{sec:resampling}
-\textcolor{red}{
-- Gerber et al's optimal scheme\\
-- Del Moral's toy scheme?\\
-}
-
-There is a great deal of flexibility in the function referred to as {\footnotesize RESAMPLE} in Algorithm \ref{alg:SMC}. The most straightforward choice is multinomial resampling \citep{efron1994}, which is also the easiest to analyse. However, multinomial resampling is well known to be sub-optimal in terms of the resulting Monte Carlo variance, and is rarely used in practice. For instance, \citet{douc2005} proves that both residual resampling and stratified resampling yield lower variance. 
-Various schemes are presented in this section.
+There is a great deal of flexibility in the function referred to as {\footnotesize RESAMPLE} in Algorithm \ref{alg:SMC}.
+Various possible schemes are presented in this section.
 
 For a procedure to be considered a valid resampling scheme, we will require the following:
 \begin{enumerate}
@@ -657,6 +652,16 @@ However, this scheme is known to exhibit pathological behaviour in some cases du
 \end{figure}
 
 \subsection{Remarks on performance}
+\subsubsection{Variance}
+The most straightforward choice of resampling scheme, and also the easiest to analyse, is multinomial. However, multinomial resampling is well known to be sub-optimal in terms of the resulting Monte Carlo variance, and is rarely used in practice.
+
+\citet{douc2005} proves that both residual resampling and stratified resampling yield lower variance estimators. 
+The variance we are referring to here is the variance of Monte Carlo estimators of an arbitrary test function $f$, conditional on the past:
+\begin{equation*}
+\V\left[ \frac{1}{N} \sum_{i=1}^N f(x_t^{(i)}) \middle| \F\right]
+\end{equation*}
+The authors remark that, while the variance resulting from systematic resampling is not provably lower than that of multinomial resampling, empirical performance is comparable among residual, stratified and systematic resampling.
+
 \subsubsection{Support of offspring numbers}
 First consider the support of the marginal offspring distributions in each scheme, given the corresponding weight. Condition on the $i^{th}$ weight lying in the interval $\wt{i} \in [k/N, (k+1)/N]$, but leave the other weights unknown. By considering the best and worst cases for each scheme, we have: 
 \begin{description}
@@ -691,6 +696,13 @@ It is clear that multinomial resampling is exchangeable since in this case the p
 
 Stratified and systematic resampling are clearly not exchangeable since, for instance, child 1 is more likely to choose parent 1 than child $N$ is. However, this is merely a feature of the arbitrary ordering of the sampling steps: exchangeability can easily be reintroduced by applying a random permutation to the vector of parental indices after sampling.
 The same goes for residual resampling.
+
+\subsection{Optimal resampling}
+\textcolor{red}{
+- Gerber, Chopin \& Whiteley\\
+- Crisan \& Lyons\\
+}
+
 
 \section{Discussion}\label{sec:discussion}
 \textcolor{red}{
