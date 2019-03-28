@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  22 MAR 2019 16:14
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  28 MAR 2019 16:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -690,91 +690,91 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 69.
 (/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Underfull \hbox (badness 10000) in paragraph at lines 81--82
+Underfull \hbox (badness 10000) in paragraph at lines 82--83
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 83--87
+Underfull \hbox (badness 10000) in paragraph at lines 84--88
 
  []
 
 [1
 
 {/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-[2]
-<smc_kalman.pdf, id=26, 602.25pt x 250.9375pt>
+[2] [3]
+<smc_kalman.pdf, id=32, 602.25pt x 250.9375pt>
 File: smc_kalman.pdf Graphic file (type pdf)
 <use smc_kalman.pdf>
-Package pdftex.def Info: smc_kalman.pdf  used on input line 233.
+Package pdftex.def Info: smc_kalman.pdf  used on input line 242.
 (pdftex.def)             Requested size: 424.82523pt x 177.01816pt.
- [3] [4 <./smc_kalman.pdf>]
-<kingman.png, id=42, 377.41pt x 341.275pt>
+ [4]
+<kingman.png, id=39, 377.41pt x 341.275pt>
 File: kingman.png Graphic file (type png)
 <use kingman.png>
-Package pdftex.def Info: kingman.png  used on input line 266.
+Package pdftex.def Info: kingman.png  used on input line 275.
 (pdftex.def)             Requested size: 283.22162pt x 256.10141pt.
- [5]
+ [5 <./smc_kalman.pdf>]
 <eg_WF.pdf, id=47, 451.6875pt x 385.19911pt>
 File: eg_WF.pdf Graphic file (type pdf)
 <use eg_WF.pdf>
-Package pdftex.def Info: eg_WF.pdf  used on input line 308.
+Package pdftex.def Info: eg_WF.pdf  used on input line 317.
 (pdftex.def)             Requested size: 377.62642pt x 322.06036pt.
 <degeneracy.pdf, id=48, 728.48161pt x 385.92181pt>
 File: degeneracy.pdf Graphic file (type pdf)
 <use degeneracy.pdf>
-Package pdftex.def Info: degeneracy.pdf  used on input line 328.
+Package pdftex.def Info: degeneracy.pdf  used on input line 337.
 (pdftex.def)             Requested size: 377.62642pt x 200.0504pt.
  [6 <./kingman.png>] [7 <./eg_WF.pdf> <./degeneracy.pdf
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./degeneracy.pdf): PDF inclu
 sion: multiple pdfs with page group included in a single page
->] [8] [9] [10] [11] [12] [13]
-Overfull \hbox (8.04799pt too wide) detected at line 710
-[]
- []
-
-[14]
-Overfull \hbox (7.93095pt too wide) detected at line 754
-[]
- []
-
-
-Overfull \hbox (23.69243pt too wide) detected at line 775
+>] [8] [9] [10] [11] [12] [13] [14]
+Overfull \hbox (8.04799pt too wide) detected at line 741
 []
  []
 
 [15]
-Overfull \hbox (36.88333pt too wide) detected at line 789
+Overfull \hbox (7.93095pt too wide) detected at line 785
+[]
+ []
+
+
+Overfull \hbox (23.69243pt too wide) detected at line 806
 []
  []
 
 [16]
-Overfull \hbox (7.12737pt too wide) detected at line 814
+Overfull \hbox (36.88333pt too wide) detected at line 820
 []
  []
 
-[17] [18] [19]
-Overfull \hbox (26.89339pt too wide) detected at line 884
+[17]
+Overfull \hbox (7.12737pt too wide) detected at line 845
+[]
+ []
+
+[18] [19] [20]
+Overfull \hbox (26.89339pt too wide) detected at line 915
 []
  []
 
 
-Overfull \hbox (24.85626pt too wide) detected at line 902
+Overfull \hbox (24.85626pt too wide) detected at line 933
 []
  []
 
 
-Overfull \hbox (23.73724pt too wide) detected at line 914
+Overfull \hbox (23.73724pt too wide) detected at line 945
 []
  []
 
-[20] (./transfer_report.bbl [21]) [22] (./transfer_report.aux) ) 
+[21] (./transfer_report.bbl [22]) [23] (./transfer_report.aux) ) 
 Here is how much of TeX's memory you used:
- 15403 strings out of 492649
- 293266 string characters out of 6129623
- 364048 words of memory out of 5000000
- 18963 multiletter control sequences out of 15000+600000
+ 15414 strings out of 492649
+ 293498 string characters out of 6129623
+ 362104 words of memory out of 5000000
+ 18974 multiletter control sequences out of 15000+600000
  15283 words of font info for 58 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,15n,54p,1357b,746s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -806,10 +806,10 @@ amsfonts/cm/cmti10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/a
 msfonts/cm/cmti9.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/ams
 fonts/symbols/msbm10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public
 /amsfonts/symbols/msbm7.pfb>
-Output written on transfer_report.pdf (22 pages, 520018 bytes).
+Output written on transfer_report.pdf (23 pages, 524270 bytes).
 PDF statistics:
- 208 PDF objects out of 1000 (max. 8388607)
- 146 compressed objects within 2 object streams
+ 211 PDF objects out of 1000 (max. 8388607)
+ 148 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  33 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -73,6 +73,7 @@
 Since its introduction to the statistics literature by \citet{gordon1993}, sequential Monte Carlo (SMC) has found a huge range of applications and has become an indispensible tool to practitioners from many fields. 
 It is particularly useful in applications such as target tracking, where the model has a natural sequential structure.
 However, the sequential nature of SMC is helpful not only in inherently sequential settings, but in any setting where the quantity to be inferred has highly correlated components.
+Other application areas include image processing, molecular simulation and economics.
 
 In these cases the more traditional Markov chain Monte Carlo methods are essentially useless because the strong dependence structure causes them to mix extremely slowly.
 Conversely, SMC exploits this dependence structure to create recursive Monte Carlo algorithms that can be efficient in this difficult setting.
@@ -95,12 +96,10 @@ Finally we summarise future directions of the work, and its potential impact, in
 Throughout the document we will use the compact notation $X_{m:n}$ as shorthand for $X_m, X_{m+1}, \dots, X_n$, as well as $X_{-n} := X_0, \dots, X_{n-1}, X_{n+1}, \dots X_{N}$.
 We denote falling factorial powers $(x)_a := x(x-1)\dots(x-a+1)$, with the convention $(x)_0 = 1$.
 
-\section{Sequential Monte Carlo}\label{sec:SMC}
-References for this section are \citet{doucet2001}, \citet{delmoral2006}, and \citet{doucet2009}.
 
-\subsection{Class of models}
-Although sequential Monte Carlo (SMC) methods can be applied in a much more general setting, they are particularly easy to motivate in the setting of state space models, where the ``sequential'' nature follows naturally from the discrete time steps present in the model. 
-For the purposes of presenting the algorithm, let us consider a time-homogeneous state space model consisting of an unobservable discrete-time Markov process $X_{0:T}$ and observables $Y_{0:T}$, satisfying the conditional independence structure
+\subsection{State space models}
+%Although sequential Monte Carlo (SMC) methods can be applied in a much more general setting, they are particularly easy to motivate in the setting of state space models, where the ``sequential'' nature follows naturally from the discrete time steps present in the model. 
+For the purposes of presenting the algorithm, let us consider a model consisting of an unobservable time-homogeneous discrete-time Markov process $X_{0:T}$ and observables $Y_{0:T}$, satisfying the conditional independence structure
 \begin{align*}
 & (X_{t+1:T} \indep X_{0:t-1}) \mid X_t \\
 & (Y_t \indep Y_{-t}, X_{-t}) \mid X_t
@@ -124,6 +123,7 @@ for all $t \in \{0,1,\dots, T\}$, as represented by the graphical model below.
 \end{center}
 
 We assume for notational convenience that $x_0,\dots,x_T$ take values in a common state space $\mathcal{X}$, and $y_0,\dots,y_T$ in a common state space $\mathcal{Y}$, but these assumptions can be dropped. 
+Such models are referred to as {state space models} or {hidden Markov models}; the terminology varies among authors. They provide a surprisingly flexible framework for time series modelling.
 
 Suppose we have the following model:
 \begin{align*}
@@ -147,6 +147,7 @@ The three main inference problems are:
 \item[Prediction] (where will it go next?) $p(x_{t+1} | y_{0:t})$
 \item[Smoothing] (where has it been?) $p(x_{0:t} | y_{0:t})$
 \end{description}
+%%% ^ write these as their intractable integrals and whatnot
 In the on-line setting, we take as our prior the posterior distribution from the previous time step $t-1$, and update it using the new observation $y_t$. The inference must be fast enough to keep up with the rate of arrival of observations, so in particular the complexity of the update must not increase with $T$.
 In the off-line setting, we take $\mu$ as the prior distribution, and infer the set of posteriors once all $T+1$ observations have arrived.
 
@@ -154,9 +155,17 @@ Prediction and filtering are essentially equivalent, because given a filtering d
 Smoothing is considered a harder task because it requires us to infer many more parameters from the same amount of information; indeed the dimension of the problem increases linearly with $T$.
 %In general it is not possible to infer the smoothing distributions on-line, because this would require using all of the previous observations at each time step, so the complexity would increase at each step. Algorithms that exist for on-line smoothing [REFs] are typically either approximate or computationally expensive.
 
-In the case of linear Gaussian state space models, the posterior distributions of interest are available analytically, by way of the Kalman filter \citep{kalman1960} and Rauch-Tung-Striebel (RTS) smoother recursions \citep{rauch1965}. Recursions are also available for some other conjugate models: see for example \citet{vidoni1999}.
-The other analytic case occurs if the state space of $(X_t)_{t=0}^\infty$ is finite, in which case the forward-backward algorithm \citep{baum1970} yields the exact posteriors.
+\subsection{Deterministic solutions}
+In the case of linear Gaussian state space models, the posterior distributions of interest are also Gaussian, with mean and covariance available analytically by way of the Kalman filter \citep{kalman1960} and Rauch-Tung-Striebel (RTS) smoother recursions \citep{rauch1965}. Recursions are also available for some other conjugate models: see for example \citet{vidoni1999}.
+Another analytic case occurs if the state space $\mathcal{X}$ is finite, in which case any integrals become finite sums, and the forward-backward algorithm \citep{baum1970} yields the exact posteriors.
 
+If the model is Gaussian but non-linear, the posterior filtering distributions can be estimated using the \emph{extended Kalman filter} \citep{jazwinski2007}, which simply applies a first-order linearisation in order to make use of the Kalman filter. This method performs well on models that are ``almost linear''. However, the resulting predictor is only optimal when the model is actually linear, in which case the extended Kalman filter coincides with the Kalman filter.
+
+For models that are highly non-linear or for which gradients are not readily available, a more suitable method is the \emph{unscented Kalman filter} \citep{wan2000}. This involves taking a representative sample (which is chosen deterministically using the \emph{unscented transformation}) to characterise the distribution at time $t$, and then propagating these points through the non-linear transition to obtain a characterisation of the distribution at time $t+1$.
+
+
+\section{Sequential Monte Carlo}\label{sec:SMC}
+References for this section are \citet{doucet2001}, \citet{delmoral2006}, and \citet{doucet2009}.
 \subsection{Particle approximation}
 \textcolor{red}{
 - Add a section including theoretical justification for SMC...?\\
@@ -192,7 +201,7 @@ p(x_{t+1} | y_{0:t}) \propto f(x_{t+1} | x_t) p(x_{0:t} | y_{0:t}).
 SMC provides a particle method to approximate to \eqref{eq:smooth_recursion}, given a model specification and a sequence of observations. Like the underlying process, the algorithm proceeds sequentially, returning its approximation to the smoothing distribution at each time step.
 This approximation is the empirical distribution of the particles:
 \begin{equation}
-\hat{p}(x_{0:t}|y_{0:t}) = \frac{1}{N} \sum_{i=1}^N \delta_{X_{0:t}^{(i)}}
+\hat{p}(x_{0:t}|y_{0:t}) = \frac{1}{N} \sum_{i=1}^N \delta_{X_{0:t}^{(i)}} (x_{0:t})
 \end{equation}
 The particle approximation is justified by various convergence results - see for example \citet{delmoral2013} for details.
 
@@ -224,7 +233,7 @@ Figure \ref{fig:SMC_vs_kalman} illustrates the particle approximation arising fr
 
 If only the latest filtering distribution is required, we can marginalise out $\mathbf{x}_{0:t-1}$ at each step by simply throwing away the particle histories and keeping only the particle approximation $\mathbf{x}_{t}$ to the filtering distribution at the current time $t$. 
 The algorithm progresses in a Markovian fashion, only ever referring to the particles at the immediately previous step, so filtering distributions can be approximated with minimal memory usage. 
-If, say, the mean and variance of $X_{t} \mid y_{0:t}$ at each time $t$ are required, we can store just these summary statistics, plus the two most recent generations of particles, and throw away all other information about the particles at previous time steps. This is vital if one wishes to carry out filtering in an on-line fashion, as it prevents the memory requirements accumulating more than necessary.
+If, say, the mean and variance of $(X_{t} | Y_{0:t} = y_{0:t})$ at each time $t$ are required, we can store just these summary statistics, plus the two most recent generations of particles, and throw away all other information about the particles at previous time steps. This is vital if one wishes to carry out filtering in an on-line fashion, as it prevents the memory requirements accumulating more than necessary.
 
 The form of the {\footnotesize RESAMPLE} function in Algorithm \ref{alg:SMC} is discussed in Section \ref{sec:resampling}.
 
@@ -449,15 +458,21 @@ Under the conditions of \citet[Lemma 3]{koskela2018}, the genealogy of any $n$ p
 
 \section{Alternative resampling schemes}\label{sec:resampling}
 \textcolor{red}{
-- rewrite the intro paragraph\\
 - Gerber et al's optimal scheme\\
 - Del Moral's toy scheme?\\
-- any other interesting properties of the various schemes\\
-- properties we will require from resampling schemes, eg unbiased\\
 }
 
 There is a great deal of flexibility in the function referred to as {\footnotesize RESAMPLE} in Algorithm \ref{alg:SMC}. The most straightforward choice is multinomial resampling \citep{efron1994}, which is also the easiest to analyse. However, multinomial resampling is well known to be sub-optimal in terms of the resulting Monte Carlo variance, and is rarely used in practice. For instance, \citet{douc2005} proves that both residual resampling and stratified resampling yield lower variance. 
-In this section we will present some resampling schemes that claim to perform better than multinomial resampling.
+Various schemes are presented in this section.
+
+For a procedure to be considered a valid resampling scheme, we will require the following:
+\begin{enumerate}
+\item The assignment of children to parents is random. \label{item:resampling_random}
+\item The total number of particles $N$ remains fixed. \label{item:resampling_fixedN}
+\item The particles after resampling are equally weighted. \label{item:resampling_equalw}
+\item The resampling scheme is unbiased; that is, the expected number of offspring of each particle $i$ is equal to $N\wt{i}$. \label{item:resampling_unbiased}
+\end{enumerate}
+Condition \ref{item:resampling_unbiased} ensures that the resulting SMC estimates are unbiased. Condition \ref{item:resampling_random} is needed to prevent weight degeneracy. Conditions \ref{item:resampling_fixedN} and \ref{item:resampling_equalw} can be violated, but this is generally not advantageous.
 
 \subsection{Multinomial resampling}
 Multinomial resampling \citep{efron1994} is one of the simplest resampling schemes, and the one first appearing in the literature.
@@ -498,6 +513,11 @@ U_i \sim \Unif \left(\frac{i-1}{N}, \frac{i}{N} \right) .
 This scheme ensures that the samples are ``well spread out'', again reducing the probability of randomly losing high-weighted particles.
 The method is illustrated in Figure \ref{fig:resampling_stratified}.
 
+Explicitly, the parental index assigned to child $i$ is the index $a_i$ satisfying
+\begin{equation}\label{eq:syst_strat_resampling}
+\sum_{j=1}^{a_i -1} \wt{j} \leq U_i \leq \sum_{j=1}^{a_i} \wt{j}
+\end{equation}
+
 \subsection{Systematic resampling}
 Systematic resampling is described in \citet{carpenter1999} and also in \citet{whitley1994} where it is called ``stochastic universal sampling''.
 
@@ -507,10 +527,13 @@ In this scheme, only one Uniform sample is drawn, $U \sim \operatorname{U}(0,1/N
 U_i = U + \frac{i-1}{N}
 \end{equation*}
 for each $i \in \{1, \dots, N\}$.
-This scheme again ensures the random numbers are ``well spread out'', even more so than with stratified resampling.
+The parental indices are again selected according to \eqref{eq:syst_strat_resampling}. 
 The method is illustrated in Figure \ref{fig:resampling_systematic}.
+This scheme again ensures the random numbers are ``well spread out'', even more so than with stratified resampling.
 
 Systematic resampling is often preferred among practitioners because it is extremely easy to implement and also computationally efficient, requiring only one random number to be generated.
+
+However, this scheme is known to exhibit pathological behaviour in some cases due to its dependence on the ordering of the subintervals. Such behaviour can be avoided by randomly permuting the intervals before sampling, and this is the recommended practice. 
 
 \begin{figure}
 \centering
@@ -653,13 +676,21 @@ We can also see that because $w_1$ has weight $\geq 1/N$ and is placed first, it
 
 This property can lead to pathological behaviour, but is easily avoided by applying a random permutation to the order of the subintervals.
 
-\subsubsection{Equal weights}
+\subsubsection{Degeneracy under equal weights}
 Suppose we somehow end up in the situation where all the weights are equal (i.e.\ $\wt{i} = 1/N$ for all $i$).
 In this case, residual resampling will result in a deterministic assignment only: each particle will be assigned one offspring, and there will be no remainder left to assign randomly. This behaviour cannot be avoided, however the event that all weights are equal typically has zero measure.
 
 In fact, stratified and systematic resampling will have the same result: the intervals for sampling will correspond exactly to the weighted subintervals, so no matter which random numbers are sampled, exactly one will fall in each subinterval.
 
 In the case of stratified resampling this behaviour can be avoided by shifting the sampling intervals by a random amount. In fact this random shift is inherent in all of the resampling schemes as described by \citet{whitley1994}; he imagines subdivisions of a circle rather than an interval, and then ``spins the roulette wheel'' around it.
+
+\subsubsection{Exchangeability}
+We will call a resampling scheme exchangeable if the resulting distribution of parental indices is invariant under permutations of the children. To put it another way, each child chooses its parent from the same marginal distribution.
+
+It is clear that multinomial resampling is exchangeable since in this case the parental indices are independent and identically distributed. However it is worth noting that some efficient implementations of multinomial sampling may not preserve exchangeability in practice.
+
+Stratified and systematic resampling are clearly not exchangeable since, for instance, child 1 is more likely to choose parent 1 than child $N$ is. However, this is merely a feature of the arbitrary ordering of the sampling steps: exchangeability can easily be reintroduced by applying a random permutation to the vector of parental indices after sampling.
+The same goes for residual resampling.
 
 \section{Discussion}\label{sec:discussion}
 \textcolor{red}{
