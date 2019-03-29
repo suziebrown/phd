@@ -38,6 +38,13 @@ Douc, R., Capp{\'e}, O. \harvardand\ Moulines, E.  \harvardyearleft
   filtering, {\em in} `Image and Signal Processing and Analysis, 2005. ISPA
   2005. Proceedings of the 4th International Symposium on', IEEE, pp.~64--69.
 
+\harvarditem[Doucet et~al.]{Doucet, Briers \harvardand\
+  S{\'e}n{\'e}cal}{2006}{doucet2006}
+Doucet, A., Briers, M. \harvardand\ S{\'e}n{\'e}cal, S.  \harvardyearleft
+  2006\harvardyearright , `Efficient block sampling strategies for sequential
+  {Monte} {Carlo} methods', {\em Journal of Computational and Graphical
+  Statistics} {\bf 15}(3),~693--711.
+
 \harvarditem[Doucet et~al.]{Doucet, De~Freitas \harvardand\
   Gordon}{2001}{doucet2001}
 Doucet, A., De~Freitas, N. \harvardand\ Gordon, N.  \harvardyearleft
@@ -68,6 +75,12 @@ Fisher, R.~A.  \harvardyearleft 1923\harvardyearright , `On the dominance
 Fisher, R.~A.  \harvardyearleft 1930\harvardyearright , `The distribution of
   gene ratios for rare mutations', {\em Proceedings of the Royal Society of
   Edinburgh} {\bf 50},~205--220.
+
+\harvarditem{Gilks \harvardand\ Berzuini}{2001}{gilks2001}
+Gilks, W.~R. \harvardand\ Berzuini, C.  \harvardyearleft 2001\harvardyearright
+  , `Following a moving target --- {Monte} {Carlo} inference for dynamic
+  {Bayesian} models', {\em Journal of the Royal Statistical Society: Series B
+  (Statistical Methodology)} {\bf 63}(1),~127--146.
 
 \harvarditem[Gordon et~al.]{Gordon, Salmond \harvardand\
   Smith}{1993}{gordon1993}
@@ -131,6 +144,11 @@ Moran, P. A.~P.  \harvardyearleft 1958\harvardyearright , Random processes in
 Mosimann, J.~E.  \harvardyearleft 1962\harvardyearright , `On the compound
   multinomial distribution, the multivariate $\beta$-distribution, and
   correlations among proportions', {\em Biometrika} {\bf 49}(1/2),~65--82.
+
+\harvarditem{Pitt \harvardand\ Shephard}{1999}{pitt1999}
+Pitt, M.~K. \harvardand\ Shephard, N.  \harvardyearleft 1999\harvardyearright ,
+  `Filtering via simulation: Auxiliary particle filters', {\em Journal of the
+  American Statistical Association} {\bf 94}(446),~590--599.
 
 \harvarditem[Rauch et~al.]{Rauch, Striebel \harvardand\ Tung}{1965}{rauch1965}
 Rauch, H.~E., Striebel, C. \harvardand\ Tung, F.  \harvardyearleft

@@ -326,10 +326,12 @@ The coalescence of lineages is an unavoidable effect of resampling, and it cause
 The resulting empirical measure typically consists of $N$ distinct masses, but the marginals at early times may just consist of a single mass repeated $N$ times.
 This phenomenon, known as \emph{ancestral degeneracy}, is illustrated in Figure \ref{fig:degeneracy}.
 
-So if we are really interested in the smoothed states a long way into the past, the estimation variance will be huge. This problem was identified even in the early literature \citep{gordon1993}, where some ad hoc methods were proposed to reduce it. Since then there has been a lot of work towards mitigating ancestral degeneracy, some of which are discussed in Section \ref{sec:resampling}.\\
+So if we are really interested in the smoothed states a long way into the past, the estimation variance will be huge. This problem was identified even in the early literature \citep{gordon1993}, where some ad hoc methods were proposed to reduce it. %%% what exactly?
+
+Since then many techniques have been proposed to mitigate ancestral degeneracy. These include adaptive resampling (resampling not at every step but only when the variance of the weights gets too high) and using lower-variance resampling schemes (this is discussed in detail in Section \ref{sec:resampling}), as well as modified algorithms such as the auxiliary particle filter \citep{pitt1999}, resample-move \citep{gilks2001} and block sampling \citep{doucet2006}.
+
 \textcolor{red}{
 - Ancestral vs.\ weight degeneracy\\
-- More discussion of general techniques to mitigate it?\\
 }
 
 \begin{figure}
