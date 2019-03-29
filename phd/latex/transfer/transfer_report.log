@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  29 MAR 2019 09:47
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  29 MAR 2019 10:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -727,52 +727,52 @@ File: degeneracy.pdf Graphic file (type pdf)
 Package pdftex.def Info: degeneracy.pdf  used on input line 339.
 (pdftex.def)             Requested size: 377.62642pt x 200.0504pt.
 
-[8 <./degeneracy.pdf>] [9] [10] [11] [12] [13] [14]
-Overfull \hbox (8.04799pt too wide) detected at line 755
-[]
- []
-
-[15]
-Overfull \hbox (7.93095pt too wide) detected at line 799
+[8 <./degeneracy.pdf>] [9] [10] [11] [12] [13] [14] [15]
+Overfull \hbox (8.04799pt too wide) detected at line 772
 []
  []
 
 
-Overfull \hbox (23.69243pt too wide) detected at line 820
+Overfull \hbox (7.93095pt too wide) detected at line 816
 []
  []
 
 [16]
-Overfull \hbox (36.88333pt too wide) detected at line 834
+Overfull \hbox (23.69243pt too wide) detected at line 837
 []
  []
 
 [17]
-Overfull \hbox (7.12737pt too wide) detected at line 859
+Overfull \hbox (36.88333pt too wide) detected at line 851
 []
  []
 
-[18] [19] [20]
-Overfull \hbox (26.89339pt too wide) detected at line 929
+[18]
+Overfull \hbox (7.12737pt too wide) detected at line 876
+[]
+ []
+
+[19] [20] [21]
+Overfull \hbox (26.89339pt too wide) detected at line 946
 []
  []
 
 
-Overfull \hbox (24.85626pt too wide) detected at line 947
+Overfull \hbox (24.85626pt too wide) detected at line 964
 []
  []
 
 
-Overfull \hbox (23.73724pt too wide) detected at line 959
+Overfull \hbox (23.73724pt too wide) detected at line 976
 []
  []
 
-[21] (./transfer_report.bbl [22]) [23] (./transfer_report.aux) ) 
+[22] (./transfer_report.bbl [23]) [24] (./transfer_report.aux) ) 
 Here is how much of TeX's memory you used:
- 15423 strings out of 492649
- 293651 string characters out of 6129623
- 365981 words of memory out of 5000000
- 18983 multiletter control sequences out of 15000+600000
+ 15425 strings out of 492649
+ 293692 string characters out of 6129623
+ 361002 words of memory out of 5000000
+ 18985 multiletter control sequences out of 15000+600000
  15283 words of font info for 58 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,15n,54p,1357b,746s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -804,10 +804,10 @@ amsfonts/cm/cmti10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/a
 msfonts/cm/cmti9.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/ams
 fonts/symbols/msbm10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public
 /amsfonts/symbols/msbm7.pfb>
-Output written on transfer_report.pdf (23 pages, 526041 bytes).
+Output written on transfer_report.pdf (24 pages, 529082 bytes).
 PDF statistics:
- 212 PDF objects out of 1000 (max. 8388607)
- 149 compressed objects within 2 object streams
+ 215 PDF objects out of 1000 (max. 8388607)
+ 151 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  33 words of extra memory for PDF output out of 10000 (max. 10000000)
 

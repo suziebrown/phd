@@ -326,7 +326,7 @@ The coalescence of lineages is an unavoidable effect of resampling, and it cause
 The resulting empirical measure typically consists of $N$ distinct masses, but the marginals at early times may just consist of a single mass repeated $N$ times.
 This phenomenon, known as \emph{ancestral degeneracy}, is illustrated in Figure \ref{fig:degeneracy}.
 
-So if we are really interested in the smoothed states a long way into the past, the estimation variance will be huge. This problem was identified even in the early literature \citep{gordon1993}, where some ad hoc methods were proposed to reduce it. %%% what exactly?
+So if we are really interested in the smoothed states a long way into the past, the estimation variance will be huge. This problem was identified even in the early literature \citep{gordon1993}, where some ad hoc methods were proposed to reduce it.
 
 Since then many techniques have been proposed to mitigate ancestral degeneracy. These include adaptive resampling (resampling not at every step but only when the variance of the weights gets too high) and using lower-variance resampling schemes (this is discussed in detail in Section \ref{sec:resampling}), as well as modified algorithms such as the auxiliary particle filter \citep{pitt1999}, resample-move \citep{gilks2001} and block sampling \citep{doucet2006}.
 
@@ -411,7 +411,7 @@ The problem can be avoided by using a sufficiently large number of particles for
 If, say, we want to ensure that the probability of all $N$ lineages coalescing is below a certain threshold, all of the relevant information is encoded in the distribution of the time to MRCA of the genealogical process. For the Kingman coalescent this distribution is known, and Corollary \ref{thm:condSMC_kingman} states that as $N\to\infty$ the genealogy is a Kingman coalescent.
 The remaining question is whether the Kingman coalescent provides a reasonable approximation outside of the asymptotic regime - since in reality we simulate finitely many particles. We intend to investigate this question by way of a simulation study.
 
-\subsection{Genealogies of conditional SMC algorithms}
+\subsection{Genealogies of conditional SMC algorithms}\label{sec:condSMC_maths}
 In this section we calculate various quantities related to the genealogical process induced by conditional SMC with multinomial resampling. By writing these in terms of the corresponding quantities for standard SMC with multinomial resampling, we are able to apply results from \citet{koskela2018}. In this way we will show that the genealogical process converges to the Kingman coalescent, in the sense of finite-dimensional distributions, as the number of particles $N\to\infty$.
 
 The derivations of the expressions \eqref{eq:cNtilde}, \eqref{eq:DNtilde}, \eqref{eq:cNtilde2}, along with details of the application of results from \citet{koskela2018}, are relegated to the appendix. Below is an overview of the proof.
@@ -705,6 +705,23 @@ The same goes for residual resampling.
 - Crisan \& Lyons\\
 }
 
+\subsection{Genealogies of SMC algorithms with residual resampling}
+Similarly to Section \ref{sec:condSMC_maths}, here we attempt to characterise the genealogies induced in the case of residual resampling. Convergence is not yet proved in this case, but the steps taken so far are summarised here, with full details in the appendix.
+
+The central quantity is again the coalescence rate, which we will now denote $c_N^m(t)$ and $c_N^r(t)$ for multinomial and residual resampling respectively.
+The expected coalescence rate can be written:
+\begin{align*}
+\E[c^r_N(t) |\F]
+&= \E[c^{m}_N(t) |\F] \left( 1 + \frac{1}{N-1} \right) - \frac{1}{(N)_2}  \E\left[ \frac{\sum_{i=1}^{N} (N\wt{i} - \lfloor N\wt{i}\rfloor)^2}{\sum_{j=1}^{N} (N\wt{j} - \lfloor N\wt{j}\rfloor)} \middle|\F \right] \\
+&\qquad -\frac{1}{(N)_2} \E \left[ \sum_{i=1}^{N} \lfloor N\wt{i}\rfloor \middle|\F \right] \\
+&= \E[c^{m}_N(t) |\F] \left( 1 + \frac{1}{N-1} \right) \\
+&\qquad- \frac{1}{(N)_2}  \E\left[ \frac{\sum_{i=1}^{N} \left(N\wt{i} - \lfloor N\wt{i} \rfloor \right) \left( N\wt{i} + \sum_{k\neq i} \lfloor N\wt{k} \rfloor \right) }{\sum_{j=1}^{N} \left(N\wt{j} - \lfloor N\wt{j}\rfloor\right)} \middle|\F \right]  
+\end{align*}
+and using that $\E[c^{m}_N(t) |\F] = O(N^{-1})$, since the subtracted term is non-negative, we have the upper bound
+\begin{equation}\label{eq:residual_coalrate}
+\E[c^r_N(t) |\F] \leq \E[c^m_N(t) |\F] + O(N^{-2}).
+\end{equation}
+Before we can hope to verify the conditions of \citet[Theorem 1]{koskela2018} in this case, it remains to find similar bounds on $\E[D^r_N(t) |\F]$ and $\E[(c^r_N(t))^2 |\F]$.
 
 \section{Discussion}\label{sec:discussion}
 \textcolor{red}{
@@ -964,6 +981,9 @@ Therefore we have as required
 as $N\to\infty$.
 \end{description}
 This concludes the proof of Corollary \ref{thm:condSMC_kingman}. \qed
+
+\section{Derivation of \eqref{eq:residual_coalrate}}
+
 
 \bibliography{../smc.bib}
 \end{document}
