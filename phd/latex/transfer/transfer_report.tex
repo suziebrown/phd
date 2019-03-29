@@ -83,7 +83,7 @@ The method is not without its problems, and it is one of these problems that we 
 
 Sections \ref{sec:SMC} and \ref{sec:coalescent_theory} explain the background material on SMC and coalescent theory respectively. With these in place we are then able to explain the contribution of this work in the context of the SMC literature.
 In Section \ref{sec:conditionalSMC} we present the first novel result of this work with an outline proof; the full proof is in the Appendix.
-Section \ref{sec:resampling} introduces the next focus of this work, for which nothing is proved yet.
+Section \ref{sec:resampling} introduces the next focus of this work, for which the proofs are not yet complete.
 Finally we summarise future directions of the work, and its potential impact, in Section \ref{sec:discussion}.\\
 
 %%%%
@@ -712,8 +712,6 @@ The central quantity is again the coalescence rate, which we will now denote $c_
 The expected coalescence rate can be written:
 \begin{align*}
 \E[c^r_N(t) |\F]
-&= \E[c^{m}_N(t) |\F] \left( 1 + \frac{1}{N-1} \right) - \frac{1}{(N)_2}  \E\left[ \frac{\sum_{i=1}^{N} (N\wt{i} - \lfloor N\wt{i}\rfloor)^2}{\sum_{j=1}^{N} (N\wt{j} - \lfloor N\wt{j}\rfloor)} \middle|\F \right] \\
-&\qquad -\frac{1}{(N)_2} \E \left[ \sum_{i=1}^{N} \lfloor N\wt{i}\rfloor \middle|\F \right] \\
 &= \E[c^{m}_N(t) |\F] \left( 1 + \frac{1}{N-1} \right) \\
 &\qquad- \frac{1}{(N)_2}  \E\left[ \frac{\sum_{i=1}^{N} \left(N\wt{i} - \lfloor N\wt{i} \rfloor \right) \left( N\wt{i} + \sum_{k\neq i} \lfloor N\wt{k} \rfloor \right) }{\sum_{j=1}^{N} \left(N\wt{j} - \lfloor N\wt{j}\rfloor\right)} \middle|\F \right]  
 \end{align*}
@@ -983,7 +981,67 @@ as $N\to\infty$.
 This concludes the proof of Corollary \ref{thm:condSMC_kingman}. \qed
 
 \section{Derivation of \eqref{eq:residual_coalrate}}
+In residual resampling offspring counts are sampled according to:
+\begin{align*}
+& \vt{i} = \lfloor N \wt{i} \rfloor + X_i \\
+& X_i \sim \Mn (N-k, (\wbar{1}, \dots, \wbar{N}))
+\end{align*}
+where $k := \sum_{i=1}^N \lfloor N \wt{i} \rfloor$ is the number of offspring assigned deterministically, and $\wbar{i} := \frac{N\wt{i} - \lfloor N \wt{i} \rfloor}{N - k}$ are the residual weights. Let us also define the residuals $r_i := N\wt{i} - \lfloor N \wt{i} \rfloor$. This also implies $\sum_{i=1}^N r_i = N-k$.
 
+The coalescence rate is defined as
+\begin{equation*}
+c_N(t) := \frac{1}{(N)_2} \sum_{i=1}^{N} (\vt{i})_2.
+\end{equation*}
+We use $c_N^m(t)$ and $c_N^r(t)$ to denote the coalescence rates with multinomial and residual resampling respectively.
+The expectation then comes out as
+\begin{align*}
+\E[(\vt{i})_2 |\F] &= \E[(\vt{i})^2 |\F] - \E[\vt{i} |\F] \\
+&= \E[\lfloor N\wt{i} \rfloor^2 |\F] + 2 \E[\lfloor N\wt{i} \rfloor r_i |\F] + \E\left[ r_i \left(1 - \frac{r_i}{N-k} + r_i \right) |\F \right] - \E[N\wt{i} |\F] \\
+&=\E[ \lfloor N\wt{i} \rfloor^2 |\F] - \E[ \lfloor N\wt{i} \rfloor |\F] + 2 \E[ \lfloor N\wt{i} \rfloor r_i |\F] + \E\left[ r_i^2 \left(1- \frac{1}{N-k} \right) |\F\right] \\
+&= \E[ (N\wt{i})^2 |\F] - \E[ \lfloor N\wt{i} \rfloor |\F] - \E\left[ \frac{r_i^2}{N-k} |\F \right]
+\end{align*}
+so we get
+\begin{align}
+\E[c^r_N(t) |\F] &=  \frac{1}{(N)_2}  \sum_{i=1}^{N} \E[(\vt{i})_2 |\F ]\notag\\
+&= \frac{N}{N-1} \sum_{i=1}^{N} \E[(\wt{i})^2 |\F] - \frac{1}{(N)_2} \sum_{i=1}^{N} \E\left[ \frac{r_i^2}{N-k} |\F \right] - \frac{1}{(N)_2} \E[k |\F] \notag\\
+&= \E[c^{m}_N(t) |\F] \left( 1 + \frac{1}{N-1} \right) - \frac{1}{(N)_2}  \E\left[ \frac{\sum_{i=1}^{N} (N\wt{i} - \lfloor N\wt{i}\rfloor)^2}{\sum_{j=1}^{N} (N\wt{j} - \lfloor N\wt{j}\rfloor)} \middle|\F \right] \notag\\
+&\qquad -\frac{1}{(N)_2} \E \left[ \sum_{i=1}^{N} \lfloor N\wt{i}\rfloor \middle|\F \right]
+\label{eq:cNt_1}
+\end{align}
+We can write this in a different form by combining the second and third terms of \eqref{eq:cNt_1}:
+\begin{align*}
+&- \frac{1}{(N)_2}  \E\left[ \frac{\sum_{i=1}^{N} (N\wt{i} - \lfloor N\wt{i}\rfloor)^2}{\sum_{j=1}^{N} (N\wt{j} - \lfloor N\wt{j}\rfloor)} |\F \right] 
+-\frac{1}{(N)_2} \E \left[ \sum_{k=1}^{N} \lfloor N\wt{k}\rfloor \middle|\F \right] \\
+&=: - \frac{1}{(N)_2} \E[A |\F]
+\end{align*}
+Then
+\begin{align*}
+A &=
+ \frac{\sum_{i=1}^{N} (N\wt{i} - \lfloor N\wt{i}\rfloor)^2}{\sum_{j=1}^{N} (N\wt{j} - \lfloor N\wt{j}\rfloor)} 
++ \sum_{k=1}^{N} \lfloor N\wt{k}\rfloor \\
+&= \frac{\sum_{i=1}^{N} (N\wt{i} - \lfloor N\wt{i}\rfloor)^2 + \sum_{i=1}^N\sum_{k=1}^N \lfloor N\wt{k} \rfloor (N\wt{i}- \lfloor N\wt{i} \rfloor)}{\sum_{j=1}^{N} (N\wt{j} - \lfloor N\wt{j}\rfloor)} \\
+&=: \frac{A^\prime}{\sum_{j=1}^{N} (N\wt{j} - \lfloor N\wt{j}\rfloor)} 
+\end{align*}
+Then
+\begin{align*}
+A^\prime &=
+\sum_{i=1}^{N} (N\wt{i} - \lfloor N\wt{i}\rfloor)^2 + \sum_{i=1}^N\sum_{k=1}^N \lfloor N\wt{k} \rfloor (N\wt{i}- \lfloor N\wt{i} \rfloor)\\
+&= \sum_{i=1}^{N} \left\{ \left(N\wt{i} - \lfloor N\wt{i}\rfloor \right)^2 + \lfloor N\wt{i} \rfloor \left(N\wt{i} - \lfloor N\wt{i}\rfloor \right)
++ \sum_{k\neq i} \lfloor N\wt{k} \rfloor \left(N\wt{i} - \lfloor N\wt{i}\rfloor \right) \right\}\\
+&= \sum_{i=1}^{N} \left\{ (N\wt{i})^2 - N\wt{i} \lfloor N\wt{i} \rfloor 
++ \sum_{k\neq i} \lfloor N\wt{k} \rfloor \left(N\wt{i} - \lfloor N\wt{i}\rfloor \right) \right\}\\
+ &= \sum_{i=1}^{N} \left\{ \left(N\wt{i} - \lfloor N\wt{i} \rfloor \right) \left( N\wt{i} + \sum_{k\neq i} \lfloor N\wt{k} \rfloor \right) \right\}
+\end{align*}
+So we have
+\begin{align*}
+\E[c^r_N(t) |\F] &=  \E[c^{m}_N(t) |\F] \left( 1 + \frac{1}{N-1} \right) \\
+&\qquad- \frac{1}{(N)_2}  \E\left[ \frac{\sum_{i=1}^{N} \left(N\wt{i} - \lfloor N\wt{i} \rfloor \right) \left( N\wt{i} + \sum_{k\neq i} \lfloor N\wt{k} \rfloor \right) }{\sum_{j=1}^{N} \left(N\wt{j} - \lfloor N\wt{j}\rfloor\right)} \middle|\F \right]  
+\end{align*}
+Under the assumptions of \citet[Lemma 3]{koskela2018} we have that $\E[c^{m}_N(t) |\F] = O(N^{-1})$. Combining this with the observation that the subtracted term above is non-negative, we obtain the bound
+\begin{equation*}
+\E[c^r_N(t) |\F] \leq \E[c^m_N(t) |\F] + O(N^{-2})
+\end{equation*}
+which was stated in \eqref{eq:residual_coalrate}. \qed
 
 \bibliography{../smc.bib}
 \end{document}
