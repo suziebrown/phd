@@ -300,7 +300,6 @@ where $b$ is the number of equivalence classes of $\xi$, and $\xi \prec \eta$ me
 \section{SMC genealogies as coalescents}
 \textcolor{red}{
 - motivate the work: see notes on back of Adam's scribbled-on copy \& commented paragraph in intro\\
-- resampling viewed backwards in time: branching process $\to$ coalescent process\\
 - asymptotic properties of SMC lit review: CLT, path storage, coalescence etc.\\
 - the gap in knowledge that we aim to fill\\
 - why the simple SSM described at start is sufficient to demonstrate coalescence\\
@@ -308,9 +307,14 @@ where $b$ is the number of equivalence classes of $\xi$, and $\xi \prec \eta$ me
 }
 
 \subsection{Ancestral degeneracy}
-The resampling step in Algorithm \ref{alg:SMC} induces a genealogical tree.
-During resampling, some particles have multiple offspring while others have none. The particles with no offspring ``die out''; they are not in the lineage of any time $T$ particle. So unless the offspring variance is low, the $N$ time $T$ particles are likely to originate from only a few distinct time $0$ ancestors.
+The resampling step in Algorithm \ref{alg:SMC} induces a branching process which, viewed backwards in time, is a coalescent process. 
+
+During resampling, some particles have multiple offspring while others have none. This generates the ``genealogical tree'', because particles that have no offspring in some generation ``die out''.
 An example of this is shown in Figure \ref{fig:WF_tree}.
+
+Tracing the lineages of time $T$ particles backwards in time, they gradually coalesce until, at some time $t<T$, all of the time $T$ particles descend from a single time $t$ ancestor. 
+If the number of particles $N$ is big enough compared to the time horizon $T$, it could be that $t<0$, in which case the genealogies do not fully coalesce within the sample. If $N$ is not big enough, we end up with just one particle representing the marginal smoothing distributions at times $0,\dots,t$.
+Typically, even at times quite close to $T$, there are no more than a few distinct particles in the sample.
 
 \begin{figure}
 \centering
@@ -319,20 +323,28 @@ An example of this is shown in Figure \ref{fig:WF_tree}.
 \label{fig:WF_tree}
 \end{figure}
 
-In order to estimate filtering distributions $p(x_t | y_{0:t})$, we only require a sample of particles at the current time step, so if $\mathcal{X}$ is continuous we typically have $N$ distinct positions given by the $N$ particles. Then the empirical measure has mass in $N$ locations, and the Monte Carlo error for estimating expectations under $p(x_t | y_{0:t})$ scales as $O(N^{-1/2})$ [REF].
+In order to estimate filtering distributions $p(x_t | y_{0:t})$, we only require a sample of particles at the current time step, so if $\mathcal{X}$ is continuous we typically have $N$ distinct positions given by the $N$ particles. Then the empirical measure
+\begin{equation*}
+\hat{p}(x_{t}|y_{0:t}) = \frac{1}{N} \sum_{i=1}^N \delta_{X_{t}^{(i)}} (x_{t})
+\end{equation*}
+has mass in $N$ locations, and the Monte Carlo error for estimating expectations under $p(x_t | y_{0:t})$ scales as $O(N^{-1/2})$ [REF].
 
 However, we do not achieve the same performance in the case of estimating the  smoothing distributions $p(x_{0:t} | y_{0:t})$. In this case we require a sample of trajectories over times $0:t$ as opposed to a sample of particles at time $t$.
 The coalescence of lineages is an unavoidable effect of resampling, and it causes more and more of these trajectories to coincide the further into the past we look.
-The resulting empirical measure typically consists of $N$ distinct masses, but the marginals at early times may just consist of a single mass repeated $N$ times.
+The resulting empirical measure
+\begin{equation*}
+\hat{p}(x_{0:t}|y_{0:t}) = \frac{1}{N} \sum_{i=1}^N \delta_{X_{0:t}^{(i)}} (x_{0:t})
+\end{equation*}
+typically consists of $N$ distinct masses, but the marginals at early times may consist of only a single distinct mass repeated $N$ times.
 This phenomenon, known as \emph{ancestral degeneracy}, is illustrated in Figure \ref{fig:degeneracy}.
 
 So if we are really interested in the smoothed states a long way into the past, the estimation variance will be huge. This problem was identified even in the early literature \citep{gordon1993}, where some ad hoc methods were proposed to reduce it.
 
-Since then many techniques have been proposed to mitigate ancestral degeneracy. These include adaptive resampling (resampling not at every step but only when the variance of the weights gets too high) and using lower-variance resampling schemes (this is discussed in detail in Section \ref{sec:resampling}), as well as modified algorithms such as the auxiliary particle filter \citep{pitt1999}, resample-move \citep{gilks2001} and block sampling \citep{doucet2006}.
+Since then many techniques have been proposed to mitigate ancestral degeneracy.
+When no resampling is done, the variance of the particle weights explodes, so that  after a few iterations there is essentially just one particle contributing to the empirical measure. This is known as \emph{weight degeneracy}, and it causes much the same problems as ancestral degeneracy, except that it worsens forwards in time, while ancestral degeneracy operates backwards in time.
 
-\textcolor{red}{
-- Ancestral vs.\ weight degeneracy\\
-}
+This means that there is a trade-off between the two, so achieving good performance is difficult. Various strategies have been proposed in the literature.
+These include adaptive resampling (resampling not at every step but only when the variance of the weights gets too high) and using lower-variance resampling schemes (this is discussed in detail in Section \ref{sec:resampling}), as well as modified algorithms such as the auxiliary particle filter \citep{pitt1999}, resample-move \citep{gilks2001} and block sampling \citep{doucet2006}.
 
 \begin{figure}
 \centering

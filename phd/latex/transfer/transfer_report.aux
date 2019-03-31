@@ -34,15 +34,15 @@
 \newlabel{fig:SMC_vs_kalman}{{1}{5}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Kingman's coalescent}{5}}
 \@writefile{toc}{\contentsline {section}{\numberline {4}SMC genealogies as coalescents}{5}}
-\citation{gordon1993}
-\citation{pitt1999}
-\citation{gilks2001}
-\citation{doucet2006}
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces A realisation of Kingman's $n$-coalescent for a sample of size $n=50$. At first there are many distinct lineages, and mergers happen rapidly. Once there are fewer distinct lineages left, they take longer to merge. The process spends about half of its time with just two or three distinct lineages. \textit  {(Source: Wikimedia Commons)}\relax }}{6}}
 \newlabel{fig:kingman}{{2}{6}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Ancestral degeneracy}{6}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Genelaogical tree induced by resampling over 12 generations with $N=10$ particles. At each resampling step, any particles with no offspring ``die out''; they are not in the lineage of any time $T$ particle. In this realisation, the $N$ particles at time $T$ all originate from the same time $0$ ancestor. ``Dead'' particles/lineages are coloured black/grey, while the ``live'' tree is highlighted in purple.\relax }}{7}}
 \newlabel{fig:WF_tree}{{3}{7}}
+\citation{gordon1993}
+\citation{pitt1999}
+\citation{gilks2001}
+\citation{doucet2006}
 \citation{kingman1982gene}
 \citation{fisher1923,fisher1930,wright1931}
 \citation{moran1958}
@@ -50,18 +50,15 @@
 \citation{mohle1998}
 \citation{koskela2018}
 \citation{mohle1998}
-\citation{andrieu2010}
-\citation{andrieu2010}
 \@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces A sample of $N=6$ trajectories, illustrating ancestral degeneracy. At the ``present'' time there are six distinct lineages, but just three steps back they have coalesced onto only two lineages, and it takes less than 20 steps back before only one lineage remains.\relax }}{8}}
 \newlabel{fig:degeneracy}{{4}{8}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Existing results}{8}}
-\@writefile{toc}{\contentsline {section}{\numberline {5}Conditional SMC}{8}}
-\newlabel{sec:conditionalSMC}{{5}{8}}
-\citation{koskela2018}
+\citation{andrieu2010}
+\citation{andrieu2010}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Conditional SMC}{9}}
+\newlabel{sec:conditionalSMC}{{5}{9}}
 \@writefile{loa}{\contentsline {algorithm}{\numberline {2}{\ignorespaces Conditional SMC with multinomial resampling\relax }}{9}}
 \newlabel{alg:condSMC}{{2}{9}}
-\citation{koskela2018}
-\citation{koskela2018}
 \citation{koskela2018}
 \citation{koskela2018}
 \citation{koskela2018}
@@ -70,12 +67,14 @@
 \newlabel{eq:cNtilde}{{4}{10}}
 \newlabel{eq:DNtilde}{{5}{10}}
 \newlabel{eq:cNtilde2}{{6}{10}}
-\newlabel{eq:tau_tilde}{{7}{10}}
-\newlabel{thm:condSMC_kingman}{{1}{10}}
+\citation{koskela2018}
+\citation{koskela2018}
+\citation{koskela2018}
 \citation{efron1994}
 \citation{liu1998}
 \citation{whitley1994}
-\citation{kitagawa1996}
+\newlabel{eq:tau_tilde}{{7}{11}}
+\newlabel{thm:condSMC_kingman}{{1}{11}}
 \@writefile{toc}{\contentsline {section}{\numberline {6}Alternative resampling schemes}{11}}
 \newlabel{sec:resampling}{{6}{11}}
 \newlabel{item:resampling_random}{{1}{11}}
@@ -83,16 +82,16 @@
 \newlabel{item:resampling_equalw}{{3}{11}}
 \newlabel{item:resampling_unbiased}{{4}{11}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Multinomial resampling}{11}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Residual resampling}{11}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}Stratified resampling}{11}}
+\citation{kitagawa1996}
 \citation{carpenter1999}
 \citation{whitley1994}
 \citation{douc2005}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Residual resampling}{12}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}Stratified resampling}{12}}
 \newlabel{eq:syst_strat_resampling}{{8}{12}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {6.4}Systematic resampling}{12}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {6.5}Remarks on performance}{12}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {6.5.1}Variance}{12}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.5.2}Support of offspring numbers}{12}}
 \newlabel{fig:resampling_mn}{{5a}{13}}
 \newlabel{sub@fig:resampling_mn}{{(a)}{a}}
 \newlabel{fig:resampling_stratified}{{5b}{13}}
@@ -104,21 +103,22 @@
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {Stratified resampling}}}{13}}
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(c)}{\ignorespaces {Systematic resampling}}}{13}}
 \citation{whitley1994}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.5.2}Support of offspring numbers}{14}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {6.5.3}Permutation invariance}{14}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {6.5.4}Degeneracy under equal weights}{14}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.5.5}Exchangeability}{14}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.6}Optimal resampling}{14}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.7}Genealogies of SMC algorithms with residual resampling}{14}}
 \citation{koskela2018}
 \citation{mosimann1962}
-\citation{koskela2018}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.5.5}Exchangeability}{15}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.6}Optimal resampling}{15}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.7}Genealogies of SMC algorithms with residual resampling}{15}}
 \newlabel{eq:residual_coalrate}{{9}{15}}
 \@writefile{toc}{\contentsline {section}{\numberline {7}Discussion}{15}}
 \newlabel{sec:discussion}{{7}{15}}
 \@writefile{toc}{\contentsline {section}{\numberline {A}Proof of Corollary 1\hbox {}}{15}}
 \newlabel{eq:mn_moments}{{10}{15}}
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Conversion of ordinary powers into falling factorial powers\relax }}{16}}
-\newlabel{tab:fact_powers}{{1}{16}}
+\citation{koskela2018}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Conversion of ordinary powers into falling factorial powers\relax }}{17}}
+\newlabel{tab:fact_powers}{{1}{17}}
 \citation{koskela2018}
 \citation{koskela2018}
 \citation{koskela2018}
