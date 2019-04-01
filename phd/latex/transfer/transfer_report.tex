@@ -97,7 +97,7 @@ Throughout the document we will use the compact notation $X_{m:n}$ as shorthand 
 We denote falling factorial powers $(x)_a := x(x-1)\dots(x-a+1)$, with the convention $(x)_0 = 1$.
 
 
-\subsection{State space models}
+\subsection{State space models}\label{sec:SSM_spec}
 %Although sequential Monte Carlo (SMC) methods can be applied in a much more general setting, they are particularly easy to motivate in the setting of state space models, where the ``sequential'' nature follows naturally from the discrete time steps present in the model. 
 For the purposes of presenting the algorithm, let us consider a model consisting of an unobservable time-homogeneous discrete-time Markov process $X_{0:T}$ and observables $Y_{0:T}$, satisfying the conditional independence structure
 \begin{align*}
@@ -167,7 +167,7 @@ For models that are highly non-linear or for which gradients are not readily ava
 \section{Sequential Monte Carlo}\label{sec:SMC}
 References for this section are \citet{doucet2001}, \citet{delmoral2006}, and \citet{doucet2009}.
 \subsection{Particle approximation}
-\textcolor{red}{
+\textcolor{blue}{
 - Add a section including theoretical justification for SMC...?\\
 - If so, rearrange to have Sec: State Space Models $\rightarrow$ Sub: Class of Models; Inference Problems; Methods (non-SMC) + Sec: SMC $\rightarrow$ Sub: SMC for SSMs; Theoretical Justification for SMC.\\
 }
@@ -246,8 +246,7 @@ The form of the {\footnotesize RESAMPLE} function in Algorithm \ref{alg:SMC} is 
 
 
 \section{Coalescent Theory}\label{sec:coalescent_theory}
-\textcolor{red}{
-- time is going backwards now...\\
+\textcolor{blue}{
 - Cannings model: exchangeability, also a key assumption for our SMC tings\\
 - without exchangeability, can't even expect Markov process
 }
@@ -348,7 +347,6 @@ The mathematical tractability of this model stems from the fact that, if we form
 \textcolor{red}{
 - motivate the work: see notes on back of Adam's scribbled-on copy \& commented paragraph in intro\\
 - asymptotic properties of SMC lit review: CLT, path storage, coalescence etc.\\
-- the gap in knowledge that we aim to fill\\
 - why the simple SSM described at start is sufficient to demonstrate coalescence\\
 - how to deal with the difference between Kingman (time stops once all coalesced) and SMC genealogies (fixed time frame T)
 }
@@ -400,32 +398,63 @@ These include adaptive resampling (resampling not at every step but only when th
 \label{fig:degeneracy}
 \end{figure}
 
+\subsection{Quantifying degeneracy}
+The problem of ancestral degeneracy can be mitigated by these various measures, but not entirely removed. Therefore it is natural to ask how bad we can expect it to be. 
+If we could discover how quickly lineages will coalesce in a given algorithm, we could use this information to tune the number of particles, or even the time horizon, such that an acceptable number of distinct trajectories remain throughout the sampling window.
+
+For instance, in the \emph{particle Gibbs} algorithm it is important to maintain at least two distinct trajectories with high probability, so the number of particles should be chosen large enough to ensure this (this is discussed further in Section \ref{sec:conditionalSMC}).
+
+In general, analysis of the genealogies can quantify \emph{a priori} the severity of ancestral degeneracy and thus the sampling variance to be expected with a given algorithm and number of particles.
+It could also provide an analytical comparison of the efficacy of the various strategies proposed to reduce ancestral degeneracy, where previously recommendations have mostly been based on empirical performance. For instance, in Section \ref{sec:resampling} we discuss the relative performance of various resampling schemes.
+
 \subsection{Existing results}
-\textcolor{red}{
-Rewrite this section after adding details in Sec 3...
-}\\
-The first results showing convergence of population models to the Kingman coalescent appear in Kingman's original paper \citep{kingman1982gene} introducing the Kingman coalescent. This includes, but is not limited to, the neutral Wright-Fisher model \citep{fisher1923, fisher1930, wright1931} and the Moran model \citep{moran1958}.
-It is known that a general class of exchangeable models known as neutral Cannings models converge to the Kingman coalescent \citep[Section 2.2]{etheridge2011}.
-\citet{mohle1998} proved convergence for a larger class, including some non-exchangeable models.
+The first results showing convergence of population models to the Kingman coalescent appear in Kingman's original papers. This includes the neutral Wright-Fisher model and the neutral Moran model.
+Furthermore, it has been shown that the more general class of neutral Cannings models converge to the Kingman coalescent.
+\citet{mohle1998} proved convergence for a larger class still, including some non-exchangeable models.
 
 \citet{koskela2018} presents the first application of this type of analysis to SMC genealogies. Their result relies heavily on the methods introduced by \citet{mohle1998}.
-They were able to prove convergence to the Kingman coalescent for genealogies induced by standard SMC algorithms with multinomial resampling.
+They prove convergence to the Kingman coalescent for genealogies induced by a first SMC algorithm, with multinomial resampling.
 In the following sections we attempt to extend their result to cover some other SMC algorithms.
 
+It is interesting to note that many of the simplifying assumptions in population models actually hold in the case of SMC genealogies. The population size (number of particles) is a constant $N$; the generations are discrete and non-overlapping (all particles are resampled at once). The main difficulty in analysing SMC genealogies is the lack of neutrality: parents are selected with unequal weights, corresponding to fitness in population genetics.
 
 \section{Conditional SMC}\label{sec:conditionalSMC}
-\textcolor{red}{
-- Introduce particle MCMC (perhaps including basic algorithm)\\
-- Then motivate conditional SMC as update in PMCMC\\
-}
 
-Conditional SMC differs from the standard algorithm in that one predetermined trajectory (that is, a sequence of particle positions and the corresponding ancestral line) is conditioned to survive all of the propagation and resampling steps. 
-We will refer to this sequence as the \emph{immortal trajectory}, following the terminology used for conditioned Galton-Watson processes, and the \emph{immortal particle} will refer to the particle in a particular generation that is part of the immortal trajectory.
+\subsection{Particle Gibbs}
+Consider a model like the one presented in Section \ref{sec:SSM_spec}, where the transition density of $(X_t)$ depends on some parameter $\theta$. That is,
+\begin{align*}
+& X_0 \sim \mu(\cdot) \\
+& X_{t+1} \mid (X_t = x_t) \sim f_{\theta}(\cdot | x_t)  \qquad t=0,\dots,T-1 \\
+& Y_t \mid (X_t = x_t) \sim g(\cdot | x_t) \qquad t=0,\dots,T
+\end{align*}
+It is plausible to assume additionally the conditional independence statement $(\Theta \indep Y_t) \mid X_t$.
 
-The conditional SMC algorithm was proposed by \citet{andrieu2010} for use in the \emph{particle Gibbs} sampler, which they introduce as part of a more general class of particle MCMC methods. 
-In the particle Gibbs sampler, the standard SMC algorithm does not admit the desired target distribution, so this conditional version must be used instead.
+In this scenario we might want to find the joint posterior distribution $p(\theta, x_{0:T} | y_{0:t})$.
+If the density $f_\theta$ is suitably tractable, then it should be possible to sample exactly from $p(\theta | x_{0:t}, y_{0:t}) = p(\theta | x_{0:t})$, given some value of $x_{0:t}$.
+This suggests employing a Gibbs sampler alternately sampling from $p(\theta | x_{0:t}, y_{0:t})$ and $p(x_{0:t} | \theta, y_{0:t})$.
 
-When used as a component of the particle Gibbs algorithm, the immortal trajectory $x_{0:T}^*$ for each SMC run is sampled from the trajectories output from the previous run \citep[Section 2.4.3]{andrieu2010}. However, for our purposes we just consider a single SMC run for which the immortal trajectory is fixed.
+The distribution $p(x_{0:t} | \theta, y_{0:t})$ is just like $p(x_{0:t} | y_{0:t})$ in the model of Section \ref{sec:SSM_spec}, because although it is now parametrised by $\theta$, we are conditioning on a specific value of the parameter.
+This is then exactly the distribution that we suggested targeting with SMC since it is too difficult to sample from exactly.
+So is it possible to use SMC within this Gibbs sampler?
+
+This is precisely what was suggested in \citet{andrieu2010} --- although this is just one of many scenarios to which they apply their method.
+They point out that replacing an exact sample from $p(x_{0:t} | \theta, y_{0:t})$ with an SMC approximation does not yield a Gibbs sampler targeting the desired invariant distribution $p(\theta, x_{0:T} | y_{0:t})$.
+This can be corrected by using instead a \emph{conditional SMC} update, which is described in Section \ref{sec:condSMC_alg}.
+
+Each iteration of the resulting particle Gibbs algorithm runs as follows: 
+given the observations $y_{0:T}$ as well as positions $X_{0:T}^{(i-1)}$ and indices $a_{0:T}^{(i-1)}$ from the previous iteration,
+\begin{enumerate}
+\item Sample $\theta^{(i)} \sim p(\cdot | X_{0:T}^{(i-1)}, y_{0:T})$
+\item Run a conditional SMC update conditional on $X_{0:T}^{(i-1)}, a_{0:T}^{(i-1)}$ to obtain the approximate distribution $\hat{p}(x_{0:T} | \theta^{(i)}, y_{0:T})$
+\item Sample $X_{0:T}^{(i)} \sim \hat{p}(x_{0:T} | \theta^{(i)}, y_{0:T})$. This implicitly samples $a_{0:T}^{(i)}$, the particle indices of $X_{0:T}^{(i)}$.
+\end{enumerate}
+
+\subsection{The conditional SMC update}\label{sec:condSMC_alg}
+Conditional SMC differs from the standard algorithm in that one predetermined trajectory (that is, a sequence of particle positions and the corresponding ancestral indices) is conditioned to survive all of the propagation and resampling steps. 
+We refer to this sequence of positions as the \emph{immortal trajectory}, following the terminology used for conditioned Galton-Watson processes, and the \emph{immortal particle} will refer to the particle in a particular generation that is part of the immortal trajectory.
+
+When used as a component of the particle Gibbs algorithm, the immortal trajectory $x_{0:T}^*$ for each SMC run is sampled from the trajectories output from the previous run \citep[Section 2.4.3]{andrieu2010}. However, for our purposes we just consider a single SMC run for which the immortal trajectory is fixed. 
+Our statement of the algorithm also differs in that we do not include the immortal indices as an input; instead we sample them uniformly during the algorithm. For our purposes this is equivalent.
 
 A conditional SMC algorithm employing multinomial resampling is described in Algorithm \ref{alg:condSMC}.
 
