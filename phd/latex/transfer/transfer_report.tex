@@ -247,7 +247,6 @@ The form of the {\footnotesize RESAMPLE} function in Algorithm \ref{alg:SMC} is 
 
 \section{Coalescent Theory}\label{sec:coalescent_theory}
 \textcolor{red}{
-- asymptotic coalescents for various population models\\
 - time is going backwards now...\\
 - Cannings model: exchangeability, also a key assumption for our SMC tings\\
 - without exchangeability, can't even expect Markov process
@@ -296,6 +295,54 @@ where $b$ is the number of equivalence classes of $\xi$, and $\xi \prec \eta$ me
 %The \emph{Kingman coalescent} is the process on the whole population of size $N\to\infty$, such that the genealogy of any sample of size $n<N$ individuals from the present generation is an $n$-coalescent.
 %%% not true - fix this!
 
+\subsection{Limiting genealogies for population models}
+The Kingman coalescent is the asymptotic process (in the large population limit) for the coalescents arising from a surprisingly wide range of population models. Some important examples are studied in this section.
+
+\subsubsection{Wright-Fisher model}
+The neutral Wright-Fisher model \citep{fisher1923, fisher1930, wright1931} is one of the most studied models in population genetics.
+
+Assume we have a population of constant size $N$ which reproduces in discrete generations.
+At each time step, the existing generation dies, and $N$ offspring are produced. The offspring descend from parents which are independently selected according to
+\begin{equation*}
+a_i \sim \Cat(1:N, (1/N, \dots, 1/N)).
+\end{equation*}
+The offspring numbers are therefore jointly distributed
+\begin{equation*}
+(v_1,\dots, v_N) \sim \Mn(N, (1/N, \dots, 1/N)).
+\end{equation*}
+
+This model is ``neutral'' because all of the individuals are chosen to reproduce with the same probability. That is, no individual is considered ``fitter'' than any other, so there is no genetic selection. There are several variants of the Wright-Fisher model that include selection, but they are typically much less tractable than the neutral one.
+
+Kingman showed in his original papers introducing the Kingman coalescent \citep{kingman1982gene} that genealogies of the Wright-Fisher model converge to the Kingman coalescent as $N\to\infty$.
+
+\subsubsection{Cannings model}
+The neutral Cannings model \citep{cannings1974, cannings1975} is a more general construction which encompasses the Wright-Fisher model as a special case.
+
+Again we have a population of constant size $N$ reproducing in discrete generations.
+Now, the specific selection mechanism is not specified; we simply require that the offspring distribution is exchangeable. That is, the probability of observing offspring counts $(v_1, \dots, v_N)$ is invariant under permutations of the vector.
+
+Invariance under permutations encodes the fact that all parents are treated equally, hence this is still a neutral model.
+It is clear that the Wright-Fisher model falls under this framework, because the multinomial distribution with equal weights is indeed exchangeable.
+
+Genealogies of the Cannings model also converge to the Kingman coalescent as $N\to\infty$ \citep[Section 2.2]{etheridge2011}.
+
+\subsubsection{Moran model}
+The neutral Moran model \citep{moran1958} is often preferred by mathematicians because of its tractability.
+
+We still have a population of constant size $N$ with discrete generations.
+At each time step, an ordered pair of individuals is selected uniformly at random. The first individual in this pair dies (i.e.\ leaves no offspring in the next generation), while the other reproduces (leaving two offspring). All of the other individuals leave exactly one offspring.
+
+Usually the model is thought of as having ``overlapping generations'': the individuals having one offspring are considered to be not reproducing but rather surviving to appear again in the next generation.
+However, one can equally think of it as having non-overlapping generations and a low variance reproduction mechanism.
+
+In fact, it is again a special case of the Cannings model, where the offspring distribution is uniform over all permutations of $(0,2,1,1,\dots,1)$.
+Therefore we know that its genealogies converge to the Kingman coalescent.
+
+The mathematical tractability of this model stems from the fact that, if we formulate it a little more carefully, its pre-limiting behaviour is also that of a Kingman coalescent... 
+
+%The first results showing convergence of population models to the Kingman coalescent appear in Kingman's original paper \citep{kingman1982gene} introducing the Kingman coalescent. This includes, but is not limited to, the neutral Wright-Fisher model \citep{fisher1923, fisher1930, wright1931} and the Moran model \citep{moran1958}.
+%It is known that a general class of exchangeable models known as neutral Cannings models converge to the Kingman coalescent \citep[Section 2.2]{etheridge2011}.
+%\citet{mohle1998} proved convergence for a larger class, including some non-exchangeable models.
 
 \section{SMC genealogies as coalescents}
 \textcolor{red}{
