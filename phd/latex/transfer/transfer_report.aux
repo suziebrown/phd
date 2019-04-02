@@ -9,9 +9,9 @@
 \citation{vidoni1999}
 \citation{baum1970}
 \citation{jazwinski2007}
-\citation{wan2000}
 \@writefile{toc}{\contentsline {subsection}{\numberline {1.2}Inference in state space models}{2}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {1.3}Deterministic solutions}{2}}
+\citation{wan2000}
 \citation{doucet2001}
 \citation{delmoral2006}
 \citation{doucet2009}
@@ -27,134 +27,137 @@
 \newlabel{alg:SMC}{{1}{4}}
 \@writefile{toc}{\contentsline {section}{\numberline {3}Coalescent Theory}{4}}
 \newlabel{sec:coalescent_theory}{{3}{4}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Kingman's coalescent}{4}}
 \citation{kingman1982gene,kingman1982coal,kingman1982exch}
 \citation{wakeley2009}
 \citation{wakeley2009}
 \citation{mohle1998}
-\citation{fisher1923,fisher1930,wright1931}
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces SMC particles before resampling for a linear Gaussian model. The purple ribbon shows the exact posterior mode and 95\% credible interval, computed using the Kalman filter and RTS smoother. The black dots show the positions of the SMC particles, with size proportional to weight. After resampling all particles have equal weights but some are duplicated.\relax }}{5}}
 \newlabel{fig:SMC_vs_kalman}{{1}{5}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Limiting genealogies for population models}{5}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.1}Wright-Fisher model}{5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Kingman's coalescent}{5}}
+\citation{fisher1923,fisher1930,wright1931}
 \citation{kingman1982gene}
 \citation{cannings1974,cannings1975}
-\citation{etheridge2011}
-\citation{moran1958}
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces A realisation of Kingman's $n$-coalescent for a sample of size $n=50$. At first there are many distinct lineages, and mergers happen rapidly. Once there are fewer distinct lineages left, they take longer to merge. The process spends about half of its time with just two or three distinct lineages. \textit  {(Source: Wikimedia Commons)}\relax }}{6}}
 \newlabel{fig:kingman}{{2}{6}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.2}Cannings model}{6}}
-\citation{doucet2009}
-\citation{gordon1993}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Limiting genealogies for population models}{6}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.1}Wright-Fisher model}{6}}
+\citation{etheridge2011}
+\citation{moran1958}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.2}Cannings model}{7}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.3}Moran model}{7}}
 \@writefile{toc}{\contentsline {section}{\numberline {4}SMC genealogies as coalescents}{7}}
+\newlabel{sec:SMC_coal}{{4}{7}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Ancestral degeneracy}{7}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Genelaogical tree induced by resampling over 12 generations with $N=10$ particles. At each resampling step, any particles with no offspring ``die out''; they are not in the lineage of any time $T$ particle. In this realisation, the $N$ particles at time $T$ all originate from the same time $0$ ancestor. ``Dead'' particles/lineages are coloured black/grey, while the ``live'' tree is highlighted in purple.\relax }}{8}}
 \newlabel{fig:WF_tree}{{3}{8}}
+\citation{doucet2009}
+\citation{gordon1993}
 \citation{pitt1999}
 \citation{gilks2001}
 \citation{doucet2006}
 \citation{chan2013,lee2018,olsson2019}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces A sample of $N=6$ trajectories, illustrating ancestral degeneracy. At the ``present'' time there are six distinct lineages, but just three steps back they have coalesced onto only two lineages, and it takes less than 20 steps back before only one lineage remains.\relax }}{9}}
-\newlabel{fig:degeneracy}{{4}{9}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Quantifying degeneracy}{9}}
 \citation{jacob2015}
 \citation{koskela2018}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Quantifying degeneracy}{9}}
 \citation{mohle1998}
 \citation{koskela2018}
 \citation{mohle1998}
-\citation{andrieu2010}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces A sample of $N=6$ trajectories, illustrating ancestral degeneracy. At the ``present'' time there are six distinct lineages, but just three steps back they have coalesced onto only two lineages, and it takes less than 20 steps back before only one lineage remains.\relax }}{10}}
+\newlabel{fig:degeneracy}{{4}{10}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Existing results}{10}}
-\@writefile{toc}{\contentsline {section}{\numberline {5}Conditional SMC}{10}}
-\newlabel{sec:conditionalSMC}{{5}{10}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Particle Gibbs}{10}}
 \citation{andrieu2010}
+\citation{andrieu2010}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Conditional SMC}{11}}
+\newlabel{sec:conditionalSMC}{{5}{11}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Particle Gibbs}{11}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.2}The conditional SMC update}{11}}
 \newlabel{sec:condSMC_alg}{{5.2}{11}}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {2}{\ignorespaces Conditional SMC with multinomial resampling\relax }}{11}}
-\newlabel{alg:condSMC}{{2}{11}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {2}{\ignorespaces Conditional SMC with multinomial resampling\relax }}{12}}
+\newlabel{alg:condSMC}{{2}{12}}
 \citation{koskela2018}
 \citation{koskela2018}
 \citation{koskela2018}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Genealogies of conditional SMC algorithms}{12}}
-\newlabel{sec:condSMC_maths}{{5.3}{12}}
-\newlabel{eq:cNtilde}{{4}{12}}
-\newlabel{eq:DNtilde}{{5}{12}}
-\newlabel{eq:cNtilde2}{{6}{12}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Genealogies of conditional SMC algorithms}{13}}
+\newlabel{sec:condSMC_maths}{{5.3}{13}}
+\newlabel{eq:cNtilde}{{4}{13}}
+\newlabel{eq:DNtilde}{{5}{13}}
+\newlabel{eq:cNtilde2}{{6}{13}}
 \citation{koskela2018}
 \citation{koskela2018}
 \citation{koskela2018}
+\citation{liu1998}
 \citation{efron1994}
 \citation{liu1998}
 \citation{whitley1994}
-\newlabel{eq:tau_tilde}{{7}{13}}
-\newlabel{thm:condSMC_kingman}{{1}{13}}
-\@writefile{toc}{\contentsline {section}{\numberline {6}Alternative resampling schemes}{13}}
-\newlabel{sec:resampling}{{6}{13}}
-\newlabel{item:resampling_random}{{1}{13}}
-\newlabel{item:resampling_fixedN}{{2}{13}}
-\newlabel{item:resampling_equalw}{{3}{13}}
-\newlabel{item:resampling_unbiased}{{4}{13}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Multinomial resampling}{13}}
+\newlabel{eq:tau_tilde}{{7}{14}}
+\newlabel{thm:condSMC_kingman}{{1}{14}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Alternative resampling schemes}{14}}
+\newlabel{sec:resampling}{{6}{14}}
+\newlabel{item:resampling_random}{{1}{14}}
+\newlabel{item:resampling_fixedN}{{2}{14}}
+\newlabel{item:resampling_equalw}{{3}{14}}
+\newlabel{item:resampling_unbiased}{{4}{14}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Multinomial resampling}{14}}
+\newlabel{eq:syst_strat_resampling}{{8}{14}}
 \citation{kitagawa1996}
 \citation{carpenter1999}
 \citation{whitley1994}
 \citation{douc2005}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Residual resampling}{14}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}Stratified resampling}{14}}
-\newlabel{eq:syst_strat_resampling}{{8}{14}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.4}Systematic resampling}{14}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.5}Remarks on performance}{14}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.5.1}Variance}{14}}
-\newlabel{fig:resampling_mn}{{5a}{15}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Residual resampling}{15}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}Stratified resampling}{15}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4}Systematic resampling}{15}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.5}Remarks on performance}{15}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.5.1}Variance}{15}}
+\newlabel{fig:resampling_mn}{{5a}{16}}
 \newlabel{sub@fig:resampling_mn}{{(a)}{a}}
-\newlabel{fig:resampling_stratified}{{5b}{15}}
+\newlabel{fig:resampling_stratified}{{5b}{16}}
 \newlabel{sub@fig:resampling_stratified}{{(b)}{b}}
-\newlabel{fig:resampling_systematic}{{5c}{15}}
+\newlabel{fig:resampling_systematic}{{5c}{16}}
 \newlabel{sub@fig:resampling_systematic}{{(c)}{c}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Illustration of the way parental indices are sampled in three different resampling schemes. For this example $N=4$ and the weights are $\wt {1:4} = \frac  {1}{N}(1,\frac  {2}{3},2,\frac  {1}{3})$. In each case the indices are assigned by sampling from $\operatorname  {Uniform}(0,1)$ and seeing which subinterval the samples land in, where the length of the subinterval corresponding to each index is given by its weight. The same $\operatorname  {Uniform}(0,1)$ samples are used in each case.  \textbf  {(a)} For Multinomial resampling, we just sample $N$ independent $\operatorname  {Uniform}(0,1)$ random variables. In this example the sampled offspring counts are $(1,1,2,0)$.  \textbf  {(b)} For stratified resampling, the $\operatorname  {Uniform}(0,1)$ samples are transformed to Uniform draws from the intervals (0,0.25), (0.25,0.5), (0.5, 0.75), (0.75,1). In this example the sampled offspring counts are $(1,1,2,0)$.  \textbf  {(c)} For systematic resampling, we use only the first draw and transform as in (b) to get a sample from $\operatorname  {Uniform}(0,0.25)$. For the subsequent draws, we just add 0.25 each time to obtain a sample in each interval. In this example the sampled offspring counts are $(1,0,2,1)$.\relax }}{15}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {Multinomial resampling}}}{15}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {Stratified resampling}}}{15}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(c)}{\ignorespaces {Systematic resampling}}}{15}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Illustration of the way parental indices are sampled in three different resampling schemes. For this example $N=4$ and the weights are $\wt {1:4} = \frac  {1}{N}(1,\frac  {2}{3},2,\frac  {1}{3})$. In each case the indices are assigned by sampling from $\operatorname  {Uniform}(0,1)$ and seeing which subinterval the samples land in, where the length of the subinterval corresponding to each index is given by its weight. The same $\operatorname  {Uniform}(0,1)$ samples are used in each case.  \textbf  {(a)} For Multinomial resampling, we just sample $N$ independent $\operatorname  {Uniform}(0,1)$ random variables. In this example the sampled offspring counts are $(1,1,2,0)$.  \textbf  {(b)} For stratified resampling, the $\operatorname  {Uniform}(0,1)$ samples are transformed to Uniform draws from the intervals (0,0.25), (0.25,0.5), (0.5, 0.75), (0.75,1). In this example the sampled offspring counts are $(1,1,2,0)$.  \textbf  {(c)} For systematic resampling, we use only the first draw and transform as in (b) to get a sample from $\operatorname  {Uniform}(0,0.25)$. For the subsequent draws, we just add 0.25 each time to obtain a sample in each interval. In this example the sampled offspring counts are $(1,0,2,1)$.\relax }}{16}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {Multinomial resampling}}}{16}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {Stratified resampling}}}{16}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(c)}{\ignorespaces {Systematic resampling}}}{16}}
 \citation{gerber2017}
 \citation{whitley1994}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.5.2}Support of offspring numbers}{16}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.5.3}Permutation invariance}{16}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.5.4}Degeneracy under equal weights}{16}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.5.2}Support of offspring numbers}{17}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.5.3}Permutation invariance}{17}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.5.4}Degeneracy under equal weights}{17}}
 \citation{crisan1999}
 \citation{koskela2018}
 \citation{koskela2018}
+\citation{koskela2018}
 \citation{mosimann1962}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.5.5}Exchangeability}{17}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.6}Optimal resampling}{17}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.7}Genealogies of SMC algorithms with residual resampling}{17}}
-\newlabel{eq:residual_coalrate}{{9}{17}}
-\@writefile{toc}{\contentsline {section}{\numberline {7}Discussion}{17}}
-\newlabel{sec:discussion}{{7}{17}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.5.5}Exchangeability}{18}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.6}Optimal resampling}{18}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.7}Genealogies of SMC algorithms with residual resampling}{18}}
+\newlabel{eq:residual_coalrate}{{9}{18}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Discussion}{18}}
+\newlabel{sec:discussion}{{7}{18}}
 \citation{koskela2018}
-\@writefile{toc}{\contentsline {section}{\numberline {A}Proof of Corollary 1\hbox {}}{18}}
-\newlabel{eq:mn_moments}{{10}{18}}
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Conversion of ordinary powers into falling factorial powers\relax }}{19}}
-\newlabel{tab:fact_powers}{{1}{19}}
-\citation{koskela2018}
-\citation{koskela2018}
+\@writefile{toc}{\contentsline {section}{\numberline {A}Proof of Corollary 1\hbox {}}{19}}
+\newlabel{eq:mn_moments}{{10}{19}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Conversion of ordinary powers into falling factorial powers\relax }}{20}}
+\newlabel{tab:fact_powers}{{1}{20}}
 \citation{koskela2018}
 \citation{koskela2018}
 \citation{koskela2018}
 \citation{koskela2018}
 \citation{koskela2018}
-\newlabel{eq:cN_upper}{{11}{23}}
-\newlabel{eq:cN_lower}{{12}{23}}
-\newlabel{eq:DN_upper}{{13}{23}}
-\newlabel{eq:cN2_upper}{{14}{23}}
-\newlabel{eq:sum_tau_cN_upperlower}{{15}{23}}
+\citation{koskela2018}
+\citation{koskela2018}
+\newlabel{eq:cN_upper}{{11}{24}}
+\newlabel{eq:cN_lower}{{12}{24}}
+\newlabel{eq:DN_upper}{{13}{24}}
+\newlabel{eq:cN2_upper}{{14}{24}}
+\newlabel{eq:sum_tau_cN_upperlower}{{15}{24}}
 \citation{koskela2018}
 \citation{koskela2018}
 \citation{koskela2018}
-\@writefile{toc}{\contentsline {section}{\numberline {B}Derivation of \textup  {\hbox {\mathsurround \z@ \normalfont  (\ignorespaces 9\hbox {}\unskip \@@italiccorr )}}}{25}}
+\@writefile{toc}{\contentsline {section}{\numberline {B}Derivation of \textup  {\hbox {\mathsurround \z@ \normalfont  (\ignorespaces 9\hbox {}\unskip \@@italiccorr )}}}{26}}
 \citation{koskela2018}
 \bibdata{../smc.bib}
-\newlabel{eq:cNt_1}{{16}{26}}
+\newlabel{eq:cNt_1}{{16}{27}}
 \bibcite{andrieu2010}{{1}{2010}{{Andrieu et~al.}}{{Andrieu, Doucet and\ Holenstein}}}
 \bibcite{baum1970}{{2}{1970}{{Baum et~al.}}{{Baum, Petrie, Soules and\ Weiss}}}
 \bibcite{cannings1974}{{3}{1974}{{Cannings}}{{}}}
