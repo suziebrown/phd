@@ -86,13 +86,6 @@ In Section \ref{sec:conditionalSMC} we present the first novel result of this wo
 Section \ref{sec:resampling} introduces the next focus of this work, for which the proofs are not yet complete.
 Finally we summarise future directions of the work, and its potential impact, in Section \ref{sec:discussion}.\\
 
-%%%%
-%While particle methods can be very effective for filtering, it is more difficult to apply them to smoothing because they typically suffer very badly from ancestral degeneracy in the particle genealogies.
-%
-%When attempting to mitigate this problem, one often encounters a trade-off between ancestral degeneracy (arising from resampling) and weight degeneracy (arising from sequential importance sampling). However, while weight degeneracy is a reasonably well-quantified problem, there exists little in the way of tools for quantifying ancestral degeneracy a priori. There have been some simulation studies attempting to cast light on the magnitude of this problem, but analytical findings remain elusive, since the complexity of the most commonly used particle methods makes it difficult to obtain any rigorous results.
-%Consequently, there is a wealth of pertinent open questions in this area. This work attempts to extend a first result for a standard class of SMC algorithms to the more sophisticated algorithms which are typically used in practice.
-%%%%
-
 Throughout the document we will use the compact notation $X_{m:n}$ as shorthand for $X_m, X_{m+1}, \dots, X_n$, as well as $X_{-n} := X_0, \dots, X_{n-1}, X_{n+1}, \dots X_{N}$.
 We denote falling factorial powers $(x)_a := x(x-1)\dots(x-a+1)$, with the convention $(x)_0 = 1$.
 
@@ -344,8 +337,7 @@ The mathematical tractability of this model stems from the fact that, if we form
 %\citet{mohle1998} proved convergence for a larger class, including some non-exchangeable models.
 
 \section{SMC genealogies as coalescents}
-\textcolor{red}{
-- motivate the work: see notes on back of Adam's scribbled-on copy \& commented paragraph in intro\\
+\textcolor{blue}{
 - asymptotic properties of SMC lit review: CLT, path storage, coalescence etc.\\
 - why the simple SSM described at start is sufficient to demonstrate coalescence\\
 - how to deal with the difference between Kingman (time stops once all coalesced) and SMC genealogies (fixed time frame T)
@@ -372,7 +364,7 @@ In order to estimate filtering distributions $p(x_t | y_{0:t})$, we only require
 \begin{equation*}
 \hat{p}(x_{t}|y_{0:t}) = \frac{1}{N} \sum_{i=1}^N \delta_{X_{t}^{(i)}} (x_{t})
 \end{equation*}
-has mass in $N$ locations, and the Monte Carlo error for estimating expectations under $p(x_t | y_{0:t})$ scales as $O(N^{-1/2})$ [REF].
+has mass in $N$ locations, and the Monte Carlo error for estimating expectations under $p(x_t | y_{0:t})$ scales as $O(N^{-1/2})$ \citep{doucet2009}.
 
 However, we do not achieve the same performance in the case of estimating the  smoothing distributions $p(x_{0:t} | y_{0:t})$. In this case we require a sample of trajectories over times $0:t$ as opposed to a sample of particles at time $t$.
 The coalescence of lineages is an unavoidable effect of resampling, and it causes more and more of these trajectories to coincide the further into the past we look.
@@ -399,13 +391,19 @@ These include adaptive resampling (resampling not at every step but only when th
 \end{figure}
 
 \subsection{Quantifying degeneracy}
-The problem of ancestral degeneracy can be mitigated by these various measures, but not entirely removed. Therefore it is natural to ask how bad we can expect it to be. 
+The problem of ancestral degeneracy can be mitigated by these various measures, but not entirely removed. Therefore it is natural to ask how bad we can expect it to be. While weight degeneracy is a reasonably well-quantified problem, there exists little in the way of tools for quantifying ancestral degeneracy. There have been some simulation studies attempting to cast light on the magnitude of this problem, but analytical findings remain elusive, since the complexity of the most popular particle methods makes it difficult to obtain any rigorous results.
+
 If we could discover how quickly lineages will coalesce in a given algorithm, we could use this information to tune the number of particles, or even the time horizon, such that an acceptable number of distinct trajectories remain throughout the sampling window.
 
 For instance, in the \emph{particle Gibbs} algorithm it is important to maintain at least two distinct trajectories with high probability, so the number of particles should be chosen large enough to ensure this (this is discussed further in Section \ref{sec:conditionalSMC}).
 
-In general, analysis of the genealogies can quantify \emph{a priori} the severity of ancestral degeneracy and thus the sampling variance to be expected with a given algorithm and number of particles.
-It could also provide an analytical comparison of the efficacy of the various strategies proposed to reduce ancestral degeneracy, where previously recommendations have mostly been based on empirical performance. For instance, in Section \ref{sec:resampling} we discuss the relative performance of various resampling schemes.
+In general, analysis of the genealogies can quantify the severity of ancestral degeneracy and thus the sampling variance to be expected with a given algorithm and number of particles.
+Variance estimation for SMC is an active research topic \citep{chan2013, lee2018, olsson2019}, but the previously proposed estimators require the output from at least one run of the algorithm, whereas our analysis allow us to estimate the variance \emph{a priori}.
+
+Moreover, it could provide an analytical comparison of the efficacy of the various strategies proposed to reduce ancestral degeneracy, where previously recommendations have mostly been based on empirical performance. For instance, in Section \ref{sec:resampling} we discuss the relative performance of various resampling schemes.
+
+There is also a connection with estimating the memory requirements of SMC algorithms. Storing the entire trajectory for each of $N$ particles over time horizon $T$ requires $O(NT)$ memory, but ancestral degeneracy means that much of this storage is redundant. 
+\citet{jacob2015} construct an algorithm for efficiently storing the trajectories, and show that the expected cost is at most $O(N\log N)$, independent of $T$. \citet{koskela2018} remark that this bound could perhaps be reduced to $O(N)$, based on empirical results.
 
 \subsection{Existing results}
 The first results showing convergence of population models to the Kingman coalescent appear in Kingman's original papers. This includes the neutral Wright-Fisher model and the neutral Moran model.
@@ -770,6 +768,7 @@ A strange property of stratified and systematic resampling is that they are sens
 We can also see that because $w_1$ has weight $\geq 1/N$ and is placed first, it is guaranteed at least one offspring.
 
 This property can lead to pathological behaviour, but is easily avoided by applying a random permutation to the order of the subintervals.
+\citet{gerber2017} also propose a variation on systematic resampling that avoids this property.
 
 \subsubsection{Degeneracy under equal weights}
 Suppose we somehow end up in the situation where all the weights are equal (i.e.\ $\wt{i} = 1/N$ for all $i$).
@@ -788,10 +787,7 @@ Stratified and systematic resampling are clearly not exchangeable since, for ins
 The same goes for residual resampling.
 
 \subsection{Optimal resampling}
-\textcolor{red}{
-- Gerber, Chopin \& Whiteley\\
-- Crisan \& Lyons\\
-}
+\citet{crisan1999} introduce another resampling scheme based on a branching process, which they show to be optimal in some sense. However, their algorithm is not widely used in practice because it is difficult to implement.
 
 \subsection{Genealogies of SMC algorithms with residual resampling}
 Similarly to Section \ref{sec:condSMC_maths}, here we attempt to characterise the genealogies induced in the case of residual resampling. Convergence is not yet proved in this case, but the steps taken so far are summarised here, with full details in the appendix.
@@ -810,11 +806,12 @@ and using that $\E[c^{m}_N(t) |\F] = O(N^{-1})$, since the subtracted term is no
 Before we can hope to verify the conditions of \citet[Theorem 1]{koskela2018} in this case, it remains to find similar bounds on $\E[D^r_N(t) |\F]$ and $\E[(c^r_N(t))^2 |\F]$.
 
 \section{Discussion}\label{sec:discussion}
-\textcolor{red}{
-- results so far\\
-- impact of this work: to practitioners, to enriching the SMC literature, interpretation within pop gen.\\
-- future directions
-}
+We have successfully extended the result of \citet{koskela2018} to show that conditional SMC genealogies also converge to the Kingman coalescent. The next step is to use numerical simulations to investigate whether this result provides a reasonable approximation in the finite-$N$ regime that is of interest in practice.
+
+Meanwhile, we are also looking into the influence of alternative resampling schemes on the asymptotic form of the coalescent. This is of particular interest because these resampling schemes are intended to slow down coalescence.
+
+These are the first analyses of their kind, and are a valuable contribution to the SMC literature because of the practical relevance of ancestral degeneracy. We hope that this analysis may provide not only theoretically interesting results, but also directly benefit practitioners by providing a framework for optimising the design and parameters of SMC algorithms and providing a new angle on the relative merits of existing methods.
+
 
 \appendix
 \section{Proof of Corollary \ref{thm:condSMC_kingman}}
