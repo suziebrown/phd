@@ -1,7 +1,7 @@
 using Random, Distributions
 
 n = 10 # number of particles
-reps = 4 # number of weight vectors to sample
+reps = 100 # number of weight vectors to sample
 w = Array{Float64, 2}(undef, reps, n)
 
 # generate weight vectors
@@ -16,6 +16,7 @@ end
 
 v_mn = Array{Int64, 2}(undef, reps, n)
 v_res = Array{Int64, 2}(undef, reps, n)
+n_random = Array{Int64, 1}(undef, reps)
 
 # simulate resampling with multinomial & residual
 for i in 1:reps
@@ -27,6 +28,7 @@ for i in 1:reps
     R = sum(resid)
     resid = resid / R
     R = Int(round(n * R))
+    n_random[i] = R # how many offspring were assigned randomly
     v_res_rand = rand(Multinomial(R, resid)) # random part
 
     v_res[i,:] = v_res_det + v_res_rand # residual resampling
@@ -49,6 +51,10 @@ end
 
 n_greater = sum(pairs_res .> pairs_mn)
 n_equal = sum(pairs_res .== pairs_mn)
+avg_random = mean(n_random)
 
-println("residual merged more pairs in ", n_greater, " out of ", reps, " cases.")
-println("residual merged the same number of pairs in ", n_equal, " out of ", reps, " cases.")
+println()
+println("Residual merged more pairs than multinomial in ", n_greater, " out of ", reps, " cases.")
+println("Residual merged the same number of pairs as multinomial in ", n_equal, " out of ", reps, " cases.")
+println("On average, residual assigned ", avg_random, " out of ", n, " offspring randomly.")
+println()
