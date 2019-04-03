@@ -1,12 +1,12 @@
 using Random, Distributions
 
-n = 10 # number of particles
-reps = 100 # number of weight vectors to sample
+n = 1000 # number of particles
+reps = 10000 # number of weight vectors to sample
 w = Array{Float64, 2}(undef, reps, n)
 
 # generate weight vectors
 for i in 1:reps
-    w[i, :] = rand(Float64, n)
+    w[i, :] = rand(LogNormal(0,1), n)
 end
 # normalise weight vectors
 W = sum(w, dims=2).^(-1)
@@ -58,9 +58,25 @@ n_equal = sum(pairs_res .== pairs_mn)
 avg_random = mean(n_random)
 mad_greater = sum(mad_res .> mad_mn)
 
+#output to console
 println()
 println("On average, residual assigned ", avg_random, " out of ", n, " offspring randomly.")
 println("Residual merged more pairs than multinomial in ", n_greater, " out of ", reps, " cases.")
 println("Residual merged the same number of pairs as multinomial in ", n_equal, " out of ", reps, " cases.")
 println("Residual gave higher MAD from expected offspring numbers in ", mad_greater, " out of ", reps, " cases.")
 println()
+
+# plot coalescence rates against each other
+using Plots
+
+coal_mn = pairs_mn /(n*(n-1))
+coal_res = pairs_res /(n*(n-1))
+plotlim = max(maximum(coal_mn), maximum(coal_res))
+
+plot([0,plotlim], [0,plotlim], color="gray", leg=false)
+scatter!(coal_mn, coal_res, marker=(2, :purple, Plots.stroke(0)))
+xlabel!("multinomial resampling")
+ylabel!("residual resampling")
+title!("empirical coalescence rate (N=1000)")
+
+#savefig("cN_mn_res_N1000.pdf")
