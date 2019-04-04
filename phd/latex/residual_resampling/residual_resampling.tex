@@ -1,0 +1,132 @@
+\documentclass[fleqn]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=2cm]{geometry}
+
+% maths
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+% bibliography
+\usepackage[round, sort&compress]{natbib}
+\usepackage{har2nat}
+\bibliographystyle{agsm}
+
+% custom header/footer
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+\fancyhf{}
+\rfoot{\textsf{\thepage}}
+\lfoot{\textsf{Suzie Brown}}
+
+% project-specific commands
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\F}{\mathcal{F}_{t-1}}
+\newcommand{\Mn}{\operatorname{Multinomial}}
+\newcommand{\vt}[2][t]{v_{#1}^{(#2)}}
+\newcommand{\wt}[2][t]{w_{#1}^{(#2)}}
+\newcommand{\fnw}[1][i]{\lfloor N\wt{#1} \rfloor}
+\newcommand{\wbar}[2][t]{\bar{w}_{#1}^{(#2)}}
+
+\title{Residual resampling in SMC}
+\author{Suzie Brown}
+\date{\today}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+
+%*intro*
+%
+%*state multinomial resampling procedure for comparison*
+%
+%*Assuming constant number of particles and unbiasedness of resampling scheme...*
+%
+%*Also define N, w's, v's, etc.*\\
+
+%\section{Low variance resampling}
+%
+%It is well known that multinomial resampling does not yield the most efficient  sequential Monte Carlo algorithm.
+%A resampling step is necessary in SMC to prevent the variance of the particle weights to explode (\emph{weight degeneracy}), and it must incorporate some randomness to ensure convergence to the target distribution.
+%However, the addition of a random resampling procedure causes the ancestral lines of the particles to coalesce back in time (\emph{ancestral degeneracy}).
+%If we are interested in estimating the smoothing distribution, we have to trade off these two effects: roughly speaking, less random resampling leads to more weight degeneracy and less ancestral degeneracy.
+%
+%As long as the resampling procedure is able to kill off less promising particles reasonably efficiently, there shouldn't be an issue with weight degeneracy.
+%For this reason, a lot of work has gone into suggesting improvements to multinomial resampling which reduce the speed of coalescence whilst still allowing `bad' particles to be killed off quickly.
+%One such scheme, particularly popular among practitioners, is \emph{residual resampling} \citep{liu1998}. 
+The offspring counts are sampled according to:
+\begin{align*}
+& \vt{i} = \lfloor N \wt{i} \rfloor + X_i \\
+& X_i \sim \Mn (N-k, (\wbar{1}, \dots, \wbar{N}))
+\end{align*}
+where $k := \sum_{i=1}^N \lfloor N \wt{i} \rfloor$ is the number of offspring assigned deterministically, and $\wbar{i} := \frac{N\wt{i} - \lfloor N \wt{i} \rfloor}{N - k}$ are the residual weights. Let us also define the residuals $r_i := N\wt{i} - \lfloor N \wt{i} \rfloor$.
+
+%We can see that this scheme offers a reduction in the variance of the weights (compared to no resampling): particles with weight less than $1/N$ stand the chance of having no offspring and therefore being killed off, while any particle with weight at least $1/N$ is guaranteed to survive. As in multinomial resampling, particles with very low weights are very unlikely to survive.
+%
+%Furthermore, \citet{douc2005} show that the conditional variance of the resulting approximation is always smaller with residual resampling than with multinomial resampling. They note that the same applies to stratified resampling, but the two schemes perform similarly in practice.
+%
+%The variance of offspring counts among a particular generation serves as an intuitive proxy for the amount of ancestral degeneracy associated with a particular resampling scheme. To illustrate this, consider two extremes: a resampling scheme that assigns all offspring to the single highest-weighted particle, versus a scheme that deterministically assigns exactly one offspring to each particle. The first scheme maximises the variance of offspring counts, and causes all the particles' ancestries to coalesce just one iteration back in time. The second, which is the same as no resampling at all, gives zero variance of offspring counts, and the resulting ancestries will never coalesce.
+%
+%We can see residual resampling (as well as other popular schemes like systematic resampling and stratified resampling) as a modification of multinomial resampling that reduces the amount of randomness in the resampling step. The number of offspring assigned to each particle is decomposed into a deterministic and a random part, as opposed to multinomial resampling which is purely random.
+
+\section{Coalescence rate}
+We shall calculate the expected coalescence rate in the case of residual resampling. The coalescence rate is defined in \citet{koskela2018} as
+\begin{equation*}
+c_N(t) := \frac{1}{(N)_2} \sum_{i=1}^{N} \E\left[ (\vt{i})_2 \right].
+\end{equation*}
+The inner expectation comes out as
+\begin{align*}
+\E[(\vt{i})_2] &= \E[(\vt{i})^2] - \E[\vt{i}] \\
+&= \lfloor N\wt{i} \rfloor^2 + 2\lfloor N\wt{i} \rfloor r_i + r_i \left(1 - \frac{r_i}{N-k} + r_i \right) - N\wt{i} \\
+&= \lfloor N\wt{i} \rfloor^2 - \lfloor N\wt{i} \rfloor + 2\lfloor N\wt{i} \rfloor r_i + r_i^2 \left(1- \frac{1}{N-k} \right) \\
+&= (N\wt{i})^2 - \lfloor N\wt{i} \rfloor - \frac{r_i^2}{N-k}
+\end{align*}
+so we get
+\begin{align*}
+\E[c^r_N(t) |\F] &=  \frac{1}{(N)_2} \E\left[ \sum_{i=1}^{N} \E[(\vt{i})_2] |\F \right] \\
+&= \frac{N}{N-1} \sum_{i=1}^{N} \E[(\wt{i})^2 |\F] - \frac{1}{(N)_2} \sum_{i=1}^{N} \E\left[ \frac{r_i^2}{N-k} |\F \right] - \frac{1}{(N)_2} \E[k |\F] \\
+&= \E[c^{m}_N(t) |\F] \left( 1 + \frac{1}{N-1} \right) - \frac{1}{(N)_2}  \E\left[ \frac{\sum_{i=1}^{N} (N\wt{i} - \lfloor N\wt{i}\rfloor)^2}{\sum_{j=1}^{N} (N\wt{j} - \lfloor N\wt{j}\rfloor)} |\F \right] \\
+&\qquad -\frac{1}{(N)_2} \E \left[ \sum_{i=1}^{N} \lfloor N\wt{i}\rfloor |\F \right]
+\end{align*}
+%The first term resembles the expected coalescence rate for multinomial resampling, except for the factor of $\frac{N}{N-1}$. The second term captures the variance of the residuals, and the third term captures the expected number of deterministically assigned offspring.
+\textbf{Sanity check:}\\
+When the weights are all equal, $\wt{i} \equiv 1/N$, we should have $\E[c^r_N(t) |\F] = 0$ since each particle will have exactly one offspring so it is impossible for any lineages to coalesce. In this case we have $\E[c^{m}_N(t) |\F] = \sum_{i=1}^{N} \E[(\wt{i})^2 |\F] = 1/N$ for multinomial resampling. We also have that $N\wt{i} \equiv \lfloor N\wt{i} \rfloor \equiv 1$ and hence $r_i = 0$ and $k=N$. Thus the RHS comes out as
+\begin{equation*}
+\frac{1}{N}\frac{N}{N-1} - 0 - \frac{1}{(N)_2} N = \frac{1}{N-1} - \frac{1}{N-1} = 0
+\end{equation*}
+as expected.
+
+\section{Squared coalescence rate and other awful expressions}
+First let's write down various moments that will be needed (where $i \neq j$).
+\begin{align*}
+\E[(\vt{i})^2 |\F] &= \fnw^2 + 2\fnw N\wt{i} + (N)_2(\wt{i})^2 \\
+\E[(\vt{i})^3 |\F] &= \fnw^3 + 3\fnw^2 N\wt{i} + 3\fnw (N)_2(\wt{i})^2 +(N)_3(\wt{i})^3 \\
+\E[(\vt{i})^4 |\F]&= \fnw^4 + 4\fnw^3 N\wt{i} + 6\fnw^2 (N)_2 (\wt{i})^2 + 4\fnw (N)_3(\wt{i})^3 + (N)_4(\wt{i})^4 \\
+\E[\vt{i}\vt{j} |\F] &= \fnw\fnw[j] + \fnw N\wt{j} + \fnw[j] N\wt{i} + (N)_2\wt{i}\wt{j} \\
+\E[(\vt{i})^2\vt{j} |\F] &= \fnw^2\fnw[j] + \fnw^2 N\wt{j} + 2\fnw\fnw[j] N\wt{i} + 2\fnw (N)_2 \wt{i}\wt{j} \\
+&\qquad + \fnw[j] (N)_2(\wt{i})^2 + (N)_3(\wt{i})^2\wt{j}\\
+\E[(\vt{i})^2(\vt{j})^2 |\F] &= \fnw^2\fnw[j]^2 +2\fnw^2\fnw[j] N\wt{j} + 2\fnw\fnw[j]^2 N\wt{i} \\
+&\qquad + \fnw^2 (N)_2 (\wt{j})^2 + 4\fnw\fnw[j](N)_2\wt{i}\wt{j} + \fnw[j]^2 (N)_2(\wt{i})^2 \\
+&\qquad + 2\fnw (N)_3\wt{i}(\wt{j})^2 + 2\fnw[j] (N)_3 (\wt{i})^2\wt{j} + (N)_4 (\wt{i})^2(\wt{j})^2
+\end{align*}
+
+For the squared coalescence rate, expanding the falling factorials appropriately, we get
+\begin{align*}
+\E[(c^r_N(t))^2 |\F] &=
+\frac{1}{(N)_2^2} \left( \sum_{i=1}^N \E[(\vt{i})_2^2 |\F] + \sum_{i=1}^N \sum_{j\neq i} \E[(\vt{i})_2 (\vt{j})_2 |\F] \right) \\
+&= \frac{1}{(N)_2^2} \sum_{i=1}^N \left( \E[(\vt{i})^4 |\F] - 2 \E[(\vt{i})^3 |\F] + \E[(\vt{i})^2 |\F] \right) \\
+&\qquad + \frac{1}{(N)_2^2} \sum_{i=1}^N \sum_{j\neq i} \left( \E[(\vt{i})^2 (\vt{j})^2 |\F] - \E[(\vt{i})^2 \vt{j} |\F] - \E[\vt{i} (\vt{j})^2 |\F] + \E[\vt{i} \vt{j} |\F] \right)
+\end{align*}
+Then we can try plugging in the expressions derived above and find that none of the terms cancel. Maybe if we're clever we can factorise it or something.
+
+\section{Mega-merger rate}
+Now the rate of super0binary mergers...
+\begin{align*}
+\E[D_N(t) |\F] &=
+\frac{1}{N(N)_2} \sum_{i=1}^N \left( \E[(\vt{i})^3 |\F] - \E[(\vt{i})^2 |\F] \right) \\
+&\qquad + \frac{1}{N(N)_2} \sum_{i=1}^N \sum_{j\neq i} \left( \E[(\vt{i})^2 (\vt{j})^2 |\F] - \E[\vt{i} (\vt{j})^2 |\F] \right)
+\end{align*}
+
+\bibliography{smc.bib}
+\end{document}

@@ -1,0 +1,21 @@
+\begin{thebibliography}{xx}
+
+\harvarditem{Douc \harvardand\ Capp{\'e}}{2005}{douc2005}
+Douc, R. \harvardand\ Capp{\'e}, O.  \harvardyearleft 2005\harvardyearright ,
+  Comparison of resampling schemes for particle filtering, {\em in} `Image and
+  Signal Processing and Analysis, 2005. ISPA 2005. Proceedings of the 4th
+  International Symposium on', IEEE, pp.~64--69.
+
+\harvarditem[Koskela et~al.]{Koskela, Jenkins, Johansen \harvardand\
+  Spano}{2018}{koskela2018}
+Koskela, J., Jenkins, P.~A., Johansen, A.~M. \harvardand\ Spano, D.
+  \harvardyearleft 2018\harvardyearright , `Asymptotic genealogies of
+  interacting particle systems with an application to sequential monte carlo',
+  {\em arXiv preprint arXiv:1804.01811} .
+
+\harvarditem{Liu \harvardand\ Chen}{1998}{liu1998}
+Liu, J.~S. \harvardand\ Chen, R.  \harvardyearleft 1998\harvardyearright ,
+  `Sequential monte carlo methods for dynamic systems', {\em Journal of the
+  American statistical association} {\bf 93}(443),~1032--1044.
+
+\end{thebibliography}
