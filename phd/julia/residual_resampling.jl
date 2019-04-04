@@ -1,7 +1,7 @@
 using Random, Distributions
 
-n = 1000 # number of particles
-reps = 10000 # number of weight vectors to sample
+n = 100 # number of particles
+reps = 1000 # number of weight vectors to sample
 w = Array{Float64, 2}(undef, reps, n)
 
 # generate weight vectors
@@ -49,8 +49,8 @@ for i in 1:reps
         binom_mn[j] = binomial(v_mn[i,j],2)
         binom_res[j] = binomial(v_res[i,j],2)
     end
-    pairs_mn[i] = sum(binom_mn)
-    pairs_res[i] = sum(binom_res)
+    pairs_mn[i] = sum(binom_mn) * 2
+    pairs_res[i] = sum(binom_res) * 2
 end
 
 n_greater = sum(pairs_res .> pairs_mn)
