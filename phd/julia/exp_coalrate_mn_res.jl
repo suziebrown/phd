@@ -14,12 +14,10 @@ for i in 1:length(w1_vals)
     p0_mn = w2 ^2
     p1_mn = 2 * w1 * w2
     p2_mn = w1 ^2
-    println(p0_mn, p1_mn, p2_mn)
     # probability of having 0,1,2 offspring assigned to parent 1 (residual):
     p0_res = (w1 < 0.5 ? 1 : 0) * ((w2 - 0.5) * 2)
     p1_res = (w1 < 0.5 ? 1 : 0) * (w1 * 2) + (w2 < 0.5 ? 1 : 0) * (w2 * 2)
     p2_res = (w1 > 0.5 ? 1 : 0) * ((w1 - 0.5) * 2)
-    println(p0_res, p1_res, p2_res)
     # expected coalescence rates
     EcN_mn[i] = p0_mn + p2_mn
     EcN_res[i] = p0_res + p2_res
