@@ -7,6 +7,10 @@ Andrieu, C., Doucet, A. \harvardand\ Holenstein, R.  \harvardyearleft
   {\em Journal of the Royal Statistical Society: Series B (Statistical
   Methodology)} {\bf 72}(3),~269--342.
 
+\harvarditem{Bain \harvardand\ Crisan}{2008}{bain2008}
+Bain, A. \harvardand\ Crisan, D.  \harvardyearleft 2008\harvardyearright , {\em
+  Fundamentals of Stochastic Filtering}, Springer.
+
 \harvarditem[Baum et~al.]{Baum, Petrie, Soules \harvardand\
   Weiss}{1970}{baum1970}
 Baum, L.~E., Petrie, T., Soules, G. \harvardand\ Weiss, N.  \harvardyearleft
@@ -212,8 +216,8 @@ Wakeley, J.  \harvardyearleft 2009\harvardyearright , {\em Coalescent Theory:
 Wan, E.~A. \harvardand\ Van Der~Merwe, R.  \harvardyearleft
   2000\harvardyearright , The unscented {Kalman} filter for nonlinear
   estimation, {\em in} `Proceedings of the IEEE 2000 Adaptive Systems for
-  Signal Processing, Communications, and Control Symposium (Cat. No. 00EX373)',
-  IEEE, pp.~153--158.
+  Signal Processing, Communications, and Control Symposium', IEEE,
+  pp.~153--158.
 
 \harvarditem{Whitley}{1994}{whitley1994}
 Whitley, D.  \harvardyearleft 1994\harvardyearright , `A genetic algorithm

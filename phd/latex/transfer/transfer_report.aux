@@ -21,6 +21,7 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Particle approximation}{3}}
 \newlabel{eq:smooth_recursion}{{1}{3}}
 \newlabel{eq:smooth_recursion2}{{2}{3}}
+\citation{delmoral2013}
 \citation{mohle1998}
 \@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Standard SMC\relax }}{4}}
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
@@ -31,7 +32,8 @@
 \citation{wakeley2009}
 \citation{wakeley2009}
 \citation{mohle1998}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces SMC particles before resampling for a linear Gaussian model. The purple ribbon shows the exact posterior mode and 95\% credible interval, computed using the Kalman filter and RTS smoother. The black dots show the positions of the SMC particles, with size proportional to weight. After resampling all particles have equal weights but some are duplicated.\relax }}{5}}
+\citation{wakeley2009}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces SMC particles before resampling for a linear Gaussian model. The purple ribbon shows the exact posterior mode and 95\% highest posterior density interval, computed using the Kalman filter and RTS smoother. The black dots show the positions of the SMC particles, with size proportional to weight. After resampling all particles have equal weights but some are duplicated.\relax }}{5}}
 \newlabel{fig:SMC_vs_kalman}{{1}{5}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Kingman's coalescent}{5}}
 \citation{fisher1923,fisher1930,wright1931}
@@ -55,26 +57,26 @@
 \citation{pitt1999}
 \citation{gilks2001}
 \citation{doucet2006}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces A sample of $N=6$ trajectories, illustrating ancestral degeneracy. At the ``present'' time there are six distinct lineages, but just three steps back they have coalesced onto only two lineages, and it takes less than 20 steps back before only one lineage remains.\relax }}{9}}
+\newlabel{fig:degeneracy}{{4}{9}}
 \citation{chan2013,lee2018,olsson2019}
 \citation{jacob2015}
 \citation{koskela2018}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Quantifying degeneracy}{9}}
 \citation{mohle1998}
 \citation{koskela2018}
 \citation{mohle1998}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces A sample of $N=6$ trajectories, illustrating ancestral degeneracy. At the ``present'' time there are six distinct lineages, but just three steps back they have coalesced onto only two lineages, and it takes less than 20 steps back before only one lineage remains.\relax }}{10}}
-\newlabel{fig:degeneracy}{{4}{10}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Quantifying degeneracy}{10}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Existing results}{10}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Conditional SMC}{10}}
+\newlabel{sec:conditionalSMC}{{5}{10}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Particle Gibbs}{10}}
 \citation{andrieu2010}
 \citation{andrieu2010}
-\@writefile{toc}{\contentsline {section}{\numberline {5}Conditional SMC}{11}}
-\newlabel{sec:conditionalSMC}{{5}{11}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Particle Gibbs}{11}}
+\citation{koskela2018}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.2}The conditional SMC update}{11}}
 \newlabel{sec:condSMC_alg}{{5.2}{11}}
 \@writefile{loa}{\contentsline {algorithm}{\numberline {2}{\ignorespaces Conditional SMC with multinomial resampling\relax }}{12}}
 \newlabel{alg:condSMC}{{2}{12}}
-\citation{koskela2018}
 \citation{koskela2018}
 \citation{koskela2018}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Genealogies of conditional SMC algorithms}{13}}
@@ -87,55 +89,57 @@
 \citation{koskela2018}
 \citation{liu1998}
 \citation{efron1994}
-\citation{liu1998}
-\citation{whitley1994}
 \newlabel{eq:tau_tilde}{{7}{14}}
 \newlabel{thm:condSMC_kingman}{{1}{14}}
 \@writefile{toc}{\contentsline {section}{\numberline {6}Alternative resampling schemes}{14}}
 \newlabel{sec:resampling}{{6}{14}}
-\newlabel{item:resampling_random}{{1}{14}}
-\newlabel{item:resampling_fixedN}{{2}{14}}
-\newlabel{item:resampling_equalw}{{3}{14}}
-\newlabel{item:resampling_unbiased}{{4}{14}}
+\newlabel{item:resampling_fixedN}{{1}{14}}
+\newlabel{item:resampling_equalw}{{2}{14}}
+\newlabel{item:resampling_unbiased}{{3}{14}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Multinomial resampling}{14}}
-\newlabel{eq:syst_strat_resampling}{{8}{14}}
+\citation{liu1998}
+\citation{whitley1994}
 \citation{kitagawa1996}
 \citation{carpenter1999}
 \citation{whitley1994}
 \citation{douc2005}
+\newlabel{eq:syst_strat_resampling}{{8}{15}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Residual resampling}{15}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {6.3}Stratified resampling}{15}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {6.4}Systematic resampling}{15}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.5}Remarks on performance}{15}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.5.1}Variance}{15}}
 \newlabel{fig:resampling_mn}{{5a}{16}}
 \newlabel{sub@fig:resampling_mn}{{(a)}{a}}
 \newlabel{fig:resampling_stratified}{{5b}{16}}
 \newlabel{sub@fig:resampling_stratified}{{(b)}{b}}
 \newlabel{fig:resampling_systematic}{{5c}{16}}
 \newlabel{sub@fig:resampling_systematic}{{(c)}{c}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Illustration of the way parental indices are sampled in three different resampling schemes. For this example $N=4$ and the weights are $\wt {1:4} = \frac  {1}{N}(1,\frac  {2}{3},2,\frac  {1}{3})$. In each case the indices are assigned by sampling from $\operatorname  {Uniform}(0,1)$ and seeing which subinterval the samples land in, where the length of the subinterval corresponding to each index is given by its weight. The same $\operatorname  {Uniform}(0,1)$ samples are used in each case.  \textbf  {(a)} For Multinomial resampling, we just sample $N$ independent $\operatorname  {Uniform}(0,1)$ random variables. In this example the sampled offspring counts are $(1,1,2,0)$.  \textbf  {(b)} For stratified resampling, the $\operatorname  {Uniform}(0,1)$ samples are transformed to Uniform draws from the intervals (0,0.25), (0.25,0.5), (0.5, 0.75), (0.75,1). In this example the sampled offspring counts are $(1,1,2,0)$.  \textbf  {(c)} For systematic resampling, we use only the first draw and transform as in (b) to get a sample from $\operatorname  {Uniform}(0,0.25)$. For the subsequent draws, we just add 0.25 each time to obtain a sample in each interval. In this example the sampled offspring counts are $(1,0,2,1)$.\relax }}{16}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Illustration of the way parental indices are sampled in three different resampling schemes. For this example $N=4$ and the weights are $\wt {1:4} = \frac  {1}{N}(1,\frac  {2}{3},2,\frac  {1}{3})$. In each case the indices are assigned by inversion sampling seeded with the same $\operatorname  {Uniform}(0,1)$ samples.  \textbf  {(a)} For Multinomial resampling, we sample $N$ independent $\operatorname  {Uniform}(0,1)$ random variables. In this example the sampled offspring counts are $(1,1,2,0)$.  \textbf  {(b)} For stratified resampling, the $\operatorname  {Uniform}(0,1)$ samples are transformed to Uniform draws from the intervals (0,0.25), (0.25,0.5), (0.5, 0.75), (0.75,1). In this example the sampled offspring counts are $(1,1,2,0)$.  \textbf  {(c)} For systematic resampling, we use only the first draw and transform as in (b) to get a sample from $\operatorname  {Uniform}(0,0.25)$. For the subsequent draws, we just add 0.25 each time to obtain a sample in each interval. In this example the sampled offspring counts are $(1,0,2,1)$.\relax }}{16}}
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {Multinomial resampling}}}{16}}
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {Stratified resampling}}}{16}}
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(c)}{\ignorespaces {Systematic resampling}}}{16}}
+\citation{douc2005}
 \citation{gerber2017}
 \citation{whitley1994}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.5}Remarks on performance}{17}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.5.1}Variance}{17}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {6.5.2}Support of offspring numbers}{17}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {6.5.3}Permutation invariance}{17}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {6.5.4}Degeneracy under equal weights}{17}}
 \citation{crisan1999}
+\citation{bain2008}
 \citation{koskela2018}
 \citation{koskela2018}
 \citation{koskela2018}
-\citation{mosimann1962}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {6.5.5}Exchangeability}{18}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {6.6}Optimal resampling}{18}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {6.7}Genealogies of SMC algorithms with residual resampling}{18}}
 \newlabel{eq:residual_coalrate}{{9}{18}}
 \@writefile{toc}{\contentsline {section}{\numberline {7}Discussion}{18}}
 \newlabel{sec:discussion}{{7}{18}}
+\citation{mosimann1962}
 \citation{koskela2018}
 \@writefile{toc}{\contentsline {section}{\numberline {A}Proof of Corollary 1\hbox {}}{19}}
+\newlabel{sec:proof_conditional}{{A}{19}}
 \newlabel{eq:mn_moments}{{10}{19}}
 \@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Conversion of ordinary powers into falling factorial powers\relax }}{20}}
 \newlabel{tab:fact_powers}{{1}{20}}
@@ -155,47 +159,49 @@
 \citation{koskela2018}
 \citation{koskela2018}
 \@writefile{toc}{\contentsline {section}{\numberline {B}Derivation of \textup  {\hbox {\mathsurround \z@ \normalfont  (\ignorespaces 9\hbox {}\unskip \@@italiccorr )}}}{26}}
+\newlabel{sec:proof_residual}{{B}{26}}
 \citation{koskela2018}
 \bibdata{../smc.bib}
 \newlabel{eq:cNt_1}{{16}{27}}
 \bibcite{andrieu2010}{{1}{2010}{{Andrieu et~al.}}{{Andrieu, Doucet and\ Holenstein}}}
-\bibcite{baum1970}{{2}{1970}{{Baum et~al.}}{{Baum, Petrie, Soules and\ Weiss}}}
-\bibcite{cannings1974}{{3}{1974}{{Cannings}}{{}}}
-\bibcite{cannings1975}{{4}{1975}{{Cannings}}{{}}}
-\bibcite{carpenter1999}{{5}{1999}{{Carpenter et~al.}}{{Carpenter, Clifford and\ Fearnhead}}}
-\bibcite{chan2013}{{6}{2013}{{Chan et~al.}}{{Chan, Lai et~al.}}}
-\bibcite{crisan1999}{{7}{1999}{{Crisan and\ Lyons}}{{}}}
-\bibcite{delmoral2013}{{8}{2013}{{Del~Moral}}{{}}}
-\bibcite{delmoral2006}{{9}{2006}{{Del~Moral et~al.}}{{Del~Moral, Doucet and\ Jasra}}}
-\bibcite{douc2005}{{10}{2005}{{Douc et~al.}}{{Douc, Capp{\'e} and\ Moulines}}}
-\bibcite{doucet2006}{{11}{2006}{{Doucet et~al.}}{{Doucet, Briers and\ S{\'e}n{\'e}cal}}}
-\bibcite{doucet2001}{{12}{2001}{{Doucet et~al.}}{{Doucet, De~Freitas and\ Gordon}}}
-\bibcite{doucet2009}{{13}{2011}{{Doucet and\ Johansen}}{{}}}
-\bibcite{efron1994}{{14}{1994}{{Efron and\ Tibshirani}}{{}}}
-\bibcite{etheridge2011}{{15}{2011}{{Etheridge}}{{}}}
-\bibcite{fisher1923}{{16}{1923}{{Fisher}}{{}}}
-\bibcite{fisher1930}{{17}{1930}{{Fisher}}{{}}}
-\bibcite{gerber2017}{{18}{2017}{{Gerber et~al.}}{{Gerber, Chopin and\ Whiteley}}}
-\bibcite{gilks2001}{{19}{2001}{{Gilks and\ Berzuini}}{{}}}
-\bibcite{gordon1993}{{20}{1993}{{Gordon et~al.}}{{Gordon, Salmond and\ Smith}}}
-\bibcite{jacob2015}{{21}{2015}{{Jacob et~al.}}{{Jacob, Murray and\ Rubenthaler}}}
-\bibcite{jazwinski2007}{{22}{2007}{{Jazwinski}}{{}}}
-\bibcite{kalman1960}{{23}{1960}{{Kalman}}{{}}}
-\bibcite{kingman1982coal}{{24}{1982{\em  a}}{{Kingman}}{{}}}
-\bibcite{kingman1982exch}{{25}{1982{\em  b}}{{Kingman}}{{}}}
-\bibcite{kingman1982gene}{{26}{1982{\em  c}}{{Kingman}}{{}}}
-\bibcite{kitagawa1996}{{27}{1996}{{Kitagawa}}{{}}}
-\bibcite{koskela2018}{{28}{2018}{{Koskela et~al.}}{{Koskela, Jenkins, Johansen and\ Span\`o}}}
-\bibcite{lee2018}{{29}{2018}{{Lee and\ Whiteley}}{{}}}
-\bibcite{liu1998}{{30}{1998}{{Liu and\ Chen}}{{}}}
-\bibcite{mohle1998}{{31}{1998}{{M{\"o}hle}}{{}}}
-\bibcite{moran1958}{{32}{1958}{{Moran}}{{}}}
-\bibcite{mosimann1962}{{33}{1962}{{Mosimann}}{{}}}
-\bibcite{olsson2019}{{34}{2019}{{Olsson et~al.}}{{Olsson, Douc et~al.}}}
-\bibcite{pitt1999}{{35}{1999}{{Pitt and\ Shephard}}{{}}}
-\bibcite{rauch1965}{{36}{1965}{{Rauch et~al.}}{{Rauch, Striebel and\ Tung}}}
-\bibcite{vidoni1999}{{37}{1999}{{Vidoni}}{{}}}
-\bibcite{wakeley2009}{{38}{2009}{{Wakeley}}{{}}}
-\bibcite{wan2000}{{39}{2000}{{Wan and\ Van Der~Merwe}}{{}}}
-\bibcite{whitley1994}{{40}{1994}{{Whitley}}{{}}}
-\bibcite{wright1931}{{41}{1931}{{Wright}}{{}}}
+\bibcite{bain2008}{{2}{2008}{{Bain and\ Crisan}}{{}}}
+\bibcite{baum1970}{{3}{1970}{{Baum et~al.}}{{Baum, Petrie, Soules and\ Weiss}}}
+\bibcite{cannings1974}{{4}{1974}{{Cannings}}{{}}}
+\bibcite{cannings1975}{{5}{1975}{{Cannings}}{{}}}
+\bibcite{carpenter1999}{{6}{1999}{{Carpenter et~al.}}{{Carpenter, Clifford and\ Fearnhead}}}
+\bibcite{chan2013}{{7}{2013}{{Chan et~al.}}{{Chan, Lai et~al.}}}
+\bibcite{crisan1999}{{8}{1999}{{Crisan and\ Lyons}}{{}}}
+\bibcite{delmoral2013}{{9}{2013}{{Del~Moral}}{{}}}
+\bibcite{delmoral2006}{{10}{2006}{{Del~Moral et~al.}}{{Del~Moral, Doucet and\ Jasra}}}
+\bibcite{douc2005}{{11}{2005}{{Douc et~al.}}{{Douc, Capp{\'e} and\ Moulines}}}
+\bibcite{doucet2006}{{12}{2006}{{Doucet et~al.}}{{Doucet, Briers and\ S{\'e}n{\'e}cal}}}
+\bibcite{doucet2001}{{13}{2001}{{Doucet et~al.}}{{Doucet, De~Freitas and\ Gordon}}}
+\bibcite{doucet2009}{{14}{2011}{{Doucet and\ Johansen}}{{}}}
+\bibcite{efron1994}{{15}{1994}{{Efron and\ Tibshirani}}{{}}}
+\bibcite{etheridge2011}{{16}{2011}{{Etheridge}}{{}}}
+\bibcite{fisher1923}{{17}{1923}{{Fisher}}{{}}}
+\bibcite{fisher1930}{{18}{1930}{{Fisher}}{{}}}
+\bibcite{gerber2017}{{19}{2017}{{Gerber et~al.}}{{Gerber, Chopin and\ Whiteley}}}
+\bibcite{gilks2001}{{20}{2001}{{Gilks and\ Berzuini}}{{}}}
+\bibcite{gordon1993}{{21}{1993}{{Gordon et~al.}}{{Gordon, Salmond and\ Smith}}}
+\bibcite{jacob2015}{{22}{2015}{{Jacob et~al.}}{{Jacob, Murray and\ Rubenthaler}}}
+\bibcite{jazwinski2007}{{23}{2007}{{Jazwinski}}{{}}}
+\bibcite{kalman1960}{{24}{1960}{{Kalman}}{{}}}
+\bibcite{kingman1982coal}{{25}{1982{\em  a}}{{Kingman}}{{}}}
+\bibcite{kingman1982exch}{{26}{1982{\em  b}}{{Kingman}}{{}}}
+\bibcite{kingman1982gene}{{27}{1982{\em  c}}{{Kingman}}{{}}}
+\bibcite{kitagawa1996}{{28}{1996}{{Kitagawa}}{{}}}
+\bibcite{koskela2018}{{29}{2018}{{Koskela et~al.}}{{Koskela, Jenkins, Johansen and\ Span\`o}}}
+\bibcite{lee2018}{{30}{2018}{{Lee and\ Whiteley}}{{}}}
+\bibcite{liu1998}{{31}{1998}{{Liu and\ Chen}}{{}}}
+\bibcite{mohle1998}{{32}{1998}{{M{\"o}hle}}{{}}}
+\bibcite{moran1958}{{33}{1958}{{Moran}}{{}}}
+\bibcite{mosimann1962}{{34}{1962}{{Mosimann}}{{}}}
+\bibcite{olsson2019}{{35}{2019}{{Olsson et~al.}}{{Olsson, Douc et~al.}}}
+\bibcite{pitt1999}{{36}{1999}{{Pitt and\ Shephard}}{{}}}
+\bibcite{rauch1965}{{37}{1965}{{Rauch et~al.}}{{Rauch, Striebel and\ Tung}}}
+\bibcite{vidoni1999}{{38}{1999}{{Vidoni}}{{}}}
+\bibcite{wakeley2009}{{39}{2009}{{Wakeley}}{{}}}
+\bibcite{wan2000}{{40}{2000}{{Wan and\ Van Der~Merwe}}{{}}}
+\bibcite{whitley1994}{{41}{1994}{{Whitley}}{{}}}
+\bibcite{wright1931}{{42}{1931}{{Wright}}{{}}}

@@ -5,45 +5,45 @@ The style file: agsm.bst
 Database file #1: ../smc.bib
 Warning--can't use both volume and number fields in gordon1993
 Warning--can't use both volume and number fields in moran1958
-You've used 41 entries,
+You've used 42 entries,
             2909 wiz_defined-function locations,
-            895 strings with 10958 characters,
-and the built_in function-call counts, 138028 in all, are:
-= -- 22052
-> -- 1854
+            899 strings with 11013 characters,
+and the built_in function-call counts, 140962 in all, are:
+= -- 22517
+> -- 1901
 < -- 2
-+ -- 10214
-- -- 553
-* -- 11702
-:= -- 28186
-add.period$ -- 41
-call.type$ -- 41
-change.case$ -- 569
-chr.to.int$ -- 39
-cite$ -- 43
-duplicate$ -- 703
-empty$ -- 1461
-format.name$ -- 681
-if$ -- 24752
++ -- 10430
+- -- 567
+* -- 11944
+:= -- 28800
+add.period$ -- 42
+call.type$ -- 42
+change.case$ -- 582
+chr.to.int$ -- 40
+cite$ -- 44
+duplicate$ -- 719
+empty$ -- 1490
+format.name$ -- 701
+if$ -- 25278
 int.to.chr$ -- 7
 int.to.str$ -- 0
-missing$ -- 46
-newline$ -- 126
-num.names$ -- 424
-pop$ -- 167
+missing$ -- 48
+newline$ -- 129
+num.names$ -- 434
+pop$ -- 176
 preamble$ -- 1
-purify$ -- 615
+purify$ -- 630
 quote$ -- 0
-skip$ -- 578
+skip$ -- 587
 stack$ -- 0
-substring$ -- 30826
-swap$ -- 144
-text.length$ -- 576
+substring$ -- 31456
+swap$ -- 145
+text.length$ -- 590
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 154
+type$ -- 156
 warning$ -- 2
-while$ -- 932
+while$ -- 953
 width$ -- 0
-write$ -- 537
+write$ -- 549
 (There were 2 warnings)

@@ -70,11 +70,11 @@
 \thispagestyle{fancy}
 
 \section{Introduction}
-Monte Carlo methods are a class of algorithms which use random samples to approximate integrals --- although they are usually associated with Bayesian inference in particular. 
+Monte Carlo methods are a class of algorithms which use random samples to approximate integrals. 
 There are many different subclasses of which the most famous is probably Markov chain Monte Carlo (MCMC). 
 These methods have proved enormously useful, particularly in higher-dimension problems where traditional numerical integration techniques do not perform well.
 
-Another class of Monte Carlo methods, and the focus of this work, is sequential Monte Carlo (SMC). Since its introduction to the statistics literature by \citet{gordon1993}, SMC has found a huge range of applications and has become an indispensible tool to practitioners from many fields. 
+Another class of Monte Carlo methods, and the focus of this work, is sequential Monte Carlo (SMC). Since its introduction to the literature by \citet{gordon1993}, SMC has found a huge range of applications and has become an indispensible tool to practitioners from many fields. 
 It is particularly useful in applications such as target tracking, where the model has a natural sequential structure.
 However, the sequential nature of SMC is helpful not only in inherently sequential settings, but in any setting where the quantity to be inferred has highly correlated components.
 Other application areas include image processing, molecular simulation and economics.
@@ -83,7 +83,7 @@ In these cases the more traditional Markov chain Monte Carlo methods are essenti
 Conversely, SMC exploits this dependence structure to create recursive Monte Carlo algorithms that can be efficient in this difficult setting.
 However, the method is not without its problems, and it is one of these problems that we will examine in this work.\\
 
-Sections \ref{sec:SMC} and \ref{sec:coalescent_theory} explain the background material on SMC and coalescent theory respectively. With these in place we are able to explain in Section \ref{sec:SMC_coal} the contribution of this work in the context of the SMC literature.
+Sections \ref{sec:SMC} and \ref{sec:coalescent_theory} explain the background material on SMC and coalescent theory respectively. In Section \ref{sec:SMC_coal} we explain the contribution of this work in the context of the SMC literature.
 In Section \ref{sec:conditionalSMC} we present the first novel result of this work with an outline proof; the full proof is in the Appendix.
 Section \ref{sec:resampling} introduces the next focus of this work, for which the proofs are not yet complete.
 Future directions of the work, and its potential impact, are summarised in Section \ref{sec:discussion}.\\
@@ -127,11 +127,11 @@ In particular, consider the following model:
 & Y_t \mid (X_t = x_t) \sim g(\cdot | x_t) \qquad t=0,\dots,T
 \end{align*}
 
-We assume that the \emph{transition} and \emph{emission} kernels have densities which we denote by $f$ and $g$ respectively, but this is not necessary in general.
+We assume that the \emph{transition} and \emph{emission} kernels have densities with respect to a dominating measure $dx$ which we denote by $f$ and $g$ respectively, but this is not necessary in general.
 All that is actually required is that we can sample from $\mu(\cdot)$ and $f(\cdot | x)$, and calculate \emph{unnormalised} potentials $g(y|x)$, for all $x,y$.
 
 As a concrete example, let us consider the application of target tracking. Suppose we 
-are using radar to track the position of an aeroplane. The true trajectory of the aeroplane is unknown and is represented by $X_{0:T}$ (perhaps a sequence of positions in $\mathbb{R}^3$), with $f$ encoding our model for how an aeroplane moves (perhaps some differential equations). What we observe is the output $Y_{0:T}$ of our radar equipment, which has some measurement uncertainty that is encoded in $g$.
+are using radar to track the position of an aeroplane. The true trajectory of the aeroplane is unknown and is represented by $X_{0:T}$ (perhaps a sequence of positions in $\mathbb{R}^3$), with $f$ encoding our model for how an aeroplane moves. What we observe is the output $Y_{0:T}$ of our radar equipment, which has some measurement uncertainty that is encoded in $g$.
 
 \subsection{Inference in state space models}
 Consider the Bayesian setting where $\mu$ is our prior distribution at time 0, observations $y_0, y_1, y_2 \dots, $ arrive sequentially, and we want to infer information about the hidden states $X_{0:T}$. 
@@ -154,9 +154,9 @@ Smoothing is considered a harder task because it requires us to infer many more 
 In the case of linear Gaussian state space models, the posterior distributions of interest are also Gaussian, with mean and covariance available analytically by way of the Kalman filter \citep{kalman1960} and Rauch-Tung-Striebel (RTS) smoother recursions \citep{rauch1965}. Recursions are also available for some other conjugate models: see for example \citet{vidoni1999}.
 Another analytic case occurs if the state space $\mathcal{X}$ is finite, in which case any integrals become finite sums, and the forward-backward algorithm \citep{baum1970} yields the exact posteriors.
 
-If the model is Gaussian but non-linear, the posterior filtering distributions can be estimated using the \emph{extended Kalman filter} \citep{jazwinski2007}, which applies a first-order linearisation in order to make use of the Kalman filter. This method performs well on models that are ``almost linear''. The resulting predictor is only \emph{optimal} when the model is actually linear, in which case the extended Kalman filter coincides with the Kalman filter.
+If the model is Gaussian but non-linear, the posterior filtering distributions can be estimated using the \emph{extended Kalman filter} (see for example \citet{jazwinski2007}), which applies a first-order linearisation in order to make use of the Kalman filter. This method performs well on models that are ``almost linear''. The resulting predictor is only \emph{optimal} when the model is actually linear, in which case the extended Kalman filter coincides with the Kalman filter.
 
-For models that are highly non-linear or for which gradients are not readily available, a more suitable method is the \emph{unscented Kalman filter} \citep{wan2000}. This involves taking a representative sample (which is chosen deterministically using the \emph{unscented transformation} [REF?]) to characterise the distribution at time $t$, and then propagating these points through the non-linear transition $F$ to obtain a characterisation of the distribution at time $t+1$.
+For models that are highly non-linear or for which gradients are not readily available, a more suitable method is the \emph{unscented Kalman filter} \citep{wan2000}. This involves taking a representative sample (which is chosen deterministically using the \emph{unscented transformation}) to characterise the distribution at time $t$, and then propagating these points through the non-linear transition $F$ to obtain a characterisation of the distribution at time $t+1$.
 
 In more complex models such techniques are not feasible, and we are forced to resort to Monte Carlo methods.
 For state space models, Markov chain Monte Carlo methods are not very effective due to the high dimension of the parameter space. But we can exploit the sequential nature of the underlying dynamics to decompose the problem into a sequence of inferences of more manageable dimension.
@@ -165,11 +165,10 @@ This is the motivation behind sequential Monte Carlo (SMC) methods.
 \section{Sequential Monte Carlo}\label{sec:SMC}
 References for this section are \citet{doucet2001}, \citet{delmoral2006}, and \citet{doucet2009}.
 \subsection{Particle approximation}
-\textcolor{blue}{
-- Add a section including theoretical justification for SMC...?\\
-- If so, rearrange to have Sec: State Space Models $\rightarrow$ Sub: Class of Models; Inference Problems; Methods (non-SMC) + Sec: SMC $\rightarrow$ Sub: SMC for SSMs; Theoretical Justification for SMC.\\
-}
-
+%\textcolor{blue}{
+%- Add a section including theoretical justification for SMC...?\\
+%- If so, rearrange to have Sec: State Space Models $\rightarrow$ Sub: Class of Models; Inference Problems; Methods (non-SMC) + Sec: SMC $\rightarrow$ Sub: SMC for SSMs; Theoretical Justification for SMC.\\
+%}
 The conditional independence structure in the model of Section \ref{sec:SSM_spec} implies that the (joint) marginal distribution of the hidden states $X_{0:t}$ (i.e.\ the prior distribution at time $t$) is given by
 \begin{equation*} \label{eq:hmm_marginal}
 p(x_{0:t}) = \mu(x_0) \prod_{i=1}^t f(x_i | x_{i-1})
@@ -178,7 +177,6 @@ and that the likelihood of the observations $y_{0:t}$ given the underlying state
 \begin{equation*} \label{eq:hmm_likelihood}
 p(y_{0:t} | x_{0:t}) = \prod_{i=0}^t g(y_i | x_i).
 \end{equation*}
-%The smoothing distribution $p(x_{t} | y_{0:T})$ is obtained from $p(x_{0:T} | y_{0:T})$ by marginalising. %%% what did I even mean here?
 Using the conditional independence structure, we can write
 \begin{align}
 p(x_{0:t} | y_{0:t}) &\propto g(y_t | x_t) f(x_t | x_{t-1}) p(x_{0:t-1} | y_{0:t-1}) \label{eq:smooth_recursion}\\
@@ -209,8 +207,12 @@ Figure \ref{fig:SMC_vs_kalman} illustrates the particle approximation arising fr
 \Require $N, T, \mu, \{K_t\}, \{g_t\}, y_{0:T}$
 \For{$i \in \{1,\dots,N\}$} 
 	\State Sample $X_0^{(i)} \sim \mu(\cdot)$  \Comment initialise
-	\State $w_0^{(i)} \gets \frac{g_0(X_0^{(i)})}{\sum_{j=1}^N g_0(X_0^{(j)})}$
+	\State $w_0^{(i)} \gets g_0(X_0^{(i)})$
 \EndFor
+\State $W \gets \sum_{j=1}^N w_{0}^{(j)}$
+	\For{$i \in \{1,\dots, N\}$}	
+		\State $w_{0}^{(i)} \gets \frac{1}{W}w_{0}^{(i)}$ \Comment normalise weights
+	\EndFor
 \For{$t \in \{0,\dots, T-1\}$}
 	\State Sample $a_t^{(1:N)} \sim $ {\footnotesize RESAMPLE}$(\{1,\dots ,N\}, \wt{1:N}$) \Comment resample particles
 	\For{$i \in \{1,\dots,N\}$}
@@ -227,25 +229,22 @@ Figure \ref{fig:SMC_vs_kalman} illustrates the particle approximation arising fr
 
 If only the latest filtering distribution $p(x_t | y_{0:t})$ is required, we can marginalise out $x_{0:t-1}$ at each step by simply throwing away the particle histories and keeping only the particle approximation $X_{t}^{(1:N)}$ to the filtering distribution at the current time $t$. 
 The algorithm progresses in a Markovian fashion, only ever referring to the particles at the immediately previous step, so filtering distributions can be approximated with minimal memory usage. 
-This is vital if one wishes to carry out filtering in an on-line fashion, as it prevents the memory requirements accumulating more than necessary.
+This is vital if one wishes to carry out filtering in an on-line fashion, as it prevents the memory requirements accumulating more than necessary. In particular, the storage cost is $O(N)$, independently of $T$.
 
-In the case of smoothing, if there are sufficient statistics available, we can store just these statistics at each time, plus the two most recent generations of particles, and throw away all other information about the particles at previous time steps. Even in this parsimonious case, the storage requirements will of course increase linearly with $T$.
+In the case of smoothing, the need to store information about all $T$ time steps means that the memory requirements increase linearly with $T$.
 Storage considerations for smoothing are discussed further in Section \ref{sec:SMC_coal}.
+
+SMC methods are justified by a central limit theorem and other convergence results, but these are beyond the scope of this report. See for example \citet{delmoral2013} for details.
 
 \begin{figure}
 \centering
 \includegraphics[width=0.9\textwidth]{smc_kalman.pdf}
-\caption{SMC particles before resampling for a linear Gaussian model. The purple ribbon shows the exact posterior mode and 95\% credible interval, computed using the Kalman filter and RTS smoother. The black dots show the positions of the SMC particles, with size proportional to weight. After resampling all particles have equal weights but some are duplicated.}
+\caption{SMC particles before resampling for a linear Gaussian model. The purple ribbon shows the exact posterior mode and 95\% highest posterior density interval, computed using the Kalman filter and RTS smoother. The black dots show the positions of the SMC particles, with size proportional to weight. After resampling all particles have equal weights but some are duplicated.}
 \label{fig:SMC_vs_kalman}
 \end{figure}
-
+%% this plot is not quite correct sincce is compares 'filtering' particles to 'smoothing' exact solution (with RTS)
 
 \section{Coalescent Theory}\label{sec:coalescent_theory}
-\textcolor{blue}{
-- Cannings model: exchangeability, also a key assumption for our SMC tings\\
-- without exchangeability, can't even expect Markov process
-}
-
 \begin{defn}[\citet{mohle1998}]
 Let $\mathcal{E}_n$ denote the set of equivalence relations on $\{1,\dots,n\}$.
 A \emph{discrete-time coalescent} is a stochastic process $(R_t)_{t\in\mathbb{N}}$ taking values in $\mathcal{E}_n$ such that 
@@ -255,6 +254,7 @@ That is, the initial state is the trivial relation where each index is in its ow
 An obvious consequence of this is that the state where all of the indices are in the same equivalence class is an absorbing state for the process.
 
 The genealogical interpretation of the equivalence relations is that $(i,j) \in R_t$ if and only if individuals $i$ and $j$ share a common ancestor in generation $t$.
+Note that the notion of a coalescent appears when we view the genealogy \emph{backwards in time}.
 
 \subsection{Kingman's coalescent}
 Imagine we have a population with fixed size $N$ over discrete generations, where each individual is descended from one randomly chosen individual of the previous generation. Then for each individual in the present generation, we can trace their \emph{lineage} back through the generations. 
@@ -270,7 +270,7 @@ Kingman's \emph{$n$-coalescent} provides a model for such genealogies. Kingman s
 \label{fig:kingman}
 \end{figure}
 
-The defining feature of the model is that each pair of lineages merges with unit rate. This means that many coalescences occur while there are many distinct lineages present.
+The defining feature of the model is that each pair of lineages merges with unit rate. This means that, looking at the whole population, while there are more distinct lineages present, coalescences happen exponentially more frequently.
 In particular, the $n$-coalescent can be formulated as a Poisson process where pairs of lineages coalesce independently at rate 1, with the pair to coalesce being chosen uniformly at random \citep[Section 3.2]{wakeley2009}.
 
 In the notation of \citet{wakeley2009}, let $T_i;\, i=2,\dots,n$ be the $i^{th}$ coalescence time, that is, the length of time for which there are exactly $i$ branches in the sample genealogy. The $n$-coalescent is the process in which these times are distributed as independent Exponentials with rate $\binom{i}{2}$.
@@ -289,7 +289,7 @@ where $b$ is the number of equivalence classes of $\xi$, and $\xi \prec \eta$ me
 A realisation of the $n$-coalescent for $n=50$ is shown in Figure \ref{fig:kingman}.
  
 The \emph{Kingman coalescent} is a process on $\mathbb{N}$ such that the genealogy of any sample of size $n$ individuals from the present generation is an $n$-coalescent.
-A precise formulation of this notion is given in [REF].
+A precise formulation of this notion is given in \citep{wakeley2009}.
 
 \subsection{Limiting genealogies for population models}
 The Kingman coalescent is the asymptotic process (in the large population limit) for the coalescents arising from a surprisingly wide range of population models. Some important examples are studied in this section.
@@ -309,18 +309,18 @@ The numbers of offspring of each parent are therefore jointly distributed
 
 This model is ``neutral'' because all of the individuals are chosen to reproduce with the same probability. That is, no individual is considered ``fitter'' than any other, so there is no genetic selection. There are several variants of the Wright-Fisher model that include selection, but they are typically much less tractable than the neutral one.
 
-Kingman showed in his original papers introducing the Kingman coalescent \citep{kingman1982gene} that genealogies of the Wright-Fisher model converge to the Kingman coalescent as $N\to\infty$.
+Kingman showed in his original papers introducing the Kingman coalescent \citep{kingman1982gene} that, under a certain time-scaling, genealogies of the neutral Wright-Fisher model converge to the Kingman coalescent as $N\to\infty$.
 
 \subsubsection{Cannings model}
-The neutral Cannings model \citep{cannings1974, cannings1975} is a more general construction which encompasses the Wright-Fisher model as a special case.
+The neutral Cannings model \citep{cannings1974, cannings1975} is a more general construction which encompasses the neutral Wright-Fisher model as a special case.
 
 Again we have a population of constant size $N$ reproducing in discrete generations.
 Now, the particular selection mechanism is not specified; we only require that the offspring distribution is exchangeable, i.i.d.\ at each time step, and preserves the population size. That is, the probability of observing offspring counts $(v_1, \dots, v_N)$ is invariant under permutations of this vector.
 
 Invariance under permutations encodes the fact that all parents are treated equally, hence this is still a neutral model.
-It is clear that the Wright-Fisher model falls under this framework, because the multinomial distribution with equal weights is indeed exchangeable.
+It is clear that the neutral Wright-Fisher model falls under this framework, because the multinomial distribution with equal weights is indeed exchangeable.
 
-Genealogies of the Cannings model also converge to the Kingman coalescent, under some conditions and a suitable time-scaling, as $N\to\infty$ \citep[Section 2.2]{etheridge2011}.
+Genealogies of the neutral Cannings model also converge to the Kingman coalescent, under some conditions and a suitable time-scaling, as $N\to\infty$ \citep[Section 2.2]{etheridge2011}.
 
 \subsubsection{Moran model}
 The neutral Moran model \citep{moran1958} is often preferred by mathematicians because of its tractability.
@@ -331,17 +331,17 @@ At each time step, an ordered pair of individuals is selected uniformly at rando
 Usually the model is thought of as having ``overlapping generations'': the individuals having one offspring are considered to be not reproducing but rather surviving to appear again in the next generation.
 However, one can equally think of it as having non-overlapping generations and a low variance reproduction mechanism.
 
-In fact, it is again a special case of the Cannings model, where the offspring distribution is uniform over all permutations of $(0,2,1,1,\dots,1)$.
+In fact, it is again a special case of the neutral Cannings model, where the offspring distribution is uniform over all permutations of $(0,2,1,1,\dots,1)$.
 Therefore we know that under a suitable time-scaling, its genealogies converge to the Kingman coalescent.
 
 The mathematical tractability of this model stems from the fact that, if we formulate it a little more carefully, its pre-limiting behaviour is exactly that of a Kingman coalescent. This requires us to work in continuous time, and now we say that the pairs are chosen to die/reproduce with exponential rate $\binom{N}{2}$. This gives the unit pairwise merger rate we need, and we can clearly see that the only possible mergers are between one pair of lineages at a time.
 
 \section{SMC genealogies as coalescents}\label{sec:SMC_coal}
-\textcolor{blue}{
-- asymptotic properties of SMC lit review: CLT, path storage, coalescence etc.\\
-- why the simple SSM described at start is sufficient to demonstrate coalescence\\
-- how to deal with the difference between Kingman (time stops once all coalesced) and SMC genealogies (fixed time frame T)\\
-}
+%\textcolor{blue}{
+%- asymptotic properties of SMC lit review: CLT, path storage, coalescence etc.\\
+%- why the simple SSM described at start is sufficient to demonstrate coalescence\\
+%- how to deal with the difference between Kingman (time stops once all coalesced) and SMC genealogies (fixed time frame T)\\
+%}
 In this section we reveal the link between sequential Monte Carlo and population genetics, and introduce the contribution of this work.
 
 \subsection{Ancestral degeneracy}
@@ -363,15 +363,15 @@ Typically, even at times quite close to $T$, there are no more than a few distin
 
 In order to estimate filtering distributions $p(x_t | y_{0:t})$, we only require a sample of particles at the current time step, so if $\mathcal{X}$ is continuous we typically have $N$ distinct positions given by the $N$ particles. Then the empirical measure
 \begin{equation*}
-\hat{p}(x_{t}|y_{0:t}) = \frac{1}{N} \sum_{i=1}^N \delta_{X_{t}^{(i)}} (x_{t})
+\hat{p}(dx_{t}|y_{0:t}) = \frac{1}{N} \sum_{i=1}^N \delta_{X_{t}^{(i)}} (dx_{t})
 \end{equation*}
 has mass in $N$ locations, and the Monte Carlo error for estimating expectations under $p(x_t | y_{0:t})$ scales like $N^{-1/2}$ \citep{doucet2009}.
 
-However, we do not achieve the same performance in the case of estimating the  smoothing distributions $p(x_{0:t} | y_{0:t})$. In this case we require a sample of \emph{trajectories} over times $0:t$ as opposed to a sample of particles at time $t$.
+However, in the case of estimating the smoothing distributions $p(x_{0:t} | y_{0:t})$, we require a sample of \emph{trajectories} over times $0:t$ as opposed to a sample of particles at time $t$.
 The coalescence of lineages is an unavoidable effect of resampling, and it causes more and more of these trajectories to coincide the further into the past we look.
 The resulting empirical measure
 \begin{equation*}
-\hat{p}(x_{0:t}|y_{0:t}) = \frac{1}{N} \sum_{i=1}^N \delta_{X_{0:t}^{(i)}} (x_{0:t})
+\hat{p}(dx_{0:t}|y_{0:t}) = \frac{1}{N} \sum_{i=1}^N \delta_{X_{0:t}^{(i)}} (dx_{0:t})
 \end{equation*}
 typically consists of $N$ distinct masses, but the marginals at early times may consist of only a single mass repeated $N$ times.
 This phenomenon, known as \emph{ancestral degeneracy}, is illustrated in Figure \ref{fig:degeneracy}.
@@ -398,7 +398,7 @@ If we could discover how quickly lineages will coalesce in a given algorithm, we
 For instance, in the \emph{particle Gibbs} algorithm it is important to maintain at least two distinct trajectories with high probability, so the number of particles should be chosen large enough to ensure this (this is discussed further in Section \ref{sec:conditionalSMC}).
 
 In general, analysis of the genealogies can quantify the severity of ancestral degeneracy and thus the sampling variance to be expected with a given algorithm and number of particles.
-Variance estimation for SMC is an active research topic \citep{chan2013, lee2018, olsson2019}, but the previously proposed estimators require the output from at least one run of the algorithm, whereas our analysis allows us to estimate the variance \emph{a priori}.
+Variance estimation for SMC is an active research topic \citep{chan2013, lee2018, olsson2019}, but the previously proposed estimators require the output from at least one run of the algorithm, whereas our analysis allows us to analyse aspects of an algorithm's performance without the need for any test runs.
 
 Moreover, it could provide an analytical comparison of the efficacy of the various strategies proposed to reduce ancestral degeneracy, where previously recommendations have mostly been based on empirical performance. For instance, in Section \ref{sec:resampling} we discuss the relative performance of various resampling schemes.
 
@@ -426,7 +426,7 @@ Consider a model like the one presented in Section \ref{sec:SSM_spec}, where the
 & X_{t+1} \mid (X_t = x_t) \sim f_{\theta}(\cdot | x_t)  \qquad t=0,\dots,T-1 \\
 & Y_t \mid (X_t = x_t) \sim g(\cdot | x_t) \qquad t=0,\dots,T
 \end{align*}
-It is plausible to assume additionally the conditional independence statement $(\Theta \indep Y_t) \mid X_t$, although this may not be necessary.
+It is plausible to assume additionally the conditional independence statement $(\theta \indep Y_t) \mid X_t$, although this may not be necessary.
 
 In this scenario we might want to find the joint posterior distribution $p(\theta, x_{0:T} | y_{0:t})$.
 If the density $f_\theta$ is suitably tractable, then it should be possible to sample exactly from $p(\theta | x_{0:t}, y_{0:t}) = p(\theta | x_{0:t})$, given some value of $x_{0:t}$.
@@ -444,8 +444,8 @@ Each iteration of the resulting particle Gibbs algorithm runs as follows:
 given the observations $y_{0:T}$ as well as positions $X_{0:T}^{(i-1)}$ and indices $a_{0:T}^{(i-1)}$ from the previous iteration,
 \begin{enumerate}
 \item Sample $\theta^{(i)} \sim p(\cdot | X_{0:T}^{(i-1)}, y_{0:T})$
-\item Run a conditional SMC update conditional on $X_{0:T}^{(i-1)}, a_{0:T}^{(i-1)}$ to obtain the approximate distribution $\hat{p}(x_{0:T} | \theta^{(i)}, y_{0:T})$
-\item Sample $X_{0:T}^{(i)} \sim \hat{p}(x_{0:T} | \theta^{(i)}, y_{0:T})$. This implicitly samples $a_{0:T}^{(i)}$, the particle indices of $X_{0:T}^{(i)}$.
+\item Run a conditional SMC update conditional on $X_{0:T}^{(i-1)}, a_{0:T}^{(i-1)}$ to obtain the approximate distribution $\hat{p}(dx_{0:T} | \theta^{(i)}, y_{0:T})$
+\item Sample $X_{0:T}^{(i)} \sim \hat{p}(dx_{0:T} | \theta^{(i)}, y_{0:T})$. This implicitly samples $a_{0:T}^{(i)}$, the particle indices of $X_{0:T}^{(i)}$.
 \end{enumerate}
 These steps are repeated as many times as desired to produce the MCMC output.
 
@@ -466,8 +466,12 @@ Our statement of the algorithm differs from the original formulation in that we 
 \State Sample $a_0^* \sim \Unif(\{1,\dots,N\})$
 \State $X_0^{(a_0^*)} \gets x_0^*$
 \For{$i \in \{1,\dots,N\}$}
-	\State $w_0^{(i)} \gets \frac{g_0(X_0^{(i)})}{\sum_{j=1}^N g_0(X_0^{(j)})}$
+	\State $w_0^{(i)} \gets g_0(X_0^{(i)})$
 \EndFor
+\State $W \gets \sum_{j=1}^N w_{0}^{(j)}$
+	\For{$i \in \{1,\dots, N\}$}	
+		\State $w_{0}^{(i)} \gets \frac{1}{W}w_{0}^{(i)}$ \Comment normalise weights
+	\EndFor
 \For{$t \in \{0,\dots, T-1\}$}
 	\State Sample $a_t^{(1:N)} \sim \Cat(\{1,\dots,N\}, w_t^{(1:N)})$ \Comment resample particles
 	\State Sample $a_{t+1}^* \sim \Unif(\{1,\dots,N\})$
@@ -494,7 +498,7 @@ The immortal trajectory will of course be among the surviving trajectories, but 
 Thus if all the trajectories coalesce onto the immortal trajectory, we are forced to choose the same immortal trajectory for the next run, at least for some early time steps $0:s$.
 One can imagine that if there was a high probability of full coalescence on each run, we could easily end up with samples from $p(x_{0:T}|y_{0:T})$ that are identical in the coordinates $0:s$, which would lead to poor results overall.
 
-The problem can be avoided by using a sufficiently large number of particles for the fixed time window $T$ of the conditional SMC runs. This would require a priori knowledge of the coalescence mechanism, which is not available. However, Corollary \ref{thm:condSMC_kingman} could possibly provide such knowledge.
+The problem can be avoided by using a sufficiently large number of particles for the fixed time window $T$ of the conditional SMC runs. Corollary \ref{thm:condSMC_kingman} (stated in Section \ref{sec:condSMC_maths}) could possibly provide an a priori estimate of an appropraite $N$.
 If, say, we want to ensure that the probability of all $N$ lineages coalescing is below a certain threshold, all of the relevant information is encoded in the distribution of the time to MRCA of the genealogical process. For the Kingman coalescent this distribution is known, and Corollary \ref{thm:condSMC_kingman} states that as $N\to\infty$ the genealogy is a Kingman coalescent.
 The remaining question is whether the Kingman coalescent provides a reasonable approximation outside of the asymptotic regime - since in reality we simulate finitely many particles. We intend to investigate this question by way of a simulation study.
 
@@ -504,7 +508,19 @@ We need to calculate various quantities related to the genealogical process indu
 
 Below is an overview of the proof.
 To prove convergence to the Kingman coalescent, we must control the rates of different types of mergers. In particular, we ensure that in the large population limit (under an appropriate time-scaling), pairwise mergers happen at the correct rate, and larger mergers never occur.
-The derivations of the expressions \eqref{eq:cNtilde}, \eqref{eq:DNtilde}, \eqref{eq:cNtilde2}, along with details of the application of results from \citet{koskela2018}, are relegated to the appendix. 
+The derivations of the expressions \eqref{eq:cNtilde}, \eqref{eq:DNtilde}, \eqref{eq:cNtilde2}, along with details of the application of results from \citet{koskela2018}, are relegated to Appendix \ref{sec:proof_conditional}. 
+
+A central quantity is
+\begin{equation*}
+c_N(t) := \frac{1}{(N)_2} \sum_{i=1}^{N} (\vt{i})_2.
+\end{equation*}
+This is the number of pairs merging in generation $t$. In the $N\to\infty$ limit, this will become the overall coalescence rate, so we must ensure that it matches asymptotically the coalescence rate of the Kingman coalescent. This is why we need to calculate its first and second moments below.
+
+Another important quantity is
+\begin{equation*}
+D_N(t) := \frac{1}{N(N)_2} \sum_{i=1}^N (\vt{i})_2 \left( \vt{i} + \frac{1}{N} \sum_{j\neq i} (\vt{j})^2 \right)
+\end{equation*}
+which is asymptotically the rate of \emph{super-binary mergers} --- that is, more than two lineages merging simultaneously into one or more lineages. We must ensure that it vanishes as $N\to\infty$, since super-binary mergers are not allowed under the Kingman coalescent.
 
 Throughout the following we use a tilde to indicate the conditional SMC versions of the quantities relating to standard SMC, always with multinomial resampling.
 
@@ -512,7 +528,7 @@ Firstly, we have the expected coalescence rate:
 \begin{equation}\label{eq:cNtilde}
 \E[\tilde{c}_N(t) |\F] = \frac{N-2}{N} \E[c_N(t) |\F] + \frac{2}{N} \E[\wt{1} |\F]
 \end{equation}
-Then the expected rate of super-binary mergers (that is, more than two lineages merging simultaneously into one or more lineages) is bounded above by:
+Then the expected rate of super-binary mergers is bounded above by:
 \begin{align}\label{eq:DNtilde}
 \E[\tilde{D}_N(t) |\F] 
 &\leq \E[D_N(t) |\F] + \frac{3}{N} \E[(\wt{1})^2 |\F] +  \frac{4}{N^2}\E[\wt{1} |\F] \notag\\
@@ -553,12 +569,14 @@ Various possible schemes are presented in this section.
 
 For a procedure to be considered a valid resampling scheme, we will require the following:
 \begin{enumerate}
-\item The assignment of children to parents is random. \label{item:resampling_random}
+%\item The assignment of children to parents is random. \label{item:resampling_random}
 \item The total number of particles $N$ remains fixed. \label{item:resampling_fixedN}
 \item The particles after resampling are equally weighted. \label{item:resampling_equalw}
 \item The resampling scheme is unbiased; that is, the expected number of offspring of each particle $i$ is equal to $N\wt{i}$. \label{item:resampling_unbiased}
 \end{enumerate}
-Condition \ref{item:resampling_unbiased} ensures that the resulting SMC estimates are unbiased. Condition \ref{item:resampling_random} is needed to prevent weight degeneracy. Conditions \ref{item:resampling_fixedN} and \ref{item:resampling_equalw} can be violated (for example \citet{liu1998} suggest sampling with the square roots of the weights and then correcting) but this is not generally advantageous.
+Condition \ref{item:resampling_unbiased} ensures that the resulting SMC estimates are unbiased. 
+%Condition \ref{item:resampling_random} is needed to prevent weight degeneracy.
+Conditions \ref{item:resampling_fixedN} and \ref{item:resampling_equalw} can be violated (for example \citet{liu1998} suggest sampling with the square roots of the weights and then correcting) but this is not generally advantageous.
 
 \subsection{Multinomial resampling}
 Multinomial resampling \citep{efron1994} is one of the simplest resampling schemes.
@@ -573,18 +591,19 @@ This implies the joint distribution of the offspring counts is
 \end{equation*}
 Note that in this case the parental indices are chosen independently, but the resulting offspring counts are negatively correlated.
 
-In practice, a common way to sample the parental indices is the following: divide the unit interval into $N$ disjoint subintervals each of which will correspond to a certain index $i$ and has length equal to the weight $\wt{i}$; then draw $N$ samples $U_i \sim \Unif(0,1)$ and classify them according to which of these subintervals they fall in.
+A simple way to sample the parental indices is by inversion sampling: divide the unit interval into $N$ disjoint subintervals each of which will correspond to a certain index $i$ and has length equal to the weight $\wt{i}$; then draw $N$ samples $U_i \sim \Unif(0,1)$ and classify them according to which of these subintervals they fall in.
 Explicitly, the parental index assigned to child $i$ is the index $a_i$ satisfying
 \begin{equation}\label{eq:syst_strat_resampling}
 \sum_{j=1}^{a_i -1} \wt{j} \leq U_i \leq \sum_{j=1}^{a_i} \wt{j}
 \end{equation}
-This is illustrated in Figure \ref{fig:resampling_mn}.
+This is illustrated in Figure \ref{fig:resampling_mn}. 
+Note that there exist more efficient methods to sample from a Multinomial distribution, so the inversion method may not be used in practice.
 
 \subsection{Residual resampling}
 Residual resampling is described in \citet{liu1998} and also in \citet{whitley1994} where it is called ``remainder stochastic sampling''.
 
-Each particle $X_{t}^{(i)}$ is deterministically assigned $\lfloor N \wt{i} \rfloor$ offspring, and the remaining $R := N- \sum \lfloor N w_{t}^{(i)} \rfloor$ offspring are assigned multinomially in proportion to the unaccounted-for weight. 
-This yields offspring counts
+Each particle $X_{t}^{(i)}$ is deterministically assigned $\lfloor N \wt{i} \rfloor$ offspring, and the remaining $R := N- \sum_{i=1}^N \lfloor N w_{t}^{(i)} \rfloor$ offspring are assigned multinomially in proportion to the unaccounted-for weight. 
+This yields a vector of offspring counts
 \begin{equation*}
 \vt{1:N} \eqdist \lfloor N \wt{1:N} \rfloor +  \operatorname{Multinomial}(R, (N \wt{1:N} - \lfloor N \wt{1:N}\rfloor)/R) .
 \end{equation*}
@@ -619,7 +638,7 @@ This scheme again ensures the random numbers are ``well spread out'', even more 
 
 Systematic resampling is often preferred among practitioners because it is extremely easy to implement and also computationally efficient, requiring only one random number to be generated.
 
-However, this scheme is known to exhibit pathological behaviour in some cases due to its dependence on the ordering of the subintervals. Such behaviour can be avoided by randomly permuting the intervals before sampling, and this is the recommended practice. 
+However, this scheme is known to exhibit pathological behaviour in some cases due to its dependence on the ordering of the subintervals \citep{douc2005}. Such behaviour can be avoided by randomly permuting the intervals before sampling, and this is the recommended practice. 
 
 \begin{figure}
 \centering
@@ -736,8 +755,8 @@ However, this scheme is known to exhibit pathological behaviour in some cases du
 \end{tikzpicture}
 \label{fig:resampling_systematic}
 }\\
-\caption{Illustration of the way parental indices are sampled in three different resampling schemes. For this example $N=4$ and the weights are $\wt{1:4} = \frac{1}{N}(1,\frac{2}{3},2,\frac{1}{3})$. In each case the indices are assigned by sampling from $\Unif(0,1)$ and seeing which subinterval the samples land in, where the length of the subinterval corresponding to each index is given by its weight. The same $\Unif(0,1)$ samples are used in each case.\\
-\textbf{(a)} For Multinomial resampling, we just sample $N$  independent $\Unif(0,1)$ random variables. In this example the sampled offspring counts are $(1,1,2,0)$.\\
+\caption{Illustration of the way parental indices are sampled in three different resampling schemes. For this example $N=4$ and the weights are $\wt{1:4} = \frac{1}{N}(1,\frac{2}{3},2,\frac{1}{3})$. In each case the indices are assigned by inversion sampling seeded with the same $\Unif(0,1)$ samples.\\
+\textbf{(a)} For Multinomial resampling, we sample $N$  independent $\Unif(0,1)$ random variables. In this example the sampled offspring counts are $(1,1,2,0)$.\\
 \textbf{(b)} For stratified resampling, the $\Unif(0,1)$ samples are transformed to Uniform draws from the intervals (0,0.25), (0.25,0.5), (0.5, 0.75), (0.75,1). In this example the sampled offspring counts are $(1,1,2,0)$.\\
 \textbf{(c)} For systematic resampling, we use only the first draw and transform as in (b) to get a sample from $\Unif(0,0.25)$. For the subsequent draws, we just add 0.25 each time to obtain a sample in each interval. In this example the sampled offspring counts are $(1,0,2,1)$.}
 \end{figure}
@@ -757,14 +776,14 @@ The authors remark that, while the variance resulting from systematic resampling
 Let us consider the support of the marginal offspring distributions in each scheme, given the corresponding weight. Condition on the $i^{th}$ weight lying in the interval $\wt{i} \in [k/N, (k+1)/N]$, but leave the other weights unknown. By considering the best and worst cases for each scheme, we have: 
 \begin{description}
 \item[Multinomial:] $\vt{i} \in \{0,\dots, N\}$
-\item[Residual:] $\vt{i} \in \{k,\dots, N\}$
-\item[Stratified:] $\vt{i} \in \{k-1, k+2\}$
+\item[Residual:] $\vt{i} \in \{k,\dots, k+R\}$
+\item[Stratified:] $\vt{i} \in \{k-1, k, k+1, k+2\}$
 \item[Systematic:] $\vt{i} \in \{k, k+1\}$
 \end{description}
 We see that multinomial resampling allows the possibility of very good particles having $0$ offspring, and of very bad particles having $N$ offspring (although the probabilities associated to these events are low).
 Residual resampling ensures that good particles do not die out, but still allows bad particles to possibly have many offspring.
 Stratified resampling is more restrictive, although it allows the possibility of a particle with weight $>1/N$ leaving no offspring.
-Systematic resampling is more restrictive still, allowing the number of offspring of each particle to vary only by one.
+Systematic resampling is more restrictive still, allowing the number of offspring of each particle to vary from its expected value by no more than one.
 
 \subsubsection{Permutation invariance}
 A strange property of stratified and systematic resampling is that they are sensitive to the order in which the subintervals are placed. For example, in Figures \ref{fig:resampling_stratified} and \ref{fig:resampling_systematic} if the intervals $w_2$ and $w_4$ were swapped, the number of offspring assigned to particles 2 and 4 would be swapped in each case. 
@@ -779,7 +798,7 @@ In this case, residual resampling will result in a deterministic assignment only
 
 Stratified and systematic resampling will have the same result: the intervals for sampling will correspond exactly to the weighted subintervals, so no matter which random numbers are sampled, exactly one will fall in each subinterval.
 
-In the case of stratified resampling this behaviour can be avoided by shifting the sampling intervals by a random amount. In fact this random shift is inherent in all of the resampling schemes as described by \citet{whitley1994}; he imagines subdivisions of a circle rather than an interval, and then ``spins the roulette wheel'' around it.
+However, for stratified resampling, the formulation of \citet{whitley1994} avoids this behaviour. He imagines subdivisions of a circle rather than an interval, and then ``spins the roulette wheel'' around it, which shifts the sampling intervals by a random amount and thus prevents this degeneracy.
 
 \subsubsection{Exchangeability}
 We will call a resampling scheme exchangeable if the resulting distribution of parental indices is invariant under permutations of the children. To put it another way, each child chooses its parent from the same marginal distribution.
@@ -790,10 +809,10 @@ Stratified and systematic resampling are clearly not exchangeable since, for ins
 The same goes for residual resampling.
 
 \subsection{Optimal resampling}
-\citet{crisan1999} introduce another resampling scheme based on a branching process, which they show to be optimal in some sense. However, their algorithm is not widely used in practice because it is much more complicated to implement than alternatives like systematic resampling which perform almost as well.
+\citet{crisan1999} introduce another resampling scheme based on a branching process, which they show to be optimal in some sense. However, their algorithm is not widely used in practice because it is much more complicated to implement than alternatives like systematic resampling which perform just as well empirically, and share some of its optimality properties \citep{bain2008}.
 
 \subsection{Genealogies of SMC algorithms with residual resampling}
-Similarly to Section \ref{sec:condSMC_maths}, here we attempt to characterise the genealogies induced in the case of residual resampling. Convergence is not yet proved in this case, but the steps taken so far are summarised here, with full details in the appendix.
+Similarly to Section \ref{sec:condSMC_maths}, here we attempt to characterise the genealogies induced in the case of residual resampling. Convergence is not yet proved in this case, but the steps taken so far are summarised here, with full details in Appendix \ref{sec:proof_residual}.
 
 The central quantity is again the coalescence rate, which we will now denote by $c_N^m(t)$ and $c_N^r(t)$ for multinomial and residual resampling respectively.
 The expected coalescence rate can be written:
@@ -817,7 +836,7 @@ The analyses here and in \citet{koskela2018} are the first of their kind, and ar
 
 
 \appendix
-\section{Proof of Corollary \ref{thm:condSMC_kingman}}
+\section{Proof of Corollary \ref{thm:condSMC_kingman}}\label{sec:proof_conditional}
 In the derivation of \eqref{eq:cNtilde} -- \eqref{eq:cNtilde2} we will make extensive use of the formula for factorial moments of the multinomial distribution given in \citet[p.67]{mosimann1962}:
 \begin{equation} \label{eq:mn_moments}
 \E[(X_i)_a(X_j)_b] = (n)_{a+b}\, p_i^a p_j^b
@@ -836,7 +855,7 @@ In conditional SMC we condition on the immortal trajectory surviving each resamp
 & \vttilde{1} \eqdist 1 + \Bin(N-1, \wt{1}) \\
 & \vttilde{i} \eqdist \Bin(N-1, \wt{i}), \qquad i=2,\dots,N.
 \end{align*}
-First let us consider the pair-merger rate
+First let us consider the coalescence rate
 \begin{equation*}
 c_N(t) := \frac{1}{(N)_2} \sum_{i=1}^{N} (\vt{i})_2.
 \end{equation*}
@@ -1068,7 +1087,7 @@ as $N\to\infty$.
 \end{description}
 This concludes the proof of Corollary \ref{thm:condSMC_kingman}. \qed
 
-\section{Derivation of \eqref{eq:residual_coalrate}}
+\section{Derivation of \eqref{eq:residual_coalrate}}\label{sec:proof_residual}
 In residual resampling offspring counts are sampled according to:
 \begin{align*}
 & \vt{i} = \lfloor N \wt{i} \rfloor + X_i \\

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  4 APR 2019 15:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  5 APR 2019 20:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -703,116 +703,124 @@ Underfull \hbox (badness 10000) in paragraph at lines 86--90
 
 {/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 [2] [3]
-<smc_kalman.pdf, id=30, 602.25pt x 250.9375pt>
+<smc_kalman.pdf, id=32, 602.25pt x 250.9375pt>
 File: smc_kalman.pdf Graphic file (type pdf)
 <use smc_kalman.pdf>
-Package pdftex.def Info: smc_kalman.pdf  used on input line 237.
+Package pdftex.def Info: smc_kalman.pdf  used on input line 241.
 (pdftex.def)             Requested size: 424.82523pt x 177.01816pt.
  [4]
-<kingman.png, id=39, 395.4775pt x 341.275pt>
+<kingman.png, id=38, 395.4775pt x 341.275pt>
 File: kingman.png Graphic file (type png)
 <use kingman.png>
 Package pdftex.def Info: kingman.png  used on input line 268.
 (pdftex.def)             Requested size: 283.22162pt x 244.40553pt.
  [5 <./smc_kalman.pdf>] [6 <./kingman.png>]
-<eg_WF.pdf, id=53, 451.6875pt x 385.19911pt>
+<eg_WF.pdf, id=52, 451.6875pt x 385.19911pt>
 File: eg_WF.pdf Graphic file (type pdf)
 <use eg_WF.pdf>
 Package pdftex.def Info: eg_WF.pdf  used on input line 359.
 (pdftex.def)             Requested size: 377.62642pt x 322.06036pt.
  [7] [8 <./eg_WF.pdf>]
-<degeneracy.pdf, id=68, 728.48161pt x 385.92181pt>
+<degeneracy.pdf, id=67, 728.48161pt x 385.92181pt>
 File: degeneracy.pdf Graphic file (type pdf)
 <use degeneracy.pdf>
 Package pdftex.def Info: degeneracy.pdf  used on input line 389.
 (pdftex.def)             Requested size: 377.62642pt x 200.0504pt.
 
-[9] [10 <./degeneracy.pdf>] [11] [12] [13] [14] [15] [16] [17] [18]
-Overfull \hbox (8.04799pt too wide) detected at line 858
+[9 <./degeneracy.pdf>] [10] [11] [12] [13] [14]
+Overfull \hbox (4.60475pt too wide) in paragraph at lines 605--607
+[]\OT1/cmr/m/n/10 Each par-ti-cle $\OML/cmm/m/it/10 X[]$ \OT1/cmr/m/n/10 is de-
+ter-min-is-ti-cally as-signed $\OMS/cmsy/m/n/10 b\OML/cmm/m/it/10 Nw[]\OMS/cmsy
+/m/n/10 c$ \OT1/cmr/m/n/10 off-spring, and the re-main-ing $\OML/cmm/m/it/10 R 
+\OT1/cmr/m/n/10 := \OML/cmm/m/it/10 N \OMS/cmsy/m/n/10 ^^@ [][]b\OML/cmm/m/it/1
+0 Nw[]\OMS/cmsy/m/n/10 c$
+ []
+
+[15] [16] [17] [18]
+Overfull \hbox (8.04799pt too wide) detected at line 877
 []
  []
 
 [19]
-Overfull \hbox (7.93095pt too wide) detected at line 902
+Overfull \hbox (7.93095pt too wide) detected at line 921
 []
  []
 
 
-Overfull \hbox (23.69243pt too wide) detected at line 923
+Overfull \hbox (23.69243pt too wide) detected at line 942
 []
  []
 
 [20]
-Overfull \hbox (36.88333pt too wide) detected at line 937
+Overfull \hbox (36.88333pt too wide) detected at line 956
 []
  []
 
 [21]
-Overfull \hbox (7.12737pt too wide) detected at line 962
+Overfull \hbox (7.12737pt too wide) detected at line 981
 []
  []
 
 [22] [23] [24]
-Overfull \hbox (26.89339pt too wide) detected at line 1032
+Overfull \hbox (26.89339pt too wide) detected at line 1051
 []
  []
 
 
-Overfull \hbox (24.85626pt too wide) detected at line 1050
+Overfull \hbox (24.85626pt too wide) detected at line 1069
 []
  []
 
 
-Overfull \hbox (23.73724pt too wide) detected at line 1062
+Overfull \hbox (23.73724pt too wide) detected at line 1081
 []
  []
 
 [25]
-Overfull \hbox (22.35876pt too wide) detected at line 1090
+Overfull \hbox (22.35876pt too wide) detected at line 1109
 []
  []
 
-[26] (./transfer_report.bbl [27] [28]) [29] (./transfer_report.aux) ) 
+[26] (./transfer_report.bbl [27] [28]) [29] [30] (./transfer_report.aux) ) 
 Here is how much of TeX's memory you used:
- 15451 strings out of 492649
- 294154 string characters out of 6129623
- 366423 words of memory out of 5000000
- 19012 multiletter control sequences out of 15000+600000
+ 15455 strings out of 492649
+ 294221 string characters out of 6129623
+ 365401 words of memory out of 5000000
+ 19016 multiletter control sequences out of 15000+600000
  14971 words of font info for 57 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,15n,54p,1357b,746s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/loca
-l/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local
-/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/
-texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/local/te
-xlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/tex
-live/2018/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/local/
-texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/t
-exlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/tex
-live/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texli
-ve/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive
-/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2
-018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/201
-8/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2018/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2018/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2018/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2018/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2018/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2018/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2018/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2018/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2018/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmti10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmti9.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/publi
-c/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/p
-ublic/amsfonts/symbols/msbm7.pfb>
-Output written on transfer_report.pdf (29 pages, 552281 bytes).
+ 55i,15n,54p,1177b,746s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr
+/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/
+local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/l
+ocal/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/loc
+al/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/loca
+l/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local
+/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/t
+exlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/tex
+live/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texli
+ve/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive
+/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2
+018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/201
+8/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2018/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2018/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2018/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2018/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2018/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2018/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2018/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2018/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2018/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmti9.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/pub
+lic/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1
+/public/amsfonts/symbols/msbm7.pfb>
+Output written on transfer_report.pdf (30 pages, 545437 bytes).
 PDF statistics:
- 231 PDF objects out of 1000 (max. 8388607)
- 162 compressed objects within 2 object streams
+ 230 PDF objects out of 1000 (max. 8388607)
+ 161 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  33 words of extra memory for PDF output out of 10000 (max. 10000000)
 
