@@ -134,7 +134,7 @@ In non-linear Gaussian models, use a local linear approximation and apply Kalman
 This requires gradients and performs poorly in models that are very non-linear.\\[12pt]
 \pause
 {\Large Unscented Kalman filter \cite{wan2000}}\\
-For highly non-linear Gaussian models, replace the transition step of Kalman filter by propagating a representative set of points through $f$.
+For highly non-linear Gaussian models, replace the prediction step of Kalman filter by propagating a representative set of points through $f$.
 \end{column}
 \end{columns}
 \end{frame}
@@ -142,12 +142,16 @@ For highly non-linear Gaussian models, replace the transition step of Kalman fil
 \begin{frame}{Deterministic solutions}
 \begin{itemize}
 \item Kalman filter provides optimal filter for linear Gaussian models, but extended/unscented Kalman filter are no longer optimal.\\[7pt] %%% what does optimal even mean?
-\item All of these methods require model to be Gaussian.
+\pause
+\item All of these methods require a Gaussian model.
 Deterministic solutions are available for some other conjugate families, but these are still restrictive. \\[7pt]
+\pause
 \item Solutions are also available in the case that $\mathcal{X}$ is finite (integrals become sums), but we will generally consider $\mathcal{X}$ to be a continuous space. \\[7pt]
 \end{itemize}
 \pause
-Sequential Monte Carlo (SMC) provides general-purpose (stochastic) methods that do not require a tractable model. Only requires sampling from $f(\cdot | x)$, and pointwise evaluation of $g(y | x)$ up to a normalising constant for each $y$.
+Sequential Monte Carlo (SMC) provides general-purpose (stochastic) methods that do not require a tractable model.\\[7pt]
+\pause 
+Only requires sampling from $f(\cdot | x)$, and pointwise evaluation of $g(y | x)$ up to a normalising constant for each $y$.
 \end{frame}
 
 \begin{frame}{Sequential Monte Carlo}
@@ -157,6 +161,7 @@ $p(x_{0:t}) = \mu(x_0) \prod_{i=1}^t f(x_i | x_{i-1})$ \\[7pt]
 $p(y_{0:t} | x_{0:t}) = \prod_{i=0}^t g(y_i | x_i)$ \\[7pt]
 \textbf{Posterior: }
 $p(x_{0:t} | y_{0:t}) \propto \mu(x_0) g(y_0 | x_0) \prod_{i=1}^t f(x_i | x_{i-1}) g(y_i | x_i)$\\[12pt]
+\pause
 \begin{itemize}
 \item Represent posterior distribution at time $t$ with $N$ particles.\\[7pt]
 \item Posterior factorises sequentially, avoiding increase of dimension with $T$.
@@ -213,6 +218,7 @@ This is the limiting coalescent process in many population models as $N\to\infty
 \end{frame}
 
 \begin{frame}{Resampling}
+Requirements:\\[12pt]
 \begin{itemize}
 \item The total number of particles $N$ remains fixed. 
 \item The particles after resampling are equally weighted. 
@@ -237,7 +243,7 @@ $\qquad R:= \sum r_t^{(i)}$\\[12pt]
 \end{frame}
 
 \begin{frame}{Particle Gibbs \citep{andrieu2010}}
-Hidden Markov model where transition depends on a parameter $\theta$:
+Hidden Markov model where transition depends on a hyperparameter $\theta$:
 \begin{align*}
 & \theta \sim \nu(\cdot) \\
 & X_0 \sim \mu(\cdot) \\
@@ -246,6 +252,7 @@ Hidden Markov model where transition depends on a parameter $\theta$:
 \end{align*}
 \pause
 \textbf{Gibbs sampler:} alternately sample from $p(\theta | x_{0:t}, y_{0:t})$ and $p(x_{0:t} | \theta, y_{0:t})$.\\[7pt]
+\pause
 \begin{itemize}
 \item SMC is an appropriate method for sampling from $p(x_{0:t} | \theta, y_{0:t})$
 \item To target the correct posterior distribution, need to use \emph{conditional SMC}.
@@ -279,9 +286,9 @@ Hidden Markov model where transition depends on a parameter $\theta$:
 \item (And simulations suggest it is a good model even for small $N$.)
 \pause
 \item Proved: conditional SMC (with multinomial resampling) $\Rightarrow$ Kingman coalescent.
-\item In progress: Investigate by simulations whether this is a good model for finite $N$.
+\item In progress: investigate by simulations whether this is a good model for finite $N$.
 \pause
-\item In progress: Analysis of residual resampling (and other resampling schemes).
+\item In progress: analysis of residual resampling (and other resampling schemes).
 \end{itemize}
 \end{frame}
 
