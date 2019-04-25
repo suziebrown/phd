@@ -8,13 +8,41 @@
 %\setbeamercolor{itemize items}{fg=red}
 \usenavigationsymbolstemplate{\beamertemplatenavigationsymbolsempty}
 
-% maths
-\usepackage{amsmath, amssymb}
-\newcommand{\N}{\mathcal{N}}
-
 % tikz
 \usepackage{tikz}
 \usetikzlibrary{positioning}
+
+% maths
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+
+% useful math symbols
+\newcommand{\PR}{\mathbb{P}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\V}{\operatorname{Var}}
+\newcommand{\eqdist}{\overset{d}{=}}
+\newcommand{\I}[1]{\mathbb{I}\{#1\}}
+\newcommand{\Ntoinfty}{\overset{N\to\infty}{\longrightarrow}}
+\newcommand{\limNtoinfty}{\underset{N\to\infty}{\lim}}
+\newcommand\indep{\protect\mathpalette{\protect\independenT}{\perp}}
+\def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
+
+% distributions
+\newcommand{\N}{\mathcal{N}}
+\newcommand{\Cat}{\operatorname{Categorical}}
+\newcommand{\Unif}{\operatorname{Uniform}}
+\newcommand{\Mn}{\operatorname{Multinomial}}
+\newcommand{\Bin}{\operatorname{Binomial}}
+
+% project-specific commands
+\newcommand{\F}{\mathcal{F}_{t-1}}
+\newcommand{\vt}[2][t]{v_{#1}^{(#2)}}
+\newcommand{\wt}[2][t]{w_{#1}^{(#2)}}
+\newcommand{\wbar}[2][t]{\bar{w}_{#1}^{(#2)}}
+\newcommand{\vttilde}[2][t]{\tilde{v}_{#1}^{(#2)}}
 
 \title[SMC Genealogies]{Asymptotic Genealogies of Sequential Monte Carlo Algorithms}
 \author{Suzie Brown}
@@ -157,6 +185,71 @@ For smoothing we need a sample of trajectories.\\[7pt]
 Resampling means that trajectories of time $T$ particles coalesce backwards in time.
 \end{column}
 \end{columns}
+\end{frame}
+
+\begin{frame}{Kingman's coalescent}
+\begin{columns}
+\begin{column}{0.45\textwidth}
+Looking backwards in time, each pair of lineages coalesces with unit rate.\\[7pt]
+This is the limiting coalescent process in many population models as $N\to\infty$.
+\end{column}
+\begin{column}{0.45\textwidth}
+\includegraphics[width=\textwidth]{../kingman.png}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Coalescent for SMC}
+\begin{itemize}
+\item Analysing the coalescent can help us to understand the performance of various SMC algorithms.
+\item The limiting coalescent of an SMC algorithm may depend on the resampling mechanism.
+\item For multinomial resampling, the limiting coalescent is the Kingman coalescent.
+\item What about other (more used) resampling schemes?
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Resampling}
+\begin{itemize}
+\item The total number of particles $N$ remains fixed. 
+\item The particles after resampling are equally weighted. 
+\item The resampling scheme is unbiased; that is, the expected number of offspring of each particle $i$ is equal to $N\wt{i}$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Resampling}
+\textbf{Multinomial:}
+$\vt{1:N} \eqdist \operatorname{Multinomial}(N, \wt{1:N})$\\[12pt]
+%\pause
+\textbf{Residual:}
+$\vt{1:N} \eqdist \lfloor N \wt{1:N} \rfloor +  \operatorname{Multinomial}(R, r_t^{(1:N)}/R)$\\[7pt]
+$\qquad r_t^{(i)} := (N \wt{i} - \lfloor N \wt{i}\rfloor)$\\[7pt]
+$\qquad R:= \sum r_t^{(i)}$\\[12pt]
+%\pause
+\begin{itemize}
+\item Residual resampling yields lower Monte Carlo variance than multinomial resampling.
+\item Residual resampling is widely used by practitioners.
+\item Analysing the coalescent for residual resampling is a work in progress.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Particle Gibbs}
+Hidden Markov model where transition depends on a parameter $\theta$:
+\begin{align*}
+& \theta \sim \nu(\cdot) \\
+& X_0 \sim \mu(\cdot) \\
+& X_{t+1} \mid (X_t = x_t) \sim f_{\theta}(\cdot | x_t)  \qquad t=0,\dots,T-1 \\
+& Y_t \mid (X_t = x_t) \sim g(\cdot | x_t) \qquad t=0,\dots,T
+\end{align*}
+%\pause
+\textbf{Gibbs sampler:} alternately sample from $p(\theta | x_{0:t}, y_{0:t})$ and $p(x_{0:t} | \theta, y_{0:t})$.\\[7pt]
+\begin{itemize}
+\item SMC is an appropriate method for sampling from $p(x_{0:t} | \theta, y_{0:t})$
+\item To target the correct posterior distribution, need to use \emph{conditional SMC}.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Conditional SMC}
+
 \end{frame}
 
 \end{document}
