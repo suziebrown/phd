@@ -8,6 +8,11 @@
 %\setbeamercolor{itemize items}{fg=red}
 \usenavigationsymbolstemplate{\beamertemplatenavigationsymbolsempty}
 
+% bibliography
+\usepackage{natbib}
+\usepackage{har2nat}
+\bibliographystyle{unsrt}
+
 % tikz
 \usepackage{tikz}
 \usetikzlibrary{positioning}
@@ -56,17 +61,8 @@
 \begin{frame}{State space models}
 \begin{columns}
 \begin{column}{0.45\textwidth}
-\begin{align*}
-& X_0, \dots, X_T \in \mathcal{X} \\
-& Y_0, \dots, Y_T \in \mathcal{Y} \\[12pt]
-& X_0 \sim \mu(\cdot) \\
-& X_{t+1} \mid (X_t = x_t) \sim f(\cdot | x_t)\\
-& Y_t \mid (X_t = x_t) \sim g(\cdot | x_t)
-\end{align*}
-%%% label each of those (^) lines with initial/transition/emission
-\end{column}
-
-\begin{column}{0.45\textwidth}
+Hidden process $X_0, \dots, X_T \in \mathcal{X}$\\
+Observable process $Y_0, \dots, Y_T \in \mathcal{Y}$\\[20pt]
 \begin{center}
 \begin{tikzpicture}
 \node (yt) {$Y_t$};
@@ -82,6 +78,14 @@
 \draw[->](thet.east)--(dot2.west) node[midway, above] {\footnotesize{$f$}};
 \end{tikzpicture}
 \end{center}
+\end{column}
+\pause
+\begin{column}{0.45\textwidth}
+\begin{align*}
+& X_0 \sim \mu(\cdot) \\
+& X_{t+1} \mid (X_t = x_t) \sim f(\cdot | x_t)\\
+& Y_t \mid (X_t = x_t) \sim g(\cdot | x_t)
+\end{align*}
 \end{column}
 \end{columns}
 \end{frame}
@@ -106,13 +110,13 @@ use noisy radar data to infer position/trajectory of aircraft:
 \textbf{Prediction:} where will it go next? $p(x_{t+1} | y_{0:t})$\\[7pt]
 \textbf{Smoothing:} where has it been? $p(x_{0:t} | y_{0:t})$\\[12pt]
 
-Smoothing is ``harder'' than filtering/prediction. 
+Smoothing is ``harder'' than filtering/prediction \cite{gordon1993}. 
 \end{frame}
 
 \begin{frame}{Deterministic solutions}
 \begin{columns}
 \begin{column}{0.45\textwidth}
-{\Large Kalman filter}\\
+{\Large Kalman filter \cite{kalman1960}}\\
 Under a linear Gaussian model:
 \begin{align*}
 & X_0 \sim \N(0, \Sigma_0) \\
@@ -120,16 +124,16 @@ Under a linear Gaussian model:
 & Y_t \mid (X_t = x_t) \sim \N(B x_t, \Sigma_y)
 \end{align*}
 we can recursively compute filtering distributions. 
-Then a backward pass of RTS smoother provides smoothing distributions.\\[7pt]
+Then a backward pass of RTS smoother \cite{rauch1965} provides smoothing distributions.\\[7pt]
 This class of models is rather restrictive.
 \end{column}
-%\pause
+\pause
 \begin{column}{0.45\textwidth}
-{\Large Extended Kalman filter}\\
+{\Large Extended Kalman filter \cite{jazwinski2007}}\\
 In non-linear Gaussian models, use a local linear approximation and apply Kalman filter.\\[7pt]
 This requires gradients and performs poorly in models that are very non-linear.\\[12pt]
-%\pause
-{\Large Unscented Kalman filter}\\
+\pause
+{\Large Unscented Kalman filter \cite{wan2000}}\\
 For highly non-linear Gaussian models, replace the transition step of Kalman filter by propagating a representative set of points through $f$.
 \end{column}
 \end{columns}
@@ -142,7 +146,7 @@ For highly non-linear Gaussian models, replace the transition step of Kalman fil
 Deterministic solutions are available for some other conjugate families, but these are still restrictive. \\[7pt]
 \item Solutions are also available in the case that $\mathcal{X}$ is finite (integrals become sums), but we will generally consider $\mathcal{X}$ to be a continuous space. \\[7pt]
 \end{itemize}
-%\pause
+\pause
 Sequential Monte Carlo (SMC) provides general-purpose (stochastic) methods that do not require a tractable model. Only requires sampling from $f(\cdot | x)$, and pointwise evaluation of $g(y | x)$ up to a normalising constant for each $y$.
 \end{frame}
 
@@ -155,7 +159,7 @@ $p(y_{0:t} | x_{0:t}) = \prod_{i=0}^t g(y_i | x_i)$ \\[7pt]
 $p(x_{0:t} | y_{0:t}) \propto \mu(x_0) g(y_0 | x_0) \prod_{i=1}^t f(x_i | x_{i-1}) g(y_i | x_i)$\\[12pt]
 \begin{itemize}
 \item Represent posterior distribution at time $t$ with $N$ particles.\\[7pt]
-\item Posterior factorises sequentially --- avoid increase of dimension with $T$.
+\item Posterior factorises sequentially, avoiding increase of dimension with $T$.
 \end{itemize}
 \end{frame}
 
@@ -168,10 +172,10 @@ After initialisation, iterate these steps:
 \item \textbf{Calculate weights:} weight each particle according to $g$
 \item \textbf{Resample:} duplicate high-weight particles and kill off low-weight ones \\[12pt]
 \end{itemize}
-%\pause
-Approximate posterior distribution $p(x_{0:t} | y_{0:t})$ by the empirical measure of the particles:
+\pause
+Approximate posterior distribution $p(dx_{0:t} | y_{0:t})$ by the empirical measure of the particles:
 \begin{equation*}
-\hat{p}(x_{0:t}|y_{0:t}) = \frac{1}{N} \sum_{i=1}^N \delta_{X_{0:t}^{(i)}} (x_{0:t})
+\hat{p}(dx_{0:t}|y_{0:t}) = \frac{1}{N} \sum_{i=1}^N \delta_{X_{0:t}^{(i)}} (dx_{0:t})
 \end{equation*}
 \end{frame}
 
@@ -191,7 +195,7 @@ Resampling means that trajectories of time $T$ particles coalesce backwards in t
 \begin{columns}
 \begin{column}{0.45\textwidth}
 Looking backwards in time, each pair of lineages coalesces with unit rate.\\[7pt]
-This is the limiting coalescent process in many population models as $N\to\infty$.
+This is the limiting coalescent process in many population models as $N\to\infty$ \cite{kingman1982coal, mohle1998}.
 \end{column}
 \begin{column}{0.45\textwidth}
 \includegraphics[width=\textwidth]{../kingman.png}
@@ -203,7 +207,7 @@ This is the limiting coalescent process in many population models as $N\to\infty
 \begin{itemize}
 \item Analysing the coalescent can help us to understand the performance of various SMC algorithms.
 \item The limiting coalescent of an SMC algorithm may depend on the resampling mechanism.
-\item For multinomial resampling, the limiting coalescent is the Kingman coalescent.
+\item For multinomial resampling, the limiting coalescent is the Kingman coalescent \cite{koskela2018}.
 \item What about other (more used) resampling schemes?
 \end{itemize}
 \end{frame}
@@ -219,20 +223,20 @@ This is the limiting coalescent process in many population models as $N\to\infty
 \begin{frame}{Resampling}
 \textbf{Multinomial:}
 $\vt{1:N} \eqdist \operatorname{Multinomial}(N, \wt{1:N})$\\[12pt]
-%\pause
-\textbf{Residual:}
+\pause
+\textbf{Residual \cite{liu1998}:}
 $\vt{1:N} \eqdist \lfloor N \wt{1:N} \rfloor +  \operatorname{Multinomial}(R, r_t^{(1:N)}/R)$\\[7pt]
 $\qquad r_t^{(i)} := (N \wt{i} - \lfloor N \wt{i}\rfloor)$\\[7pt]
 $\qquad R:= \sum r_t^{(i)}$\\[12pt]
-%\pause
+\pause
 \begin{itemize}
-\item Residual resampling yields lower Monte Carlo variance than multinomial resampling.
+\item Residual resampling yields lower Monte Carlo variance than multinomial resampling \cite{douc2005}.
 \item Residual resampling is widely used by practitioners.
 \item Analysing the coalescent for residual resampling is a work in progress.
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Particle Gibbs}
+\begin{frame}{Particle Gibbs \citep{andrieu2010}}
 Hidden Markov model where transition depends on a parameter $\theta$:
 \begin{align*}
 & \theta \sim \nu(\cdot) \\
@@ -240,7 +244,7 @@ Hidden Markov model where transition depends on a parameter $\theta$:
 & X_{t+1} \mid (X_t = x_t) \sim f_{\theta}(\cdot | x_t)  \qquad t=0,\dots,T-1 \\
 & Y_t \mid (X_t = x_t) \sim g(\cdot | x_t) \qquad t=0,\dots,T
 \end{align*}
-%\pause
+\pause
 \textbf{Gibbs sampler:} alternately sample from $p(\theta | x_{0:t}, y_{0:t})$ and $p(x_{0:t} | \theta, y_{0:t})$.\\[7pt]
 \begin{itemize}
 \item SMC is an appropriate method for sampling from $p(x_{0:t} | \theta, y_{0:t})$
@@ -249,7 +253,42 @@ Hidden Markov model where transition depends on a parameter $\theta$:
 \end{frame}
 
 \begin{frame}{Conditional SMC}
-
+\begin{itemize}
+\item One ``immortal'' trajectory is conditioned to survive all of the resampling steps.
+\item Intuitively, this could have a significant effect on the coalescent. 
+\pause
+\item But we have this result:
+\end{itemize}
+\begin{block}{Corollary 1}
+\textit{Under the conditions of \cite[Lemma 3]{koskela2018}
+, the genealogy of any $n$ particles from a conditional SMC algorithm with multinomial resampling converges to Kingman's $n$-coalescent in the sense of finite-dimensional distributions, under an appropriate time-scaling.}
+\end{block}
+\pause
+\begin{itemize}
+\item Intuition: as $N\to\infty$, there is zero probability that an arbitrary sample of fixed size $n$ contains the immortal particle.
+\end{itemize}
 \end{frame}
 
+\begin{frame}{Summary}
+\begin{itemize}
+\item SMC is widely used, but doesn't perform well for smoothing.
+\pause
+\item Analysis of SMC coalescents allows us to quantify the problem of ancestral degeneracy.
+\pause
+\item Proved: SMC with multinomial resampling $\Rightarrow$ Kingman coalescent.
+\item (And simulations suggest it is a good model even for small $N$.)
+\pause
+\item Proved: conditional SMC (with multinomial resampling) $\Rightarrow$ Kingman coalescent.
+\item In progress: Investigate by simulations whether this is a good model for finite $N$.
+\pause
+\item In progress: Analysis of residual resampling (and other resampling schemes).
+\end{itemize}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{References}
+
+{\small 
+\bibliography{../../smc.bib}
+}
+\end{frame}
 \end{document}
