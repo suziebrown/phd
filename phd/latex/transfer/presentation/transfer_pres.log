@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  25 APR 2019 17:12
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  26 APR 2019 09:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -997,7 +997,7 @@ Package pdftex.def Info: ../tracking.jpg  used on input line 106.
 ] [17
 
 ]
-<../degeneracy.pdf, id=161, 728.48161pt x 385.92181pt>
+<../degeneracy.pdf, id=167, 728.48161pt x 385.92181pt>
 File: ../degeneracy.pdf Graphic file (type pdf)
 <use ../degeneracy.pdf>
 Package pdftex.def Info: ../degeneracy.pdf  used on input line 197.
@@ -1005,14 +1005,19 @@ Package pdftex.def Info: ../degeneracy.pdf  used on input line 197.
  [18
 
  <../degeneracy.pdf>]
-<../kingman.png, id=177, 395.4775pt x 341.275pt>
+<../kingman.png, id=181, 395.4775pt x 341.275pt>
 File: ../kingman.png Graphic file (type png)
 <use ../kingman.png>
-Package pdftex.def Info: ../kingman.png  used on input line 209.
+Package pdftex.def Info: ../kingman.png  used on input line 210.
 (pdftex.def)             Requested size: 195.00348pt x 168.2781pt.
  [19
 
- <../kingman.png>] [20
+ <../kingman.png>]
+File: ../kingman.png Graphic file (type png)
+<use ../kingman.png>
+Package pdftex.def Info: ../kingman.png  used on input line 210.
+(pdftex.def)             Requested size: 195.00348pt x 168.2781pt.
+ [20
 
 ]
 [21
@@ -1046,14 +1051,16 @@ Package pdftex.def Info: ../kingman.png  used on input line 209.
 ] [35
 
 ]
-(./transfer_pres.bbl
+[36
+
+] (./transfer_pres.bbl
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\translate ' on input line 1.
 
-) [36
+) [37
 
-] [37
+] [38
 
 
 ]
@@ -1066,19 +1073,19 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 \tf@snm=\write8
 \openout8 = `transfer_pres.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 301.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 301.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 302.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 302.
  (./transfer_pres.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 301.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 301.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 302.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 302.
 Package rerunfilecheck Info: File `transfer_pres.out' has not changed.
 (rerunfilecheck)             Checksum: 06E27B416B3B1946CD705C501CA5B3BD;45.
  ) 
 Here is how much of TeX's memory you used:
- 20547 strings out of 492649
- 403660 string characters out of 6129623
- 476459 words of memory out of 5000000
- 23874 multiletter control sequences out of 15000+600000
+ 20553 strings out of 492649
+ 403748 string characters out of 6129623
+ 476475 words of memory out of 5000000
+ 23877 multiletter control sequences out of 15000+600000
  14994 words of font info for 54 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  56i,15n,59p,807b,978s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1094,10 +1101,10 @@ local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr
 local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi9.pfb></usr/l
 ocal/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/lo
 cal/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on transfer_pres.pdf (37 pages, 337092 bytes).
+Output written on transfer_pres.pdf (38 pages, 338713 bytes).
 PDF statistics:
- 384 PDF objects out of 1000 (max. 8388607)
- 312 compressed objects within 4 object streams
- 87 named destinations out of 1000 (max. 500000)
+ 398 PDF objects out of 1000 (max. 8388607)
+ 325 compressed objects within 4 object streams
+ 90 named destinations out of 1000 (max. 500000)
  90 words of extra memory for PDF output out of 10000 (max. 10000000)
 

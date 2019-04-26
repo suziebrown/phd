@@ -141,12 +141,12 @@ For highly non-linear Gaussian models, replace the prediction step of Kalman fil
 
 \begin{frame}{Deterministic solutions}
 \begin{itemize}
-\item Kalman filter provides optimal filter for linear Gaussian models, but extended/unscented Kalman filter are no longer optimal.\\[7pt] %%% what does optimal even mean?
+\item Kalman filter is optimal for linear Gaussian models, but extended/unscented Kalman filter are no longer optimal.\\[7pt] %%% what does optimal even mean?
 \pause
 \item All of these methods require a Gaussian model.
-Deterministic solutions are available for some other conjugate families, but these are still restrictive. \\[7pt]
+Deterministic solutions are available for some other conjugate families \cite{vidoni1999}, but these are still restrictive. \\[7pt]
 \pause
-\item Solutions are also available in the case that $\mathcal{X}$ is finite (integrals become sums), but we will generally consider $\mathcal{X}$ to be a continuous space. \\[7pt]
+\item Solutions are also available in the case that $\mathcal{X}$ is finite (integrals become sums), but we will mostly consider $\mathcal{X}$ to be a continuous space. \\[7pt]
 \end{itemize}
 \pause
 Sequential Monte Carlo (SMC) provides general-purpose (stochastic) methods that do not require a tractable model.\\[7pt]
@@ -186,12 +186,12 @@ Approximate posterior distribution $p(dx_{0:t} | y_{0:t})$ by the empirical meas
 
 \begin{frame}{Ancestral degeneracy}
 \begin{columns}
-\begin{column}{0.6\textwidth}
-\includegraphics[width=\textwidth]{../degeneracy.pdf}
-\end{column}
 \begin{column}{0.35\textwidth}
 For smoothing we need a sample of trajectories.\\[7pt]
 Resampling means that trajectories of time $T$ particles coalesce backwards in time.
+\end{column}
+\begin{column}{0.6\textwidth}
+\includegraphics[width=\textwidth]{../degeneracy.pdf}
 \end{column}
 \end{columns}
 \end{frame}
@@ -199,11 +199,12 @@ Resampling means that trajectories of time $T$ particles coalesce backwards in t
 \begin{frame}{Kingman's coalescent}
 \begin{columns}
 \begin{column}{0.45\textwidth}
-Looking backwards in time, each pair of lineages coalesces with unit rate.\\[7pt]
-This is the limiting coalescent process in many population models as $N\to\infty$ \cite{kingman1982coal, mohle1998}.
+\includegraphics[width=\textwidth]{../kingman.png}
 \end{column}
 \begin{column}{0.45\textwidth}
-\includegraphics[width=\textwidth]{../kingman.png}
+Looking backwards in time, each pair of lineages coalesces with unit rate.\\[7pt]
+\pause
+This is the limiting coalescent process in many population models as $N\to\infty$ \cite{kingman1982coal, mohle1998}.
 \end{column}
 \end{columns}
 \end{frame}
@@ -212,7 +213,7 @@ This is the limiting coalescent process in many population models as $N\to\infty
 \begin{itemize}
 \item Analysing the coalescent can help us to understand the performance of various SMC algorithms.
 \item The limiting coalescent of an SMC algorithm may depend on the resampling mechanism.
-\item For multinomial resampling, the limiting coalescent is the Kingman coalescent \cite{koskela2018}.
+\item For multinomial resampling, the limiting coalescent is a scaled Kingman coalescent \cite{koskela2018}.
 \item What about other (more used) resampling schemes?
 \end{itemize}
 \end{frame}
