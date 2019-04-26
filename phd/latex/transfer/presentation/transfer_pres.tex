@@ -5,7 +5,6 @@
 \usetheme{CambridgeUS}
 \usecolortheme{beaver}
 \setbeamertemplate{itemize items}[square]
-%\setbeamercolor{itemize items}{fg=red}
 \usenavigationsymbolstemplate{\beamertemplatenavigationsymbolsempty}
 
 % bibliography
@@ -212,8 +211,11 @@ This is the limiting coalescent process in many population models as $N\to\infty
 \begin{frame}{Coalescent for SMC}
 \begin{itemize}
 \item Analysing the coalescent can help us to understand the performance of various SMC algorithms.
+\pause
 \item The limiting coalescent of an SMC algorithm may depend on the resampling mechanism.
+\pause
 \item For multinomial resampling, the limiting coalescent is a scaled Kingman coalescent \cite{koskela2018}.
+\pause
 \item What about other (more used) resampling schemes?
 \end{itemize}
 \end{frame}
