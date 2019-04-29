@@ -6,7 +6,7 @@ nvals = length(w1_vals)
 EcN_mn = Array{Float64, 1}(undef, nvals)
 EcN_res = Array{Float64, 1}(undef, nvals)
 
-for i in 1:length(w1_vals)
+for i in 1:nvals
     # set weights
     w1 = w1_vals[i]
     w2 = 1 - w1
@@ -33,3 +33,55 @@ xlabel!("w1")
 title!("dependence of E[c_N] on weights (N=2)")
 
 #savefig("EcN_mn_res_N2.pdf")
+
+
+### comparing E(c_N^r) and E(c_N^m) for N=3 over varying w_1, w_2
+
+using LinearAlgebra
+using Plots
+
+w_vals = 0:0.01:1 # values of w1 to evaluate at (must go from 0 to 1)
+nvals = length(w_vals)
+
+EcN_mn = Array{Float64, 2}(undef, nvals, nvals)
+EcN_res = Array{Float64, 2}(undef, nvals, nvals)
+
+for i in 1:nvals
+    # set weights
+    w1 = w_vals[i]
+    for j in 1:(nvals-i+1)
+        # set weights
+        w2 = w_vals[j]
+        w3 = 1 - w1 - w2
+        # sort weights high->low
+        wsort = sort([w1, w2, w3], rev=true)
+        # cases for sorted weights:
+        if wsort[1] > 1
+            println("error: unexpected case for sorted weight vector")
+        elseif wsort[1] == 1
+            EcN_res[i,j] = 6
+        elseif wsort[1] > 2/3
+            EcN_res[i,j] = 4 * wsort[1] - 2/3
+        elseif wsort[1] == 2/3
+            EcN_res[i,j] = 2
+        elseif wsort[1] > 1/3
+            if wsort[2] < 1/3
+                EcN_res[i,j] = 2 * sum(wsort.^2) + wsort[1] * 8/3 + 38/81
+            else
+                EcN_res[i,j] = 2 * (1 - wsort[3])
+            end
+        elseif wsort[1] == 1/3
+            EcN_res[i,j] = 0
+        else
+            println("error: unexpected case for sorted weight vector")
+        end
+    end
+end
+# remove illegal entries (leaving the simplex)
+EcN_res = EcN_res[nvals:-1:1 , :]
+EcN_res = LowerTriangular(EcN_res)
+# divide by (N)_2
+EcN_res = EcN_res ./ 6
+
+# make plot
+heatmap(w_vals, w_vals, EcN_res)
