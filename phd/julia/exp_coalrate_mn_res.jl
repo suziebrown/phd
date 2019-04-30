@@ -40,7 +40,7 @@ title!("dependence of E[c_N] on weights (N=2)")
 using LinearAlgebra
 using Plots
 
-w_vals = 0:0.01:1 # values of w1 to evaluate at (must go from 0 to 1)
+w_vals = 0:0.001:1 # values of w1 to evaluate at (must go from 0 to 1)
 nvals = length(w_vals)
 
 EcN_mn = Array{Float64, 2}(undef, nvals, nvals)
@@ -58,30 +58,39 @@ for i in 1:nvals
         # cases for sorted weights:
         if wsort[1] > 1
             println("error: unexpected case for sorted weight vector")
-        elseif wsort[1] == 1
+        elseif wsort[1] == 1 # case A
             EcN_res[i,j] = 6
-        elseif wsort[1] > 2/3
-            EcN_res[i,j] = 4 * wsort[1] - 2/3
-        elseif wsort[1] == 2/3
+        elseif wsort[1] > 2/3 # case B
+            EcN_res[i,j] = 12 * wsort[1] - 6
+        elseif wsort[1] == 2/3 # case C
             EcN_res[i,j] = 2
         elseif wsort[1] > 1/3
-            if wsort[2] < 1/3
-                EcN_res[i,j] = 2 * sum(wsort.^2) + wsort[1] * 8/3 + 38/81
-            else
-                EcN_res[i,j] = 2 * (1 - wsort[3])
+            if wsort[2] < 1/3 # case D2
+                #EcN_res[i,j] = 18 * wsort[1]^2 - 6 * wsort[1] - 9 * wsort[2] * wsort[3] + 22
+                EcN_res[i,j] =(2 * (wsort[1] - 1/3) * (wsort[2] + wsort[3]) + wsort[2]^2 + wsort[3]^2) * 9/4
+            else # case D1
+                EcN_res[i,j] = 2 - 6 * wsort[3]
             end
         elseif wsort[1] == 1/3
             EcN_res[i,j] = 0
         else
             println("error: unexpected case for sorted weight vector")
         end
+        EcN_mn[i,j] = sum(wsort.^2)
     end
 end
 # remove illegal entries (leaving the simplex)
 EcN_res = EcN_res[nvals:-1:1 , :]
 EcN_res = LowerTriangular(EcN_res)
+EcN_mn = EcN_mn[nvals:-1:1 , :]
+EcN_mn = LowerTriangular(EcN_mn)
 # divide by (N)_2
 EcN_res = EcN_res ./ 6
+EcN_mn = EcN_mn ./ 6
 
 # make plot
 heatmap(w_vals, w_vals, EcN_res)
+heatmap(w_vals, w_vals, EcN_mn)
+
+contour(w_vals, w_vals, EcN_res)
+contour(w_vals, w_vals, EcN_mn)
