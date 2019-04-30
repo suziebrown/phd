@@ -90,7 +90,39 @@ Then since $(\wt{i} -1)^2 = (\wt{i})^2 -2\wt{i} +1 \geq 0$, we have that $(\wt{i
 \E[c_2^m(t) |\F] \geq \E[c_2^r(t) |\F]. \qed
 \end{equation*}
 
-\centering
+\begin{center}
 \includegraphics[width=0.8\textwidth]{EcN_mn_res_N2.pdf}
+\end{center}
+
+%==================
+
+\section*{Case $N=3$}
+Given a weight vector $(\wt{1}, \wt{2}, \wt{3})$, let $w_{(1)} \geq w_{(2)} \geq w_{(3)}$ denote the weights sorted from high to low. \\
+
+\begin{tabular}{ l | l | l | l | l }
+Case & Weights & Offspring counts &  Conditional probabilities & $\E[c_2^r(t) | \wt{1:3}]$ \\
+\hline
+(A) & $w_{(1)} = 1$ & $(3,0,0)$ & 1 & 1 \\
+\hline
+(B) & $2/3 < w_{(1)} < 1$ & $(3,0,0)$ & $3w_{(1)} - 2$ & $12w_{(1)} -6$\\
+&& $(2,1,0)$ & $3w_{(2)}$ & \\
+&& $(2,0,1)$  & $3w_{(3)}$ & \\
+\hline
+(C) & $w_{(1)}=2/3$ & $(2,1,0)$ & $3w_{(2)}$ & 2 \\
+&& $(2,0,1)$ & $3w_{(3)}$ & \\
+\hline
+(D1) & $1/3 < w_{(1)} < 2/3$ and & $(2,1,0)$ & $3w_{(1)} - 1$ & $2 - 6w_{(3)}$ \\
+& $1/3 \leq w_{(2)} < 2/3$ & $(1,2,0)$ & $3w_{(2)} -1$ & \\
+&& $(1,1,1)$ & $3w_{(3)}$  & \\
+\hline
+(D2) &  $1/3 < w_{(1)} < 2/3$ and & $(3,0,0)$ & $(3/2)^2 (w_{(1)} - 1/3)^2$ & $ (3/2) (3w_{(1)} - 1)(w_{(1)} + 1)$ \\
+& $w_{(2)} < 1/3$ & $(2,1,0)$ & $(3/2)^2 2(w_{(1)} - 1/3)w_{(2)}$ &\\
+&& $(2,0,1)$ & $(3/2)^2 2(w_{(1)} - 1/3)w_{(3)}$ &\\
+&& $(1,2,0)$ & $(3/2)^2 w_{(2)}^2$ &\\
+&& $(1,0,2)$ & $(3/2)^2 w_{(3)}^2$ &\\
+&& $(1,1,1)$ & $(3/2)^2 2w_{(2)} w_{(3)}$ &\\
+\hline
+(E) & $w_{(1)} = 1/3$ & $(1,1,1)$ & 1 & 0 \\
+\end{tabular}
 
 \end{document}
