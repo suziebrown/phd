@@ -66,8 +66,7 @@ for i in 1:nvals
             EcN_res[i,j] = 2
         elseif wsort[1] > 1/3
             if wsort[2] < 1/3 # case D2
-                #EcN_res[i,j] = 18 * wsort[1]^2 - 6 * wsort[1] - 9 * wsort[2] * wsort[3] + 22
-                EcN_res[i,j] =(2 * (wsort[1] - 1/3) * (wsort[2] + wsort[3]) + wsort[2]^2 + wsort[3]^2) * 9/4
+                EcN_res[i,j] =(3 * wsort[1] - 1) * (wsort[1] + 1) * 3/2
             else # case D1
                 EcN_res[i,j] = 2 - 6 * wsort[3]
             end
@@ -86,11 +85,12 @@ EcN_mn = EcN_mn[nvals:-1:1 , :]
 EcN_mn = LowerTriangular(EcN_mn)
 # divide by (N)_2
 EcN_res = EcN_res ./ 6
-EcN_mn = EcN_mn ./ 6
 
 # make plot
-heatmap(w_vals, w_vals, EcN_res)
-heatmap(w_vals, w_vals, EcN_mn)
+heatmap(w_vals, w_vals, EcN_res, xaxis=false)
+heatmap(w_vals, w_vals, EcN_mn, xaxis=false)
 
-contour(w_vals, w_vals, EcN_res)
-contour(w_vals, w_vals, EcN_mn)
+contour(w_vals, w_vals, EcN_res, xaxis=false)
+contour(w_vals, w_vals, EcN_mn, xaxis=false)
+
+#savefig("EcN_res_N3_contour.pdf")
