@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  1 MAY 2019 10:22
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  1 MAY 2019 11:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -741,40 +741,59 @@ Overfull \hbox (2.2222pt too wide) in paragraph at lines 182--184
 [][] [] 
  []
 
-[3 <./plots/EcN_mn_N3_heatmap.pdf> <./plots/EcN_mn_N3_contour.pdf> <./plots/EcN
-_res_N3_heatmap.pdf> <./plots/EcN_res_N3_contour.pdf>] (./res_vs_mn_N2proof.aux
-) ) 
+<plots/EcN_mn_res_diff_N3_heatmap.pdf, id=37, 602.25pt x 401.5pt>
+File: plots/EcN_mn_res_diff_N3_heatmap.pdf Graphic file (type pdf)
+<use plots/EcN_mn_res_diff_N3_heatmap.pdf>
+Package pdftex.def Info: plots/EcN_mn_res_diff_N3_heatmap.pdf  used on input li
+ne 187.
+(pdftex.def)             Requested size: 236.01561pt x 157.34404pt.
+<plots/EcN_mn_res_diff_N3_contour.pdf, id=38, 602.25pt x 401.5pt>
+File: plots/EcN_mn_res_diff_N3_contour.pdf Graphic file (type pdf)
+<use plots/EcN_mn_res_diff_N3_contour.pdf>
+Package pdftex.def Info: plots/EcN_mn_res_diff_N3_contour.pdf  used on input li
+ne 188.
+(pdftex.def)             Requested size: 236.01561pt x 157.34404pt.
+
+Overfull \hbox (2.2222pt too wide) in paragraph at lines 187--189
+[][] [] 
+ []
+
+[3] [4 <./plots/EcN_mn_N3_heatmap.pdf> <./plots/EcN_mn_N3_contour.pdf> <./plots
+/EcN_res_N3_heatmap.pdf> <./plots/EcN_res_N3_contour.pdf> <./plots/EcN_mn_res_d
+iff_N3_heatmap.pdf> <./plots/EcN_mn_res_diff_N3_contour.pdf>]
+(./res_vs_mn_N2proof.aux) ) 
 Here is how much of TeX's memory you used:
- 15355 strings out of 492649
- 292571 string characters out of 6129623
+ 15365 strings out of 492649
+ 293005 string characters out of 6129623
  352473 words of memory out of 5000000
- 18920 multiletter control sequences out of 15000+600000
+ 18928 multiletter control sequences out of 15000+600000
  14639 words of font info for 57 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,12n,54p,426b,488s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pf
-b></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
-></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb>
-</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><
-/usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></
-usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></us
-r/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/
-local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/lo
-cal/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/loca
-l/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/
-texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/te
-xlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texli
-ve/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/
-2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/201
-8/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2018
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2018/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2018/tex
-mf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on res_vs_mn_N2proof.pdf (3 pages, 866950 bytes).
+</usr/local/texlive/2018/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmex10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmmi10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmmi12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmmi5.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmmi7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmmi9.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmr10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmr12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmr17.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+r5.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.
+pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb
+></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb>
+</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><
+/usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></u
+sr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></us
+r/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+
+Output written on res_vs_mn_N2proof.pdf (4 pages, 1392756 bytes).
 PDF statistics:
- 113 PDF objects out of 1000 (max. 8388607)
- 83 compressed objects within 1 object stream
+ 124 PDF objects out of 1000 (max. 8388607)
+ 91 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 38 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 48 words of extra memory for PDF output out of 10000 (max. 10000000)
 
