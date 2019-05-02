@@ -35,6 +35,7 @@
 \usepackage{amssymb}
 \usepackage{amsthm}
 \newtheorem{lemma}{Lemma}
+\newtheorem{remark}{Remark}
 \newtheorem{corollary}{Corollary}
 \theoremstyle{definition}
 \newtheorem{defn}{Definition}
@@ -190,5 +191,47 @@ Therefore (iii) is also true, concluding the proof.
 	\end{subfigure}
 \end{figure}
 
+\begin{remark}
+Examining the table, we can see that the function $\E[c_3^r(t) |\wt{1:3}]$ is continuous in $w_{(1)}$. However, the plot clearly shows discontinuities. These occur at the boundaries between different orderings when we sort the weights from high to low.
+\end{remark}
+
+\section*{General $N$}
+\begin{lemma}
+In the case $w_{(1)} \geq \frac{N-1}{N}$, we have 
+\begin{equation*}
+\E[c_N^r(t) |\wt{1:N}] = 2w_{(1)} -1.
+\end{equation*}
+\end{lemma}
+
+\begin{proof}
+In this case, (N-1) offspring are deterministically assigned to particle 1. The one remaining offspring can either be assigned to particle 1 or to some other particle.
+\begin{itemize}
+\item The first option yields offspring vector $(N, 0, 0, \dots)$ and occurs with probability $(w_{(1)} - \frac{N-1}{N})/(1/N) = Nw_{(1)} - (N-1)$. The resulting value of $c_N^r$ is $N(N-1)/(N)_2 = 1$.
+\item The second option yields an offspring vector that is some permutation of $(N-1, 1, 0, 0, \dots)$, and occurs with probability $1- Nw_{(1)} - (N-1) = N - Nw_{(1)}$. The resulting value of $c_N^r$ is $(N-1)(N-2)/(N)_2 = (N-2)/N$.
+\end{itemize}
+So, under this constraint on the weights, we have the following expectation:
+\begin{equation*}
+\E[c_N^r(t) |\wt{1:N}] = Nw_{(1)} - (N-1) + \frac{N-2}{N}(N - Nw_{(1)}) = 2w_{(1)} -1.
+\end{equation*} 
+\end{proof}
+
+\begin{lemma}
+For $N\geq 3$, in the case $w_{(1)}, w_{(2)}, \dots, w_{(N-1)} \in \left[\frac{1}{N}, \frac{2}{N}\right]$, we have
+\begin{equation*}
+\E[c_N^r(t) |\wt{1:N}] = \frac{2}{N-1}(1/N - w_{(N)}).
+\end{equation*}
+\end{lemma}
+
+\begin{proof}
+In this case, one offspring is deterministically assigned to each of the particles $1,2,\dots,N-1$. The one remaining offspring can be assigned either to particle $N$ or to one of the others.
+\begin{itemize}
+\item The first option yields offspring vector $(1,1,\dots, 1)$ and occurs with probability $w_{(N)}/(1/N) = Nw_{(N)}$. The resulting value of $c_N^r$ is 0.
+\item The second option yields an offspring vector that is some permutation of $(2,0,1,1,\dots,1)$ and occurs with probability $1- Nw_{(N)}$. The resulting value of $c_N^r$ is 2.
+\end{itemize}
+So, under this constraint on the weights, we have the following expectation:
+\begin{equation*}
+\E[c_N^r(t) |\wt{1:N}] = 2(1- Nw_{(N)})/(N)_2 =  \frac{2}{N-1}(1/N - w_{(N)}).
+\end{equation*} 
+\end{proof}
 
 \end{document}
