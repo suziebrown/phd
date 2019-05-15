@@ -119,14 +119,10 @@ We define the difference
 \end{align*}
 Then we have to show that $\Delta_i \geq 0$ for all $N\geq 2$ and $w_i \in [0,1]$. Consider the following cases.
 \begin{description}
-\item[Case] $w \in [0, 1/N)$.\\
-Then $\flnw = 0$, so we have\\ $\Delta_i = Nw_i - Nw_i^2 + 0 = Nw_i(1-w_i) \geq 0$.
-\item[Case] $w \in ((N-1)/N, 1]$.\\
-Then $\flnw = N-1$, and we have \\ $\Delta_i = (Nw_i - (N-1))^2 - Nw_i^2 + N -1 =...= N(N-1)(w_i -1)^2 \geq 0$.
 \item[Case] $w=k/N$ for some $k \in \{1, \dots, N-1\}$. \\
 Then $\flnw = Nw_i = k$ and we have\\
 $\Delta_i = 0 - k^2/N + k = k(1- k/N) \geq 0$.
-\item[Case] $w \in (k/N, (k+1)/N )$ for some $k \in \{1, \dots, N-2\}$ \\
+\item[Case] $w \in (k/N, (k+1)/N )$ for some $k \in \{0, \dots, N-1\}$ \\
 Then $\flnw = k$, and \\
 $\Delta_i = (Nw_i - k)^2 - Nw_i^2 + k = ... = N(N-1)(w_i - k/(N-1))^2 - \frac{k^2N}{N-1} + k^2 +k$.\\
 Discarding the positive first term, we have $\Delta_i \geq - \frac{k^2N}{N-1} + k^2 +k = k(1- k/(N-1)) \geq 0$.
