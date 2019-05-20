@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  15 MAY 2019 15:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  20 MAY 2019 15:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -688,46 +688,56 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 74.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-
-Package natbib Warning: Citation `mosimann1962' on page 1 undefined on input li
-ne 104.
-
-[1
+) [1
 
 {/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-No file randomised_rounding.bbl.
+<plots/delta_cN_N2.pdf, id=21, 602.25pt x 401.5pt>
+File: plots/delta_cN_N2.pdf Graphic file (type pdf)
+<use plots/delta_cN_N2.pdf>
+Package pdftex.def Info: plots/delta_cN_N2.pdf  used on input line 141.
+(pdftex.def)             Requested size: 155.77116pt x 103.8484pt.
+<plots/delta_cN_N10.pdf, id=22, 602.25pt x 401.5pt>
+File: plots/delta_cN_N10.pdf Graphic file (type pdf)
+<use plots/delta_cN_N10.pdf>
+Package pdftex.def Info: plots/delta_cN_N10.pdf  used on input line 142.
+(pdftex.def)             Requested size: 155.77116pt x 103.8484pt.
+<plots/delta_cN_N100.pdf, id=23, 602.25pt x 401.5pt>
+File: plots/delta_cN_N100.pdf Graphic file (type pdf)
+<use plots/delta_cN_N100.pdf>
+Package pdftex.def Info: plots/delta_cN_N100.pdf  used on input line 143.
+(pdftex.def)             Requested size: 155.77116pt x 103.8484pt.
 
-Package natbib Warning: There were undefined citations.
-
-[2] (./randomised_rounding.aux) ) 
+(./randomised_rounding.bbl) [2 <./plots/delta_cN_N2.pdf> <./plots/delta_cN_N10.
+pdf> <./plots/delta_cN_N100.pdf>] (./randomised_rounding.aux) ) 
 Here is how much of TeX's memory you used:
- 15313 strings out of 492649
- 291394 string characters out of 6129623
- 348512 words of memory out of 5000000
- 18888 multiletter control sequences out of 15000+600000
- 11242 words of font info for 44 fonts, out of 8000000 for 9000
+ 15352 strings out of 492649
+ 292154 string characters out of 6129623
+ 350539 words of memory out of 5000000
+ 18916 multiletter control sequences out of 15000+600000
+ 13392 words of font info for 52 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,11n,54p,444b,309s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2018/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmr10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmr12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmr17.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmr5.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmr7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmss10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmsy7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmti10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/symb
-ols/msbm10.pfb>
-Output written on randomised_rounding.pdf (2 pages, 136280 bytes).
+ 55i,12n,54p,444b,418s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texl
+ive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texli
+ve/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texliv
+e/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive
+/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/
+2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/20
+18/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2018
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2018/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2018/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2018/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2018/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2018/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2018/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2018/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/texmf-dist/font
+s/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2018/texmf-dist/fonts
+/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on randomised_rounding.pdf (2 pages, 309840 bytes).
 PDF statistics:
- 70 PDF objects out of 1000 (max. 8388607)
- 51 compressed objects within 1 object stream
+ 90 PDF objects out of 1000 (max. 8388607)
+ 66 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 13 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 28 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -75,7 +75,7 @@
 \thispagestyle{fancy}
 
 \begin{defn}\label{defn:randround_1D}
-Let $X>0$. A random variable $Y: \mathbb{R}_+ \to \mathbb{N}$ is a \emph{randomised rounding} of $X$ if $Y$ takes the values
+Let $X\geq0$. A random variable $Y: \mathbb{R}_+ \to \mathbb{N}$ is a \emph{randomised rounding} of $X$ if $Y$ takes the values
 \begin{equation*}
 Y=
 \begin{cases}
@@ -88,7 +88,7 @@ Note that we therefore have $\E[Y] =X$.
 
 Definition \ref{defn:randround_1D} generalises easily to multivariate $X$. A randomised rounding of a vector $X \in \mathbb{R}_+^N$ produces a vector $Y \in \mathbb{N}^N$ such that $\E[Y]=X$. $Y$ can thus be used to construct an unbiased resampling scheme.
 
-Such popular resampling schemes as systematic resampling and residual resampling with stratified residuals are based on randomised roundings. In each scheme, the marginal distributions of the offspring counts are as in Definition \ref{defn:randround_1D}, where $X=N\wt{i}$ and $Y=\vt{i}$. The variety in rounding-based schemes arises from the interactions between these individual offspring counts. 
+Such popular resampling schemes as systematic resampling and residual resampling with systematic residuals are based on randomised roundings. In each scheme, the marginal distributions of the offspring counts are as in Definition \ref{defn:randround_1D}, where $X=N\wt{i}$ and $Y=\vt{i}$. The variety in rounding-based schemes arises from the interactions between these individual offspring counts. 
 
 In this document we will consider a general resampling scheme based on randomised rounding, and compare its genealogical properties to those of multinomial resampling.
 Let $(w_1, \dots, w_N)$ be a normalised weight vector (that is, $w_i \geq 0$ and $\sum w_i = 1$), let $N\geq 2$ be an integer denoting the number of particles, and let $(v_1,\dots v_N)$ denote the resampled offspring numbers. We will attach a superscript $m$ or $r$ to denote offspring numbers corresponding to multinomial and rounding-based resampling respectively.
@@ -119,17 +119,30 @@ We define the difference
 \end{align*}
 Then we have to show that $\Delta_i \geq 0$ for all $N\geq 2$ and $w_i \in [0,1]$. Consider the following cases.
 \begin{description}
-\item[Case] $w=k/N$ for some $k \in \{1, \dots, N-1\}$. \\
+\item[Case] $w_i=k/N$ for some $k \in \{1, \dots, N-1\}$. \\
 Then $\flnw = Nw_i = k$ and we have\\
 $\Delta_i = 0 - k^2/N + k = k(1- k/N) \geq 0$.
-\item[Case] $w \in (k/N, (k+1)/N )$ for some $k \in \{0, \dots, N-1\}$ \\
-Then $\flnw = k$, and \\
-$\Delta_i = (Nw_i - k)^2 - Nw_i^2 + k = ... = N(N-1)(w_i - k/(N-1))^2 - \frac{k^2N}{N-1} + k^2 +k$.\\
-Discarding the positive first term, we have $\Delta_i \geq - \frac{k^2N}{N-1} + k^2 +k = k(1- k/(N-1)) \geq 0$.
+\item[Case] $w_i \in (k/N, (k+1)/N )$ for some $k \in \{0, \dots, N-1\}$ \\
+Then $\flnw = k$, and
+\begin{align*}
+\Delta_i &= (Nw_i - k)^2 - Nw_i^2 + k\\
+&= N(N-1)w_i^2 - 2Nkw_i + k(k+1) \\
+&= N(N-1) \left[ \left( w-\frac{k}{N-1} \right)^2 - \frac{k^2}{(N-1)^2} + \frac{k(k+1)}{N(N-1)} \right]\\
+&= N(N-1) \left( w-\frac{k}{N-1} \right)^2 - \frac{k^2 N}{N-1} + k^2 +k \\
+&\geq - \frac{k^2 N}{N-1} + k^2 +k \\
+&= k\left(1-\frac{k}{N-1}\right)\\
+&\geq 0
+\end{align*}
 \end{description}
 For each $N$, any $w_i \in [0,1]$ falls into one of the above cases, so we conclude that $\Delta_i \geq 0$ for all $N, w_i$.
 \end{proof}
 
+\begin{figure}
+\includegraphics[width=0.33\textwidth]{plots/delta_cN_N2.pdf}
+\includegraphics[width=0.33\textwidth]{plots/delta_cN_N10.pdf}
+\includegraphics[width=0.33\textwidth]{plots/delta_cN_N100.pdf}
+\caption{$\Delta_i$ as a function of $w_i$ for various values of $N$. The function is piecewise quadratic between the points $w_i = k/N$. The limiting shape appears to be a parabola.}
+\end{figure}
 
-\bibliography{smc.bib}
+\bibliography{../smc.bib}
 \end{document}
