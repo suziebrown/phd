@@ -37,6 +37,7 @@
 \newtheorem{lemma}{Lemma}
 \newtheorem{remark}{Remark}
 \newtheorem{corollary}{Corollary}
+\newtheorem{conj}{Conjecture}
 \theoremstyle{definition}
 \newtheorem{defn}{Definition}
 
@@ -233,5 +234,14 @@ So, under this constraint on the weights, we have the following expectation:
 \E[c_N^r(t) |\wt{1:N}] = 2(1- Nw_{(N)})/(N)_2 =  \frac{2}{N-1}(1/N - w_{(N)}).
 \end{equation*} 
 \end{proof}
+
+\begin{conj}
+The number of cases to consider for population size $N$ (excluding zero-measure cases which can be included in other cases) is 
+\begin{equation*}
+p(N-1) + \frac{(N-1)(N-2)}{2}
+\end{equation*}
+where $p(\cdot)$ denotes the partition function (number of integer partitions).
+\end{conj}
+This expression was determined by pattern-spotting in low-$N$ cases. I believe a combinatorial proof could be found but, since it is not a particularly useful result, I shan't bother.
 
 \end{document}

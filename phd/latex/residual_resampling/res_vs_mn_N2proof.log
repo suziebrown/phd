@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  2 MAY 2019 14:06
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  13 MAY 2019 12:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -556,23 +556,24 @@ Package: amsthm 2017/10/31 v2.20.4
 \c@lemma=\count136
 \c@remark=\count137
 \c@corollary=\count138
-\c@defn=\count139
+\c@conj=\count139
+\c@defn=\count140
 
 (./res_vs_mn_N2proof.aux)
 \openout1 = `res_vs_mn_N2proof.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -610,16 +611,16 @@ LaTeX Font Info:    ... okay on input line 71.
 
 (/usr/local/texlive/2018/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count140
+\scratchcounter=\count141
 \scratchdimen=\dimen177
 \scratchbox=\box42
-\nofMPsegments=\count141
-\nofMParguments=\count142
+\nofMPsegments=\count142
+\nofMParguments=\count143
 \everyMPshowfont=\toks45
-\MPscratchCnt=\count143
+\MPscratchCnt=\count144
 \MPscratchDim=\dimen178
-\MPnumerator=\count144
-\makeMPintoPDFobject=\count145
+\MPnumerator=\count145
+\makeMPintoPDFobject=\count146
 \everyMPtoPDFconversion=\toks46
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
@@ -678,12 +679,12 @@ Package caption Info: float package is loaded.
 Package caption Info: End \AtBeginDocument code.
 
 ABD: EveryShipout initializing macros
-LaTeX Font Info:    Try loading font information for U+msa on input line 72.
+LaTeX Font Info:    Try loading font information for U+msa on input line 73.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 72.
+LaTeX Font Info:    Try loading font information for U+msb on input line 73.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -691,23 +692,23 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 <plots/EcN_mn_res_N2.pdf, id=4, 602.25pt x 401.5pt>
 File: plots/EcN_mn_res_N2.pdf Graphic file (type pdf)
 <use plots/EcN_mn_res_N2.pdf>
-Package pdftex.def Info: plots/EcN_mn_res_N2.pdf  used on input line 101.
+Package pdftex.def Info: plots/EcN_mn_res_N2.pdf  used on input line 102.
 (pdftex.def)             Requested size: 377.62642pt x 251.75781pt.
  [1
 
 {/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./plots
 /EcN_mn_res_N2.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 110--111
+Underfull \hbox (badness 10000) in paragraph at lines 111--112
 
  []
 
 
-Overfull \hbox (11.37738pt too wide) in paragraph at lines 112--137
+Overfull \hbox (11.37738pt too wide) in paragraph at lines 113--138
 [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 162--163
+Underfull \hbox (badness 10000) in paragraph at lines 163--164
 
  []
 
@@ -715,30 +716,30 @@ Underfull \hbox (badness 10000) in paragraph at lines 162--163
 <plots/EcN_mn_N3_heatmap.pdf, id=33, 602.25pt x 401.5pt>
 File: plots/EcN_mn_N3_heatmap.pdf Graphic file (type pdf)
 <use plots/EcN_mn_N3_heatmap.pdf>
-Package pdftex.def Info: plots/EcN_mn_N3_heatmap.pdf  used on input line 178.
+Package pdftex.def Info: plots/EcN_mn_N3_heatmap.pdf  used on input line 179.
 (pdftex.def)             Requested size: 236.01561pt x 157.34404pt.
 <plots/EcN_mn_N3_contour.pdf, id=34, 602.25pt x 401.5pt>
 File: plots/EcN_mn_N3_contour.pdf Graphic file (type pdf)
 <use plots/EcN_mn_N3_contour.pdf>
-Package pdftex.def Info: plots/EcN_mn_N3_contour.pdf  used on input line 179.
+Package pdftex.def Info: plots/EcN_mn_N3_contour.pdf  used on input line 180.
 (pdftex.def)             Requested size: 236.01561pt x 157.34404pt.
 
-Overfull \hbox (2.2222pt too wide) in paragraph at lines 178--180
+Overfull \hbox (2.2222pt too wide) in paragraph at lines 179--181
 [][] [] 
  []
 
 <plots/EcN_res_N3_heatmap.pdf, id=35, 602.25pt x 401.5pt>
 File: plots/EcN_res_N3_heatmap.pdf Graphic file (type pdf)
 <use plots/EcN_res_N3_heatmap.pdf>
-Package pdftex.def Info: plots/EcN_res_N3_heatmap.pdf  used on input line 183.
+Package pdftex.def Info: plots/EcN_res_N3_heatmap.pdf  used on input line 184.
 (pdftex.def)             Requested size: 236.01561pt x 157.34404pt.
 <plots/EcN_res_N3_contour.pdf, id=36, 602.25pt x 401.5pt>
 File: plots/EcN_res_N3_contour.pdf Graphic file (type pdf)
 <use plots/EcN_res_N3_contour.pdf>
-Package pdftex.def Info: plots/EcN_res_N3_contour.pdf  used on input line 184.
+Package pdftex.def Info: plots/EcN_res_N3_contour.pdf  used on input line 185.
 (pdftex.def)             Requested size: 236.01561pt x 157.34404pt.
 
-Overfull \hbox (2.2222pt too wide) in paragraph at lines 183--185
+Overfull \hbox (2.2222pt too wide) in paragraph at lines 184--186
 [][] [] 
  []
 
@@ -746,61 +747,61 @@ Overfull \hbox (2.2222pt too wide) in paragraph at lines 183--185
 File: plots/EcN_mn_res_diff_N3_heatmap.pdf Graphic file (type pdf)
 <use plots/EcN_mn_res_diff_N3_heatmap.pdf>
 Package pdftex.def Info: plots/EcN_mn_res_diff_N3_heatmap.pdf  used on input li
-ne 188.
+ne 189.
 (pdftex.def)             Requested size: 236.01561pt x 157.34404pt.
 <plots/EcN_mn_res_diff_N3_contour.pdf, id=38, 602.25pt x 401.5pt>
 File: plots/EcN_mn_res_diff_N3_contour.pdf Graphic file (type pdf)
 <use plots/EcN_mn_res_diff_N3_contour.pdf>
 Package pdftex.def Info: plots/EcN_mn_res_diff_N3_contour.pdf  used on input li
-ne 189.
+ne 190.
 (pdftex.def)             Requested size: 236.01561pt x 157.34404pt.
 
-Overfull \hbox (2.2222pt too wide) in paragraph at lines 188--190
+Overfull \hbox (2.2222pt too wide) in paragraph at lines 189--191
 [][] [] 
  []
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 209.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 210.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 209.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 210.
  [3] [4 <./plots/EcN_mn_N3_heatmap.pdf> <./plots/EcN_mn_N3_contour.pdf> <./plot
 s/EcN_res_N3_heatmap.pdf> <./plots/EcN_res_N3_contour.pdf> <./plots/EcN_mn_res_
-diff_N3_heatmap.pdf> <./plots/EcN_mn_res_diff_N3_contour.pdf>] (./res_vs_mn_N2p
-roof.aux) ) 
+diff_N3_heatmap.pdf> <./plots/EcN_mn_res_diff_N3_contour.pdf>] [5] (./res_vs_mn
+_N2proof.aux) ) 
 Here is how much of TeX's memory you used:
- 15389 strings out of 492649
- 293379 string characters out of 6129623
- 352511 words of memory out of 5000000
- 18949 multiletter control sequences out of 15000+600000
+ 15395 strings out of 492649
+ 293416 string characters out of 6129623
+ 352549 words of memory out of 5000000
+ 18955 multiletter control sequences out of 15000+600000
  14639 words of font info for 57 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,12n,54p,426b,488s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mbx10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-bx12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cme
-x10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi
-10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi1
-2.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.
-pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pf
-b></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb>
-</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></
-usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></us
-r/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/
-local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/loc
-al/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/
-texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/tex
-live/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texl
-ive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texli
-ve/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive
-/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/
-2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on res_vs_mn_N2proof.pdf (4 pages, 1401300 bytes).
+</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmbx10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmbx12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmex10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmmi10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mmi12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+mi5.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi
+7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.
+pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pf
+b></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb>
+</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></
+usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr
+/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/lo
+cal/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local
+/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/
+texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/t
+exlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/tex
+live/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texl
+ive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on res_vs_mn_N2proof.pdf (5 pages, 1404865 bytes).
 PDF statistics:
- 124 PDF objects out of 1000 (max. 8388607)
- 91 compressed objects within 1 object stream
+ 127 PDF objects out of 1000 (max. 8388607)
+ 93 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  48 words of extra memory for PDF output out of 10000 (max. 10000000)
 
