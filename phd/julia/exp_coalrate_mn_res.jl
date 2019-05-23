@@ -21,6 +21,7 @@ for i in 1:nvals
     # expected coalescence rates
     EcN_mn[i] = p0_mn + p2_mn
     EcN_res[i] = p0_res + p2_res
+    VcN_mn[i] = p0_mn
 end
 
 # plot results
@@ -93,4 +94,54 @@ heatmap(w_vals, w_vals, EcN_mn, xaxis=false)
 contour(w_vals, w_vals, EcN_res, xaxis=false)
 contour(w_vals, w_vals, EcN_mn, xaxis=false)
 
-#savefig("EcN_res_N3_contour.pdf")
+heatmap(w_vals, w_vals, EcN_mn .- EcN_res, xaxis=false)
+contour(w_vals, w_vals, EcN_mn .- EcN_res, xaxis=false)
+
+#savefig("EcN_mn_res_diff_N3_heatmap.pdf")
+
+### Tweaks: actually plot these as ternary plots;
+### Adjust colour scale to be the same for all plots
+
+### test below...
+
+w_vals = 0:0.001:(2/3) # values of w1 to evaluate at (must go from 0 to 1)
+nvals = length(w_vals)
+
+EcN_mn = Array{Float64, 1}(undef, nvals)
+EcN_res = Array{Float64, 1}(undef, nvals)
+
+for i in 1:nvals
+    # set weights
+    w1 = 1/3
+    w2 = w_vals[i]
+    w3 = 2/3 - w2
+    # sort weights high->low
+    wsort = sort([w1, w2, w3], rev=true)
+    # cases for sorted weights:
+    if wsort[1] > 1
+        println("error: unexpected case for sorted weight vector")
+    elseif wsort[1] == 1 # case A
+        EcN_res[i] = 6
+    elseif wsort[1] > 2/3 # case B
+        EcN_res[i] = 12 * wsort[1] - 6
+    elseif wsort[1] == 2/3 # case C
+        EcN_res[i] = 2
+    elseif wsort[1] > 1/3
+        if wsort[2] < 1/3 # case D2
+            EcN_res[i] =(3 * wsort[1] - 1) * (wsort[1] + 1) * 3/2
+        else # case D1
+            EcN_res[i] = 2 - 6 * wsort[3]
+        end
+    elseif wsort[1] == 1/3
+        EcN_res[i] = 0
+    else
+        println("error: unexpected case for sorted weight vector")
+    end
+    EcN_mn[i] = sum(wsort.^2)
+end
+EcN_res = EcN_res ./ 6
+
+plot(w_vals, EcN_res, legend=false)
+plot!(w_vals, EcN_mn)
+title!("slice through w1 = 1/3")
+xlabel!("w2")
