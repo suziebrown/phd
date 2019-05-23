@@ -1,13 +1,13 @@
 ## make motivational plots
 using Random, Distributions, StatsBase, Plots, Statistics
 # small values of N,T only!
-function csmc_example(N::UInt16, T::Int64, observations::Array{Float64,1}, initialsam::Function, transition::Function, potential::Function, immortal_positions::Array{Float64,1})
+function csmc_example(N::Int64, T::Int64, observations::Array{Float64,1}, initialsam::Function, transition::Function, potential::Function, immortal_positions::Array{Float64,1})
     # set OU process parameters
     delta = 1.0
     sigma = 0.1
 
     # pre-allocate memory
-    parents = Array{UInt16, 2}(undef, T, N)
+    parents = Array{Int64, 2}(undef, T, N)
     positions = Array{Float64, 2}(undef, T+1, N)
     weights = Array{Float64, 2}(undef, T+1, N)
 
@@ -35,13 +35,13 @@ function csmc_example(N::UInt16, T::Int64, observations::Array{Float64,1}, initi
     return (positions = positions, weights = weights, parents=parents, immortal=immortal_indices)
 end
 
-function smc_example(N::UInt16, T::Int64, observations::Array{Float64,1}, initialsam::Function, transition::Function, potential::Function)
+function smc_example(N::Int64, T::Int64, observations::Array{Float64,1}, initialsam::Function, transition::Function, potential::Function)
     # set OU process parameters
     delta = 1.0
     sigma = 0.1
 
     # pre-allocate memory
-    parents = Array{UInt16, 2}(undef, T, N)
+    parents = Array{Int64, 2}(undef, T, N)
     positions = Array{Float64, 2}(undef, T+1, N)
     weights = Array{Float64, 2}(undef, T+1, N)
 
@@ -92,7 +92,7 @@ function ousim(T::Int64, delta::Float64, sigma::Float64, returnstates::Bool)
 end
 
 # sample initial particle positions
-function ouinit(N::UInt16, delta::Float64, sigma::Float64)
+function ouinit(N::Int64, delta::Float64, sigma::Float64)
     rand(Normal(0, delta^(0.5)), N)
 end
 
@@ -161,7 +161,7 @@ end
 delta = 0.1 # noise variance in AR(1) process
 sigma = 0.1 # noise s.d. in observations
 T = Int64(23) # number of generations/time steps
-N = UInt16(20) # total number of particles
+N = Int64(20) # total number of particles
 
 # generate observations & immortal trajectory
 observations = ousim(T, delta, sigma, false)
@@ -180,7 +180,7 @@ scatter(smcout.positions, color=:black, grid=:x, xaxis=("time", (0,T+2), 1:1:T+1
 
 
 ##--- save most recent plot ---
-savefig("smc_kalman_3.pdf")
+#savefig("smc_kalman_3.pdf")
 
 #--- plotting a genealogical tree (not actually needed?) ---
 ypts = ones(T+1, N)

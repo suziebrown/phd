@@ -28,7 +28,7 @@ function ousim(T::Int64, delta::Float64, sigma::Float64, returnstates::Bool)
 end
 
 # sample initial particle positions
-function ouinit(N::UInt16, delta::Float64, sigma::Float64)
+function ouinit(N::Int64, delta::Float64, sigma::Float64)
     rand(Normal(0, delta^(0.5)), N)
 end
 
