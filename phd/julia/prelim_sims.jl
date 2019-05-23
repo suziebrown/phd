@@ -22,7 +22,7 @@ immpos = ourts(delta, sigma, observations).mean
 
 # set constants
 nvals = [2,4,8,16,32,64,128,256,512,1024,2048,4096,8192] # number of leaves in sampled subtree
-nrep = 10
+nrep = 1000
 
 # initialise local variables
 height = Array{Int64, 1}(undef, nrep)
