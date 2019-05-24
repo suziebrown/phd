@@ -1,4 +1,4 @@
-using StatsBase, Random, Distributions, Plots
+using Statistics, StatsBase, Random, Distributions, Plots
 # generate a sequence of observations from an Orstein-Uhlenbeck process
 function ousim(T::Int64, delta::Float64, sigma::Float64, returnstates::Bool)
     # pre-allocate arrays
@@ -162,12 +162,20 @@ immpos = ourts(delta, sigma, observations).mean
 nvals = [2,4,8,16,32,64,128,256,512,1024,2048,4096,8192] # number of leaves in sampled subtree
 nrep = 100
 
+# parameters for small-scale testing:
+T = Int64(50)
+N = Int64(32)
+nvals = [2,4,8,16,32]
+nrep = 100
+
 # initialise local variables
 height = Array{Int64, 1}(undef, nrep)
 
 # initialise output variables
 meanall = Array{Float64, 1}(undef, length(nvals))
 sdall = Array{Float64, 1}(undef, length(nvals))
+lquant = Array{Float64, 1}(undef, length(nvals))
+uquant = Array{Float64, 1}(undef, length(nvals))
 noob = zeros(Int64, length(nvals))
 
 for j in 1:length(nvals)
@@ -188,9 +196,12 @@ for j in 1:length(nvals)
         # error catching
         noob[j] += sum(height==T)
     end
-    # mean & SD of tree heights
+    # mean & SD of tree heights, and 0.05 & 0.95 quantiles
     meanall[j] = mean(height)
     sdall[j] = std(height)
+    lquant[j] = quantile!(height, 0.05)
+    uquant[j] = quantile!(height, 0.95, sorted=true)
+    println(height)
 end
 
 # catching error of T being too small for N, i.e. reports no. of cases where treeheight was T
@@ -199,6 +210,8 @@ println("means were: ", meanall)
 println("SDs were: ", sdall)
 # plot output (ribbon shows +/- 1 standard error)
 plot(nvals, meanall/N, ribbon=(sdall*nrep^(-0.5)/N, sdall*nrep^(-0.5)/N), fill=:purple, fillalpha=0.25, leg=false, xaxis=:log10, line=(:purple), marker=(:purple), markerstrokecolor=:purple, title="CSMC treeheight, immortal=MAP, N=$N", xlabel="n", ylabel="average tree height /N")
+# plot output (ribbon shows 0.05 & 0.95 quantiles)
+plot(nvals, meanall/N, ribbon=((lquant)/N,(lquant)/N), fill=:purple, fillalpha=0.25, leg=false, xaxis=:log10, line=(:purple), marker=(:purple), markerstrokecolor=:purple, title="CSMC treeheight, immortal=MAP, N=$N", xlabel="n", ylabel="average tree height /N")
 
 
 #---- save results to file ----
