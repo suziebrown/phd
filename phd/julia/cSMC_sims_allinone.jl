@@ -199,3 +199,22 @@ println("means were: ", meanall)
 println("SDs were: ", sdall)
 # plot output (ribbon shows +/- 1 standard error)
 plot(nvals, meanall/N, ribbon=(sdall*nrep^(-0.5)/N, sdall*nrep^(-0.5)/N), fill=:purple, fillalpha=0.25, leg=false, xaxis=:log10, line=(:purple), marker=(:purple), markerstrokecolor=:purple, title="CSMC treeheight, immortal=MAP, N=$N", xlabel="n", ylabel="average tree height /N")
+
+
+#---- save results to file ----
+
+open("results2", "w") do f
+    write(f, "Simulation 1 for CSMC \n
+        OU process with delta=$delta and sigma=$sigma \n
+        Immortal line = MAP \n
+        T=$T, N=$N, reps per n =$nrep \n
+        values of n:\n
+        $nvals \n
+        mean tree height /N:\n
+        $meanall \n
+        SD of tree height /N:\n
+        $sdall \n
+        sampled observation sequence:\n
+        $observations \n"
+    )
+end
