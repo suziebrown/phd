@@ -143,6 +143,8 @@ function mrca_fullstore(ancestry::Array{Int64,2}, leaves::Array{Int64,1})
 end
 
 #----------------
+# HERE BEGINS THE SIMULATION
+#----------------
 
 # set constants
 delta = 0.1 # noise variance in AR(1) process
@@ -158,7 +160,7 @@ immpos = ourts(delta, sigma, observations).mean
 
 # set constants
 nvals = [2,4,8,16,32,64,128,256,512,1024,2048,4096,8192] # number of leaves in sampled subtree
-nrep = 1000
+nrep = 100
 
 # initialise local variables
 height = Array{Int64, 1}(undef, nrep)
@@ -169,9 +171,14 @@ sdall = Array{Float64, 1}(undef, length(nvals))
 noob = zeros(Int64, length(nvals))
 
 for j in 1:length(nvals)
-    println("now starting reps for n=", n)
+    println("now starting reps for n=", nvals[j])
     # uniformly sample 'nrep'x subtrees of size 'nvals[j]' & calculate height
     for i in 1:nrep
+        # report progress (only works for nrep being multiple of 10)
+        if (i*10) % nrep ==0
+            println(100*i/nrep, "% of reps completed")
+        end
+
         # run csmc
         csmcout = csmc_fullstore(N, T, observations, ouinit, outransition, oupotential, immpos)
         # sample a subtree
