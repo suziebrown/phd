@@ -1,4 +1,4 @@
-using Statistics, StatsBase, Random, Distributions, Plots
+using Statistics, StatsBase, Random, Distributions, Plots, Dates
 # generate a sequence of observations from an Orstein-Uhlenbeck process
 function ousim(T::Int64, delta::Float64, sigma::Float64, returnstates::Bool)
     # pre-allocate arrays
@@ -154,7 +154,8 @@ N = Int64(8192) # total number of particles
 
 # generate observations & immortal trajectory
 observations = ousim(T, delta, sigma, false)
-immpos = ourts(delta, sigma, observations).mean
+imm = ourts(delta, sigma, observations)
+immpos = imm.mean + 4*(imm.variance).^(0.5)
 
 ##--- subtree sampling
 
@@ -162,11 +163,11 @@ immpos = ourts(delta, sigma, observations).mean
 nvals = [2,4,8,16,32,64,128,256,512,1024,2048,4096,8192] # number of leaves in sampled subtree
 nrep = 100
 
-# parameters for small-scale testing:
-T = Int64(50)
-N = Int64(32)
-nvals = [2,4,8,16,32]
-nrep = 100
+# # parameters for small-scale testing:
+# T = Int64(50)
+# N = Int64(32)
+# nvals = [2,4,8,16,32]
+# nrep = 100
 
 # initialise local variables
 height = Array{Int64, 1}(undef, nrep)
@@ -179,7 +180,9 @@ uquant = Array{Float64, 1}(undef, length(nvals))
 noob = zeros(Int64, length(nvals))
 
 for j in 1:length(nvals)
-    println("now starting reps for n=", nvals[j])
+    # report progress
+    println("Starting n=", nvals[j], " at ", Dates.now())
+
     # uniformly sample 'nrep'x subtrees of size 'nvals[j]' & calculate height
     for i in 1:nrep
         # report progress (only works for nrep being multiple of 10)
@@ -201,33 +204,42 @@ for j in 1:length(nvals)
     sdall[j] = std(height)
     lquant[j] = quantile!(height, 0.05)
     uquant[j] = quantile!(height, 0.95, sorted=true)
-    println(height)
 end
 
 # catching error of T being too small for N, i.e. reports no. of cases where treeheight was T
 println("number of cases hitting limit was ", sum(noob))
 println("means were: ", meanall)
-println("SDs were: ", sdall)
+#println("SDs were: ", sdall)
 # plot output (ribbon shows +/- 1 standard error)
-plot(nvals, meanall/N, ribbon=(sdall*nrep^(-0.5)/N, sdall*nrep^(-0.5)/N), fill=:purple, fillalpha=0.25, leg=false, xaxis=:log10, line=(:purple), marker=(:purple), markerstrokecolor=:purple, title="CSMC treeheight, immortal=MAP, N=$N", xlabel="n", ylabel="average tree height /N")
+#plot(nvals, meanall/N, ribbon=(sdall*nrep^(-0.5)/N, sdall*nrep^(-0.5)/N), fill=:purple, fillalpha=0.25, leg=false, xaxis=:log10, line=(:purple), marker=(:purple), markerstrokecolor=:purple, title="CSMC treeheight, immortal=MAP, N=$N", xlabel="n", ylabel="average tree height /N")
+
 # plot output (ribbon shows 0.05 & 0.95 quantiles)
-plot(nvals, meanall/N, ribbon=((lquant)/N,(lquant)/N), fill=:purple, fillalpha=0.25, leg=false, xaxis=:log10, line=(:purple), marker=(:purple), markerstrokecolor=:purple, title="CSMC treeheight, immortal=MAP, N=$N", xlabel="n", ylabel="average tree height /N")
+#plot(nvals, meanall/N, ribbon=((lquant)/N,(lquant)/N), fill=:purple, fillalpha=0.25, leg=false, xaxis=:log10, line=(:purple), marker=(:purple), markerstrokecolor=:purple, title="CSMC treeheight, immortal=MAP, N=$N", xlabel="n", ylabel="average tree height /N")
+plot!(nvals, meanall/N, ribbon=((lquant)/N,(uquant)/N), fill=:yellow, fillalpha=0.25, line=(:yellow), marker=(:yellow), markerstrokecolor=:yellow)
 
 
 #---- save results to file ----
+savefig("csmc_results7.pdf")
 
-open("results2", "w") do f
-    write(f, "Simulation 1 for CSMC \n
+datetime = Dates.now()
+
+open("results7", "w") do f
+    write(f, "Simulation 7 for CSMC \n
+        File written at $datetime \n
         OU process with delta=$delta and sigma=$sigma \n
-        Immortal line = MAP \n
+        Immortal line = MAP + 4 SD \n
         T=$T, N=$N, reps per n =$nrep \n
-        values of n:\n
+        Values of n:\n
         $nvals \n
-        mean tree height /N:\n
+        Mean tree height:\n
         $meanall \n
-        SD of tree height /N:\n
+        SD of tree height:\n
         $sdall \n
-        sampled observation sequence:\n
+        Lower quantiles of tree height:\n
+        $lquant \n
+        Upper quantiles of tree height:\n
+        $uquant \n
+        Sampled observation sequence:\n
         $observations \n"
     )
 end
