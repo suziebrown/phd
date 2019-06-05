@@ -155,13 +155,14 @@ N = Int64(8192) # total number of particles
 # generate observations & immortal trajectory
 observations = ousim(T, delta, sigma, false)
 imm = ourts(delta, sigma, observations)
-immpos = imm.mean + 4*(imm.variance).^(0.5)
+nsd = 0
+immpos = imm.mean + nsd*(imm.variance).^(0.5)
 
 ##--- subtree sampling
 
 # set constants
 nvals = [2,4,8,16,32,64,128,256,512,1024,2048,4096,8192] # number of leaves in sampled subtree
-nrep = 100
+nrep = 500
 
 # # parameters for small-scale testing:
 # T = Int64(50)
@@ -214,20 +215,20 @@ println("means were: ", meanall)
 #plot(nvals, meanall/N, ribbon=(sdall*nrep^(-0.5)/N, sdall*nrep^(-0.5)/N), fill=:purple, fillalpha=0.25, leg=false, xaxis=:log10, line=(:purple), marker=(:purple), markerstrokecolor=:purple, title="CSMC treeheight, immortal=MAP, N=$N", xlabel="n", ylabel="average tree height /N")
 
 # plot output (ribbon shows 0.05 & 0.95 quantiles)
-#plot(nvals, meanall/N, ribbon=((lquant)/N,(lquant)/N), fill=:purple, fillalpha=0.25, leg=false, xaxis=:log10, line=(:purple), marker=(:purple), markerstrokecolor=:purple, title="CSMC treeheight, immortal=MAP, N=$N", xlabel="n", ylabel="average tree height /N")
-plot!(nvals, meanall/N, ribbon=((lquant)/N,(uquant)/N), fill=:yellow, fillalpha=0.25, line=(:yellow), marker=(:yellow), markerstrokecolor=:yellow)
+#plot(nvals, meanall/N, ribbon=((lquant)/N,(uquant)/N), label="MAP+4SD", fill=:yellow, fillalpha=0.25, leg=:topleft, xaxis=:log10, line=(:yellow), marker=(:yellow), markerstrokecolor=:yellow, title="CSMC treeheight, N=$N, nrep=$nrep", xlabel="n", ylabel="tree height /N")
+plot!(nvals, meanall/N, ribbon=((lquant)/N,(uquant)/N), label="MAP", fill=:red, fillalpha=0.25, line=(:red), marker=(:red), markerstrokecolor=:red)
 
 
 #---- save results to file ----
-savefig("csmc_results7.pdf")
+savefig("csmc_results11.pdf")
 
 datetime = Dates.now()
 
-open("results7", "w") do f
-    write(f, "Simulation 7 for CSMC \n
+open("results11", "w") do f
+    write(f, "Simulation 11 for CSMC \n
         File written at $datetime \n
         OU process with delta=$delta and sigma=$sigma \n
-        Immortal line = MAP + 4 SD \n
+        Immortal line = MAP + $nsd SD \n
         T=$T, N=$N, reps per n =$nrep \n
         Values of n:\n
         $nvals \n
