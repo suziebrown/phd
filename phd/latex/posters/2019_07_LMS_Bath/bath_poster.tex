@@ -95,10 +95,10 @@ We approximate posterior distributions by samples of ``particles''. The algorith
 \filldraw[violet] (5,1.2) circle (6pt);
 \filldraw[violet] (5,3) circle (6pt);
 
-\draw[->] (5.3,3) -- (9.5,3);
-\draw[->] (5.3,1.2) -- (9.5,1.2);
-\draw[->] (5.3,-0.9) -- (9.5,-0.9);
-\draw[->] (5.3,0.3) -- (9.5,0.3);
+\draw[->] (5.5,3) -- (9.5,3);
+\draw[->] (5.5,1.2) -- (9.5,1.2);
+\draw[->] (5.5,-0.9) -- (9.5,-0.9);
+\draw[->] (5.5,0.3) -- (9.5,0.3);
 
 \filldraw[violet] (10,0.3) circle (11pt);
 \filldraw[violet] (10,-0.9) circle (4pt);
@@ -144,7 +144,7 @@ The figure shows a particle approximation for a tractable model. The exact poste
 For some applications, we want to approximate the \emph{joint} distribution over all parameters.
 We have $N$ samples from this distribution: the ``trajectories'' of each of the $N$ particles.\\[12pt]
 
-Due to resampling these trajectories overlap, coalescing backwards in time. At some point all the trajectories coalesce, and we approximate that parameter's distribution with just one sample!
+However, due to resampling these trajectories overlap, coalescing backwards in time. At some point all the trajectories coalesce, and we approximate that parameter's distribution with just one sample!
 
 \begin{figure} %%% remake this plot with a less weird realisation? %%%
 \includegraphics[width=0.9\colwidth]{../degeneracy.pdf}
@@ -158,12 +158,12 @@ This phenomenon is known as \emph{ancestral degeneracy}\textsuperscript{2}, sinc
 \begin{column}{\colwidth}
 \vspace*{5pt}
 
-\begin{block}{The Kingman Coalescent}
+\begin{block}{The Kingman Coalescent\textsuperscript{3}}
 \begin{columns}
 \begin{column}{0.5\colwidth}
 Kingman's $N$-coalescent is the coalescent process on a population of size $N$ in which each pair of lineages merges with unit rate.\\[12pt]
 
-The Kingman coalescent\textsuperscript{3} arises as an extension of the $N$-coalescent in the $N\to\infty$ limit.
+The Kingman coalescent arises as an extension of the $N$-coalescent in the $N\to\infty$ limit.
 It is the limiting genealogy for a large class of population models.
 \end{column}
 \begin{column}{0.5\colwidth}
@@ -187,7 +187,7 @@ c_N(t) := \frac{1}{(N)_2} \sum_{i=1}^{N} \E\left[ (\vt{i})_2 \right].
 
 To obtain convergence to the Kingman coalescent, we rescale time by the inverse coalescence rate to achieve the required unit rate.\\[10pt]
 
-It has been shown that, under such a rescaling and some standard assumptions, genealogies induced by multinomial resampling converge (in the sense of finite-dimensional distributions) to the Kingman coalescent\textsuperscript{4}. Simulations who the same structure even for finite $N$.\\[10pt]
+It has been shown that, under such a rescaling and some standard assumptions, genealogies induced by multinomial resampling converge (in the sense of finite-dimensional distributions) to the Kingman coalescent\textsuperscript{4}. Simulations show the same structure even for finite $N$.\\[10pt]
 
 We have since extended this result to cover conditional SMC\textsuperscript{5} with multinomial resampling. In this algorithm, a certain ``immortal trajectory'' is conditioned to survive all the resampling steps. This still admits the Kingman coalescent as its limiting genealogy, but simulations show different behaviour for $N<\infty$.\\[10pt]
 \begin{figure}

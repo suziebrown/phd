@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  5 JUN 2019 12:03
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  5 JUN 2019 12:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1058,6 +1058,7 @@ File: ../degeneracy.pdf Graphic file (type pdf)
 <use ../degeneracy.pdf>
 Package pdftex.def Info: ../degeneracy.pdf  used on input line 220.
 (pdftex.def)             Requested size: 661.6634pt x 350.54164pt.
+LaTeX Font Info:    Calculating math sizes for size <37.98> on input line 220.
 <../kingman.png, id=17, 377.41pt x 341.275pt>
 File: ../kingman.png Graphic file (type png)
 <use ../kingman.png>
@@ -1097,11 +1098,11 @@ Package rerunfilecheck Info: File `bath_poster.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 20759 strings out of 492649
- 403537 string characters out of 6129623
- 553029 words of memory out of 5000000
- 24160 multiletter control sequences out of 15000+600000
- 13247 words of font info for 47 fonts, out of 8000000 for 9000
+ 20780 strings out of 492649
+ 403955 string characters out of 6129623
+ 553144 words of memory out of 5000000
+ 24181 multiletter control sequences out of 15000+600000
+ 18806 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  56i,13n,68p,805b,1221s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
@@ -1112,7 +1113,7 @@ Here is how much of TeX's memory you used:
 </usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><
 /usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.p
 fb>
-Output written on bath_poster.pdf (1 page, 406856 bytes).
+Output written on bath_poster.pdf (1 page, 406863 bytes).
 PDF statistics:
  73 PDF objects out of 1000 (max. 8388607)
  48 compressed objects within 1 object stream
