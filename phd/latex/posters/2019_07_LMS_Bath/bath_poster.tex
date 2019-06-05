@@ -161,9 +161,9 @@ This phenomenon is known as \emph{ancestral degeneracy}\textsuperscript{2}, sinc
 \begin{block}{The Kingman Coalescent\textsuperscript{3}}
 \begin{columns}
 \begin{column}{0.5\colwidth}
-Kingman's $N$-coalescent is the coalescent process on a population of size $N$ in which each pair of lineages merges with unit rate.\\[12pt]
+Kingman's $n$-coalescent is the coalescent process on a sample of $n$ individuals from a population of size $N$ in which each pair of lineages merges with unit rate.\\[12pt]
 
-The Kingman coalescent arises as an extension of the $N$-coalescent in the $N\to\infty$ limit.
+The Kingman coalescent arises as an extension of the $n$-coalescent in the $N\to\infty$ limit.
 It is the limiting genealogy for a large class of population models.
 \end{column}
 \begin{column}{0.5\colwidth}
@@ -180,9 +180,9 @@ It is the limiting genealogy for a large class of population models.
 
 \begin{block}{SMC Genealogies}
 The genealogy depends on the number of offspring of each particle upon resampling at each time $t$, denoted $(\vt{1}, \dots, \vt{N})$.
-A key quantity in the asymtotic analysis is the coalescence rate
+A key quantity in the asymptotic analysis is the coalescence rate
 \begin{equation*}
-c_N(t) := \frac{1}{(N)_2} \sum_{i=1}^{N} \E\left[ (\vt{i})_2 \right].
+c_N(t) := \frac{1}{(N)_2} \sum_{i=1}^{N} (\vt{i})_2.
 \end{equation*}
 
 To obtain convergence to the Kingman coalescent, we rescale time by the inverse coalescence rate to achieve the required unit rate.\\[10pt]
