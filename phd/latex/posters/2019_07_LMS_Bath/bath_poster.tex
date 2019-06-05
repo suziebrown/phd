@@ -69,7 +69,7 @@
 \normalsize{\insertinstitute}\\[25pt]
 \hrule
 
-\vspace*{15pt}
+\vspace*{-10pt}
 
 \begin{columns}
 \begin{column}{\colwidth}
@@ -151,18 +151,19 @@ Due to resampling these trajectories overlap, coalescing backwards in time. At s
 \caption{Trajectories from a sample of N=6 particles. At most points there are just one or two distinct samples.}
 \end{figure}
 
-This phenomenon is known as \emph{ancestral degeneracy}\textsuperscript{2}, suggesting that the joint structure of the trajectories can be viewed as a \emph{genealogy} of particles. It is one of the main difficulties of SMC, so we would like to characterise it.
+This phenomenon is known as \emph{ancestral degeneracy}\textsuperscript{2}, since the joint structure of the trajectories can be viewed as a \emph{genealogy} of particles. It is one of the main issues in SMC, so we would like to analyse it.
 \end{block}
 \end{column}
 
 \begin{column}{\colwidth}
+\vspace*{5pt}
 
-\begin{block}{The Kingman Coalescent\textsuperscript{3}}
+\begin{block}{The Kingman Coalescent}
 \begin{columns}
 \begin{column}{0.5\colwidth}
-Kingman's $N$-coalescent is the coalescent process on a population of size $N$ in which each pair of lineages merges with rate 1.\\[12pt]
+Kingman's $N$-coalescent is the coalescent process on a population of size $N$ in which each pair of lineages merges with unit rate.\\[12pt]
 
-The Kingman coalescent arises as an extension of the $N$-coalescent in the $N\to\infty$ limit.
+The Kingman coalescent\textsuperscript{3} arises as an extension of the $N$-coalescent in the $N\to\infty$ limit.
 It is the limiting genealogy for a large class of population models.
 \end{column}
 \begin{column}{0.5\colwidth}
@@ -178,23 +179,22 @@ It is the limiting genealogy for a large class of population models.
 \end{block}
 
 \begin{block}{SMC Genealogies}
-The genealogical structure revolves around the number of offspring of each particle upon resampling, denoted $(\vt{1}, \dots, \vt{N})$ for each time $t$.
-A key quantity in the asymtotic analysis is
+The genealogy depends on the number of offspring of each particle upon resampling at each time $t$, denoted $(\vt{1}, \dots, \vt{N})$.
+A key quantity in the asymtotic analysis is the coalescence rate
 \begin{equation*}
-c_N(t) := \frac{1}{(N)_2} \sum_{i=1}^{N} \E\left[ (\vt{i})_2 \right]
+c_N(t) := \frac{1}{(N)_2} \sum_{i=1}^{N} \E\left[ (\vt{i})_2 \right].
 \end{equation*}
-which becomes the coalescence rate as $N\to\infty$.
 
 To obtain convergence to the Kingman coalescent, we rescale time by the inverse coalescence rate to achieve the required unit rate.\\[10pt]
 
-It has been shown that, under such a rescaling and some standard assumptions, the genealogies induced by multinomial resampling converge (in the sense of finite-dimensional distributions) to the Kingman coalescent\textsuperscript{4}. Furthermore, simulations suggest that the same structure appears even for finite $N$.\\[10pt]
+It has been shown that, under such a rescaling and some standard assumptions, genealogies induced by multinomial resampling converge (in the sense of finite-dimensional distributions) to the Kingman coalescent\textsuperscript{4}. Simulations who the same structure even for finite $N$.\\[10pt]
 
-We have since extended the result to cover conditional SMC\textsuperscript{5} with multinomial resampling. In this algorithm, a certain ``immortal trajectory'' is conditioned to survive all the resampling steps. This still admits the Kingman coalescent as its limiting genealogy.\\[10pt]
+We have since extended this result to cover conditional SMC\textsuperscript{5} with multinomial resampling. In this algorithm, a certain ``immortal trajectory'' is conditioned to survive all the resampling steps. This still admits the Kingman coalescent as its limiting genealogy, but simulations show different behaviour for $N<\infty$.\\[10pt]
 \begin{figure}
-\includegraphics[width=0.8\colwidth]{../CSMC_treeheight_500reps.pdf}
+\includegraphics[width=0.9\colwidth]{../CSMC_treeheight_500reps.pdf}
 \caption{Average height of subtrees with $n$ randomly chosen nodes, for different choices of immortal trajectory.}
 \end{figure}
-From simulations it appears that the process exhibits a phase transition when the immortal trajectory is particularly ``unlikely'' and $n$ approaches $N$ (i.e.\ far from the limiting regime).
+It appears that the process undergoes a phase transition when the immortal trajectory is particularly ``unlikely'' and $n$ approaches $N$.
 \end{block}
 
 \vspace*{20pt}
