@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  5 JUN 2019 09:59
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  5 JUN 2019 11:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1029,14 +1029,14 @@ Dictionary: translator-numbers-dictionary, Language: English
 tionary-English.dict
 Dictionary: translator-theorem-dictionary, Language: English 
 ) (./bath_poster.nav)
-<../warwickhead2.png, id=13, 1161.74025pt x 166.221pt>
-File: ../warwickhead2.png Graphic file (type png)
-<use ../warwickhead2.png>
-Package pdftex.def Info: ../warwickhead2.png  used on input line 219.
-(pdftex.def)             Requested size: 1690.09352pt x 241.83853pt.
-LaTeX Font Info:    Calculating math sizes for size <26.37> on input line 219.
+<../warwickhead.png, id=13, 1161.74025pt x 224.037pt>
+File: ../warwickhead.png Graphic file (type png)
+<use ../warwickhead.png>
+Package pdftex.def Info: ../warwickhead.png  used on input line 220.
+(pdftex.def)             Requested size: 1690.09352pt x 325.95633pt.
+LaTeX Font Info:    Calculating math sizes for size <26.37> on input line 220.
 LaTeX Font Info:    Try loading font information for OT1+mathkerncmss on input 
-line 219.
+line 220.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/sansmathaccent/ot1mathkerncmss.fd
 File: ot1mathkerncmss.fd 2013/03/27 Fontinst v1.933 font definitions for OT1/ma
@@ -1045,40 +1045,41 @@ thkerncmss.
 <../smc_kalman_3.pdf, id=15, 602.25pt x 250.9375pt>
 File: ../smc_kalman_3.pdf Graphic file (type pdf)
 <use ../smc_kalman_3.pdf>
-Package pdftex.def Info: ../smc_kalman_3.pdf  used on input line 219.
+Package pdftex.def Info: ../smc_kalman_3.pdf  used on input line 220.
 (pdftex.def)             Requested size: 735.18655pt x 306.35771pt.
 
 
 LaTeX Font Warning: Font shape `OT1/cmss/m/it' in size <26.37> not available
-(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 219.
+(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 220.
 
 
 <../degeneracy.pdf, id=16, 728.48161pt x 385.92181pt>
 File: ../degeneracy.pdf Graphic file (type pdf)
 <use ../degeneracy.pdf>
-Package pdftex.def Info: ../degeneracy.pdf  used on input line 219.
+Package pdftex.def Info: ../degeneracy.pdf  used on input line 220.
 (pdftex.def)             Requested size: 661.6634pt x 350.54164pt.
-LaTeX Font Info:    Calculating math sizes for size <37.98> on input line 219.
+LaTeX Font Info:    Calculating math sizes for size <37.98> on input line 220.
 <../kingman.png, id=17, 377.41pt x 341.275pt>
 File: ../kingman.png Graphic file (type png)
 <use ../kingman.png>
-Package pdftex.def Info: ../kingman.png  used on input line 219.
-(pdftex.def)             Requested size: 367.59328pt x 332.39548pt.
+Package pdftex.def Info: ../kingman.png  used on input line 220.
+(pdftex.def)             Requested size: 257.31416pt x 232.67839pt.
 
 LaTeX Font Warning: Font shape `OT1/cmss/m/it' in size <21.98> not available
-(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 219.
+(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 220.
 
 
-<../oxwasp3.png, id=18, 148.1535pt x 57.816pt>
-File: ../oxwasp3.png Graphic file (type png)
-<use ../oxwasp3.png>
-Package pdftex.def Info: ../oxwasp3.png  used on input line 219.
-(pdftex.def)             Requested size: 266.67609pt x 104.06868pt.
+<../CSMC_treeheight_500reps.pdf, id=18, 602.25pt x 401.5pt>
+File: ../CSMC_treeheight_500reps.pdf Graphic file (type pdf)
+<use ../CSMC_treeheight_500reps.pdf>
+Package pdftex.def Info: ../CSMC_treeheight_500reps.pdf  used on input line 220
+.
+(pdftex.def)             Requested size: 588.15147pt x 392.13788pt.
 [1
 
-{/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <../oxwa
-sp3.png> <../warwickhead2.png> <../smc_kalman_3.pdf> <../degeneracy.pdf> <../ki
-ngman.png>]
+{/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <../warw
+ickhead.png> <../smc_kalman_3.pdf> <../degeneracy.pdf> <../kingman.png> <../CSM
+C_treeheight_500reps.pdf>]
 \tf@nav=\write6
 \openout6 = `bath_poster.nav'.
 
@@ -1088,22 +1089,22 @@ ngman.png>]
 \tf@snm=\write8
 \openout8 = `bath_poster.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 220.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 220.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 221.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 221.
  (./bath_poster.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 220.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 220.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 221.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 221.
 Package rerunfilecheck Info: File `bath_poster.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 20781 strings out of 492649
- 403875 string characters out of 6129623
- 549928 words of memory out of 5000000
- 24182 multiletter control sequences out of 15000+600000
+ 20780 strings out of 492649
+ 403955 string characters out of 6129623
+ 553815 words of memory out of 5000000
+ 24181 multiletter control sequences out of 15000+600000
  18806 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 56i,15n,68p,805b,1221s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 56i,13n,68p,805b,1213s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
 ></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb>
 </usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmss17.pfb><
@@ -1112,10 +1113,10 @@ Here is how much of TeX's memory you used:
 </usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><
 /usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.p
 fb>
-Output written on bath_poster.pdf (1 page, 400206 bytes).
+Output written on bath_poster.pdf (1 page, 406974 bytes).
 PDF statistics:
- 71 PDF objects out of 1000 (max. 8388607)
- 45 compressed objects within 1 object stream
+ 73 PDF objects out of 1000 (max. 8388607)
+ 48 compressed objects within 1 object stream
  3 named destinations out of 1000 (max. 500000)
  68 words of extra memory for PDF output out of 10000 (max. 10000000)
 

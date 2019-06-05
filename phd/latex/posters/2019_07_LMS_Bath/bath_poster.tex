@@ -49,7 +49,7 @@
 \title{Genealogies of Sequential Monte Carlo Algorithms}
 \author{Suzie Brown}
 \institute{Department of Statistics, University of Warwick}
-\logo{\includegraphics[scale=1.8]{../oxwasp3.png}}
+%\logo{\includegraphics[scale=1.8]{../oxwasp3.png}}
 \date{}
 
 
@@ -59,9 +59,9 @@
 \vspace*{-35pt}
 
 \centering
-\makebox[\textwidth]{\includegraphics[width=\paperwidth]{../warwickhead2.png}}
+\makebox[\textwidth]{\includegraphics[width=\paperwidth]{../warwickhead.png}}
 
-\vspace*{-160pt}
+\vspace*{-220pt}
 
 \huge{\inserttitle}\\[2pt]
 \Large{\insertauthor}\\[7pt]
@@ -157,8 +157,6 @@ This phenomenon is known as \emph{ancestral degeneracy}\textsuperscript{2}, sugg
 
 \begin{column}{\colwidth}
 
-\vspace*{-75pt}
-
 \begin{block}{The Kingman Coalescent\textsuperscript{3}}
 \begin{columns}
 \begin{column}{0.5\colwidth}
@@ -169,7 +167,7 @@ It is the limiting genealogy for a large class of population models.
 \end{column}
 \begin{column}{0.5\colwidth}
 \begin{center}
-\includegraphics[width=\textwidth]{../kingman.png}
+\includegraphics[width=0.7\textwidth]{../kingman.png}\\
 \small{
 \textbf{A realisation of the 50-coalescent.}
 \textit{Source: Wikimedia Commons}
@@ -191,16 +189,19 @@ To obtain convergence to the Kingman coalescent, we rescale time by the inverse 
 
 It has been shown that, under such a rescaling and some standard assumptions, the genealogies induced by multinomial resampling converge (in the sense of finite-dimensional distributions) to the Kingman coalescent\textsuperscript{4}. Furthermore, simulations suggest that the same structure appears even for finite $N$.\\[10pt]
 
-We have since extended the result to cover conditional SMC\textsuperscript{5} with multinomial resampling. In this algorithm, a certain ``immortal trajectory'' is conditioned to survive all the resampling steps. Somewhat surprisingly, this still admits the Kingman coalescent as its limiting genealogy.\\[10pt]
-
+We have since extended the result to cover conditional SMC\textsuperscript{5} with multinomial resampling. In this algorithm, a certain ``immortal trajectory'' is conditioned to survive all the resampling steps. This still admits the Kingman coalescent as its limiting genealogy.\\[10pt]
+\begin{figure}
+\includegraphics[width=0.8\colwidth]{../CSMC_treeheight_500reps.pdf}
+\caption{Average height of subtrees with $n$ randomly chosen nodes, for different choices of immortal trajectory.}
+\end{figure}
+From simulations it appears that the process exhibits a phase transition when the immortal trajectory is particularly ``unlikely'' and $n$ approaches $N$ (i.e.\ far from the limiting regime).
 \end{block}
 
-\vspace*{50pt}
-
+\vspace*{20pt}
 \hrule
 \begin{block}
 
-\vspace*{-20pt}
+\vspace*{-30pt}
 
 \small{
 \begin{enumerate}
