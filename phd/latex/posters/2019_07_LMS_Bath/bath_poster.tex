@@ -17,6 +17,10 @@
 \setbeamerfont{caption}{size=\normalsize, series=\bfseries}
 \renewcommand{\figurename}{\color{black}{Figure}}
 
+% maths
+\newcommand{\vt}[2][t]{\nu_{#1}^{(#2)}}
+\newcommand{\E}{\mathbb{E}}
+
 % block style
 \setbeamertemplate{block begin}
 {
@@ -71,58 +75,83 @@
 \begin{column}{\colwidth}
 \begin{block}{Sequential Monte Carlo}
 
-Suppose we have a hidden Markov model with noisy observations $Y_{1:T}$ of unobservable states $X_{1:T}$:
+SMC\textsuperscript{1} is an effective Monte Carlo method for models with strong correlation between parameters. For example, inferring a sequence of underlying parameters from an autocorrelated time series.\\[12pt]
 
+We approximate posterior distributions by samples of ``particles''. The algorithm starts with $N$ equally-weighted particles and repeats the steps:
 \begin{center}
-\resizebox{0.5\colwidth}{!}{%
 \begin{tikzpicture}
-\node (yt) {$Y_t$};
-\node (thet) [below=of yt] {$X_t$};
-\node (yt1) [left=of yt] {$Y_{t-1}$};
-\node (thet1) [below=of yt1] {$X_{t-1}$};
-\node (dot1) [left=of thet1] {$\dots$};
-\node (dot2) [right=of thet] {$\dots$};
-\draw[->](thet.north)--(yt.south) node[midway, right] {\footnotesize{$g$}};
-\draw[->](thet1.north)--(yt1.south) node[midway, right] {\footnotesize{$g$}};
-\draw[->](thet1.east)--(thet.west) node[midway, above] {\footnotesize{$f$}};
-\draw[->](dot1.east)--(thet1.west) node[midway, above] {\footnotesize{$f$}};
-\draw[->](thet.east)--(dot2.west) node[midway, above] {\footnotesize{$f$}};
+\filldraw[violet] (0,0) circle (6pt);
+\filldraw[violet] (0,1) circle (6pt);
+\filldraw[violet] (0,1.5) circle (6pt);
+\filldraw[violet] (0,2.2) circle (6pt);
+
+\draw[->] (0.3,2.2) -- (4.7,3);
+\draw[->] (0.3,1.5) -- (4.7,1.2);
+\draw[->] (0.3,1) -- (4.7,-0.9);
+\draw[->] (0.3,0) -- (4.7,0.3);
+
+\filldraw[violet] (5,0.3) circle (6pt);
+\filldraw[violet] (5,-0.9) circle (6pt);
+\filldraw[violet] (5,1.2) circle (6pt);
+\filldraw[violet] (5,3) circle (6pt);
+
+\draw[->] (5.3,3) -- (9.5,3);
+\draw[->] (5.3,1.2) -- (9.5,1.2);
+\draw[->] (5.3,-0.9) -- (9.5,-0.9);
+\draw[->] (5.3,0.3) -- (9.5,0.3);
+
+\filldraw[violet] (10,0.3) circle (11pt);
+\filldraw[violet] (10,-0.9) circle (4pt);
+\filldraw[violet] (10,1.2) circle (7pt);
+\filldraw[violet] (10,3) circle (2pt);
+
+\draw[->] (10.5,1.2) -- (14.6,1.2);
+\draw[->] (10.5,0.3) -- (14.6,0.3);
+\draw[->] (10.5,-0.9) -- (14.6,-0.9);
+\draw[->] (10.5,3) -- (14.6,3);
+
+\filldraw[violet] (15.3,0.3) circle (6pt);
+\filldraw[violet] (14.9,0.53) circle (6pt);
+\filldraw[violet] (14.9,0.07) circle (6pt);
+\filldraw[violet] (15,1.2) circle (6pt);
+
+\draw[violet] (14.8,3.2) -- (15.2, 2.8);
+\draw[violet] (14.8,2.8) -- (15.2, 3.2);
+\draw[violet] (14.8,-0.7) -- (15.2, -1.1);
+\draw[violet] (14.8,-1.1) -- (15.2, -0.7);
+
+\node at (2.5,3.6) {1};
+\node at (7.5,3.6) {2};
+\node at (12.5,3.6) {3};
 \end{tikzpicture}
-}
 \end{center}
-\vspace*{-20pt}
-
-We may want to infer posterior filtering densities $p(x_t | y_{1:t})$, or smoothing densities $p(x_{1:t} | y_{1:t})$. 
-These are not available analytically, except in linear Gaussian models. \\[12pt]
-
-SMC [1] approximates the posterior distributions by sampling $N$ particles from the prior distribution and iterating the following steps:
 \begin{enumerate}
-\item \textbf{Propagate:} move particles through the Markov kernel $f$
-\item \textbf{Calculate weights:} weight particles by how likely they are to produce the observation through $g$
-\item \textbf{Resample:} duplicate high-weight particles and kill off low-weight particles to obtain a new sample of size $N$.
+\item \textbf{Propagate:} update particle positions for the next parameter
+\item \textbf{Weight:} weight particles according to agreement with the observation
+\item \textbf{Resample:} duplicate high-weight particles and kill off low-weight particles to obtain a new sample of $N$ particles.
 \end{enumerate}
 
-\vspace*{10pt}
+\vspace*{12pt}
 
-The figure shows how the population of particles looks at each step, before resampling. The purple ribbon shows the exact posterior mode and 95\% high posterior density set.
+The figure shows a particle approximation for a tractable model. The exact posterior mode and 95\% HPD set are obtained with the Kalman filter.
 \begin{figure}
 \includegraphics[width=\colwidth]{../smc_kalman_3.pdf}
-\caption{Exact posterior (purple) and weighted SMC particles before resampling (black) for a linear Gaussian model.}
+\caption{Exact posterior (purple) and weighted SMC particles before resampling (black) for a linear Gaussian HMM.}
 \end{figure}
 \end{block}
 
 \begin{block}{Ancestral Degeneracy}
-These particles cannot approximate the smoothing distributions: for that we need a sample of \emph{trajectories} covering all $t$ time steps, not just a sample of particles at each time step.\\[10pt]
+For some applications, we want to approximate the \emph{joint} distribution over all parameters.
+We have $N$ samples from this distribution: the ``trajectories'' of each of the $N$ particles.\\[12pt]
 
-A sample of $N$ trajectories is given by the lineages of the $N$ particles alive at time $t$.
-But due to the resampling mechanism, these lineages coalesce backwards in time, leaving many fewer than $N$ distinct samples at time 1. 
+Due to resampling these trajectories overlap, coalescing backwards in time. At some point all the trajectories coalesce, and we approximate that parameter's distribution with just one sample!
 
 \begin{figure} %%% remake this plot with a less weird realisation? %%%
 \includegraphics[width=0.9\colwidth]{../degeneracy.pdf}
-\caption{Trajectories from a sample of N=6 particles. At most times there are just one or two distinct lineages.}
+\caption{Trajectories from a sample of N=6 particles. At most points there are just one or two distinct samples.}
 \end{figure}
 
-This phenomenon is known as \emph{ancestral degeneracy} [2]. It can be mitigated by changing the resampling procedure, but it cannot be eradicated.
+This phenomenon is known as \emph{ancestral degeneracy}\textsuperscript{2}, suggesting that the joint structure of the trajectories can be viewed as a \emph{genealogy} of particles. It is one of the main difficulties of SMC, so we would like to characterise it.
 \end{block}
 \end{column}
 
@@ -130,27 +159,40 @@ This phenomenon is known as \emph{ancestral degeneracy} [2]. It can be mitigated
 
 \vspace*{-75pt}
 
-\begin{block}{The Kingman Coalescent}
-The Kingman coalescent [3] is a continuous-time process which describes the asymptotic genealogies of many population models.\\[10pt]
+\begin{block}{The Kingman Coalescent\textsuperscript{3}}
+\begin{columns}
+\begin{column}{0.5\colwidth}
+Kingman's $N$-coalescent is the coalescent process on a population of size $N$ in which each pair of lineages merges with rate 1.\\[12pt]
 
-The process starts with a population of size $N$ and ends when all of the lineages have merged into one.
-Each pair of lineages merges with rate 1, meaning that the total merger rate is higher when there are more distinct lineages.\\[10pt]
-
-The resulting coalescent has many lineages for only a short time, and spends most of its time with just two or three distinct lineages.
-\begin{figure}
-\includegraphics[width=0.8\colwidth]{../kingman.png}
-\caption{A realisation of the Kingman coalescent for a population of size N=50. \textmd{(Source: Wikimedia Commons)}}
-\end{figure}
+The Kingman coalescent arises as an extension of the $N$-coalescent in the $N\to\infty$ limit.
+It is the limiting genealogy for a large class of population models.
+\end{column}
+\begin{column}{0.5\colwidth}
+\begin{center}
+\includegraphics[width=\textwidth]{../kingman.png}
+\small{
+\textbf{A realisation of the 50-coalescent.}
+\textit{Source: Wikimedia Commons}
+}
+\end{center}
+\end{column}
+\end{columns}
 \end{block}
 
-\begin{block}{Asymptotic SMC Genealogies}
-The rate of coalescence of SMC genealogies depends on the resampling scheme used. \\[10pt]
+\begin{block}{SMC Genealogies}
+The genealogical structure revolves around the number of offspring of each particle upon resampling, denoted $(\vt{1}, \dots, \vt{N})$ for each time $t$.
+A key quantity in the asymtotic analysis is
+\begin{equation*}
+c_N(t) := \frac{1}{(N)_2} \sum_{i=1}^{N} \E\left[ (\vt{i})_2 \right]
+\end{equation*}
+which becomes the coalescence rate as $N\to\infty$.
 
-To obtain convergence to the Kingman coalescent, which has rate 1, we rescale time by the inverse coalescence rate, and consider the asymptotic regime as  $N\to\infty$.\\[10pt]
+To obtain convergence to the Kingman coalescent, we rescale time by the inverse coalescence rate to achieve the required unit rate.\\[10pt]
 
-So far, convergence to the Kingman coalescent is only proved for the simple case of multinomial resampling [4]. We have since extended this result to cover conditional SMC [5] with multinomial resampling.\\[10pt]
+It has been shown that, under such a rescaling and some standard assumptions, the genealogies induced by multinomial resampling converge (in the sense of finite-dimensional distributions) to the Kingman coalescent\textsuperscript{4}. Furthermore, simulations suggest that the same structure appears even for finite $N$.\\[10pt]
 
-Next we would like to analyse the coalescents induced by alternative resampling schemes such as residual and stratified resampling. These schemes reduce the offspring variance, and are more popular among practitioners.
+We have since extended the result to cover conditional SMC\textsuperscript{5} with multinomial resampling. In this algorithm, a certain ``immortal trajectory'' is conditioned to survive all the resampling steps. Somewhat surprisingly, this still admits the Kingman coalescent as its limiting genealogy.\\[10pt]
+
 \end{block}
 
 \vspace*{50pt}
@@ -162,11 +204,11 @@ Next we would like to analyse the coalescents induced by alternative resampling 
 
 \small{
 \begin{enumerate}
-\item Gordon, N. J., Salmond, D. J., \& Smith, A. F. (1993). Novel approach to nonlinear/non-Gaussian Bayesian state estimation. \textit{IEE Proceedings F (Radar and Signal Processing)} 140(3), 107-113. IET Digital Library.
+\item Gordon, N. J., Salmond, D. J., \& Smith, A. F. (1993). Novel approach to nonlinear/non-Gaussian Bayesian state estimation. \textit{IEE:F} 140(3), 107-113. IET Digital Library.
 \item Doucet, A., \& Johansen, A. M. (2011). A tutorial on particle filtering and smoothing: Fifteen years later. \textit{Handbook of nonlinear filtering}, 656-704. OUP.
 \item Kingman, J.F.C. (1982). The coalescent. \textit{Stochastic processes and their applications}, 13(3), 235-248.
-\item Koskela, J. et al. (2018).  Asymptotic genealogies of interacting particle systems with an application to sequential Monte Carlo. \textit{arXiv preprint} arXiv:1804.01811.
-\item Andrieu, C., Doucet, A., \& Holenstein, R. (2010). Particle Markov chain Monte Carlo methods. \textit{Journal of the Royal Statistical Society: Series B (Statistical Methodology)}, 72(3), 269-342.
+\item Koskela, J. et al. (2018).  Asymptotic genealogies of interacting particle systems with an application to sequential Monte Carlo. arXiv:1804.01811.
+\item Andrieu, C., Doucet, A., \& Holenstein, R. (2010). Particle Markov chain Monte Carlo methods. \textit{RSS:B}, 72(3), 269-342.
 \end{enumerate}
 }
 \end{block}
