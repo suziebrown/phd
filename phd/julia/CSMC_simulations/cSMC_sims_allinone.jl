@@ -155,7 +155,7 @@ N = Int64(8192) # total number of particles
 # generate observations & immortal trajectory
 observations = ousim(T, delta, sigma, false)
 imm = ourts(delta, sigma, observations)
-nsd = 0
+nsd = 5
 immpos = imm.mean + nsd*(imm.variance).^(0.5)
 
 ##--- subtree sampling
@@ -220,12 +220,12 @@ plot!(nvals, meanall/N, ribbon=((lquant)/N,(uquant)/N), label="MAP", fill=:red, 
 
 
 #---- save results to file ----
-savefig("csmc_results11.pdf")
+savefig("csmc_results12.pdf")
 
 datetime = Dates.now()
 
-open("results11", "w") do f
-    write(f, "Simulation 11 for CSMC \n
+open("results12", "w") do f
+    write(f, "Simulation 12 for CSMC \n
         File written at $datetime \n
         OU process with delta=$delta and sigma=$sigma \n
         Immortal line = MAP + $nsd SD \n
