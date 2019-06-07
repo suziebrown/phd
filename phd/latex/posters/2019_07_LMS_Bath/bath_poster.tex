@@ -61,12 +61,13 @@
 \centering
 \makebox[\textwidth]{\includegraphics[width=\paperwidth]{../warwickhead.png}}
 
-\vspace*{-220pt}
+\vspace*{-250pt}
 
 \huge{\inserttitle}\\[2pt]
 \Large{\insertauthor}\\[7pt]
 \large{with Jere Koskela, Adam Johansen and Paul Jenkins}\\[7pt]
-\normalsize{\insertinstitute}\\[25pt]
+\normalsize{\insertinstitute}\\[5pt]
+\normalsize{S.Brown.18@warwick.ac.uk}\\[25pt]
 \hrule
 
 \vspace*{-10pt}
@@ -77,7 +78,7 @@
 
 SMC\textsuperscript{1} is an effective Monte Carlo method for models with strong correlation between parameters. For example, inferring a sequence of underlying parameters from an autocorrelated time series.\\[12pt]
 
-We approximate posterior distributions by samples of ``particles''. The algorithm starts with $N$ equally-weighted particles and repeats the steps:
+We approximate distributions by samples of ``particles''. The algorithm starts with $N$ equally-weighted particles and repeats the steps:
 \begin{center}
 \begin{tikzpicture}
 \filldraw[violet] (0,0) circle (6pt);
@@ -85,10 +86,10 @@ We approximate posterior distributions by samples of ``particles''. The algorith
 \filldraw[violet] (0,1.5) circle (6pt);
 \filldraw[violet] (0,2.2) circle (6pt);
 
-\draw[->] (0.3,2.2) -- (4.7,3);
-\draw[->] (0.3,1.5) -- (4.7,1.2);
-\draw[->] (0.3,1) -- (4.7,-0.9);
-\draw[->] (0.3,0) -- (4.7,0.3);
+\draw[->] (0.4,2.2) -- (4.6,3);
+\draw[->] (0.4,1.5) -- (4.6,1.2);
+\draw[->] (0.4,1) -- (4.6,-0.9);
+\draw[->] (0.4,0) -- (4.6,0.3);
 
 \filldraw[violet] (5,0.3) circle (6pt);
 \filldraw[violet] (5,-0.9) circle (6pt);
@@ -127,13 +128,13 @@ We approximate posterior distributions by samples of ``particles''. The algorith
 \end{center}
 \begin{enumerate}
 \item \textbf{Propagate:} update particle positions for the next parameter
-\item \textbf{Weight:} weight particles according to agreement with the observation
+\item \textbf{Weight:} weight particles according to a potential function
 \item \textbf{Resample:} duplicate high-weight particles and kill off low-weight particles to obtain a new sample of $N$ particles.
 \end{enumerate}
 
 \vspace*{12pt}
 
-The figure shows a particle approximation for a tractable model. The exact posterior mode and 95\% HPD set are obtained with the Kalman filter.
+The figure shows a particle approximation for a tractable model. The exact posterior mode and 95\% high posterior density set are obtained with the Kalman filter.
 \begin{figure}
 \includegraphics[width=\colwidth]{../smc_kalman_3.pdf}
 \caption{Exact posterior (purple) and weighted SMC particles before resampling (black) for a linear Gaussian HMM.}
@@ -142,16 +143,16 @@ The figure shows a particle approximation for a tractable model. The exact poste
 
 \begin{block}{Ancestral Degeneracy}
 For some applications, we want to approximate the \emph{joint} distribution over all parameters.
-We have $N$ samples from this distribution: the ``trajectories'' of each of the $N$ particles.\\[12pt]
+We can approximate this distribution by the ``trajectories'' of each of the $N$ particles.\\[12pt]
 
-However, due to resampling these trajectories overlap, coalescing backwards in time. At some point all the trajectories coalesce, and we approximate that parameter's distribution with just one sample!
+However, due to resampling these trajectories overlap, coalescing backwards in time. At some point all the trajectories coalesce, and we approximate that parameter's distribution with just one point!
 
 \begin{figure} %%% remake this plot with a less weird realisation? %%%
 \includegraphics[width=0.9\colwidth]{../degeneracy.pdf}
 \caption{Trajectories from a sample of N=6 particles. At most points there are just one or two distinct samples.}
 \end{figure}
 
-This phenomenon is known as \emph{ancestral degeneracy}\textsuperscript{2}, since the joint structure of the trajectories can be viewed as a \emph{genealogy} of particles. It is one of the main issues in SMC, so we would like to analyse it.
+This phenomenon is known as \emph{ancestral degeneracy}\textsuperscript{2}, since the joint structure of the trajectories can be viewed as a \emph{genealogy} of particles. It is one of the main difficulties with SMC, so we would like to analyse it.
 \end{block}
 \end{column}
 
@@ -161,10 +162,8 @@ This phenomenon is known as \emph{ancestral degeneracy}\textsuperscript{2}, sinc
 \begin{block}{The Kingman Coalescent\textsuperscript{3}}
 \begin{columns}
 \begin{column}{0.5\colwidth}
-Kingman's $n$-coalescent is the coalescent process on a sample of $n$ individuals from a population of size $N$ in which each pair of lineages merges with unit rate.\\[12pt]
-
-The Kingman coalescent arises as an extension of the $n$-coalescent in the $N\to\infty$ limit.
-It is the limiting genealogy for a large class of population models.
+Kingman's $n$-coalescent is the coalescent process on a sample of $n$ individuals from a population of size $N$ in which each pair of lineages merges with unit rate.
+It describes the limiting genealogies for a large class of population models when $N\to\infty$.
 \end{column}
 \begin{column}{0.5\colwidth}
 \begin{center}
@@ -191,10 +190,10 @@ It has been shown that, under such a rescaling and some standard assumptions, ge
 
 We have since extended this result to cover conditional SMC\textsuperscript{5} with multinomial resampling. In this algorithm, a certain ``immortal trajectory'' is conditioned to survive all the resampling steps. This still admits the Kingman coalescent as its limiting genealogy, but simulations show different behaviour for $N<\infty$.\\[10pt]
 \begin{figure}
-\includegraphics[width=0.9\colwidth]{../CSMC_treeheight_500reps.pdf}
+\includegraphics[width=\colwidth]{../CSMC_treeheight_500reps.pdf}
 \caption{Average height of subtrees with $n$ randomly chosen nodes, for different choices of immortal trajectory.}
 \end{figure}
-It appears that the process undergoes a phase transition when the immortal trajectory is particularly ``unlikely'' and $n$ approaches $N$.
+We conjecture that the process undergoes a phase transition when the immortal trajectory is particularly ``unlikely'' and $n$ approaches $N$.
 \end{block}
 
 \vspace*{20pt}
@@ -205,7 +204,7 @@ It appears that the process undergoes a phase transition when the immortal traje
 
 \small{
 \begin{enumerate}
-\item Gordon, N. J., Salmond, D. J., \& Smith, A. F. (1993). Novel approach to nonlinear/non-Gaussian Bayesian state estimation. \textit{IEE:F} 140(3), 107-113. IET Digital Library.
+\item Gordon, N. J., Salmond, D. J., \& Smith, A. F. (1993). Novel approach to nonlinear/non-Gaussian Bayesian state estimation. \textit{IEE:F} 140(3), 107-113.
 \item Doucet, A., \& Johansen, A. M. (2011). A tutorial on particle filtering and smoothing: Fifteen years later. \textit{Handbook of nonlinear filtering}, 656-704. OUP.
 \item Kingman, J.F.C. (1982). The coalescent. \textit{Stochastic processes and their applications}, 13(3), 235-248.
 \item Koskela, J. et al. (2018).  Asymptotic genealogies of interacting particle systems with an application to sequential Monte Carlo. arXiv:1804.01811.
