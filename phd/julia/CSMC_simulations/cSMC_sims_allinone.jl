@@ -194,8 +194,8 @@ for j in 1:length(nvals)
         # run csmc
         csmcout = csmc_fullstore(N, T, observations, ouinit, outransition, oupotential, immpos)
         # sample a subtree
-        leaves = sample(1:N, nvals[j])
-        height[i] = mrca_fullstore(csmcout.parents, leaves)
+        leaves = sample(1:N, nvals[j], replace=false)
+        height[i] = mrca_fullstore(csmcout.parents, leaves)/N
 
         # error catching
         noob[j] += sum(height==T)
@@ -216,7 +216,7 @@ println("means were: ", meanall)
 
 # plot output (ribbon shows 0.05 & 0.95 quantiles)
 #plot(nvals, meanall/N, ribbon=((lquant)/N,(uquant)/N), label="MAP+4SD", fill=:yellow, fillalpha=0.25, leg=:topleft, xaxis=:log10, line=(:yellow), marker=(:yellow), markerstrokecolor=:yellow, title="CSMC treeheight, N=$N, nrep=$nrep", xlabel="n", ylabel="tree height /N")
-plot!(nvals, meanall/N, ribbon=((lquant)/N,(uquant)/N), label="MAP", fill=:red, fillalpha=0.25, line=(:red), marker=(:red), markerstrokecolor=:red)
+plot!(nvals, meanall, ribbon=(lquant,uquant), label="MAP", fill=:red, fillalpha=0.25, line=(:red), marker=(:red), markerstrokecolor=:red)
 
 
 #---- save results to file ----
@@ -232,13 +232,13 @@ open("results12", "w") do f
         T=$T, N=$N, reps per n =$nrep \n
         Values of n:\n
         $nvals \n
-        Mean tree height:\n
+        Mean tree height/N:\n
         $meanall \n
-        SD of tree height:\n
+        SD of tree height/N:\n
         $sdall \n
-        Lower quantiles of tree height:\n
+        Lower quantiles of tree height/N:\n
         $lquant \n
-        Upper quantiles of tree height:\n
+        Upper quantiles of tree height/N:\n
         $uquant \n
         Sampled observation sequence:\n
         $observations \n"
