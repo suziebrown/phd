@@ -65,7 +65,7 @@
 
 \huge{\inserttitle}\\[2pt]
 \Large{\insertauthor}\\[7pt]
-\large{with Jere Koskela, Adam Johansen and Paul Jenkins}\\[7pt]
+\large{with Paul Jenkins, Adam Johansen and Jere Koskela}\\[7pt]
 \normalsize{\insertinstitute}\\[5pt]
 \normalsize{S.Brown.18@warwick.ac.uk}\\[25pt]
 \hrule
@@ -181,7 +181,7 @@ It describes the limiting genealogies for a large class of population models whe
 The genealogy depends on the number of offspring of each particle upon resampling at each time $t$, denoted $(\vt{1}, \dots, \vt{N})$.
 A key quantity in the asymptotic analysis is the coalescence rate
 \begin{equation*}
-c_N(t) := \frac{1}{(N)_2} \sum_{i=1}^{N} (\vt{i})_2.
+c_N(t) := \frac{1}{(N)_2} \sum_{i=1}^{N} \vt{i}(\vt{i}-1).
 \end{equation*}
 
 To obtain convergence to the Kingman coalescent, we rescale time by the inverse coalescence rate to achieve the required unit rate.\\[10pt]
