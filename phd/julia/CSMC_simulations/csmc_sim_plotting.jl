@@ -30,19 +30,21 @@
 
 N=8192
 
-mycolours = [:royalblue3, :midnightblue, :indigo, :purple, :maroon4]
+mycolours = [:royalblue3, :midnightblue, :indigo, :purple, :maroon4, :maroon]
 
 zerosd = [726.102, 1016.82, 1155.61, 1201.44, 1362.67, 1348.3, 1323.37, 1340.24, 1359.86, 1342.16, 1338.39, 1307.77, 1321.49]
 onesd = [885.014, 1288.91, 1581.94, 1679.28, 1718.06, 1643.04, 1649.05, 1757.22, 1762.51, 1759.39, 1671.97, 1703.9, 1750.46]
 twosd = [1451.78, 2279.75, 2785.59, 3167.54, 3721.42, 3295.2, 3471.46, 3606.28, 3763.73, 3657.91, 3731.39, 3689.7, 3799.12]
 threesd = [1331.69, 1959.96, 2967.38, 3164.86, 3278.85, 4246.1, 4097.17, 4489.82, 4871.32, 5202.34, 5850.78, 6302.09, 7287.7]
 foursd = [909.976, 1357.13, 1751.93, 1808.43, 1791.75, 1964.09, 2068.96, 2259.14, 2649.8, 2820.46, 3940.88, 5179.25, 7102.77]
+fivesd = [814.142, 1205.01, 1480.15, 1516.35, 1533.83, 1742.18, 1667.74, 1929.58, 2259.44, 2671.45, 3427.94, 5107.16, 6883.01]
 
 plot()
-plot!(nvals, zerosd_mean/N, label="MAP", marker=:auto, markerstrokewidth=0, leg=:topleft, xaxis=:log10, seriescolor=mycolours[1], title="CSMC treeheight, N=8192", xlabel="n", ylabel="mean tree height /N")
-plot!(nvals, onesd_mean/N, label="MAP+1SD", marker=:auto, markerstrokewidth=0, seriescolor=mycolours[2])
-plot!(nvals, twosd_mean/N, label="MAP+2SD", marker=:auto, markerstrokewidth=0, seriescolor=mycolours[3])
-plot!(nvals, threesd_mean/N, label="MAP+3SD", marker=:auto, markerstrokewidth=0, seriescolor=mycolours[4])
-plot!(nvals, foursd_mean/N, label="MAP+4SD", marker=:auto, markerstrokewidth=0, seriescolor=mycolours[5])
+plot!(nvals, zerosd/N, label="MAP", marker=:auto, markerstrokewidth=0, leg=:topleft, xaxis=:log10, seriescolor=mycolours[1], title="CSMC treeheight, N=8192", xlabel="n", ylabel="mean tree height /N")
+plot!(nvals, onesd/N, label="MAP+1SD", marker=:auto, markerstrokewidth=0, seriescolor=mycolours[2])
+plot!(nvals, twosd/N, label="MAP+2SD", marker=:auto, markerstrokewidth=0, seriescolor=mycolours[3])
+plot!(nvals, threesd/N, label="MAP+3SD", marker=:auto, markerstrokewidth=0, seriescolor=mycolours[4])
+plot!(nvals, foursd/N, label="MAP+4SD", marker=:auto, markerstrokewidth=0, seriescolor=mycolours[5])
+plot!(nvals, fivesd/N, label="MAP+5SD", marker=:auto, markerstrokewidth=0, seriescolor=mycolours[6])
 
-savefig("CSMC_treeheight_n500.pdf")
+#savefig("CSMC_treeheight_n500_B.pdf")

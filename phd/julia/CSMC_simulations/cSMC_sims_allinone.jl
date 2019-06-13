@@ -147,22 +147,22 @@ end
 #----------------
 
 # set constants
+nsd = 0
 delta = 0.1 # noise variance in AR(1) process
 sigma = 0.1 # noise s.d. in observations
-T = Int64(10000) # number of generations/time steps
 N = Int64(8192) # total number of particles
+T = Int64(2*(nsd+1)*N) # number of generations/time steps
 
 # generate observations & immortal trajectory
 observations = ousim(T, delta, sigma, false)
 imm = ourts(delta, sigma, observations)
-nsd = 5
 immpos = imm.mean + nsd*(imm.variance).^(0.5)
 
 ##--- subtree sampling
 
 # set constants
-nvals = [2,4,8,16,32,64,128,256,512,1024,2048,4096,8192] # number of leaves in sampled subtree
-nrep = 500
+nvals = [2,4,8,16,32,64] #,128,256,512,1024,2048,4096,8192] # number of leaves in sampled subtree
+nrep = 100
 
 # # parameters for small-scale testing:
 # T = Int64(50)
@@ -171,8 +171,8 @@ nrep = 500
 # nrep = 100
 
 # initialise local variables
-height = Array{Int64, 1}(undef, nrep)
-
+heighttrue = Array{Int64, 1}(undef, nrep)
+height = Array{Float64, 1}(undef, nrep)
 # initialise output variables
 meanall = Array{Float64, 1}(undef, length(nvals))
 sdall = Array{Float64, 1}(undef, length(nvals))
@@ -195,11 +195,13 @@ for j in 1:length(nvals)
         csmcout = csmc_fullstore(N, T, observations, ouinit, outransition, oupotential, immpos)
         # sample a subtree
         leaves = sample(1:N, nvals[j], replace=false)
-        height[i] = mrca_fullstore(csmcout.parents, leaves)/N
+        heighttrue[i] = mrca_fullstore(csmcout.parents, leaves)
 
         # error catching
-        noob[j] += sum(height==T)
+        noob[j] += (heighttrue[i] >= T)
     end
+    # normalise by N
+    height = heighttrue/N
     # mean & SD of tree heights, and 0.05 & 0.95 quantiles
     meanall[j] = mean(height)
     sdall[j] = std(height)
@@ -216,7 +218,7 @@ println("means were: ", meanall)
 
 # plot output (ribbon shows 0.05 & 0.95 quantiles)
 #plot(nvals, meanall/N, ribbon=((lquant)/N,(uquant)/N), label="MAP+4SD", fill=:yellow, fillalpha=0.25, leg=:topleft, xaxis=:log10, line=(:yellow), marker=(:yellow), markerstrokecolor=:yellow, title="CSMC treeheight, N=$N, nrep=$nrep", xlabel="n", ylabel="tree height /N")
-plot!(nvals, meanall, ribbon=(lquant,uquant), label="MAP", fill=:red, fillalpha=0.25, line=(:red), marker=(:red), markerstrokecolor=:red)
+plot(nvals, meanall, ribbon=(lquant,uquant), fill=:red, fillalpha=0.25, line=(:red), marker=(:red), markerstrokecolor=:red)
 
 
 #---- save results to file ----
