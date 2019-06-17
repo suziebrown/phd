@@ -1,8 +1,10 @@
 \documentclass[final, 12pt]{beamer}
 \usepackage[utf8]{inputenc}
-\usepackage[orientation=portrait, size=a1, scale=1.5]{beamerposter}
+\usepackage[orientation=portrait, size=a0, scale=1.5]{beamerposter}
 \usenavigationsymbolstemplate{\beamertemplatenavigationsymbolsempty}
 
+\usepackage{ragged2e}
+\usepackage{graphicx}
 \usepackage{tikz}
 \usetikzlibrary{positioning}
 
@@ -11,10 +13,11 @@
 \setlength{\colwidth}{0.435\paperwidth}
 
 % fonts
-\setbeamercolor{block title}{fg=black,bg=white}
+\setbeamercolor{block title}{fg=violet,bg=white}
 \setbeamercolor{block body}{fg=black,bg=white}
 \setbeamercolor{item}{fg=black}
 \setbeamerfont{caption}{size=\normalsize, series=\bfseries}
+\setbeamerfont{block title}{series=\bfseries}
 \renewcommand{\figurename}{\color{black}{Figure}}
 
 % maths
@@ -56,18 +59,21 @@
 \begin{document}
 \begin{frame}
 
-\vspace*{-35pt}
+\vspace*{-20pt}
 
 \centering
 \makebox[\textwidth]{\includegraphics[width=\paperwidth]{../warwickhead.png}}
 
-\vspace*{-250pt}
+\vspace*{-360pt}
 
 \huge{\inserttitle}\\[2pt]
-\Large{\insertauthor}\\[7pt]
+\LARGE{\insertauthor}\\[7pt]
 \large{with Paul Jenkins, Adam Johansen and Jere Koskela}\\[7pt]
 \normalsize{\insertinstitute}\\[5pt]
 \normalsize{S.Brown.18@warwick.ac.uk}\\[25pt]
+
+\vspace*{5pt}
+
 \hrule
 
 \vspace*{-10pt}
@@ -76,10 +82,11 @@
 \begin{column}{\colwidth}
 \begin{block}{Sequential Monte Carlo}
 
-SMC\textsuperscript{1} is an effective Monte Carlo method for models with strong correlation between parameters. For example, inferring a sequence of underlying parameters from an autocorrelated time series.\\[12pt]
+SMC\textsuperscript{1} is an effective Monte Carlo method for models with strong correlation between parameters. For example, inferring a sequence of underlying parameters from an autocorrelated time series.\\[16pt]
 
 We approximate distributions by samples of ``particles''. The algorithm starts with $N$ equally-weighted particles and repeats the steps:
 \begin{center}
+\resizebox{0.85\colwidth}{!}{%
 \begin{tikzpicture}
 \filldraw[violet] (0,0) circle (6pt);
 \filldraw[violet] (0,1) circle (6pt);
@@ -121,10 +128,11 @@ We approximate distributions by samples of ``particles''. The algorithm starts w
 \draw[violet] (14.8,-0.7) -- (15.2, -1.1);
 \draw[violet] (14.8,-1.1) -- (15.2, -0.7);
 
-\node at (2.5,3.6) {1};
-\node at (7.5,3.6) {2};
-\node at (12.5,3.6) {3};
+\node at (2.5,3.6) {\footnotesize{1}};
+\node at (7.5,3.6) {\footnotesize{2}};
+\node at (12.5,3.6) {\footnotesize{3}};
 \end{tikzpicture}
+}
 \end{center}
 \begin{enumerate}
 \item \textbf{Propagate:} update particle positions for the next parameter
@@ -143,16 +151,16 @@ The figure shows a particle approximation for a tractable model. The exact poste
 
 \begin{block}{Ancestral Degeneracy}
 For some applications, we want to approximate the \emph{joint} distribution over all parameters.
-We can approximate this distribution by the ``trajectories'' of each of the $N$ particles.\\[12pt]
+We can approximate this distribution by the ``trajectories'' of each of the $N$ particles.\\[16pt]
 
 However, due to resampling these trajectories overlap, coalescing backwards in time. At some point all the trajectories coalesce, and we approximate that parameter's distribution with just one point!
 
 \begin{figure} %%% remake this plot with a less weird realisation? %%%
-\includegraphics[width=0.9\colwidth]{../degeneracy.pdf}
-\caption{Trajectories from a sample of N=6 particles. At most points there are just one or two distinct samples.}
+\includegraphics[width=\colwidth , trim={1.5cm 0.5cm 0.5cm 1.5cm},clip]{../degen2.pdf}
+\caption{Trajectories from a sample of N=10 particles. At most points there are just one or two distinct samples.}
 \end{figure}
 
-This phenomenon is known as \emph{ancestral degeneracy}\textsuperscript{2}, since the joint structure of the trajectories can be viewed as a \emph{genealogy} of particles. It is one of the main difficulties with SMC, so we would like to analyse it.
+This phenomenon is known as \emph{ancestral degeneracy}\textsuperscript{2}, since the joint structure of the trajectories can be viewed as a \emph{genealogy} of particles. It is one of the main issues with SMC, so we would like to analyse it.
 \end{block}
 \end{column}
 
@@ -184,11 +192,11 @@ A key quantity in the asymptotic analysis is the coalescence rate
 c_N(t) := \frac{1}{(N)_2} \sum_{i=1}^{N} \vt{i}(\vt{i}-1).
 \end{equation*}
 
-To obtain convergence to the Kingman coalescent, we rescale time by the inverse coalescence rate to achieve the required unit rate.\\[10pt]
+To obtain convergence to the Kingman coalescent, we rescale time by the inverse coalescence rate to achieve the required unit rate.\\[16pt]
 
-It has been shown that, under such a rescaling and some standard assumptions, genealogies induced by multinomial resampling converge (in the sense of finite-dimensional distributions) to the Kingman coalescent\textsuperscript{4}. Simulations show the same structure even for finite $N$.\\[10pt]
+It has been shown that, under such a rescaling and some standard assumptions, genealogies induced by multinomial resampling converge (in the sense of finite-dimensional distributions) to the Kingman coalescent\textsuperscript{4}. Simulations show the same structure even for finite $N$.\\[16pt]
 
-We have since extended this result to cover conditional SMC\textsuperscript{5} with multinomial resampling. In this algorithm, a certain ``immortal trajectory'' is conditioned to survive all the resampling steps. This still admits the Kingman coalescent as its limiting genealogy, but simulations show different behaviour for $N<\infty$.\\[10pt]
+We have since extended this result to cover conditional SMC\textsuperscript{5} with multinomial resampling. In this algorithm, a certain ``immortal trajectory'' is conditioned to survive all the resampling steps. This still admits the Kingman coalescent as its limiting genealogy, but simulations show different behaviour for $N<\infty$.\\[35pt]
 \begin{figure}
 \includegraphics[width=\colwidth]{../CSMC_treeheight_500reps.pdf}
 \caption{Average height of subtrees with $n$ randomly chosen nodes, for different choices of immortal trajectory.}
@@ -196,11 +204,11 @@ We have since extended this result to cover conditional SMC\textsuperscript{5} w
 We conjecture that the process undergoes a phase transition when the immortal trajectory is particularly ``unlikely'' and $n$ approaches $N$.
 \end{block}
 
-\vspace*{20pt}
+\vspace*{40pt}
 \hrule
 \begin{block}
 
-\vspace*{-30pt}
+\vspace*{-20pt}
 
 \small{
 \begin{enumerate}
