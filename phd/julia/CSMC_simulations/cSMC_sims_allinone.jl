@@ -147,21 +147,22 @@ end
 #----------------
 
 # set constants
-nsd = 0
 delta = 0.1 # noise variance in AR(1) process
 sigma = 0.1 # noise s.d. in observations
-N = Int64(8192) # total number of particles
-T = Int64(2*(nsd+1)*N) # number of generations/time steps
+N = Int64(256) # total number of particles
+T = Int64(100*N) # number of generations/time steps
 
 # generate observations & immortal trajectory
 observations = ousim(T, delta, sigma, false)
 imm = ourts(delta, sigma, observations)
+
+nsd = 0
 immpos = imm.mean + nsd*(imm.variance).^(0.5)
 
 ##--- subtree sampling
 
 # set constants
-nvals = [2,4,8,16,32,64] #,128,256,512,1024,2048,4096,8192] # number of leaves in sampled subtree
+nvals = [256] #,128,256,512,1024,2048,4096,8192] # number of leaves in sampled subtree
 nrep = 100
 
 # # parameters for small-scale testing:
@@ -202,12 +203,15 @@ for j in 1:length(nvals)
     end
     # normalise by N
     height = heighttrue/N
+    histogram(height)
     # mean & SD of tree heights, and 0.05 & 0.95 quantiles
     meanall[j] = mean(height)
     sdall[j] = std(height)
     lquant[j] = quantile!(height, 0.05)
     uquant[j] = quantile!(height, 0.95, sorted=true)
 end
+
+#scatter(heighttrue, legend=false, title="Tree heights: nsd=$nsd, N=$N, n=256", yaxis=:log10)
 
 # catching error of T being too small for N, i.e. reports no. of cases where treeheight was T
 println("number of cases hitting limit was ", sum(noob))
