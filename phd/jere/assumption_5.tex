@@ -1,0 +1,148 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{amsmath, amssymb, parskip, graphicx, amsthm, fancyhdr, dsfont, algorithm, algpseudocode, color, hyperref, bm}
+\usepackage[]{natbib}
+
+\setlength{\voffset}{0mm}
+\setlength{\topmargin}{0mm}
+\setlength{\headheight}{0mm}
+\setlength{\headsep}{0mm}
+\setlength{\hoffset}{0mm}
+\setlength{\oddsidemargin}{0mm}
+\setlength{\textwidth}{160mm}
+\setlength{\textheight}{250mm}
+\setlength{\footskip}{7mm}
+\setlength{\marginparwidth}{0mm}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{prop}{Proposition}
+\newtheorem{lem}{Lemma}
+\newtheorem{cor}{Corollary}
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+\newtheorem{rmk}{Remark}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\T}{\mathbb{T}}
+\newcommand{\n}{\mathbf{n}}
+\newcommand{\m}{\mathbf{m}}
+\newcommand{\e}{\mathbf{e}}
+\newcommand{\z}{\mathbf{z}}
+\newcommand{\x}{\mathbf{x}}
+\newcommand{\h}{\mathbf{h}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Lcal}{\mathcal{L}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\Xcal}{\mathcal{X}}
+\newcommand{\Ycal}{\mathcal{Y}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\1}{\mathds{1}}
+\newcommand{\Prob}{\mathbb{P}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\hpi}{\hat{\pi}}
+\newcommand{\tcr}[1]{{\textcolor{red}{#1}}}
+
+\begin{document}
+
+Recall the quantities
+\begin{align*}
+c_N( t ) &:= \frac{ 1 }{ ( N )_2 } \sum_{ i = 1 }^N ( \nu_t^{ ( i ) } )_2, \\
+D_N( t ) &:= \frac{ 1 }{ N ( N )_2 } \sum_{ i = 1 }^N ( \nu_t^{ ( i ) } )_2 \Bigg( \nu_t^{ ( i )  } + \frac{ 1 }{ N } \sum_{ j \neq i }^N ( \nu_t^{ ( j ) } )^2 \Bigg);
+\end{align*}
+the assumptions
+\begin{align}
+\E[ c_N( t ) ] &\rightarrow 0, \label{a1} \\
+\E\Bigg[ \sum_{ r = \tau_N( s ) + 1 }^{ \tau_N( t ) } D_N( r ) \Bigg] &\rightarrow 0, \label{a2} \\
+\E\Bigg[ \sum_{ r = \tau_N( s ) + 1 }^{ \tau_N( t ) } c_N( r )^2 \Bigg] &\rightarrow 0; \label{a3}
+\end{align}
+and the reverse-time filtration $\F_t := \sigma( \bm{ \nu }_s; 1 \leq s \leq t )$.
+\vskip 11pt
+\begin{lem}
+We have
+\begin{equation*}
+c_N( t )^2 \leq \frac{ N }{ N - 1 } D_N( t ),
+\end{equation*}
+so that \eqref{a2} $\Rightarrow$ \eqref{a3}.
+\end{lem}
+\begin{proof}
+\begin{align*}
+c_N( t )^2 &= \frac{ 1 }{ N ( N - 1 ) ( N )_2 } \sum_{ i = 1 }^N ( \nu_t^{ ( i ) } )_2 \Bigg( \nu_t^{ ( i ) } ( \nu_t^{ ( i ) } - 1 ) + \sum_{ j \neq i }^N ( \nu_t^{ ( j ) } )_2 \Bigg) \\
+&= \frac{ 1 }{ N ( N )_2 } \sum_{ i = 1 }^N ( \nu_t^{ ( i ) } )_2 \Bigg( \frac{ \nu_t^{ ( i ) } ( \nu_t^{ ( i ) } - 1 ) }{ N - 1 } + \frac{ 1 }{ N - 1 } \sum_{ j \neq i }^N ( \nu_t^{ ( j ) } )_2 \Bigg) \\
+&\leq \frac{ 1 }{ N ( N )_2 } \sum_{ i = 1 }^N ( \nu_t^{ ( i ) } )_2 \Bigg( \nu_t^{ ( i ) } + \frac{ 1 }{ N - 1 } \sum_{ j \neq i }^N ( \nu_t^{ ( j ) } )_2 \Bigg) \\
+&\leq \frac{ 1 }{ N ( N )_2 } \sum_{ i = 1 }^N ( \nu_t^{ ( i ) } )_2 \Bigg( \nu_t^{ ( i ) } + \frac{ N / ( N - 1 ) }{ N } \sum_{ j \neq i }^N ( \nu_t^{ ( j ) } )^2 \Bigg) \\
+&\leq \frac{ N / ( N - 1 ) }{ N ( N )_2 } \sum_{ i = 1 }^N ( \nu_t^{ ( i ) } )_2 \Bigg( \nu_t^{ ( i ) } + \frac{ 1 }{ N } \sum_{ j \neq i }^N ( \nu_t^{ ( j ) } )^2 \Bigg) = \frac{ N }{ N - 1 } D_N( t ).
+\end{align*}
+\end{proof}
+
+We now introduce a new assumption: for some  deterministic sequence $b_N \rightarrow 0$, we have
+\begin{equation} \label{a4}
+\frac{ 1 }{ ( N )_3 } \sum_{ i = 1 }^N \E[ ( \nu_t^{ ( i ) } )_3 | \F_{ t - 1 } ]  \leq b_N \E[ c_N( t ) | \F_{ t - 1 } ]
+\end{equation}
+uniformly in $t \geq 1$.
+\vskip 11pt
+\begin{lem}
+\eqref{a4} $\Rightarrow$ \eqref{a1} and \eqref{a4} $\Rightarrow$ \eqref{a2}.
+\end{lem}
+\begin{proof}
+We prove the two implications separately, starting with the former.
+Following the proof of \cite[Lemma 5.5]{Moehle03}, we fix $\varepsilon > 0$ and define the event $A_i := \{ \nu_t^{ ( i ) } \leq N \varepsilon \}$.
+Now
+\begin{align}
+\E[ c_N( t ) | \F_{ t - 1 } ] &= \frac{ 1 }{ ( N )_2 } \sum_{ i = 1 }^N \E[ ( \nu_t^{ ( i ) } )_2 | \F_{ t - 1 } ] \nonumber \\
+&= \frac{ 1 }{ ( N )_2 } \sum_{ i = 1 }^N \Big\{ \E[ ( \nu_t^{ ( i ) } )_2 \mathds{ 1 }_{ A_i } | \F_{ t - 1 } ] + \E[ ( \nu_t^{ ( i ) } )_2 \mathds{ 1 }_{ A_i^c } | \F_{ t - 1 } ] \Big\} \nonumber \\
+&\leq \frac{ \varepsilon }{ N - 1 } \sum_{ i = 1 }^N \E[ \nu_t^{ ( i ) } \mathds{ 1 }_{ A_i } | \F_{ t - 1 } ] + \sum_{ i = 1 }^N \E[ \mathds{ 1 }_{ A_i^c } | \F_{ t - 1 } ] \nonumber \\
+&\leq \{ 1 + O( N^{ -1 } ) \} \varepsilon + \sum_{ i = 1 }^N \Prob( \nu_t^{ ( i ) } > N \varepsilon | \F_{ t - 1 } ). \label{cond_cN}
+\end{align}
+For $N \geq 3 / \varepsilon$, Markov's inequality yields
+\begin{align}
+\sum_{ i = 1 }^N \Prob( \nu_t^{ ( i ) } > N \varepsilon | \F_{ t - 1 } ) &\leq \frac{ 1 }{ ( N \varepsilon )_3 } \sum_{ i = 1 }^N \E[ ( \nu_t^{ ( i ) } )_3 | \F_{ t - 1 } ] = \frac{ \{ 1 + O( N^{ -1 } ) \} }{ \varepsilon^3 ( N )_3 } \sum_{ i = 1 }^N \E[ ( \nu_t^{ ( i ) } )_3 | \F_{ t - 1 } ] \nonumber \\
+&\leq \{ 1 + O( N^{ -1 } ) \} \frac{ b_N }{ \varepsilon^3 } \E[ c_N( t ) | \F_{ t - 1 } ]. \label{markovs_ineq}
+\end{align}
+Substituting \eqref{markovs_ineq} into \eqref{cond_cN} and using $c_N( t ) \leq 1$ results in
+\begin{equation*}
+\E[ c_N( t ) | \F_{ t - 1 } ] \leq \{ 1 + O( N^{ -1 } ) \} \Bigg( \varepsilon + \frac{ b_N }{ \varepsilon^3 } \Bigg) \rightarrow \varepsilon
+\end{equation*}
+because $b_N \rightarrow 0$. 
+Since $\varepsilon > 0$ was arbitrary, we have
+\begin{equation*}
+\E[ c_N( t ) ] = \E[ \E[ c_N( t ) | \F_{ t - 1 } ] ] \rightarrow 0
+\end{equation*}
+as $N \rightarrow \infty$.
+
+We will show \eqref{a4} $\Rightarrow$ \eqref{a2} in two parts, the first of which is
+\begin{align}
+\frac{ 1 }{ N ( N )_2 } \sum_{ i = 1 }^N \E[ ( \nu_t^{ ( i ) } )_2 \nu_t^{ ( i ) } | \F_{ t - 1 } ] &= \frac{ 1 }{ N ( N )_2 } \sum_{ i = 1 }^N \E[ ( \nu_t^{ ( i ) } )_3 + 2 ( \nu_t^{ ( i ) } )_2 | \F_{ t - 1 } ] \nonumber \\
+&\leq \frac{ 1 }{ ( N )_3 } \sum_{ i = 1 }^N \E[ ( \nu_t^{ ( i ) } )_3 | \F_{ t - 1 } ] + \frac{ 2 }{ N } \E[ c_N( t ) | \F_{ t - 1 } ] \nonumber \\
+&\leq \Bigg( b_N + \frac{ 2 }{ N } \Bigg) \E[ c_N( t ) | \F_{ t - 1 } ]. \label{DN_part_1}
+\end{align}
+For the second, note
+\begin{align}
+\frac{ 1 }{ N^2 ( N )_2 } \sum_{ i \neq j }^N \E[ ( \nu_t^{ ( i ) } )_2 ( \nu_t^{ ( j ) } )^2 | \F_{ t - 1 }  ] &= \frac{ 1 }{ N^2 ( N )_2 } \sum_{ i \neq j = 1 }^N \E[ ( \nu_t^{ ( i ) } )_2 ( \nu_t^{ ( j ) } )_2 + ( \nu_t^{ ( i ) } )_2 \nu_t^{ ( j ) } | \F_{ t - 1 } ] \nonumber \\
+&\leq \frac{ 1 }{ N^2 ( N )_2 } \sum_{ i \neq j }^N \E[ ( \nu_t^{ ( i ) } )_2 ( \nu_t^{ ( j ) } )_2 | \F_{ t - 1 } ] + \frac{ \E[ c_N( t ) | \F_{ t - 1 } ] }{ N }. \label{DN_part_2}
+\end{align}
+Now
+\begin{align}
+\sum_{ i \neq j }^N \E[ ( \nu_t^{ ( i ) } )_2 ( \nu_t^{ ( j ) } )_2 | \F_{ t - 1 } ] &= \sum_{ i \neq j }^N \Big\{ \E[ ( \nu_t^{ ( i ) } )_2 ( \nu_t^{ ( j ) } )_2 \mathds{ 1 }_{ A_i } | \F_{ t - 1 } ] + \E[ ( \nu_t^{ ( i ) } )_2 ( \nu_t^{ ( j ) } )_2 \mathds{ 1 }_{ A_i^c } | \F_{ t - 1 } ] \Big\} \nonumber \\
+&\leq N \varepsilon \sum_{ i \neq j }^N \E[ \nu_t^{ ( i ) } ( \nu_t^{ ( j ) } )_2 \mathds{ 1 }_{ A_i } | \F_{ t - 1 } ] + N^3 \sum_{ i \neq j }^N \E[ \nu_t^{ ( j ) } \mathds{ 1 }_{ A_i^c } | \F_{ t - 1 } ] \nonumber \\
+&\leq N^2 ( N )_2 \varepsilon \E[ c_N( t ) | \F_{ t - 1 } ] + N^4 \sum_{ i = 1 }^N \Prob( \nu_t^{ ( i ) } > N \varepsilon | \F_{ t - 1 } ). \label{DN_part_3}
+\end{align}
+Substituting \eqref{markovs_ineq} into \eqref{DN_part_3} yields
+\begin{equation}
+\sum_{ i \neq j }^N \E[ ( \nu_t^{ ( i ) } )_2 ( \nu_t^{ ( j ) } )_2 | \F_{ t - 1 } ] \leq N^4 \{ 1 + O( N^{ -1 } ) \} \Bigg( \varepsilon + \frac{ b_N }{ \varepsilon^3 } \Bigg) \E[ c_N( t ) | \F_{ t - 1 } ], \label{DN_part_4}
+\end{equation}
+and substituting \eqref{DN_part_4} into \eqref{DN_part_2} gives
+\begin{equation}
+\frac{ 1 }{ N^2 ( N )_2 } \sum_{ i \neq j }^N \E[ ( \nu_t^{ ( i ) } )_2 ( \nu_t^{ ( j ) } )^2 | \F_{ t - 1 }  ] \leq \Bigg( \{ 1 + O( N^{ -1 } ) \} \Big[ \varepsilon + \frac{ b_N }{ \varepsilon^3 } \Big] + \frac{ 1 }{ N } \Bigg) \E[ c_N( t ) | \F_{ t - 1 } ]. \label{DN_last}
+\end{equation}
+Finally, invoking Lemma 2 from our paper twice, with \eqref{DN_part_1} and \eqref{DN_last} in between, gives
+\begin{align*}
+\E\Bigg[ \sum_{ r = \tau_N( s ) + 1 }^{ \tau_N( t ) } D_N( r ) \Bigg] &= \E\Bigg[ \sum_{ r = \tau_N( s ) + 1 }^{ \tau_N( t ) } \E[ D_N( r ) | \F_{ t - 1 } ] \Bigg] \\
+&\leq \Bigg( \{ 1 + O( N^{ -1 } ) \} \Bigg[ \varepsilon + \frac{ b_N }{ \varepsilon^3 } \Bigg] + \frac{ 3 }{ N } + b_N \Bigg) \E\Bigg[ \sum_{ r = \tau_N( s ) + 1 }^{ \tau_N( t ) } c_N( r ) \Bigg] \\
+&\leq \Bigg( \{ 1 + O( N^{ -1 } ) \} \Bigg[ \varepsilon + \frac{ b_N }{ \varepsilon^3 } \Bigg] + \frac{ 3 }{ N } + b_N \Bigg) ( t - s + 1 ) \rightarrow \varepsilon ( t - s + 1 ),
+\end{align*}
+and recalling that $\varepsilon > 0$ was arbitrary concludes the proof.
+\end{proof}
+
+\bibliographystyle{plainnat}
+\bibliography{bibliography}  
+
+\end{document}

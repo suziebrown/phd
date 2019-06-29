@@ -1,0 +1,172 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{amsmath, amssymb, parskip, graphicx, amsthm, fancyhdr, dsfont, algorithm, algpseudocode, color, hyperref, bm}
+\usepackage[]{natbib}
+
+\setlength{\voffset}{0mm}
+\setlength{\topmargin}{0mm}
+\setlength{\headheight}{0mm}
+\setlength{\headsep}{0mm}
+\setlength{\hoffset}{0mm}
+\setlength{\oddsidemargin}{0mm}
+\setlength{\textwidth}{160mm}
+\setlength{\textheight}{250mm}
+\setlength{\footskip}{7mm}
+\setlength{\marginparwidth}{0mm}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{prop}{Proposition}
+\newtheorem{lem}{Lemma}
+\newtheorem{cor}{Corollary}
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+\newtheorem{rmk}{Remark}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\T}{\mathbb{T}}
+\newcommand{\n}{\mathbf{n}}
+\newcommand{\m}{\mathbf{m}}
+\newcommand{\e}{\mathbf{e}}
+\newcommand{\z}{\mathbf{z}}
+\newcommand{\x}{\mathbf{x}}
+\newcommand{\h}{\mathbf{h}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Lcal}{\mathcal{L}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\Xcal}{\mathcal{X}}
+\newcommand{\Ycal}{\mathcal{Y}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\1}{\mathds{1}}
+\newcommand{\Prob}{\mathbb{P}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\hpi}{\hat{\pi}}
+\newcommand{\tcr}[1]{{\textcolor{red}{#1}}}
+\newcommand{\osum}{\mathop{\sum\nolimits^{\phantom{}_{\star}}}\limits}
+
+\begin{document}
+
+\begin{lem}\label{improved_bounds}
+\begin{equation*}
+1 - C_{ | \xi |  } \{ 1 + O( N^{ -1 } ) \} D_N( t ) -  \binom{ | \xi | }{ 2 } \{ 1 + O( N^{-1} ) \} c_N( t ) \leq p_{ \xi \xi }( t ),
+\end{equation*}
+for a constant $C_{ | \xi |  } > 0$ that does not depend on $N$.
+\end{lem}
+\begin{proof}
+Let $\kappa_i := \#\{ j : b_j = i \}$ denote the multiplicity of mergers of size $i$, with the slight abuse of terminology in that $\kappa_1$ counts non-merger events.
+In particular, we have that $\kappa_1 + 2 \kappa_2 + \ldots | \xi | \kappa_{ | \xi | } = | \xi |$.
+Now
+\begin{equation*}
+p_{ \xi \xi }( t ) = 1 - \frac{ 1 }{ ( N )_{ | \xi | } } \sum_{ k = 1 }^{ | \xi | - 1 } \sum_{ \substack{ b_1 \geq \ldots \geq b_k = 1 \\ b_1 + \ldots + b_k = | \xi | } }^{ | \xi | } \frac{ | \xi |! }{ \prod_{ j = 1 }^{ | \xi | } ( j ! )^{ \kappa_j } \kappa_j ! } \sum_{ \substack{ i_1 \neq \ldots \neq i_k = 1 \\ \text{all distinct} } }^N( \nu_t^{ ( i_1 ) } )_{ b_1 } \ldots ( \nu_t^{ ( i_k ) } )_{ b_k },
+\end{equation*}
+because the right hand side subtracts the probabilities of all possible merger events.
+See \citep[eq (11)]{Fu06} for the combinatorial factor.
+The omitted $k = | \xi |$ summand would correspond to the probability of an identity transition.
+The non-increasing ordering of $( b_1, \ldots, b_k )$ is arbitrary, but without loss of generality: choosing any ordering of the same set of merger sizes would give the same result.
+
+Firstly, we separate out the $k = | \xi | - 1$ term, which covers isolated binary mergers, and note that in that case the only possible $b$-vector is $(2, 1, \ldots, 1)$, for which
+\begin{equation*}
+\frac{ | \xi |! }{ \prod_{ j = 1 }^{ | \xi | } ( j ! )^{ \kappa_j } \kappa_j ! } = \frac{ | \xi |! }{ 2 ! ( | \xi | - 2 ) ! } = \binom{ | \xi | }{ 2 },
+\end{equation*}
+and
+\begin{align*}
+&\sum_{ i_1 \neq \ldots \neq i_{ | \xi | - 1 } = 1 }^N ( \nu_t^{ ( i_1 ) } )_2 \nu_t^{ ( i_2 ) } \ldots \nu_t^{ ( i_{ | \xi | - 1 } ) } \\ 
+&\leq \sum_{ i = 1 }^N ( \nu_t^{ ( i ) } )_2 \Bigg[ ( N - \nu_t^{ ( i ) } )^{ | \xi | - 2 } - \binom{ | \xi | - 2 }{ 2 } \sum_{ j \neq i }^N ( \nu_t^{ ( j ) } )^2 ( N - \nu_t^{ ( i ) } )^{ | \xi | - 4 } \Bigg] \\
+&\leq N^{ | \xi | - 2 } \sum_{ i = 1 }^N ( \nu_t^{ ( i ) } )_2,
+\end{align*}
+Thus
+\begin{align*}
+p_{ \xi \xi }( t ) &\geq 1 - \binom{ | \xi | }{ 2 } \frac{ 1 + O( N^{ -1 } ) }{ ( N )_2 } \sum_{ i = 1 }^N ( \nu_t^{ ( i ) } )_2 \\
+&- \frac{ 1 }{ ( N )_{ | \xi | } } \sum_{ k = 1 }^{ | \xi | - 2 } \sum_{ \substack{ b_1 \geq \ldots \geq b_k = 1 \\ b_1 + \ldots + b_k = | \xi | } }^{ | \xi | } \frac{ | \xi |! }{ \prod_{ j = 1 }^{ | \xi | } ( j ! )^{ \kappa_j } \kappa_j ! } \sum_{ \substack{ i_1 \neq \ldots \neq i_k = 1 \\ \text{all distinct} } }^N( \nu_t^{ ( i_1 ) } )_{ b_1 } \ldots ( \nu_t^{ ( i_k ) } )_{ b_k }.
+\end{align*}
+For the other summands, we have
+\begin{equation*}
+\frac{ | \xi |! }{ \prod_{ j = 1 }^{ | \xi | } ( j ! )^{ \kappa_j } \kappa_j ! } \leq | \xi | !
+\end{equation*}
+and (similarly to Lemma 1, Case 3 in our paper),
+\begin{align*}
+\sum_{ \substack{ i_1 \neq \ldots \neq i_k = 1 \\ \text{all distinct} } }^N &( \nu_t^{ ( i_1 ) } )_{ b_1 } \ldots ( \nu_t^{ ( i_k ) } )_{ b_k } \leq \sum_{ i = 1 }^N ( \nu_t^{ ( i ) } )_2 \Bigg\{ N^{ | \xi | - 2 } - \sum_{ \substack{ j_1 \neq \ldots \neq j_{ | \xi | - 2 } = 1 \\ \text{all distinct and } \neq i } }^N \nu_t^{ ( j_1 ) } \ldots \nu_t^{ ( j_{ | \xi | - 2 } ) } \Bigg\} \\
+&= \sum_{ i = 1 }^N ( \nu_t^{ ( i ) } )_2 \Bigg\{ N^{ | \xi | - 2 } - ( N - \nu_t^{ ( i ) } )^{ | \xi | - 2 } + \binom{ | \xi | - 2 }{ 2 } \sum_{ j \neq i } ( \nu_t^{ ( j ) } )^2 \Bigg( \sum_{ k \neq i } \nu_t^{ ( k ) } \Bigg)^{ | \xi | - 4 } \Bigg\} \\
+&\leq \sum_{ i = 1 }^N ( \nu_t^{ ( i ) } )_2 \Bigg\{ ( | \xi | - 2 ) \nu_t^{ ( i ) } N^{ | \xi | - 3 } + \binom{ | \xi | - 2 }{ 2 } \sum_{ j \neq i } ( \nu_t^{ ( j ) } )^2 N^{ | \xi | - 4 } \Bigg\},
+\end{align*}
+where the last step uses $(N - x)^b \geq N^b - b x N^{ b - 1 }$.
+Overall
+\begin{align*}
+p_{ \xi \xi }( t ) &\geq 1 - \binom{ | \xi | }{ 2 } \frac{ 1 + O( N^{ -1 } ) }{ ( N )_2 } \sum_{ i = 1 }^N ( \nu_t^{ ( i ) } )_2 \\
+&- \frac{ N^{ | \xi | - 3 } }{ ( N )_{ | \xi | } } \sum_{ k = 1 }^{ | \xi | - 2 } \sum_{ \substack{ b_1 \geq \ldots \geq b_k = 1 \\ b_1 + \ldots + b_k = | \xi | } }^{ | \xi | } | \xi |! \sum_{ i = 1 }^N ( \nu_t^{ ( i ) } )_2 \Bigg\{ ( | \xi | - 2 ) \nu_t^{ ( i ) } N^{ | \xi | - 3 } + \binom{ | \xi | - 2 }{ 2 } \sum_{ j \neq i } ( \nu_t^{ ( j ) } )^2 N^{ | \xi | - 4 } \Bigg\}.
+\end{align*}
+The summand in the third term depends neither on $k$ nor on $b_1, \ldots, b_k$, and the number of terms in those sums is bounded above by $( | \xi | - 2 ) \gamma_{ | \xi | - 2 }$, where $\gamma_n$ is the number of integer partitions of $n$.
+By \cite[Section 2]{hardy/ramanujan:1918}, $\gamma_n < K e^{ 2 \sqrt{ 2 n } } / n$ for a constant $K > 0$ independent of $n$.
+Thus
+\begin{align*}
+p_{ \xi \xi }( t ) &\geq 1 - \binom{ | \xi | }{ 2 } \frac{ 1 + O( N^{ -1 } ) }{ ( N )_2 } \sum_{ i = 1 }^N ( \nu_t^{ ( i ) } )_2 \\
+&- K e^{ 2 \sqrt{ 2 ( | \xi | - 2 ) } } | \xi |! \binom{ | \xi | - 2 }{ 2 } \frac{ N^{ | \xi | - 3 } }{ ( N )_{ | \xi | } } \sum_{ i = 1 }^N ( \nu_t^{ ( i ) } )_2 \Bigg\{ \nu_t^{ ( i ) } + \frac{ 1 }{ N } \sum_{ j \neq i } ( \nu_t^{ ( j ) } )^2 \Bigg\} \\
+&=  1 - \binom{ | \xi | }{ 2 } \{ 1 + O( N^{ -1 } ) \} c_N( t ) - C_{ | \xi | } \{ 1 + O( N^{ -1 } ) \} D_N( t ) ),
+\end{align*}
+where $C_{ | \xi | } > 0$ depends on $| \xi |$ but not on $N$.
+\end{proof}
+
+In order to use Lemma \ref{improved_bounds} to remove assumption (6) from \cite[Theorem 1]{Koskela19}, it is necessary to rewrite the argument for the lower bound.
+The upper bound does not use assumption (6).
+We do this below.
+
+\begin{proof}[Proof of Theorem 1 without Assumption (6)]
+\begin{align*}
+\chi_d &\geq \osum_{ s_1 < \ldots < s_{ \alpha } = \tau_N( t_{ d - 1 } ) + 1 }^{ \tau_N( t_d ) } ( \tilde{ Q }^{ \alpha } )_{ \eta_{ d - 1 } \eta_d } \Bigg\{ \prod_{ r = 1 }^{ \alpha } \Bigg( c_N( s_r ) - \binom{ n - 2 }{ 2 } \{ 1+ O( N^{ -1 } ) \} D_N( s_r ) \Bigg) \Bigg\} \\
+&\phantom{\geq} \times \prod_{ \substack{ r = \tau_N( t_{ d - 1 } ) + 1 \\ r \neq s_1, \ldots, r \neq s_{ \alpha } } }^{ \tau_N( t_d ) } \Bigg\{ 1 - C_n \{ 1 + O( N^{ -1 } ) \} D_N( r ) \\
+&\phantom{ \geq \times \prod_{ \substack{ r = \tau_N( t_{ d - 1 } ) + 1 \\ r \neq s_1, \ldots, r \neq s_{ \alpha } } }^{ \tau_N( t_d ) } \Bigg\{ 1 } - \binom{ | \eta_{ d - 1 } | - | \{ i : s_i < r \} | }{ 2 } \{ 1 + O( N^{ -1 } ) \} c_N( r ) \Bigg\}.
+\end{align*}
+A multinomial expansion of the product on the last line yields 
+\begin{align*}
+\chi_d \geq {}& \sum_{ \beta = 0 }^{ \tau_N( t_d ) - \tau_N( t_{ d - 1 } ) - \alpha } ( \tilde{ Q }^{ \alpha } )_{ \eta_{ d - 1 } \eta_d } \sum_{ ( \lambda, \mu ) \in \Pi_2( [ \alpha + \beta ] ) : | \lambda | = \alpha } \{ 1 + O( N^{ -1 } ) \}^{ \beta } \\
+&\times \osum_{ s_1 < \ldots < s_{ \alpha + \beta } = \tau_N( t_{ d - 1 } ) + 1 }^{ \tau_N( t_d ) } \Bigg\{ \prod_{ r \in \lambda } \Bigg[ c_N( s_r ) - \binom{ n - 2 }{ 2 } \{ 1 + O( N^{ -1 } ) \} D_N( s_r ) \Bigg] \Bigg\}\\
+&\times \prod_{ r \in \mu } \Bigg\{ - \binom{ | \eta_{ d - 1 } | - | \{ i \in \lambda : i < r \} | }{ 2 } c_N( s_r ) - C_n D_N( s_r ) \Bigg\}.
+\end{align*}
+Expanding the product over $\lambda$ gives
+\begin{align*}
+\chi_d &\geq \sum_{ \beta = 0 }^{ \tau_N( t_d ) - \tau_N( t_{ d - 1 } ) - \alpha } ( \tilde{ Q }^{ \alpha } )_{ \eta_{ d - 1 } \eta_d } \sum_{ ( \lambda, \mu, \pi ) \in \Pi_3( [ \alpha + \beta ] ) : | \mu | = \beta } \binom{ n - 2 }{ 2 }^{ | \pi | } ( -1 )^{ | \pi | } \{ 1 + O( N^{ -1 } ) \}^{ \beta + | \pi | } \\
+&\phantom{\geq} \times \osum_{ s_1 < \ldots < s_{ \alpha + \beta } = \tau_N( t_{ d - 1 } ) + 1 }^{ \tau_N( t_d ) } \Bigg\{ \prod_{ r \in \lambda } c_N( s_r ) \Bigg\} \Bigg\{ \prod_{ r \in \pi }  D_N( s_r ) \Bigg\} \\
+&\phantom{\geq} \times \prod_{ r \in \mu } \Bigg\{ - \binom{ | \eta_{ d - 1 } | - | \{ i \in \lambda \cup \pi : i < r \} | }{ 2 } c_N( s_r ) - C_n D_N( s_r ) \Bigg\},
+\end{align*}
+and expanding the product over $\mu$ results in
+\begin{align*}
+\chi_d &\geq \sum_{ \beta = 0 }^{ \tau_N( t_d ) - \tau_N( t_{ d - 1 } ) - \alpha } ( \tilde{ Q }^{ \alpha } )_{ \eta_{ d - 1 } \eta_d } \sum_{ ( \lambda, \mu, \pi, \sigma ) \in \Pi_4( [ \alpha + \beta ] ) : | \mu | + | \sigma | = \beta } C_n^{ | \sigma | } \binom{ n - 2 }{ 2 }^{ | \pi | } ( -1 )^{ | \pi | + | \sigma | } \\
+&\phantom{\geq} \times \{ 1 + O( N^{ -1 } ) \}^{ \beta + | \pi | } \Bigg\{ \prod_{ r \in \mu } - \binom{ | \eta_{ d - 1 } | - | \{ i \in \lambda \cup \pi : i < r \} | }{ 2 } \Bigg\} \\
+&\phantom{\geq} \times \osum_{ s_1 < \ldots < s_{ \alpha + \beta } = \tau_N( t_{ d - 1 } ) + 1 }^{ \tau_N( t_d ) } \Bigg\{ \prod_{ r \in \lambda \cup \mu } c_N( s_r ) \Bigg\} \prod_{ r \in \pi \cup \sigma }  D_N( s_r ) .
+\end{align*}
+Via a further multinomial expansion, the lower bound for the $k$-step transition probability can be written as
+\begin{align*}
+\lim_{ N \rightarrow \infty } \E\Bigg[ \prod_{ d = 1 }^k \chi_d \Bigg] &\geq \lim_{ N \rightarrow \infty } \E\Bigg[ \sum_{ \beta_1 = 0 }^{ \infty } \ldots \sum_{ \beta_k = 0 }^{ \infty } \sum_{ ( \lambda_1, \mu_1, \pi_1, \sigma_1 ) \in \Pi_4( [ \alpha_1 + \beta_1 ] ) : | \mu_1 | + | \sigma_1 | = \beta_1 } \ldots \\
+&\phantom{\geq} \sum_{ ( \lambda_k, \mu_k, \pi_k, \sigma_k ) \in \Pi_4( [ \alpha_k + \beta_k ] ) : | \mu_k | + | \sigma_k | = \beta_k } C_n^{ \sum_{ d = 1 }^k | \sigma_d | } \binom{ n - 2 }{ 2 }^{ \sum_{ d = 1 }^k| \pi_d | } \\
+&\phantom{\geq} \times ( -1 )^{ \sum_{ d = 1 }^k | \pi_d | + | \sigma_d | }  \{ 1 + O( N^{ -1 } ) \}^{ | \bm{ \beta } | + \sum_{ d = 1 }^k | \pi_d | } \\
+&\phantom{\geq} \times \Bigg\{ \prod_{ d = 1 }^k ( \tilde{ Q }^{ \alpha_d } )_{ \eta_{ d - 1 } \eta_d } \prod_{ r \in \mu_d } - \binom{ | \eta_{ d - 1 } | - | \{ i \in \lambda_d \cup \pi_d : i < r \} | }{ 2 } \Bigg\} \\
+&\phantom{\geq} \times \osum_{ s_1^{ ( 1 ) } < \ldots < s_{ \alpha_1 + \beta_1 }^{ ( 1 ) } = \tau_N( t_0 ) + 1 }^{ \tau_N( t_1 ) } \ldots \osum_{ s_1^{ ( k ) } < \ldots < s_{ \alpha_k + \beta_k }^{ ( k ) } = \tau_N( t_{ k - 1 } ) + 1 }^{ \tau_N( t_k ) } \\
+&\phantom{\geq} \prod_{ d = 1 }^k \mathds{ 1 }_{ \{ \tau_N( t_d ) - \tau_N( t_{ d - 1 } ) \geq \alpha_d + \beta_d \} } \Bigg\{ \prod_{ r \in \lambda_d \cup \mu_d } c_N( s_r^{ ( d ) } ) \Bigg\} \prod_{ r \in \pi_d \cup \sigma_d }  D_N( s_r^{ ( d ) } ) \Bigg].
+\end{align*}
+An argument completely analogous to that in \cite[Appendix]{Koskela19} shows that passing the expectation and the limit through the infinite sums is justified, whereupon the contribution of terms with $ \sum_{ d = 1 }^k | \pi_d | + | \sigma_d | > 0$ vanishes.
+To see why, follow the argument used to show that the contribution of multiple merger trajectories vanishes in the corresponding upper bound in \cite{Koskela19}.
+That leaves
+\begin{align}
+\lim_{ N \rightarrow \infty } \E\Bigg[ \prod_{ d = 1 }^k \chi_d \Bigg] &\geq \sum_{ \beta_1 = 0 }^{ \infty } \ldots \sum_{ \beta_k = 0 }^{ \infty } \sum_{ ( \lambda_1, \mu_1 ) \in \Pi_2( [ \alpha_1 + \beta_1 ] ) : | \mu_1 | = \beta_1 } \ldots \sum_{ ( \lambda_k, \mu_k ) \in \Pi_2( [ \alpha_k + \beta_k ] ) : | \mu_k | = \beta_k } \nonumber \\
+&\phantom{\geq} \Bigg\{ \prod_{ d = 1 }^k ( \tilde{ Q }^{ \alpha_d } )_{ \eta_{ d - 1 } \eta_d } \prod_{ r \in \mu_d } - \binom{ | \eta_{ d - 1 } | - | \{ i \in \lambda_d \cup \pi_d : i < r \} | }{ 2 } \Bigg\} \nonumber \\
+&\phantom{\geq} \times \lim_{ N \rightarrow \infty } \E\Bigg[ \osum_{ s_1^{ ( 1 ) } < \ldots < s_{ \alpha_1 + \beta_1 }^{ ( 1 ) } = \tau_N( t_0 ) + 1 }^{ \tau_N( t_1 ) } \ldots \osum_{ s_1^{ ( k ) } < \ldots < s_{ \alpha_k + \beta_k }^{ ( k ) } = \tau_N( t_{ k - 1 } ) + 1 }^{ \tau_N( t_k ) } \nonumber \\
+&\phantom{\geq} \prod_{ d = 1 }^k \mathds{ 1 }_{ \{ \tau_N( t_d ) - \tau_N( t_{ d - 1 } ) \geq \alpha_d + \beta_d \} } \Bigg\{ \prod_{ r \in \lambda_d \cup \mu_d } c_N( s_r^{ ( d ) } ) \Bigg\} \Bigg]. \label{eq1}
+\end{align}
+Recall \cite[Eq (11)]{Koskela19}:
+\begin{align*}
+\sum_{ ( \lambda, \mu ) \in \Pi_2( [ \alpha + \beta ] ) : | \mu | = \beta } ( \tilde{ Q }^{ \alpha } )_{ \eta_{ d - 1 } \eta_d } \prod_{ r \in \mu } - \binom{ | \eta_{ d - 1 } | - | \{ i \in \lambda \cup \pi : i < r \} | }{ 2 } = ( Q^{ \alpha + \beta } )_{ \eta_{ d - 1 } \eta_d },
+\end{align*}
+and note that applying this $k$ times in \eqref{eq1} yields
+\begin{align*}
+\lim_{ N \rightarrow \infty } \E\Bigg[ \prod_{ d = 1 }^k \chi_d \Bigg] &\geq \sum_{ \beta_1 = 0 }^{ \infty } \ldots \sum_{ \beta_k = 0 }^{ \infty } \Bigg\{ \prod_{ d = 1 }^k ( Q^{ \alpha_d + \beta_d } )_{ \eta_{ d - 1 } \eta_d } \Bigg\} \\
+&\phantom{\geq} \times \lim_{ N \rightarrow \infty } \E\Bigg[ \Bigg\{ \prod_{ d = 1 }^k \mathds{ 1 }_{ \{ \tau_N( t_d ) - \tau_N( t_{ d - 1 } ) \geq \alpha_d + \beta_d \} } \Bigg\} \osum_{ s_1^{ ( 1 ) } < \ldots < s_{ \alpha_1 + \beta_1 }^{ ( 1 ) } = \tau_N( t_0 ) + 1 }^{ \tau_N( t_1 ) } \\
+&\phantom{\geq \times \lim_{ N \rightarrow \infty } \E\Bigg[} \ldots \osum_{ s_1^{ ( k ) } < \ldots < s_{ \alpha_k + \beta_k }^{ ( k ) } = \tau_N( t_{ k - 1 } ) + 1 }^{ \tau_N( t_k ) } \prod_{ d = 1 }^k \prod_{ r \in \lambda_d \cup \mu_d } c_N( s_r^{ ( d ) } ) \Bigg].
+\end{align*}
+We now apply \cite[Eq (14)]{Koskela19} to those terms with a negative sign ($| \bm{ \beta } |$ odd) and \cite[Eq (15)]{Koskela19} to those terms with a positive sign ($| \bm{ \beta } |$ even), and obtain
+\begin{align*}
+\lim_{ N \rightarrow \infty } \E\Bigg[ \prod_{ d = 1 }^k \chi_d \Bigg] &\geq \sum_{ \beta_1 = 0 }^{ \infty } \ldots \sum_{ \beta_k = 0 }^{ \infty } \Bigg\{ \prod_{ d = 1 }^k ( Q^{ \alpha_d + \beta_d } )_{ \eta_{ d - 1 } \eta_d } \frac{ ( t_d - t_{ d - 1 } )^{ \alpha_d + \beta_d } }{ ( \alpha_d + \beta_d ) ! } \Bigg\} \\
+&\phantom{\geq} \times \lim_{ N \rightarrow \infty } \E\Bigg[ \prod_{ d = 1 }^k \mathds{ 1 }_{ \{ \tau_N( t_d ) - \tau_N( t_{ d - 1 } ) \geq \alpha_d + \beta_d \} } \Bigg].
+\end{align*}
+An invocation of \cite[Eq (16)]{Koskela19} concludes the proof.
+\end{proof}
+\bibliography{bibliography.bib}  
+
+\end{document}
