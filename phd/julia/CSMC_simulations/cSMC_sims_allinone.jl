@@ -149,21 +149,21 @@ end
 # set constants
 delta = 0.1 # noise variance in AR(1) process
 sigma = 0.1 # noise s.d. in observations
-N = Int64(256) # total number of particles
-T = Int64(100*N) # number of generations/time steps
+N = Int64(1024) # total number of particles
+T = Int64(150*N) # number of generations/time steps
 
 # generate observations & immortal trajectory
 observations = ousim(T, delta, sigma, false)
 imm = ourts(delta, sigma, observations)
 
-nsd = 0
+nsd = 2
 immpos = imm.mean + nsd*(imm.variance).^(0.5)
 
 ##--- subtree sampling
 
 # set constants
-nvals = [256] #,128,256,512,1024,2048,4096,8192] # number of leaves in sampled subtree
-nrep = 100
+nvals = [2,4,8,16,32,64,128,256,512,1024] #,128,256,512,1024,2048,4096,8192] # number of leaves in sampled subtree
+nrep = 500
 
 # # parameters for small-scale testing:
 # T = Int64(50)
@@ -176,7 +176,7 @@ heighttrue = Array{Int64, 1}(undef, nrep)
 height = Array{Float64, 1}(undef, nrep)
 # initialise output variables
 meanall = Array{Float64, 1}(undef, length(nvals))
-sdall = Array{Float64, 1}(undef, length(nvals))
+#sdall = Array{Float64, 1}(undef, length(nvals))
 lquant = Array{Float64, 1}(undef, length(nvals))
 uquant = Array{Float64, 1}(undef, length(nvals))
 noob = zeros(Int64, length(nvals))
@@ -187,10 +187,6 @@ for j in 1:length(nvals)
 
     # uniformly sample 'nrep'x subtrees of size 'nvals[j]' & calculate height
     for i in 1:nrep
-        # report progress (only works for nrep being multiple of 10)
-        if (i*10) % nrep ==0
-            println(100*i/nrep, "% of reps completed")
-        end
 
         # run csmc
         csmcout = csmc_fullstore(N, T, observations, ouinit, outransition, oupotential, immpos)
@@ -200,13 +196,18 @@ for j in 1:length(nvals)
 
         # error catching
         noob[j] += (heighttrue[i] >= T)
+
+        # report progress (only works for nrep being multiple of 10)
+        if (i*10) % nrep ==0
+            println(100*i/nrep, "% of reps completed")
+        end
     end
     # normalise by N
     height = heighttrue/N
     histogram(height)
     # mean & SD of tree heights, and 0.05 & 0.95 quantiles
     meanall[j] = mean(height)
-    sdall[j] = std(height)
+    #sdall[j] = std(height)
     lquant[j] = quantile!(height, 0.05)
     uquant[j] = quantile!(height, 0.95, sorted=true)
 end
@@ -215,23 +216,17 @@ end
 
 # catching error of T being too small for N, i.e. reports no. of cases where treeheight was T
 println("number of cases hitting limit was ", sum(noob))
-println("means were: ", meanall)
-#println("SDs were: ", sdall)
-# plot output (ribbon shows +/- 1 standard error)
-#plot(nvals, meanall/N, ribbon=(sdall*nrep^(-0.5)/N, sdall*nrep^(-0.5)/N), fill=:purple, fillalpha=0.25, leg=false, xaxis=:log10, line=(:purple), marker=(:purple), markerstrokecolor=:purple, title="CSMC treeheight, immortal=MAP, N=$N", xlabel="n", ylabel="average tree height /N")
 
-# plot output (ribbon shows 0.05 & 0.95 quantiles)
-#plot(nvals, meanall/N, ribbon=((lquant)/N,(uquant)/N), label="MAP+4SD", fill=:yellow, fillalpha=0.25, leg=:topleft, xaxis=:log10, line=(:yellow), marker=(:yellow), markerstrokecolor=:yellow, title="CSMC treeheight, N=$N, nrep=$nrep", xlabel="n", ylabel="tree height /N")
-plot(nvals, meanall, ribbon=(lquant,uquant), fill=:red, fillalpha=0.25, line=(:red), marker=(:red), markerstrokecolor=:red)
-
+#plot(nvals[1:9], meanall[1:9], xaxis=:log10, label="MAP+2SD", ribbon=(lquant[1:9],uquant[1:9]), fill=:red, fillalpha=0.25, line=(:red), marker=(:red), markerstrokecolor=:red)
+#plot!(nvals[1:9], meanall[1:9], label="MAP+2SD", ribbon=(lquant[1:9],uquant[1:9]), fill=:purple, fillalpha=0.25, line=(:purple), marker=(:purple), markerstrokecolor=:purple)
 
 #---- save results to file ----
-savefig("csmc_results12.pdf")
+#savefig("filter_vs_smooth_2.pdf")
 
 datetime = Dates.now()
 
-open("results12", "w") do f
-    write(f, "Simulation 12 for CSMC \n
+open("results16", "w") do f
+    write(f, "Simulation 16 for CSMC \n
         File written at $datetime \n
         OU process with delta=$delta and sigma=$sigma \n
         Immortal line = MAP + $nsd SD \n
@@ -240,12 +235,12 @@ open("results12", "w") do f
         $nvals \n
         Mean tree height/N:\n
         $meanall \n
-        SD of tree height/N:\n
-        $sdall \n
         Lower quantiles of tree height/N:\n
         $lquant \n
         Upper quantiles of tree height/N:\n
         $uquant \n
+        Number of runs hitting limit:\n
+        $noob \n
         Sampled observation sequence:\n
         $observations \n"
     )
