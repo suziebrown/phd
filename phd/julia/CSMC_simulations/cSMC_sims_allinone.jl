@@ -156,7 +156,7 @@ T = Int64(150*N) # number of generations/time steps
 observations = ousim(T, delta, sigma, false)
 imm = ourts(delta, sigma, observations)
 
-nsd = 2
+nsd = 0
 immpos = imm.mean + nsd*(imm.variance).^(0.5)
 
 ##--- subtree sampling
@@ -217,7 +217,7 @@ end
 # catching error of T being too small for N, i.e. reports no. of cases where treeheight was T
 println("number of cases hitting limit was ", sum(noob))
 
-#plot(nvals[1:9], meanall[1:9], xaxis=:log10, label="MAP+2SD", ribbon=(lquant[1:9],uquant[1:9]), fill=:red, fillalpha=0.25, line=(:red), marker=(:red), markerstrokecolor=:red)
+#plot(nvals[1:10], meanall[1:10], xaxis=:log10, label="MAP", ribbon=(lquant[1:10],uquant[1:10]), fill=:red, fillalpha=0.25, line=(:red), marker=(:red), markerstrokecolor=:red)
 #plot!(nvals[1:9], meanall[1:9], label="MAP+2SD", ribbon=(lquant[1:9],uquant[1:9]), fill=:purple, fillalpha=0.25, line=(:purple), marker=(:purple), markerstrokecolor=:purple)
 
 #---- save results to file ----
@@ -225,8 +225,8 @@ println("number of cases hitting limit was ", sum(noob))
 
 datetime = Dates.now()
 
-open("results16", "w") do f
-    write(f, "Simulation 16 for CSMC \n
+open("results17", "w") do f
+    write(f, "Simulation 17 for CSMC \n
         File written at $datetime \n
         OU process with delta=$delta and sigma=$sigma \n
         Immortal line = MAP + $nsd SD \n
