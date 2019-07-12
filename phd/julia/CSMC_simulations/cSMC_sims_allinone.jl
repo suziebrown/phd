@@ -156,7 +156,7 @@ T = Int64(150*N) # number of generations/time steps
 observations = ousim(T, delta, sigma, false)
 imm = ourts(delta, sigma, observations)
 
-nsd = 0
+nsd = 3
 immpos = imm.mean + nsd*(imm.variance).^(0.5)
 
 ##--- subtree sampling
@@ -225,8 +225,8 @@ println("number of cases hitting limit was ", sum(noob))
 
 datetime = Dates.now()
 
-open("results17", "w") do f
-    write(f, "Simulation 17 for CSMC \n
+open("results18", "w") do f
+    write(f, "Simulation 18 for CSMC \n
         File written at $datetime \n
         OU process with delta=$delta and sigma=$sigma \n
         Immortal line = MAP + $nsd SD \n
