@@ -1,0 +1,7 @@
+# ----- Experiment 1 -----
+#
+# This experiment involves plotting tree heights of conditionalSMC genealogies,
+# as the "plausibility" of the immortal line varies.
+#
+# It does not attempt to disentangle the effects of tree structure
+# from likelihood of sampling the immortal particle among the n sampled leaves

@@ -62,7 +62,11 @@ zerosd_lower = [0.0078125, 0.0361328, 0.0634277, 0.0673828, 0.0722656, 0.0751465
 twosd = [0.19666, 0.328717, 0.43217, 0.42248, 0.481, 0.48666, 0.508152, 0.530256, 0.526613, 0.505318]
 twosd_upper = [0.150684, 0.105713, 0.280176, 0.432275, 1.4625, 0.626221, 0.840869, 0.518994, 0.526074, 0.758936]
 twosd_lower = [0.00976563, 0.0478516, 0.0712402, 0.0956055, 0.125928, 0.135596, 0.157178, 0.15625, 0.159033, 0.159814]
-#threesd = [1331.69, 1959.96, 2967.38, 3164.86, 3278.85, 4246.1, 4097.17, 4489.82, 4871.32, 5202.34, 5850.78, 6302.09, 7287.7]
+#
+threesd = [0.322908, 0.429732, 0.620645, 0.637828, 0.909016, 0.91867, 1.07224, 1.47865, 1.83172, 2.3112]
+threesd_upper = [0.0724609, 0.828809, 0.277588, 0.257178, 3.16104, 4.49238, 0.25083, 2.75547, 0.468555, 2.3708]
+threesd_lower = [0.00878906, 0.046875, 0.0683594, 0.0761719, 0.0868164, 0.0908203, 0.0996094, 0.120898, 0.151172, 0.322021]
+#
 foursd = [0.295217, 0.482889, 1.03172, 1.58346, 1.44648, 2.83352, 4.35965, 6.76921, 12.8193, 24.7134]
 foursd_upper = [0.157666, 0.323926, 0.210889, 0.437744, 0.331445, 0.189062, 0.227393, 8.1377, 30.2178, 26.8226]
 foursd_lower = [0.00976563, 0.0428711, 0.0673828, 0.0742188, 0.0849121, 0.0986328, 0.0839355, 0.0888672, 0.105273, 1.94282]
@@ -81,6 +85,7 @@ plot!(nvals, fivesd, label="MAP+5SD", marker=:auto, markerstrokewidth=0, seriesc
 plot()
 plot!(nvals, zerosd, label="MAP", marker=:auto, markerstrokewidth=0, leg=:topleft, xaxis=:log10, seriescolor=mycolours[1], title="CSMC treeheight, N=1024", xlabel="n", ylabel="mean tree height /N")
 plot!(nvals[1:9], twosd[1:9], label="MAP+2SD", marker=:auto, markerstrokewidth=0, leg=:topleft, xaxis=:log10, seriescolor=mycolours[3], title="CSMC treeheight, N=1024", xlabel="n", ylabel="mean tree height /N")
+plot!(nvals, threesd, label="MAP+3SD", marker=:auto, markerstrokewidth=0, leg=:topleft, xaxis=:log10, seriescolor=mycolours[4], title="CSMC treeheight, N=1024", xlabel="n", ylabel="mean tree height /N")
 plot!(nvals[1:9], foursd[1:9], label="MAP+4SD", marker=:auto, markerstrokewidth=0, leg=:topleft, xaxis=:log10, seriescolor=mycolours[5], title="CSMC treeheight, N=1024", xlabel="n", ylabel="mean tree height /N")
 
 # with ribbons
@@ -88,6 +93,6 @@ plot()
 plot!(nvals, zerosd, ribbon=(zerosd_lower,zerosd_upper), label="MAP", marker=:auto, markerstrokewidth=0, leg=:topleft, xaxis=:log10, seriescolor=mycolours[1], title="CSMC treeheight, N=1024", xlabel="n", ylabel="mean tree height /N")
 plot!(nvals[1:9], twosd[1:9], ribbon=(twosd_lower[1:9],twosd_upper[1:9]), label="MAP+2SD", marker=:auto, markerstrokewidth=0, leg=:topleft, xaxis=:log10, seriescolor=mycolours[3], title="CSMC treeheight, N=1024", xlabel="n", ylabel="mean tree height /N")
 plot!(nvals[1:9], foursd[1:9], ribbon=(foursd_lower[1:9],foursd_upper[1:9]), label="MAP+4SD", marker=:auto, markerstrokewidth=0, leg=:topleft, xaxis=:log10, seriescolor=mycolours[5], title="CSMC treeheight, N=1024", xlabel="n", ylabel="mean tree height /N")
+plot!(nvals, threesd, ribbon=(threesd_lower,threesd_upper), label="MAP+3SD", marker=:auto, markerstrokewidth=0, leg=:topleft, xaxis=:log10, seriescolor=mycolours[4], title="CSMC treeheight, N=1024", xlabel="n", ylabel="mean tree height /N")
 
-
-#savefig("CSMC_treeheight_n500_A.pdf")
+#savefig("CSMC_treeheight_n500_B.pdf")
