@@ -1,0 +1,10 @@
+# ----- Experiment 2 -----
+#
+# This experiment builds on experiment 1 by somewhat isolating
+# the effects of the tree structure from the effects of randomly
+# sampling or not sampling the immortal particle among the leaves.
+#
+# For each series, there are two versions: one where the sample of
+# leaves does not include the immortal particle, and one where it
+# does. These are compared using the same conditionalSMC runs, but
+# with different leaf samples and hence different sub-genealogies.
