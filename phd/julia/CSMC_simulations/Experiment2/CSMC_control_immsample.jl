@@ -149,9 +149,9 @@ end
 # set constants
 delta = 0.1 # noise variance in AR(1) process
 sigma = 0.1 # noise s.d. in observations
-N = Int64(128) # total number of particles
+N = Int64(1024) # total number of particles
 T = Int64(150*N) # number of generations/time steps
-nvals = [2,4,8,16,32,64,127] # values of n to sample with (n=N not allowed)
+nvals = [2,4,8,16,32,64,128,256,512,1023] # values of n to sample with (n=N not allowed)
 nrep = 100 # number of repetitions for each n value
 
 # generate observations & immortal trajectory
@@ -159,7 +159,7 @@ observations = ousim(T, delta, sigma, false)
 imm = ourts(delta, sigma, observations)
 
 # set less-constants
-nsd = 3
+nsd = 1
 immpos = imm.mean + nsd*(imm.variance).^(0.5)
 
 # initialise local variables
@@ -221,17 +221,10 @@ end
 # catching error of T being too small for N, i.e. reports no. of cases where treeheight was T
 println("number of cases hitting limit was ", sum(noob0)+sum(noob1))
 
-#---- plot results ----
-plot()
-plot!(nvals, mean0, line=:dot, label="0", seriescolor=:purple)
-plot!(nvals, mean1, label="1", seriescolor=:purple)
-title!("N=128, nsd=3, nrep=100")
-#savefig("results_imm1.pdf")
-
+# save results to file
 datetime = Dates.now()
-
-open("results_imm1", "w") do f
-    write(f, "Simulation 1 for CSMC controlling for sampling of immortal particle \n
+open("results_imm4", "w") do f
+    write(f, "Simulation 4 for CSMC controlling for sampling of immortal particle \n
         File written at $datetime \n
         OU process with delta=$delta and sigma=$sigma \n
         Immortal line = MAP + $nsd SD \n
@@ -260,3 +253,10 @@ open("results_imm1", "w") do f
         $observations \n"
     )
 end
+
+#---- plot results ----
+plot()
+plot!(nvals, mean0, line=:dot, label="0", seriescolor=:purple)
+plot!(nvals, mean1, label="1", seriescolor=:purple)
+
+#savefig("results_imm1.pdf")
