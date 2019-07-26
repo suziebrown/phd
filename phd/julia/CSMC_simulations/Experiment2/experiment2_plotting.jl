@@ -60,6 +60,32 @@ plot!(nvals, mean2inc, ribbon=(l2inc, u2inc), label="MAP+2SD:inc", marker=mymark
 plot!(nvals, mean1exc, ribbon=(l1exc, u1exc), label="MAP+1SD:exc", marker=mymarkers[2], markerstrokewidth=0, seriescolor=2)
 plot!(nvals, mean1inc, ribbon=(l1inc, u1inc), label="MAP+1SD:inc", marker=mymarkers[2], markerstrokewidth=0, seriescolor=2, line=:dash)
 
+# separately for each nsd
+plot()
+plot!(nvals, mean4exc, ribbon=(l4exc, u4exc), label="MAP+4SD:exc", marker=mymarkers[5], markerstrokewidth=0, seriescolor=5,
+    xaxis=:log10, title="including/excluding immortal particle: N=$N, nrep=$nrep, nsd=4", titlefontsize=10,
+    xlabel="n", ylabel="tree height /N", leg=:topleft)
+plot!(nvals[noob4inc.==0], mean4inc[noob4inc.==0], ribbon=(l4inc[noob4inc.==0], u4inc[noob4inc.==0]), label="MAP+4SD:inc", marker=mymarkers[5], markerstrokewidth=0, seriescolor=5, line=:dash)
+
+plot()
+plot!(nvals, mean3exc, ribbon=(l3exc, u3exc), label="MAP+3SD:exc", marker=mymarkers[4], markerstrokewidth=0, seriescolor=4,
+    xaxis=:log10, title="including/excluding immortal particle: N=$N, nrep=$nrep, nsd=3", titlefontsize=10,
+    xlabel="n", ylabel="tree height /N", leg=:topleft)
+plot!(nvals, mean3inc, ribbon=(l3inc, u3inc), label="MAP+3SD:inc", marker=mymarkers[4], markerstrokewidth=0, seriescolor=4, line=:dash)
+
+plot()
+plot!(nvals, mean2exc, ribbon=(l2exc, u2exc), label="MAP+2SD:exc", marker=mymarkers[3], markerstrokewidth=0, seriescolor=3,
+    xaxis=:log10, title="including/excluding immortal particle: N=$N, nrep=$nrep, nsd=2", titlefontsize=10,
+    xlabel="n", ylabel="tree height /N", leg=:topleft)
+plot!(nvals, mean2inc, ribbon=(l2inc, u2inc), label="MAP+2SD:inc", marker=mymarkers[3], markerstrokewidth=0, seriescolor=3, line=:dash)
+
+plot()
+plot!(nvals, mean1exc, ribbon=(l1exc, u1exc), label="MAP+1SD:exc", marker=mymarkers[2], markerstrokewidth=0, seriescolor=2,
+    xaxis=:log10, title="including/excluding immortal particle: N=$N, nrep=$nrep, nsd=1", titlefontsize=10,
+    xlabel="n", ylabel="tree height /N", leg=:topleft)
+plot!(nvals, mean1inc, ribbon=(l1inc, u1inc), label="MAP+1SD:inc", marker=mymarkers[2], markerstrokewidth=0, seriescolor=2, line=:dash)
+
+
 # without ribbons
 plot()
 plot!(nvals, mean4exc, label="MAP+4SD:exc", marker=mymarkers[5], markerstrokewidth=0, seriescolor=5,
@@ -82,4 +108,4 @@ plot!(nvals, ratio3, label="MAP+3SD", marker=mymarkers[4], markerstrokewidth=0, 
 plot!(nvals, ratio2, label="MAP+2SD", marker=mymarkers[3], markerstrokewidth=0, seriescolor=3)
 plot!(nvals, ratio1, label="MAP+1SD", marker=mymarkers[2], markerstrokewidth=0, seriescolor=2)
 
-#savefig("CSMC_treeheight_incexcC.pdf")
+#savefig("CSMC_treeheight_incexc_nsd4.pdf")
