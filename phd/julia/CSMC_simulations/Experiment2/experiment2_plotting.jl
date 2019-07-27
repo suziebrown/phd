@@ -43,9 +43,19 @@ u1exc = [0.426416, 0.3896, 0.238525, 0.294336, 0.330957, 0.179932, 0.27124, 0.16
 noob1exc = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 mean1inc = [0.0974805, 0.142334, 0.151338, 0.159648, 0.189795, 0.191328, 0.16917, 0.1775, 0.177393, 0.178838]
 l1inc = [0.0097168, 0.0398926, 0.0644043, 0.0770996, 0.0691895, 0.0820313, 0.0692871, 0.0818848, 0.0839844, 0.0858887]
-u1inc =  [0.070166, 0.174414, 0.238525, 0.298047, 0.330957, 0.179932, 0.27124, 0.161914, 0.314697, 0.337988]
+u1inc = [0.070166, 0.174414, 0.238525, 0.298047, 0.330957, 0.179932, 0.27124, 0.161914, 0.314697, 0.337988]
 noob1inc = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 ratio1 = mean1inc./mean1exc
+
+mean0exc = [0.0783984, 0.105059, 0.130166, 0.135957, 0.148975, 0.147871, 0.139961, 0.14749, 0.135078, 0.145664]
+l0exc = [0.00581055, 0.0507324, 0.0672363, 0.067334, 0.0740234, 0.070166, 0.0751953, 0.0673828, 0.0770996, 0.0791016]
+u0exc = [0.0756348, 0.0957031, 0.176807, 0.232666, 0.215381, 0.302246, 0.20874, 0.315186, 0.278174, 0.223682]
+noob0exc = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+mean0inc = [0.0663281, 0.099541, 0.125176, 0.138516, 0.147256, 0.148887, 0.142764, 0.14583, 0.134961, 0.145664]
+l0inc = [0.00488281, 0.0378906, 0.0506348, 0.067334, 0.0702637, 0.0814453, 0.076123, 0.0673828, 0.0770996, 0.0791016]
+u0inc = [0.0632813, 0.0827148, 0.176807, 0.194629, 0.248096, 0.302246, 0.20874, 0.164893, 0.278174, 0.223682]
+noob0inc = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+ratio0 = mean0inc./mean0exc
 
 # with ribbons
 plot()
@@ -85,6 +95,12 @@ plot!(nvals, mean1exc, ribbon=(l1exc, u1exc), label="MAP+1SD:exc", marker=mymark
     xlabel="n", ylabel="tree height /N", leg=:topleft)
 plot!(nvals, mean1inc, ribbon=(l1inc, u1inc), label="MAP+1SD:inc", marker=mymarkers[2], markerstrokewidth=0, seriescolor=2, line=:dash)
 
+plot()
+plot!(nvals, mean0exc, ribbon=(l0exc, u0exc), label="MAP+0SD:exc", marker=mymarkers[1], markerstrokewidth=0, seriescolor=1,
+    xaxis=:log10, title="including/excluding immortal particle: N=$N, nrep=$nrep, nsd=1", titlefontsize=10,
+    xlabel="n", ylabel="tree height /N", leg=:topleft)
+plot!(nvals, mean0inc, ribbon=(l0inc, u0inc), label="MAP+0SD:inc", marker=mymarkers[1], markerstrokewidth=0, seriescolor=1, line=:dash)
+
 
 # without ribbons
 plot()
@@ -98,6 +114,8 @@ plot!(nvals, mean2exc, label="MAP+2SD:exc", marker=mymarkers[3], markerstrokewid
 plot!(nvals, mean2inc, label="MAP+2SD:inc", marker=mymarkers[3], markerstrokewidth=0, seriescolor=3, line=:dash)
 plot!(nvals, mean1exc, label="MAP+1SD:exc", marker=mymarkers[2], markerstrokewidth=0, seriescolor=2)
 plot!(nvals, mean1inc, label="MAP+1SD:inc", marker=mymarkers[2], markerstrokewidth=0, seriescolor=2, line=:dash)
+plot!(nvals, mean0exc, label="MAP+0SD:exc", marker=mymarkers[1], markerstrokewidth=0, seriescolor=1)
+plot!(nvals, mean0inc, label="MAP+0SD:inc", marker=mymarkers[1], markerstrokewidth=0, seriescolor=1, line=:dash)
 
 # plot ration of include:exclude
 plot()
@@ -107,5 +125,6 @@ plot!(nvals[noob4inc.==0], ratio4[noob4inc.==0], label="MAP+4SD", marker=mymarke
 plot!(nvals, ratio3, label="MAP+3SD", marker=mymarkers[4], markerstrokewidth=0, seriescolor=4)
 plot!(nvals, ratio2, label="MAP+2SD", marker=mymarkers[3], markerstrokewidth=0, seriescolor=3)
 plot!(nvals, ratio1, label="MAP+1SD", marker=mymarkers[2], markerstrokewidth=0, seriescolor=2)
+plot!(nvals, ratio0, label="MAP+0SD", marker=mymarkers[1], markerstrokewidth=0, seriescolor=1)
 
-#savefig("CSMC_treeheight_incexc_nsd4.pdf")
+#savefig("CSMC_treeheight_incexc_D.pdf")

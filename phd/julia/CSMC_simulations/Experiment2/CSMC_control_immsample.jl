@@ -159,7 +159,7 @@ observations = ousim(T, delta, sigma, false)
 imm = ourts(delta, sigma, observations)
 
 # set less-constants
-nsd = 1
+nsd = 0
 immpos = imm.mean + nsd*(imm.variance).^(0.5)
 
 # initialise local variables
@@ -223,8 +223,8 @@ println("number of cases hitting limit was ", sum(noob0)+sum(noob1))
 
 # save results to file
 datetime = Dates.now()
-open("results_imm4", "w") do f
-    write(f, "Simulation 4 for CSMC controlling for sampling of immortal particle \n
+open("results_imm5", "w") do f
+    write(f, "Simulation 5 for CSMC controlling for sampling of immortal particle \n
         File written at $datetime \n
         OU process with delta=$delta and sigma=$sigma \n
         Immortal line = MAP + $nsd SD \n
