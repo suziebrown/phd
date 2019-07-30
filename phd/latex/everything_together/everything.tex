@@ -30,7 +30,7 @@
 \usepackage{algorithmicx}
 \usepackage{algpseudocode}
 
-% maths
+% maths / theorems
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsthm}
@@ -44,6 +44,7 @@
 \newtheorem{defn}{Definition}
 
 % useful math symbols
+\newcommand{\N}{\mathbb{N}}
 \newcommand{\Prob}{\mathbb{P}}
 \newcommand{\E}{\mathbb{E}}
 \newcommand{\V}{\operatorname{Var}}
@@ -379,6 +380,41 @@ as $N\to\infty$.
 \end{description}
 \end{proof}
 
+\subsection{With the updated theorem assumptions...}
+Denote the vector of particle weights $\wt{1:N} = (\wt{1}, \wt{2}, \dots, \wt{N})$.
+Let $\vttilde{1:N} = (\vttilde{1}, \vttilde{2}, \dots, \vttilde{N})$ denote the associated offspring counts under conditional SMC. The offspring counts are distributed according to
+\begin{equation*}
+\vttilde{1:N} \eqdist (1,0,0,\dots, 0) + \Mn(N-1, \wt{1:N})
+\end{equation*}
+The standing assumption holds by exchangeability of the offspring assignments in Algorithm \ref{alg:condSMC}. There remains to show that there exists a deterministic sequence $(b_N)_{N\in\N}$ such that $\limNtoinfty b_N =0$ and
+\begin{equation}\label{eq:csmc_ratiobound}
+\frac{\frac{1}{(N)_3}{\sum_{i=1}^N \E[(\vttilde{i})_3 |\F}}{\frac{1}{(N)_2} \sum_{i=1}^N \E[(\vttilde{i})_2 |\F]} \leq b_N
+\end{equation}
+for all $N \in \N$. For the denominator, we find
+\begin{align*}
+{\sum_{i=1}^N \E[(\vttilde{i})_2 |\F}
+&=  \E\left[ (\vttilde{1})_2 |\F \right] + \sum_{i=2}^{N} \E\left[ (\vttilde{i})_2 |\F \right] \\
+&= (N-1)_2\E[(\wt{1})^2 |\F] + 2(N-1)\E[\wt{1} |\F] + \sum_{i=2}^{N} (N-1)_2\E[(\wt{i})^2 |\F] \\
+&= (N-1)_2 \sum_{i=1}^{N} \E[(\wt{i})^2 |\F] + 2(N-1) \E[\wt{1} |\F] 
+\end{align*}
+using that $(X+1)_2 = (X)_2 + 2(X)_1$ and the factorial moments of the Multinomial distribution \citep{mosimann1962}.
+For the numerator, we have
+\begin{align*}
+{\sum_{i=1}^N \E[(\vttilde{i})_3 |\F}
+&=  \E\left[ (\vttilde{1})_3 |\F \right] + \sum_{i=2}^{N} \E\left[ (\vttilde{i})_3 |\F \right] \\
+&= (N-1)_3\E[(\wt{1})^3 |\F] + 3(N-1)_2\E[(\wt{1})^2 |\F] + \sum_{i=2}^{N} (N-1)_3\E[(\wt{i})^3 |\F] \\
+&= (N-1)_3 \sum_{i=1}^{N} \E[(\wt{i})^3 |\F] + 3(N-1)_2 \E[(\wt{1})^2 |\F] 
+\end{align*}
+using similarly that $(X+1)_3 = (X)_3 + 3(X)_2$.
+Combining these expressions, the ratio in \eqref{eq:csmc_ratiobound} becomes
+\begin{align*}
+\frac{\frac{1}{(N)_3}{\sum_{i=1}^N \E[(\vttilde{i})_3 |\F}}{\frac{1}{(N)_2} \sum_{i=1}^N \E[(\vttilde{i})_2 |\F]}
+&= \frac{1}{N-2} \frac{(N-1)_3 \sum_{i=1}^{N} \E[(\wt{i})^3 |\F] + 3(N-1)_2 \E[(\wt{1})^2 |\F] }{(N-1)_2 \sum_{i=1}^{N} \E[(\wt{i})^2 |\F] + 2(N-1) \E[\wt{1} |\F]} \\
+&\leq \frac{1}{N-2} \frac{(N-1)_3 \sum_{i=1}^{N} \E[(\wt{i})^3 |\F]}{(N-1)_2 \sum_{i=1}^{N} \E[(\wt{i})^2 |\F]} + \frac{1}{N-2} \frac{3(N-1)_2 \E[(\wt{1})^2 |\F]}{(N-1)_2 \sum_{i=1}^{N} \E[(\wt{i})^2 |\F]} \\
+&\leq \frac{1}{N-2} \frac{(N-1)_3 \sum_{i=1}^{N} \E[(\wt{i})^3 |\F]}{(N-1)_2 \sum_{i=1}^{N} \E[(\wt{i})^2 |\F]} + \frac{1}{N-2} \frac{3(N-1)_2 \E[(\wt{1})^2 |\F]}{(N-1)_2 \E[(\wt{1})^2 |\F]} \\
+&<  \frac{1}{N-2} \frac{\sum_{i=1}^{N} \E[(\vt{i})_3 |\F]}{\sum_{i=1}^{N} \E[(\vt{i})_2 |\F]} + \frac{3}{N-2}
+\end{align*}
+where the last inequality comes from $\frac{(N-1)_3}{(N-1)_2} = N-3 \leq N-2 = \frac{(N)_3}{(N)_2}$.
 
 
 \section{Residual resampling}
