@@ -381,16 +381,60 @@ as $N\to\infty$.
 \end{proof}
 
 \subsection{With the updated theorem assumptions...}
-Denote the vector of particle weights $\wt{1:N} = (\wt{1}, \wt{2}, \dots, \wt{N})$.
-Let $\vttilde{1:N} = (\vttilde{1}, \vttilde{2}, \dots, \vttilde{N})$ denote the associated offspring counts under conditional SMC. The offspring counts are distributed according to
+\begin{thm}\label{thm:mn_newassns}
+Under the time scaling of \citet[Theorem 1]{koskela2018} and the conditions of \citet[Lemma 3]{koskela2018}, genealogies of SMC algorithms with multinomial resampling converge to Kingman's $n$-coalescent in the sense of finite-dimensional distributions as $N\to\infty$.
+\end{thm}
+
+\begin{proof}
+The standing assumption holds by exchangeability of the Multinomial distribution.
+We also need to show that there exists a deterministic sequence $(b_N)_{N\in\N}$ such that $\limNtoinfty b_N =0$ and
+\begin{equation}\label{eq:csmc_ratiobound}
+\frac{\frac{1}{(N)_3}{\sum_{i=1}^N \E[(\vt{i})_3 |\F}}{\frac{1}{(N)_2} \sum_{i=1}^N \E[(\vt{i})_2 |\F]} \leq b_N
+\end{equation}
+for all $N \in \N$. 
+For the denominator, we apply \citet[Lemma 3]{koskela2018} directly to obtain, for some constants $a\geq \varepsilon\geq0$,
 \begin{equation*}
-\vttilde{1:N} \eqdist (1,0,0,\dots, 0) + \Mn(N-1, \wt{1:N})
+\sum_{i=1}^N \E[(\vt{i})_2 |\F] \geq \frac{(N)_2 \varepsilon^4}{Na^4}
 \end{equation*}
-The standing assumption holds by exchangeability of the offspring assignments in Algorithm \ref{alg:condSMC}. There remains to show that there exists a deterministic sequence $(b_N)_{N\in\N}$ such that $\limNtoinfty b_N =0$ and
+For the numerator, we use that $\vt{i} \longrightarrow (\vt{i})_3$ is $\{i\}$-increasing, along with the argument from the proof of \citet[Lemma 3]{koskela2018}, to obtain
+\begin{equation*}
+\sum_{i=1}^N \E[(\vt{i})_3 |\F] \leq \sum_{i=1}^N  \E[(\tilde{a}_t^{(i)})_3]
+\end{equation*}
+where
+\begin{equation}
+\tilde{a}_t^{(j)} \sim^{iid} \Cat \left( \left(\frac{a}{\varepsilon}\right)^{\I{i=1}-\I{i\neq 1}}, \left(\frac{a}{\varepsilon}\right)^{\I{i=2}-\I{i\neq 2}}, \dots, \left(\frac{a}{\varepsilon}\right)^{\I{i=N}-\I{i\neq N}} \right)
+\end{equation}
+We can calculate the expectation for $\tilde{a}_t^{(1:N)}$, so we obtain
+\begin{align*}
+\sum_{i=1}^N \E[(\vt{i})_3 |\F] &\leq 
+(N)_3 \left( \frac{1}{(N-1)\varepsilon/a + a/\varepsilon} \right)^3 \left[ (N-1)\left(\frac{\varepsilon}{a}\right)^3 + \left(\frac{a}{\varepsilon}\right)^3 \right] \\
+&= \frac{(N)_3}{\left((N-1)\varepsilon/a + a/\varepsilon\right)^3}\left(a^6 + (N-1)\varepsilon^6\right) \\
+&\leq \frac{(N)_3}{N^3\varepsilon^6} (Na^6) = \frac{(N)_3}{N^2} \frac{a^6}{\varepsilon^6}
+\end{align*}
+where the last inequality follows because $a\geq \varepsilon$.
+Putting these together, we can bound the ratio above by
+\begin{equation}
+b_N := \frac{(N)_3 \frac{(N)_3}{N^2} \frac{a^6}{\varepsilon^6}}{(N)_2 \frac{(N)_2 \varepsilon^4}{Na^4}} = \frac{1}{N}\frac{a^{10}}{\varepsilon^{10}} \quad \Ntoinfty 0
+\end{equation}
+We conclude the result by applying Theorem ? [the KJJS Thm1 with updated assns].
+\end{proof}
+
+\begin{thm}\label{thm:CSMC_newassns}
+Under the time scaling of \citet[Theorem 1]{koskela2018} and the conditions of \citet[Lemma 3]{koskela2018}, genealogies of conditional SMC algorithms with multinomial resampling converge to Kingman's $n$-coalescent in the sense of finite-dimensional distributions as $N\to\infty$.
+\end{thm}
+
+\begin{proof}
+Denote the vector of particle weights $\wt{1:N} = (\wt{1}, \wt{2}, \dots, \wt{N})$.
+Let $\vttilde{1:N} = (\vttilde{1}, \vttilde{2}, \dots, \vttilde{N})$ denote the associated offspring counts under conditional SMC. Assuming WLOG that the immortal particle is particle 1, the offspring counts are distributed according to
+\begin{equation*}
+\vttilde{1:N} \mid \wt{1:N} \eqdist (1,0,0,\dots, 0) + \Mn(N-1, \wt{1:N})
+\end{equation*}
+The standing assumption holds by exchangeability of the offspring assignments in Algorithm \ref{alg:condSMC}. 
+As before, we need to show that
 \begin{equation}\label{eq:csmc_ratiobound}
 \frac{\frac{1}{(N)_3}{\sum_{i=1}^N \E[(\vttilde{i})_3 |\F}}{\frac{1}{(N)_2} \sum_{i=1}^N \E[(\vttilde{i})_2 |\F]} \leq b_N
 \end{equation}
-for all $N \in \N$. For the denominator, we find
+for some deterministic sequence $b_N \limNtoinfty 0$. For the denominator, we find
 \begin{align*}
 {\sum_{i=1}^N \E[(\vttilde{i})_2 |\F}
 &=  \E\left[ (\vttilde{1})_2 |\F \right] + \sum_{i=2}^{N} \E\left[ (\vttilde{i})_2 |\F \right] \\
@@ -414,7 +458,14 @@ Combining these expressions, the ratio in \eqref{eq:csmc_ratiobound} becomes
 &\leq \frac{1}{N-2} \frac{(N-1)_3 \sum_{i=1}^{N} \E[(\wt{i})^3 |\F]}{(N-1)_2 \sum_{i=1}^{N} \E[(\wt{i})^2 |\F]} + \frac{1}{N-2} \frac{3(N-1)_2 \E[(\wt{1})^2 |\F]}{(N-1)_2 \E[(\wt{1})^2 |\F]} \\
 &<  \frac{1}{N-2} \frac{\sum_{i=1}^{N} \E[(\vt{i})_3 |\F]}{\sum_{i=1}^{N} \E[(\vt{i})_2 |\F]} + \frac{3}{N-2}
 \end{align*}
-where the last inequality comes from $\frac{(N-1)_3}{(N-1)_2} = N-3 \leq N-2 = \frac{(N)_3}{(N)_2}$.
+where the last inequality comes from $\frac{(N-1)_3}{(N-1)_2} = N-3 < N-2 = \frac{(N)_3}{(N)_2}$.
+Then, using Theorem \ref{thm:mn_newassns}, we can bound this by
+\begin{equation*}
+b_N := \frac{1}{N}\frac{a^6}{\varepsilon^6} + \frac{3}{N-2} \quad \Ntoinfty 0
+\end{equation*}
+as required, where $a$ and $\varepsilon$ are constants defined in the conditions of \citet[Lemma 3]{koskela2018}.
+We conclude the result by applying Theorem ? [the KJJS Thm1 with updated assns].
+\end{proof}
 
 
 \section{Residual resampling}
