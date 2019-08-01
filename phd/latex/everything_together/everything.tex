@@ -819,5 +819,26 @@ For each $N$, any $w_i \in [0,1]$ falls into one of the above cases, so we concl
 \caption{$\Delta_i$ as a function of $w_i$ for various values of $N$. The function is piecewise quadratic between the points $w_i = k/N$. The limiting shape appears to be a parabola.}
 \end{figure}
 
+\subsection{Third moment \& required ratio}
+\begin{align*}
+\E[(\vt{i})_3 |\wt{1:N}] 
+&= (\flnw)_3(1-N\wt{i} + \flnw) + (\flnw +1)_3(N\wt{i} - \flnw) \\
+&= (\flnw)_2 \left\{ (\flnw -2)(1-N\wt{i} + \flnw) + (\flnw +1)(N\wt{i} - \flnw)\right\} \\
+&= (\flnw)_2 \left( 3N\wt{i} - 2\flnw -2 \right)
+\end{align*}
+So for the ratio we have
+\begin{align*}
+\frac{\frac{1}{(N)_3}\sum_{i=1}^N \E[(\vt{i})_3 |\F]}{\frac{1}{(N)_2} \sum_{i=1}^N \E[(\vt{i})_2 |\F]}  
+&= \frac{1}{N-2} \frac{\sum_{i=1}^N \E[(\flnw)_2(3N\wt{i} - 2\flnw -2) |\F]}{ \sum_{i=1}^N \E[\flnw(2N\wt{i} - \flnw -1) |\F]} \\
+&\leq \frac{1}{N-2} \frac{\sum_{i=1}^N \E[(\flnw)_2N\wt{i} |\F]}{ \sum_{i=1}^N \E[\flnw(N\wt{i} -1) |\F]} \\
+&\leq \frac{1}{N-2} \frac{\sum_{i=1}^N \E[(N\wt{i})_2 N\wt{i} |\F]}{ \sum_{i=1}^N \E[(N\wt{i} -1)^2 |\F]} \\
+&= \frac{1}{N-2} \frac{\sum_{i=1}^N \E[(N\wt{i})^3 |\F] - \sum_{i=1}^N \E[(N\wt{i})^2 |\F]}{ N^2 \sum_{i=1}^N \E[(\wt{i})^2 |\F] - 2N \sum_{i=1}^N \E[\wt{i} |\F] + \sum_{i=1}^N \E[1 |\F]} \\
+&= \frac{1}{N-2} \frac{N^3 \sum_{i=1}^N \E[(\wt{i})^3 |\F] - N^2 \sum_{i=1}^N \E[(\wt{i})^2 |\F]}{ N^2 \sum_{i=1}^N \E[(\wt{i})^2 |\F] - 2N  + N} \\
+&= \frac{1}{N-2} \frac{N^2 \sum_{i=1}^N \E[(\wt{i})^3 |\F] - N \sum_{i=1}^N \E[(\wt{i})^2 |\F]}{ N \sum_{i=1}^N \E[(\wt{i})^2 |\F] - 1} \\
+&= \frac{1}{N-2} \left[ \frac{N^2 \sum_{i=1}^N \E[(\wt{i})^3 |\F]}{ N \sum_{i=1}^N \E[(\wt{i})^2 |\F] - 1} - \frac{N \sum_{i=1}^N \E[(\wt{i})^2 |\F]}{ N \sum_{i=1}^N \E[(\wt{i})^2 |\F] - 1} \right] \\
+&= \frac{1}{N-2} \left[-1 + \frac{N^2 \sum_{i=1}^N \E[(\wt{i})^3 |\F] -1}{ N \sum_{i=1}^N \E[(\wt{i})^2 |\F] - 1} \right] \\
+\end{align*}
+Then, using that $\wt{i} =\Theta (N^{-1})$, the sum in the denominator is $O(N^{-1})$ and the sum in the numerator is $O(N^{-2})$. Hence the whole expression is $O(N^{-1})$ as $N\to\infty$, so we can find a suitable sequence $b_N \Ntoinfty 0$ to satisfy the conditions of Theorem (?) [the one with new assns].
+
 \bibliography{../smc.bib}
 \end{document}

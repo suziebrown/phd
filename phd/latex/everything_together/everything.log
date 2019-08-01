@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  31 JUL 2019 10:55
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  1 AUG 2019 13:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -900,9 +900,14 @@ File: ../randomised_rounding/plots/delta_cN_N100.pdf Graphic file (type pdf)
 Package pdftex.def Info: ../randomised_rounding/plots/delta_cN_N100.pdf  used o
 n input line 818.
 (pdftex.def)             Requested size: 155.77116pt x 103.8484pt.
- (./everything.bbl) [20 <../randomised_rounding/plots/delta_cN_N2.pdf> <../rand
-omised_rounding/plots/delta_cN_N10.pdf> <../randomised_rounding/plots/delta_cN_
-N100.pdf>] (./everything.aux)
+
+Overfull \hbox (1.84985pt too wide) detected at line 840
+[]
+ []
+
+[20 <../randomised_rounding/plots/delta_cN_N2.pdf> <../randomised_rounding/plot
+s/delta_cN_N10.pdf> <../randomised_rounding/plots/delta_cN_N100.pdf>]
+(./everything.bbl) [21] (./everything.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -940,10 +945,10 @@ ist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2018/texmf-dis
 t/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2018/texmf-dist
 /fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2018/texmf-
 dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
-Output written on everything.pdf (20 pages, 1658564 bytes).
+Output written on everything.pdf (21 pages, 1661993 bytes).
 PDF statistics:
- 201 PDF objects out of 1000 (max. 8388607)
- 145 compressed objects within 2 object streams
+ 204 PDF objects out of 1000 (max. 8388607)
+ 147 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  63 words of extra memory for PDF output out of 10000 (max. 10000000)
 
