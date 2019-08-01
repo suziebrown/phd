@@ -1,0 +1,120 @@
+\documentclass[fleqn]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=2.5cm]{geometry}
+
+% bibliography
+\usepackage[round, sort&compress]{natbib}
+\usepackage{har2nat}
+\bibliographystyle{agsm}
+
+% custom header/footer
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+\fancyhf{}
+\rfoot{\textsf{\thepage}}
+\lfoot{\textsf{Suzie Brown}}
+
+% miscellaneous formatting
+\usepackage{xcolor}
+\usepackage[font=small]{caption}
+\usepackage{subcaption}
+\usepackage{enumitem}
+
+% maths / theorems
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\newtheorem{thm}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{remark}{Remark}
+\newtheorem{corollary}{Corollary}
+\newtheorem{conj}{Conjecture}
+\newtheorem{prop}{Proposition}
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+
+% useful math symbols
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Prob}{\mathbb{P}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\V}{\operatorname{Var}}
+\newcommand{\eqdist}{\overset{d}{=}}
+\newcommand{\I}[1]{\mathbb{I}_{\{#1\}}}
+\newcommand{\Ntoinfty}{\overset{N\to\infty}{\longrightarrow}}
+\newcommand{\limNtoinfty}{\underset{N\to\infty}{\lim}}
+\newcommand\indep{\protect\mathpalette{\protect\independenT}{\perp}}
+\def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
+
+% distributions
+\newcommand{\Cat}{\operatorname{Categorical}}
+\newcommand{\Unif}{\operatorname{Uniform}}
+\newcommand{\Mn}{\operatorname{Multinomial}}
+\newcommand{\Bin}{\operatorname{Binomial}}
+
+% project-specific symbols
+\newcommand{\F}{\mathcal{F}_{t-1}}
+\newcommand{\vt}[2][t]{\nu_{#1}^{(#2)}}
+\newcommand{\wt}[2][t]{w_{#1}^{(#2)}}
+\newcommand{\wbar}[2][t]{\bar{w}_{#1}^{(#2)}}
+\newcommand{\vttilde}[2][t]{\tilde{\nu}_{#1}^{(#2)}}
+\newcommand{\flnw}{\lfloor N\wt{i} \rfloor }
+
+\title{Stochastic roundings --- coalescent proof}
+\author{Suzie Brown}
+\date{\today}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+
+\begin{defn}\label{defn:randround_1D}
+Let $X\geq0$. A random variable $Y: \mathbb{R}_+ \to \mathbb{N}$ is a \emph{stochastic rounding} of $X$ if $Y$ takes the values
+\begin{equation*}
+Y=
+\begin{cases}
+ \lfloor X \rfloor & \text{with probability } 1- X+ \lfloor X \rfloor \\
+  \lfloor X \rfloor +1 & \text{with probability } X- \lfloor X \rfloor 
+\end{cases}
+\end{equation*}
+\end{defn}
+
+\begin{thm}
+Under the time scaling of \citet[Theorem 1]{koskela2018} and the conditions of \citet[Lemma 3]{koskela2018}, genealogies of SMC algorithms with stochastic rounding-based resampling schemes converge to Kingman's $n$-coalescent in the sense of finite-dimensional distributions as $N\to\infty$.
+\end{thm}
+
+\begin{proof}
+We need to show that there exists a deterministic sequence $(b_N)_{N\in\N}$ such that $\limNtoinfty b_N =0$ and
+\begin{equation}\label{eq:mn_ratiobound}
+\frac{\frac{1}{(N)_3}\sum_{i=1}^N \E[(\vt{i})_3 |\F]}{\frac{1}{(N)_2} \sum_{i=1}^N \E[(\vt{i})_2 |\F]} \leq b_N
+\end{equation}
+for all $N \in \N$. 
+Directly applying Definition \ref{defn:randround_1D}, we find for the denominator
+\begin{align*}
+\E[(v_i)_2^{(r)} | w_i] &= \flnw (\flnw -1) (1 - Nw_i + \flnw) + (\flnw +1) \flnw (Nw_i - \flnw) \\
+&= \flnw \left( 2(Nw_i - \flnw) + \flnw -1 \right)
+\end{align*}
+For the numerator we find
+\begin{align*}
+\E[(\vt{i})_3 |\wt{1:N}] 
+&= (\flnw)_3(1-N\wt{i} + \flnw) + (\flnw +1)_3(N\wt{i} - \flnw) \\
+&= (\flnw)_2 \left\{ (\flnw -2)(1-N\wt{i} + \flnw) + (\flnw +1)(N\wt{i} - \flnw)\right\} \\
+&= (\flnw)_2 \left( 3N\wt{i} - 2\flnw -2 \right)
+\end{align*}
+So for the ratio we have
+\begin{align*}
+\frac{\frac{1}{(N)_3}\sum_{i=1}^N \E[(\vt{i})_3 |\F]}{\frac{1}{(N)_2} \sum_{i=1}^N \E[(\vt{i})_2 |\F]}  
+&= \frac{1}{N-2} \frac{\sum_{i=1}^N \E[(\flnw)_2(3N\wt{i} - 2\flnw -2) |\F]}{ \sum_{i=1}^N \E[\flnw(2N\wt{i} - \flnw -1) |\F]} \\
+&\leq \frac{1}{N-2} \frac{\sum_{i=1}^N \E[(\flnw)_2N\wt{i} |\F]}{ \sum_{i=1}^N \E[\flnw(N\wt{i} -1) |\F]} \qquad \textcolor{violet}{\text{since }N\wt{i} - \flnw \in [0,1)}\\
+&\leq \frac{1}{N-2} \frac{\sum_{i=1}^N \E[(N\wt{i})_2 N\wt{i} |\F]}{ \sum_{i=1}^N \E[(N\wt{i} -1)^2 |\F]} \qquad \textcolor{violet}{\text{since }N\wt{i} - \flnw \in [0,1)}\\
+&= \frac{1}{N-2} \frac{\sum_{i=1}^N \E[(N\wt{i})^3 |\F] - \sum_{i=1}^N \E[(N\wt{i})^2 |\F]}{ N^2 \sum_{i=1}^N \E[(\wt{i})^2 |\F] - 2N \sum_{i=1}^N \E[\wt{i} |\F] + \sum_{i=1}^N \E[1 |\F]} \\
+&= \frac{1}{N-2} \frac{N^3 \sum_{i=1}^N \E[(\wt{i})^3 |\F] - N^2 \sum_{i=1}^N \E[(\wt{i})^2 |\F]}{ N^2 \sum_{i=1}^N \E[(\wt{i})^2 |\F] - 2N  + N} \qquad \textcolor{violet}{\text{since }\sum \wt{i} =1}\\
+&= \frac{1}{N-2} \frac{N^2 \sum_{i=1}^N \E[(\wt{i})^3 |\F] - N \sum_{i=1}^N \E[(\wt{i})^2 |\F]}{ N \sum_{i=1}^N \E[(\wt{i})^2 |\F] - 1} \\
+&= \frac{1}{N-2} \left[ \frac{N^2 \sum_{i=1}^N \E[(\wt{i})^3 |\F]}{ N \sum_{i=1}^N \E[(\wt{i})^2 |\F] - 1} - \frac{N \sum_{i=1}^N \E[(\wt{i})^2 |\F]}{ N \sum_{i=1}^N \E[(\wt{i})^2 |\F] - 1} \right] \\
+&= \frac{1}{N-2} \left[-1 + \frac{N^2 \sum_{i=1}^N \E[(\wt{i})^3 |\F] -1}{ N \sum_{i=1}^N \E[(\wt{i})^2 |\F] - 1} \right] \\
+\end{align*}
+Then, using that $\wt{i} =\Theta (N^{-1})$, the sum in the denominator is $O(N^{-1})$ and the sum in the numerator is $O(N^{-2})$. Hence the whole expression is $O(N^{-1})$ as $N\to\infty$, so we can find a suitable sequence $b_N \Ntoinfty 0$ to satisfy the conditions of Theorem (?) [the one with new assns].
+\end{proof}
+
+\bibliography{../smc.bib}
+\end{document}
