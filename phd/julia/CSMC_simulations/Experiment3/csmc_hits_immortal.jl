@@ -169,19 +169,20 @@ nsd = 0
 immpos = imm.mean + nsd*(imm.variance).^(0.5)
 
 # initialise local variables
-heighttrue0 = Array{Int64, 1}(undef, nrep)
-heighttrue1 = Array{Int64, 1}(undef, nrep)
+heighttrue = Array{Int64, 1}(undef, nrep)
+hitimm = Array{Bool, 1}(undef, nrep)
 height1 = Array{Float64, 1}(undef, nrep)
 height0 = Array{Float64, 1}(undef, nrep)
 # initialise output variables
+nsam0 = Array{Float64, 1}(undef, length(nvals))
+nsam1 = Array{Float64, 1}(undef, length(nvals))
 mean0 = Array{Float64, 1}(undef, length(nvals))
 mean1 = Array{Float64, 1}(undef, length(nvals))
 lquant0 = Array{Float64, 1}(undef, length(nvals))
 uquant0 = Array{Float64, 1}(undef, length(nvals))
 lquant1 = Array{Float64, 1}(undef, length(nvals))
 uquant1 = Array{Float64, 1}(undef, length(nvals))
-noob0 = zeros(Int64, length(nvals))
-noob1 = zeros(Int64, length(nvals))
+noob = zeros(Int64, length(nvals))
 
 for j in 1:length(nvals)
     # report progress
@@ -192,33 +193,32 @@ for j in 1:length(nvals)
 
         # run csmc
         csmcout = csmc_fullstore(N, T, observations, ouinit, outransition, oupotential, immpos)
-        # identify immortal particle & remove from sequence
+        # sample a subtree not containing immortal leaf
         immpart = csmcout.immortal[T+1]
         nonimm = deleteat!(collect(1:N), immpart)
-        # sample the subtrees
-        leaves0 = sample(nonimm, nvals[j], replace=false)
-        leaves1 = sample(nonimm, nvals[j]-1, replace=false)
-        push!(leaves1, immpart) # add immortal particle into sample
+        leaves = sample(nonimm, nvals[j], replace=false)
         # calculate tree heights
-        heighttrue0[i] = mrca_fullstore(csmcout.parents, leaves0)
-        heighttrue1[i] = mrca_fullstore(csmcout.parents, leaves1)
+        mrcaout = mrca_fullstore(csmcout.parents, leaves, csmcout.immortal)
+        heighttrue[i] = mrcaout.mrca
+        hitimm[i] = mrcaout.hitimm
 
         # error catching
-        noob0[j] += (heighttrue0[i] >= T)
-        noob1[j] += (heighttrue1[i] >= T)
+        noob[j] += (heighttrue[i] >= T)
         # report progress (only works for nrep being multiple of 10)
         if (i*10) % nrep ==0
             println(100*i/nrep, "% of reps completed")
         end
     end
     # normalise by N
-    height0 = heighttrue0/N
-    height1 = heighttrue1/N
+    height0 = heighttrue[.!hitimm]/N
+    height1 = heighttrue[hitimm]/N
     # statistics for tree heights (immortal line excluded):
+    nsam0[j] = sum(.!hitimm)
     mean0[j] = mean(height0)
     lquant0[j] = quantile!(height0, 0.05)
     uquant0[j] = quantile!(height0, 0.95, sorted=true)
     # statistics for tree heights (immortal line included):
+    nsam1[j] = sum(hitimm)
     mean1[j] = mean(height1)
     lquant1[j] = quantile!(height1, 0.05)
     uquant1[j] = quantile!(height1, 0.95, sorted=true)
@@ -229,8 +229,8 @@ println("number of cases hitting limit was ", sum(noob0)+sum(noob1))
 
 # save results to file
 datetime = Dates.now()
-open("results_imm5", "w") do f
-    write(f, "Simulation 5 for CSMC controlling for sampling of immortal particle \n
+open("results_exp3_1", "w") do f
+    write(f, "Simulation 1 for CSMC controlling for coalescing with immortal line \n
         File written at $datetime \n
         OU process with delta=$delta and sigma=$sigma \n
         Immortal line = MAP + $nsd SD \n
