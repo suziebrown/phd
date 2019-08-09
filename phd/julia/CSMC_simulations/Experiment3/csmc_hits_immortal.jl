@@ -176,12 +176,12 @@ height0 = Array{Float64, 1}(undef, nrep)
 # initialise output variables
 nsam0 = Array{Float64, 1}(undef, length(nvals))
 nsam1 = Array{Float64, 1}(undef, length(nvals))
-mean0 = Array{Float64, 1}(undef, length(nvals))
-mean1 = Array{Float64, 1}(undef, length(nvals))
-lquant0 = Array{Float64, 1}(undef, length(nvals))
-uquant0 = Array{Float64, 1}(undef, length(nvals))
-lquant1 = Array{Float64, 1}(undef, length(nvals))
-uquant1 = Array{Float64, 1}(undef, length(nvals))
+mean0 = Array{Union{Missing, Float64}, 1}(undef, length(nvals))
+mean1 = Array{Union{Missing, Float64}, 1}(undef, length(nvals))
+lquant0 = Array{Union{Missing, Float64}, 1}(undef, length(nvals))
+uquant0 = Array{Union{Missing, Float64}, 1}(undef, length(nvals))
+lquant1 = Array{Union{Missing, Float64}, 1}(undef, length(nvals))
+uquant1 = Array{Union{Missing, Float64}, 1}(undef, length(nvals))
 noob = zeros(Int64, length(nvals))
 
 for j in 1:length(nvals)
@@ -198,7 +198,7 @@ for j in 1:length(nvals)
         nonimm = deleteat!(collect(1:N), immpart)
         leaves = sample(nonimm, nvals[j], replace=false)
         # calculate tree heights
-        mrcaout = mrca_fullstore(csmcout.parents, leaves, csmcout.immortal)
+        mrcaout = mrca_hitimm(csmcout.parents, leaves, csmcout.immortal)
         heighttrue[i] = mrcaout.mrca
         hitimm[i] = mrcaout.hitimm
 
@@ -214,47 +214,61 @@ for j in 1:length(nvals)
     height1 = heighttrue[hitimm]/N
     # statistics for tree heights (immortal line excluded):
     nsam0[j] = sum(.!hitimm)
-    mean0[j] = mean(height0)
-    lquant0[j] = quantile!(height0, 0.05)
-    uquant0[j] = quantile!(height0, 0.95, sorted=true)
+    if nsam0[j]>0
+        mean0[j] = mean(height0)
+        lquant0[j] = quantile!(height0, 0.05)
+        uquant0[j] = quantile!(height0, 0.95, sorted=true)
+    else
+        mean0[j] = missing
+        lquant0[j] = missing
+        uquant0[j] = missing
+    end
     # statistics for tree heights (immortal line included):
     nsam1[j] = sum(hitimm)
-    mean1[j] = mean(height1)
-    lquant1[j] = quantile!(height1, 0.05)
-    uquant1[j] = quantile!(height1, 0.95, sorted=true)
+    if nsam1[j]>0
+        mean1[j] = mean(height1)
+        lquant1[j] = quantile!(height1, 0.05)
+        uquant1[j] = quantile!(height1, 0.95, sorted=true)
+    else
+        mean1[j] = missing
+        lquant1[j] = missing
+        uquant1[j] = missing
+    end
 end
 
 # catching error of T being too small for N, i.e. reports no. of cases where treeheight was T
-println("number of cases hitting limit was ", sum(noob0)+sum(noob1))
+println("number of cases hitting limit was ", sum(noob))
 
 # save results to file
 datetime = Dates.now()
-open("results_exp3_1", "w") do f
-    write(f, "Simulation 1 for CSMC controlling for coalescing with immortal line \n
+open("results_exp3_6", "w") do f
+    write(f, "Simulation 6 for CSMC controlling for coalescing with immortal line \n
         File written at $datetime \n
         OU process with delta=$delta and sigma=$sigma \n
         Immortal line = MAP + $nsd SD \n
         T=$T, N=$N, reps per n =$nrep \n
         Values of n:\n
-        $nvals \n\n
-        ---Statistics excluding immortal particle---\n
+        $nvals \n
+        Number of runs hitting limit:\n
+        $noob \n\n
+        ---Samples not hitting immortal line---\n
+        Number of samples:\n
+        $nsam0 \n
         Mean tree height/N:\n
         $mean0 \n
         Lower quantiles of tree height/N:\n
         $lquant0 \n
         Upper quantiles of tree height/N:\n
         $uquant0 \n
-        Number of runs hitting limit:\n
-        $noob0 \n\n
-        ---Statistics including immortal particle---\n
+        ---Samples coalescing with immortal line---\n
+        Number of samples:\n
+        $nsam1 \n
         Mean tree height/N:\n
         $mean1 \n
         Lower quantiles of tree height/N:\n
         $lquant1 \n
         Upper quantiles of tree height/N:\n
         $uquant1 \n
-        Number of runs hitting limit:\n
-        $noob1 \n\n
         Sampled observation sequence:\n
         $observations \n"
     )
@@ -262,7 +276,14 @@ end
 
 #---- plot results ----
 plot()
-plot!(nvals, mean0, line=:dot, label="0", seriescolor=:purple)
+plot!(nvals, mean0, xaxis=:log10, line=:dot, label="0", seriescolor=:purple)
 plot!(nvals, mean1, label="1", seriescolor=:purple)
 
-#savefig("results_imm1.pdf")
+# proportion of samples coalescing with immortal line:
+plot(nvals, nsam1/nrep, ylims=(0,1), xaxis=:log10, label="MAP")
+plot!(nvals, nsam1/nrep, label="MAP")
+
+#savefig("proportion_coalescing_immortal.pdf")
+
+## NOte :: I accidentally generated new obs for nsd=1. I am using those going
+## forward, but the nsd=0 results are made with different observations.
