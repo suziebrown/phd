@@ -1,0 +1,94 @@
+%\documentclass[manuscript]{biometrika}
+\documentclass[lineno]{biometrika}
+
+\usepackage{amsmath}
+
+%% Please use the following statements for
+%% managing the text and math fonts for your papers:
+\usepackage{times}
+%\usepackage[cmbold]{mathtime}
+\usepackage{bm}
+\usepackage{natbib}
+
+\usepackage[plain,noend]{algorithm2e}
+
+\makeatletter
+\renewcommand{\algocf@captiontext}[2]{#1\algocf@typo. \AlCapFnt{}#2} % text of caption
+\renewcommand{\AlTitleFnt}[1]{#1\unskip}% default definition
+\def\@algocf@capt@plain{top}
+\renewcommand{\algocf@makecaption}[2]{%
+  \addtolength{\hsize}{\algomargin}%
+  \sbox\@tempboxa{\algocf@captiontext{#1}{#2}}%
+  \ifdim\wd\@tempboxa >\hsize%     % if caption is longer than a line
+    \hskip .5\algomargin%
+    \parbox[t]{\hsize}{\algocf@captiontext{#1}{#2}}% then caption is not centered
+  \else%
+    \global\@minipagefalse%
+    \hbox to\hsize{\box\@tempboxa}% else caption is centered
+  \fi%
+  \addtolength{\hsize}{-\algomargin}%
+}
+\makeatother
+
+%%% User-defined macros should be placed here, but keep them to a minimum.
+
+
+\addtolength\topmargin{35pt}
+\DeclareMathOperator{\Thetabb}{\mathcal{C}}
+
+\begin{document}
+
+\jname{Biometrika}
+%% The year, volume, and number are determined on publication
+\jyear{2018}
+\jvol{103}
+\jnum{1}
+%% The \doi{...} and \accessdate commands are used by the production team
+%\doi{10.1093/biomet/asm023}
+\accessdate{Advance Access publication on 31 July 2018}
+
+%% These dates are usually set by the production team
+\received{2 January 2017}
+\revised{1 April 2017}
+
+%% The left and right page headers are defined here:
+\markboth{S. Brown et~al.}{More SMC genealogies}
+
+%% Here are the title, author names and addresses
+\title{Some more things about SMC genealogies...}
+
+\author{S. BROWN}
+\affil{Department of Statistics, University of Warwick, Coventry CV4 7AL, U.K. \email{s.brown.18@warwick.ac.uk}}
+
+\author{P. JENKINS}
+\affil{Department of Statistics, University of Warwick, Coventry CV4 7AL, U.K.
+\email{p.jenkins@warwick.ac.uk}}
+
+\author{A. M. JOHANSEN}
+\affil{Department of Statistics, University of Warwick, Coventry CV4 7AL, U.K.
+\email{a.m.johansen@warwick.ac.uk}}
+
+\author{\and J. KOSKELA}
+\affil{Department of Statistics, University of Warwick, Coventry CV4 7AL, U.K. \email{j.koskela@warwick.ac.uk}}
+
+\maketitle
+
+\begin{abstract}
+
+\end{abstract}
+
+\begin{keywords}
+Blah; Blah; Blah
+\end{keywords}
+
+\section{Introduction}
+
+\section{The updated theorem...}
+
+\section{Stochastic roundings...}
+
+\section{CSMC...}
+
+\bibliographystyle{biometrika}
+\bibliography{../smc.bib}
+\end{document}
