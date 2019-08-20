@@ -1,0 +1,12 @@
+\begin{thebibliography}{1}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+
+\bibitem[{Koskela et~al.(2018)Koskela, Jenkins, Johansen \&
+  Span\`o}]{koskela2018}
+\textsc{Koskela, J.}, \textsc{Jenkins, P.~A.}, \textsc{Johansen, A.~M.} \&
+  \textsc{Span\`o, D.} (2018).
+\newblock Asymptotic genealogies of interacting particle systems with an
+  application to sequential {Monte} {Carlo}.
+\newblock \textit{arXiv preprint arXiv:1804.01811} .
+
+\end{thebibliography}
