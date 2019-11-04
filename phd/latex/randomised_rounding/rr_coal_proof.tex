@@ -116,5 +116,31 @@ So for the ratio we have
 Then, using that $\wt{i} =\Theta (N^{-1})$, the sum in the denominator is $O(N^{-1})$ and the sum in the numerator is $O(N^{-2})$. Hence the whole expression is $O(N^{-1})$ as $N\to\infty$, so we can find a suitable sequence $b_N \Ntoinfty 0$ to satisfy the conditions of Theorem (?) [the one with new assns].
 \end{proof}
 
+\textcolor{red}{The conclusion of the above proof is not rigorous... but we can use a simpler argument based on the bounded weights.}
+
+\begin{proof}
+Directly applying Definition \ref{defn:randround_1D}, we find firstly
+\begin{align*}
+\E[(v_i)_2^{(r)} | \wt{1:N}] &= \flnw (\flnw -1) (1 - Nw_i + \flnw) + (\flnw +1) \flnw (Nw_i - \flnw) \\
+&= \flnw \left( 2(Nw_i - \flnw) + \flnw -1 \right)
+\end{align*}
+In the same way,
+\begin{align*}
+\E[(\vt{i})_3 |\wt{1:N}] 
+&= (\flnw)_3(1-N\wt{i} + \flnw) + (\flnw +1)_3(N\wt{i} - \flnw) \\
+&= (\flnw)_2 \left\{ (\flnw -2)(1-N\wt{i} + \flnw) + (\flnw +1)(N\wt{i} - \flnw)\right\} \\
+&= (\flnw)_2 \left( 2N\wt{i} - \flnw -1 +  (N\wt{i} - \flnw -1) \right) \\
+&\leq (\flnw -1)\flnw \left( 2N\wt{i} - \flnw -1 \right).
+\end{align*}
+In the case where $\flnw \geq 1$, we therefore have
+\begin{align*}
+\E[(\vt{i})_3 |\wt{1:N}] 
+&\leq (\flnw -1) \E[(v_i)_2^{(r)} | \wt{1:N}] \\
+&\leq \E[(v_i)_2^{(r)} | \wt{1:N}] \left(\frac{a^4}{\varepsilon^4} - 1 \right)
+\end{align*}
+with constants $a$ and $\varepsilon$ as before.
+The case $\flnw < 1$ is trivial because then $\E[(\vt{i})_3 |\wt{1:N}] =0$ while $\E[(v_i)_2^{(r)} | \wt{1:N}] \geq 0$, so $b_N$ can be any non-negative sequence.
+\end{proof}
+
 \bibliography{../smc.bib}
 \end{document}
