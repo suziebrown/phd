@@ -67,7 +67,104 @@
 \end{frame}
 
 
-\begin{frame}{Resampling Schemes}{Definition}
+\begin{frame}{Outline}
+\begin{enumerate}
+\item Sequential Monte Carlo
+\item How to resample
+\item Properties of resampling schemes
+\item Link with genealogies
+\end{enumerate}
+
+%%% NOTES
+% if you were here two weeks ago Francesca gave an intro to SMC - mine will be quite different (motivational & vague)
+% genealogies is the part I'm primarily working on
+\end{frame}
+
+
+\begin{frame}{Sequential Monte Carlo}{Motivation}
+\begin{itemize}
+\item Want to approximate a sequence of target measures $(\eta_n)_{n\in\mathbb{N}}$
+\item Use a system of $N$ particles with dynamics `mimicking' the target
+\item Approximate the measures $\eta_n$ by (random) empirical measures $\eta_n^N$ consisting of atoms at the particle positions
+\end{itemize}
+
+%%% NOTES
+% at each time n, we have N particles (consisting of a position and weight)
+% draw a picture of continuous target vs. discrete approximation
+% can be a `good' estimator for expectations of test functions (good = consistent, CLT, etc.)
+\end{frame}
+
+
+\begin{frame}{Sequential Monte Carlo}{Illustration}
+\begin{center}
+\resizebox{0.95\textwidth}{!}{%
+\begin{tikzpicture}
+\filldraw[darkred] (0,0) circle (6pt);
+\filldraw[darkred] (0,1) circle (6pt);
+\filldraw[darkred] (0,1.5) circle (6pt);
+\filldraw[darkred] (0,2.2) circle (6pt);
+
+\draw[->] (0.4,2.2) -- (4.6,3);
+\draw[->] (0.4,1.5) -- (4.6,1.2);
+\draw[->] (0.4,1) -- (4.6,-0.9);
+\draw[->] (0.4,0) -- (4.6,0.3);
+
+\filldraw[darkred] (5,0.3) circle (6pt);
+\filldraw[darkred] (5,-0.9) circle (6pt);
+\filldraw[darkred] (5,1.2) circle (6pt);
+\filldraw[darkred] (5,3) circle (6pt);
+
+\draw[->] (5.5,3) -- (9.5,3);
+\draw[->] (5.5,1.2) -- (9.5,1.2);
+\draw[->] (5.5,-0.9) -- (9.5,-0.9);
+\draw[->] (5.5,0.3) -- (9.5,0.3);
+
+\filldraw[darkred] (10,0.3) circle (11pt);
+\filldraw[darkred] (10,-0.9) circle (4pt);
+\filldraw[darkred] (10,1.2) circle (7pt);
+\filldraw[darkred] (10,3) circle (2pt);
+
+\draw[->] (10.5,1.2) -- (14.6,1.2);
+\draw[->] (10.5,0.3) -- (14.6,0.3);
+\draw[->] (10.5,-0.9) -- (14.6,-0.9);
+\draw[->] (10.5,3) -- (14.6,3);
+
+\filldraw[darkred] (15.3,0.3) circle (6pt);
+\filldraw[darkred] (14.9,0.53) circle (6pt);
+\filldraw[darkred] (14.9,0.07) circle (6pt);
+\filldraw[darkred] (15,1.2) circle (6pt);
+
+\draw[darkred] (14.8,3.2) -- (15.2, 2.8);
+\draw[darkred] (14.8,2.8) -- (15.2, 3.2);
+\draw[darkred] (14.8,-0.7) -- (15.2, -1.1);
+\draw[darkred] (14.8,-1.1) -- (15.2, -0.7);
+
+\node at (2.5,3.6) {\footnotesize{propagate}};
+\node at (7.5,3.6) {\footnotesize{weight}};
+\node at (12.5,3.6) {\footnotesize{resample}};
+\end{tikzpicture}
+}
+\end{center}
+\end{frame}
+
+
+\begin{frame}{Resampling}{Motivation}
+\begin{itemize}
+\item Resampling is necessary to prevent \emph{weight degeneracy}
+\item But resampling causes \emph{ancestral degeneracy}
+\pause
+\item Strategy: resample in a way that minimises `unnecessary coalescences'
+\end{itemize}
+
+%%% NOTES
+% explain weight degeneracy: what would happen if no resampling, (exponential concentration of weights)
+% explain ancestral degeneracy: quantified by coalescing backwards, fewer distinct samples
+% both problems effectively limit the number of samples contributing to the estimator - need a trade-off
+% accepting that we can't do without resampling completely, let's see how we can do it in a smart way...
+\end{frame}
+
+
+\begin{frame}{Resampling}{Definition}
 %Let $\mathcal{S}_k$ denote the simplex on $k$ elements
 %\begin{equation}
 %\mathcal{S}_k := \left\{ (x_1, \dots, x_k) : x_i \geq 0, \sum x_i = 1 \right\}
@@ -359,6 +456,53 @@ a_i = \inf\left\{ k: \sum_{j=1}^{k} \wt{j} \geq U_i \right\}
 % 3. In this case the offspring counts are (1,0,2,1).
 \end{frame}
 
+
+\begin{frame}{Coalescence Probability}{Definition}
+The probability that a randomly chosen pair of particles at generation $t$ share a common ancestor at generation $(t-1)$
+\begin{equation*}
+c_N = \frac{1}{N(N-1)} \sum_{i=1}^N \vt{i}(\vt{i}-1)
+\end{equation*}
+
+%%% NOTES
+% N(N-1) is the number of pairs from which we choose uniformly
+% the sum is over all possible parents that could be a common ancestor for the pair
+% v_i(v_i-1) =0 if that parent had only one child, and is the number of ways this pair could be chosen from the i^th parent's offspring.
+\end{frame}
+
+
+\begin{frame}{Coalescence Probability}{Example}
+Consider the case where we have only two particles ($N=2$)
+\begin{equation*}
+c_2 = \frac{1}{2}\left[ \vt{1}(\vt{1}-1) + \vt{2}(\vt{2}-1)\right]
+\end{equation*}
+The expectation of $c_2$ conditional on knowing the weights $(\wt{1}, \wt{2})$ is
+\begin{align*}
+c_2 &= \frac{1}{2} \E[\vt{1}(\vt{1}-1) \mid \wt{1:2}] + \frac{1}{2} \E[\vt{2}(\vt{2}-1) \mid \wt{1:2}] \\
+&= \PR[\vt{1}=2 \mid \wt{1:2}] + \PR[\vt{2}=2 \mid \wt{1:2}]
+\end{align*}
+
+%%% NOTES
+% The only possible values of v_i are 0,1,2. 
+% If 0,1 then v_i(v_i-1)=0
+% If 2 then v_i(v_i-1)=2
+% write as E[ 2* I{v_i=2} |w] to get the last line.
+%
+% Multinomial: w_1^2 + w_2^2
+% Residual-mn: (2w_1 -1)I{w_1>0.5} + (2w_2 -1)I{w_2>0.5}
+\end{frame}
+
+
+\begin{frame}{Coalescence Probability}{Example}
+\centering
+\includegraphics[width=0.7\textwidth]{EcN_mn_res_n2.pdf}
+
+%%% NOTES
+% (N=2) For all weight vectors, coalescence rate is lower with residual-multinomial than with multinomial
+% Stratified & systematic resampling have the same curve as residual
+% More interesting in higher dimensions, but difficult to plot!
+% (Also proved dominance of res-mn over mn also for N=3 but no general-N proof yet)
+% NB: slow coalescence is good because we keep distinct samples for longer
+\end{frame}
 
 
 \begin{frame}[allowframebreaks]{References}
