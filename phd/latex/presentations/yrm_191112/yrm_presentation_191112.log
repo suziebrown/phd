@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  12 NOV 2019 12:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  12 NOV 2019 13:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1031,41 +1031,58 @@ thkerncmss.
 
 ] [35
 
-]
-Overfull \hbox (8.56316pt too wide) in paragraph at lines 614--614
- [][] 
- []
+] [36
 
-[36
+] [37
 
-]
-<eg_WF.pdf, id=260, 386.64452pt x 385.19911pt>
-File: eg_WF.pdf Graphic file (type pdf)
-<use eg_WF.pdf>
-Package pdftex.def Info: eg_WF.pdf  used on input line 631.
-(pdftex.def)             Requested size: 195.00348pt x 194.2742pt.
- [37
-
- <./eg_WF.pdf>] [38
+] [38
 
 ] [39
 
+] [40
+
 ]
-<EcN_mn_res_n2.pdf, id=288, 602.00911pt x 375.0813pt>
+Overfull \hbox (14.06857pt too wide) in paragraph at lines 631--631
+ [][] 
+ []
+
+[41
+
+]
+Overfull \hbox (14.06857pt too wide) in paragraph at lines 631--631
+ [][] 
+ []
+
+[42
+
+]
+<eg_WF.pdf, id=298, 386.64452pt x 385.19911pt>
+File: eg_WF.pdf Graphic file (type pdf)
+<use eg_WF.pdf>
+Package pdftex.def Info: eg_WF.pdf  used on input line 648.
+(pdftex.def)             Requested size: 195.00348pt x 194.2742pt.
+ [43
+
+ <./eg_WF.pdf>] [44
+
+] [45
+
+]
+<EcN_mn_res_n2.pdf, id=325, 602.00911pt x 375.0813pt>
 File: EcN_mn_res_n2.pdf Graphic file (type pdf)
 <use EcN_mn_res_n2.pdf>
-Package pdftex.def Info: EcN_mn_res_n2.pdf  used on input line 679.
+Package pdftex.def Info: EcN_mn_res_n2.pdf  used on input line 696.
 (pdftex.def)             Requested size: 303.3395pt x 188.9939pt.
- [40
+ [46
 
- <./EcN_mn_res_n2.pdf>] [41
+ <./EcN_mn_res_n2.pdf>] [47
 
-] [42
+] [48
 
-] [43
+] [49
 
 ]
-[44
+[50
 
 ]
 \tf@nav=\write6
@@ -1083,20 +1100,20 @@ Package bibentry Warning: You have used \nobibliography*
 (bibentry)                without a following \bibliography.
 (bibentry)                You may not be able to run BibTeX.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 707.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 707.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 720.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 720.
 (./yrm_presentation_191112.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 707.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 707.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 720.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 720.
 Package rerunfilecheck Info: File `yrm_presentation_191112.out' has not changed
 .
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 20651 strings out of 492649
- 406218 string characters out of 6129623
- 488354 words of memory out of 5000000
- 23975 multiletter control sequences out of 15000+600000
+ 20654 strings out of 492649
+ 405927 string characters out of 6129623
+ 488395 words of memory out of 5000000
+ 23966 multiletter control sequences out of 15000+600000
  18437 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  56i,15n,59p,817b,681s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1113,10 +1130,10 @@ local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/l
 ocal/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/loc
 al/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr
 /local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on yrm_presentation_191112.pdf (44 pages, 317004 bytes).
+Output written on yrm_presentation_191112.pdf (50 pages, 325250 bytes).
 PDF statistics:
- 392 PDF objects out of 1000 (max. 8388607)
- 312 compressed objects within 4 object streams
- 89 named destinations out of 1000 (max. 500000)
+ 431 PDF objects out of 1000 (max. 8388607)
+ 345 compressed objects within 4 object streams
+ 101 named destinations out of 1000 (max. 500000)
  77 words of extra memory for PDF output out of 10000 (max. 10000000)
 
