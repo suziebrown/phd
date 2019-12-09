@@ -1,0 +1,82 @@
+\documentclass[fleqn]{article}
+\usepackage[margin=2.5cm]{geometry}
+
+% custom header/footer
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+\fancyhf{}
+\rfoot{\textsf{\thepage}}
+\lfoot{\textsf{Suzie Brown}}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% useful math symbols
+\newcommand{\PR}{\mathbb{P}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\V}{\operatorname{Var}}
+\newcommand{\eqdist}{\overset{d}{=}}
+\newcommand{\I}[1]{\mathbb{I}\{#1\}}
+
+% distributions
+\newcommand{\Cat}{\operatorname{Categorical}}
+\newcommand{\Unif}{\operatorname{Uniform}}
+\newcommand{\Mn}{\operatorname{Multinomial}}
+\newcommand{\Bin}{\operatorname{Binomial}}
+
+% project-specific commands
+\newcommand{\F}{\mathcal{F}_{t-1}}
+\newcommand{\vt}[2][t]{v_{#1}^{(#2)}}
+\newcommand{\wt}[2][t]{w_{#1}^{(#2)}}
+\newcommand{\wbar}[2][t]{\bar{w}_{#1}^{(#2)}}
+\newcommand{\vttilde}[2][t]{\tilde{v}_{#1}^{(#2)}}
+\newcommand{\flnw}{\lfloor N\wt{i} \rfloor }
+
+\title{That conditioning argument...}
+\author{Suzie Brown}
+\date{\today}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+Note: time is labelled in reverse throughout this document.\\
+
+Let's take the conditioning set to be $\mathcal{H}_t = (\mathbf{X}_t, \mathbf{X}_{t-1}, \mathbf{w}_t, \mathbf{w}_{t-1})$. This set works as a separatrix between $\mathbf{a}_{t}$ and $\mathcal{F}_{t-1}$ as desired. It is different from the one used in (Koskela et al 2019) because we include $\mathbf{w}_t$ directly rather than its explicit expression in terms of $\mathbf{a}_{t+1}, \mathbf{X}_{t+1}, \mathbf{X}_t$ to simplify the notation.\\
+
+In each case, the choice of parent depends on two factors: the conditional probability of choosing that parent under the given resampling scheme, and the conditional ``probability'' of a particle moving from that parent's position at time $t$ to the offspring's position at time $t-1$. We see the contribution of these two factors in the following.
+
+\section*{Multinomial case}
+Under multinomial resampling, the parental indices $\mathbf{a}_t$ are conditionally independent given $\mathcal{H}_t$. The conditional law of each index is
+\begin{equation*}
+\PR [a_t^{(i)} = a_i \mid \mathcal{H}_t] \propto \wt{i} q_{t-1}(X_t^{(a_i)}, X_{t-1}^{(i)}).
+\end{equation*}
+Since the indices are all independent, their joint conditional law is
+\begin{equation*}
+\PR [\mathbf{a}_t = \mathbf{a} \mid \mathcal{H}_t] \propto \prod_{i=1}^N \wt{i} q_{t-1}(X_t^{(a_i)}, X_{t-1}^{(i)}).
+\end{equation*}
+
+\section*{Conditional SMC case}
+In conditional SMC with multinomial resampling, the parental indices are still independent, but we have to treat $i=1$ as a special case. We are assuming wlog that the immortal particle is labelled 1 in each generation. We have the following conditional law:
+%% typeset the below properly using cases...
+\begin{align*}
+&\PR [a_t^{(1)} = a_1 \mid \mathcal{H}_t] = \I{a_1=1}  & \\
+&\PR [a_t^{(i)} = a_i \mid \mathcal{H}_t] \propto \wt{i} q_{t-1}(X_t^{(a_i)}, X_{t-1}^{(i)}) & i=2,\dots,N .
+\end{align*}
+The joint conditional law is therefore
+\begin{equation*}
+\PR [\mathbf{a}_t = \mathbf{a} \mid \mathcal{H}_t] \propto \I{a_1 = 1} \prod_{i=2}^N \wt{i} q_{t-1}(X_t^{(a_i)}, X_{t-1}^{(i)}).
+\end{equation*}
+
+\section*{Stochastic rounding case}
+If we resample using a stochastic rounding, we lose the independence between parental indices. The set of valid assignments is much smaller, because each family size can vary by no more than one from its expected value.
+
+Defining the family sizes $\vt{i} := |\{ j : a_t^{(j)} = i \}|$ as functions of $\mathbf{a}_t$, we have the constraint $\vt{i} \in \{\flnw, \flnw +1\}$. This is encoded in the law of $\mathbf{a}_t$ via indicator functions. The joint conditional law is
+
+\begin{align*}
+\PR [\mathbf{a}_t = \mathbf{a} \mid \mathcal{H}_t] &\propto \prod_{i=1}^N \left[ \I{\vt{i} = \flnw}(1- N\wt{i} + \flnw) \right.\\
+&\qquad\qquad\qquad \left. + \I{\vt{i} = \flnw +1}(N\wt{i}-\flnw)\right] q_{t-1}(X_t^{(a_i)}, X_{t-1}^{(i)}).
+\end{align*}
+The dependence between parental indices is implicit in the references to $\vt{i}$, since it is a function of the whole vector $\mathbf{a}_t$.
+
+\end{document}
