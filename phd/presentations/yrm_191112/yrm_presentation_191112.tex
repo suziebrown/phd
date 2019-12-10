@@ -1,0 +1,720 @@
+\documentclass[aspectratio=169]{beamer}
+\usepackage[utf8]{inputenc}
+
+% design
+\usetheme{CambridgeUS}
+\usecolortheme{beaver}
+\setbeamertemplate{itemize items}[square]
+\usenavigationsymbolstemplate{\beamertemplatenavigationsymbolsempty}
+\definecolor{darkred}{rgb}{0.8,0,0}
+\setbeamertemplate{enumerate item}{\color{darkred}\insertenumlabel.}
+\setbeamertemplate{itemize item}{\color{darkred}$\blacktriangleright$}
+\setlength{\tabcolsep}{12pt}
+\setbeamercolor{block title}{fg=darkred}
+
+% bibliography
+%\usepackage[backend=biber, style=authortitle]{biblatex}
+\usepackage{natbib}
+\usepackage{har2nat}
+\bibliographystyle{unsrt}
+%\addbibresource{../../smc.bib}
+\usepackage{bibentry}
+\nobibliography*
+
+% tikz
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+% maths
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+
+% useful math symbols
+\newcommand{\PR}{\mathbb{P}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\V}{\operatorname{Var}}
+\newcommand{\eqdist}{\overset{d}{=}}
+\newcommand{\I}[1]{\mathbb{I}\{#1\}}
+\newcommand{\Ntoinfty}{\overset{N\to\infty}{\longrightarrow}}
+\newcommand{\limNtoinfty}{\underset{N\to\infty}{\lim}}
+\newcommand\indep{\protect\mathpalette{\protect\independenT}{\perp}}
+\def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
+
+% distributions
+\newcommand{\N}{\mathcal{N}}
+\newcommand{\Cat}{\operatorname{Categorical}}
+\newcommand{\Unif}{\operatorname{Uniform}}
+\newcommand{\Mn}{\operatorname{Multinomial}}
+\newcommand{\Bin}{\operatorname{Binomial}}
+
+% project-specific commands
+\newcommand{\F}{\mathcal{F}_{t-1}}
+%\newcommand{\vt}[2][t]{v_{#1}^{(#2)}}
+\newcommand{\vt}[1]{v_{#1}}
+%\newcommand{\wt}[2][t]{w_{#1}^{(#2)}}
+\newcommand{\wt}[1]{w_{#1}}
+%\newcommand{\wbar}[2][t]{\bar{w}_{#1}^{(#2)}}
+%\newcommand{\vttilde}[2][t]{\tilde{v}_{#1}^{(#2)}}
+
+\title[Resampling in SMC]{Resampling in Sequential Monte Carlo}
+\author{Suzie Brown}
+\date{12 November 2019} 
+
+\begin{document}
+\begin{frame}
+\maketitle
+\end{frame}
+
+
+\begin{frame}{Outline}
+\begin{enumerate}
+\item Introduction to sequential Monte Carlo
+\item How to resample
+\item Properties of resampling schemes
+\item Link with genealogies
+\end{enumerate}
+
+%%% NOTES
+% if you were here two weeks ago Francesca gave an intro to SMC - mine will be quite different (motivational & vague)
+% genealogies is the part I'm primarily working on
+\end{frame}
+
+
+\begin{frame}{Sequential Monte Carlo}{Motivation}
+\begin{itemize}
+\item Want to approximate a sequence of target measures $(\eta_t)_{t\in\mathbb{N}}$
+\item Use a system of $N$ particles with dynamics `mimicking' the target
+\item A `particle' consists of a position and a weight: $(x_t^{(i)}, w_t^{(i)}) = (x_i, w_i)$
+\item Approximate the measures $\eta_t$ by (random) empirical measures $\eta_t^N$ consisting of atoms at the particle positions
+\end{itemize}
+
+%%% NOTES
+% `position' is a point in the space on which \eta_n is defined
+% `weight' is a value in (0,1) s.t. the weights add to 1
+% I will suppress dependence on time t from notation where possible - everything can change from one time step to the next
+% draw a picture of continuous target vs. discrete approximation
+% can be a `good' estimator for expectations of test functions (good = consistent, CLT, etc.)
+\end{frame}
+
+
+\begin{frame}{Sequential Monte Carlo}{Illustration}
+\begin{center}
+\resizebox{0.95\textwidth}{!}{%
+\begin{tikzpicture}
+\filldraw[darkred] (0,0) circle (6pt);
+\filldraw[darkred] (0,1) circle (6pt);
+\filldraw[darkred] (0,1.5) circle (6pt);
+\filldraw[darkred] (0,2.2) circle (6pt);
+
+\draw[->] (0.4,2.2) -- (4.6,3);
+\draw[->] (0.4,1.5) -- (4.6,1.2);
+\draw[->] (0.4,1) -- (4.6,-0.9);
+\draw[->] (0.4,0) -- (4.6,0.3);
+
+\filldraw[darkred] (5,0.3) circle (6pt);
+\filldraw[darkred] (5,-0.9) circle (6pt);
+\filldraw[darkred] (5,1.2) circle (6pt);
+\filldraw[darkred] (5,3) circle (6pt);
+
+\draw[->] (5.5,3) -- (9.5,3);
+\draw[->] (5.5,1.2) -- (9.5,1.2);
+\draw[->] (5.5,-0.9) -- (9.5,-0.9);
+\draw[->] (5.5,0.3) -- (9.5,0.3);
+
+\filldraw[darkred] (10,0.3) circle (11pt);
+\filldraw[darkred] (10,-0.9) circle (4pt);
+\filldraw[darkred] (10,1.2) circle (7pt);
+\filldraw[darkred] (10,3) circle (2pt);
+
+\draw[->] (10.5,1.2) -- (14.6,1.2);
+\draw[->] (10.5,0.3) -- (14.6,0.3);
+\draw[->] (10.5,-0.9) -- (14.6,-0.9);
+\draw[->] (10.5,3) -- (14.6,3);
+
+\filldraw[darkred] (15.3,0.3) circle (6pt);
+\filldraw[darkred] (14.9,0.53) circle (6pt);
+\filldraw[darkred] (14.9,0.07) circle (6pt);
+\filldraw[darkred] (15,1.2) circle (6pt);
+
+\draw[darkred] (14.8,3.2) -- (15.2, 2.8);
+\draw[darkred] (14.8,2.8) -- (15.2, 3.2);
+\draw[darkred] (14.8,-0.7) -- (15.2, -1.1);
+\draw[darkred] (14.8,-1.1) -- (15.2, -0.7);
+
+\node at (2.5,3.6) {\footnotesize{propagate}};
+\node at (7.5,3.6) {\footnotesize{weight}};
+\node at (12.5,3.6) {\footnotesize{resample}};
+\end{tikzpicture}
+}
+\end{center}
+\end{frame}
+
+
+\begin{frame}{Resampling}{Motivation}
+\begin{itemize}
+\item Resampling is necessary to prevent \emph{weight degeneracy}
+\item But resampling causes \emph{ancestral degeneracy}
+\pause
+\item Strategy: resample in a way that minimises `unnecessary coalescences'
+\end{itemize}
+
+%%% NOTES
+% explain weight degeneracy: what would happen if no resampling, (exponential concentration of weights)
+% explain ancestral degeneracy: quantified by coalescing backwards, fewer distinct samples
+% both problems effectively limit the number of samples contributing to the estimator - need a trade-off
+% accepting that we can't do without resampling completely, let's see how we can do it in a smart way...
+\end{frame}
+
+
+\begin{frame}{Resampling}{Definition}
+%Let $\mathcal{S}_k$ denote the simplex on $k$ elements
+%\begin{equation}
+%\mathcal{S}_k := \left\{ (x_1, \dots, x_k) : x_i \geq 0, \sum x_i = 1 \right\}
+%\end{equation}
+%
+%We will call a map {\color{darkred}$\wt{1:N} \in \mathcal{S}_N \longrightarrow \vt{1:N} \in \mathbb{N}^N$} a \emph{resampling scheme} if it satisfies the following
+%\begin{itemize}
+%\item Number of particles is constant: $\sum_{i=1}^N \vt{i}(\wt{1:N}) = N$
+%\item Unbiased: $\E[\vt{i} \mid \wt{1:N}] = N\wt{i}$ for all $i$
+%\item After resampling, all weights are equal to $\frac{1}{N}$
+%\end{itemize}
+We will take valid resampling schemes to be those satisfying
+\begin{itemize}
+\item The total number of particles $N$ remains fixed
+\item The particles after resampling are equally weighted
+\item The scheme is unbiased: the expected number of offspring of particle $i$ is equal to $N\wt{i}$ for each $i$
+\end{itemize}
+
+%%% NOTES
+% 1. These conditions can be violated in certain ways without destroying the convergence properties of the SMC algorithm, but in practice such schemes are not used much.
+%%%
+\end{frame}
+
+
+\begin{frame}{Multinomial Resampling\footnote{Efron \& Tibshirani (1994) `An introduction to the bootstrap'}}{Definition}
+Parental indices $a_i \in \{1,\dots,N\}$:
+\begin{equation*}
+(a_{i} \mid \wt{1:N}) \overset{iid}{\sim} \Cat(1:N, \wt{1:N})
+\end{equation*}
+\pause
+Offspring numbers $\vt{i} \in \{0,\dots,N\}$ such that $\sum \vt{i} = N$:
+\begin{equation*}
+(\vt{1:N} \mid \wt{1:N}) \sim \Mn(N, \wt{1:N})
+\end{equation*}
+
+%%% NOTES
+% 1. Weight vectors in Categorical/Multinomial distributions are given up to a constant
+% 2. May not be the most efficient way, but one way to sample from the Categorical distribution is by inversion sampling. Useful for comparison with other resampling schemes.
+%%%
+\end{frame}
+
+
+\begin{frame}{Multinomial Resampling}{Inversion Sampling}
+Draw uniform random variables
+\begin{equation*}
+U_i \overset{iid}{\sim} \Unif (0,1); \qquad i=1,\dots,N
+\end{equation*}
+and determine the parental indices by inversion
+\begin{equation*}
+a_i = \inf\left\{ k: \sum_{j=1}^{k} \wt{j} \geq U_i \right\}
+\end{equation*}
+\end{frame}
+
+
+\begin{frame}{Multinomial Resampling}{Inversion Sampling}
+\begin{center}
+\begin{tikzpicture}
+%parallel lines
+\draw[thick] (0,0) -- (12,0);
+\draw (0,2) -- (12,2);
+% tick marks at ends
+\draw[thick] (0,0.1) --(0,-0.1);
+\draw[thick] (12,0.1) --(12,-0.1);
+\draw (0,2.1) --(0,1.9);
+\draw (12,2.1) --(12,1.9);
+% tick marks indicating weights
+\draw[thick] (0.28*12,0.1) --(0.28*12,-0.1);
+\draw[thick] (0.4*12,0.1) --(0.4*12,-0.1);
+\draw[thick] (0.91*12,0.1) --(0.91*12,-0.1);
+% weight labels
+\node at (0.28*6,-0.3) {$w_1$};
+\node at (0.28*12+0.12*6,-0.3) {$w_2$};
+\node at (0.4*12+0.51*6.,-0.3) {$w_3$};
+\node at (0.91*12+0.09*6,-0.3) {$w_4$};
+% endpoint labels
+\node at (-0.2,2) {$0$};
+\node at (12.2,2) {$1$};
+\pause
+% uniform points
+\filldraw[darkred] (10.94,2) circle (2pt) node[above] {$u_1$};
+\filldraw[darkred] (1.06,2) circle (2pt) node[above] {$u_2$};
+\filldraw[darkred] (8.82,2) circle (2pt) node[above] {$u_3$};
+\filldraw[darkred] (3.16,2) circle (2pt) node[above] {$u_4$};
+\pause
+% arrows from random points
+\draw[thick, darkred, ->] (10.94,2) -- (10.94,0);
+\draw[thick, darkred, ->] (1.06,2) -- (1.06,0);
+\draw[thick, darkred, ->] (8.82,2) -- (8.82,0);
+\draw[thick, darkred, ->] (3.16,2) -- (3.16,0);
+\end{tikzpicture}
+\end{center}
+
+%%% NOTES
+% 1. Use the weights to partition [0,1]
+% 2. Draw N i.i.d. Uniform[0,1] samples
+% 3. Number of points falling in each interval gives the offspring counts (2,0,1,1)
+%%%
+\end{frame}
+
+
+\begin{frame}{Residual Resampling\footnote{Liu \& Chen (1998) `Sequential Monte Carlo methods for dynamic systems'}\textsuperscript{,}\footnote{Whitley (1994) `A genetic algorithm tutorial'}}{Definition}
+\begin{enumerate}
+\item Deterministically assign $\lfloor N \wt{i} \rfloor$ offspring to particle $i$; i=1,\dots, N
+\item There are $R := N- \sum_{i=1}^N \lfloor N \wt{i} \rfloor$ offspring  still to be assigned
+\item Assign these randomly according to the residual weights $r_i := \frac{1}{R} (N\wt{i} - \lfloor N\wt{i} \rfloor)$
+\end{enumerate}
+
+%%% NOTES
+% 1. The deterministic part means high-weight (>1/N) particles are guaranteed to survive
+% 2. The random part can be done in various ways e.g. multinomial, stratified
+%%%
+\end{frame}
+
+
+\begin{frame}{Residual Resampling}{Illustration}
+\begin{tikzpicture}
+\node at (0,0) {$w_1=0.28$};
+\node at (0,-1) {$w_2=0.12$};
+\node at (0,-2) {$w_3=0.51$};
+\node at (0,-3) {$w_4=0.09$};
+\draw[thick, fill=black] (1,0.1) rectangle (1+0.28*10,-0.1);
+\draw[thick, fill=black] (1,0.1-1) rectangle (1+0.12*10,-0.1-1);
+\draw[thick, fill=black] (1,0.1-2) rectangle (1+0.51*10,-0.1-2);
+\draw[thick, fill=black] (1,0.1-3) rectangle (1+0.09*10,-0.1-3);
+\pause
+\draw[thick,fill=darkred] (1+0.03*10,0.1) rectangle
+node[above, color=darkred] {$\frac{1}{N}$} (1+0.28*10,-0.1);
+\draw[thick, fill=darkred] (1+0.01*10,0.1-2) rectangle 
+node[above, color=darkred] {$\frac{1}{N}$} (1+0.26*10,-0.1-2);
+\draw[thick, fill=darkred] (1+0.26*10,0.1-2) rectangle 
+node[above, color=darkred] {$\frac{1}{N}$} (1+0.51*10,-0.1-2);
+\pause
+\draw[thick, fill=darkred] (-1.3,0) circle (4pt);
+\draw[thick, fill=darkred] (-1.3,-2) circle (4pt);
+\draw[thick, fill=darkred] (-1.7,-2) circle (4pt);
+\end{tikzpicture}
+\end{frame}
+
+
+\begin{frame}{Residual Resampling}{Illustration}
+\begin{tikzpicture}
+\draw[thick, fill=darkred] (-1.3,0) circle (4pt);
+\draw[thick, fill=darkred] (-1.3,-2) circle (4pt);
+\draw[thick, fill=darkred] (-1.7,-2) circle (4pt);
+\node at (0,0) {$r_1 \propto 0.03$};
+\node at (0,-1) {$r_2 \propto 0.12$};
+\node at (0,-2) {$r_3 \propto 0.01$};
+\node at (0,-3) {$r_4 \propto 0.09$};
+\draw[thick, fill=black] (1,0.1) rectangle (1+0.03*10,-0.1);
+\draw[thick, fill=black] (1,0.1-1) rectangle (1+0.12*10,-0.1-1);
+\draw[thick, fill=black] (1,0.1-2) rectangle (1+0.01*10,-0.1-2);
+\draw[thick, fill=black] (1,0.1-3) rectangle (1+0.09*10,-0.1-3);
+\end{tikzpicture}
+\end{frame}
+
+
+\begin{frame}{Residual Resampling}{Illustration}
+\begin{tikzpicture}
+\draw[thick, fill=darkred] (-1.3,0) circle (4pt);
+\draw[thick, fill=darkred] (-1.3,-2) circle (4pt);
+\draw[thick, fill=darkred] (-1.7,-2) circle (4pt);
+\node at (0,0) {$r_1 = 0.12$};
+\node at (0,-1) {$r_2 = 0.48$};
+\node at (0,-2) {$r_3 = 0.04$};
+\node at (0,-3) {$r_4 = 0.36$};
+\draw[thick, fill=black] (1,0.1) rectangle (1+0.03*40,-0.1);
+\draw[thick, fill=black] (1,0.1-1) rectangle (1+0.12*40,-0.1-1);
+\draw[thick, fill=black] (1,0.1-2) rectangle (1+0.01*40,-0.1-2);
+\draw[thick, fill=black] (1,0.1-3) rectangle (1+0.09*40,-0.1-3);
+\end{tikzpicture}
+\end{frame}
+
+
+\begin{frame}{Residual Resampling}{Definition}
+If residuals are assigned using multinomial resampling, offspring counts are distributed
+\begin{equation*}
+\vt{1:N} \eqdist \lfloor N \wt{1:N} \rfloor +  \Mn(R, r_{1:N})
+\end{equation*}
+\end{frame}
+
+
+\begin{frame}{Stratified Resampling\footnote{Kitagawa (1996) `Monte Carlo filter and smoother for non-Gaussian nonlinear state space models'}}{Definition}
+Draw uniformly from each stratified interval
+\begin{equation*}
+U_i \sim \Unif \left(\frac{i-1}{N}, \frac{i}{N} \right); \qquad i=1,\dots,N
+\end{equation*}
+and determine the parental indices by inversion
+\begin{equation*}
+a_i = \inf\left\{ k: \sum_{j=1}^{k} \wt{j} \geq U_i \right\}
+\end{equation*}
+\end{frame}
+
+
+\begin{frame}{Stratified Resampling}{Inversion Sampling}
+\begin{center}
+\begin{tikzpicture}
+%parallel lines
+\draw[thick] (0,0) -- (12,0);
+\draw (0,2) -- (12,2);
+% tick marks at ends
+\draw[thick] (0,0.1) --(0,-0.1);
+\draw[thick] (12,0.1) --(12,-0.1);
+\draw (0,2.1) --(0,1.9);
+\draw (12,2.1) --(12,1.9);
+% tick marks indicating sampling intervals:
+\draw (3,2.1) --(3,1.9);
+\draw (6,2.1) --(6,1.9);
+\draw (9,2.1) --(9,1.9);
+% tick marks indicating weights
+\draw[thick] (0.28*12,0.1) --(0.28*12,-0.1);
+\draw[thick] (0.4*12,0.1) --(0.4*12,-0.1);
+\draw[thick] (0.91*12,0.1) --(0.91*12,-0.1);
+% weight labels
+\node at (0.28*6,-0.3) {$w_1$};
+\node at (0.28*12+0.12*6,-0.3) {$w_2$};
+\node at (0.4*12+0.51*6.,-0.3) {$w_3$};
+\node at (0.91*12+0.09*6,-0.3) {$w_4$};
+% endpoint labels
+\node at (-0.2,2) {$0$};
+\node at (12.2,2) {$1$};
+\pause
+% stratified points
+\filldraw[darkred] (2.735,2) circle (2pt) node[above] {$u_1$};
+\filldraw[darkred] (3.265,2) circle (2pt) node[above] {$u_2$};
+\filldraw[darkred] (8.205,2) circle (2pt) node[above] {$u_3$};
+\filldraw[darkred] (9.79,2) circle (2pt) node[above] {$u_4$};
+% arrows from random points
+\draw[thick, darkred, ->] (2.735,2) -- (2.735,0);
+\draw[thick, darkred, ->] (3.265,2) -- (3.265,0);
+\draw[thick, darkred, ->] (8.205,2) -- (8.205,0);
+\draw[thick, darkred, ->] (9.79,2) -- (9.79,0);
+\end{tikzpicture}
+\end{center}
+
+%%% NOTES
+% 1. Like in Multinomial resampling, but this time the Uniform random numbers are stratified, so there is exactly one in each interval [(i-1)/N, i/N]; i=1,...,N.
+% 2. Here I used the same U[0,1] seeds as in m/n but transformed them to the stratified intervals.
+% 3. In this example, we get offspring counts (2,0,2,0).
+%%%
+\end{frame}
+
+
+\begin{frame}{Systematic Resampling\footnote{Carpenter, Clifford \& Fearnhead (1999) `Improved particle filter for nonlinear problems'}\textsuperscript{,}\footnote{Whitley (1994) `A genetic algorithm tutorial'}}{Definition}
+Draw uniformly from $[0, \frac{1}{N}]$, and add multiples of $\frac{1}{N}$
+\begin{equation*}
+U_1 \sim \Unif \left(0, \frac{1}{N} \right)
+\end{equation*}
+\begin{equation*}
+U_i = U_1 + \frac{i-1}{N}; \qquad i=2,\dots,N
+\end{equation*}
+and determine the parental indices by inversion
+\begin{equation*}
+a_i = \inf\left\{ k: \sum_{j=1}^{k} \wt{j} \geq U_i \right\}
+\end{equation*}
+\end{frame}
+
+
+\begin{frame}{Systematic Resampling}{Inversion Sampling}
+\begin{center}
+\begin{tikzpicture}
+%parallel lines
+\draw[thick] (0,0) -- (12,0);
+\draw (0,2) -- (12,2);
+% tick marks at ends
+\draw[thick] (0,0.1) --(0,-0.1);
+\draw[thick] (12,0.1) --(12,-0.1);
+\draw (0,2.1) --(0,1.9);
+\draw (12,2.1) --(12,1.9);
+% tick marks indicating sampling intervals:
+\draw (3,2.1) --(3,1.9);
+\draw (6,2.1) --(6,1.9);
+\draw (9,2.1) --(9,1.9);
+% tick marks indicating weights
+\draw[thick] (0.28*12,0.1) --(0.28*12,-0.1);
+\draw[thick] (0.4*12,0.1) --(0.4*12,-0.1);
+\draw[thick] (0.91*12,0.1) --(0.91*12,-0.1);
+% weight labels
+\node at (0.28*6,-0.3) {$w_1$};
+\node at (0.28*12+0.12*6,-0.3) {$w_2$};
+\node at (0.4*12+0.51*6.,-0.3) {$w_3$};
+\node at (0.91*12+0.09*6,-0.3) {$w_4$};
+% endpoint labels
+\node at (-0.2,2) {$0$};
+\node at (12.2,2) {$1$};
+\pause
+% systematic points
+\filldraw[darkred] (2.735,2) circle (2pt) node[above] {$u_1$};
+\filldraw[darkred] (5.735,2) circle (2pt) node[above] {$u_2$};
+\filldraw[darkred] (8.735,2) circle (2pt) node[above] {$u_3$};
+\filldraw[darkred] (11.735,2) circle (2pt) node[above] {$u_4$};
+% arrows from random points
+\draw[thick, darkred, ->] (2.735,2) -- (2.735,0);
+\draw[thick, darkred, ->] (5.735,2) -- (5.735,0);
+\draw[thick, darkred, ->] (8.735,2) -- (8.735,0);
+\draw[thick, darkred, ->] (11.735,2) -- (11.735,0);
+\end{tikzpicture}
+\end{center}
+
+%%% NOTES
+% 1. Similar to stratified resampling, we ensure exactly one uniform point in each interval
+% 2. Here we use just one random seed which is transformed for each interval: u_1 in [0,1/N], then the rest obtained by adding multiples of 1/N.
+% 3. In this case the offspring counts are (1,0,2,1).
+\end{frame}
+
+
+\begin{frame}{Properties of Resampling Schemes}{Support of Offspring Counts}
+Suppose $\wt{i} \in \left[\frac{k}{N}, \frac{k+1}{N}\right]$.\\
+What are the possible values for $\vt{i}$?\\[10pt]
+\textbf{Multinomial:} $\vt{i} \in \{0,\dots, N\}$\\[5pt]
+\textbf{Residual:} $\vt{i} \in \{k,\dots, k+R\}$\\[5pt]
+\textbf{Stratified:} $\vt{i} \in \{k-1, k, k+1, k+2\}$\\[5pt]
+\textbf{Systematic:} $\vt{i} \in \{k, k+1\}$
+\end{frame}
+
+
+\begin{frame}{Properties of Resampling Schemes}{One-Step Variance}
+Consider variance of our estimator, conditional on the previous step:
+\begin{equation*}
+\V \left[ \frac{1}{N} \sum_{i=1}^N \varphi(X_t^{(i)}) \mid \mathcal{G}_{t-1} \right]
+\end{equation*}
+\pause
+In this sense we have\footnote{Douc, Capp\'e \& Moulines (2005) `Comparison of resampling schemes for particle filtering'}
+\begin{align*}
+\V[\text{stratified}] &\leq \V[\text{multinomial}] \\
+\V[\text{residual-stratified}] \leq \V[\text{residual-multinomial}] &\leq \V[\text{multinomial}]
+\end{align*}
+
+%%% NOTES
+% One-step: how much variance is introduced by one use of this resampling procedure?
+% Phi is some test function - with `nice' properties (cts, bounded, integrable?) that vary depending on what you want to prove...
+% G_n is the sigma-field generated by particles & weights up to time n
+\end{frame}
+
+
+\begin{frame}{Properties of Resampling Schemes}{Permutation Invariance}
+Stratified and systematic resampling are sensitive to the ordering of the particles.\\[10pt]
+\pause
+\begin{block}{Example}
+$N=6$\\
+$\wt{1:N} = \frac{1}{12}(3,3,2,2,1,1)$\\[7pt]
+Is it possible to sample offspring counts $\vt{i} = (1,1,1,1,1,1)$ ?\\[5pt]
+\pause
+Answer: it depends on the ordering!
+\end{block}
+%%% NOTES
+% Permutation invariance is not the same as exchangeability
+% Exchangeability can always be introduced by applying a random permutation to the offspring vector v_i
+% In this example, the two orderings give different distributions even if a random permutation is applied - there is still no way to sample (1,1,1,1,1,1) in the first ordering.
+%
+% Is this related to the ordering by positions conjecture by Kitagawa, proved by Gerber/Whiteley/Chopin ?
+\end{frame}
+
+
+\begin{frame}{Properties of Resampling Schemes}{Permutation Invariance}
+\centering
+\begin{tikzpicture}
+% middle line
+\draw (0,-1.5) -- (12,-1.5);
+\draw (0,-1.6) -- (0,-1.4);
+\draw (2,-1.6) -- (2,-1.4);
+\draw (4,-1.6) -- (4,-1.4);
+\draw (6,-1.6) -- (6,-1.4);
+\draw (8,-1.6) -- (8,-1.4);
+\draw (10,-1.6) -- (10,-1.4);
+\draw (12,-1.6) -- (12,-1.4);
+% middle line labels
+\node at (1,-1.25) {\footnotesize $\frac{1}{N}$};
+\node at (3,-1.25) {\footnotesize $\frac{1}{N}$};
+\node at (5,-1.25) {\footnotesize $\frac{1}{N}$};
+\node at (7,-1.25) {\footnotesize $\frac{1}{N}$};
+\node at (9,-1.25) {\footnotesize $\frac{1}{N}$};
+\node at (11,-1.25) {\footnotesize $\frac{1}{N}$};
+% vertical dotted lines
+\draw[dotted] (0,-3.5) -- (0,0.5);
+\draw[dotted] (2,-3.5) -- (2,0.5);
+\draw[dotted] (4,-3.5) -- (4,0.5);
+\draw[dotted] (6,-3.5) -- (6,0.5);
+\draw[dotted] (8,-3.5) -- (8,0.5);
+\draw[dotted] (10,-3.5) -- (10,0.5);
+\draw[dotted] (12,-3.5) -- (12,0.5);
+\pause
+% top line
+\draw[thick, darkred] (0,0) -- (12,0);
+\draw[thick, darkred] (0,0.1) -- (0,-0.1);
+\draw[thick, darkred] (3,0.1) -- (3,-0.1);
+\draw[thick, darkred] (6,0.1) -- (6,-0.1);
+\draw[thick, darkred] (8,0.1) -- (8,-0.1);
+\draw[thick, darkred] (10,0.1) -- (10,-0.1);
+\draw[thick, darkred] (11,0.1) -- (11,-0.1);
+\draw[thick, darkred] (12,0.1) -- (12,-0.1);
+% top line weight labels
+\node[darkred] at (1.5, 0.2) {$w_1$};
+\node[darkred] at (4.5, 0.2) {$w_2$};
+\node[darkred] at (7, 0.2) {$w_3$};
+\node[darkred] at (9, 0.2) {$w_4$};
+\node[darkred] at (10.5, 0.2) {$w_5$};
+\node[darkred] at (11.5, 0.2) {$w_6$};
+\pause
+% bottom line
+\draw[thick, darkred] (0,-3) -- (12,-3);
+\draw[thick, darkred] (0,-3.1) -- (0,-2.9);
+\draw[thick, darkred] (1,-3.1) -- (1,-2.9);
+\draw[thick, darkred] (4,-3.1) -- (4,-2.9);
+\draw[thick, darkred] (5,-3.1) -- (5,-2.9);
+\draw[thick, darkred] (8,-3.1) -- (8,-2.9);
+\draw[thick, darkred] (10,-3.1) -- (10,-2.9);
+\draw[thick, darkred] (12,-3.1) -- (12,-2.9);
+% bottom line weight labels
+\node[darkred] at (0.5, -3.2) {$w_5$};
+\node[darkred] at (2.5, -3.2) {$w_1$};
+\node[darkred] at (4.5, -3.2) {$w_6$};
+\node[darkred] at (6.5, -3.2) {$w_2$};
+\node[darkred] at (9, -3.2) {$w_3$};
+\node[darkred] at (11, -3.2) {$w_4$};
+\end{tikzpicture}
+\end{frame}
+
+
+\begin{frame}{Properties of Resampling Schemes}{Permutation Invariance}
+\begin{itemize}
+\item Kitagawa\footnote{Kitagawa (1996) `Monte Carlo filter and smoother for non-Gaussian nonlinear state space models'} suggested ordering the particles by their positions before resampling
+\item He ran an experiment suggesting that sorting reduces Monte Carlo variance
+\item This was later proved to be true\footnote{Gerber, Chopin \& Whiteley (2018) `Negative association, ordering and convergence of resampling methods'}
+\item Sorting by position could be a sort of proxy for sorting by weight
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Properties of Resampling Schemes}{Degeneracy under Equal Weights}
+\begin{itemize}
+\item Suppose all of the weights are multiples of $\frac{1}{N}$. 
+\pause
+\item Then residual, stratified and systematic resampling all yield purely deterministic assignments of offspring.
+\pause
+\item In particular, if $\wt{1:N} = \frac{1}{N}(1,\dots, 1)$, these schemes do not resample at all (assigning exactly one offspring to each particle).
+\pause
+\item Under reasonable conditions, this situation has zero measure.
+\end{itemize}
+
+%%% NOTES
+% The roulette wheel specification of stratified resampling actually avoids this - can have +/-1 offspring from mean still.
+\end{frame}
+
+
+\begin{frame}{Properties of Resampling Schemes}{Summary}
+\centering
+\begin{tabular}{c|c c c c}
+& $\sup|\vt{i} - N\wt{i}|$ & low variance & \shortstack{invariant under \\ permutations} & \shortstack{degenerate if \\ $\wt{1:N} \propto (1,\dots, 1)$} \\
+\hline
+multinomial & $N$ & $\times$ & \checkmark & $\times$ \\
+residual & $R$ & \checkmark & \checkmark & \checkmark \\
+stratified & 2 & \checkmark & $\times$ & \checkmark \\
+systematic & 1 & $\times$ & $\times$ & \checkmark \\
+\pause
+residual-strat & 1 & \checkmark & $\times$ & \checkmark
+\end{tabular}
+\end{frame}
+
+
+\begin{frame}{Resampling and Genealogies}
+\begin{columns}
+\begin{column}{0.45\textwidth}
+\begin{itemize}
+\item Resampling creates a genealogy (family tree) of particles
+\item Properties of the genealogy affect performance of the SMC algorithm
+\item Different resampling schemes give different forms of genealogies
+\item Basic quantity for analysing genealogies is the pair coalescence probability
+\end{itemize}
+\end{column}
+\begin{column}{0.45\textwidth}
+\includegraphics[width=\textwidth]{eg_WF.pdf}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Coalescence Probability}{Definition}
+The probability that a randomly chosen pair of particles at generation $t$ share a common ancestor at generation $(t-1)$
+\begin{equation*}
+c_N = \frac{1}{N(N-1)} \sum_{i=1}^N \vt{i}(\vt{i}-1)
+\end{equation*}
+
+%%% NOTES
+% N(N-1) is the number of pairs from which we choose uniformly
+% the sum is over all possible parents that could be a common ancestor for the pair
+% v_i(v_i-1) =0 if that parent had only one child, and is the number of ways this pair could be chosen from the i^th parent's offspring.
+\end{frame}
+
+
+\begin{frame}{Coalescence Probability}{Example}
+Consider the case where we have only two particles ($N=2$)
+\begin{equation*}
+c_2 = \frac{1}{2}\left[ \vt{1}(\vt{1}-1) + \vt{2}(\vt{2}-1)\right]
+\end{equation*}
+The expectation of $c_2$ conditional on knowing the weights $(\wt{1}, \wt{2})$ is
+\begin{align*}
+c_2 &= \frac{1}{2} \E[\vt{1}(\vt{1}-1) \mid \wt{1:2}] + \frac{1}{2} \E[\vt{2}(\vt{2}-1) \mid \wt{1:2}] \\
+&= \PR[\vt{1}=2 \mid \wt{1:2}] + \PR[\vt{2}=2 \mid \wt{1:2}]
+\end{align*}
+
+%%% NOTES
+% The only possible values of v_i are 0,1,2. 
+% If 0,1 then v_i(v_i-1)=0
+% If 2 then v_i(v_i-1)=2
+% write as E[ 2* I{v_i=2} |w] to get the last line.
+%
+% Multinomial: w_1^2 + w_2^2
+% Residual-mn: (2w_1 -1)I{w_1>0.5} + (2w_2 -1)I{w_2>0.5}
+\end{frame}
+
+
+\begin{frame}{Coalescence Probability}{Example}
+\centering
+\includegraphics[width=0.7\textwidth]{EcN_mn_res_n2.pdf}
+
+%%% NOTES
+% (N=2) For all weight vectors, coalescence rate is lower with residual-multinomial than with multinomial
+% Stratified & systematic resampling have the same curve as residual
+% More interesting in higher dimensions, but difficult to plot!
+% (Also proved dominance of res-mn over mn also for N=3 but no general-N proof yet)
+% NB: slow coalescence is good because we keep distinct samples for longer
+\end{frame}
+
+
+\begin{frame}
+\begin{itemize}
+\item We proved that asymptotically (as $N\to\infty$) residual resampling dominates multinomial in terms of expected coalescence probability
+\item We also proved it in cases $N=2$ and $N=3$
+\pause
+\item We conjecture that it holds for all finite $N$ too
+\item It just remains to prove it for $N=4,5,\dots$
+\pause
+\item We proved that systematic resampling (and some others) dominate multinomial in expected coalescence probability, for all $N$.
+\end{itemize}
+%%% NOTES 
+% Everything is conditional on weights
+% Probability -> rate in asymptotic regime
+% "Some others" means all stochastic-rounding-based schemes, for those who know what that means
+\end{frame}
+
+
+\begin{frame}
+\centering
+THE END
+\end{frame}
+\end{document}
