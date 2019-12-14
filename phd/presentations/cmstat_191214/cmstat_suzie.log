@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  14 DEC 2019 10:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  14 DEC 2019 12:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**yrm_presentation_191112.tex
-(./yrm_presentation_191112.tex
+**cmstat_suzie.tex
+(./cmstat_suzie.tex
 LaTeX2e <2018-04-01> patch level 2
 Babel <3.18> and hyphenation patterns for 84 language(s) loaded.
 (/usr/local/texlive/2018/texmf-dist/tex/latex/beamer/beamer.cls
@@ -683,7 +683,7 @@ Package: suffix 2006/07/15 1.5a Variant command support
 (/usr/local/texlive/2018/texmf-dist/tex/latex/natbib/bibentry.sty
 Package: bibentry 2007/10/30 1.5 (PWD)
 )
-(./yrm_presentation_191112.bbl)
+No file cmstat_suzie.bbl.
 (/usr/local/texlive/2018/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
 (/usr/local/texlive/2018/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
 Package: pgf 2015/08/07 v3.0.1a (rcs-revision 1.15)
@@ -764,23 +764,28 @@ s/tikzlibrarypositioning.code.tex
 File: tikzlibrarypositioning.code.tex 2008/10/06 v3.0.1a (rcs-revision 1.7)
 )
 \c@defn=\count165
- (./yrm_presentation_191112.aux)
-\openout1 = `yrm_presentation_191112.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 67.
-LaTeX Font Info:    ... okay on input line 67.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 67.
-LaTeX Font Info:    ... okay on input line 67.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 67.
-LaTeX Font Info:    ... okay on input line 67.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 67.
-LaTeX Font Info:    ... okay on input line 67.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 67.
-LaTeX Font Info:    ... okay on input line 67.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 67.
-LaTeX Font Info:    ... okay on input line 67.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 67.
-LaTeX Font Info:    ... okay on input line 67.
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\\' on input line 65.
+
+(./cmstat_suzie.aux)
+\openout1 = `cmstat_suzie.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -848,7 +853,7 @@ e
 ))
 ABD: EveryShipout initializing macros
 \AtBeginShipoutBox=\box59
-Package hyperref Info: Link coloring OFF on input line 67.
+Package hyperref Info: Link coloring OFF on input line 68.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -858,66 +863,66 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count172
 )
-LaTeX Info: Redefining \ref on input line 67.
-LaTeX Info: Redefining \pageref on input line 67.
-LaTeX Info: Redefining \nameref on input line 67.
+LaTeX Info: Redefining \ref on input line 68.
+LaTeX Info: Redefining \pageref on input line 68.
+LaTeX Info: Redefining \nameref on input line 68.
 
-(./yrm_presentation_191112.out) (./yrm_presentation_191112.out)
+(./cmstat_suzie.out) (./cmstat_suzie.out)
 \@outlinefile=\write5
-\openout5 = `yrm_presentation_191112.out'.
+\openout5 = `cmstat_suzie.out'.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 67.
+(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 68.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/bx/n on input line 67.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/bx/n on input line 68.
 \symnumbers=\mathgroup6
 \sympureletters=\mathgroup7
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/cmr/m/n on input line 67.
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 67.
+(Font)                  OT1/cmss/m/n --> OT1/cmr/m/n on input line 68.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 68.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/bx/n on input line 67.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/bx/n on input line 68.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/bx/n on input line 67.
-LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 67.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/bx/n on input line 68.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 68.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/m/n on input line 67.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/m/n on input line 68.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> OT1/cmss/m/n on input line 67.
-LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 67.
+(Font)                  OT1/cmss/bx/n --> OT1/cmss/m/n on input line 68.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 68.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> OT1/cmss/m/it on input line 67.
+(Font)                  OT1/cmr/m/it --> OT1/cmss/m/it on input line 68.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> OT1/cmss/m/it on input line 67.
-LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 67.
+(Font)                  OT1/cmr/bx/it --> OT1/cmss/m/it on input line 68.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 68.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 67.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 68.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 67.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 68.
 LaTeX Font Info:    Overwriting symbol font `numbers' in version `bold'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/bx/n on input line 67.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/bx/n on input line 68.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  OT1/cmss/m/it --> OT1/cmss/bx/it on input line 67.
+(Font)                  OT1/cmss/m/it --> OT1/cmss/bx/it on input line 68.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
-(Font)                  OT1/cmss/bx/n --> OT1/cmr/bx/n on input line 67.
+(Font)                  OT1/cmss/bx/n --> OT1/cmr/bx/n on input line 68.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> OT1/cmss/bx/n on input line 67.
+(Font)                  OT1/cmss/bx/n --> OT1/cmss/bx/n on input line 68.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/bx/n on input line 67.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/bx/n on input line 68.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmss/m/it --> OT1/cmss/bx/it on input line 67.
+(Font)                  OT1/cmss/m/it --> OT1/cmss/bx/it on input line 68.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/bx/n on input line 67.
-LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 67.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/bx/n on input line 68.
+LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 68.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `normal'
 (Font)                  OT1/cmss/m/it --> OT1/mathkerncmss/m/sl on input line 6
-7.
+8.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
 (Font)                  OT1/cmss/bx/it --> OT1/mathkerncmss/m/sl on input line 
-67.
+68.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
 (Font)                  OT1/mathkerncmss/m/sl --> OT1/mathkerncmss/bx/sl on inp
-ut line 67.
+ut line 68.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/translator/translator-basic-dicti
 onary-English.dict
@@ -942,28 +947,28 @@ Dictionary: translator-numbers-dictionary, Language: English
 (/usr/local/texlive/2018/texmf-dist/tex/latex/translator/translator-theorem-dic
 tionary-English.dict
 Dictionary: translator-theorem-dictionary, Language: English 
-) (./yrm_presentation_191112.nav) [1
+) (./cmstat_suzie.nav) [1
 
-{/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2
-
-]
-LaTeX Font Info:    Try loading font information for U+msa on input line 101.
+{/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+LaTeX Font Info:    Try loading font information for U+msa on input line 162.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 101.
+LaTeX Font Info:    Try loading font information for U+msb on input line 162.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Try loading font information for OT1+mathkerncmss on input 
-line 101.
+line 162.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/sansmathaccent/ot1mathkerncmss.fd
 File: ot1mathkerncmss.fd 2013/03/27 Fontinst v1.933 font definitions for OT1/ma
 thkerncmss.
-) [3
+) [2
+
+] [3
 
 ] [4
 
@@ -993,10 +998,10 @@ thkerncmss.
 
 ] [17
 
-] [18
-
 ]
-[19
+[18
+
+] [19
 
 ] [20
 
@@ -1024,75 +1029,18 @@ thkerncmss.
 
 ] [32
 
-] [33
-
 ]
-[34
-
-] [35
-
-] [36
-
-] [37
-
-] [38
-
-] [39
-
-] [40
-
-]
-Overfull \hbox (14.06857pt too wide) in paragraph at lines 631--631
- [][] 
- []
-
-[41
-
-]
-Overfull \hbox (14.06857pt too wide) in paragraph at lines 631--631
- [][] 
- []
-
-[42
-
-]
-<eg_WF.pdf, id=298, 386.64452pt x 385.19911pt>
-File: eg_WF.pdf Graphic file (type pdf)
-<use eg_WF.pdf>
-Package pdftex.def Info: eg_WF.pdf  used on input line 648.
-(pdftex.def)             Requested size: 195.00348pt x 194.2742pt.
- [43
-
- <./eg_WF.pdf>] [44
-
-] [45
-
-]
-<EcN_mn_res_n2.pdf, id=325, 602.00911pt x 375.0813pt>
-File: EcN_mn_res_n2.pdf Graphic file (type pdf)
-<use EcN_mn_res_n2.pdf>
-Package pdftex.def Info: EcN_mn_res_n2.pdf  used on input line 696.
-(pdftex.def)             Requested size: 303.3395pt x 188.9939pt.
- [46
-
- <./EcN_mn_res_n2.pdf>] [47
-
-] [48
-
-] [49
-
-]
-[50
+[33
 
 ]
 \tf@nav=\write6
-\openout6 = `yrm_presentation_191112.nav'.
+\openout6 = `cmstat_suzie.nav'.
 
 \tf@toc=\write7
-\openout7 = `yrm_presentation_191112.toc'.
+\openout7 = `cmstat_suzie.toc'.
 
 \tf@snm=\write8
-\openout8 = `yrm_presentation_191112.snm'.
+\openout8 = `cmstat_suzie.snm'.
 
 
 
@@ -1100,40 +1048,45 @@ Package bibentry Warning: You have used \nobibliography*
 (bibentry)                without a following \bibliography.
 (bibentry)                You may not be able to run BibTeX.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 720.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 720.
-(./yrm_presentation_191112.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 720.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 720.
-Package rerunfilecheck Info: File `yrm_presentation_191112.out' has not changed
-.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 461.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 461.
+(./cmstat_suzie.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 461.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 461.
+Package rerunfilecheck Info: File `cmstat_suzie.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
  ) 
 Here is how much of TeX's memory you used:
- 20654 strings out of 492649
- 405927 string characters out of 6129623
- 488395 words of memory out of 5000000
- 23966 multiletter control sequences out of 15000+600000
- 18437 words of font info for 67 fonts, out of 8000000 for 9000
+ 20485 strings out of 492649
+ 402569 string characters out of 6129623
+ 514438 words of memory out of 5000000
+ 23831 multiletter control sequences out of 15000+600000
+ 18500 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 56i,15n,59p,817b,681s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 56i,15n,59p,806b,657s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
 ></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb>
-</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb><
-/usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></
-usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></us
-r/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/
-local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr
-/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr
-/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/
-local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/l
-ocal/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/loc
-al/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr
-/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on yrm_presentation_191112.pdf (50 pages, 325250 bytes).
+</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></
+usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></u
+sr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></us
+r/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/
+local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/lo
+cal/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/lo
+cal/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi12.pfb></usr/lo
+cal/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/loc
+al/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi9.pfb></usr/loca
+l/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local
+/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/t
+exlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/loc
+al/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on cmstat_suzie.pdf (33 pages, 188655 bytes).
 PDF statistics:
- 431 PDF objects out of 1000 (max. 8388607)
- 345 compressed objects within 4 object streams
- 101 named destinations out of 1000 (max. 500000)
- 77 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 311 PDF objects out of 1000 (max. 8388607)
+ 248 compressed objects within 3 object streams
+ 71 named destinations out of 1000 (max. 500000)
+ 61 words of extra memory for PDF output out of 10000 (max. 10000000)
 
