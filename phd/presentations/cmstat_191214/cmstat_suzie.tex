@@ -53,10 +53,10 @@
 
 % project-specific commands
 \newcommand{\F}{\mathcal{F}_{t-1}}
-%\newcommand{\vt}[2][t]{v_{#1}^{(#2)}}
-\newcommand{\vt}[1]{v_{#1}}
-%\newcommand{\wt}[2][t]{w_{#1}^{(#2)}}
-\newcommand{\wt}[1]{w_{#1}}
+\newcommand{\vt}[2][t]{v_{#1}^{(#2)}}
+%\newcommand{\vt}[1]{v_{#1}}
+\newcommand{\wt}[2][t]{w_{#1}^{(#2)}}
+%\newcommand{\wt}[1]{w_{#1}}
 %\newcommand{\wbar}[2][t]{\bar{w}_{#1}^{(#2)}}
 %\newcommand{\vttilde}[2][t]{\tilde{v}_{#1}^{(#2)}}
 \newcommand{\Et}{\mathbb{E}_{t}}
@@ -194,7 +194,7 @@
 \item Population of $N$ particles
 \item Sample $n\leq N$ terminal particles
 \pause
-\item Describe genealogy by a partition-valued stochastic process $(G_t^{(n,N)})_{t\in\mathbb{N}}$
+\item Describe genealogy by a partition-valued stochastic process $(G_t^{(n,N)})_{t\in\mathbb{N}_0}$
 \item Elements $i, j$ are in the same block of the partition $G_t^{(n,N)}$ iff particles $i$ and $j$ share a common ancestor at time $t$
 \pause
 \item At time 0, the partition of $\{1,\dots,n\}$ consisting of singletons: $G_0^{(n,N)} = \{ \{1\}, \dots, \{n\} \}$
@@ -325,10 +325,21 @@
 
 \begin{frame}{Kingman's $n$-coalescent}
 \begin{itemize}
+\pause
 \item $n$ terminal particles
 \item Continuous time
 \item Each pair of lineages coalesces at rate 1
-\item No other (>pair) mergers allowed
+\item No other ($>$ pair) mergers allowed
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Notation}
+\begin{itemize}
+\item $\wt{i}$ = weight of particle $i$ in generation $t$
+\item family size $\vt{i}$ = number of offspring of particle $i$ in generation $t$
+\pause
+\item pair merger rate $c_N(t) = \frac{1}{(N)_2}\sum_{i=1}^N (\vt{i})_2$
+\item time scale $\tau_N(t)$ = inverse of $c_N(t)$
 \end{itemize}
 \end{frame}
 
@@ -346,6 +357,7 @@ Then the rescaled genealogical process $(G_{\tau_N(t)}^{(n,N)})_{t\geq0} $ conve
 
 \begin{frame}{A simplified statement}
 \vspace{-10pt}
+\pause
 Suppose there exists a deterministic sequence $(b_N)_{N\in\mathbb{N}}$ uniform in $t\geq 1$ such that $b_N \to 0$.
 \begin{equation}
 \frac{1}{(N)_3} \sum_{i = 1}^N \Et[ (\vt{i})_3 ]  \leq b_N \frac{1}{(N)_2} \sum_{i = 1}^N \Et[ (\vt{i})_2  ]
@@ -368,6 +380,8 @@ Then the rescaled genealogical process $(G_{\tau_N(t)}^{(n,N)})_{t\geq0} $ conve
 
 \begin{frame}{Resampling schemes}
 Problem : map weights $(\wt{1}, \dots, \wt{N})$ to family sizes $(\vt{1},\dots, \vt{N})$.\\
+
+\pause
 Desirable properties:
 \begin{itemize}
 \item constant population size $\sum_{i=1}^N \vt{i} =N$
@@ -388,6 +402,7 @@ Under multinomial resampling, the rescaled genealogies converge to Kingman's coa
 \end{frame}
 
 \begin{frame}{Stochastic roundings}
+\pause
 Let $X\geq 0$.\\
 $Y: \mathbb{R}_+ \to \mathbb{N}$ is a \emph{stochastic rounding} of $X$ if $Y$ takes the values
 \begin{equation*}
