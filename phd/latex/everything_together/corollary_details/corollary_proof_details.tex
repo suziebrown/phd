@@ -1,0 +1,143 @@
+\documentclass[fleqn]{article}
+\usepackage[margin=2.5cm]{geometry}
+
+% custom header/footer
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+\fancyhf{}
+\rfoot{\textsf{\thepage}}
+\lfoot{\textsf{Suzie Brown}}
+
+% bibliography
+\usepackage[round, sort&compress]{natbib}
+\usepackage{har2nat}
+\bibliographystyle{agsm}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bbm}
+\usepackage{amsthm}
+\newtheorem{thm}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{remark}{Remark}
+\newtheorem{corollary}{Corollary}
+\newtheorem{conj}{Conjecture}
+\newtheorem{prop}{Proposition}
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+
+% useful math symbols
+\newcommand{\PR}{\mathbb{P}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\V}{\operatorname{Var}}
+\newcommand{\eqdist}{\overset{d}{=}}
+\newcommand{\I}[1]{\mathbb{I}\{#1\}}
+\newcommand{\1}[1]{\mathbbm{1}_{\{#1\}}}
+\newcommand{\limNtoinfty}{\underset{N\to\infty}{\lim}}
+
+% distributions
+\newcommand{\Cat}{\operatorname{Categorical}}
+\newcommand{\Unif}{\operatorname{Uniform}}
+\newcommand{\Mn}{\operatorname{Multinomial}}
+\newcommand{\Bin}{\operatorname{Binomial}}
+
+% project-specific commands
+\newcommand{\F}{\mathcal{F}_{t-1}}
+\newcommand{\vt}[2][t]{v_{#1}^{(#2)}}
+\newcommand{\wt}[2][t]{w_{#1}^{(#2)}}
+\newcommand{\wbar}[2][t]{\bar{w}_{#1}^{(#2)}}
+\newcommand{\vttilde}[2][t]{\tilde{v}_{#1}^{(#2)}}
+\newcommand{\flnw}{\lfloor N\wt{i} \rfloor }
+
+\title{Corollaries 1--3 proofs with details...}
+\author{Suzie Brown}
+\date{\today}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+
+\begin{defn}
+A function $f$ is said to be $i$-increasing if it is an increasing function in $\vt{i} = |\{j : a_t^{(j)} = i \}|$.
+\end{defn}
+
+\section*{Multinomial resampling}
+
+\begin{corollary}\label{thm:mn_newassns}
+Under the time scaling \eqref{eq:tauN}, supposing there exist constants $0<\varepsilon\leq 1\leq a<\infty$ such that
+\begin{align}
+\frac{1}{a} \leq &g_t(x, x^\prime) \leq a \label{eq:bounded_g}\\
+\varepsilon h(x^\prime) \leq &q_t(x, x^\prime) \leq \frac{1}{\varepsilon} h(x^\prime) ,\label{eq:bounded_q}
+\end{align}
+genealogies of SMC algorithms with multinomial resampling converge to Kingman's $n$-coalescent in the sense of finite-dimensional distributions as $N\to\infty$.
+\end{corollary}
+
+\begin{lemma}\label{lem:i_increasing}
+Let $a_t^{(i)}$ be the parental indices from a SMC algorithm with multinomial resampling. For any function $f$ that is $i$-increasing, 
+\begin{align*}
+& \E[f(\mathbf{a}_t) \mid \mathcal{H}_t] \leq \E[f(\mathbf{A}_1)] \\
+& \E[f(\mathbf{a}_t) \mid \mathcal{H}_t] \geq \E[f(\mathbf{A}_2)]
+\end{align*}
+where the elements of $\mathbf{A}_1, \mathbf{A}_2$ are all mutually independent and independent of $\mathcal{F}_{\infty}$, and distributed according to
+\begin{align*}
+& A_1^{(j)} \sim \Cat\left( \left( \frac{a}{\varepsilon} \right)^{\1{i=1} -\1{i\neq 1}} ,\dots, \left( \frac{a}{\varepsilon} \right)^{\1{i=N} -\1{i\neq N}} \right) \\
+& A_2^{(j)} \sim \Cat\left( \left( \frac{\varepsilon}{a} \right)^{\1{i=1} -\1{i\neq 1}} ,\dots, \left( \frac{\varepsilon}{a} \right)^{\1{i=N} -\1{i\neq N}} \right),
+\end{align*}
+where the arguments of Categorical and Multinomial distributions are given up to a normalising constant here and throughout this document.
+\end{lemma}
+\begin{proof}
+The result follows using the bounds given in equations \eqref{eq:bounded_g}, \eqref{eq:bounded_q} with a balls-in-bins coupling, and cancelling $h$ from the top and bottom.
+\end{proof}
+
+Define the corresponding ``family sizes'' $V_1^{(i)} := |\{j: A_1^{(j)}=i\}|$ and $V_2^{(i)} := |\{j: A_2^{(j)}=i\}|$ for $i=1,\dots,N$. The distributions of $\mathbf{A}_1, \mathbf{A}_2$ imply the following:
+\begin{align*}
+& \mathbf{V}_1 \sim \Mn\left(N, \left( \frac{a}{\varepsilon} \right)^{\1{i=1} -\1{i\neq 1}} ,\dots, \left( \frac{a}{\varepsilon} \right)^{\1{i=N} -\1{i\neq N}} \right) \\
+& \mathbf{V}_2 \sim \Mn\left(N, \left( \frac{\varepsilon}{a} \right)^{\1{i=1} -\1{i\neq 1}} ,\dots, \left( \frac{\varepsilon}{a} \right)^{\1{i=N} -\1{i\neq N}} \right),
+\end{align*}
+
+Notice that the function $f_i(\mathbf{a}_t) := (\vt{i})_2$ is $i$-increasing for each $i=1,\dots,N$. Applying Lemma \ref{lem:i_increasing} and the Multinomial moments formula \citep{mosimann1962}, we obtain the following lower bound:
+\begin{align*}
+\E_t[f_i(\mathbf{a}_t)] &\geq \E[f_i(\mathbf{A}_2)] = \E[(V_2^{(i)})_2] \\
+&= \frac{(N)_2 (\varepsilon/a)^2}{[(\varepsilon/a) + (N-1)(a/\varepsilon)]^2}
+\geq \frac{(N)_2 (\varepsilon/a)^2}{N^2(a/\varepsilon)^2}
+= \frac{(N)_2}{N^2}\frac{\varepsilon^4}{a^4}.
+\end{align*}
+So we can lower bound the denominator by
+\begin{equation*}
+\E_t[c_N(t)] = \frac{1}{(N)_2} \sum_{i=1}^N \E_t[(\vt{i})_2]
+\geq \frac{N}{(N)_2} \frac{(N)_2}{N^2}\frac{\varepsilon^4}{a^4}
+= \frac{\varepsilon^4}{Na^4}.
+\end{equation*}
+
+To upper bound the numerator, consider the function $f_i(\mathbf{a}_t) := (\vt{i})_3$, which is $i$-increasing for each $i=1,\dots,N$.
+Again using Lemma \ref{lem:i_increasing} and \citep{mosimann1962}, we obtain the following lower bound:
+\begin{align*}
+\E_t[f_i(\mathbf{a}_t)] &\leq \E[f_i(\mathbf{A}_1)] = \E[(V_1^{(i)})_3] \\
+&= \frac{(N)_3 (a/\varepsilon)^3}{[(a/\varepsilon) + (N-1)(\varepsilon/a)]^3}
+\geq \frac{(N)_3 (a/\varepsilon)^3}{N^3(\varepsilon/a)^3}
+= \frac{(N)_3}{N^3}\frac{a^6}{\varepsilon^6}.
+\end{align*}
+and the numerator is therefore bounded above by
+\begin{equation*}
+\frac{1}{(N)_3} \sum_{i=1}^N \E_t[(\vt{i})_3]
+\leq \frac{N}{(N)_3} \frac{(N)_3}{N^3}\frac{\varepsilon^6}{a^6}
+= \frac{\varepsilon^6}{N^2a^6}.
+\end{equation*}
+
+The ratio is therefore bounded above by
+\begin{equation*}
+\frac{\frac{1}{(N)_3} \sum_{i=1}^N \E_t[(\vt{i})_3]}{\frac{1}{(N)_2} \sum_{i=1}^N \E_t[(\vt{i})_2]}
+\leq \frac{N}{(N)_3} \frac{(N)_3}{N^3}\frac{\varepsilon^6}{a^6}
+= \frac{\varepsilon^6}{N^2a^6} \frac{Na^4}{\varepsilon^4} = \frac{a^{10}}{N\varepsilon^{10}} =: b_N \limNtoinfty 0.
+\end{equation*}
+
+We can thus conclude the proof of Corollary \ref{thm:mn_newassns} by applying Theorem 1.
+
+
+\section*{Conditional SMC with multinomial resampling}
+
+
+
+\bibliography{../../smc.bib}
+\end{document}
