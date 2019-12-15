@@ -62,7 +62,7 @@
 \newcommand{\Et}{\mathbb{E}_{t}}
 
 \title[Genealogies of SMC Algorithms]{Recent Progress in Genealogies of Sequential Monte Carlo Algorithms}
-\author[Suzie Brown]{Suzie Brown\\ with Paul Jenkins, Adam Johansen \& Jere Koskela}
+\author[Suzie Brown]{\textbf{Suzie Brown} \\ University of Warwick \\ with Paul Jenkins, Adam Johansen \& Jere Koskela}
 \date{15 December 2019} 
 
 \begin{document}
@@ -338,7 +338,8 @@
 \item $\wt{i}$ = weight of particle $i$ in generation $t$
 \item family size $\vt{i}$ = number of offspring of particle $i$ in generation $t$
 \pause
-\item pair merger rate $c_N(t) = \frac{1}{(N)_2}\sum_{i=1}^N (\vt{i})_2$
+\item pair merger probability $c_N(t) = \frac{1}{N(N-1)}\sum_{i=1}^N \vt{i}(\vt{i}-1)$
+\pause
 \item time scale $\tau_N(t)$ = inverse of $c_N(t)$
 \end{itemize}
 \end{frame}
@@ -346,12 +347,12 @@
 \begin{frame}{A convergence theorem\footnote{Koskela, Jenkins, Johansen, Span\`o. \textit{Ann Stat,} to appear.}}
 \vspace{-10pt}
 Suppose:
-\begin{align}
-\E [c_N(t)] &\rightarrow 0 , \label{eq:oldass1}\\
-\E \left[ \sum_{ r = \tau_N( s ) + 1 }^{ \tau_N( t ) } D_N( r ) \right] &\rightarrow 0, \label{eq:oldass2}\\
-\E \left[ \sum_{ r = \tau_N( s ) + 1 }^{ \tau_N( t ) } c_N( r )^2 \right] &\rightarrow 0 , \label{eq:oldass3}\\
-\E [\tau_N(t) - \tau_N(s)] &\leq C_{t,s} N; \label{eq:oldass4}
-\end{align}
+\begin{align*}
+\E [c_N(t)] &\rightarrow 0  \\
+\E \left[ \sum_{ r = \tau_N( s ) + 1 }^{ \tau_N( t ) } D_N( r ) \right] &\rightarrow 0 \\
+\E \left[ \sum_{ r = \tau_N( s ) + 1 }^{ \tau_N( t ) } c_N( r )^2 \right] &\rightarrow 0 \\
+\E [\tau_N(t) - \tau_N(s)] &\leq C_{t,s} N 
+\end{align*}
 Then the rescaled genealogical process $(G_{\tau_N(t)}^{(n,N)})_{t\geq0} $ converges to Kingman's coalescent in the sense of finite-dimensional distributions as $N\to\infty$.
 \end{frame}
 
@@ -359,9 +360,9 @@ Then the rescaled genealogical process $(G_{\tau_N(t)}^{(n,N)})_{t\geq0} $ conve
 \vspace{-10pt}
 \pause
 Suppose there exists a deterministic sequence $(b_N)_{N\in\mathbb{N}}$ uniform in $t\geq 1$ such that $b_N \to 0$.
-\begin{equation}
-\frac{1}{(N)_3} \sum_{i = 1}^N \Et[ (\vt{i})_3 ]  \leq b_N \frac{1}{(N)_2} \sum_{i = 1}^N \Et[ (\vt{i})_2  ]
-\end{equation}
+\begin{equation*}
+\frac{1}{N(N-1)(N-2)} \sum_{i = 1}^N \Et[ \vt{i}(\vt{i}-1)(\vt{i}-2) ]  \leq b_N \frac{1}{N(N-1)} \sum_{i = 1}^N \Et[ \vt{i}(\vt{i}-1)  ]
+\end{equation*}
 
 Then the rescaled genealogical process $(G_{\tau_N(t)}^{(n,N)})_{t\geq0} $ converges to Kingman's coalescent in the sense of finite-dimensional distributions as $N\to\infty$.
 \end{frame}
@@ -370,32 +371,32 @@ Then the rescaled genealogical process $(G_{\tau_N(t)}^{(n,N)})_{t\geq0} $ conve
 \begin{itemize}
 \item We replace four conditions with one
 \pause
-\item We remove (4), which we know is not a necessary condition
+\item We remove condition 4, which we know is not a necessary condition
 \pause
-\item We remove (2) and (3), which contain awkward mixed moments
+\item We remove conditions 2 and 3, which contain awkward mixed moments
 \pause
 \item We can verify the new condition in more complicated cases...
 \end{itemize}
 \end{frame}
 
 \begin{frame}{Resampling schemes}
-Problem : map weights $(\wt{1}, \dots, \wt{N})$ to family sizes $(\vt{1},\dots, \vt{N})$.\\
+Problem : (stochastically) map weights $(\wt{1}, \dots, \wt{N})$ to family sizes $(\vt{1},\dots, \vt{N})$.\\
 
 \pause
 Desirable properties:
 \begin{itemize}
-\item constant population size $\sum_{i=1}^N \vt{i} =N$
-\item equal weights after resampling $w_{t+}^{(i)} = 1/N$
-\item unbiased $\E[\vt{i} | \wt{i}] = N\wt{i}$
+\item Number of particles constant $\sum_{i=1}^N \vt{i} =N$
+\item Equal weights after resampling $w_{t+}^{(i)} = 1/N$
+\item Unbiased $\E[\vt{i} | \wt{i}] = N\wt{i}$
 \end{itemize}
 \end{frame}
 
 \begin{frame}{Corollary: multinomial resampling}
 Consider an SMC algorithm with potential $g$ and transition density $q$, satisfying
-\begin{align}
+\begin{align*}
 \frac{1}{a} \leq &g_t(x, x^\prime) \leq a \\
 \varepsilon h(x^\prime) \leq &q_t(x, x^\prime) \leq \frac{1}{\varepsilon} h(x^\prime) 
-\end{align}
+\end{align*}
 for constants $0<\varepsilon\leq 1\leq a<\infty$, and probablity distribution $h(\cdot)$.\\[10pt]
 
 Under multinomial resampling, the rescaled genealogies converge to Kingman's coalescent.
@@ -428,10 +429,10 @@ Can generalise to multivariate case, with marginals $Y_i \mid X_i$ as above.
 
 \begin{frame}{Corollary: stochastic rounding -based resampling}
 Consider an SMC algorithm with potential $g$ and transition density $q$, satisfying
-\begin{align}
+\begin{align*}
 \frac{1}{a} \leq &g_t(x, x^\prime) \leq a \\
 \varepsilon h(x^\prime) \leq &q_t(x, x^\prime) \leq \frac{1}{\varepsilon} h(x^\prime) 
-\end{align}
+\end{align*}
 for constants $0<\varepsilon\leq 1\leq a<\infty$, and probablity distribution $h(\cdot)$.\\[10pt]
 
 Under stochastic rounding -based resampling, the rescaled genealogies converge to Kingman's coalescent.
@@ -446,10 +447,10 @@ Under stochastic rounding -based resampling, the rescaled genealogies converge t
 
 \begin{frame}{Corollary: conditional SMC}
 Consider a conditional SMC algorithm with potential $g$ and transition density $q$, satisfying
-\begin{align}
+\begin{align*}
 \frac{1}{a} \leq &g_t(x, x^\prime) \leq a \\
 \varepsilon h(x^\prime) \leq &q_t(x, x^\prime) \leq \frac{1}{\varepsilon} h(x^\prime) 
-\end{align}
+\end{align*}
 for constants $0<\varepsilon\leq 1\leq a<\infty$, and probablity distribution $h(\cdot)$.\\[10pt]
 
 Under multinomial resampling, the rescaled genealogies converge to Kingman's coalescent.
@@ -458,8 +459,9 @@ Under multinomial resampling, the rescaled genealogies converge to Kingman's coa
 \begin{frame}{What about finite $N$?}
 \begin{itemize}
 \item As $N\to\infty$ but sample size $n$ fixed, probability of sampling immortal line vanishes, so its effect isn't seen in the limit
+\pause
 \item For finite $N$ we have more interesting behaviour
-\item Depends how ``close'' the immortal line is to other trajectories
+\item Depends how ``typical'' the immortal trajectory is 
 \end{itemize}
 \end{frame}
 
