@@ -136,6 +136,55 @@ We can thus conclude the proof of Corollary \ref{thm:mn_newassns} by applying Th
 
 
 \section*{Conditional SMC with multinomial resampling}
+We can apply the same technique to tackle conditional SMC, but it requires an adjustment of the bounding distributions.
+We assume wlog that the immortal particle always takes index 1.
+
+\begin{lemma}\label{lem:i_increasing_csmc}
+Let $a_t^{(i)}$ be the parental indices from a  conditional SMC algorithm with multinomial resampling. For any function $f$ that is $i$-increasing, 
+\begin{align*}
+& \E[f(\mathbf{a}_t) \mid \mathcal{H}_t] \leq \E[f(\mathbf{A}_1)] \\
+& \E[f(\mathbf{a}_t) \mid \mathcal{H}_t] \geq \E[f(\mathbf{A}_2)]
+\end{align*}
+where the elements of $\mathbf{A}_1, \mathbf{A}_2$ are all mutually independent and independent of $\mathcal{F}_{\infty}$, and distributed according to
+\begin{align*}
+& A_1^{(j)} \sim \begin{cases}
+& \delta_1  \qquad j=1\\
+& \Cat\left( \left( \frac{a}{\varepsilon} \right)^{\1{i=1} -\1{i\neq 1}} ,\dots, \left( \frac{a}{\varepsilon} \right)^{\1{i=N} -\1{i\neq N}} \right) \qquad j\neq 1
+ \end{cases}\\
+& A_2^{(j)} \sim \begin{cases}
+& \delta_1 \qquad j=1 \\
+& \Cat\left( \left( \frac{\varepsilon}{a} \right)^{\1{i=1} -\1{i\neq 1}} ,\dots, \left( \frac{\varepsilon}{a} \right)^{\1{i=N} -\1{i\neq N}} \right) \qquad j\neq 1 .
+\end{cases}
+\end{align*}
+\end{lemma}
+
+As before, we can define the corresponding ``family sizes'' $V_1^{(i)} := |\{j: A_1^{(j)}=i\}|$ and $V_2^{(i)} := |\{j: A_2^{(j)}=i\}|$ for $i=1,\dots,N$. They now have the following distributions:
+\begin{align*}
+& \mathbf{V}_1 \eqdist (1,0,\dots,0) + \Mn\left(N-1, \left( \frac{a}{\varepsilon} \right)^{\1{i=1} -\1{i\neq 1}} ,\dots, \left( \frac{a}{\varepsilon} \right)^{\1{i=N} -\1{i\neq N}} \right) \\
+& \mathbf{V}_2 \eqdist (1,0,\dots, 0) + \Mn\left(N-1, \left( \frac{\varepsilon}{a} \right)^{\1{i=1} -\1{i\neq 1}} ,\dots, \left( \frac{\varepsilon}{a} \right)^{\1{i=N} -\1{i\neq N}} \right) .
+\end{align*}
+
+Now consider again the $i$-increasing function $f_i(\mathbf{a}_t) := (\vt{i})_2$. In the conditional SMC case, we can apply Lemma \ref{lem:i_increasing_csmc} to obtain the lower bound
+\begin{equation*}
+\frac{1}{(N)_2} \sum_{i=1}^N \E_t[(\vt{i})_2] \geq \frac{1}{(N)_2} \sum_{i=1}^N \E[(V_2^{(i)})_2]
+= \frac{1}{(N)_2} \left[ \sum_{i=1}^N \frac{(N-1)_2 (\varepsilon/a)^2}{[(\varepsilon/a) + (N-2)(a/\varepsilon)]^2} + 2 \frac{(N-1)(\varepsilon/a)}{(\varepsilon/a) + (N-2)(a/\varepsilon)} \right]
+\end{equation*}
+using the Multinomial moments as before, along with the identity $(X+1)_2 \equiv (X)_2 + 2(X)_1$.
+This is further bounded by
+\begin{equation*}
+\frac{1}{(N)_2} \sum_{i=1}^N \E_t[(\vt{i})_2] 
+\geq \frac{1}{(N)_2} \left[ \frac{(N)_3 (\varepsilon/a)^2}{(N-1)^2(a/\varepsilon)^2} + \frac{2(N-1)(\varepsilon/a)}{(N-1)(a/\varepsilon)} \right]
+= \frac{1}{(N)_2} \left[ \frac{(N)_3}{(N-1)^2}\frac{\varepsilon^4}{a^4} + \frac{2\varepsilon^2}{a^2} \right] 
+\end{equation*}
+
+Similarly, we derive an upper bound on $f_i(\mathbf{a}_t) := (\vt{i})_3$, yielding
+\begin{align*}
+\frac{1}{(N)_3} \sum_{i=1}^N \E_t[(\vt{i})_3] 
+&\leq \frac{1}{(N)_3} \left[ \sum_{i=1}^N \frac{(N-1)_3 (a/\varepsilon)^3}{[(a/\varepsilon) + (N-2)(\varepsilon/a)]^3} + 3 \frac{(N-1)_2 (a/\varepsilon)^2}{[(a/\varepsilon) + (N-2)(\varepsilon/a)]^2} \right] \\
+&\leq \frac{1}{(N)_3} \left[ ... \right]
+\end{align*}
+
+
 
 
 
