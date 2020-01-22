@@ -50,13 +50,18 @@
 \newcommand{\vttilde}[2][t]{\tilde{v}_{#1}^{(#2)}}
 \newcommand{\flnw}{\lfloor N\wt{i} \rfloor }
 
-\title{Corollaries 1--3 proofs with details...}
+\title{Details for proofs of corollaries 1--3}
 \author{Suzie Brown}
 \date{\today}
 
 \begin{document}
 \maketitle
 \thispagestyle{fancy}
+Note: time is labelled in reverse throughout this document.\\
+
+Let's take the conditioning set to be $\mathcal{H}_t = (\mathbf{X}_t, \mathbf{X}_{t-1}, \mathbf{w}_t, \mathbf{w}_{t-1})$. This set works as a separatrix between $\mathbf{a}_{t}$ and $\mathcal{F}_{t-1}$ as desired. It is different from the one used in (Koskela et al 2019) because we include $\mathbf{w}_t$ directly rather than its explicit expression in terms of $\mathbf{a}_{t+1}, \mathbf{X}_{t+1}, \mathbf{X}_t$ to simplify the notation.\\
+
+In each case, the choice of parent depends on two factors: the conditional probability of choosing that parent under the given resampling scheme, and the conditional ``probability'' of a particle moving from that parent's position at time $t$ to the offspring's position at time $t-1$. We see the contribution of these two factors in the following.
 
 \begin{defn}
 A function $f$ is said to be $i$-increasing if it is an increasing function in $\vt{i} = |\{j : a_t^{(j)} = i \}|$.
@@ -64,14 +69,14 @@ A function $f$ is said to be $i$-increasing if it is an increasing function in $
 
 \section*{Multinomial resampling}
 
-\begin{corollary}\label{thm:mn_newassns}
-Under the time scaling \eqref{eq:tauN}, supposing there exist constants $0<\varepsilon\leq 1\leq a<\infty$ such that
-\begin{align}
-\frac{1}{a} \leq &g_t(x, x^\prime) \leq a \label{eq:bounded_g}\\
-\varepsilon h(x^\prime) \leq &q_t(x, x^\prime) \leq \frac{1}{\varepsilon} h(x^\prime) ,\label{eq:bounded_q}
-\end{align}
-genealogies of SMC algorithms with multinomial resampling converge to Kingman's $n$-coalescent in the sense of finite-dimensional distributions as $N\to\infty$.
-\end{corollary}
+Under multinomial resampling, the parental indices $\mathbf{a}_t$ are conditionally independent given $\mathcal{H}_t$. The conditional law of each index is
+\begin{equation*}
+\PR [a_t^{(i)} = a_i \mid \mathcal{H}_t] \propto \wt{i} q_{t-1}(X_t^{(a_i)}, X_{t-1}^{(i)}).
+\end{equation*}
+Since the indices are all independent, their joint conditional law is
+\begin{equation*}
+\PR [\mathbf{a}_t = \mathbf{a} \mid \mathcal{H}_t] \propto \prod_{i=1}^N \wt{i} q_{t-1}(X_t^{(a_i)}, X_{t-1}^{(i)}).
+\end{equation*}
 
 \begin{lemma}\label{lem:i_increasing}
 Let $a_t^{(i)}$ be the parental indices from a SMC algorithm with multinomial resampling. For any function $f$ that is $i$-increasing, 
@@ -90,7 +95,17 @@ where the arguments of Categorical and Multinomial distributions are given up to
 The result follows using the bounds given in equations \eqref{eq:bounded_g}, \eqref{eq:bounded_q} with a balls-in-bins coupling, and cancelling $h$ from the top and bottom.
 \end{proof}
 
-Define the corresponding ``family sizes'' $V_1^{(i)} := |\{j: A_1^{(j)}=i\}|$ and $V_2^{(i)} := |\{j: A_2^{(j)}=i\}|$ for $i=1,\dots,N$. The distributions of $\mathbf{A}_1, \mathbf{A}_2$ imply the following:
+\begin{corollary}\label{thm:mn_newassns}
+Under the time scaling \eqref{eq:tauN}, supposing there exist constants $0<\varepsilon\leq 1\leq a<\infty$ such that
+\begin{align}
+\frac{1}{a} \leq &g_t(x, x^\prime) \leq a \label{eq:bounded_g}\\
+\varepsilon h(x^\prime) \leq &q_t(x, x^\prime) \leq \frac{1}{\varepsilon} h(x^\prime) ,\label{eq:bounded_q}
+\end{align}
+genealogies of SMC algorithms with multinomial resampling converge to Kingman's $n$-coalescent in the sense of finite-dimensional distributions as $N\to\infty$.
+\end{corollary}
+
+\begin{proof}
+Define the ``family sizes'' $V_1^{(i)} := |\{j: A_1^{(j)}=i\}|$ and $V_2^{(i)} := |\{j: A_2^{(j)}=i\}|$ for $i=1,\dots,N$. The distributions of $\mathbf{A}_1, \mathbf{A}_2$ imply the following:
 \begin{align*}
 & \mathbf{V}_1 \sim \Mn\left(N, \left( \frac{a}{\varepsilon} \right)^{\1{i=1} -\1{i\neq 1}} ,\dots, \left( \frac{a}{\varepsilon} \right)^{\1{i=N} -\1{i\neq N}} \right) \\
 & \mathbf{V}_2 \sim \Mn\left(N, \left( \frac{\varepsilon}{a} \right)^{\1{i=1} -\1{i\neq 1}} ,\dots, \left( \frac{\varepsilon}{a} \right)^{\1{i=N} -\1{i\neq N}} \right),
@@ -111,11 +126,11 @@ So we can lower bound the denominator by
 \end{equation*}
 
 To upper bound the numerator, consider the function $f_i(\mathbf{a}_t) := (\vt{i})_3$, which is $i$-increasing for each $i=1,\dots,N$.
-Again using Lemma \ref{lem:i_increasing} and \citep{mosimann1962}, we obtain the following lower bound:
+Again using Lemma \ref{lem:i_increasing} and \citep{mosimann1962}, we obtain the following upper bound:
 \begin{align*}
 \E_t[f_i(\mathbf{a}_t)] &\leq \E[f_i(\mathbf{A}_1)] = \E[(V_1^{(i)})_3] \\
 &= \frac{(N)_3 (a/\varepsilon)^3}{[(a/\varepsilon) + (N-1)(\varepsilon/a)]^3}
-\geq \frac{(N)_3 (a/\varepsilon)^3}{N^3(\varepsilon/a)^3}
+\leq \frac{(N)_3 (a/\varepsilon)^3}{N^3(\varepsilon/a)^3}
 = \frac{(N)_3}{N^3}\frac{a^6}{\varepsilon^6}.
 \end{align*}
 and the numerator is therefore bounded above by
@@ -133,11 +148,22 @@ The ratio is therefore bounded above by
 \end{equation*}
 
 We can thus conclude the proof of Corollary \ref{thm:mn_newassns} by applying Theorem 1.
+\end{proof}
 
 
 \section*{Conditional SMC with multinomial resampling}
 We can apply the same technique to tackle conditional SMC, but it requires an adjustment of the bounding distributions.
 We assume wlog that the immortal particle always takes index 1.
+In this case, the parental indices are still independent, but we have to treat $i=1$ as a special case. We are assuming wlog that the immortal particle is labelled 1 in each generation. We have the following conditional law:
+%% typeset the below properly using cases...
+\begin{align*}
+&\PR [a_t^{(1)} = a_1 \mid \mathcal{H}_t] = \I{a_1=1}  & \\
+&\PR [a_t^{(i)} = a_i \mid \mathcal{H}_t] \propto \wt{i} q_{t-1}(X_t^{(a_i)}, X_{t-1}^{(i)}) & i=2,\dots,N .
+\end{align*}
+The joint conditional law is therefore
+\begin{equation*}
+\PR [\mathbf{a}_t = \mathbf{a} \mid \mathcal{H}_t] \propto \I{a_1 = 1} \prod_{i=2}^N \wt{i} q_{t-1}(X_t^{(a_i)}, X_{t-1}^{(i)}).
+\end{equation*}
 
 \begin{lemma}\label{lem:i_increasing_csmc}
 Let $a_t^{(i)}$ be the parental indices from a  conditional SMC algorithm with multinomial resampling. For any function $f$ that is $i$-increasing, 
@@ -158,35 +184,120 @@ where the elements of $\mathbf{A}_1, \mathbf{A}_2$ are all mutually independent 
 \end{align*}
 \end{lemma}
 
-As before, we can define the corresponding ``family sizes'' $V_1^{(i)} := |\{j: A_1^{(j)}=i\}|$ and $V_2^{(i)} := |\{j: A_2^{(j)}=i\}|$ for $i=1,\dots,N$. They now have the following distributions:
+\begin{corollary}\label{thm:csmc_newassns}
+Under the time scaling \eqref{eq:tauN} and conditions \eqref{eq:bounded_g} and \eqref{eq:bounded_q}, genealogies of conditional SMC algorithms with multinomial resampling converge to Kingman's $n$-coalescent in the sense of finite-dimensional distributions as $N\to\infty$.
+\end{corollary}
+
+As before, we can define ``family sizes'' $V_1^{(i)} := |\{j: A_1^{(j)}=i\}|$ and $V_2^{(i)} := |\{j: A_2^{(j)}=i\}|$ for $i=1,\dots,N$. They now have the following distributions:
 \begin{align*}
 & \mathbf{V}_1 \eqdist (1,0,\dots,0) + \Mn\left(N-1, \left( \frac{a}{\varepsilon} \right)^{\1{i=1} -\1{i\neq 1}} ,\dots, \left( \frac{a}{\varepsilon} \right)^{\1{i=N} -\1{i\neq N}} \right) \\
 & \mathbf{V}_2 \eqdist (1,0,\dots, 0) + \Mn\left(N-1, \left( \frac{\varepsilon}{a} \right)^{\1{i=1} -\1{i\neq 1}} ,\dots, \left( \frac{\varepsilon}{a} \right)^{\1{i=N} -\1{i\neq N}} \right) .
 \end{align*}
 
 Now consider again the $i$-increasing function $f_i(\mathbf{a}_t) := (\vt{i})_2$. In the conditional SMC case, we can apply Lemma \ref{lem:i_increasing_csmc} to obtain the lower bound
-\begin{equation*}
-\frac{1}{(N)_2} \sum_{i=1}^N \E_t[(\vt{i})_2] \geq \frac{1}{(N)_2} \sum_{i=1}^N \E[(V_2^{(i)})_2]
-= \frac{1}{(N)_2} \left[ \sum_{i=1}^N \frac{(N-1)_2 (\varepsilon/a)^2}{[(\varepsilon/a) + (N-2)(a/\varepsilon)]^2} + 2 \frac{(N-1)(\varepsilon/a)}{(\varepsilon/a) + (N-2)(a/\varepsilon)} \right]
-\end{equation*}
-using the Multinomial moments as before, along with the identity $(X+1)_2 \equiv (X)_2 + 2(X)_1$.
+\begin{align*}
+\frac{1}{(N)_2} \sum_{i=1}^N \E_t[(\vt{i})_2] 
+&\geq \frac{1}{(N)_2} \sum_{i=1}^N \E[(V_2^{(i)})_2] 
+=  \frac{1}{(N)_2} \left[ \E[(V_2^{(1)})_2] + \sum_{i=2}^N \E[(V_2^{(i)})_2] \right] \\
+&= \frac{1}{(N)_2} \left[ \frac{(N-1)_2 (\varepsilon/a)^2}{[(\varepsilon/a) + (N-2)(a/\varepsilon)]^2} + 2 \frac{(N-1)(\varepsilon/a)}{(\varepsilon/a) + (N-2)(a/\varepsilon)} + \sum_{i=2}^N \frac{(N-1)_2 (\varepsilon/a)^2}{[(\varepsilon/a) + (N-2)(a/\varepsilon)]^2} \right] \\
+&= \frac{1}{(N)_2} \left[ 2 \frac{(N-1)(\varepsilon/a)}{(\varepsilon/a) + (N-2)(a/\varepsilon)} + \sum_{i=1}^N \frac{(N-1)_2 (\varepsilon/a)^2}{[(\varepsilon/a) + (N-2)(a/\varepsilon)]^2} \right]
+\end{align*}
+using the Multinomial moments as before, along with the identity $(X+1)_2 \equiv 2(X)_1 +(X)_2$.
 This is further bounded by
 \begin{equation*}
 \frac{1}{(N)_2} \sum_{i=1}^N \E_t[(\vt{i})_2] 
-\geq \frac{1}{(N)_2} \left[ \frac{(N)_3 (\varepsilon/a)^2}{(N-1)^2(a/\varepsilon)^2} + \frac{2(N-1)(\varepsilon/a)}{(N-1)(a/\varepsilon)} \right]
-= \frac{1}{(N)_2} \left[ \frac{(N)_3}{(N-1)^2}\frac{\varepsilon^4}{a^4} + \frac{2\varepsilon^2}{a^2} \right] 
+\geq \frac{1}{(N)_2} \left[ \frac{2(N-1)(\varepsilon/a)}{(N-1)(a/\varepsilon)} + \frac{(N)_3 (\varepsilon/a)^2}{(N-1)^2(a/\varepsilon)^2} \right]
+= \frac{1}{(N)_2} \left[\frac{2\varepsilon^2}{a^2} + \frac{(N)_3}{(N-1)^2}\frac{\varepsilon^4}{a^4}  \right] 
 \end{equation*}
 
-Similarly, we derive an upper bound on $f_i(\mathbf{a}_t) := (\vt{i})_3$, yielding
+Similarly, we derive an upper bound on $f_i(\mathbf{a}_t) := (\vt{i})_3$, this time applying the identity $(X+1)_3 \equiv 3(X)_2 +(X)_3 $:
 \begin{align*}
 \frac{1}{(N)_3} \sum_{i=1}^N \E_t[(\vt{i})_3] 
-&\leq \frac{1}{(N)_3} \left[ \sum_{i=1}^N \frac{(N-1)_3 (a/\varepsilon)^3}{[(a/\varepsilon) + (N-2)(\varepsilon/a)]^3} + 3 \frac{(N-1)_2 (a/\varepsilon)^2}{[(a/\varepsilon) + (N-2)(\varepsilon/a)]^2} \right] \\
-&\leq \frac{1}{(N)_3} \left[ ... \right]
+&\leq \frac{1}{(N)_3} \left[ \E[(V_2^{(1)})_3] + \sum_{i=2}^N \E[(V_2^{(i)})_3] \right] \\
+&\leq \frac{1}{(N)_3} \left[ 3 \frac{(N-1)_2 (a/\varepsilon)^2}{[(a/\varepsilon) + (N-2)(\varepsilon/a)]^2} + \sum_{i=1}^N \frac{(N-1)_3 (a/\varepsilon)^3}{[(a/\varepsilon) + (N-2)(\varepsilon/a)]^3} \right] \\
+&\leq \frac{1}{(N)_3} \left[ \frac{3(N-1)_2 (a/\varepsilon)^2}{(N-1)^2 (\varepsilon/a)^2} + \frac{(N)_4 (a/\varepsilon)^3}{(N-1)^3 (\varepsilon/a)^3} \right] \\
+&= \frac{1}{(N)_3} \left[ \frac{3(N-1)_2}{(N-1)^2} \frac{a^4}{\varepsilon^4} +\frac{(N)_4}{(N-1)^3} \frac{a^6}{\varepsilon^6} \right].
 \end{align*}
 
+We therefore have the following upper bound on the ratio:
+\begin{align*}
+\frac{\frac{1}{(N)_3} \sum_{i=1}^N \E_t[(\vt{i})_3]}{\frac{1}{(N)_2} \sum_{i=1}^N \E_t[(\vt{i})_2]}
+&\leq \frac{(N)_2}{(N)_3} \frac{\frac{(N)_4}{(N-1)^3} \frac{a^6}{\varepsilon^6} + \frac{3(N-1)_2}{(N-1)^2} \frac{a^4}{\varepsilon^4}}{\frac{(N)_3}{(N-1)^2}\frac{\varepsilon^4}{a^4} + \frac{2\varepsilon^2}{a^2}}
+\leq \frac{1}{N-2} \left[ \frac{\frac{(N)_4}{(N-1)^3} \frac{a^6}{\varepsilon^6} }{\frac{(N)_3}{(N-1)^2}\frac{\varepsilon^4}{a^4} } 
++ \frac{ \frac{3(N-1)_2}{(N-1)^2} \frac{a^4}{\varepsilon^4}}{\frac{2\varepsilon^2}{a^2}} \right] \\
+&= \frac{1}{N-2} \left[ \frac{N-3}{N-1} \frac{a^{10}}{\varepsilon^{10}} + \frac{3}{2} \frac{N-2}{N-1} \frac{a^6}{\varepsilon^6} \right]
+\leq \frac{1}{N-2} \left[ \frac{a^{10}}{\varepsilon^{10}} + \frac{3}{2} \frac{a^6}{\varepsilon^6} \right] =:b_N \to 0.
+\end{align*}
 
+\section*{Stochastic rounding case}
+If we resample using a stochastic rounding, we lose the independence between parental indices. The set of valid assignments is much smaller, because each family size can vary by no more than one from its expected value.
 
+Defining the family sizes $\vt{i} := |\{ j : a_t^{(j)} = i \}|$ as functions of $\mathbf{a}_t$, we have the constraint $\vt{i} \in \{\flnw, \flnw +1\}$. This is encoded in the law of $\mathbf{a}_t$ via indicator functions. We can find the probability of each of the two possible values up to a constant:
 
+\begin{align*}
+\PR[\vt{i} &= \flnw \mid \mathcal{H}_t] = C \cdot (1- N\wt{i} + \flnw)\sum_{\substack{J\subset [N]:\\ |J|=\flnw}} \binom{N}{\flnw}^{-1} \prod_{j\in J} q_{t-1}(X_t^{(i)}, X_{t-1}^{(j)}) \\
+\PR[\vt{i} &= \flnw +1 \mid \mathcal{H}_t] = C \cdot (N\wt{i} - \flnw)\sum_{\substack{J\subset [N]:\\ |J|=\flnw +1}} \binom{N}{\flnw+1}^{-1} \prod_{j\in J} q_{t-1}(X_t^{(i)}, X_{t-1}^{(j)})
+\end{align*}
+We assume uniform boundedness of the transition densities, which is stronger than the condition used in the other corollaries. That is, there exists $\varepsilon \in (0,1)$ such that, almost surely,
+\begin{equation}
+\varepsilon \leq q_{t-1}(x, x^\prime) \leq \frac{1}{\varepsilon}.
+\end{equation}
+We can use this to bound the probabilities above and below:
+\begin{align*}
+C \cdot (1- N\wt{i} + \flnw) \varepsilon^{\flnw} &\leq \PR[\vt{i} = \flnw \mid \mathcal{H}_t] &\leq C \cdot (1- N\wt{i} + \flnw) \varepsilon^{-\flnw} \\
+C \cdot (N\wt{i} - \flnw) \varepsilon^{(\flnw +1)} &\leq \PR[\vt{i} = \flnw +1 \mid \mathcal{H}_t] &\leq C \cdot (N\wt{i} - \flnw) \varepsilon^{-(\flnw+1)} 
+\end{align*}
+As these are the only two possibilities, we can easily find bounds on the normalising constant:
+\begin{align*}
+\frac{1}{C} &= \frac{1}{C} \PR[\vt{i} = \flnw \mid \mathcal{H}_t] + \frac{1}{C} \PR[\vt{i} = \flnw +1 \mid \mathcal{H}_t] \\
+&\leq (1- N\wt{i} + \flnw) \varepsilon^{-\flnw} + (N\wt{i} - \flnw) \varepsilon^{-(\flnw +1)} \\
+&= \varepsilon^{-(\flnw+1)} [ \varepsilon + (1-\varepsilon)(N\wt{i} - \flnw)] \\
+&\leq \varepsilon^{-(\flnw+2)}
+\end{align*}
+where the final inequality follows from $\varepsilon \in (0,1)$ and $x-\lfloor x \rfloor \in [0,1)$. Similarly,
+\begin{align*}
+\frac{1}{C} &\geq (1- N\wt{i} + \flnw) \varepsilon^{\flnw} + (N\wt{i} - \flnw) \varepsilon^{(\flnw +1)} \\
+&= \varepsilon^{\flnw} [ 1 - (1-\varepsilon)(N\wt{i} - \flnw)] \\
+&\geq \varepsilon^{\flnw} .
+\end{align*}
+We therefore find the following bounds on the probabilities:
+\begin{align*}
+\PR[\vt{i} = \flnw \mid \mathcal{H}_t] & \leq (1- N\wt{i} + \flnw)\, \varepsilon^{-2\flnw} \\
+\PR[\vt{i} = \flnw \mid \mathcal{H}_t] & \geq (1- N\wt{i} + \flnw)\, \varepsilon^{(2\flnw +2)} \\
+\PR[\vt{i} = \flnw +1 \mid \mathcal{H}_t] & \leq (N\wt{i} - \flnw)\, \varepsilon^{-(2\flnw +1)} \\
+\PR[\vt{i} = \flnw +1 \mid \mathcal{H}_t] & \geq (N\wt{i} - \flnw) \, \varepsilon^{(2\flnw +3)} 
+\end{align*}
+Now we can get at the expectations of interest:
+\begin{align*}
+\E[(\vt{i})_2 \mid \mathcal{H}_t] &= (\flnw)_2 \PR[\vt{i} = \flnw \mid \mathcal{H}_t] + (\flnw +1)_2 \PR[\vt{i} = \flnw +1 \mid \mathcal{H}_t] \\
+&\geq (\flnw)_2 (1- N\wt{i} + \flnw)\, \varepsilon^{(2\flnw +2)} + (\flnw +1)_2 (N\wt{i} - \flnw) \, \varepsilon^{(2\flnw +3)} \\
+&\geq \varepsilon^{(2\flnw +3)} \, \flnw (2N\wt{i} -\flnw -1)
+\end{align*}
+and
+\begin{align*}
+\E[(\vt{i})_3 \mid \mathcal{H}_t] &= (\flnw)_3 \PR[\vt{i} = \flnw \mid \mathcal{H}_t] + (\flnw +1)_3 \PR[\vt{i} = \flnw +1 \mid \mathcal{H}_t] \\
+&\leq (\flnw)_3 (1- N\wt{i} + \flnw)\, \varepsilon^{-(2\flnw)} + (\flnw +1)_3 (N\wt{i} - \flnw)\, \varepsilon^{-(2\flnw +1)} \\
+&\leq \varepsilon^{-(2\flnw +1)} \, (\flnw)_2 (2N\wt{i} - \flnw -1 + N\wt{i} - \flnw -1) \\
+&\leq \varepsilon^{-(2\flnw +1)} \, (\flnw -1)\flnw (2N\wt{i} - \flnw -1).
+\end{align*}
+In particular, we now have
+\begin{equation*}
+\E[(\vt{i})_3 \mid \mathcal{H}_t] \leq \varepsilon^{-(4\flnw +4)}\, (\flnw -1 )\,\E[(\vt{i})_2 \mid \mathcal{H}_t] .
+\end{equation*}
+Now we use the bounds on the potential functions to take care of the terms in $\wt{i}$. Using the bounds \eqref{eq:bounded_g} along with the form of the weights in Algorithm 1, we have almost surely for each $i$
+\begin{equation*}
+\frac{1}{Na^2} \leq \wt{i} \leq \frac{a^2}{N} .
+\end{equation*}
+Applying these bounds along with the simple inequality $\lfloor x\rfloor \leq x$, we have
+\begin{equation*}
+\E[(\vt{i})_3 \mid \mathcal{H}_t] \leq \varepsilon^{-(4 a^2 +4)}\, (a^2 -1 )\,\E[(\vt{i})_2 \mid \mathcal{H}_t] .
+\end{equation*}
+Finally, since this bound applies uniformly for each $i$, the ratio of interest is bounded by
+\begin{equation*}
+\frac{\frac{1}{(N)_3} \sum_{i=1}^N \E_t[(\vt{i})_3]}{\frac{1}{(N)_2} \sum_{i=1}^N \E_t[(\vt{i})_2]}
+\leq \frac{1}{N-2} \varepsilon^{-(4 a^2 +4)}\, (a^2 -1 ) =: b_N \to 0
+\end{equation*}
+as required, so we can apply Theorem 1 to obtain the result.
 
 \bibliography{../../smc.bib}
 \end{document}

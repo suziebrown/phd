@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  6 DEC 2019 10:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  22 JAN 2020 11:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -782,17 +782,17 @@ Package pdftex.def Info: ../residual_resampling/plots/EcN_mn_res_N2.pdf  used o
 n input line 568.
 (pdftex.def)             Requested size: 377.62642pt x 251.75781pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 577--578
+Underfull \hbox (badness 10000) in paragraph at lines 581--582
 
  []
 
 
-Overfull \hbox (11.37738pt too wide) in paragraph at lines 579--604
+Overfull \hbox (11.37738pt too wide) in paragraph at lines 583--608
 [][] 
  []
 
 [14 <../residual_resampling/plots/EcN_mn_res_N2.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 629--630
+Underfull \hbox (badness 10000) in paragraph at lines 633--634
 
  []
 
@@ -803,7 +803,7 @@ File: ../residual_resampling/plots/EcN_mn_N3_heatmap.pdf Graphic file (type pdf
 )
 <use ../residual_resampling/plots/EcN_mn_N3_heatmap.pdf>
 Package pdftex.def Info: ../residual_resampling/plots/EcN_mn_N3_heatmap.pdf  us
-ed on input line 645.
+ed on input line 649.
 (pdftex.def)             Requested size: 236.01561pt x 157.34404pt.
 <../residual_resampling/plots/EcN_mn_N3_contour.pdf, id=78, 602.25pt x 401.5pt>
 
@@ -811,10 +811,10 @@ File: ../residual_resampling/plots/EcN_mn_N3_contour.pdf Graphic file (type pdf
 )
 <use ../residual_resampling/plots/EcN_mn_N3_contour.pdf>
 Package pdftex.def Info: ../residual_resampling/plots/EcN_mn_N3_contour.pdf  us
-ed on input line 646.
+ed on input line 650.
 (pdftex.def)             Requested size: 236.01561pt x 157.34404pt.
 
-Overfull \hbox (2.2222pt too wide) in paragraph at lines 645--647
+Overfull \hbox (2.2222pt too wide) in paragraph at lines 649--651
 [][] [] 
  []
 
@@ -824,7 +824,7 @@ File: ../residual_resampling/plots/EcN_res_N3_heatmap.pdf Graphic file (type pd
 f)
 <use ../residual_resampling/plots/EcN_res_N3_heatmap.pdf>
 Package pdftex.def Info: ../residual_resampling/plots/EcN_res_N3_heatmap.pdf  u
-sed on input line 650.
+sed on input line 654.
 (pdftex.def)             Requested size: 236.01561pt x 157.34404pt.
 <../residual_resampling/plots/EcN_res_N3_contour.pdf, id=80, 602.25pt x 401.5pt
 >
@@ -832,10 +832,10 @@ File: ../residual_resampling/plots/EcN_res_N3_contour.pdf Graphic file (type pd
 f)
 <use ../residual_resampling/plots/EcN_res_N3_contour.pdf>
 Package pdftex.def Info: ../residual_resampling/plots/EcN_res_N3_contour.pdf  u
-sed on input line 651.
+sed on input line 655.
 (pdftex.def)             Requested size: 236.01561pt x 157.34404pt.
 
-Overfull \hbox (2.2222pt too wide) in paragraph at lines 650--652
+Overfull \hbox (2.2222pt too wide) in paragraph at lines 654--656
 [][] [] 
  []
 
@@ -845,7 +845,7 @@ File: ../residual_resampling/plots/EcN_mn_res_diff_N3_heatmap.pdf Graphic file
 (type pdf)
 <use ../residual_resampling/plots/EcN_mn_res_diff_N3_heatmap.pdf>
 Package pdftex.def Info: ../residual_resampling/plots/EcN_mn_res_diff_N3_heatma
-p.pdf  used on input line 655.
+p.pdf  used on input line 659.
 (pdftex.def)             Requested size: 236.01561pt x 157.34404pt.
 <../residual_resampling/plots/EcN_mn_res_diff_N3_contour.pdf, id=82, 602.25pt x
  401.5pt>
@@ -853,31 +853,31 @@ File: ../residual_resampling/plots/EcN_mn_res_diff_N3_contour.pdf Graphic file
 (type pdf)
 <use ../residual_resampling/plots/EcN_mn_res_diff_N3_contour.pdf>
 Package pdftex.def Info: ../residual_resampling/plots/EcN_mn_res_diff_N3_contou
-r.pdf  used on input line 656.
+r.pdf  used on input line 660.
 (pdftex.def)             Requested size: 236.01561pt x 157.34404pt.
 
-Overfull \hbox (2.2222pt too wide) in paragraph at lines 655--657
+Overfull \hbox (2.2222pt too wide) in paragraph at lines 659--661
 [][] [] 
  []
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 676.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 680.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 676.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 680.
  [16] [17 <../residual_resampling/plots/EcN_mn_N3_heatmap.pdf> <../residual_res
 ampling/plots/EcN_mn_N3_contour.pdf> <../residual_resampling/plots/EcN_res_N3_h
 eatmap.pdf> <../residual_resampling/plots/EcN_res_N3_contour.pdf> <../residual_
 resampling/plots/EcN_mn_res_diff_N3_heatmap.pdf> <../residual_resampling/plots/
 EcN_mn_res_diff_N3_contour.pdf>]
-Overfull \hbox (27.44pt too wide) detected at line 731
+Overfull \hbox (27.44pt too wide) detected at line 735
 []
  []
 
 
-Overfull \hbox (80.60565pt too wide) detected at line 739
+Overfull \hbox (80.60565pt too wide) detected at line 743
 []
  []
 
@@ -886,22 +886,22 @@ Overfull \hbox (80.60565pt too wide) detected at line 739
 File: ../randomised_rounding/plots/delta_cN_N2.pdf Graphic file (type pdf)
 <use ../randomised_rounding/plots/delta_cN_N2.pdf>
 Package pdftex.def Info: ../randomised_rounding/plots/delta_cN_N2.pdf  used on 
-input line 816.
+input line 820.
 (pdftex.def)             Requested size: 155.77116pt x 103.8484pt.
 <../randomised_rounding/plots/delta_cN_N10.pdf, id=116, 602.25pt x 401.5pt>
 File: ../randomised_rounding/plots/delta_cN_N10.pdf Graphic file (type pdf)
 <use ../randomised_rounding/plots/delta_cN_N10.pdf>
 Package pdftex.def Info: ../randomised_rounding/plots/delta_cN_N10.pdf  used on
- input line 817.
+ input line 821.
 (pdftex.def)             Requested size: 155.77116pt x 103.8484pt.
 <../randomised_rounding/plots/delta_cN_N100.pdf, id=117, 602.25pt x 401.5pt>
 File: ../randomised_rounding/plots/delta_cN_N100.pdf Graphic file (type pdf)
 <use ../randomised_rounding/plots/delta_cN_N100.pdf>
 Package pdftex.def Info: ../randomised_rounding/plots/delta_cN_N100.pdf  used o
-n input line 818.
+n input line 822.
 (pdftex.def)             Requested size: 155.77116pt x 103.8484pt.
 
-Overfull \hbox (1.84985pt too wide) detected at line 840
+Overfull \hbox (1.84985pt too wide) detected at line 844
 []
  []
 
@@ -945,7 +945,7 @@ ist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2018/texmf-dis
 t/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2018/texmf-dist
 /fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2018/texmf-
 dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
-Output written on everything.pdf (21 pages, 1662092 bytes).
+Output written on everything.pdf (21 pages, 1661881 bytes).
 PDF statistics:
  204 PDF objects out of 1000 (max. 8388607)
  147 compressed objects within 2 object streams

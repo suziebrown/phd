@@ -568,6 +568,10 @@ Then since $(\wt{i} -1)^2 = (\wt{i})^2 -2\wt{i} +1 \geq 0$, we have that $(\wt{i
 \includegraphics[width=0.8\textwidth]{../residual_resampling/plots/EcN_mn_res_N2.pdf}
 \end{center}
 
+The red line on the plot is correct for stratified resampling and for stochastic rounding, as well as residual-multinomial, for $N=2$. This is easy to show using the same kind of technique as above.
+
+We could add another line for CSMC-multinomial, which has expected coalescence rate $w_1$. It therefore dominates multinomial when $w_1 \leq 0.5$ but is dominated by multinomial when $w_1 \geq 0.5$. This asymmetry is due to the (wlog) assignment of the immortal particle to index 1. 
+
 %==================
 
 \subsubsection{Case $N=3$}
