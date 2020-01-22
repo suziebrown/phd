@@ -5,6 +5,7 @@ nvals = length(w1_vals)
 
 EcN_mn = Array{Float64, 1}(undef, nvals)
 EcN_res = Array{Float64, 1}(undef, nvals)
+EcN_csmc = Array{Float64, 1}(undef, nvals)
 
 for i in 1:nvals
     # set weights
@@ -21,6 +22,7 @@ for i in 1:nvals
     # expected coalescence rates
     EcN_mn[i] = p0_mn + p2_mn
     EcN_res[i] = p0_res + p2_res
+    EcN_csmc[i] = w1
     VcN_mn[i] = p0_mn
 end
 
@@ -28,7 +30,8 @@ end
 using Plots
 
 plot(w1_vals, EcN_mn, lab="multinomial", line=2, legend=:bottomright)
-plot!(w1_vals, EcN_res, lab="residual", line=2)
+plot!(w1_vals, EcN_res, lab="residual-mn", line=2)
+plot!(w1_vals, EcN_csmc, lab="CSMC-mn", line=2)
 ylabel!("expected coalescence rate")
 xlabel!("w1")
 title!("dependence of E[c_N] on weights (N=2)")
