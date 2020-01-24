@@ -258,16 +258,16 @@ where the final inequality follows from $\varepsilon \in (0,1)$ and $x-\lfloor x
 \begin{align*}
 \frac{1}{C} &\geq (1- N\wt{i} + \flnw) \varepsilon^{\flnw} + (N\wt{i} - \flnw) \varepsilon^{(\flnw +1)} \\
 &= \varepsilon^{\flnw} [ 1 - (1-\varepsilon)(N\wt{i} - \flnw)] \\
-&\geq \varepsilon^{\flnw} .
+&\geq \varepsilon^{\flnw+1} .
 \end{align*}
 We therefore find the following bounds on the probabilities:
 \begin{align*}
-\PR[\vt{i} = \flnw \mid \mathcal{H}_t] & \leq (1- N\wt{i} + \flnw)\, \varepsilon^{-2\flnw} \\
+\PR[\vt{i} = \flnw \mid \mathcal{H}_t] & \leq (1- N\wt{i} + \flnw)\, \varepsilon^{-(2\flnw+1)} \\
 \PR[\vt{i} = \flnw \mid \mathcal{H}_t] & \geq (1- N\wt{i} + \flnw)\, \varepsilon^{(2\flnw +2)} \\
-\PR[\vt{i} = \flnw +1 \mid \mathcal{H}_t] & \leq (N\wt{i} - \flnw)\, \varepsilon^{-(2\flnw +1)} \\
+\PR[\vt{i} = \flnw +1 \mid \mathcal{H}_t] & \leq (N\wt{i} - \flnw)\, \varepsilon^{-(2\flnw +2)} \\
 \PR[\vt{i} = \flnw +1 \mid \mathcal{H}_t] & \geq (N\wt{i} - \flnw) \, \varepsilon^{(2\flnw +3)} 
 \end{align*}
-Now we can get at the expectations of interest:
+Now we can get at the expectations of interest [NEED TO CARRY THROUGH eps FACTOR ON UBs THROUGHOUT THE FOLLOWING]:
 \begin{align*}
 \E[(\vt{i})_2 \mid \mathcal{H}_t] &= (\flnw)_2 \PR[\vt{i} = \flnw \mid \mathcal{H}_t] + (\flnw +1)_2 \PR[\vt{i} = \flnw +1 \mid \mathcal{H}_t] \\
 &\geq (\flnw)_2 (1- N\wt{i} + \flnw)\, \varepsilon^{(2\flnw +2)} + (\flnw +1)_2 (N\wt{i} - \flnw) \, \varepsilon^{(2\flnw +3)} \\
