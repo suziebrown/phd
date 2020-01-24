@@ -247,42 +247,58 @@ We can use this to bound the probabilities above and below:
 C \cdot (1- N\wt{i} + \flnw) \varepsilon^{\flnw} &\leq \PR[\vt{i} = \flnw \mid \mathcal{H}_t] &\leq C \cdot (1- N\wt{i} + \flnw) \varepsilon^{-\flnw} \\
 C \cdot (N\wt{i} - \flnw) \varepsilon^{(\flnw +1)} &\leq \PR[\vt{i} = \flnw +1 \mid \mathcal{H}_t] &\leq C \cdot (N\wt{i} - \flnw) \varepsilon^{-(\flnw+1)} 
 \end{align*}
-As these are the only two possibilities, we can easily find bounds on the normalising constant:
+As these are the only two possibilities, we can easily find bounds on the normalised probabilities, for example:
 \begin{align*}
-\frac{1}{C} &= \frac{1}{C} \PR[\vt{i} = \flnw \mid \mathcal{H}_t] + \frac{1}{C} \PR[\vt{i} = \flnw +1 \mid \mathcal{H}_t] \\
-&\leq (1- N\wt{i} + \flnw) \varepsilon^{-\flnw} + (N\wt{i} - \flnw) \varepsilon^{-(\flnw +1)} \\
-&= \varepsilon^{-(\flnw+1)} [ \varepsilon + (1-\varepsilon)(N\wt{i} - \flnw)] \\
-&\leq \varepsilon^{-(\flnw+2)}
+\PR[\vt{i} = \flnw \mid \mathcal{H}_t] 
+&\leq \frac{(1-N\wt{i} + \flnw)\varepsilon^{-\flnw}}{(1-N\wt{i} + \flnw)\varepsilon^{-\flnw} + (N\wt{i} - \flnw)\varepsilon^{(\flnw + 1)}} \\
+&= (1-N\wt{i} + \flnw) \left[ 1- (1-\varepsilon^{(2\flnw+1)})(N\wt{i} - \flnw) \right]^{-1} \\
+&\leq (1-N\wt{i} + \flnw) \left[ 1- (1-\varepsilon^{(2\flnw+1)}) \right]^{-1} \\
+&= (1-N\wt{i} + \flnw) \varepsilon^{-(2\flnw+1)}
 \end{align*}
-where the final inequality follows from $\varepsilon \in (0,1)$ and $x-\lfloor x \rfloor \in [0,1)$. Similarly,
+where we use that $x-\lfloor x \rfloor \in [0,1)$.
+A similar calculation gives us the corresponding lower bound:
 \begin{align*}
-\frac{1}{C} &\geq (1- N\wt{i} + \flnw) \varepsilon^{\flnw} + (N\wt{i} - \flnw) \varepsilon^{(\flnw +1)} \\
-&= \varepsilon^{\flnw} [ 1 - (1-\varepsilon)(N\wt{i} - \flnw)] \\
-&\geq \varepsilon^{\flnw+1} .
+\PR[\vt{i} = \flnw \mid \mathcal{H}_t] 
+&\geq \frac{(1-N\wt{i} + \flnw)\varepsilon^{\flnw}}{(1-N\wt{i} + \flnw)\varepsilon^{\flnw} + (N\wt{i} - \flnw)\varepsilon^{-(\flnw + 1)}} \\
+&= (1-N\wt{i} + \flnw) \left[ 1- (1-\varepsilon^{-(2\flnw+1)})(N\wt{i} - \flnw) \right]^{-1} \\
+&\geq (1-N\wt{i} + \flnw) .
 \end{align*}
-We therefore find the following bounds on the probabilities:
+Also the upper bound on the other probability:
 \begin{align*}
-\PR[\vt{i} = \flnw \mid \mathcal{H}_t] & \leq (1- N\wt{i} + \flnw)\, \varepsilon^{-(2\flnw+1)} \\
-\PR[\vt{i} = \flnw \mid \mathcal{H}_t] & \geq (1- N\wt{i} + \flnw)\, \varepsilon^{(2\flnw +2)} \\
-\PR[\vt{i} = \flnw +1 \mid \mathcal{H}_t] & \leq (N\wt{i} - \flnw)\, \varepsilon^{-(2\flnw +2)} \\
-\PR[\vt{i} = \flnw +1 \mid \mathcal{H}_t] & \geq (N\wt{i} - \flnw) \, \varepsilon^{(2\flnw +3)} 
+\PR[\vt{i} = \flnw +1 \mid \mathcal{H}_t] 
+&\leq \frac{(N\wt{i} - \flnw)\varepsilon^{-(\flnw +1)}}{(N\wt{i} - \flnw)\varepsilon^{-(\flnw +1)} + (1- N\wt{i} + \flnw)\varepsilon^{\flnw}} \\
+&= (N\wt{i} - \flnw) \left[ \varepsilon^{(2\flnw +1)} + (1-\varepsilon^{(2\flnw+1)})(N\wt{i} - \flnw) \right]^{-1} \\
+&= (N\wt{i} - \flnw) \varepsilon^{-(2\flnw+1)} ,
 \end{align*}
-Now we can get at the expectations of interest [NEED TO CARRY THROUGH eps FACTOR ON UBs THROUGHOUT THE FOLLOWING]:
+and the corresponding lower bound:
+\begin{align*}
+\PR[\vt{i} = \flnw +1 \mid \mathcal{H}_t] 
+&\geq \frac{(N\wt{i} - \flnw)\varepsilon^{(\flnw +1)}}{(N\wt{i} - \flnw)\varepsilon^{(\flnw +1)} + (1- N\wt{i} + \flnw)\varepsilon^{-\flnw}} \\
+&= (N\wt{i} - \flnw) \left[ \varepsilon^{-(2\flnw +1)} + (1-\varepsilon^{-(2\flnw+1)})(N\wt{i} - \flnw) \right]^{-1} \\
+&= (N\wt{i} - \flnw) .
+\end{align*}
+In summary, we have:
+\begin{alignat*}{2}
+(1-N\wt{i} + \flnw) &\leq \PR[\vt{i} = \flnw \mid \mathcal{H}_t]  &&\leq (1-N\wt{i} + \flnw) \varepsilon^{-(2\flnw+1)} \\
+(N\wt{i} - \flnw) &\leq \PR[\vt{i} = \flnw +1 \mid \mathcal{H}_t] &&\leq (N\wt{i} - \flnw) \varepsilon^{-(2\flnw+1)}
+\end{alignat*}
+Now we can get at the expectations of interest:
 \begin{align*}
 \E[(\vt{i})_2 \mid \mathcal{H}_t] &= (\flnw)_2 \PR[\vt{i} = \flnw \mid \mathcal{H}_t] + (\flnw +1)_2 \PR[\vt{i} = \flnw +1 \mid \mathcal{H}_t] \\
-&\geq (\flnw)_2 (1- N\wt{i} + \flnw)\, \varepsilon^{(2\flnw +2)} + (\flnw +1)_2 (N\wt{i} - \flnw) \, \varepsilon^{(2\flnw +3)} \\
-&\geq \varepsilon^{(2\flnw +3)} \, \flnw (2N\wt{i} -\flnw -1)
+&\geq (\flnw)_2 (1- N\wt{i} + \flnw) + (\flnw +1)_2 (N\wt{i} - \flnw)\\
+&= \flnw (2N\wt{i} -\flnw -1)
 \end{align*}
 and
 \begin{align*}
 \E[(\vt{i})_3 \mid \mathcal{H}_t] &= (\flnw)_3 \PR[\vt{i} = \flnw \mid \mathcal{H}_t] + (\flnw +1)_3 \PR[\vt{i} = \flnw +1 \mid \mathcal{H}_t] \\
-&\leq (\flnw)_3 (1- N\wt{i} + \flnw)\, \varepsilon^{-(2\flnw)} + (\flnw +1)_3 (N\wt{i} - \flnw)\, \varepsilon^{-(2\flnw +1)} \\
-&\leq \varepsilon^{-(2\flnw +1)} \, (\flnw)_2 (2N\wt{i} - \flnw -1 + N\wt{i} - \flnw -1) \\
-&\leq \varepsilon^{-(2\flnw +1)} \, (\flnw -1)\flnw (2N\wt{i} - \flnw -1).
+&\leq (\flnw)_3 (1- N\wt{i} + \flnw)\, \varepsilon^{-(2\flnw+1)} + (\flnw +1)_3 (N\wt{i} - \flnw)\, \varepsilon^{-(2\flnw +1)} \\
+&= (\flnw -1)\flnw  \varepsilon^{-(2\flnw +1)} \,  (3N\wt{i} - 2\flnw -2) \\
+&\leq (\flnw -1)\flnw  \varepsilon^{-(2\flnw +1)} \,  (2N\wt{i} - 1\flnw -1) .
 \end{align*}
 In particular, we now have
 \begin{equation*}
-\E[(\vt{i})_3 \mid \mathcal{H}_t] \leq \varepsilon^{-(4\flnw +4)}\, (\flnw -1 )\,\E[(\vt{i})_2 \mid \mathcal{H}_t] .
+\E[(\vt{i})_3 \mid \mathcal{H}_t] 
+\leq  (\flnw -1 ) \, \varepsilon^{-(2\flnw +1)} \, \E[(\vt{i})_2 \mid \mathcal{H}_t] .
 \end{equation*}
 Now we use the bounds on the potential functions to take care of the terms in $\wt{i}$. Using the bounds \eqref{eq:bounded_g} along with the form of the weights in Algorithm 1, we have almost surely for each $i$
 \begin{equation*}
@@ -290,14 +306,15 @@ Now we use the bounds on the potential functions to take care of the terms in $\
 \end{equation*}
 Applying these bounds along with the simple inequality $\lfloor x\rfloor \leq x$, we have
 \begin{equation*}
-\E[(\vt{i})_3 \mid \mathcal{H}_t] \leq \varepsilon^{-(4 a^2 +4)}\, (a^2 -1 )\,\E[(\vt{i})_2 \mid \mathcal{H}_t] .
+\E[(\vt{i})_3 \mid \mathcal{H}_t] \leq (a^2 -1 )\, \varepsilon^{-(2 a^2 +1)}\, \E[(\vt{i})_2 \mid \mathcal{H}_t] .
 \end{equation*}
 Finally, since this bound applies uniformly for each $i$, the ratio of interest is bounded by
 \begin{equation*}
 \frac{\frac{1}{(N)_3} \sum_{i=1}^N \E_t[(\vt{i})_3]}{\frac{1}{(N)_2} \sum_{i=1}^N \E_t[(\vt{i})_2]}
-\leq \frac{1}{N-2} \varepsilon^{-(4 a^2 +4)}\, (a^2 -1 ) =: b_N \to 0
+\leq \frac{1}{N-2}(a^2 -1 )\, \varepsilon^{-(2a^2 +1)}  =: b_N \to 0
 \end{equation*}
 as required, so we can apply Theorem 1 to obtain the result.
+
 
 \bibliography{../../smc.bib}
 \end{document}
