@@ -59,12 +59,12 @@
 \thispagestyle{fancy}
 Note: time is labelled in reverse throughout this document.\\
 
-Let's take the conditioning set to be $\mathcal{H}_t = (\mathbf{X}_t, \mathbf{X}_{t-1}, \mathbf{w}_t, \mathbf{w}_{t-1})$. This set works as a separatrix between $\mathbf{a}_{t}$ and $\mathcal{F}_{t-1}$ as desired. It is different from the one used in (Koskela et al 2019) because we include $\mathbf{w}_t$ directly rather than its explicit expression in terms of $\mathbf{a}_{t+1}, \mathbf{X}_{t+1}, \mathbf{X}_t$ to simplify the notation.\\
+For any $N\in \mathbb{N}$, we define the conditioning set to be $\mathcal{H}_t^N = (\mathbf{X}_t, \mathbf{X}_{t-1}, \mathbf{w}_t, \mathbf{w}_{t-1})$. (The dependence on $N$ is suppressed from the notation in the following so that I wouldn't have to update it everywhere.) This set works as a separatrix between $\mathbf{a}_{t}$ and $\mathcal{F}_{t-1}$ as desired. It is different from the one used in (Koskela et al 2019) because we include $\mathbf{w}_t$ directly rather than its explicit expression in terms of $\mathbf{a}_{t+1}, \mathbf{X}_{t+1}, \mathbf{X}_t$ to simplify the notation.\\
 
 In each case, the choice of parent depends on two factors: the conditional probability of choosing that parent under the given resampling scheme, and the conditional ``probability'' of a particle moving from that parent's position at time $t$ to the offspring's position at time $t-1$. We see the contribution of these two factors in the following.
 
 \begin{defn}
-A function $f$ is said to be $i$-increasing if it is an increasing function in $\vt{i} = |\{j : a_t^{(j)} = i \}|$.
+For any $N$ and any $i\in\{1,\dots,N\}$, a function $f: \{1,\dots,N\}^N \to \mathbb{R}$ is said to be $i$-increasing if it is an increasing function in $\vt{i} = |\{j : a_t^{(j)} = i \}|$.
 \end{defn}
 
 \section*{Multinomial resampling}
@@ -154,7 +154,7 @@ We can thus conclude the proof of Corollary \ref{thm:mn_newassns} by applying Th
 \section*{Conditional SMC with multinomial resampling}
 We can apply the same technique to tackle conditional SMC, but it requires an adjustment of the bounding distributions.
 We assume wlog that the immortal particle always takes index 1.
-In this case, the parental indices are still independent, but we have to treat $i=1$ as a special case. We are assuming wlog that the immortal particle is labelled 1 in each generation. We have the following conditional law:
+The parental indices are still independent, but we now have to treat $i=1$ as a special case. We have the following conditional law:
 %% typeset the below properly using cases...
 \begin{align*}
 &\PR [a_t^{(1)} = a_1 \mid \mathcal{H}_t] = \I{a_1=1}  & \\
@@ -166,7 +166,7 @@ The joint conditional law is therefore
 \end{equation*}
 
 \begin{lemma}\label{lem:i_increasing_csmc}
-Let $a_t^{(i)}$ be the parental indices from a  conditional SMC algorithm with multinomial resampling. For any function $f$ that is $i$-increasing, 
+Let $a_t^{(i)}$ be the parental indices from a  conditional SMC algorithm with multinomial resampling, such that \eqref{eq:bounded_g} and \eqref{eq:bounded_q} are satisfied. For any function $f$ that is $i$-increasing, 
 \begin{align*}
 & \E[f(\mathbf{a}_t) \mid \mathcal{H}_t] \leq \E[f(\mathbf{A}_1)] \\
 & \E[f(\mathbf{a}_t) \mid \mathcal{H}_t] \geq \E[f(\mathbf{A}_2)]
@@ -247,7 +247,13 @@ We can use this to bound the probabilities above and below:
 C \cdot (1- N\wt{i} + \flnw) \varepsilon^{\flnw} &\leq \PR[\vt{i} = \flnw \mid \mathcal{H}_t] &\leq C \cdot (1- N\wt{i} + \flnw) \varepsilon^{-\flnw} \\
 C \cdot (N\wt{i} - \flnw) \varepsilon^{(\flnw +1)} &\leq \PR[\vt{i} = \flnw +1 \mid \mathcal{H}_t] &\leq C \cdot (N\wt{i} - \flnw) \varepsilon^{-(\flnw+1)} 
 \end{align*}
-As these are the only two possibilities, we can easily find bounds on the normalised probabilities, for example:
+As these are the only two possibilities, we can easily find bounds on the normalised probabilities. We use that, for $A,B > 0$,
+\begin{equation}
+\frac{A}{A+B} = \frac{1}{1+ (B/A)} \leq \frac{1}{1+(B^-/A^+)} = \frac{A^+}{A^+ + B^-}
+\end{equation}
+where $A^+$ is an upper bound on $A$ and $B^-$ is a lower bound on $B$. This yields slightly tighter bounds than just bounding the numerator $A$ above and the denominator $A+B$ below. A similar result is used for the lower bound. 
+
+For the first upper bound we get:
 \begin{align*}
 \PR[\vt{i} = \flnw \mid \mathcal{H}_t] 
 &\leq \frac{(1-N\wt{i} + \flnw)\varepsilon^{-\flnw}}{(1-N\wt{i} + \flnw)\varepsilon^{-\flnw} + (N\wt{i} - \flnw)\varepsilon^{(\flnw + 1)}} \\
@@ -260,8 +266,8 @@ A similar calculation gives us the corresponding lower bound:
 \begin{align*}
 \PR[\vt{i} = \flnw \mid \mathcal{H}_t] 
 &\geq \frac{(1-N\wt{i} + \flnw)\varepsilon^{\flnw}}{(1-N\wt{i} + \flnw)\varepsilon^{\flnw} + (N\wt{i} - \flnw)\varepsilon^{-(\flnw + 1)}} \\
-&= (1-N\wt{i} + \flnw) \left[ 1- (1-\varepsilon^{-(2\flnw+1)})(N\wt{i} - \flnw) \right]^{-1} \\
-&\geq (1-N\wt{i} + \flnw) .
+&= (1-N\wt{i} + \flnw) \left[ 1+ (\varepsilon^{-(2\flnw+1)} -1)(N\wt{i} - \flnw) \right]^{-1} \\
+&\geq (1-N\wt{i} + \flnw) \varepsilon^{(2\flnw+1)} .
 \end{align*}
 Also the upper bound on the other probability:
 \begin{align*}
@@ -274,31 +280,31 @@ and the corresponding lower bound:
 \begin{align*}
 \PR[\vt{i} = \flnw +1 \mid \mathcal{H}_t] 
 &\geq \frac{(N\wt{i} - \flnw)\varepsilon^{(\flnw +1)}}{(N\wt{i} - \flnw)\varepsilon^{(\flnw +1)} + (1- N\wt{i} + \flnw)\varepsilon^{-\flnw}} \\
-&= (N\wt{i} - \flnw) \left[ \varepsilon^{-(2\flnw +1)} + (1-\varepsilon^{-(2\flnw+1)})(N\wt{i} - \flnw) \right]^{-1} \\
-&= (N\wt{i} - \flnw) .
+&= (N\wt{i} - \flnw) \left[ \varepsilon^{-(2\flnw +1)} - (\varepsilon^{-(2\flnw+1)} -1)(N\wt{i} - \flnw) \right]^{-1} \\
+&= (N\wt{i} - \flnw) \varepsilon^{(2\flnw +1)} .
 \end{align*}
 In summary, we have:
 \begin{alignat*}{2}
-(1-N\wt{i} + \flnw) &\leq \PR[\vt{i} = \flnw \mid \mathcal{H}_t]  &&\leq (1-N\wt{i} + \flnw) \varepsilon^{-(2\flnw+1)} \\
-(N\wt{i} - \flnw) &\leq \PR[\vt{i} = \flnw +1 \mid \mathcal{H}_t] &&\leq (N\wt{i} - \flnw) \varepsilon^{-(2\flnw+1)}
+(1-N\wt{i} + \flnw) \varepsilon^{(2\flnw +1)} &\leq \PR[\vt{i} = \flnw \mid \mathcal{H}_t]  &&\leq (1-N\wt{i} + \flnw) \varepsilon^{-(2\flnw+1)} \\
+(N\wt{i} - \flnw) \varepsilon^{(2\flnw +1)} &\leq \PR[\vt{i} = \flnw +1 \mid \mathcal{H}_t] &&\leq (N\wt{i} - \flnw) \varepsilon^{-(2\flnw+1)}
 \end{alignat*}
 Now we can get at the expectations of interest:
 \begin{align*}
 \E[(\vt{i})_2 \mid \mathcal{H}_t] &= (\flnw)_2 \PR[\vt{i} = \flnw \mid \mathcal{H}_t] + (\flnw +1)_2 \PR[\vt{i} = \flnw +1 \mid \mathcal{H}_t] \\
-&\geq (\flnw)_2 (1- N\wt{i} + \flnw) + (\flnw +1)_2 (N\wt{i} - \flnw)\\
-&= \flnw (2N\wt{i} -\flnw -1)
+&\geq (\flnw)_2 (1- N\wt{i} + \flnw) \varepsilon^{(2\flnw +1)} + (\flnw +1)_2 (N\wt{i} - \flnw) \varepsilon^{(2\flnw +1)}\\
+&= \flnw (2N\wt{i} -\flnw -1) \,\varepsilon^{(2\flnw +1)}
 \end{align*}
 and
 \begin{align*}
 \E[(\vt{i})_3 \mid \mathcal{H}_t] &= (\flnw)_3 \PR[\vt{i} = \flnw \mid \mathcal{H}_t] + (\flnw +1)_3 \PR[\vt{i} = \flnw +1 \mid \mathcal{H}_t] \\
 &\leq (\flnw)_3 (1- N\wt{i} + \flnw)\, \varepsilon^{-(2\flnw+1)} + (\flnw +1)_3 (N\wt{i} - \flnw)\, \varepsilon^{-(2\flnw +1)} \\
 &= (\flnw -1)\flnw  \varepsilon^{-(2\flnw +1)} \,  (3N\wt{i} - 2\flnw -2) \\
-&\leq (\flnw -1)\flnw  \varepsilon^{-(2\flnw +1)} \,  (2N\wt{i} - 1\flnw -1) .
+&\leq (\flnw -1)\flnw  (2N\wt{i} - 1\flnw -1) \,\varepsilon^{-(2\flnw +1)} .
 \end{align*}
 In particular, we now have
 \begin{equation*}
 \E[(\vt{i})_3 \mid \mathcal{H}_t] 
-\leq  (\flnw -1 ) \, \varepsilon^{-(2\flnw +1)} \, \E[(\vt{i})_2 \mid \mathcal{H}_t] .
+\leq  (\flnw -1 ) \, \varepsilon^{-(4\flnw +2)} \, \E[(\vt{i})_2 \mid \mathcal{H}_t] .
 \end{equation*}
 Now we use the bounds on the potential functions to take care of the terms in $\wt{i}$. Using the bounds \eqref{eq:bounded_g} along with the form of the weights in Algorithm 1, we have almost surely for each $i$
 \begin{equation*}
@@ -306,12 +312,12 @@ Now we use the bounds on the potential functions to take care of the terms in $\
 \end{equation*}
 Applying these bounds along with the simple inequality $\lfloor x\rfloor \leq x$, we have
 \begin{equation*}
-\E[(\vt{i})_3 \mid \mathcal{H}_t] \leq (a^2 -1 )\, \varepsilon^{-(2 a^2 +1)}\, \E[(\vt{i})_2 \mid \mathcal{H}_t] .
+\E[(\vt{i})_3 \mid \mathcal{H}_t] \leq (a^2 -1 )\, \varepsilon^{-(4 a^2 +2)}\, \E[(\vt{i})_2 \mid \mathcal{H}_t] .
 \end{equation*}
 Finally, since this bound applies uniformly for each $i$, the ratio of interest is bounded by
 \begin{equation*}
 \frac{\frac{1}{(N)_3} \sum_{i=1}^N \E_t[(\vt{i})_3]}{\frac{1}{(N)_2} \sum_{i=1}^N \E_t[(\vt{i})_2]}
-\leq \frac{1}{N-2}(a^2 -1 )\, \varepsilon^{-(2a^2 +1)}  =: b_N \to 0
+\leq \frac{1}{N-2}(a^2 -1 )\, \varepsilon^{-(4a^2 +2)}  =: b_N \to 0
 \end{equation*}
 as required, so we can apply Theorem 1 to obtain the result.
 

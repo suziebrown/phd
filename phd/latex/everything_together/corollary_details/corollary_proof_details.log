@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  24 JAN 2020 12:23
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  30 JAN 2020 16:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -277,17 +277,27 @@ Overfull \hbox (0.63535pt too wide) detected at line 249
  []
 
 [4]
-Overfull \hbox (9.00803pt too wide) detected at line 272
+Overfull \hbox (9.00803pt too wide) detected at line 278
 []
  []
 
 
-Overfull \hbox (21.50806pt too wide) detected at line 279
+Overfull \hbox (21.50806pt too wide) detected at line 285
 []
  []
 
 
-Overfull \hbox (54.25185pt too wide) detected at line 297
+Overfull \hbox (3.96625pt too wide) detected at line 290
+[]
+ []
+
+
+Overfull \hbox (38.41856pt too wide) detected at line 296
+[]
+ []
+
+
+Overfull \hbox (54.25185pt too wide) detected at line 303
 []
  []
 
@@ -299,11 +309,11 @@ LaTeX Warning: There were undefined references.
 Here is how much of TeX's memory you used:
  2358 strings out of 492649
  29779 string characters out of 6129623
- 111464 words of memory out of 5000000
+ 110464 words of memory out of 5000000
  6219 multiletter control sequences out of 15000+600000
  12861 words of font info for 51 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 27i,16n,43p,487b,325s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 27i,16n,43p,637b,325s stack positions out of 5000i,500n,10000p,200000b,80000s
  </Users/suzie/Library/texlive/2018/texmf-var/fonts/pk/ljfour/public/bbm/bbm7
 .600pk></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx1
 0.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12
@@ -322,7 +332,7 @@ live/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texli
 ve/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive
 /2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/
 2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on corollary_proof_details.pdf (6 pages, 199745 bytes).
+Output written on corollary_proof_details.pdf (6 pages, 202289 bytes).
 PDF statistics:
  96 PDF objects out of 1000 (max. 8388607)
  69 compressed objects within 1 object stream
