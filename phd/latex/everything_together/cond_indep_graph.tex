@@ -14,14 +14,16 @@
 \begin{document}
 \begin{figure}
 \centering
-\begin{tikzpicture}
+\begin{tikzpicture}[>=stealth]
 %%% Draw on filtration (F_t) as nested areas...
 % highlighting circles
-\filldraw[lightgray] (4,0) circle (20pt);
-\filldraw[lightgray] (8,0) circle (20pt);
-\filldraw[lightgray] (4,-2) circle (20pt);
-\filldraw[lightgray] (8,-2) circle (20pt);
-\filldraw[yellow] (4,-4) circle (20pt);
+%\filldraw[lightgray] (4,0) circle (20pt);
+%\filldraw[lightgray] (8,0) circle (20pt);
+%\filldraw[lightgray] (4,-2) circle (20pt);
+%\filldraw[lightgray] (8,-2) circle (20pt);
+\filldraw[gray!20, rounded corners] (3.4,0.5)--(8.6,0.5)--(8.6,-2.5)--(3.4,-2.5)--cycle;
+\node[gray!70] at (8.9,0.3) {$\mathcal{H}_t$};
+%\draw[lightgray] (4,-4) circle (20pt);
 % left dots
 \node at (-2,0) {...};
 \node at (-2,-2) {...};
@@ -47,6 +49,14 @@
 \node at (10,-2) {...};
 \node at (10,-4) {...};
 \node at (10,-6) {...};
+%filtrations
+\draw [rounded corners, dashed, gray] (11,-6.5)--(7,-6.5)--(7,-5.5)--(11,-5.5);
+\draw [rounded corners, dashed, gray] (11,-6.7)--(3,-6.7)--(3,-5.3)--(11,-5.3);
+\draw [rounded corners, dashed, gray] (11,-6.9)--(-1,-6.9)--(-1,-5.1)--(11,-5.1);
+% filtration labels
+\node[gray] at (7.5,-6.3) {\footnotesize{$\mathcal{F}_{t-1}$}};
+\node[gray] at (3.3,-6.5) {\footnotesize{$\mathcal{F}_{t}$}};
+\node[gray] at (-0.5,-6.7) {\footnotesize{$\mathcal{F}_{t+1}$}};
 % arrows (t+1) -> t
 \draw[->] (0.5,0)--(3.6,0);
 \draw[->] (0.5,0)--(3.6,-2);
@@ -70,6 +80,6 @@
 \draw[->] (8,-2.3)--(8,-3.7);
 \draw[->] (8,-4.3)--(8,-5.7);
 \end{tikzpicture}
-\caption{Part of the conditional independence graph for Algorithm [1]. The forwards direction of time is from left to right. Nodes highlighted in grey form the separatrix $\mathcal{H}_t$ which separates $\bm{a}_t$ (highlighted in yellow) from $\mathcal{F}_{t-1}$.}
+\caption{Part of the conditional independence graph for Algorithm [1]. The forwards direction of time is from left to right. Nodes highlighted in grey form the separatrix $\mathcal{H}_t$ which separates $\bm{a}_t$ from $\mathcal{F}_{t-1}$.}
 \end{figure}
 \end{document}
