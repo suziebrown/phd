@@ -1,0 +1,102 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=2.5cm]{geometry}
+
+% bibliography
+\usepackage[round, sort&compress]{natbib}
+\usepackage{har2nat}
+\bibliographystyle{agsm}
+
+\title{Literature Review Notes}
+\author{Suzie Brown}
+
+\begin{document}
+\maketitle
+
+%-----------------------------------
+\section*{Sequential Monte Carlo}
+
+\textbf{\citet{gordon1993}}\\
+Original reference for SMC.
+\\[5pt]
+\textbf{\citet{kitagawa1996}}\\
+Nice introduction to SMC. Review of other non-linear filtering techniques: extensions to Kalman filtering.
+\\[5pt]
+\textbf{\citet{delmoral2013}}\\
+Loads of rigorous results about SMC e.g.\ convergence, rates, CLTs.
+\\[5pt]
+\textbf{\citet{doucet2009}}\\
+-
+\\[5pt]
+\textbf{\citet{andrieu2010}}\\
+Introduces particle MCMC methods, including particle Gibbs with conditional SMC.
+
+%-----------------------------------
+\section*{Resampling}
+
+\textbf{\citet{kitagawa1996}}\\
+Comparison of multinomial, stratified \& systematic resampling. And the effect of pre-sorting. [in appendix]
+\\[5pt]
+\textbf{\citet{douc2005}}\\
+Comparison of Monte Carlo variance between multinomial, res-mn, stratified, systematic. CLTs for resampled particles.
+\\[5pt]
+\textbf{\citet{lee2019}}\\
+Implementation of low-variance resampling within conditional SMC.
+\\[5pt]
+\textbf{\citet{murray2016}}\\
+-
+\\[5pt]
+\textbf{\citet{whitley1994}}\\
+-
+
+%-----------------------------------
+\section*{Backward Smoothing Methods}
+
+\textbf{\citet{kitagawa1996}}\\
+Some solutions to ancestral degeneracy: fixed lag smoother, forward-backward-type algorithm.
+\\[5pt]
+\textbf{\citet{doucet2009}}\\
+-
+\\[5pt]
+\textbf{\citet{lindsten2013}}\\
+A whole book on backward simulation. [Chapter 5] describes backward simulation and ancestor sampling in particle MCMC.
+\\[5pt]
+\textbf{\citet{andrieu2010}}\\
+Nick Whiteley describes (briefly!) the idea of ancestor sampling in particle MCMC [see Nick's comment in discussion].
+
+%-----------------------------------
+\section*{Convergence of Genealogies}
+
+\textbf{\citet{mohle1998}}\\
+Necessary \& sufficient conditions for convergence of Cannings model to a coalescent process more general than Kingman. Allowing large mergers but not simultaneous mergers.
+\\[5pt]
+\textbf{\citet{mohle2001}}\\
+Even more general result than \citet{mohle1998}, giving necessary \& sufficient conditions for convergence to a process allowing large and simultaneous mergers. I hope to adapt this result to prove necessity of our Theorem 1 conditions.
+\\[5pt]
+\textbf{\citet{mohle1999}}\\
+-
+
+%-----------------------------------
+\section*{SMC Genealogies}
+
+\textbf{\citet{jacob2015}}\\
+Description of ancestries as trunk+crown. Upper bound on storage cost via an approximate multinomial resampling scheme that is independent of weights. Numerical simulations suggesting similar results for stratified and systematic resampling (including an ordering on the schemes?). 
+\\[5pt]
+\textbf{\citet{koskela2018}}\\
+-
+
+%-----------------------------------
+\section*{Variance Estimation}
+
+\textbf{\citet{chan2013}}\\
+-
+\\[5pt]
+\textbf{\citet{lee2018}}\\
+-
+\\[5pt]
+\textbf{\citet{olsson2019}}\\
+-
+
+%-----------------------------------
+\bibliography{../smc.bib}
+\end{document}

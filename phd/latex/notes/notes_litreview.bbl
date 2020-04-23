@@ -1,0 +1,98 @@
+\begin{thebibliography}{xx}
+
+\harvarditem[Andrieu et~al.]{Andrieu, Doucet \harvardand\
+  Holenstein}{2010}{andrieu2010}
+Andrieu, C., Doucet, A. \harvardand\ Holenstein, R.  \harvardyearleft
+  2010\harvardyearright , `Particle {Markov} chain {Monte} {Carlo} methods',
+  {\em Journal of the Royal Statistical Society: Series B (Statistical
+  Methodology)} {\bf 72}(3),~269--342.
+
+\harvarditem[Chan et~al.]{Chan, Lai et~al.}{2013}{chan2013}
+Chan, H.~P., Lai, T.~L. et~al.  \harvardyearleft 2013\harvardyearright , `A
+  general theory of particle filters in hidden {Markov} models and some
+  applications', {\em The Annals of Statistics} {\bf 41}(6),~2877--2904.
+
+\harvarditem{Del~Moral}{2013}{delmoral2013}
+Del~Moral, P.  \harvardyearleft 2013\harvardyearright , {\em Mean Field
+  Simulation for {Monte} {Carlo} Integration}, Chapman and Hall/CRC.
+
+\harvarditem[Douc et~al.]{Douc, Capp{\'e} \harvardand\
+  Moulines}{2005}{douc2005}
+Douc, R., Capp{\'e}, O. \harvardand\ Moulines, E.  \harvardyearleft
+  2005\harvardyearright , Comparison of resampling schemes for particle
+  filtering, {\em in} `Image and Signal Processing and Analysis, 2005. ISPA
+  2005. Proceedings of the 4th International Symposium on', IEEE, pp.~64--69.
+
+\harvarditem{Doucet \harvardand\ Johansen}{2011}{doucet2009}
+Doucet, A. \harvardand\ Johansen, A.~M.  \harvardyearleft 2011\harvardyearright
+  , A tutorial on particle filtering and smoothing: Fifteen years later, {\em
+  in} `Handbook of nonlinear filtering', OUP, pp.~656--704.
+
+\harvarditem[Gordon et~al.]{Gordon, Salmond \harvardand\
+  Smith}{1993}{gordon1993}
+Gordon, N.~J., Salmond, D.~J. \harvardand\ Smith, A.~F.  \harvardyearleft
+  1993\harvardyearright , Novel approach to nonlinear/non-{Gaussian} {Bayesian}
+  state estimation, {\em in} `IEE Proceedings F (Radar and Signal Processing)',
+  Vol. 140, IET, pp.~107--113.
+
+\harvarditem[Jacob et~al.]{Jacob, Murray \harvardand\
+  Rubenthaler}{2015}{jacob2015}
+Jacob, P.~E., Murray, L.~M. \harvardand\ Rubenthaler, S.  \harvardyearleft
+  2015\harvardyearright , `Path storage in the particle filter', {\em
+  Statistics and Computing} {\bf 25}(2),~487--496.
+
+\harvarditem{Kitagawa}{1996}{kitagawa1996}
+Kitagawa, G.  \harvardyearleft 1996\harvardyearright , `{Monte} {Carlo} filter
+  and smoother for non-{Gaussian} nonlinear state space models', {\em Journal
+  of Computational and Graphical Statistics} {\bf 5}(1),~1--25.
+
+\harvarditem[Koskela et~al.]{Koskela, Jenkins, Johansen \harvardand\
+  Span\`o}{2018}{koskela2018}
+Koskela, J., Jenkins, P.~A., Johansen, A.~M. \harvardand\ Span\`o, D.
+  \harvardyearleft 2018\harvardyearright , `Asymptotic genealogies of
+  interacting particle systems with an application to sequential {Monte}
+  {Carlo}', {\em arXiv preprint arXiv:1804.01811} .
+
+\harvarditem[Lee et~al.]{Lee, Murray \harvardand\ Johansen}{2019}{lee2019}
+Lee, A., Murray, L. \harvardand\ Johansen, A.~M.  \harvardyearleft
+  2019\harvardyearright , `Resampling in conditional {SMC} algorithms'.
+
+\harvarditem{Lee \harvardand\ Whiteley}{2018}{lee2018}
+Lee, A. \harvardand\ Whiteley, N.  \harvardyearleft 2018\harvardyearright ,
+  `Variance estimation in the particle filter', {\em Biometrika} {\bf
+  105}(3),~609--625.
+
+\harvarditem[Lindsten et~al.]{Lindsten, Sch{\"o}n et~al.}{2013}{lindsten2013}
+Lindsten, F., Sch{\"o}n, T.~B. et~al.  \harvardyearleft 2013\harvardyearright ,
+  `Backward simulation methods for {Monte} {Carlo} statistical inference', {\em
+  Foundations and Trends in Machine Learning} {\bf 6}(1),~1--143.
+
+\harvarditem{M{\"o}hle}{1998}{mohle1998}
+M{\"o}hle, M.  \harvardyearleft 1998\harvardyearright , `Robustness results for
+  the coalescent', {\em Journal of Applied Probability} {\bf 35}(2),~438--447.
+
+\harvarditem{M{\"o}hle}{1999}{mohle1999}
+M{\"o}hle, M.  \harvardyearleft 1999\harvardyearright , `Weak convergence to
+  the coalescent in neutral population models', {\em Journal of Applied
+  Probability} {\bf 36}(2),~446--460.
+
+\harvarditem[M{\"o}hle et~al.]{M{\"o}hle, Sagitov et~al.}{2001}{mohle2001}
+M{\"o}hle, M., Sagitov, S. et~al.  \harvardyearleft 2001\harvardyearright , `A
+  classification of coalescent processes for haploid exchangeable population
+  models', {\em The Annals of Probability} {\bf 29}(4),~1547--1562.
+
+\harvarditem[Murray et~al.]{Murray, Lee \harvardand\ Jacob}{2016}{murray2016}
+Murray, L.~M., Lee, A. \harvardand\ Jacob, P.~E.  \harvardyearleft
+  2016\harvardyearright , `Parallel resampling in the particle filter', {\em
+  Journal of Computational and Graphical Statistics} {\bf 25}(3),~789--805.
+
+\harvarditem[Olsson et~al.]{Olsson, Douc et~al.}{2019}{olsson2019}
+Olsson, J., Douc, R. et~al.  \harvardyearleft 2019\harvardyearright ,
+  `Numerically stable online estimation of variance in particle filters', {\em
+  Bernoulli} {\bf 25}(2),~1504--1535.
+
+\harvarditem{Whitley}{1994}{whitley1994}
+Whitley, D.  \harvardyearleft 1994\harvardyearright , `A genetic algorithm
+  tutorial', {\em Statistics and Computing} {\bf 4}(2),~65--85.
+
+\end{thebibliography}
