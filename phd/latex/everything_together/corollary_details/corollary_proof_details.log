@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  4 FEB 2020 12:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  14 APR 2020 09:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -301,7 +301,12 @@ Overfull \hbox (54.25185pt too wide) detected at line 303
 []
  []
 
-[5] (./corollary_proof_details.bbl) [6] (./corollary_proof_details.aux)
+[5]
+Overfull \hbox (32.24258pt too wide) detected at line 340
+[]
+ []
+
+(./corollary_proof_details.bbl) [6] (./corollary_proof_details.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -332,7 +337,7 @@ live/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texli
 ve/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive
 /2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/
 2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on corollary_proof_details.pdf (6 pages, 202466 bytes).
+Output written on corollary_proof_details.pdf (6 pages, 204889 bytes).
 PDF statistics:
  96 PDF objects out of 1000 (max. 8388607)
  69 compressed objects within 1 object stream

@@ -71,11 +71,11 @@ For any $N$ and any $i\in\{1,\dots,N\}$, a function $f: \{1,\dots,N\}^N \to \mat
 
 Under multinomial resampling, the parental indices $\mathbf{a}_t$ are conditionally independent given $\mathcal{H}_t$. The conditional law of each index is
 \begin{equation*}
-\PR [a_t^{(i)} = a_i \mid \mathcal{H}_t] \propto \wt{i} q_{t-1}(X_t^{(a_i)}, X_{t-1}^{(i)}).
+\PR [a_t^{(i)} = a_i \mid \mathcal{H}_t] \propto \wt{a_i} q_{t-1}(X_t^{(a_i)}, X_{t-1}^{(i)}).
 \end{equation*}
 Since the indices are all independent, their joint conditional law is
 \begin{equation*}
-\PR [\mathbf{a}_t = \mathbf{a} \mid \mathcal{H}_t] \propto \prod_{i=1}^N \wt{i} q_{t-1}(X_t^{(a_i)}, X_{t-1}^{(i)}).
+\PR [\mathbf{a}_t = \mathbf{a} \mid \mathcal{H}_t] \propto \prod_{i=1}^N \wt{a_i} q_{t-1}(X_t^{(a_i)}, X_{t-1}^{(i)}).
 \end{equation*}
 
 \begin{lemma}\label{lem:i_increasing}
@@ -158,11 +158,11 @@ The parental indices are still independent, but we now have to treat $i=1$ as a 
 %% typeset the below properly using cases...
 \begin{align*}
 &\PR [a_t^{(1)} = a_1 \mid \mathcal{H}_t] = \I{a_1=1}  & \\
-&\PR [a_t^{(i)} = a_i \mid \mathcal{H}_t] \propto \wt{i} q_{t-1}(X_t^{(a_i)}, X_{t-1}^{(i)}) & i=2,\dots,N .
+&\PR [a_t^{(i)} = a_i \mid \mathcal{H}_t] \propto \wt{a_i} q_{t-1}(X_t^{(a_i)}, X_{t-1}^{(i)}) & i=2,\dots,N .
 \end{align*}
 The joint conditional law is therefore
 \begin{equation*}
-\PR [\mathbf{a}_t = \mathbf{a} \mid \mathcal{H}_t] \propto \I{a_1 = 1} \prod_{i=2}^N \wt{i} q_{t-1}(X_t^{(a_i)}, X_{t-1}^{(i)}).
+\PR [\mathbf{a}_t = \mathbf{a} \mid \mathcal{H}_t] \propto \I{a_1 = 1} \prod_{i=2}^N \wt{a_i} q_{t-1}(X_t^{(a_i)}, X_{t-1}^{(i)}).
 \end{equation*}
 
 \begin{lemma}\label{lem:i_increasing_csmc}
@@ -320,6 +320,27 @@ Finally, since this bound applies uniformly for each $i$, the ratio of interest 
 \leq \frac{1}{N-2}(a^2 -1 )\, \varepsilon^{-(4a^2 +2)}  =: b_N \to 0
 \end{equation*}
 as required, so we can apply Theorem 1 to obtain the result.
+
+\section*{CSMC with multinomial resampling and ancestor sampling}
+Denote the immortal trajectory by positions $\mathbf{X}_{0:T}^*$ and indices $\mathbf{a}_{1:T}^*$.
+The marginal distribution of parental indices is
+\begin{equation*}
+\PR[a_t^{(i)} = a_i \mid \mathcal{H}_t , \mathbf{X}_{0:T}^* ] \propto
+\begin{cases}
+& \wt{a_i} q_{t-1}(X_t^{(a_i)}, X_{t-1}^{(i)}) \qquad \text{non-immortal particles} \\
+& \wt{a_i} q_{t-1}(X_t^{(a_i)}, X_{t-1}^*) \prod_{s=0}^{t-1} g_s(X_{s+1}^*, X_s^*) q_s(X_{s+1}^*, X_s^*) \qquad \text{immortal particle}
+\end{cases}
+\end{equation*}
+and all are independent due to the independence of multinomial resampling. Thus, taking wlog the index of the immortal particle to be always 1, the joint distribution is given by
+\begin{align*}
+\PR[a_t^{(1:N)} = a_{1:N} \mid \mathcal{H}_t , \mathbf{X}_{0:T}^* ] &\propto
+\prod_{i=2}^N \wt{a_i} q_{t-1}(X_t^{(a_i)}, X_{t-1}^{(i)}) \cdot \wt{a_1} q_{t-1}(X_t^{(a_1)}, X_{t-1}^{(1)}) \prod_{s=0}^{t-1} g_s(X_{s+1}^*, X_s^*) q_s(X_{s+1}^*, X_s^*)\\
+&= \prod_{i=1}^N \wt{a_i} q_{t-1}(X_t^{(a_i)}, X_{t-1}^{(i)}) \cdot \prod_{s=0}^{t-1} g_s(X_{s+1}^*, X_s^*) q_s(X_{s+1}^*, X_s^*)\\
+&\propto \prod_{i=1}^N \wt{a_i} q_{t-1}(X_t^{(a_i)}, X_{t-1}^{(i)}) .
+\end{align*}
+This is the same distribution that we have in the case of standard SMC with multinomial resampling (although we condition additionally on the immortal trajectory).
+This only holds when the underlying process is Markovian (?)
+
 
 
 \bibliography{../../smc.bib}
