@@ -2,45 +2,45 @@ This is BibTeX, Version 0.99d (TeX Live 2018)
 Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: thesisoutline.aux
 The style file: agsm.bst
-Database file #1: ../smc.bib
-You've used 5 entries,
+Database file #1: ../latex/smc.bib
+You've used 4 entries,
             2909 wiz_defined-function locations,
-            673 strings with 5720 characters,
-and the built_in function-call counts, 20792 in all, are:
-= -- 3343
-> -- 325
+            667 strings with 5571 characters,
+and the built_in function-call counts, 18296 in all, are:
+= -- 2977
+> -- 255
 < -- 0
-+ -- 1603
-- -- 98
-* -- 1805
-:= -- 4200
-add.period$ -- 5
-call.type$ -- 5
-change.case$ -- 70
-chr.to.int$ -- 5
-cite$ -- 5
-duplicate$ -- 78
-empty$ -- 165
-format.name$ -- 112
-if$ -- 3723
++ -- 1429
+- -- 77
+* -- 1601
+:= -- 3662
+add.period$ -- 4
+call.type$ -- 4
+change.case$ -- 56
+chr.to.int$ -- 4
+cite$ -- 4
+duplicate$ -- 63
+empty$ -- 135
+format.name$ -- 88
+if$ -- 3279
 int.to.chr$ -- 5
 int.to.str$ -- 0
-missing$ -- 5
-newline$ -- 18
-num.names$ -- 54
-pop$ -- 15
+missing$ -- 4
+newline$ -- 15
+num.names$ -- 43
+pop$ -- 11
 preamble$ -- 1
-purify$ -- 75
+purify$ -- 60
 quote$ -- 0
-skip$ -- 70
+skip$ -- 56
 stack$ -- 0
-substring$ -- 4723
-swap$ -- 13
-text.length$ -- 70
+substring$ -- 4234
+swap$ -- 11
+text.length$ -- 56
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 20
+type$ -- 16
 warning$ -- 0
-while$ -- 111
+while$ -- 90
 width$ -- 0
-write$ -- 70
+write$ -- 56
