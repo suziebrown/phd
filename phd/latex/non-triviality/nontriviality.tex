@@ -100,7 +100,7 @@ Setting $\theta = 2/N$ and using Lemmata 1--2,
 \end{equation*}
 \end{proof}
 
-\begin{thm}
+\begin{thm}\label{thm:nontrivial_mn_optimalw}
 In the neutral case (i.e.\ when all weights are equal at every time step) with multinomial resampling, there exists $N_0$ such that for all $N>N_0$, for all finite $t$, $\PR[\tau_N(t) = \infty] =0$.
 \end{thm}
 
@@ -123,7 +123,7 @@ Hence, taking $N_0=3$, we have that $\PR[\tau_N(t) = \infty] =0$ for all $N>N_0$
 
 \section*{Multinomial resampling: non-neutral case}
 
-\begin{lemma}
+\begin{lemma}\label{lem:mn_optimal_w}
 For all $N\geq 2$, for all $t$, for any weight vector $(w_1, \dots, w_N)$,
 \begin{equation*}
 \PR \left[c_N(t) > \frac{2}{N^2} \middle| \mathbf{w}=(w_1, \dots, w_N) \right]
@@ -140,10 +140,10 @@ Fix arbitrary $t$ and $N\geq 2$. Firstly notice that
 &= 1- \PR[\nu_t^{(1:N)} = (1,\dots, 1) \mid \mathbf{w}=(w_1, \dots, w_N)].
 \end{align*}
 Since, conditional on the weights, $\nu_t^{(1:N)} \sim \Mn(N, (w_1, \dots, w_N))$, the probability of interest is
-\begin{equation*}
+\begin{equation}\label{eq:mn_nomerger_prob}
 \PR[\nu_t^{(1:N)} = (1,\dots, 1) \mid \mathbf{w}=(w_1, \dots, w_N)] =
 N! \prod_{i=1}^N w_i .
-\end{equation*}
+\end{equation}
 We will show that the global maximum of this function on the simplex $\mathcal{S}_{N-1}$ is attained at $\mathbf{w}=(1/N,\dots,1/N)$.
 This weight vector will therefore minimise the probability of the complementary event, implying the desired result.
 
@@ -191,6 +191,103 @@ and show that $H$ is negative semi-definite: for any $\mathbf{x} \in \mathbb{R}^
 \end{align*}
 \end{proof}
 
+\begin{lemma}
+With multinomial resampling, conditional on any sequence of weight vectors $\mathbf{w}_r^{(1:N)} \in \mathcal{S}_{N-1}; r\in\mathbb{N}$, there exists $N_0$ such that for all $N>N_0$, for all finite $t$, $\PR[\tau_N(t) = \infty] =0$.
+\end{lemma}
 
+
+\section*{Conditional SMC with multinomial resampling: optimal weights}
+
+Define $\mathbf{w}^* := \frac{1}{N-1} \left[ (1,\dots,1) - \mathbf{e}_{i^*} \right]$, where $i^*$ is the immortal index at generation $t$, and $\mathbf{e}_i$ denotes a 1-hot vector.
+ 
+\begin{lemma}
+For all $N\geq 2$, for all $t$,
+\begin{equation*}
+\E \left[c_N(t) \mid \mathbf{w}=\mathbf{w}^* \right]
+= \frac{N-2}{N(N-1)} .
+\end{equation*}
+\end{lemma}
+
+\begin{proof}
+Since the immortal particle has weight zero, the remaining offspring counts are distributed as $\Mn(N-1, (1/(N-1),\dots,1/(N-1)))$. We can apply the usual formula for factorial moments of the Multinomial distribution:
+\begin{equation*}
+\E \left[c_N(t) \mid \mathbf{w}=\mathbf{w}^* \right]
+= \frac{1}{(N)_2} \sum_{i=1}^N \E \left[(\nu_t^{(i)})_2 \mid \mathbf{w}=\mathbf{w}^* \right]
+= \frac{1}{(N)_2} \sum_{i\neq i^*}^N (N-1)_2 \left(\frac{1}{N-1}\right)^2
+= \frac{N-2}{N(N-1)}.
+\end{equation*}
+\end{proof}
+ 
+\begin{lemma}
+For all $N\geq 4$, for all $t$,
+\begin{equation*}
+\E \left[(c_N(t))^2 \middle| \mathbf{w}=\mathbf{w}^* \right]
+= \frac{(N-2)(N^3-2N^2+2)}{N^2(N-1)^4} .
+\end{equation*}
+\end{lemma}
+
+\begin{proof}
+\begin{align*}
+\E &\left[(c_N(t))^2  \mid \mathbf{w} =\mathbf{w}^* \right]
+= \frac{1}{(N)_2^2} \sum_{i=1}^N \sum_{j=1}^N \E\left[ (\nu_t^{(i)})_2 (\nu_t^{(j)})_2 \middle| \mathbf{w}=\mathbf{w}^* \right] \\
+&= \frac{1}{(N)_2^2} \sum_{i\neq i^*}^N \sum_{j\neq i^*}^N \E\left[ (\nu_t^{(i)})_2 (\nu_t^{(j)})_2 \middle| \mathbf{w}=\mathbf{w}^* \right] \\
+&= \frac{1}{(N)_2^2} \left\{ \sum_{i\neq i^*}^N \sum_{j\neq i,i^*}^N \E\left[ (\nu_t^{(i)})_2 (\nu_t^{(j)})_2 \middle| \mathbf{w}=\mathbf{w}^* \right] + \sum_{i\neq i^*}^N \E\left[ (\nu_t^{(i)})_2^2 \middle| \mathbf{w}=\mathbf{w}^* \right] \right\} \\
+&= \frac{1}{(N)_2^2} \left\{ \sum_{i\neq i^*}^N \sum_{j\neq i,i^*}^N \E\left[ (\nu_t^{(i)})_2 (\nu_t^{(j)})_2 \middle| \mathbf{w}=\mathbf{w}^* \right] + \sum_{i\neq i^*}^N \E\left[ (\nu_t^{(i)})_4 + 4(\nu_t^{(i)})_3 + 2(\nu_t^{(i)})_2 \middle| \mathbf{w}=\mathbf{w}^* \right] \right\} \\
+&= \frac{1}{(N)_2^2} \left\{ \sum_{i\neq i^*}^N \sum_{j\neq i,i^*}^N (N-1)_4 \left(\frac{1}{N-1}\right)^4 + \sum_{i\neq i^*}^N \left( (N-1)_4 \left(\frac{1}{N-1}\right)^4 + 4(N-1)_3 \left(\frac{1}{N-1}\right)^3 + 2(N-1)_2 \left(\frac{1}{N-1}\right)^2 \right) \right\} \\
+&= \frac{1}{(N)_2^2} \left\{ \frac{(N-1)_2 (N-1)_4 }{(N-1)^4}
++  \frac{(N-1) (N-1)_4}{(N-1)^4} +  \frac{4(N-1)(N-1)_3}{(N-1)^3} +  \frac{2(N-1)(N-1)_2}{(N-1)^2} \right\} \\
+&= \frac{(N-2)(N^3-2N^2+2)}{N^2(N-1)^4}.
+\end{align*}
+\end{proof} 
+ 
+\begin{lemma}\label{lem:csmc_cN_LB}
+For all $N\geq 4$, for all $t$,
+\begin{equation*}
+\PR \left[c_N(t) > \frac{2}{N^2} \middle| \mathbf{w}=\mathbf{w}^*  \right] 
+\geq \left( 1-\frac{2(N-1)}{N(N-2)} \right)^2 \left(1- \frac{2N^2-5N+4}{N^3-2N^2+2} \right) .
+\end{equation*}
+\end{lemma}
+
+\begin{proof}
+We apply the Paley-Zygmund inequality, with $\theta = \frac{2(N-1)}{N(N-2)}$:
+\begin{align*}
+\PR &\left[c_N(t) > \theta\,\E[c_N(t) | \mathbf{w} =\mathbf{w}^*] \middle| \mathbf{w} =\mathbf{w}^* \right] 
+\geq (1-\theta)^2 \frac{\E[c_N(t) | \mathbf{w} =\mathbf{w}^*]^2}{\E[(c_N(t))^2 | \mathbf{w} =\mathbf{w}^*]} \\
+&= \left( 1-\frac{2(N-1)}{N(N-2)} \right)^2  \frac{(N-2)^2}{N^2(N-1)^2} \frac{N^2(N-1)^4}{(N-2)(N^3-2N^2+2)} \\
+&= \left( 1-\frac{2(N-1)}{N(N-2)} \right)^2  \frac{(N-1)^2 (N-2)}{N^3-2N^2+2} 
+= \left( 1-\frac{2(N-1)}{N(N-2)} \right)^2 \left(1- \frac{2N^2-5N+4}{N^3-2N^2+2} \right) .
+\end{align*}
+\end{proof} 
+ 
+\begin{thm}\label{thm:nontrivial_csmc_optimalw}
+In conditional SMC with multinomial resampling, in the optimal case where the weight vector is equal to $\mathbf{w}^*$ at every time step, there exists $N_0$ such that for all $N>N_0$, for all finite $t$, $\PR[\tau_N(t) = \infty] =0$.
+\end{thm}
+
+\begin{proof}
+The proof is exactly the same as for Theorem \ref{thm:nontrivial_mn_optimalw}; Lemma \ref{lem:csmc_cN_LB} provides the bound on $P(E_r)$ which is strictly positive and constant in $r$.
+\end{proof}
+
+
+\section*{Conditional SMC with multinomial resampling: general weights}
+
+\begin{lemma}
+For all $N\geq 2$, for all $t$, for any weight vector $(w_1, \dots, w_N)$,
+\begin{equation*}
+\PR \left[c_N(t) > \frac{2}{N^2} \middle| \mathbf{w}=(w_1, \dots, w_N) \right]
+\geq \PR \left[c_N(t) > \frac{2}{N^2} \middle| \mathbf{w}=\mathbf{w}^* \right].
+\end{equation*}
+\end{lemma}
+
+\begin{proof}
+\begin{equation*}
+\PR \left[c_N(t) > \frac{2}{N^2} \mid \mathbf{w}=(w_1, \dots, w_N) \right]
+= 1- \PR[\nu_t^{(1:N)} = (1,\dots, 1) \mid \mathbf{w}=(w_1, \dots, w_N)] 
+= (N-1)! \prod_{i\neq i^*}^{N} w_i
+\end{equation*}
+since the immortal particle $i^*$ is automatically assigned one offspring.
+This is equivalent to the expression we had in the standard case \eqref{eq:mn_nomerger_prob}, except with $N-1$ particles rather than $N$. 
+As we saw in Lemma \ref{lem:mn_optimal_w}, this function is maximised at the vector of equal weights, in this case $\mathbf{w}_{-i^*}=\frac{1}{N-1} (1,\dots,1)$. 
+This leaves zero weight for the immortal particle, so overall we have $\mathbf{w}=\frac{1}{N-1} \left\{ (1,\dots,1) - \mathbf{e}_{i^*} \right\}$ as required.
+\end{proof}
 
 \end{document}
