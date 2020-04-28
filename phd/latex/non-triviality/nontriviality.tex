@@ -100,6 +100,8 @@ Setting $\theta = 2/N$ and using Lemmata 1--2,
 \end{equation*}
 \end{proof}
 
+\textbf{NB:} We actually have an exact expression for the above probability, which is $1- N! N^{-N} $ (see for example the proof of Lemma 4 below). Perhaps it would be better to use that... although the asymptotics seem a bit more obscure then? This could save a page of workings though so probably a good idea in the end. 
+
 \begin{thm}\label{thm:nontrivial_mn_optimalw}
 In the neutral case (i.e.\ when all weights are equal at every time step) with multinomial resampling, there exists $N_0$ such that for all $N>N_0$, for all finite $t$, $\PR[\tau_N(t) = \infty] =0$.
 \end{thm}
@@ -191,12 +193,23 @@ and show that $H$ is negative semi-definite: for any $\mathbf{x} \in \mathbb{R}^
 \end{align*}
 \end{proof}
 
-\begin{lemma}
+\begin{thm}
 With multinomial resampling, conditional on any sequence of weight vectors $\mathbf{w}_r^{(1:N)} \in \mathcal{S}_{N-1}; r\in\mathbb{N}$, there exists $N_0$ such that for all $N>N_0$, for all finite $t$, $\PR[\tau_N(t) = \infty] =0$.
-\end{lemma}
+\end{thm}
+
+\begin{proof}
+As in Theorem \ref{thm:nontrivial_mn_optimalw}, denote the sequence of events 
+$E_r := \{ c_N(r) > 2/N^2 \}$ for $r \in \mathbb{N}$.
+We know from Theorem \ref{thm:nontrivial_mn_optimalw} that, in the neutral case, $E_r$ occurs infinitely often. Lemma \ref{lem:mn_optimal_w} tells us that 
+$\PR[E_r \mid \mathbf{w}=(w_1, \dots, w_N)] \geq \PR[E_r \mid \mathbf{w}=(1/N, \dots, 1/N)]$
+for all $r$. 
+Therefore, by a coupling argument, we conclude that $E_r$ occurs infinitely often in the non-neutral case as well.
+\end{proof}
 
 
 \section*{Conditional SMC with multinomial resampling: optimal weights}
+\textbf{NB:} The exposition below is more explicit than necessary, in order to reduce dependencies between sections. The expectations under CSMC-mn do not really need to be calculated directly, as they are equal to the expectations under standard-mn, where $(N-1)$ replaces $N$ everywhere except in the leading $(N)_2$ factors.
+It is probably also possible to infer Theorem 3 by a direct modification of Theorem 1, without the need to calculate moments and apply the PZ inequality again.\\
 
 Define $\mathbf{w}^* := \frac{1}{N-1} \left[ (1,\dots,1) - \mathbf{e}_{i^*} \right]$, where $i^*$ is the immortal index at generation $t$, and $\mathbf{e}_i$ denotes a 1-hot vector.
  
@@ -222,9 +235,10 @@ Since the immortal particle has weight zero, the remaining offspring counts are 
 For all $N\geq 4$, for all $t$,
 \begin{equation*}
 \E \left[(c_N(t))^2 \middle| \mathbf{w}=\mathbf{w}^* \right]
-= \frac{(N-2)(N^3-2N^2+2)}{N^2(N-1)^4} .
+= \frac{(N+1)(N-2)^2}{N^2(N-1)^3} .
 \end{equation*}
 \end{lemma}
+%%% CORRECT THIS IN THE PZ INEQUALITY TOO
 
 \begin{proof}
 \begin{align*}
@@ -236,7 +250,7 @@ For all $N\geq 4$, for all $t$,
 &= \frac{1}{(N)_2^2} \left\{ \sum_{i\neq i^*}^N \sum_{j\neq i,i^*}^N (N-1)_4 \left(\frac{1}{N-1}\right)^4 + \sum_{i\neq i^*}^N \left( (N-1)_4 \left(\frac{1}{N-1}\right)^4 + 4(N-1)_3 \left(\frac{1}{N-1}\right)^3 + 2(N-1)_2 \left(\frac{1}{N-1}\right)^2 \right) \right\} \\
 &= \frac{1}{(N)_2^2} \left\{ \frac{(N-1)_2 (N-1)_4 }{(N-1)^4}
 +  \frac{(N-1) (N-1)_4}{(N-1)^4} +  \frac{4(N-1)(N-1)_3}{(N-1)^3} +  \frac{2(N-1)(N-1)_2}{(N-1)^2} \right\} \\
-&= \frac{(N-2)(N^3-2N^2+2)}{N^2(N-1)^4}.
+&= \frac{(N+1)(N-2)^2}{N^2(N-1)^3}.
 \end{align*}
 \end{proof} 
  
@@ -244,7 +258,7 @@ For all $N\geq 4$, for all $t$,
 For all $N\geq 4$, for all $t$,
 \begin{equation*}
 \PR \left[c_N(t) > \frac{2}{N^2} \middle| \mathbf{w}=\mathbf{w}^*  \right] 
-\geq \left( 1-\frac{2(N-1)}{N(N-2)} \right)^2 \left(1- \frac{2N^2-5N+4}{N^3-2N^2+2} \right) .
+\geq \left( 1-\frac{2(N-1)}{N(N-2)} \right)^2 \frac{N-1}{N+1} .
 \end{equation*}
 \end{lemma}
 
@@ -253,9 +267,8 @@ We apply the Paley-Zygmund inequality, with $\theta = \frac{2(N-1)}{N(N-2)}$:
 \begin{align*}
 \PR &\left[c_N(t) > \theta\,\E[c_N(t) | \mathbf{w} =\mathbf{w}^*] \middle| \mathbf{w} =\mathbf{w}^* \right] 
 \geq (1-\theta)^2 \frac{\E[c_N(t) | \mathbf{w} =\mathbf{w}^*]^2}{\E[(c_N(t))^2 | \mathbf{w} =\mathbf{w}^*]} \\
-&= \left( 1-\frac{2(N-1)}{N(N-2)} \right)^2  \frac{(N-2)^2}{N^2(N-1)^2} \frac{N^2(N-1)^4}{(N-2)(N^3-2N^2+2)} \\
-&= \left( 1-\frac{2(N-1)}{N(N-2)} \right)^2  \frac{(N-1)^2 (N-2)}{N^3-2N^2+2} 
-= \left( 1-\frac{2(N-1)}{N(N-2)} \right)^2 \left(1- \frac{2N^2-5N+4}{N^3-2N^2+2} \right) .
+&= \left( 1-\frac{2(N-1)}{N(N-2)} \right)^2  \frac{(N-2)^2}{N^2(N-1)^2} \frac{N^2(N-1)^3}{(N+1)(N-2)^2}
+= \left( 1-\frac{2(N-1)}{N(N-2)} \right)^2 \frac{N-1}{N+1}  .
 \end{align*}
 \end{proof} 
  
@@ -270,7 +283,7 @@ The proof is exactly the same as for Theorem \ref{thm:nontrivial_mn_optimalw}; L
 
 \section*{Conditional SMC with multinomial resampling: general weights}
 
-\begin{lemma}
+\begin{lemma}\label{lem:csmc_optimal_w}
 For all $N\geq 2$, for all $t$, for any weight vector $(w_1, \dots, w_N)$,
 \begin{equation*}
 \PR \left[c_N(t) > \frac{2}{N^2} \middle| \mathbf{w}=(w_1, \dots, w_N) \right]
@@ -287,7 +300,20 @@ For all $N\geq 2$, for all $t$, for any weight vector $(w_1, \dots, w_N)$,
 since the immortal particle $i^*$ is automatically assigned one offspring.
 This is equivalent to the expression we had in the standard case \eqref{eq:mn_nomerger_prob}, except with $N-1$ particles rather than $N$. 
 As we saw in Lemma \ref{lem:mn_optimal_w}, this function is maximised at the vector of equal weights, in this case $\mathbf{w}_{-i^*}=\frac{1}{N-1} (1,\dots,1)$. 
-This leaves zero weight for the immortal particle, so overall we have $\mathbf{w}=\frac{1}{N-1} \left\{ (1,\dots,1) - \mathbf{e}_{i^*} \right\}$ as required.
+This leaves zero weight for the immortal particle, so overall the maximum is attained at $\mathbf{w}^*=\frac{1}{N-1} \left\{ (1,\dots,1) - \mathbf{e}_{i^*} \right\}$ as required.
+\end{proof}
+
+\begin{thm}
+In conditional SMC with multinomial resampling, conditional on any sequence of weight vectors $\mathbf{w}_r^{(1:N)} \in \mathcal{S}_{N-1}; r\in\mathbb{N}$, there exists $N_0$ such that for all $N>N_0$, for all finite $t$, $\PR[\tau_N(t) = \infty] =0$.
+\end{thm}
+
+\begin{proof}
+As in Theorem \ref{thm:nontrivial_mn_optimalw}, denote the sequence of events 
+$E_r := \{ c_N(r) > 2/N^2 \}$ for $r \in \mathbb{N}$.
+We know from the argument behind Theorem \ref{thm:nontrivial_csmc_optimalw} (which is completely analogous to Theorem \ref{thm:nontrivial_mn_optimalw}) that, in the neutral case, $E_r$ occurs infinitely often. Lemma \ref{lem:csmc_optimal_w} tells us that 
+$\PR[E_r \mid \mathbf{w}=(w_1, \dots, w_N)] \geq \PR[E_r \mid \mathbf{w}=\mathbf{w}^*]$
+for all $r$. 
+Therefore, by a coupling argument, we conclude that $E_r$ occurs infinitely often in the general case as well.
 \end{proof}
 
 \end{document}
