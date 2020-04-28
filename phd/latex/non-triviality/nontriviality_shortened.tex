@@ -1,0 +1,225 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=2cm]{geometry}
+
+% custom header/footer
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+\fancyhf{}
+\rfoot{\textsf{\thepage}}
+\lfoot{\textsf{Suzie Brown}}
+
+% bibliography
+\usepackage[round, sort&compress]{natbib}
+\usepackage{har2nat}
+\bibliographystyle{agsm}
+
+% maths
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\newtheorem{thm}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newcommand{\PR}{\mathbb{P}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\V}{\operatorname{Var}}
+\newcommand{\Mn}{\operatorname{Multinomial}}
+
+\title{Non-triviality condition (shortened version)}
+\author{Suzie Brown}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+
+\section*{Multinomial resampling}
+
+\begin{lemma}\label{lem:neutral_cN_LB}
+For all $N\geq 2$, for all $t$,
+\begin{equation*}
+\PR \left[c_N(t) > \frac{2}{N^2} \middle| \mathbf{w}=\left( \frac{1}{N}, \dots, \frac{1}{N} \right) \right] 
+= 1- \frac{N!}{N^N}.
+\end{equation*}
+\end{lemma}
+
+\begin{proof}
+Fix arbitrary $t$ and $N\geq 2$. Since $2/(N)_2 > 2/(N^2)$ is the smallest possible non-zero value for $c_N(t)$,
+\begin{align*}
+\PR \left[c_N(t) > \frac{2}{N^2} \mid \mathbf{w}=(1/N, \dots, 1/N) \right]
+&= 1- \PR[c_N(t) = 0  \mid \mathbf{w}=(1/N, \dots, 1/N)] \\
+&= 1- \PR[\nu_t^{(1:N)} = (1,\dots, 1) \mid \mathbf{w}=(1/N, \dots, 1/N)].
+\end{align*}
+Conditional on the weights, $\nu_t^{(1:N)} \sim \Mn(N, (1/N, \dots, 1/N))$, so the probability of interest is
+\begin{equation*}
+\PR[\nu_t^{(1:N)} = (1,\dots, 1) \mid \mathbf{w}=(1/N, \dots, 1/N)] =
+N! \prod_{i=1}^N \frac{1}{N}
+= \frac{N!}{N^N}.
+\end{equation*}
+\end{proof}
+
+
+\begin{lemma}\label{thm:nontrivial_mn_optimalw}
+In the neutral case (i.e.\ when all weights are equal at every time step) with multinomial resampling, there exists $N_0$ such that for all $N>N_0$, for all finite $t$, $\PR[\tau_N(t) = \infty] =0$.
+\end{lemma}
+
+\begin{proof}
+Let us rewrite the event of interest in a different way.
+\begin{align*}
+\PR[\tau_N(t) = \infty] =0 &\Leftrightarrow \PR[\tau_N(t) < \infty] =1 \\
+&\Leftrightarrow \PR\left[ \min \left\{s>1 : \sum_{r=1}^s c_N(r) <t \right\} < \infty \right] =1 \\
+&\Leftrightarrow \PR\left[ \exists s<\infty : \sum_{r=1}^s c_N(r) <t \right] =1
+\end{align*}
+It is sufficient to show that, for all $N>N_0$, $c_N(r)$ is bounded away from zero infinitely often in $r$.
+We consider the sequence of events 
+$E_r := \{ c_N(r) > 2/N^2 \}$ for $r \in \mathbb{N}$.
+In the neutral case, the resampled family sizes at each generation are independent, hence the events $E_r$ are independent. 
+By the second Borel-Cantelli lemma, $E_r$ occurs infinitely often if $\sum_{r=1}^\infty \PR(E_r) = \infty$. 
+An expression for $\PR(E_r)$ is given in Lemma \ref{lem:neutral_cN_LB}. 
+For any fixed $N\geq 2$, the probability is strictly positive and constant in $r$, so the Borel-Cantelli condition is satisfied, thus we conclude that $E_r$ occurs infinitely often.
+Hence, taking $N_0=1$, we have that $\PR[\tau_N(t) = \infty] =0$ for all $N>N_0$ and all finite $t$, as required.
+\end{proof}
+
+
+\begin{lemma}\label{lem:mn_optimal_w}
+For all $N\geq 2$, for all $t$, for any weight vector $(w_1, \dots, w_N) \in \mathcal{S}_{N-1}$,
+\begin{equation*}
+\PR \left[c_N(t) > \frac{2}{N^2} \middle| \mathbf{w}=(w_1, \dots, w_N) \right]
+\geq \PR \left[c_N(t) > \frac{2}{N^2} \middle| \mathbf{w}=\left( \frac{1}{N}, \dots, \frac{1}{N} \right) \right] .
+\end{equation*}
+That is, the probability of having at least one merger is minimised by the vector of equal weights.
+\end{lemma}
+
+\begin{proof}
+Fix arbitrary $t$ and $N\geq 2$. Recall that
+\begin{equation}\label{eq:mn_nomerger_prob}
+1-\PR \left[c_N(t) > \frac{2}{N^2} \mid \mathbf{w}=(w_1, \dots, w_N) \right]
+= N! \prod_{i=1}^N w_i .
+\end{equation}
+We will show that the global maximum of this function on the simplex $\mathcal{S}_{N-1}$ is attained at $\mathbf{w}=(1/N,\dots,1/N)$.
+This weight vector will therefore minimise the probability of the complementary event, implying the desired result.
+
+First, since we are working on the simplex, we encode the constraint $\sum w_j =1$ by rewriting the function to optimise as
+\begin{equation*}
+f(\mathbf{w}) :=
+\prod_{i=1}^N w_i
+= \left(1- \sum_{j=1}^{N-1} w_j \right)\prod_{i=1}^{N-1} w_i 
+\end{equation*}
+where we have also dropped the constant positive factor $N!$. 
+Now, for every $k \in \{1,\dots,N-1\}$, we solve
+\begin{equation*}
+\frac{\partial f(\mathbf{w})}{\partial w_k}
+= \left(1- w_k - \sum_{j=1}^{N-1} w_j \right)\prod_{i\neq k}^{N-1} w_i 
+=0 .
+\end{equation*}
+The product over $i \neq k$ is constant for each $k$, so this amounts to solving
+\begin{equation*}
+w_k = 1- \sum_{j=1}^{N-1} w_j = w_N
+\end{equation*}
+for all $k$.
+The unique solution is
+$w_1 = w_2= \dots =  w_N = 1/N$.
+
+To verify that this critical point is a maximum, we can evaluate the Hessian $H$:
+\begin{align*}
+H_{kl}(\mathbf{w})
+&= \begin{cases}
+-2 \prod_{i\neq k}^{N-1} w_i & k=l \\
+\left( 1 - w_k - w_l - \sum_{j=1}^{N-1} w_j \right)\prod_{i\neq k,l}^{N-1}w_i & k\neq l
+\end{cases} \\
+H_{kl}((1/N, \dots, 1/N))&= \begin{cases}
+-2 \left(\frac{1}{N}\right)^{N-2} & k=l \\
+- \left(\frac{1}{N}\right)^{N-2} & k\neq l
+\end{cases}
+\end{align*}
+and show that $H$ is negative semi-definite: for any $\mathbf{x} \in \mathbb{R}^{N-1}$,
+\begin{align*}
+\mathbf{x}^T H \mathbf{x} &= \sum_{k=1}^{N-1} \left[ -2\left(\frac{1}{N}\right)^{N-2} x_k^2
+- \sum_{l\neq k}^{N-1} \left(\frac{1}{N}\right)^{N-2} x_k x_l \right] 
+= \left(\frac{1}{N}\right)^{N-2} \left[ -\sum_{k=1}^{N-1} 2x_k^2 - \sum_{k=1}^{N-1} \sum_{l\neq k}^{N-1} x_k x_l \right] \\
+&= \left(\frac{1}{N}\right)^{N-2} \left[ -\sum_{k=1}^{N-1} x_k^2 - \sum_{k=1}^{N-1} \sum_{l=1}^{N-1} x_k x_l \right]
+= \left(\frac{1}{N}\right)^{N-2} \left[ - \sum_{k=1}^{N-1} x_k^2 - \left(\sum_{k=1}^{N-1} x_k \right)^2 \right]
+\leq 0 .
+\end{align*}
+\end{proof}
+
+\begin{thm}
+With multinomial resampling, conditional on any sequence of weight vectors $\mathbf{w}_r^{(1:N)} \in \mathcal{S}_{N-1}; r\in\mathbb{N}$, there exists $N_0$ such that for all $N>N_0$, for all finite $t$, $\PR[\tau_N(t) = \infty] =0$.
+\end{thm}
+
+\begin{proof}
+As in Lemma \ref{thm:nontrivial_mn_optimalw}, denote the sequence of events 
+$E_r := \{ c_N(r) > 2/N^2 \}$ for $r \in \mathbb{N}$.
+We know from Lemma \ref{thm:nontrivial_mn_optimalw} that, in the neutral case, $E_r$ occurs infinitely often. Lemma \ref{lem:mn_optimal_w} tells us that 
+$\PR[E_r \mid \mathbf{w}=(w_1, \dots, w_N)] \geq \PR[E_r \mid \mathbf{w}=(1/N, \dots, 1/N)]$
+for all $r$. 
+Therefore, by a coupling argument, we conclude that $E_r$ occurs infinitely often in the non-neutral case as well.
+\end{proof}
+
+
+\section*{Conditional SMC with multinomial resampling}
+
+Define $\mathbf{w}^* := \frac{1}{N-1} \left[ (1,\dots,1) - \mathbf{e}_{i^*} \right]$, where $i^*$ is the immortal index at generation $t$, and $\mathbf{e}_i$ denotes a 1-hot vector.
+ 
+\begin{lemma}\label{lem:csmc_cN_LB}
+For all $N\geq 4$, for all $t$,
+\begin{equation*}
+\PR \left[c_N(t) > \frac{2}{N^2} \middle| \mathbf{w}=\mathbf{w}^*  \right] 
+= 1- \frac{(N-1)!}{(N-1)^{N-1}}
+\end{equation*}
+\end{lemma}
+
+\begin{proof}
+Under $\mathbf{w}^*$, the immortal parent has zero weight and is therefore assigned exactly one offspring (the immortal particle). The remaining $N-1$ offspring are assigned to the remaining $N-1$ parents according to a Multinomial distribution with equal weights. We therefore have
+\begin{equation*}
+\PR \left[c_N(t) > \frac{2}{N^2} \mid \mathbf{w}=\mathbf{w}^* \right]
+= 1-\PR[\nu_t^{(1:N)} = (1,\dots, 1) \mid \mathbf{w}=\mathbf{w}^*] 
+= 1- (N-1)! \prod_{i\neq i^*}^{N} \frac{1}{N-1}
+= 1- \frac{(N-1)!}{(N-1)^{N-1}} .
+\end{equation*}
+\end{proof} 
+
+ 
+\begin{lemma}\label{thm:nontrivial_csmc_optimalw}
+In conditional SMC with multinomial resampling, in the optimal case where the weight vector is equal to $\mathbf{w}^*$ at every time step, there exists $N_0$ such that for all $N>N_0$, for all finite $t$, $\PR[\tau_N(t) = \infty] =0$.
+\end{lemma}
+
+\begin{proof}
+The proof is exactly the same as for Theorem \ref{thm:nontrivial_mn_optimalw}; Lemma \ref{lem:csmc_cN_LB} provides the expression for $P(E_r)$ which is strictly positive and constant in $r$.
+\end{proof}
+
+
+\begin{lemma}\label{lem:csmc_optimal_w}
+For all $N\geq 2$, for all $t$, for any weight vector $(w_1, \dots, w_N) \in \mathcal{S}_{N-1}$,
+\begin{equation*}
+\PR \left[c_N(t) > \frac{2}{N^2} \middle| \mathbf{w}=(w_1, \dots, w_N) \right]
+\geq \PR \left[c_N(t) > \frac{2}{N^2} \middle| \mathbf{w}=\mathbf{w}^* \right].
+\end{equation*}
+\end{lemma}
+
+\begin{proof}
+Recall that
+\begin{equation*}
+1- \PR \left[c_N(t) > \frac{2}{N^2} \mid \mathbf{w}=(w_1, \dots, w_N) \right]
+= (N-1)! \prod_{i\neq i^*}^{N} w_i .
+\end{equation*}
+Ignoring the immortal particles, this is equivalent to multinomial resampling in the standard case \eqref{eq:mn_nomerger_prob}, only with $N-1$ particles rather than $N$. 
+As we saw in Lemma \ref{lem:mn_optimal_w}, this function is maximised at the vector of equal weights, in this case $\mathbf{w}_{-i^*}=\frac{1}{N-1} (1,\dots,1)$. 
+This leaves zero weight for the immortal particle, so overall the maximum is attained at $\mathbf{w}^*=\frac{1}{N-1} \left[ (1,\dots,1) - \mathbf{e}_{i^*} \right]$ as required.
+\end{proof}
+
+
+\begin{thm}
+In conditional SMC with multinomial resampling, conditional on any sequence of weight vectors $\mathbf{w}_r^{(1:N)} \in \mathcal{S}_{N-1}; r\in\mathbb{N}$, there exists $N_0$ such that for all $N>N_0$, for all finite $t$, $\PR[\tau_N(t) = \infty] =0$.
+\end{thm}
+
+\begin{proof}
+As before, consider the sequence of events 
+$E_r := \{ c_N(r) > 2/N^2 \}$ for $r \in \mathbb{N}$.
+We know from the argument behind Lemma \ref{thm:nontrivial_csmc_optimalw} (which is completely analogous to Lemma \ref{thm:nontrivial_mn_optimalw}) that, in the case $\mathbf{w}=\mathbf{w}^*$, $E_r$ occurs infinitely often. Lemma \ref{lem:csmc_optimal_w} tells us that 
+$\PR[E_r \mid \mathbf{w}=(w_1, \dots, w_N)] \geq \PR[E_r \mid \mathbf{w}=\mathbf{w}^*]$
+for all $r$. 
+Therefore, by a coupling argument, we conclude that $E_r$ occurs infinitely often in the general case as well.
+\end{proof}
+
+\end{document}
