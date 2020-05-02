@@ -2,6 +2,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage[margin=2cm]{geometry}
 
+\usepackage{enumitem}
+
 % custom header/footer
 \usepackage{fancyhdr}
 \pagestyle{fancy}
@@ -67,8 +69,8 @@ In the neutral case (i.e.\ when all weights are equal at every time step) with m
 Let us rewrite the event of interest in a different way.
 \begin{align*}
 \PR[\tau_N(t) = \infty] =0 &\Leftrightarrow \PR[\tau_N(t) < \infty] =1 \\
-&\Leftrightarrow \PR\left[ \min \left\{s>1 : \sum_{r=1}^s c_N(r) <t \right\} < \infty \right] =1 \\
-&\Leftrightarrow \PR\left[ \exists s<\infty : \sum_{r=1}^s c_N(r) <t \right] =1
+&\Leftrightarrow \PR\left[ \min \left\{s>1 : \sum_{r=1}^s c_N(r) >t \right\} < \infty \right] =1 \\
+&\Leftrightarrow \PR\left[ \exists s<\infty : \sum_{r=1}^s c_N(r) >t \right] =1
 \end{align*}
 It is sufficient to show that, for all $N>N_0$, $c_N(r)$ is bounded away from zero infinitely often in $r$.
 We consider the sequence of events 
@@ -132,14 +134,14 @@ H_{kl}((1/N, \dots, 1/N))&= \begin{cases}
 - \left(\frac{1}{N}\right)^{N-2} & k\neq l
 \end{cases}
 \end{align*}
-and show that $H$ is negative semi-definite: for any $\mathbf{x} \in \mathbb{R}^{N-1}$,
+and show that $H$ is negative definite: for any $\mathbf{x} \in \mathbb{R}^{N-1} \setminus \{\mathbf{0}\}$,
 \begin{align*}
 \mathbf{x}^T H \mathbf{x} &= \sum_{k=1}^{N-1} \left[ -2\left(\frac{1}{N}\right)^{N-2} x_k^2
 - \sum_{l\neq k}^{N-1} \left(\frac{1}{N}\right)^{N-2} x_k x_l \right] 
 = \left(\frac{1}{N}\right)^{N-2} \left[ -\sum_{k=1}^{N-1} 2x_k^2 - \sum_{k=1}^{N-1} \sum_{l\neq k}^{N-1} x_k x_l \right] \\
 &= \left(\frac{1}{N}\right)^{N-2} \left[ -\sum_{k=1}^{N-1} x_k^2 - \sum_{k=1}^{N-1} \sum_{l=1}^{N-1} x_k x_l \right]
 = \left(\frac{1}{N}\right)^{N-2} \left[ - \sum_{k=1}^{N-1} x_k^2 - \left(\sum_{k=1}^{N-1} x_k \right)^2 \right]
-\leq 0 .
+< 0 .
 \end{align*}
 \end{proof}
 
@@ -159,7 +161,7 @@ Therefore, by a coupling argument, we conclude that $E_r$ occurs infinitely ofte
 
 \section*{Conditional SMC with multinomial resampling}
 
-Define $\mathbf{w}^* := \frac{1}{N-1} \left[ (1,\dots,1) - \mathbf{e}_{i^*} \right]$, where $i^*$ is the immortal index at generation $t$, and $\mathbf{e}_i$ denotes a 1-hot vector.
+Define $\mathbf{w}^* := \frac{1}{N-1} \left[ (1,\dots,1) - \mathbf{e}_{i^*} \right]$, where $i^*$ is the immortal index at generation $t$, and $\mathbf{e}_i$ denotes the $i^{th}$ canonical basis vector.
  
 \begin{lemma}\label{lem:csmc_cN_LB}
 For all $N\geq 4$, for all $t$,
@@ -185,7 +187,7 @@ In conditional SMC with multinomial resampling, in the optimal case where the we
 \end{lemma}
 
 \begin{proof}
-The proof is exactly the same as for Theorem \ref{thm:nontrivial_mn_optimalw}; Lemma \ref{lem:csmc_cN_LB} provides the expression for $P(E_r)$ which is strictly positive and constant in $r$.
+The proof is exactly the same as for Lemma \ref{thm:nontrivial_mn_optimalw}; Lemma \ref{lem:csmc_cN_LB} provides the expression for $P(E_r)$ which is strictly positive and constant in $r$.
 \end{proof}
 
 
@@ -221,5 +223,78 @@ $\PR[E_r \mid \mathbf{w}=(w_1, \dots, w_N)] \geq \PR[E_r \mid \mathbf{w}=\mathbf
 for all $r$. 
 Therefore, by a coupling argument, we conclude that $E_r$ occurs infinitely often in the general case as well.
 \end{proof}
+
+
+\section*{Stochastic rounding}
+\begin{lemma} \label{lem:extreme_w_coal_as}
+Let $\mathbf{w} = (w_1,\dots,w_N) \in \mathcal{S}_{N-1}$ and resample by stochastic rounding.
+\begin{enumerate}[label=(\roman*)]
+\item If $w_i \geq 2/N$ for some $i$, then $\PR[c_N(t) =0 |\mathbf{w} ] =0$. \label{item:SR_weight_2}
+\item If $w_i= 0$ for some $i$, then $\PR[c_N(t) =0 |\mathbf{w} ] =0$. \label{item:SR_weight_0}
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+In case \ref{item:SR_weight_2} particle $i$ is assigned at least two offspring, so $c_N(t)$ cannot be equal to zero.
+In case \ref{item:SR_weight_0} particle $i$ is assigned zero offspring, so at least one other particle must be assigned more than one offspring, thus $c_N(t)$ cannot be equal to zero.
+\end{proof}
+
+The upshot of Lemma \ref{lem:extreme_w_coal_as} is that in these cases of ``extreme weights'' we have $c_N(t) > 2/N^2$ almost surely, so we can exclude these cases while we go about bounding $\PR[c_N(t) > 2/N^2 | \mathbf{w}]$ away from zero.
+
+
+\begin{lemma}\label{lem:weps_cN_prob}
+Define $\mathbf{w}^\varepsilon := \frac{1}{N}(1,\dots,1) + \varepsilon \mathbf{e}_i - \varepsilon \mathbf{e}_j$ for any $i \neq j$ and $0< \varepsilon < 1/N$. Then $\PR[c_N(t) > 2/N^2 | \mathbf{w}^\varepsilon] = N\varepsilon$.
+\end{lemma}
+
+\begin{proof}
+\begin{align*}
+\PR[c_N(t) \leq 2/N^2 | \mathbf{w}^\varepsilon]
+&= \PR[\nu_t^{(1:N)} = (1,\dots, 1) \mid \mathbf{w}^\varepsilon] 
+= \PR[\nu_t^{(i)} = 1, \nu_t^{(j)} = 1 \mid \mathbf{w}^\varepsilon] 
+= \PR[\nu_t^{(i)} = 1 \mid \mathbf{w}^\varepsilon] \\
+&= 1- N w_i^\varepsilon + \lfloor N w_i^\varepsilon \rfloor 
+= 1- N(1/N + \varepsilon) + 1
+= 1 - N\varepsilon ,
+\end{align*}
+since the offspring counts are deterministically equal to one apart from particles $i$ and $j$, and it remains that $\nu_t^{(i)} = 1$ if and only if $\nu_t^{(j)} = 1$. The second line comes from the definition of stochastic rounding.
+\end{proof}
+
+
+
+
+\begin{lemma}
+Denote $\mathcal{S}_{N-1}^\varepsilon := \{ \mathbf{w} \in \mathcal{S}_{N-1} :  \forall i, \, 0 <w_i <\frac{2}{N} ;\, \max_i w_i \geq \frac{1}{N} + \varepsilon \}$.
+Then, for all $\mathbf{w} \in \mathcal{S}_{N-1}^\varepsilon$, 
+$\PR[c_N(t) > 2/N^2 | \mathbf{w} ] \geq \PR[c_N(t) > 2/N^2 | \mathbf{w}^\varepsilon ]$.
+\end{lemma}
+
+\begin{proof}
+Fix arbitrary $\mathbf{w} \in \mathcal{S}_{N-1}^\varepsilon$. Let $i^*$ be then index of the particle with the largest weight.
+Denote $\mathcal{I} := \{i \in \{1,\dots,N\} : w_i > 1/N \}$.
+Notice that 
+\begin{equation*}
+\PR[ c_N(t) \leq 2/N^2 | \mathbf{w} ] 
+= \PR[ \nu_t^{(i)} =1 \,\forall i\in\{1,\dots,N\} | \mathbf{w}] 
+= \PR[ \nu_t^{(i)} =1 \,\forall i\in \mathcal{I} | \mathbf{w}] .
+\end{equation*}
+This is true because all weights are in $(0, 2/N)$, so for $i \in \mathcal{I}, \nu_t^{(i)} \in \{1,2\}$, and for $i \notin \mathcal{I}, \nu_t^{(i)} \in \{0,1\}$; and the offspring counts must sum to $N$ (a generalisation of the argument used in Lemma \ref{lem:weps_cN_prob}).
+
+We can then decompose this probability into a product of conditional probabilities:
+\begin{align*}
+\PR[ \nu_t^{(i)} =1 \,\forall i\in \mathcal{I} | \mathbf{w}]
+&= \prod_{i \in \mathcal{I}} \PR[ \nu_t^{(i)} =1 | \nu_t^{(j)}=1 \,\forall j <i \in \mathcal{I}; \mathbf{w}] \\
+&= \PR[\nu_t^{(i^*)} =1 | \mathbf{w}] \prod_{i \neq i^* \in \mathcal{I}} \PR[ \nu_t^{(i)} =1 | \nu_t^{(i^*)}=1; \nu_t^{(j)}=1 \,\forall j <i \in \mathcal{I}; \mathbf{w}] \\
+&\leq \PR[\nu_t^{(i^*)} =1 | \mathbf{w}] .
+\end{align*}
+The last line is the probability $\PR[ c_N(t) \leq 2/N^2 | \mathbf{w} ] $ in the case where $|\mathcal{I}| =1$, i.e.\ the only weight larger than $1/N$ is $w_{i^*}$.
+
+In other words, $\PR[ c_N(t) > 2/N^2 | \mathbf{w} ]$ is minimised on $\mathcal{S}_{N-1}^\varepsilon$ by having only one weight larger than $1/N$. The values of the other weights do not affect this probability. 
+
+We therefore find that a minimum of $\PR[ c_N(t) > 2/N^2 | \mathbf{w} ]$ on $\mathcal{S}_{N-1}^\varepsilon$ is given by $\mathbf{w}^{\varepsilon^\prime}$, for some $\varepsilon^\prime \geq \varepsilon$. 
+It only remains to show that taking $\varepsilon^\prime > \varepsilon$ does not decrease the probability. This is a consequence of Lemma \ref{lem:weps_cN_prob}, where we see that $\PR[ c_N(t) > 2/N^2 | \mathbf{w}^{\varepsilon^\prime}]$ is monotonically increasing in $\varepsilon^\prime$.
+\end{proof}
+
+
+
 
 \end{document}
