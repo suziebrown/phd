@@ -16,6 +16,12 @@ Chan, H.~P., Lai, T.~L. et~al.  \harvardyearleft 2013\harvardyearright , `A
 Del~Moral, P.  \harvardyearleft 2013\harvardyearright , {\em Mean Field
   Simulation for {Monte} {Carlo} Integration}, Chapman and Hall/CRC.
 
+\harvarditem[Del~Moral et~al.]{Del~Moral, Doucet, Jasra
+  et~al.}{2012}{delmoral2012}
+Del~Moral, P., Doucet, A., Jasra, A. et~al.  \harvardyearleft
+  2012\harvardyearright , `On adaptive resampling strategies for sequential
+  {Monte} {Carlo} methods', {\em Bernoulli} {\bf 18}(1),~252--278.
+
 \harvarditem[Douc et~al.]{Douc, Capp{\'e} \harvardand\
   Moulines}{2005}{douc2005}
 Douc, R., Capp{\'e}, O. \harvardand\ Moulines, E.  \harvardyearleft
@@ -27,6 +33,12 @@ Douc, R., Capp{\'e}, O. \harvardand\ Moulines, E.  \harvardyearleft
 Doucet, A. \harvardand\ Johansen, A.~M.  \harvardyearleft 2011\harvardyearright
   , A tutorial on particle filtering and smoothing: Fifteen years later, {\em
   in} `Handbook of nonlinear filtering', OUP, pp.~656--704.
+
+\harvarditem[Gerber et~al.]{Gerber, Chopin \harvardand\
+  Whiteley}{2019}{gerber2017}
+Gerber, M., Chopin, N. \harvardand\ Whiteley, N.  \harvardyearleft
+  2019\harvardyearright , `Negative association, ordering and convergence of
+  resampling methods', {\em The Annals of Statistics} {\bf 47}(4),~2236--2260.
 
 \harvarditem[Gordon et~al.]{Gordon, Salmond \harvardand\
   Smith}{1993}{gordon1993}
@@ -61,6 +73,11 @@ Lee, A., Murray, L. \harvardand\ Johansen, A.~M.  \harvardyearleft
 Lee, A. \harvardand\ Whiteley, N.  \harvardyearleft 2018\harvardyearright ,
   `Variance estimation in the particle filter', {\em Biometrika} {\bf
   105}(3),~609--625.
+
+\harvarditem[Li et~al.]{Li, Wang, Deng \harvardand\ Liu}{2020}{li2020}
+Li, Y., Wang, W., Deng, K. \harvardand\ Liu, J.~S.  \harvardyearleft
+  2020\harvardyearright , `Stratification and optimal resampling for sequential
+  {Monte} {Carlo}', {\em arXiv preprint arXiv:2004.01975} .
 
 \harvarditem[Lindsten et~al.]{Lindsten, Sch{\"o}n et~al.}{2013}{lindsten2013}
 Lindsten, F., Sch{\"o}n, T.~B. et~al.  \harvardyearleft 2013\harvardyearright ,

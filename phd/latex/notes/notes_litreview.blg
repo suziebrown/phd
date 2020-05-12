@@ -4,45 +4,45 @@ The top-level auxiliary file: notes_litreview.aux
 The style file: agsm.bst
 Database file #1: ../smc.bib
 Warning--can't use both volume and number fields in gordon1993
-You've used 18 entries,
+You've used 21 entries,
             2909 wiz_defined-function locations,
-            755 strings with 7676 characters,
-and the built_in function-call counts, 70090 in all, are:
-= -- 11274
-> -- 1005
+            771 strings with 8146 characters,
+and the built_in function-call counts, 84602 in all, are:
+= -- 13612
+> -- 1257
 < -- 1
-+ -- 5313
-- -- 301
-* -- 6028
-:= -- 14136
-add.period$ -- 18
-call.type$ -- 18
-change.case$ -- 251
-chr.to.int$ -- 18
-cite$ -- 19
-duplicate$ -- 308
-empty$ -- 650
-format.name$ -- 356
-if$ -- 12609
++ -- 6454
+- -- 378
+* -- 7316
+:= -- 17028
+add.period$ -- 21
+call.type$ -- 21
+change.case$ -- 293
+chr.to.int$ -- 21
+cite$ -- 22
+duplicate$ -- 355
+empty$ -- 750
+format.name$ -- 442
+if$ -- 15215
 int.to.chr$ -- 5
 int.to.str$ -- 0
-missing$ -- 18
-newline$ -- 57
-num.names$ -- 191
-pop$ -- 68
+missing$ -- 21
+newline$ -- 66
+num.names$ -- 224
+pop$ -- 76
 preamble$ -- 1
-purify$ -- 270
+purify$ -- 315
 quote$ -- 0
-skip$ -- 268
+skip$ -- 310
 stack$ -- 0
-substring$ -- 15860
-swap$ -- 67
-text.length$ -- 253
+substring$ -- 19180
+swap$ -- 75
+text.length$ -- 295
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 70
+type$ -- 82
 warning$ -- 1
-while$ -- 410
+while$ -- 477
 width$ -- 0
-write$ -- 246
+write$ -- 288
 (There was 1 warning)
