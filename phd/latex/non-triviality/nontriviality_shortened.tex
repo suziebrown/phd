@@ -243,7 +243,7 @@ The upshot of Lemma \ref{lem:extreme_w_coal_as} is that in these cases of ``extr
 
 
 \begin{lemma}\label{lem:weps_cN_prob}
-Define $\mathbf{w}^\varepsilon := \frac{1}{N}(1,\dots,1) + \varepsilon \mathbf{e}_i - \varepsilon \mathbf{e}_j$ for any $i \neq j$ and $0< \varepsilon < 1/N$. Then $\PR[c_N(t) > 2/N^2 | \mathbf{w}^\varepsilon] = N\varepsilon$.
+Define $\mathbf{w}^\varepsilon := \frac{1}{N}\{(1,\dots,1) + \varepsilon \mathbf{e}_i - \varepsilon \mathbf{e}_j \}$ for any $i \neq j$ and $0< \varepsilon < 1$. Then $\PR[c_N(t) > 2/N^2 | \mathbf{w}^\varepsilon] = \varepsilon$.
 \end{lemma}
 
 \begin{proof}
@@ -253,7 +253,7 @@ Define $\mathbf{w}^\varepsilon := \frac{1}{N}(1,\dots,1) + \varepsilon \mathbf{e
 = \PR[\nu_t^{(i)} = 1, \nu_t^{(j)} = 1 \mid \mathbf{w}^\varepsilon] 
 = \PR[\nu_t^{(i)} = 1 \mid \mathbf{w}^\varepsilon] \\
 &= 1- N w_i^\varepsilon + \lfloor N w_i^\varepsilon \rfloor 
-= 1- N(1/N + \varepsilon) + 1
+= 1- N(1+ \varepsilon)/N + 1
 = 1 - N\varepsilon ,
 \end{align*}
 since the offspring counts are deterministically equal to one apart from particles $i$ and $j$, and it remains that $\nu_t^{(i)} = 1$ if and only if $\nu_t^{(j)} = 1$. The second line comes from the definition of stochastic rounding.
@@ -263,7 +263,7 @@ since the offspring counts are deterministically equal to one apart from particl
 
 
 \begin{lemma}
-Denote $\mathcal{S}_{N-1}^\varepsilon := \{ \mathbf{w} \in \mathcal{S}_{N-1} :  \forall i, \, 0 <w_i <\frac{2}{N} ;\, \max_i w_i \geq \frac{1}{N} + \varepsilon \}$.
+Denote $\mathcal{S}_{N-1}^\varepsilon := \{ \mathbf{w} \in \mathcal{S}_{N-1} :  \forall i, \, 0 <w_i <\frac{2}{N} ;\, \max_i w_i \geq \frac{1 + \varepsilon}{N} \}$ for any $\varepsilon \in (0, 1)$.
 Then, for all $\mathbf{w} \in \mathcal{S}_{N-1}^\varepsilon$, 
 $\PR[c_N(t) > 2/N^2 | \mathbf{w} ] \geq \PR[c_N(t) > 2/N^2 | \mathbf{w}^\varepsilon ]$.
 \end{lemma}
@@ -286,15 +286,16 @@ We can then decompose this probability into a product of conditional probabiliti
 &= \PR[\nu_t^{(i^*)} =1 | \mathbf{w}] \prod_{i \neq i^* \in \mathcal{I}} \PR[ \nu_t^{(i)} =1 | \nu_t^{(i^*)}=1; \nu_t^{(j)}=1 \,\forall j <i \in \mathcal{I}; \mathbf{w}] \\
 &\leq \PR[\nu_t^{(i^*)} =1 | \mathbf{w}] .
 \end{align*}
-The last line is the probability $\PR[ c_N(t) \leq 2/N^2 | \mathbf{w} ] $ in the case where $|\mathcal{I}| =1$, i.e.\ the only weight larger than $1/N$ is $w_{i^*}$.
+The last line is equal to the probability $\PR[ c_N(t) \leq 2/N^2 | \mathbf{w} ] $ in the case where $|\mathcal{I}| =1$, i.e.\ the only weight larger than $1/N$ is $w_{i^*}$.
 
-In other words, $\PR[ c_N(t) > 2/N^2 | \mathbf{w} ]$ is minimised on $\mathcal{S}_{N-1}^\varepsilon$ by having only one weight larger than $1/N$. The values of the other weights do not affect this probability. 
+In other words, $\PR[ c_N(t) > 2/N^2 | \mathbf{w} ]$ is minimised on $\mathcal{S}_{N-1}^\varepsilon$ by having only one weight larger than $1/N$, in which case the values of the other weights do not affect this probability. 
 
 We therefore find that a minimum of $\PR[ c_N(t) > 2/N^2 | \mathbf{w} ]$ on $\mathcal{S}_{N-1}^\varepsilon$ is given by $\mathbf{w}^{\varepsilon^\prime}$, for some $\varepsilon^\prime \geq \varepsilon$. 
 It only remains to show that taking $\varepsilon^\prime > \varepsilon$ does not decrease the probability. This is a consequence of Lemma \ref{lem:weps_cN_prob}, where we see that $\PR[ c_N(t) > 2/N^2 | \mathbf{w}^{\varepsilon^\prime}]$ is monotonically increasing in $\varepsilon^\prime$.
+Thus the minimum of $\PR[ c_N(t) > 2/N^2 | \mathbf{w} ]$ is attained at $\mathbf{w} = \mathbf{w}^\varepsilon$, as required. (Although this minimum is not unique, we have shown explicitly that it is a global minimum on $\mathcal{S}_{N-1}^\varepsilon$.)
 \end{proof}
 
-
+Combining the above three Lemmata we see that, for any $\mathbf{w} \in \mathcal{S}_{N-1}$ such that $\max_i w_i \geq \frac{1 + \varepsilon}{N}$, we have the bound $\PR[ c_N(t) > 2/N^2 | \mathbf{w} ] \geq \varepsilon$. This will probably turn out to be useful, provided we can say something about whether we can expect the constraint $\max_i w_i \geq \frac{1 + \varepsilon}{N}$ to hold.
 
 
 \end{document}
