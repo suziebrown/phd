@@ -22,14 +22,19 @@ General description of what an IPS is, what they are useful for, and how to simu
 \subsection{Coalescent Theory}
 Review of literature from population genetics, including the relevant population models and results about the corresponding coalescent processes.
 \subsection{SMC Genealogies}
-Description of how genealogies are induced by SMC algorithms and how this is related to the performance of the algorithms. Existing results characterising these genealogies. Algorithms and variants previously proposed to mitigate ancestral degeneracy.
+Description of how genealogies are induced by SMC algorithms and how this is related to the performance of the algorithms. Existing results characterising these genealogies.
+\subsection{Resampling}
+Tour of resampling schemes and other ways to possibly improve performance by varying the resampling step, e.g. adaptive resampling. Existing results and conjectures comparing the performance of different schemes. Introduction of stochastic rounding as a class of resampling schemes. Implementation and usage in practice. 
 
 \section{Limiting Coalescents for SMC Genealogies (done)}
 \subsection{General Result for IPSs}
 A refinement of \citet[Theorem 1]{koskela2018} with more tractable conditions. Proof of the theroem. 
+\subsection{Application to Multinomial Resampling}
+Corollary for multinomial resampling, as the simplest case.
 \subsection{Application to Stochastic Rounding-based Resampling}
-Introduction of stochastic rounding, and how it can be used for resampling in SMC. Key examples of resampling schemes that can be seen as stochastic rounding. Comparison of this type of resampling with more naive methods, supported by results from the SMC literature. Implementation and usage in practice. Proof that the theorem holds for SMC with stochastic rounding-based resampling, and interpretation of that result including comparison on time scale versus multinomial resampling.
+Proof that the theorem holds for SMC with stochastic rounding-based resampling, and interpretation of that result including comparison on time scale versus multinomial resampling.
 \subsection{Application to Conditional SMC}
+[Possibly move the introduction to CSMC into the Background chapter.]
 Introduction of conditional SMC as a key component of particle MCMC, and what type of problem this is useful for. Proof that the theorem holds for conditional SMC and interpretation of this result. Discussion of behaviour in the pre-limiting regime, supported by simulation studies.
 
 \section{Ancestor Sampling (in progress)} % (see e.g. \citet[Chapter 5]{lindsten2013})
