@@ -107,14 +107,14 @@ f(\mathbf{w}) :=
 \prod_{i=1}^N w_i
 = \left(1- \sum_{j=1}^{N-1} w_j \right)\prod_{i=1}^{N-1} w_i 
 \end{equation*}
-where we have also dropped the constant positive factor $N!$. 
+where we have also dropped the constant positive factor $N!$. Note that this objective function is non-negative and obtains its minimal value zero whenever one or more of the weights is equal to zero; since we are looking for a maximum we can assume that $w_i >0$ for all $i$.
 Now, for every $k \in \{1,\dots,N-1\}$, we solve
 \begin{equation*}
 \frac{\partial f(\mathbf{w})}{\partial w_k}
 = \left(1- w_k - \sum_{j=1}^{N-1} w_j \right)\prod_{i\neq k}^{N-1} w_i 
 =0 .
 \end{equation*}
-The product over $i \neq k$ is constant for each $k$, so this amounts to solving
+The product over $i \neq k$ is constant and positive for each $k$, so this amounts to solving
 \begin{equation*}
 w_k = 1- \sum_{j=1}^{N-1} w_j = w_N
 \end{equation*}
@@ -122,21 +122,21 @@ for all $k$.
 The unique solution is
 $w_1 = w_2= \dots =  w_N = 1/N$.
 
-To verify that this critical point is a maximum, we can evaluate the Hessian $H$:
+To verify that the critical point is a maximum, we evaluate the Hessian $H$:
 \begin{align*}
 H_{kl}(\mathbf{w})
 &= \begin{cases}
 -2 \prod_{i\neq k}^{N-1} w_i & k=l \\
 \left( 1 - w_k - w_l - \sum_{j=1}^{N-1} w_j \right)\prod_{i\neq k,l}^{N-1}w_i & k\neq l
 \end{cases} \\
-H_{kl}((1/N, \dots, 1/N))&= \begin{cases}
+H_{kl}(1/N, \dots, 1/N)&= \begin{cases}
 -2 \left(\frac{1}{N}\right)^{N-2} & k=l \\
 - \left(\frac{1}{N}\right)^{N-2} & k\neq l
 \end{cases}
 \end{align*}
-and show that $H$ is negative definite: for any $\mathbf{x} \in \mathbb{R}^{N-1} \setminus \{\mathbf{0}\}$,
+and show that $H$ is negative definite at $(1/N, \dots, 1/N)$: for any $\mathbf{x} \in \mathbb{R}^{N-1} \setminus \{\mathbf{0}\}$,
 \begin{align*}
-\mathbf{x}^T H \mathbf{x} &= \sum_{k=1}^{N-1} \left[ -2\left(\frac{1}{N}\right)^{N-2} x_k^2
+\mathbf{x}^T H\left(\frac{1}{N}, \dots, \frac{1}{N}\right) \mathbf{x} &= \sum_{k=1}^{N-1} \left[ -2\left(\frac{1}{N}\right)^{N-2} x_k^2
 - \sum_{l\neq k}^{N-1} \left(\frac{1}{N}\right)^{N-2} x_k x_l \right] 
 = \left(\frac{1}{N}\right)^{N-2} \left[ -\sum_{k=1}^{N-1} 2x_k^2 - \sum_{k=1}^{N-1} \sum_{l\neq k}^{N-1} x_k x_l \right] \\
 &= \left(\frac{1}{N}\right)^{N-2} \left[ -\sum_{k=1}^{N-1} x_k^2 - \sum_{k=1}^{N-1} \sum_{l=1}^{N-1} x_k x_l \right]
@@ -164,7 +164,7 @@ Therefore, by a coupling argument, we conclude that $E_r$ occurs infinitely ofte
 Define $\mathbf{w}^* := \frac{1}{N-1} \left[ (1,\dots,1) - \mathbf{e}_{i^*} \right]$, where $i^*$ is the immortal index at generation $t$, and $\mathbf{e}_i$ denotes the $i^{th}$ canonical basis vector.
  
 \begin{lemma}\label{lem:csmc_cN_LB}
-For all $N\geq 4$, for all $t$,
+For all $N\geq 2$, for all $t$,
 \begin{equation*}
 \PR \left[c_N(t) > \frac{2}{N^2} \middle| \mathbf{w}=\mathbf{w}^*  \right] 
 = 1- \frac{(N-1)!}{(N-1)^{N-1}}
@@ -243,18 +243,18 @@ The upshot of Lemma \ref{lem:extreme_w_coal_as} is that in these cases of ``extr
 
 
 \begin{lemma}\label{lem:weps_cN_prob}
-Define $\mathbf{w}^\varepsilon := \frac{1}{N}\{(1,\dots,1) + \varepsilon \mathbf{e}_i - \varepsilon \mathbf{e}_j \}$ for any $i \neq j$ and $0< \varepsilon < 1$. Then $\PR[c_N(t) > 2/N^2 | \mathbf{w}^\varepsilon] = \varepsilon$.
+Define $\mathbf{w}^\delta := \frac{1}{N}\{(1,\dots,1) + \delta \mathbf{e}_i - \delta \mathbf{e}_j \}$ for any $i \neq j$ and $0< \delta < 1$. Then $\PR[c_N(t) > 2/N^2 | \mathbf{w}^\delta] = \delta$.
 \end{lemma}
 
 \begin{proof}
 \begin{align*}
-\PR[c_N(t) \leq 2/N^2 | \mathbf{w}^\varepsilon]
-&= \PR[\nu_t^{(1:N)} = (1,\dots, 1) \mid \mathbf{w}^\varepsilon] 
-= \PR[\nu_t^{(i)} = 1, \nu_t^{(j)} = 1 \mid \mathbf{w}^\varepsilon] 
-= \PR[\nu_t^{(i)} = 1 \mid \mathbf{w}^\varepsilon] \\
-&= 1- N w_i^\varepsilon + \lfloor N w_i^\varepsilon \rfloor 
-= 1- N(1+ \varepsilon)/N + 1
-= 1 - N\varepsilon ,
+\PR[c_N(t) \leq 2/N^2 | \mathbf{w}^\delta]
+&= \PR[\nu_t^{(1:N)} = (1,\dots, 1) \mid \mathbf{w}^\delta] 
+= \PR[\nu_t^{(i)} = 1, \nu_t^{(j)} = 1 \mid \mathbf{w}^\delta] 
+= \PR[\nu_t^{(i)} = 1 \mid \mathbf{w}^\delta] \\
+&= 1- N w_i^\delta + \lfloor N w_i^\delta \rfloor 
+= 1- N(1+ \delta)/N + 1
+= 1 - \delta ,
 \end{align*}
 since the offspring counts are deterministically equal to one apart from particles $i$ and $j$, and it remains that $\nu_t^{(i)} = 1$ if and only if $\nu_t^{(j)} = 1$. The second line comes from the definition of stochastic rounding.
 \end{proof}
@@ -263,13 +263,13 @@ since the offspring counts are deterministically equal to one apart from particl
 
 
 \begin{lemma}
-Denote $\mathcal{S}_{N-1}^\varepsilon := \{ \mathbf{w} \in \mathcal{S}_{N-1} :  \forall i, \, 0 <w_i <\frac{2}{N} ;\, \max_i w_i \geq \frac{1 + \varepsilon}{N} \}$ for any $\varepsilon \in (0, 1)$.
-Then, for all $\mathbf{w} \in \mathcal{S}_{N-1}^\varepsilon$, 
-$\PR[c_N(t) > 2/N^2 | \mathbf{w} ] \geq \PR[c_N(t) > 2/N^2 | \mathbf{w}^\varepsilon ]$.
+Denote $\mathcal{S}_{N-1}^\delta := \{ \mathbf{w} \in \mathcal{S}_{N-1} :  \forall i, \, 0 <w_i <\frac{2}{N} ;\, \max_i w_i \geq \frac{1 + \delta}{N} \}$ for any $\varepsilon \in (0, 1)$.
+Then, for all $\mathbf{w} \in \mathcal{S}_{N-1}^\delta$, 
+$\PR[c_N(t) > 2/N^2 | \mathbf{w} ] \geq \PR[c_N(t) > 2/N^2 | \mathbf{w}^\delta ]$.
 \end{lemma}
 
 \begin{proof}
-Fix arbitrary $\mathbf{w} \in \mathcal{S}_{N-1}^\varepsilon$. Let $i^*$ be then index of the particle with the largest weight.
+Fix arbitrary $\mathbf{w} \in \mathcal{S}_{N-1}^\delta$. Let $i^*$ be then index of the particle with the largest weight.
 Denote $\mathcal{I} := \{i \in \{1,\dots,N\} : w_i > 1/N \}$.
 Notice that 
 \begin{equation*}
@@ -290,12 +290,12 @@ The last line is equal to the probability $\PR[ c_N(t) \leq 2/N^2 | \mathbf{w} ]
 
 In other words, $\PR[ c_N(t) > 2/N^2 | \mathbf{w} ]$ is minimised on $\mathcal{S}_{N-1}^\varepsilon$ by having only one weight larger than $1/N$, in which case the values of the other weights do not affect this probability. 
 
-We therefore find that a minimum of $\PR[ c_N(t) > 2/N^2 | \mathbf{w} ]$ on $\mathcal{S}_{N-1}^\varepsilon$ is given by $\mathbf{w}^{\varepsilon^\prime}$, for some $\varepsilon^\prime \geq \varepsilon$. 
-It only remains to show that taking $\varepsilon^\prime > \varepsilon$ does not decrease the probability. This is a consequence of Lemma \ref{lem:weps_cN_prob}, where we see that $\PR[ c_N(t) > 2/N^2 | \mathbf{w}^{\varepsilon^\prime}]$ is monotonically increasing in $\varepsilon^\prime$.
-Thus the minimum of $\PR[ c_N(t) > 2/N^2 | \mathbf{w} ]$ is attained at $\mathbf{w} = \mathbf{w}^\varepsilon$, as required. (Although this minimum is not unique, we have shown explicitly that it is a global minimum on $\mathcal{S}_{N-1}^\varepsilon$.)
+We therefore find that a minimum of $\PR[ c_N(t) > 2/N^2 | \mathbf{w} ]$ on $\mathcal{S}_{N-1}^\delta$ is given by $\mathbf{w}^{\delta^\prime}$, for some $\delta^\prime \geq \delta$. 
+It only remains to show that taking $\delta^\prime > \delta$ does not decrease the probability. This is a consequence of Lemma \ref{lem:weps_cN_prob}, where we see that $\PR[ c_N(t) > 2/N^2 | \mathbf{w}^{\delta^\prime}]$ is monotonically increasing in $\delta^\prime$.
+Thus the minimum of $\PR[ c_N(t) > 2/N^2 | \mathbf{w} ]$ is attained at $\mathbf{w} = \mathbf{w}^\delta$, as required. (Although this minimum is not unique, we have shown explicitly that it is a global minimum on $\mathcal{S}_{N-1}^\delta$.)
 \end{proof}
 
-Combining the above three Lemmata we see that, for any $\mathbf{w} \in \mathcal{S}_{N-1}$ such that $\max_i w_i \geq \frac{1 + \varepsilon}{N}$, we have the bound $\PR[ c_N(t) > 2/N^2 | \mathbf{w} ] \geq \varepsilon$. This will probably turn out to be useful, provided we can say something about whether we can expect the constraint $\max_i w_i \geq \frac{1 + \varepsilon}{N}$ to hold.
+Combining the above three Lemmata we see that, for any $\mathbf{w} \in \mathcal{S}_{N-1}$ such that $\max_i w_i \geq \frac{1 + \delta}{N}$, we have the bound $\PR[ c_N(t) > 2/N^2 | \mathbf{w} ] \geq \delta$. This will probably turn out to be useful, provided we can say something about whether we can expect the constraint $\max_i w_i \geq \frac{1 + \delta}{N}$ to hold.
 
 
 \end{document}
