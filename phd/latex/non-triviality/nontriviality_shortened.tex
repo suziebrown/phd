@@ -35,6 +35,13 @@
 \maketitle
 \thispagestyle{fancy}
 
+The following theorem will be used in each section. It is a version of the second Borel--Cantelli lemma, which can be found for instance in [Durrett, Theorem 4.3.4 - make citation].
+\begin{thm}
+Let$ (\mathcal{F}_n)_{n\geq 0}$ be a filtration with $\mathcal{F}_0 = \{\emptyset, \Omega\}$. Let $(B_n)_{n\geq 0}$ be a sequence of events such that $B_n \in \mathcal{F}_n$ for all $n$.
+Then the events $\{ B_n \, i.o. \}$ and $\{ \sum_{n=1}^\infty \PR[B_n \mid \mathcal{F}_{n-1} ] =\infty \}$ are almost surely equal.
+\end{thm}
+
+
 \section*{Multinomial resampling}
 
 \begin{lemma}\label{lem:neutral_cN_LB}
@@ -243,29 +250,34 @@ The upshot of Lemma \ref{lem:extreme_w_coal_as} is that in these cases of ``extr
 
 
 \begin{lemma}\label{lem:weps_cN_prob}
-Define $\mathbf{w}^\delta := \frac{1}{N}\{(1,\dots,1) + \delta \mathbf{e}_i - \delta \mathbf{e}_j \}$ for any $i \neq j$ and $0< \delta < 1$. Then $\PR[c_N(t) > 2/N^2 | \mathbf{w}^\delta] = \delta$.
+Define $\mathbf{w}^\delta := \frac{1}{N}\{(1,\dots,1) + \delta \mathbf{e}_i - \delta \mathbf{e}_j \}$ for any $i \neq j$ and $0< \delta < 1$. Then $\PR[c_N(t) > 2/N^2 | \mathcal{H}_t, \mathbf{w}_t = \mathbf{w}_\delta] \geq \delta \varepsilon^3$.
 \end{lemma}
 
 \begin{proof}
+We use a bound on $\PR[ \nu_t^{(i)} = \lfloor N w_t^{(i)} \rfloor ]$ from the proof of Corollary 1 in the draft paper:
+\begin{equation*}
+\PR[ \nu_t^{(i)} = \lfloor N w_t^{(i)} \rfloor \mid \mathcal{H}_t] =: p_0 = 1-p_1 \leq 1 - (Nw_t^{(i)} - \lfloor N w_t^{(i)} \rfloor ) \varepsilon^{(2\lfloor N w_t^{(i)} \rfloor +1)} .
+\end{equation*}
+Then
 \begin{align*}
-\PR[c_N(t) \leq 2/N^2 | \mathbf{w}^\delta]
-&= \PR[\nu_t^{(1:N)} = (1,\dots, 1) \mid \mathbf{w}^\delta] 
-= \PR[\nu_t^{(i)} = 1, \nu_t^{(j)} = 1 \mid \mathbf{w}^\delta] 
-= \PR[\nu_t^{(i)} = 1 \mid \mathbf{w}^\delta] \\
-&= 1- N w_i^\delta + \lfloor N w_i^\delta \rfloor 
-= 1- N(1+ \delta)/N + 1
-= 1 - \delta ,
+\PR[c_N(t) \leq 2/N^2 | \mathcal{H}_t, \mathbf{w}_t = \mathbf{w}_\delta]
+&= \PR[\nu_t^{(1:N)} = (1,\dots, 1) \mid \mathcal{H}_t, \mathbf{w}_t = \mathbf{w}_\delta] \\
+&= \PR[\nu_t^{(i)} = 1, \nu_t^{(j)} = 1 \mid \mathcal{H}_t, \mathbf{w}_t = \mathbf{w}_\delta] \\
+&= \PR[\nu_t^{(i)} = 1 \mid \mathcal{H}_t, \mathbf{w}_t = \mathbf{w}_\delta] \\
+&\leq 1- (N w_\delta^{(i)} - \lfloor N w_\delta^{(i)} \rfloor) \varepsilon^{(2\lfloor N w_\delta^{(i)} \rfloor +1)} \\
+&= 1- \{N(1+ \delta)/N - 1\}\varepsilon^3 \\
+&= 1 - \delta\varepsilon^3 ,
 \end{align*}
-since the offspring counts are deterministically equal to one apart from particles $i$ and $j$, and it remains that $\nu_t^{(i)} = 1$ if and only if $\nu_t^{(j)} = 1$. The second line comes from the definition of stochastic rounding.
+since the offspring counts are deterministically equal to one apart from particles $i$ and $j$, and it remains that $\nu_t^{(i)} = 1$ if and only if $\nu_t^{(j)} = 1$.
 \end{proof}
 
 
 
 
 \begin{lemma}
-Denote $\mathcal{S}_{N-1}^\delta := \{ \mathbf{w} \in \mathcal{S}_{N-1} :  \forall i, \, 0 <w_i <\frac{2}{N} ;\, \max_i w_i \geq \frac{1 + \delta}{N} \}$ for any $\varepsilon \in (0, 1)$.
-Then, for all $\mathbf{w} \in \mathcal{S}_{N-1}^\delta$, 
-$\PR[c_N(t) > 2/N^2 | \mathbf{w} ] \geq \PR[c_N(t) > 2/N^2 | \mathbf{w}^\delta ]$.
+For any $\delta \in (0, 1)$, denote $\mathcal{S}_{N-1}^\delta := \{ \mathbf{w} \in \mathcal{S}_{N-1} :  \forall i, \, 0 <w_i <\frac{2}{N} ;\, \max_i w_i \geq \frac{1 + \delta}{N} \}$.
+Then for all $\mathbf{w} \in \mathcal{S}_{N-1}^\delta$, 
+$\PR[c_N(t) > 2/N^2 | \mathbf{w} ] \geq \PR[c_N(t) > 2/N^2 | \mathbf{w}_\delta ]$.
 \end{lemma}
 
 \begin{proof}
@@ -288,14 +300,19 @@ We can then decompose this probability into a product of conditional probabiliti
 \end{align*}
 The last line is equal to the probability $\PR[ c_N(t) \leq 2/N^2 | \mathbf{w} ] $ in the case where $|\mathcal{I}| =1$, i.e.\ the only weight larger than $1/N$ is $w_{i^*}$.
 
-In other words, $\PR[ c_N(t) > 2/N^2 | \mathbf{w} ]$ is minimised on $\mathcal{S}_{N-1}^\varepsilon$ by having only one weight larger than $1/N$, in which case the values of the other weights do not affect this probability. 
+In other words, $\PR[ c_N(t) > 2/N^2 | \mathbf{w} ]$ is minimised on $\mathcal{S}_{N-1}^\delta$ by having only one weight larger than $1/N$, in which case the values of the other weights do not affect this probability. 
 
-We therefore find that a minimum of $\PR[ c_N(t) > 2/N^2 | \mathbf{w} ]$ on $\mathcal{S}_{N-1}^\delta$ is given by $\mathbf{w}^{\delta^\prime}$, for some $\delta^\prime \geq \delta$. 
-It only remains to show that taking $\delta^\prime > \delta$ does not decrease the probability. This is a consequence of Lemma \ref{lem:weps_cN_prob}, where we see that $\PR[ c_N(t) > 2/N^2 | \mathbf{w}^{\delta^\prime}]$ is monotonically increasing in $\delta^\prime$.
-Thus the minimum of $\PR[ c_N(t) > 2/N^2 | \mathbf{w} ]$ is attained at $\mathbf{w} = \mathbf{w}^\delta$, as required. (Although this minimum is not unique, we have shown explicitly that it is a global minimum on $\mathcal{S}_{N-1}^\delta$.)
+We therefore find that a minimum of $\PR[ c_N(t) > 2/N^2 | \mathbf{w} ]$ on $\mathcal{S}_{N-1}^\delta$ is given by $\mathbf{w}_{\delta^\prime}$, for some $\delta^\prime \geq \delta$. 
+It only remains to show that taking $\delta^\prime > \delta$ does not decrease the probability. This is a consequence of Lemma \ref{lem:weps_cN_prob}, where we see that $\PR[ c_N(t) > 2/N^2 | \mathbf{w}_{\delta^\prime}]$ is monotonically increasing in $\delta^\prime$.
+Thus the minimum of $\PR[ c_N(t) > 2/N^2 | \mathbf{w} ]$ is attained at $\mathbf{w} = \mathbf{w}_\delta$, as required. (Although this minimum is not unique, we have shown explicitly that it is a global minimum on $\mathcal{S}_{N-1}^\delta$.)
 \end{proof}
 
-Combining the above three Lemmata we see that, for any $\mathbf{w} \in \mathcal{S}_{N-1}$ such that $\max_i w_i \geq \frac{1 + \delta}{N}$, we have the bound $\PR[ c_N(t) > 2/N^2 | \mathbf{w} ] \geq \delta$. This will probably turn out to be useful, provided we can say something about whether we can expect the constraint $\max_i w_i \geq \frac{1 + \delta}{N}$ to hold.
+[Combining the above three Lemmata we see that, for any $\mathbf{w} \in \mathcal{S}_{N-1}$ such that $\max_i w_i \geq \frac{1 + \delta}{N}$, we have the bound $\PR[ c_N(t) > 2/N^2 | \mathbf{w} ] \geq \delta$. This will probably turn out to be useful, provided we can say something about whether we can expect the constraint $\max_i w_i \geq \frac{1 + \delta}{N}$ to hold.]
+
+\begin{thm}
+Consider a sequential Monte Carlo algorithm using any stochastic rounding as its resampling scheme.
+If $\PR\{\max_i w_t^{(i)} \geq (1+\delta)/N\} >0$ for infinitely many $t$ then $\PR\{\tau_N(t) = \infty \}=0$ for all finite $t$.
+\end{thm}
 
 
 \end{document}
