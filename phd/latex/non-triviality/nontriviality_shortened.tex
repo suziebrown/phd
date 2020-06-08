@@ -232,6 +232,28 @@ Therefore, by a coupling argument, we conclude that $E_r$ occurs infinitely ofte
 \end{proof}
 
 
+\subsection*{There's an easier way...}
+
+\begin{thm}
+In conditional SMC with multinomial resampling, there exists $N_0$ such that for all $N>N_0$, for all finite $t$, $\PR[\tau_N(t) = \infty] =0$.
+\end{thm}
+
+\begin{proof}
+We have, from the proof of Corollary 2 in the draft paper,
+\begin{equation*}
+\E [c_N(t) \mid \mathcal{F}_{t-1}] \geq \frac{1}{(N)_2} \left\{ \frac{2\varepsilon^2}{a^2} + \frac{(N)_3 \varepsilon^4}{(N-1)^2 a^4} \right\} .
+\end{equation*}
+Since $c_N(t) \in [0,1]$ almost surely, for any fixed $N$ the ``worst-case'' distribution of $c_N(t)$ (i.e.\ maximising $\PR[c_N(t)=0 \mid \mathcal{F}_{t-1}]$) is two atoms, at 0 and 1. To ensure the correct expectation, the atom at 1 must have weight $\E[c_N(t) \mid \mathcal{F}_{t-1}]$, which is bounded below by the above inequality.
+Hence for any finite $N$,
+\begin{equation*}
+\sum_{t=0}^\infty \PR[ c_N(t) > 2/N^2 \mid \mathcal{F}_{t-1}] 
+\geq \sum_{t=0}^\infty \frac{1}{(N)_2} \left\{ \frac{2\varepsilon^2}{a^2} + \frac{(N)_3 \varepsilon^4}{(N-1)^2 a^4} \right\}
+= \infty .
+\end{equation*}
+By Borel--Cantelli, we therefore have almost surely for all $N>2$ that $c_N(t) > 2/N^2$ for infinitely many $t$, which as argued earlier implies $\PR[\tau_N(t) = \infty] =0$ for all finite $t$.
+\end{proof}
+
+
 \section*{Stochastic rounding}
 \begin{lemma} \label{lem:extreme_w_coal_as}
 Let $\mathbf{w} = (w_1,\dots,w_N) \in \mathcal{S}_{N-1}$ and resample by stochastic rounding.

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  6 JUN 2020 11:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  8 JUN 2020 12:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -236,14 +236,14 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
- [4]
+ [4] [5]
 (./nontriviality_shortened.aux) ) 
 Here is how much of TeX's memory you used:
- 2560 strings out of 492649
- 33424 string characters out of 6129623
+ 2561 strings out of 492649
+ 33439 string characters out of 6129623
  114426 words of memory out of 5000000
- 6430 multiletter control sequences out of 15000+600000
- 12466 words of font info for 48 fonts, out of 8000000 for 9000
+ 6431 multiletter control sequences out of 15000+600000
+ 12773 words of font info for 49 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  30i,15n,43p,412b,314s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2018/texmf-dist/fonts/type
@@ -264,10 +264,10 @@ msy5.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cms
 y7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti1
 0.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/m
 sbm10.pfb>
-Output written on nontriviality_shortened.pdf (4 pages, 199050 bytes).
+Output written on nontriviality_shortened.pdf (5 pages, 203344 bytes).
 PDF statistics:
- 85 PDF objects out of 1000 (max. 8388607)
- 61 compressed objects within 1 object stream
+ 88 PDF objects out of 1000 (max. 8388607)
+ 63 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
