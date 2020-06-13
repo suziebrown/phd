@@ -2,6 +2,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[margin=2cm]{geometry}
 
+\usepackage{graphicx}
 \usepackage{enumitem}
 
 % custom header/footer
@@ -11,6 +12,11 @@
 \fancyhf{}
 \rfoot{\textsf{\thepage}}
 \lfoot{\textsf{Suzie Brown}}
+
+%annotations
+\usepackage{color}
+\usepackage{xspace}
+\newcommand{\seb}[1]{\xspace\textcolor{red}{#1}\xspace}
 
 % bibliography
 \usepackage[round, sort&compress]{natbib}
@@ -26,6 +32,7 @@
 \newcommand{\PR}{\mathbb{P}}
 \newcommand{\E}{\mathbb{E}}
 \newcommand{\V}{\operatorname{Var}}
+\newcommand{\I}[1]{\mathbb{I}_{\{#1\}}}
 \newcommand{\Mn}{\operatorname{Multinomial}}
 
 \title{Non-triviality condition (shortened version)}
@@ -79,7 +86,7 @@ Let us rewrite the event of interest in a different way.
 &\Leftrightarrow \PR\left[ \min \left\{s>1 : \sum_{r=1}^s c_N(r) >t \right\} < \infty \right] =1 \\
 &\Leftrightarrow \PR\left[ \exists s<\infty : \sum_{r=1}^s c_N(r) >t \right] =1
 \end{align*}
-It is sufficient to show that, for all $N>N_0$, $c_N(r)$ is bounded away from zero infinitely often in $r$.
+It is sufficient to show that, almost surely for all $N>N_0$, $c_N(r)$ is bounded away from zero infinitely often in $r$.
 We consider the sequence of events 
 $E_r := \{ c_N(r) > 2/N^2 \}$ for $r \in \mathbb{N}$.
 In the neutral case, the resampled family sizes at each generation are independent, hence the events $E_r$ are independent. 
@@ -173,19 +180,29 @@ Define $\mathbf{w}^* := \frac{1}{N-1} \left[ (1,\dots,1) - \mathbf{e}_{i^*} \rig
 \begin{lemma}\label{lem:csmc_cN_LB}
 For all $N\geq 2$, for all $t$,
 \begin{equation*}
-\PR \left[c_N(t) > \frac{2}{N^2} \middle| \mathbf{w}=\mathbf{w}^*  \right] 
-= 1- \frac{(N-1)!}{(N-1)^{N-1}}
+\PR \left[c_N(t) > \frac{2}{N^2} \middle| \mathcal{H}_t, \mathbf{w}_t=\mathbf{w}^*  \right] 
+= 1- (\varepsilon(N-1))^{1-N} \prod_{i\neq i^*}^N h(X_{t-1}^{(i)}) .
 \end{equation*}
 \end{lemma}
 
 \begin{proof}
 Under $\mathbf{w}^*$, the immortal parent has zero weight and is therefore assigned exactly one offspring (the immortal particle). The remaining $N-1$ offspring are assigned to the remaining $N-1$ parents according to a Multinomial distribution with equal weights. We therefore have
+\begin{align*}
+\PR \left[c_N(t) \leq \frac{2}{N^2} \mid \mathcal{H}_t \right]
+&=\frac{1}{(N-1)!} \sum_{\mathbf{a}_t : \nu_t^{(i)}=1 \forall i} \PR[\mathbf{a}_t \mid \mathcal{H}_t] \\
+&=\frac{1}{(N-1)!} \sum_{\mathbf{a}_t: \nu_t^{(i)}=1 \forall i} \prod_{i \neq i^*}^N w_t^{(i)} q_{t-1}(X_t^{(a_t^{(i)}}, X_{t-1}^{(i)}) \\
+&\leq \frac{1}{(N-1)!} \sum_{\mathbf{a}_t: \nu_t^{(i)}=1 \forall i} \prod_{i \neq i^*}^N w_t^{(i)} \varepsilon^{-1} h(X_{t-1}^{(i)}) \\
+&= \prod_{i \neq i^*}^N w_t^{(i)} \varepsilon^{-1} h(X_{t-1}^{(i)}) \\
+&= \varepsilon^{1-N} \left( \prod_{j \neq i^*}^N w_t^{(j)} \right) \left( \prod_{i \neq i^*}^N h(X_{t-1}^{(i)}) \right) \\
+&\propto \prod_{j \neq i^*}^N w_t^{(j)} =: f(\mathbf{w}_t) .
+\end{align*}
+Evaluated at $\mathbf{w}^*$, we have 
 \begin{equation*}
-\PR \left[c_N(t) > \frac{2}{N^2} \mid \mathbf{w}=\mathbf{w}^* \right]
-= 1-\PR[\nu_t^{(1:N)} = (1,\dots, 1) \mid \mathbf{w}=\mathbf{w}^*] 
-= 1- (N-1)! \prod_{i\neq i^*}^{N} \frac{1}{N-1}
-= 1- \frac{(N-1)!}{(N-1)^{N-1}} .
+\PR \left[c_N(t) > \frac{2}{N^2} \middle| \mathcal{H}_t, \mathbf{w}_t=\mathbf{w}^*  \right] 
+= 1- \varepsilon^{1-N} \left( \prod_{j \neq i^*}^N \frac{1}{N-1} \right) \left( \prod_{i \neq i^*}^N h(X_{t-1}^{(i)}) \right)
+= 1- (\varepsilon(N-1))^{1-N} \prod_{i\neq i^*}^N h(X_{t-1}^{(i)})
 \end{equation*}
+as required.
 \end{proof} 
 
  
@@ -201,36 +218,67 @@ The proof is exactly the same as for Lemma \ref{thm:nontrivial_mn_optimalw}; Lem
 \begin{lemma}\label{lem:csmc_optimal_w}
 For all $N\geq 2$, for all $t$, for any weight vector $(w_1, \dots, w_N) \in \mathcal{S}_{N-1}$,
 \begin{equation*}
-\PR \left[c_N(t) > \frac{2}{N^2} \middle| \mathbf{w}=(w_1, \dots, w_N) \right]
-\geq \PR \left[c_N(t) > \frac{2}{N^2} \middle| \mathbf{w}=\mathbf{w}^* \right].
+\PR \left[c_N(t) > \frac{2}{N^2} \middle| \mathcal{H}_t \right]
+\geq \PR \left[c_N(t) > \frac{2}{N^2} \middle| \mathcal{H}_t, \mathbf{w}_t = \mathbf{w}^* \right].
 \end{equation*}
 \end{lemma}
 
 \begin{proof}
-Recall that
+In the proof of Lemma [4] we found an expression for the probability of interest, $\PR[c_N(t) \leq 2/N^2 \mid \mathcal{H}_t]$.
+To see that $\mathbf{w}^*$ is the ``worst case'' weight vector (i.e\ maximising that probability), consider the optimisation of
 \begin{equation*}
-1- \PR \left[c_N(t) > \frac{2}{N^2} \mid \mathbf{w}=(w_1, \dots, w_N) \right]
-= (N-1)! \prod_{i\neq i^*}^{N} w_i .
+f(\mathbf{w}) :=
+\prod_{\substack{i=1\\ i\neq i^*}}^N w_i
+= \left(1- \sum_{j=1}^{N-1} w_j \right)\prod_{\substack{i=1\\ i\neq i^*}}^{N-1} w_i 
+\propto \PR \left[c_N(t) \leq \frac{2}{N^2} \mid \mathcal{H}_t, \mathbf{w}_t = \mathbf{w} \right]
 \end{equation*}
-Ignoring the immortal particles, this is equivalent to multinomial resampling in the standard case \eqref{eq:mn_nomerger_prob}, only with $N-1$ particles rather than $N$. 
-As we saw in Lemma \ref{lem:mn_optimal_w}, this function is maximised at the vector of equal weights, in this case $\mathbf{w}_{-i^*}=\frac{1}{N-1} (1,\dots,1)$. 
-This leaves zero weight for the immortal particle, so overall the maximum is attained at $\mathbf{w}^*=\frac{1}{N-1} \left[ (1,\dots,1) - \mathbf{e}_{i^*} \right]$ as required.
+over $\mathbf{w} \in \mathcal{S}_{N-1}$.
+This objective function is non-negative and obtains its minimal value zero whenever one or more of the non-immortal weights is equal to zero; since we are looking for a maximum we can assume that $w_i >0$ for all $i \neq i^*$.
+Now, for every $k \in \{1,\dots,N-1\}\setminus \{i^*\}$, we solve
+\begin{equation*}
+\frac{\partial f(\mathbf{w})}{\partial w_k}
+= \left(1- w_k - \sum_{j=1}^{N-1} w_j \right)\prod_{\substack{i=1\\ i\neq k,i^*}}^{N-1} w_i 
+=0 .
+\end{equation*}
+The product is constant and positive for each $k$, so this amounts to solving
+\begin{equation*}
+w_k = 1- \sum_{\substack{j=1\\ j\neq i^*}}^{N-1} w_j = w_N
+\end{equation*}
+simultaneously for all $k \in \{1,\dots,N-1\}\setminus \{i^*\}$.
+The locus of solutions is the ridge
+$\mathbf{w}_a = \{(1, \dots,1) +a \mathbf{e}_{i^*} \} /(N+a)$ for some constant $a \in [-1,\infty)$. (See Figure \ref{fig:CSMC_ternaryplot} for an illustration in the case N=3.)
+It can be shown that the Hessian in indices $\{1,\dots,N\}\setminus \{i^*\}$ is negative definite.
+\seb{The Hessian in the non-immortal indices comes out exactly as in the standard multinomial case; a proof analogous to that one could easily be included.}
+On this ridge the objective function takes values $f(\mathbf{w}_a) = (N+a)^{1-N}$.
+Further optimising over $a$, the unique maximum is at $a=-1$, thus $\mathbf{w}^* = \{(1,\dots,1) - \mathbf{e}_{i^*}\} /(N-1)$.
+This weight vector thus minimises the probability of the complementary event, and we conclude the result.
 \end{proof}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth]{ternplot1.pdf}
+\caption{Plot of objective function $f(\mathbf{w})$ in the case $N=3$, where the immortal index is $i^*=3$.}
+\label{fig:CSMC_ternaryplot}
+\end{figure}
 
 
 \begin{thm}
-In conditional SMC with multinomial resampling, conditional on any sequence of weight vectors $\mathbf{w}_r^{(1:N)} \in \mathcal{S}_{N-1}; r\in\mathbb{N}$, there exists $N_0$ such that for all $N>N_0$, for all finite $t$, $\PR[\tau_N(t) = \infty] =0$.
+In conditional SMC with multinomial resampling, there exists $N_0$ such that for all $N>N_0$, for all finite $t$, $\PR[\tau_N(t) = \infty] =0$.
 \end{thm}
 
-\begin{proof}
-As before, consider the sequence of events 
-$E_r := \{ c_N(r) > 2/N^2 \}$ for $r \in \mathbb{N}$.
-We know from the argument behind Lemma \ref{thm:nontrivial_csmc_optimalw} (which is completely analogous to Lemma \ref{thm:nontrivial_mn_optimalw}) that, in the case $\mathbf{w}=\mathbf{w}^*$, $E_r$ occurs infinitely often. Lemma \ref{lem:csmc_optimal_w} tells us that 
-$\PR[E_r \mid \mathbf{w}=(w_1, \dots, w_N)] \geq \PR[E_r \mid \mathbf{w}=\mathbf{w}^*]$
-for all $r$. 
-Therefore, by a coupling argument, we conclude that $E_r$ occurs infinitely often in the general case as well.
-\end{proof}
+%\begin{proof}
+%As before, consider the sequence of events 
+%$E_r := \{ c_N(r) > 2/N^2 \}$ for $r \in \mathbb{N}$.
+%We know from the argument behind Lemma \ref{thm:nontrivial_csmc_optimalw} (which is completely analogous to Lemma \ref{thm:nontrivial_mn_optimalw}) that, in the case $\mathbf{w}=\mathbf{w}^*$, $E_r$ occurs infinitely often. Lemma \ref{lem:csmc_optimal_w} tells us that 
+%$\PR[E_r \mid \mathbf{w}=(w_1, \dots, w_N)] \geq \PR[E_r \mid \mathbf{w}=\mathbf{w}^*]$
+%for all $r$. 
+%Therefore, by a coupling argument, we conclude that $E_r$ occurs infinitely often in the general case as well.
+%\end{proof}
 
+\begin{proof}
+Combining Lemmata [4] and [6], we see that $\PR \left[c_N(t) > \frac{2}{N^2} \middle| \mathcal{H}_t \right] \geq 1- (\varepsilon(N-1))^{1-N} \prod_{i\neq i^*}^N h(X_{t-1}^{(i)})$ for all $t$. For sufficiently large $N$, say $N>N_0$, this probability is bounded away from zero.
+[A D-separation + Borel--Cantelli argument analogous to the stochastic rounding case will lead to the result.]
+\end{proof}
 
 \subsection*{There's an easier way...}
 
@@ -329,12 +377,34 @@ It only remains to show that taking $\delta^\prime > \delta$ does not decrease t
 Thus the minimum of $\PR[ c_N(t) > 2/N^2 | \mathbf{w} ]$ is attained at $\mathbf{w} = \mathbf{w}_\delta$, as required. (Although this minimum is not unique, we have shown explicitly that it is a global minimum on $\mathcal{S}_{N-1}^\delta$.)
 \end{proof}
 
-[Combining the above three Lemmata we see that, for any $\mathbf{w} \in \mathcal{S}_{N-1}$ such that $\max_i w_i \geq \frac{1 + \delta}{N}$, we have the bound $\PR[ c_N(t) > 2/N^2 | \mathbf{w} ] \geq \delta$. This will probably turn out to be useful, provided we can say something about whether we can expect the constraint $\max_i w_i \geq \frac{1 + \delta}{N}$ to hold.]
-
 \begin{thm}
 Consider a sequential Monte Carlo algorithm using any stochastic rounding as its resampling scheme.
-If $\PR\{\max_i w_t^{(i)} \geq (1+\delta)/N\} >0$ for infinitely many $t$ then $\PR\{\tau_N(t) = \infty \}=0$ for all finite $t$.
+If there exists $\mu>0$ such that $\PR\{\max_i w_t^{(i)} \geq (1+\delta)/N \mid \mathcal{H}_t\} \geq \mu$ for infinitely many $t$ then $\PR\{\tau_N(t) = \infty \}=0$ for all $N>1$ and for all finite $t$.
 \end{thm}
+
+\begin{proof}
+Combining Lemmata [7--9] we see that, for any $\mathbf{w} \in \mathcal{S}_{N-1}$ such that $\max_i w_i \geq \frac{1 + \delta}{N}$, we have the bound $\PR[ c_N(t) > 2/N^2 | \mathbf{w} ] \geq \delta\varepsilon^3$.
+By the law of total probability,
+\begin{equation*}
+\PR[c_N(t) > 2/N^2 \mid \mathcal{H}_t] 
+\geq \PR[c_N(t) > 2/N^2 \mid \mathcal{H}_t, \max w_i \geq (1+\delta)/N ]\, \PR[\max w_i \geq (1+\delta)/N \mid \mathcal{H}_t]
+\geq \mu \delta \varepsilon^3 
+\end{equation*}
+for those infinitely many $t$ where $\PR\{\max_i w_t^{(i)} \geq (1+\delta)/N \mid \mathcal{H}_t\} \geq \mu$.
+Using the D-separation established in [draft paper, Cor 1 proof], we can write
+\begin{align*}
+\PR[c_N(t) > 2/N^2 \mid \mathcal{F}_{t-1}] 
+&= \E[ \I{c_N(t) > 2/N^2} \mid \mathcal{F}_{t-1}] \\
+&= \E[ \E[ \I{c_N(t) > 2/N^2} \mid \mathcal{H}_t ]\mid \mathcal{F}_{t-1}] \\
+&= \E[ \PR[c_N(t) > 2/N^2 \mid \mathcal{H}_t ]\mid \mathcal{F}_{t-1}] .
+\end{align*}
+Hence this probability is bounded below by $\mu\delta\varepsilon^3$ for infinitely many $t$. We therefore have
+\begin{equation}
+\sum_{t=0}^\infty \PR[c_N(t) > 2/N^2 \mid \mathcal{F}_{t-1}]  \geq \sum_{j=0}^\infty \mu\delta\varepsilon^3 = \infty ,
+\end{equation}
+and applying Theorem [1 - that BC2 statement], almost surely $c_N(t) >2/N^2$ for infinitely many $t$.
+As argued in Lemma [2], this is sufficient for the result.
+\end{proof}
 
 
 \end{document}
