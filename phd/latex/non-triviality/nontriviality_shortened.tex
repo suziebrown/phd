@@ -33,6 +33,7 @@
 \newcommand{\E}{\mathbb{E}}
 \newcommand{\V}{\operatorname{Var}}
 \newcommand{\I}[1]{\mathbb{I}_{\{#1\}}}
+\newcommand{\1}[1]{\mathbb{I}_{#1}}
 \newcommand{\Mn}{\operatorname{Multinomial}}
 
 \title{Non-triviality condition (shortened version)}
@@ -42,10 +43,10 @@
 \maketitle
 \thispagestyle{fancy}
 
-The following theorem will be used in each section. It is a version of the second Borel--Cantelli lemma, which can be found for instance in [Durrett, Theorem 4.3.4 - make citation].
+The following theorem will be used in each section. It is a filtered version of the second Borel--Cantelli lemma, which can be found for instance in \citet[Theorem 4.3.4]{durrett2019}.
 \begin{thm}
-Let$ (\mathcal{F}_n)_{n\geq 0}$ be a filtration with $\mathcal{F}_0 = \{\emptyset, \Omega\}$. Let $(B_n)_{n\geq 0}$ be a sequence of events such that $B_n \in \mathcal{F}_n$ for all $n$.
-Then the events $\{ B_n \, i.o. \}$ and $\{ \sum_{n=1}^\infty \PR[B_n \mid \mathcal{F}_{n-1} ] =\infty \}$ are almost surely equal.
+Let $ (\mathcal{F}_t)_{t\geq 0}$ be a filtration with $\mathcal{F}_0 = \{\emptyset, \Omega\}$. Let $(B_t)_{t\geq 0}$ be a sequence of events such that $B_t \in \mathcal{F}_t$ for all $t$.
+Then the events $\{ B_t \text{ i.o.} \}$ and $\{ \sum_{t=1}^\infty \PR[B_t \mid \mathcal{F}_{t-1} ] =\infty \}$ are almost surely equal.
 \end{thm}
 
 
@@ -83,8 +84,8 @@ In the neutral case (i.e.\ when all weights are equal at every time step) with m
 Let us rewrite the event of interest in a different way.
 \begin{align*}
 \PR[\tau_N(t) = \infty] =0 &\Leftrightarrow \PR[\tau_N(t) < \infty] =1 \\
-&\Leftrightarrow \PR\left[ \min \left\{s>1 : \sum_{r=1}^s c_N(r) >t \right\} < \infty \right] =1 \\
-&\Leftrightarrow \PR\left[ \exists s<\infty : \sum_{r=1}^s c_N(r) >t \right] =1
+&\Leftrightarrow \PR\left[ \min \left\{s \geq 1 : \sum_{r=1}^s c_N(r) \geq t \right\} < \infty \right] =1 \\
+&\Leftrightarrow \PR\left[ \exists s<\infty : \sum_{r=1}^s c_N(r) \geq t \right] =1
 \end{align*}
 It is sufficient to show that, almost surely for all $N>N_0$, $c_N(r)$ is bounded away from zero infinitely often in $r$.
 We consider the sequence of events 
@@ -406,5 +407,75 @@ and applying Theorem [1 - that BC2 statement], almost surely $c_N(t) >2/N^2$ for
 As argued in Lemma [2], this is sufficient for the result.
 \end{proof}
 
+The lemma below is here to clear up any uncertainty about the tower property / D-separation argument, as used in this proof in the paper.
+\begin{lemma}
+Let $A,B$ be events such that $A$ is measurable with respect to $\mathcal{F}_{t}$, and $B$ is measurable with respect to $\mathcal{H}_{t}$ (but not vice versa), and neither event is measurable with respect to $\mathcal{F}_{t-1}$. 
+(In the real proof we have $A:= \{c_N(t)>2/N^2\}$ and $B:= \{ \max_i w_t^{(i)} - \min_i w_t^{(i)} \geq 2\delta/N \}$).
+Then
+\begin{equation}
+\PR[A \mid \mathcal{F}_{t-1}, B] 
+=\E[ \PR[ A \mid \mathcal{H}_t] \mid \mathcal{F}_{t-1}, B ] 
+\end{equation}
+and
+\begin{equation}
+\PR[A \mid \mathcal{H}_t] 
+\geq \PR[ A \mid \mathcal{H}_t, B] \, \1{B}.
+\end{equation}
+\end{lemma}
 
+\begin{proof}
+For the first point,
+\begin{align*}
+\PR[A \mid \mathcal{F}_{t-1}, B] 
+&= \E[ \1{A} \mid \mathcal{F}_{t-1}, B]
+= \frac{\E[ \1{A} \1{B} \mid \mathcal{F}_{t-1}]}{\PR[B \mid \mathcal{F}_{t-1}]}
+=\frac{\E[ \E[ \1{A} \1{B} \mid \mathcal{H}_t, \mathcal{F}_{t-1} ] \mid \mathcal{F}_{t-1}]}{\PR[B \mid \mathcal{F}_{t-1}]}
+=\frac{\E[ \E[ \1{A} \1{B} \mid \mathcal{H}_t ] \mid \mathcal{F}_{t-1}]}{\PR[B \mid \mathcal{F}_{t-1}]}\\
+&=\frac{\E[ \E[ \1{A} \mid \mathcal{H}_t ] \1{B} \mid \mathcal{F}_{t-1}]}{\PR[B \mid \mathcal{F}_{t-1}]}
+=\frac{\E[ \E[ \1{A} \mid \mathcal{H}_t ] \mid \mathcal{F}_{t-1}, B ] \PR[B \mid \mathcal{F}_{t-1}]}{\PR[B \mid \mathcal{F}_{t-1}]} \\
+&=\E[ \E[ \1{A} \mid \mathcal{H}_t ] \mid \mathcal{F}_{t-1}, B ] 
+=\E[ \PR[ A \mid \mathcal{H}_t] \mid \mathcal{F}_{t-1}, B ].
+\end{align*}
+For the second point,
+\begin{align*}
+\PR[A \mid \mathcal{H}_t] 
+=  \PR[ A \mid \mathcal{H}_t, B] \PR[B \mid \mathcal{H}_t]
++ \PR[ A \mid \mathcal{H}_t, B^c] \PR[B^c \mid \mathcal{H}_t]
+\geq  \PR[ A \mid \mathcal{H}_t, B] \PR[B \mid \mathcal{H}_t]
+=  \PR[ A \mid \mathcal{H}_t, B] \1{B}
+\end{align*}
+since $B$ is $\mathcal{H}_t$-measurable.
+\end{proof}
+
+The next Lemma shows how these two results are helpful in our scenario of Corollary 1.
+
+\begin{lemma}
+Let $A := \{ c_N(t) > 2/N^2 \}$. Let $B:= \{ \max_i w_t^{(i)} - \min_i w_t^{(i)} \geq 2\delta/N \}$. (Notice that these events satisfy the measurability properties in the previous Lemma.)
+As an assumption in Corollary 1 we have that $\PR[B \mid \mathcal{F}_{t-1}] \geq \zeta >0$ for infinitely many $t$.
+We showed in the proof of Corollary 1 that $\PR[A \mid \mathcal{H}_t, B] \geq \delta\varepsilon^3$.
+Then, under this set-up, we have
+$\PR[A \mid \mathcal{F}_{t-1}] \geq \zeta\delta\varepsilon^3$ for infinitely many $t$.
+\end{lemma}
+
+\begin{proof}
+\begin{align*}
+\PR[ A \mid \mathcal{F}_{t-1} ]
+&= \E[ \1{A} \mid \mathcal{F}_{t-1} ]
+= \E[ \E[ \1{A} \mid \mathcal{F}_{t-1}, B ]  \mid \mathcal{F}_{t-1} ]
+= \E[ \PR[ A \mid \mathcal{F}_{t-1}, B ]  \mid \mathcal{F}_{t-1} ]
+= \E[ \E[ \PR[ A \mid \mathcal{H}_t ] \mid \mathcal{F}_{t-1}, B ] \mid \mathcal{F}_{t-1} ] \\
+&\geq \E[ \E[ \PR[ A \mid \mathcal{H}_t, B ] \1{B} \mid \mathcal{F}_{t-1}, B ] \mid \mathcal{F}_{t-1} ]
+= \E[ \E[ \PR[ A \mid \mathcal{H}_t, B ] \mid \mathcal{F}_{t-1}, B ] \1{B} \mid \mathcal{F}_{t-1} ] \\
+&\geq \E[ \E[ \delta\varepsilon^3 \mid \mathcal{F}_{t-1}, B ] \1{B} \mid \mathcal{F}_{t-1} ]
+= \E[ \delta\varepsilon^3 \1{B} \mid \mathcal{F}_{t-1} ]
+= \delta\varepsilon^3 \E[ \1{B} \mid \mathcal{F}_{t-1} ]
+= \delta\varepsilon^3 \PR[ B \mid \mathcal{F}_{t-1} ] \\
+&\geq \zeta\delta\varepsilon^3 \text{ for infinitely many $t$}.
+\end{align*}
+\end{proof}
+
+
+
+
+\bibliography{../smc.bib}
 \end{document}
