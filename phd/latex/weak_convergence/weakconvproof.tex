@@ -1,0 +1,130 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=2cm]{geometry}
+
+\usepackage{graphicx}
+\usepackage{enumitem}
+
+% custom header/footer
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+\fancyhf{}
+\rfoot{\textsf{\thepage}}
+\lfoot{\textsf{Suzie Brown}}
+
+%annotations
+\usepackage{color}
+\usepackage{xspace}
+\newcommand{\seb}[1]{\xspace\textcolor{red}{#1}\xspace}
+
+% bibliography
+\usepackage[round, sort&compress]{natbib}
+\usepackage{har2nat}
+\bibliographystyle{agsm}
+
+% maths
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newcommand{\Prob}{\mathbb{P}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Et}{\mathbb{E}_t}
+\newcommand{\V}{\operatorname{Var}}
+\newcommand{\I}[1]{\mathbb{I}_{\{#1\}}}
+\newcommand{\1}[1]{\mathbb{I}_{#1}}
+\newcommand{\Mn}{\operatorname{Multinomial}}
+
+\title{Weak convergence proof (in progress)}
+\author{Suzie Brown}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+
+\begin{theorem}\label{thm:weakconv}
+Let $\nu_t^{(1:N)}$ denote the offspring numbers in an interacting particle system satisfying the standing assumption and such that, for any $N$ sufficiently large, $\Prob\{ \tau_N(t) = \infty \} =0$ for all finite $t$. Suppose that there exists a deterministic sequence $(b_N)_{N\geq1}$ such that ${\lim}_{N\to\infty} b_N =0$ and
+\begin{equation}\label{eq:mainthmcond}
+\frac{1}{(N)_3} \sum_{i = 1}^N \Et\{ (\nu_t^{(i)})_3 \}  \leq b_N \frac{1}{(N)_2} \sum_{i = 1}^N \Et\{ (\nu_t^{(i)})_2 \}
+\end{equation}
+for all $N$, uniformly in $t \geq 1$.
+Then the rescaled genealogical process $(G_{\tau_N(t)}^{(n,N)})_{t\geq0}$ converges weakly to Kingman's $n$-coalescent as $N \to \infty$.
+\end{theorem}
+
+\begin{proof}
+Define $p_t := \max_{\xi\in E} \{1 - p_{\xi\xi}(t)\} = 1 - p_{\Delta\Delta}(t)$, where $\Delta$ denotes the trivial partition of $\{1,\dots,n\}$ into singletons. For a proof that the maximum is attained at $\xi = \Delta$, see Lemma \ref{thm:maximum_pr}. 
+Following \citet{mohle1999}, we now construct the two-dimensional Markov process $(Z_t, S_t)_{t \in \mathbb{N}}$ with transition probabilities
+\begin{equation}
+\Prob(Z_t = j , S_t = \eta \mid Z_{t-1} = i, S_{t-1} = \xi)
+= \begin{cases}
+1 - p_t &\quad \text{if } j=i \text{ and } \xi=\eta \\
+p_{\xi\xi}(t) + p_t - 1  &\quad \text{if } j=i+1 \text{ and } \xi=\eta \\
+p_{\xi\eta}(t) &\quad \text{if } j=i+1 \text{ and } \xi\neq\eta \\
+0 &\quad \text{otherwise} .
+\end{cases}
+\end{equation}
+The construction is such that the marginal $(S_t)$ has the same distribution as the genealogical process of interest, and $(Z_t)$ has jumps at all the times $(S_t)$ does plus some extra jumps. (The definition of $p_t$ ensures that the probability in the second case is non-negative, attaining the value zero when $\xi=\Delta$.)
+
+Denote by $0=T_0^{(N)}<T_1^{(N)}<\dots$ the jump times of the rescaled process $(Z_{\tau_N(t)})_{t\geq0}$, and $\omega_i^{(N)} := T_i^{(N)} - T_{i-1}^{(N)}$ the corresponding holding times ($i\in\mathbb{N}$).
+
+...
+\end{proof}
+
+\begin{lemma}\label{thm:maximum_pr}
+$\max_{\xi\in E} (1 - p_{\xi\xi}(t)) = 1 - p_{\Delta\Delta}(t)$.
+\end{lemma}
+%%% This below proof is incorrect.
+%\begin{proof}
+%From the definition of $p_{\xi\eta}(t)$ \citep[Equation (1)]{koskela2018},
+%\begin{equation}
+%p_{\xi\xi}(t) = \frac{1}{(N)_{|\xi|}} \sum_{\substack{i_1,\dots,i_{|\xi|} \\ \text{all distinct}}} \nu_t^{(i_1)} \cdots \nu_t^{(i_{|\xi|})} .
+%\end{equation}
+%In the case $\xi = \Delta$, this simplifies to
+%\begin{equation}
+%p_{\Delta\Delta}(t) = \prod_{i=1}^N \nu_t^{(i)} 
+%= \begin{cases}
+%1 &\quad \text{if } \nu_t^{(1)}=\cdots=\nu_t^{(n)} \\
+%0 &\quad \text{otherwise} .
+%\end{cases}
+%\end{equation}
+%Whenever $p_{\Delta\Delta}(t) = 1$, $p_{\xi\xi}(t) = 1$ for all $\xi$ also. 
+%Otherwise, $p_{\xi\xi}(t) \geq p_{\Delta\Delta}(t) = 0$ for all $\xi$, since $p_{\xi\xi}(t) \in [0,1]$.
+%Hence $p_{\xi\xi}(t)$ attains its minimum at $\xi=\Delta$, and the result follows.
+%\end{proof}
+\begin{proof}
+Consider any $\xi \in E$ consisting of $k$ blocks ($1\leq k\leq n-1$), and any $\xi^\prime\in E$ consisting of $k+1$ blocks. 
+From the definition of $p_{\xi\eta}(t)$ \citep[Equation (1)]{koskela2018},
+\begin{equation}
+p_{\xi\xi}(t) = \frac{1}{(N)_k} \sum_{\substack{i_1,\dots,i_k \\ \text{all distinct}}} \nu_t^{(i_1)} \cdots \nu_t^{(i_k)} .
+\end{equation}
+Similarly,
+\begin{align*}
+p_{\xi^\prime\xi^\prime}(t) &= \frac{1}{(N)_{k+1}} \sum_{\substack{i_1,\dots,i_k, i_{k+1} \\ \text{all distinct}}} \nu_t^{(i_1)} \cdots \nu_t^{(i_k)} \nu_t^{(i_{k+1})} \\
+&= \frac{1}{(N)_k(N-k)} \sum_{\substack{i_1,\dots,i_k \\ \text{all distinct}}} \left\{ \nu_t^{(i_1)} \cdots \nu_t^{(i_k)} \sum_{\substack{i_{k+1}=1 \\ \text{also distinct}}}^N \nu_t^{(i_{k+1})} \right\} .
+\end{align*}
+Discarding some zero summands,
+\begin{equation}
+p_{\xi^\prime\xi^\prime}(t) = \frac{1}{(N)_k(N-k)} \sum_{\substack{i_1,\dots,i_k \\ \text{all distinct:} \\ \nu_t^{(i_1)},\dots,\nu_t^{(i_k)} > 0 }} \left\{ \nu_t^{(i_1)} \cdots \nu_t^{(i_k)} \sum_{\substack{i_{k+1}=1 \\ \text{also distinct}}}^N \nu_t^{(i_{k+1})} \right\} .
+\end{equation}
+The inner sum is
+\begin{equation}
+\sum_{\substack{i_{k+1}=1 \\ \text{also distinct}}}^N \nu_t^{(i_{k+1})} =
+\left\{ \sum_{i=1}^N \nu_t^{(i)} -  \sum_{i\in\{i_1,\dots,i_k\} } \nu_t^{(i)} \right\}
+\leq N - k
+\end{equation}
+since $\nu_t^{(i_1)},\dots,\nu_t^{(i_k)} $ are all at least 1.
+Hence
+\begin{equation}
+p_{\xi^\prime\xi^\prime}(t)
+\leq  \frac{N-k}{(N)_k(N-k)} \sum_{\substack{i_1,\dots,i_k \\ \text{all distinct:} \\ \nu_t^{(i_1)},\dots,\nu_t^{(i_k)} > 0 }} \nu_t^{(i_1)} \cdots \nu_t^{(i_k)} 
+= p_{\xi\xi}(t) .
+\end{equation}
+Thus $p_{\xi\xi}(t)$ is decreasing in the number of blocks of $\xi$, and is therefore minimised by taking $\xi = \Delta$, which achieves the maximum $n$ blocks. This choice in turn maximises $1-p_{\xi\xi}(t)$, as required.
+\end{proof}
+
+
+
+\bibliography{../smc.bib}
+\end{document}
