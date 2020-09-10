@@ -124,7 +124,60 @@ p_{\xi^\prime\xi^\prime}(t)
 Thus $p_{\xi\xi}(t)$ is decreasing in the number of blocks of $\xi$, and is therefore minimised by taking $\xi = \Delta$, which achieves the maximum $n$ blocks. This choice in turn maximises $1-p_{\xi\xi}(t)$, as required.
 \end{proof}
 
+\begin{lemma}
+\begin{equation}
+\lim_{N\to\infty} \E\left[ \prod_{r=1}^{\tau_N(t)} (1-p_r) \right] = e^{-\alpha t}
+\end{equation}
+where $\alpha := n(n-1)/2$.
+\end{lemma}
+\begin{proof}
+\textbf{\\Lower Bound}\\
+From \citet[Lemma 1 Case 1]{koskela2018}, taking $\xi=\Delta$, we have
+\begin{equation}
+1-p_t = p_{\Delta\Delta}(t) \geq 1 - \alpha (1+O(N^{-1})) \left[ \frac{(3n-1)(n-2)}{6N^2} + c_N(t) \right] .
+\end{equation}
+Hence, by a multinomial expansion,
+\begin{align*}
+\prod_{r=1}^{\tau_N(t)} (1-p_r)
+&\geq \prod_{r=1}^{\tau_N(t)} \left\{ 1 - \alpha (1+O(N^{-1}) \left[ \frac{(3n-1)(n-2)}{6N^2} + c_N(r) \right] \right\} \\
+&= 1 + \sum_{k=1}^\infty \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
+\left\{ - \alpha (1+O(N^{-1})) \left[ \frac{(3n-1)(n-2)}{6N^2} + c_N(r_j) \right] \right\} \\
+&= 1 + \sum_{k=1}^\infty \left\{- \alpha (1+O(N^{-1}))\right\}^k \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
+\left\{ \frac{(3n-1)(n-2)}{6N^2} + c_N(r_j) \right\} 
+\end{align*}
+where the empty sum is taken to be zero.
+Taking expectations,
+\begin{equation}\label{eq:9}
+\E \left[ \prod_{r=1}^{\tau_N(t)} (1-p_r) \right]
+\geq 1 + \sum_{k=1}^\infty \left\{- \alpha (1+O(N^{-1}))\right\}^k \E \left[ \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
+\left\{ \frac{(3n-1)(n-2)}{6N^2} + c_N(r_j) \right\} \right]
+\end{equation}
+(the infinite sum has only finitely many non-zero summands, since the inner sum is empty for $k>\tau_N(t)$, which justifies swapping the sum and expectation.)
+From \citet[Equation (8)]{koskela2018},
+\begin{align*}
+\sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k c_N(r_j)
+&\geq \frac{1}{k!} \left( \sum_{s=1}^{\tau_N(t)} c_N(s) \right)^k 
+- \frac{1}{k!} \binom{k}{2} \left( \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right)
+\left( \sum_{s=1}^{\tau_N(t)} c_N(s) \right)^{k-2} \\
+&\geq \frac{1}{k!} t^k
+ - \frac{1}{k!} \binom{k}{2} (t+1)^{k-2} \left( \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right) .
+\end{align*}
+Then 
+\begin{equation}
+\E\left[ \frac{1}{k!} t^k
+ - \frac{1}{k!} \binom{k}{2} (t+1)^{k-2} \left( \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right) \right] 
+= \frac{1}{k!} t^k - \frac{1}{k!} \binom{k}{2} (t+1)^{k-2} \E\left[ \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right]
+ \longrightarrow \frac{1}{k!} t^k
+\end{equation}
+as $N\to\infty$ using \citet[Equation (5)]{brown2020}, via lemmata 1 and 3 therein.
+Similarly, applying \citet[Equation (9)]{koskela2018},
+\begin{align*}
+\sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k c_N(r_j)
+&\leq \frac{1}{k!} (t+1)^k
+\end{align*}
+But that sneaky $+1$ ruins the whole thing, because it means we don't have a limit for the expectation on the RHS of \eqref{eq:9}, which means we can't say anything useful about the limit of the sum as a whole :(
 
+\end{proof}
 
 \bibliography{../smc.bib}
 \end{document}
