@@ -228,7 +228,7 @@ From \citet[Equation (8)]{koskela2018},
  - \frac{1}{k!} \binom{k}{2} (t+1)^{k-2} \left( \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right) .
 \end{align*}
 Then 
-\begin{equation}
+\begin{equation}\label{eq:10}
 \E\left[ \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
 \left\{ \frac{B_n}{\alpha} D_N(r_j) + c_N(r_j) \right\}  \right] 
 \geq \frac{1}{k!} t^k - \frac{1}{k!} \binom{k}{2} (t+1)^{k-2} \E\left[ \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right]
@@ -258,7 +258,7 @@ Now for the upper bound.
 \sum_{\substack{r_1\neq\dots\neq r_k \\\text{all distinct}}}^{\tau_N(t)} 
 \left\{ \prod_{i=1}^{I} c_N(r_i) \right\} \left\{ \prod_{j=I+1}^k D_N(r_j) \right\} \\
 &= \frac{1}{k!} \sum_{\substack{r_1\neq\dots\neq r_k \\\text{all distinct}}}^{\tau_N(t)} 
-\left\{ \prod_{i=1}^{I} c_N(r_i) \right\} \\
+\left\{ \prod_{i=1}^{k} c_N(r_i) \right\} \\
 &\qquad + \frac{1}{k!}
 \sum_{I=0}^{k-1}  \binom{k}{I}
 \left( \frac{B_n}{\alpha} \right)^{k-I}
@@ -369,9 +369,71 @@ Similarly to \eqref{eq:10}, an upper bound for the inner sum is
 \end{equation}
 with $\E[ \{ t + c_N(\tau_N(t)) \}^k /k! ] \longrightarrow t^k/k!$.
 
-I'm not sure how to get the lower bound.
+For the lower bound, stealing some results from the mega-align earlier,
+\begin{align*}
+\sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
+\left\{ c_N(r_j) - \binom{n-1}{2} D_N(r_j) \right\}
+&= \frac{1}{k!} \sum_{\substack{r_1\neq\dots\neq r_k \\ \text{all distinct}}}^{\tau_N(t)}
+\left\{ \prod_{i=1}^k c_N(r_i) \right\} \\
+&\qquad + \frac{1}{k!} \sum_{I=0}^{k-1} \binom{k}{I} \left( -\binom{n-1}{2} \right)^{k-I}
+\sum_{\substack{r_1\neq\dots\neq r_k \\ \text{all distinct}}}
+\left\{ \prod_{i=1}^I c_N(r_i) \right\}
+\left\{ \prod_{j=I+1}^k D_N(r_j) \right\} .
+\end{align*}
+First let us treat the first term:
+\begin{align*}
+\frac{1}{k!} \sum_{\substack{r_1\neq\dots\neq r_k \\ \text{all distinct}}}^{\tau_N(t)}
+\left\{ \prod_{i=1}^k c_N(r_i) \right\} 
+&\geq \frac{1}{k!} \left( \sum_{s=1}^{\tau_N(t)} c_N(s) \right)^k
+- \frac{1}{k!} \binom{k}{2}  \left( \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right)  \left( \sum_{s=1}^{\tau_N(t)} c_N(s) \right)^{k-2} \\
+&\geq \frac{1}{k!} t^k - \frac{1}{k!} \binom{k}{2} (t+1)^{k-2}  \left( \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right)
+\end{align*}
+and as before we have 
+\begin{equation}
+\lim_{N\to\infty} \E \left[ \frac{1}{k!} t^k - \frac{1}{k!} \binom{k}{2} (t+1)^{k-2}  \left( \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right) \right] = \frac{1}{k!} t^k .
+\end{equation}
+It remains to show that the expectation of the second term converges to zero.
+\begin{align*}
+ \frac{1}{k!} \sum_{I=0}^{k-1} \binom{k}{I} \left( -\binom{n-1}{2} \right)^{k-I}
+&\sum_{\substack{r_1\neq\dots\neq r_k \\ \text{all distinct}}}
+\left\{ \prod_{i=1}^I c_N(r_i) \right\}
+\left\{ \prod_{j=I+1}^k D_N(r_j) \right\} \\
+&= \frac{1}{k!} \sum_{\substack{I=0 \\ (k-I) \text{even}}}^{k-1}  \binom{k}{I} \binom{n-1}{2}^{k-I}
+\sum_{\substack{r_1\neq\dots\neq r_k \\ \text{all distinct}}}
+\left\{ \prod_{i=1}^I c_N(r_i) \right\}
+\left\{ \prod_{j=I+1}^k D_N(r_j) \right\} \\
+&\qquad - \frac{1}{k!} \sum_{\substack{I=0 \\ (k-I) \text{odd}}}^{k-1}  \binom{k}{I} \binom{n-1}{2}^{k-I}
+\sum_{\substack{r_1\neq\dots\neq r_k \\ \text{all distinct}}}
+\left\{ \prod_{i=1}^I c_N(r_i) \right\}
+\left\{ \prod_{j=I+1}^k D_N(r_j) \right\} \\
+&\geq 0 
+- \frac{1}{k!} \sum_{\substack{I=0 \\ (k-I) \text{odd}}}^{k-1}  \binom{k}{I} \binom{n-1}{2}^{k-I}
+(t+1)^{k-1}
+\left\{ \sum_{s=1}^{\tau_N(t)} D_N(s) \right\} \\
+\end{align*}
+using that $c_N(r), D_N(r) \geq 0$ for all $r$ to bound the even terms below, and arguments from the mega-align earlier to bound the odd terms above.
+Taking the expectation and limit yields the desired result:
+\begin{align*}
+\lim_{N\to\infty} &\E \left[ \frac{1}{k!} \sum_{I=0}^{k-1} \binom{k}{I} \left( -\binom{n-1}{2} \right)^{k-I}
+\sum_{\substack{r_1\neq\dots\neq r_k \\ \text{all distinct}}}
+\left\{ \prod_{i=1}^I c_N(r_i) \right\}
+\left\{ \prod_{j=I+1}^k D_N(r_j) \right\} \right] \\
+&\qquad\qquad \geq - \frac{1}{k!} \sum_{\substack{I=0 \\ (k-I) \text{odd}}}^{k-1}  \binom{k}{I} \binom{n-1}{2}^{k-I}
+(t+1)^{k-1}
+\lim_{N\to\infty} \E \left[ \sum_{s=1}^{\tau_N(t)} D_N(s) \right]
+= 0 .
+\end{align*}
 
-...
+Combining these upper and lower limits, we conclude that
+\begin{equation}
+1 + \sum_{k=1}^\infty \left\{- \alpha (1+O(N^{-1}))\right\}^k \E \left[ \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
+\left\{ c_N(r_j) - \binom{n-1}{2} D_N(r_j) \right\} \right]
+\longrightarrow 1+ \sum_{k=1}^\infty (-\alpha)^k \frac{1}{k!} t^k
+= e^{-\alpha t}
+\end{equation}
+as $N\to\infty$.
+
+We now have upper and lower bounds on $\lim_{N\to\infty} \E\left[ \prod_{r=1}^{\tau_N(t)} (1-p_r) \right]$, both of which are equal to $e^{-\alpha t}$, so we're done.
 \end{proof}
 
 \bibliography{../smc.bib}
