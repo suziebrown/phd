@@ -100,10 +100,10 @@ From the definition of $p_{\xi\eta}(t)$ \citep[Equation (1)]{koskela2018},
 p_{\xi\xi}(t) = \frac{1}{(N)_k} \sum_{\substack{i_1,\dots,i_k \\ \text{all distinct}}} \nu_t^{(i_1)} \cdots \nu_t^{(i_k)} .
 \end{equation}
 Similarly,
-\begin{align*}
-p_{\xi^\prime\xi^\prime}(t) &= \frac{1}{(N)_{k+1}} \sum_{\substack{i_1,\dots,i_k, i_{k+1} \\ \text{all distinct}}} \nu_t^{(i_1)} \cdots \nu_t^{(i_k)} \nu_t^{(i_{k+1})} \\
+\begin{align}
+p_{\xi^\prime\xi^\prime}(t) &= \frac{1}{(N)_{k+1}} \sum_{\substack{i_1,\dots,i_k, i_{k+1} \\ \text{all distinct}}} \nu_t^{(i_1)} \cdots \nu_t^{(i_k)} \nu_t^{(i_{k+1})} \notag\\
 &= \frac{1}{(N)_k(N-k)} \sum_{\substack{i_1,\dots,i_k \\ \text{all distinct}}} \left\{ \nu_t^{(i_1)} \cdots \nu_t^{(i_k)} \sum_{\substack{i_{k+1}=1 \\ \text{also distinct}}}^N \nu_t^{(i_{k+1})} \right\} .
-\end{align*}
+\end{align}
 Discarding the zero summands,
 \begin{equation}
 p_{\xi^\prime\xi^\prime}(t) = \frac{1}{(N)_k(N-k)} \sum_{\substack{i_1,\dots,i_k \\ \text{all distinct:} \\ \nu_t^{(i_1)},\dots,\nu_t^{(i_k)} > 0 }} \left\{ \nu_t^{(i_1)} \cdots \nu_t^{(i_k)} \sum_{\substack{i_{k+1}=1 \\ \text{also distinct}}}^N \nu_t^{(i_{k+1})} \right\} .
@@ -197,14 +197,14 @@ From \citet[Equation (14)]{brown2020}, taking $\xi=\Delta$, we have
 \end{equation}
 where $B_n >0$.
 Hence, by a multinomial expansion,
-\begin{align*}
+\begin{align}
 \prod_{r=1}^{\tau_N(t)} (1-p_r)
-&\geq \prod_{r=1}^{\tau_N(t)} \left\{ 1 - \alpha (1+O(N^{-1})\left[\frac{B_n}{\alpha} D_N(r) + c_N(r) \right] \right\} \\
+&\geq \prod_{r=1}^{\tau_N(t)} \left\{ 1 - \alpha (1+O(N^{-1})\left[\frac{B_n}{\alpha} D_N(r) + c_N(r) \right] \right\} \notag\\
 &= 1 + \sum_{k=1}^\infty \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
-\left\{ - \alpha (1+O(N^{-1})) \left[\frac{B_n}{\alpha} D_N(r_j) + c_N(r_j) \right] \right\} \\
+\left\{ - \alpha (1+O(N^{-1})) \left[\frac{B_n}{\alpha} D_N(r_j) + c_N(r_j) \right] \right\} \notag\\
 &= 1 + \sum_{k=1}^\infty \left\{- \alpha (1+O(N^{-1}))\right\}^k \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
 \left\{ \frac{B_n}{\alpha} D_N(r_j) + c_N(r_j) \right\} .
-\end{align*}
+\end{align}
 (The empty sum is defined to be zero and the empty product is defined to be one throughout.)
 Taking expectations,
 \begin{equation}\label{eq:9}
@@ -217,16 +217,16 @@ We want to show that the expectation on the right converges to $t^k/k!$, for rea
 
 First the lower bound.
 From \citet[Equation (8)]{koskela2018},
-\begin{align*}
+\begin{align}
 \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
 \left\{ \frac{B_n}{\alpha} D_N(r_j) + c_N(r_j) \right\}
-&\geq \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k c_N(r_j) \\
+&\geq \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k c_N(r_j) \notag\\
 &\geq \frac{1}{k!} \left( \sum_{s=1}^{\tau_N(t)} c_N(s) \right)^k 
 - \frac{1}{k!} \binom{k}{2} \left( \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right)
-\left( \sum_{s=1}^{\tau_N(t)} c_N(s) \right)^{k-2} \\
+\left( \sum_{s=1}^{\tau_N(t)} c_N(s) \right)^{k-2} \notag\\
 &\geq \frac{1}{k!} t^k
  - \frac{1}{k!} \binom{k}{2} (t+1)^{k-2} \left( \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right) 
-\end{align*}
+\end{align}
 by the definition of $\tau_N$.
 Then 
 \begin{equation}\label{eq:10}
@@ -345,7 +345,7 @@ Then, using that $D_N(s) \leq c_N(s)$ for all $s$ (see Lemma \ref{thm:DN_leq_cN}
 %(t+1)^I
 %\left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right)^{k-I} 
 Taking expectations, 
-\begin{align*}
+\begin{align}
 \lim_{N\to\infty} \E \left[ \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
 \left\{ \frac{B_n}{\alpha} D_N(r_j) + c_N(r_j) \right\} \right]
 &\leq \frac{1}{k!} \lim_{N\to\infty} \E[ \left\{ t + c_N(\tau_N(t)) \right\}^k ] \\
@@ -353,9 +353,9 @@ Taking expectations,
 \sum_{I=0}^{k-1}  \binom{k}{I}
 \left( \frac{B_n}{\alpha} \right)^{k-I}
 (t+1)^{k-1}
-\lim_{N\to\infty} \E\left[ \left( \sum_{r=1}^{\tau_N(t)} D_N(r) \right) \right] \\
-&= \frac{1}{k!} t^k .
-\end{align*}
+\lim_{N\to\infty} \E\left[ \left( \sum_{r=1}^{\tau_N(t)} D_N(r) \right) \right] \notag\\
+&= \frac{1}{k!} t^k .\notag
+\end{align}
 The limit follows from \citet[Equations (3),(4)]{brown2020} along with the fact that, since $c_N(s) \in [0,1]$ for all $s$, $\E[c_N(s)^k] \leq \E[c_N(s)]$ for all $k\geq 1$, and the expansion
 \begin{equation}\label{eq:11}
 \E\left[ \frac{1}{k!} \{t+ c_N(\tau_N(t)) \}^k \right]
@@ -412,52 +412,52 @@ Analogously to \eqref{eq:7}, we can write
 \left\{ \prod_{j=I+1}^k D_N(r_j) \right\} .\notag
 \end{align}
 We start by dealing with the second term:
-\begin{align*}
+\begin{align}
 \frac{1}{k!} \sum_{I=0}^{k-1} \binom{k}{I} \left( -\binom{n-1}{2} \right)^{k-I}
 &\sum_{\substack{r_1\neq\dots\neq r_k \\ \text{all distinct}}}
 \left\{ \prod_{i=1}^I c_N(r_i) \right\}
-\left\{ \prod_{j=I+1}^k D_N(r_j) \right\} \\
+\left\{ \prod_{j=I+1}^k D_N(r_j) \right\} \notag\\
 &= \frac{1}{k!} \sum_{\substack{I=0:\\k-I \text{ even}}}^{k-1} \binom{k}{I} \binom{n-1}{2}^{k-I}
 \sum_{\substack{r_1\neq\dots\neq r_k \\ \text{all distinct}}}
 \left\{ \prod_{i=1}^I c_N(r_i) \right\}
-\left\{ \prod_{j=I+1}^k D_N(r_j) \right\} \\
+\left\{ \prod_{j=I+1}^k D_N(r_j) \right\} \notag\\
 &\qquad - \frac{1}{k!} \sum_{\substack{I=0:\\k-I \text{ odd}}}^{k-1} \binom{k}{I} \binom{n-1}{2}^{k-I}
 \sum_{\substack{r_1\neq\dots\neq r_k \\ \text{all distinct}}}
 \left\{ \prod_{i=1}^I c_N(r_i) \right\}
 \left\{ \prod_{j=I+1}^k D_N(r_j) \right\} .
-\end{align*}
+\end{align}
 This is lower bounded by
-\begin{equation*}
+\begin{equation}
 0 
 - \frac{1}{k!} \sum_{\substack{I=0 \\ (k-I) \text{odd}}}^{k-1}  \binom{k}{I} \binom{n-1}{2}^{k-I}
 (t+1)^{k-1}
 \left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right)
-\end{equation*}
+\end{equation}
 using that $c_N(r), D_N(r) \geq 0$ for all $r$ to bound the even terms below, and arguments from \eqref{eq:8} to bound the odd terms above.
 The same arguments lead to the upper bound
-\begin{equation*}
+\begin{equation}
 \frac{1}{k!} \sum_{\substack{I=0 \\ (k-I) \text{odd}}}^{k-1}  \binom{k}{I} \binom{n-1}{2}^{k-I}
 (t+1)^{k-1}
 \left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right)
 -0 .
-\end{equation*}
+\end{equation}
 By \citet[Equation (4)]{brown2020}, both bounds have vanishing expectation as $N\to\infty$.
 We are left with the first term in (18), which is upper bounded by
-\begin{equation*}
+\begin{equation}
 \frac{1}{k!} \sum_{\substack{r_1\neq\dots\neq r_k \\ \text{all distinct}}}^{\tau_N(t)}
 \left\{ \prod_{i=1}^k c_N(r_i) \right\}
 \leq \frac{1}{k!}\left( \sum_{s=1}^{\tau_N(t)} c_N(s) \right)^k
 \leq \frac{1}{k!} \{t + c_N(\tau_N(t)) \}^k
-\end{equation*}
+\end{equation}
 the expectation of which converges to $t^k/k!$ as in \eqref{eq:11}.
 We use \citet[Equation (8)]{koskela2018} to construct a lower bound:
-\begin{align*}
+\begin{align}
 \frac{1}{k!} \sum_{\substack{r_1\neq\dots\neq r_k \\ \text{all distinct}}}^{\tau_N(t)}
 \left\{ \prod_{i=1}^k c_N(r_i) \right\} 
 &\geq \frac{1}{k!} \left( \sum_{s=1}^{\tau_N(t)} c_N(s) \right)^k
-- \frac{1}{k!} \binom{k}{2}  \left( \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right)  \left( \sum_{s=1}^{\tau_N(t)} c_N(s) \right)^{k-2} \\
+- \frac{1}{k!} \binom{k}{2}  \left( \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right)  \left( \sum_{s=1}^{\tau_N(t)} c_N(s) \right)^{k-2} \notag\\
 &\geq \frac{1}{k!} t^k - \frac{1}{k!} \binom{k}{2} (t+1)^{k-2}  \left( \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right)
-\end{align*}
+\end{align}
 The expectation of this bound also converges to $t^k/k!$, using \citet[Equation (5)]{brown2020}.
 %To bound the first term we again call on \citet[Equation (8)]{koskela2018}:
 %\begin{align*}
@@ -526,13 +526,13 @@ $D_N(t) \leq c_N(t)$ for all $t$.
 \end{lemma}
 
 \begin{proof}
-\begin{align*}
+\begin{align}
 D_N(t) &:= \frac{1}{(N)_2} \sum_{i=1}^N (\nu_t^{(i)})_2 \frac{1}{N} \left\{  \nu_t^{(i)} + \frac{1}{N} \sum_{j\neq i}^N (\nu_t^{(j)})^2 \right\}
-\leq \frac{1}{(N)_2} \sum_{i=1}^N (\nu_t^{(i)})_2 \frac{1}{N} \left\{  \nu_t^{(i)} + \frac{1}{N} \sum_{j\neq i}^N N \nu_t^{(j)} \right\} \\
+\leq \frac{1}{(N)_2} \sum_{i=1}^N (\nu_t^{(i)})_2 \frac{1}{N} \left\{  \nu_t^{(i)} + \frac{1}{N} \sum_{j\neq i}^N N \nu_t^{(j)} \right\} \notag\\
 &= \frac{1}{(N)_2} \sum_{i=1}^N (\nu_t^{(i)})_2 \frac{1}{N} \left\{ \sum_{j =1}^N \nu_t^{(j)} \right\}
 \leq \frac{1}{(N)_2} \sum_{i=1}^N (\nu_t^{(i)})_2
 = c_N(t) .
-\end{align*}
+\end{align}
 \end{proof}
 
 
