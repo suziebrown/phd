@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  18 SEP 2020 10:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  22 SEP 2020 10:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -334,16 +334,16 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 {/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
  [4]
-Overfull \hbox (17.61731pt too wide) detected at line 399
+Overfull \hbox (17.61731pt too wide) detected at line 413
 []
  []
 
 [5] (./weakconvproof.bbl) [6] (./weakconvproof.aux) ) 
 Here is how much of TeX's memory you used:
- 3803 strings out of 492649
- 52222 string characters out of 6129623
- 142907 words of memory out of 5000000
- 7607 multiletter control sequences out of 15000+600000
+ 3804 strings out of 492649
+ 52229 string characters out of 6129623
+ 142916 words of memory out of 5000000
+ 7608 multiletter control sequences out of 15000+600000
  11847 words of font info for 46 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,17n,43p,366b,317s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -366,7 +366,7 @@ blic/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/publ
 ic/amsfonts/cm/cmti10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/publi
 c/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/p
 ublic/amsfonts/symbols/msbm7.pfb>
-Output written on weakconvproof.pdf (6 pages, 210355 bytes).
+Output written on weakconvproof.pdf (6 pages, 209329 bytes).
 PDF statistics:
  95 PDF objects out of 1000 (max. 8388607)
  68 compressed objects within 1 object stream

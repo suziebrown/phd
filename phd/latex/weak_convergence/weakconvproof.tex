@@ -253,6 +253,7 @@ Now for the upper bound. We start with a multinomial expansion and some manipula
 \left( \frac{B_n}{\alpha} \right)^{k-|\mathcal{I}|}
 \sum_{\substack{r_1\neq\dots\neq r_k \\\text{all distinct}}}^{\tau_N(t)}
 \left\{ \prod_{i\in\mathcal{I}} c_N(r_i) \right\} \left\{ \prod_{j\notin \mathcal{I}} D_N(r_j) \right\} \notag\\
+%&= \frac{1}{k!} \sum_{\substack{r_1\neq\dots\neq r_k \\\text{all distinct}}}^{\tau_N(t)} 
 &= \frac{1}{k!}
 \sum_{I=0}^k  \binom{k}{I}
 \left( \frac{B_n}{\alpha} \right)^{k-I}
@@ -264,7 +265,14 @@ Now for the upper bound. We start with a multinomial expansion and some manipula
 \sum_{I=0}^{k-1}  \binom{k}{I}
 \left( \frac{B_n}{\alpha} \right)^{k-I}
 \sum_{\substack{r_1\neq\dots\neq r_k \\\text{all distinct}}}^{\tau_N(t)} 
-\left\{ \prod_{i=1}^{I} c_N(r_i) \right\} \left\{ \prod_{j=I+1}^k D_N(r_j) \right\} .\label{eq:7}
+\left\{ \prod_{i=1}^{I} c_N(r_i) \right\} \left\{ \prod_{j=I+1}^k D_N(r_j) \right\} .
+%\left\{ \prod_{i=1}^{k} c_N(r_i) \right\} \notag\\
+%&\qquad + \frac{1}{k!}
+%\sum_{\mathcal{I}\subset \{1,\dots ,k\}}  
+%\left( \frac{B_n}{\alpha} \right)^{k-|\mathcal{I}|}
+%\sum_{\substack{r_1\neq\dots\neq r_k \\\text{all distinct}}}^{\tau_N(t)}
+%\left\{ \prod_{i\in\mathcal{I}} c_N(r_i) \right\} \left\{ \prod_{j\notin \mathcal{I}} D_N(r_j) \right\} \notag\\
+\label{eq:7}
 \end{align}
 Then, using that $D_N(s) \leq c_N(s)$ for all $s$ (see Lemma \ref{thm:DN_leq_cN} for a proof), along with the definition of $\tau_N$,
 \begin{align}
@@ -274,7 +282,14 @@ Then, using that $D_N(s) \leq c_N(s)$ for all $s$ (see Lemma \ref{thm:DN_leq_cN}
 \sum_{I=0}^{k-1}  \binom{k}{I}
 \left( \frac{B_n}{\alpha} \right)^{k-I}
 \sum_{\substack{r_1\neq\dots\neq r_k \\\text{all distinct}}}^{\tau_N(t)} 
-\left\{ \prod_{i=1}^{I} c_N(r_i) \right\} \left\{ \prod_{j=I+1}^k D_N(r_j) \right\} \notag\\
+\left\{ \prod_{i=1}^{I} c_N(r_i) \right\} \left\{ \prod_{j=I+1}^k D_N(r_j) \right\}\notag\\
+%\frac{1}{k!} \sum_{\substack{r_1\neq\dots\neq r_k \\\text{all distinct}}}^{\tau_N(t)} 
+%\left\{ \prod_{i=1}^{k} c_N(r_i) \right\} 
+%& + \frac{1}{k!}
+%\sum_{\mathcal{I}\subset \{1,\dots ,k\}}  
+%\left( \frac{B_n}{\alpha} \right)^{k-|\mathcal{I}|}
+%\sum_{\substack{r_1\neq\dots\neq r_k \\\text{all distinct}}}^{\tau_N(t)}
+%\left\{ \prod_{i\in\mathcal{I}} c_N(r_i) \right\} \left\{ \prod_{j\notin \mathcal{I}} D_N(r_j) \right\} \notag\\
 &\leq  \frac{1}{k!} \left( \sum_{r=1}^{\tau_N(t)} c_N(r) \right)^k
 + \frac{1}{k!}
 \sum_{I=0}^{k-1}  \binom{k}{I}
@@ -376,28 +391,66 @@ A multinomial expansion as before yields
 \leq 1 + \sum_{k=1}^\infty \left\{- \alpha (1+O(N^{-1}))\right\}^k \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
 \left\{ c_N(r_j) - \binom{n-1}{2} D_N(r_j) \right\} .
 \end{equation}
-Similarly to \eqref{eq:10}, an upper bound for the inner sum is
-\begin{equation}
-\sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
-\left\{ c_N(r_j) - \binom{n-1}{2} D_N(r_j) \right\}
-\leq \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k c_N(r_j)
-\leq \frac{1}{k!} \left( \sum_{r=1}^{\tau_N(t)} c_N(r) \right)^k
-\leq \frac{1}{k!} \{ t + c_N(\tau_N(t)) \}^k 
-\end{equation}
-with $\E[ \{ t + c_N(\tau_N(t)) \}^k] \longrightarrow t^k$ as shown in \eqref{eq:11}.
-
-For the lower bound, analogously to \eqref{eq:7},
-\begin{align*}
+%Similarly to \eqref{eq:10}, an upper bound for the inner sum is
+%\begin{equation}
+%\sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
+%\left\{ c_N(r_j) - \binom{n-1}{2} D_N(r_j) \right\}
+%\leq \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k c_N(r_j)
+%\leq \frac{1}{k!} \left( \sum_{r=1}^{\tau_N(t)} c_N(r) \right)^k
+%\leq \frac{1}{k!} \{ t + c_N(\tau_N(t)) \}^k 
+%\end{equation}
+%with $\E[ \{ t + c_N(\tau_N(t)) \}^k] \longrightarrow t^k$ as shown in \eqref{eq:11}.
+Analogously to \eqref{eq:7}, we can write
+\begin{align}
 \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
 \left\{ c_N(r_j) - \binom{n-1}{2} D_N(r_j) \right\}
 &= \frac{1}{k!} \sum_{\substack{r_1\neq\dots\neq r_k \\ \text{all distinct}}}^{\tau_N(t)}
-\left\{ \prod_{i=1}^k c_N(r_i) \right\} \\
+\left\{ \prod_{i=1}^k c_N(r_i) \right\} \label{eq:18}\\
 &\qquad + \frac{1}{k!} \sum_{I=0}^{k-1} \binom{k}{I} \left( -\binom{n-1}{2} \right)^{k-I}
+\sum_{\substack{r_1\neq\dots\neq r_k \\ \text{all distinct}}}
+\left\{ \prod_{i=1}^I c_N(r_i) \right\}
+\left\{ \prod_{j=I+1}^k D_N(r_j) \right\} .\notag
+\end{align}
+We start by dealing with the second term:
+\begin{align*}
+\frac{1}{k!} \sum_{I=0}^{k-1} \binom{k}{I} \left( -\binom{n-1}{2} \right)^{k-I}
+&\sum_{\substack{r_1\neq\dots\neq r_k \\ \text{all distinct}}}
+\left\{ \prod_{i=1}^I c_N(r_i) \right\}
+\left\{ \prod_{j=I+1}^k D_N(r_j) \right\} \\
+&= \frac{1}{k!} \sum_{\substack{I=0:\\k-I \text{ even}}}^{k-1} \binom{k}{I} \binom{n-1}{2}^{k-I}
+\sum_{\substack{r_1\neq\dots\neq r_k \\ \text{all distinct}}}
+\left\{ \prod_{i=1}^I c_N(r_i) \right\}
+\left\{ \prod_{j=I+1}^k D_N(r_j) \right\} \\
+&\qquad - \frac{1}{k!} \sum_{\substack{I=0:\\k-I \text{ odd}}}^{k-1} \binom{k}{I} \binom{n-1}{2}^{k-I}
 \sum_{\substack{r_1\neq\dots\neq r_k \\ \text{all distinct}}}
 \left\{ \prod_{i=1}^I c_N(r_i) \right\}
 \left\{ \prod_{j=I+1}^k D_N(r_j) \right\} .
 \end{align*}
-To bound the first term we again call on \citet[Equation (8)]{koskela2018}:
+This is lower bounded by
+\begin{equation*}
+0 
+- \frac{1}{k!} \sum_{\substack{I=0 \\ (k-I) \text{odd}}}^{k-1}  \binom{k}{I} \binom{n-1}{2}^{k-I}
+(t+1)^{k-1}
+\left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right)
+\end{equation*}
+using that $c_N(r), D_N(r) \geq 0$ for all $r$ to bound the even terms below, and arguments from \eqref{eq:8} to bound the odd terms above.
+The same arguments lead to the upper bound
+\begin{equation*}
+\frac{1}{k!} \sum_{\substack{I=0 \\ (k-I) \text{odd}}}^{k-1}  \binom{k}{I} \binom{n-1}{2}^{k-I}
+(t+1)^{k-1}
+\left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right)
+-0 .
+\end{equation*}
+By \citet[Equation (4)]{brown2020}, both bounds have vanishing expectation as $N\to\infty$.
+We are left with the first term in (18), which is upper bounded by
+\begin{equation*}
+\frac{1}{k!} \sum_{\substack{r_1\neq\dots\neq r_k \\ \text{all distinct}}}^{\tau_N(t)}
+\left\{ \prod_{i=1}^k c_N(r_i) \right\}
+\leq \frac{1}{k!}\left( \sum_{s=1}^{\tau_N(t)} c_N(s) \right)^k
+\leq \frac{1}{k!} \{t + c_N(\tau_N(t)) \}^k
+\end{equation*}
+the expectation of which converges to $t^k/k!$ as in \eqref{eq:11}.
+We use \citet[Equation (8)]{koskela2018} to construct a lower bound:
 \begin{align*}
 \frac{1}{k!} \sum_{\substack{r_1\neq\dots\neq r_k \\ \text{all distinct}}}^{\tau_N(t)}
 \left\{ \prod_{i=1}^k c_N(r_i) \right\} 
@@ -405,43 +458,51 @@ To bound the first term we again call on \citet[Equation (8)]{koskela2018}:
 - \frac{1}{k!} \binom{k}{2}  \left( \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right)  \left( \sum_{s=1}^{\tau_N(t)} c_N(s) \right)^{k-2} \\
 &\geq \frac{1}{k!} t^k - \frac{1}{k!} \binom{k}{2} (t+1)^{k-2}  \left( \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right)
 \end{align*}
-and as in \eqref{eq:10} we obtain 
-\begin{equation}
-\lim_{N\to\infty} \E \left[ \frac{1}{k!} t^k - \frac{1}{k!} \binom{k}{2} (t+1)^{k-2}  \left( \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right) \right] = \frac{1}{k!} t^k .
-\end{equation}
-It remains to show that the expectation of the second term converges to zero.
-\begin{align*}
- \frac{1}{k!} \sum_{I=0}^{k-1} \binom{k}{I} \left( -\binom{n-1}{2} \right)^{k-I}
-&\sum_{\substack{r_1\neq\dots\neq r_k \\ \text{all distinct}}}
-\left\{ \prod_{i=1}^I c_N(r_i) \right\}
-\left\{ \prod_{j=I+1}^k D_N(r_j) \right\} \\
-&= \frac{1}{k!} \sum_{\substack{I=0 \\ (k-I) \text{even}}}^{k-1}  \binom{k}{I} \binom{n-1}{2}^{k-I}
-\sum_{\substack{r_1\neq\dots\neq r_k \\ \text{all distinct}}}
-\left\{ \prod_{i=1}^I c_N(r_i) \right\}
-\left\{ \prod_{j=I+1}^k D_N(r_j) \right\} \\
-&\qquad - \frac{1}{k!} \sum_{\substack{I=0 \\ (k-I) \text{odd}}}^{k-1}  \binom{k}{I} \binom{n-1}{2}^{k-I}
-\sum_{\substack{r_1\neq\dots\neq r_k \\ \text{all distinct}}}
-\left\{ \prod_{i=1}^I c_N(r_i) \right\}
-\left\{ \prod_{j=I+1}^k D_N(r_j) \right\} \\
-&\geq 0 
-- \frac{1}{k!} \sum_{\substack{I=0 \\ (k-I) \text{odd}}}^{k-1}  \binom{k}{I} \binom{n-1}{2}^{k-I}
-(t+1)^{k-1}
-\left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right) \\
-\end{align*}
-using that $c_N(r), D_N(r) \geq 0$ for all $r$ to bound the even terms below, and arguments from \eqref{eq:8} to bound the odd terms above.
-Taking expectations, we obtain
-\begin{align*}
-\lim_{N\to\infty} &\E \left[ \frac{1}{k!} \sum_{I=0}^{k-1} \binom{k}{I} \left( -\binom{n-1}{2} \right)^{k-I}
-\sum_{\substack{r_1\neq\dots\neq r_k \\ \text{all distinct}}}
-\left\{ \prod_{i=1}^I c_N(r_i) \right\}
-\left\{ \prod_{j=I+1}^k D_N(r_j) \right\} \right] \\
-&\qquad\qquad \geq - \frac{1}{k!} \sum_{\substack{I=0 \\ (k-I) \text{odd}}}^{k-1}  \binom{k}{I} \binom{n-1}{2}^{k-I}
-(t+1)^{k-1}
-\lim_{N\to\infty} \E \left[ \sum_{s=1}^{\tau_N(t)} D_N(s) \right]
-= 0 .
-\end{align*}
-
-Combining these upper and lower limits, we conclude that
+The expectation of this bound also converges to $t^k/k!$, using \citet[Equation (5)]{brown2020}.
+%To bound the first term we again call on \citet[Equation (8)]{koskela2018}:
+%\begin{align*}
+%\frac{1}{k!} \sum_{\substack{r_1\neq\dots\neq r_k \\ \text{all distinct}}}^{\tau_N(t)}
+%\left\{ \prod_{i=1}^k c_N(r_i) \right\} 
+%&\geq \frac{1}{k!} \left( \sum_{s=1}^{\tau_N(t)} c_N(s) \right)^k
+%- \frac{1}{k!} \binom{k}{2}  \left( \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right)  \left( \sum_{s=1}^{\tau_N(t)} c_N(s) \right)^{k-2} \\
+%&\geq \frac{1}{k!} t^k - \frac{1}{k!} \binom{k}{2} (t+1)^{k-2}  \left( \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right)
+%\end{align*}
+%and as in \eqref{eq:10} we obtain 
+%\begin{equation}
+%\lim_{N\to\infty} \E \left[ \frac{1}{k!} t^k - \frac{1}{k!} \binom{k}{2} (t+1)^{k-2}  \left( \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right) \right] = \frac{1}{k!} t^k .
+%\end{equation}
+%It remains to show that the expectation of the second term converges to zero.
+%\begin{align*}
+% \frac{1}{k!} \sum_{I=0}^{k-1} \binom{k}{I} \left( -\binom{n-1}{2} \right)^{k-I}
+%&\sum_{\substack{r_1\neq\dots\neq r_k \\ \text{all distinct}}}
+%\left\{ \prod_{i=1}^I c_N(r_i) \right\}
+%\left\{ \prod_{j=I+1}^k D_N(r_j) \right\} \\
+%&= \frac{1}{k!} \sum_{\substack{I=0 \\ (k-I) \text{even}}}^{k-1}  \binom{k}{I} \binom{n-1}{2}^{k-I}
+%\sum_{\substack{r_1\neq\dots\neq r_k \\ \text{all distinct}}}
+%\left\{ \prod_{i=1}^I c_N(r_i) \right\}
+%\left\{ \prod_{j=I+1}^k D_N(r_j) \right\} \\
+%&\qquad - \frac{1}{k!} \sum_{\substack{I=0 \\ (k-I) \text{odd}}}^{k-1}  \binom{k}{I} \binom{n-1}{2}^{k-I}
+%\sum_{\substack{r_1\neq\dots\neq r_k \\ \text{all distinct}}}
+%\left\{ \prod_{i=1}^I c_N(r_i) \right\}
+%\left\{ \prod_{j=I+1}^k D_N(r_j) \right\} \\
+%&\geq 0 
+%- \frac{1}{k!} \sum_{\substack{I=0 \\ (k-I) \text{odd}}}^{k-1}  \binom{k}{I} \binom{n-1}{2}^{k-I}
+%(t+1)^{k-1}
+%\left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right) \\
+%\end{align*}
+%using that $c_N(r), D_N(r) \geq 0$ for all $r$ to bound the even terms below, and arguments from \eqref{eq:8} to bound the odd terms above.
+%Taking expectations, we obtain
+%\begin{align*}
+%\lim_{N\to\infty} &\E \left[ \frac{1}{k!} \sum_{I=0}^{k-1} \binom{k}{I} \left( -\binom{n-1}{2} \right)^{k-I}
+%\sum_{\substack{r_1\neq\dots\neq r_k \\ \text{all distinct}}}
+%\left\{ \prod_{i=1}^I c_N(r_i) \right\}
+%\left\{ \prod_{j=I+1}^k D_N(r_j) \right\} \right] \\
+%&\qquad\qquad \geq - \frac{1}{k!} \sum_{\substack{I=0 \\ (k-I) \text{odd}}}^{k-1}  \binom{k}{I} \binom{n-1}{2}^{k-I}
+%(t+1)^{k-1}
+%\lim_{N\to\infty} \E \left[ \sum_{s=1}^{\tau_N(t)} D_N(s) \right]
+%= 0 .
+%\end{align*}
+We can now conclude that
 \begin{equation}
 \lim_{N\to\infty} \E \left[ \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
 \left\{ c_N(r_j) - \binom{n-1}{2} D_N(r_j) \right\} \right]
