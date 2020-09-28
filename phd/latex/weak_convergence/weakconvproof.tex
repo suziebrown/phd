@@ -125,6 +125,7 @@ Thus $p_{\xi\xi}(t)$ is decreasing in the number of blocks of $\xi$, and is ther
 \end{proof}
 
 \begin{lemma}
+For any $t>0$,
 \begin{equation}
 \lim_{N\to\infty} \E\left[ \prod_{r=1}^{\tau_N(t)} (1-p_r) \right] = e^{-\alpha t}
 \end{equation}
@@ -193,33 +194,40 @@ The strategy is to find upper and lower bounds on $\E\left[ \prod_{r=1}^{\tau_N(
 \textbf{Lower Bound}\\ %(with weaker assumptions than above)
 From \citet[Equation (14)]{brown2020}, taking $\xi=\Delta$, we have
 \begin{equation}
-1-p_t = p_{\Delta\Delta}(t) \geq 1 - \alpha (1+O(N^{-1})) \left[\frac{B_n}{\alpha} D_N(t) + c_N(t) \right]
+1-p_t = p_{\Delta\Delta}(t) \geq 1 - \alpha (1+O(N^{-1})) \left[c_N(t) + B_n D_N(t) \right]
 \end{equation}
-where $B_n >0$.
+where $B_n >0$ and the $O(N^{-1})$ term does not depend on $t$.
+In particular,
+\begin{equation}
+1-p_t = p_{\Delta\Delta}(t) \geq 1 - \frac{N^{n-2}}{(N-2)_{n-2}} \alpha c_N(t) - \frac{N^{n-3}}{(N-3)_{n-3}} B_n D_N(t) 
+\end{equation}
+%A sufficient condition for the RHS to be non-negative is $c_N(t) \leq [\alpha + B_n (1- 2/N)]^{-1}$. %% not true: check workings.
+%% NB: $B_n$ here is equivalent to $B_n/\alpha$ in notation of \citet{koskela2018}.
 Hence, by a multinomial expansion,
 \begin{align}
 \prod_{r=1}^{\tau_N(t)} (1-p_r)
-&\geq \prod_{r=1}^{\tau_N(t)} \left\{ 1 - \alpha (1+O(N^{-1})\left[\frac{B_n}{\alpha} D_N(r) + c_N(r) \right] \right\} \notag\\
-&= 1 + \sum_{k=1}^\infty \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
-\left\{ - \alpha (1+O(N^{-1})) \left[\frac{B_n}{\alpha} D_N(r_j) + c_N(r_j) \right] \right\} \notag\\
-&= 1 + \sum_{k=1}^\infty \left\{- \alpha (1+O(N^{-1}))\right\}^k \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
-\left\{ \frac{B_n}{\alpha} D_N(r_j) + c_N(r_j) \right\} .
+&\geq \prod_{r=1}^{\tau_N(t)} \left\{ 1 - \alpha (1+O(N^{-1}))\left[ c_N(r) + B_n D_N(r) \right] \right\} \notag\\
+&= 1 + \sum_{k=1}^{\tau_N(t)} \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
+\left\{ - \alpha (1+O(N^{-1})) \left[ c_N(r_j) + B_n D_N(r_j) \right] \right\} \notag\\
+&= 1 + \sum_{k=1}^{\tau_N(t)} \left\{- \alpha (1+O(N^{-1}))\right\}^k \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
+\left\{ c_N(r_j) + B_n D_N(r_j) \right\} .
 \end{align}
-(The empty sum is defined to be zero and the empty product is defined to be one throughout.)
+%(The empty sum is defined to be zero and the empty product is defined to be one throughout.)
 Taking expectations,
 \begin{equation}\label{eq:9}
 \E \left[ \prod_{r=1}^{\tau_N(t)} (1-p_r) \right]
-\geq 1 + \sum_{k=1}^\infty \left\{- \alpha (1+O(N^{-1}))\right\}^k \E \left[ \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
-\left\{ \frac{B_n}{\alpha} D_N(r_j) + c_N(r_j) \right\} \right]
+\geq 1 + \sum_{k=1}^{\tau_N(t)} \left\{- \alpha (1+O(N^{-1}))\right\}^k \E \left[ \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
+\left\{ c_N(r_j) + B_n D_N(r_j) \right\} \right] .
 \end{equation}
-(the infinite sum has only finitely many non-zero summands, since the inner sum is empty for $k>\tau_N(t)$, which justifies swapping the sum and expectation.)
+%(the infinite sum has only finitely many non-zero summands, since the inner sum is empty for $k>\tau_N(t)$, which justifies swapping the sum and expectation.)
 We want to show that the expectation on the right converges to $t^k/k!$, for reasons that will become clear. The strategy is to upper and lower bound this expectation by quantities that converge to $t^k/k!$. 
 
-First the lower bound.
+First the lower bound. 
+Assume that $k\leq \tau_N(t)$, i.e.\ the sum is non-empty.
 From \citet[Equation (8)]{koskela2018},
 \begin{align}
 \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
-\left\{ \frac{B_n}{\alpha} D_N(r_j) + c_N(r_j) \right\}
+\left\{ c_N(r_j) + B_n D_N(r_j) \right\}
 &\geq \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k c_N(r_j) \notag\\
 &\geq \frac{1}{k!} \left( \sum_{s=1}^{\tau_N(t)} c_N(s) \right)^k 
 - \frac{1}{k!} \binom{k}{2} \left( \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right)
@@ -231,7 +239,7 @@ by the definition of $\tau_N$.
 Then 
 \begin{equation}\label{eq:10}
 \E\left[ \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
-\left\{ \frac{B_n}{\alpha} D_N(r_j) + c_N(r_j) \right\}  \right] 
+\left\{ c_N(r_j) + B_n D_N(r_j) \right\}  \right] 
 \geq \frac{1}{k!} t^k - \frac{1}{k!} \binom{k}{2} (t+1)^{k-2} \E\left[ \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right]
  \longrightarrow \frac{1}{k!} t^k
 \end{equation}
@@ -240,117 +248,117 @@ as $N\to\infty$ using \citet[Equation (5)]{brown2020}, which is shown to hold vi
 Now for the upper bound. We start with a multinomial expansion and some manipulations of the sums:
 \begin{align}
 \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
-\left\{ \frac{B_n}{\alpha} D_N(r_j) + c_N(r_j) \right\}
+\left\{ c_N(r_j) + B_n D_N(r_j) \right\}
 &= \frac{1}{k!} \sum_{\substack{r_1\neq\dots\neq r_k \\\text{all distinct}}}^{\tau_N(t)}
 \prod_{j=1}^k 
-\left\{ \frac{B_n}{\alpha} D_N(r_j) + c_N(r_j) \right\} \notag\\
+\left\{ c_N(r_j) + B_n D_N(r_j) \right\} \notag\\
 &= \frac{1}{k!} \sum_{\substack{r_1\neq\dots\neq r_k \\\text{all distinct}}}^{\tau_N(t)} 
 \sum_{\mathcal{I}\subseteq \{1,\dots ,k\}}  
-\left( \frac{B_n}{\alpha} \right)^{k-|\mathcal{I}|}
+( B_n )^{k-|\mathcal{I}|}
 \left\{ \prod_{i\in\mathcal{I}} c_N(r_i) \right\} \left\{ \prod_{j\notin \mathcal{I}} D_N(r_j) \right\} \notag\\
 &= \frac{1}{k!} 
 \sum_{\mathcal{I}\subseteq \{1,\dots ,k\}}  
-\left( \frac{B_n}{\alpha} \right)^{k-|\mathcal{I}|}
+( B_n )^{k-|\mathcal{I}|}
 \sum_{\substack{r_1\neq\dots\neq r_k \\\text{all distinct}}}^{\tau_N(t)}
 \left\{ \prod_{i\in\mathcal{I}} c_N(r_i) \right\} \left\{ \prod_{j\notin \mathcal{I}} D_N(r_j) \right\} \notag\\
 %&= \frac{1}{k!} \sum_{\substack{r_1\neq\dots\neq r_k \\\text{all distinct}}}^{\tau_N(t)} 
 &= \frac{1}{k!}
 \sum_{I=0}^k  \binom{k}{I}
-\left( \frac{B_n}{\alpha} \right)^{k-I}
+( B_n )^{k-I}
 \sum_{\substack{r_1\neq\dots\neq r_k \\\text{all distinct}}}^{\tau_N(t)} 
 \left\{ \prod_{i=1}^{I} c_N(r_i) \right\} \left\{ \prod_{j=I+1}^k D_N(r_j) \right\} \notag\\
 &= \frac{1}{k!} \sum_{\substack{r_1\neq\dots\neq r_k \\\text{all distinct}}}^{\tau_N(t)} 
 \left\{ \prod_{i=1}^{k} c_N(r_i) \right\} \notag\\
 &\qquad + \frac{1}{k!}
 \sum_{I=0}^{k-1}  \binom{k}{I}
-\left( \frac{B_n}{\alpha} \right)^{k-I}
+( B_n )^{k-I}
 \sum_{\substack{r_1\neq\dots\neq r_k \\\text{all distinct}}}^{\tau_N(t)} 
 \left\{ \prod_{i=1}^{I} c_N(r_i) \right\} \left\{ \prod_{j=I+1}^k D_N(r_j) \right\} .\label{eq:7}
 %\left\{ \prod_{i=1}^{k} c_N(r_i) \right\} \notag\\
 %&\qquad + \frac{1}{k!}
 %\sum_{\mathcal{I}\subset \{1,\dots ,k\}}  
-%\left( \frac{B_n}{\alpha} \right)^{k-|\mathcal{I}|}
+%( B_n )^{k-|\mathcal{I}|}
 %\sum_{\substack{r_1\neq\dots\neq r_k \\\text{all distinct}}}^{\tau_N(t)}
 %\left\{ \prod_{i\in\mathcal{I}} c_N(r_i) \right\} \left\{ \prod_{j\notin \mathcal{I}} D_N(r_j) \right\} 
 \end{align}
-Then, using that $D_N(s) \leq c_N(s)$ for all $s$ (see Lemma \ref{thm:DN_leq_cN} for a proof), along with the definition of $\tau_N$,
+Then, using that $D_N(s) \leq c_N(s)$ for all $s$ \citep[p.9]{koskela2018}, along with the definition of $\tau_N$,
 \begin{align}
 \frac{1}{k!} \sum_{\substack{r_1\neq\dots\neq r_k \\\text{all distinct}}}^{\tau_N(t)} 
 \left\{ \prod_{i=1}^{k} c_N(r_i) \right\} 
 & + \frac{1}{k!}
 \sum_{I=0}^{k-1}  \binom{k}{I}
-\left( \frac{B_n}{\alpha} \right)^{k-I}
+( B_n )^{k-I}
 \sum_{\substack{r_1\neq\dots\neq r_k \\\text{all distinct}}}^{\tau_N(t)} 
 \left\{ \prod_{i=1}^{I} c_N(r_i) \right\} \left\{ \prod_{j=I+1}^k D_N(r_j) \right\}\notag\\
 %\frac{1}{k!} \sum_{\substack{r_1\neq\dots\neq r_k \\\text{all distinct}}}^{\tau_N(t)} 
 %\left\{ \prod_{i=1}^{k} c_N(r_i) \right\} 
 %& + \frac{1}{k!}
 %\sum_{\mathcal{I}\subset \{1,\dots ,k\}}  
-%\left( \frac{B_n}{\alpha} \right)^{k-|\mathcal{I}|}
+%( B_n )^{k-|\mathcal{I}|}
 %\sum_{\substack{r_1\neq\dots\neq r_k \\\text{all distinct}}}^{\tau_N(t)}
 %\left\{ \prod_{i\in\mathcal{I}} c_N(r_i) \right\} \left\{ \prod_{j\notin \mathcal{I}} D_N(r_j) \right\} \notag\\
 &\leq  \frac{1}{k!} \left( \sum_{r=1}^{\tau_N(t)} c_N(r) \right)^k
 + \frac{1}{k!}
 \sum_{I=0}^{k-1}  \binom{k}{I}
-\left( \frac{B_n}{\alpha} \right)^{k-I}
+( B_n )^{k-I}
 \sum_{\substack{r_1\neq\dots\neq r_k \\\text{all distinct}}}^{\tau_N(t)} 
-\left\{ \prod_{i=1}^{k-1} c_N(r_i) \right\} \left\{ D_N(r_k) \right\} \notag\\
+\left\{ \prod_{i=1}^{k-1} c_N(r_i) \right\} D_N(r_k) \notag\\
 &\leq  \frac{1}{k!} \left\{ t + c_N(\tau_N(t)) \right\}^k
 + \frac{1}{k!}
 \sum_{I=0}^{k-1}  \binom{k}{I}
-\left( \frac{B_n}{\alpha} \right)^{k-I}
+( B_n )^{k-I}
 \left\{ \sum_{\substack{r_1\neq\dots\neq r_{k-1} \\\text{all distinct}}}^{\tau_N(t)} 
 \prod_{i=1}^{k-1} c_N(r_i) \right\} 
-\left\{ \sum_{r_k =1}^{\tau_N(t)} D_N(r_k) \right\} \notag\\
+\left( \sum_{r_k =1}^{\tau_N(t)} D_N(r_k) \right) \notag\\
 &\leq  \frac{1}{k!} \left\{ t + c_N(\tau_N(t)) \right\}^k
 + \frac{1}{k!}
 \sum_{I=0}^{k-1}  \binom{k}{I}
-\left( \frac{B_n}{\alpha} \right)^{k-I}
+( B_n )^{k-I}
 \left( \sum_{r=1}^{\tau_N(t)} c_N(r) \right)^{k-1}
 \left( \sum_{r=1}^{\tau_N(t)} D_N(r) \right) \notag\\
 &\leq  \frac{1}{k!} \left\{ t + c_N(\tau_N(t)) \right\}^k
 + \frac{1}{k!}
 \sum_{I=0}^{k-1}  \binom{k}{I}
-\left( \frac{B_n}{\alpha} \right)^{k-I}
+( B_n )^{k-I}
 (t+1)^{k-1}
 \left( \sum_{r=1}^{\tau_N(t)} D_N(r) \right) . \label{eq:8}
 \end{align}
 %%% old version of the mega-align
 %&\leq \frac{1}{k!}
 %\sum_{I=0}^k  \binom{k}{I}
-%\left( \frac{B_n}{\alpha} \right)^{k-I}
+%\left( B_n \right)^{k-I}
 %\left\{\sum_{\substack{r_1\neq\dots\neq r_I \\\text{all distinct}}}^{\tau_N(t)}  \prod_{i=1}^{I} c_N(r_i) \right\} 
 %\left\{ \sum_{\substack{r_{I+1}\neq\dots\neq r_k \\\text{all distinct}}}^{\tau_N(t)}  \prod_{j=I+1}^k D_N(r_j) \right\} \\
 %&\leq \frac{1}{k!}
 %\sum_{I=0}^k  \binom{k}{I}
-%\left( \frac{B_n}{\alpha} \right)^{k-I}
+%\left( B_n \right)^{k-I}
 %\left( \sum_{r=1}^{\tau_N(t)} c_N(r) \right)^I
 %\left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right)^{k-I} \\
 %&\leq \frac{1}{k!}
 %\sum_{I=0}^k  \binom{k}{I}
-%\left( \frac{B_n}{\alpha} \right)^{k-I}
+%\left( B_n \right)^{k-I}
 %\left( t+ c_N(\tau_N(t)) \right)^I
 %\left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right)^{k-I} \\
 %&= \frac{1}{k!} \{ t+c_N(\tau_N(t)) \}^k
 %+ \frac{1}{k!}
 %\sum_{I=0}^{k-1}  \binom{k}{I}
-%\left( \frac{B_n}{\alpha} \right)^{k-I}
+%\left( B_n \right)^{k-I}
 %\left( t+ c_N(\tau_N(t)) \right)^I
 %\left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right)^{k-I} \\
 %&\leq \frac{1}{k!} \{ t+c_N(\tau_N(t)) \}^k
 %+ \frac{1}{k!}
 %\sum_{I=0}^{k-1}  \binom{k}{I}
-%\left( \frac{B_n}{\alpha} \right)^{k-I}
+%\left( B_n \right)^{k-I}
 %(t+1)^I
 %\left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right)^{k-I} 
 Taking expectations, 
 \begin{align}
 \lim_{N\to\infty} \E \left[ \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
-\left\{ \frac{B_n}{\alpha} D_N(r_j) + c_N(r_j) \right\} \right]
+\left\{ c_N(r_j) + B_n D_N(r_j) \right\} \right]
 &\leq \frac{1}{k!} \lim_{N\to\infty} \E[ \left\{ t + c_N(\tau_N(t)) \right\}^k ] \\
 &\qquad+ \frac{1}{k!}
 \sum_{I=0}^{k-1}  \binom{k}{I}
-\left( \frac{B_n}{\alpha} \right)^{k-I}
+( B_n )^{k-I}
 (t+1)^{k-1}
 \lim_{N\to\infty} \E\left[ \left( \sum_{r=1}^{\tau_N(t)} D_N(r) \right) \right] \notag\\
 &= \frac{1}{k!} t^k .\notag
@@ -358,69 +366,83 @@ Taking expectations,
 The limit follows from \citet[Equations (3),(4)]{brown2020} along with the fact that, since $c_N(s) \in [0,1]$ for all $s$, $\E[c_N(s)^k] \leq \E[c_N(s)]$ for all $k\geq 1$, and the expansion
 \begin{equation}\label{eq:11}
 \E\left[ \frac{1}{k!} \{t+ c_N(\tau_N(t)) \}^k \right]
-= \E\left[ \frac{1}{k!} \sum_{i=0}^k \binom{k}{i} t^i c_N(\tau_N(t))^{k-i} \right]
-= \frac{1}{k!} \left\{ t^k + k t^{k-1} \E[c_N(\tau_N(t))] + \dots \right\}
+= \frac{1}{k!} \sum_{i=0}^k \binom{k}{i} t^i \,\E\left[ c_N(\tau_N(t))^{k-i} \right]
+%= \frac{1}{k!} \left\{ t^k + k t^{k-1} \E[c_N(\tau_N(t))] + \dots \right\}
 \longrightarrow \frac{1}{k!}t^k .
 \end{equation}
 
 Combining these upper and lower limits, we conclude that
-\begin{equation}
+\begin{equation}\label{eq:19}
 \lim_{N\to\infty} \E \left[ \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
-\left\{ \frac{B_n}{\alpha} D_N(r_j) + c_N(r_j) \right\} \right]
+\left\{ c_N(r_j) + B_n D_N(r_j) \right\} \right]
 = \frac{1}{k!} t^k
 \end{equation}
 and thus
-\begin{equation}
-1 + \sum_{k=1}^\infty \left\{- \alpha (1+O(N^{-1}))\right\}^k \E \left[ \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
-\left\{ \frac{B_n}{\alpha} D_N(r_j) + c_N(r_j) \right\} \right]
-\longrightarrow 1+ \sum_{k=1}^\infty (-\alpha)^k \frac{1}{k!} t^k
-= e^{-\alpha t}
-\end{equation}
-as $N\to\infty$.
+%\begin{equation}
+%1 + \sum_{k=1}^\infty \left\{- \alpha (1+O(N^{-1}))\right\}^k \E \left[ \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
+%\left\{ c_N(r_j) + B_n D_N(r_j) \right\} \right]
+%\longrightarrow 1+ \sum_{k=1}^\infty (-\alpha)^k \frac{1}{k!} t^k
+%= e^{-\alpha t}
+%\end{equation}
+\begin{align}\label{eq:20}
+\lim_{N\to\infty} &\E \left[ 1 + \sum_{k=1}^{\tau_N(t)} \left\{- \alpha (1+O(N^{-1}))\right\}^k
+\sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
+\left\{ c_N(r_j) + B_n D_N(r_j) \right\} \right] \notag\\
+&= 1 + \lim_{N\to\infty} \sum_{k=1}^\infty \left\{- \alpha (1+O(N^{-1}))\right\}^k
+\E \left[ \I{k\leq\tau_N(t)} \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
+\left\{ c_N(r_j) + B_n D_N(r_j) \right\} \right] \notag\\
+&= 1 + \sum_{k=1}^\infty (-\alpha)^k 
+\lim_{N\to\infty} \E \left[ \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
+\left\{ c_N(r_j) + B_n D_N(r_j) \right\} \middle| k\leq\tau_N(t) \right]
+\times \lim_{N\to\infty} \Prob [k\leq\tau_N(t)] \notag\\
+&= 1 + \sum_{k=1}^\infty (-\alpha)^k \frac{t^k}{k!} \times 1 = e^{-\alpha t} 
+\end{align}
+as $N\to\infty$, where the last line follows from \eqref{eq:19} and Lemma [??].
 
 
 \textbf{\\Upper Bound}\\
 From \citet[Lemma 1 Case 1]{koskela2018}, taking $\xi=\Delta$, we have
 \begin{equation}
-1-p_t = p_{\Delta\Delta}(t) \leq 1 - \alpha (1+O(N^{-1})) \left[ c_N(t) - \binom{n-1}{2} D_N(t) \right] .
+1-p_t = p_{\Delta\Delta}(t) \leq 1 - \alpha (1+O(N^{-1})) \left[ c_N(t) - B_n^\prime D_N(t) \right] .
 \end{equation}
+%% NB: $B_n^\prime = \binom{n-1}{2}$.
 A multinomial expansion as before yields
 \begin{equation}
 \prod_{r=1}^{\tau_N(t)} (1-p_r)
-\leq 1 + \sum_{k=1}^\infty \left\{- \alpha (1+O(N^{-1}))\right\}^k \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
-\left\{ c_N(r_j) - \binom{n-1}{2} D_N(r_j) \right\} .
+\leq 1 + \sum_{k=1}^{\tau_N(t)} \left\{- \alpha (1+O(N^{-1}))\right\}^k \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
+\left\{ c_N(r_j) - B_n^\prime D_N(r_j) \right\} .
 \end{equation}
 %Similarly to \eqref{eq:10}, an upper bound for the inner sum is
 %\begin{equation}
 %\sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
-%\left\{ c_N(r_j) - \binom{n-1}{2} D_N(r_j) \right\}
+%\left\{ c_N(r_j) - B_n^\prime D_N(r_j) \right\}
 %\leq \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k c_N(r_j)
 %\leq \frac{1}{k!} \left( \sum_{r=1}^{\tau_N(t)} c_N(r) \right)^k
 %\leq \frac{1}{k!} \{ t + c_N(\tau_N(t)) \}^k 
 %\end{equation}
 %with $\E[ \{ t + c_N(\tau_N(t)) \}^k] \longrightarrow t^k$ as shown in \eqref{eq:11}.
-Analogously to \eqref{eq:7}, we can write
+Analogously to \eqref{eq:7}, assuming $k\leq\tau_N(t)$ we can write
 \begin{align}
 \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
-\left\{ c_N(r_j) - \binom{n-1}{2} D_N(r_j) \right\}
+\left\{ c_N(r_j) - B_n^\prime D_N(r_j) \right\}
 &= \frac{1}{k!} \sum_{\substack{r_1\neq\dots\neq r_k \\ \text{all distinct}}}^{\tau_N(t)}
 \left\{ \prod_{i=1}^k c_N(r_i) \right\} \label{eq:18}\\
-&\qquad + \frac{1}{k!} \sum_{I=0}^{k-1} \binom{k}{I} \left( -\binom{n-1}{2} \right)^{k-I}
+&\qquad + \frac{1}{k!} \sum_{I=0}^{k-1} \binom{k}{I} \left( -B_n^\prime \right)^{k-I}
 \sum_{\substack{r_1\neq\dots\neq r_k \\ \text{all distinct}}}
 \left\{ \prod_{i=1}^I c_N(r_i) \right\}
 \left\{ \prod_{j=I+1}^k D_N(r_j) \right\} .\notag
 \end{align}
 We start by dealing with the second term:
 \begin{align}
-\frac{1}{k!} \sum_{I=0}^{k-1} \binom{k}{I} \left( -\binom{n-1}{2} \right)^{k-I}
+\frac{1}{k!} \sum_{I=0}^{k-1} \binom{k}{I} \left( -B_n^\prime \right)^{k-I}
 &\sum_{\substack{r_1\neq\dots\neq r_k \\ \text{all distinct}}}
 \left\{ \prod_{i=1}^I c_N(r_i) \right\}
 \left\{ \prod_{j=I+1}^k D_N(r_j) \right\} \notag\\
-&= \frac{1}{k!} \sum_{\substack{I=0:\\k-I \text{ even}}}^{k-1} \binom{k}{I} \binom{n-1}{2}^{k-I}
+&= \frac{1}{k!} \sum_{\substack{I=0:\\k-I \text{ even}}}^{k-1} \binom{k}{I} (B_n^\prime)^{k-I}
 \sum_{\substack{r_1\neq\dots\neq r_k \\ \text{all distinct}}}
 \left\{ \prod_{i=1}^I c_N(r_i) \right\}
 \left\{ \prod_{j=I+1}^k D_N(r_j) \right\} \notag\\
-&\qquad - \frac{1}{k!} \sum_{\substack{I=0:\\k-I \text{ odd}}}^{k-1} \binom{k}{I} \binom{n-1}{2}^{k-I}
+&\qquad - \frac{1}{k!} \sum_{\substack{I=0:\\k-I \text{ odd}}}^{k-1} \binom{k}{I} (B_n^\prime)^{k-I}
 \sum_{\substack{r_1\neq\dots\neq r_k \\ \text{all distinct}}}
 \left\{ \prod_{i=1}^I c_N(r_i) \right\}
 \left\{ \prod_{j=I+1}^k D_N(r_j) \right\} .
@@ -428,20 +450,20 @@ We start by dealing with the second term:
 This is lower bounded by
 \begin{equation}
 0 
-- \frac{1}{k!} \sum_{\substack{I=0 \\ (k-I) \text{odd}}}^{k-1}  \binom{k}{I} \binom{n-1}{2}^{k-I}
+- \frac{1}{k!} \sum_{\substack{I=0 \\ k-I \text{ odd}}}^{k-1}  \binom{k}{I} (B_n^\prime)^{k-I}
 (t+1)^{k-1}
 \left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right)
 \end{equation}
 using that $c_N(r), D_N(r) \geq 0$ for all $r$ to bound the even terms below, and arguments from \eqref{eq:8} to bound the odd terms above.
 The same arguments lead to the upper bound
 \begin{equation}
-\frac{1}{k!} \sum_{\substack{I=0 \\ (k-I) \text{odd}}}^{k-1}  \binom{k}{I} \binom{n-1}{2}^{k-I}
+\frac{1}{k!} \sum_{\substack{I=0 \\ k-I \text{ even}}}^{k-1}  \binom{k}{I} (B_n^\prime)^{k-I}
 (t+1)^{k-1}
 \left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right)
 -0 .
 \end{equation}
 By \citet[Equation (4)]{brown2020}, both bounds have vanishing expectation as $N\to\infty$.
-We are left with the first term in (18), which is upper bounded by
+We are left with the first term in \eqref{eq:18}, which is upper bounded by
 \begin{equation}
 \frac{1}{k!} \sum_{\substack{r_1\neq\dots\neq r_k \\ \text{all distinct}}}^{\tau_N(t)}
 \left\{ \prod_{i=1}^k c_N(r_i) \right\}
@@ -504,14 +526,15 @@ The expectation of this bound also converges to $t^k/k!$, using \citet[Equation 
 We can now conclude that
 \begin{equation}
 \lim_{N\to\infty} \E \left[ \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
-\left\{ c_N(r_j) - \binom{n-1}{2} D_N(r_j) \right\} \right]
+\left\{ c_N(r_j) - B_n^\prime D_N(r_j) \right\} \right]
 = \frac{1}{k!} t^k
 \end{equation}
-and thus
+and thus, by calculations analogous to \eqref{eq:20},
 \begin{equation}
-1 + \sum_{k=1}^\infty \left\{- \alpha (1+O(N^{-1}))\right\}^k \E \left[ \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
-\left\{ c_N(r_j) - \binom{n-1}{2} D_N(r_j) \right\} \right]
-\longrightarrow 1+ \sum_{k=1}^\infty (-\alpha)^k \frac{1}{k!} t^k
+\lim_{N\to\infty} \E\left[
+1 + \sum_{k=1}^{\tau_N(t)} \left\{- \alpha (1+O(N^{-1}))\right\}^k \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
+\left\{ c_N(r_j) - B_n^\prime D_N(r_j) \right\} \right]
+= 1+ \sum_{k=1}^\infty (-\alpha)^k \frac{1}{k!} t^k
 = e^{-\alpha t}
 \end{equation}
 as $N\to\infty$.
@@ -519,20 +542,6 @@ as $N\to\infty$.
 We now have upper and lower bounds on $\lim_{N\to\infty} \E\left[ \prod_{r=1}^{\tau_N(t)} (1-p_r) \right]$, both of which are equal to $e^{-\alpha t}$, and the result follows.
 \end{proof}
 
-
-\begin{lemma}\label{thm:DN_leq_cN}
-$D_N(t) \leq c_N(t)$ for all $t$.
-\end{lemma}
-
-\begin{proof}
-\begin{align}
-D_N(t) &:= \frac{1}{(N)_2} \sum_{i=1}^N (\nu_t^{(i)})_2 \frac{1}{N} \left\{  \nu_t^{(i)} + \frac{1}{N} \sum_{j\neq i}^N (\nu_t^{(j)})^2 \right\}
-\leq \frac{1}{(N)_2} \sum_{i=1}^N (\nu_t^{(i)})_2 \frac{1}{N} \left\{  \nu_t^{(i)} + \frac{1}{N} \sum_{j\neq i}^N N \nu_t^{(j)} \right\} \notag\\
-&= \frac{1}{(N)_2} \sum_{i=1}^N (\nu_t^{(i)})_2 \frac{1}{N} \left\{ \sum_{j =1}^N \nu_t^{(j)} \right\}
-\leq \frac{1}{(N)_2} \sum_{i=1}^N (\nu_t^{(i)})_2
-= c_N(t) .
-\end{align}
-\end{proof}
 
 
 \bibliography{../smc.bib}
