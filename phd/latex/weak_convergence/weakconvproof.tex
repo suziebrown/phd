@@ -45,12 +45,13 @@
 \thispagestyle{fancy}
 
 \begin{theorem}\label{thm:weakconv}
-Let $\nu_t^{(1:N)}$ denote the offspring numbers in an interacting particle system satisfying the standing assumption and such that, for any $N$ sufficiently large, $\Prob\{ \tau_N(t) = \infty \} =0$ for all finite $t$. Suppose that there exists a deterministic sequence $(b_N)_{N\geq1}$ such that ${\lim}_{N\to\infty} b_N =0$ and
+Let $\nu_t^{(1:N)}$ denote the offspring numbers in an interacting particle system satisfying the standing assumption and such that, for any $N$ sufficiently large, for all finite $t$, $\Prob\{ \tau_N(t) = \infty \} =0$. Suppose that there exists a deterministic sequence $(b_N)_{N\geq1}$ such that ${\lim}_{N\to\infty} b_N =0$ and
 \begin{equation}\label{eq:mainthmcond}
 \frac{1}{(N)_3} \sum_{i = 1}^N \Et\{ (\nu_t^{(i)})_3 \}  \leq b_N \frac{1}{(N)_2} \sum_{i = 1}^N \Et\{ (\nu_t^{(i)})_2 \}
 \end{equation}
 for all $N$, uniformly in $t \geq 1$.
-Then the rescaled genealogical process $(G_{\tau_N(t)}^{(n,N)})_{t\geq0}$ converges weakly to Kingman's $n$-coalescent as $N \to \infty$.
+Then the rescaled genealogical process $(G_{\tau_N(t)}^{(n,N)})_{t\geq0}$ converges weakly %% in what topology?
+to Kingman's $n$-coalescent as $N \to \infty$.
 \end{theorem}
 
 \begin{proof}
