@@ -27,13 +27,14 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsthm}
+\usepackage{bbm}
 \newtheorem{theorem}{Theorem}
 \newtheorem{lemma}{Lemma}
 \newcommand{\Prob}{\mathbb{P}}
 \newcommand{\E}{\mathbb{E}}
 \newcommand{\Et}{\mathbb{E}_t}
 \newcommand{\V}{\operatorname{Var}}
-\newcommand{\I}[1]{\mathbb{I}_{\{#1\}}}
+\newcommand{\I}[1]{\mathbbm{1}_{\{#1\}}}
 \newcommand{\1}[1]{\mathbb{I}_{#1}}
 \newcommand{\Mn}{\operatorname{Multinomial}}
 
@@ -45,13 +46,38 @@
 \thispagestyle{fancy}
 
 \begin{lemma}
-for all $t>0$,
+For any $n \leq N \in \mathbb{N}$, for all $t>0$, define 
 \begin{equation}
-\Prob \left[  \bigcap_{r=1}^{\tau_N(t)} E_r ] \underset{\longrightarrow}{N\to\infty} 1
+E_t := \left\{ c_N(t) < \frac{(N-3)_{n-3}}{N^{n-3}} \left( \alpha \left(1 + \frac{2}{N-2} \right) + B_n \right)^{-1} \right\} 
+\end{equation}
+where $\alpha$ and $B_n$ are positive constants as in equation whatever.
+Then, for all $t>0$,
+\begin{equation}
+\Prob \left[  \bigcap_{r=1}^{\tau_N(t)} E_r \right] \overset{N\to\infty}{\longrightarrow} 1 .
 \end{equation}
 \end{lemma}
 
+\begin{proof}
+\begin{equation}
+\Prob \left[  \bigcap_{r=1}^{\tau_N(t)} E_r \right]
+= 1 - \Prob \left[  \bigcup_{r=1}^{\tau_N(t)} E_r^c \right]
+\geq 1 - \E \left[ \sum_{r=1}^{\tau_N(t)} \Prob [E_r^c] \right] .
+\end{equation}
+Using the generalised Markov inequality,
+\begin{align}
+\Prob [E_r^c] &= \Prob \left[ c_N(t) \geq \frac{(N-3)_{n-3}}{N^{n-3}} \left( \alpha \left(1 + \frac{2}{N-2} \right) + B_n \right)^{-1} \right] \notag\\
+&\leq \E[c_N(r)^2] \frac{N^{2(n-3)}}{(N-3)_{n-3}^2} \left( \alpha \left(1 + \frac{2}{N-2} \right) + B_n \right)^2 .
+\end{align}
+Now
+\begin{align}
+\Prob \left[  \bigcap_{r=1}^{\tau_N(t)} E_r \right]
+&\geq 1 - \E \left[  \sum_{r=1}^{\tau_N(t)} \E[c_N(r)^2] \frac{N^{2(n-3)}}{(N-3)_{n-3}^2} \left( \alpha \left(1 + \frac{2}{N-2} \right) + B_n \right)^2 \right] \notag\\
+&= 1 - \frac{N^{2(n-3)}}{(N-3)_{n-3}^2} \left( \alpha \left(1 + \frac{2}{N-2} \right) + B_n \right)^2 
+\E \left[ \sum_{r=1}^{\tau_N(t)} c_N(r)^2 \right] \notag\\
+&\overset{N\to\infty}{\longrightarrow} 1 - (\alpha + B_n)^2 \times 0 = 1 .
+\end{align}
 
+\end{proof}
 
 
 
