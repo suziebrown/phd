@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  2 OCT 2020 10:25
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  2 OCT 2020 11:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -352,10 +352,10 @@ Overfull \hbox (13.14967pt too wide) detected at line 439
 
 [5] [6] (./weakconvproof.bbl) [7] (./weakconvproof.aux) ) 
 Here is how much of TeX's memory you used:
- 3844 strings out of 492649
- 53169 string characters out of 6129623
- 142098 words of memory out of 5000000
- 7638 multiletter control sequences out of 15000+600000
+ 3846 strings out of 492649
+ 53198 string characters out of 6129623
+ 142114 words of memory out of 5000000
+ 7640 multiletter control sequences out of 15000+600000
  12242 words of font info for 49 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,17n,43p,367b,317s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -380,7 +380,7 @@ onts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2018/texmf-dist/fon
 ts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2018/texmf-dist/font
 s/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2018/texmf-dist/
 fonts/type1/public/amsfonts/symbols/msbm7.pfb>
-Output written on weakconvproof.pdf (7 pages, 219480 bytes).
+Output written on weakconvproof.pdf (7 pages, 221819 bytes).
 PDF statistics:
  109 PDF objects out of 1000 (max. 8388607)
  79 compressed objects within 1 object stream
