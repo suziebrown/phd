@@ -27,14 +27,15 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsthm}
+\usepackage{bbm}
 \newtheorem{theorem}{Theorem}
 \newtheorem{lemma}{Lemma}
 \newcommand{\Prob}{\mathbb{P}}
 \newcommand{\E}{\mathbb{E}}
 \newcommand{\Et}{\mathbb{E}_t}
 \newcommand{\V}{\operatorname{Var}}
-\newcommand{\I}[1]{\mathbb{I}_{\{#1\}}}
-\newcommand{\1}[1]{\mathbb{I}_{#1}}
+\newcommand{\I}[1]{\mathbbm{1}_{\{#1\}}}
+\newcommand{\1}[1]{\mathbbm{1}_{#1}}
 \newcommand{\Mn}{\operatorname{Multinomial}}
 
 \title{Weak convergence proof (in progress)}
@@ -200,31 +201,47 @@ From \citet[Equation (14)]{brown2020}, taking $\xi=\Delta$, we have
 where $B_n >0$ and the $O(N^{-1})$ term does not depend on $t$.
 In particular,
 \begin{equation}
-1-p_t = p_{\Delta\Delta}(t) \geq 1 - \frac{N^{n-2}}{(N-2)_{n-2}} \alpha c_N(t) - \frac{N^{n-3}}{(N-3)_{n-3}} B_n D_N(t) 
+1-p_t = p_{\Delta\Delta}(t) \geq 1 - \frac{N^{n-2}}{(N-2)_{n-2}} \alpha c_N(t) - \frac{N^{n-3}}{(N-3)_{n-3}} B_n D_N(t) .
+\end{equation}
+Since $D_N(t) \leq c_N(t)$, a sufficient condition for the bound to be positive is
+\begin{equation}
+E_t := \left\{ c_N(t) < \frac{(N-3)_{n-3}}{N^{n-3}} \left( \alpha \left(1 + \frac{2}{N-2} \right) + B_n \right)^{-1} \right\} .
 \end{equation}
 %A sufficient condition for the RHS to be non-negative is $c_N(t) \leq [\alpha + B_n (1- 2/N)]^{-1}$. %% not true: check workings.
 %% NB: $B_n$ here is equivalent to $B_n/\alpha$ in notation of \citet{koskela2018}.
 Hence, by a multinomial expansion,
 \begin{align}
 \prod_{r=1}^{\tau_N(t)} (1-p_r)
-&\geq \prod_{r=1}^{\tau_N(t)} \left\{ 1 - \alpha (1+O(N^{-1}))\left[ c_N(r) + B_n D_N(r) \right] \right\} \notag\\
-&= 1 + \sum_{k=1}^{\tau_N(t)} \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
-\left\{ - \alpha (1+O(N^{-1})) \left[ c_N(r_j) + B_n D_N(r_j) \right] \right\} \notag\\
-&= 1 + \sum_{k=1}^{\tau_N(t)} \left\{- \alpha (1+O(N^{-1}))\right\}^k \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
+&\geq \prod_{r=1}^{\tau_N(t)} \left\{ 1 - \alpha (1+O(N^{-1}))\left[ c_N(r) + B_n D_N(r) \right] \right\}
+\times \prod_{r=1}^{\tau_N(t)} \1{E_r} \notag\\
+&= \left( 1 + \sum_{k=1}^{\tau_N(t)} \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
+\left\{ - \alpha (1+O(N^{-1})) \left[ c_N(r_j) + B_n D_N(r_j) \right] \right\} \right)
+\times \prod_{r=1}^{\tau_N(t)} \1{E_r} \notag\\
+&= \prod_{r=1}^{\tau_N(t)} \1{E_r} 
++ \sum_{k=1}^{\tau_N(t)} \left\{- \alpha (1+O(N^{-1}))\right\}^k 
+\left(\prod_{r=1}^{\tau_N(t)} \1{E_r} \right)
+\sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
 \left\{ c_N(r_j) + B_n D_N(r_j) \right\} .
 \end{align}
 %(The empty sum is defined to be zero and the empty product is defined to be one throughout.)
 Taking expectations,
-\begin{equation}\label{eq:9}
+\begin{align}\label{eq:9}
 \E \left[ \prod_{r=1}^{\tau_N(t)} (1-p_r) \right]
-\geq 1 + \sum_{k=1}^{\tau_N(t)} \left\{- \alpha (1+O(N^{-1}))\right\}^k \E \left[ \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
-\left\{ c_N(r_j) + B_n D_N(r_j) \right\} \right] .
-\end{equation}
+&\geq \E\left[ \prod_{r=1}^{\tau_N(t)} \1{E_r} \right] \notag\\
+&\qquad + \E \left[ \sum_{k=1}^{\infty} \left\{- \alpha (1+O(N^{-1}))\right\}^k \I{k \leq \tau_N(t)} \1{\bigcap E_r} \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
+\left\{ c_N(r_j) + B_n D_N(r_j) \right\} \right] \notag\\
+&= \Prob \left[ \bigcap_{r=1}^{\tau_N(t)} E_r \right] \notag\\
+&\qquad + \sum_{k=1}^{\infty} \left\{- \alpha (1+O(N^{-1}))\right\}^k
+\E \left[ \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
+\left\{ c_N(r_j) + B_n D_N(r_j) \right\} \middle| k\leq\tau_N(t), \bigcap_{r=1}^{\tau_N(t)} E_r \right] \notag\\
+&\qquad \times \Prob \left[ k\leq \tau_N(t), \bigcap_{r=1}^{\tau_N(t)} E_r \right] .
+\end{align}
 %(the infinite sum has only finitely many non-zero summands, since the inner sum is empty for $k>\tau_N(t)$, which justifies swapping the sum and expectation.)
-We want to show that the expectation on the right converges to $t^k/k!$, for reasons that will become clear. The strategy is to upper and lower bound this expectation by quantities that converge to $t^k/k!$. 
+We want to show that the conditional expectation on the right converges to $t^k/k!$, for reasons that will become clear. The strategy is to upper and lower bound this expectation by quantities that converge to $t^k/k!$. 
 
 First the lower bound. 
-Assume that $k\leq \tau_N(t)$, i.e.\ the sum is non-empty.
+Assume that $k\leq \tau_N(t)$, ensuring that the sum is non-empty.
+%The conditioning on $\bigcap E_r$ doesn't affect these bounds, which are based on general properties of $c_N$, $D_N$ and $\tau_N$. %%% Is this true???
 From \citet[Equation (8)]{koskela2018},
 \begin{align}
 \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
@@ -237,14 +254,16 @@ From \citet[Equation (8)]{koskela2018},
  - \frac{1}{k!} \binom{k}{2} (t+1)^{k-2} \left( \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right) 
 \end{align}
 by the definition of $\tau_N$.
-Then 
-\begin{equation}\label{eq:10}
-\E\left[ \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
-\left\{ c_N(r_j) + B_n D_N(r_j) \right\}  \right] 
-\geq \frac{1}{k!} t^k - \frac{1}{k!} \binom{k}{2} (t+1)^{k-2} \E\left[ \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right]
- \longrightarrow \frac{1}{k!} t^k
-\end{equation}
-as $N\to\infty$ using \citet[Equation (5)]{brown2020}, which is shown to hold via lemmata 1 and 3 therein.
+Then, since the conditioning can only decrease the values of $c_N(s)$,
+\begin{align}\label{eq:10}
+\E &\left[ \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
+\left\{ c_N(r_j) + B_n D_N(r_j) \right\}  
+\middle| k\leq\tau_N(t), \bigcap_{r=1}^{\tau_N(t)} E_r \right] \notag\\
+&\qquad \geq \frac{1}{k!} t^k - \frac{1}{k!} \binom{k}{2} (t+1)^{k-2} \E\left[ \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \middle| k\leq\tau_N(t), \bigcap_{r=1}^{\tau_N(t)} E_r \right] \notag\\
+&\qquad \geq \frac{1}{k!} t^k - \frac{1}{k!} \binom{k}{2} (t+1)^{k-2} \E\left[ \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right]
+\longrightarrow \frac{1}{k!} t^k
+\end{align}
+as $N\to\infty$ using \citet[Equation (5)]{brown2020}. %, which is shown to hold via lemmata 1 and 3 therein.
 
 Now for the upper bound. We start with a multinomial expansion and some manipulations of the sums:
 \begin{align}
@@ -354,28 +373,44 @@ Then, using that $D_N(s) \leq c_N(s)$ for all $s$ \citep[p.9]{koskela2018}, alon
 %\left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right)^{k-I} 
 Taking expectations, 
 \begin{align}
-\lim_{N\to\infty} \E \left[ \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
-\left\{ c_N(r_j) + B_n D_N(r_j) \right\} \right]
-&\leq \frac{1}{k!} \lim_{N\to\infty} \E[ \left\{ t + c_N(\tau_N(t)) \right\}^k ] \\
+\lim_{N\to\infty} \E &\left[ \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
+\left\{ c_N(r_j) + B_n D_N(r_j) \right\} 
+\middle| k\leq\tau_N(t), \bigcap_{r=1}^{\tau_N(t)} E_r \right] \notag\\
+&\leq \frac{1}{k!} \lim_{N\to\infty} \E \left[ \left\{ t + c_N(\tau_N(t)) \right\}^k
+\middle| k\leq\tau_N(t), \bigcap_{r=1}^{\tau_N(t)} E_r \right] \notag\\
 &\qquad+ \frac{1}{k!}
 \sum_{I=0}^{k-1}  \binom{k}{I}
 ( B_n )^{k-I}
 (t+1)^{k-1}
-\lim_{N\to\infty} \E\left[ \left( \sum_{r=1}^{\tau_N(t)} D_N(r) \right) \right] \notag\\
-&= \frac{1}{k!} t^k .\notag
+\lim_{N\to\infty} \E\left[ \sum_{r=1}^{\tau_N(t)} D_N(r) \middle| k\leq\tau_N(t), \bigcap_{r=1}^{\tau_N(t)} E_r \right] \notag\\
+&\leq \frac{1}{k!} \lim_{N\to\infty} \E \left[ \left\{ t + c_N(\tau_N(t)) \right\}^k \right] \notag
++ \frac{1}{k!}
+\sum_{I=0}^{k-1}  \binom{k}{I}
+( B_n )^{k-I}
+(t+1)^{k-1}
+\lim_{N\to\infty} \E\left[ \sum_{r=1}^{\tau_N(t)} D_N(r) \right] \notag\\
+&= \frac{1}{k!} t^k 
 \end{align}
+again using that the conditioning can only decrease the expectations.
+%%% even decreasing expectation of D_N ?
 The limit follows from \citet[Equations (3),(4)]{brown2020} along with the fact that, since $c_N(s) \in [0,1]$ for all $s$, $\E[c_N(s)^k] \leq \E[c_N(s)]$ for all $k\geq 1$, and the expansion
 \begin{equation}\label{eq:11}
-\E\left[ \frac{1}{k!} \{t+ c_N(\tau_N(t)) \}^k \right]
-= \frac{1}{k!} \sum_{i=0}^k \binom{k}{i} t^i \,\E\left[ c_N(\tau_N(t))^{k-i} \right]
-%= \frac{1}{k!} \left\{ t^k + k t^{k-1} \E[c_N(\tau_N(t))] + \dots \right\}
-\longrightarrow \frac{1}{k!}t^k .
+\E\left[ \{t+ c_N(\tau_N(t)) \}^k \right]
+%\middle| k\leq\tau_N(t ), \bigcap_{r=1}^{\tau_N(t)} E_r \right]
+%= \sum_{i=0}^k \binom{k}{i} t^i \,
+%\E\left[ c_N(\tau_N(t))^{k-i} \middle| k\leq\tau_N(t), \bigcap_{r=1}^{\tau_N(t)} E_r \right]
+%\leq 
+=\sum_{i=0}^k \binom{k}{i} t^i \,
+\E\left[ c_N(\tau_N(t))^{k-i} \right]
+%= \left\{ t^k + k t^{k-1} \E[c_N(\tau_N(t))] + \dots \right\}
+\longrightarrow t^k .
 \end{equation}
 
 Combining these upper and lower limits, we conclude that
 \begin{equation}\label{eq:19}
 \lim_{N\to\infty} \E \left[ \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
-\left\{ c_N(r_j) + B_n D_N(r_j) \right\} \right]
+\left\{ c_N(r_j) + B_n D_N(r_j) \right\} 
+\middle| k\leq\tau_N(t), \bigcap_{r=1}^{\tau_N(t)} E_r \right]
 = \frac{1}{k!} t^k
 \end{equation}
 and thus
@@ -386,17 +421,21 @@ and thus
 %= e^{-\alpha t}
 %\end{equation}
 \begin{align}\label{eq:20}
-\lim_{N\to\infty} &\E \left[ 1 + \sum_{k=1}^{\tau_N(t)} \left\{- \alpha (1+O(N^{-1}))\right\}^k
+\lim_{N\to\infty} &\E \left[ \prod_{r=1}^{\tau_N(t)} \1{E_r} 
++ \sum_{k=1}^{\tau_N(t)} \left\{- \alpha (1+O(N^{-1}))\right\}^k 
+\left(\prod_{r=1}^{\tau_N(t)} \1{E_r} \right)
 \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
 \left\{ c_N(r_j) + B_n D_N(r_j) \right\} \right] \notag\\
-&= 1 + \lim_{N\to\infty} \sum_{k=1}^\infty \left\{- \alpha (1+O(N^{-1}))\right\}^k
-\E \left[ \I{k\leq\tau_N(t)} \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
+&= \lim_{N\to\infty} \Prob \left[ \bigcap_{r=1}^{\tau_N(t)} E_r \right] \notag\\
+&\qquad + \lim_{N\to\infty} \sum_{k=1}^\infty \left\{- \alpha (1+O(N^{-1}))\right\}^k
+\E \left[ \I{k\leq\tau_N(t)} \left(\prod_{r=1}^{\tau_N(t)} \1{E_r} \right) \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
 \left\{ c_N(r_j) + B_n D_N(r_j) \right\} \right] \notag\\
-&= 1 + \sum_{k=1}^\infty (-\alpha)^k 
+&= \lim_{N\to\infty} \Prob \left[ \bigcap_{r=1}^{\tau_N(t)} E_r \right] \notag\\
+&\qquad + \sum_{k=1}^\infty (-\alpha)^k 
 \lim_{N\to\infty} \E \left[ \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
-\left\{ c_N(r_j) + B_n D_N(r_j) \right\} \middle| k\leq\tau_N(t) \right]
-\times \lim_{N\to\infty} \Prob [k\leq\tau_N(t)] \notag\\
-&= 1 + \sum_{k=1}^\infty (-\alpha)^k \frac{t^k}{k!} \times 1 = e^{-\alpha t} 
+\left\{ c_N(r_j) + B_n D_N(r_j) \right\} \middle| k\leq\tau_N(t), \bigcap_{r=1}^{\tau_N(t)} E_r \right]
+\times \lim_{N\to\infty}\Prob \left[ k\leq \tau_N(t), \bigcap_{r=1}^{\tau_N(t)} E_r \right] \notag\\
+&= 1+ \sum_{k=1}^\infty (-\alpha)^k \frac{t^k}{k!} \times 1 = e^{-\alpha t} 
 \end{align}
 as $N\to\infty$, where the last line follows from \eqref{eq:19} and Lemma [??].
 
