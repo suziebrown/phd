@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  2 OCT 2020 11:06
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  5 OCT 2020 09:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -346,44 +346,44 @@ LaTeX Font Info:    Try loading font information for U+bbm on input line 225.
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
 ) [2] [3]
 [4]
-Overfull \hbox (13.14967pt too wide) detected at line 439
+Overfull \hbox (13.14967pt too wide) detected at line 452
 []
  []
 
-[5] [6] (./weakconvproof.bbl) [7] (./weakconvproof.aux) ) 
+[5] [6] [7] (./weakconvproof.bbl) [8] (./weakconvproof.aux) ) 
 Here is how much of TeX's memory you used:
  3846 strings out of 492649
  53198 string characters out of 6129623
- 142114 words of memory out of 5000000
+ 144114 words of memory out of 5000000
  7640 multiletter control sequences out of 15000+600000
  12242 words of font info for 49 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,17n,43p,367b,317s stack positions out of 5000i,500n,10000p,200000b,80000s
- </Users/suzie/Library
-/texlive/2018/texmf-var/fonts/pk/ljfour/public/bbm/bbm10.600pk></usr/local/texl
-ive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texli
-ve/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texliv
-e/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive
-/2018/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/local/texl
-ive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texli
-ve/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive
-/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2
-018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/201
-8/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2018/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2018/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2018/texmf
--dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2018/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2018/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2018/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2018/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2018/texmf-dist/font
-s/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2018/texmf-dist/
-fonts/type1/public/amsfonts/symbols/msbm7.pfb>
-Output written on weakconvproof.pdf (7 pages, 221819 bytes).
+ </Users/suzie/Lib
+rary/texlive/2018/texmf-var/fonts/pk/ljfour/public/bbm/bbm10.600pk></usr/local/
+texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/t
+exlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/te
+xlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/tex
+live/2018/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/local/
+texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/t
+exlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/tex
+live/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texli
+ve/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive
+/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2
+018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/201
+8/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2018/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2018/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2018/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2018/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2018/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2018/texmf-dist/
+fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2018/texmf-d
+ist/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
+Output written on weakconvproof.pdf (8 pages, 224264 bytes).
 PDF statistics:
- 109 PDF objects out of 1000 (max. 8388607)
- 79 compressed objects within 1 object stream
+ 112 PDF objects out of 1000 (max. 8388607)
+ 81 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

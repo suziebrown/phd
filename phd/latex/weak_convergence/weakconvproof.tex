@@ -260,10 +260,12 @@ Then, since the conditioning can only decrease the values of $c_N(s)$,
 \left\{ c_N(r_j) + B_n D_N(r_j) \right\}  
 \middle| k\leq\tau_N(t), \bigcap_{r=1}^{\tau_N(t)} E_r \right] \notag\\
 &\qquad \geq \frac{1}{k!} t^k - \frac{1}{k!} \binom{k}{2} (t+1)^{k-2} \E\left[ \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \middle| k\leq\tau_N(t), \bigcap_{r=1}^{\tau_N(t)} E_r \right] \notag\\
+&\qquad = \frac{1}{k!} t^k - \frac{1}{k!} \binom{k}{2} (t+1)^{k-2} \E\left[ \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \I{k\leq\tau_N(t)} \I{\bigcap_{r=1}^{\tau_N(t)} E_r} \right] \left(\Prob \left[k\leq\tau_N(t), \bigcap_{r=1}^{\tau_N(t)} E_r \right] \right)^{-1}  \notag\\
 &\qquad \geq \frac{1}{k!} t^k - \frac{1}{k!} \binom{k}{2} (t+1)^{k-2} \E\left[ \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right]
+\left(\Prob \left[k\leq\tau_N(t), \bigcap_{r=1}^{\tau_N(t)} E_r \right] \right)^{-1}
 \longrightarrow \frac{1}{k!} t^k
 \end{align}
-as $N\to\infty$ using \citet[Equation (5)]{brown2020}. %, which is shown to hold via lemmata 1 and 3 therein.
+as $N\to\infty$ using \citet[Equation (5)]{brown2020} and Lemma \ref{thm:indicators_prob1}. %, which is shown to hold via lemmata 1 and 3 therein.
 
 Now for the upper bound. We start with a multinomial expansion and some manipulations of the sums:
 \begin{align}
@@ -373,27 +375,38 @@ Then, using that $D_N(s) \leq c_N(s)$ for all $s$ \citep[p.9]{koskela2018}, alon
 %\left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right)^{k-I} 
 Taking expectations, 
 \begin{align}
-\lim_{N\to\infty} \E &\left[ \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
+\E &\left[ \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
 \left\{ c_N(r_j) + B_n D_N(r_j) \right\} 
 \middle| k\leq\tau_N(t), \bigcap_{r=1}^{\tau_N(t)} E_r \right] \notag\\
-&\leq \frac{1}{k!} \lim_{N\to\infty} \E \left[ \left\{ t + c_N(\tau_N(t)) \right\}^k
+&\leq \frac{1}{k!} \E \left[ \left\{ t + c_N(\tau_N(t)) \right\}^k
 \middle| k\leq\tau_N(t), \bigcap_{r=1}^{\tau_N(t)} E_r \right] \notag\\
 &\qquad+ \frac{1}{k!}
 \sum_{I=0}^{k-1}  \binom{k}{I}
 ( B_n )^{k-I}
 (t+1)^{k-1}
-\lim_{N\to\infty} \E\left[ \sum_{r=1}^{\tau_N(t)} D_N(r) \middle| k\leq\tau_N(t), \bigcap_{r=1}^{\tau_N(t)} E_r \right] \notag\\
-&\leq \frac{1}{k!} \lim_{N\to\infty} \E \left[ \left\{ t + c_N(\tau_N(t)) \right\}^k \right] \notag
+\E\left[ \sum_{r=1}^{\tau_N(t)} D_N(r) \middle| k\leq\tau_N(t), \bigcap_{r=1}^{\tau_N(t)} E_r \right] \notag\\
+&= \frac{1}{k!} \E \left[ \left\{ t + c_N(\tau_N(t)) \right\}^k
+\I{k\leq\tau_N(t)} \I{\bigcap E_r} \right] 
+\left(\Prob \left[k\leq\tau_N(t), \bigcap_{r=1}^{\tau_N(t)} E_r \right] \right)^{-1} \notag\\
+&\qquad+ \frac{1}{k!}
+\sum_{I=0}^{k-1}  \binom{k}{I}
+( B_n )^{k-I}
+(t+1)^{k-1}
+\E\left[ \sum_{r=1}^{\tau_N(t)} D_N(r) \I{k\leq\tau_N(t)} \I{\bigcap E_r} \right]
+\left(\Prob \left[k\leq\tau_N(t), \bigcap_{r=1}^{\tau_N(t)} E_r \right] \right)^{-1} \notag\\
+& \leq \left(
+\frac{1}{k!} \E \left[ \left\{ t + c_N(\tau_N(t)) \right\}^k \right] 
 + \frac{1}{k!}
 \sum_{I=0}^{k-1}  \binom{k}{I}
 ( B_n )^{k-I}
 (t+1)^{k-1}
-\lim_{N\to\infty} \E\left[ \sum_{r=1}^{\tau_N(t)} D_N(r) \right] \notag\\
-&= \frac{1}{k!} t^k 
+\E\left[ \sum_{r=1}^{\tau_N(t)} D_N(r) \right]
+\right)
+\left(\Prob \left[k\leq\tau_N(t), \bigcap_{r=1}^{\tau_N(t)} E_r \right] \right)^{-1} \notag\\
+&\longrightarrow \frac{1}{k!} t^k .
 \end{align}
-again using that the conditioning can only decrease the expectations.
 %%% even decreasing expectation of D_N ?
-The limit follows from \citet[Equations (3),(4)]{brown2020} along with the fact that, since $c_N(s) \in [0,1]$ for all $s$, $\E[c_N(s)^k] \leq \E[c_N(s)]$ for all $k\geq 1$, and the expansion
+The limit follows from Lemma \ref{thm:indicators_prob1} and \citet[Equations (3),(4)]{brown2020} along with the fact that, since $c_N(s) \in [0,1]$ for all $s$, $\E[c_N(s)^k] \leq \E[c_N(s)]$ for all $k\geq 1$, and the expansion
 \begin{equation}\label{eq:11}
 \E\left[ \{t+ c_N(\tau_N(t)) \}^k \right]
 %\middle| k\leq\tau_N(t ), \bigcap_{r=1}^{\tau_N(t)} E_r \right]
@@ -406,7 +419,7 @@ The limit follows from \citet[Equations (3),(4)]{brown2020} along with the fact 
 \longrightarrow t^k .
 \end{equation}
 
-Combining these upper and lower limits, we conclude that
+Combining the upper and lower limits, we conclude that
 \begin{equation}\label{eq:19}
 \lim_{N\to\infty} \E \left[ \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
 \left\{ c_N(r_j) + B_n D_N(r_j) \right\} 
