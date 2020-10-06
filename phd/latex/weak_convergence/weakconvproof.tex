@@ -608,20 +608,26 @@ Then, for all $t>0$,
 \end{equation}
 \end{lemma}
 \begin{proof}
-\begin{equation}
+\begin{align}
 \Prob \left[  \bigcap_{r=1}^{\tau_N(t)} E_r \right]
-= 1 - \Prob \left[  \bigcup_{r=1}^{\tau_N(t)} E_r^c \right]
-\geq 1 - \E \left[ \sum_{r=1}^{\tau_N(t)} \Prob [E_r^c] \right] .
-\end{equation}
+&= 1 - \Prob \left[  \bigcup_{r=1}^{\tau_N(t)} E_r^c \right]
+= 1 - \E \left[ \1{\bigcup E_r^c} \right]
+\geq 1 - \E \left[ \sum_{r=1}^{\tau_N(t)} \1{E_r^c} \right] \notag\\
+&= 1 - \E \left[ \sum_{r=1}^{\tau_N(t)}  \E [ \1{E_r^c} \mid \mathcal{F}_{r-1} ] \right]
+= 1 - \E \left[ \sum_{r=1}^{\tau_N(t)} \Prob [E_r^c \mid \mathcal{F}_{r-1} ] \right] 
+\end{align}
+where the inequality holds by considering the two possible values of $\1{\bigcup E_r^c}$, and the second line follows from \citet[Lemma 2]{koskela2018} when the function $c_N(r)$ is replaced by $\1{E_r^c}$.
 Using the generalised Markov inequality,
 \begin{align}
-\Prob [E_r^c] &= \Prob \left[ c_N(t) \geq \frac{(N-3)_{n-3}}{N^{n-3}} \left( \alpha \left(1 + \frac{2}{N-2} \right) + B_n \right)^{-1} \right] \notag\\
-&\leq \E[c_N(r)^2] \frac{N^{2(n-3)}}{(N-3)_{n-3}^2} \left( \alpha \left(1 + \frac{2}{N-2} \right) + B_n \right)^2 .
+\Prob [E_r^c \mid \mathcal{F}_{r-1} ] &= \Prob \left[ c_N(r) \geq \frac{(N-3)_{n-3}}{N^{n-3}} \left( \alpha \left(1 + \frac{2}{N-2} \right) + B_n \right)^{-1} \middle| \mathcal{F}_{r-1} \right] \notag\\
+&\leq \E[c_N(r)^2 \mid \mathcal{F}_{r-1} ] \frac{N^{2(n-3)}}{(N-3)_{n-3}^2} \left( \alpha \left(1 + \frac{2}{N-2} \right) + B_n \right)^2 .
 \end{align}
-Now
+Now, using \citet[Lemma 2]{koskela2018} again, but with $c_N(r)$ replaced by $c_N(r)^2$,
 \begin{align}
 \Prob \left[  \bigcap_{r=1}^{\tau_N(t)} E_r \right]
-&\geq 1 - \E \left[  \sum_{r=1}^{\tau_N(t)} \E[c_N(r)^2] \frac{N^{2(n-3)}}{(N-3)_{n-3}^2} \left( \alpha \left(1 + \frac{2}{N-2} \right) + B_n \right)^2 \right] \notag\\
+&\geq 1 - \E \left[  \sum_{r=1}^{\tau_N(t)} \E[c_N(r)^2 \mid \mathcal{F}_{r-1} ] \frac{N^{2(n-3)}}{(N-3)_{n-3}^2} \left( \alpha \left(1 + \frac{2}{N-2} \right) + B_n \right)^2 \right] \notag\\
+&= 1 - \frac{N^{2(n-3)}}{(N-3)_{n-3}^2} \left( \alpha \left(1 + \frac{2}{N-2} \right) + B_n \right)^2 
+\E \left[ \sum_{r=1}^{\tau_N(t)} \E[c_N(r)^2 \mid \mathcal{F}_{r-1} ] \right] \notag\\
 &= 1 - \frac{N^{2(n-3)}}{(N-3)_{n-3}^2} \left( \alpha \left(1 + \frac{2}{N-2} \right) + B_n \right)^2 
 \E \left[ \sum_{r=1}^{\tau_N(t)} c_N(r)^2 \right] \notag\\
 &\overset{N\to\infty}{\longrightarrow} 1 - (\alpha + B_n)^2 \times 0 = 1 .
