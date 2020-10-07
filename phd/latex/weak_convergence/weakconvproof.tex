@@ -127,7 +127,7 @@ Thus $p_{\xi\xi}(t)$ is decreasing in the number of blocks of $\xi$, and is ther
 \end{proof}
 
 \begin{lemma}
-For any $t>0$,
+For any $0 < t < \infty$,
 \begin{equation}
 \lim_{N\to\infty} \E\left[ \prod_{r=1}^{\tau_N(t)} (1-p_r) \right] = e^{-\alpha t}
 \end{equation}
@@ -597,7 +597,7 @@ We now have upper and lower bounds on $\lim_{N\to\infty} \E\left[ \prod_{r=1}^{\
 
 
 \begin{lemma}\label{thm:indicators_prob1}
-For any $n \leq N \in \mathbb{N}$, for all $t>0$, define 
+For any $n \leq N \in \mathbb{N}$, for all $t \in \mathbb{N}$, define 
 \begin{equation}
 E_t := \left\{ c_N(t) < \frac{(N-3)_{n-3}}{N^{n-3}} \left( \alpha \left(1 + \frac{2}{N-2} \right) + B_n \right)^{-1} \right\} 
 \end{equation}
@@ -632,6 +632,37 @@ Now, using \citet[Lemma 2]{koskela2018} again, but with $c_N(r)$ replaced by $c_
 \E \left[ \sum_{r=1}^{\tau_N(t)} c_N(r)^2 \right] \notag\\
 &\overset{N\to\infty}{\longrightarrow} 1 - (\alpha + B_n)^2 \times 0 = 1 .
 \end{align}
+\end{proof}
+
+\begin{lemma}
+For all $k\geq 1$, for all $t>0$,
+\begin{equation}
+\lim_{N\to\infty} \Prob \left[k \leq \tau_N(t), \bigcap_{r=1}^{\tau_N(t)} E_r \right] = 1 .
+\end{equation}
+\end{lemma}
+\begin{proof}
+We will construct a constant $C_1$ such that 
+\begin{equation}\label{eq:38}
+\Prob \left[  \bigcap_{r=1}^{\tau_N(t)} \{ c_N(r) < C_1 \} \right]
+\leq \Prob \left[k \leq \tau_N(t), \bigcap_{r=1}^{\tau_N(t)} E_r \right]
+\end{equation}
+and
+\begin{equation}\label{eq:39}
+\lim_{N\to\infty} \Prob \left[  \bigcap_{r=1}^{\tau_N(t)} \{ c_N(r) < C_1 \} \right] =1 .
+\end{equation}
+Any $C_1 \leq \frac{(N-3)_{n-3}}{N^{n-3}} \left( \alpha \left(1 + \frac{2}{N-2} \right) + B_n \right)^{-1}$ will be sufficient for $\bigcap_{r=1}^{\tau_N(t)} E_r$.
+Furthermore, we can write 
+\begin{equation}
+\{ \tau_N(t) \geq k \} 
+= \left\{ \min \left\{ s \geq 1 : \sum_{r=1}^{s} c_N(r) \geq t \right\} \geq k \right\}
+= \left\{ \sum_{r=1}^{k-1} c_N(r) < t \right\}
+\supseteq \bigcap_{r=1}^{k-1} \left \{ c_N(r) < \frac{t}{k} \right\}.
+\end{equation}
+A suitable choice to satisfy \eqref{eq:38} would thus be
+\begin{equation}
+C_1 = \min \left\{ \frac{(N-3)_{n-3}}{N^{n-3}} \left( \alpha \left(1 + \frac{2}{N-2} \right) + B_n \right)^{-1} ,\, \frac{t}{k} \right\} .
+\end{equation}
+Noting that $t$ is fixed, it can be shown that \eqref{eq:39} is satisfied by modifying the constant in the proof of Lemma \ref{thm:indicators_prob1}.
 \end{proof}
 
 \bibliography{../smc.bib}
