@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  7 OCT 2020 11:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  8 OCT 2020 12:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -346,19 +346,19 @@ LaTeX Font Info:    Try loading font information for U+bbm on input line 225.
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
 ) [2] [3]
 [4]
-Overfull \hbox (13.14967pt too wide) detected at line 452
+Overfull \hbox (18.55598pt too wide) detected at line 452
 []
  []
 
 [5] [6] [7] (./weakconvproof.bbl [8]) [9] (./weakconvproof.aux) ) 
 Here is how much of TeX's memory you used:
- 3848 strings out of 492649
- 53212 string characters out of 6129623
- 144132 words of memory out of 5000000
- 7642 multiletter control sequences out of 15000+600000
- 12242 words of font info for 49 fonts, out of 8000000 for 9000
+ 3853 strings out of 492649
+ 53268 string characters out of 6129623
+ 144149 words of memory out of 5000000
+ 7646 multiletter control sequences out of 15000+600000
+ 12940 words of font info for 51 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,17n,43p,367b,319s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,17n,43p,367b,322s stack positions out of 5000i,500n,10000p,200000b,80000s
  </Users/suzie
 /Library/texlive/2018/texmf-var/fonts/pk/ljfour/public/bbm/bbm10.600pk></usr/lo
 cal/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/loc
@@ -380,7 +380,7 @@ f-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2018/texmf-
 dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2018/texmf-d
 ist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2018/tex
 mf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
-Output written on weakconvproof.pdf (9 pages, 229167 bytes).
+Output written on weakconvproof.pdf (9 pages, 229052 bytes).
 PDF statistics:
  115 PDF objects out of 1000 (max. 8388607)
  83 compressed objects within 1 object stream

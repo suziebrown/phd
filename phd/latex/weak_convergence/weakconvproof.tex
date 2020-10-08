@@ -129,30 +129,30 @@ Thus $p_{\xi\xi}(t)$ is decreasing in the number of blocks of $\xi$, and is ther
 \begin{lemma}
 For any $0 < t < \infty$,
 \begin{equation}
-\lim_{N\to\infty} \E\left[ \prod_{r=1}^{\tau_N(t)} (1-p_r) \right] = e^{-\alpha t}
+\lim_{N\to\infty} \E\left[ \prod_{r=1}^{\tau_N(t)} (1-p_r) \right] = e^{-\alpha_n t}
 \end{equation}
-where $\alpha := n(n-1)/2$.
+where $\alpha_n := n(n-1)/2$.
 \end{lemma}
 \begin{proof}
 %\textbf{\\Lower Bound}\\
 %From \citet[Lemma 1 Case 1]{koskela2018}, taking $\xi=\Delta$, we have
 %\begin{equation}
-%1-p_t = p_{\Delta\Delta}(t) \geq 1 - \alpha (1+O(N^{-1})) \left[ \frac{(3n-1)(n-2)}{6N^2} + c_N(t) \right] .
+%1-p_t = p_{\Delta\Delta}(t) \geq 1 - \alpha_n (1+O(N^{-1})) \left[ \frac{(3n-1)(n-2)}{6N^2} + c_N(t) \right] .
 %\end{equation}
 %Hence, by a multinomial expansion,
 %\begin{align*}
 %\prod_{r=1}^{\tau_N(t)} (1-p_r)
-%&\geq \prod_{r=1}^{\tau_N(t)} \left\{ 1 - \alpha (1+O(N^{-1}) \left[ \frac{(3n-1)(n-2)}{6N^2} + c_N(r) \right] \right\} \\
+%&\geq \prod_{r=1}^{\tau_N(t)} \left\{ 1 - \alpha_n (1+O(N^{-1}) \left[ \frac{(3n-1)(n-2)}{6N^2} + c_N(r) \right] \right\} \\
 %&= 1 + \sum_{k=1}^\infty \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
-%\left\{ - \alpha (1+O(N^{-1})) \left[ \frac{(3n-1)(n-2)}{6N^2} + c_N(r_j) \right] \right\} \\
-%&= 1 + \sum_{k=1}^\infty \left\{- \alpha (1+O(N^{-1}))\right\}^k \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
+%\left\{ - \alpha_n (1+O(N^{-1})) \left[ \frac{(3n-1)(n-2)}{6N^2} + c_N(r_j) \right] \right\} \\
+%&= 1 + \sum_{k=1}^\infty \left\{- \alpha_n (1+O(N^{-1}))\right\}^k \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
 %\left\{ \frac{(3n-1)(n-2)}{6N^2} + c_N(r_j) \right\} 
 %\end{align*}
 %where the empty sum is taken to be zero.
 %Taking expectations,
 %\begin{equation}\label{eq:9}
 %\E \left[ \prod_{r=1}^{\tau_N(t)} (1-p_r) \right]
-%\geq 1 + \sum_{k=1}^\infty \left\{- \alpha (1+O(N^{-1}))\right\}^k \E \left[ \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
+%\geq 1 + \sum_{k=1}^\infty \left\{- \alpha_n (1+O(N^{-1}))\right\}^k \E \left[ \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
 %\left\{ \frac{(3n-1)(n-2)}{6N^2} + c_N(r_j) \right\} \right]
 %\end{equation}
 %(the infinite sum has only finitely many non-zero summands, since the inner sum is empty for $k>\tau_N(t)$, which justifies swapping the sum and expectation.)
@@ -186,39 +186,39 @@ where $\alpha := n(n-1)/2$.
 %
 %Combining these upper and lower limits, we conclude that
 %\begin{equation}
-%1 + \sum_{k=1}^\infty \left\{- \alpha (1+O(N^{-1}))\right\}^k \E \left[ \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
+%1 + \sum_{k=1}^\infty \left\{- \alpha_n (1+O(N^{-1}))\right\}^k \E \left[ \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
 %\left\{ \frac{(3n-1)(n-2)}{6N^2} + c_N(r_j) \right\} \right]
-%\longrightarrow 1+ \sum_{k=1}^\infty (-\alpha)^k \frac{1}{k!} t^k
-%= e^{-\alpha t}
+%\longrightarrow 1+ \sum_{k=1}^\infty (-\alpha_n)^k \frac{1}{k!} t^k
+%= e^{-\alpha_n t}
 %\end{equation}
 %as $N\to\infty$.
-The strategy is to find upper and lower bounds on $\E\left[ \prod_{r=1}^{\tau_N(t)} (1-p_r) \right]$, both of which converge to $e^{-\alpha t}$.\\
+The strategy is to find upper and lower bounds on $\E\left[ \prod_{r=1}^{\tau_N(t)} (1-p_r) \right]$, both of which converge to $e^{-\alpha_n t}$.\\
 \textbf{Lower Bound}\\ %(with weaker assumptions than above)
 From \citet[Equation (14)]{brown2020}, taking $\xi=\Delta$, we have
 \begin{equation}\label{eq:9a}
-1-p_t = p_{\Delta\Delta}(t) \geq 1 - \alpha (1+O(N^{-1})) \left[c_N(t) + B_n D_N(t) \right]
+1-p_t = p_{\Delta\Delta}(t) \geq 1 - \alpha_n (1+O(N^{-1})) \left[c_N(t) + B_n D_N(t) \right]
 \end{equation}
 where $B_n >0$ and the $O(N^{-1})$ term does not depend on $t$.
 In particular,
 \begin{equation}
-1-p_t = p_{\Delta\Delta}(t) \geq 1 - \frac{N^{n-2}}{(N-2)_{n-2}} \alpha c_N(t) - \frac{N^{n-3}}{(N-3)_{n-3}} B_n D_N(t) .
+1-p_t = p_{\Delta\Delta}(t) \geq 1 - \frac{N^{n-2}}{(N-2)_{n-2}} \alpha_n c_N(t) - \frac{N^{n-3}}{(N-3)_{n-3}} B_n D_N(t) .
 \end{equation}
 Since $D_N(t) \leq c_N(t)$, a sufficient condition for the bound to be positive is
 \begin{equation}
-E_t := \left\{ c_N(t) < \frac{(N-3)_{n-3}}{N^{n-3}} \left( \alpha \left(1 + \frac{2}{N-2} \right) + B_n \right)^{-1} \right\} .
+E_t := \left\{ c_N(t) < \frac{(N-3)_{n-3}}{N^{n-3}} \left( \alpha_n \left(1 + \frac{2}{N-2} \right) + B_n \right)^{-1} \right\} .
 \end{equation}
-%A sufficient condition for the RHS to be non-negative is $c_N(t) \leq [\alpha + B_n (1- 2/N)]^{-1}$. %% not true: check workings.
-%% NB: $B_n$ here is equivalent to $B_n/\alpha$ in notation of \citet{koskela2018}.
+%A sufficient condition for the RHS to be non-negative is $c_N(t) \leq [\alpha_n + B_n (1- 2/N)]^{-1}$. %% not true: check workings.
+%% NB: $B_n$ here is equivalent to $B_n/\alpha_n$ in notation of \citet{koskela2018}.
 Hence, by a multinomial expansion,
 \begin{align}
 \prod_{r=1}^{\tau_N(t)} (1-p_r)
-&\geq \prod_{r=1}^{\tau_N(t)} \left\{ 1 - \alpha (1+O(N^{-1}))\left[ c_N(r) + B_n D_N(r) \right] \right\}
+&\geq \prod_{r=1}^{\tau_N(t)} \left\{ 1 - \alpha_n (1+O(N^{-1}))\left[ c_N(r) + B_n D_N(r) \right] \right\}
 \times \prod_{r=1}^{\tau_N(t)} \1{E_r} \notag\\
 &= \left( 1 + \sum_{k=1}^{\tau_N(t)} \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
-\left\{ - \alpha (1+O(N^{-1})) \left[ c_N(r_j) + B_n D_N(r_j) \right] \right\} \right)
+\left\{ - \alpha_n (1+O(N^{-1})) \left[ c_N(r_j) + B_n D_N(r_j) \right] \right\} \right)
 \times \prod_{r=1}^{\tau_N(t)} \1{E_r} \notag\\
 &= \prod_{r=1}^{\tau_N(t)} \1{E_r} 
-+ \sum_{k=1}^{\tau_N(t)} \left\{- \alpha (1+O(N^{-1}))\right\}^k 
++ \sum_{k=1}^{\tau_N(t)} \left\{- \alpha_n (1+O(N^{-1}))\right\}^k 
 \left(\prod_{r=1}^{\tau_N(t)} \1{E_r} \right)
 \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
 \left\{ c_N(r_j) + B_n D_N(r_j) \right\} .
@@ -228,10 +228,10 @@ Taking expectations,
 \begin{align}\label{eq:9}
 \E \left[ \prod_{r=1}^{\tau_N(t)} (1-p_r) \right]
 &\geq \E\left[ \prod_{r=1}^{\tau_N(t)} \1{E_r} \right] \notag\\
-&\qquad + \E \left[ \sum_{k=1}^{\infty} \left\{- \alpha (1+O(N^{-1}))\right\}^k \I{k \leq \tau_N(t)} \1{\bigcap E_r} \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
+&\qquad + \E \left[ \sum_{k=1}^{\infty} \left\{- \alpha_n (1+O(N^{-1}))\right\}^k \I{k \leq \tau_N(t)} \1{\bigcap E_r} \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
 \left\{ c_N(r_j) + B_n D_N(r_j) \right\} \right] \notag\\
 &= \Prob \left[ \bigcap_{r=1}^{\tau_N(t)} E_r \right] \notag\\
-&\qquad + \sum_{k=1}^{\infty} \left\{- \alpha (1+O(N^{-1}))\right\}^k
+&\qquad + \sum_{k=1}^{\infty} \left\{- \alpha_n (1+O(N^{-1}))\right\}^k
 \E \left[ \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
 \left\{ c_N(r_j) + B_n D_N(r_j) \right\} \middle| k\leq\tau_N(t), \bigcap_{r=1}^{\tau_N(t)} E_r \right] \notag\\
 &\qquad \times \Prob \left[ k\leq \tau_N(t), \bigcap_{r=1}^{\tau_N(t)} E_r \right] .
@@ -254,7 +254,7 @@ From \citet[Equation (8)]{koskela2018},
  - \frac{1}{k!} \binom{k}{2} (t+1)^{k-2} \left( \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right) 
 \end{align}
 by the definition of $\tau_N$.
-Then, since the conditioning can only decrease the values of $c_N(s)$,
+Then
 \begin{align}\label{eq:10}
 \E &\left[ \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
 \left\{ c_N(r_j) + B_n D_N(r_j) \right\}  
@@ -428,27 +428,27 @@ Combining the upper and lower limits, we conclude that
 \end{equation}
 and thus
 %\begin{equation}
-%1 + \sum_{k=1}^\infty \left\{- \alpha (1+O(N^{-1}))\right\}^k \E \left[ \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
+%1 + \sum_{k=1}^\infty \left\{- \alpha_n (1+O(N^{-1}))\right\}^k \E \left[ \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
 %\left\{ c_N(r_j) + B_n D_N(r_j) \right\} \right]
-%\longrightarrow 1+ \sum_{k=1}^\infty (-\alpha)^k \frac{1}{k!} t^k
-%= e^{-\alpha t}
+%\longrightarrow 1+ \sum_{k=1}^\infty (-\alpha_n)^k \frac{1}{k!} t^k
+%= e^{-\alpha_n t}
 %\end{equation}
 \begin{align}\label{eq:20}
 \lim_{N\to\infty} &\E \left[ \prod_{r=1}^{\tau_N(t)} \1{E_r} 
-+ \sum_{k=1}^{\tau_N(t)} \left\{- \alpha (1+O(N^{-1}))\right\}^k 
++ \sum_{k=1}^{\tau_N(t)} \left\{- \alpha_n (1+O(N^{-1}))\right\}^k 
 \left(\prod_{r=1}^{\tau_N(t)} \1{E_r} \right)
 \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
 \left\{ c_N(r_j) + B_n D_N(r_j) \right\} \right] \notag\\
 &= \lim_{N\to\infty} \Prob \left[ \bigcap_{r=1}^{\tau_N(t)} E_r \right] \notag\\
-&\qquad + \lim_{N\to\infty} \sum_{k=1}^\infty \left\{- \alpha (1+O(N^{-1}))\right\}^k
+&\qquad + \lim_{N\to\infty} \sum_{k=1}^\infty \left\{- \alpha_n (1+O(N^{-1}))\right\}^k
 \E \left[ \I{k\leq\tau_N(t)} \left(\prod_{r=1}^{\tau_N(t)} \1{E_r} \right) \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
 \left\{ c_N(r_j) + B_n D_N(r_j) \right\} \right] \notag\\
 &= \lim_{N\to\infty} \Prob \left[ \bigcap_{r=1}^{\tau_N(t)} E_r \right] \notag\\
-&\qquad + \sum_{k=1}^\infty (-\alpha)^k 
+&\qquad + \sum_{k=1}^\infty (-\alpha_n)^k 
 \lim_{N\to\infty} \E \left[ \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
 \left\{ c_N(r_j) + B_n D_N(r_j) \right\} \middle| k\leq\tau_N(t), \bigcap_{r=1}^{\tau_N(t)} E_r \right]
 \times \lim_{N\to\infty}\Prob \left[ k\leq \tau_N(t), \bigcap_{r=1}^{\tau_N(t)} E_r \right] \notag\\
-&= 1+ \sum_{k=1}^\infty (-\alpha)^k \frac{t^k}{k!} \times 1 = e^{-\alpha t} 
+&= 1+ \sum_{k=1}^\infty (-\alpha_n)^k \frac{t^k}{k!} \times 1 = e^{-\alpha_n t} 
 \end{align}
 as $N\to\infty$, where the last line follows from \eqref{eq:19} and Lemma \ref{thm:indicators_prob1}.
 
@@ -456,13 +456,14 @@ as $N\to\infty$, where the last line follows from \eqref{eq:19} and Lemma \ref{t
 \textbf{\\Upper Bound}\\
 From \citet[Lemma 1 Case 1]{koskela2018}, taking $\xi=\Delta$, we have
 \begin{equation}
-1-p_t = p_{\Delta\Delta}(t) \leq 1 - \alpha (1+O(N^{-1})) \left[ c_N(t) - B_n^\prime D_N(t) \right] .
+1-p_t = p_{\Delta\Delta}(t) \leq 1 - \alpha_n (1+O(N^{-1})) \left[ c_N(t) - B_n^\prime D_N(t) \right] 
 \end{equation}
+where again the $O(N^{-1})$ term does not depend on $t$.
 %% NB: $B_n^\prime = \binom{n-1}{2}$.
 A multinomial expansion as before yields
 \begin{equation}
 \prod_{r=1}^{\tau_N(t)} (1-p_r)
-\leq 1 + \sum_{k=1}^{\tau_N(t)} \left\{- \alpha (1+O(N^{-1}))\right\}^k \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
+\leq 1 + \sum_{k=1}^{\tau_N(t)} \left\{- \alpha_n (1+O(N^{-1}))\right\}^k \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
 \left\{ c_N(r_j) - B_n^\prime D_N(r_j) \right\} .
 \end{equation}
 %Similarly to \eqref{eq:10}, an upper bound for the inner sum is
@@ -585,63 +586,66 @@ We can now conclude that
 and thus, by calculations analogous to \eqref{eq:20},
 \begin{equation}
 \lim_{N\to\infty} \E\left[
-1 + \sum_{k=1}^{\tau_N(t)} \left\{- \alpha (1+O(N^{-1}))\right\}^k \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
+1 + \sum_{k=1}^{\tau_N(t)} \left\{- \alpha_n (1+O(N^{-1}))\right\}^k \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
 \left\{ c_N(r_j) - B_n^\prime D_N(r_j) \right\} \right]
-= 1+ \sum_{k=1}^\infty (-\alpha)^k \frac{1}{k!} t^k
-= e^{-\alpha t}
+= 1+ \sum_{k=1}^\infty (-\alpha_n)^k \frac{1}{k!} t^k
+= e^{-\alpha_n t}
 \end{equation}
 as $N\to\infty$.
 
-We now have upper and lower bounds on $\lim_{N\to\infty} \E\left[ \prod_{r=1}^{\tau_N(t)} (1-p_r) \right]$, both of which are equal to $e^{-\alpha t}$, and the result follows.
+We now have upper and lower bounds on $\lim_{N\to\infty} \E\left[ \prod_{r=1}^{\tau_N(t)} (1-p_r) \right]$, both of which are equal to $e^{-\alpha_n t}$, and the result follows.
 \end{proof}
 
+
+%\begin{lemma}
+%For any $n \leq N \in \mathbb{N}$, for all $t \in \mathbb{N}$, define 
+%\begin{equation}
+%E_t := \left\{ c_N(t) < \frac{(N-3)_{n-3}}{N^{n-3}} \left( \alpha_n \left(1 + \frac{2}{N-2} \right) + B_n \right)^{-1} \right\} 
+%\end{equation}
+%where $\alpha_n$ and $B_n$ are positive constants as in \eqref{eq:9a}.
+%Then, for all $t>0$,
+%\begin{equation}
+%\lim_{N\to\infty} \Prob \left[  \bigcap_{r=1}^{\tau_N(t)} E_r \right] = 1 .
+%\end{equation}
+%\end{lemma}
+%\begin{proof}
+%\begin{align}
+%\Prob \left[  \bigcap_{r=1}^{\tau_N(t)} E_r \right]
+%&= 1 - \Prob \left[  \bigcup_{r=1}^{\tau_N(t)} E_r^c \right]
+%= 1 - \E \left[ \1{\bigcup E_r^c} \right]
+%\geq 1 - \E \left[ \sum_{r=1}^{\tau_N(t)} \1{E_r^c} \right] \notag\\
+%&= 1 - \E \left[ \sum_{r=1}^{\tau_N(t)}  \E [ \1{E_r^c} \mid \mathcal{F}_{r-1} ] \right]
+%= 1 - \E \left[ \sum_{r=1}^{\tau_N(t)} \Prob [E_r^c \mid \mathcal{F}_{r-1} ] \right] 
+%\end{align}
+%where the inequality holds by considering the two possible values of $\1{\bigcup E_r^c}$, and the second line follows from Lemma \ref{thm:kjjslemma2} with $f(r) = \1{E_r^c}$.
+%Using the generalised Markov inequality,
+%\begin{align}
+%\Prob [E_r^c \mid \mathcal{F}_{r-1} ] &= \Prob \left[ c_N(r) \geq \frac{(N-3)_{n-3}}{N^{n-3}} \left( \alpha_n \left(1 + \frac{2}{N-2} \right) + B_n \right)^{-1} \middle| \mathcal{F}_{r-1} \right] \notag\\
+%&\leq \E[c_N(r)^2 \mid \mathcal{F}_{r-1} ] \frac{N^{2(n-3)}}{(N-3)_{n-3}^2} \left( \alpha_n \left(1 + \frac{2}{N-2} \right) + B_n \right)^2 .
+%\end{align}
+%Now, using Lemma \ref{thm:kjjslemma2} again, this time with $f(r) = c_N(r)^2$,
+%\begin{align}
+%\Prob \left[  \bigcap_{r=1}^{\tau_N(t)} E_r \right]
+%&\geq 1 - \E \left[  \sum_{r=1}^{\tau_N(t)} \E[c_N(r)^2 \mid \mathcal{F}_{r-1} ] \frac{N^{2(n-3)}}{(N-3)_{n-3}^2} \left( \alpha_n \left(1 + \frac{2}{N-2} \right) + B_n \right)^2 \right] \notag\\
+%&= 1 - \frac{N^{2(n-3)}}{(N-3)_{n-3}^2} \left( \alpha_n \left(1 + \frac{2}{N-2} \right) + B_n \right)^2 
+%\E \left[ \sum_{r=1}^{\tau_N(t)} \E[c_N(r)^2 \mid \mathcal{F}_{r-1} ] \right] \notag\\
+%&= 1 - \frac{N^{2(n-3)}}{(N-3)_{n-3}^2} \left( \alpha_n \left(1 + \frac{2}{N-2} \right) + B_n \right)^2 
+%\E \left[ \sum_{r=1}^{\tau_N(t)} c_N(r)^2 \right] \notag\\
+%&\overset{N\to\infty}{\longrightarrow} 1 - (\alpha_n + B_n)^2 \times 0 = 1 .
+%\end{align}
+%\end{proof}
 
 \begin{lemma}\label{thm:indicators_prob1}
-For any $n \leq N \in \mathbb{N}$, for all $t \in \mathbb{N}$, define 
-\begin{equation}
-E_t := \left\{ c_N(t) < \frac{(N-3)_{n-3}}{N^{n-3}} \left( \alpha \left(1 + \frac{2}{N-2} \right) + B_n \right)^{-1} \right\} 
-\end{equation}
-where $\alpha$ and $B_n$ are positive constants as in \eqref{eq:9a}.
-Then, for all $t>0$,
-\begin{equation}
-\lim_{N\to\infty} \Prob \left[  \bigcap_{r=1}^{\tau_N(t)} E_r \right] = 1 .
+For all $k \in \mathbb{N}$, for all $t>0$,
+\begin{equation}\label{eq:37}
+\lim_{N\to\infty} \Prob \left[k \leq \tau_N(t), \bigcap_{r=1}^{\tau_N(t)} E_r \right] = 1 
+\qquad \text{and} \qquad
+\lim_{N\to\infty} \Prob \left[ \bigcap_{r=1}^{\tau_N(t)} E_r \right] = 1 .
 \end{equation}
 \end{lemma}
-\begin{proof}
-\begin{align}
-\Prob \left[  \bigcap_{r=1}^{\tau_N(t)} E_r \right]
-&= 1 - \Prob \left[  \bigcup_{r=1}^{\tau_N(t)} E_r^c \right]
-= 1 - \E \left[ \1{\bigcup E_r^c} \right]
-\geq 1 - \E \left[ \sum_{r=1}^{\tau_N(t)} \1{E_r^c} \right] \notag\\
-&= 1 - \E \left[ \sum_{r=1}^{\tau_N(t)}  \E [ \1{E_r^c} \mid \mathcal{F}_{r-1} ] \right]
-= 1 - \E \left[ \sum_{r=1}^{\tau_N(t)} \Prob [E_r^c \mid \mathcal{F}_{r-1} ] \right] 
-\end{align}
-where the inequality holds by considering the two possible values of $\1{\bigcup E_r^c}$, and the second line follows from \citet[Lemma 2]{koskela2018} when the function $c_N(r)$ is replaced by $\1{E_r^c}$.
-Using the generalised Markov inequality,
-\begin{align}
-\Prob [E_r^c \mid \mathcal{F}_{r-1} ] &= \Prob \left[ c_N(r) \geq \frac{(N-3)_{n-3}}{N^{n-3}} \left( \alpha \left(1 + \frac{2}{N-2} \right) + B_n \right)^{-1} \middle| \mathcal{F}_{r-1} \right] \notag\\
-&\leq \E[c_N(r)^2 \mid \mathcal{F}_{r-1} ] \frac{N^{2(n-3)}}{(N-3)_{n-3}^2} \left( \alpha \left(1 + \frac{2}{N-2} \right) + B_n \right)^2 .
-\end{align}
-Now, using \citet[Lemma 2]{koskela2018} again, but with $c_N(r)$ replaced by $c_N(r)^2$,
-\begin{align}
-\Prob \left[  \bigcap_{r=1}^{\tau_N(t)} E_r \right]
-&\geq 1 - \E \left[  \sum_{r=1}^{\tau_N(t)} \E[c_N(r)^2 \mid \mathcal{F}_{r-1} ] \frac{N^{2(n-3)}}{(N-3)_{n-3}^2} \left( \alpha \left(1 + \frac{2}{N-2} \right) + B_n \right)^2 \right] \notag\\
-&= 1 - \frac{N^{2(n-3)}}{(N-3)_{n-3}^2} \left( \alpha \left(1 + \frac{2}{N-2} \right) + B_n \right)^2 
-\E \left[ \sum_{r=1}^{\tau_N(t)} \E[c_N(r)^2 \mid \mathcal{F}_{r-1} ] \right] \notag\\
-&= 1 - \frac{N^{2(n-3)}}{(N-3)_{n-3}^2} \left( \alpha \left(1 + \frac{2}{N-2} \right) + B_n \right)^2 
-\E \left[ \sum_{r=1}^{\tau_N(t)} c_N(r)^2 \right] \notag\\
-&\overset{N\to\infty}{\longrightarrow} 1 - (\alpha + B_n)^2 \times 0 = 1 .
-\end{align}
-\end{proof}
 
-\begin{lemma}
-For all $k\geq 1$, for all $t>0$,
-\begin{equation}
-\lim_{N\to\infty} \Prob \left[k \leq \tau_N(t), \bigcap_{r=1}^{\tau_N(t)} E_r \right] = 1 .
-\end{equation}
-\end{lemma}
 \begin{proof}
-We will construct a constant $C_1$ such that 
+We first construct a constant $C_1$ such that 
 \begin{equation}\label{eq:38}
 \Prob \left[  \bigcap_{r=1}^{\tau_N(t)} \{ c_N(r) < C_1 \} \right]
 \leq \Prob \left[k \leq \tau_N(t), \bigcap_{r=1}^{\tau_N(t)} E_r \right]
@@ -650,7 +654,7 @@ and
 \begin{equation}\label{eq:39}
 \lim_{N\to\infty} \Prob \left[  \bigcap_{r=1}^{\tau_N(t)} \{ c_N(r) < C_1 \} \right] =1 .
 \end{equation}
-Any $C_1 \leq \frac{(N-3)_{n-3}}{N^{n-3}} \left( \alpha \left(1 + \frac{2}{N-2} \right) + B_n \right)^{-1}$ will be sufficient for $\bigcap_{r=1}^{\tau_N(t)} E_r$.
+Any $C_1 \leq \frac{(N-3)_{n-3}}{N^{n-3}} \left( \alpha_n \left(1 + \frac{2}{N-2} \right) + B_n \right)^{-1}$ will be sufficient for $\bigcap_{r=1}^{\tau_N(t)} E_r$.
 Furthermore, we can write 
 \begin{equation}
 \{ \tau_N(t) \geq k \} 
@@ -660,10 +664,48 @@ Furthermore, we can write
 \end{equation}
 A suitable choice to satisfy \eqref{eq:38} would thus be
 \begin{equation}
-C_1 = \min \left\{ \frac{(N-3)_{n-3}}{N^{n-3}} \left( \alpha \left(1 + \frac{2}{N-2} \right) + B_n \right)^{-1} ,\, \frac{t}{k} \right\} .
+C_1 = \min \left\{ \frac{(N-3)_{n-3}}{N^{n-3}} \left( \alpha_n \left(1 + \frac{2}{N-2} \right) + B_n \right)^{-1} ,\, \frac{t}{k} \right\} .
 \end{equation}
-Noting that $t$ is fixed, it can be shown that \eqref{eq:39} is satisfied by modifying the constant in the proof of Lemma \ref{thm:indicators_prob1}.
+Now we show that this choice of $C_1$ satisfies \eqref{eq:39}.
+\begin{align}
+\Prob \left[  \bigcap_{r=1}^{\tau_N(t)} \{c_N(r) < C_1\} \right]
+&= 1 - \Prob \left[  \bigcup_{r=1}^{\tau_N(t)} \{c_N(r) \geq C_1\} \right]
+= 1 - \E \left[ \1{\bigcup \{c_N(r) \geq C_1\} } \right]
+\geq 1 - \E \left[ \sum_{r=1}^{\tau_N(t)} \1{\{c_N(r) \geq C_1\}} \right] \notag\\
+&= 1 - \E \left[ \sum_{r=1}^{\tau_N(t)}  \E [ \1{\{c_N(r) \geq C_1\}} \mid \mathcal{F}_{r-1} ] \right]
+= 1 - \E \left[ \sum_{r=1}^{\tau_N(t)} \Prob [\{c_N(r) \geq C_1\} \mid \mathcal{F}_{r-1} ] \right] 
+\end{align}
+where the inequality holds by considering the two possible values of $\1{\bigcup \{c_N(r) \geq C_1\}}$, and the second line follows from Lemma \ref{thm:kjjslemma2} with $f(r) = \1{\{c_N(r) \geq C_1\}}$.
+Using the generalised Markov inequality,
+\begin{align}
+\Prob [\{c_N(r) \geq C_1\} \mid \mathcal{F}_{r-1} ] 
+\leq C_1^{-2} \, \E[c_N(r)^2 \mid \mathcal{F}_{r-1} ] .
+\end{align}
+Now, using Lemma \ref{thm:kjjslemma2} again, this time with $f(r) = c_N(r)^2$,
+\begin{align}
+\Prob \left[  \bigcap_{r=1}^{\tau_N(t)} \{c_N(r) < C_1\} \right]
+&\geq 1 - \E \left[  \sum_{r=1}^{\tau_N(t)} C_1^{-2} \, \E[c_N(r)^2 \mid \mathcal{F}_{r-1} ] \right] \notag\\
+&= 1 - C_1^{-2} \,
+\E \left[ \sum_{r=1}^{\tau_N(t)} \E[c_N(r)^2 \mid \mathcal{F}_{r-1} ] \right] \notag\\
+&= 1 - C_1^{-2} \,
+\E \left[ \sum_{r=1}^{\tau_N(t)} c_N(r)^2 \right] \notag\\
+&\overset{N\to\infty}{\longrightarrow} 1 - \min\{(\alpha_n + B_n)^2 , k^2/t^2 \} \times 0 = 1 .
+\end{align}
+Clearly $\Prob \left[k \leq \tau_N(t), \bigcap_{r=1}^{\tau_N(t)} E_r \right] \leq \Prob \left[\bigcap_{r=1}^{\tau_N(t)} E_r \right]$, so the second part of \eqref{eq:37} follows as an immediate corollary.
 \end{proof}
+
+
+The following Lemma is taken from \citet[Lemma 2]{koskela2018}, where the function is set to $f(t) = c_N(t)$, but the authors remark that the result holds for other choices of function.
+\begin{lemma}\label{thm:kjjslemma2}
+Let $(\mathcal{F}_t)$ be the filtration generated by the offspring counts $\nu_t^{(1:N)}$ at each generation $t$.
+Let $f(t)$ be any $\mathcal{F}_t$-measurable function. %%% not sure measurability is even necessary
+Then
+\begin{equation}
+\E \left[ \sum_{r=1}^{\tau_N(t)} f(r) \right] 
+= \E \left[ \sum_{r=1}^{\tau_N(t)} \E [ f(r) \mid \mathcal{F}_{r-1} ] \right] .
+\end{equation}
+\end{lemma}
+%%% include a proof, or not?
 
 \bibliography{../smc.bib}
 \end{document}
