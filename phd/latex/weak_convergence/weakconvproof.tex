@@ -237,6 +237,9 @@ Taking expectations,
 &\qquad \times \Prob \left[ k\leq \tau_N(t), \bigcap_{r=1}^{\tau_N(t)} E_r \right] .
 \end{align}
 %(the infinite sum has only finitely many non-zero summands, since the inner sum is empty for $k>\tau_N(t)$, which justifies swapping the sum and expectation.)
+Swapping the expectation with the infinite sum is justified by the dominated convergence theorem, the calculations for which are almost identical to the invocation of Tannery's theorem in equations 
+\eqref{eq:21a}--\eqref{eq:26a}.
+
 We want to show that the conditional expectation on the right converges to $t^k/k!$, for reasons that will become clear. The strategy is to upper and lower bound this expectation by quantities that converge to $t^k/k!$. 
 
 First the lower bound. 
@@ -403,7 +406,7 @@ Taking expectations,
 \E\left[ \sum_{r=1}^{\tau_N(t)} D_N(r) \right]
 \right)
 \left(\Prob \left[k\leq\tau_N(t), \bigcap_{r=1}^{\tau_N(t)} E_r \right] \right)^{-1} \notag\\
-&\longrightarrow \frac{1}{k!} t^k .
+&\longrightarrow \frac{1}{k!} t^k . \label{eq:19a}
 \end{align}
 %%% even decreasing expectation of D_N ?
 The limit follows from Lemma \ref{thm:indicators_prob1} and \citet[Equations (3),(4)]{brown2020} along with the fact that, since $c_N(s) \in [0,1]$ for all $s$, $\E[c_N(s)^k] \leq \E[c_N(s)]$ for all $k\geq 1$, and the expansion
@@ -416,41 +419,91 @@ The limit follows from Lemma \ref{thm:indicators_prob1} and \citet[Equations (3)
 =\sum_{i=0}^k \binom{k}{i} t^i \,
 \E\left[ c_N(\tau_N(t))^{k-i} \right]
 %= \left\{ t^k + k t^{k-1} \E[c_N(\tau_N(t))] + \dots \right\}
-\longrightarrow t^k .
+\longrightarrow t^k 
 \end{equation}
+which holds for any fixed $k$.
 
 Combining the upper and lower limits, we conclude that
 \begin{equation}\label{eq:19}
 \lim_{N\to\infty} \E \left[ \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
 \left\{ c_N(r_j) + B_n D_N(r_j) \right\} 
 \middle| k\leq\tau_N(t), \bigcap_{r=1}^{\tau_N(t)} E_r \right]
-= \frac{1}{k!} t^k
+= \frac{1}{k!} t^k .
 \end{equation}
-and thus
+Now, starting with \eqref{eq:9}, we have
+\begin{align}\label{eq:21a}
+\lim_{N\to\infty} &\E \left[ \prod_{r=1}^{\tau_N(t)} (1-p_r) \right]
+\geq \lim_{N\to\infty} \Prob \left[ \bigcap_{r=1}^{\tau_N(t)} E_r \right] \notag\\
+&+ \lim_{N\to\infty} \sum_{k=1}^\infty \left\{ -\alpha_n (1+ O(N^{-1})) \right\}^k 
+\E \left[ \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
+\left\{ c_N(r_j) + B_n D_N(r_j) \right\} \middle| k\leq\tau_N(t), \bigcap_{r=1}^{\tau_N(t)} E_r \right]
+\Prob \left[ k \leq \tau_N(t) , \bigcap_{r=1}^{\tau_N(t)} E_r \right]
+\end{align}
+Since $\tau_N(t) \to \infty$, some care must be taken when exchanging the limit with the sum. We will use Tannery's theorem (a special case of dominated convergence) to show that this is okay.
+Let 
+\begin{equation}
+a_k(N) := \{ -\alpha_n (1+ O(N^{-1})) \}^k 
+\E \left[ \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
+\left\{ c_N(r_j) + B_n D_N(r_j) \right\} \middle| k\leq\tau_N(t), \bigcap_{r=1}^{\tau_N(t)} E_r \right]
+\Prob \left[ k \leq \tau_N(t) , \bigcap_{r=1}^{\tau_N(t)} E_r \right] .
+\end{equation}
+We know from \eqref{eq:19} and Lemma \ref{thm:indicators_prob1} that
+\begin{equation}
+\lim_{N\to\infty} a_k(N) = (-\alpha_n)^k \frac{1}{k!}t^k =: b_k.
+\end{equation}
+Furthermore, using \eqref{eq:19a},
+\begin{align}
+|a_k(N)| 
+&\leq \{ \alpha_n (1+ O(N^{-1})) \}^k 
+\left( \frac{1}{k!} (t+1)^k + \frac{1}{k!} \sum_{I=0}^{k-1} \binom{k}{I} (B_n)^{k-I} (t+1)^{k-1} \E \left[ \sum_{r=1}^{\tau_N(t)} c_N(r) \right] \right) \times 1 \notag\\
+&\leq \{ \alpha_n (1+ O(N^{-1})) \}^k 
+\left( \frac{1}{k!} (t+1)^k + \frac{1}{k!} \sum_{I=0}^{k-1} \binom{k}{I} (B_n)^{k-I} (t+1)^k \right) \notag\\
+&= \{ \alpha_n (1+ O(N^{-1})) \}^k 
+\frac{1}{k!} (t+1)^k \left( 1+\sum_{I=0}^{k-1} \binom{k}{I} (B_n)^{k-I} \right) \notag\\
+&= \{ \alpha_n (1+ O(N^{-1})) \}^k \frac{1}{k!} (t+1)^k (1 + B_n)^k 
+=: M_k .
+\end{align}
+Now
+\begin{equation}
+\sum_{k=0}^\infty M_k = \exp \left\{ \alpha_n (1+O(N^{-1})) (t+1) (1+B_n) \right\} < \infty
+\end{equation}
+so we can apply Tannery's theorem:
+\begin{equation}\label{eq:26a}
+\lim_{N\to\infty} \sum_{k=1}^\infty a_k(N)
+= \sum_{k=1}^\infty b_k
+= e^{-\alpha_n t} -1
+\end{equation}
+and finally, applying Lemma \ref{thm:indicators_prob1},
+\begin{equation}
+\lim_{N\to\infty} \E \left[ \prod_{r=1}^{\tau_N(t)} (1-p_r) \right]
+\geq 1 + e^{-\alpha_n t} -1 = e^{-\alpha_n t} .
+\end{equation}
 %\begin{equation}
 %1 + \sum_{k=1}^\infty \left\{- \alpha_n (1+O(N^{-1}))\right\}^k \E \left[ \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
 %\left\{ c_N(r_j) + B_n D_N(r_j) \right\} \right]
 %\longrightarrow 1+ \sum_{k=1}^\infty (-\alpha_n)^k \frac{1}{k!} t^k
 %= e^{-\alpha_n t}
 %\end{equation}
-\begin{align}\label{eq:20}
-\lim_{N\to\infty} &\E \left[ \prod_{r=1}^{\tau_N(t)} \1{E_r} 
-+ \sum_{k=1}^{\tau_N(t)} \left\{- \alpha_n (1+O(N^{-1}))\right\}^k 
-\left(\prod_{r=1}^{\tau_N(t)} \1{E_r} \right)
-\sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
-\left\{ c_N(r_j) + B_n D_N(r_j) \right\} \right] \notag\\
-&= \lim_{N\to\infty} \Prob \left[ \bigcap_{r=1}^{\tau_N(t)} E_r \right] \notag\\
-&\qquad + \lim_{N\to\infty} \sum_{k=1}^\infty \left\{- \alpha_n (1+O(N^{-1}))\right\}^k
-\E \left[ \I{k\leq\tau_N(t)} \left(\prod_{r=1}^{\tau_N(t)} \1{E_r} \right) \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
-\left\{ c_N(r_j) + B_n D_N(r_j) \right\} \right] \notag\\
-&= \lim_{N\to\infty} \Prob \left[ \bigcap_{r=1}^{\tau_N(t)} E_r \right] \notag\\
-&\qquad + \sum_{k=1}^\infty (-\alpha_n)^k 
-\lim_{N\to\infty} \E \left[ \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
-\left\{ c_N(r_j) + B_n D_N(r_j) \right\} \middle| k\leq\tau_N(t), \bigcap_{r=1}^{\tau_N(t)} E_r \right]
-\times \lim_{N\to\infty}\Prob \left[ k\leq \tau_N(t), \bigcap_{r=1}^{\tau_N(t)} E_r \right] \notag\\
-&= 1+ \sum_{k=1}^\infty (-\alpha_n)^k \frac{t^k}{k!} \times 1 = e^{-\alpha_n t} 
-\end{align}
-as $N\to\infty$, where the last line follows from \eqref{eq:19} and Lemma \ref{thm:indicators_prob1}.
+%%%
+%\\---\\
+%\begin{align}\label{eq:20}
+%\lim_{N\to\infty} &\E \left[ \prod_{r=1}^{\tau_N(t)} \1{E_r} 
+%+ \sum_{k=1}^{\tau_N(t)} \left\{- \alpha_n (1+O(N^{-1}))\right\}^k 
+%\left(\prod_{r=1}^{\tau_N(t)} \1{E_r} \right)
+%\sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
+%\left\{ c_N(r_j) + B_n D_N(r_j) \right\} \right] \notag\\
+%&= \lim_{N\to\infty} \Prob \left[ \bigcap_{r=1}^{\tau_N(t)} E_r \right] \notag\\
+%&\qquad + \lim_{N\to\infty} \sum_{k=1}^\infty \left\{- \alpha_n (1+O(N^{-1}))\right\}^k
+%\E \left[ \I{k\leq\tau_N(t)} \left(\prod_{r=1}^{\tau_N(t)} \1{E_r} \right) \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
+%\left\{ c_N(r_j) + B_n D_N(r_j) \right\} \right] \notag\\
+%&= \lim_{N\to\infty} \Prob \left[ \bigcap_{r=1}^{\tau_N(t)} E_r \right] \notag\\
+%&\qquad + \sum_{k=1}^\infty (-\alpha_n)^k 
+%\lim_{N\to\infty} \E \left[ \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
+%\left\{ c_N(r_j) + B_n D_N(r_j) \right\} \middle| k\leq\tau_N(t), \bigcap_{r=1}^{\tau_N(t)} E_r \right]
+%\times \lim_{N\to\infty}\Prob \left[ k\leq \tau_N(t), \bigcap_{r=1}^{\tau_N(t)} E_r \right] \notag\\
+%&= 1+ \sum_{k=1}^\infty (-\alpha_n)^k \frac{t^k}{k!} \times 1 = e^{-\alpha_n t} 
+%\end{align}
+%as $N\to\infty$, where the last line follows from \eqref{eq:19} and Lemma \ref{thm:indicators_prob1}.
 
 
 \textbf{\\Upper Bound}\\
@@ -524,7 +577,7 @@ We are left with the first term in \eqref{eq:18}, which is upper bounded by
 \leq \frac{1}{k!}\left( \sum_{s=1}^{\tau_N(t)} c_N(s) \right)^k
 \leq \frac{1}{k!} \{t + c_N(\tau_N(t)) \}^k
 \end{equation}
-the expectation of which converges to $t^k/k!$ as in \eqref{eq:11}.
+the expectation of which (conditional on $k\leq\tau_N(t)$; otherwise the sum is empty and has expectation zero) converges to $t^k/k!$ as in \eqref{eq:11}.
 We use \citet[Equation (8)]{koskela2018} to construct a lower bound:
 \begin{align}
 \frac{1}{k!} \sum_{\substack{r_1\neq\dots\neq r_k \\ \text{all distinct}}}^{\tau_N(t)}
@@ -533,7 +586,7 @@ We use \citet[Equation (8)]{koskela2018} to construct a lower bound:
 - \frac{1}{k!} \binom{k}{2}  \left( \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right)  \left( \sum_{s=1}^{\tau_N(t)} c_N(s) \right)^{k-2} \notag\\
 &\geq \frac{1}{k!} t^k - \frac{1}{k!} \binom{k}{2} (t+1)^{k-2}  \left( \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right)
 \end{align}
-The expectation of this bound also converges to $t^k/k!$, using \citet[Equation (5)]{brown2020}.
+The expectation of this bound (conditional on $k\leq\tau_N(t)$) also converges to $t^k/k!$, using \citet[Equation (5)]{brown2020}.
 %To bound the first term we again call on \citet[Equation (8)]{koskela2018}:
 %\begin{align*}
 %\frac{1}{k!} \sum_{\substack{r_1\neq\dots\neq r_k \\ \text{all distinct}}}^{\tau_N(t)}
@@ -580,18 +633,22 @@ The expectation of this bound also converges to $t^k/k!$, using \citet[Equation 
 We can now conclude that
 \begin{equation}
 \lim_{N\to\infty} \E \left[ \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
-\left\{ c_N(r_j) - B_n^\prime D_N(r_j) \right\} \right]
+\left\{ c_N(r_j) - B_n^\prime D_N(r_j) \right\} \middle| k\leq \tau_N(t) \right]
 = \frac{1}{k!} t^k
 \end{equation}
-and thus, by calculations analogous to \eqref{eq:20},
-\begin{equation}
-\lim_{N\to\infty} \E\left[
+and thus, applying dominated convergence and Tannery's theorem as in the lower bound, along with Lemma \ref{thm:indicators_prob1},
+\begin{align}
+\lim_{N\to\infty} &\E\left[ \prod_{r=1}^{\tau_N(t)} (1-p_r \right] \notag\\
+&\leq \lim_{N\to\infty} \E\left[
 1 + \sum_{k=1}^{\tau_N(t)} \left\{- \alpha_n (1+O(N^{-1}))\right\}^k \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
-\left\{ c_N(r_j) - B_n^\prime D_N(r_j) \right\} \right]
-= 1+ \sum_{k=1}^\infty (-\alpha_n)^k \frac{1}{k!} t^k
-= e^{-\alpha_n t}
-\end{equation}
-as $N\to\infty$.
+\left\{ c_N(r_j) - B_n^\prime D_N(r_j) \right\} \right] \notag\\
+&= 1 + \sum_{k=1}^\infty \lim_{N\to\infty} \{ -\alpha_n(1+O(N^{-1})) \}^k
+\lim_{N\to\infty} \E \left[ \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
+\left\{ c_N(r_j) - B_n^\prime D_N(r_j) \right\} \middle| k\leq \tau_N(t) \right]
+\lim_{N\to\infty} \Prob\left[ k\leq \tau_N(t) \right] \notag\\
+&= 1+ \sum_{k=1}^\infty (-\alpha_n)^k \frac{1}{k!} t^k
+= e^{-\alpha_n t} .
+\end{align}
 
 We now have upper and lower bounds on $\lim_{N\to\infty} \E\left[ \prod_{r=1}^{\tau_N(t)} (1-p_r) \right]$, both of which are equal to $e^{-\alpha_n t}$, and the result follows.
 \end{proof}
@@ -639,8 +696,12 @@ We now have upper and lower bounds on $\lim_{N\to\infty} \E\left[ \prod_{r=1}^{\
 For all $k \in \mathbb{N}$, for all $t>0$,
 \begin{equation}\label{eq:37}
 \lim_{N\to\infty} \Prob \left[k \leq \tau_N(t), \bigcap_{r=1}^{\tau_N(t)} E_r \right] = 1 
+\end{equation}
+and consequently
+\begin{equation}\label{eq:37a}
+\lim_{N\to\infty} \Prob \left[ \bigcap_{r=1}^{\tau_N(t)} E_r \right] = 1 
 \qquad \text{and} \qquad
-\lim_{N\to\infty} \Prob \left[ \bigcap_{r=1}^{\tau_N(t)} E_r \right] = 1 .
+\lim_{N\to\infty} \Prob \left[ k \leq \tau_N(t) \right] = 1 .
 \end{equation}
 \end{lemma}
 
@@ -654,7 +715,7 @@ and
 \begin{equation}\label{eq:39}
 \lim_{N\to\infty} \Prob \left[  \bigcap_{r=1}^{\tau_N(t)} \{ c_N(r) < C_1 \} \right] =1 .
 \end{equation}
-Any $C_1 \leq \frac{(N-3)_{n-3}}{N^{n-3}} \left( \alpha_n \left(1 + \frac{2}{N-2} \right) + B_n \right)^{-1}$ will be sufficient for $\bigcap_{r=1}^{\tau_N(t)} E_r$.
+Any $C_1 \leq \frac{(N-3)_{n-3}}{N^{n-3}} \left( \alpha_n \left(1 + \frac{2}{N-2} \right) + B_n \right)^{-1}$ will suffice to ensure that $\{c_N(r) < C_1\} \subseteq E_r$ for all $r$.
 Furthermore, we can write 
 \begin{equation}
 \{ \tau_N(t) \geq k \} 
@@ -691,14 +752,14 @@ Now, using Lemma \ref{thm:kjjslemma2} again, this time with $f(r) = c_N(r)^2$,
 \E \left[ \sum_{r=1}^{\tau_N(t)} c_N(r)^2 \right] \notag\\
 &\overset{N\to\infty}{\longrightarrow} 1 - \min\{(\alpha_n + B_n)^2 , k^2/t^2 \} \times 0 = 1 .
 \end{align}
-Clearly $\Prob \left[k \leq \tau_N(t), \bigcap_{r=1}^{\tau_N(t)} E_r \right] \leq \Prob \left[\bigcap_{r=1}^{\tau_N(t)} E_r \right]$, so the second part of \eqref{eq:37} follows as an immediate corollary.
+Clearly $\Prob \left[k \leq \tau_N(t), \bigcap_{r=1}^{\tau_N(t)} E_r \right] \leq \Prob \left[\bigcap_{r=1}^{\tau_N(t)} E_r \right]$ and $\Prob \left[k \leq \tau_N(t), \bigcap_{r=1}^{\tau_N(t)} E_r \right] \leq \Prob \left[ k \leq \tau_N(t) \right]$, so \eqref{eq:37a} follows as an immediate corollary.
 \end{proof}
 
 
 The following Lemma is taken from \citet[Lemma 2]{koskela2018}, where the function is set to $f(t) = c_N(t)$, but the authors remark that the result holds for other choices of function.
 \begin{lemma}\label{thm:kjjslemma2}
-Let $(\mathcal{F}_t)$ be the filtration generated by the offspring counts $\nu_t^{(1:N)}$ at each generation $t$.
-Let $f(t)$ be any $\mathcal{F}_t$-measurable function. %%% not sure measurability is even necessary
+Let $(\mathcal{F}_t)$ be the backwards-in-time filtration generated by the offspring counts $\nu_t^{(1:N)}$ at each generation $t$,
+and let $f(t)$ be any deterministic function of $\nu_t^{(1:N)}$.
 Then
 \begin{equation}
 \E \left[ \sum_{r=1}^{\tau_N(t)} f(r) \right] 
