@@ -243,7 +243,7 @@ Swapping the expectation with the infinite sum is justified by the dominated con
 We want to show that the conditional expectation on the right converges to $t^k/k!$, for reasons that will become clear. The strategy is to upper and lower bound this expectation by quantities that converge to $t^k/k!$. 
 
 First the lower bound. 
-Assume that $k\leq \tau_N(t)$, ensuring that the sum is non-empty.
+Fix $k\leq \tau_N(t)$, so that the sum is non-empty.
 %The conditioning on $\bigcap E_r$ doesn't affect these bounds, which are based on general properties of $c_N$, $D_N$ and $\tau_N$. %%% Is this true???
 From \citet[Equation (8)]{koskela2018},
 \begin{align}
@@ -423,7 +423,7 @@ The limit follows from Lemma \ref{thm:indicators_prob1} and \citet[Equations (3)
 \end{equation}
 which holds for any fixed $k$.
 
-Combining the upper and lower limits, we conclude that
+Combining the upper and lower limits, we conclude that, for any fixed $k\leq \tau_N(t)$,
 \begin{equation}\label{eq:19}
 \lim_{N\to\infty} \E \left[ \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
 \left\{ c_N(r_j) + B_n D_N(r_j) \right\} 
@@ -511,9 +511,9 @@ From \citet[Lemma 1 Case 1]{koskela2018}, taking $\xi=\Delta$, we have
 \begin{equation}
 1-p_t = p_{\Delta\Delta}(t) \leq 1 - \alpha_n (1+O(N^{-1})) \left[ c_N(t) - B_n^\prime D_N(t) \right] 
 \end{equation}
-where again the $O(N^{-1})$ term does not depend on $t$.
+where the $O(N^{-1})$ term does not depend on $t$.
 %% NB: $B_n^\prime = \binom{n-1}{2}$.
-A multinomial expansion as before yields
+A multinomial expansion as in the lower bound yields
 \begin{equation}
 \prod_{r=1}^{\tau_N(t)} (1-p_r)
 \leq 1 + \sum_{k=1}^{\tau_N(t)} \left\{- \alpha_n (1+O(N^{-1}))\right\}^k \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
@@ -528,7 +528,7 @@ A multinomial expansion as before yields
 %\leq \frac{1}{k!} \{ t + c_N(\tau_N(t)) \}^k 
 %\end{equation}
 %with $\E[ \{ t + c_N(\tau_N(t)) \}^k] \longrightarrow t^k$ as shown in \eqref{eq:11}.
-Analogously to \eqref{eq:7}, assuming $k\leq\tau_N(t)$ we can write
+Analogously to \eqref{eq:7}, for fixed $k\leq\tau_N(t)$ we can write
 \begin{align}
 \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
 \left\{ c_N(r_j) - B_n^\prime D_N(r_j) \right\}
@@ -638,7 +638,7 @@ We can now conclude that
 \end{equation}
 and thus, applying dominated convergence and Tannery's theorem as in the lower bound, along with Lemma \ref{thm:indicators_prob1},
 \begin{align}
-\lim_{N\to\infty} &\E\left[ \prod_{r=1}^{\tau_N(t)} (1-p_r \right] \notag\\
+\lim_{N\to\infty} &\E\left[ \prod_{r=1}^{\tau_N(t)} (1-p_r) \right] \notag\\
 &\leq \lim_{N\to\infty} \E\left[
 1 + \sum_{k=1}^{\tau_N(t)} \left\{- \alpha_n (1+O(N^{-1}))\right\}^k \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
 \left\{ c_N(r_j) - B_n^\prime D_N(r_j) \right\} \right] \notag\\
@@ -766,7 +766,24 @@ Then
 = \E \left[ \sum_{r=1}^{\tau_N(t)} \E [ f(r) \mid \mathcal{F}_{r-1} ] \right] .
 \end{equation}
 \end{lemma}
-%%% include a proof, or not?
+
+\begin{proof}
+Define 
+\begin{equation}
+M_s := \sum_{r=1}^s \left\{ f(r) - \E [ f(r) \mid \mathcal{F}_{r-1} ] \right\} .
+\end{equation}
+It is easy to see that $(M_s)$ is a martingale with respect to $(\mathcal{F}_s)$, and $M_0 = 0$. 
+Now fix $K>0$ and note that $\tau_N(t) \wedge K$ is a bounded $\mathcal{F}_t$-stopping time.
+Hence we can apply the optional stopping theorem:
+\begin{align}
+\E [M_{\tau_N(t) \wedge K} ]
+= \E \left[ \sum_{r=1}^{\tau_N(t) \wedge K} \left\{ f(r) - \E [ f(r) \mid \mathcal{F}_{r-1} ] \right\} \right]
+= \E \left[ \sum_{r=1}^{\tau_N(t) \wedge K} f(r) \right]
+- \E \left[ \sum_{r=1}^{\tau_N(t) \wedge K} \E [ f(r) \mid \mathcal{F}_{r-1} ] \right]
+=0 .
+\end{align}
+Taking $K\to\infty$ and applying the monotone convergence theorem concludes the proof.
+\end{proof}
 
 \bibliography{../smc.bib}
 \end{document}
