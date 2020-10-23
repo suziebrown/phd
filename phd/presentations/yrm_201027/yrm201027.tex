@@ -64,7 +64,7 @@
 
 \title[SMC genealogies]{Genealogies of sequential Monte Carlo algorithms}
 \author{Suzie Brown}
-\date{27 October 2020} 
+\date{27 October 2020}
 
 \begin{document}
 \begin{frame}
@@ -84,7 +84,7 @@
 \begin{frame}{Sequential Monte Carlo}
 \begin{itemize}
 \item Want to sample from a sequence of intractable target distributions
-\item Typical setting: dimension of target increases in time, or strong dependence between consecutive targets (so MCMC is impractical)
+\item Typical settings: dimension of target increases in time, strong dependence between consecutive targets (so MCMC is impractical)
 \item SMC can obtain exact draws, and thus approximate expectations
 \end{itemize}
 
@@ -93,7 +93,7 @@
 % Run-time is linear in number of dimensions, cf MCMC
 % Dependence between consecutive targets is a help rather than a hindrance, cf MCMC
 % Inference can be done on-line
-
+% Most stuff you might want to know about Bayes posterior can be written as an expectation
 \end{frame}
 
 
@@ -164,93 +164,260 @@ $p(x_{1:t} \mid y_{1:T})$ & ``smoothing''
 %% Actually this is a terrible example because it hardly makes sense to assume that Y_{t+1} depends on Y_t only via X...
 %\end{frame}
 
-\begin{frame}{Importance Sampling}
+\begin{frame}{Importance sampling}
 \centering
-
-\end{frame}
-
-
-%%%----------------- old slides below here ------------------
+\includegraphics[width=0.9\textwidth]{importance1.pdf}
 
 %%% NOTES
-% if you were here two weeks ago Francesca gave an intro to SMC - mine will be quite different (motivational & vague)
-% genealogies is the part I'm primarily working on
+% Here's our "intractable" target
+\end{frame}
 
+\begin{frame}{Importance sampling}
+\centering
+\includegraphics[width=0.9\textwidth]{importance2.pdf}
 
+%%% NOTES
+% Select a proposal density that we *can* sample from, and sample from it
+\end{frame}
 
-\begin{frame}{Sequential Monte Carlo}{Illustration}
-\begin{center}
-\resizebox{0.95\textwidth}{!}{%
-\begin{tikzpicture}
-\filldraw[darkred] (0,0) circle (6pt);
-\filldraw[darkred] (0,1) circle (6pt);
-\filldraw[darkred] (0,1.5) circle (6pt);
-\filldraw[darkred] (0,2.2) circle (6pt);
+\begin{frame}{Importance sampling}
+\centering
+\includegraphics[width=0.9\textwidth]{importance3.pdf}
 
-\draw[->] (0.4,2.2) -- (4.6,3);
-\draw[->] (0.4,1.5) -- (4.6,1.2);
-\draw[->] (0.4,1) -- (4.6,-0.9);
-\draw[->] (0.4,0) -- (4.6,0.3);
-
-\filldraw[darkred] (5,0.3) circle (6pt);
-\filldraw[darkred] (5,-0.9) circle (6pt);
-\filldraw[darkred] (5,1.2) circle (6pt);
-\filldraw[darkred] (5,3) circle (6pt);
-
-\draw[->] (5.5,3) -- (9.5,3);
-\draw[->] (5.5,1.2) -- (9.5,1.2);
-\draw[->] (5.5,-0.9) -- (9.5,-0.9);
-\draw[->] (5.5,0.3) -- (9.5,0.3);
-
-\filldraw[darkred] (10,0.3) circle (11pt);
-\filldraw[darkred] (10,-0.9) circle (4pt);
-\filldraw[darkred] (10,1.2) circle (7pt);
-\filldraw[darkred] (10,3) circle (2pt);
-
-\draw[->] (10.5,1.2) -- (14.6,1.2);
-\draw[->] (10.5,0.3) -- (14.6,0.3);
-\draw[->] (10.5,-0.9) -- (14.6,-0.9);
-\draw[->] (10.5,3) -- (14.6,3);
-
-\filldraw[darkred] (15.3,0.3) circle (6pt);
-\filldraw[darkred] (14.9,0.53) circle (6pt);
-\filldraw[darkred] (14.9,0.07) circle (6pt);
-\filldraw[darkred] (15,1.2) circle (6pt);
-
-\draw[darkred] (14.8,3.2) -- (15.2, 2.8);
-\draw[darkred] (14.8,2.8) -- (15.2, 3.2);
-\draw[darkred] (14.8,-0.7) -- (15.2, -1.1);
-\draw[darkred] (14.8,-1.1) -- (15.2, -0.7);
-
-\node at (2.5,3.6) {\footnotesize{propagate}};
-\node at (7.5,3.6) {\footnotesize{weight}};
-\node at (12.5,3.6) {\footnotesize{resample}};
-\end{tikzpicture}
-}
-\end{center}
+%%% NOTES
+% Calculate weights for each sample proportional to ratio of target/proposal density 
+% "The weighted samples are distributed according to the target" (in the sense that expectations are unbiased)
+% We only needed to evaluate the target density pointwise up to a constant (standard assumption for Monte Carlo)
 \end{frame}
 
 
+\begin{frame}{Sequential importance sampling}
+% Would be nice to remake this diagram as one that is more intuitively linked to the importance sampling one
+\begin{itemize}
+\item Idea: use weighted samples from one time step to construct a proposal for the next step
+\item Multiplying weights over time causes \textit{weight degeneracy}% would be great to have an animation illustrating this...
+\item Can avoid this problem by resampling (weights are reset at each step)
 
-\begin{frame}{Resampling and Genealogies}
+%%% NOTES
+% Compounding time steps, get `particles' each with position and weight evolving over time
+% SIS is a valid Monte Carlo algorithm
+% Weight degeneracy = variance of weights explodes / all weight assigned to one particle
+% Instead of taking weighted samples as proposal, make copies of samples according to weight, and reset weights to uniform
+% SIR is also a valid algorithm!
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Resampling}
+% Possibly include in this slide the 3 rules for valid resampling, if relevant later
 \begin{columns}
 \begin{column}{0.45\textwidth}
 \begin{itemize}
-\item Resampling creates a genealogy (family tree) of particles
-\item Properties of the genealogy affect performance of the SMC algorithm
-\item Different resampling schemes give different forms of genealogies
-\item Basic quantity for analysing genealogies is the pair coalescence probability
+\item Want to transform continuous weights to discrete offspring counts
+\item For example, sample counts from Multinomial distribution 
 \end{itemize}
 \end{column}
 \begin{column}{0.45\textwidth}
-%\includegraphics[width=\textwidth]{eg_WF.pdf}
+\centering
+\includegraphics[width=\textwidth]{resample1.pdf} \\
+\includegraphics[width=\textwidth]{resample2.pdf}
 \end{column}
 \end{columns}
+
+%%% NOTES
+% Some particles will now start in the same positions, but they will be randomly moved (say with f_t) to construct the next proposal
+\end{frame}
+
+
+\begin{frame}{Sequential Monte Carlo algorithm}
+Iterate these steps:
+\begin{enumerate}
+\item Mutate: move particle positions (according to $f_t$)
+\item Weight: Calculate importance weights for each particle
+\item Resample: Duplicate/kill particles according to weights, reset weights to $1/N$
+\end{enumerate}
+\end{frame}
+
+
+\begin{frame}{Ancestral degeneracy}
+\centering
+\begin{tikzpicture}
+\filldraw (0,0) circle (6pt);
+\filldraw (0,-1) circle (6pt);
+\filldraw (0,-2) circle (6pt);
+\filldraw (0,-3) circle (6pt);
+
+\draw[->, thick] (0.3,0)--(1.7,0);
+\draw[->, thick] (0.3,-1)--(1.7,-1);
+\draw[->, thick] (0.3,-3)--(1.7,-3);
+\draw[->, thick] (0.3,-1)--(1.7,-2);
+
+\filldraw (2,0) circle (6pt);
+\filldraw (2,-1) circle (6pt);
+\filldraw (2,-2) circle (6pt);
+\filldraw (2,-3) circle (6pt);
+
+\pause
+
+\filldraw (4,0) circle (6pt);
+\filldraw (4,-1) circle (6pt);
+\filldraw (4,-2) circle (6pt);
+\filldraw (4,-3) circle (6pt);
+
+\draw[->, thick] (2.3,-1)--(3.7,0);
+\draw[->, thick] (2.3,-1)--(3.7,-1);
+\draw[->, thick] (2.3,-3)--(3.7,-2);
+\draw[->, thick] (2.3,-3)--(3.7,-3);
+
+\pause
+
+\filldraw (6,0) circle (6pt);
+\filldraw (6,-1) circle (6pt);
+\filldraw (6,-2) circle (6pt);
+\filldraw (6,-3) circle (6pt);
+
+\filldraw (8,0) circle (6pt);
+\filldraw (8,-1) circle (6pt);
+\filldraw (8,-2) circle (6pt);
+\filldraw (8,-3) circle (6pt);
+
+\draw[->, thick] (4.3,0)--(5.7,0);
+\draw[->, thick] (4.3,-1)--(5.7,-1);
+\draw[->, thick] (4.3,-1)--(5.7,-2);
+\draw[->, thick] (4.3,-3)--(5.7,-3);
+
+\draw[->, thick] (6.3,0)--(7.7,0);
+\draw[->, thick] (6.3,-1)--(7.7,-1);
+\draw[->, thick] (6.3,-2)--(7.7,-2);
+\draw[->, thick] (6.3,-2)--(7.7,-3);
+
+\pause
+% highlight first lineage
+\filldraw[darkred] (8,0) circle (5pt);
+\filldraw[darkred] (6,0) circle (5pt);
+\filldraw[darkred] (4,0) circle (5pt);
+\filldraw[darkred] (2,-1) circle (5pt);
+\filldraw[darkred] (0,-1) circle (5pt);
+
+\draw[->, thick, darkred] (0.3,-1)--(1.7,-1);
+\draw[->, thick, darkred] (2.3,-1)--(3.7,0);
+\draw[->, thick, darkred] (4.3,0)--(5.7,0);
+\draw[->, thick, darkred] (6.3,0)--(7.7,0);
+
+\pause
+% highlight other lineages
+\filldraw[darkred] (4,-1) circle (5pt);
+\filldraw[darkred] (6,-1) circle (5pt);
+\filldraw[darkred] (8,-1) circle (5pt);
+\filldraw[darkred] (6,-2) circle (5pt);
+\filldraw[darkred] (8,-2) circle (5pt);
+\filldraw[darkred] (8,-3) circle (5pt);
+
+\draw[->, thick, darkred] (2.3,-1)--(3.7,-1);
+\draw[->, thick, darkred] (4.3,-1)--(5.7,-1);
+\draw[->, thick, darkred] (4.3,-1)--(5.7,-2);
+\draw[->, thick, darkred] (6.3,-1)--(7.7,-1);
+\draw[->, thick, darkred] (6.3,-2)--(7.7,-2);
+\draw[->, thick, darkred] (6.3,-2)--(7.7,-3);
+\end{tikzpicture}
+\end{frame}
+
+
+\begin{frame}{Ancestral degeneracy}
+\centering
+\vspace{1cm}
+\begin{tikzpicture}
+\filldraw (0,0) circle (6pt);
+\filldraw (0,-1) circle (6pt);
+\filldraw (0,-2) circle (6pt);
+\filldraw (0,-3) circle (6pt);
+
+\draw[->, thick] (0.3,0)--(1.7,0);
+\draw[->, thick] (0.3,-1)--(1.7,-1);
+\draw[->, thick] (0.3,-3)--(1.7,-3);
+\draw[->, thick] (0.3,-1)--(1.7,-2);
+
+\filldraw (2,0) circle (6pt);
+\filldraw (2,-1) circle (6pt);
+\filldraw (2,-2) circle (6pt);
+\filldraw (2,-3) circle (6pt);
+
+\filldraw (4,0) circle (6pt);
+\filldraw (4,-1) circle (6pt);
+\filldraw (4,-2) circle (6pt);
+\filldraw (4,-3) circle (6pt);
+
+\draw[->, thick] (2.3,-1)--(3.7,0);
+\draw[->, thick] (2.3,-1)--(3.7,-1);
+\draw[->, thick] (2.3,-3)--(3.7,-2);
+\draw[->, thick] (2.3,-3)--(3.7,-3);
+
+\filldraw (6,0) circle (6pt);
+\filldraw (6,-1) circle (6pt);
+\filldraw (6,-2) circle (6pt);
+\filldraw (6,-3) circle (6pt);
+
+\filldraw (8,0) circle (6pt);
+\filldraw (8,-1) circle (6pt);
+\filldraw (8,-2) circle (6pt);
+\filldraw (8,-3) circle (6pt);
+
+\draw[->, thick] (4.3,0)--(5.7,0);
+\draw[->, thick] (4.3,-1)--(5.7,-1);
+\draw[->, thick] (4.3,-1)--(5.7,-2);
+\draw[->, thick] (4.3,-3)--(5.7,-3);
+
+\draw[->, thick] (6.3,0)--(7.7,0);
+\draw[->, thick] (6.3,-1)--(7.7,-1);
+\draw[->, thick] (6.3,-2)--(7.7,-2);
+\draw[->, thick] (6.3,-2)--(7.7,-3);
+
+% highlight first lineage
+\filldraw[darkred] (8,0) circle (5pt);
+\filldraw[darkred] (6,0) circle (5pt);
+\filldraw[darkred] (4,0) circle (5pt);
+\filldraw[darkred] (2,-1) circle (5pt);
+\filldraw[darkred] (0,-1) circle (5pt);
+
+\draw[->, thick, darkred] (0.3,-1)--(1.7,-1);
+\draw[->, thick, darkred] (2.3,-1)--(3.7,0);
+\draw[->, thick, darkred] (4.3,0)--(5.7,0);
+\draw[->, thick, darkred] (6.3,0)--(7.7,0);
+
+% highlight other lineages
+\filldraw[darkred] (4,-1) circle (5pt);
+\filldraw[darkred] (6,-1) circle (5pt);
+\filldraw[darkred] (8,-1) circle (5pt);
+\filldraw[darkred] (6,-2) circle (5pt);
+\filldraw[darkred] (8,-2) circle (5pt);
+\filldraw[darkred] (8,-3) circle (5pt);
+
+\draw[->, thick, darkred] (2.3,-1)--(3.7,-1);
+\draw[->, thick, darkred] (4.3,-1)--(5.7,-1);
+\draw[->, thick, darkred] (4.3,-1)--(5.7,-2);
+\draw[->, thick, darkred] (6.3,-1)--(7.7,-1);
+\draw[->, thick, darkred] (6.3,-2)--(7.7,-2);
+\draw[->, thick, darkred] (6.3,-2)--(7.7,-3);
+\end{tikzpicture}
+
+\vspace{1cm}
+For $t<<T$, $p(x_{1:t} | y_{1:T})$ is approximated by very few distinct points!
+\end{frame}
+
+\begin{frame}{Ancestral degeneracy}
+\begin{itemize}
+\item In smoothing applications, ancestral degenracy can seriously limit the performance of SMC
+\item Can be mitigated by resampling less often (e.g.\ only when variance of weights gets too big --- ``adaptive resampling'')
+\item Can also use low-variance resampling schemes
+\item If we knew how bad ancestral degeneracy would be, we could tune parameters to limit it (e.g.\ number of particles, threshold for adaptive resampling)
+\item Our aim: quantify ancestral degeneracy by analysing the induced genealogy
+\end{itemize}
 \end{frame}
 
 
 \begin{frame}{Coalescence Probability}{Definition}
-The probability that a randomly chosen pair of particles at generation $t$ share a common ancestor at generation $(t-1)$
+The probability that a randomly chosen pair of particles at generation $t$ share a common ancestor at generation $(t-1)$, conditional on offspring counts
 \begin{equation*}
 c_N = \frac{1}{N(N-1)} \sum_{i=1}^N \vt{i}(\vt{i}-1)
 \end{equation*}
@@ -262,56 +429,9 @@ c_N = \frac{1}{N(N-1)} \sum_{i=1}^N \vt{i}(\vt{i}-1)
 \end{frame}
 
 
-\begin{frame}{Coalescence Probability}{Example}
-Consider the case where we have only two particles ($N=2$)
-\begin{equation*}
-c_2 = \frac{1}{2}\left[ \vt{1}(\vt{1}-1) + \vt{2}(\vt{2}-1)\right]
-\end{equation*}
-The expectation of $c_2$ conditional on knowing the weights $(\wt{1}, \wt{2})$ is
-\begin{align*}
-c_2 &= \frac{1}{2} \E[\vt{1}(\vt{1}-1) \mid \wt{1:2}] + \frac{1}{2} \E[\vt{2}(\vt{2}-1) \mid \wt{1:2}] \\
-&= \PR[\vt{1}=2 \mid \wt{1:2}] + \PR[\vt{2}=2 \mid \wt{1:2}]
-\end{align*}
-
-%%% NOTES
-% The only possible values of v_i are 0,1,2. 
-% If 0,1 then v_i(v_i-1)=0
-% If 2 then v_i(v_i-1)=2
-% write as E[ 2* I{v_i=2} |w] to get the last line.
 %
-% Multinomial: w_1^2 + w_2^2
-% Residual-mn: (2w_1 -1)I{w_1>0.5} + (2w_2 -1)I{w_2>0.5}
-\end{frame}
-
-
-\begin{frame}{Coalescence Probability}{Example}
-\centering
-%\includegraphics[width=0.7\textwidth]{EcN_mn_res_n2.pdf}
-
-%%% NOTES
-% (N=2) For all weight vectors, coalescence rate is lower with residual-multinomial than with multinomial
-% Stratified & systematic resampling have the same curve as residual
-% More interesting in higher dimensions, but difficult to plot!
-% (Also proved dominance of res-mn over mn also for N=3 but no general-N proof yet)
-% NB: slow coalescence is good because we keep distinct samples for longer
-\end{frame}
-
-
-\begin{frame}
-\begin{itemize}
-\item We proved that asymptotically (as $N\to\infty$) residual resampling dominates multinomial in terms of expected coalescence probability
-\item We also proved it in cases $N=2$ and $N=3$
-\pause
-\item We conjecture that it holds for all finite $N$ too
-\item It just remains to prove it for $N=4,5,\dots$
-\pause
-\item We proved that systematic resampling (and some others) dominate multinomial in expected coalescence probability, for all $N$.
-\end{itemize}
-%%% NOTES 
-% Everything is conditional on weights
-% Probability -> rate in asymptotic regime
-% "Some others" means all stochastic-rounding-based schemes, for those who know what that means
-\end{frame}
+% Add more frames here
+%
 
 
 \begin{frame}
