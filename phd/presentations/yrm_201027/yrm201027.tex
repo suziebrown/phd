@@ -55,10 +55,10 @@
 
 % project-specific commands
 \newcommand{\F}{\mathcal{F}_{t-1}}
-%\newcommand{\vt}[2][t]{v_{#1}^{(#2)}}
-\newcommand{\vt}[1]{v_{#1}}
-%\newcommand{\wt}[2][t]{w_{#1}^{(#2)}}
-\newcommand{\wt}[1]{w_{#1}}
+\newcommand{\vt}[2][t]{v_{#1}^{(#2)}}
+%\newcommand{\vt}[1]{\nu_{#1}}
+\newcommand{\wt}[2][t]{w_{#1}^{(#2)}}
+%\newcommand{\wt}[1]{w_{#1}}
 %\newcommand{\wbar}[2][t]{\bar{w}_{#1}^{(#2)}}
 %\newcommand{\vttilde}[2][t]{\tilde{v}_{#1}^{(#2)}}
 
@@ -416,18 +416,244 @@ For $t<<T$, $p(x_{1:t} | y_{1:T})$ is approximated by very few distinct points!
 \end{frame}
 
 
-\begin{frame}{Coalescence Probability}{Definition}
-The probability that a randomly chosen pair of particles at generation $t$ share a common ancestor at generation $(t-1)$, conditional on offspring counts
+\begin{frame}{Encoding genealogies}
+\centering
+\begin{tikzpicture}
+\draw[dotted] (0,-4.5)--(0,0.5);
+\draw[dotted] (2,-4.5)--(2,0.5);
+\draw[dotted] (4,-4.5)--(4,0.5);
+\draw[dotted] (6,-4.5)--(6,0.5);
+\draw[dotted] (8,-4.5)--(8,0.5);
+
+\draw[thick, darkred] (0,-1)--(2,-1);
+\draw[thick, darkred] (2,0)--(2,-2);
+\draw[thick, darkred] (2,0)--(8,0);
+\draw[thick, darkred] (2,-2)--(4,-2);
+\draw[thick, darkred] (4,-3)--(4,-1);
+\draw[thick, darkred] (4,-1)--(8,-1);
+\draw[thick, darkred] (4,-3)--(6,-3);
+\draw[thick, darkred] (6,-2)--(6,-4);
+\draw[thick, darkred] (6,-2)--(8,-2);
+\draw[thick, darkred] (6,-4)--(8,-4);
+
+\node at (8.3,0) {1};
+\node at (8.3,-1) {2};
+\node at (8.3,-2) {3};
+\node at (8.3,-4) {4};
+
+\node at (8,-4.8) {$t=0$};
+\node at (8,-5.5) {$\{1\}, \{2\},\{3\}, \{4\}$};
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Encoding genealogies}
+\centering
+\begin{tikzpicture}
+\draw[dotted] (0,-4.5)--(0,0.5);
+\draw[dotted] (2,-4.5)--(2,0.5);
+\draw[dotted] (4,-4.5)--(4,0.5);
+\draw[dotted] (6,-4.5)--(6,0.5);
+\draw[dotted] (8,-4.5)--(8,0.5);
+
+\draw[thick, darkred] (0,-1)--(2,-1);
+\draw[thick, darkred] (2,0)--(2,-2);
+\draw[thick, darkred] (2,0)--(8,0);
+\draw[thick, darkred] (2,-2)--(4,-2);
+\draw[thick, darkred] (4,-3)--(4,-1);
+\draw[thick, darkred] (4,-1)--(8,-1);
+\draw[thick, darkred] (4,-3)--(6,-3);
+\draw[thick, darkred] (6,-2)--(6,-4);
+\draw[thick, darkred] (6,-2)--(8,-2);
+\draw[thick, darkred] (6,-4)--(8,-4);
+
+\node at (8.3,0) {1};
+\node at (8.3,-1) {2};
+\node at (8.3,-2) {3};
+\node at (8.3,-4) {4};
+
+\node at (6,-4.8) {$t=1$};
+\node at (6,-5.5) {$\{1\}, \{2\},\{3,4\}$};
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Encoding genealogies}
+\centering
+\begin{tikzpicture}
+\draw[dotted] (0,-4.5)--(0,0.5);
+\draw[dotted] (2,-4.5)--(2,0.5);
+\draw[dotted] (4,-4.5)--(4,0.5);
+\draw[dotted] (6,-4.5)--(6,0.5);
+\draw[dotted] (8,-4.5)--(8,0.5);
+
+\draw[thick, darkred] (0,-1)--(2,-1);
+\draw[thick, darkred] (2,0)--(2,-2);
+\draw[thick, darkred] (2,0)--(8,0);
+\draw[thick, darkred] (2,-2)--(4,-2);
+\draw[thick, darkred] (4,-3)--(4,-1);
+\draw[thick, darkred] (4,-1)--(8,-1);
+\draw[thick, darkred] (4,-3)--(6,-3);
+\draw[thick, darkred] (6,-2)--(6,-4);
+\draw[thick, darkred] (6,-2)--(8,-2);
+\draw[thick, darkred] (6,-4)--(8,-4);
+
+\node at (8.3,0) {1};
+\node at (8.3,-1) {2};
+\node at (8.3,-2) {3};
+\node at (8.3,-4) {4};
+
+\node at (4,-4.8) {$t=2$};
+\node at (4,-5.5) {$\{1\}, \{2,3,4\}$};
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Encoding genealogies}
+\centering
+\begin{tikzpicture}
+\draw[dotted] (0,-4.5)--(0,0.5);
+\draw[dotted] (2,-4.5)--(2,0.5);
+\draw[dotted] (4,-4.5)--(4,0.5);
+\draw[dotted] (6,-4.5)--(6,0.5);
+\draw[dotted] (8,-4.5)--(8,0.5);
+
+\draw[thick, darkred] (0,-1)--(2,-1);
+\draw[thick, darkred] (2,0)--(2,-2);
+\draw[thick, darkred] (2,0)--(8,0);
+\draw[thick, darkred] (2,-2)--(4,-2);
+\draw[thick, darkred] (4,-3)--(4,-1);
+\draw[thick, darkred] (4,-1)--(8,-1);
+\draw[thick, darkred] (4,-3)--(6,-3);
+\draw[thick, darkred] (6,-2)--(6,-4);
+\draw[thick, darkred] (6,-2)--(8,-2);
+\draw[thick, darkred] (6,-4)--(8,-4);
+
+\node at (8.3,0) {1};
+\node at (8.3,-1) {2};
+\node at (8.3,-2) {3};
+\node at (8.3,-4) {4};
+
+\node at (2,-4.8) {$t=3$};
+\node at (2,-5.5) {$\{1,2,3,4\}$};
+\end{tikzpicture}
+\end{frame}
+
+
+\begin{frame}{Asymptotic setting}
+\begin{itemize}
+\item We take the number of particles $N\to\infty$
+\item We consider a sample of $n<<N$ particles at time zero
+\item We trace these $n$ lineages back to see the genealogy
+\item We will have to rescale time to get a well-defined limiting process
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Kingman's $n$-coalescent}
+\begin{columns}
+\begin{column}{0.45\textwidth}
+\begin{itemize}
+\item Continuous-time Markov chain on the space of equivalence relations on $\{1,\dots,n\}$
+\item Only non-identity transitions are those involving a single pair merger
+\item This happens at rate 1 for each pair of lineages (total rate $\binom{k}{2}$ while there are $k$ distinct lineages)
+\end{itemize}
+\end{column}
+\begin{column}{0.45\textwidth}
+\includegraphics[width=\textwidth]{kingman.png}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Time scale}
+The probability that a randomly chosen pair of particles at generation $t$ share a common ancestor at generation $(t-1)$, conditional on offspring counts, is
 \begin{equation*}
-c_N = \frac{1}{N(N-1)} \sum_{i=1}^N \vt{i}(\vt{i}-1)
+c_N(t) = \frac{1}{N(N-1)} \sum_{i=1}^N \vt{i}(\vt{i}-1)
+\end{equation*}
+To get an $n$-coalescent, this should converge to 1 (the required pair merger rate),
+so we rescale time by the inverse
+\begin{equation*}
+\tau_N(t) := \min\left\{ s\geq 1 : \sum_{r=1}^s c_N(r) \geq t \right\}
 \end{equation*}
 
 %%% NOTES
 % N(N-1) is the number of pairs from which we choose uniformly
 % the sum is over all possible parents that could be a common ancestor for the pair
 % v_i(v_i-1) =0 if that parent had only one child, and is the number of ways this pair could be chosen from the i^th parent's offspring.
+% Dependence on t is supressed
 \end{frame}
 
+
+\begin{frame}{Main theorem}
+\begin{itemize}
+\item Offspring counts $(\vt{1},\dots,\vt{N})$
+\item Parent-offspring assignments are uniform given offspring counts
+\item Time scale does not explode (i.e.\ $\PR[\tau_N(t)=\infty]=0$ for all finite $t$)
+\item There exists a sequence $(b_N)$ such that $\lim_{N\to\infty} b_N = 0$ and
+\begin{equation*}
+\frac{1}{(N)_3} \sum_{i=1}^N \E_t [ (\vt{i})_3 ]
+\leq b_N \frac{1}{(N)_2} \sum_{i=1}^N \E_t [ (\vt{i})_2 ]
+\end{equation*}
+\end{itemize}
+Then the finite-dimensional distributions of the rescaled genealogies converge to the $n$-coalescent as $N\to\infty$.
+\end{frame}
+
+
+\begin{frame}{Corollaries}
+Only the method of resampling affects the genealogies of an SMC algorithm. We established the theorem in these cases:
+\begin{itemize}
+\item Multinomial resampling
+\item Stochastic rounding 
+\item Conditional SMC with multinomial resampling
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Multinomial resampling}
+\begin{itemize}
+\item Offpsring counts are sampled from Multinomial distribution parametrised by weights
+\item Easy to analyse, but doesn't perform well
+\item (For the population geneticists): different from Wright-Fisher model because not neutral
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Stochastic rounding}
+\begin{itemize}
+\item Minimum-variance resampling schemes
+\item Offspring count $\vt{i}$ sampled by rounding $N \wt{i}$ up or down to an integer
+\item Need some way to ensure total number of offspring is $N$ (this is what distinguishes the different schemes within this class)
+\item (For the SMC specialists): includes systematic, residual-stratified, residual-systematic, SSP reampling, ...
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Conditional SMC}
+\begin{itemize}
+\item Component of particle MCMC
+\item One lineage is conditioned to survive all resampling steps
+\item Resampling algorithm must deterministically propagate this ``immortal lineage''
+\item For example: fix one offspring to immortal lineage, multinomial sampling for the remaining counts
+\item Conjecture that theorem will also apply to conditional SMC with stochastic rounding
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{In conclusion...}
+\begin{itemize}
+\item Genealogies can help us to analyse performance of smoothing algorithms which suffer ancestral degeneracy
+\item We have simple conditions under which these genealogies converge to $n$-coalescent
+\item These conditions are verified for some important classes of SMC algorithms
+\end{itemize}
+
+\pause
+
+Open questions
+\begin{itemize}
+\item How to estimate the time scale $c_N$ a priori (since it depends on offspring counts)
+\item Weak convergence (as opposed to FDDs) so we can say more about convergence of expectations
+\item Rate of convergence
+\item Finite-$N$ behaviour
+\end{itemize}
+\end{frame}
 
 %
 % Add more frames here
@@ -436,6 +662,10 @@ c_N = \frac{1}{N(N-1)} \sum_{i=1}^N \vt{i}(\vt{i}-1)
 
 \begin{frame}
 \centering
-THE END
+\vspace{1cm}
+THE END\\
+\vspace{1cm}
+For more details you can look at the pre-print\\
+arXiv:2007.00096
 \end{frame}
 \end{document}
