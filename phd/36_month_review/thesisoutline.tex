@@ -17,8 +17,13 @@
 \section{Introduction}
 
 \section{Background}
-\subsection{Interacting particle systems / sequential Monte Carlo}
-General description of what an IPS is, what they are useful for, and how to simulate one. SMC as a specific class of IPS. Relevant literature about SMC (e.g.\ convergence results).
+\subsection{State space models}
+Introduction of state space models: target tracking example (1D train); modelling assumptions for this example; why Bayesian?
+Scenarios where model is tractable: Kalman filter, extended KF, etc.
+Brief discussion of scope of SMC beyond SSMs.
+\subsection{Sequential Monte Carlo}
+Motivation in context of SSMs (IS, SIS, SIR). Generic SMC algorithm (possibly introduce bootstrap PF first). Discussion of each step.
+Theoretical justifications for SMC (e.g. convergence results).
 \subsection{Coalescent theory}
 Review of literature from population genetics, introducing the relevant population models (Wright--Fisher, Moran, Cannings) and Kingman's coalescent / $n$-coalescent. Domain of attraction of Kingman's coalescent, as far as previous works have shown. Properties of such models (neutrality, Markov property) that may be violated by SMC systems.
 \subsection{SMC genealogies}
