@@ -246,7 +246,7 @@ First the lower bound.
 Fix $k\leq \tau_N(t)$, so that the sum is non-empty.
 %The conditioning on $\bigcap E_r$ doesn't affect these bounds, which are based on general properties of $c_N$, $D_N$ and $\tau_N$. %%% Is this true???
 From \citet[Equation (8)]{koskela2018},
-\begin{align}
+\begin{align}\label{eq:14}
 \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
 \left\{ c_N(r_j) + B_n D_N(r_j) \right\}
 &\geq \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k c_N(r_j) \notag\\
@@ -514,7 +514,7 @@ From \citet[Lemma 1 Case 1]{koskela2018}, taking $\xi=\Delta$, we have
 where the $O(N^{-1})$ term does not depend on $t$.
 %% NB: $B_n^\prime = \binom{n-1}{2}$.
 A multinomial expansion as in the lower bound yields
-\begin{equation}
+\begin{equation}\label{eq:29}
 \prod_{r=1}^{\tau_N(t)} (1-p_r)
 \leq 1 + \sum_{k=1}^{\tau_N(t)} \left\{- \alpha_n (1+O(N^{-1}))\right\}^k \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
 \left\{ c_N(r_j) - B_n^\prime D_N(r_j) \right\} .
@@ -555,7 +555,7 @@ We start by dealing with the second term:
 \left\{ \prod_{j=I+1}^k D_N(r_j) \right\} .
 \end{align}
 This is lower bounded by
-\begin{equation}
+\begin{equation} \label{eq:32}
 0 
 - \frac{1}{k!} \sum_{\substack{I=0 \\ k-I \text{ odd}}}^{k-1}  \binom{k}{I} (B_n^\prime)^{k-I}
 (t+1)^{k-1}
@@ -563,7 +563,7 @@ This is lower bounded by
 \end{equation}
 using that $c_N(r), D_N(r) \geq 0$ for all $r$ to bound the even terms below, and arguments from \eqref{eq:8} to bound the odd terms above.
 The same arguments lead to the upper bound
-\begin{equation}
+\begin{equation}\label{eq:33}
 \frac{1}{k!} \sum_{\substack{I=0 \\ k-I \text{ even}}}^{k-1}  \binom{k}{I} (B_n^\prime)^{k-I}
 (t+1)^{k-1}
 \left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right)
@@ -785,6 +785,152 @@ Hence we can apply the optional stopping theorem:
 \end{align}
 Taking $K\to\infty$ and applying the monotone convergence theorem concludes the proof.
 \end{proof}
+
+
+
+\section*{Induction step: upper bound}
+\begin{lemma}\label{thm:induction_LB}
+Fix $i_0=0$, $i_k=k$.
+\begin{equation}\label{eq:50}
+\lim_{N\to\infty} \E \left[ \left( \prod_{r=1}^{\tau_N(t)} (1-p_r) \right) \left( \sum_{\substack{r_1<\dots<r_k :\\ r_i\leq \tau_N(t_i) \forall i}} \prod_{i=1}^k \frac{p_{r_i}}{1-p_{r_i}} \right) \right] 
+\leq e^{-\alpha_n t} \alpha_n^k \sum_{\substack{i_1\leq \dots\leq i_{k-1}\\ \in \{0,\dots,k\} :\\ i_j \geq j \forall j}} \prod_{j=1}^k \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})! }
+\end{equation}
+\end{lemma}
+
+We start by simplifying the first product inside the expectation (if simplifying is a suitable term to describe making an expression much longer but easier to handle).
+Firstly, we apply \eqref{eq:29} and \eqref{eq:18}, then bound the even terms using \eqref{eq:8} and \eqref{eq:33} and the odd terms using \eqref{eq:14} and \eqref{eq:32}:
+\begin{align}
+\prod_{r=1}^{\tau_N(t)} (1-p_r)
+&\leq 1 + \sum_{l=1}^{\tau_N(t)} \{-\alpha_n (1+ O(N^{-1}))\}^l
+\sum_{\substack{s_1<\dots<s_l \\ =1}}^{\tau_N(t)} \prod_{j=1}^l
+\left\{ c_N(s_j) - B_n^\prime D_N(s_j) \right\} \notag\\
+&= 1 + \sum_{l=1}^{\tau_N(t)} \frac{1}{l!} \{-\alpha_n (1+O(N^{-1}))\}^l
+\sum_{\substack{s_1\neq\dots\neq s_l \\ \text{all distinct} \\ =1}}^{\tau_N(t)} \prod_{j=1}^l c_N(s_j) \notag\\
+&\qquad+ \sum_{l=1}^{\tau_N(t)} \frac{1}{l!} \{-\alpha_n (1+O(N^{-1}))\}^l
+\sum_{I=0}^{l-1} \binom{l}{I} (-B_n^\prime)^{l-I}
+\sum_{\substack{s_1\neq\dots\neq s_l \\ \text{all distinct} \\ =1}}^{\tau_N(t)}
+\left\{ \prod_{i=1}^I c_N(s_i) \right\}
+\left\{ \prod_{j=I+1}^l D_N(s_j) \right\} \notag\\
+&\leq 1 + \sum_{\substack{l=1\\\text{even}}}^{\tau_N(t)} \frac{1}{l!} \{\alpha_n(1+O(N^{-1})\}^l \left\{ t + c_N(\tau_N(t)) \right\}^l
+- \sum_{\substack{l=1\\\text{odd}}}^{\tau_N(t)} \frac{1}{l!} \{-\alpha_n (1+O(N^{-1}))\}^l t^l \notag\\
+&\qquad+ \sum_{\substack{l=2\\\text{odd}}}^{\tau_N(t)} \frac{1}{l!} \{\alpha_n (1+O(N^{-1}))\}^l \binom{l}{2} (t+1)^{l-2} 
+\left( \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right) \notag\\
+&\qquad+ \sum_{\substack{l=1\\ \text{even}}}^{\tau_N(t)} \frac{1}{l!} \{\alpha_n(1+O(N^{-1}))\}^l 
+\sum_{\substack{I=0\\ (l-I)\text{ even} }}^{l-1} \binom{l}{I} (B_n^\prime)^{l-I} (t+1)^{l-1}
+\left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right) \notag\\
+&\qquad+ \sum_{\substack{l=1\\ \text{odd}}}^{\tau_N(t)} \frac{1}{l!} \{\alpha_n(1+O(N^{-1}))\}^l
+\sum_{\substack{I=0\\ (l-I)\text{ odd}}}^{l-1} \binom{l}{I} (B_n^\prime)^{l-I} (t+1)^{l-1}
+\left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right) .\label{eq:51}
+\end{align}
+Now we treat each of the terms separately. The last three terms should not contribute to the limit in Lemma \ref{thm:induction_LB}. 
+To begin,
+\begin{align}
+\sum_{\substack{l=1\\\text{even}}}^{\tau_N(t)} \frac{1}{l!} \{\alpha_n &(1+O(N^{-1})\}^l \left\{ t + c_N(\tau_N(t)) \right\}^l
+= \sum_{\substack{l=1\\\text{even}}}^{\tau_N(t)} \frac{1}{l!} \{\alpha_n(1+O(N^{-1})\}^l \sum_{i=0}^l \binom{l}{i} t^i \{c_N(\tau_N(t))\}^{l-i} \notag\\
+&= \sum_{\substack{l=1\\\text{even}}}^{\tau_N(t)} \frac{1}{l!} \{\alpha_n(1+O(N^{-1})\}^l t^l
++ c_N(\tau_N(t)) \sum_{\substack{l=1\\\text{even}}}^{\tau_N(t)} \frac{1}{l!} \{\alpha_n(1+O(N^{-1})\}^l \sum_{i=0}^{l-1} \binom{l}{i} t^i \{c_N(\tau_N(t))\}^{l-i-1} \notag\\
+&\leq \sum_{\substack{l=1\\\text{even}}}^{\tau_N(t)} \frac{1}{l!} \{\alpha_n(1+O(N^{-1})\}^l t^l
++ c_N(\tau_N(t)) \sum_{\substack{l=1\\\text{even}}}^{\tau_N(t)} \frac{1}{l!} \{\alpha_n(1+O(N^{-1})\}^l \sum_{i=0}^{l-1} \binom{l}{i} t^i \notag\\
+&= \sum_{\substack{l=1\\\text{even}}}^{\tau_N(t)} \frac{1}{l!} \{\alpha_n(1+O(N^{-1})\}^l t^l
++ c_N(\tau_N(t)) \sum_{\substack{l=1\\\text{even}}}^{\tau_N(t)} \frac{1}{l!} \{\alpha_n(1+O(N^{-1})\}^l (t+1)^l \notag\\
+&\leq \sum_{\substack{l=1\\\text{even}}}^{\tau_N(t)} \frac{1}{l!} \{\alpha_n(1+O(N^{-1})\}^l t^l
++ c_N(\tau_N(t)) \exp \left[ (t+1) \alpha_n (1+O(N^{-1})) \right] .
+\end{align}
+Now the first line after the inequality in \eqref{eq:51} is bounded by
+\begin{align}
+1 + \sum_{\substack{l=1\\\text{even}}}^{\tau_N(t)} \frac{1}{l!} &\{\alpha_n(1+O(N^{-1})\}^l \left\{ t + c_N(\tau_N(t)) \right\}^l
+- \sum_{\substack{l=1\\\text{odd}}}^{\tau_N(t)} \frac{1}{l!} \{-\alpha_n (1+O(N^{-1}))\}^l t^l \notag\\
+&\leq 1 + \sum_{\substack{l=1\\\text{even}}}^{\tau_N(t)} \frac{1}{l!} \{\alpha_n(1+O(N^{-1})\}^l t^l
++ c_N(\tau_N(t)) \exp \left[ (t+1) \alpha_n (1+O(N^{-1})) \right]
+- \sum_{\substack{l=1\\\text{odd}}}^{\tau_N(t)} \frac{1}{l!} \{-\alpha_n (1+O(N^{-1}))\}^l t^l \notag\\
+&= \sum_{l=0}^{\tau_N(t)} \frac{1}{l!} \{ -\alpha_n(1+O(N^{-1})\}^l t^l
++ c_N(\tau_N(t)) \exp \left[ (t+1) \alpha_n (1+O(N^{-1})) \right] \notag\\
+&\leq \exp \left[ -\alpha_n (1+O(N^{-1})) t \right] + c_N(\tau_N(t)) \exp \left[ (t+1) \alpha_n (1+O(N^{-1})) \right] . \label{eq:53}
+\end{align} 
+It will turn out that the $e^{-\alpha_n t}$ part of \eqref{eq:53} is the only term of \eqref{eq:51} that contributes to the limit in Lemma \ref{thm:induction_LB}.
+Next we wrangle the remaining terms into forms that will vanish in the limit.
+\begin{align}
+\sum_{\substack{l=2\\ \text{odd}}}^{\tau_N(t)} \frac{1}{l!} &\{\alpha_n (1+O(N^{-1}))\}^l \binom{l}{2} (t+1)^{l-2} 
+\left( \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right) \notag\\
+&= \left( \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right) 
+\frac{1}{2} \{\alpha_n (1+O(N^{-1}))\}^2
+\sum_{\substack{l=2\\ \text{odd}}}^{\tau_N(t)} \frac{1}{(l-2)!} \{\alpha_n (1+O(N^{-1}))\}^{l-2} (t+1)^{l-2} \notag\\
+&\leq \left( \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right) 
+\frac{1}{2} \{\alpha_n (1+O(N^{-1}))\}^2
+\exp\left[ (t+1) \alpha_n (1+O(N^{-1})) \right] .
+\end{align}
+Next,
+\begin{align}
+\sum_{\substack{l=1\\ \text{even}}}^{\tau_N(t)} \frac{1}{l!} &\{\alpha_n(1+O(N^{-1}))\}^l 
+\sum_{\substack{I=0\\ (l-I)\text{ even} }}^{l-1} \binom{l}{I} (B_n^\prime)^{l-I} (t+1)^{l-1}
+\left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right) \notag\\
+&\leq \left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right)
+\sum_{\substack{l=1\\ \text{even}}}^{\tau_N(t)} \frac{1}{l!} \{\alpha_n(1+O(N^{-1}))\}^l (t+1)^l
+\sum_{\substack{I=0\\ (l-I)\text{ even} }}^{l-1} \binom{l}{I} (B_n^\prime)^{l-I} \notag\\
+&\leq \left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right)
+\sum_{\substack{l=1\\ \text{even}}}^{\tau_N(t)} \frac{1}{l!} \{\alpha_n(1+O(N^{-1}))\}^l (t+1)^l
+(1+B_n^\prime)^l . \label{eq:55}
+\end{align}
+and similarly
+\begin{align}
+\sum_{\substack{l=1\\ \text{odd}}}^{\tau_N(t)} \frac{1}{l!} &\{\alpha_n(1+O(N^{-1}))\}^l
+\sum_{\substack{I=0\\ (l-I)\text{ odd}}}^{l-1} \binom{l}{I} (B_n^\prime)^{l-I} (t+1)^{l-1}
+\left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right) \notag\\
+&\leq \left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right)
+\sum_{\substack{l=1\\ \text{odd}}}^{\tau_N(t)} \frac{1}{l!} \{\alpha_n(1+O(N^{-1}))\}^l (t+1)^l (1+B_n^\prime)^l . \label{eq:56}
+\end{align}
+The sum of \eqref{eq:55} and \eqref{eq:56} is therefore bounded above by
+\begin{equation}
+\left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right)
+\exp \left[ (t+1) \alpha_n (1+O(N^{-1})) (1+B_n^\prime) \right] .
+\end{equation}
+Putting it all together, we now have
+\begin{align}
+\prod_{r=1}^{\tau_N(t)} (1-p_r)
+&\leq  \exp \left[ -\alpha_n (1+O(N^{-1})) t \right] + c_N(\tau_N(t)) \exp \left[ (t+1) \alpha_n (1+O(N^{-1})) \right] \notag\\
+&\qquad+ \left( \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right) 
+\frac{1}{2} \{\alpha_n (1+O(N^{-1}))\}^2
+\exp\left[ (t+1) \alpha_n (1+O(N^{-1})) \right] \notag\\
+&\qquad+ \left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right)
+\exp \left[ (t+1) \alpha_n (1+O(N^{-1})) (1+B_n^\prime) \right]
+\end{align}
+the expectation of which, in agreement with the previous section, converges to $e^{-\alpha_n t}$.
+Now we turn our attention to the remaining terms inside the expectation in \eqref{eq:50}. We start off by proposing a crude upper bound that will allow the nuisance terms to vanish, but is not refined enough to be of use in the remaining term.
+Applying \eqref{eq:9a} (and assuming that $\alpha_n (1+O(N^{-1})) [ c_N(r_i) + B_n D_N(r_i) ] \neq 1$),
+\begin{align}
+\sum_{\substack{r_1<\dots<r_k :\\ r_i\leq \tau_N(t_i) \forall i}} \prod_{i=1}^k \frac{p_{r_i}}{1-p_{r_i}}
+&\leq \sum_{\substack{r_1<\dots<r_k :\\ r_i\leq \tau_N(t_i) \forall i}} \prod_{i=1}^k
+\frac{\alpha_n (1+O(N^{-1})) [ c_N(r_i) + B_n D_N(r_i) ]}{1- \alpha_n (1+O(N^{-1})) [ c_N(r_i) + B_n D_N(r_i) ]} \notag\\
+&\leq \sum_{\substack{r_1<\dots<r_k :\\ r_i\leq \tau_N(t_i) \forall i}} \prod_{i=1}^k
+\frac{\alpha_n (1+O(N^{-1})) }{1- \alpha_n (1+O(N^{-1})) (1+ B_n) }
+\left[ c_N(r_i) + B_n D_N(r_i) \right] \notag\\
+&\leq \left| \frac{\alpha_n (1+O(N^{-1})) }{1- \alpha_n (1+O(N^{-1})) (1+ B_n) } \right|^k
+\sum_{\substack{r_1<\dots<r_k :\\ r_i\leq \tau_N(t_i) \forall i}} \prod_{i=1}^k
+\left[ c_N(r_i) + B_n D_N(r_i) \right] \notag\\
+\end{align}
+Then using \eqref{eq:8},
+\begin{align}
+\sum_{\substack{r_1<\dots<r_k :\\ r_i\leq \tau_N(t_i) \forall i}} \prod_{i=1}^k
+\left[ c_N(r_i) + B_n D_N(r_i) \right] 
+&\leq \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t_k)} \prod_{i=1}^k
+\left[ c_N(r_i) + B_n D_N(r_i) \right] \notag\\
+&\leq \frac{1}{k!} (t_k +1)^k + \left( \sum_{r=1}^{\tau_N(t_k)} D_N(r) \right)
+\frac{1}{k!} \sum_{I=0}^{k-1} \binom{k}{I} (B_n)^{k-I} (t_k +1)^{k-1} \notag\\
+&\leq \frac{1}{k!} (t_k +1)^k + \left( \sum_{r=1}^{\tau_N(t_k)} c_N(r) \right)
+\frac{1}{k!} (t_k +1)^{k-1} (1+B_n)^k \notag\\
+&\leq \frac{1}{k!} (t_k +1)^k + (t_k +1)
+\frac{1}{k!} (t_k +1)^{k-1} (1+B_n)^k \notag\\
+&= \frac{1}{k!} (t_k +1)^k \left[ 1+(1+B_n)^k \right] 
+\end{align}
+and so we are left with the deterministic bound
+\begin{equation}
+\sum_{\substack{r_1<\dots<r_k :\\ r_i\leq \tau_N(t_i) \forall i}} \prod_{i=1}^k \frac{p_{r_i}}{1-p_{r_i}}
+\leq \left| \frac{\alpha_n (1+O(N^{-1})) }{1- \alpha_n (1+O(N^{-1})) (1+ B_n) } \right|^k \frac{1}{k!} (t_k +1)^k \left[ 1+(1+B_n)^k \right] .
+\end{equation}
+
+
+
+
 
 \bibliography{../smc.bib}
 \end{document}
