@@ -399,6 +399,23 @@ Desirable properties:
 \end{itemize}
 \end{frame}
 
+\begin{frame}{Resampling} %%% combine with previous slide somehow
+% Possibly include in this slide the 3 rules for valid resampling, if relevant later
+\begin{columns}
+\begin{column}{0.45\textwidth}
+\begin{itemize}
+\item Transform continuous weights to discrete offspring counts
+\item For example, sample counts from Multinomial distribution 
+\end{itemize}
+\end{column}
+\begin{column}{0.45\textwidth}
+\centering
+\includegraphics[width=\textwidth]{resample1.pdf} \\
+\includegraphics[width=\textwidth]{resample2.pdf}
+\end{column}
+\end{columns}
+\end{frame}
+
 \begin{frame}{Corollary: multinomial resampling}
 Consider an SMC algorithm with potential $g$ and transition density $q$, satisfying
 \begin{align*}
@@ -425,7 +442,7 @@ Y \mid X =
 Can generalise to multivariate case, with marginals $Y_i \mid X_i$ as above.
 \end{frame}
 
-\begin{frame}{Stochastic roundings}
+\begin{frame}{Stochastic roundings} %%% combine this onto previous slide?
 \begin{itemize}
 \item $X_i = N\wt{i}$
 \item $\vt{i} = Y_i$
@@ -480,6 +497,16 @@ Under multinomial resampling, the rescaled genealogies converge to Kingman's coa
 \item Satisfied by stochastic rounding -based resampling
 \item Satisfied by conditional SMC with multinomial resampling...
 \item ... but this hides some interesting pre-limiting behaviour
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Open questions}
+\begin{itemize}
+\item Verify theorem for other important resampling schemes (stratified, residual-multinomial)
+\item How to estimate the time scale $c_N$ a priori (since it depends on offspring counts)
+\item Weak convergence so we can say more about convergence of expectations
+\item Rates of convergence
+\item Finite-$N$ behaviour
 \end{itemize}
 \end{frame}
 
