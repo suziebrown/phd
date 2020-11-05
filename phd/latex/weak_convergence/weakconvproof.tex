@@ -204,7 +204,7 @@ In particular,
 1-p_t = p_{\Delta\Delta}(t) \geq 1 - \frac{N^{n-2}}{(N-2)_{n-2}} \alpha_n c_N(t) - \frac{N^{n-3}}{(N-3)_{n-3}} B_n D_N(t) .
 \end{equation}
 Since $D_N(s) \leq c_N(s)$ for all $s$ \citep[p.9]{koskela2018}, a sufficient condition for the bound to be positive is
-\begin{equation}
+\begin{equation}\label{eq:11a}
 E_t := \left\{ c_N(t) < \frac{(N-3)_{n-3}}{N^{n-3}} \left( \alpha_n \left(1 + \frac{2}{N-2} \right) + B_n \right)^{-1} \right\} .
 \end{equation}
 %A sufficient condition for the RHS to be non-negative is $c_N(t) \leq [\alpha_n + B_n (1- 2/N)]^{-1}$. %% not true: check workings.
@@ -221,7 +221,7 @@ Hence, by a multinomial expansion,
 + \sum_{k=1}^{\tau_N(t)} \left\{- \alpha_n (1+O(N^{-1}))\right\}^k 
 \left(\prod_{r=1}^{\tau_N(t)} \1{E_r} \right)
 \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
-\left\{ c_N(r_j) + B_n D_N(r_j) \right\} .
+\left\{ c_N(r_j) + B_n D_N(r_j) \right\} . \label{eq:12}
 \end{align}
 %(The empty sum is defined to be zero and the empty product is defined to be one throughout.)
 Taking expectations,
@@ -246,7 +246,7 @@ First the lower bound.
 Fix $k\leq \tau_N(t)$, so that the sum is non-empty.
 %The conditioning on $\bigcap E_r$ doesn't affect these bounds, which are based on general properties of $c_N$, $D_N$ and $\tau_N$. %%% Is this true???
 From \citet[Equation (8)]{koskela2018},
-\begin{align}\label{eq:14}
+\begin{align}
 \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
 \left\{ c_N(r_j) + B_n D_N(r_j) \right\}
 &\geq \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k c_N(r_j) \notag\\
@@ -254,7 +254,7 @@ From \citet[Equation (8)]{koskela2018},
 - \frac{1}{k!} \binom{k}{2} \left( \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right)
 \left( \sum_{s=1}^{\tau_N(t)} c_N(s) \right)^{k-2} \notag\\
 &\geq \frac{1}{k!} t^k
- - \frac{1}{k!} \binom{k}{2} (t+1)^{k-2} \left( \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right) 
+ - \frac{1}{k!} \binom{k}{2} (t+1)^{k-2} \left( \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right) \label{eq:14}
 \end{align}
 by the definition of $\tau_N$.
 Then
@@ -831,7 +831,7 @@ To begin,
 + c_N(\tau_N(t)) \sum_{\substack{l=1\\\text{even}}}^{\tau_N(t)} \frac{1}{l!} \{\alpha_n(1+O(N^{-1})\}^l \sum_{i=0}^{l-1} \binom{l}{i} t^i \{c_N(\tau_N(t))\}^{l-i-1} \notag\\
 &\leq \sum_{\substack{l=1\\\text{even}}}^{\tau_N(t)} \frac{1}{l!} \{\alpha_n(1+O(N^{-1})\}^l t^l
 + c_N(\tau_N(t)) \sum_{\substack{l=1\\\text{even}}}^{\tau_N(t)} \frac{1}{l!} \{\alpha_n(1+O(N^{-1})\}^l \sum_{i=0}^{l-1} \binom{l}{i} t^i \notag\\
-&= \sum_{\substack{l=1\\\text{even}}}^{\tau_N(t)} \frac{1}{l!} \{\alpha_n(1+O(N^{-1})\}^l t^l
+&\leq \sum_{\substack{l=1\\\text{even}}}^{\tau_N(t)} \frac{1}{l!} \{\alpha_n(1+O(N^{-1})\}^l t^l
 + c_N(\tau_N(t)) \sum_{\substack{l=1\\\text{even}}}^{\tau_N(t)} \frac{1}{l!} \{\alpha_n(1+O(N^{-1})\}^l (t+1)^l \notag\\
 &\leq \sum_{\substack{l=1\\\text{even}}}^{\tau_N(t)} \frac{1}{l!} \{\alpha_n(1+O(N^{-1})\}^l t^l
 + c_N(\tau_N(t)) \exp \left[ (t+1) \alpha_n (1+O(N^{-1})) \right] .
@@ -892,7 +892,7 @@ Putting it all together, we now have
 \frac{1}{2} \{\alpha_n (1+O(N^{-1}))\}^2
 \exp\left[ (t+1) \alpha_n (1+O(N^{-1})) \right] \notag\\
 &\qquad+ \left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right)
-\exp \left[ (t+1) \alpha_n (1+O(N^{-1})) (1+B_n^\prime) \right]
+\exp \left[ (t+1) \alpha_n (1+O(N^{-1})) (1+B_n^\prime) \right] \label{eq:58}
 \end{align}
 the expectation of which, in agreement with the previous section, converges to $e^{-\alpha_n t}$.
 Now we turn our attention to the remaining terms inside the expectation in \eqref{eq:50}. We start off by proposing a crude upper bound that will allow the nuisance terms to vanish, but is not refined enough to be of use in the remaining term.
@@ -906,7 +906,7 @@ Applying \eqref{eq:9a} (and assuming that $\alpha_n (1+O(N^{-1})) [ c_N(r_i) + B
 \left[ c_N(r_i) + B_n D_N(r_i) \right] \notag\\
 &\leq \left| \frac{\alpha_n (1+O(N^{-1})) }{1- \alpha_n (1+O(N^{-1})) (1+ B_n) } \right|^k
 \sum_{\substack{r_1<\dots<r_k :\\ r_i\leq \tau_N(t_i) \forall i}} \prod_{i=1}^k
-\left[ c_N(r_i) + B_n D_N(r_i) \right] \notag\\
+\left[ c_N(r_i) + B_n D_N(r_i) \right]
 \end{align}
 Then using \eqref{eq:8},
 \begin{align}
@@ -923,10 +923,113 @@ Then using \eqref{eq:8},
 &= \frac{1}{k!} (t_k +1)^k \left[ 1+(1+B_n)^k \right] 
 \end{align}
 and so we are left with the deterministic bound
-\begin{equation}
+\begin{equation}\label{eq:61}
 \sum_{\substack{r_1<\dots<r_k :\\ r_i\leq \tau_N(t_i) \forall i}} \prod_{i=1}^k \frac{p_{r_i}}{1-p_{r_i}}
-\leq \left| \frac{\alpha_n (1+O(N^{-1})) }{1- \alpha_n (1+O(N^{-1})) (1+ B_n) } \right|^k \frac{1}{k!} (t_k +1)^k \left[ 1+(1+B_n)^k \right] .
+\leq \left| \frac{\alpha_n (1+O(N^{-1})) }{1- \alpha_n (1+O(N^{-1})) (1+ B_n) } \right|^k \frac{1}{k!} (t_k +1)^k \left[ 1+(1+B_n)^k \right] 
 \end{equation}
+with limit 
+\begin{align}
+K_{n,k} 
+&:= \lim_{N\to\infty} \left| \frac{\alpha_n (1+O(N^{-1})) }{1- \alpha_n (1+O(N^{-1})) (1+ B_n) } \right|^k \frac{1}{k!} (t_k +1)^k \left[ 1+(1+B_n)^k \right] \notag\\
+&= \left| \frac{\alpha_n }{1- \alpha_n (1+ B_n) } \right|^k \frac{1}{k!} (t_k +1)^k \left[ 1+(1+B_n)^k \right] \label{eq:62}
+\end{align}
+Now let us see how far we've got. Combining \eqref{eq:58} and \eqref{eq:61},
+\begin{align}
+\lim_{N\to\infty} \E &\left[ \left( \prod_{r=1}^{\tau_N(t)} (1-p_r) \right) \left( \sum_{\substack{r_1<\dots<r_k :\\ r_i\leq \tau_N(t_i) \forall i}} \prod_{i=1}^k \frac{p_{r_i}}{1-p_{r_i}} \right) \right] 
+\leq \exp \left[ -\alpha_n t \right] \lim_{N\to\infty} \E \left[ \sum_{\substack{r_1<\dots<r_k :\\ r_i\leq \tau_N(t_i) \forall i}} \prod_{i=1}^k \frac{p_{r_i}}{1-p_{r_i}} \right] \notag\\
+&\qquad+ \lim_{N\to\infty} \E [c_N(\tau_N(t))] \exp \left[ (t+1) \alpha_n  \right] K_{n,k} \notag\\
+&\qquad+ \lim_{N\to\infty} \E \left[ \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right] 
+\frac{1}{2} \alpha_n^2
+\exp\left[ (t+1) \alpha_n \right] K_{n,k} \notag\\
+&\qquad+ \lim_{N\to\infty} \E \left[ \sum_{s=1}^{\tau_N(t)} D_N(s) \right]
+\exp \left[ (t+1) \alpha_n (1+B_n^\prime) \right] K_{n,k} \notag\\
+&= \exp \left[ -\alpha_n t \right] \lim_{N\to\infty} \E \left[ \sum_{\substack{r_1<\dots<r_k :\\ r_i\leq \tau_N(t_i) \forall i}} \prod_{i=1}^k \frac{p_{r_i}}{1-p_{r_i}} \right] .
+\end{align}
+by \citet[Equations (3)--(5)]{brown2020}.
+It remains to show that
+\begin{equation}
+\lim_{N\to\infty} \E \left[ \sum_{\substack{r_1<\dots<r_k :\\ r_i\leq \tau_N(t_i) \forall i}} \prod_{i=1}^k \frac{p_{r_i}}{1-p_{r_i}} \right] 
+\leq \alpha_n^k \sum_{\substack{i_1\leq \dots\leq i_{k-1}\\ \in \{0,\dots,k\} :\\ i_j \geq j \forall j}} \prod_{j=1}^k \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})! } .
+\end{equation}
+
+
+
+\section*{Induction step: lower bound}
+\begin{lemma}\label{thm:induction_LB}
+Fix $i_0=0$, $i_k=k$.
+\begin{equation}\label{eq:50}
+\lim_{N\to\infty} \E \left[ \left( \prod_{r=1}^{\tau_N(t)} (1-p_r) \right) \left( \sum_{\substack{r_1<\dots<r_k :\\ r_i\leq \tau_N(t_i) \forall i}} \prod_{i=1}^k \frac{p_{r_i}}{1-p_{r_i}} \right) \right] 
+\geq e^{-\alpha_n t} \alpha_n^k \sum_{\substack{i_1\leq \dots\leq i_{k-1}\\ \in \{0,\dots,k\} :\\ i_j \geq j \forall j}} \prod_{j=1}^k \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})! }
+\end{equation}
+\end{lemma}
+The proof follows a similar structure to the upper bound; first expanding the $\prod (1-p_r)$ to separate the nuisance terms and using the same crude bound on $\sum \prod p_{r_i} / (1- p_{r_i})$ to show that these vanish, then computing the limit with the remaining terms only.
+
+Using \eqref{eq:12} with $E_t$ defined as in \eqref{eq:11a}, then bounding the even terms with \eqref{eq:14} and the odd terms with \eqref{eq:8},
+\begin{align}
+\prod_{r=1}^{\tau_N(t)} (1-p_r)
+&\geq \left( \prod_{r=1}^{\tau_N(t)} \1{E_r} \right)
+\left( 1+ \sum_{l=1}^{\tau_N(t)} \{-\alpha_n (1+O(N^{-1}))\}^l
+\sum_{\substack{s_1<\dots,<s_l \\ =1}}^{\tau_N(t)} \prod_{j=1}^l
+\left\{ c_N(s_j) + B_n D_N(s_j) \right\} \right) \notag\\
+&\geq \left( \prod_{r=1}^{\tau_N(t)} \1{E_r} \right)
+\left( 1+ \sum_{\substack{l=2\\ \text{even}}}^{\tau_N(t)} \frac{1}{l!} \{\alpha_n(1+O(N^{-1}))\}^l 
+\left[ t^l - \binom{l}{2} (t+1)^{l-2} \left(\sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right) \right] \right.\notag\\
+&\qquad\qquad- \left. \sum_{\substack{l=1\\ \text{odd}}}^{\tau_N(t)} \frac{1}{l!} \{\alpha_n(1+O(N^{-1}))\}^l
+\left[ \left\{ t+ c_N(\tau_N(t)) \right\}^l 
++ \sum_{I=0}^{l-1} \binom{l}{I} (B_n)^{l-I} (t+1)^{l-1}
+\left(\sum_{s=1}^{\tau_N(t)} D_N(s) \right) \right] \right) \notag\\
+&= \left( \prod_{r=1}^{\tau_N(t)} \1{E_r} \right)
+\left( 1+ \sum_{\substack{l=2\\ \text{even}}}^{\tau_N(t)} \frac{1}{l!} \{\alpha_n(1+O(N^{-1}))\}^l t^l - \sum_{\substack{l=1\\ \text{odd}}}^{\tau_N(t)} \frac{1}{l!} \{\alpha_n(1+O(N^{-1}))\}^l t^l \right) \notag\\
+&\qquad\qquad- \left( \prod_{r=1}^{\tau_N(t)} \1{E_r} \right)
+\left[ \sum_{\substack{l=2\\ \text{even}}}^{\tau_N(t)} \frac{1}{l!} \{\alpha_n(1+O(N^{-1}))\}^l \binom{l}{2} (t+1)^{l-2}
+\left(\sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right) \right. \notag\\
+&\qquad\qquad\qquad\qquad+ \sum_{\substack{l=1\\ \text{odd}}}^{\tau_N(t)} \frac{1}{l!} \{\alpha_n(1+O(N^{-1}))\}^l c_N(\tau_N(t))
+\sum_{i=0}^{l-1} \binom{l}{i} t^i \{ c_N(\tau_N(t)) \}^{l-1-i} \notag\\
+&\qquad\qquad\qquad\qquad+ \left. \sum_{\substack{l=1\\ \text{odd}}}^{\tau_N(t)} \frac{1}{l!} \{\alpha_n(1+O(N^{-1}))\}^l (t+1)^{l-1}
+\left(\sum_{s=1}^{\tau_N(t)} D_N(s) \right)
+\sum_{I=0}^{l-1} \binom{l}{I} (B_n)^{l-I} \right] \notag\\
+&\geq \left( \prod_{r=1}^{\tau_N(t)} \1{E_r} \right)
+\sum_{l=0}^{\tau_N(t)} \frac{1}{l!} \{ -\alpha_n(1+O(N^{-1}))\}^l t^l \notag\\
+&\qquad\qquad-  \left(\sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right)
+\frac{1}{2} \{ \alpha_n (1+O(N^{-1})) \}^2  \sum_{l=2}^\infty \frac{1}{(l-2)!} (t+1)^{l-2} \{ \alpha_n (1+O(N^{-1})) \}^{l-2} \notag\\
+&\qquad\qquad- c_N(\tau_N(t)) \sum_{l=0}^\infty \frac{1}{l!} \{\alpha_n(1+O(N^{-1}))\}^l (t+1)^l \notag\\
+&\qquad\qquad- \left(\sum_{s=1}^{\tau_N(t)} D_N(s) \right)
+\sum_{l=0}^\infty \frac{1}{l!} \{\alpha_n(1+O(N^{-1}))\}^l (t+1)^l (1+B_n)^l \notag\\
+&= \left( \prod_{r=1}^{\tau_N(t)} \1{E_r} \right)
+\sum_{l=0}^{\tau_N(t)} \frac{1}{l!} \{ -\alpha_n(1+O(N^{-1}))\}^l t^l \notag\\
+&\qquad\qquad-  \left(\sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right)
+\frac{1}{2} \{ \alpha_n (1+O(N^{-1})) \}^2
+\exp \left[ (t+1) \alpha_n (1+O(N^{-1})) \right] \notag\\
+&\qquad\qquad- c_N(\tau_N(t)) \exp \left[ (t+1) \alpha_n (1+O(N^{-1})) \right] \notag\\
+&\qquad\qquad- \left(\sum_{s=1}^{\tau_N(t)} D_N(s) \right)
+\exp \left[ (t+1) \alpha_n (1+O(N^{-1})) (1+B_n) \right] .
+\end{align}
+We now have the nuisance terms (that is, the last three lines) in a form whose expectation will vanish.
+In particular, using \eqref{eq:61}--\eqref{eq:62}, and applying \citet[Equations (3)--(5)]{brown2020},
+\begin{align}
+\lim_{N\to\infty} \E &\left[ \left( \prod_{r=1}^{\tau_N(t)} (1-p_r) \right) \left( \sum_{\substack{r_1<\dots<r_k :\\ r_i\leq \tau_N(t_i) \forall i}} \prod_{i=1}^k \frac{p_{r_i}}{1-p_{r_i}} \right) \right] \notag\\
+&\qquad\geq \lim_{N\to\infty} \E \left[ \left( \prod_{r=1}^{\tau_N(t)} \1{E_r} \right)
+\sum_{l=0}^{\tau_N(t)} \frac{1}{l!} \{ -\alpha_n(1+O(N^{-1}))\}^l t^l
+\left( \sum_{\substack{r_1<\dots<r_k :\\ r_i\leq \tau_N(t_i) \forall i}} \prod_{i=1}^k \frac{p_{r_i}}{1-p_{r_i}} \right) \right] \notag\\
+&\qquad\qquad- \lim_{N\to\infty} \E\left[ \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right]
+\frac{1}{2} \alpha_n^2
+\exp \left[ (t+1) \alpha_n \right] K_{n,k} \notag\\
+&\qquad\qquad- \lim_{N\to\infty} \E\left[ c_N(\tau_N(t)) \right]
+ \exp \left[ (t+1) \alpha_n \right] K_{n,k} \notag\\
+ &\qquad\qquad- \lim_{N\to\infty} \E\left[ \sum_{s=1}^{\tau_N(t)} D_N(s) \right]
+\exp \left[ (t+1) \alpha_n (1+B_n) \right] K_{n,k} \notag\\
+&\qquad= \lim_{N\to\infty} \E \left[ \left( \prod_{r=1}^{\tau_N(t)} \1{E_r} \right)
+\sum_{l=0}^{\tau_N(t)} \frac{1}{l!} \{ -\alpha_n(1+O(N^{-1}))\}^l t^l
+\left( \sum_{\substack{r_1<\dots<r_k :\\ r_i\leq \tau_N(t_i) \forall i}} \prod_{i=1}^k \frac{p_{r_i}}{1-p_{r_i}} \right) \right] .
+\end{align}
+
+
+
+
+
+
+
+
 
 
 
