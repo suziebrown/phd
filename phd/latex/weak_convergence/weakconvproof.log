@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  5 NOV 2020 17:06
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  6 NOV 2020 12:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -217,9 +217,6 @@ LaTeX Font Info:    Overwriting math alphabet `\mathbbmss' in version `bold'
 
 LaTeX Warning: Label `thm:induction_LB' multiply defined.
 
-
-LaTeX Warning: Label `eq:50' multiply defined.
-
 )
 \openout1 = `weakconvproof.aux'.
 
@@ -363,7 +360,7 @@ Overfull \hbox (11.4111pt too wide) detected at line 651
  []
 
 [7] [8] [9]
-Overfull \hbox (19.09406pt too wide) detected at line 849
+Overfull \hbox (11.31625pt too wide) detected at line 849
 []
  []
 
@@ -380,7 +377,7 @@ LaTeX Warning: There were multiply-defined labels.
 Here is how much of TeX's memory you used:
  3871 strings out of 492649
  53410 string characters out of 6129623
- 146358 words of memory out of 5000000
+ 146357 words of memory out of 5000000
  7664 multiletter control sequences out of 15000+600000
  12940 words of font info for 51 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -405,7 +402,7 @@ exlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/tex
 live/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texl
 ive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/
 texlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
-Output written on weakconvproof.pdf (15 pages, 258022 bytes).
+Output written on weakconvproof.pdf (15 pages, 257900 bytes).
 PDF statistics:
  134 PDF objects out of 1000 (max. 8388607)
  96 compressed objects within 1 object stream
