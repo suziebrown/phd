@@ -53,7 +53,7 @@
 
 % project-specific commands
 \newcommand{\F}{\mathcal{F}_{t-1}}
-\newcommand{\vt}[2][t]{v_{#1}^{(#2)}}
+\newcommand{\vt}[2][t]{\nu_{#1}^{(#2)}}
 %\newcommand{\vt}[1]{v_{#1}}
 \newcommand{\wt}[2][t]{w_{#1}^{(#2)}}
 %\newcommand{\wt}[1]{w_{#1}}
@@ -72,13 +72,49 @@
 
 \begin{frame}{Outline}
 \begin{enumerate}
-\item ...
+\item Sequential Monte Carlo
+\item Resampling and degeneracy
+\item SMC genealogies
+\item Examples
 \end{enumerate}
 \end{frame}
 
-%% add a frame with SMC algm skeleton, to fix notation g,q etc.?
 
 \begin{frame}{Sequential Monte Carlo}
+Iterate these steps:
+\begin{enumerate}
+\item \textbf{Mutate} particles via Markov transition density $q_t$
+\item \textbf{Weight} particles by potential function $g_t$
+\item \textbf{Resample} particles in proportion to their weights
+\end{enumerate}
+\end{frame}
+
+
+\begin{frame}{Resampling}
+\begin{columns}
+\begin{column}{0.45\textwidth}
+\onslide<1->
+Stochastically map continuous weights $(\wt{1}, \dots, \wt{N})$ to discrete offspring counts $(\vt{1},\dots, \vt{N})$\\[10pt]
+\onslide<2->
+Properties:
+\begin{itemize}
+\item Number of particles constant $\sum_{i=1}^N \vt{i} =N$
+\item Equal weights after resampling $w_{t+}^{(i)} = 1/N$
+\item Unbiased\\ $\E[\vt{i} | \wt{i}] = N\wt{i}$
+\end{itemize}
+
+\end{column}
+\begin{column}{0.45\textwidth}
+\centering
+\onslide<1->
+\includegraphics[width=\textwidth]{resample1.pdf} \\
+\includegraphics[width=\textwidth]{resample2.pdf}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Resampling induces a genealogy}
 \centering
 \begin{tikzpicture}
 \filldraw (0,0) circle (6pt);
@@ -86,8 +122,63 @@
 \filldraw (0,-2) circle (6pt);
 \filldraw (0,-3) circle (6pt);
 
-\draw[->] (-1,-4.5)--(9,-4.5);
-\node at (4,-4.7) {forward in time};
+\draw[->, thick] (0.3,0)--(1.7,0);
+\draw[->, thick] (0.3,-1)--(1.7,-1);
+\draw[->, thick] (0.3,-3)--(1.7,-3);
+\draw[->, thick] (0.3,-1)--(1.7,-2);
+
+\filldraw (2,0) circle (6pt);
+\filldraw (2,-1) circle (6pt);
+\filldraw (2,-2) circle (6pt);
+\filldraw (2,-3) circle (6pt);
+
+\pause
+
+\filldraw (4,0) circle (6pt);
+\filldraw (4,-1) circle (6pt);
+\filldraw (4,-2) circle (6pt);
+\filldraw (4,-3) circle (6pt);
+
+\filldraw (6,0) circle (6pt);
+\filldraw (6,-1) circle (6pt);
+\filldraw (6,-2) circle (6pt);
+\filldraw (6,-3) circle (6pt);
+
+\filldraw (8,0) circle (6pt);
+\filldraw (8,-1) circle (6pt);
+\filldraw (8,-2) circle (6pt);
+\filldraw (8,-3) circle (6pt);
+
+\draw[->, thick] (2.3,-1)--(3.7,0);
+\draw[->, thick] (2.3,-1)--(3.7,-1);
+\draw[->, thick] (2.3,-3)--(3.7,-2);
+\draw[->, thick] (2.3,-3)--(3.7,-3);
+
+\draw[->, thick] (4.3,0)--(5.7,0);
+\draw[->, thick] (4.3,-1)--(5.7,-1);
+\draw[->, thick] (4.3,-1)--(5.7,-2);
+\draw[->, thick] (4.3,-3)--(5.7,-3);
+
+\draw[->, thick] (6.3,0)--(7.7,0);
+\draw[->, thick] (6.3,-1)--(7.7,-1);
+\draw[->, thick] (6.3,-2)--(7.7,-2);
+\draw[->, thick] (6.3,-2)--(7.7,-3);
+\end{tikzpicture}
+\end{frame}
+
+
+\begin{frame}{Resampling induces a genealogy}
+\centering
+\begin{tikzpicture}
+\filldraw (0,0) circle (6pt);
+\filldraw (0,-1) circle (6pt);
+\filldraw (0,-2) circle (6pt);
+\filldraw (0,-3) circle (6pt);
+
+\draw[->, thick] (0.3,0)--(1.7,0);
+\draw[->, thick] (0.3,-1)--(1.7,-1);
+\draw[->, thick] (0.3,-3)--(1.7,-3);
+\draw[->, thick] (0.3,-1)--(1.7,-2);
 
 \filldraw (2,0) circle (6pt);
 \filldraw (2,-1) circle (6pt);
@@ -109,11 +200,6 @@
 \filldraw (8,-2) circle (6pt);
 \filldraw (8,-3) circle (6pt);
 
-\draw[->, thick] (0.3,0)--(1.7,0);
-\draw[->, thick] (0.3,-1)--(1.7,-1);
-\draw[->, thick] (0.3,-3)--(1.7,-3);
-\draw[->, thick] (0.3,-1)--(1.7,-2);
-
 \draw[->, thick] (2.3,-1)--(3.7,0);
 \draw[->, thick] (2.3,-1)--(3.7,-1);
 \draw[->, thick] (2.3,-3)--(3.7,-2);
@@ -129,15 +215,6 @@
 \draw[->, thick] (6.3,-2)--(7.7,-2);
 \draw[->, thick] (6.3,-2)--(7.7,-3);
 
-\pause
-\node at (8,-3.8) {$t=0$};
-\pause
-\node at (6,-3.8) {$t=1$};
-\node at (4,-3.8) {$t=2$};
-\node at (2,-3.8) {$t=3$};
-\node at (0,-3.8) {$t=4$};
-
-\pause
 % highlight first lineage
 \filldraw[darkred] (8,0) circle (5pt);
 \pause
@@ -169,49 +246,105 @@
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}{Induced genealogy}
+
+\begin{frame}{Resampling induces a genealogy}
+\vspace{1cm}
+
 \centering
 \begin{tikzpicture}
-\draw[dotted] (0,-4.5)--(0,0.5);
-\draw[dotted] (2,-4.5)--(2,0.5);
-\draw[dotted] (4,-4.5)--(4,0.5);
-\draw[dotted] (6,-4.5)--(6,0.5);
-\draw[dotted] (8,-4.5)--(8,0.5);
+\filldraw (0,0) circle (6pt);
+\filldraw (0,-1) circle (6pt);
+\filldraw (0,-2) circle (6pt);
+\filldraw (0,-3) circle (6pt);
 
-\draw[thick, darkred] (0,-1)--(2,-1);
-\draw[thick, darkred] (2,0)--(2,-2);
-\draw[thick, darkred] (2,0)--(8,0);
-\draw[thick, darkred] (2,-2)--(4,-2);
-\draw[thick, darkred] (4,-3)--(4,-1);
-\draw[thick, darkred] (4,-1)--(8,-1);
-\draw[thick, darkred] (4,-3)--(6,-3);
-\draw[thick, darkred] (6,-2)--(6,-4);
-\draw[thick, darkred] (6,-2)--(8,-2);
-\draw[thick, darkred] (6,-4)--(8,-4);
+\draw[->, thick] (0.3,0)--(1.7,0);
+\draw[->, thick] (0.3,-1)--(1.7,-1);
+\draw[->, thick] (0.3,-3)--(1.7,-3);
+\draw[->, thick] (0.3,-1)--(1.7,-2);
 
-\node at (8,-4.8) {$t=0$};
-\node at (6,-4.8) {$t=1$};
-\node at (4,-4.8) {$t=2$};
-\node at (2,-4.8) {$t=3$};
-\node at (0,-4.8) {$t=4$};
+\filldraw (2,0) circle (6pt);
+\filldraw (2,-1) circle (6pt);
+\filldraw (2,-2) circle (6pt);
+\filldraw (2,-3) circle (6pt);
+
+\filldraw (4,0) circle (6pt);
+\filldraw (4,-1) circle (6pt);
+\filldraw (4,-2) circle (6pt);
+\filldraw (4,-3) circle (6pt);
+
+\filldraw (6,0) circle (6pt);
+\filldraw (6,-1) circle (6pt);
+\filldraw (6,-2) circle (6pt);
+\filldraw (6,-3) circle (6pt);
+
+\filldraw (8,0) circle (6pt);
+\filldraw (8,-1) circle (6pt);
+\filldraw (8,-2) circle (6pt);
+\filldraw (8,-3) circle (6pt);
+
+\draw[->, thick] (2.3,-1)--(3.7,0);
+\draw[->, thick] (2.3,-1)--(3.7,-1);
+\draw[->, thick] (2.3,-3)--(3.7,-2);
+\draw[->, thick] (2.3,-3)--(3.7,-3);
+
+\draw[->, thick] (4.3,0)--(5.7,0);
+\draw[->, thick] (4.3,-1)--(5.7,-1);
+\draw[->, thick] (4.3,-1)--(5.7,-2);
+\draw[->, thick] (4.3,-3)--(5.7,-3);
+
+\draw[->, thick] (6.3,0)--(7.7,0);
+\draw[->, thick] (6.3,-1)--(7.7,-1);
+\draw[->, thick] (6.3,-2)--(7.7,-2);
+\draw[->, thick] (6.3,-2)--(7.7,-3);
+
+% highlight first lineage
+\filldraw[darkred] (8,0) circle (5pt);
+\filldraw[darkred] (6,0) circle (5pt);
+\filldraw[darkred] (4,0) circle (5pt);
+\filldraw[darkred] (2,-1) circle (5pt);
+\filldraw[darkred] (0,-1) circle (5pt);
+
+\draw[->, thick, darkred] (0.3,-1)--(1.7,-1);
+\draw[->, thick, darkred] (2.3,-1)--(3.7,0);
+\draw[->, thick, darkred] (4.3,0)--(5.7,0);
+\draw[->, thick, darkred] (6.3,0)--(7.7,0);
+
+% highlight other lineages
+\filldraw[darkred] (4,-1) circle (5pt);
+\filldraw[darkred] (6,-1) circle (5pt);
+\filldraw[darkred] (8,-1) circle (5pt);
+\filldraw[darkred] (6,-2) circle (5pt);
+\filldraw[darkred] (8,-2) circle (5pt);
+\filldraw[darkred] (8,-3) circle (5pt);
+
+\draw[->, thick, darkred] (2.3,-1)--(3.7,-1);
+\draw[->, thick, darkred] (4.3,-1)--(5.7,-1);
+\draw[->, thick, darkred] (4.3,-1)--(5.7,-2);
+\draw[->, thick, darkred] (6.3,-1)--(7.7,-1);
+\draw[->, thick, darkred] (6.3,-2)--(7.7,-2);
+\draw[->, thick, darkred] (6.3,-2)--(7.7,-3);
 \end{tikzpicture}
+
+\vspace{1cm}
+\textbf{Ancestral degeneracy:} for $t<<T$, few distinct samples are available
 \end{frame}
 
-\begin{frame}{Mathematical formulation}
+
+\begin{frame}{Encoding genealogies}
 \begin{itemize}
+\item Label time in reverse
 \item Population of $N$ particles
 \item Sample $n\leq N$ terminal particles
-\pause
-\item Describe genealogy by a partition-valued stochastic process $(G_t^{(n,N)})_{t\in\mathbb{N}_0}$
+\item Describe genealogy by stochastic process $(G_t^{(n,N)})_{t\in\mathbb{N}_0}$ on space of partitions of $\{1,\dots,n\}$
 \item Elements $i, j$ are in the same block of the partition $G_t^{(n,N)}$ iff particles $i$ and $j$ share a common ancestor at time $t$
-\pause
-\item At time 0, the partition of $\{1,\dots,n\}$ consisting of singletons: $G_0^{(n,N)} = \{ \{1\}, \dots, \{n\} \}$
+\item Initially $G_0^{(n,N)} = \{ \{1\}, \dots, \{n\} \}$
 \item The only possible non-identity transitions are those that merge blocks
+\item The trivial partition $\{ \{ 1,\dots, n \} \}$ is an absorbing state
 \end{itemize}
-
 \end{frame}
 
-\begin{frame}{Example}
+
+\begin{frame}{Encoding genealogies} %%% add some pauses in here
 \centering
 \begin{tikzpicture}
 \draw[dotted] (0,-4.5)--(0,0.5);
@@ -230,6 +363,8 @@
 \draw[thick, darkred] (6,-2)--(6,-4);
 \draw[thick, darkred] (6,-2)--(8,-2);
 \draw[thick, darkred] (6,-4)--(8,-4);
+
+\pause
 
 \node at (8.3,0) {1};
 \node at (8.3,-1) {2};
@@ -241,7 +376,7 @@
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}{Example}
+\begin{frame}{Encoding genealogies}
 \centering
 \begin{tikzpicture}
 \draw[dotted] (0,-4.5)--(0,0.5);
@@ -271,7 +406,7 @@
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}{Example}
+\begin{frame}{Encoding genealogies}
 \centering
 \begin{tikzpicture}
 \draw[dotted] (0,-4.5)--(0,0.5);
@@ -301,7 +436,7 @@
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}{Example}
+\begin{frame}{Encoding genealogies}
 \centering
 \begin{tikzpicture}
 \draw[dotted] (0,-4.5)--(0,0.5);
@@ -331,89 +466,70 @@
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}{Kingman's $n$-coalescent} %%% Add the wiki picture of KC on this slide
-\begin{itemize}
-\pause
-\item $n$ terminal particles
-\item Continuous time
-\item Each pair of lineages coalesces at rate 1
-\item No other ($>$ pair) mergers allowed
-\end{itemize}
-\end{frame}
 
-\begin{frame}{Notation}
-\begin{itemize}
-\item $\wt{i}$ = weight of particle $i$ in generation $t$
-\item family size $\vt{i}$ = number of offspring of particle $i$ in generation $t$
-\pause
-\item pair merger probability $c_N(t) = \frac{1}{N(N-1)}\sum_{i=1}^N \vt{i}(\vt{i}-1)$
-\pause
-\item time scale $\tau_N(t)$ = inverse of $c_N(t)$
-\end{itemize}
-\end{frame}
-
-\begin{frame}{A convergence theorem\footnote{Koskela, Jenkins, Johansen, Span\`o. \textit{Ann Stat,} to appear.}}
-\vspace{-10pt}
-Suppose:
-\begin{align*}
-\E [c_N(t)] &\rightarrow 0  \\
-\E \left[ \sum_{ r = \tau_N( s ) + 1 }^{ \tau_N( t ) } D_N( r ) \right] &\rightarrow 0 \\
-\E \left[ \sum_{ r = \tau_N( s ) + 1 }^{ \tau_N( t ) } c_N( r )^2 \right] &\rightarrow 0 \\
-\E [\tau_N(t) - \tau_N(s)] &\leq C_{t,s} N 
-\end{align*}
-Then the rescaled genealogical process $(G_{\tau_N(t)}^{(n,N)})_{t\geq0} $ converges to Kingman's coalescent in the sense of finite-dimensional distributions as $N\to\infty$.
-\end{frame}
-
-\begin{frame}{A simplified statement}
-\vspace{-10pt}
-\pause
-Suppose there exists a deterministic sequence $(b_N)_{N\in\mathbb{N}}$ uniform in $t\geq 1$ such that $b_N \to 0$.
-\begin{equation*}
-\frac{1}{N(N-1)(N-2)} \sum_{i = 1}^N \Et[ \vt{i}(\vt{i}-1)(\vt{i}-2) ]  \leq b_N \frac{1}{N(N-1)} \sum_{i = 1}^N \Et[ \vt{i}(\vt{i}-1)  ]
-\end{equation*}
-
-Then the rescaled genealogical process $(G_{\tau_N(t)}^{(n,N)})_{t\geq0} $ converges to Kingman's coalescent in the sense of finite-dimensional distributions as $N\to\infty$.
-\end{frame}
-
-\begin{frame}{Remarks}
-\begin{itemize}
-\item We replace four conditions with one
-\pause
-\item We remove condition 4, which we know is not a necessary condition
-\pause
-\item We remove conditions 2 and 3, which contain awkward mixed moments
-\pause
-\item We can verify the new condition in more complicated cases...
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Resampling schemes}
-Problem : (stochastically) map weights $(\wt{1}, \dots, \wt{N})$ to family sizes $(\vt{1},\dots, \vt{N})$.\\
-
-\pause
-Desirable properties:
-\begin{itemize}
-\item Number of particles constant $\sum_{i=1}^N \vt{i} =N$
-\item Equal weights after resampling $w_{t+}^{(i)} = 1/N$
-\item Unbiased $\E[\vt{i} | \wt{i}] = N\wt{i}$
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Resampling} %%% combine with previous slide somehow
-% Possibly include in this slide the 3 rules for valid resampling, if relevant later
+\begin{frame}{Kingman's $n$-coalescent}
 \begin{columns}
 \begin{column}{0.45\textwidth}
 \begin{itemize}
-\item Transform continuous weights to discrete offspring counts
-\item For example, sample counts from Multinomial distribution 
+\item Continuous-time Markov chain on the space of partitions of $\{1,\dots,n\}$
+\item Single pair mergers only
+\item Each pair merges independently at rate 1 (total merge rate $\binom{k}{2}$ while there are $k$ distinct lineages)
 \end{itemize}
 \end{column}
 \begin{column}{0.45\textwidth}
-\centering
-\includegraphics[width=\textwidth]{resample1.pdf} \\
-\includegraphics[width=\textwidth]{resample2.pdf}
+\includegraphics[width=\textwidth]{kingman.png}
+\hspace*{\fill} \tiny{image: Wikimedia commons}
 \end{column}
 \end{columns}
+\end{frame}
+
+
+\begin{frame}{Time scale}
+The probability that a randomly chosen pair of particles at generation $t$ share a common ancestor at generation $(t-1)$, conditional on offspring counts, is
+\begin{equation*}
+c_N(t) = \frac{1}{(N)_2} \sum_{i=1}^N (\vt{i})_2
+\end{equation*}
+To get an $n$-coalescent, this should converge to 1 (the required pair merger rate),
+so we rescale time by the inverse
+\begin{equation*}
+\tau_N(t) := \min\left\{ s\geq 1 : \sum_{r=1}^s c_N(r) \geq t \right\}
+\end{equation*}
+\end{frame}
+
+
+\begin{frame}{Main theorem}
+\begin{itemize}
+\item Offspring counts $(\vt{1},\dots,\vt{N})$
+\pause
+\item Parent-offspring assignments are uniform given offspring counts
+\item Time scale does not explode (i.e.\ $\PR[\tau_N(t)=\infty]=0$ for all finite $t$)
+\item There exists a sequence $(b_N)$ such that $\lim_{N\to\infty} b_N = 0$ and
+\begin{equation*}
+\frac{1}{(N)_3} \sum_{i=1}^N \E_t [ (\vt{i})_3 ]
+\leq b_N \frac{1}{(N)_2} \sum_{i=1}^N \E_t [ (\vt{i})_2 ]
+\end{equation*}
+\end{itemize}
+\pause
+Then the finite-dimensional distributions of the time-rescaled genealogies converge to Kingman's $n$-coalescent as $N\to\infty$.
+\end{frame}
+
+
+\begin{frame}{Corollaries}
+We established the theorem in these cases:
+\begin{itemize}
+\item Multinomial resampling
+\item Stochastic rounding 
+\item Conditional SMC with multinomial resampling
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Multinomial resampling}
+\begin{itemize}
+\item Offspring counts are sampled from Multinomial distribution parametrised by weights
+\item Easy to analyse, but doesn't perform well
+\item (For the population geneticists): different from Wright-Fisher model because not neutral
+\end{itemize}
 \end{frame}
 
 \begin{frame}{Corollary: multinomial resampling}
@@ -427,32 +543,28 @@ for constants $0<\varepsilon\leq 1\leq a<\infty$, and probablity distribution $h
 Under multinomial resampling, the rescaled genealogies converge to Kingman's coalescent.
 \end{frame}
 
-\begin{frame}{Stochastic roundings}
-\pause
-Let $X\geq 0$.\\
-$Y: \mathbb{R}_+ \to \mathbb{N}$ is a \emph{stochastic rounding} of $X$ if $Y$ takes the values
+
+\begin{frame}{Stochastic rounding}
+$\mathbf{Y}: \mathbb{R}_+^N \to \mathbb{N}^N$ is a \emph{stochastic rounding} of $\mathbf{X}$ if for $i=1,\dots,N$
 \begin{equation*}
-Y \mid X =
+Y_i \mid X_i =
 \begin{cases}
- \lfloor X \rfloor & \text{with probability } 1- X+ \lfloor X \rfloor \\
-  \lfloor X \rfloor +1 & \text{with probability } X- \lfloor X \rfloor 
+ \lfloor X_i \rfloor & \text{with probability } 1- X_i + \lfloor X_i \rfloor \\
+  \lfloor X_i \rfloor +1 & \text{with probability } X_i - \lfloor X_i \rfloor 
 \end{cases}
 \end{equation*}
-\pause
-Can generalise to multivariate case, with marginals $Y_i \mid X_i$ as above.
-\end{frame}
 
-\begin{frame}{Stochastic roundings} %%% combine this onto previous slide?
+%%% add pause
 \begin{itemize}
-\item $X_i = N\wt{i}$
-\item $\vt{i} = Y_i$
-\item Constraint $Y_1+\dots +Y_N = N$
-\pause
-\item Examples: systematic resampling, residual-stratified resampling, SSP resampling\footnote{Gerber, Whiteley, Chopin. \textit{Ann Stat,} 2019.},...
+\item We can construct low-variance resampling schemes using stochastic rounding
+\item Take $X_i = N\wt{i}$ and $Y_i = \vt{i}$
+\item Require further constraint $Y_1 + \cdots + Y_N = N$
+\item \textbf{Examples:} systematic, residual-stratified, branching system\footnote{Crisan, Lyons. \textit{Prob Theory \& Related Fields,} 1997}, SSP resampling\footnote{Gerber, Whiteley, Chopin. \textit{Ann Stat,} 2019.}
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Corollary: stochastic rounding -based resampling}
+
+\begin{frame}{Corollary: stochastic rounding}
 Consider an SMC algorithm with potential $g$ and transition density $q$, satisfying
 \begin{align*}
 \frac{1}{a} \leq &g_t(x, x^\prime) \leq a \\
@@ -463,12 +575,19 @@ for constants $0<\varepsilon\leq 1\leq a<\infty$, and probablity distribution $h
 Under stochastic rounding -based resampling, the rescaled genealogies converge to Kingman's coalescent.
 \end{frame}
 
+
+%%% Make illustrative diagram about CSMC
 \begin{frame}{Conditional SMC}
 \begin{itemize}
 \item Used for SMC updates in particle MCMC\footnote{Andrieu, Doucet, Holenstein. \textit{JRSSB}, 2010.}
-\item Given a fixed ``immortal trajectory'', conditioned to survive all transition and resampling steps
+\item One ``immortal lineage'' is conditioned to survive all mutation and resampling steps
+\item Resampling algorithm must deterministically propagate this ``immortal lineage''
+\item For example: fix one offspring to immortal lineage, multinomial sampling for the remaining counts
+\pause
+\item Conjecture: theorem also applies to conditional SMC with stochastic rounding
 \end{itemize}
 \end{frame}
+
 
 \begin{frame}{Corollary: conditional SMC}
 Consider a conditional SMC algorithm with potential $g$ and transition density $q$, satisfying
@@ -481,15 +600,9 @@ for constants $0<\varepsilon\leq 1\leq a<\infty$, and probablity distribution $h
 Under multinomial resampling, the rescaled genealogies converge to Kingman's coalescent.
 \end{frame}
 
-\begin{frame}{What about finite $N$?}
-\begin{itemize}
-\item As $N\to\infty$ but sample size $n$ fixed, probability of sampling immortal line vanishes, so its effect isn't seen in the limit
-\pause
-\item For finite $N$ we have more interesting behaviour
-\item Depends how ``typical'' the immortal trajectory is 
-\end{itemize}
-\end{frame}
 
+
+%%% amalgamate following slides:
 \begin{frame}{Summary}
 \begin{itemize}
 \item We consider genealogies of SMC algorithms
@@ -509,5 +622,25 @@ Under multinomial resampling, the rescaled genealogies converge to Kingman's coa
 \item Finite-$N$ behaviour
 \end{itemize}
 \end{frame}
+
+
+\begin{frame}{In conclusion...}
+\begin{itemize}
+\item Genealogies can help us to analyse performance of smoothing algorithms which suffer ancestral degeneracy
+\item We have simple conditions under which these genealogies converge to $n$-coalescent
+\item These conditions are verified for some important classes of SMC algorithms
+\end{itemize}
+
+\pause
+Open questions
+\begin{itemize}
+\item Verify theorem for other important resampling schemes (stratified, residual-multinomial)
+\item How to estimate the time scale $c_N$ a priori (since it depends on offspring counts)
+\item Weak convergence so we can say more about convergence of expectations
+\item Rates of convergence
+\item Finite-$N$ behaviour
+\end{itemize}
+\end{frame}
+
 
 \end{document}
