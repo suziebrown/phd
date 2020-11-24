@@ -81,6 +81,8 @@
 
 
 \begin{frame}{Sequential Monte Carlo}
+Target a sequence of distributions by simulating a population of particles evolving in time\\[10pt]
+\pause
 Iterate these steps:
 \begin{enumerate}
 \item \textbf{Mutate} particles via Markov transition density $q_t$
@@ -333,10 +335,13 @@ Properties:
 \begin{frame}{Encoding genealogies}
 \begin{itemize}
 \item Label time in reverse
+\pause
 \item Population of $N$ particles
 \item Sample $n\leq N$ terminal particles
+\pause
 \item Describe genealogy by stochastic process $(G_t^{(n,N)})_{t\in\mathbb{N}_0}$ on space of partitions of $\{1,\dots,n\}$
 \item Elements $i, j$ are in the same block of the partition $G_t^{(n,N)}$ iff particles $i$ and $j$ share a common ancestor at time $t$
+\pause
 \item Initially $G_0^{(n,N)} = \{ \{1\}, \dots, \{n\} \}$
 \item The only possible non-identity transitions are those that merge blocks
 \item The trivial partition $\{ \{ 1,\dots, n \} \}$ is an absorbing state
@@ -364,12 +369,12 @@ Properties:
 \draw[thick, darkred] (6,-2)--(8,-2);
 \draw[thick, darkred] (6,-4)--(8,-4);
 
-\pause
-
 \node at (8.3,0) {1};
 \node at (8.3,-1) {2};
 \node at (8.3,-2) {3};
 \node at (8.3,-4) {4};
+
+\pause
 
 \node at (8,-4.8) {$t=0$};
 \node at (8,-5.5) {$\{1\}, \{2\},\{3\}, \{4\}$};
@@ -467,7 +472,7 @@ Properties:
 \end{frame}
 
 
-\begin{frame}{Kingman's $n$-coalescent}
+\begin{frame}{Kingman's $n$-coalescent\footnote[frame]{J F C Kingman, \textit{Stochastic Processes \& their Applications}, 1982.}}
 \begin{columns}
 \begin{column}{0.45\textwidth}
 \begin{itemize}
@@ -478,19 +483,19 @@ Properties:
 \end{column}
 \begin{column}{0.45\textwidth}
 \includegraphics[width=\textwidth]{kingman.png}
-\hspace*{\fill} \tiny{image: Wikimedia commons}
+\hspace*{\fill} \tiny{image: Wikimedia Commons}
 \end{column}
 \end{columns}
 \end{frame}
 
 
 \begin{frame}{Time scale}
-The probability that a randomly chosen pair of particles at generation $t$ share a common ancestor at generation $(t-1)$, conditional on offspring counts, is
+Pair merger probability conditional on $( \vt{1},\dots, \vt{N} )$:
 \begin{equation*}
 c_N(t) = \frac{1}{(N)_2} \sum_{i=1}^N (\vt{i})_2
 \end{equation*}
-To get an $n$-coalescent, this should converge to 1 (the required pair merger rate),
-so we rescale time by the inverse
+\pause
+Rescale time by inverse:
 \begin{equation*}
 \tau_N(t) := \min\left\{ s\geq 1 : \sum_{r=1}^s c_N(r) \geq t \right\}
 \end{equation*}
@@ -498,11 +503,12 @@ so we rescale time by the inverse
 
 
 \begin{frame}{Main theorem}
+Assumptions:
 \begin{itemize}
-\item Offspring counts $(\vt{1},\dots,\vt{N})$
-\pause
 \item Parent-offspring assignments are uniform given offspring counts
+\pause
 \item Time scale does not explode (i.e.\ $\PR[\tau_N(t)=\infty]=0$ for all finite $t$)
+\pause
 \item There exists a sequence $(b_N)$ such that $\lim_{N\to\infty} b_N = 0$ and
 \begin{equation*}
 \frac{1}{(N)_3} \sum_{i=1}^N \E_t [ (\vt{i})_3 ]
@@ -510,12 +516,12 @@ so we rescale time by the inverse
 \end{equation*}
 \end{itemize}
 \pause
-Then the finite-dimensional distributions of the time-rescaled genealogies converge to Kingman's $n$-coalescent as $N\to\infty$.
+Then the finite-dimensional distributions of the time-rescaled genealogies $\left( G_{\tau_N(t)}^{(n,N)} \right)_{t\geq0}$ converge to Kingman's $n$-coalescent as $N\to\infty$.
 \end{frame}
 
 
-\begin{frame}{Corollaries}
-We established the theorem in these cases:
+\begin{frame}{Examples}
+We have established the theorem in these cases:
 \begin{itemize}
 \item Multinomial resampling
 \item Stochastic rounding 
@@ -525,22 +531,18 @@ We established the theorem in these cases:
 
 
 \begin{frame}{Multinomial resampling}
-\begin{itemize}
-\item Offspring counts are sampled from Multinomial distribution parametrised by weights
-\item Easy to analyse, but doesn't perform well
-\item (For the population geneticists): different from Wright-Fisher model because not neutral
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Corollary: multinomial resampling}
 Consider an SMC algorithm with potential $g$ and transition density $q$, satisfying
 \begin{align*}
 \frac{1}{a} \leq &g_t(x, x^\prime) \leq a \\
 \varepsilon h(x^\prime) \leq &q_t(x, x^\prime) \leq \frac{1}{\varepsilon} h(x^\prime) 
 \end{align*}
 for constants $0<\varepsilon\leq 1\leq a<\infty$, and probablity distribution $h(\cdot)$.\\[10pt]
-
-Under multinomial resampling, the rescaled genealogies converge to Kingman's coalescent.
+\pause
+Under multinomial resampling:
+\begin{equation*}
+(\vt{1} , \dots, \vt{N}) \sim \Mn \left( N, (\wt{1},\dots,\wt{N}) \right)
+\end{equation*}
+the rescaled genealogies converge to Kingman's coalescent.\footnote{J Koskela, P A Jenkins, A M Johansen, D Span\`o. \textit{Annals of Statistics}, 2020.}
 \end{frame}
 
 
@@ -553,94 +555,105 @@ Y_i \mid X_i =
   \lfloor X_i \rfloor +1 & \text{with probability } X_i - \lfloor X_i \rfloor 
 \end{cases}
 \end{equation*}
-
-%%% add pause
+\pause
 \begin{itemize}
 \item We can construct low-variance resampling schemes using stochastic rounding
 \item Take $X_i = N\wt{i}$ and $Y_i = \vt{i}$
 \item Require further constraint $Y_1 + \cdots + Y_N = N$
-\item \textbf{Examples:} systematic, residual-stratified, branching system\footnote{Crisan, Lyons. \textit{Prob Theory \& Related Fields,} 1997}, SSP resampling\footnote{Gerber, Whiteley, Chopin. \textit{Ann Stat,} 2019.}
+\pause
+\item \textbf{Examples:} systematic, residual-stratified, branching system\footnote{D Crisan, T Lyons. \textit{Probability Theory \& Related Fields}, 1997.}, SSP resampling\footnote{M Gerber, N Whiteley, N Chopin. \textit{Annals of Statistics}, 2019.}
 \end{itemize}
 \end{frame}
 
 
-\begin{frame}{Corollary: stochastic rounding}
+\begin{frame}{Stochastic rounding}
 Consider an SMC algorithm with potential $g$ and transition density $q$, satisfying
 \begin{align*}
 \frac{1}{a} \leq &g_t(x, x^\prime) \leq a \\
-\varepsilon h(x^\prime) \leq &q_t(x, x^\prime) \leq \frac{1}{\varepsilon} h(x^\prime) 
+\varepsilon \leq &q_t(x, x^\prime) \leq \frac{1}{\varepsilon}
 \end{align*}
-for constants $0<\varepsilon\leq 1\leq a<\infty$, and probablity distribution $h(\cdot)$.\\[10pt]
+for constants $0<\varepsilon\leq 1\leq a<\infty$.\\[10pt]
 
-Under stochastic rounding -based resampling, the rescaled genealogies converge to Kingman's coalescent.
+Resampling via stochastic rounding, the rescaled genealogies converge to Kingman's coalescent.
 \end{frame}
 
 
 %%% Make illustrative diagram about CSMC
 \begin{frame}{Conditional SMC}
+\begin{columns}
+\begin{column}{0.45\textwidth}
+\centering
+\begin{tikzpicture}
+\draw[very thick] (0,0)--(7,0);
+\draw[very thick] (1,0)--(2,1);
+\draw[very thick] (2,1)--(7,1);
+\draw[very thick] (4,1)--(5,2);
+\draw[very thick] (5,2)--(7,2);
+\draw[very thick] (1.5,0)--(3.5,-2);
+\draw[very thick] (3.5,-2)--(7,-2);
+\draw[very thick] (4.5,-2)--(5.5,-1);
+\draw[very thick] (5.5,-1)--(7,-1);
+\draw[very thick] (4.5,-2)--(5.5,-3);
+\draw[very thick] (5.5,-3)--(7,-3);
+
+% red highlight:
+\draw[darkred, ultra thick] (0,0)--(1.5,0);
+\draw[darkred, ultra thick] (1.5,0)--(3.5,-2);
+\draw[darkred, ultra thick] (3.5,-2)--(4.5,-2);
+\draw[darkred, ultra thick] (4.5,-2)--(5.5,-1);
+\draw[darkred, ultra thick] (5.5,-1)--(7,-1);
+\end{tikzpicture}
+\end{column}
+\begin{column}{0.4\textwidth}
 \begin{itemize}
-\item Used for SMC updates in particle MCMC\footnote{Andrieu, Doucet, Holenstein. \textit{JRSSB}, 2010.}
-\item One ``immortal lineage'' is conditioned to survive all mutation and resampling steps
-\item Resampling algorithm must deterministically propagate this ``immortal lineage''
-\item For example: fix one offspring to immortal lineage, multinomial sampling for the remaining counts
-\pause
-\item Conjecture: theorem also applies to conditional SMC with stochastic rounding
+\item Used for SMC updates in particle MCMC\footnote[frame]{C Andrieu, A Doucet, R Holenstein. \textit{Journal of the Royal Statistical Society B}, 2010.}
+\item One fixed ``immortal lineage'' is conditioned to survive all mutation and resampling steps
+\item Resampling must deterministically propagate the immortal lineage
 \end{itemize}
+\end{column}
+\end{columns}
 \end{frame}
 
 
-\begin{frame}{Corollary: conditional SMC}
+\begin{frame}{Conditional SMC}
 Consider a conditional SMC algorithm with potential $g$ and transition density $q$, satisfying
 \begin{align*}
 \frac{1}{a} \leq &g_t(x, x^\prime) \leq a \\
 \varepsilon h(x^\prime) \leq &q_t(x, x^\prime) \leq \frac{1}{\varepsilon} h(x^\prime) 
 \end{align*}
-for constants $0<\varepsilon\leq 1\leq a<\infty$, and probablity distribution $h(\cdot)$.\\[10pt]
+for constants $0<\varepsilon\leq 1\leq a<\infty$, and probability distribution $h(\cdot)$.\\[10pt]
 
-Under multinomial resampling, the rescaled genealogies converge to Kingman's coalescent.
+Under multinomial resampling, the rescaled genealogies converge to Kingman's coalescent.\\[10pt]
+
+\pause
+\textbf{Conjecture:} the theorem also applies to conditional SMC with stochastic rounding
 \end{frame}
 
 
-
-%%% amalgamate following slides:
-\begin{frame}{Summary}
+\begin{frame}{In conclusion...}
 \begin{itemize}
-\item We consider genealogies of SMC algorithms
-\item We provide simple conditions for asymptotically Kingman genealogies
-\item Satisfied by stochastic rounding -based resampling
-\item Satisfied by conditional SMC with multinomial resampling...
-\item ... but this hides some interesting pre-limiting behaviour
+\item Genealogies can help us to analyse performance of SMC algorithms which suffer ancestral degeneracy
+\item We have simple conditions under which these genealogies converge to Kingman's $n$-coalescent
+\item These conditions are verified for some important classes of SMC algorithms
 \end{itemize}
 \end{frame}
 
 \begin{frame}{Open questions}
 \begin{itemize}
 \item Verify theorem for other important resampling schemes (stratified, residual-multinomial)
-\item How to estimate the time scale $c_N$ a priori (since it depends on offspring counts)
-\item Weak convergence so we can say more about convergence of expectations
+\item How to estimate the time scale $\tau_N$ a priori (since it depends on offspring counts)
+\item Weak convergence
 \item Rates of convergence
 \item Finite-$N$ behaviour
 \end{itemize}
 \end{frame}
 
-
-\begin{frame}{In conclusion...}
-\begin{itemize}
-\item Genealogies can help us to analyse performance of smoothing algorithms which suffer ancestral degeneracy
-\item We have simple conditions under which these genealogies converge to $n$-coalescent
-\item These conditions are verified for some important classes of SMC algorithms
-\end{itemize}
-
-\pause
-Open questions
-\begin{itemize}
-\item Verify theorem for other important resampling schemes (stratified, residual-multinomial)
-\item How to estimate the time scale $c_N$ a priori (since it depends on offspring counts)
-\item Weak convergence so we can say more about convergence of expectations
-\item Rates of convergence
-\item Finite-$N$ behaviour
-\end{itemize}
+\begin{frame}
+\centering
+\vspace{1cm}
+{\Large Thank you!}\\
+\vspace{1cm}
+pre-print at arXiv:2007.00096
 \end{frame}
-
 
 \end{document}
