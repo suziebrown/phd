@@ -81,8 +81,8 @@
 
 
 \begin{frame}{Sequential Monte Carlo}
-Approximate a sequence of distributions by simulating a population of particles evolving in time\\[10pt]
-\pause
+Target a sequence of distributions by simulating a population of particles evolving in time\\[10pt]
+%\pause
 Iterate these steps:
 \begin{enumerate}
 \item \textbf{Mutate} particles via Markov transition density $q_t$
@@ -102,7 +102,7 @@ Properties:
 \begin{itemize}
 \item Number of particles constant $\sum_{i=1}^N \vt{i} =N$
 \item Equal weights after resampling $w_{t+}^{(i)} = 1/N$
-\item Unbiased\\ $\E[\vt{i} | \wt{1:N}] = N\wt{i}$
+\item Unbiased\\ $\E[\vt{i} | \wt{i}] = N\wt{i}$
 \end{itemize}
 
 \end{column}
@@ -134,7 +134,7 @@ Properties:
 \filldraw (2,-2) circle (6pt);
 \filldraw (2,-3) circle (6pt);
 
-\pause
+%\pause
 
 \filldraw (4,0) circle (6pt);
 \filldraw (4,-1) circle (6pt);
@@ -230,7 +230,7 @@ Properties:
 \draw[->, thick, darkred] (4.3,0)--(5.7,0);
 \draw[->, thick, darkred] (6.3,0)--(7.7,0);
 
-\pause
+%\pause
 % highlight other lineages
 \filldraw[darkred] (4,-1) circle (5pt);
 \filldraw[darkred] (6,-1) circle (5pt);
@@ -335,7 +335,7 @@ Properties:
 \begin{frame}{Mitigating ancestral degeneracy}
 \vspace{-1cm}
 Resample less often? \\
-\pause
+%\pause
 \textbf{Adaptive resampling}: only resample when effective sample size falls below some threshold.
 \vspace{1cm}
 
@@ -429,7 +429,7 @@ Resample less often? \\
 \begin{frame}{Mitigating ancestral degeneracy}
 \vspace{-1cm}
 Resample more cleverly? \\
-\pause
+%\pause
 \textbf{Low-variance resampling}: resample in a way that reduces the extra randomness added by the resampling step.
 \vspace{1cm}
 
@@ -526,7 +526,7 @@ Resample more cleverly? \\
 \begin{frame}{Mitigating ancestral degeneracy}
 \vspace{-1cm}
 Make use of killed samples? \\
-\pause
+%\pause
 \textbf{Backward simulation}: use a backward pass to sample new ancestors for the terminal particles.
 \vspace{1cm}
 
@@ -635,7 +635,6 @@ Make use of killed samples? \\
 \item How many particles should I use to maintain $k$ distinct trajectories across time horizon $T$?
 \item How big a lag can I use in fixed-lag smoothing?
 \item How reliable is my smoothing estimator?
-\item How do resampling schemes compare?
 \end{itemize}
 \end{frame}
 
@@ -749,13 +748,13 @@ Make use of killed samples? \\
 \begin{frame}{Encoding genealogies}
 \begin{itemize}
 \item Label time in reverse
-\pause
+%\pause
 \item Population of $N$ particles
-\item Sample $n\leq N$ terminal particles at random
-\pause
+\item Sample $n\leq N$ terminal particles
+%\pause
 \item Describe genealogy by stochastic process $(G_t^{(n,N)})_{t\in\mathbb{N}_0}$ on space of partitions of $\{1,\dots,n\}$
 \item Elements $i, j$ are in the same block of the partition $G_t^{(n,N)}$ iff particles $i$ and $j$ share a common ancestor at time $t$
-\pause
+%\pause
 \item Initially $G_0^{(n,N)} = \{ \{1\}, \dots, \{n\} \}$
 \item The only possible non-identity transitions are those that merge blocks
 \item The trivial partition $\{ \{ 1,\dots, n \} \}$ is an absorbing state
@@ -788,7 +787,7 @@ Make use of killed samples? \\
 \node at (8.3,-2) {3};
 \node at (8.3,-4) {4};
 
-\pause
+%\pause
 
 \node at (8,-4.8) {$t=0$};
 \node at (8,-5.5) {$\{1\}, \{2\},\{3\}, \{4\}$};
@@ -908,10 +907,10 @@ Pair merger probability conditional on $( \vt{1},\dots, \vt{N} )$:
 \begin{equation*}
 c_N(t) = \frac{1}{(N)_2} \sum_{i=1}^N (\vt{i})_2
 \end{equation*}
-\pause
+%\pause
 Rescale time by inverse:
 \begin{equation*}
-\tau_N(t) := \inf\left\{ s\geq 1 : \sum_{r=1}^s c_N(r) \geq t \right\}
+\tau_N(t) := \min\left\{ s\geq 1 : \sum_{r=1}^s c_N(r) \geq t \right\}
 \end{equation*}
 \end{frame}
 
@@ -920,16 +919,16 @@ Rescale time by inverse:
 Conditions:
 \begin{itemize}
 \item Parent-offspring assignments are uniform given offspring counts
-\pause
+%\pause
 \item Time scale does not explode (i.e.\ $\PR[\tau_N(t)=\infty]=0$ for all finite $t$)
-\pause
+%\pause
 \item There exists a sequence $(b_N)$ such that $\lim_{N\to\infty} b_N = 0$ and
 \begin{equation*}
 \frac{1}{(N)_3} \sum_{i=1}^N \E_t [ (\vt{i})_3 ]
 \leq b_N \frac{1}{(N)_2} \sum_{i=1}^N \E_t [ (\vt{i})_2 ]
 \end{equation*}
 \end{itemize}
-\pause
+%\pause
 Then the finite-dimensional distributions of the time-rescaled genealogies $\left( G_{\tau_N(t)}^{(n,N)} \right)_{t\geq0}$ converge to Kingman's $n$-coalescent as $N\to\infty$.
 \end{frame}
 
@@ -948,14 +947,14 @@ Resample from a Categorical distribution, so offspring counts are Multinomial:
 \begin{equation*}
 (\vt{1} , \dots, \vt{N}) \sim \Mn \left( N, (\wt{1},\dots,\wt{N}) \right)
 \end{equation*}
-\pause
+%\pause
 Suppose the potentials $g_t$ and transition densities $q_t$ satisfy
 \begin{equation*}
 \frac{1}{a} \leq g_t(x, x^\prime) \leq a \qquad
 \varepsilon h(x^\prime) \leq q_t(x, x^\prime) \leq \frac{1}{\varepsilon} h(x^\prime) 
 \end{equation*}
 for constants $0<\varepsilon\leq 1\leq a<\infty$, and probability distribution $h(\cdot)$.\\[10pt]
-\pause
+%\pause
 Then the rescaled genealogies converge to the $n$-coalescent.\footnote{J Koskela, PA Jenkins, AM Johansen, D Span\`o. \textit{Annals of Statistics}, 2020.}
 \end{frame}
 
@@ -969,12 +968,12 @@ Y_i \mid X_i =
   \lfloor X_i \rfloor +1 & \text{with probability } X_i - \lfloor X_i \rfloor 
 \end{cases}
 \end{equation*}
-\pause
+%\pause
 \begin{itemize}
 \item Take $X_i = N\wt{i}$ and $Y_i = \vt{i}$
 \item By construction $\E[Y_i \mid \mathbf{X}] = X_i$
 \item Require further constraint $Y_1 + \cdots + Y_N = N$
-\pause
+%\pause
 \item \textbf{Examples:} systematic, residual-stratified, branching system\footnote{D Crisan, T Lyons. \textit{Probability Theory \& Related Fields}, 1997.}, SSP\footnote{M Gerber, N Whiteley, N Chopin. \textit{Annals of Statistics}, 2019.} resampling
 \end{itemize}
 \end{frame}
@@ -982,21 +981,21 @@ Y_i \mid X_i =
 
 \begin{frame}{Stochastic rounding}
 Resample using any stochastic rounding procedure.\\[10pt]
-\pause
+%\pause
 Suppose the potentials $g_t$ and transition densities $q_t$ satisfy
 \begin{equation*}
 \frac{1}{a} \leq g_t(x, x^\prime) \leq a \qquad
 \varepsilon \leq q_t(x, x^\prime) \leq \frac{1}{\varepsilon} 
 \end{equation*}
 for constants $0<\varepsilon\leq 1\leq a<\infty$.\\[10pt]
-\pause
+%\pause
 Then the rescaled genealogies converge to the $n$-coalescent.
 \end{frame}
 
 
 \begin{frame}{Conditional SMC}
 A particle Gibbs\footnote{C Andrieu, A Doucet, R Holenstein. \textit{Journal of the Royal Statistical Society B}, 2010.} scenario...
-\begin{itemize}[<+->]
+\begin{itemize}
 \item Want to target $p(\theta, x_{0:T} \mid y_{0:T})$
 \item Gibbs sampler: alternate samples from \\
 \hspace{1cm} $p(\theta \mid x_{0:T}, y_{0:T})$ (easy) and \\
@@ -1030,7 +1029,7 @@ A particle Gibbs\footnote{C Andrieu, A Doucet, R Holenstein. \textit{Journal of 
 \draw[darkred, ultra thick] (5,-0.5)--(7,-0.5);
 \draw[darkred, ultra thick] (4,0)--(5,-0.5);
 \end{tikzpicture}
-\pause
+%\pause
 okay
 \end{column}
 \begin{column}{0.45\textwidth}
@@ -1060,14 +1059,12 @@ not okay
 
 \begin{frame}{Conditional SMC}
 Consider a conditional SMC algorithm with multinomial resampling.\\[10pt]
-\pause
 Assume
 \begin{equation*}
 \frac{1}{a} \leq g_t(x, x^\prime) \leq a \qquad
 \varepsilon h(x^\prime) \leq q_t(x, x^\prime) \leq \frac{1}{\varepsilon} h(x^\prime) .
 \end{equation*}
 
-\pause
 Then the rescaled genealogies converge to the $n$-coalescent.
 \end{frame}
 
@@ -1075,9 +1072,9 @@ Then the rescaled genealogies converge to the $n$-coalescent.
 \begin{frame}{Quantities of interest}
 \begin{columns}
 \begin{column}{0.45\textwidth}
-\begin{itemize}[<+->]
+\begin{itemize}
 \item Time to MRCA: first time when there is only one distinct lineage
-\item $T_k$: time interval where there are exactly $k$ distinct lineages
+\item $T_k$: Time interval where there are exactly $k$ distinct lineages
 \item Total branch length: storage cost
 \end{itemize}
 \end{column}
@@ -1090,8 +1087,7 @@ Then the rescaled genealogies converge to the $n$-coalescent.
 
 
 \begin{frame}{Mitigating ancestral degeneracy, revisited}
-\pause
-\begin{itemize}[<+->]
+\begin{itemize}
 \item \textbf{Adaptive resampling}: should slow down the time-scale on which the coalescent is recovered (it may have some other effect)
 \item \textbf{Low-variance resampling}: stochastic rounding schemes have minimal variance
 \item \textbf{Backward simulation}: the backward-in-time process is not a pure coalescent, and is not induced by resampling
