@@ -509,7 +509,7 @@ and finally, applying Lemma \ref{thm:indicators_prob1},
 
 \textbf{\\Upper Bound}\\
 From \citet[Lemma 1 Case 1]{koskela2018}, taking $\xi=\Delta$, we have
-\begin{equation}
+\begin{equation}\label{eq:28}
 1-p_t = p_{\Delta\Delta}(t) \leq 1 - \alpha_n (1+O(N^{-1})) \left[ c_N(t) - B_n^\prime D_N(t) \right] 
 \end{equation}
 where the $O(N^{-1})$ term does not depend on $t$.
@@ -572,7 +572,7 @@ The same arguments lead to the upper bound
 \end{equation}
 By \citet[Equation (4)]{brown2020}, both bounds have vanishing expectation as $N\to\infty$.
 We are left with the first term in \eqref{eq:18}, which is upper bounded by
-\begin{equation}
+\begin{equation}\label{eq:34}
 \frac{1}{k!} \sum_{\substack{r_1\neq\dots\neq r_k \\ \text{all distinct}}}^{\tau_N(t)}
 \left\{ \prod_{i=1}^k c_N(r_i) \right\}
 \leq \frac{1}{k!}\left( \sum_{s=1}^{\tau_N(t)} c_N(s) \right)^k
@@ -1090,7 +1090,7 @@ using \citet[Equation (3)]{brown2020}.
 \end{proof}
 
 \begin{lemma}
-\begin{equation}
+\begin{equation}\label{eq:74}
 \lim_{N\to\infty} \E \left[ \sum_{\substack{r_1 <\dots< r_k :\\ r_i \leq \tau_N(t_i) \forall i}}
 \left( \prod_{i=1}^k p_{r_i} \right)
 \left( \prod_{\substack{r=1 \\ \notin \{r_1,\dots,r_k\} }}^{\tau_N(t)} (1-p_r) \right) \right]
@@ -1114,10 +1114,10 @@ In this way we are left with only summation inside the expectation, so we can pr
 \leq
 \E\left[ \sum \mathscr{A}_1 \mathscr{B}_1 \right] + \E\left[ \sum \mathscr{A}_1 \mathscr{B}_2 \right] + \cdots + \E\left[ \sum \mathscr{A}_2 \mathscr{B}_5 \right].
 \end{equation}
-The expansions will be such that the only cross-term contributing to the limit on the LHS of (74?) is $\mathscr{A}_1 \mathscr{B}_1$. I will show that the other cross-terms vanish and that the $\mathscr{A}_1 \mathscr{B}_1$ term is bounded as in (74?).
+The expansions will be such that the only cross-term contributing to the limit on the LHS of \eqref{eq:74} is $\mathscr{A}_1 \mathscr{B}_1$. I will show that the other cross-terms vanish and that the $\mathscr{A}_1 \mathscr{B}_1$ term is bounded as in \eqref{eq:74}.
 Let's do it!
 
-First,
+First, using \eqref{eq:9a},
 \begin{align}
 \prod_{i=1}^k p_{r_i} 
 &\leq \prod_{i=1}^k \alpha_n (1+O(N^{-1})) \{ c_N(r_i) + B_n D_N(r_i) \} \notag\\
@@ -1132,25 +1132,25 @@ First,
 \end{align}
 where we have defined
 \begin{align}
-&\mathscr{A}_1 := \{ \alpha_n (1+O(N^{-1})) \}^k \prod_{i=1}^k  c_N(r_i) \notag\\
+&\mathscr{A}_1 := \{ \alpha_n (1+O(N^{-1})) \}^k \prod_{i=1}^k  c_N(r_i) , \notag\\
 &\mathscr{A}_2 := \{ \alpha_n (1+O(N^{-1})) \}^k \sum_{\mathcal{I} \subset [k]} B_n^{k - |\mathcal{I}|}
 \left( \prod_{i \in \mathcal{I}} c_N(r_i) \right)
-\left( \prod_{j \notin \mathcal{I}} B_n D_N(r_j) \right) .
+\left( \prod_{j \notin \mathcal{I}} B_n D_N(r_j) \right) .\label{eq:78}
 \end{align}
-For the cross-terms involving $\mathscr{A}_2$ we will use the following bound, which follows from (16?), (17?):
-\begin{equation}
+For the cross-terms involving $\mathscr{A}_2$ we will use the following bound, which follows from \eqref{eq:7} and \eqref{eq:8}:
+\begin{equation}\label{eq:79}
 \sum_{\substack{r_1 <\dots< r_k :\\ r_i \leq \tau_N(t_i) \forall i}} \mathscr{A}_2 
 \leq \left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right) (t+1)^{k-1} \frac{1}{k!} (1+B_n)^k .
 \end{equation}
-We also have the following deterministic bound using a similar argument to (34?), which will be used for the cross-terms with $\mathscr{B}_2$, $\mathscr{B}_3$, $\mathscr{B}_4$ and $\mathscr{B}_5$:
-\begin{equation}
+We also have the following deterministic bound using the argument of \eqref{eq:34}, which will be used for the cross-terms with $\mathscr{B}_2$, $\mathscr{B}_3$, $\mathscr{B}_4$ and $\mathscr{B}_5$:
+\begin{equation}\label{eq:80}
 \sum_{\substack{r_1 <\dots< r_k :\\ r_i \leq \tau_N(t_i) \forall i}} \mathscr{A}_1
-\leq \{ \alpha_n (1+O(N^{-1})) \}^k \sum_{\substack{r_1 <\dots< r_k \\ =1}} \prod_{i=1}^k c_N(r_i) 
+\leq \{ \alpha_n (1+O(N^{-1})) \}^k \sum_{\substack{r_1 <\dots< r_k \\ =1}}^{\tau_N(t)} \prod_{i=1}^k c_N(r_i) 
 \leq \{ \alpha_n (1+O(N^{-1})) \}^k \frac{1}{k!} (t+1)^k .
 \end{equation}
 
 Now let's look at those $\mathscr{B}$ terms... 
-By (28?),
+By \eqref{eq:28},
 \begin{align}
 \prod_{\substack{r=1 \\ \notin \{r_1,\dots,r_k\} }}^{\tau_N(t)} (1-p_r)
 &\leq \prod_{\substack{r=1 \\ \notin \{r_1,\dots,r_k\} }}^{\tau_N(t)} 
@@ -1162,7 +1162,7 @@ By (28?),
 &\leq 1 + \sum_{\substack{l=1 \\ \notin \{r_1,\dots,r_k\} \\ \text{even} }}^{\tau_N(t)}
 \{ \alpha_n (1+O(N^{-1})) \}^l 
 \sum_{\substack{s_1<\dots<s_l \\ =1 }}^{\tau_N(t)}
-\prod_{j=1}^l \{ c_N(s_j) \notag\\
+\prod_{j=1}^l c_N(s_j) \notag\\
 &\qquad- \sum_{\substack{l=1 \\ \notin \{r_1,\dots,r_k\} \\ \text{odd} }}^{\tau_N(t)}
 \{ \alpha_n (1+O(N^{-1})) \}^l 
 \sum_{\substack{s_1<\dots<s_l \\ =1 }}^{\tau_N(t)}
@@ -1172,7 +1172,7 @@ By (28?),
 \sum_{\substack{s_1<\dots<s_l : \\ \exists i,j: s_i=r_j }}^{\tau_N(t)}
 \prod_{j=1}^l \{ c_N(s_j) - B_n^\prime D_N(s_j) \} .
 \end{align}
-Using (30?), (34?) and (32?), this is further bounded by
+Using \eqref{eq:18}, \eqref{eq:34} and \eqref{eq:32}, this is further bounded by
 \begin{align}
 &1 + \sum_{\substack{l=1 \\ \notin \{r_1,\dots,r_k\} \\ \text{even} }}^{\tau_N(t)}
 \{ \alpha_n (1+O(N^{-1})) \}^l \frac{1}{l!} \{ t + c_N(\tau_N(t)) \}^l \notag\\
@@ -1190,7 +1190,7 @@ Using (30?), (34?) and (32?), this is further bounded by
 \sum_{s_l \in \{r_1, \dots, r_k\} } \sum_{\substack{s_1\neq \dots \neq s_{l-1} \\ \neq s_l}}^{\tau_N(t)}
 \prod_{j=1}^l \{ c_N(s_j) - B_n^\prime D_N(s_j) \} 
 \end{align}
-and then, applying (14?),
+and then, applying \eqref{eq:14},
 \begin{align}
 &\leq 1 + \sum_{\substack{l=1 \\ \notin \{r_1,\dots,r_k\} \\ \text{even} }}^{\tau_N(t)}
 \{ \alpha_n (1+O(N^{-1})) \}^l \frac{1}{l!} 
@@ -1206,7 +1206,7 @@ and then, applying (14?),
 \end{align}
 Then
 \begin{align}
-&\leq \sum_{\substack{l=1 \\ \notin \{r_1,\dots,r_k\} }}^{\tau_N(t)} 
+&\leq \sum_{\substack{l=0 \\ \notin \{r_1,\dots,r_k\} }}^{\tau_N(t)} 
 \{ - \alpha_n (1+O(N^{-1})) \}^l \frac{1}{l!} t^l
 + c_N(\tau_N(t)) \sum_{\substack{l=1 \\ \notin \{r_1,\dots,r_k\} \\ \text{even} }}^{\tau_N(t)} \{ \alpha_n (1+O(N^{-1})) \}^l \frac{1}{l!} (t+1)^l \notag\\
 &\qquad+ \left( \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right)
@@ -1224,10 +1224,11 @@ Then
 \end{align}
 where
 \begin{align}
-&\sum_{\substack{l=1 \\ \notin \{r_1,\dots,r_k\} }}^{\tau_N(t)} 
+&\sum_{\substack{l=0 \\ \notin \{r_1,\dots,r_k\} }}^{\tau_N(t)} 
 \{ - \alpha_n (1+O(N^{-1})) \}^l \frac{1}{l!} t^l
-\leq \sum_{l=0}^{\tau_N(t)} \frac{1}{l!} \{ - \alpha_n (1+O(N^{-1})) \}^l t^l
-&=: \mathscr{B}_1, \notag\\
+\textcolor{red}{
+\leq \sum_{l=0}^{\tau_N(t)} \frac{1}{l!} \{ - \alpha_n (1+O(N^{-1})) \}^l t^l}
+&=: \mathscr{B}_1 , \notag\\
 &c_N(\tau_N(t)) \sum_{\substack{l=1 \\ \notin \{r_1,\dots,r_k\} \\ \text{even} }}^{\tau_N(t)} \{ \alpha_n (1+O(N^{-1})) \}^l \frac{1}{l!} (t+1)^l
 \leq c_N(\tau_N(t)) \exp[ \alpha_n (1+O(N^{-1})) (t+1) ]
 &=: \mathscr{B}_2, \notag\\
@@ -1250,27 +1251,27 @@ where
 \prod_{j=1}^l c_N(s_j) \notag\\
 &\qquad\qquad \leq \{ c_N(r_1) + \cdots + c_N(r_k) \}
 \sum_{\substack{l=1 \\ \notin \{r_1,\dots,r_k\} \\ \text{odd} }}^{\tau_N(t)}
-\frac{1}{l!} \{ - \alpha_n (1+O(N^{-1})) \}^l (t+1)^{l-1} \notag\\
+\frac{1}{l!} \{ \alpha_n (1+O(N^{-1})) \}^l (t+1)^{l-1} \notag\\
 &\qquad\qquad \leq \{ c_N(r_1) + \cdots + c_N(r_k) \}
 \exp[ \alpha_n (1 + O(N^{-1})) (t+1) ]
-&=: \mathscr{B}_5
+&=: \mathscr{B}_5 \label{eq:85}
 \end{align}
-where (34?) was used to simplify $\mathscr{B}_5$.
+where \eqref{eq:34} was used to simplify $\mathscr{B}_5$.
 We also have the following deterministic bounds, which will be used for the cross-terms with $\mathscr{A}_2$:
 \begin{align}
 & \mathscr{B}_1 \leq \exp[ \alpha_n (1+O(N^{-1})) t ] , \notag\\
 & \mathscr{B}_2 \leq \exp\left[ \alpha_n (1+O(N^{-1})) (t+1) \right] , \notag\\
 & \mathscr{B}_3 \leq (t+1) \frac{1}{2} \{ \alpha_n (1+O(N^{-1})) \}^2 \exp\left[ \alpha_n (1+O(N^{-1})) (t+1) \right] , \notag\\
 & \mathscr{B}_4 \leq (t+1) \exp\left[ \alpha_n (1+O(N^{-1})) (t+1) (1 + B_n^\prime) \right] , \notag\\
-& \mathscr{B}_5 \leq k \exp\left[ \alpha_n (1+O(N^{-1})) (t+1) \right] .
+& \mathscr{B}_5 \leq k \exp\left[ \alpha_n (1+O(N^{-1})) (t+1) \right] . \label{eq:86}
 \end{align}
 Now we are in a position to bound the cross-terms.
 
-Using the bounds in (86?), which are all non-negative, deterministic and do not depend on $r_1,\dots,r_k$, we can bound
+Using the bounds in \eqref{eq:86}, which are all non-negative, deterministic and do not depend on $r_1,\dots,r_k$, we can bound
 \begin{equation}
 \E\left[ \sum \mathscr{A}_2 \mathscr{B}_1 \right] + \E\left[ \sum \mathscr{A}_2 \mathscr{B}_2 \right] + \E\left[ \sum \mathscr{A}_2 \mathscr{B}_3 \right] + \E\left[ \sum \mathscr{A}_2 \mathscr{B}_4 \right] + \E\left[ \sum \mathscr{A}_2 \mathscr{B}_5 \right]
 \end{equation}
-by the sum of the bounds in (86?), multiplied by the expectation of the bound from (79?):
+by the sum of the bounds in \eqref{eq:86}, multiplied by the expectation of the bound from \eqref{eq:79}, which is
 \begin{equation}
 \E\left[ \sum_{\substack{r_1 <\dots< r_k :\\ r_i \leq \tau_N(t_i) \forall i}} \mathscr{A}_2 \right]
 \leq \E\left[ \left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right) (t+1)^{k-1} \frac{1}{k!} (1+B_n)^k \right]
@@ -1279,10 +1280,11 @@ by the sum of the bounds in (86?), multiplied by the expectation of the bound fr
 as $N\to\infty$ by \citet[Equation (4)]{brown2020}. 
 So all the terms involving $\mathscr{A}_2$ vanish in the limit.
 Now the remaining terms are those involving $\mathscr{A}_1$.
-We see from their definitions in (85?) that $\mathscr{B}_2$, $\mathscr{B}_3$ and $\mathscr{B}_4$ do not depend on $r_1,\dots, r_k$. Along with the deterministic bound (80?), this means we can write
+We see from their definitions in \eqref{eq:85} that $\mathscr{B}_2$, $\mathscr{B}_3$ and $\mathscr{B}_4$ do not depend on $r_1,\dots, r_k$. Along with the deterministic bound \eqref{eq:80}, this means we can write
 \begin{align}
 \E\left[ \sum_{\substack{r_1 <\dots< r_k :\\ r_i \leq \tau_N(t_i) \forall i}} \mathscr{A}_1 \left( \mathscr{B}_2 + \mathscr{B}_3 + \mathscr{B}_4 \right) \right]
-&\leq \E\left[ \mathscr{B}_2 + \mathscr{B}_3 + \mathscr{B}_4 \right] \sum_{\substack{r_1 <\dots< r_k :\\ r_i \leq \tau_N(t_i) \forall i}} \mathscr{A}_1 \notag\\
+&\leq \E\left[ \mathscr{B}_2 + \mathscr{B}_3 + \mathscr{B}_4 \right] \times
+\{ \alpha_n (1+O(N^{-1})) \}^k \frac{1}{k!} (t+1)^k \notag\\
 &\leq \Bigg\{
 \E\left[ c_N(\tau_N(t)) \right] \exp[ \alpha_n (1+O(N^{-1})) (t+1) ] \notag\\
 &\qquad+ \E\left[ \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right]
@@ -1295,7 +1297,7 @@ We see from their definitions in (85?) that $\mathscr{B}_2$, $\mathscr{B}_3$ and
 \end{align}
 as $N\to\infty$ by \citet[Equations (3)--(5)]{brown2020}.
 
-The other nuisance term $\mathscr{A}_1 \mathscr{B}_5$ requires more delicate handling, since $\mathscr{B}_5$ depends on $r_1, \dots, r_k$. Using (85?) and (78?),
+The other nuisance term $\mathscr{A}_1 \mathscr{B}_5$ requires more delicate handling, since $\mathscr{B}_5$ depends on $r_1, \dots, r_k$. Using \eqref{eq:85} and \eqref{eq:78},
 \begin{equation}
 \sum_{\substack{r_1 <\dots< r_k :\\ r_i \leq \tau_N(t_i) \forall i}} \mathscr{A}_1 \mathscr{B}_5
 \leq \{ \alpha_n (1+O(N^{-1})) \}^k \exp[ \alpha_n (1 + O(N^{-1})) (t+1) ] 
@@ -1315,7 +1317,7 @@ Expanding the sum on the RHS,
 \sum_{\substack{r_1 \neq \dots \neq r_{k-1} :\\ =1}}^{\tau_N(t)} \prod_{i=1}^{k-1} c_N(r_i) \notag\\
 &\leq k \left( \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right) (t+1)^{k-1}
 \end{align}
-where the last inequality follows from (34?).
+where the last inequality follows from \eqref{eq:34}.
 Hence
 \begin{equation}
 \lim_{N\to\infty}\E\left[ \sum_{\substack{r_1 <\dots< r_k :\\ r_i \leq \tau_N(t_i) \forall i}} \mathscr{A}_1 \mathscr{B}_5 \right]
@@ -1324,12 +1326,34 @@ k (t+1)^{k-1} \lim_{N\to\infty}\E\left[ \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right] 
 \end{equation}
 by \citet[Equation (4)]{brown2020}.
 
-We have shown that all the cross-terms vanish in the limit, except for $\mathscr{A}_1 \mathscr{B}_1$, which will give us the RHS of (74?):
-
-...
-
-
-
+We have shown that all the cross-terms vanish in the limit, except for $\mathscr{A}_1 \mathscr{B}_1$, which will give us the RHS of \eqref{eq:74}:
+\textcolor{red}{
+\begin{align}
+\lim_{N\to\infty}\E\left[ \sum_{\substack{r_1 <\dots< r_k :\\ r_i \leq \tau_N(t_i) \forall i}} \mathscr{A}_1 \mathscr{B}_1 \right]
+&= \alpha_n^k  \lim_{N\to\infty}
+\E\left[ \sum_{l=0}^{\tau_N(t)} \frac{1}{l!} \{ - \alpha_n (1+O(N^{-1})) \}^l t^l \sum_{\substack{r_1 <\dots< r_k :\\ r_i \leq \tau_N(t_i) \forall i}} \prod_{i=1}^k  c_N(r_i) \right] \notag\\
+&= \alpha_n^k  \lim_{N\to\infty}
+\E\left[ \sum_{l=0}^{\infty} \frac{1}{l!} \{ - \alpha_n (1+O(N^{-1})) \}^l t^l \1{l\leq \tau_N(t)} \sum_{\substack{r_1 <\dots< r_k :\\ r_i \leq \tau_N(t_i) \forall i}} \prod_{i=1}^k  c_N(r_i) \right] \notag\\
+&= \alpha_n^k \sum_{l=0}^{\infty} \frac{1}{l!} (- \alpha_n)^l t^l \lim_{N\to\infty}
+\E\left[ \1{l\leq \tau_N(t)} \sum_{\substack{r_1 <\dots< r_k :\\ r_i \leq \tau_N(t_i) \forall i}} \prod_{i=1}^k  c_N(r_i) \right] \notag\\ 
+&= \alpha_n^k \sum_{l=0}^{\infty} \frac{1}{l!} (- \alpha_n)^l t^l \lim_{N\to\infty}
+\E\left[ \sum_{\substack{r_1 <\dots< r_k :\\ r_i \leq \tau_N(t_i) \forall i}} \prod_{i=1}^k  c_N(r_i) \middle| l\leq \tau_N(t) \right] 
+\lim_{N\to\infty} \Prob\left[ l\leq \tau_N(t) \right] \notag\\ 
+&= \alpha_n^k \sum_{l=0}^{\infty} \frac{1}{l!} (- \alpha_n)^l t^l \lim_{N\to\infty}
+\E\left[ \sum_{\substack{r_1 <\dots< r_k :\\ r_i \leq \tau_N(t_i) \forall i}} \prod_{i=1}^k  c_N(r_i) \middle| l\leq \tau_N(t) \right]
+\end{align}}
+by Lemma \ref{thm:indicators_prob1}.
+Altogether we have shown that 
+\begin{align}
+\lim_{N\to\infty} \E \left[ \sum_{\substack{r_1 <\dots< r_k :\\ r_i \leq \tau_N(t_i) \forall i}}
+\left( \prod_{i=1}^k p_{r_i} \right)
+\left( \prod_{\substack{r=1 \\ \notin \{r_1,\dots,r_k\} }}^{\tau_N(t)} (1-p_r) \right) \right]
+&\leq \lim_{N\to\infty} \E \left[ \sum_{\substack{r_1 <\dots< r_k :\\ r_i \leq \tau_N(t_i) \forall i}}
+(\mathscr{A}_1 + \mathscr{A}_2) (\mathscr{B}_1 + \mathscr{B}_2 + \mathscr{B}_3 + \mathscr{B}_4 + \mathscr{B}_5) \right] \notag\\
+& \textcolor{red}{\leq \alpha_n^k \sum_{l=0}^{\infty} \frac{1}{l!} (- \alpha_n)^l t^l \lim_{N\to\infty}
+\E\left[ \sum_{\substack{r_1 <\dots< r_k :\\ r_i \leq \tau_N(t_i) \forall i}} \prod_{i=1}^k  c_N(r_i) \middle| l\leq \tau_N(t) \right] }
+\end{align}
+which concludes the proof.
 \end{proof}
 
 
