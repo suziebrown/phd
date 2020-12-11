@@ -1,0 +1,130 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=2cm]{geometry}
+
+% custom header/footer
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+\fancyhf{}
+\rfoot{\textsf{\thepage}}
+\lfoot{\textsf{Suzie Brown}}
+
+% maths
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{bbm}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newcommand{\Prob}{\mathbb{P}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Et}{\mathbb{E}_t}
+\newcommand{\V}{\operatorname{Var}}
+\newcommand{\I}[1]{\mathbbm{1}_{\{#1\}}}
+\newcommand{\1}[1]{\mathbbm{1}_{#1}}
+\newcommand{\flnw}{\lfloor N w_i \rfloor}
+\newcommand{\flnj}{\lfloor N w_j \rfloor}
+\newcommand{\Ht}{\mathcal{H}_t}
+
+\title{Residual Resampling v2.0 (in progress)}
+\author{Suzie Brown}
+\date{10 December 2020}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+
+\begin{align}
+r_i &:= Nw_i - \flnw \\
+R &:= \sum_{j=1}^N r_j = N - \sum_{j=1}^N \flnj \\
+\end{align}
+
+\section*{Case $R = 0$}
+
+\begin{equation}
+\sum_{i=1}^N \E[ (\nu_i)_2 \mid \Ht] = \sum_{i=1}^N (\flnw)_2 \geq 2 | \{ \flnw \geq 2 \} |
+\end{equation}
+and
+\begin{equation}
+\sum_{i=1}^N \E[ (\nu_i)_3 \mid \Ht] = \sum_{i=1}^N (\flnw)_3 \leq (a^2)_3 | \{ \flnw \geq 2 \} | \leq a^6 | \{ \flnw \geq 2 \} |
+\end{equation}
+so
+\begin{equation}
+b_N := \frac{1}{N-2} \frac{a^6}{2}
+\end{equation}
+will suffice.
+\textbf{NB:} $b_N$ must be deterministic, so we can't actually choose it based on which $R$ case we fall into. We can just set it to its maximum between this case and the next one.
+
+\section*{Case $R \neq 0$}
+
+\begin{equation}
+\nu_i \overset{d}{=} \flnw + \operatorname{Bin}(R, r_i/R)
+\end{equation}
+
+\begin{equation}
+\E[ \nu_i \mid \Ht] = \flnw + r_i = Nw_i
+\end{equation}
+
+\begin{align}
+\E[ (\nu_i)_2 \mid \Ht] &= (\flnw)_2 + 2\flnw r_i + \frac{R-1}{R} r_i^2
+= \flnw^2 - \flnw + 2 \flnw r_i + r_i^2 - \frac{r_i^2}{R} \notag\\
+&= \left\{ \flnw + r_i \right\}^2 - \flnw - \frac{r_i^2}{R}
+= N^2 w_i^2 - \flnw - \frac{r_i^2}{R}
+\geq N^2 w_i^2 - Nw_i
+\end{align}
+
+\begin{align}
+\E[ (\nu_i)_3 \mid \Ht] 
+&= (\flnw)_3 + 3(\flnw)_2 r_i + 3\flnw \frac{R-1}{R} r_i^2 + \frac{(R-1)(R-2)}{R^2} r_i^3 \notag\\
+&\leq (\flnw)_3 + 3(\flnw)_2 r_i + 3\flnw r_i^2 +  r_i^3 \notag\\
+&\leq \flnw^3 + 3 \flnw^2 r_i + 3 \flnw r_i^2 +  r_i^3
+= \left\{ \flnw + r_i \right\}^3
+= N^3 w_i^3
+\leq a^6
+\end{align}
+
+
+\begin{table}[h]
+\centering
+\begin{tabular}{| l c l |}
+\hline
+$(X)_1$ & $=$ & $X$ \\
+$(X)_2$ & $=$ & $X^2 - X$ \\
+$(X)_3$ & $=$ & $X^3 - 3X^2 + 2X$ \\
+$X$ & $=$ & $(X)_1$ \\
+$X^2$ & $=$ & $(X)_2 + (X)_1$ \\
+$X^3$ & $=$ & $(X)_3 + 3(X)_2 + (X)_1$ \\
+\hline
+\end{tabular}
+\caption{Conversions between standard and factorial powers}
+\end{table}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{| l c l |}
+\hline
+$(X+Y)_1$ & $=$ & $X + Y$ \\
+$(X+Y)_2$ & $=$ & $(X)_2 + 2XY + (Y)_2$ \\
+$(X+Y)_3$ & $=$ & $(X)_3 + 3(X)_2 Y + 3X(Y)_2 + (Y)_3$ \\
+\hline
+\end{tabular}
+\caption{Expansions of mixed factorial powers}
+\end{table}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{| l c l |}
+\hline
+$\E[(X)_1]$ & $=$ & $n p$ \\
+$\E[(X)_2]$ & $=$ & $n (n-1) p^2$ \\
+$\E[(X)_3]$ & $=$ & $n (n-1) (n-2) p^3$ \\
+$\E[X]$ & $=$ & $n p$ \\
+$\E[X^2]$ & $=$ & $n p (1 + (n-1)p )$ \\
+$\E[X^3]$ & $=$ & $n p (1 + (n-1) p (3 + (n-2) p ) )$ \\
+\hline
+\end{tabular}
+\caption{Moments of the Binomial distirbution; $X\sim \operatorname{Bin}(n,p)$}
+\end{table}
+
+\end{document}
