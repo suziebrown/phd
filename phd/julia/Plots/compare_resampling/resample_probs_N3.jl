@@ -54,3 +54,13 @@ using Plots
 
 ternaryheatmap(prob111mn, 4)
 ternaryheatmap(prob111res, 48)
+
+#----
+
+function testfun(x,y,funargs...)
+    x + y + funargs[1]
+end
+function testfun2(func, funargs)
+    func(x,y,funargs)
+end
+testfun3(x,args3...) = x+args3[1]
