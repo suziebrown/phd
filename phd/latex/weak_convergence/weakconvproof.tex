@@ -39,6 +39,7 @@
 \newcommand{\1}[1]{\mathbbm{1}_{#1}}
 \newcommand{\Mn}{\operatorname{Multinomial}}
 
+
 \title{Weak convergence proof (in progress)}
 \author{Suzie Brown}
 
@@ -1356,6 +1357,190 @@ Altogether we have shown that
 which concludes the proof.
 \end{proof}
 
+\section*{A third attempt at that proof...}
+\begin{align}
+\prod_{\substack{r=1 \\ \notin \{r_1,\dots,r_k\} }}^{\tau_N(t)} (1-p_r)
+&\leq \prod_{\substack{r=1 \\ \notin \{r_1,\dots,r_k\} }}^{\tau_N(t)} 
+\left( 1 - \alpha_n  (1+O(N^{-1})) \{ c_N(r) - B_n^\prime D_N(r) \} \right) \notag\\
+&= 1 + \sum_{\substack{l=1 \\ \notin \{r_1,\dots,r_k\} }}^{\tau_N(t)}
+\{ -\alpha_n (1+O(N^{-1})) \}^l 
+\sum_{\substack{s_1<\dots<s_l \\ \notin \{r_1,\dots,r_k\} }}^{\tau_N(t)}
+\prod_{j=1}^l \{ c_N(s_j) - B_n^\prime D_N(s_j) \} \notag\\
+&= 1 + \sum_{l=1}^{\tau_N(t)}
+\{ -\alpha_n (1+O(N^{-1})) \}^l 
+\sum_{\substack{s_1<\dots<s_l \\ =1  }}^{\tau_N(t)}
+\prod_{j=1}^l \{ c_N(s_j) - B_n^\prime D_N(s_j) \} \notag\\
+&\qquad- \sum_{l=1}^{\tau_N(t)}
+\{ -\alpha_n (1+O(N^{-1})) \}^l 
+\sum_{\substack{s_1<\dots<s_l \\ \in \{r_1,\dots,r_k\} }}
+\prod_{j=1}^l \{ c_N(s_j) - B_n^\prime D_N(s_j) \} \notag\\
+&\qquad- \sum_{l \in \{r_1,\dots,r_k\}}^{\tau_N(t)}
+\{ -\alpha_n (1+O(N^{-1})) \}^l 
+\sum_{\substack{s_1<\dots<s_l \\ =1 }}^{\tau_N(t)}
+\prod_{j=1}^l \{ c_N(s_j) - B_n^\prime D_N(s_j) \}
+\end{align}
+Starting with the first line on the RHS:
+\begin{align}
+1 + &\sum_{l=1}^{\tau_N(t)}
+\{ -\alpha_n (1+O(N^{-1})) \}^l 
+\sum_{\substack{s_1<\dots<s_l \\ =1  }}^{\tau_N(t)}
+\prod_{j=1}^l \{ c_N(s_j) - B_n^\prime D_N(s_j) \} \notag\\
+&= 1 + \sum_{l=1}^{\tau_N(t)} \frac{1}{l!} \{ \alpha_n (1+O(N^{-1})) \}^l 
+\sum_{\substack{s_1 \neq\dots\neq s_l \\ =1  }}^{\tau_N(t)}
+\left\{ \sum_{\substack{I=0\\\text{even} }}^l
+\binom{l}{I} (B_n^\prime)^{l-I} 
+\left( \prod_{i=1}^I c_N(s_i) \right) \left( \prod_{j=I+1}^l D_N(s_j) \right) 
+\right. \notag\\
+&\qquad- \left. \sum_{\substack{I=0 \\ \text{odd} }}^l
+\binom{l}{I} (B_n^\prime)^{l-I} 
+\left( \prod_{i=1}^I c_N(s_i) \right) \left( \prod_{j=I+1}^l D_N(s_j) \right) 
+\right\} \notag\\
+&\leq 1 +  \sum_{l=1}^{\tau_N(t)} \frac{1}{l!} \{ \alpha_n (1+O(N^{-1})) \}^l 
+\sum_{\substack{s_1 \neq\dots\neq s_l \\ =1  }}^{\tau_N(t)} \prod_{i=1}^l c_N(s_i) \notag\\
+&\qquad+  \sum_{l=1}^{\tau_N(t)} \frac{1}{l!} \{ \alpha_n (1+O(N^{-1})) \}^l 
+\sum_{\substack{s_1 \neq\dots\neq s_l \\ =1  }}^{\tau_N(t)}
+\sum_{\substack{I=0\\\text{even} }}^l
+\binom{l}{I} (B_n^\prime)^{l-I} 
+\left( \prod_{i=1}^I c_N(s_i) \right) \left( \prod_{j=I+1}^l D_N(s_j) \right) \notag\\
+&\qquad- \sum_{\substack{ l \in \{r_1,\dots,r_k\} \\ \text{odd} }}
+\frac{1}{l!} \{ \alpha_n (1+O(N^{-1})) \}^l 
+\sum_{\substack{s_1 \neq\dots\neq s_l \\ =1  }}^{\tau_N(t)}
+\sum_{\substack{I=0\\\text{odd} }}^l
+\binom{l}{I} (B_n^\prime)^{l-I} 
+\left( \prod_{i=1}^I c_N(s_i) \right) \left( \prod_{j=I+1}^l D_N(s_j) \right) \notag\\
+&\leq \sum_{l=0}^{\tau_N(t)} \frac{1}{l!} \{ - \alpha_n (1+O(N^{-1})) \}^l 
+\{ t + c_N(\tau_N(t)) \}^l \notag\\
+&\qquad+ \sum_{l=1}^{\tau_N(t)} \frac{1}{l!} \{ \alpha_n (1+O(N^{-1})) \}^l 
+\sum_{\substack{ I=0 \\ \text{even} }}^{l-1} \binom{l}{I} (B_n^\prime)^{l-I} (t+1)^{l-1}
+\left( \sum_{r=1}^{\tau_N(t)} D_N(r) \right) \notag\\
+&\qquad- \sum_{\substack{ l \in \{r_1,\dots,r_k\} \\ \text{odd} }}
+\frac{1}{l!} \{ \alpha_n (1+O(N^{-1})) \}^l 
+\sum_{\substack{s_1 \neq\dots\neq s_l \\ =1  }}^{\tau_N(t)}
+\prod_{i=1}^l c_N(s_i) \notag\\
+&\leq \sum_{l=0}^{\tau_N(t)} \frac{1}{l!} \{ - \alpha_n (1+O(N^{-1})) \}^l t^l
++ \sum_{l=0}^{\tau_N(t)} \frac{1}{l!} \{ \alpha_n (1+O(N^{-1})) \}^l 
+c_N(\tau_N(t)) \sum_{i=0}^{l-1} \binom{l}{i} t^i \left\{ c_N(\tau_N(t)) \right\}^{l-1-i} \notag\\
+&\qquad+ \left( \sum_{r=1}^{\tau_N(t)} D_N(r) \right)
+\sum_{l=1}^{\tau_N(t)} \frac{1}{l!} \{ \alpha_n (1+O(N^{-1})) \}^l 
+(t+1)^{l-1} (1+B_n^\prime)^l \notag\\
+&\qquad- \sum_{\substack{ l \in \{r_1,\dots,r_k\} \\ \text{odd} }}
+\frac{1}{l!} \{ \alpha_n (1+O(N^{-1})) \}^l 
+\sum_{\substack{s_1 \neq\dots\neq s_l \\ =1  }}^{\tau_N(t)}
+\prod_{i=1}^l c_N(s_i) \notag\\
+&\leq \sum_{l=0}^{\tau_N(t)} \frac{1}{l!} \{ - \alpha_n (1+O(N^{-1})) \}^l t^l
++ c_N(\tau_N(t)) \exp\left[ \alpha_n (1+O(N^{-1})) (t+1) \right] \notag\\
+&\qquad+ \left( \sum_{r=1}^{\tau_N(t)} D_N(r) \right) \exp\left[ \alpha_n (1+O(N^{-1})) (t+1) (1+B_n^\prime) \right] \notag\\
+&\qquad- \sum_{\substack{ l \in \{r_1,\dots,r_k\} \\ \text{odd} }}
+\frac{1}{l!} \{ \alpha_n (1+O(N^{-1})) \}^l 
+\sum_{\substack{s_1 \neq\dots\neq s_l \\ =1  }}^{\tau_N(t)}
+\prod_{i=1}^l c_N(s_i) .
+\end{align}
+Now the second line:
+\begin{align}
+- \sum_{l=1}^{\tau_N(t)} &\{ -\alpha_n (1+O(N^{-1})) \}^l 
+\sum_{\substack{s_1<\dots<s_l \\ \in \{r_1,\dots,r_k\} }}
+\prod_{j=1}^l \{ c_N(s_j) - B_n^\prime D_N(s_j) \} \notag\\
+&= - \sum_{l=1}^{k} \frac{1}{l!} \{ \alpha_n (1+O(N^{-1})) \}^l 
+\sum_{\substack{s_1 \neq\dots\neq s_l \\ \in \{r_1,\dots,r_k\} }}
+\left\{ \sum_{\substack{I=0\\\text{even} }}^l
+\binom{l}{I} (B_n^\prime)^{l-I} 
+\left( \prod_{i=1}^I c_N(s_i) \right) \left( \prod_{j=I+1}^l D_N(s_j) \right) 
+\right. \notag\\
+&\qquad- \left. \sum_{\substack{I=0 \\ \text{odd} }}^l
+\binom{l}{I} (B_n^\prime)^{l-I} 
+\left( \prod_{i=1}^I c_N(s_i) \right) \left( \prod_{j=I+1}^l D_N(s_j) \right) 
+\right\} \notag\\
+&\leq \sum_{l=1}^{k} \frac{1}{l!} \{ \alpha_n (1+O(N^{-1})) \}^l 
+\sum_{\substack{I=0 \\ \text{odd} }}^l
+\binom{l}{I} (B_n^\prime)^{l-I} 
+\sum_{\substack{s_1 \neq\dots\neq s_l \\ \in \{r_1,\dots,r_k\} }}
+\left( \prod_{i=1}^I c_N(s_i) \right) \left( \prod_{j=I+1}^l D_N(s_j) \right) \notag\\
+&\leq \sum_{l=1}^{k} \frac{1}{l!} \{ \alpha_n (1+O(N^{-1})) \}^l 
+\sum_{\substack{I=0 \\ \text{odd} }}^l
+\binom{l}{I} (B_n^\prime)^{l-I} 
+\sum_{s\in \{r_1,\dots,r_k\} } c_N(s)
+\sum_{\substack{s_1 \neq\dots\neq s_{l-1} \\ \in \{r_1,\dots,r_k\}\setminus \{s\} }}
+\prod_{i=1}^{l-1} c_N(s_i)  \notag\\
+&\leq \sum_{l=1}^{k} \frac{1}{l!} \{ \alpha_n (1+O(N^{-1})) \}^l 
+(1 + B_n^\prime)^l \left( \sum_{s\in \{r_1,\dots,r_k\} } c_N(s) \right)
+\frac{(k-1)!}{(k-l)!} \notag\\
+&\leq \left( \sum_{s\in \{r_1,\dots,r_k\} } c_N(s) \right)
+\left[ 1 + \alpha_n (1+O(N^{-1})) (1 + B_n^\prime) \right]^k .
+\end{align}
+And the third line:
+\begin{align}
+- \sum_{l \in \{r_1,\dots,r_k\}}^{\tau_N(t)}
+&\{ -\alpha_n (1+O(N^{-1})) \}^l 
+\sum_{\substack{s_1<\dots<s_l \\ =1 }}^{\tau_N(t)}
+\prod_{j=1}^l \{ c_N(s_j) - B_n^\prime D_N(s_j) \} \notag\\
+&= \sum_{l \in \{r_1,\dots,r_k\}}^{\tau_N(t)}
+\frac{1}{l!} \{ \alpha_n (1+O(N^{-1})) \}^l 
+\sum_{\substack{s_1 \neq\dots\neq s_l \\ =1 }}^{\tau_N(t)}
+\left\{ \sum_{\substack{I=0\\\text{odd} }}^l
+\binom{l}{I} (B_n^\prime)^{l-I} 
+\left( \prod_{i=1}^I c_N(s_i) \right) \left( \prod_{j=I+1}^l D_N(s_j) \right) 
+\right. \notag\\
+&\qquad- \left. \sum_{\substack{I=0 \\ \text{even} }}^l
+\binom{l}{I} (B_n^\prime)^{l-I} 
+\left( \prod_{i=1}^I c_N(s_i) \right) \left( \prod_{j=I+1}^l D_N(s_j) \right) 
+\right\} \notag\\
+&\leq \sum_{l \in \{r_1,\dots,r_k\}}^{\tau_N(t)}
+\frac{1}{l!} \{ \alpha_n (1+O(N^{-1})) \}^l 
+\sum_{\substack{s_1 \neq\dots\neq s_l \\ =1 }}^{\tau_N(t)}
+\sum_{\substack{I=0\\\text{odd} }}^l
+\binom{l}{I} (B_n^\prime)^{l-I} 
+\left( \prod_{i=1}^I c_N(s_i) \right) \left( \prod_{j=I+1}^l D_N(s_j) \right) \notag\\
+&= \sum_{\substack{l \in \{r_1,\dots,r_k\} \\ \text{odd} }}^{\tau_N(t)}
+\frac{1}{l!} \{ \alpha_n (1+O(N^{-1})) \}^l 
+\sum_{\substack{s_1 \neq\dots\neq s_l \\ =1 }}^{\tau_N(t)}
+\prod_{i=1}^l c_N(s_i) \notag\\
+&\qquad+ \sum_{l \in \{r_1,\dots,r_k\}}^{\tau_N(t)}
+\frac{1}{l!} \{ \alpha_n (1+O(N^{-1})) \}^l 
+\sum_{\substack{s_1 \neq\dots\neq s_l \\ =1 }}^{\tau_N(t)}
+\sum_{\substack{I=0\\\text{odd} }}^{l-1}
+\binom{l}{I} (B_n^\prime)^{l-I} 
+\left( \prod_{i=1}^I c_N(s_i) \right) \left( \prod_{j=I+1}^l D_N(s_j) \right) \notag\\
+&\leq \sum_{\substack{l \in \{r_1,\dots,r_k\} \\ \text{odd} }}^{\tau_N(t)}
+\frac{1}{l!} \{ \alpha_n (1+O(N^{-1})) \}^l 
+\sum_{\substack{s_1 \neq\dots\neq s_l \\ =1 }}^{\tau_N(t)}
+\prod_{i=1}^l c_N(s_i) \notag\\
+&\qquad+ \sum_{l \in \{r_1,\dots,r_k\}}^{\tau_N(t)}
+\frac{1}{l!} \{ \alpha_n (1+O(N^{-1})) \}^l 
+\sum_{\substack{I=0\\\text{odd} }}^{l-1}
+\binom{l}{I} (B_n^\prime)^{l-I} (t+1)^{l-1}
+\left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right) \notag\\
+&\leq \sum_{\substack{l \in \{r_1,\dots,r_k\} \\ \text{odd} }}^{\tau_N(t)}
+\frac{1}{l!} \{ \alpha_n (1+O(N^{-1})) \}^l 
+\sum_{\substack{s_1 \neq\dots\neq s_l \\ =1 }}^{\tau_N(t)}
+\prod_{i=1}^l c_N(s_i) \notag\\
+&\qquad+ \left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right)
+\exp\left[ \alpha_n (1+O(N^{-1})) (t+1) (1 + B_n^\prime) \right] .
+\end{align}
+Putting these together, we have
+\begin{align}
+\prod_{\substack{r=1 \\ \notin \{r_1,\dots,r_k\} }}^{\tau_N(t)} (1-p_r)
+&\leq \sum_{l=0}^{\tau_N(t)} \frac{1}{l!} \{ - \alpha_n (1+O(N^{-1})) \}^l t^l
++ c_N(\tau_N(t)) \exp\left[ \alpha_n (1+O(N^{-1})) (t+1) \right] \notag\\
+&\qquad+ 2 \left( \sum_{r=1}^{\tau_N(t)} D_N(r) \right) \exp\left[ \alpha_n (1+O(N^{-1})) (t+1) (1+B_n^\prime) \right] \notag\\
+&\qquad+ \left( \sum_{s\in \{r_1,\dots,r_k\} } c_N(s) \right)
+\left[ 1 + \alpha_n (1+O(N^{-1})) (1 + B_n^\prime) \right]^k \notag\\
+&=: \mathscr{B}_1 + \mathscr{B}_2 + 2\mathscr{B}_3 + \mathscr{B}_4
+\end{align}
+where we define
+\begin{align}
+\mathscr{B}_1 &:= \sum_{l=0}^{\tau_N(t)} \frac{1}{l!} \{ - \alpha_n (1+O(N^{-1})) \}^l t^l , \notag\\
+\mathscr{B}_2 &:= c_N(\tau_N(t)) \exp\left[ \alpha_n (1+O(N^{-1})) (t+1) \right] , \notag\\
+\mathscr{B}_3 &:= \left( \sum_{r=1}^{\tau_N(t)} D_N(r) \right) \exp\left[ \alpha_n (1+O(N^{-1})) (t+1) (1+B_n^\prime) \right] , \notag\\
+\mathscr{B}_4 &:= \left( \sum_{s\in \{r_1,\dots,r_k\} } c_N(s) \right)
+\left[ 1 + \alpha_n (1+O(N^{-1})) (1 + B_n^\prime) \right]^k .
+\end{align}
+We also have the deterministic bounds, independent of $r_1,\dots,r_k$:
+\begin{align}
+\mathscr{B}_1 &\leq \exp\left[ \alpha_n (1+O(N^{-1})) t \right] , \notag\\
+\mathscr{B}_2 &\leq \exp\left[ \alpha_n (1+O(N^{-1})) (t+1) \right] , \notag\\
+\mathscr{B}_3 &\leq (t+1) \exp\left[ \alpha_n (1+O(N^{-1})) (t+1) (1+B_n^\prime) \right] , \notag\\
+\mathscr{B}_4 &\leq k \left[ 1 + \alpha_n (1+O(N^{-1})) (1 + B_n^\prime) \right]^k .
+\end{align}
 
 
 
