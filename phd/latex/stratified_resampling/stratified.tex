@@ -1,0 +1,126 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=2cm]{geometry}
+
+%\usepackage{graphicx}
+%\usepackage{enumitem}
+
+% custom header/footer
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+\fancyhf{}
+\rfoot{\textsf{\thepage}}
+\lfoot{\textsf{Suzie Brown}}
+
+%annotations
+%\usepackage{color}
+%\usepackage{xspace}
+%\newcommand{\seb}[1]{\xspace\textcolor{red}{#1}\xspace}
+
+% bibliography
+%\usepackage[round, sort&compress]{natbib}
+%\usepackage{har2nat}
+%\bibliographystyle{agsm}
+
+% maths
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+%\usepackage[mathscr]{euscript}
+%\usepackage{bbm}
+%\newtheorem{theorem}{Theorem}
+%\newtheorem{lemma}{Lemma}
+%\newcommand{\Prob}{\mathbb{P}}
+\newcommand{\E}{\mathbb{E}}
+%\newcommand{\Et}{\mathbb{E}_t}
+%\newcommand{\V}{\operatorname{Var}}
+%\newcommand{\I}[1]{\mathbbm{1}_{\{#1\}}}
+%\newcommand{\1}[1]{\mathbbm{1}_{#1}}
+%\newcommand{\Mn}{\operatorname{Multinomial}}
+\newcommand{\flnw}{\lfloor N w_i\rfloor}
+
+
+\title{Stratified resampling}
+\author{Suzie Brown}
+\date{22 December 2020}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+In this note I will show that our theorem also applies to stratified resampling. The calculations are similar to those for stochastic rounding, since in both cases there are only a small number of values that each $\nu_i$ can take, given $w_i$.
+In stratified resampling, the  value of $\nu_i$ is almost surely restricted conditional on $w_i$:
+\begin{equation}
+\nu_i \mid w_i =
+\begin{cases}
+\flnw -1 & \text{w.p. } p_{-1} \\
+\flnw & \text{w.p. } p_{0} \\
+\flnw +1 & \text{w.p. } p_{1} \\
+\flnw +2 & \text{w.p. } p_{2} \\
+\end{cases}
+\end{equation}
+where $p_{-1} + p_0 + p_1 + p_2 =1$.
+
+\textbf{Case $\flnw =0$.}
+\begin{align*}
+\E[ (\nu_i)_2 \mid \mathcal{H}_t ] 
+&= p_{-1} (\flnw -1)_2 + p_0 (\flnw)_2 + p_1 (\flnw +1)_2 + p_2 (\flnw +2)_2
+= 2p_2 \geq 0, \\
+\E[ (\nu_i)_3 \mid \mathcal{H}_t ] 
+&= p_{-1} (\flnw -1)_3 + p_0 (\flnw)_3 + p_1 (\flnw +1)_3 + p_2 (\flnw +2)_3
+= 0 .
+\end{align*}
+The other cases follow similarly.
+
+\textbf{Case $\flnw =1$.}
+\begin{align*}
+\E[ (\nu_i)_2 \mid \mathcal{H}_t ] 
+&= 2p_1 + 6p_2 , \\
+\E[ (\nu_i)_3 \mid \mathcal{H}_t ] 
+&= 6p_2 
+\leq 2p_1 + 6p_2 .
+\end{align*}
+
+\textbf{Case $\flnw =2$.}
+\begin{align*}
+\E[ (\nu_i)_2 \mid \mathcal{H}_t ] 
+&= 2p_0 + 6p_1 + 24p_2 , \\
+\E[ (\nu_i)_3 \mid \mathcal{H}_t ] 
+&= 6p_1 + 24p_2 
+\leq 2p_0 + 6p_1 + 24p_2 .
+\end{align*}
+
+\textbf{Case $\flnw \geq 3$.}
+\begin{align*}
+\E[ (\nu_i)_2 \mid \mathcal{H}_t ] 
+&= p_{-1} (\flnw -1)_2 + p_0 (\flnw)_2 + p_1 (\flnw +1)_2 + p_2 (\flnw +2)_2 \\
+&\geq p_{-1} + p_0 + p_1 + p_2
+=1 , \\
+\E[ (\nu_i)_3 \mid \mathcal{H}_t ] 
+&=  p_{-1} (\flnw -1)_3 + p_0 (\flnw)_3 + p_1 (\flnw +1)_3 + p_2 (\flnw +2)_3 \\
+&\leq (p_{-1} + p_0 + p_1 + p_2) (\flnw +2)_3
+\leq (a^2 +2)_3 .
+\end{align*}
+Putting these together,
+\begin{align*}
+\sum_{i=1}^N \E[ (\nu_i)_2 \mid \mathcal{H}_t ] 
+&\geq (2p_1 + 6p_2) |\{ i: \flnw =1 \}| + (2p_0 + 6p_1 + 24p_2) |\{ i: \flnw =2 \}| + |\{ i: \flnw \geq 3 \}| ,\\
+\sum_{i=1}^N \E[ (\nu_i)_3 \mid \mathcal{H}_t ] 
+&\leq (2p_1 + 6p_2) |\{ i: \flnw =1 \}| + (2p_0 + 6p_1 + 24p_2) |\{ i: \flnw =2 \}| + (a^2 +2)_3 |\{ i: \flnw \geq 3 \}| .
+\end{align*}
+We have (ignoring for the moment the possibility of dividing by zero):
+\begin{align*}
+\frac{(N)_2}{(N)_3} &\frac{\sum_{i=1}^N \E[ (\nu_i)_3 \mid \mathcal{H}_t ] }{\sum_{i=1}^N \E[ (\nu_i)_2 \mid \mathcal{H}_t ] } \\
+&\leq \frac{(N)_2}{(N)_3} \frac{2p_1 + 6p_2) |\{ i: \flnw =1 \}| + (2p_0 + 6p_1 + 24p_2) |\{ i: \flnw =2 \}| + (a^2 +2)_3 |\{ i: \flnw \geq 3 \}| }{(2p_1 + 6p_2) |\{ i: \flnw =1 \}| + (2p_0 + 6p_1 + 24p_2) |\{ i: \flnw =2 \}| + |\{ i: \flnw \geq 3 \}| } \\
+&\leq \frac{1}{N-2} \left( \frac{(2p_1 + 6p_2) |\{ i: \flnw =1 \}| + (2p_0 + 6p_1 + 24p_2) |\{ i: \flnw =2 \}| }{(2p_1 + 6p_2) |\{ i: \flnw =1 \}| + (2p_0 + 6p_1 + 24p_2) |\{ i: \flnw =2 \}| }
++ \frac{ (a^2 +2)_3 |\{ i: \flnw \geq 3 \}| }{ |\{ i: \flnw \geq 3 \}| } \right) \\
+&= \frac{1}{N-2} ( 1 +  (a^2 +2)_3 ) \leq \frac{1}{N-2} (a^2 +2)^3 =: b_N .
+\end{align*}
+Some, but not all, of the denominator terms may be equal to zero, in which case the numerator and denominator should really be modified before taking the ratio, but this will never actually cause a problem. In any case the terms that are left in the ratio yield a bound less than the $b_N$ defined here. (If no terms are left then both sides are equal to zero and we may set $b_N$ arbitrarily.)
+
+To apply the theorem, it yet remains to prove the finite time scale condition, or otherwise include it in the statement of the corollary. I expect a similar argument to that used for stochastic rounding should work here. We will require a similar condition to ensure the weights are bounded away from $(1,\dots,1)/N$ since, like stochastic rounding, stratified resampling is degenerate under equal weights.
+
+
+
+
+\end{document}
