@@ -1,0 +1,498 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  11 JAN 2021 12:52
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**thesis_main.tex
+(./thesis_main.tex
+LaTeX2e <2018-04-01> patch level 2
+Babel <3.18> and hyphenation patterns for 84 language(s) loaded.
+(/usr/local/texlive/2018/texmf-dist/tex/latex/koma-script/scrbook.cls
+Document Class: scrbook 2018/03/30 v3.25 KOMA-Script document class (book)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/koma-script/scrkbase.sty
+Package: scrkbase 2018/03/30 v3.25 KOMA-Script package (KOMA-Script-dependent b
+asics and keyval usage)
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/koma-script/scrbase.sty
+Package: scrbase 2018/03/30 v3.25 KOMA-Script package (KOMA-Script-independent 
+basics and keyval usage)
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/koma-script/scrlfile.sty
+Package: scrlfile 2018/03/30 v3.25 KOMA-Script package (loading files)
+)))
+(/usr/local/texlive/2018/texmf-dist/tex/latex/koma-script/tocbasic.sty
+Package: tocbasic 2018/03/30 v3.25 KOMA-Script package (handling toc-files)
+\scr@dte@tocline@numberwidth=\skip41
+\scr@dte@tocline@numbox=\box26
+)
+Package tocbasic Info: omitting babel extension for `toc'
+(tocbasic)             because of feature `nobabel' available
+(tocbasic)             for `toc' on input line 136.
+Package tocbasic Info: defining new hook before heading of `' on input line 166
+3.
+Class scrbook Info: You've used standard option `oneside'.
+(scrbook)           This is correct!
+(scrbook)           Internally I'm using `twoside=false'.
+(scrbook)           If you'd like to set the option with \KOMAoptions,
+(scrbook)           you'd have to use `twoside=false' there
+(scrbook)           instead of `oneside', too.
+Class scrbook Info: File `scrsize11pt.clo' used instead of
+(scrbook)           file `scrsize11.clo' to setup font sizes on input line 2331
+.
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/koma-script/scrsize11pt.clo
+File: scrsize11pt.clo 2018/03/30 v3.25 KOMA-Script font size class option (11pt
+)
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/koma-script/typearea.sty
+Package: typearea 2018/03/30 v3.25 KOMA-Script package (type area)
+\ta@bcor=\skip42
+\ta@div=\count80
+Package typearea Info: You've used standard option `oneside'.
+(typearea)             This is correct!
+(typearea)             Internally I'm using `twoside=false'.
+(typearea)             If you'd like to set the option with \KOMAoptions,
+(typearea)             you'd have to use `twoside=false' there
+(typearea)             instead of `oneside', too.
+\ta@hblk=\skip43
+\ta@vblk=\skip44
+\ta@temp=\skip45
+\footheight=\skip46
+Package typearea Info: These are the values describing the layout:
+(typearea)             DIV  = 10
+(typearea)             BCOR = 0.0pt
+(typearea)             \paperwidth      = 597.50793pt
+(typearea)              \textwidth      = 418.25555pt
+(typearea)              DIV departure   = -6%
+(typearea)              \evensidemargin = 17.3562pt
+(typearea)              \oddsidemargin  = 17.3562pt
+(typearea)             \paperheight     = 845.04694pt
+(typearea)              \textheight     = 595.80026pt
+(typearea)              \topmargin      = -25.16531pt
+(typearea)              \headheight     = 17.0pt
+(typearea)              \headsep        = 20.40001pt
+(typearea)              \topskip        = 11.0pt
+(typearea)              \footskip       = 47.6pt
+(typearea)              \baselineskip   = 13.6pt
+(typearea)              on input line 1706.
+)
+\c@part=\count81
+\c@chapter=\count82
+\c@section=\count83
+\c@subsection=\count84
+\c@subsubsection=\count85
+\c@paragraph=\count86
+\c@subparagraph=\count87
+\scr@dte@part@maxnumwidth=\skip47
+\scr@dte@chapter@maxnumwidth=\skip48
+\scr@dte@section@maxnumwidth=\skip49
+\scr@dte@subsection@maxnumwidth=\skip50
+\scr@dte@subsubsection@maxnumwidth=\skip51
+\scr@dte@paragraph@maxnumwidth=\skip52
+\scr@dte@subparagraph@maxnumwidth=\skip53
+\abovecaptionskip=\skip54
+\belowcaptionskip=\skip55
+\c@pti@nb@sid@b@x=\box27
+\scr@dte@figure@maxnumwidth=\skip56
+Package tocbasic Info: omitting babel extension for `lof'
+(tocbasic)             because of feature `nobabel' available
+(tocbasic)             for `lof' on input line 6251.
+\c@figure=\count88
+\scr@dte@table@maxnumwidth=\skip57
+Package tocbasic Info: omitting babel extension for `lot'
+(tocbasic)             because of feature `nobabel' available
+(tocbasic)             for `lot' on input line 6272.
+\c@table=\count89
+Class scrbook Info: Redefining `\numberline' on input line 6445.
+\bibindent=\dimen102
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/setspace/setspace.sty
+Package: setspace 2011/12/19 v6.7a set line spacing
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/epigraph/epigraph.sty
+Package: epigraph 2009/09/02 v1.5c typesetting epigraphs
+\beforeepigraphskip=\skip58
+\afterepigraphskip=\skip59
+\epigraphwidth=\skip60
+\epigraphrule=\skip61
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/biblatex/biblatex.sty
+Package: biblatex 2018/03/04 v3.11 programmable bibliographies (PK/MW)
+
+(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2018/01/30 v0.27 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+)
+(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+)
+(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2018/02/11 v2.5e e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count90
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+
+(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+
+(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+(/usr/local/texlive/2018/texmf-dist/tex/latex/logreq/logreq.sty
+Package: logreq 2010/08/04 v1.0 xml request logger
+\lrq@indent=\count91
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/logreq/logreq.def
+File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
+))
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip10
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+(/usr/local/texlive/2018/texmf-dist/tex/generic/xstring/xstring.sty
+(/usr/local/texlive/2018/texmf-dist/tex/generic/xstring/xstring.tex
+\@xs@message=\write3
+\integerpart=\count92
+\decimalpart=\count93
+)
+Package: xstring 2013/10/13  v1.7c  String manipulations (C Tellechea)
+)
+\c@tabx@nest=\count94
+\c@listtotal=\count95
+\c@listcount=\count96
+\c@liststart=\count97
+\c@liststop=\count98
+\c@citecount=\count99
+\c@citetotal=\count100
+\c@multicitecount=\count101
+\c@multicitetotal=\count102
+\c@instcount=\count103
+\c@maxnames=\count104
+\c@minnames=\count105
+\c@maxitems=\count106
+\c@minitems=\count107
+\c@citecounter=\count108
+\c@savedcitecounter=\count109
+\c@uniquelist=\count110
+\c@uniquename=\count111
+\c@refsection=\count112
+\c@refsegment=\count113
+\c@maxextratitle=\count114
+\c@maxextratitleyear=\count115
+\c@maxextradate=\count116
+\c@maxextraalpha=\count117
+\c@abbrvpenalty=\count118
+\c@highnamepenalty=\count119
+\c@lownamepenalty=\count120
+\c@maxparens=\count121
+\c@parenlevel=\count122
+\blx@tempcnta=\count123
+\blx@tempcntb=\count124
+\blx@tempcntc=\count125
+\blx@maxsection=\count126
+\blx@maxsegment@0=\count127
+\blx@notetype=\count128
+\blx@parenlevel@text=\count129
+\blx@parenlevel@foot=\count130
+\blx@sectionciteorder@0=\count131
+\labelnumberwidth=\skip62
+\labelalphawidth=\skip63
+\biblabelsep=\skip64
+\bibitemsep=\skip65
+\bibnamesep=\skip66
+\bibinitsep=\skip67
+\bibparsep=\skip68
+\bibhang=\skip69
+\blx@bcfin=\read1
+\blx@bcfout=\write4
+\c@mincomprange=\count132
+\c@maxcomprange=\count133
+\c@mincompwidth=\count134
+Package biblatex Info: Trying to load biblatex default data model...
+Package biblatex Info: ... file 'blx-dm.def' found.
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/biblatex/blx-dm.def
+File: blx-dm.def 2018/03/04 v3.11 biblatex localization (PK/MW)
+)
+Package biblatex Info: Trying to load biblatex style data model...
+Package biblatex Info: ... file 'authoryear.dbx' not found.
+Package biblatex Info: Trying to load biblatex custom data model...
+Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
+\c@afterword=\count135
+\c@savedafterword=\count136
+\c@annotator=\count137
+\c@savedannotator=\count138
+\c@author=\count139
+\c@savedauthor=\count140
+\c@bookauthor=\count141
+\c@savedbookauthor=\count142
+\c@commentator=\count143
+\c@savedcommentator=\count144
+\c@editor=\count145
+\c@savededitor=\count146
+\c@editora=\count147
+\c@savededitora=\count148
+\c@editorb=\count149
+\c@savededitorb=\count150
+\c@editorc=\count151
+\c@savededitorc=\count152
+\c@foreword=\count153
+\c@savedforeword=\count154
+\c@holder=\count155
+\c@savedholder=\count156
+\c@introduction=\count157
+\c@savedintroduction=\count158
+\c@namea=\count159
+\c@savednamea=\count160
+\c@nameb=\count161
+\c@savednameb=\count162
+\c@namec=\count163
+\c@savednamec=\count164
+\c@translator=\count165
+\c@savedtranslator=\count166
+\c@shortauthor=\count167
+\c@savedshortauthor=\count168
+\c@shorteditor=\count169
+\c@savedshorteditor=\count170
+\c@labelname=\count171
+\c@savedlabelname=\count172
+\c@institution=\count173
+\c@savedinstitution=\count174
+\c@lista=\count175
+\c@savedlista=\count176
+\c@listb=\count177
+\c@savedlistb=\count178
+\c@listc=\count179
+\c@savedlistc=\count180
+\c@listd=\count181
+\c@savedlistd=\count182
+\c@liste=\count183
+\c@savedliste=\count184
+\c@listf=\count185
+\c@savedlistf=\count186
+\c@location=\count187
+\c@savedlocation=\count188
+\c@organization=\count189
+\c@savedorganization=\count190
+\c@origlocation=\count191
+\c@savedoriglocation=\count192
+\c@origpublisher=\count193
+\c@savedorigpublisher=\count194
+\c@publisher=\count195
+\c@savedpublisher=\count196
+\c@language=\count197
+\c@savedlanguage=\count198
+\c@origlanguage=\count199
+\c@savedoriglanguage=\count266
+\c@pageref=\count267
+\c@savedpageref=\count268
+\shorthandwidth=\skip70
+\shortjournalwidth=\skip71
+\shortserieswidth=\skip72
+\shorttitlewidth=\skip73
+\shortauthorwidth=\skip74
+\shorteditorwidth=\skip75
+\locallabelnumberwidth=\skip76
+\locallabelalphawidth=\skip77
+\localshorthandwidth=\skip78
+\localshortjournalwidth=\skip79
+\localshortserieswidth=\skip80
+\localshorttitlewidth=\skip81
+\localshortauthorwidth=\skip82
+\localshorteditorwidth=\skip83
+Package biblatex Info: Trying to load compatibility code...
+Package biblatex Info: ... file 'blx-compat.def' found.
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/biblatex/blx-compat.def
+File: blx-compat.def 2018/03/04 v3.11 biblatex compatibility (PK/MW)
+)
+Package biblatex Info: Trying to load generic definitions...
+Package biblatex Info: ... file 'biblatex.def' found.
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/biblatex/biblatex.def
+File: biblatex.def 2018/03/04 v3.11 biblatex compatibility (PK/MW)
+\c@textcitecount=\count269
+\c@textcitetotal=\count270
+\c@textcitemaxnames=\count271
+\c@biburlnumpenalty=\count272
+\c@biburlucpenalty=\count273
+\c@biburllcpenalty=\count274
+\c@smartand=\count275
+)
+Package biblatex Info: Trying to load bibliography style 'authoryear'...
+Package biblatex Info: ... file 'authoryear.bbx' found.
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/biblatex/bbx/authoryear.bbx
+File: authoryear.bbx 2018/03/04 v3.11 biblatex bibliography style (PK/MW)
+Package biblatex Info: Trying to load bibliography style 'standard'...
+Package biblatex Info: ... file 'standard.bbx' found.
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/biblatex/bbx/standard.bbx
+File: standard.bbx 2018/03/04 v3.11 biblatex bibliography style (PK/MW)
+\c@bbx:relatedcount=\count276
+\c@bbx:relatedtotal=\count277
+))
+Package biblatex Info: Trying to load citation style 'authoryear'...
+Package biblatex Info: ... file 'authoryear.cbx' found.
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/biblatex/cbx/authoryear.cbx
+File: authoryear.cbx 2018/03/04 v3.11 biblatex citation style (PK/MW)
+Package biblatex Info: Redefining '\cite'.
+Package biblatex Info: Redefining '\parencite'.
+Package biblatex Info: Redefining '\footcite'.
+Package biblatex Info: Redefining '\footcitetext'.
+Package biblatex Info: Redefining '\smartcite'.
+Package biblatex Info: Redefining '\textcite'.
+Package biblatex Info: Redefining '\textcites'.
+)
+Package biblatex Info: Trying to load configuration file...
+Package biblatex Info: ... file 'biblatex.cfg' found.
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/biblatex/biblatex.cfg
+File: biblatex.cfg 
+))
+Package biblatex Info: Trying to load language 'english'...
+Package biblatex Info: ... file 'english.lbx' found.
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/biblatex/lbx/english.lbx
+File: english.lbx 2018/03/04 v3.11 biblatex localization (PK/MW)
+)
+\@quotelevel=\count278
+\@quotereset=\count279
+
+(./thesis_main.aux (./introduction.aux) (./background.aux))
+\openout1 = `thesis_main.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+Package biblatex Info: Input encoding 'utf8' detected.
+Package biblatex Info: Automatic encoding selection.
+(biblatex)             Assuming data encoding 'utf8'.
+\openout4 = `thesis_main.bcf'.
+
+Package biblatex Info: Trying to load bibliographic data...
+Package biblatex Info: ... file 'thesis_main.bbl' found.
+ (./thesis_main.bbl)
+Package biblatex Info: Reference section=0 on input line 23.
+Package biblatex Info: Reference segment=0 on input line 23.
+[1
+
+
+
+{/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+(./thesis_main.toc
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <10.95> on input line 11.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 11.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 11.
+)
+\tf@toc=\write5
+\openout5 = `thesis_main.toc'.
+
+ [1
+
+
+
+] (./thesis_main.lof)
+\tf@lof=\write6
+\openout6 = `thesis_main.lof'.
+
+ [2
+
+
+] (./thesis_main.lot)
+\tf@lot=\write7
+\openout7 = `thesis_main.lot'.
+
+ [3
+
+
+]
+chapter without number
+[4
+
+
+]
+chapter without number
+[5
+
+
+]
+\openout2 = `background.aux'.
+
+ (./background.tex
+chapter 2.
+[2
+
+
+
+
+
+]) [3]
+
+LaTeX Warning: Empty bibliography on input line 91.
+
+(./thesis_main.aux (./introduction.aux) (./background.aux))
+Package logreq Info: Writing requests to 'thesis_main.run.xml'.
+\openout1 = `thesis_main.run.xml'.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 9430 strings out of 492649
+ 176242 string characters out of 6129623
+ 701545 words of memory out of 5000000
+ 13249 multiletter control sequences out of 15000+600000
+ 9428 words of font info for 33 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 44i,7n,66p,9165b,742s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
+></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb>
+</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></
+usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></us
+r/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl10.pfb></usr
+/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb>
+Output written on thesis_main.pdf (8 pages, 82417 bytes).
+PDF statistics:
+ 55 PDF objects out of 1000 (max. 8388607)
+ 38 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+

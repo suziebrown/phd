@@ -1,0 +1,93 @@
+\documentclass[oneside]{scrbook} %%% remove oneside option for final hard copy
+\usepackage[onehalfspacing]{setspace} %%% remove this option for final copy
+
+%%% EDITING TOOLS
+%%% use this command to load only certain chapters during writing/editing process (cross-referencing with omitted chapters will still work):
+\includeonly{background}
+
+%%% FORMATTING
+%%%Probably best to put formatting commands in a separate file. Consider changing: fonts, margins (must be at least 4cm at left and 1.5cm around edges), header/footer, references/citations, algorithms, captions, paragraph indents, chapter/equation numbering, ...
+\usepackage{epigraph}
+\setlength{\epigraphwidth}{0.6\linewidth}
+\renewcommand{\textflush}{flushright} %%% default is flushleft, not sure which looks better
+
+%%% BIBLIOGRAPHY
+\usepackage[style=authoryear, sorting=nyt, backend=biber]{biblatex} %%% use \cite, \textcite and \parencite commands in text
+\addbibresource{../latex/smc.bib}
+
+%%% MATHS PACKAGES
+
+%%% USER-DEFINED MACROS
+
+
+\begin{document}
+
+\begin{titlepage}
+\centering
+\vspace*{5cm}
+\begin{LARGE}\bfseries
+Resampling and genealogies in sequential Monte Carlo algorithms\par \end{LARGE} 
+\vspace{1.5cm} 
+\begin{Large}\bfseries
+Susanna Elizabeth Brown\par
+\end{Large}
+\vspace{3cm}
+\begin{large}
+A thesis submitted for the degree of\\Doctor of Philosophy in Statistics \par
+\vspace{1.5cm}
+University of Warwick, Department of Statistics \par
+\vspace{1.5cm}
+Janurary 2021 %%% update submission date (month year)
+\end{large}
+\end{titlepage}
+
+
+\frontmatter
+
+\tableofcontents
+\listoffigures
+\listoftables
+\chapter{Acknowledgements}
+I would like to thank... %%% supervisors, funding body, people who helped me with research, other people who supported me
+\vspace*{3cm}
+
+%%% Edit the declaration as appropriate:
+%%% Add a section title above the declaration?
+
+This thesis is submitted to the University of Warwick in support of my application for the degree of Doctor of Philosophy. It has been composed by myself and has not been submitted in any previous application for any degree %%% (if parts previously used add:) apart from the background material in sections XXX which was previously submitted for YYY degree.
+\\[5pt]
+The work presented (including data generated and data analysis) was carried out by the author except in the cases outlined below:
+%%% List of data provided and/or analysis carried out by collaborators.
+\\[5pt]
+Parts of this thesis have been published by the author:
+%%% List of publications including submitted papers.
+
+\chapter{Abstract} %%% remove the "Abstract" title?
+
+%%% The abstract must be no more than 300 words and may be single-spaced to ensure it fits on one page.
+
+%%% A list of acronyms must be placed either here or at the end of the thesis, and its location indicated in the ToC.
+
+
+\mainmatter
+
+%%% Note: maximum word count is 70,000 excluding equations, tables, appendices etc. This is unlikely to be restrictive.
+
+%%% The main body will be contained in separate tex files for each chapter, which are pulled in using these commands:
+
+\include{introduction}
+\include{background}
+%\include{limits}
+%\include{csmc}
+%\include{weakconv}
+%\include{discussion}
+
+
+\backmatter
+
+%%% A list of acronyms must be placed either here or after the abstract, and its location indicated in the ToC.
+
+%%% The bibliography/references will go here.
+\printbibliography
+
+\end{document}
