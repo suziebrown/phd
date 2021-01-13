@@ -1744,7 +1744,7 @@ Using bounds from \citet[Equation (14)]{brown2020} and \citet[Lemma 1 Case 1]{ko
 \right\} \label{eq:76}
 \end{align}
 We will now look at each of the three terms on the RHS of \eqref{eq:76}.
-Splitting into positive and negative terms, then using arguments analogous to \eqref{eq:14} and \eqref{eq:7}--\eqref{eq:8} respectively,
+For the first line: splitting into positive and negative terms, then using arguments analogous to \eqref{eq:14} and \eqref{eq:7}--\eqref{eq:8} respectively,
 %%% I should really include one more line of working here between the first and second lines, to show the splitting into odd/even terms.
 \begin{align}
 \{ \alpha_n &(1 + O(N^{-1}) ) \}^k
@@ -1752,6 +1752,16 @@ Splitting into positive and negative terms, then using arguments analogous to \e
 \left\{ 1 + \sum_{l=1}^{\tau_N(t)} \{ - \alpha_n (1 + O(N^{-1}) ) \}^l \frac{1}{l!}
 \sum_{s_1 \neq \dots \neq s_l}^{\tau_N(t)} \prod_{j=1}^l
 \{ c_N(s_j) + B_n D_N(s_j) \} \right\} \notag\\
+&= \{ \alpha_n (1 + O(N^{-1}) ) \}^k
+\left\{ \sum_{\substack{r_1 <\dots< r_k :\\ r_i \leq \tau_N(t_i) \forall i}} \prod_{i=1}^k c_N(r_i) \right\}
+\Bigg\{ 1 + \sum_{\substack{ l=2 \\ \text{even} }}^{\tau_N(t)} 
+\{ \alpha_n (1 + O(N^{-1}) ) \}^l \frac{1}{l!}
+\sum_{s_1 \neq \dots \neq s_l}^{\tau_N(t)} \prod_{j=1}^l
+\{ c_N(s_j) + B_n D_N(s_j) \} \notag\\
+&\qquad- \sum_{\substack{ l=1 \\ \text{odd} }}^{\tau_N(t)} 
+\{ \alpha_n (1 + O(N^{-1}) ) \}^l \frac{1}{l!}
+\sum_{s_1 \neq \dots \neq s_l}^{\tau_N(t)} \prod_{j=1}^l
+\{ c_N(s_j) + B_n D_N(s_j) \} \Bigg\} \notag\\
 &\geq \{ \alpha_n (1 + O(N^{-1}) ) \}^k
 \left\{ \sum_{\substack{r_1 <\dots< r_k :\\ r_i \leq \tau_N(t_i) \forall i}} \prod_{i=1}^k c_N(r_i) \right\}
 \Bigg\{ 1 + \sum_{\substack{ l=2 \\ \text{even} }}^{\tau_N(t)} 
@@ -1796,7 +1806,7 @@ Splitting into positive and negative terms, then using arguments analogous to \e
 \sum_{l=0}^{\tau_N(t)} \{ - \alpha_n (1 + O(N^{-1}) ) \}^l \frac{1}{l!} t^l 
 \sum_{\substack{r_1 <\dots< r_k :\\ r_i \leq \tau_N(t_i) \forall i}} \prod_{i=1}^k c_N(r_i) \notag\\
 &\qquad- \{ \alpha_n (1 + O(N^{-1}) ) \}^k
-\left\{ \sum_{\substack{r_1 <\dots< r_k :\\ r_i \leq \tau_N(t_i) \forall i}} \prod_{i=1}^k c_N(r_i) \right\}
+\left\{ \sum_{r_1 <\dots< r_k} \prod_{i=1}^k c_N(r_i) \right\}
 \Bigg\{ c_N(\tau_N(t)) \sum_{\substack{ l=1 \\ \text{odd} }}^{\tau_N(t)}
  \{ \alpha_n (1 + O(N^{-1}) ) \}^l \frac{1}{l!} (t+1)^l \notag\\
  &\qquad\qquad+  \left( \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right)
@@ -1808,7 +1818,7 @@ Splitting into positive and negative terms, then using arguments analogous to \e
 &\geq \{ \alpha_n (1 + O(N^{-1}) ) \}^k
 \sum_{l=0}^{\tau_N(t)} \{ - \alpha_n (1 + O(N^{-1}) ) \}^l \frac{1}{l!} t^l 
 \sum_{\substack{r_1 <\dots< r_k :\\ r_i \leq \tau_N(t_i) \forall i}} \prod_{i=1}^k c_N(r_i) \notag\\
-&\qquad- \{ \alpha_n (1 + O(N^{-1}) ) \}^k (t+1)^k
+&\qquad- \{ \alpha_n (1 + O(N^{-1}) ) \}^k \frac{1}{k!} (t+1)^k
 \Bigg\{ c_N(\tau_N(t)) \exp[ \alpha_n (1 + O(N^{-1}) ) (t+1) ] \notag\\
  &\qquad\qquad+  \left( \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right)
 \frac{1}{2} \{ \alpha_n (1 + O(N^{-1}) ) \}^2 \exp[ \alpha_n (1 + O(N^{-1}) ) (t+1) ] \notag\\
@@ -1830,7 +1840,7 @@ Due to \citet[Equations (3)--(5)]{brown2020}, upon taking the expectation and li
 \lim_{N\to\infty}\E \left[ \sum_{\substack{r_1 <\dots< r_k :\\ r_i \leq \tau_N(t_i) \forall i}} \prod_{i=1}^k c_N(r_i) \middle| \tau_N(t) \geq l \right] 
 \lim_{N\to\infty}\Prob\left[ \tau_N(t) \geq l \right] \notag\\
 &= \alpha_n^k \sum_{l=0}^{\infty} (-\alpha_n)^l \frac{1}{l!} t^l 
-\lim_{N\to\infty}\E \left[ \sum_{\substack{r_1 <\dots< r_k :\\ r_i \leq \tau_N(t_i) \forall i}} \prod_{i=1}^k c_N(r_i) \middle| \tau_N(t) \geq l \right] 
+\lim_{N\to\infty}\E \left[ \sum_{\substack{r_1 <\dots< r_k :\\ r_i \leq \tau_N(t_i) \forall i}} \prod_{i=1}^k c_N(r_i) \middle| \tau_N(t) \geq l \right] \label{eq:78a}
 \end{align}
 by Lemma \ref{thm:indicators_prob1}.
 Now for the second term on the RHS of \eqref{eq:76}.
@@ -1895,7 +1905,7 @@ Finally, we consider the last line of \eqref{eq:76}:
 \left( \prod_{j\notin\mathcal{I}} D_N(r_j) \right)
 \right\} .
 \end{align}
-The sums over $l$ and $\mathcal{I}$ have positive and negative terms; a lower bound is formed by keeping the negative terms as they are, and multiplying the positive terms by $-1$, namely:
+The sums over $l$ and $\mathcal{I}$ have positive and negative terms; a crude lower bound is formed by keeping the negative terms as they are, and multiplying the positive terms by $-1$, namely:
 \begin{align}
 - \{ \alpha_n (1 + O(N^{-1}) ) \}^k
 &\left\{ \sum_{l=1}^{\tau_N(t)} \{ \alpha_n (1 + O(N^{-1}) ) \}^l \frac{1}{l!}
@@ -1919,7 +1929,7 @@ Let us first consider
 (t+1)^l (1+B_n)^l \notag\\
 &\leq \exp[ \alpha_n (1 + O(N^{-1}) ) (t+1) (1+B_n) ].
 \end{align}
-using that $c_N(t) \geq D_N(t)$.
+where the first inequality holds because $c_N(t) \geq D_N(t)$.
 Hence \eqref{eq:82} is greater than or equal to
 \begin{align}
 - \{ \alpha_n (1 + O(N^{-1}) ) \}^k
@@ -1932,11 +1942,11 @@ Hence \eqref{eq:82} is greater than or equal to
 which, using \eqref{eq:79a}--\eqref{eq:80a}, is further bounded by
 \begin{equation}
 - \{ \alpha_n (1 + O(N^{-1}) ) \}^k \left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right) \frac{1}{k!} (t+1)^{k-1} (1 + B_n^\prime)^k 
-\exp[ \alpha_n (1 + O(N^{-1}) ) (t+1) (1+B_n) ] .
+\exp[ \alpha_n (1 + O(N^{-1}) ) (t+1) (1+B_n) ] . \label{eq:85}
 \end{equation}
-The expectation of this also vanishes in the limit due to \citet[Equation (5)]{brown2020}.
+The expectation of this also vanishes in the limit due to \citet[Equation (4)]{brown2020}.
 
-Putting this all together, we have
+Combining the bounds from \eqref{eq:78a}, \eqref{eq:80a} and \eqref{eq:85}, we find
 \begin{align}
 \lim_{N\to\infty} \E \left[ \sum_{\substack{r_1 <\dots< r_k :\\ r_i \leq \tau_N(t_i) \forall i}}
 \left( \prod_{i=1}^k p_{r_i} \right)
@@ -1945,7 +1955,7 @@ Putting this all together, we have
 \lim_{N\to\infty}\E \left[ \sum_{\substack{r_1 <\dots< r_k :\\ r_i \leq \tau_N(t_i) \forall i}} \prod_{i=1}^k c_N(r_i) \middle| \tau_N(t) \geq l \right] .
 \end{align}
 
-[ + The LB analogue of Lemma \ref{thm:LOterms_UB} should be enough to conclude.]
+[ Then a LB analogue of Lemma \ref{thm:LOterms_UB} should be enough to conclude.]
 
 
 
