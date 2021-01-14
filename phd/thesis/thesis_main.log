@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  11 JAN 2021 12:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  14 JAN 2021 13:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -386,7 +386,7 @@ File: english.lbx 2018/03/04 v3.11 biblatex localization (PK/MW)
 \@quotelevel=\count278
 \@quotereset=\count279
 
-(./thesis_main.aux (./introduction.aux) (./background.aux))
+(./thesis_main.aux (./introduction.aux) (./background.aux) (./weakconv.aux))
 \openout1 = `thesis_main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 23.
@@ -408,15 +408,16 @@ Package biblatex Info: Automatic encoding selection.
 
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'thesis_main.bbl' found.
- (./thesis_main.bbl)
+
+(./thesis_main.bbl)
 Package biblatex Info: Reference section=0 on input line 23.
 Package biblatex Info: Reference segment=0 on input line 23.
-[1
+ [1
 
 
 
-{/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-(./thesis_main.toc
+{/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (./thes
+is_main.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <10.95> on input line 11.
 LaTeX Font Info:    External font `cmex10' loaded for size
@@ -438,7 +439,8 @@ LaTeX Font Info:    External font `cmex10' loaded for size
  [2
 
 
-] (./thesis_main.lot)
+]
+(./thesis_main.lot)
 \tf@lot=\write7
 \openout7 = `thesis_main.lot'.
 
@@ -460,6 +462,10 @@ chapter without number
 
  (./background.tex
 chapter 2.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 7.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 7.
 [2
 
 
@@ -470,29 +476,30 @@ chapter 2.
 
 LaTeX Warning: Empty bibliography on input line 91.
 
-(./thesis_main.aux (./introduction.aux) (./background.aux))
+(./thesis_main.aux (./introduction.aux) (./background.aux) (./weakconv.aux))
 Package logreq Info: Writing requests to 'thesis_main.run.xml'.
 \openout1 = `thesis_main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 9430 strings out of 492649
- 176242 string characters out of 6129623
- 701545 words of memory out of 5000000
- 13249 multiletter control sequences out of 15000+600000
- 9428 words of font info for 33 fonts, out of 8000000 for 9000
+ 9441 strings out of 492649
+ 176372 string characters out of 6129623
+ 702765 words of memory out of 5000000
+ 13254 multiletter control sequences out of 15000+600000
+ 9729 words of font info for 34 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  44i,7n,66p,9165b,742s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
+></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb
 ></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb>
 </usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></
 usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></us
 r/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl10.pfb></usr
 /local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb>
-Output written on thesis_main.pdf (8 pages, 82417 bytes).
+Output written on thesis_main.pdf (8 pages, 92034 bytes).
 PDF statistics:
- 55 PDF objects out of 1000 (max. 8388607)
- 38 compressed objects within 1 object stream
+ 59 PDF objects out of 1000 (max. 8388607)
+ 41 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
