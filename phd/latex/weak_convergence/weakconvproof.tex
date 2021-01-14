@@ -298,7 +298,7 @@ where $\alpha_n := n(n-1)/2$.
 %as $N\to\infty$.
 The strategy is to find upper and lower bounds on $\E\left[ \prod_{r=1}^{\tau_N(t)} (1-p_r) \right]$, both of which converge to $e^{-\alpha_n t}$.\\
 \textbf{Lower Bound}\\ %(with weaker assumptions than above)
-From \citet[Equation (14)]{brown2020}, taking $\xi=\Delta$, we have
+From \citet[Equation (3.14)]{brown2021}, taking $\xi=\Delta$, we have
 \begin{equation}\label{eq:9a}
 1-p_t = p_{\Delta\Delta}(t) \geq 1 - \alpha_n (1+O(N^{-1})) \left[c_N(t) + B_n D_N(t) \right]
 \end{equation}
@@ -372,7 +372,7 @@ Then
 \left(\Prob \left[k\leq\tau_N(t), \bigcap_{r=1}^{\tau_N(t)} E_r \right] \right)^{-1}
 \longrightarrow \frac{1}{k!} t^k
 \end{align}
-as $N\to\infty$ using \citet[Equation (5)]{brown2020} and Lemma \ref{thm:indicators_prob1}. %, which is shown to hold via lemmata 1 and 3 therein.
+as $N\to\infty$ using \citet[Equation (3.5)]{brown2021} and Lemma \ref{thm:indicators_prob1}. %, which is shown to hold via lemmata 1 and 3 therein.
 
 Now for the upper bound. We start with a multinomial expansion and some manipulations of the sums:
 \begin{align}
@@ -513,7 +513,7 @@ Taking expectations,
 &\longrightarrow \frac{1}{k!} t^k . \label{eq:19a}
 \end{align}
 %%% even decreasing expectation of D_N ?
-The limit follows from Lemma \ref{thm:indicators_prob1} and \citet[Equations (3),(4)]{brown2020} along with the fact that, since $c_N(s) \in [0,1]$ for all $s$, $\E[c_N(s)^k] \leq \E[c_N(s)]$ for all $k\geq 1$, and the expansion
+The limit follows from Lemma \ref{thm:indicators_prob1} and \citet[Equations (3.3)--(3.4)]{brown2021} along with the fact that, since $c_N(s) \in [0,1]$ for all $s$, $\E[c_N(s)^k] \leq \E[c_N(s)]$ for all $k\geq 1$, and the expansion
 \begin{equation}\label{eq:11}
 \E\left[ \{t+ c_N(\tau_N(t)) \}^k \right]
 %\middle| k\leq\tau_N(t ), \bigcap_{r=1}^{\tau_N(t)} E_r \right]
@@ -673,7 +673,7 @@ The same arguments lead to the upper bound
 \left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right)
 -0 .
 \end{equation}
-By \citet[Equation (4)]{brown2020}, both bounds have vanishing expectation as $N\to\infty$.
+By \citet[Equation (3.4)]{brown2021}, both bounds have vanishing expectation as $N\to\infty$.
 We are left with the first term in \eqref{eq:18}, which is upper bounded by
 \begin{equation}\label{eq:34}
 \frac{1}{k!} \sum_{\substack{r_1\neq\dots\neq r_k \\ \text{all distinct}}}^{\tau_N(t)}
@@ -690,7 +690,7 @@ We use \citet[Equation (8)]{koskela2018} to construct a lower bound:
 - \frac{1}{k!} \binom{k}{2}  \left( \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right)  \left( \sum_{s=1}^{\tau_N(t)} c_N(s) \right)^{k-2} \notag\\
 &\geq \frac{1}{k!} t^k - \frac{1}{k!} \binom{k}{2} (t+1)^{k-2}  \left( \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right)
 \end{align}
-The expectation of this bound (conditional on $k\leq\tau_N(t)$) also converges to $t^k/k!$, using \citet[Equation (5)]{brown2020}.
+The expectation of this bound (conditional on $k\leq\tau_N(t)$) also converges to $t^k/k!$, using \citet[Equation (3.5)]{brown2021}.
 %To bound the first term we again call on \citet[Equation (8)]{koskela2018}:
 %\begin{align*}
 %\frac{1}{k!} \sum_{\substack{r_1\neq\dots\neq r_k \\ \text{all distinct}}}^{\tau_N(t)}
@@ -1101,7 +1101,7 @@ Now we are in a position to evaluate the limit in Lemma \ref{thm:LOterms_UB}:
 (1+ t_j - t_{j-1})^{k^2} \notag\\
 &= \sum_{\substack{i_1\leq \dots\leq i_{k-1}\\ \in \{0,\dots,k\} :\\ i_j \geq j \forall j}} \prod_{j=1}^k \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})!}
 \end{align}
-using \citet[Equation (3)]{brown2020}. %%% This equation does need modifying for the conditional probability though...
+using \citet[Equation (3.3)]{brown2021}. %%% This equation does need modifying for the conditional probability though...
 \end{proof}
 
 \begin{lemma}
@@ -1624,7 +1624,7 @@ by the sum of the bounds in \eqref{eq:107}, multiplied by the expectation of the
 \leq \E\left[ \left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right) \{ \alpha_n (1+O(N^{-1})) \}^k (t+1)^{k-1} \frac{1}{k!} (1+B_n)^k \right]
 \longrightarrow 0
 \end{equation}
-as $N\to\infty$ by \citet[Equation (4)]{brown2020}. 
+as $N\to\infty$ by \citet[Equation (3.4)]{brown2021}. 
 So all the terms involving $\mathscr{A}_2$ vanish in the limit.
 Now the remaining terms are those involving $\mathscr{A}_1$.
 We see from their definitions in \eqref{eq:106} that $\mathscr{B}_2$ and $\mathscr{B}_3$ do not depend on $r_1,\dots, r_k$. Along with the deterministic bound \eqref{eq:80}, this means we can write
@@ -1639,7 +1639,7 @@ We see from their definitions in \eqref{eq:106} that $\mathscr{B}_2$ and $\maths
 \Bigg\} \times \alpha_n^k \frac{1}{k!} (t+1)^k \notag\\
 &=0
 \end{align}
-by \citet[Equations (3)--(4)]{brown2020}.
+by \citet[Equations (3.3)--(3.4)]{brown2021}.
 The other nuisance term $\mathscr{A}_1 \mathscr{B}_4$ requires more delicate handling, since $\mathscr{B}_4$ depends on $r_1, \dots, r_k$. Using \eqref{eq:106} and \eqref{eq:78},
 \begin{equation}
 \sum_{\substack{r_1 <\dots< r_k :\\ r_i \leq \tau_N(t_i) \forall i}} \mathscr{A}_1 \mathscr{B}_4
@@ -1668,7 +1668,7 @@ Hence
 \leq \alpha_n^k \left[ 1 + \alpha_n (1 + B_n^\prime) \right]^k
 k (t+1)^{k-1} \lim_{N\to\infty}\E\left[ \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right] =0
 \end{equation}
-by \citet[Equation (4)]{brown2020}.
+by \citet[Equation (3.4)]{brown2021}.
 
 We have shown that all the cross-terms vanish in the limit, except for $\mathscr{A}_1 \mathscr{B}_1$, which will give us the RHS of \eqref{eq:74}:
 \begin{align}
@@ -1701,7 +1701,18 @@ which concludes the proof.
 
 \section*{Induction step: lower bound}
 
-Using bounds from \citet[Equation (14)]{brown2020} and \citet[Lemma 1 Case 1]{koskela2018} and expanding the products,
+\begin{lemma}
+\begin{equation}
+\lim_{N\to\infty} \E \left[ \sum_{\substack{r_1 <\dots< r_k :\\ r_i \leq \tau_N(t_i) \forall i}}
+\left( \prod_{i=1}^k p_{r_i} \right)
+\left( \prod_{\substack{r=1 \\ \notin \{r_1,\dots,r_k\} }}^{\tau_N(t)} (1-p_r) \right) \right]
+\geq \alpha_n^k \sum_{l=0}^\infty \frac{1}{l!} (-\alpha_n)^l t^l \lim_{N\to\infty} 
+\E \left[ \sum_{\substack{r_1 <\dots< r_k :\\ r_i \leq \tau_N(t_i) \forall i}} \prod_{i=1}^k c_N(r_i) \middle| l+k \leq \tau_N(t) \right] .
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Using bounds from \citet[Equation (3.14)]{brown2021} and \citet[Lemma 1 Case 1]{koskela2018} and expanding the products,
 %%% We need to chuck some indicators in the RHS from the outset, to ensure that everything is nonnegative before multiplying.
 \begin{align}
 \sum_{\substack{r_1 <\dots< r_k :\\ r_i \leq \tau_N(t_i) \forall i}}
@@ -1825,7 +1836,7 @@ For the first line: splitting into positive and negative terms, then using argum
 &\qquad\qquad+ \left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right)
 \exp[ \alpha_n (1 + O(N^{-1}) ) (t+1) (1 + B_n) ] \Bigg\}
 \end{align}
-Due to \citet[Equations (3)--(5)]{brown2020}, upon taking the expectation and limit, we have
+Due to \citet[Equations (3.3)--(3.5)]{brown2021}, upon taking the expectation and limit, we have
 \begin{align}
 \alpha_n^k \sum_{l=0}^{\infty} &(-\alpha_n)^l \frac{1}{l!} t^l 
 \lim_{N\to\infty}\E \left[ \1{\tau_N(t) \geq l}
@@ -1891,7 +1902,7 @@ Again using the argument of \eqref{eq:7}--\eqref{eq:8}, this is greater than or 
 \begin{equation}
 - \{ \alpha_n (1 + O(N^{-1}) ) \}^k \left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right) \frac{1}{k!} (t+1)^{k-1} (1 + B_n^\prime)^k , \label{eq:80a}
 \end{equation}
-the expectation of which vanishes in the limit \citep[Equation (5)]{brown2020}.
+the expectation of which vanishes in the limit \citep[Equation (3.5)]{brown2021}.
 Finally, we consider the last line of \eqref{eq:76}:
 \begin{align}
 \{ \alpha_n (1 + O(N^{-1}) ) \}^k
@@ -1944,7 +1955,7 @@ which, using \eqref{eq:79a}--\eqref{eq:80a}, is further bounded by
 - \{ \alpha_n (1 + O(N^{-1}) ) \}^k \left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right) \frac{1}{k!} (t+1)^{k-1} (1 + B_n^\prime)^k 
 \exp[ \alpha_n (1 + O(N^{-1}) ) (t+1) (1+B_n) ] . \label{eq:85}
 \end{equation}
-The expectation of this also vanishes in the limit due to \citet[Equation (4)]{brown2020}.
+The expectation of this also vanishes in the limit due to \citet[Equation (3.4)]{brown2021}.
 
 Combining the bounds from \eqref{eq:78a}, \eqref{eq:80a} and \eqref{eq:85}, we find
 \begin{align}
@@ -1954,8 +1965,144 @@ Combining the bounds from \eqref{eq:78a}, \eqref{eq:80a} and \eqref{eq:85}, we f
 &\geq \alpha_n^k \sum_{l=0}^{\infty} (-\alpha_n)^l \frac{1}{l!} t^l 
 \lim_{N\to\infty}\E \left[ \sum_{\substack{r_1 <\dots< r_k :\\ r_i \leq \tau_N(t_i) \forall i}} \prod_{i=1}^k c_N(r_i) \middle| \tau_N(t) \geq l \right] .
 \end{align}
+\end{proof}
 
-[ Then a LB analogue of Lemma \ref{thm:LOterms_UB} should be enough to conclude.]
+
+%%%___________________________
+
+\begin{lemma}\label{thm:LOterms_equality}
+Let $E$ be any event such that $\lim_{N\to\infty} \Prob[E] =1$. Fix $l, k \in \mathbb{N}$, $i_0=0$, $i_k=k$. For any sequence of times $0 = t_0 \leq t_1 \leq \cdots \leq t_k \leq t$,
+\begin{equation}\label{eq:88}
+\lim_{N\to\infty} \E \left[ \1{E} \sum_{\substack{r_1<\dots<r_k :\\ r_i\leq \tau_N(t_i) \forall i}} \prod_{i=1}^k c_N(r_i) \right] 
+= \sum_{\substack{i_1\leq \dots\leq i_{k-1}\\ \in \{0,\dots,k\} :\\ i_j \geq j \forall j}} \prod_{j=1}^k \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})! } .
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+As pointed out in \citet[p.~460]{mohle1999}, the sum-product on the left hand side can be expanded as
+\begin{equation}
+\sum_{\substack{r_1<\dots<r_k :\\ r_i\leq \tau_N(t_i) \forall i}} \prod_{i=1}^k c_N(r_i)
+= \sum_{\substack{i_1\leq \dots\leq i_{k-1}\\ \in \{0,\dots,k\} :\\ i_j \geq j \forall j}} \, \prod_{j=1}^k \,
+\sum_{\substack{ r_{i_{j-1}+1} < \dots < r_{i_j} \\ = \tau_N(t_{j-1})+1}}^{\tau_N(t_j)}  \,\prod_{i=i_{j-1}+1}^{i_j} c_N(r_i) .
+\end{equation}
+Moreover,
+\begin{equation}
+\sum_{\substack{ r_{i_{j-1}+1} < \dots < r_{i_j} \\ = \tau_N(t_{j-1})+1}}^{\tau_N(t_j)}  \,\prod_{i=i_{j-1}+1}^{i_j} c_N(r_i)
+= \frac{1}{(i_j - i_{j-1})!} \sum_{\substack{ r_{i_{j-1}+1} \neq \dots \neq r_{i_j} \\ = \tau_N(t_{j-1})+1 \\ \text{all distinct}}}^{\tau_N(t_j)}
+\prod_{i=i_{j-1}+1}^{i_j} c_N(r_i) .
+\end{equation}
+%Following \citet[(8)--(9)]{koskela2018}, the inner sum-product in \eqref{eq:70} may be written
+A simple modification of \citet[(9)]{koskela2018} gives us an upper bound:
+\begin{align}
+\sum_{\substack{ r_{i_{j-1}+1} \neq \dots \neq r_{i_j} \\ = \tau_N(t_{j-1})+1 \\ \text{all distinct}}}^{\tau_N(t_j)}
+\prod_{i=i_{j-1}+1}^{i_j} c_N(r_i)
+&\leq \left[ t_j - t_{j-1} + c_N(\tau_N(t_j)) \right]^{i_j - i_{j-1}} \notag\\
+&= \sum_{l=0}^{i_j - i_{j-1}} \binom{i_j - i_{j-1}}{l} (t_j - t_{j-1})^l \left[ c_N(\tau_N(t_j)) \right]^{i_j - i_{j-1}-l} \notag\\
+&= (t_j - t_{j-1})^{i_j - i_{j-1}} \notag\\
+&\qquad+ c_N(\tau_N(t_j)) \sum_{l=0}^{i_j - i_{j-1} -1} \binom{i_j - i_{j-1}}{l} (t_j - t_{j-1})^l \left[ c_N(\tau_N(t_j)) \right]^{i_j - i_{j-1}-1-l} \notag\\
+&\leq (t_j - t_{j-1})^{i_j - i_{j-1}} 
++ c_N(\tau_N(t_j)) ( t_j - t_{j-1} +1 )^k ,
+\end{align}
+using in the last line that $c_N \leq 1$ and $0 \leq i_j - i_{j-1} \leq k$.
+Now taking the product on the outside,
+\begin{align}
+\prod_{j=1}^k \,
+\sum_{\substack{ r_{i_{j-1}+1} < \dots < r_{i_j} \\ = \tau_N(t_{j-1})+1}}^{\tau_N(t_j)}  \,\prod_{i=i_{j-1}+1}^{i_j} c_N(r_i)
+&\leq \prod_{j=1}^k \left\{ \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})!}  
++ c_N(\tau_N(t_j)) \frac{(1+ t_j - t_{j-1})^k}{(i_j - i_{j-1})!} \right\} \notag\\
+&\leq \prod_{j=1}^k \left\{ \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})!}  
++ c_N(\tau_N(t_j)) (1+ t_j - t_{j-1})^k \right\} \notag\\
+&= \sum_{\mathcal{I} \subseteq [k]} \left( \prod_{j\in\mathcal{I}} \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})!} \right)
+\left( \prod_{j\notin\mathcal{I}} c_N(\tau_N(t_j)) (1+ t_j - t_{j-1})^k \right) \notag\\
+&= \prod_{j=1}^k \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})!}  \notag\\
+&\qquad+ \sum_{\mathcal{I} \subset [k]} \left( \prod_{j\in\mathcal{I}} \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})!}\right)
+\left( \prod_{j\notin\mathcal{I}} c_N(\tau_N(t_j)) (1+ t_j - t_{j-1})^k \right) \notag\\
+&\leq \prod_{j=1}^k \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})!}  \notag\\
+&\qquad+ \sum_{\mathcal{I} \subset [k]} c_N(\tau_N(t_{j^*})) \left( \prod_{j\in\mathcal{I}} \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})!}\right)
+%\left( \prod_{ j\notin\mathcal{I} } (1+ t_j - t_{j-1})^k \right)
+(1+ t_j - t_{j-1})^{k^2} \label{eq:91}
+\end{align}
+where, say, $j^* := \min\{ j\notin\mathcal{I}\}$.
+Now we are in a position to evaluate the limit in \eqref{eq:88}:
+\begin{align}
+\lim_{N\to\infty} \E &\left[ \1{E} \sum_{\substack{r_1<\dots<r_k :\\ r_i\leq \tau_N(t_i) \forall i}} \prod_{i=1}^k c_N(r_i) \right] 
+\leq \lim_{N\to\infty} \E \left[\sum_{\substack{r_1<\dots<r_k :\\ r_i\leq \tau_N(t_i) \forall i}} \prod_{i=1}^k c_N(r_i) \right] \notag\\
+&\leq \sum_{\substack{i_1\leq \dots\leq i_{k-1}\\ \in \{0,\dots,k\} :\\ i_j \geq j \forall j}} \prod_{j=1}^k \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})!} 
++ \sum_{\substack{i_1\leq \dots\leq i_{k-1}\\ \in \{0,\dots,k\} :\\ i_j \geq j \forall j}} \sum_{\mathcal{I} \subset [k]} \lim_{N\to\infty} \E \left[ c_N(\tau_N(t_{j^*})) \right] 
+\left( \prod_{j\in\mathcal{I}} \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})!}\right) 
+%\prod_{\substack{j\notin\mathcal{I} \\ j\neq j^*}} (1+ t_j - t_{j-1})^k
+(1+ t_j - t_{j-1})^{k^2} \notag\\
+&= \sum_{\substack{i_1\leq \dots\leq i_{k-1}\\ \in \{0,\dots,k\} :\\ i_j \geq j \forall j}} \prod_{j=1}^k \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})!}
+\end{align}
+using \citet[Equation (3.3)]{brown2021}.
+For the corresponding lower bound, using \citet[(8)]{koskela2018},
+\begin{align}
+\sum_{\substack{ r_{i_{j-1}+1} \neq \dots \neq r_{i_j} \\ = \tau_N(t_{j-1})+1 \\ \text{all distinct}}}^{\tau_N(t_j)}
+\prod_{i=i_{j-1}+1}^{i_j} c_N(r_i)
+&\geq \left( \sum_{s=\tau_N(t_{j-1})+1}^{\tau_N(t_j)} c_N(s) \right)^{i_j - i_{j-1}} \notag\\
+&\qquad\qquad- \binom{i_j - i_{j-1}}{2} \left( \sum_{s=\tau_N(t_{j-1})+1}^{\tau_N(t_j)} c_N(s)^2 \right)
+\left( \sum_{s=\tau_N(t_{j-1})+1}^{\tau_N(t_j)} c_N(s) \right)^{i_j - i_{j-1} -2} \notag\\
+&\geq (t_j - t_{j-1})^{i_j - i_{j-1}}
+- \binom{i_j - i_{j-1}}{2} \left( \sum_{s=\tau_N(t_{j-1})+1}^{\tau_N(t_j)} c_N(s)^2 \right)
+( t_j - t_{j-1} +1 )^{i_j - i_{j-1} -2} \notag\\
+&\geq (t_j - t_{j-1})^{i_j - i_{j-1}}
+- (i_j - i_{j-1})! \left( \sum_{s=\tau_N(t_{j-1})+1}^{\tau_N(t_j)} c_N(s)^2 \right)
+( t_j - t_{j-1} +1 )^{k-1} .
+\end{align}
+Now, taking the product on the outside as in \eqref{eq:91}, 
+\begin{align}
+\prod_{j=1}^k \,
+\sum_{\substack{ r_{i_{j-1}+1} < \dots < r_{i_j} \\ = \tau_N(t_{j-1})+1}}^{\tau_N(t_j)}  \,&\prod_{i=i_{j-1}+1}^{i_j} c_N(r_i)
+\geq \prod_{j=1}^k \left\{ \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})!}  
+- \left( \sum_{s=\tau_N(t_{j-1})+1}^{\tau_N(t_j)} c_N(s)^2 \right)
+( t_j - t_{j-1} +1 )^{k-1} \right\} \notag\\
+&= \sum_{\mathcal{I} \subseteq [k]} (-1)^{k-|\mathcal{I}|} \left( \prod_{j\in\mathcal{I}} \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})!} \right)
+\left( \prod_{j\notin\mathcal{I}} \left( \sum_{s=\tau_N(t_{j-1})+1}^{\tau_N(t_j)} c_N(s)^2 \right) ( t_j - t_{j-1} +1 )^{k-1} \right) \notag\\
+&= \prod_{j=1}^k \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})!}  \notag\\
+&\qquad+ \sum_{\mathcal{I} \subset [k]} (-1)^{k-|\mathcal{I}|} \left( \prod_{j\in\mathcal{I}} \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})!} \right)
+\left( \prod_{j\notin\mathcal{I}} \left( \sum_{s=\tau_N(t_{j-1})+1}^{\tau_N(t_j)} c_N(s)^2 \right) ( t_j - t_{j-1} +1 )^{k-1} \right) \notag\\
+&\geq \prod_{j=1}^k \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})!}  \notag\\
+&\qquad- \sum_{\substack{\mathcal{I} \subset [k]:\\k-|\mathcal{I}| \text{ odd} }} \left( \prod_{j\in\mathcal{I}} \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})!} \right)
+\left( \prod_{j\notin\mathcal{I}} \left( \sum_{s=\tau_N(t_{j-1})+1}^{\tau_N(t_j)} c_N(s)^2 \right) ( t_j - t_{j-1} +1 )^{k-1} \right) \notag\\
+&\geq \prod_{j=1}^k \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})!} 
+- \sum_{\mathcal{I} \subset [k]} 
+\left( \sum_{s=\tau_N(t_{j^*-1})+1}^{\tau_N(t_{j^*})} c_N(s)^2 \right)
+\left( \prod_{j\in\mathcal{I}} ( t_j - t_{j-1} )^k \right)
+\left( \prod_{j\notin\mathcal{I}} ( t_j - t_{j-1} +1 )^k \right) \notag\\
+&\geq \prod_{j=1}^k \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})!}
+- \sum_{\mathcal{I} \subset [k]} 
+\left( \sum_{s=\tau_N(t_{j^*-1})+1}^{\tau_N(t_{j^*})} c_N(s)^2 \right)
+( t_j - t_{j-1} +1 )^{k^2} .
+\end{align}
+Now we can evaluate the limit:
+\begin{align}
+\lim_{N\to\infty} \E &\left[ \1{E} \sum_{\substack{r_1<\dots<r_k :\\ r_i\leq \tau_N(t_i) \forall i}} \prod_{i=1}^k c_N(r_i) \right] 
+\geq \lim_{N\to\infty} \E \left[ \1{E} \sum_{\substack{i_1\leq \dots\leq i_{k-1}\\ \in \{0,\dots,k\} :\\ i_j \geq j \forall j}}
+\prod_{j=1}^k \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})!} \right] \notag\\
+&\hspace{4cm}- \lim_{N\to\infty} \E \left[ \1{E} \sum_{\substack{i_1\leq \dots\leq i_{k-1}\\ \in \{0,\dots,k\} :\\ i_j \geq j \forall j}}
+\sum_{\mathcal{I} \subset [k]} 
+\left( \sum_{s=\tau_N(t_{j^*-1})+1}^{\tau_N(t_{j^*})} c_N(s)^2 \right)
+( t_j - t_{j-1} +1 )^{k^2} \right] \notag\\
+&\geq \sum_{\substack{i_1\leq \dots\leq i_{k-1}\\ \in \{0,\dots,k\} :\\ i_j \geq j \forall j}}
+\prod_{j=1}^k \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})!}   
+\lim_{N\to\infty}\E[\1{E}]
+- \lim_{N\to\infty} \E \left[ \sum_{\substack{i_1\leq \dots\leq i_{k-1}\\ \in \{0,\dots,k\} :\\ i_j \geq j \forall j}}
+\sum_{\mathcal{I} \subset [k]} 
+\left( \sum_{s=\tau_N(t_{j^*-1})+1}^{\tau_N(t_{j^*})} c_N(s)^2 \right)
+( t_j - t_{j-1} +1 )^{k^2} \right] \notag\\
+&= \sum_{\substack{i_1\leq \dots\leq i_{k-1}\\ \in \{0,\dots,k\} :\\ i_j \geq j \forall j}}
+\prod_{j=1}^k \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})!}   
+\lim_{N\to\infty}\Prob[E]
+- \sum_{\substack{i_1\leq \dots\leq i_{k-1}\\ \in \{0,\dots,k\} :\\ i_j \geq j \forall j}}
+\sum_{\mathcal{I} \subset [k]}
+\lim_{N\to\infty} \E \left[ \sum_{s=\tau_N(t_{j^*-1})+1}^{\tau_N(t_{j^*})} c_N(s)^2 \right]
+( t_j - t_{j-1} +1 )^{k^2} \notag\\
+&= \sum_{\substack{i_1\leq \dots\leq i_{k-1}\\ \in \{0,\dots,k\} :\\ i_j \geq j \forall j}}
+\prod_{j=1}^k \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})!} .
+\end{align}
+using \citet[Equation (3.5)]{brown2021}.
+We have shown that the upper and lower bounds coincide, so the result follows.
+\end{proof}
 
 
 
