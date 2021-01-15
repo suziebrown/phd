@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  14 JAN 2021 17:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  15 JAN 2021 09:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -403,17 +403,17 @@ Overfull \vbox (20.72707pt too high) has occurred while \output is active []
 
 
 [17] [18] [19] [20]
-Overfull \hbox (34.36987pt too wide) detected at line 2036
+Overfull \hbox (34.36987pt too wide) detected at line 2037
 []
  []
 
 [21]
-Overfull \hbox (5.9835pt too wide) detected at line 2076
+Overfull \hbox (5.9835pt too wide) detected at line 2077
 []
  []
 
 
-Overfull \hbox (34.37233pt too wide) detected at line 2102
+Overfull \hbox (34.37233pt too wide) detected at line 2103
 []
  []
 
@@ -448,7 +448,7 @@ ts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2018/texmf-dist/fonts
 type1/public/amsfonts/euler/eusm10.pfb></usr/local/texlive/2018/texmf-dist/font
 s/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2018/texmf-dist/
 fonts/type1/public/amsfonts/symbols/msbm7.pfb>
-Output written on weakconvproof.pdf (23 pages, 291864 bytes).
+Output written on weakconvproof.pdf (23 pages, 291990 bytes).
 PDF statistics:
  164 PDF objects out of 1000 (max. 8388607)
  116 compressed objects within 2 object streams

@@ -1996,7 +1996,8 @@ A simple modification of \citet[(9)]{koskela2018} gives us an upper bound:
 \begin{align}
 \sum_{\substack{ r_{i_{j-1}+1} \neq \dots \neq r_{i_j} \\ = \tau_N(t_{j-1})+1 \\ \text{all distinct}}}^{\tau_N(t_j)}
 \prod_{i=i_{j-1}+1}^{i_j} c_N(r_i)
-&\leq \left[ t_j - t_{j-1} + c_N(\tau_N(t_j)) \right]^{i_j - i_{j-1}} \notag\\
+&\leq \left( \sum_{s=\tau_N(t_{j-1})+1}^{\tau_N(t_j)} c_N(s) \right)^{i_j - i_{j-1}}
+\leq \left[ t_j - t_{j-1} + c_N(\tau_N(t_j)) \right]^{i_j - i_{j-1}} \notag\\
 &= \sum_{l=0}^{i_j - i_{j-1}} \binom{i_j - i_{j-1}}{l} (t_j - t_{j-1})^l \left[ c_N(\tau_N(t_j)) \right]^{i_j - i_{j-1}-l} \notag\\
 &= (t_j - t_{j-1})^{i_j - i_{j-1}} \notag\\
 &\qquad+ c_N(\tau_N(t_j)) \sum_{l=0}^{i_j - i_{j-1} -1} \binom{i_j - i_{j-1}}{l} (t_j - t_{j-1})^l \left[ c_N(\tau_N(t_j)) \right]^{i_j - i_{j-1}-1-l} \notag\\
