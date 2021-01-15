@@ -1,0 +1,55 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=2cm]{geometry}
+
+% custom header/footer
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+\fancyhf{}
+\rfoot{\textsf{\thepage}}
+\lfoot{\textsf{Suzie Brown}}
+
+\title{Possible future research topics}
+\author{Suzie Brown}
+\date{15 January 2021}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+
+\section*{Extending the theoretical results}
+\begin{itemize}
+\item What is the effect of adaptive resampling?
+\item Corollaries also for residual-multinomial and stratified resampling.
+\item Rates of convergence (modifying more of M\"ohle's work).
+\item Could badly-behaved potentials produce a non-Kingman Lambda-coalescent? For example, use for potentials some heavy-tailed fitnesses like in Schweinsberg model. This is probably not interesting from an SMC point of view.
+\item A way to estimate coalescent rates a priori for some specific tractable class of models, say.
+\item Do our results apply to cloning models, or other continuous-time models?
+\end{itemize}
+
+\section*{Resampling}
+\begin{itemize}
+\item Compare residual-stratified vs. stratified resampling (and residual-systematic vs systematic): are they equivalent? What if the weights are sorted? Maybe start by coding up an exploratory experiment.
+\item Compare theoretical computation/storage costs and parallelisability between the different resampling schemes.
+\item Is there a nice set of weights that will nicely illustrate all the points I want to make about resampling schemes?
+\item Can the comparison of time-scales for different schemes be wrangled into/ related to a direct comparison of the variances? Is this even useful?
+\item Don't forget the resampling scheme that's even worse than multinomial: sampling once from Categorical and replicating it N times. This leads to a star-shaped coalescent, which sets a precedent for non-Kingman Lambda coalescents from SMC genealogies.
+\item (See marked notebook 3 page circa Jun/Jul 2020 for some more thoughts/ideas.)
+\item (Just for fun:) in stochastic rounding, how many possible ways are there to assign the offspring counts? Consider that each of the N counts takes one of two possible values, but this will overcount a lot because we are also constrained by offspring counts summing to N.
+\item (Conjecture:) pre-sorting of weights reduces resampling variance, but increases the coalescence rate. Intuition: when weights are sorted, small weights that sum to less than 1/N are grouped together so only one of them can have a child. (It may be that this effect is entirely cancelled by the reduction in variance elsewhere.)
+\end{itemize}
+
+\section*{Simulation experiments}
+\begin{itemize}
+\item Now we (almost?) have weak convergence, redo similar experiments to those at end of KJJS, but without having to fudge the argument in order to apply FDD convergence.
+\item Code up all the different sampling schemes (and sorted/unsorted variants etc.) and come up with some useful (if only illustrative) experiments comparing them.
+\item Decide which functions would be most interesting to illustrate the performance of resampling schemes, say using ternary diagrams. (See marked notebook 3 page at 8/7/20.)
+\item Explore pre-asymptotic behaviour of CSMC for example. I did some work on this previously.
+\item Make edits to my ternary plot ``library'' (see notebook 3 marked page at 8/7/20).
+\end{itemize}
+
+
+
+
+\end{document}
