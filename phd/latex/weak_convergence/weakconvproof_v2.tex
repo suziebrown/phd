@@ -1,0 +1,137 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=2cm]{geometry}
+
+\usepackage{graphicx}
+\usepackage{enumitem}
+
+% custom header/footer
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+\fancyhf{}
+\rfoot{\textsf{\thepage}}
+\lfoot{\textsf{Suzie Brown}}
+
+%annotations
+\usepackage{color}
+\usepackage{xspace}
+\newcommand{\seb}[1]{\xspace\textcolor{red}{#1}\xspace}
+
+% bibliography
+\usepackage[round, sort&compress]{natbib}
+\usepackage{har2nat}
+\bibliographystyle{agsm}
+
+% maths
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[mathscr]{euscript}
+\usepackage{bbm}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newcommand{\Prob}{\mathbb{P}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Et}{\mathbb{E}_t}
+\newcommand{\V}{\operatorname{Var}}
+\newcommand{\I}[1]{\mathbbm{1}_{\{#1\}}}
+\newcommand{\1}[1]{\mathbbm{1}_{#1}}
+\newcommand{\Mn}{\operatorname{Multinomial}}
+
+%\allowdisplaybreaks
+
+\title{Weak convergence proof v.2 (neater) (in progress)}
+\author{Suzie Brown}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+
+\begin{lemma}
+\begin{equation}
+\sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)} \prod_{j=1}^l c_N(s_j)
+\geq t^l - \left( \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right) \binom{l}{2} (t+1)^{l-2} .
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+As pointed out in \citet[Equation (8)]{koskela2018}, 
+\begin{equation}\label{eq:02}
+\sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)} \prod_{j=1}^l c_N(s_j)
+\geq \left( \sum_{s=0}^{\tau_N(t)} c_N(s) \right)^l
+- \binom{l}{2} \left( \sum_{s=0}^{\tau_N(t)} c_N(s)^2 \right)
+\left( \sum_{s=0}^{\tau_N(t)} c_N(s) \right)^{l-2} .
+\end{equation}
+By definition of $\tau_N$, 
+\begin{equation}
+t \leq \sum_{s=0}^{\tau_N(t)} c_N(s) \leq t+1 .
+\end{equation}
+Substituting these bounds into the RHS of \eqref{eq:02} yields the result.
+\end{proof}
+
+
+\begin{lemma}
+\begin{equation}
+\sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)} \prod_{j=1}^l c_N(s_j)
+\leq t^l + c_N(\tau_N(t)) (t+1)^l .
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+It is a true fact that
+\begin{equation}
+\sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)} \prod_{j=1}^l c_N(s_j)
+\leq \left( \sum_{s=0}^{\tau_N(t)} c_N(s) \right)^l ,
+\end{equation}
+as can be seen by considering the multinomial expansion of the RHS.
+This is further bounded by
+\begin{equation}
+\left( \sum_{s=0}^{\tau_N(t)} c_N(s) \right)^l
+\leq \left( \sum_{s=0}^{\tau_N(t) -1} c_N(s) + c_N(\tau_N(t)) \right)^l
+\leq \left[ t + c_N(\tau_N(t)) \right]^l ,
+\end{equation}
+again using the definition of $\tau_N$.
+A binomial expansion yields
+\begin{equation}
+\left[ t + c_N(\tau_N(t)) \right]^l
+= t^l + \sum_{i=0}^{l-1} \binom{l}{i} t^i c_N(\tau_N(t))^{l-i}
+= t^l + c_N(\tau_N(t)) \sum_{i=0}^{l-1} \binom{l}{i} t^i c_N(\tau_N(t))^{l-1-i} ,
+\end{equation}
+then since $c_N(s) \leq 1$ for all $s$,
+\begin{equation}
+\sum_{i=0}^{l-1} \binom{l}{i} t^i c_N(\tau_N(t))^{l-1-i}
+\leq \sum_{i=0}^{l-1} \binom{l}{i} t^i
+\leq (t+1)^l .
+\end{equation}
+Putting this together yields the result.
+\end{proof}
+
+
+\begin{lemma}
+Let $B$ be a positive constant which may depend on $n$.
+\begin{equation}
+\sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)} \prod_{j=1}^l 
+\left[ c_N(s_j) + B D_N(s_j) \right]
+\leq \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)} \prod_{j=1}^l c_N(s_j)
++ \left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right) (t+1)^{l-1} (1+B)^l .
+\end{equation}
+\end{lemma}
+
+\begin{lemma}
+Let $B$ be a positive constant which may depend on $n$.
+\begin{equation}
+\sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)} \prod_{j=1}^l 
+\left[ c_N(s_j) - B D_N(s_j) \right]
+\geq \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)} \prod_{j=1}^l c_N(s_j)
+- \left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right) (t+1)^{l-1} (1+B)^l .
+\end{equation}
+\end{lemma}
+
+
+
+
+
+
+\bibliography{../smc.bib}
+\end{document}
