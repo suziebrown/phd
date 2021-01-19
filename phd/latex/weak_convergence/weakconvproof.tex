@@ -54,7 +54,7 @@ Let $\nu_t^{(1:N)}$ denote the offspring numbers in an interacting particle syst
 \frac{1}{(N)_3} \sum_{i = 1}^N \Et\{ (\nu_t^{(i)})_3 \}  \leq b_N \frac{1}{(N)_2} \sum_{i = 1}^N \Et\{ (\nu_t^{(i)})_2 \}
 \end{equation}
 for all $N$, uniformly in $t \geq 1$.
-Then the rescaled genealogical process $(G_{\tau_N(t)}^{(n,N)})_{t\geq0}$ converges weakly %% in what topology?
+Then the rescaled genealogical process $(G_{\tau_N(t)}^{(n,N)})_{t\geq0}$ converges weakly \seb{in what topology?}
 to Kingman's $n$-coalescent as $N \to \infty$.
 \end{theorem}
 
@@ -341,6 +341,7 @@ Taking expectations,
 &\qquad \times \Prob \left[ k\leq \tau_N(t), \bigcap_{r=1}^{\tau_N(t)} E_r \right] .
 \end{align}
 %(the infinite sum has only finitely many non-zero summands, since the inner sum is empty for $k>\tau_N(t)$, which justifies swapping the sum and expectation.)
+\seb{In the above, don't change the indicators for conditional expectations; we just end up swapping back on the next page. We now know more elegant ways to deal with these conditioning things.}
 Swapping the expectation with the infinite sum is justified by the dominated convergence theorem, the calculations for which are almost identical to the invocation of Tannery's theorem in equations 
 \eqref{eq:21a}--\eqref{eq:26a}.
 
@@ -348,7 +349,7 @@ We want to show that the conditional expectation on the right converges to $t^k/
 
 First the lower bound. 
 Fix $k\leq \tau_N(t)$, so that the sum is non-empty.
-%The conditioning on $\bigcap E_r$ doesn't affect these bounds, which are based on general properties of $c_N$, $D_N$ and $\tau_N$. %%% Is this true???
+%The conditioning on $\bigcap E_r$ doesn't affect these bounds, which are based on general properties of $c_N$, $D_N$ and $\tau_N$. (maybe?)
 From \citet[Equation (8)]{koskela2018},
 \begin{align}
 \sum_{\substack{r_1<\dots<r_k \\ =1}}^{\tau_N(t)}\prod_{j=1}^k 
@@ -513,6 +514,7 @@ Taking expectations,
 &\longrightarrow \frac{1}{k!} t^k . \label{eq:19a}
 \end{align}
 %%% even decreasing expectation of D_N ?
+\seb{Again, we should be able to deal with the indicators more directly than this, I think.}
 The limit follows from Lemma \ref{thm:indicators_prob1} and \citet[Equations (3.3)--(3.4)]{brown2021} along with the fact that, since $c_N(s) \in [0,1]$ for all $s$, $\E[c_N(s)^k] \leq \E[c_N(s)]$ for all $k\geq 1$, and the expansion
 \begin{equation}\label{eq:11}
 \E\left[ \{t+ c_N(\tau_N(t)) \}^k \right]
@@ -795,9 +797,6 @@ We now have upper and lower bounds on $\lim_{N\to\infty} \E\left[ \prod_{r=1}^{\
 %&\overset{N\to\infty}{\longrightarrow} 1 - (\alpha_n + B_n)^2 \times 0 = 1 .
 %\end{align}
 %\end{proof}
-
-
-%%% The general-use results (prob 1 indicators & martingale thingy) used to live here
 
 
 %\section*{Induction step: upper bound}
@@ -1101,7 +1100,7 @@ Now we are in a position to evaluate the limit in Lemma \ref{thm:LOterms_UB}:
 (1+ t_j - t_{j-1})^{k^2} \notag\\
 &= \sum_{\substack{i_1\leq \dots\leq i_{k-1}\\ \in \{0,\dots,k\} :\\ i_j \geq j \forall j}} \prod_{j=1}^k \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})!}
 \end{align}
-using \citet[Equation (3.3)]{brown2021}. %%% This equation does need modifying for the conditional probability though...
+using \citet[Equation (3.3)]{brown2021}. \seb{The conditional expectation will not appear (e.g. in RHS of \eqref{eq:74}) once the proof of Lemma 6 (UB induction step) has been modified; then Lemma 8 will be applied rather than this Lemma 5.}
 \end{proof}
 
 \begin{lemma}
@@ -1439,7 +1438,7 @@ First, expanding the relevant product in \eqref{eq:74},
 \prod_{j=1}^l \{ c_N(s_j) - B_n^\prime D_N(s_j) \} \notag\\
 &\qquad- \sum_{l=1}^{\tau_N(t) -k}
 (-\alpha_n)^l (1+O(N^{-1}))
-\sum_{\substack{s_1<\dots<s_l \\ \in \{r_1,\dots,r_k\} }}
+\sum_{\substack{s_1<\dots<s_l \\ \exists i,i^\prime : s_i=r_{i^\prime} }}
 \prod_{j=1}^l \{ c_N(s_j) - B_n^\prime D_N(s_j) \} %\notag\\
 %&\qquad- \sum_{l \in \{r_1,\dots,r_k\}}^{\tau_N(t)}
 %(-\alpha_n)^l (1+O(N^{-1}))
@@ -1507,36 +1506,61 @@ c_N(\tau_N(t)) \sum_{i=0}^{l-1} \binom{l}{i} t^i \left\{ c_N(\tau_N(t)) \right\}
  .
 \end{align}
 Now the second line:
+%\begin{align}
+%- \sum_{l=1}^{\tau_N(t) -k} &(-\alpha_n)^l (1+O(N^{-1}))
+%\sum_{\substack{s_1<\dots<s_l \\ \in \{r_1,\dots,r_k\} }}
+%\prod_{j=1}^l \{ c_N(s_j) - B_n^\prime D_N(s_j) \} \notag\\
+%&= - \sum_{l=1}^{k \wedge (\tau_N(t) -k)} \frac{1}{l!} \alpha_n^l (1+O(N^{-1}))
+%\sum_{\substack{s_1 \neq\dots\neq s_l \\ \in \{r_1,\dots,r_k\} }}
+%\left\{ \sum_{\substack{I=0\\\text{even} }}^l
+%\binom{l}{I} (B_n^\prime)^{l-I} 
+%\left( \prod_{i=1}^I c_N(s_i) \right) \left( \prod_{j=I+1}^l D_N(s_j) \right) 
+%\right. \notag\\
+%&\qquad- \left. \sum_{\substack{I=0 \\ \text{odd} }}^l
+%\binom{l}{I} (B_n^\prime)^{l-I} 
+%\left( \prod_{i=1}^I c_N(s_i) \right) \left( \prod_{j=I+1}^l D_N(s_j) \right) 
+%\right\} \notag\\
+%&\leq \sum_{l=1}^{k} \frac{1}{l!} \alpha_n^l (1+O(N^{-1}))
+%\sum_{\substack{I=0 \\ \text{odd} }}^l
+%\binom{l}{I} (B_n^\prime)^{l-I} 
+%\sum_{\substack{s_1 \neq\dots\neq s_l \\ \in \{r_1,\dots,r_k\} }}
+%\left( \prod_{i=1}^I c_N(s_i) \right) \left( \prod_{j=I+1}^l D_N(s_j) \right) \notag\\
+%&\leq \sum_{l=1}^{k} \frac{1}{l!} \alpha_n^l (1+O(N^{-1}))
+%\sum_{\substack{I=0 \\ \text{odd} }}^l
+%\binom{l}{I} (B_n^\prime)^{l-I} 
+%\sum_{s\in \{r_1,\dots,r_k\} } c_N(s)
+%\sum_{\substack{s_1 \neq\dots\neq s_{l-1} \\ \in \{r_1,\dots,r_k\}\setminus \{s\} }}
+%\prod_{i=1}^{l-1} c_N(s_i)  \notag\\
+%&\leq \sum_{l=1}^{k} \frac{1}{l!} \alpha_n^l (1+O(N^{-1}))
+%(1 + B_n^\prime)^l \left( \sum_{s\in \{r_1,\dots,r_k\} } c_N(s) \right)
+%\frac{(k-1)!}{(k-l)!} \notag\\
+%&\leq \left( \sum_{s\in \{r_1,\dots,r_k\} } c_N(s) \right)
+%\left[ 1 + \alpha_n (1+O(N^{-1})) (1 + B_n^\prime) \right]^k .
+%\end{align}
+\seb{Is it definitely okay to pull out the sum over $s_1$? Is some combinatorial correction needed?}
 \begin{align}
 - \sum_{l=1}^{\tau_N(t) -k} &(-\alpha_n)^l (1+O(N^{-1}))
-\sum_{\substack{s_1<\dots<s_l \\ \in \{r_1,\dots,r_k\} }}
+\sum_{\substack{s_1<\dots<s_l \\ \exists i,i^\prime : s_i=r_{i^\prime} }}
 \prod_{j=1}^l \{ c_N(s_j) - B_n^\prime D_N(s_j) \} \notag\\
-&= - \sum_{l=1}^{k \wedge (\tau_N(t) -k)} \frac{1}{l!} \alpha_n^l (1+O(N^{-1}))
-\sum_{\substack{s_1 \neq\dots\neq s_l \\ \in \{r_1,\dots,r_k\} }}
-\left\{ \sum_{\substack{I=0\\\text{even} }}^l
-\binom{l}{I} (B_n^\prime)^{l-I} 
-\left( \prod_{i=1}^I c_N(s_i) \right) \left( \prod_{j=I+1}^l D_N(s_j) \right) 
-\right. \notag\\
-&\qquad- \left. \sum_{\substack{I=0 \\ \text{odd} }}^l
-\binom{l}{I} (B_n^\prime)^{l-I} 
-\left( \prod_{i=1}^I c_N(s_i) \right) \left( \prod_{j=I+1}^l D_N(s_j) \right) 
-\right\} \notag\\
-&\leq \sum_{l=1}^{k} \frac{1}{l!} \alpha_n^l (1+O(N^{-1}))
-\sum_{\substack{I=0 \\ \text{odd} }}^l
-\binom{l}{I} (B_n^\prime)^{l-I} 
-\sum_{\substack{s_1 \neq\dots\neq s_l \\ \in \{r_1,\dots,r_k\} }}
-\left( \prod_{i=1}^I c_N(s_i) \right) \left( \prod_{j=I+1}^l D_N(s_j) \right) \notag\\
-&\leq \sum_{l=1}^{k} \frac{1}{l!} \alpha_n^l (1+O(N^{-1}))
-\sum_{\substack{I=0 \\ \text{odd} }}^l
-\binom{l}{I} (B_n^\prime)^{l-I} 
-\sum_{s\in \{r_1,\dots,r_k\} } c_N(s)
-\sum_{\substack{s_1 \neq\dots\neq s_{l-1} \\ \in \{r_1,\dots,r_k\}\setminus \{s\} }}
-\prod_{i=1}^{l-1} c_N(s_i)  \notag\\
-&\leq \sum_{l=1}^{k} \frac{1}{l!} \alpha_n^l (1+O(N^{-1}))
-(1 + B_n^\prime)^l \left( \sum_{s\in \{r_1,\dots,r_k\} } c_N(s) \right)
-\frac{(k-1)!}{(k-l)!} \notag\\
-&\leq \left( \sum_{s\in \{r_1,\dots,r_k\} } c_N(s) \right)
-\left[ 1 + \alpha_n (1+O(N^{-1})) (1 + B_n^\prime) \right]^k .
+&\leq \sum_{l=1}^{\tau_N(t) -k} \alpha_n^l (1+O(N^{-1}))
+\sum_{\substack{s_1<\dots<s_l \\ \exists i,i^\prime : s_i=r_{i^\prime} }}
+\prod_{j=1}^l \{ c_N(s_j) + B_n^\prime D_N(s_j) \} \notag\\
+&\leq \sum_{l=1}^{\tau_N(t) -k} \alpha_n^l (1+O(N^{-1}))
+\sum_{\substack{s_1<\dots<s_l \\ \exists i,i^\prime : s_i=r_{i^\prime} }}
+(1 + B_n^\prime)^l \prod_{j=1}^l c_N(s_j) \notag\\
+&\leq \sum_{l=1}^{\tau_N(t) -k} \alpha_n^l (1+O(N^{-1}))
+\frac{1}{l!} \sum_{s_1 \in \{r_1,\dots,r_k\} } \sum_{s_2\neq \dots\neq s_l}^{\tau_N(t)}
+(1 + B_n^\prime)^l \prod_{j=1}^l c_N(s_j) \notag\\
+&= \sum_{s \in \{r_1,\dots,r_k\} } c_N(s)
+\sum_{l=1}^{\tau_N(t) -k} \alpha_n^l (1+O(N^{-1}))
+\frac{1}{l!}  (1 + B_n^\prime)^l
+\sum_{s_1\neq \dots\neq s_{l-1}}^{\tau_N(t)} 
+\prod_{j=1}^{l-1} c_N(s_j) \notag\\
+&\leq \sum_{s \in \{r_1,\dots,r_k\} } c_N(s)
+\sum_{l=1}^{\tau_N(t) -k} \alpha_n^l (1+O(N^{-1}))
+\frac{1}{l!}  (1 + B_n^\prime)^l (t+1)^{l-1} \notag\\
+&\leq \left( \sum_{s \in \{r_1,\dots,r_k\} } c_N(s) \right)
+\exp[ \alpha_n (1+O(N^{-1})) (1 + B_n^\prime) (t+1) ] .
 \end{align}
 %And the third line:
 %\begin{align}
@@ -1594,7 +1618,7 @@ Putting these together, we have
 + c_N(\tau_N(t)) \exp\left[ \alpha_n (1+O(N^{-1})) (t+1) \right] \notag\\
 &\qquad+ \left( \sum_{r=1}^{\tau_N(t)} D_N(r) \right) \exp\left[ \alpha_n (1+O(N^{-1})) (t+1) (1+B_n^\prime) \right] \notag\\
 &\qquad+ \left( \sum_{s\in \{r_1,\dots,r_k\} } c_N(s) \right)
-\left[ 1 + \alpha_n (1+O(N^{-1})) (1 + B_n^\prime) \right]^k \notag\\
+\exp\left[\alpha_n (1+O(N^{-1})) (1 + B_n^\prime)(t+1) \right] \notag\\
 &= \mathscr{B}_1 + \mathscr{B}_2 + \mathscr{B}_3 + \mathscr{B}_4
 \end{align}
 where we define
@@ -1603,14 +1627,14 @@ where we define
 \mathscr{B}_2 &:= c_N(\tau_N(t)) \exp\left[ \alpha_n (1+O(N^{-1})) (t+1) \right] , \notag\\
 \mathscr{B}_3 &:= \left( \sum_{r=1}^{\tau_N(t)} D_N(r) \right) \exp\left[ \alpha_n (1+O(N^{-1})) (t+1) (1+B_n^\prime) \right] , \notag\\
 \mathscr{B}_4 &:= \left( \sum_{s\in \{r_1,\dots,r_k\} } c_N(s) \right)
-\left[ 1 + \alpha_n (1+O(N^{-1})) (1 + B_n^\prime) \right]^k . \label{eq:106}
+\exp\left[\alpha_n (1+O(N^{-1})) (1 + B_n^\prime)(t+1) \right] . \label{eq:106}
 \end{align}
 We also have the deterministic bounds, independent of $r_1,\dots,r_k$:
 \begin{align}
 \mathscr{B}_1 &\leq \exp\left[ \alpha_n (1+O(N^{-1})) t \right] , \notag\\
 \mathscr{B}_2 &\leq \exp\left[ \alpha_n (1+O(N^{-1})) (t+1) \right] , \notag\\
 \mathscr{B}_3 &\leq (t+1) \exp\left[ \alpha_n (1+O(N^{-1})) (t+1) (1+B_n^\prime) \right] , \notag\\
-\mathscr{B}_4 &\leq k \left[ 1 + \alpha_n (1+O(N^{-1})) (1 + B_n^\prime) \right]^k . \label{eq:107}
+\mathscr{B}_4 &\leq k \exp\left[\alpha_n (1+O(N^{-1})) (1 + B_n^\prime)(t+1) \right] . \label{eq:107}
 \end{align}
 Now we are in a position to bound the cross-terms.
 
@@ -1644,7 +1668,7 @@ The other nuisance term $\mathscr{A}_1 \mathscr{B}_4$ requires more delicate han
 \begin{equation}
 \sum_{\substack{r_1 <\dots< r_k :\\ r_i \leq \tau_N(t_i) \forall i}} \mathscr{A}_1 \mathscr{B}_4
 \leq \alpha_n^k (1+O(N^{-1}))
-\left[ 1 + \alpha_n (1+O(N^{-1})) (1 + B_n^\prime) \right]^k
+\exp\left[\alpha_n (1+O(N^{-1})) (1 + B_n^\prime)(t+1) \right]
 \sum_{\substack{r_1 <\dots< r_k :\\ r_i \leq \tau_N(t_i) \forall i}}
 \{ c_N(r_1) + \cdots + c_N(r_k) \}
 \prod_{i=1}^k  c_N(r_i) .
@@ -1665,7 +1689,7 @@ where the last inequality follows from \eqref{eq:34}.
 Hence
 \begin{equation}
 \lim_{N\to\infty}\E\left[ \sum_{\substack{r_1 <\dots< r_k :\\ r_i \leq \tau_N(t_i) \forall i}} \mathscr{A}_1 \mathscr{B}_4 \right]
-\leq \alpha_n^k \left[ 1 + \alpha_n (1 + B_n^\prime) \right]^k
+\leq \alpha_n^k \exp\left[\alpha_n (1 + B_n^\prime) (t+1) \right] 
 k (t+1)^{k-1} \lim_{N\to\infty}\E\left[ \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right] =0
 \end{equation}
 by \citet[Equation (3.4)]{brown2021}.
@@ -1713,7 +1737,7 @@ which concludes the proof.
 
 \begin{proof}
 Using bounds from \citet[Equation (3.14)]{brown2021} and \citet[Lemma 1 Case 1]{koskela2018} and expanding the products,
-%%% We need to chuck some indicators in the RHS from the outset, to ensure that everything is nonnegative before multiplying.
+\seb{We still need to chuck some indicators in the RHS of this (from the first line) to ensure that everything is non-negative before multiplying.}
 \begin{align}
 \sum_{\substack{r_1 <\dots< r_k :\\ r_i \leq \tau_N(t_i) \forall i}}
 &\left( \prod_{i=1}^k p_{r_i} \right)
@@ -1756,7 +1780,6 @@ Using bounds from \citet[Equation (3.14)]{brown2021} and \citet[Lemma 1 Case 1]{
 \end{align}
 We will now look at each of the three terms on the RHS of \eqref{eq:76}.
 For the first line: splitting into positive and negative terms, then using arguments analogous to \eqref{eq:14} and \eqref{eq:7}--\eqref{eq:8} respectively,
-%%% I should really include one more line of working here between the first and second lines, to show the splitting into odd/even terms.
 \begin{align}
 \alpha_n^k &(1 + O(N^{-1}) )
 \left\{ \sum_{\substack{r_1 <\dots< r_k :\\ r_i \leq \tau_N(t_i) \forall i}} \prod_{i=1}^k c_N(r_i) \right\}
@@ -1967,11 +1990,16 @@ Combining the bounds from \eqref{eq:78a}, \eqref{eq:80a} and \eqref{eq:85}, we f
 \end{align}
 \end{proof}
 
-
-%%%___________________________
+%___________________________
 
 \begin{lemma}\label{thm:LOterms_equality}
-Let $E$ be any event such that $\lim_{N\to\infty} \Prob[E] =1$. Fix $l, k \in \mathbb{N}$, $i_0=0$, $i_k=k$. For any sequence of times $0 = t_0 \leq t_1 \leq \cdots \leq t_k \leq t$,
+For any $t_{j-1}, t_j, i_{j-1}, i_j$, define the event
+\begin{equation}
+E_j^\star = \left\{ \left( \sum_{s=\tau_N(t_{j-1})+1}^{\tau_N(t_j)} c_N(s)^2 \right)
+\leq \frac{ (t_j - t_{j-1})^{i_j - i_{j-1} -k +1} }{ (i_j - i_{j-1})! } \right\} ,
+\end{equation}
+and let $E^\star := \bigcap_{j=1}^k E_j^\star$.
+Let $E$ be any event independent of $r_1,\dots,r_k$ such that $\lim_{N\to\infty} \Prob[E \cap E^\star] =1$. Fix $l, k \in \mathbb{N}$, $i_0=0$, $i_k=k$. Then for any sequence of times $0 = t_0 \leq t_1 \leq \cdots \leq t_k \leq t$,
 \begin{equation}\label{eq:88}
 \lim_{N\to\infty} \E \left[ \1{E} \sum_{\substack{r_1<\dots<r_k :\\ r_i\leq \tau_N(t_i) \forall i}} \prod_{i=1}^k c_N(r_i) \right] 
 = \sum_{\substack{i_1\leq \dots\leq i_{k-1}\\ \in \{0,\dots,k\} :\\ i_j \geq j \forall j}} \prod_{j=1}^k \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})! } .
@@ -2056,21 +2084,20 @@ Now, taking the product on the outside as in \eqref{eq:91},
 \sum_{\substack{ r_{i_{j-1}+1} < \dots < r_{i_j} \\ = \tau_N(t_{j-1})+1}}^{\tau_N(t_j)}  \,&\prod_{i=i_{j-1}+1}^{i_j} c_N(r_i)
 \geq \prod_{j=1}^k \left\{ \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})!}  
 - \left( \sum_{s=\tau_N(t_{j-1})+1}^{\tau_N(t_j)} c_N(s)^2 \right)
-( t_j - t_{j-1} +1 )^{k-1} \right\} \notag\\
+( t_j - t_{j-1} +1 )^{k-1} \right\} \1{E^\star} \notag\\
 &= \sum_{\mathcal{I} \subseteq [k]} (-1)^{k-|\mathcal{I}|} \left( \prod_{j\in\mathcal{I}} \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})!} \right)
-\left( \prod_{j\notin\mathcal{I}} \left( \sum_{s=\tau_N(t_{j-1})+1}^{\tau_N(t_j)} c_N(s)^2 \right) ( t_j - t_{j-1} +1 )^{k-1} \right) \notag\\
-&= \prod_{j=1}^k \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})!}  \notag\\
+\left( \prod_{j\notin\mathcal{I}} \left( \sum_{s=\tau_N(t_{j-1})+1}^{\tau_N(t_j)} c_N(s)^2 \right) ( t_j - t_{j-1} +1 )^{k-1} \right) \1{E^\star} \notag\\
+&= \prod_{j=1}^k \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})!} \1{E^\star} \notag\\
 &\qquad+ \sum_{\mathcal{I} \subset [k]} (-1)^{k-|\mathcal{I}|} \left( \prod_{j\in\mathcal{I}} \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})!} \right)
 \left( \prod_{j\notin\mathcal{I}} \left( \sum_{s=\tau_N(t_{j-1})+1}^{\tau_N(t_j)} c_N(s)^2 \right) ( t_j - t_{j-1} +1 )^{k-1} \right) \notag\\
-&\geq \prod_{j=1}^k \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})!}  \notag\\
+&\geq \prod_{j=1}^k \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})!} \1{E^\star}  \notag\\
 &\qquad- \sum_{\substack{\mathcal{I} \subset [k]:\\k-|\mathcal{I}| \text{ odd} }} \left( \prod_{j\in\mathcal{I}} \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})!} \right)
 \left( \prod_{j\notin\mathcal{I}} \left( \sum_{s=\tau_N(t_{j-1})+1}^{\tau_N(t_j)} c_N(s)^2 \right) ( t_j - t_{j-1} +1 )^{k-1} \right) \notag\\
-&\geq \prod_{j=1}^k \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})!} 
-- \sum_{\mathcal{I} \subset [k]} 
+&\geq \prod_{j=1}^k \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})!} \1{E^\star} - \sum_{\mathcal{I} \subset [k]} 
 \left( \sum_{s=\tau_N(t_{j^*-1})+1}^{\tau_N(t_{j^*})} c_N(s)^2 \right)
 \left( \prod_{j\in\mathcal{I}} ( t_j - t_{j-1} )^k \right)
 \left( \prod_{j\notin\mathcal{I}} ( t_j - t_{j-1} +1 )^k \right) \notag\\
-&\geq \prod_{j=1}^k \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})!}
+&\geq \prod_{j=1}^k \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})!} \1{E^\star}
 - \sum_{\mathcal{I} \subset [k]} 
 \left( \sum_{s=\tau_N(t_{j^*-1})+1}^{\tau_N(t_{j^*})} c_N(s)^2 \right)
 ( t_j - t_{j-1} +1 )^{k^2} .
@@ -2078,7 +2105,7 @@ Now, taking the product on the outside as in \eqref{eq:91},
 Now we can evaluate the limit:
 \begin{align}
 \lim_{N\to\infty} \E &\left[ \1{E} \sum_{\substack{r_1<\dots<r_k :\\ r_i\leq \tau_N(t_i) \forall i}} \prod_{i=1}^k c_N(r_i) \right] 
-\geq \lim_{N\to\infty} \E \left[ \1{E} \sum_{\substack{i_1\leq \dots\leq i_{k-1}\\ \in \{0,\dots,k\} :\\ i_j \geq j \forall j}}
+\geq \lim_{N\to\infty} \E \left[ \1{E\cap E^\star} \sum_{\substack{i_1\leq \dots\leq i_{k-1}\\ \in \{0,\dots,k\} :\\ i_j \geq j \forall j}}
 \prod_{j=1}^k \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})!} \right] \notag\\
 &\hspace{4cm}- \lim_{N\to\infty} \E \left[ \1{E} \sum_{\substack{i_1\leq \dots\leq i_{k-1}\\ \in \{0,\dots,k\} :\\ i_j \geq j \forall j}}
 \sum_{\mathcal{I} \subset [k]} 
@@ -2086,14 +2113,14 @@ Now we can evaluate the limit:
 ( t_j - t_{j-1} +1 )^{k^2} \right] \notag\\
 &\geq \sum_{\substack{i_1\leq \dots\leq i_{k-1}\\ \in \{0,\dots,k\} :\\ i_j \geq j \forall j}}
 \prod_{j=1}^k \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})!}   
-\lim_{N\to\infty}\E[\1{E}]
+\lim_{N\to\infty}\E[\1{E\cap E^\star}]
 - \lim_{N\to\infty} \E \left[ \sum_{\substack{i_1\leq \dots\leq i_{k-1}\\ \in \{0,\dots,k\} :\\ i_j \geq j \forall j}}
 \sum_{\mathcal{I} \subset [k]} 
 \left( \sum_{s=\tau_N(t_{j^*-1})+1}^{\tau_N(t_{j^*})} c_N(s)^2 \right)
 ( t_j - t_{j-1} +1 )^{k^2} \right] \notag\\
 &= \sum_{\substack{i_1\leq \dots\leq i_{k-1}\\ \in \{0,\dots,k\} :\\ i_j \geq j \forall j}}
 \prod_{j=1}^k \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})!}   
-\lim_{N\to\infty}\Prob[E]
+\lim_{N\to\infty}\Prob[E\cap E^\star]
 - \sum_{\substack{i_1\leq \dots\leq i_{k-1}\\ \in \{0,\dots,k\} :\\ i_j \geq j \forall j}}
 \sum_{\mathcal{I} \subset [k]}
 \lim_{N\to\infty} \E \left[ \sum_{s=\tau_N(t_{j^*-1})+1}^{\tau_N(t_{j^*})} c_N(s)^2 \right]

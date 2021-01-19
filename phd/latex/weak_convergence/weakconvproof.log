@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  18 JAN 2021 19:38
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  19 JAN 2021 13:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -351,45 +351,55 @@ LaTeX Font Info:    Try loading font information for U+bbm on input line 179.
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
 ) [2] [3]
 [4] [5]
-Overfull \hbox (22.18239pt too wide) detected at line 545
+Overfull \hbox (22.18239pt too wide) detected at line 547
 []
  []
 
 [6] [7]
-Overfull \hbox (9.18887pt too wide) detected at line 755
+Overfull \hbox (9.18887pt too wide) detected at line 757
 []
  []
 
 [8]
-Overfull \hbox (0.39545pt too wide) detected at line 1075
+Overfull \hbox (0.39545pt too wide) detected at line 1074
 []
  []
 
 [9]
-Overfull \hbox (12.51135pt too wide) detected at line 1114
+Overfull \hbox (12.51135pt too wide) detected at line 1113
 [] \U/msb/m/n/10 E [] \OMS/cmsy/m/n/10 ^^T \OML/cmm/m/it/10 [] [] []\OT1/cmr/m
 /n/10 (\OMS/cmsy/m/n/10 ^^@\OML/cmm/m/it/10 []\OT1/cmr/m/n/10 )[]\OML/cmm/m/it
 /10 t[] [] \U/msb/m/n/10 E []
  []
 
-LaTeX Font Info:    Try loading font information for U+eus on input line 1380.
+LaTeX Font Info:    Try loading font information for U+eus on input line 1379.
 (/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/ueus.fd
 File: ueus.fd 2013/01/14 v3.01 Euler Script
 ) [10] [11]
-[12] [13] [14]
-Overfull \hbox (12.51135pt too wide) detected at line 1698
+[12] [13]
+Overfull \hbox (2.08463pt too wide) detected at line 1675
+[] \U/eus/m/n/10 A[]B[] \OMS/cmsy/m/n/10 ^^T \OML/cmm/m/it/10 []\OT1/cmr/m/n/1
+0 (1 + \OML/cmm/m/it/10 O\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 N[]\OT1/cmr/m/n/10 )
+) [] [] []\OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 c[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/
+10 r[]\OT1/cmr/m/n/10 ) + [] + \OML/cmm/m/it/10 c[]\OT1/cmr/m/n/10 (\OML/cmm/m/
+it/10 r[]\OT1/cmr/m/n/10 )\OMS/cmsy/m/n/10 g [] \OML/cmm/m/it/10 c[]\OT1/cmr/m/
+n/10 (\OML/cmm/m/it/10 r[]\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 :
+ []
+
+[14]
+Overfull \hbox (12.51135pt too wide) detected at line 1722
 []
  []
 
 
-Overfull \hbox (16.95576pt too wide) detected at line 1711
+Overfull \hbox (16.95576pt too wide) detected at line 1735
 [] \U/msb/m/n/10 E [] \OMS/cmsy/m/n/10 ^^U \OML/cmm/m/it/10 [] [] []\OT1/cmr/m
 /n/10 (\OMS/cmsy/m/n/10 ^^@\OML/cmm/m/it/10 []\OT1/cmr/m/n/10 )[]\OML/cmm/m/it
 /10 t[] [] \U/msb/m/n/10 E [] \OML/cmm/m/it/10 :
  []
 
 
-Overfull \hbox (30.11545pt too wide) detected at line 1756
+Overfull \hbox (30.11545pt too wide) detected at line 1780
 []
  []
 
@@ -398,29 +408,29 @@ Overfull \vbox (20.72707pt too high) has occurred while \output is active []
 
 
 [17] [18] [19] [20]
-Overfull \hbox (34.36987pt too wide) detected at line 2037
+Overfull \hbox (34.36987pt too wide) detected at line 2065
 []
  []
 
 [21]
-Overfull \hbox (5.9835pt too wide) detected at line 2077
+Overfull \hbox (22.94743pt too wide) detected at line 2104
 []
  []
 
-
-Overfull \hbox (34.37233pt too wide) detected at line 2103
+[22]
+Overfull \hbox (50.19739pt too wide) detected at line 2130
 []
  []
 
-[22] (./weakconvproof.bbl) [23] (./weakconvproof.aux) ) 
+[23] (./weakconvproof.bbl) [24] (./weakconvproof.aux) ) 
 Here is how much of TeX's memory you used:
  3910 strings out of 492649
  54023 string characters out of 6129623
- 160900 words of memory out of 5000000
+ 160829 words of memory out of 5000000
  7694 multiletter control sequences out of 15000+600000
  13540 words of font info for 54 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,22n,43p,367b,319s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,22n,43p,395b,319s stack positions out of 5000i,500n,10000p,200000b,80000s
  </Users/suzie/Library/t
 exlive/2018/texmf-var/fonts/pk/ljfour/public/bbm/bbm10.600pk></usr/local/texliv
 e/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive
@@ -443,10 +453,10 @@ ts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2018/texmf-dist/fonts
 type1/public/amsfonts/euler/eusm10.pfb></usr/local/texlive/2018/texmf-dist/font
 s/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2018/texmf-dist/
 fonts/type1/public/amsfonts/symbols/msbm7.pfb>
-Output written on weakconvproof.pdf (23 pages, 291606 bytes).
+Output written on weakconvproof.pdf (24 pages, 294064 bytes).
 PDF statistics:
- 164 PDF objects out of 1000 (max. 8388607)
- 116 compressed objects within 2 object streams
+ 167 PDF objects out of 1000 (max. 8388607)
+ 118 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
