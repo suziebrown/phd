@@ -404,6 +404,64 @@ Combining the upper and lower bounds in \eqref{eq:022} and \eqref{eq:029} respec
 \end{proof}
 
 
+\begin{lemma}[Induction step upper bound]\label{thm:inductionUB}
+Fix $k \in \mathbb{N}$, $i_0:=0$, $i_k:=k$. For any sequence of times
+$0 = t_0 \leq t_1 \leq \cdots \leq t_k \leq t$,
+\begin{equation}
+\lim_{N\to\infty} \E \left[ 
+        \sum_{\substack{r_1 <\dots< r_k :\\ r_i \leq \tau_N(t_i) \forall i}}
+        \left( \prod_{i=1}^k p_{r_i} \right)
+        \left( \prod_{\substack{r=1 \\ \notin \{r_1,\dots,r_k\} }}^{\tau_N(t)} 
+        (1-p_r) \right) \right]
+\leq \alpha_n^k \sum_{l=0}^\infty \frac{1}{l!} (-\alpha_n)^l t^l 
+        \sum_{\substack{i_1\leq \dots\leq i_{k-1}\\ \in \{0,\dots,k\} :
+        \\ i_j \geq j \forall j}} 
+        \prod_{j=1}^k \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})! } .
+\end{equation}
+\end{lemma}
+
+
+\begin{lemma}[Induction step lower bound]\label{thm:inductionLB}
+Fix $k \in \mathbb{N}$, $i_0:=0$, $i_k:=k$. For any sequence of times
+$0 = t_0 \leq t_1 \leq \cdots \leq t_k \leq t$,
+\begin{equation}
+\lim_{N\to\infty} \E \left[ 
+        \sum_{\substack{r_1 <\dots< r_k :\\ r_i \leq \tau_N(t_i) \forall i}}
+        \left( \prod_{i=1}^k p_{r_i} \right)
+        \left( \prod_{\substack{r=1 \\ \notin \{r_1,\dots,r_k\} }}^{\tau_N(t)} 
+        (1-p_r) \right) \right]
+\geq \alpha_n^k \sum_{l=0}^\infty \frac{1}{l!} (-\alpha_n)^l t^l 
+        \sum_{\substack{i_1\leq \dots\leq i_{k-1}\\ \in \{0,\dots,k\} :
+        \\ i_j \geq j \forall j}} 
+        \prod_{j=1}^k \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})! } .
+\end{equation}
+\end{lemma}
+
+
+\begin{lemma}\label{thm:induction_sumprodcN}
+For any $t_{j-1}, t_j, i_{j-1}, i_j$, define the event
+\begin{equation}
+E_j^\star
+= \left\{ \left( \sum_{s=\tau_N(t_{j-1})+1}^{\tau_N(t_j)} c_N(s)^2 \right)
+        \leq \frac{ (t_j - t_{j-1})^{i_j - i_{j-1} -k +1} }{ (i_j - i_{j-1})! } \right\} ,
+\end{equation}
+and let 
+$E^\star := \bigcap_{j=1}^k E_j^\star$.
+Let $E$ be any event independent of $r_1,\dots,r_k$ such that 
+$\lim_{N\to\infty} \Prob[E \cap E^\star] =1$. 
+Fix $l, k \in \mathbb{N}$, $i_0:=0$, $i_k:=k$. 
+Then for any sequence of times 
+$0 = t_0 \leq t_1 \leq \cdots \leq t_k \leq t$,
+\begin{equation}
+\lim_{N\to\infty} \E \left[ \1{E} 
+        \sum_{\substack{r_1<\dots<r_k :\\ r_i\leq \tau_N(t_i) \forall i}}
+        \prod_{i=1}^k c_N(r_i) \right] 
+= \sum_{\substack{i_1\leq \dots\leq i_{k-1}\\ \in \{0,\dots,k\} :
+        \\ i_j \geq j \forall j}} 
+        \prod_{j=1}^k \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})! } .
+\end{equation}
+\end{lemma}
+
 
 \bibliography{../smc.bib}
 \end{document}
