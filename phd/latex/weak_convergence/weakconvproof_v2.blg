@@ -3,44 +3,44 @@ Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: weakconvproof_v2.aux
 The style file: agsm.bst
 Database file #1: ../smc.bib
-You've used 1 entry,
+You've used 2 entries,
             2909 wiz_defined-function locations,
-            645 strings with 4986 characters,
-and the built_in function-call counts, 6596 in all, are:
-= -- 1095
-> -- 91
+            652 strings with 5205 characters,
+and the built_in function-call counts, 12930 in all, are:
+= -- 2141
+> -- 182
 < -- 1
-+ -- 544
-- -- 28
-* -- 584
-:= -- 1306
-add.period$ -- 1
-call.type$ -- 1
-change.case$ -- 14
-chr.to.int$ -- 1
-cite$ -- 1
-duplicate$ -- 12
-empty$ -- 23
-format.name$ -- 31
-if$ -- 1180
++ -- 1060
+- -- 56
+* -- 1155
+:= -- 2543
+add.period$ -- 2
+call.type$ -- 2
+change.case$ -- 28
+chr.to.int$ -- 2
+cite$ -- 2
+duplicate$ -- 28
+empty$ -- 56
+format.name$ -- 62
+if$ -- 2319
 int.to.chr$ -- 5
 int.to.str$ -- 0
-missing$ -- 0
-newline$ -- 6
-num.names$ -- 11
-pop$ -- 3
+missing$ -- 1
+newline$ -- 9
+num.names$ -- 22
+pop$ -- 5
 preamble$ -- 1
-purify$ -- 15
+purify$ -- 30
 quote$ -- 0
-skip$ -- 12
+skip$ -- 26
 stack$ -- 0
-substring$ -- 1572
-swap$ -- 1
-text.length$ -- 15
+substring$ -- 3076
+swap$ -- 4
+text.length$ -- 29
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 4
+type$ -- 8
 warning$ -- 0
-while$ -- 21
+while$ -- 44
 width$ -- 0
-write$ -- 17
+write$ -- 31

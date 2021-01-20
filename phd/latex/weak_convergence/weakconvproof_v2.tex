@@ -4,6 +4,7 @@
 
 \usepackage{graphicx}
 \usepackage{enumitem}
+\usepackage[nobreak]{mdframed} % The nobreak option should probably be set locally in the final document, since breaks may be required in longer theorems.
 
 % custom header/footer
 \usepackage{fancyhdr}
@@ -29,8 +30,8 @@
 \usepackage{amsthm}
 \usepackage[mathscr]{euscript}
 \usepackage{bbm}
-\newtheorem{theorem}{Theorem}
-\newtheorem{lemma}{Lemma}
+\newmdtheoremenv{theorem}{Theorem}
+\newmdtheoremenv{lemma}{Lemma}
 \newcommand{\Prob}{\mathbb{P}}
 \newcommand{\E}{\mathbb{E}}
 \newcommand{\Et}{\mathbb{E}_t}
@@ -48,39 +49,32 @@
 \maketitle
 \thispagestyle{fancy}
 
-\begin{lemma}
+\begin{lemma}\label{thm:cleanup1}
 \begin{equation}
-\sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)} \prod_{j=1}^l c_N(s_j)
-\geq t^l - \left( \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right) \binom{l}{2} (t+1)^{l-2} .
-\end{equation}
-\end{lemma}
-
-\begin{proof}
-As pointed out in \citet[Equation (8)]{koskela2018}, 
-\begin{equation}\label{eq:02}
-\sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)} \prod_{j=1}^l c_N(s_j)
-\geq \left( \sum_{s=0}^{\tau_N(t)} c_N(s) \right)^l
-- \binom{l}{2} \left( \sum_{s=0}^{\tau_N(t)} c_N(s)^2 \right)
-\left( \sum_{s=0}^{\tau_N(t)} c_N(s) \right)^{l-2} .
-\end{equation}
-By definition of $\tau_N$, 
-\begin{equation}
-t \leq \sum_{s=0}^{\tau_N(t)} c_N(s) \leq t+1 .
-\end{equation}
-Substituting these bounds into the RHS of \eqref{eq:02} yields the result.
-\end{proof}
-
-
-\begin{lemma}
-\begin{equation}
-\sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)} \prod_{j=1}^l c_N(s_j)
+t^l - \left( \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right) \binom{l}{2} (t+1)^{l-2} 
+\leq \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)} \prod_{j=1}^l c_N(s_j)
 \leq t^l + c_N(\tau_N(t)) (t+1)^l .
 \end{equation}
 \end{lemma}
 
 \begin{proof}
+As pointed out in \citet[Equation (8)]{koskela2018}, 
+\begin{equation}\label{eq:002}
+\sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)} \prod_{j=1}^l c_N(s_j)
+\geq \left( \sum_{s=0}^{\tau_N(t)} c_N(s) \right)^l
+        - \binom{l}{2} \left( \sum_{s=0}^{\tau_N(t)} c_N(s)^2 \right)
+        \left( \sum_{s=0}^{\tau_N(t)} c_N(s) \right)^{l-2} .
+\end{equation}
+By definition of $\tau_N$, 
+\begin{equation}\label{eq:003}
+t 
+\leq \sum_{s=0}^{\tau_N(t)} c_N(s) 
+\leq t+1 .
+\end{equation}
+Substituting these bounds into the RHS of \eqref{eq:002} yields the lower bound.
+
 It is a true fact that
-\begin{equation}
+\begin{equation}\label{eq:005}
 \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)} \prod_{j=1}^l c_N(s_j)
 \leq \left( \sum_{s=0}^{\tau_N(t)} c_N(s) \right)^l ,
 \end{equation}
@@ -104,32 +98,310 @@ then since $c_N(s) \leq 1$ for all $s$,
 \leq \sum_{i=0}^{l-1} \binom{l}{i} t^i
 \leq (t+1)^l .
 \end{equation}
-Putting this together yields the result.
+Putting this together yields the upper bound.
 \end{proof}
 
 
-\begin{lemma}
+\begin{lemma}\label{thm:cleanup2}
 Let $B$ be a positive constant which may depend on $n$.
 \begin{equation}
 \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)} \prod_{j=1}^l 
-\left[ c_N(s_j) + B D_N(s_j) \right]
+        \left[ c_N(s_j) + B D_N(s_j) \right]
 \leq \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)} \prod_{j=1}^l c_N(s_j)
-+ \left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right) (t+1)^{l-1} (1+B)^l .
+        + \left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right) (t+1)^{l-1} (1+B)^l .
 \end{equation}
 \end{lemma}
 
-\begin{lemma}
+\begin{proof}
+We start with a binomial expansion:
+\begin{align}
+\sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)} \prod_{j=1}^l 
+        \left[ c_N(s_j) + B D_N(s_j) \right]
+&= \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)} \sum_{\mathcal{I} \subseteq [l]}
+        B^{l-|\mathcal{I}|} \left( \prod_{i\in\mathcal{I}} c_N(s_i) \right)
+        \left( \prod_{j\notin\mathcal{I}} D_N(s_j) \right) \notag\\
+&= \sum_{\mathcal{I} \subseteq [l]} B^{l-|\mathcal{I}|}
+        \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)}
+        \left( \prod_{i\in\mathcal{I}} c_N(s_i) \right)
+        \left( \prod_{j\notin\mathcal{I}} D_N(s_j) \right) \label{eq:010}
+\end{align}
+where $[l] := \{1,\dots,l\}$. Since the sum is over all permutations of $r_1,\dots,r_l$, we may arbitrarily choose an ordering for $\{1,\dots,l\}$ such that $\mathcal{I} = \{ 1,\dots, |\mathcal{I}| \}$:
+\begin{equation}
+\sum_{\mathcal{I} \subseteq [l]} B^{l-|\mathcal{I}|}
+        \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)}
+        \left( \prod_{i\in\mathcal{I}} c_N(s_i) \right)
+        \left( \prod_{j\notin\mathcal{I}} D_N(s_j) \right)
+= \sum_{I=0}^l \binom{l}{I} B^{l-I} \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)}
+        \left( \prod_{i=1}^I c_N(s_i) \right)
+        \left( \prod_{j=I+1}^l D_N(s_j) \right) .
+\end{equation}
+Separating the term $I=l$,
+\begin{align}
+\sum_{I=0}^l \binom{l}{I} B^{l-I} \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)}
+        \left( \prod_{i=1}^I c_N(s_i) \right)
+        &\left( \prod_{j=I+1}^l D_N(s_j) \right)
+= \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)} \prod_{j=1}^l c_N(s_j) \notag\\
+&\qquad+ \sum_{I=0}^{l-1} \binom{l}{I} B^{l-I} 
+        \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)}
+        \left( \prod_{i=1}^I c_N(s_i) \right) \left( \prod_{j=I+1}^l D_N(s_j) \right). \label{eq:012}
+\end{align}
+In the second line, there is always at least one $D_N$ term, and $c_N(s) \leq D_N(s)$ for all $s$, so we can write
+\begin{align}
+\sum_{I=0}^{l-1}\binom{l}{I} B^{l-I} \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)}
+        \left( \prod_{i=1}^I c_N(s_i) \right) \left( \prod_{j=I+1}^l D_N(s_j) \right)
+&\leq \sum_{I=0}^{l-1}\binom{l}{I} B^{l-I} 
+        \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)}
+        \left( \prod_{i=1}^{l-1} c_N(s_i) \right) D_N(s_l) \notag\\
+&\leq \sum_{I=0}^{l-1}\binom{l}{I} B^{l-I} 
+        \left( \sum_{s_1\neq\dots\neq s_{l-1}}^{\tau_N(t)} 
+        \prod_{i=1}^{l-1} c_N(s_i) \right) 
+        \sum_{s_l=1}^{\tau_N(t)} D_N(s_l) \notag\\
+&\leq \sum_{I=0}^{l-1}\binom{l}{I} B^{l-I} (t+1)^{l-1}
+        \sum_{s=1}^{\tau_N(t)} D_N(s) \label{eq:013}
+\end{align}
+using \eqref{eq:005} and \eqref{eq:003}.
+Finally, by the Binomial Theorem,
+\begin{equation}\label{eq:014}
+\sum_{I=0}^{l-1}\binom{l}{I} B^{l-I} (t+1)^{l-1}
+        \sum_{s=1}^{\tau_N(t)} D_N(s)
+\leq \left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right) (t+1)^{l-1} (1+B)^l ,
+\end{equation}
+which, together with \eqref{eq:012}, concludes the proof.
+\end{proof}
+
+
+\begin{lemma}\label{thm:cleanup3}
 Let $B$ be a positive constant which may depend on $n$.
 \begin{equation}
 \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)} \prod_{j=1}^l 
-\left[ c_N(s_j) - B D_N(s_j) \right]
+        \left[ c_N(s_j) - B D_N(s_j) \right]
 \geq \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)} \prod_{j=1}^l c_N(s_j)
-- \left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right) (t+1)^{l-1} (1+B)^l .
+        - \left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right) (t+1)^{l-1} (1+B)^l .
 \end{equation}
 \end{lemma}
 
+\begin{proof}
+A binomial expansion and subsequent manipulation as in \eqref{eq:010}--\eqref{eq:012} gives
+\begin{align}
+\sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)} \prod_{j=1}^l 
+        \left[ c_N(s_j) - B D_N(s_j) \right]
+&= \sum_{\mathcal{I} \subseteq [l]} (-B)^{l-|\mathcal{I}|}
+        \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)}
+        \left( \prod_{i\in\mathcal{I}} c_N(s_i) \right)
+        \left( \prod_{j\notin\mathcal{I}} D_N(s_j) \right) \notag\\
+&= \sum_{I=0}^l \binom{l}{I} (-B)^{l-I} 
+        \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)}
+        \left( \prod_{i=1}^I c_N(s_i) \right)
+        \left( \prod_{j=I+1}^l D_N(s_j) \right) \notag\\
+&= \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)} \prod_{j=1}^l c_N(s_j)
+        + \sum_{I=0}^{l-1} \binom{l}{I} (-B)^{l-I} 
+        \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)}
+        \left( \prod_{i=1}^I c_N(s_i) \right) 
+        \left( \prod_{j=I+1}^l D_N(s_j) \right) \notag\\
+&\geq \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)} \prod_{j=1}^l c_N(s_j)
+        - \sum_{I=0}^{l-1} \binom{l}{I} B^{l-I} 
+        \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)}
+        \left( \prod_{i=1}^I c_N(s_i) \right) \left( \prod_{j=I+1}^l D_N(s_j) \right)
+\end{align}
+where the last inequality just multiplies some positive terms by $-1$.
+Then \eqref{eq:013}--\eqref{eq:014} can be applied directly (noting that an upper bound on negative terms gives a lower bound overall):
+\begin{equation}
+- \sum_{I=0}^{l-1} \binom{l}{I} B^{l-I} 
+        \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)}
+        \left( \prod_{i=1}^I c_N(s_i) \right) \left( \prod_{j=I+1}^l D_N(s_j) \right)
+\geq \left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right) (t+1)^{l-1} (1+B)^l 
+\end{equation}
+which concludes the proof.
+\end{proof}
 
 
+\begin{lemma}[Basis step]\label{thm:basis}
+For any $0 < t < \infty$,
+\begin{equation}
+\lim_{N\to\infty} \E\left[ \prod_{r=1}^{\tau_N(t)} (1-p_r) \right] 
+= e^{-\alpha_n t}
+\end{equation}
+where $\alpha_n := n(n-1)/2$.
+\end{lemma}
+
+\begin{proof}
+We start by showing that
+$\lim_{N\to\infty}\E\left[ \prod_{r=1}^{\tau_N(t)} (1-p_r) \right] 
+\leq e^{-\alpha_n t}$.\\
+From \citet[Lemma 1 Case 1]{koskela2018}, taking $\xi=\Delta$, we have
+\begin{equation}
+1-p_t 
+= p_{\Delta\Delta}(t) \leq 1 - \alpha_n (1+O(N^{-1})) 
+        \left[ c_N(t) - B_n^\prime D_N(t) \right] 
+\end{equation}
+where the $O(N^{-1})$ term does not depend on $t$.
+Applying a multinomial expansion and then separating the positive and negative terms,
+\begin{align}
+\prod_{r=1}^{\tau_N(t)} (1-p_r)
+&\leq 1 + \sum_{l=1}^{\tau_N(t)} (- \alpha_n)^l (1+O(N^{-1})) 
+        \frac{1}{l!} \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)}\prod_{j=1}^l
+        \left[ c_N(s_j) - B_n^\prime D_N(s_j) \right] \notag\\
+&= 1 + \sum_{\substack{l=2 \\ \text{even} }}^{\tau_N(t)} 
+        \alpha_n^l (1+O(N^{-1})) \frac{1}{l!} 
+        \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)}\prod_{j=1}^l
+        \left[ c_N(s_j) - B_n^\prime D_N(s_j) \right] \notag\\
+    &\qquad- \sum_{\substack{l=1 \\ \text{odd} }}^{\tau_N(t)} 
+        \alpha_n^l (1+O(N^{-1})) \frac{1}{l!} 
+        \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)}\prod_{j=1}^l
+        \left[ c_N(s_j) - B_n^\prime D_N(s_j) \right] .
+\end{align}
+This is further bounded by applying Lemma~\ref{thm:cleanup3} and then both bounds of Lemma~\ref{thm:cleanup1}:
+\begin{align}
+\prod_{r=1}^{\tau_N(t)} (1-p_r)
+&\leq 1 + \sum_{\substack{l=2 \\ \text{even} }}^{\tau_N(t)} 
+        \alpha_n^l (1+O(N^{-1})) \frac{1}{l!} 
+        \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)}\prod_{j=1}^l c_N(s_j) \notag\\
+    &\qquad- \sum_{\substack{l=1 \\ \text{odd} }}^{\tau_N(t)} 
+        \alpha_n^l (1+O(N^{-1})) \frac{1}{l!} 
+        \left\{ \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)}\prod_{j=1}^l c_N(s_j)
+        - \left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right) 
+        (t+1)^{l-1} (1+B_n^\prime)^l \right\} \notag\\
+&\leq 1 + \sum_{\substack{l=2 \\ \text{even} }}^{\tau_N(t)} 
+        \alpha_n^l (1+O(N^{-1})) \frac{1}{l!} 
+        \left\{ t^l + c_N(\tau_N(t)) (t+1)^l \right\} \notag\\
+    &\qquad- \sum_{\substack{l=1 \\ \text{odd} }}^{\tau_N(t)} 
+        \alpha_n^l (1+O(N^{-1})) \frac{1}{l!} 
+        \left\{ t^l - \left( \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right) 
+        \binom{l}{2} (t+1)^{l-2}
+        - \left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right) 
+        (t+1)^{l-1} (1+B_n^\prime)^l \right\} .
+\end{align}
+A bit of tidying up and we have
+\begin{align}
+\prod_{r=1}^{\tau_N(t)} (1-p_r)
+&\leq \sum_{l=0}^{\tau_N(t)} (-\alpha_n)^l (1+O(N^{-1})) \frac{1}{l!} t^l
+    + c_N(\tau_N(t)) \sum_{\substack{l=2 \\ \text{even} }}^{\tau_N(t)}
+        \alpha_n^l (1+O(N^{-1})) \frac{1}{l!} (t+1)^l \notag\\
+    &\qquad+ \left( \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right)
+        \sum_{\substack{l=1 \\ \text{odd} }}^{\tau_N(t)} \alpha_n^l
+        (1+O(N^{-1})) \frac{1}{l!} \binom{l}{2} (t+1)^{l-2} \notag\\
+    &\qquad+ \left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right) 
+        \sum_{\substack{l=1 \\ \text{odd} }}^{\tau_N(t)} \alpha_n^l
+        (1+O(N^{-1})) \frac{1}{l!} (t+1)^{l-1} (1+B_n^\prime)^l \notag\\
+&\leq \sum_{l=0}^{\tau_N(t)} (-\alpha_n)^l (1+O(N^{-1})) \frac{1}{l!} t^l
+    + c_N(\tau_N(t)) \exp[ \alpha_n (1+O(N^{-1})) (t+1) ] \notag\\
+    &\qquad+ \left( \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right)
+        \frac{1}{2} \alpha_n^2 \exp[ \alpha_n (1+O(N^{-1})) (t+1) ] \notag\\
+    &\qquad+ \left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right)
+        \exp[ \alpha_n (1+O(N^{-1})) (t+1) (1+B_n^\prime) ].
+\end{align}
+Now, taking the expectation and limit, and applying \citet[Equations (3.3)--(3.5)]{brown2021} and Lemma~?? \seb{(Lemma 2 in the messy weakconv note; not written up here yet)},
+\begin{align}
+\lim_{N\to\infty} \E \left[ \prod_{r=1}^{\tau_N(t)} (1-p_r) \right]
+&\leq \sum_{l=0}^{\infty} (-\alpha_n)^l \frac{1}{l!} t^l
+        \lim_{N\to\infty} \Prob \left[ \tau_N(t) \geq l \right]
+    + \lim_{N\to\infty} \E \left[ c_N(\tau_N(t)) \right]
+        \exp[ \alpha_n (t+1) ] \notag\\
+    &\qquad+ \lim_{N\to\infty} \E \left[ \sum_{s=1}^{\tau_N(t)} 
+        c_N(s)^2 \right]
+        \frac{1}{2} \alpha_n^2 \exp[ \alpha_n (t+1) ] \notag\\
+    &\qquad+ \lim_{N\to\infty} \E \left[ \sum_{s=1}^{\tau_N(t)} D_N(s) \right]
+        \exp[ \alpha_n (t+1) (1+B_n^\prime) ] \notag\\
+&= \sum_{l=0}^{\infty} (-\alpha_n)^l \frac{1}{l!} t^l
+= e^{-\alpha_n t}. \label{eq:022}
+\end{align}
+
+It remains to show that
+$\lim_{N\to\infty}\E\left[ \prod_{r=1}^{\tau_N(t)} (1-p_r) \right] 
+\geq e^{-\alpha_n t}$.\\
+From \citet[Equation (3.14)]{brown2021}, taking $\xi=\Delta$, we have
+\begin{equation}
+1-p_t 
+= p_{\Delta\Delta}(t) \geq 1 - \alpha_n (1+O(N^{-1})) 
+        \left[c_N(t) + B_n D_N(t) \right]
+\end{equation}
+where $B_n >0$ and the $O(N^{-1})$ term does not depend on $t$.
+In particular,
+\begin{equation}
+1-p_t
+= p_{\Delta\Delta}(t) \geq 1 - \frac{N^{n-2}}{(N-2)_{n-2}} \alpha_n c_N(t) 
+        - \frac{N^{n-3}}{(N-3)_{n-3}} B_n D_N(t) .
+\end{equation}
+Since $D_N(s) \leq c_N(s)$ for all $s$ \citep[p.9]{koskela2018}, a sufficient condition for this bound to be non-negative is
+\begin{equation}
+E_r 
+:= \left\{ c_N(r) \leq \frac{(N-3)_{n-3}}{N^{n-3}} 
+        \left( \alpha_n \left(1 + \frac{2}{N-2} \right) + B_n \right)^{-1} \right\} ,
+\end{equation}
+and we define $E := \bigcap_{r=1}^{\tau_N(t)} E_r$.
+We now apply a multinomial expansion to the product, and split into positive and negative terms:
+\begin{align}
+\prod_{r=1}^{\tau_N(t)} (1-p_r)
+&\geq \left\{ 1 + \sum_{l=1}^{\tau_N(t)} (-\alpha_n)^l (1+O(N^{-1})) 
+        \frac{1}{l!} \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)}\prod_{j=1}^l
+        \left[ c_N(s_j) + B_n D_N(s_j) \right] \right\} \1{E} \notag\\
+&= \Bigg\{ 1 + \sum_{\substack{l=2 \\ \text{even} }}^{\tau_N(t)} 
+        \alpha_n^l (1+O(N^{-1})) \frac{1}{l!} 
+        \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)}\prod_{j=1}^l
+        \left[ c_N(s_j) + B_n D_N(s_j) \right] \notag\\
+    &\qquad- \sum_{\substack{l=1 \\ \text{odd} }}^{\tau_N(t)} 
+        \alpha_n^l (1+O(N^{-1})) \frac{1}{l!}
+        \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)}\prod_{j=1}^l
+        \left[ c_N(s_j) + B_n D_N(s_j) \right] \Bigg\} \1{E}
+\end{align}
+This is further bounded by applying Lemma~\ref{thm:cleanup2} and both bounds in Lemma~\ref{thm:cleanup1}:
+\begin{align}
+\prod_{r=1}^{\tau_N(t)} (1-p_r)
+&\geq \Bigg\{ 1 + \sum_{\substack{l=2 \\ \text{even} }}^{\tau_N(t)} 
+        \alpha_n^l (1+O(N^{-1})) \frac{1}{l!} 
+        \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)}\prod_{j=1}^l c_N(s_j) \notag\\
+    &\qquad- \sum_{\substack{l=1 \\ \text{odd} }}^{\tau_N(t)} 
+        \alpha_n^l (1+O(N^{-1})) \frac{1}{l!}
+        \left[ \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)}\prod_{j=1}^l c_N(s_j)
+        + \left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right)
+        (t+1)^{l-1} (1+B_n)^l \right] \Bigg\} \1{E} \notag\\
+&\geq \Bigg\{ 1 + \sum_{\substack{l=2 \\ \text{even} }}^{\tau_N(t)} 
+        \alpha_n^l (1+O(N^{-1})) \frac{1}{l!} 
+        \left[ t^l - \left( \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right)
+        \binom{l}{2}(t+1)^{l-2} \right] \notag\\
+    &\qquad- \sum_{\substack{l=1 \\ \text{odd} }}^{\tau_N(t)} 
+        \alpha_n^l (1+O(N^{-1})) \frac{1}{l!}
+        \left[ t^l + c_N(\tau_N(t)) (t+1)^l
+        + \left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right)
+        (t+1)^{l-1} (1+B_n)^l \right] \Bigg\} \1{E} .
+\end{align}
+Tidying things up,
+\begin{align}
+\prod_{r=1}^{\tau_N(t)} (1-p_r)
+&\geq \sum_{l=0}^{\tau_N(t)} (-\alpha_n)^l (1+O(N^{-1})) 
+        \frac{1}{l!} t^l \1{E}
+        - \left( \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right)
+        \sum_{\substack{l=2 \\ \text{even} }}^{\tau_N(t)} 
+        \alpha_n^l (1+O(N^{-1})) \frac{1}{l!} \binom{l}{2}(t+1)^{l-2} \notag\\
+    &\qquad- c_N(\tau_N(t)) \sum_{\substack{l=1 \\ \text{odd} }}^{\tau_N(t)} 
+        \alpha_n^l (1+O(N^{-1})) \frac{1}{l!} (t+1)^l \notag\\
+    &\qquad- \left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right)
+        \sum_{\substack{l=1 \\ \text{odd} }}^{\tau_N(t)} 
+        \alpha_n^l (1+O(N^{-1})) \frac{1}{l!} (t+1)^{l-1} (1+B_n)^l \notag\\
+&\geq \sum_{l=0}^{\tau_N(t)} (-\alpha_n)^l (1+O(N^{-1})) 
+        \frac{1}{l!} t^l \1{E}
+        - \left( \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right)
+        \frac{1}{2} \alpha_n^2 \exp[ \alpha_n (1+O(N^{-1})) (t+1) ]\notag\\
+    &\qquad- c_N(\tau_N(t)) \exp[ \alpha_n (1+O(N^{-1})) (t+1) ] \notag\\
+    &\qquad- \left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right)
+        \exp[ \alpha_n (1+O(N^{-1})) (t+1) (1+B_n) ].
+\end{align}
+Now, taking the expectation and limit, and applying \citet[Equations (3.3)--(3.5)]{brown2021} and Lemma~?? \seb{(Lemma 2 in the messy weakconv note; not written up here yet)},
+\begin{align}
+\lim_{N\to\infty} \E \left[ \prod_{r=1}^{\tau_N(t)} (1-p_r) \right]
+&\geq \sum_{l=0}^{\infty} (-\alpha_n)^l (1+O(N^{-1})) \frac{1}{l!} t^l 
+        \lim_{N\to\infty} \Prob\left[ \{\tau_N(t) \geq l\} \cap E \right] \notag\\
+    &\qquad- \lim_{N\to\infty} \E \left[ \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right]
+        \frac{1}{2} \alpha_n^2 \exp[ \alpha_n (t+1) ]\notag\\
+    &\qquad- \lim_{N\to\infty} \E \left[ c_N(\tau_N(t)) \right] 
+        \exp[ \alpha_n (t+1) ] \notag\\
+    &\qquad- \lim_{N\to\infty} \E \left[ \sum_{s=1}^{\tau_N(t)} D_N(s) \right]
+        \exp[ \alpha_n (t+1) (1+B_n) ] \notag\\
+&= \sum_{l=0}^{\infty} (-\alpha_n)^l \frac{1}{l!} t^l
+= e^{-\alpha_n t}. \label{eq:029}
+\end{align}
+Combining the upper and lower bounds in \eqref{eq:022} and \eqref{eq:029} respectively concludes the proof.
+\end{proof}
 
 
 
