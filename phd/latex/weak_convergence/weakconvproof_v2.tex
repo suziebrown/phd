@@ -39,6 +39,7 @@
 \newcommand{\I}[1]{\mathbbm{1}_{\{#1\}}}
 \newcommand{\1}[1]{\mathbbm{1}_{#1}}
 \newcommand{\Mn}{\operatorname{Multinomial}}
+\renewcommand{\qedsymbol}{$\blacksquare$}
 
 %\allowdisplaybreaks
 
@@ -48,6 +49,8 @@
 \begin{document}
 \maketitle
 \thispagestyle{fancy}
+
+\section*{Bounds on sum-products}
 
 \begin{lemma}\label{thm:cleanup1}
 \begin{equation}
@@ -214,6 +217,8 @@ Then \eqref{eq:013}--\eqref{eq:014} can be applied directly (noting that an uppe
 which concludes the proof.
 \end{proof}
 
+
+\section*{Main components of weak convergence}
 
 \begin{lemma}[Basis step]\label{thm:basis}
 For any $0 < t < \infty$,
@@ -403,7 +408,7 @@ Now, taking the expectation and limit, and applying \citet[Equations (3.3)--(3.5
 Combining the upper and lower bounds in \eqref{eq:022} and \eqref{eq:029} respectively concludes the proof.
 \end{proof}
 
-
+\seb{I have proofs for the next three lemmata, I'm just working on a presentation that might be intelligible to someone other than myself.}
 \begin{lemma}[Induction step upper bound]\label{thm:inductionUB}
 Fix $k \in \mathbb{N}$, $i_0:=0$, $i_k:=k$. For any sequence of times
 $0 = t_0 \leq t_1 \leq \cdots \leq t_k \leq t$,
@@ -439,17 +444,18 @@ $0 = t_0 \leq t_1 \leq \cdots \leq t_k \leq t$,
 
 
 \begin{lemma}\label{thm:induction_sumprodcN}
-For any $t_{j-1}, t_j, i_{j-1}, i_j$, define the event
-\begin{equation}
-E_j^\star
-= \left\{ \left( \sum_{s=\tau_N(t_{j-1})+1}^{\tau_N(t_j)} c_N(s)^2 \right)
-        \leq \frac{ (t_j - t_{j-1})^{i_j - i_{j-1} -k +1} }{ (i_j - i_{j-1})! } \right\} ,
-\end{equation}
-and let 
-$E^\star := \bigcap_{j=1}^k E_j^\star$.
-Let $E$ be any event independent of $r_1,\dots,r_k$ such that 
-$\lim_{N\to\infty} \Prob[E \cap E^\star] =1$. 
+%%% The below definition will instead appear in the proof of this Lemma; it is no longer needed in the statement.
+%For any $t_{j-1}, t_j, i_{j-1}, i_j$, define the event
+%\begin{equation}
+%E_j^\star
+%= \left\{ \left( \sum_{s=\tau_N(t_{j-1})+1}^{\tau_N(t_j)} c_N(s)^2 \right)
+%        \leq \frac{ (t_j - t_{j-1})^{i_j - i_{j-1} -k +1} }{ (i_j - i_{j-1})! } \right\} ,
+%\end{equation}
+%and let 
+%$E^\star := \bigcap_{j=1}^k E_j^\star$.
 Fix $l, k \in \mathbb{N}$, $i_0:=0$, $i_k:=k$. 
+Let $E$ be any event independent of $r_1,\dots,r_k$ such that 
+$\lim_{N\to\infty} \Prob[E] =1$. 
 Then for any sequence of times 
 $0 = t_0 \leq t_1 \leq \cdots \leq t_k \leq t$,
 \begin{equation}
@@ -461,6 +467,325 @@ $0 = t_0 \leq t_1 \leq \cdots \leq t_k \leq t$,
         \prod_{j=1}^k \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})! } .
 \end{equation}
 \end{lemma}
+
+
+\section*{Indicators}
+
+\begin{lemma}
+Let $A,B$ be events.
+If $\lim\Prob[A] =1$ and $\lim\Prob[B]=1$ then $\lim \Prob [A \cap B] =1$.
+\end{lemma}
+\seb{The above might be so obvious as to go unstated, but it is very important because it means we don't have to deal with intersections of dependent events! Here is a little proof just to be sure:}
+
+\begin{proof}
+\begin{align}
+&\lim \Prob[A] =1 \textbf{ and } \lim \Prob[B] =1 \notag\\
+\Leftrightarrow &\lim \Prob[A^c] =0 \textbf{ and } 
+        \lim \Prob[B^c] =0 \notag\\
+\Rightarrow &\lim \left\{ \Prob[A^c] + \Prob[B^c] \right\} =0 \notag\\
+\Rightarrow &\lim \Prob[A^c \cup B^c] =0 \notag\\
+\Leftrightarrow &\lim \Prob[ A \cap B ] =1.
+\end{align}
+The only part of this argument that I find potentially controversial is going from the third to the fourth line, which is an application of the sandwich theorem (since $0 \leq \Prob[A^c \cup B^c] \leq \Prob[A^c] + \Prob[B^c]$).
+\end{proof}
+
+
+\begin{lemma}\label{thm:indicators_general}
+Let $K$ be a constant which may depend on $n, N$ but not on $r$, such that $K^{-2} = O(1)$ as $N\to\infty$.
+Define the events $E_r := \{ c_N(r) < K \}$ and denote $E := \bigcap_{r=1}^{\tau_N(t)} E_r$.
+Then $\lim_{N\to\infty} \Prob[E]=1$.
+\end{lemma}
+
+\begin{proof}
+\begin{align}
+\Prob[E]
+&= 1- \Prob[E^c]
+= 1- \Prob\left[ \bigcup_{r=1}^{\tau_N(t)} E_r^c \right]
+= 1- \E\left[ \1{\bigcup E_r^c} \right]
+\geq 1 - \E\left[ \sum_{r=1}^{\tau_N(t)} \1{E_r^c} \right] \notag\\
+&= 1- \E\left[  \sum_{r=1}^{\tau_N(t)} \E\left[ \1{E_r^c} 
+        \mid \mathcal{F}_{r-1} \right] \right]
+= 1- \E\left[  \sum_{r=1}^{\tau_N(t)} \Prob\left[ E_r^c
+        \mid \mathcal{F}_{r-1} \right] \right] \label{eq:034}
+\end{align}
+where for the second line we apply Lemma~\ref{thm:kjjslemma2} with $f(r) = \1{E_r^c} $.
+To see that this choice of $f$ satisfies the conditions of Lemma \ref{thm:kjjslemma2}, note that 
+\begin{equation}
+\sum_{r=1}^{\tau_N(s)} \1{\{c_N(r) \geq K \}} \leq \sum_{r=1}^{\tau_N(s)} \frac{c_N(r)}{K} \leq \frac{s+1}{K} < \infty .
+\end{equation}
+By the generalised Markov inequality,
+\begin{equation}
+\Prob[ E_r^c \mid \mathcal{F}_{r-1} ]
+= \Prob[ c_N(r) \geq K \mid \mathcal{F}_{r-1} ]
+\leq \E[c_N(r)^2 \mid \mathcal{F}_{r-1} ] K^{-2} .
+\end{equation}
+Substituting this into \eqref{eq:034} and applying Lemma~\ref{thm:kjjslemma2} again, this time with $f(r) = c_N(r)^2$,
+\begin{equation}
+\Prob[E]
+\geq 1- K^{-2} \E\left[  \sum_{r=1}^{\tau_N(t)} 
+        \E[c_N(r)^2 \mid \mathcal{F}_{r-1} ] \right]
+= 1 - K^{-2} \E\left[  \sum_{r=1}^{\tau_N(t)} c_N(r)^2 \right] .
+\end{equation}
+Applying \citet[Equation (3.5)]{brown2021}, the limit is
+\begin{equation}
+\lim_{N\to\infty} \Prob[E]
+= 1 - O(1) \times 0
+=1 
+\end{equation}
+as required.
+\end{proof}
+
+
+\begin{lemma}\label{thm:indicators_tau}
+Fix $t>0$. For any $l \in \mathbb{R}$,
+$\lim_{N\to\infty} \Prob[ \tau_N(t) \geq l ] =1$ .
+\end{lemma}
+
+\begin{proof}
+\begin{equation}
+\{ \tau_N(t) \geq l \} 
+= \left\{ \min \left\{ s \geq 1 : \sum_{r=1}^{s} c_N(r) \geq t \right\} \geq l \right\}
+= \left\{ \sum_{r=1}^{l-1} c_N(r) < t \right\}
+\supseteq \bigcap_{r=1}^{l-1} \left \{ c_N(r) < \frac{t}{l} \right\}
+\supseteq \bigcap_{r=1}^{\tau_N(t)} \left \{ c_N(r) < \frac{t}{l} \right\} .
+\end{equation}
+Hence
+\begin{equation}
+\lim_{N\to\infty} \Prob[ \tau_N(t) \geq l ] 
+\geq \lim_{N\to\infty} \Prob\left[ \bigcap_{r=1}^{\tau_N(t)} 
+        \left \{ c_N(r) < \frac{t}{l} \right\} \right]
+\end{equation}
+and the result follows by applying Lemma~\ref{thm:indicators_general} with $K=t/l$.
+\end{proof}
+
+
+\begin{lemma}\label{thm:indicators_c2}
+Define the event
+\begin{equation}
+E^\star := \bigcap_{j=1}^k \left\{ \sum_{s=\tau_N(t_{j-1})+1}^{\tau_N(t_j)}
+        c_N(s)^2 \leq \frac{ (t_j - t_{j-1})^{i_j - i_{j-1} -k +1} }{ (i_j - i_{j-1})! }
+        \right\} .
+\end{equation}
+Then $\lim_{N\to\infty} \Prob[E^\star] =1$.
+\end{lemma}
+
+\begin{proof}
+\begin{align}
+E^\star
+&\supseteq \left\{ \sum_{j=1}^k \sum_{s=\tau_N(t_{j-1})+1}^{\tau_N(t_j)}
+        c_N(s)^2 \leq \sum_{j=1}^k \frac{ (t_j - t_{j-1})^{i_j - i_{j-1} -k +1} }
+        { (i_j - i_{j-1})! } \right\} \notag\\
+&= \left\{ \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \leq 
+        \sum_{j=1}^k \frac{ (t_j - t_{j-1})^{i_j - i_{j-1} -k +1} }
+        { (i_j - i_{j-1})! } \right\} \notag\\
+&\supseteq \left\{ \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \leq 
+        \frac{1}{k!} \sum_{j=1}^k (t_j - t_{j-1})^{i_j - i_{j-1} -k +1} 
+        \right\} .
+\end{align}
+To simplify the RHS further, consider the possible values of $(i_j - i_{j-1} -k +1) \in \{-k+1,\dots,1\}$:
+\seb{This simplification isn't necessary for the result, but it makes the expressions less cumbersome later on.}\\
+\textbf{Case} $(i_j - i_{j-1} -k +1) <0$:\\
+\begin{equation}
+\sum_{j=1}^k (t_j - t_{j-1})^{i_j - i_{j-1} -k +1}
+\geq \sum_{j=1}^k t^{i_j - i_{j-1} -k +1} 
+\geq \sum_{j=1}^k t^{-k +1} 
+= kt^{-k+1}.
+\end{equation}
+\textbf{Case} $(i_j - i_{j-1} -k +1) =0$:\\
+\begin{equation}
+\sum_{j=1}^k (t_j - t_{j-1})^{i_j - i_{j-1} -k +1}
+= \sum_{j=1}^k 1
+=k .
+\end{equation}
+\textbf{Case} $(i_j - i_{j-1} -k +1) =1$:\\
+\begin{equation}
+\sum_{j=1}^k (t_j - t_{j-1})^{i_j - i_{j-1} -k +1}
+= \sum_{j=1}^k (t_j - t_{j-1})
+= t_k - t_0
+=t .
+\end{equation}
+%%% alternative "cases" layout:
+%\begin{align}
+%\sum_{j=1}^k (t_j - t_{j-1})^{i_j - i_{j-1} -k +1}
+%\geq 
+%\begin{cases}
+%    \sum_{j=1}^k (t)^{i_j - i_{j-1} -k +1} 
+%        \geq \sum_{j=1}^k t^{-k +1} 
+%        = kt^{-k+1}
+%        &\text{if } (i_j - i_{j-1} -k +1) <0\\
+%    \sum_{j=1}^k 1
+%        =k
+%        &\text{if } (i_j - i_{j-1} -k +1) =0\\
+%    \sum_{j=1}^k (t_j - t_{j-1})
+%        = t_k - t_0
+%        = t
+%        &\text{if } (i_j - i_{j-1} -k +1) =1\\
+%\end{cases}
+%\end{align}
+Altogether
+\begin{equation}
+\sum_{j=1}^k (t_j - t_{j-1})^{i_j - i_{j-1} -k +1}
+\geq \min\{ kt^{-k+1}, k, t \}
+= \min\{ kt^{-k+1}, t \}
+= t \min\{ kt^{-k}, 1 \} ,
+\end{equation}
+so
+\begin{equation}
+E^\star
+\supseteq \left\{ \sum_{s=1}^{\tau_N(t)} c_N(s)^2 < 
+        \frac{t}{k!} \min\{ kt^{-k}, 1 \} \right\} .
+\end{equation}
+Using Markov's inequality,
+\begin{align}
+\Prob[E^\star]
+&\geq \Prob \left[ \sum_{s=1}^{\tau_N(t)} c_N(s)^2 < 
+        \frac{t}{k!} \min\{ kt^{-k}, 1 \} \right]
+= 1- \Prob \left[ \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \geq 
+        \frac{t}{k!} \min\{ kt^{-k}, 1 \} \right] \notag\\
+&\geq 1- \frac{k!}{t} \max\{ 1, k^{-1} t^k \} 
+        \E \left[  \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right] ,
+\end{align}
+and by \citet[Equation (3.5)]{brown2021}
+\begin{equation}
+\lim_{N\to\infty} \Prob[E^\star]
+= 1 - O(1) \times 0 
+= 1
+\end{equation}
+as required.
+\end{proof}
+
+
+\begin{lemma}
+Let $K$ be a constant not depending on $N, r$, but which may depend on $n$.
+\begin{equation}
+\lim_{N\to\infty} \Prob \left[ \bigcap_{r=1}^{\tau_N(t)} 
+        \left\{ c_N(r) \geq K D_N(r) \right\} \right] 
+= 1 . 
+\end{equation}
+\end{lemma}
+\seb{Proof will be courtesy of Jere's note with a few edits and probably more explicit workings.}
+
+\begin{proof}
+\begin{align}
+\Prob \left[ \bigcap_{r=1}^{\tau_N(t)} 
+        \left\{ c_N(r) \geq K D_N(r) \right\} \right]
+&\geq \Prob \left[ \bigcap_{r=1}^{\tau_N(t)} 
+        \left\{ c_N(r) > K D_N(r) \right\} \right] \notag\\
+&= 1- \Prob \left[ \bigcup_{r=1}^{\tau_N(t)} 
+        \left\{ c_N(r) \leq K D_N(r) \right\} \right] \notag\\
+&= 1- \E \left[ \1{\bigcup \{ c_N(r) \leq K D_N(r) \} } \right] \notag\\
+&\geq 1- \E \left[ \sum_{r=1}^{\tau_N(t)} \I{ c_N(r) \leq K D_N(r) } \right]
+        \notag\\
+&= 1- \E \left[ \sum_{r=1}^{\tau_N(t)} \Prob[ c_N(r) \leq K D_N(r) 
+        \mid \mathcal{F}_{r-1} ] \right]
+\end{align}
+where the final inequality is an application of Lemma~\ref{thm:kjjslemma2} with $f(r) = \I{ c_N(r) \leq K D_N(r) }$.
+
+Fix $0 < \varepsilon < (n-3)(n-4)$ and let $N > \max\{ \varepsilon^{-1}, (\binom{n-2}{2} - 2\varepsilon)^{-1} \}$. For each $r,i$ define the event $A_i(r) := \{ \nu_r^{(i)} \leq N\varepsilon \}$.
+Conditional on $\mathcal{F}_{r-1}$, we have
+\begin{equation}
+D_N(r)
+= \frac{1}{N(N)_2} \sum_{i=1}^N (\nu_r^{(j)})_2 \left[ \nu_r^{(i)} 
+        + \frac{1}{N} \sum_{j\neq i} (\nu_r^{(i)})^2 \right] \1{A_i(r)^c}
+        + \frac{1}{N(N)_2} \sum_{i=1}^N (\nu_r^{(i)})_2 \left[ \nu_r^{(i)} 
+        + \frac{1}{N} \sum_{j\neq i} (\nu_r^{(j)})^2 \right] \1{A_i(r)} .
+\end{equation}
+For the first term, 
+\begin{equation}
+\frac{1}{N(N)_2} \sum_{i=1}^N (\nu_r^{(i)})_2 \left[ \nu_r^{(i)} 
+        + \frac{1}{N} \sum_{j\neq i} (\nu_r^{(j)})^2 \right] \1{A_i(r)^c}
+\leq \sum_{i=1}^N \1{A_i(r)^c} .
+\end{equation}
+For the second term,
+\begin{align}
+\frac{1}{N(N)_2} \sum_{i=1}^N (\nu_r^{(i)})_2 \left[ \nu_r^{(i)} 
+        + \frac{1}{N} \sum_{j\neq i} (\nu_r^{(j)})^2 \right] \1{A_i(r)}
+&\leq \frac{1}{N(N)_2} \sum_{i=1}^N (\nu_r^{(i)})_2 \nu_r^{(i)} \1{A_i(r)} 
+        + \frac{1}{N^2(N)_2} \sum_{i=1}^N (\nu_r^{(i)})_2 \sum_{j=1}^N 
+        (\nu_r^{(j)})^2 \1{A_i(r)} \notag\\
+&\leq \frac{1}{N} c_N(r) N\varepsilon
+        + \frac{1}{N^2(N)_2} \sum_{i=1}^N (\nu_r^{(i)})_2 \sum_{j=1}^N 
+        (\nu_r^{(j)})_2 \1{A_i(r)} \notag\\
+    &\qquad+ \frac{1}{N^2(N)_2} \sum_{i=1}^N (\nu_r^{(i)})_2 \sum_{j=1}^N 
+        (\nu_r^{(j)}) \1{A_i(r)} \notag\\
+&\leq \varepsilon c_N(r) 
+        + \frac{1}{N^2} \sum_{i=1}^N \nu_r^{(i)} N\varepsilon c_N(r) 
+        + \frac{1}{N^2} c_N(r) N \notag\\
+&= c_N(r) \left( 2\varepsilon + \frac{1}{N} \right).
+\end{align}
+Hence, conditional on $\mathcal{F}_{r-1}$,
+\begin{align}
+\left\{ c_N(r) \geq K D_N(r) \right\}
+&\supseteq \left\{ c_N(r) \leq K c_N(r) (2\varepsilon + N^{-1}) 
+        + K \sum_{i=1}^N \1{A_i(r)^c} \right\} \notag\\
+&=\left\{ K^{-1} - 2\varepsilon- \frac{1}{N} \leq 
+        \sum_{i=1}^N \1{A_i(r)^c} c_N(r)^{-1} \right\} 
+\end{align}
+where the ratio $\1{A_i(r)^c} / c_N(r)$ is well-defined because
+\begin{equation}
+A_i(r)^c 
+\Rightarrow c_N(r) 
+:= \frac{1}{(N)_2} \sum_{j=1}^N (\nu_r^{(j)})_2
+\geq \frac{1}{(N)_2} (\nu_r^{(j)})_2
+\geq \frac{\varepsilon (N\varepsilon-1)}{N-1}
+\geq \varepsilon \left( \varepsilon - \frac{1}{N} \right)
+>0 .
+\end{equation}
+
+...
+\seb{The rest of the proof follows the rest of Jere's note...}
+\end{proof}
+
+
+\section*{Other useful results}
+
+The following Lemma is taken from \citet[Lemma 2]{koskela2018}, where the function is set to $f(t) = c_N(t)$, but the authors remark that the result holds for other choices of function.
+\begin{lemma}\label{thm:kjjslemma2}
+Let $(\mathcal{F}_t)$ be the backwards-in-time filtration generated by the offspring counts $\nu_t^{(1:N)}$ at each generation $t$,
+and let $f(t)$ be any deterministic function of $\nu_t^{(1:N)}$ that is non-negative and bounded. In particular, for all $t$ there exists $B<\infty$ such that $0\leq f(t) \leq B$.
+Then
+\begin{equation}
+\E \left[ \sum_{r=1}^{\tau_N(t)} f(r) \right] 
+= \E \left[ \sum_{r=1}^{\tau_N(t)} \E [ f(r) \mid \mathcal{F}_{r-1} ] \right] .
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Define 
+\begin{equation}
+M_s 
+:= \sum_{r=1}^s \left\{ f(r) - \E [ f(r) \mid \mathcal{F}_{r-1} ] \right\} .
+\end{equation}
+It is easy to establish that $(M_s)$ is a martingale with respect to $(\mathcal{F}_s)$, and $M_0 = 0$. 
+Now fix $K\geq 1$ and note that $\tau_N(t) \wedge K$ is a bounded $\mathcal{F}_t$-stopping time.
+Hence we can apply the optional stopping theorem:
+\begin{align}
+\E [M_{\tau_N(t) \wedge K} ]
+= \E \left[ \sum_{r=1}^{\tau_N(t) \wedge K} \left\{ f(r) 
+        - \E [ f(r) \mid \mathcal{F}_{r-1} ] \right\} \right]
+= \E \left[ \sum_{r=1}^{\tau_N(t) \wedge K} f(r) \right]
+        - \E \left[ \sum_{r=1}^{\tau_N(t) \wedge K} 
+        \E [ f(r) \mid \mathcal{F}_{r-1} ] \right]
+=0 .
+\end{align}
+Since this holds for all $K\geq 1$,
+\begin{equation}
+\lim_{K\to\infty} \E \left[ \sum_{r=1}^{\tau_N(t) \wedge K} f(r) \right]
+= \lim_{K\to\infty} \E \left[ \sum_{r=1}^{\tau_N(t) \wedge K} 
+        \E [ f(r) \mid \mathcal{F}_{r-1} ] \right] .
+\end{equation}
+The monotone convergence theorem allows the limit to pass inside the expectation on each side (since increasing $K$ can only increase each sum, by possibly adding non-negative terms). Hence
+\begin{equation}
+\E \left[ \sum_{r=1}^{\tau_N(t)} f(r) \right]
+= \E \left[ \lim_{K\to\infty} \sum_{r=1}^{\tau_N(t) \wedge K} f(r) \right]
+= \E \left[ \lim_{K\to\infty} \sum_{r=1}^{\tau_N(t) \wedge K} 
+        \E [ f(r) \mid \mathcal{F}_{r-1} ] \right] 
+= \E \left[ \sum_{r=1}^{\tau_N(t)} 
+        \E [ f(r) \mid \mathcal{F}_{r-1} ] \right]
+\end{equation}
+which concludes the proof.
+\end{proof}
+
 
 
 \bibliography{../smc.bib}
