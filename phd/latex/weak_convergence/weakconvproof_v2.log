@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  22 JAN 2021 19:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  25 JAN 2021 10:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -679,47 +679,48 @@ h that $[][] \U/msb/m/n/10 P\OT1/cmr/m/n/10 [\OML/cmm/m/it/10 E\OT1/cmr/m/n/10
 ] =
  []
 
+[7] [8] [9]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 474.
+(mdframed)              on input line 668.
+ [10]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 493.
-[7]
+(mdframed)              on input line 687.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 539.
+(mdframed)              on input line 729.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 562.
-
-Underfull \hbox (badness 10000) in paragraph at lines 584--588
+(mdframed)              on input line 752.
+ [11]
+Underfull \hbox (badness 10000) in paragraph at lines 774--778
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 593--595
+Underfull \hbox (badness 10000) in paragraph at lines 783--785
 
  []
 
-[8]
-Underfull \hbox (badness 10000) in paragraph at lines 599--601
+
+Underfull \hbox (badness 10000) in paragraph at lines 789--791
 
  []
 
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 658.
-[9]
+(mdframed)              on input line 848.
+[12] [13]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 743.
- [10] (./weakconvproof_v2.bbl) [11] (./weakconvproof_v2.aux) ) 
+(mdframed)              on input line 965.
+ [14] (./weakconvproof_v2.bbl) [15] (./weakconvproof_v2.aux) ) 
 Here is how much of TeX's memory you used:
- 13285 strings out of 492649
- 247184 string characters out of 6129623
- 324776 words of memory out of 5000000
- 17029 multiletter control sequences out of 15000+600000
+ 13292 strings out of 492649
+ 247266 string characters out of 6129623
+ 327835 words of memory out of 5000000
+ 17036 multiletter control sequences out of 15000+600000
  539493 words of font info for 59 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  39i,16n,43p,10405b,320s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -744,10 +745,10 @@ ist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2018/texmf-dis
 t/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2018/texmf-dist
 /fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2018/texmf-
 dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on weakconvproof_v2.pdf (11 pages, 242886 bytes).
+Output written on weakconvproof_v2.pdf (15 pages, 258418 bytes).
 PDF statistics:
- 121 PDF objects out of 1000 (max. 8388607)
- 87 compressed objects within 1 object stream
+ 134 PDF objects out of 1000 (max. 8388607)
+ 96 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
