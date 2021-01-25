@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  25 JAN 2021 10:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  25 JAN 2021 13:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -664,12 +664,19 @@ Package mdframed Info: mdframed detected package amsthm
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 429.
- [6]
+ [6] [7]
+Overfull \hbox (21.63286pt too wide) detected at line 560
+[] \U/msb/m/n/10 E [] \OMS/cmsy/m/n/10 ^^U \OML/cmm/m/it/10 [] []\OT1/cmr/m/n/
+10 (\OMS/cmsy/m/n/10 ^^@\OML/cmm/m/it/10 []\OT1/cmr/m/n/10 )[][]\OML/cmm/m/it/
+10 t[] [] \U/msb/m/n/10 E []
+ []
+
+[8]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 446.
+(mdframed)              on input line 584.
 
-Overfull \hbox (0.38155pt too wide) in paragraph at lines 456--461
+Overfull \hbox (0.38155pt too wide) in paragraph at lines 585--590
 []\OT1/cmr/bx/n/10 Lemma 7. []\OT1/cmr/m/it/10 Fix $\OML/cmm/m/it/10 l; k \OMS/
 cmsy/m/n/10 2 \U/msb/m/n/10 N$\OT1/cmr/m/it/10 , $\OML/cmm/m/it/10 i[] \OT1/cmr
 /m/n/10 := 0$\OT1/cmr/m/it/10 , $\OML/cmm/m/it/10 i[] \OT1/cmr/m/n/10 := \OML/c
@@ -679,51 +686,51 @@ h that $[][] \U/msb/m/n/10 P\OT1/cmr/m/n/10 [\OML/cmm/m/it/10 E\OT1/cmr/m/n/10
 ] =
  []
 
-[7] [8] [9]
+[9] [10] [11]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 668.
- [10]
+(mdframed)              on input line 796.
+ [12]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 687.
+(mdframed)              on input line 815.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 729.
+(mdframed)              on input line 857.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 752.
- [11]
-Underfull \hbox (badness 10000) in paragraph at lines 774--778
+(mdframed)              on input line 880.
+ [13]
+Underfull \hbox (badness 10000) in paragraph at lines 902--906
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 783--785
+Underfull \hbox (badness 10000) in paragraph at lines 911--913
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 789--791
+Underfull \hbox (badness 10000) in paragraph at lines 917--919
 
  []
 
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 848.
-[12] [13]
+(mdframed)              on input line 976.
+[14] [15]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 965.
- [14] (./weakconvproof_v2.bbl) [15] (./weakconvproof_v2.aux) ) 
+(mdframed)              on input line 1093.
+ [16] (./weakconvproof_v2.bbl) [17] (./weakconvproof_v2.aux) ) 
 Here is how much of TeX's memory you used:
- 13292 strings out of 492649
- 247266 string characters out of 6129623
- 327835 words of memory out of 5000000
- 17036 multiletter control sequences out of 15000+600000
+ 13299 strings out of 492649
+ 247320 string characters out of 6129623
+ 327899 words of memory out of 5000000
+ 17043 multiletter control sequences out of 15000+600000
  539493 words of font info for 59 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 39i,16n,43p,10405b,320s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 39i,22n,43p,10405b,320s stack positions out of 5000i,500n,10000p,200000b,80000s
  </Users/suzie/Li
 brary/texlive/2018/texmf-var/fonts/pk/ljfour/public/bbm/bbm10.600pk></usr/local
 /texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/
@@ -745,10 +752,10 @@ ist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2018/texmf-dis
 t/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2018/texmf-dist
 /fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2018/texmf-
 dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on weakconvproof_v2.pdf (15 pages, 258418 bytes).
+Output written on weakconvproof_v2.pdf (17 pages, 265666 bytes).
 PDF statistics:
- 134 PDF objects out of 1000 (max. 8388607)
- 96 compressed objects within 1 object stream
+ 140 PDF objects out of 1000 (max. 8388607)
+ 100 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

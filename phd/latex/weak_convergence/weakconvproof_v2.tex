@@ -234,7 +234,7 @@ We start by showing that
 $\lim_{N\to\infty}\E\left[ \prod_{r=1}^{\tau_N(t)} (1-p_r) \right] 
 \leq e^{-\alpha_n t}$.\\
 From \citet[Lemma 1 Case 1]{koskela2018}, taking $\xi=\Delta$, we have
-\begin{equation}
+\begin{equation} \label{eq:018}
 1-p_t 
 = p_{\Delta\Delta}(t) \leq 1 - \alpha_n (1+O(N^{-1})) 
         \left[ c_N(t) - B_n^\prime D_N(t) \right] 
@@ -293,9 +293,9 @@ A bit of tidying up and we have
     &\qquad+ \left( \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right)
         \frac{1}{2} \alpha_n^2 \exp[ \alpha_n (1+O(N^{-1})) (t+1) ] \notag\\
     &\qquad+ \left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right)
-        \exp[ \alpha_n (1+O(N^{-1})) (t+1) (1+B_n^\prime) ].
+        \exp[ \alpha_n (1+O(N^{-1})) (t+1) (1+B_n^\prime) ] . \label{eq:021}
 \end{align}
-Now, taking the expectation and limit, and applying \citet[Equations (3.3)--(3.5)]{brown2021} and Lemma~?? \seb{(Lemma 2 in the messy weakconv note; not written up here yet)},
+Now, taking the expectation and limit, and applying \citet[Equations (3.3)--(3.5)]{brown2021} and Lemma~\ref{thm:indicators_tau},
 \begin{align}
 \lim_{N\to\infty} \E \left[ \prod_{r=1}^{\tau_N(t)} (1-p_r) \right]
 &\leq \sum_{l=0}^{\infty} (-\alpha_n)^l \frac{1}{l!} t^l
@@ -328,7 +328,7 @@ In particular,
         - \frac{N^{n-3}}{(N-3)_{n-3}} B_n D_N(t) .
 \end{equation}
 Since $D_N(s) \leq c_N(s)$ for all $s$ \citep[p.9]{koskela2018}, a sufficient condition for this bound to be non-negative is
-\begin{equation}
+\begin{equation}\label{eq:025}
 E_r 
 := \left\{ c_N(r) \leq \frac{(N-3)_{n-3}}{N^{n-3}} 
         \left( \alpha_n \left(1 + \frac{2}{N-2} \right) + B_n \right)^{-1} \right\} ,
@@ -389,9 +389,9 @@ Tidying things up,
         \frac{1}{2} \alpha_n^2 \exp[ \alpha_n (1+O(N^{-1})) (t+1) ]\notag\\
     &\qquad- c_N(\tau_N(t)) \exp[ \alpha_n (1+O(N^{-1})) (t+1) ] \notag\\
     &\qquad- \left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right)
-        \exp[ \alpha_n (1+O(N^{-1})) (t+1) (1+B_n) ].
+        \exp[ \alpha_n (1+O(N^{-1})) (t+1) (1+B_n) ]. \label{eq:028}
 \end{align}
-Now, taking the expectation and limit, and applying \citet[Equations (3.3)--(3.5)]{brown2021} and Lemma~?? \seb{(Lemma 2 in the messy weakconv note; not written up here yet)},
+Now, taking the expectation and limit, and applying \citet[Equations (3.3)--(3.5)]{brown2021} to show that all but the first sum vanish, and Lemmata \ref{thm:indicators_tau} and \ref{thm:indicators_cN} to show that $\lim_{N\to\infty} \Prob[ \{\tau_N(t) \geq l\} \cap E ] =1$,
 \begin{align}
 \lim_{N\to\infty} \E \left[ \prod_{r=1}^{\tau_N(t)} (1-p_r) \right]
 &\geq \sum_{l=0}^{\infty} (-\alpha_n)^l (1+O(N^{-1})) \frac{1}{l!} t^l 
@@ -408,7 +408,7 @@ Now, taking the expectation and limit, and applying \citet[Equations (3.3)--(3.5
 Combining the upper and lower bounds in \eqref{eq:022} and \eqref{eq:029} respectively concludes the proof.
 \end{proof}
 
-\seb{I have proofs for the next three lemmata, I'm just working on a presentation that might be intelligible to someone other than myself.}
+\seb{I have proofs for the next two lemmata, I'm just working on a presentation that might be intelligible to someone other than myself.}
 \begin{lemma}[Induction step upper bound]\label{thm:inductionUB}
 Fix $k \in \mathbb{N}$, $i_0:=0$, $i_k:=k$. For any sequence of times
 $0 = t_0 \leq t_1 \leq \cdots \leq t_k \leq t$,
@@ -442,17 +442,146 @@ $0 = t_0 \leq t_1 \leq \cdots \leq t_k \leq t$,
 \end{equation}
 \end{lemma}
 
+\begin{proof}
+Firstly,
+\begin{equation}
+\sum_{\substack{r_1 <\dots< r_k :\\ r_i \leq \tau_N(t_i) \forall i}}
+        \left( \prod_{i=1}^k p_{r_i} \right)
+        \left( \prod_{\substack{r=1 \\ \notin \{r_1,\dots,r_k\} }}^{\tau_N(t)} 
+        (1-p_r) \right)
+\geq \sum_{\substack{r_1 <\dots< r_k :\\ r_i \leq \tau_N(t_i) \forall i}}
+        \left( \prod_{i=1}^k p_{r_i} \right)
+        \left( \prod_{r=1}^{\tau_N(t)} 
+        (1-p_r) \right) . \label{eq:032a}
+\end{equation}
+Now the second product does not depend on $r_1,\dots,r_k$, and we can use the lower bound from \eqref{eq:028}:
+\begin{align}
+\prod_{r=1}^{\tau_N(t)} (1-p_r)
+&\geq \sum_{l=0}^{\tau_N(t)} (-\alpha_n)^l (1+O(N^{-1})) 
+        \frac{1}{l!} t^l \1{E}
+        - \left( \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right)
+        \frac{1}{2} \alpha_n^2 \exp[ \alpha_n (1+O(N^{-1})) (t+1) ]\notag\\
+    &\qquad- c_N(\tau_N(t)) \exp[ \alpha_n (1+O(N^{-1})) (t+1) ] \notag\\
+    &\qquad- \left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right)
+        \exp[ \alpha_n (1+O(N^{-1})) (t+1) (1+B_n) ] .\label{eq:033a}
+\end{align}
+%Moreover, we have a deterministic bound on this product:
+%\begin{align}
+%\prod_{r=1}^{\tau_N(t)} (1-p_r)
+%&\geq - \exp[ \alpha_n (1+O(N^{-1})) t ]
+%        - (t+1) \frac{1}{2} \alpha_n^2 
+%        \exp[ \alpha_n (1+O(N^{-1})) (t+1) ]\notag\\
+%    &\qquad- \exp[ \alpha_n (1+O(N^{-1})) (t+1) ]
+%        - (t+1) \exp[ \alpha_n (1+O(N^{-1})) (t+1) (1+B_n) ] .
+%\end{align}
+We will also need an upper bound on this product, which is formed from \eqref{eq:021} with a further deterministic bound:
+\begin{align}
+\prod_{r=1}^{\tau_N(t)} (1-p_r)
+&\leq \sum_{l=0}^{\tau_N(t)} (-\alpha_n)^l (1+O(N^{-1})) \frac{1}{l!} t^l
+    + c_N(\tau_N(t)) \exp[ \alpha_n (1+O(N^{-1})) (t+1) ] \notag\\
+    &\qquad+ \left( \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right)
+        \frac{1}{2} \alpha_n^2 \exp[ \alpha_n (1+O(N^{-1})) (t+1) ] \notag\\
+    &\qquad+ \left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right)
+        \exp[ \alpha_n (1+O(N^{-1})) (t+1) (1+B_n^\prime) ] \notag\\
+&\leq \exp[ \alpha_n (1+O(N^{-1})) t ]
+        + \exp[ \alpha_n (1+O(N^{-1})) (t+1) ]  \notag\\
+    &\qquad+ \frac{1}{2} \alpha_n^2 (t+1)
+        \exp[ \alpha_n (1+O(N^{-1})) (t+1) ]
+        + (t+1) \exp[ \alpha_n (1+O(N^{-1})) (t+1) (1+B_n^\prime) ] \notag\\
+&\leq \left( 2 + \frac{\alpha_n^2 (t+1)}{2} \right) 
+        \exp[ \alpha_n (1+O(N^{-1})) (t+1) ] 
+        + (t+1) \exp[ \alpha_n (1+O(N^{-1})) (t+1) (1+B_n^\prime) ] 
+        \label{eq:034a}
+\end{align}
+where $E$ is defined as in \eqref{eq:025}.
+Now let us consider the remaining sum-product. We use the same bound on $p_r$ as in \eqref{eq:018}:
+\begin{equation}
+p_r
+= 1- p_{\Delta\Delta}(t) 
+\geq \alpha_n (1+O(N^{-1})) 
+        \left[ c_N(r) - B_n^\prime D_N(r) \right] .
+\end{equation}
+A sufficient condition to ensure this bound is non-negative is given in the event
+\begin{equation}
+E_r^\prime := \left\{ c_N(r) \geq B_n^\prime D_N(r) \right\}
+\end{equation}
+and we define $E^\prime := \bigcap_{r=1}^{\tau_N(t)} E_r^\prime$.
+Applying a multinomial expansion followed by a result similar to Lemma~\ref{thm:cleanup3},
+\begin{align}
+\sum_{\substack{r_1 <\dots< r_k :\\ r_i \leq \tau_N(t_i) \forall i}}
+        \left( \prod_{i=1}^k p_{r_i} \right)
+&\geq \alpha_n^k (1+O(N^{-1})) \sum_{\substack{r_1 <\dots< r_k 
+        :\\ r_i \leq \tau_N(t_i) \forall i}} \prod_{i=1}^k
+        \left[ c_N(r) - B_n^\prime D_N(r) \right] \1{E^\prime} \notag\\
+&\geq \alpha_n^k (1+O(N^{-1})) \left\{
+        \sum_{\substack{r_1 <\dots< r_k :\\ r_i \leq \tau_N(t_i) \forall i}}
+        \prod_{i=1}^k c_N(r_i) \1{E^\prime}
+        - \frac{1}{k!} \left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right)
+        (t+1)^{k-1} (1+B_n^\prime)^k \right\} .
+\end{align}
+The above expression is split into even and odd terms; a lower bound on \eqref{eq:032a} can be formed by multiplying the even terms by the lower bound \eqref{eq:033a} and the odd terms by the upper bound \eqref{eq:034a}. 
+Thus
+\begin{align}
+\sum_{\substack{r_1 <\dots< r_k :\\ r_i \leq \tau_N(t_i) \forall i}}
+        \left( \prod_{i=1}^k p_{r_i} \right)
+        \left( \prod_{\substack{r=1 \\ \notin \{r_1,\dots,r_k\} }}^{\tau_N(t)} 
+        (1-p_r) \right)
+&\geq \alpha_n^k (1+O(N^{-1}))
+        \sum_{\substack{r_1 <\dots< r_k :\\ r_i \leq \tau_N(t_i) \forall i}}
+        \prod_{i=1}^k c_N(r_i) \1{E^\prime} \Bigg\{ \notag\\
+    &\qquad \sum_{l=0}^{\tau_N(t)} (-\alpha_n)^l (1+O(N^{-1})) 
+        \frac{1}{l!} t^l \1{E} \notag\\
+    &\qquad- \left( \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right)
+        \frac{1}{2} \alpha_n^2 \exp[ \alpha_n (1+O(N^{-1})) (t+1) ]\notag\\
+    &\qquad- c_N(\tau_N(t)) \exp[ \alpha_n (1+O(N^{-1})) (t+1) ] \notag\\
+    &\qquad- \left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right)
+        \exp[ \alpha_n (1+O(N^{-1})) (t+1) (1+B_n) ] \Bigg\} \notag\\
+&- \alpha_n^k (1+O(N^{-1})) \frac{1}{k!} 
+        \left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right)
+        (t+1)^{k-1} (1+B_n^\prime)^k \Bigg\{ \notag\\
+    &\qquad \left( 2 + \frac{\alpha_n^2 (t+1)}{2} \right) 
+        \exp[ \alpha_n (1+O(N^{-1})) (t+1) ] \notag\\
+    &\qquad+ (t+1) \exp[ \alpha_n (1+O(N^{-1})) (t+1) (1+B_n^\prime) ] 
+        \Bigg\} .
+\end{align}
+Due to \citet[Equations (3.3)--(3.5)]{brown2021}, all of the negative terms have vanishing expectation, leaving \seb{add one more line of workings in here}
+\begin{equation}
+\lim_{N\to\infty} \E \left[ 
+        \sum_{\substack{r_1 <\dots< r_k :\\ r_i \leq \tau_N(t_i) \forall i}}
+        \left( \prod_{i=1}^k p_{r_i} \right)
+        \left( \prod_{\substack{r=1 \\ \notin \{r_1,\dots,r_k\} }}^{\tau_N(t)} 
+        (1-p_r) \right) \right]
+\geq \alpha_n^k
+        \sum_{l=0}^{\infty} (-\alpha_n)^l
+        \frac{1}{l!} t^l
+        \lim_{N\to\infty}\E\left[ \I{\tau_N(t) \geq l} \1{E\cap E^\prime}
+        \sum_{\substack{r_1 <\dots< r_k :\\ r_i \leq \tau_N(t_i) \forall i}}
+        \prod_{i=1}^k c_N(r_i) \right]
+\end{equation}
+Lemma~\ref{thm:indicators_cN} establishes that $\lim_{N\to\infty}\Prob[ E\cap E^\prime ] =1$ and Lemma~\ref{thm:indicators_tau} deals with the other indicator.
+We can therefore apply Lemma~\ref{thm:induction_sumprodcN} to conclude that
+\begin{align}
+\lim_{N\to\infty} \E \left[ 
+        \sum_{\substack{r_1 <\dots< r_k :\\ r_i \leq \tau_N(t_i) \forall i}}
+        \left( \prod_{i=1}^k p_{r_i} \right)
+        \left( \prod_{\substack{r=1 \\ \notin \{r_1,\dots,r_k\} }}^{\tau_N(t)} 
+        (1-p_r) \right) \right]
+&\geq \alpha_n^k
+        \sum_{l=0}^{\infty} (-\alpha_n)^l
+        \frac{1}{l!} t^l
+        \sum_{\substack{i_1\leq \dots\leq i_{k-1}\\ \in \{0,\dots,k\} :
+        \\ i_j \geq j \forall j}} 
+        \prod_{j=1}^k \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})! } \notag\\
+&= \alpha_n^k e^{-\alpha_n t} 
+        \sum_{\substack{i_1\leq \dots\leq i_{k-1}\\ \in \{0,\dots,k\} :
+        \\ i_j \geq j \forall j}} 
+        \prod_{j=1}^k \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})! }
+\end{align}
+as required.
+\end{proof}
+
 
 \begin{lemma}\label{thm:induction_sumprodcN}
-%%% The below definition will instead appear in the proof of this Lemma; it is no longer needed in the statement.
-%For any $t_{j-1}, t_j, i_{j-1}, i_j$, define the event
-%\begin{equation}
-%E_j^\star
-%= \left\{ \left( \sum_{s=\tau_N(t_{j-1})+1}^{\tau_N(t_j)} c_N(s)^2 \right)
-%        \leq \frac{ (t_j - t_{j-1})^{i_j - i_{j-1} -k +1} }{ (i_j - i_{j-1})! } \right\} ,
-%\end{equation}
-%and let 
-%$E^\star := \bigcap_{j=1}^k E_j^\star$.
 Fix $l, k \in \mathbb{N}$, $i_0:=0$, $i_k:=k$. 
 Let $E$ be any event independent of $r_1,\dots,r_k$ such that 
 $\lim_{N\to\infty} \Prob[E] =1$. 
@@ -486,7 +615,6 @@ Moreover,
         \neq r_{i_j} \\ = \tau_N(t_{j-1})+1 }}^{\tau_N(t_j)}
         \prod_{i=i_{j-1}+1}^{i_j} c_N(r_i) .
 \end{equation}
-%A simple modification of \citet[(9)]{koskela2018}
 An argument akin to \eqref{eq:005}
 gives us an upper bound:
 \begin{align}
@@ -551,7 +679,7 @@ Now we are in a position to evaluate the limit in \eqref{eq:032}:
         {(i_j - i_{j-1})!}
 \end{align}
 using \citet[Equation (3.3)]{brown2021}.
-For the corresponding lower bound, %using \citet[(8)]{koskela2018},
+For the corresponding lower bound,
 by a slight modification of \eqref{eq:002},
 \begin{align}
 \sum_{\substack{ r_{i_{j-1}+1} \neq \dots \neq r_{i_j} 
@@ -684,7 +812,7 @@ The only part of this argument that I find potentially controversial is going fr
 \end{proof}
 
 
-\begin{lemma}\label{thm:indicators_general}
+\begin{lemma}\label{thm:indicators_cN}
 Let $K$ be a constant which may depend on $n, N$ but not on $r$, such that $K^{-2} = O(1)$ as $N\to\infty$.
 Define the events $E_r := \{ c_N(r) < K \}$ and denote $E := \bigcap_{r=1}^{\tau_N(t)} E_r$.
 Then $\lim_{N\to\infty} \Prob[E]=1$.
@@ -745,7 +873,7 @@ Hence
 \geq \lim_{N\to\infty} \Prob\left[ \bigcap_{r=1}^{\tau_N(t)} 
         \left \{ c_N(r) < \frac{t}{l} \right\} \right]
 \end{equation}
-and the result follows by applying Lemma~\ref{thm:indicators_general} with $K=t/l$.
+and the result follows by applying Lemma~\ref{thm:indicators_cN} with $K=t/l$.
 \end{proof}
 
 
