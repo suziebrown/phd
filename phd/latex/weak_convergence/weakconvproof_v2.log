@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  26 JAN 2021 14:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  27 JAN 2021 10:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -636,127 +636,108 @@ Package mdframed Info: mdframed detected package amsthm
 (mdframed)              on input line 55.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 108.
+(mdframed)              on input line 109.
  [1
 
 {/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 176.
+(mdframed)              on input line 178.
  [2]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 223.
+(mdframed)              on input line 226.
 
-Overfull \hbox (24.66362pt too wide) detected at line 278
+Overfull \hbox (24.66362pt too wide) detected at line 281
 []
  []
 
 [3]
-LaTeX Font Info:    Try loading font information for U+bbm on input line 298.
+LaTeX Font Info:    Try loading font information for U+bbm on input line 301.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/bbm-macros/ubbm.fd
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
 ) [4]
 [5]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 413.
+(mdframed)              on input line 416.
  [6] [7] [8]
-Overfull \hbox (7.70302pt too wide) detected at line 594
+Overfull \hbox (7.70302pt too wide) detected at line 597
 []
  []
 
 [9]
-Overfull \hbox (5.05925pt too wide) detected at line 642
+Overfull \hbox (5.05925pt too wide) detected at line 645
 []
  []
 
 [10]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 697.
+(mdframed)              on input line 700.
  [11] [12]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 848.
-
-Overfull \hbox (0.38155pt too wide) in paragraph at lines 849--854
-[]\OT1/cmr/bx/n/10 Lemma 7. []\OT1/cmr/m/it/10 Fix $\OML/cmm/m/it/10 l; k \OMS/
-cmsy/m/n/10 2 \U/msb/m/n/10 N$\OT1/cmr/m/it/10 , $\OML/cmm/m/it/10 i[] \OT1/cmr
-/m/n/10 := 0$\OT1/cmr/m/it/10 , $\OML/cmm/m/it/10 i[] \OT1/cmr/m/n/10 := \OML/c
-mm/m/it/10 k$\OT1/cmr/m/it/10 . Let $\OML/cmm/m/it/10 E$ \OT1/cmr/m/it/10 be an
-y event in-de-pen-dent of $\OML/cmm/m/it/10 r[]; [] ; r[]$ \OT1/cmr/m/it/10 suc
-h that $[][] \U/msb/m/n/10 P\OT1/cmr/m/n/10 [\OML/cmm/m/it/10 E\OT1/cmr/m/n/10 
-] =
+(mdframed)              on input line 851.
+ [13] [14]
+Overfull \hbox (15.81467pt too wide) detected at line 1001
+[]
  []
 
-[13] [14] [15] [16]
+[15] [16]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1082.
+(mdframed)              on input line 1051.
  [17]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1124.
+(mdframed)              on input line 1071.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1147.
-
-Underfull \hbox (badness 10000) in paragraph at lines 1169--1173
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1178--1180
-
- []
-
-[18]
-Underfull \hbox (badness 10000) in paragraph at lines 1184--1186
-
- []
-
+(mdframed)              on input line 1113.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1243.
-[19] [20]
+(mdframed)              on input line 1138.
+ [18]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1360.
- (./weakconvproof_v2.bbl [21]) [22] (./weakconvproof_v2.aux)
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
- ) 
+(mdframed)              on input line 1213.
+ [19] [20]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 1337.
+ [21] (./weakconvproof_v2.bbl) [22]
+(./weakconvproof_v2.aux) ) 
 Here is how much of TeX's memory you used:
- 13304 strings out of 492649
- 247366 string characters out of 6129623
- 327988 words of memory out of 5000000
- 17050 multiletter control sequences out of 15000+600000
- 538874 words of font info for 57 fonts, out of 8000000 for 9000
+ 13308 strings out of 492649
+ 247404 string characters out of 6129623
+ 326988 words of memory out of 5000000
+ 17052 multiletter control sequences out of 15000+600000
+ 539493 words of font info for 59 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 39i,22n,43p,10405b,324s stack positions out of 5000i,500n,10000p,200000b,80000s
- </Users/suzie/Library/texlive/2018/texmf-var/fonts/pk/ljfour/public/bbm/bbm1
-0.600pk></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx
-10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx1
-2.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10
-.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cmextra/cm
-ex7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi
-10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5
-.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.p
-fb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb
-></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><
-/usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></u
-sr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/
-local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/loc
-al/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/loca
-l/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local
-/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/t
-exlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/tex
-live/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texl
-ive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/
-texlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on weakconvproof_v2.pdf (22 pages, 277727 bytes).
+ 39i,22n,43p,10405b,320s stack positions out of 5000i,500n,10000p,200000b,80000s
+ </Users/suzie/Library/texlive/2018/texmf-var/fonts/p
+k/ljfour/public/bbm/bbm10.600pk></usr/local/texlive/2018/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmex10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/pu
+blic/amsfonts/cmextra/cmex7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmr10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmr12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmr17.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmr5.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmr7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmss10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmsy5.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/c
+msy7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmt
+i10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols
+/msam10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/sym
+bols/msbm10.pfb>
+Output written on weakconvproof_v2.pdf (22 pages, 280010 bytes).
 PDF statistics:
  157 PDF objects out of 1000 (max. 8388607)
  111 compressed objects within 2 object streams
