@@ -3,6 +3,7 @@
 \usepackage[margin=2cm]{geometry}
 
 \usepackage{graphicx}
+\usepackage{tikz}
 \usepackage{enumitem}
 \usepackage[nobreak]{mdframed} % The nobreak option should probably be set locally in the final document, since breaks may be required in longer theorems.
 
@@ -1382,6 +1383,70 @@ which concludes the proof.
 \end{proof}
 
 
+\section*{Dependency graph}
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[>=stealth, thick]
+% boxes
+\filldraw[rounded corners, gray!20] (1.9,1.4)--(4.1,1.4)--(4.1,-2.4)--(1.9,-2.4)--cycle;
+\node[gray] at (3,1.6) {\textsc{indicators}};
+\filldraw[rounded corners, gray!20] (1.9,-3.1)--(4.1,-3.1)--(4.1,-5.9)--(1.9,-5.9)--cycle;
+\node[gray] at (3,-2.9) {\textsc{sum-products}};
+% nodes column 1
+\node at (0,-0.5) {Lemma~\ref{thm:kjjslemma2}};
+%nodes column 2 indics
+\node at (3,1) {Lemma~\ref{thm:indicators_c2}};
+\node at (3,0) {Lemma~\ref{thm:indicators_DN}};
+\node at (3,-1) {Lemma~\ref{thm:indicators_cN}};
+\node at (3,-2) {Lemma~\ref{thm:indicators_tau}};
+% nodes column 2 sumprods
+\node at (3,-3.5) {Lemma~\ref{thm:sumprod3}};
+\node at (3,-4.5) {Lemma~\ref{thm:sumprod2}};
+\node at (3,-5.5) {Lemma~\ref{thm:sumprod1}};
+%nodes column 3
+\node at (6,1) {Lemma~\ref{thm:induction_sumprodcN}};
+% nodes column 4
+\node[align=center] at (9,0) {Lemma~\ref{thm:inductionLB}\\[-3pt] \textcolor{gray}{\textsc{induction}} \\[-5pt] \textcolor{gray}{\textsc{l.b.}} };
+\node[align=center] at (9,-2) {Lemma~\ref{thm:inductionUB}\\[-3pt] \textcolor{gray}{\textsc{induction}} \\[-5pt] \textcolor{gray}{\textsc{u.b.}} };
+\node[align=center] at (9,-4) {Lemma~\ref{thm:basis}\\[-3pt] \textcolor{gray}{\textsc{basis}} };
+%nodes column 5
+\node at (12,0.5) {Lemma ??};
+\node[align=center] at (12,-2) {Theorem 1?\\[-3pt] \textcolor{gray}{\textsc{weak}}\\[-5pt] \textcolor{gray}{\textsc{conv.}} };
+
+% arrows column 1 to 2
+\draw[->] (1,-0.5)--(2,0);
+\draw[->] (1,-0.5)--(2,-1);
+%arrows column 2 to 2
+\draw[->] (3,-1.2)--(3,-1.8);
+%arrows column 2 to 3
+\draw[->] (4,1)--(5,1);
+\draw[->, dotted] (4,-5.5)--(6,0.8);
+%arrows column2 indics to 4
+\draw[->] (4,-2)--(8.1,0);
+\draw[->] (4,-2)--(8,-2);
+\draw[->] (4,-2)--(8.1,-4);
+\draw[->] (4,-1)--(8,0);
+\draw[->] (4,-1)--(8.1,-4);
+\draw[->] (4,0)--(8,0);
+% arrows column 2 sumprods to 4
+\draw[->, dotted] (4,-3.5)--(8,0);
+\draw[->, dotted] (4,-4.5)--(8,-2);
+\draw[->] (4,-3.5)--(8,-4);
+\draw[->] (4,-4.5)--(8,-4);
+\draw[->] (4,-5.5)--(8,-4);
+% arrows column 3 to 4
+\draw[->] (7,0.9)--(8.1,0.2);
+\draw[->] (7,0.9)--(8.2,-1.6);
+%arrows column 4 to 5
+\draw[->] (9.9,-0.1)--(11.1,-1.6);
+\draw[->] (9.9,-2)--(11,-2);
+\draw[->] (9.9,-3.9)--(11.2,-2.3);
+% arrows column 5 to 5
+\draw[->] (12,0.2)--(12,-1.6);
+\end{tikzpicture}
+\caption{Graph showing dependencies between lemmata used to prove weak convergence. Dotted arrows indicate dependence via a slight modification.}
+\end{figure}
 
 \bibliography{../smc.bib}
 \end{document}
