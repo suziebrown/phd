@@ -133,7 +133,7 @@ We start with a binomial expansion:
         \left( \prod_{i\in\mathcal{I}} c_N(s_i) \right)
         \left( \prod_{j\notin\mathcal{I}} D_N(s_j) \right) \label{eq:010}
 \end{align}
-where $[l] := \{1,\dots,l\}$. Since the sum is over all permutations of $r_1,\dots,r_l$, we may arbitrarily choose an ordering for $\{1,\dots,l\}$ such that $\mathcal{I} = \{ 1,\dots, |\mathcal{I}| \}$:
+where $[l] := \{1,\dots,l\}$. Since the sum is over all permutations of $s_1,\dots,s_l$, we may arbitrarily choose an ordering for $\{1,\dots,l\}$ such that $\mathcal{I} = \{ 1,\dots, |\mathcal{I}| \}$:
 \begin{equation}
 \sum_{\mathcal{I} \subseteq [l]} B^{l-|\mathcal{I}|}
         \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)}
@@ -153,7 +153,7 @@ Separating the term $I=l$,
         \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)}
         \left( \prod_{i=1}^I c_N(s_i) \right) \left( \prod_{j=I+1}^l D_N(s_j) \right). \label{eq:012}
 \end{align}
-In the second line, there is always at least one $D_N$ term, and $c_N(s) \leq D_N(s)$ for all $s$, so we can write
+In the second line, there is always at least one $D_N$ term, and $c_N(s) \geq D_N(s)$ for all $s$ \citep[p.9]{koskela2018}, so we can write
 \begin{align}
 \sum_{I=0}^{l-1}\binom{l}{I} B^{l-I} \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)}
         \left( \prod_{i=1}^I c_N(s_i) \right) \left( \prod_{j=I+1}^l D_N(s_j) \right)
@@ -250,7 +250,12 @@ When $N$ is large enough, a sufficient condition to ensure the bound in \eqref{e
 \begin{equation}\label{eq:019b}
 E_r := \left\{ c_N(r) \leq \alpha_n^{-1} \right\}
 \end{equation}
-and we define $E := \bigcap_{r=1}^{\tau_N(t)} E_r$.
+and we define $E := \bigcap_{r=1}^{\tau_N(t)} E_r$, so
+\begin{equation}
+1-p_r
+= p_{\Delta\Delta}(r) \leq 1 - \alpha_n (1+O(N^{-1})) 
+        \left[ c_N(r) - B_n^\prime D_N(r) \right] \1{E} .
+\end{equation}
 Applying a multinomial expansion and then separating the positive and negative terms,
 \begin{align}
 \prod_{r=1}^{\tau_N(t)} (1-p_r)
@@ -272,7 +277,8 @@ This is further bounded by applying Lemma~\ref{thm:sumprod3} and then both bound
 \prod_{r=1}^{\tau_N(t)} (1-p_r)
 &\leq 1 + \Bigg\{ \sum_{\substack{l=2 \\ \text{even} }}^{\tau_N(t)} 
         \alpha_n^l (1+O(N^{-1})) \frac{1}{l!} 
-        \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)}\prod_{j=1}^l c_N(s_j) \notag\\
+        \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)}\prod_{j=1}^l c_N(s_j)
+        \notag\\
     &\qquad- \sum_{\substack{l=1 \\ \text{odd} }}^{\tau_N(t)} 
         \alpha_n^l (1+O(N^{-1})) \frac{1}{l!} 
         \left[ \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)}\prod_{j=1}^l c_N(s_j)
@@ -338,14 +344,14 @@ where $B_n >0$ and the $O(N^{-1})$ term does not depend on $t$.
 In particular,
 \begin{equation}
 1-p_t
-= p_{\Delta\Delta}(t) \geq 1 - \frac{N^{n-2}}{(N-2)_{n-2}} \alpha_n c_N(t) 
-        - \frac{N^{n-3}}{(N-3)_{n-3}} \alpha_n B_n D_N(t) .
+= p_{\Delta\Delta}(t) \geq 1 - \frac{N^{n-2}}{(N-2)_{n-2}} \alpha_n 
+    [ c_N(t) + B_n D_N(t) ] .
 \end{equation}
 Since $D_N(s) \leq c_N(s)$ for all $s$ \citep[p.9]{koskela2018}, a sufficient condition for this bound to be non-negative is
 \begin{equation}\label{eq:025}
 E_r 
-:= \left\{ c_N(r) \leq \frac{(N-3)_{n-3}}{N^{n-3}} 
-        \frac{1}{\alpha_n} \left( \frac{N}{N-2} + B_n \right)^{-1} \right\} ,
+:= \left\{ c_N(r) \leq \frac{(N-2)_{n-2}}{N^{n-2}} 
+        \alpha_n^{-1} (1+B_n)^{-1} \right\} ,
 \end{equation}
 and we again define $E := \bigcap_{r=1}^{\tau_N(t)} E_r$.
 We now apply a multinomial expansion to the product, and split into positive and negative terms:
@@ -978,6 +984,7 @@ E_j^\star
 = \left\{ \left( \sum_{s=\tau_N(t_{j-1})+1}^{\tau_N(t_j)} c_N(s)^2 \right)
         \leq \frac{ (t_j - t_{j-1})^{i_j - i_{j-1} -k +1} }{ (i_j - i_{j-1})! } \right\} ,
 \end{equation}
+\seb{(If $t_j = t_{j-1}$ then $E^\star_j$ has probability 1 even without the limit; otherwise this is in the right form for Lemma~\ref{thm:indicators_c2}.)}
 which is sufficient to ensure the $j^{th}$ term in the following product is non-negative,
 and define 
 $E^\star := \bigcap_{j=1}^k E_j^\star$.
@@ -1093,7 +1100,7 @@ If $\lim\Prob[A] =1$ and $\lim\Prob[B]=1$ then $\lim \Prob [A \cap B] =1$.
 %___________
 
 \begin{lemma}\label{thm:indicators_cN}
-Let $K$ be a constant which may depend on $n, N$ but not on $r$, such that $K^{-2} = O(1)$ as $N\to\infty$.
+Let $K>0$ be a constant which may depend on $n, N$ but not on $r$, such that $K^{-2} = O(1)$ as $N\to\infty$.
 Define the events $E_r := \{ c_N(r) < K \}$ and denote $E := \bigcap_{r=1}^{\tau_N(t)} E_r$.
 Then $\lim_{N\to\infty} \Prob[E]=1$.
 \end{lemma}
@@ -1140,7 +1147,7 @@ $\lim_{N\to\infty} \Prob[ \tau_N(t) \geq l ] =1$ .
 \end{lemma}
 
 \begin{proof}
-We can replace the event $\{ \tau_N(t) \geq \}$ with an event of the form of $E$ in Lemma~\ref{thm:indicators_cN}:
+We can replace the event $\{ \tau_N(t) \geq l \}$ with an event of the form of $E$ in Lemma~\ref{thm:indicators_cN}:
 \begin{equation}
 \{ \tau_N(t) \geq l \} 
 = \left\{ \min \left\{ s \geq 1 : \sum_{r=1}^{s} c_N(r) \geq t \right\} \geq l \right\}
@@ -1159,78 +1166,109 @@ by applying Lemma~\ref{thm:indicators_cN} with $K=t/l$.
 \end{proof}
 
 
+%\begin{lemma}\label{thm:indicators_c2}
+%Fix $k\in\mathbb{N}$, a sequence of times $0 = t_0 \leq t_1 \leq \cdots \leq t_k \leq t$, and a sequence of indices $0 = i_0 \leq i_1 \leq \cdots \leq i_k =k$.
+%Define the event
+%\begin{equation}
+%E^\star := \bigcap_{j=1}^k \left\{ \sum_{s=\tau_N(t_{j-1})+1}^{\tau_N(t_j)}
+%        c_N(s)^2 \leq \frac{ (t_j - t_{j-1})^{i_j - i_{j-1} -k +1} }{ (i_j - i_{j-1})! }
+%        \right\} .
+%\end{equation}
+%Then $\lim_{N\to\infty} \Prob[E^\star] =1$.
+%\end{lemma}
+%
+%\begin{proof}
+%\begin{align}
+%E^\star
+%&\supseteq \left\{ \sum_{j=1}^k \sum_{s=\tau_N(t_{j-1})+1}^{\tau_N(t_j)}
+%        c_N(s)^2 \leq \sum_{j=1}^k \frac{ (t_j - t_{j-1})^{i_j - i_{j-1} -k +1} }
+%        { (i_j - i_{j-1})! } \right\} \notag\\
+%&= \left\{ \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \leq 
+%        \sum_{j=1}^k \frac{ (t_j - t_{j-1})^{i_j - i_{j-1} -k +1} }
+%        { (i_j - i_{j-1})! } \right\} \notag\\
+%&\supseteq \left\{ \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \leq 
+%        \frac{1}{k!} \sum_{j=1}^k (t_j - t_{j-1})^{i_j - i_{j-1} -k +1} 
+%        \right\} .
+%\end{align}
+%To simplify the RHS further, consider the possible values of $(i_j - i_{j-1} -k +1) \in \{-k+1,\dots,1\}$:
+%\seb{This simplification isn't necessary for the result, but it makes the expressions less cumbersome later on.}
+%\begin{align*}
+%\textbf{Case } (i_j - i_{j-1} -k +1) <0:&\\
+%\sum_{j=1}^k (t_j - t_{j-1})^{i_j - i_{j-1} -k +1}
+%&\geq \sum_{j=1}^k t^{i_j - i_{j-1} -k +1} 
+%\geq \sum_{j=1}^k t^{-k +1} 
+%= kt^{-k+1}. \\
+%\textbf{Case } (i_j - i_{j-1} -k +1) =0:&\\
+%\sum_{j=1}^k (t_j - t_{j-1})^{i_j - i_{j-1} -k +1}
+%&= \sum_{j=1}^k 1
+%=k . \\
+%\textbf{Case } (i_j - i_{j-1} -k +1) =1:&\\
+%\sum_{j=1}^k (t_j - t_{j-1})^{i_j - i_{j-1} -k +1}
+%&= \sum_{j=1}^k (t_j - t_{j-1})
+%= t_k - t_0
+%=t .
+%\end{align*}
+%Altogether
+%\begin{equation}
+%\sum_{j=1}^k (t_j - t_{j-1})^{i_j - i_{j-1} -k +1}
+%\geq \min\{ kt^{-k+1}, k, t \}
+%= \min\{ kt^{-k+1}, t \}
+%= t \min\{ kt^{-k}, 1 \} ,
+%\end{equation}
+%so
+%\begin{equation}
+%E^\star
+%\supseteq \left\{ \sum_{s=1}^{\tau_N(t)} c_N(s)^2 < 
+%        \frac{t}{k!} \min\{ kt^{-k}, 1 \} \right\} .
+%\end{equation}
+%Using Markov's inequality,
+%\begin{align}
+%\Prob[E^\star]
+%&\geq \Prob \left[ \sum_{s=1}^{\tau_N(t)} c_N(s)^2 < 
+%        \frac{t}{k!} \min\{ kt^{-k}, 1 \} \right]
+%= 1- \Prob \left[ \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \geq 
+%        \frac{t}{k!} \min\{ kt^{-k}, 1 \} \right] \notag\\
+%&\geq 1- \frac{k!}{t} \max\{ 1, k^{-1} t^k \} 
+%        \E \left[  \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right] ,
+%\end{align}
+%and by \citet[Equation (3.5)]{brown2021}
+%\begin{equation}
+%\lim_{N\to\infty} \Prob[E^\star]
+%= 1 - O(1) \times 0 
+%= 1
+%\end{equation}
+%as required.
+%\end{proof}
+
+
 \begin{lemma}\label{thm:indicators_c2}
-Fix $k\in\mathbb{N}$, a sequence of times $0 = t_0 \leq t_1 \leq \cdots \leq t_k \leq t$, and a sequence of indices $0 = i_0 \leq i_1 \leq \cdots \leq i_k =k$.
+Fix $k\in\mathbb{N}$, a sequence of times $0 = t_0 \leq t_1 \leq \cdots \leq t_k \leq t$, and let $K_1,\dots,K_k$ be strictly positive constants such that for each $j$, $K_j^{-1} = O(1)$ as $N\to\infty$.
 Define the event
 \begin{equation}
 E^\star := \bigcap_{j=1}^k \left\{ \sum_{s=\tau_N(t_{j-1})+1}^{\tau_N(t_j)}
-        c_N(s)^2 \leq \frac{ (t_j - t_{j-1})^{i_j - i_{j-1} -k +1} }{ (i_j - i_{j-1})! }
-        \right\} .
+        c_N(s)^2 \leq K_j \right\} .
 \end{equation}
 Then $\lim_{N\to\infty} \Prob[E^\star] =1$.
 \end{lemma}
 
 \begin{proof}
-\begin{align}
-E^\star
-&\supseteq \left\{ \sum_{j=1}^k \sum_{s=\tau_N(t_{j-1})+1}^{\tau_N(t_j)}
-        c_N(s)^2 \leq \sum_{j=1}^k \frac{ (t_j - t_{j-1})^{i_j - i_{j-1} -k +1} }
-        { (i_j - i_{j-1})! } \right\} \notag\\
-&= \left\{ \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \leq 
-        \sum_{j=1}^k \frac{ (t_j - t_{j-1})^{i_j - i_{j-1} -k +1} }
-        { (i_j - i_{j-1})! } \right\} \notag\\
-&\supseteq \left\{ \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \leq 
-        \frac{1}{k!} \sum_{j=1}^k (t_j - t_{j-1})^{i_j - i_{j-1} -k +1} 
-        \right\} .
-\end{align}
-To simplify the RHS further, consider the possible values of $(i_j - i_{j-1} -k +1) \in \{-k+1,\dots,1\}$:
-\seb{This simplification isn't necessary for the result, but it makes the expressions less cumbersome later on.}
-\begin{align*}
-\textbf{Case } (i_j - i_{j-1} -k +1) <0:&\\
-\sum_{j=1}^k (t_j - t_{j-1})^{i_j - i_{j-1} -k +1}
-&\geq \sum_{j=1}^k t^{i_j - i_{j-1} -k +1} 
-\geq \sum_{j=1}^k t^{-k +1} 
-= kt^{-k+1}. \\
-\textbf{Case } (i_j - i_{j-1} -k +1) =0:&\\
-\sum_{j=1}^k (t_j - t_{j-1})^{i_j - i_{j-1} -k +1}
-&= \sum_{j=1}^k 1
-=k . \\
-\textbf{Case } (i_j - i_{j-1} -k +1) =1:&\\
-\sum_{j=1}^k (t_j - t_{j-1})^{i_j - i_{j-1} -k +1}
-&= \sum_{j=1}^k (t_j - t_{j-1})
-= t_k - t_0
-=t .
-\end{align*}
-Altogether
 \begin{equation}
-\sum_{j=1}^k (t_j - t_{j-1})^{i_j - i_{j-1} -k +1}
-\geq \min\{ kt^{-k+1}, k, t \}
-= \min\{ kt^{-k+1}, t \}
-= t \min\{ kt^{-k}, 1 \} ,
-\end{equation}
-so
-\begin{equation}
-E^\star
-\supseteq \left\{ \sum_{s=1}^{\tau_N(t)} c_N(s)^2 < 
-        \frac{t}{k!} \min\{ kt^{-k}, 1 \} \right\} .
-\end{equation}
-Using Markov's inequality,
-\begin{align}
 \Prob[E^\star]
-&\geq \Prob \left[ \sum_{s=1}^{\tau_N(t)} c_N(s)^2 < 
-        \frac{t}{k!} \min\{ kt^{-k}, 1 \} \right]
-= 1- \Prob \left[ \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \geq 
-        \frac{t}{k!} \min\{ kt^{-k}, 1 \} \right] \notag\\
-&\geq 1- \frac{k!}{t} \max\{ 1, k^{-1} t^k \} 
-        \E \left[  \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right] ,
-\end{align}
-and by \citet[Equation (3.5)]{brown2021}
+= 1- \Prob[(E^\star)^c]
+= 1- \Prob\left[ \bigcup_{j=1}^k \left\{ \sum_{s=\tau_N(t_{j-1})+1}
+        ^{\tau_N(t_j)} c_N(s)^2 > K_j \right\} \right] 
+\geq 1- \sum_{j=1}^k \Prob\left[ \sum_{s=\tau_N(t_{j-1})+1}
+        ^{\tau_N(t_j)} c_N(s)^2 \geq K_j \right] .
+\end{equation}
+Applying Markov's inequality,
 \begin{equation}
-\lim_{N\to\infty} \Prob[E^\star]
-= 1 - O(1) \times 0 
+\Prob[E^\star]
+\geq 1- \sum_{j=1}^k K_j^{-1} \E\left[ \sum_{s=\tau_N(t_{j-1})+1}
+        ^{\tau_N(t_j)} c_N(s)^2 \right]
+\underset{N\to\infty}{\longrightarrow} 1- \sum_{j=1}^k O(1) \times 0 
 = 1
 \end{equation}
-as required.
+by \citet[Equation (3.5)]{brown2021}.
 \end{proof}
 
 
@@ -1260,7 +1298,7 @@ Let $K$ be a constant not depending on $N, r$, but which may depend on $n$.
 \end{align}
 where the final inequality is an application of Lemma~\ref{thm:kjjslemma2} with $f(r) = \I{ c_N(r) \leq K D_N(r) }$.
 
-Fix $0 < \varepsilon < K^{-1}/2$ and assume $N > \max\{ \varepsilon^{-1}, (\binom{n-2}{2} - 2\varepsilon)^{-1} \}$. For each $r,i$ define the event $A_i(r) := \{ \nu_r^{(i)} \leq N\varepsilon \}$.
+Fix $0 < \varepsilon < K^{-1}/2$ and assume $N > \max\{ \varepsilon^{-1}, (K^{-1} - 2\varepsilon)^{-1} \}$. For each $r,i$ define the event $A_i(r) := \{ \nu_r^{(i)} \leq N\varepsilon \}$.
 Conditional on $\mathcal{F}_{r-1}$, we have
 \begin{equation}
 D_N(r)
