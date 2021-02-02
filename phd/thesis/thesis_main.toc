@@ -1,23 +1,25 @@
 \boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\nonumberline Acknowledgements}{iv}
+\contentsline {chapter}{\nonumberline Acknowledgements}{iv}{chapter*.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\nonumberline Abstract}{v}
+\contentsline {chapter}{\nonumberline Abstract}{v}{chapter*.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {1}Introduction}{1}
+\contentsline {chapter}{\nonumberline Notation}{vi}{chapter*.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {2}Background}{2}
+\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.1}State space models}{2}
+\contentsline {chapter}{\numberline {2}Background}{2}{chapter.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.2}Sequential Monte Carlo}{2}
+\contentsline {section}{\numberline {2.1}State space models}{2}{section.2.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.3}Coalescent theory}{2}
+\contentsline {section}{\numberline {2.2}Sequential Monte Carlo}{2}{section.2.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.4}SMC genealogies \& ancestral degeneracy}{2}
+\contentsline {section}{\numberline {2.3}Coalescent theory}{2}{section.2.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.5}Resampling}{3}
+\contentsline {section}{\numberline {2.4}SMC genealogies \& ancestral degeneracy}{2}{section.2.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.6}Conditional SMC \& particle MCMC}{3}
+\contentsline {section}{\numberline {2.5}Resampling}{3}{section.2.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {1}Weak Convergence}{1}
+\contentsline {section}{\numberline {2.6}Conditional SMC \& particle MCMC}{3}{section.2.6}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {3}Weak Convergence}{4}{chapter.3}

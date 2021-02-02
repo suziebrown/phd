@@ -1975,6 +1975,26 @@
     <bcf:datasource type="file" datatype="bibtex">../latex/smc.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="0">
+    <bcf:citekey order="1">mohle1999</bcf:citekey>
+    <bcf:citekey order="2">mohle1999</bcf:citekey>
+    <bcf:citekey order="3">koskela2018</bcf:citekey>
+    <bcf:citekey order="4">koskela2018</bcf:citekey>
+    <bcf:citekey order="5">koskela2018</bcf:citekey>
+    <bcf:citekey order="6">brown2021</bcf:citekey>
+    <bcf:citekey order="7">brown2021</bcf:citekey>
+    <bcf:citekey order="8">koskela2018</bcf:citekey>
+    <bcf:citekey order="9">brown2021</bcf:citekey>
+    <bcf:citekey order="10">brown2021</bcf:citekey>
+    <bcf:citekey order="11">brown2021</bcf:citekey>
+    <bcf:citekey order="12">brown2021</bcf:citekey>
+    <bcf:citekey order="13">mohle1999</bcf:citekey>
+    <bcf:citekey order="14">brown2021</bcf:citekey>
+    <bcf:citekey order="15">brown2021</bcf:citekey>
+    <bcf:citekey order="16">brown2021</bcf:citekey>
+    <bcf:citekey order="17">brown2021</bcf:citekey>
+    <bcf:citekey order="18">koskela2018</bcf:citekey>
+    <bcf:citekey order="19">koskela2018</bcf:citekey>
+    <bcf:citekey order="20">koskela2018</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nyt">

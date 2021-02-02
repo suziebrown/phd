@@ -1,23 +1,71 @@
 \documentclass[oneside]{scrbook} %%% remove oneside option for final hard copy
 \usepackage[onehalfspacing]{setspace} %%% remove this option for final copy
 
-%%% EDITING TOOLS
-%%% use this command to load only certain chapters during writing/editing process (cross-referencing with omitted chapters will still work):
-\includeonly{background}
+%%% see
+% https://warwick.ac.uk/services/dc/pgrassessments/gtehdr/presentation_th?
+% for guidelines on thesis formatting etc.
 
-%%% FORMATTING
-%%%Probably best to put formatting commands in a separate file. Consider changing: fonts, margins (must be at least 4cm at left and 1.5cm around edges), header/footer, references/citations, algorithms, captions, paragraph indents, chapter/equation numbering, ...
+%%% EDITING TOOLS
+%%% use this command to load only certain chapters during writing/editing process (cross-referencing with omitted chapters will still work, but it seems to break the ToC):
+%\includeonly{background, weakconv}
+
+%%% ANNOTATIONS
+\usepackage{color}
+\usepackage{xspace}
+\newcommand{\seb}[1]{\xspace\textcolor{red}{#1}\xspace}
+
+%%% GENERAL FORMATTING
+%%%Probably best to put formatting commands in a separate file. Consider changing: fonts, margins (must be at least 4cm at left and 1.5cm around edges), header/footer, references/citations, algorithms, captions, paragraph indents, chapter/equation numbering, ..
+\usepackage[a4paper, inner=4cm, outer=2cm, top=3cm, bottom=3cm]{geometry}
+\usepackage{graphicx}
+\usepackage{tikz}
+%%% add user-defined colours here: I'm using <gray!20> and <gray> in the weak conv graph e.g.
+\usepackage{enumitem}
+\usepackage[nobreak]{mdframed} % The nobreak option should probably be set locally in the final document, since breaks may be required in longer theorems.
+\renewcommand{\sfdefault}{put} % this isn't actually a sans font, so might be better to use something like phv (helvetica), but I rather like this font for headings.
+
+%%% EPIGRAPHS
 \usepackage{epigraph}
 \setlength{\epigraphwidth}{0.6\linewidth}
 \renewcommand{\textflush}{flushright} %%% default is flushleft, not sure which looks better
+
+%%% CUSTOM HEAD/FOOT
+%\usepackage{fancyhdr}
+%\pagestyle{fancy}
+%\renewcommand{\headrulewidth}{0pt}
+%\fancyhf{}
+%\rfoot{\textsf{\thepage}}
+%\lfoot{\textsf{Suzie Brown}}
 
 %%% BIBLIOGRAPHY
 \usepackage[style=authoryear, sorting=nyt, backend=biber]{biblatex} %%% use \cite, \textcite and \parencite commands in text
 \addbibresource{../latex/smc.bib}
 
 %%% MATHS PACKAGES
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[mathscr]{euscript}
+\usepackage{bbm}
 
-%%% USER-DEFINED MACROS
+%%% MATHS ENVIRONMENTS
+\newmdtheoremenv[backgroundcolor=gray!20, linewidth=0pt]{theorem}{Theorem}[chapter]
+\newmdtheoremenv[backgroundcolor=gray!20, linewidth=0pt]{lemma}{Lemma}[chapter]
+\renewcommand{\qedsymbol}{$\blacksquare$}
+%\allowdisplaybreaks
+
+%%% MATHS COMMANDS
+\newcommand{\Prob}{\mathbb{P}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Et}{\mathbb{E}_t}
+\newcommand{\V}{\operatorname{Var}}
+\newcommand{\I}[1]{\mathbbm{1}_{\{#1\}}}
+\newcommand{\1}[1]{\mathbbm{1}_{#1}}
+\newcommand{\Mn}{\operatorname{Multinomial}}
+
+%%% HYPERLINKS (must load last)
+\usepackage{hyperref}
+
 
 
 \begin{document}
@@ -37,7 +85,7 @@ A thesis submitted for the degree of\\Doctor of Philosophy in Statistics \par
 \vspace{1.5cm}
 University of Warwick, Department of Statistics \par
 \vspace{1.5cm}
-Janurary 2021 %%% update submission date (month year)
+January 2021 %%% update submission date (month year)
 \end{large}
 \end{titlepage}
 
@@ -47,6 +95,7 @@ Janurary 2021 %%% update submission date (month year)
 \tableofcontents
 \listoffigures
 \listoftables
+
 \chapter{Acknowledgements}
 I would like to thank... %%% supervisors, funding body, people who helped me with research, other people who supported me
 \vspace*{3cm}
@@ -62,11 +111,22 @@ The work presented (including data generated and data analysis) was carried out 
 Parts of this thesis have been published by the author:
 %%% List of publications including submitted papers.
 
-\chapter{Abstract} %%% remove the "Abstract" title?
+\chapter[Abstract]{} %%% remove the "Abstract" title once done
 
 %%% The abstract must be no more than 300 words and may be single-spaced to ensure it fits on one page.
 
 %%% A list of acronyms must be placed either here or at the end of the thesis, and its location indicated in the ToC.
+
+\chapter[Notation]{Notation and conventions}
+\begin{tabular}{p{0.1\textwidth} p{0.8\textwidth}}
+$\mathbb{N}$ & the natural numbers starting from 1, $\{1,2,\dots \}$ \\
+$[a]$ & the set $\{1,2,\dots,a\}$ where $a\in\mathbb{N}$ \\
+$(a)_b$ & the falling factorial $a (a-1) \cdots (a-b+1)$ 
+    where $a,b \in \mathbb{N}$ \\
+$\prod_{\emptyset}$ & the empty product is taken to be $1$\\
+$\sum_{\emptyset}$ & the empty sum is taken to be $0$, while the sum over
+     an index vector of length zero is the identity operator \seb{?}
+\end{tabular}
 
 
 \mainmatter
@@ -77,10 +137,10 @@ Parts of this thesis have been published by the author:
 
 \include{introduction}
 \include{background}
-%\include{limits}
-%\include{csmc}
-%\include{weakconv}
-%\include{discussion}
+\include{limits}
+\include{csmc}
+\include{weakconv}
+\include{discussion}
 
 
 \backmatter
