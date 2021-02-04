@@ -1,25 +1,71 @@
 \boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\nonumberline Acknowledgements}{iv}{chapter*.4}
+\contentsline {chapter}{\nonumberline Acknowledgements}{v}{chapter*.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\nonumberline Abstract}{v}{chapter*.5}
+\contentsline {chapter}{\nonumberline Abstract}{vi}{chapter*.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\nonumberline Notation}{vi}{chapter*.6}
+\contentsline {chapter}{\nonumberline Notation}{vii}{chapter*.6}
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {2}Background}{2}{chapter.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.1}State space models}{2}{section.2.1}
+\contentsline {section}{\numberline {2.1}Sequential Monte Carlo}{2}{section.2.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.2}Sequential Monte Carlo}{2}{section.2.2}
+\contentsline {subsection}{\numberline {2.1.1}Motivation}{2}{subsection.2.1.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.3}Coalescent theory}{2}{section.2.3}
+\contentsline {subsection}{\numberline {2.1.2}Inference in SSMs}{2}{subsection.2.1.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.4}SMC genealogies \& ancestral degeneracy}{2}{section.2.4}
+\contentsline {subsection}{\numberline {2.1.3}Exact solutions}{2}{subsection.2.1.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.5}Resampling}{3}{section.2.5}
+\contentsline {subsection}{\numberline {2.1.4}Feynman-Kac models}{2}{subsection.2.1.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.6}Conditional SMC \& particle MCMC}{3}{section.2.6}
+\contentsline {subsection}{\numberline {2.1.5}Sequential Monte Carlo for Feynman-Kac models}{2}{subsection.2.1.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {3}Weak Convergence}{4}{chapter.3}
+\contentsline {subsection}{\numberline {2.1.6}Theoretical justification}{2}{subsection.2.1.6}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.2}Coalescent theory}{3}{section.2.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.2.1}Kingman's coalescent}{3}{subsection.2.2.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.2.2}Properties}{3}{subsection.2.2.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.2.3}Models in population genetics}{3}{subsection.2.2.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.2.4}Particle populations}{3}{subsection.2.2.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.3}Sequential Monte Carlo genealogies}{3}{section.2.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.3.1}From particles to genealogies}{3}{subsection.2.3.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.3.2}Performance}{3}{subsection.2.3.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.3.3}Mitigating ancestral degeneracy}{3}{subsection.2.3.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.3.4}Asymptotics}{3}{subsection.2.3.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.4}Resampling}{4}{section.2.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.4.1}Definition}{4}{subsection.2.4.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.4.2}What makes a good resampling scheme?}{4}{subsection.2.4.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.4.3}Examples}{4}{subsection.2.4.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.4.4}Stochastic rounding}{4}{subsection.2.4.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.5}Conditional SMC}{4}{section.2.5}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.5.1}Particle MCMC}{4}{subsection.2.5.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.5.2}Particle Gibbs algorithm}{4}{subsection.2.5.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.5.3}Ancestor sampling}{4}{subsection.2.5.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {3}Limits}{5}{chapter.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {4}Conditional SMC}{6}{chapter.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {5}Weak Convergence}{7}{chapter.5}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {6}Discussion}{37}{chapter.6}

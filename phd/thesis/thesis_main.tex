@@ -27,15 +27,9 @@
 %%% EPIGRAPHS
 \usepackage{epigraph}
 \setlength{\epigraphwidth}{0.6\linewidth}
+\setlength{\beforeepigraphskip}{1.5\baselineskip}
+\setlength{\afterepigraphskip}{3.5\baselineskip}
 \renewcommand{\textflush}{flushright} %%% default is flushleft, not sure which looks better
-
-%%% CUSTOM HEAD/FOOT
-%\usepackage{fancyhdr}
-%\pagestyle{fancy}
-%\renewcommand{\headrulewidth}{0pt}
-%\fancyhf{}
-%\rfoot{\textsf{\thepage}}
-%\lfoot{\textsf{Suzie Brown}}
 
 %%% BIBLIOGRAPHY
 \usepackage[style=authoryear, sorting=nyt, backend=biber]{biblatex} %%% use \cite, \textcite and \parencite commands in text
@@ -50,6 +44,7 @@
 
 %%% MATHS ENVIRONMENTS
 \newmdtheoremenv[backgroundcolor=gray!20, linewidth=0pt]{theorem}{Theorem}[chapter]
+\newmdtheoremenv[backgroundcolor=gray!20, linewidth=0pt]{prop}{Proposition}[chapter]
 \newmdtheoremenv[backgroundcolor=gray!20, linewidth=0pt]{lemma}{Lemma}[chapter]
 \renewcommand{\qedsymbol}{$\blacksquare$}
 %\allowdisplaybreaks
@@ -103,7 +98,7 @@ I would like to thank... %%% supervisors, funding body, people who helped me wit
 %%% Edit the declaration as appropriate:
 %%% Add a section title above the declaration?
 
-This thesis is submitted to the University of Warwick in support of my application for the degree of Doctor of Philosophy. It has been composed by myself and has not been submitted in any previous application for any degree %%% (if parts previously used add:) apart from the background material in sections XXX which was previously submitted for YYY degree.
+This thesis is submitted to the University of Warwick in support of my application for the degree of Doctor of Philosophy. It has been composed by myself and has not been submitted in any previous application for any degree. %%% (if parts previously used add:) apart from the background material in sections XXX which was previously submitted for YYY degree.
 \\[5pt]
 The work presented (including data generated and data analysis) was carried out by the author except in the cases outlined below:
 %%% List of data provided and/or analysis carried out by collaborators.
@@ -138,7 +133,7 @@ $\sum_{\emptyset}$ & the empty sum is taken to be $0$, while the sum over
 \include{introduction}
 \include{background}
 \include{limits}
-\include{csmc}
+\include{csmc} %%% should this really have its own chapter?
 \include{weakconv}
 \include{discussion}
 

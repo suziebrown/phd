@@ -70,6 +70,39 @@
       \verb 10.1214/20-EJP561
       \endverb
     \endentry
+    \entry{ethier1986}{book}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,uniquepart=base,hash=a45f2eb8285ae9ba8a91156b575327cd}{%
+           family={Ethier},
+           familyi={E\bibinitperiod},
+           given={Stewart\bibnamedelima N.},
+           giveni={S\bibinitperiod\bibinitdelim N\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=5e35655c3b358ba169619d83bfbdb38e}{%
+           family={Kurtz},
+           familyi={K\bibinitperiod},
+           given={Thomas\bibnamedelima G.},
+           giveni={T\bibinitperiod\bibinitdelim G\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {John Wiley \& Sons}%
+      }
+      \strng{namehash}{643c59d13c6db724b5feafdea6777f7f}
+      \strng{fullhash}{643c59d13c6db724b5feafdea6777f7f}
+      \strng{bibnamehash}{643c59d13c6db724b5feafdea6777f7f}
+      \strng{authorbibnamehash}{643c59d13c6db724b5feafdea6777f7f}
+      \strng{authornamehash}{643c59d13c6db724b5feafdea6777f7f}
+      \strng{authorfullhash}{643c59d13c6db724b5feafdea6777f7f}
+      \field{sortinit}{E}
+      \field{sortinithash}{f615fb9c6fba11c6f962fb3fd599810e}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Markov Processes: Characterization and Convergence}
+      \field{year}{2009}
+    \endentry
     \entry{koskela2018}{report}{}
       \name{author}{4}{}{%
         {{uniquename=0,uniquepart=base,hash=9b74b02c1ef5fc6fd3d8f21b8ce9be68}{%

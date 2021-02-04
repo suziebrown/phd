@@ -3,10 +3,33 @@
 \BOOKMARK [0][-]{chapter*.6}{Notation}{}% 3
 \BOOKMARK [0][-]{chapter.1}{Introduction}{}% 4
 \BOOKMARK [0][-]{chapter.2}{Background}{}% 5
-\BOOKMARK [1][-]{section.2.1}{State space models}{chapter.2}% 6
-\BOOKMARK [1][-]{section.2.2}{Sequential Monte Carlo}{chapter.2}% 7
-\BOOKMARK [1][-]{section.2.3}{Coalescent theory}{chapter.2}% 8
-\BOOKMARK [1][-]{section.2.4}{SMC genealogies \046 ancestral degeneracy}{chapter.2}% 9
-\BOOKMARK [1][-]{section.2.5}{Resampling}{chapter.2}% 10
-\BOOKMARK [1][-]{section.2.6}{Conditional SMC \046 particle MCMC}{chapter.2}% 11
-\BOOKMARK [0][-]{chapter.3}{Weak Convergence}{}% 12
+\BOOKMARK [1][-]{section.2.1}{Sequential Monte Carlo}{chapter.2}% 6
+\BOOKMARK [2][-]{subsection.2.1.1}{Motivation}{section.2.1}% 7
+\BOOKMARK [2][-]{subsection.2.1.2}{Inference in SSMs}{section.2.1}% 8
+\BOOKMARK [2][-]{subsection.2.1.3}{Exact solutions}{section.2.1}% 9
+\BOOKMARK [2][-]{subsection.2.1.4}{Feynman-Kac models}{section.2.1}% 10
+\BOOKMARK [2][-]{subsection.2.1.5}{Sequential Monte Carlo for Feynman-Kac models}{section.2.1}% 11
+\BOOKMARK [2][-]{subsection.2.1.6}{Theoretical justification}{section.2.1}% 12
+\BOOKMARK [1][-]{section.2.2}{Coalescent theory}{chapter.2}% 13
+\BOOKMARK [2][-]{subsection.2.2.1}{Kingman's coalescent}{section.2.2}% 14
+\BOOKMARK [2][-]{subsection.2.2.2}{Properties}{section.2.2}% 15
+\BOOKMARK [2][-]{subsection.2.2.3}{Models in population genetics}{section.2.2}% 16
+\BOOKMARK [2][-]{subsection.2.2.4}{Particle populations}{section.2.2}% 17
+\BOOKMARK [1][-]{section.2.3}{Sequential Monte Carlo genealogies}{chapter.2}% 18
+\BOOKMARK [2][-]{subsection.2.3.1}{From particles to genealogies}{section.2.3}% 19
+\BOOKMARK [2][-]{subsection.2.3.2}{Performance}{section.2.3}% 20
+\BOOKMARK [2][-]{subsection.2.3.3}{Mitigating ancestral degeneracy}{section.2.3}% 21
+\BOOKMARK [2][-]{subsection.2.3.4}{Asymptotics}{section.2.3}% 22
+\BOOKMARK [1][-]{section.2.4}{Resampling}{chapter.2}% 23
+\BOOKMARK [2][-]{subsection.2.4.1}{Definition}{section.2.4}% 24
+\BOOKMARK [2][-]{subsection.2.4.2}{What makes a good resampling scheme?}{section.2.4}% 25
+\BOOKMARK [2][-]{subsection.2.4.3}{Examples}{section.2.4}% 26
+\BOOKMARK [2][-]{subsection.2.4.4}{Stochastic rounding}{section.2.4}% 27
+\BOOKMARK [1][-]{section.2.5}{Conditional SMC}{chapter.2}% 28
+\BOOKMARK [2][-]{subsection.2.5.1}{Particle MCMC}{section.2.5}% 29
+\BOOKMARK [2][-]{subsection.2.5.2}{Particle Gibbs algorithm}{section.2.5}% 30
+\BOOKMARK [2][-]{subsection.2.5.3}{Ancestor sampling}{section.2.5}% 31
+\BOOKMARK [0][-]{chapter.3}{Limits}{}% 32
+\BOOKMARK [0][-]{chapter.4}{Conditional SMC}{}% 33
+\BOOKMARK [0][-]{chapter.5}{Weak Convergence}{}% 34
+\BOOKMARK [0][-]{chapter.6}{Discussion}{}% 35
