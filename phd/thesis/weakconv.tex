@@ -1,10 +1,11 @@
 \chapter{Weak Convergence}
 
-%\epigraph{
-%At the age of twenty-one he wrote a treatise upon the Binomial Theorem, which has had a European vogue. On the strength of it he won the Mathematical Chair at one of our smaller universities, and had, to all appearances, a most brilliant career before him.
-%}
-%{\textsc{Sherlock Holmes}} %\\The Final Problem
+\epigraph{
+At the age of twenty-one he wrote a treatise upon the Binomial Theorem, which has had a European vogue. On the strength of it he won the Mathematical Chair at one of our smaller universities, and had, to all appearances, a most brilliant career before him.
+}
+{\textsc{Sherlock Holmes}} %\\The Final Problem
 
+We start by defining a suitable metric space.
 Let $\mathcal{P}_n$ be the space of partitions of $\{1,\dots,n\}$.
 Denote by $\mathcal{X}$ the set of all functions mapping $[0,\infty)$ to $\mathcal{P}_n$ that are right-continuous with left limits.
 (Our rescaled genealogical process $(\mathcal{G}^{(n,N)}_{\tau_N(t)})_{t\geq0}$ and our encoding of the $n$-coalescent are piecewise-constant functions mapping time $t\in[0,\infty)$ to partitions, and thus live in the space $\mathcal{X}$.)
@@ -32,12 +33,40 @@ to Kingman's $n$-coalescent as $N \to \infty$.
 
 \begin{proof}
 The structure of the proof follows \textcite{mohle1999}, albeit with considerable technical complication due to the lack of independence between generations (non-neutrality) in our model. \seb{is this the main/only source of complication?}
-Since we already have convergence of the finite-dimensional distributions (Theorem ??), strengthening this to weak convergence requires relative compactness of the family of processes $\{ (G_{\tau_N(t)}^{(n,N)})_{t\geq0} \}_{N\in\mathbb{N}}$.
+Since we already have convergence of the finite-dimensional distributions (Theorem ?? \seb{refers to a previous chapter}), strengthening this to weak convergence requires relative compactness of the sequence of processes $\{ (G_{\tau_N(t)}^{(n,N)})_{t\geq0} \}_{N\in\mathbb{N}}$.
 
-...
+We can apply \textcite[Chapter 3, Corollary 7.4]{ethier1986}: $\mathcal{P}_n$ is finite and therefore complete and separable, and the sample paths of $(G_{\tau_N(t)}^{(n,N)})_{t\geq0}$ live in $\mathcal{X}$, so the conditions of the corollary are satisfied.
+The corollary states that the sequence of processes $\{ (G_{\tau_N(t)}^{(n,N)})_{t\geq0} \}_{N\in\mathbb{N}}$ is relatively compact if and only if the following two conditions hold:
+\begin{enumerate}
+\item \label{item:relcomp1} For every $\varepsilon>0$, $t\geq 0$ there exists a compact set $\Gamma \subseteq \mathcal{P}_n$ such that
+\begin{equation}
+\liminf_{N\to\infty} \Prob[ G_{\tau_N(t)}^{(n,N)} \in \Gamma ] 
+\geq 1-\varepsilon
+\end{equation}
+\item \label{item:relcomp2} For every $\varepsilon>0$, $t>0$ there exists $\delta>0$ such that
+\begin{equation}
+\liminf_{N\to\infty} \Prob[ \omega(G_{\tau_N(\cdot)}^{(n,N)}, \delta, t) < \varepsilon ] 
+\geq 1-\varepsilon
+\end{equation}
+where 
+\begin{equation}
+\omega(G_{\tau_N(t)}^{(n,N)}, \delta, t) := \inf \max_{i \in [K]} 
+        \sup_{u,v \in [T_{i-1}, T_i)} \rho( G_{\tau_N(u)}^{(n,N)}, G_{\tau_N(v)}^{(n,N)} )
+\end{equation}
+with the infimum taken over all partitions of the form $0=T_0<T_1<\cdots <T_{K-1} <t \leq T_K$ such that $\min_{i\in[K]} (T_i - T_{i-1}) > \delta$. \seb{use a different letter not $K$?}
+\end{enumerate}
+In our case, Condition \ref{item:relcomp1} is satisfied automatically with $\Gamma = \mathcal{P}_n$, since $\mathcal{P}_n$ is finite and hence compact. 
+The intuition behind condition \ref{item:relcomp2} is that the jumps of the process must be ``well-separated''. 
+In our particluar case where $\rho$ is the zero-one metric, we see that $\rho( G_{\tau_N(u)}^{(n,N)}, G_{\tau_N(v)}^{(n,N)} )$ is equal to 1 if there is a jump between times $u$ and $v$, and 0 otherwise. 
+The supremum over $u,v$ then indicates whether there is a jump at any time in the interval $[T_i, T_{i-1})$. 
+Similarly, the maximum over $i$ then indicates whether there is a jump within any of the intervals defined by that particular partition; this can only be equal to zero if all of the jumps occur exactly at the times $T_0, \dots, T_k$. 
+The infimum over all allowed partitions, then, can only be equal to zero if no two jumps occur less than $\delta$ (unscaled) time apart, because of the restriction we placed on these partitions.
+
+The proof is concentrated on proving Condition \ref{item:relcomp2}.
+To do this, we use a coupling with another process that contains all of the jumps of the genealogical process, with the addition of some extra jumps. This process is constructed in such a way that it can be shown to satisfy Condition 2, and hence so does the genealogical process.
 
 Define $p_t := \max_{\xi\in E} \{1 - p_{\xi\xi}(t)\} = 1 - p_{\Delta\Delta}(t)$, where $\Delta$ denotes the trivial partition of $\{1,\dots,n\}$ into singletons. For a proof that the maximum is attained at $\xi = \Delta$, see Lemma \ref{thm:maximum_pr}. 
-Following \textcite{mohle1999}, we now construct the two-dimensional Markov process $(Z_t, S_t)_{t \in \mathbb{N}}$ with transition probabilities
+Following \textcite{mohle1999}, we now construct the two-dimensional \seb{conditionally on $\mathcal{F}$ ?} Markov process $(Z_t, S_t)_{t \in \mathbb{N}}$ with transition probabilities
 \begin{equation}
 \Prob(Z_t = j , S_t = \eta \mid Z_{t-1} = i, S_{t-1} = \xi)
 = \begin{cases}
@@ -46,10 +75,10 @@ p_{\xi\xi}(t) + p_t - 1  &\quad \text{if } j=i+1 \text{ and } \xi=\eta \\
 p_{\xi\eta}(t) &\quad \text{if } j=i+1 \text{ and } \xi\neq\eta \\
 0 &\quad \text{otherwise} .
 \end{cases}
-\end{equation}
+\end{equation}\seb{initial state?}
 The construction is such that the marginal $(S_t)$ has the same distribution as the genealogical process of interest, and $(Z_t)$ has jumps at all the times $(S_t)$ does plus some extra jumps. (The definition of $p_t$ ensures that the probability in the second case is non-negative, attaining the value zero when $\xi=\Delta$.)
 
-Denote by $0=T_0^{(N)}<T_1^{(N)}<\dots$ the jump times of the rescaled process $(Z_{\tau_N(t)})_{t\geq0}$, and $\omega_i^{(N)} := T_i^{(N)} - T_{i-1}^{(N)}$ the corresponding holding times ($i\in\mathbb{N}$).
+Denote by $0=T_0^{(N)}<T_1^{(N)}<\dots$ the jump times of the rescaled process $(Z_{\tau_N(t)})_{t\geq0}$, and by $\varpi_i^{(N)} := T_i^{(N)} - T_{i-1}^{(N)}$ the corresponding holding times.
 
 ...
 \end{proof}
