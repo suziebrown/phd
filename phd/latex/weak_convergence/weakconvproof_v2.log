@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  2 FEB 2021 11:59
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  2 FEB 2021 14:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1114,9 +1114,6 @@ Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1515.
 
 Package rerunfilecheck Info: File `weakconvproof_v2.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
  ) 
 Here is how much of TeX's memory you used:
  26671 strings out of 492649
@@ -1147,7 +1144,7 @@ exlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/tex
 live/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texl
 ive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/
 texlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on weakconvproof_v2.pdf (20 pages, 296369 bytes).
+Output written on weakconvproof_v2.pdf (20 pages, 296353 bytes).
 PDF statistics:
  430 PDF objects out of 1000 (max. 8388607)
  383 compressed objects within 4 object streams
