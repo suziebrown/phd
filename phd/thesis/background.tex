@@ -6,25 +6,80 @@ Anyone who considers arithmetical methods of producing random digits is, of cour
 % For, as has been pointed out several times, there is no such thing as a random number --- there are only methods to produce random numbers, and a strict arithmetic procedure of course is not such a method.
 {\textsc{John von Neumann}}
 
-\section{State space models}
-[Introduction of state space models: target tracking example (1D train); modelling assumptions for this example; why Bayesian?
-Scenarios where model is tractable: Kalman filter, extended KF, etc.
-Brief discussion of scope of SMC beyond SSMs.]
 
 \section{Sequential Monte Carlo}
-[Motivation in context of SSMs (IS, SIS, SIR). Generic SMC algorithm (possibly introduce bootstrap PF first). Discussion of each step.
-Theoretical justifications for SMC (e.g. convergence results).]
+
+\subsection{Motivation}
+Being Bayesian. SSMs/HMMs. Example(s) of SSM (1D train?).
+
+\subsection{Inference in SSMs}
+What quantities do we want to infer? Why is this generally difficult? Filtering, prediction, smoothing, likelihood/normalising constant.
+
+\subsection{Exact solutions}
+Which SSMs are tractable? Kalman filter, extended KF, unscented KF, other conjugate models.
+
+\subsection{Feynman-Kac models}
+Define a generic FK model. Show that this class includes all SSMs. Example of non-SSM that is FK?
+
+\subsection{Sequential Monte Carlo for Feynman-Kac models}
+Present generic algorithm. State the SMC estimators of the quantities of interest.
+
+\subsection{Theoretical justification}
+How come SMC works? Convergence results (briefly!) e.g. CLT.
+
 
 \section{Coalescent theory}
-[Review of literature from population genetics, introducing the relevant population models (Wright--Fisher, Moran, Cannings) and Kingman's coalescent / $n$-coalescent. Domain of attraction of Kingman's coalescent, as far as previous works have shown. Properties of such models (neutrality, Markov property) that may be violated by SMC systems.]
 
-\section{SMC genealogies \& ancestral degeneracy}
-[Description of how genealogies are induced by SMC algorithms and how this is related to the performance of the algorithms (ancestral degeneracy, variance estimation, storage cost). Existing results characterising these genealogies.\\
-Ways to mitigate ancestral degeneracy (low-variance resampling, adaptive resampling, backward sampling).]
+\subsection{Kingman's coalescent}
+Define the $n$-coalescent, and Kingman's coalescent as extension of it. (Do I need to introduce random partitions first?)
 
-\section{Resampling} 
-[Definition of a `valid' resampling scheme and justification for these restrictions. Tour of key resampling schemes (multinomial, residual, stratified, systematic, ...), with discussion of their properties, implementation and usage in practice. Idea of `optimality' in resampling, description of so-called optimal schemes. Existing results and conjectures comparing the performance of different schemes. Introduction of stochastic rounding as a class of resampling schemes. Adaptive resampling.\\
-Examples and discussion of resampling schemes that violate the three properies; optimal transport resampling, along with the others I mentioned in previous writings.]
+\subsection{Properties}
+Properties of Kingman's coalescent / $n$-coalescent. Distributions of branch length, waiting times, time to MRCA.
 
-\section{Conditional SMC \& particle MCMC}
-Motivation and definition of particle Gibbs algorithm, and how CSMC crops up in it. Ancestor sampling.
+\subsection{Models in population genetics}
+Talk about KC's ``domain of attraction''. Introduce Wright-Fisher model, Moran model, Cannings models.
+
+\subsection{Particle populations}
+Particles = individuals, iterations = generations. In what ways is SMC like a population model? (constant population size, non-overlapping generations, discrete time). In what ways is SMC not like a population model? (non-neutral, non-Markov?)
+
+
+\section{Sequential Monte Carlo genealogies}
+
+\subsection{From particles to genealogies}
+How does the SMC algorithm induce a genealogy? (resampling = parent-child relationship). 
+
+\subsection{Performance}
+How do genealogies affect performance? Variance (and variance estimation?), storage cost. Ancestral degeneracy.
+
+\subsection{Mitigating ancestral degeneracy}
+Low-variance resampling (save details for next section). Adaptive resampling: idea of balancing weight/ancestral degeneracy; rule of thumb for implementing it; when is it effective or not?; necessary changes to our generic SMC algorithm (calculation of weights in particular). Backward sampling: when is it possible to do this?
+
+\subsection{Asymptotics}
+Why are large population asymptotics useful? Existing results (path storage, KJJS).
+
+
+\section{Resampling}
+
+\subsection{Definition}
+The job of resampling (map weights to counts). Define ``valid'' resampling schemes (the three rules). Counter-examples where these rules are violated (the examples I've mentioned in previous writings, plus optimal transport resampling and that one FC told me about recently).
+
+\subsection{What makes a good resampling scheme?}
+Low-variance: variance of what? Different criteria/ definitions of optimality. Negative association. Link back to adaptive resampling: interaction between adaptive and low-variance resampling.
+
+\subsection{Examples}
+Tour of the key resampling schemes (multinomial, residual-*, stratified, systematic). Comparicon of properties of these, existing results comparing schemes. Implementation considerations. Theoretical justification (or lack of).
+
+\subsection{Stochastic rounding}
+Define stochastic rounding. Resampling schemes contained by this class. General properties for this class (marginal distributions, negative association, minimum-variance).
+
+
+\section{Conditional SMC}
+
+\subsection{Particle MCMC}
+Motivate particle MCMC methods. 
+
+\subsection{Particle Gibbs algorithm}
+Present particle Gibbs algorithm. Explain why CSMC is required within particle Gibbs.
+
+\subsection{Ancestor sampling}
+Algorithm (or required changes to generic algorithm). Relation to backward sampling. When can it be implemented? Effect on performance (when is it effective?).
