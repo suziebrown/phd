@@ -66,16 +66,17 @@ The proof is concentrated on proving Condition \ref{item:relcomp2}.
 To do this, we use a coupling with another process that contains all of the jumps of the genealogical process, with the addition of some extra jumps. This process is constructed in such a way that it can be shown to satisfy Condition 2, and hence so does the genealogical process.
 
 Define $p_t := \max_{\xi\in E} \{1 - p_{\xi\xi}(t)\} = 1 - p_{\Delta\Delta}(t)$, where $\Delta$ denotes the trivial partition of $\{1,\dots,n\}$ into singletons. For a proof that the maximum is attained at $\xi = \Delta$, see Lemma \ref{thm:maximum_pr}. 
-Following \textcite{mohle1999}, we now construct the two-dimensional \seb{conditionally on $\mathcal{F}$ ?} Markov process $(Z_t, S_t)_{t \in \mathbb{N}}$ with transition probabilities
+Following \textcite{mohle1999}, we now construct the two-dimensional \seb{conditionally on $\mathcal{F}$ ?} Markov process $(Z_t, S_t)_{t \in \mathbb{N}_0}$ with transition probabilities
 \begin{equation}
 \Prob(Z_t = j , S_t = \eta \mid Z_{t-1} = i, S_{t-1} = \xi)
 = \begin{cases}
 1 - p_t &\quad \text{if } j=i \text{ and } \xi=\eta \\
 p_{\xi\xi}(t) + p_t - 1  &\quad \text{if } j=i+1 \text{ and } \xi=\eta \\
 p_{\xi\eta}(t) &\quad \text{if } j=i+1 \text{ and } \xi\neq\eta \\
-0 &\quad \text{otherwise} .
+0 &\quad \text{otherwise} 
 \end{cases}
-\end{equation}\seb{initial state?}
+\end{equation}
+and initial state $Z_0=0$, $S_0 = \Delta$.
 The construction is such that the marginal $(S_t)$ has the same distribution as the genealogical process of interest, and $(Z_t)$ has jumps at all the times $(S_t)$ does plus some extra jumps. (The definition of $p_t$ ensures that the probability in the second case is non-negative, attaining the value zero when $\xi=\Delta$.)
 
 Denote by $0=T_0^{(N)}<T_1^{(N)}<\dots$ the jump times of the rescaled process $(Z_{\tau_N(t)})_{t\geq0}$, and by $\varpi_i^{(N)} := T_i^{(N)} - T_{i-1}^{(N)}$ the corresponding holding times.
@@ -84,7 +85,7 @@ Denote by $0=T_0^{(N)}<T_1^{(N)}<\dots$ the jump times of the rescaled process $
 \end{proof}
 
 
-\section*{Bounds on sum-products}
+\section{Bounds on sum-products}
 
 \begin{lemma}\label{thm:sumprod1}
 Fix $t>0$, $l\in\mathbb{N}$.
@@ -255,7 +256,7 @@ which concludes the proof.
 \end{proof}
 
 
-\section*{Main components of weak convergence}
+\section{Main components of weak convergence}
 
 \begin{lemma}[Basis step]\label{thm:basis}
 For any $0 < t < \infty$,
@@ -1097,7 +1098,7 @@ We have shown that the upper and lower bounds coincide, so the result follows.
 \end{proof}
 
 
-\section*{Indicators}
+\section{Indicators}
 
 \begin{lemma}\label{thm:indicators_cN}
 Let $K$ be a constant which may depend on $n, N$ but not on $r$, such that $K^{-2} = O(1)$ as $N\to\infty$.
@@ -1318,7 +1319,7 @@ Substituting this back into \eqref{eq:050} concludes the proof.
 \end{proof}
 
 
-\section*{Other useful results}
+\section{Other useful results}
 
 \begin{lemma}\label{thm:maximum_pr}
 $\max_{\xi\in E} (1 - p_{\xi\xi}(t)) = 1 - p_{\Delta\Delta}(t)$.

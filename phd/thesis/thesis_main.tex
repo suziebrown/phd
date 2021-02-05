@@ -32,7 +32,7 @@
 \renewcommand{\textflush}{flushright} %%% default is flushleft, not sure which looks better
 
 %%% BIBLIOGRAPHY
-\usepackage[style=authoryear, sorting=nyt, backend=biber]{biblatex} %%% use \cite, \textcite and \parencite commands in text
+\usepackage[citestyle=authoryear, sorting=nyt, backend=biber]{biblatex} %%% use \cite, \textcite and \parencite commands in text
 \addbibresource{../latex/smc.bib}
 
 %%% MATHS PACKAGES
@@ -46,6 +46,8 @@
 \newmdtheoremenv[backgroundcolor=gray!20, linewidth=0pt]{theorem}{Theorem}[chapter]
 \newmdtheoremenv[backgroundcolor=gray!20, linewidth=0pt]{prop}{Proposition}[chapter]
 \newmdtheoremenv[backgroundcolor=gray!20, linewidth=0pt]{lemma}{Lemma}[chapter]
+\theoremstyle{definition}
+\newmdtheoremenv[backgroundcolor=gray!20, linewidth=0pt]{defn}{Definition}[chapter]
 \renewcommand{\qedsymbol}{$\blacksquare$}
 %\allowdisplaybreaks
 
@@ -114,7 +116,8 @@ Parts of this thesis have been published by the author:
 
 \chapter[Notation]{Notation and conventions}
 \begin{tabular}{p{0.1\textwidth} p{0.8\textwidth}}
-$\mathbb{N}$ & the natural numbers starting from 1, $\{1,2,\dots \}$ \\
+$\mathbb{N}$ & the natural numbers starting from one, $\{1,2,\dots \}$ \\
+$\mathbb{N}_0$ & the natural numbers starting from zero, $\{0,1,2,\dots \}$ \\
 $[a]$ & the set $\{1,2,\dots,a\}$ where $a\in\mathbb{N}$ \\
 $(a)_b$ & the falling factorial $a (a-1) \cdots (a-b+1)$ 
     where $a,b \in \mathbb{N}$ \\
@@ -133,7 +136,7 @@ $\sum_{\emptyset}$ & the empty sum is taken to be $0$, while the sum over
 \include{introduction}
 \include{background}
 \include{limits}
-\include{csmc} %%% should this really have its own chapter?
+\include{applications}
 \include{weakconv}
 \include{discussion}
 

@@ -22,7 +22,7 @@ Which SSMs are tractable? Kalman filter, extended KF, unscented KF, other conjug
 Define a generic FK model. Show that this class includes all SSMs. Example of non-SSM that is FK?
 
 \subsection{Sequential Monte Carlo for Feynman-Kac models}
-Present generic algorithm. State the SMC estimators of the quantities of interest.
+Present generic algorithm. State the SMC estimators of the quantities of interest. Include the dependence diagram and note that the offspring counts are not independent at each time, but can be made so by conditioning on the separatrix $\mathcal{H}$.
 
 \subsection{Theoretical justification}
 How come SMC works? Convergence results (briefly!) e.g. CLT.
@@ -34,7 +34,7 @@ How come SMC works? Convergence results (briefly!) e.g. CLT.
 Define the $n$-coalescent, and Kingman's coalescent as extension of it. (Do I need to introduce random partitions first?)
 
 \subsection{Properties}
-Properties of Kingman's coalescent / $n$-coalescent. Distributions of branch length, waiting times, time to MRCA.
+Properties of Kingman's coalescent / $n$-coalescent. Distributions of branch length, waiting times, time to MRCA. Coming down from infinity.
 
 \subsection{Models in population genetics}
 Talk about KC's ``domain of attraction''. Introduce Wright-Fisher model, Moran model, Cannings models.
@@ -67,7 +67,7 @@ The job of resampling (map weights to counts). Define ``valid'' resampling schem
 Low-variance: variance of what? Different criteria/ definitions of optimality. Negative association. Link back to adaptive resampling: interaction between adaptive and low-variance resampling.
 
 \subsection{Examples}
-Tour of the key resampling schemes (multinomial, residual-*, stratified, systematic). Comparicon of properties of these, existing results comparing schemes. Implementation considerations. Theoretical justification (or lack of).
+Tour of the key resampling schemes (multinomial, residual-*, stratified, systematic, and the worst possible scheme). Comparison of properties of these, existing results comparing schemes. Implementation considerations. Theoretical justification (or lack of).
 
 \subsection{Stochastic rounding}
 Define stochastic rounding. Resampling schemes contained by this class. General properties for this class (marginal distributions, negative association, minimum-variance).
