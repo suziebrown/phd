@@ -248,28 +248,33 @@ From \citet[Lemma 1 Case 1]{koskela2018}, taking $\xi=\Delta$, we have for each 
 where the $O(N^{-1})$ term does not depend on $r$.
 When $N$ is large enough, a sufficient condition to ensure the bound in \eqref{eq:018} is non-negative is the event
 \begin{equation}\label{eq:019b}
-E_r := \left\{ c_N(r) \leq \alpha_n^{-1} \right\}
+E_r := \left\{ c_N(r) \leq \alpha_n^{-1} \right\} .
 \end{equation}
-and we define $E := \bigcap_{r=1}^{\tau_N(t)} E_r$, so
+We will also need to control the sign of $c_N(r) - B_n^\prime D_N(r)$, for which we define the event
+\begin{equation}\label{eq:defn_Eprime}
+E_r^\prime := \left\{ c_N(r) \geq B_n^\prime D_N(r) \right\} ,
+\end{equation}
+and we define $E := \bigcap_{r=1}^{\tau_N(t)} E_r$ and $E^\prime := \bigcap_{r=1}^{\tau_N(t)} E_r^\prime$.
+Then
 \begin{equation}
 1-p_r
 = p_{\Delta\Delta}(r) \leq 1 - \alpha_n (1+O(N^{-1})) 
-        \left[ c_N(r) - B_n^\prime D_N(r) \right] \1{E} .
+        \left[ c_N(r) - B_n^\prime D_N(r) \right] \1{E \cap E^\prime} .
 \end{equation}
 Applying a multinomial expansion and then separating the positive and negative terms,
 \begin{align}
 \prod_{r=1}^{\tau_N(t)} (1-p_r)
 &\leq 1 + \sum_{l=1}^{\tau_N(t)} (- \alpha_n)^l (1+O(N^{-1})) 
         \frac{1}{l!} \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)}\prod_{j=1}^l
-        \left[ c_N(s_j) - B_n^\prime D_N(s_j) \right] \1{E} \notag\\
+        \left[ c_N(s_j) - B_n^\prime D_N(s_j) \right] \1{E \cap E^\prime}\notag\\
 &= 1 + \sum_{\substack{l=2 \\ \text{even} }}^{\tau_N(t)} 
         \alpha_n^l (1+O(N^{-1})) \frac{1}{l!} 
         \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)}\prod_{j=1}^l
-        \left[ c_N(s_j) - B_n^\prime D_N(s_j) \right] \1{E} \notag\\
+        \left[ c_N(s_j) - B_n^\prime D_N(s_j) \right] \1{E \cap E^\prime} \notag\\
     &\qquad- \sum_{\substack{l=1 \\ \text{odd} }}^{\tau_N(t)} 
         \alpha_n^l (1+O(N^{-1})) \frac{1}{l!} 
         \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)}\prod_{j=1}^l
-        \left[ c_N(s_j) - B_n^\prime D_N(s_j) \right] \1{E} .
+        \left[ c_N(s_j) - B_n^\prime D_N(s_j) \right] \1{E \cap E^\prime} .
         \label{eq:019}
 \end{align}
 This is further bounded by applying Lemma~\ref{thm:sumprod3} and then both bounds of Lemma~\ref{thm:sumprod1}:
@@ -283,7 +288,7 @@ This is further bounded by applying Lemma~\ref{thm:sumprod3} and then both bound
         \alpha_n^l (1+O(N^{-1})) \frac{1}{l!} 
         \left[ \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)}\prod_{j=1}^l c_N(s_j)
         - \left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right) 
-        (t+1)^{l-1} (1+B_n^\prime)^l \right] \Bigg\} \1{E} \notag\\
+        (t+1)^{l-1} (1+B_n^\prime)^l \right] \Bigg\} \1{E \cap E^\prime} \notag\\
 &\leq 1 + \Bigg\{ \sum_{\substack{l=2 \\ \text{even} }}^{\tau_N(t)} 
         \alpha_n^l (1+O(N^{-1})) \frac{1}{l!} 
         \left\{ t^l + c_N(\tau_N(t)) (t+1)^l \right\} \notag\\
@@ -292,13 +297,13 @@ This is further bounded by applying Lemma~\ref{thm:sumprod3} and then both bound
         \left[ t^l - \left( \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right) 
         \binom{l}{2} (t+1)^{l-2}
         - \left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right) 
-        (t+1)^{l-1} (1+B_n^\prime)^l \right] \Bigg\} \1{E} .
+        (t+1)^{l-1} (1+B_n^\prime)^l \right] \Bigg\} \1{E \cap E^\prime} .
 \end{align}
 Collecting some terms,
 \begin{align}
 \prod_{r=1}^{\tau_N(t)} (1-p_r)
 &\leq 1+ \sum_{l=1}^{\tau_N(t)} (-\alpha_n)^l (1+O(N^{-1})) \frac{1}{l!} t^l 
-        \1{E}
+        \1{E \cap E^\prime}
         + c_N(\tau_N(t)) \sum_{\substack{l=2 \\ \text{even} }}^{\tau_N(t)}
         \alpha_n^l (1+O(N^{-1})) \frac{1}{l!} (t+1)^l \notag\\
     &\qquad+ \left( \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right)
@@ -308,18 +313,18 @@ Collecting some terms,
         \sum_{\substack{l=1 \\ \text{odd} }}^{\tau_N(t)} \alpha_n^l
         (1+O(N^{-1})) \frac{1}{l!} (t+1)^{l-1} (1+B_n^\prime)^l \notag\\
 &\leq 1+ \sum_{l=1}^{\infty} (-\alpha_n)^l (1+O(N^{-1})) \frac{1}{l!} t^l
-        \I{\tau_N(t) \geq l} \1{E}
+        \I{\tau_N(t) \geq l} \1{E \cap E^\prime}
         + c_N(\tau_N(t)) \exp[ \alpha_n (1+O(N^{-1})) (t+1) ] \notag\\
     &\qquad+ \left( \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right)
         \frac{1}{2} \alpha_n^2 \exp[ \alpha_n (1+O(N^{-1})) (t+1) ] \notag\\
     &\qquad+ \left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right)
         \exp[ \alpha_n (1+O(N^{-1})) (t+1) (1+B_n^\prime) ] . \label{eq:021}
 \end{align}
-Now, taking the expectation and limit, then applying \citet[Equations (3.3)--(3.5)]{brown2021}, and Lemmata \ref{thm:indicators_tau} and \ref{thm:indicators_DN} to deal with the indicators,
+Now, taking the expectation and limit, then applying \citet[Equations (3.3)--(3.5)]{brown2021}, and Lemmata \ref{thm:indicators_cN}, \ref{thm:indicators_tau} and \ref{thm:indicators_DN} to deal with the indicators,
 \begin{align}
 \lim_{N\to\infty} \E \left[ \prod_{r=1}^{\tau_N(t)} (1-p_r) \right]
 &\leq 1+ \sum_{l=1}^{\infty} (-\alpha_n)^l \frac{1}{l!} t^l
-        \lim_{N\to\infty} \Prob \left[ \{\tau_N(t) \geq l\} \cap E \right]
+        \lim_{N\to\infty} \Prob \left[ \{\tau_N(t) \geq l\} \cap E \cap E^\prime \right]
     + \lim_{N\to\infty} \E \left[ c_N(\tau_N(t)) \right]
         \exp[ \alpha_n (t+1) ] \notag\\
     &\qquad+ \lim_{N\to\infty} \E \left[ \sum_{s=1}^{\tau_N(t)} 
@@ -446,37 +451,37 @@ $0 = t_0 \leq t_1 \leq \cdots \leq t_k \leq t$,
 \end{lemma}
 
 \begin{proof}
-We use the bound on $(1-p_r)$ from \eqref{eq:018} and apply a multinomial expansion, defining as in \eqref{eq:019b} the event $E$ which ensures the bound is non-negative:
+We use the bound on $(1-p_r)$ from \eqref{eq:018} and apply a multinomial expansion, defining as in \eqref{eq:019b} and \eqref{eq:defn_Eprime} respectively the events $E$ and $E^\prime$ which ensure the bounds are non-negative:
 \begin{align}
 \prod_{\substack{r=1 \\ \notin \{r_1,\dots,r_k\} }}^{\tau_N(t)} (1-p_r)
 &\leq \prod_{\substack{r=1 \\ \notin \{r_1,\dots,r_k\} }}^{\tau_N(t)} 
         \left\{ 1 - \alpha_n  (1+O(N^{-1})) [ c_N(r) - B_n^\prime D_N(r) ] 
-        \1{E} \right\} \notag\\
+        \1{E \cap E^\prime} \right\} \notag\\
 &= 1 + \sum_{l=1}^{\tau_N(t) -k}
         (-\alpha_n)^l (1+O(N^{-1})) \frac{1}{l!}
         \sum_{\substack{s_1\neq\dots\neq s_l \\ \notin \{r_1,\dots,r_k\} }}
         ^{\tau_N(t)}
         \prod_{j=1}^l [ c_N(s_j) - B_n^\prime D_N(s_j) ]
-        \1{E} \notag\\
+        \1{E \cap E^\prime} \notag\\
 &= 1 + \sum_{l=1}^{\tau_N(t) -k}
         (-\alpha_n)^l (1+O(N^{-1})) \frac{1}{l!}
         \sum_{\substack{s_1\neq\dots\neq s_l }}^{\tau_N(t)}
-        \prod_{j=1}^l [ c_N(s_j) - B_n^\prime D_N(s_j) ] \1{E} \notag\\
+        \prod_{j=1}^l [ c_N(s_j) - B_n^\prime D_N(s_j) ] \1{E \cap E^\prime} \notag\\
     &\qquad- \sum_{l=1}^{\tau_N(t) -k}
         (-\alpha_n)^l (1+O(N^{-1})) \frac{1}{l!}
         \sum_{\substack{s_1\neq\dots\neq s_l \\ \exists i,i^\prime 
         : s_i=r_{i^\prime} }}
         \prod_{j=1}^l [ c_N(s_j) - B_n^\prime D_N(s_j) ]
-        \1{E} . \label{eq:031}
+        \1{E \cap E^\prime} . \label{eq:031}
 \end{align}
-The penultimate line above is exactly the expansion we had in the basis step \eqref{eq:019}, except for the limit on $l$, and as such following the same arguments gives a bound like that in \eqref{eq:021}:
+The penultimate line above is exactly the expansion we had in the basis step \eqref{eq:019}, except for the limit on $l$, and as such following the same arguments gives a bound analogous to that in \eqref{eq:021}:
 \begin{align}
 1 + \sum_{l=1}^{\tau_N(t) -k}
         (-\alpha_n)^l (1+O(N^{-1})) \frac{1}{l!}
         &\sum_{\substack{s_1\neq\dots\neq s_l }}^{\tau_N(t)}
-        \prod_{j=1}^l [ c_N(s_j) - B_n^\prime D_N(s_j) ] \1{E} \notag\\
+        \prod_{j=1}^l [ c_N(s_j) - B_n^\prime D_N(s_j) ] \1{E \cap E^\prime} \notag\\
 &\leq 1+ \sum_{l=1}^{\tau_N(t) -k} (-\alpha_n)^l (1+O(N^{-1})) \frac{1}{l!} t^l
-        \1{E}
+        \1{E \cap E^\prime}
         + c_N(\tau_N(t)) \exp[ \alpha_n (1+O(N^{-1})) (t+1) ] \notag\\
     &\qquad+ \left( \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right)
         \frac{1}{2} \alpha_n^2 \exp[ \alpha_n (1+O(N^{-1})) (t+1) ] \notag\\
@@ -488,7 +493,7 @@ For the last line of \eqref{eq:031},
 - \sum_{l=1}^{\tau_N(t) -k} (-\alpha_n)^l (1+O(N^{-1})) \frac{1}{l!}
         &\sum_{\substack{s_1\neq\dots\neq s_l \\ \exists i,i^\prime 
         : s_i=r_{i^\prime} }}
-        \prod_{j=1}^l \{ c_N(s_j) - B_n^\prime D_N(s_j) \} \1{E} \notag\\
+        \prod_{j=1}^l \{ c_N(s_j) - B_n^\prime D_N(s_j) \} \1{E \cap E^\prime} \notag\\
 &\leq \sum_{l=1}^{\tau_N(t) -k} \alpha_n^l (1+O(N^{-1})) \frac{1}{l!}
         \sum_{\substack{s_1\neq\dots\neq s_l \\ \exists i,i^\prime 
         : s_i=r_{i^\prime} }}
@@ -517,7 +522,7 @@ Putting these together, we have
 \begin{align}
 \prod_{\substack{r=1 \\ \notin \{r_1,\dots,r_k\} }}^{\tau_N(t)} (1-p_r)
 &\leq 1+ \sum_{l=1}^{\tau_N(t) -k} (-\alpha_n)^l (1+O(N^{-1})) \frac{1}{l!} t^l
-        \1{E}
+        \1{E \cap E^\prime}
         + c_N(\tau_N(t)) \exp[ \alpha_n (1+O(N^{-1})) (t+1) ] \notag\\
     &\qquad+ \left( \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right)
         \frac{1}{2} \alpha_n^2 \exp[ \alpha_n (1+O(N^{-1})) (t+1) ] \notag\\
@@ -570,7 +575,7 @@ Combining \eqref{eq:034b} with the other product, the expression inside the expe
         \left( \prod_{\substack{r=1 \\ \notin \{r_1,\dots,r_k\} }}^{\tau_N(t)} 
         (1-p_r) \right)
 \leq \Bigg\{ 1+ \sum_{l=1}^{\tau_N(t) -k} (-\alpha_n)^l (1+O(N^{-1})) 
-        \frac{1}{l!} t^l \1{E} \Bigg\}
+        \frac{1}{l!} t^l \1{E \cap E^\prime} \Bigg\}
         \sum_{\substack{r_1 <\dots< r_k :\\ r_i \leq \tau_N(t_i) \forall i}}
         \prod_{i=1}^k p_{r_i} \notag\\
     &\qquad+ \Bigg\{ c_N(\tau_N(t)) 
@@ -592,10 +597,10 @@ Applying the various bounds \eqref{eq:035}--\eqref{eq:037}, we have
 \sum_{\substack{r_1 <\dots< r_k :\\ r_i \leq \tau_N(t_i) \forall i}}
         &\left( \prod_{i=1}^k p_{r_i} \right)
         \left( \prod_{\substack{r=1 \\ \notin \{r_1,\dots,r_k\} }}^{\tau_N(t)} 
-        (1-p_r) \right)
-\leq \alpha_n^k (1+O(N^{-1})) \Bigg\{
+        (1-p_r) \right) \notag\\
+&\leq \alpha_n^k (1+O(N^{-1})) \Bigg\{
         1+ \sum_{l=1}^{\tau_N(t) -k} (-\alpha_n)^l (1+O(N^{-1})) \frac{1}{l!} t^l
-        \1{E} \Bigg\}
+        \1{E \cap E^\prime} \Bigg\}
         \sum_{\substack{r_1 <\dots< r_k :\\ r_i \leq \tau_N(t_i) \forall i}}
         \prod_{i=1}^k c_N(r_i) \notag\\
     &\qquad+ \left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right)
@@ -625,7 +630,7 @@ Upon taking the expectation and limit, we have
         \left( \prod_{\substack{r=1 \\ \notin \{r_1,\dots,r_k\} }}^{\tau_N(t)} 
         (1-p_r) \right) \right]
 \leq \alpha_n^k \lim_{N\to\infty} \E\left[ \left( 1+
-        \sum_{l=1}^{\tau_N(t) -k} (-\alpha_n)^l \frac{1}{l!} t^l \1{E} \right)
+        \sum_{l=1}^{\tau_N(t) -k} (-\alpha_n)^l \frac{1}{l!} t^l \1{E \cap E^\prime} \right)
         \sum_{\substack{r_1 <\dots< r_k :\\ r_i \leq \tau_N(t_i) \forall i}}
         \prod_{i=1}^k c_N(r_i) \right] \notag\\
     &\qquad+  \lim_{N\to\infty} \E\left[ \sum_{s=1}^{\tau_N(t)} D_N(s) \right]
@@ -658,7 +663,7 @@ The middle terms vanish due to \citet[Equations (3.3)--(3.5)]{brown2021} and the
         \prod_{i=1}^k c_N(r_i) \right] \notag\\
     &\qquad + \alpha_n^k
         \sum_{l=1}^{\infty} (-\alpha_n)^l \frac{1}{l!} t^l
-        \lim_{N\to\infty} \E \left[ \I{\tau_N(t)\geq k+l} \1{E}
+        \lim_{N\to\infty} \E \left[ \I{\tau_N(t)\geq k+l} \1{E \cap E^\prime}
         \sum_{\substack{r_1 <\dots< r_k :\\ r_i \leq \tau_N(t_i) \forall i}}
         \prod_{i=1}^k c_N(r_i) \right] \notag\\
     &\qquad+ \exp[ \alpha_n (1 + B_n^\prime) (t+1) ]
@@ -696,7 +701,7 @@ hence
 = 0 
 \end{equation}
 by \citet[Equation (3.5)]{brown2021}.
-By Lemmata \ref{thm:indicators_tau} and \ref{thm:indicators_cN}, $\lim_{N\to\infty} \Prob[ \{ \tau_N(t)\geq k+l \} \cap E ] =1$,  so we can apply Lemma~\ref{thm:induction_sumprodcN} to the remaining expectations in \eqref{eq:040}, yielding
+By Lemmata \ref{thm:indicators_tau}, \ref{thm:indicators_cN} and \ref{thm:indicators_DN}, $\lim_{N\to\infty} \Prob[ \{ \tau_N(t)\geq k+l \} \cap E \cap E^\prime ] =1$,  so we can apply Lemma~\ref{thm:induction_sumprodcN} to the remaining expectations in \eqref{eq:040}, yielding
 \begin{align}
 \lim_{N\to\infty} \E \left[ 
         \sum_{\substack{r_1 <\dots< r_k :\\ r_i \leq \tau_N(t_i) \forall i}}
@@ -785,11 +790,11 @@ p_r
         \left[ c_N(r) - B_n^\prime D_N(r) \right] 
 \end{equation}
 where the $O(N^{-1})$ term does not depend on $r$.
-When $N$ is large enough for the factor of $(1+O(N^{-1}))$ to be non-negative, a sufficient condition to ensure the bound in \eqref{eq:050a} is non-negative is the event
-\begin{equation}\label{eq:019a}
-E_r^\prime := \left\{ c_N(r) \geq B_n^\prime D_N(r) \right\}
-\end{equation}
-and we define $E^\prime := \bigcap_{r=1}^{\tau_N(t)} E_r^\prime$.
+When $N$ is large enough for the factor of $(1+O(N^{-1}))$ to be non-negative, a sufficient condition to ensure the bound in \eqref{eq:050a} is non-negative is the event $E^\prime$ that was defined in \eqref{eq:defn_Eprime}.
+%\begin{equation}\label{eq:019a}
+%E_r^\prime := \left\{ c_N(r) \geq B_n^\prime D_N(r) \right\}
+%\end{equation}
+%and we define $E^\prime := \bigcap_{r=1}^{\tau_N(t)} E_r^\prime$.
 Then
 \begin{equation}
 \prod_{i=1}^k p_{r_i}
@@ -1083,19 +1088,19 @@ Let $A,B$ be events.
 If $\lim\Prob[A] =1$ and $\lim\Prob[B]=1$ then $\lim \Prob [A \cap B] =1$.
 \end{lemma}
 \seb{The above might be so obvious as to go unstated, but it is very important because it means we don't have to deal with intersections of dependent events!} 
-%\seb{Here is a little proof just to be sure:}
+\seb{Here is a little proof just to be sure:}
 
-%\begin{proof}
-%\begin{align}
-%&\lim \Prob[A] =1 \textbf{ and } \lim \Prob[B] =1 \notag\\
-%\Leftrightarrow &\lim \Prob[A^c] =0 \textbf{ and } 
-%        \lim \Prob[B^c] =0 \notag\\
-%\Rightarrow &\lim \left\{ \Prob[A^c] + \Prob[B^c] \right\} =0 \notag\\
-%\Rightarrow &\lim \Prob[A^c \cup B^c] =0 \notag\\
-%\Leftrightarrow &\lim \Prob[ A \cap B ] =1.
-%\end{align}
-%The only part of this argument that I find potentially controversial is going from the third to the fourth line, which is an application of the sandwich theorem (since $0 \leq \Prob[A^c \cup B^c] \leq \Prob[A^c] + \Prob[B^c]$).
-%\end{proof}
+\begin{proof}
+\begin{align}
+&\lim \Prob[A] =1 \textbf{ and } \lim \Prob[B] =1 \notag\\
+\Leftrightarrow &\lim \Prob[A^c] =0 \textbf{ and } 
+        \lim \Prob[B^c] =0 \notag\\
+\Rightarrow &\lim \left\{ \Prob[A^c] + \Prob[B^c] \right\} =0 \notag\\
+\Rightarrow &\lim \Prob[A^c \cup B^c] =0 \notag\\
+\Leftrightarrow &\lim \Prob[ A \cap B ] =1.
+\end{align}
+The only part of this argument that I find potentially controversial is going from the third to the fourth line, which is an application of the sandwich theorem (since $0 \leq \Prob[A^c \cup B^c] \leq \Prob[A^c] + \Prob[B^c]$).
+\end{proof}
 
 %___________
 
@@ -1446,7 +1451,7 @@ which concludes the proof.
 
 \section*{Dependency graph}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \begin{tikzpicture}[>=stealth, thick]
 % boxes
