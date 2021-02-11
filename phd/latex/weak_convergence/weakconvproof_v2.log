@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  8 FEB 2021 09:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  10 FEB 2021 15:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1032,100 +1032,117 @@ Package mdframed Info: mdframed detected package amsthm
 (mdframed)              on input line 58.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 112.
+(mdframed)              on input line 127.
  [1
 
 {/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 181.
+(mdframed)              on input line 196.
  [2]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 229.
-LaTeX Font Info:    Try loading font information for U+bbm on input line 262.
+(mdframed)              on input line 244.
+LaTeX Font Info:    Try loading font information for U+bbm on input line 277.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/bbm-macros/ubbm.fd
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
 ) [3]
-Overfull \hbox (55.40747pt too wide) detected at line 301
+Overfull \hbox (55.40747pt too wide) detected at line 316
 []
  []
 
 [4] [5]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 437.
+(mdframed)              on input line 454.
  [6]
-Overfull \hbox (18.70158pt too wide) detected at line 490
+Overfull \hbox (18.70158pt too wide) detected at line 507
 []
  []
 
 [7] [8]
-Overfull \hbox (7.70302pt too wide) detected at line 624
+Overfull \hbox (7.70302pt too wide) detected at line 642
 []
  []
 
 [9]
-Overfull \hbox (27.37242pt too wide) detected at line 653
+Overfull \hbox (27.37242pt too wide) detected at line 671
 []
  []
 
 [10]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 725.
+(mdframed)              on input line 745.
  [11] [12] [13]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 884.
- [14] [15]
-Overfull \hbox (15.81467pt too wide) detected at line 1035
+(mdframed)              on input line 905.
+
+Overfull \hbox (30.69878pt too wide) detected at line 979
+[]
+ []
+
+[14] [15]
+Overfull \hbox (28.77258pt too wide) detected at line 1076
 []
  []
 
 [16]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1085.
+(mdframed)              on input line 1126.
  [17]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1107.
+(mdframed)              on input line 1148.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1149.
+(mdframed)              on input line 1190.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1249.
+(mdframed)              on input line 1290.
  [18]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1280.
+(mdframed)              on input line 1321.
  [19] [20]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1404.
- (./weakconvproof_v2.bbl) [21]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1520.
- [22]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1520.
+(mdframed)              on input line 1445.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 1498.
+ [21]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 1566
+.
 
-(./weakconvproof_v2.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1520.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1520.
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 1566.
+
+
+(./weakconvproof_v2.bbl) [22]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1634.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1634.
+ (./weakconvproof_v2.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1634.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1634.
 
 Package rerunfilecheck Info: File `weakconvproof_v2.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 26678 strings out of 492649
- 512445 string characters out of 6129623
- 589470 words of memory out of 5000000
- 30044 multiletter control sequences out of 15000+600000
+ 26713 strings out of 492649
+ 513002 string characters out of 6129623
+ 592750 words of memory out of 5000000
+ 30070 multiletter control sequences out of 15000+600000
  539794 words of font info for 60 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,22n,54p,10405b,707s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,22n,54p,10405b,705s stack positions out of 5000i,500n,10000p,200000b,80000s
  </Users/suzie/Library/texlive/2018/texmf-var/fonts/pk/ljfour/public/bbm/bbm1
 0.600pk></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx
 10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx1
@@ -1147,10 +1164,10 @@ exlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/tex
 live/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texl
 ive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/
 texlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on weakconvproof_v2.pdf (22 pages, 300629 bytes).
+Output written on weakconvproof_v2.pdf (22 pages, 307235 bytes).
 PDF statistics:
- 443 PDF objects out of 1000 (max. 8388607)
- 394 compressed objects within 4 object streams
- 138 named destinations out of 1000 (max. 500000)
+ 499 PDF objects out of 1000 (max. 8388607)
+ 449 compressed objects within 5 object streams
+ 144 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
