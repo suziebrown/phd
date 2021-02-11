@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  5 FEB 2021 10:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  8 FEB 2021 10:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1107,9 +1107,10 @@ LaTeX Font Info:    Overwriting math alphabet `\mathbbmss' in version `bold'
 (Font)                  U/bbmss/m/n --> U/bbmss/bx/n on input line 35.
 )
 \c@theorem=\count409
-\c@prop=\count410
-\c@lemma=\count411
-\c@defn=\count412
+\c@corollary=\count410
+\c@prop=\count411
+\c@lemma=\count412
+\c@defn=\count413
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2018/02/06 v6.86b Hypertext links for LaTeX
@@ -1147,15 +1148,15 @@ Package: refcount 2016/05/16 v3.5 Data extraction from label references (HO)
 Package: hycolor 2016/05/16 v1.8 Color options for hyperref/bookmark (HO)
 )
 \@linkdim=\dimen256
-\Hy@linkcounter=\count413
-\Hy@pagecounter=\count414
+\Hy@linkcounter=\count414
+\Hy@pagecounter=\count415
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2018/02/06 v6.86b Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
 ... no UTF-8 mapping file for font encoding PD1
 )
-\Hy@SavedSpaceFactor=\count415
+\Hy@SavedSpaceFactor=\count416
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/latexconfig/hyperref.cfg
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
@@ -1167,10 +1168,10 @@ Package hyperref Info: Plain pages OFF on input line 4524.
 Package hyperref Info: Backreferencing OFF on input line 4529.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4762.
-\c@Hy@tempcnt=\count416
+\c@Hy@tempcnt=\count417
 LaTeX Info: Redefining \url on input line 5115.
 \XeTeXLinkMargin=\dimen257
-\Fld@menulength=\count417
+\Fld@menulength=\count418
 \Field@Width=\dimen258
 \Fld@charsize=\dimen259
 Package hyperref Info: Hyper figures OFF on input line 6369.
@@ -1182,17 +1183,17 @@ Package hyperref Info: Link coloring with OCG OFF on input line 6394.
 Package hyperref Info: PDF/A mode OFF on input line 6399.
 LaTeX Info: Redefining \ref on input line 6439.
 LaTeX Info: Redefining \pageref on input line 6443.
-\Hy@abspage=\count418
-\c@Item=\count419
-\c@Hfootnote=\count420
+\Hy@abspage=\count419
+\c@Item=\count420
+\c@Hfootnote=\count421
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/hyperref/hpdftex.def
 File: hpdftex.def 2018/02/06 v6.86b Hyperref driver for pdfTeX
-\HyAnn@Count=\count421
-\Fld@listcount=\count422
-\c@bookmark@seq@number=\count423
+\HyAnn@Count=\count422
+\Fld@listcount=\count423
+\c@bookmark@seq@number=\count424
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
 Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
@@ -1207,40 +1208,40 @@ Package biblatex Info: ... file 'english.lbx' found.
 (/usr/local/texlive/2018/texmf-dist/tex/latex/biblatex/lbx/english.lbx
 File: english.lbx 2018/03/04 v3.11 biblatex localization (PK/MW)
 )
-\@quotelevel=\count424
-\@quotereset=\count425
+\@quotelevel=\count425
+\@quotereset=\count426
 
 (./thesis_main.aux (./introduction.aux) (./background.aux) (./limits.aux)
 (./applications.aux) (./weakconv.aux) (./discussion.aux))
 \openout1 = `thesis_main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
 
 (/usr/local/texlive/2018/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count426
+\scratchcounter=\count427
 \scratchdimen=\dimen260
 \scratchbox=\box62
-\nofMPsegments=\count427
-\nofMParguments=\count428
+\nofMPsegments=\count428
+\nofMParguments=\count429
 \everyMPshowfont=\toks40
-\MPscratchCnt=\count429
+\MPscratchCnt=\count430
 \MPscratchDim=\dimen261
-\MPnumerator=\count430
-\makeMPintoPDFobject=\count431
+\MPnumerator=\count431
+\makeMPintoPDFobject=\count432
 \everyMPtoPDFconversion=\toks41
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
@@ -1303,9 +1304,9 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'thesis_main.bbl' found.
  (./thesis_main.bbl)
-Package biblatex Info: Reference section=0 on input line 68.
-Package biblatex Info: Reference segment=0 on input line 68.
-Package hyperref Info: Link coloring OFF on input line 68.
+Package biblatex Info: Reference section=0 on input line 71.
+Package biblatex Info: Reference segment=0 on input line 71.
+Package hyperref Info: Link coloring OFF on input line 71.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -1313,11 +1314,11 @@ Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 (/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count432
+\c@section@level=\count433
 )
-LaTeX Info: Redefining \ref on input line 68.
-LaTeX Info: Redefining \pageref on input line 68.
-LaTeX Info: Redefining \nameref on input line 68.
+LaTeX Info: Redefining \ref on input line 71.
+LaTeX Info: Redefining \pageref on input line 71.
+LaTeX Info: Redefining \nameref on input line 71.
 
 (./thesis_main.out) (./thesis_main.out)
 \@outlinefile=\write6
@@ -1328,15 +1329,15 @@ LaTeX Info: Redefining \nameref on input line 68.
 
 
 {/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    Try loading font information for OT1+put on input line 92.
+LaTeX Font Info:    Try loading font information for OT1+put on input line 95.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/ot1put.fd
 File: ot1put.fd 2001/06/04 font definitions for OT1/put.
 )
 LaTeX Font Info:    Font shape `OT1/put/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/put/b/n' tried instead on input line 92.
+(Font)              Font shape `OT1/put/b/n' tried instead on input line 95.
 LaTeX Font Info:    Font shape `OT1/put/bx/n' in size <20.74> not available
-(Font)              Font shape `OT1/put/b/n' tried instead on input line 92.
+(Font)              Font shape `OT1/put/b/n' tried instead on input line 95.
 
 (./thesis_main.toc
 LaTeX Font Info:    Try loading font information for U+msa on input line 13.
@@ -1395,7 +1396,7 @@ chapter 1.
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.136 \include{introduction}
+l.139 \include{introduction}
                              [1
 
 
@@ -1430,12 +1431,71 @@ chapter 3.
 
  (./applications.tex
 chapter 4.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 18.
+
+LaTeX Warning: Reference `app:dseparation' on page 6 undefined on input line 34
+.
+
+
+LaTeX Warning: Reference `alg:SMC' on page 6 undefined on input line 38.
+
+LaTeX Font Info:    Try loading font information for U+bbm on input line 46.
+(/usr/local/texlive/2018/texmf-dist/tex/latex/bbm-macros/ubbm.fd
+File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
 ) [6
 
 
 
 
 ]
+
+LaTeX Warning: Reference `eq:mainthmcond' on page 7 undefined on input line 72.
+
+
+
+LaTeX Warning: Reference `thm:generalconv' on page 7 undefined on input line 73
+.
+
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 79.
+[7]
+Overfull \hbox (7.31442pt too wide) detected at line 98
+[]
+ []
+
+[8]
+
+LaTeX Warning: Reference `app:dseparation' on page 9 undefined on input line 14
+3.
+
+[9]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 170.
+ [10] [11]
+Overfull \hbox (6.1646pt too wide) detected at line 245
+[]
+ []
+
+
+LaTeX Warning: Reference `eq:mainthmcond' on page 12 undefined on input line 25
+5.
+
+
+LaTeX Warning: Reference `app:finiteness' on page 12 undefined on input line 25
+5.
+
+
+LaTeX Warning: Reference `thm:generalconv' on page 12 undefined on input line 2
+55.
+
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 261.
+[12]) [13]
 \openout2 = `weakconv.aux'.
 
  (./weakconv.tex
@@ -1443,21 +1503,25 @@ chapter 5.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 24.
-[7
+[14
 
 
 
 
-] [8]
+] [15]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 90.
- [9]
+(mdframed)              on input line 88.
+ [16]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 144.
+(mdframed)              on input line 129.
+ [17]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 183.
 
-Overfull \hbox (2.78377pt too wide) detected at line 152
+Overfull \hbox (2.78377pt too wide) detected at line 191
 [] [] [] [] \OMS/cmsy/m/n/10.95 ^^T [] [] \OML/cmm/m/it/10.95 c[]\OT1/cmr/m/n/1
 0.95 (\OML/cmm/m/it/10.95 s[]\OT1/cmr/m/n/10.95 ) + [] (\OML/cmm/m/it/10.95 t \
 OT1/cmr/m/n/10.95 + 1)[](1 + \OML/cmm/m/it/10.95 B\OT1/cmr/m/n/10.95 )[]\OML/cm
@@ -1465,26 +1529,27 @@ m/m/it/10.95 :
  []
 
 
-Overfull \hbox (66.79228pt too wide) detected at line 177
+Overfull \hbox (66.79228pt too wide) detected at line 216
 [] [] \OML/cmm/m/it/10.95 B[] [] [] [] \OT1/cmr/m/n/10.95 = [] []\OML/cmm/m/it/
 10.95 B[] [] [] [] :
  []
 
 
-Overfull \hbox (25.60753pt too wide) detected at line 187
+Overfull \hbox (25.60753pt too wide) detected at line 226
 []
  []
 
-[10]
-Overfull \hbox (69.32552pt too wide) detected at line 201
+
+Overfull \hbox (69.32552pt too wide) detected at line 240
 []
  []
 
+[18]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 213.
+(mdframed)              on input line 252.
 
-Overfull \hbox (2.78377pt too wide) detected at line 221
+Overfull \hbox (2.78377pt too wide) detected at line 260
 [] [] [] [] \OMS/cmsy/m/n/10.95 ^^U [] [] \OML/cmm/m/it/10.95 c[]\OT1/cmr/m/n/1
 0.95 (\OML/cmm/m/it/10.95 s[]\OT1/cmr/m/n/10.95 ) \OMS/cmsy/m/n/10.95 ^^@ [] \O
 T1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 t \OT1/cmr/m/n/10.95 + 1)[](1 + \OML/cmm/
@@ -1492,195 +1557,192 @@ m/it/10.95 B\OT1/cmr/m/n/10.95 )[]\OML/cmm/m/it/10.95 :
  []
 
 
-Overfull \hbox (98.81395pt too wide) detected at line 246
+Overfull \hbox (98.81395pt too wide) detected at line 285
 []
  []
 
-[11]
-Overfull \hbox (3.62474pt too wide) detected at line 254
+
+Overfull \hbox (3.62474pt too wide) detected at line 293
 [] \OMS/cmsy/m/n/10.95 ^^@ [] []\OML/cmm/m/it/10.95 B[] [] [] [] \OMS/cmsy/m/n/
 10.95 ^^U ^^@ [] \OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 t \OT1/cmr/m/n/10.95 +
  1)[](1 + \OML/cmm/m/it/10.95 B\OT1/cmr/m/n/10.95 )[]
  []
 
+[19]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 261.
-[12]
-LaTeX Font Info:    Try loading font information for U+bbm on input line 301.
- (/usr/local/texlive/2018/texmf-dist/tex/latex/bbm-macros/ubbm.fd
-File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
-)
-Overfull \hbox (159.00258pt too wide) detected at line 322
+(mdframed)              on input line 300.
+
+Overfull \hbox (159.00258pt too wide) detected at line 361
+[]
+ []
+
+[20]
+Overfull \hbox (48.73076pt too wide) detected at line 382
 []
  []
 
 
-Overfull \hbox (48.73076pt too wide) detected at line 343
+Overfull \hbox (67.80319pt too wide) detected at line 397
 []
  []
 
-[13]
-Overfull \hbox (67.80319pt too wide) detected at line 358
+[21]
+Overfull \hbox (98.80354pt too wide) detected at line 457
 []
  []
 
-[14]
-Overfull \hbox (98.80354pt too wide) detected at line 418
+[22]
+Overfull \hbox (78.15157pt too wide) detected at line 478
 []
  []
 
-
-Overfull \hbox (78.15157pt too wide) detected at line 439
-[]
- []
-
-[15]
+[23]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 458.
+(mdframed)              on input line 497.
 
-Overfull \hbox (84.0211pt too wide) detected at line 471
+Overfull \hbox (84.0211pt too wide) detected at line 510
 [] [] \U/msb/m/n/10.95 E [] \OMS/cmsy/m/n/10.95 ^^T \OML/cmm/m/it/10.95 [] [] 
 []\OT1/cmr/m/n/10.95 (\OMS/cmsy/m/n/10.95 ^^@\OML/cmm/m/it/10.95 []\OT1/cmr/m/
 n/10.95 )[]\OML/cmm/m/it/10.95 t[] [] [] []:
  []
 
-[16]
-Overfull \hbox (3.75868pt too wide) detected at line 497
+
+Overfull \hbox (3.75868pt too wide) detected at line 536
+[]
+ []
+
+[24]
+Overfull \hbox (119.62622pt too wide) detected at line 550
 []
  []
 
 
-Overfull \hbox (119.62622pt too wide) detected at line 511
+Overfull \hbox (102.54381pt too wide) detected at line 580
 []
  []
 
 
-Overfull \hbox (102.54381pt too wide) detected at line 541
+Overfull \hbox (41.31839pt too wide) detected at line 594
 []
  []
 
-[17]
-Overfull \hbox (41.31839pt too wide) detected at line 555
+[25]
+Overfull \hbox (98.6379pt too wide) detected at line 607
 []
  []
 
-
-Overfull \hbox (98.6379pt too wide) detected at line 568
-[]
- []
-
-[18]
-Overfull \hbox (86.26985pt too wide) detected at line 615
-[]
- []
-
-[19]
-Overfull \hbox (150.66641pt too wide) detected at line 645
+[26]
+Overfull \hbox (86.26985pt too wide) detected at line 654
 []
  []
 
 
-Overfull \hbox (122.50734pt too wide) detected at line 674
+Overfull \hbox (150.66641pt too wide) detected at line 684
 []
  []
 
-[20]
-Overfull \hbox (60.36168pt too wide) detected at line 696
+
+Overfull \hbox (122.50734pt too wide) detected at line 713
 []
  []
 
-[21]
-Overfull \hbox (15.23224pt too wide) detected at line 723
+[27]
+Overfull \hbox (60.36168pt too wide) detected at line 735
+[]
+ []
+
+[28]
+Overfull \hbox (15.23224pt too wide) detected at line 762
 [] [] \U/msb/m/n/10.95 E [] \OMS/cmsy/m/n/10.95 ^^T []\OT1/cmr/m/n/10.95 (\OML/
 cmm/m/it/10.95 t \OT1/cmr/m/n/10.95 + 1)[] [] \U/msb/m/n/10.95 E [] \OT1/cmr/m/
 n/10.95 = 0
  []
 
 
-Overfull \hbox (57.3295pt too wide) detected at line 741
+Overfull \hbox (57.3295pt too wide) detected at line 780
 []
  []
 
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 746.
+(mdframed)              on input line 785.
 
-Overfull \hbox (84.0211pt too wide) detected at line 759
+Overfull \hbox (84.0211pt too wide) detected at line 798
 [] [] \U/msb/m/n/10.95 E [] \OMS/cmsy/m/n/10.95 ^^U \OML/cmm/m/it/10.95 [] [] 
 []\OT1/cmr/m/n/10.95 (\OMS/cmsy/m/n/10.95 ^^@\OML/cmm/m/it/10.95 []\OT1/cmr/m/
 n/10.95 )[]\OML/cmm/m/it/10.95 t[] [] [] []:
  []
 
-[22]
-Overfull \hbox (37.49117pt too wide) detected at line 784
+[29]
+Overfull \hbox (37.49117pt too wide) detected at line 823
 []
  []
 
 
-Overfull \hbox (85.1906pt too wide) detected at line 804
+Overfull \hbox (85.1906pt too wide) detected at line 843
 []
  []
 
-[23]
-Overfull \hbox (88.48825pt too wide) detected at line 837
-[]
- []
-
-
-Overfull \hbox (59.04085pt too wide) detected at line 862
+[30]
+Overfull \hbox (88.48825pt too wide) detected at line 876
 []
  []
 
 
-Overfull \hbox (68.3369pt too wide) detected at line 881
+Overfull \hbox (59.04085pt too wide) detected at line 901
 []
  []
 
-[24]
-Overfull \hbox (57.3295pt too wide) detected at line 900
+
+Overfull \hbox (68.3369pt too wide) detected at line 920
+[]
+ []
+
+[31]
+Overfull \hbox (57.3295pt too wide) detected at line 939
 []
  []
 
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 905.
-[25]
-Overfull \hbox (62.5996pt too wide) detected at line 972
+(mdframed)              on input line 944.
+[32]
+Overfull \hbox (62.5996pt too wide) detected at line 1011
 []
  []
 
 
-Overfull \hbox (7.54301pt too wide) detected at line 992
+Overfull \hbox (7.54301pt too wide) detected at line 1031
 []
  []
 
-[26]
-Overfull \hbox (88.7925pt too wide) detected at line 1006
+[33]
+Overfull \hbox (88.7925pt too wide) detected at line 1045
 []
  []
 
 
-Overfull \hbox (125.75452pt too wide) detected at line 1055
+Overfull \hbox (125.75452pt too wide) detected at line 1094
 []
  []
 
-[27]
-Overfull \hbox (92.46626pt too wide) detected at line 1095
+[34]
+Overfull \hbox (92.46626pt too wide) detected at line 1134
 []
  []
 
-[28]
+[35]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1103.
- [29]
+(mdframed)              on input line 1142.
+ [36]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1145.
+(mdframed)              on input line 1184.
 
-Overfull \hbox (108.80887pt too wide) detected at line 1158
+Overfull \hbox (108.80887pt too wide) detected at line 1197
 []\OMS/cmsy/m/n/10.95 f\OML/cmm/m/it/10.95 ^^\[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/
 it/10.95 t\OT1/cmr/m/n/10.95 ) \OMS/cmsy/m/n/10.95 ^^U \OML/cmm/m/it/10.95 l\OM
 S/cmsy/m/n/10.95 g \OT1/cmr/m/n/10.95 = [] = [] \OMS/cmsy/m/n/10.95 ^^S [] [] ^
@@ -1689,9 +1751,9 @@ S/cmsy/m/n/10.95 g \OT1/cmr/m/n/10.95 = [] = [] \OMS/cmsy/m/n/10.95 ^^S [] [] ^
 
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1170.
-[30]
-Overfull \hbox (62.00995pt too wide) detected at line 1188
+(mdframed)              on input line 1209.
+[37]
+Overfull \hbox (62.00995pt too wide) detected at line 1227
 []\U/msb/m/n/10.95 P\OT1/cmr/m/n/10.95 [\OML/cmm/m/it/10.95 E[]\OT1/cmr/m/n/10.
 95 ] = 1 \OMS/cmsy/m/n/10.95 ^^@ \U/msb/m/n/10.95 P\OT1/cmr/m/n/10.95 [(\OML/cm
 m/m/it/10.95 E[]\OT1/cmr/m/n/10.95 )[]] = 1 \OMS/cmsy/m/n/10.95 ^^@ \U/msb/m/n/
@@ -1701,9 +1763,9 @@ m/m/it/10.95 E[]\OT1/cmr/m/n/10.95 )[]] = 1 \OMS/cmsy/m/n/10.95 ^^@ \U/msb/m/n/
 
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1201.
-[31]
-Overfull \hbox (67.28311pt too wide) detected at line 1235
+(mdframed)              on input line 1240.
+[38]
+Overfull \hbox (67.28311pt too wide) detected at line 1274
 []\OML/cmm/m/it/10.95 D[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 r\OT1/cmr/m/n/
 10.95 ) = [] [](\OML/cmm/m/it/10.95 ^^W[]\OT1/cmr/m/n/10.95 )[] [] \U/bbm/m/n/1
 0.95 1[] \OT1/cmr/m/n/10.95 + [] [](\OML/cmm/m/it/10.95 ^^W[]\OT1/cmr/m/n/10.95
@@ -1711,97 +1773,122 @@ Overfull \hbox (67.28311pt too wide) detected at line 1235
  []
 
 
-Overfull \hbox (108.2203pt too wide) detected at line 1258
+Overfull \hbox (108.2203pt too wide) detected at line 1297
 []
  []
 
-[32]
-Overfull \hbox (48.02219pt too wide) detected at line 1317
+[39]
+Overfull \hbox (48.02219pt too wide) detected at line 1356
 []
  []
 
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1324.
-[33]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 1362.
- [34]
-Overfull \hbox (72.43637pt too wide) detected at line 1390
+(mdframed)              on input line 1364.
+[40]
+Overfull \hbox (72.43637pt too wide) detected at line 1392
 []
  []
 
 
-Overfull \hbox (53.56366pt too wide) detected at line 1405
+Overfull \hbox (53.56366pt too wide) detected at line 1407
 []\U/msb/m/n/10.95 E [] \OT1/cmr/m/n/10.95 = \U/msb/m/n/10.95 E [] \OT1/cmr/m/n
 /10.95 = \U/msb/m/n/10.95 E [] \OT1/cmr/m/n/10.95 = \U/msb/m/n/10.95 E []
  []
 
-) [35] [36]
+) [41]
 \openout2 = `discussion.aux'.
 
  (./discussion.tex
 chapter 6.
-) [37
+) [42
 
 
 
 
-] [38
+] [43
 
 
 
 
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 151.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 151.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 154.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 154.
  (./thesis_main.aux (./introduction.aux) (./background.aux)
 (./limits.aux) (./applications.aux) (./weakconv.aux) (./discussion.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 151.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 151.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 154.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 154.
 Package rerunfilecheck Info: File `thesis_main.out' has not changed.
-(rerunfilecheck)             Checksum: DF9E26153028D1327DDE5E727CAF7F96;3933.
+(rerunfilecheck)             Checksum: 8D5DDFCFEF5EFACE5C275EA03DC1EC27;3895.
+
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package logreq Info: Writing requests to 'thesis_main.run.xml'.
 \openout1 = `thesis_main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 35068 strings out of 492649
- 677715 string characters out of 6129623
- 1211057 words of memory out of 5000000
- 38225 multiletter control sequences out of 15000+600000
- 556401 words of font info for 71 fonts, out of 8000000 for 9000
+ 35128 strings out of 492649
+ 678638 string characters out of 6129623
+ 1211831 words of memory out of 5000000
+ 38259 multiletter control sequences out of 15000+600000
+ 556796 words of font info for 74 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  64i,22n,66p,10565b,1441s stack positions out of 5000i,500n,10000p,200000b,80000s
- </Users/suzie/Library/texlive/2018/texmf-var/fonts/pk/ljfour/public/bbm/bbm1
-0.657pk>{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/l
-ocal/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/lo
-cal/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/loc
-al/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/loc
-al/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/loca
-l/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/l
-ocal/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/lo
-cal/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/loca
-l/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/
-texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/te
-xlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texl
-ive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive
-/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/20
-18/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl10.pfb></usr/local/texlive/201
-8/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2018/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2018/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2018/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2018/texmf
--dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2018/t
-exmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/20
-18/texmf-dist/fonts/type1/adobe/utopia/putb8a.pfb>
-Output written on thesis_main.pdf (46 pages, 371197 bytes).
+pdfTeX warning (dest): name{equation.5.3.73} has been referenced but does not
+ exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{equation.5.2.26} has been referenced but does not e
+xist, replaced by a fixed one
+
+pdfTeX warning (dest): name{equation.5.2.25} has been referenced but does not e
+xist, replaced by a fixed one
+
+pdfTeX warning (dest): name{equation.5.2.24} has been referenced but does not e
+xist, replaced by a fixed one
+
+pdfTeX warning (dest): name{equation.5.1.9} has been referenced but does not ex
+ist, replaced by a fixed one
+
+pdfTeX warning (dest): name{equation.5.1.10} has been referenced but does not e
+xist, replaced by a fixed one
+
+pdfTeX warning (dest): name{equation.5.1.8} has been referenced but does not ex
+ist, replaced by a fixed one
+
+ </Users/suzie/Library/texlive/2018/texmf-var/fonts/pk/ljfour/public/bbm/bbm8.6
+00pk> </Users/suzie/Library/texlive/2018/texmf-var/fonts/pk/ljfour/public/bbm/b
+bm10.657pk>{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}</us
+r/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr
+/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/
+local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/
+local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/l
+ocal/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></us
+r/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr
+/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/l
+ocal/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/loc
+al/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local
+/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/t
+exlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texl
+ive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive
+/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl10.pfb></usr/local/texlive/
+2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2
+018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/201
+8/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2018/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2018/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2018/te
+xmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/201
+8/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive
+/2018/texmf-dist/fonts/type1/adobe/utopia/putb8a.pfb>
+Output written on thesis_main.pdf (51 pages, 408733 bytes).
 PDF statistics:
- 863 PDF objects out of 1000 (max. 8388607)
- 785 compressed objects within 8 object streams
- 229 named destinations out of 1000 (max. 500000)
+ 931 PDF objects out of 1000 (max. 8388607)
+ 846 compressed objects within 9 object streams
+ 253 named destinations out of 1000 (max. 500000)
  469 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -18,7 +18,7 @@ Finally, equip the space $\mathcal{P}_n$ with the zero-one metric,
     1 &\text{otherwise}
 \end{cases}
 \end{equation}
-for any $\xi, \eta \in \mathcal{P}_n$. 
+for any $\xi, \eta \in \mathcal{P}_n$.
 
 
 \begin{theorem}\label{thm:weakconv}
@@ -48,7 +48,7 @@ The corollary states that the sequence of processes $\{ (G_{\tau_N(t)}^{(n,N)})_
 \liminf_{N\to\infty} \Prob[ \omega(G_{\tau_N(\cdot)}^{(n,N)}, \delta, t) < \varepsilon ] 
 \geq 1-\varepsilon
 \end{equation}
-where 
+where $\omega$ is the modulus of continuity:
 \begin{equation}
 \omega(G_{\tau_N(t)}^{(n,N)}, \delta, t) := \inf \max_{i \in [K]} 
         \sup_{u,v \in [T_{i-1}, T_i)} \rho( G_{\tau_N(u)}^{(n,N)}, G_{\tau_N(v)}^{(n,N)} )
@@ -57,9 +57,10 @@ with the infimum taken over all partitions of the form $0=T_0<T_1<\cdots <T_{K-1
 \end{enumerate}
 In our case, Condition \ref{item:relcomp1} is satisfied automatically with $\Gamma = \mathcal{P}_n$, since $\mathcal{P}_n$ is finite and hence compact. 
 The intuition behind condition \ref{item:relcomp2} is that the jumps of the process must be ``well-separated''. 
-In our particluar case where $\rho$ is the zero-one metric, we see that $\rho( G_{\tau_N(u)}^{(n,N)}, G_{\tau_N(v)}^{(n,N)} )$ is equal to 1 if there is a jump between times $u$ and $v$, and 0 otherwise. 
-The supremum over $u,v$ then indicates whether there is a jump at any time in the interval $[T_i, T_{i-1})$. 
-Similarly, the maximum over $i$ then indicates whether there is a jump within any of the intervals defined by that particular partition; this can only be equal to zero if all of the jumps occur exactly at the times $T_0, \dots, T_k$. 
+In our case where $\rho$ is the zero-one metric, we see that $\rho( G_{\tau_N(u)}^{(n,N)}, G_{\tau_N(v)}^{(n,N)} )$ is equal to 1 if there is a jump between times $u$ and $v$, and 0 otherwise.
+Taking the supremum and maximum then indicates whether there is a jump within any of the intervals of the given partition; this can only be equal to zero if all of the jumps occur exactly at the times $T_0, \dots, T_k$. 
+%The supremum over $u,v$ then indicates whether there is a jump at any time in the interval $[T_i, T_{i-1})$. 
+%Similarly, the maximum over $i$ then indicates whether there is a jump within any of the intervals defined by that particular partition; this can only be equal to zero if all of the jumps occur exactly at the times $T_0, \dots, T_k$. 
 The infimum over all allowed partitions, then, can only be equal to zero if no two jumps occur less than $\delta$ (unscaled) time apart, because of the restriction we placed on these partitions.
 
 The proof is concentrated on proving Condition \ref{item:relcomp2}.
@@ -83,6 +84,44 @@ Denote by $0=T_0^{(N)}<T_1^{(N)}<\dots$ the jump times of the rescaled process $
 
 ...
 \end{proof}
+
+\begin{lemma}\label{thm:maximum_pr}
+$\max_{\xi\in E} (1 - p_{\xi\xi}(t)) = 1 - p_{\Delta\Delta}(t)$.
+\seb{I need to fix notation; perhaps the set $E$ could become $\mathcal{P}$ (for partitions) or something?}
+\end{lemma}
+
+\begin{proof}
+Consider any $\xi \in E$ consisting of $k$ blocks ($1\leq k\leq n-1$), and any $\xi^\prime\in E$ consisting of $k+1$ blocks. 
+From the definition of $p_{\xi\eta}(t)$ \parencite[Equation (1)]{koskela2018},
+\begin{equation}
+p_{\xi\xi}(t) = \frac{1}{(N)_k} \sum_{\substack{i_1,\dots,i_k \\ \text{all distinct}}} \nu_t^{(i_1)} \cdots \nu_t^{(i_k)} .
+\end{equation}
+Similarly,
+\begin{align}
+p_{\xi^\prime\xi^\prime}(t) &= \frac{1}{(N)_{k+1}} \sum_{\substack{i_1,\dots,i_k, i_{k+1} \\ \text{all distinct}}} \nu_t^{(i_1)} \cdots \nu_t^{(i_k)} \nu_t^{(i_{k+1})} \notag\\
+&= \frac{1}{(N)_k(N-k)} \sum_{\substack{i_1,\dots,i_k \\ \text{all distinct}}} \left\{ \nu_t^{(i_1)} \cdots \nu_t^{(i_k)} \sum_{\substack{i_{k+1}=1 \\ \text{also distinct}}}^N \nu_t^{(i_{k+1})} \right\} .
+\end{align}
+Discarding the zero summands,
+\begin{equation}
+p_{\xi^\prime\xi^\prime}(t) = \frac{1}{(N)_k(N-k)} \sum_{\substack{i_1,\dots,i_k \\ \text{all distinct:} \\ \nu_t^{(i_1)},\dots,\nu_t^{(i_k)} > 0 }} \left\{ \nu_t^{(i_1)} \cdots \nu_t^{(i_k)} \sum_{\substack{i_{k+1}=1 \\ \text{also distinct}}}^N \nu_t^{(i_{k+1})} \right\} .
+\end{equation}
+The inner sum is
+\begin{equation}
+\sum_{\substack{i_{k+1}=1 \\ \text{also distinct}}}^N \nu_t^{(i_{k+1})} =
+\left\{ \sum_{i=1}^N \nu_t^{(i)} -  \sum_{i\in\{i_1,\dots,i_k\} } \nu_t^{(i)} \right\}
+\leq N - k
+\end{equation}
+since $\nu_t^{(i_1)},\dots,\nu_t^{(i_k)} $ are all at least 1.
+Hence
+\begin{equation}
+p_{\xi^\prime\xi^\prime}(t)
+\leq  \frac{N-k}{(N)_k(N-k)} \sum_{\substack{i_1,\dots,i_k \\ \text{all distinct:} \\ \nu_t^{(i_1)},\dots,\nu_t^{(i_k)} > 0 }} \nu_t^{(i_1)} \cdots \nu_t^{(i_k)} 
+= p_{\xi\xi}(t) .
+\end{equation}
+Thus $p_{\xi\xi}(t)$ is decreasing in the number of blocks of $\xi$, and is therefore minimised by taking $\xi = \Delta$, which achieves the maximum $n$ blocks. This choice in turn maximises $1-p_{\xi\xi}(t)$, as required.
+\end{proof}
+
+%%%------------
 
 
 \section{Bounds on sum-products}
@@ -1320,43 +1359,6 @@ Substituting this back into \eqref{eq:050} concludes the proof.
 
 
 \section{Other useful results}
-
-\begin{lemma}\label{thm:maximum_pr}
-$\max_{\xi\in E} (1 - p_{\xi\xi}(t)) = 1 - p_{\Delta\Delta}(t)$.
-\seb{I need to fix notation; perhaps the set $E$ could become $\mathcal{P}$ (for partitions) or something?}
-\end{lemma}
-
-\begin{proof}
-Consider any $\xi \in E$ consisting of $k$ blocks ($1\leq k\leq n-1$), and any $\xi^\prime\in E$ consisting of $k+1$ blocks. 
-From the definition of $p_{\xi\eta}(t)$ \parencite[Equation (1)]{koskela2018},
-\begin{equation}
-p_{\xi\xi}(t) = \frac{1}{(N)_k} \sum_{\substack{i_1,\dots,i_k \\ \text{all distinct}}} \nu_t^{(i_1)} \cdots \nu_t^{(i_k)} .
-\end{equation}
-Similarly,
-\begin{align}
-p_{\xi^\prime\xi^\prime}(t) &= \frac{1}{(N)_{k+1}} \sum_{\substack{i_1,\dots,i_k, i_{k+1} \\ \text{all distinct}}} \nu_t^{(i_1)} \cdots \nu_t^{(i_k)} \nu_t^{(i_{k+1})} \notag\\
-&= \frac{1}{(N)_k(N-k)} \sum_{\substack{i_1,\dots,i_k \\ \text{all distinct}}} \left\{ \nu_t^{(i_1)} \cdots \nu_t^{(i_k)} \sum_{\substack{i_{k+1}=1 \\ \text{also distinct}}}^N \nu_t^{(i_{k+1})} \right\} .
-\end{align}
-Discarding the zero summands,
-\begin{equation}
-p_{\xi^\prime\xi^\prime}(t) = \frac{1}{(N)_k(N-k)} \sum_{\substack{i_1,\dots,i_k \\ \text{all distinct:} \\ \nu_t^{(i_1)},\dots,\nu_t^{(i_k)} > 0 }} \left\{ \nu_t^{(i_1)} \cdots \nu_t^{(i_k)} \sum_{\substack{i_{k+1}=1 \\ \text{also distinct}}}^N \nu_t^{(i_{k+1})} \right\} .
-\end{equation}
-The inner sum is
-\begin{equation}
-\sum_{\substack{i_{k+1}=1 \\ \text{also distinct}}}^N \nu_t^{(i_{k+1})} =
-\left\{ \sum_{i=1}^N \nu_t^{(i)} -  \sum_{i\in\{i_1,\dots,i_k\} } \nu_t^{(i)} \right\}
-\leq N - k
-\end{equation}
-since $\nu_t^{(i_1)},\dots,\nu_t^{(i_k)} $ are all at least 1.
-Hence
-\begin{equation}
-p_{\xi^\prime\xi^\prime}(t)
-\leq  \frac{N-k}{(N)_k(N-k)} \sum_{\substack{i_1,\dots,i_k \\ \text{all distinct:} \\ \nu_t^{(i_1)},\dots,\nu_t^{(i_k)} > 0 }} \nu_t^{(i_1)} \cdots \nu_t^{(i_k)} 
-= p_{\xi\xi}(t) .
-\end{equation}
-Thus $p_{\xi\xi}(t)$ is decreasing in the number of blocks of $\xi$, and is therefore minimised by taking $\xi = \Delta$, which achieves the maximum $n$ blocks. This choice in turn maximises $1-p_{\xi\xi}(t)$, as required.
-\end{proof}
-
 
 The following Lemma is taken from \textcite[Lemma 2]{koskela2018}, where the function is set to $f(r) = c_N(r)$, but the authors remark that the result holds for other choices of function.
 \begin{lemma}\label{thm:kjjslemma2}

@@ -10,76 +10,76 @@ Anyone who considers arithmetical methods of producing random digits is, of cour
 \section{Sequential Monte Carlo}
 
 \subsection{Motivation}
-Being Bayesian. SSMs/HMMs. Example(s) of SSM (1D train?).
+\draft{Being Bayesian. SSMs/HMMs. Example(s) of SSM (1D train?).}
 
 \subsection{Inference in SSMs}
-What quantities do we want to infer? Why is this generally difficult? Filtering, prediction, smoothing, likelihood/normalising constant.
+\draft{What quantities do we want to infer? Why is this generally difficult? Filtering, prediction, smoothing, likelihood/normalising constant.}
 
 \subsection{Exact solutions}
-Which SSMs are tractable? Kalman filter, extended KF, unscented KF, other conjugate models.
+\draft{Which SSMs are tractable? Kalman filter, extended KF, unscented KF, other conjugate models.}
 
 \subsection{Feynman-Kac models}
-Define a generic FK model. Show that this class includes all SSMs. Example of non-SSM that is FK?
+\draft{Define a generic FK model. Show that this class includes all SSMs. Example of non-SSM that is FK?}
 
 \subsection{Sequential Monte Carlo for Feynman-Kac models}
-Present generic algorithm. State the SMC estimators of the quantities of interest. Include the dependence diagram and note that the offspring counts are not independent at each time, but can be made so by conditioning on the separatrix $\mathcal{H}$.
+\draft{Present generic algorithm. State the SMC estimators of the quantities of interest. Include the dependence diagram and note that the offspring counts are not independent at each time, but can be made so by conditioning on the separatrix $\mathcal{H}$.}
 
 \subsection{Theoretical justification}
-How come SMC works? Convergence results (briefly!) e.g. CLT.
+\draft{How come SMC works? Convergence results (briefly!) e.g. CLT.}
 
 
 \section{Coalescent theory}
 
 \subsection{Kingman's coalescent}
-Define the $n$-coalescent, and Kingman's coalescent as extension of it. (Do I need to introduce random partitions first?)
+\draft{Define the $n$-coalescent, and Kingman's coalescent as extension of it. (Do I need to introduce random partitions first?)}
 
 \subsection{Properties}
-Properties of Kingman's coalescent / $n$-coalescent. Distributions of branch length, waiting times, time to MRCA. Coming down from infinity.
+\draft{Properties of Kingman's coalescent / $n$-coalescent. Distributions of branch length, waiting times, time to MRCA. Coming down from infinity.}
 
 \subsection{Models in population genetics}
-Talk about KC's ``domain of attraction''. Introduce Wright-Fisher model, Moran model, Cannings models.
+\draft{Talk about KC's ``domain of attraction''. Introduce Wright-Fisher model, Moran model, Cannings models.}
 
 \subsection{Particle populations}
-Particles = individuals, iterations = generations. In what ways is SMC like a population model? (constant population size, non-overlapping generations, discrete time). In what ways is SMC not like a population model? (non-neutral, non-Markov?)
+\draft{Particles = individuals, iterations = generations. In what ways is SMC like a population model? (constant population size, non-overlapping generations, discrete time). In what ways is SMC not like a population model? (non-neutral, non-Markov?)}
 
 
 \section{Sequential Monte Carlo genealogies}
 
 \subsection{From particles to genealogies}
-How does the SMC algorithm induce a genealogy? (resampling = parent-child relationship). 
+\draft{How does the SMC algorithm induce a genealogy? (resampling = parent-child relationship).}
 
 \subsection{Performance}
-How do genealogies affect performance? Variance (and variance estimation?), storage cost. Ancestral degeneracy.
+\draft{How do genealogies affect performance? Variance (and variance estimation?), storage cost. Ancestral degeneracy.}
 
 \subsection{Mitigating ancestral degeneracy}
-Low-variance resampling (save details for next section). Adaptive resampling: idea of balancing weight/ancestral degeneracy; rule of thumb for implementing it; when is it effective or not?; necessary changes to our generic SMC algorithm (calculation of weights in particular). Backward sampling: when is it possible to do this?
+\draft{Low-variance resampling (save details for next section). Adaptive resampling: idea of balancing weight/ancestral degeneracy; rule of thumb for implementing it; when is it effective or not?; necessary changes to our generic SMC algorithm (calculation of weights in particular). Backward sampling: when is it possible to do this?}
 
 \subsection{Asymptotics}
-Why are large population asymptotics useful? Existing results (path storage, KJJS).
+\draft{Why are large population asymptotics useful? Existing results (path storage, KJJS).}
 
 
 \section{Resampling}
 
 \subsection{Definition}
-The job of resampling (map weights to counts). Define ``valid'' resampling schemes (the three rules). Counter-examples where these rules are violated (the examples I've mentioned in previous writings, plus optimal transport resampling and that one FC told me about recently).
+\draft{The job of resampling (map weights to counts). Define ``valid'' resampling schemes (the three rules). Counter-examples where these rules are violated (the examples I've mentioned in previous writings, plus optimal transport resampling [see email from James Thornton] and that one FC told me about recently [Huang et al 2020]).}
 
 \subsection{What makes a good resampling scheme?}
-Low-variance: variance of what? Different criteria/ definitions of optimality. Negative association. Link back to adaptive resampling: interaction between adaptive and low-variance resampling.
+\draft{Low-variance: variance of what? Different criteria/ definitions of optimality. Negative association. Link back to adaptive resampling: interaction between adaptive and low-variance resampling.}
 
 \subsection{Examples}
-Tour of the key resampling schemes (multinomial, residual-*, stratified, systematic, and the worst possible scheme). Comparison of properties of these, existing results comparing schemes. Implementation considerations. Theoretical justification (or lack of).
+\draft{Tour of the key resampling schemes (multinomial, residual-*, stratified, systematic, and the worst possible scheme). Comparison of properties of these, existing results comparing schemes. Implementation considerations. Theoretical justification (or lack of).}
 
 \subsection{Stochastic rounding}
-Define stochastic rounding. Resampling schemes contained by this class. General properties for this class (marginal distributions, negative association, minimum-variance).
+\draft{Define stochastic rounding. Resampling schemes contained by this class. General properties for this class (marginal distributions, negative association, minimum-variance).}
 
 
 \section{Conditional SMC}
 
 \subsection{Particle MCMC}
-Motivate particle MCMC methods. 
+\draft{Motivate particle MCMC methods.}
 
 \subsection{Particle Gibbs algorithm}
-Present particle Gibbs algorithm. Explain why CSMC is required within particle Gibbs.
+\draft{Present particle Gibbs algorithm. Explain why CSMC is required within particle Gibbs.}
 
 \subsection{Ancestor sampling}
-Algorithm (or required changes to generic algorithm). Relation to backward sampling. When can it be implemented? Effect on performance (when is it effective?).
+\draft{Algorithm (or required changes to generic algorithm). Relation to backward sampling. When can it be implemented? Effect on performance (when is it effective?).}

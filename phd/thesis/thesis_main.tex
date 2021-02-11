@@ -12,7 +12,8 @@
 %%% ANNOTATIONS
 \usepackage{color}
 \usepackage{xspace}
-\newcommand{\seb}[1]{\xspace\textcolor{red}{#1}\xspace}
+\newcommand{\seb}[1]{\xspace\textcolor{red}{#1}\xspace} %% for comments
+\newcommand{\draft}[1]{\xspace\textcolor{violet}{#1}\xspace} %% for notes about what to write
 
 %%% GENERAL FORMATTING
 %%%Probably best to put formatting commands in a separate file. Consider changing: fonts, margins (must be at least 4cm at left and 1.5cm around edges), header/footer, references/citations, algorithms, captions, paragraph indents, chapter/equation numbering, ..
@@ -44,6 +45,7 @@
 
 %%% MATHS ENVIRONMENTS
 \newmdtheoremenv[backgroundcolor=gray!20, linewidth=0pt]{theorem}{Theorem}[chapter]
+\newmdtheoremenv[backgroundcolor=gray!20, linewidth=0pt]{corollary}{Corollary}[chapter]
 \newmdtheoremenv[backgroundcolor=gray!20, linewidth=0pt]{prop}{Proposition}[chapter]
 \newmdtheoremenv[backgroundcolor=gray!20, linewidth=0pt]{lemma}{Lemma}[chapter]
 \theoremstyle{definition}
@@ -59,6 +61,7 @@
 \newcommand{\I}[1]{\mathbbm{1}_{\{#1\}}}
 \newcommand{\1}[1]{\mathbbm{1}_{#1}}
 \newcommand{\Mn}{\operatorname{Multinomial}}
+\newcommand{\flnw}[1][i]{\lfloor N w_t^{(#1)} \rfloor}
 
 %%% HYPERLINKS (must load last)
 \usepackage{hyperref}

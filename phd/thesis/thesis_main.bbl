@@ -70,6 +70,38 @@
       \verb 10.1214/20-EJP561
       \endverb
     \endentry
+    \entry{durrett2019}{book}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=175a15e34b656dab74bea645e2ed84d0}{%
+           family={Durrett},
+           familyi={D\bibinitperiod},
+           given={Rick},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press}%
+      }
+      \strng{namehash}{175a15e34b656dab74bea645e2ed84d0}
+      \strng{fullhash}{175a15e34b656dab74bea645e2ed84d0}
+      \strng{bibnamehash}{175a15e34b656dab74bea645e2ed84d0}
+      \strng{authorbibnamehash}{175a15e34b656dab74bea645e2ed84d0}
+      \strng{authornamehash}{175a15e34b656dab74bea645e2ed84d0}
+      \strng{authorfullhash}{175a15e34b656dab74bea645e2ed84d0}
+      \field{sortinit}{D}
+      \field{sortinithash}{2ef1bd9a78cc71eb74d7231c635177b8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{5}
+      \field{series}{Cambridge Series in Statistical and Probabilistic Mathematics}
+      \field{title}{Probability: Theory and Examples}
+      \field{year}{2019}
+      \verb{doi}
+      \verb 10.1017/9781108591034
+      \endverb
+    \endentry
     \entry{ethier1986}{book}{}
       \name{author}{2}{}{%
         {{uniquename=0,uniquepart=base,hash=a45f2eb8285ae9ba8a91156b575327cd}{%
@@ -181,6 +213,38 @@
       \field{year}{1999}
       \field{pages}{446\bibrangedash 460}
       \range{pages}{15}
+    \endentry
+    \entry{mosimann1962}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=da37a051d8d8cf6b936d516fec9271bb}{%
+           family={Mosimann},
+           familyi={M\bibinitperiod},
+           given={James\bibnamedelima E.},
+           giveni={J\bibinitperiod\bibinitdelim E\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {JSTOR}%
+      }
+      \strng{namehash}{da37a051d8d8cf6b936d516fec9271bb}
+      \strng{fullhash}{da37a051d8d8cf6b936d516fec9271bb}
+      \strng{bibnamehash}{da37a051d8d8cf6b936d516fec9271bb}
+      \strng{authorbibnamehash}{da37a051d8d8cf6b936d516fec9271bb}
+      \strng{authornamehash}{da37a051d8d8cf6b936d516fec9271bb}
+      \strng{authorfullhash}{da37a051d8d8cf6b936d516fec9271bb}
+      \field{sortinit}{M}
+      \field{sortinithash}{cfd219b90152c06204fab207bc6c7cab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Biometrika}
+      \field{number}{1/2}
+      \field{title}{On the Compound Multinomial Distribution, the Multivariate $\beta$-Distribution, and Correlations among Proportions}
+      \field{volume}{49}
+      \field{year}{1962}
+      \field{pages}{65\bibrangedash 82}
+      \range{pages}{18}
     \endentry
   \enddatalist
 \endrefsection

@@ -3,7 +3,7 @@
 %%% choose an epigraph to go here
 
 \section{Multinomial resampling}
-This is the easy-to-analyse scheme, because conditionally i.i.d., and was presented in KJJS already. Now (with our simpler conditions) it is easier to show.
+\draft{This is the easy-to-analyse scheme, because conditionally i.i.d., and was presented in KJJS already. Now (with our simpler conditions) it is easier to show.}
 
 \subsection{Proof of main condition}
 
@@ -12,21 +12,269 @@ This is the easy-to-analyse scheme, because conditionally i.i.d., and was presen
 
 \section{Stochastic rounding}
 
+
 \subsection{Proof of main condition}
 
-\subsection{Proof of finite time scale condition}
+\begin{corollary}\label{thm:stochrounding}
+Consider an SMC algorithm using any stochastic rounding as its resampling scheme, such that the standing assumption is satisfied.
+Assume that there exists a constant $a\in [1,\infty)$ such that for all $x, x^\prime, t$,
+\begin{equation}\label{eq:gq_bounds_sr}
+\frac{1}{a} \leq g_t(x, x^\prime) \leq a . %, \quad
+%\varepsilon \leq q_t(x, x^\prime) \leq \frac{1}{\varepsilon} .
+\end{equation}
+Assume that $\Prob[ \tau_N(t) = \infty] =0$ for all finite $t$.
+Let $(G_t^{(n,N)})_{t\geq0}$ denote the genealogy of a random sample of $n$ terminal particles from the output of the algorithm when the total number of particles used is $N$. Then, for any fixed $n$, the time-scaled genealogy $(G_{\tau_N(t)}^{(n,N)})_{t\geq0}$ converges to Kingman's $n$-coalescent as $N\to \infty$, in the sense of finite-dimensional distributions.
+\end{corollary}
+
+\begin{proof}
+Using the forward-time Markov property of SMC, and the associated conditional dependence graph, for each $N$ we establish a sequence of $\sigma$-algebras
+\begin{equation}\label{eq:defn_Ht}
+\mathcal{H}_t := \sigma(X_{t-1}^{(1:N)}, X_t^{(1:N)}, w_{t-1}^{(1:N)}, w_t^{(1:N)} )
+\end{equation}
+such that $\nu_t^{(1:N)}$ is conditionally independent of the filtration $\mathcal{F}_{t-1}$ given $\mathcal{H}_t$. The full D-separation argument is presented in Appendix~\ref{app:dseparation}.
+
+Defining the family sizes $\nu_t^{(i)} = |\{ j : a_t^{(j)} = i \}|$ as functions of $a_t^{(1:N)}$, we have the almost sure constraint $\nu_t^{(i)} \in \{\flnw, \flnw +1\}$.  Denote $p_0^{(i)} := \Prob[ \nu_t^{(i)} = \flnw \mid \mathcal{H}_t ]$ and $p_1^{(i)} := \Prob[ \nu_t^{(i)} = \flnw +1 \mid \mathcal{H}_t ] = 1-p_0^{(i)}$. 
+
+We obtain the following upper bounds, using the almost sure bounds $w_t^{(i)} \leq a^2/N$ which follow from \eqref{eq:gq_bounds_sr} along with the form of the weights in Algorithm \ref{alg:SMC}:
+\begin{align*}
+\E[(\nu_t^{(i)})_3 \mid \mathcal{H}_t] &= p_0^{(i)} (\flnw)_3 + p_1^{(i)} (\flnw + 1)_3 \\
+&= \flnw (\flnw -1) \{ p_0^{(i)} (\flnw -2) + p_1^{(i)} (\flnw +1) \} \\
+&= \flnw (\flnw -1) \{ \flnw (p_0^{(i)} + p_1^{(i)}) -2 p_0^{(i)} + p_1^{(i)} \} \\
+&= \flnw (\flnw -1) \{ \flnw -2 p_0^{(i)} + p_1^{(i)} \} \\
+&\leq a^2 (a^2 -1) (a^2 -0 +1) \1{\flnw \geq 2} \\
+&\leq (a^2 +1)^3 \1{\flnw \geq 2} .
+\end{align*}
+We also have the lower bounds
+\begin{align*}
+\E[(\nu_t^{(i)})_2 \mid \mathcal{H}_t] &= p_0^{(i)} (\flnw)_2 + p_1^{(i)} (\flnw + 1)_2 \\
+&= \flnw \{ p_0^{(i)} (\flnw -1) + p_1^{(i)} (\flnw +1) \} \\
+&= \flnw \{ \flnw (p_0^{(i)} + p_1^{(i)}) - p_0^{(i)} + p_1^{(i)} \} \\
+&= \flnw \{ \flnw - p_0^{(i)} + p_1^{(i)} \} \\
+&\geq 2 (2 -1 +0) \1{\flnw \geq 2} = 2 \1{\flnw \geq 2} .
+\end{align*}
+Applying the tower property and conditional independence,
+\begin{align*}
+\frac{1}{(N)_2} \sum_{i=1}^N \Et [( \nu_t^{(i)} )_2 ] 
+&= \frac{1}{(N)_2} \Et\left[ \sum_{i=1}^N \E\left[ (\nu_t^{(i)})_2 \mid \mathcal{H}_t, \mathcal{F}_{t-1} \right] \right] \\
+&= \frac{1}{(N)_2} \Et\left[ \sum_{i=1}^N \E\left[ (\nu_t^{(i)})_2 \mid \mathcal{H}_t \right] \right]
+\geq \frac{1}{(N)_2} 2 \Et\left[ |\{i:\flnw\geq 2\}| \right] 
+\end{align*}
+and similarly
+\begin{align*}
+\frac{1}{(N)_3} \sum_{i=1}^N \Et [( \nu_t^{(i)} )_3 ] 
+&\leq \frac{1}{(N)_3}  (a^2+1)^3 \Et\left[ |\{i:\flnw\geq 2\}| \right] \\
+&\leq b_N  \frac{1}{(N)_2} \sum_{i=1}^N \Et [( \nu_t^{(i)} )_2 ]
+\end{align*}
+where
+\begin{equation*}
+b_N := \frac{1}{N-2}\frac{(a^2+1)^3}{2} \underset{N\to\infty}{\longrightarrow} 0
+\end{equation*}
+is independent of $\mathcal{F}_\infty$, satisfying \eqref{eq:mainthmcond}.
+The result follows by applying Theorem \ref{thm:generalconv}.
+\end{proof}
+
+
+\subsection{Finite time scale}
+
+\begin{lemma}\label{thm:SR_nontriviality}
+Consider an SMC algorithm using any stochastic rounding as its resampling scheme.
+Suppose that $\varepsilon \leq q_t(x, x^\prime) \leq \varepsilon^{-1}$ uniformly for some $\varepsilon \in (0,1]$, and that there exist $\zeta >0$ and $\delta \in (0,1)$ such that $\Prob[ \max_i w_t^{(i)} - \min_i w_t^{(i)} \geq 2\delta/N \mid \mathcal{F}_{t-1} ] \geq \zeta$ for infinitely many $t$. Then, for all $N>1$, $\Prob[ \tau_N(t) = \infty ] =0$ for all finite $t$.
+\end{lemma}
+
+\begin{proof}
+Let $\mathcal{H}_t$ be defined as in \eqref{eq:defn_Ht}. The first step is to show that whenever $\max_i w_t^{(i)} \geq (1+\delta)/N$, $\Prob[  c_N(t) > 2/N^2 \mid \mathcal{H}_t ] = \Prob[ c_N(t) \neq 0 \mid \mathcal{H}_t ]$ is bounded below uniformly in $t$.
+For this purpose we need consider only weight vectors such that $w_t^{(i)} \in (0,2/N)$ for all $i$; otherwise $\Prob[ c_N(t) \neq 0 \mid \mathcal{H}_t ] =1$ by the definition of stochastic rounding.
+
+Denote $\mathcal{S}_{N-1}^\delta = \{ w^{(1:N)} \in \mathcal{S}_{N-1} :  \forall i, \, 0 <w^{(i)} <2/N ;\, \max_i w^{(i)} \geq (1 + \delta)/N \}$ for any $\delta \in (0, 1)$, where $\mathcal{S}_{k}$ denotes the $k$-dimensional probability simplex.
+Fix arbitrary $w_t^{(1:N)} \in \mathcal{S}_{N-1}^\delta$. Set $i^\star = \arg\max_i w_t^{(i)}$ and denote $\mathcal{I} = \{i \in \{1,\dots,N\} : w^{(i)} > 1/N \}$.
+Since all weights are in $(0, 2/N)$, for $i \in \mathcal{I}, \nu_t^{(i)} \in \{1,2\}$ and for $i \notin \mathcal{I}, \nu_t^{(i)} \in \{0,1\}$; and since the offspring counts must sum to $N$, we can write
+\begin{align}\label{eq:smallcN_istar}
+\Prob[ c_N(t) \leq 2/N^2 \mid \mathcal{H}_t ]
+&= \Prob[ \nu_t^{(i)} =1 \,\forall i\in\{1,\dots,N\} \mid \mathcal{H}_t ] \notag\\
+&= \Prob[ \nu_t^{(i)} =1 \,\forall i\in \mathcal{I} \mid \mathcal{H}_t ] \notag\\
+&= \prod_{i \in \mathcal{I}} \Prob[ \nu_t^{(i)} =1 \mid \nu_t^{(j)}=1 \,\forall j \in \mathcal{I}: j<i; \mathcal{H}_t ] \notag\\
+&= \Prob[ \nu_t^{(i^\star)} =1 \mid \mathcal{H}_t ] \prod_{\substack{i \in \mathcal{I} \\ i \neq i^\star}} \Prob[ \nu_t^{(i)} =1 \mid \nu_t^{(i^\star)}=1; \nu_t^{(j)}=1 \,\forall j \in \mathcal{I}: j<i ; \mathcal{H}_t ] \notag\\
+&\leq \Prob[ \nu_t^{(i^\star)} =1 \mid \mathcal{H}_t ] .
+\end{align}
+The final inequality holds with equality when $|\mathcal{I}| =1$, i.e.\ the only weight larger than $1/N$ is $w_t^{(i^\star)}$.
+Thus $\Prob[ c_N(t) > 2/N^2 \mid \mathcal{H}_t ]$ is minimised on $\mathcal{S}_{N-1}^\delta$ when only one weight is larger than $1/N$, in which case the values of the other weights do not affect this probability. 
+
+Define $w_{\delta^\prime} = \{(1,\dots,1) + \delta^\prime e_{i^\star} - \delta^\prime e_{j^\star} \} /N$ for fixed $i^\star \neq j^\star$ and $\delta^\prime \in (0,1)$, where $e_i$ denotes the $i$th canonical basis vector in $\mathbb{R}^N$. 
+As in the proof of Corollary~\ref{thm:stochrounding}, define $p_0^{(i)} = \Prob[ \nu_t^{(i)} = \flnw \mid \mathcal{H}_t ]$ and $p_1^{(i)} = \Prob[ \nu_t^{(i)} = \flnw +1 \mid \mathcal{H}_t ]$. Then from \eqref{eq:smallcN_istar} we have
+\begin{equation*}
+\Prob[ c_N(t) > 2/N^2 \mid \mathcal{H}_t, w_t^{(1:N)} = w_{\delta^\prime} ]
+= 1- \Prob[ \nu_t^{(i^\star)} = 1 \mid \mathcal{H}_t, w_t^{(1:N)} = w_{\delta^\prime} ]
+= p_1^{(i^\star)},
+\end{equation*}
+evaluated on $w_{\delta^\prime}$.
+We will need a lower bound on $p_1^{(i^\star)}$ when $w_t^{(1:N)} = w_{\delta^\prime}$. 
+We first derive expressions for $p_0^{(i)}$ and $p_1^{(i)}$ up to a constant, then use $p_0^{(i)} + p_1^{(i)} =1$ to get a normalised bound. We have
+\begin{align*} 
+p_0^{(i)} &= C (1- N w_t^{(i)} + \flnw) \\
+&\qquad \times \sum_{\substack{a_{1:N} \in \{1,\dots,N\}^N : \\ |\{j: a_j=i\}|=\flnw }}
+\Prob\left[ a_t^{(1:N)} = a_{1:N} \mid \nu_t^{(i)}, w_t^{(1:N)} \right]
+\prod_{k=1}^N q_{t-1}( X_t^{(a_k)}, X_{t-1}^{(k)} ) ,\\
+p_1^{(i)} &= C (N w_t^{(i)} - \flnw) \\
+&\qquad \times \sum_{\substack{a_{1:N} \in \{1,\dots,N\}^N : \\ |\{j: a_j=i\}|=\flnw +1 }}
+\Prob\left[ a_t^{(1:N)} = a_{1:N} \mid \nu_t^{(i)}, w_t^{(1:N)} \right]
+\prod_{k=1}^N q_{t-1}( X_t^{(a_k)}, X_{t-1}^{(k)} ) .
+\end{align*}
+Applying the bounds on $q_t$, we have
+\begin{align*}
+C (1- N w_t^{(i)} + \flnw) \varepsilon^N &\leq p_0^{(i)} \leq C (1- N w_t^{(i)} + \flnw) \varepsilon^{-N} ,\\
+C (N w_t^{(i)} - \flnw) \varepsilon^N &\leq p_1^{(i)} \leq C (N w_t^{(i)} - \flnw) \varepsilon^{-N}
+\end{align*}
+from which we construct the normalised bound
+\begin{equation*}
+p_1^{(i)} \geq \frac{ (Nw_t^{(i)} - \flnw) \varepsilon^{N} }{ (Nw_t^{(i)} - \flnw) \varepsilon^{-N} + (1- Nw_t^{(i)} +\flnw) \varepsilon^{-N}}
+= (Nw_t^{(i)} - \flnw) \varepsilon^{2N} .
+\end{equation*}
+When $w_t^{(1:N)} = w_{\delta^\prime}$, we have $w_t^{(i^\star)} = (1+\delta^\prime)/N$, so $p_1^{(i^\star)} \geq \delta^\prime \varepsilon^{2N}$,
+which is increasing in $\delta^\prime$.
+We conclude that $\Prob[ c_N(t) > 2/N^2 | \mathcal{H}_t, \max_i w_t^{(i)} \geq (1+\delta)/N ] \geq \min_{\delta^\prime \geq \delta} \delta^\prime \varepsilon^{2N} = \delta \varepsilon^{2N}$.
+
+A slight modification of this argument yields $\Prob[ c_N(t) > 2/N^2 | \mathcal{H}_t, \min_i w_t^{(i)} \leq (1-\delta)/N ] \geq \delta \varepsilon^{2N} $.
+Whenever $\max_i w_t^{(i)} - \min_i w_t^{(i)} \geq 2\delta/N$, either $\max_i w_t^{(i)} \geq (1+\delta)/N$ or $\min_i w_t^{(i)} \leq (1-\delta)/N$, so we have 
+$\Prob[ c_N(t) > 2/N^2 | \mathcal{H}_t, \max_i w_t^{(i)} - \min_i w_t^{(i)} \geq 2\delta/N ] \geq \delta \varepsilon^{2N}$.
+Thus 
+\begin{equation*}
+\Prob[ c_N(t)>2/N^2 \mid \mathcal{H}_t ] \geq \delta \varepsilon^{2N}\1{\max_i w_t^{(i)} - \min_i w_t^{(i)} \geq 2\delta/N} .
+\end{equation*}
+Using the D-separation established in Appendix \ref{app:dseparation} combined with the tower property, we have
+\begin{align*}
+\Prob[ c_N(t)>2/N^2 \mid \mathcal{F}_{t-1} ]
+&=\Et\left[ \Prob[ c_N(t)>2/N^2 \mid \mathcal{H}_t, \mathcal{F}_{t-1} ] \right]
+=\Et\left[ \Prob[ c_N(t)>2/N^2 \mid \mathcal{H}_t ] \right] \\
+&\geq \delta \varepsilon^{2N} \Prob[ \max_i w_t^{(i)} - \min_i w_t^{(i)} \geq 2\delta/N \mid \mathcal{F}_{t-1} ] ,
+\end{align*}
+which is bounded below by $ \zeta \delta \varepsilon^{2N} $ for infinitely many $t$. 
+Hence,
+\begin{equation*}
+\sum_{t=0}^\infty \Prob[ c_N(t) > 2/N^2 \mid \mathcal{F}_{t-1} ] = \infty .
+\end{equation*}
+By a filtered version of the second Borel--Cantelli lemma (see for example \cite[Theorem 4.3.4]{durrett2019}), this implies that $c_N(t) >2/N^2$ for infinitely many $t$, almost surely.
+This ensures, for all $t <\infty$, that $\Prob\left[ \exists s<\infty : \sum_{r=1}^s c_N(r) \geq t \right] =1$, which by definition of $\tau_N(t)$ is equivalent to $\Prob[ \tau_N(t) = \infty ] =0$.
+\end{proof}
 
 
 \section{The worst possible resampling scheme}
-Remark that this one doesn't converge to KC, but rather to a star-shaped coalescent.
+\draft{Remark that this one doesn't converge to KC, but rather to a star-shaped coalescent.}
 
 
 \section{Conditional SMC}
-Why CSMC is qualitatively different to, say, standard SMC with multinomial resampling (immortal particle etc.). Reasons for restriction to multinomial resampling, conjecture that limit theorem holds for other schemes in CSMC.
+\draft{Why CSMC is qualitatively different to, say, standard SMC with multinomial resampling (immortal particle etc.). Reasons for restriction to multinomial resampling, conjecture that limit theorem holds for other schemes in CSMC.}
+
 
 \subsection{Proof of main condition}
 
-\subsection{Proof of finite time scale condition}
+\begin{corollary}\label{thm:CSMC_newassns}
+Consider a conditional SMC algorithm using multinomial resampling, such that the standing assumption is satisfied. Assume there exist constants $\varepsilon\in (0,1], a\in [1,\infty)$ and probability density $h$ such that for all $x, x^\prime, t$,
+\begin{equation}\label{eq:gq_bounds_csmc}
+\frac{1}{a} \leq g_t(x, x^\prime) \leq a , \quad
+\varepsilon h(x^\prime) \leq q_t(x, x^\prime) \leq \frac{1}{\varepsilon} h(x^\prime) .
+\end{equation}
+Let $(G_t^{(n,N)})_{t\geq0}$ denote the genealogy of a random sample of $n$ terminal particles from the output of the algorithm when the total number of particles used is $N$. Then, for any fixed $n$, the time-scaled genealogy $(G_{\tau_N(t)}^{(n,N)})_{t\geq0}$ converges to Kingman's $n$-coalescent as $N\to \infty$, in the sense of finite-dimensional distributions.
+\end{corollary}
+
+\begin{proof}
+Define the conditioning $\sigma$-algebra $\mathcal{H}_t$ as in \eqref{eq:defn_Ht}.
+We assume without loss of generality that the immortal particle takes index 1 in each generation. This significantly simplifies the notation, but the same argument holds if the immortal indices are taken to be $a_{(0:T)}^\star$ rather than $(1,\dots,1)$.
+
+The parental indices are conditionally independent, as in standard SMC with multinomial resampling, but we have to treat $i=1$ as a special case. We have the following conditional law on parental indices
+\begin{equation*}
+\Prob \left[ a_t^{(i)} = a_i \mid \mathcal{H}_t \right] \propto
+\begin{cases}
+\1{a_i=1} &i=1 \\
+w_t^{(a_i)} q_{t-1}(X_t^{(a_i)}, X_{t-1}^{(i)}) &i=2,\dots,N .
+\end{cases}
+\end{equation*}
+The joint conditional law is therefore
+\begin{equation*}
+\Prob \left[ a_t^{(1:N)} = a_{1:N} \mid \mathcal{H}_t \right] \propto \1{a_1 = 1} \prod_{i=2}^N w_t^{(a_i)} q_{t-1}(X_t^{(a_i)}, X_{t-1}^{(i)}).
+\end{equation*}
+First we make the following observation, which follows from a balls-in-bins coupling.
+Assume \eqref{eq:gq_bounds_csmc}. 
+Then for any function $f:\{1,\dots,N\}^N \to \mathbb{R}$ such that (for a fixed $i$) $f(a_t^{\prime(1:N)}) \geq f(a_t^{(1:N)})$ whenever $|\{j:a_t^{\prime(j)}=i\}| \geq |\{j:a_t^{(j)}=i\}|$,
+\begin{equation}\label{eq:csmc_f_bound}
+\E[ f(A_{1,i}^{(1:N)}) ] 
+\leq \E[ f(a_t^{(1:N)}) \mid \mathcal{H}_t ]
+\leq \E[ f(A_{2,i}^{(1:N)}) ] 
+\end{equation}
+where the elements of $A_{1,i}^{(1:N)}, A_{2,i}^{(1:N)}$ are all mutually independent and independent of $\mathcal{F}_{\infty}$, and distributed according to
+\begin{align*}
+& A_{1,i}^{(j)} \sim \begin{cases}
+\delta_1 \qquad & j=1 \\
+\operatorname{Categorical}\left( (\varepsilon/a)^{\1{i=1} -\1{i\neq 1}} ,\dots, (\varepsilon/a)^{\1{i=N} -\1{i\neq N}} \right) & j\neq 1 
+\end{cases} \\
+& A_{2,i}^{(j)} \sim \begin{cases}
+\delta_1 \qquad & j=1\\
+\operatorname{Categorical}\left( (a/\varepsilon)^{\1{i=1} -\1{i\neq 1}} ,\dots, (a/\varepsilon)^{\1{i=N} -\1{i\neq N}} \right) & j\neq 1
+ \end{cases}
+\end{align*}
+where the vector of probabilities is given up to a constant in the argument of Categorical distributions.
+We use these random vectors to construct bounds that are independent of $\mathcal{F}_\infty$.
+Also define the corresponding offspring counts $V_1^{(i)} = |\{j: A_{1,i}^{(j)}=i\}|$, $V_2^{(i)} = |\{j: A_{2,i}^{(j)}=i\}|$, for $i=1,\dots,N$, which have marginal distributions
+\begin{align*}
+& V_1^{(i)} \overset{d}{=} \1{i=1} + \operatorname{Binomial}\left(N-1, \frac{\varepsilon/a}{(\varepsilon/a) + (N-1)(a/\varepsilon)} \right) , \\
+& V_2^{(i)} \overset{d}{=} \1{i=1} + \operatorname{Binomial}\left( N-1, \frac{a/\varepsilon}{(a/\varepsilon) + (N-1)(\varepsilon/a)} \right) .
+\end{align*}
+Now consider the function $f_i(a_t^{(1:N)}) := (\nu_t^{(i)})_2$. We can apply \eqref{eq:csmc_f_bound} to obtain the lower bound
+\begin{align*}
+\frac{1}{(N)_2} \sum_{i=1}^N \E[ (\nu_t^{(i)})_2 \mid \mathcal{H}_t ]
+&\geq \frac{1}{(N)_2} \sum_{i=1}^N \E[ (V_1^{(i)})_2 ]
+=  \frac{1}{(N)_2} \left[ \E[ (V_1^{(1)})_2 ] + \sum_{i=2}^N \E[ (V_1^{(i)})_2 ] \right] \\
+&= \frac{1}{(N)_2} \Bigg[ \frac{(N-1)_2 (\varepsilon/a)^2}{\{(\varepsilon/a) + (N-1)(a/\varepsilon)\}^2} + \frac{2(N-1)(\varepsilon/a)}{(\varepsilon/a) + (N-1)(a/\varepsilon)}  \\
+&\qquad\qquad\qquad + \sum_{i=2}^N \frac{(N-1)_2 (\varepsilon/a)^2}{\{(\varepsilon/a) + (N-1)(a/\varepsilon)\}^2} \Bigg] \\
+&= \frac{1}{(N)_2} \left[ \frac{2(N-1)(\varepsilon/a)}{(\varepsilon/a) + (N-1)(a/\varepsilon)} + \sum_{i=1}^N \frac{(N-1)_2 (\varepsilon/a)^2}{\{(\varepsilon/a) + (N-1)(a/\varepsilon)\}^2} \right]
+\end{align*}
+using the moments of the Binomial distribution (see \cite{mosimann1962} for example) along with the identity $(X+1)_2 \equiv 2(X)_1 +(X)_2$.
+This is further bounded by
+\begin{align}
+\frac{1}{(N)_2} \sum_{i=1}^N \E[ (\nu_t^{(i)})_2 \mid \mathcal{H}_t ]
+&\geq \frac{1}{(N)_2} \left\{ \frac{2(N-1)(\varepsilon/a)}{N(a/\varepsilon)} + \frac{(N)_3 (\varepsilon/a)^2}{N^2(a/\varepsilon)^2} \right\} \nonumber\\
+&= \frac{1}{N^2} \left\{\frac{2\varepsilon^2}{a^2} + \frac{(N-2)\varepsilon^4}{a^4}  \right\} . \label{eq:CSMC_cN_LB}
+\end{align}
+Similarly, we derive an upper bound on $f_i(a_t^{(1:N)}) := (\nu_t^{(i)})_3$, this time using the identity $(X+1)_3 \equiv 3(X)_2 +(X)_3 $:
+\begin{align*}
+\frac{1}{(N)_3} \sum_{i=1}^N \E[ (\nu_t^{(i)})_3 \mid \mathcal{H}_t]
+&\leq \frac{1}{(N)_3} \left[ \E[ (V_2^{(1)})_3 ] + \sum_{i=2}^N \E[ (V_2^{(i)})_3 ] \right] \\
+&\leq \frac{1}{(N)_3} \left[ \frac{ 3 (N-1)_2 (a/\varepsilon)^2}{\{(a/\varepsilon) + (N-1)(\varepsilon/a)\}^2} + \sum_{i=1}^N \frac{(N-1)_3 (a/\varepsilon)^3}{\{(a/\varepsilon) + (N-1)(\varepsilon/a)\}^3} \right] \\
+&\leq \frac{1}{(N)_3} \left\{ \frac{3(N-1)_2 (a/\varepsilon)^2}{N^2 (\varepsilon/a)^2} + \frac{(N)_4 (a/\varepsilon)^3}{N^3 (\varepsilon/a)^3} \right\} \\
+&= \frac{1}{(N)_3} \left\{ \frac{3(N-1)_2}{N^2} \frac{a^4}{\varepsilon^4} +\frac{(N)_4}{N^3} \frac{a^6}{\varepsilon^6} \right\} \\
+&= \frac{1}{N^3} \left\{ \frac{3a^4}{\varepsilon^4} + \frac{(N-3) a^6}{\varepsilon^6} \right\} .
+\end{align*}
+We apply the tower property and conditional independence as in Corollary~\ref{thm:stochrounding}, upper bounding the ratio by
+\begin{align*}
+\frac{\frac{1}{(N)_3} \sum_{i=1}^N \Et[ (\nu_t^{(i)})_3 ]}{\frac{1}{(N)_2} \sum_{i=1}^N \Et[ (\nu_t^{(i)})_2 ]}
+&\leq \frac{N^2}{N^3} \frac{ \frac{3a^4}{\varepsilon^4} + \frac{(N-3)a^6}{\varepsilon^6} }{ \frac{2\varepsilon^2}{a^2} + \frac{(N-2)\varepsilon^4}{a^4} }
+\leq \frac{1}{N} \frac{a^6}{\varepsilon^6}\, \frac{3 + (N-3) a^2 / \varepsilon^2 }{2 + (N-2) \varepsilon^2 / a^2} \\
+&\leq \frac{1}{N} \frac{a^6}{\varepsilon^6} \left\{ \frac{3}{2} + \frac{N-3}{N-2} \frac{a^4}{\varepsilon^4} \right\}
+\leq \frac{1}{N} \left\{ \frac{3 a^6}{2 \varepsilon^6} + \frac{a^{10}}{\varepsilon^{10}} \right\}
+=: b_N \underset{N\to\infty}{\longrightarrow} 0.
+\end{align*}
+Thus \eqref{eq:mainthmcond} is satisfied. It remains to show that, for $N$ sufficiently large, $\Prob[ \tau_N(t) = \infty ] =0$ for all finite $t$, a technicality which is proved in Lemma \ref{thm:CSMC_nontriviality} in Appendix~\ref{app:finiteness}. Applying Theorem \ref{thm:generalconv} gives the result.
+\end{proof}
+
+
+\subsection{Finite time scale}
+
+\begin{lemma}\label{thm:CSMC_nontriviality}
+Consider a conditional SMC algorithm using multinomial resampling, satisfying the standing assumption and \eqref{eq:gq_bounds_csmc}. 
+Then, for all $N>2$, $\Prob[ \tau_N(t) = \infty ]=0$ for all finite $t$.
+\end{lemma}
+
+\begin{proof}
+Since $c_N(t) \in [0,1]$ almost surely and has strictly positive expectation, for any fixed $N$ the distribution of $c_N(t)$ with given expectation that maximises $\Prob[ c_N(t)=0 \mid \mathcal{F}_{t-1} ]$ is two atoms, at 0 and 1 respectively. To ensure the correct expectation, the atom at 1 should have mass $\Prob[ c_N(t)=1 \mid \mathcal{F}_{t-1} ] = \Et [ c_N(t) ]$, which is bounded below by \eqref{eq:CSMC_cN_LB}.
+If $c_N(t) > 0$ then $c_N(t) \geq 2/(N)_2 > 2/N^2$. Hence, in general $\Prob[ c_N(t) > 2/N^2 \mid \mathcal{F}_{t-1} ] \geq \Et [c_N(t)]$. Applying \eqref{eq:CSMC_cN_LB}, we have for any finite $N$,
+\begin{equation*}
+\sum_{t=0}^\infty \Prob[ c_N(t) > 2/N^2 \mid \mathcal{F}_{t-1} ]
+\geq \sum_{t=0}^\infty \Et [ c_N(t) ]
+\geq \sum_{t=0}^\infty \frac{1}{N^2} \left\{\frac{2\varepsilon^2}{a^2} + \frac{(N-2)\varepsilon^4}{a^4}  \right\}
+= \infty
+\end{equation*}
+By an argument analogous to the conclusion of Lemma \ref{thm:SR_nontriviality}, $\Prob[ \tau_N(t) = \infty ] =0$ for all $t < \infty$.
+\end{proof}
+
 
 \subsection{Effect of ancestor sampling}
-Argue that ancestor sampling removes bias towards assigning offspring to immortal line, and leaves exactly the same genealogy as standard SMC with multinomial resampling.
+\draft{Argue that ancestor sampling removes bias towards assigning offspring to immortal line, and leaves exactly the same genealogy as standard SMC with multinomial resampling.}
