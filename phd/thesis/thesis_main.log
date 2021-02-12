@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  8 FEB 2021 10:24
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  12 FEB 2021 17:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1396,7 +1396,7 @@ chapter 1.
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.139 \include{introduction}
+l.143 \include{introduction}
                              [1
 
 
@@ -1508,20 +1508,20 @@ Package mdframed Info: mdframed detected package amsthm
 
 
 
-] [15]
+] [15] [16]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 88.
- [16]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 129.
+(mdframed)              on input line 139.
  [17]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 183.
+(mdframed)              on input line 179.
+ [18]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 233.
 
-Overfull \hbox (2.78377pt too wide) detected at line 191
+Overfull \hbox (2.78377pt too wide) detected at line 241
 [] [] [] [] \OMS/cmsy/m/n/10.95 ^^T [] [] \OML/cmm/m/it/10.95 c[]\OT1/cmr/m/n/1
 0.95 (\OML/cmm/m/it/10.95 s[]\OT1/cmr/m/n/10.95 ) + [] (\OML/cmm/m/it/10.95 t \
 OT1/cmr/m/n/10.95 + 1)[](1 + \OML/cmm/m/it/10.95 B\OT1/cmr/m/n/10.95 )[]\OML/cm
@@ -1529,27 +1529,27 @@ m/m/it/10.95 :
  []
 
 
-Overfull \hbox (66.79228pt too wide) detected at line 216
+Overfull \hbox (66.79228pt too wide) detected at line 266
 [] [] \OML/cmm/m/it/10.95 B[] [] [] [] \OT1/cmr/m/n/10.95 = [] []\OML/cmm/m/it/
 10.95 B[] [] [] [] :
  []
 
 
-Overfull \hbox (25.60753pt too wide) detected at line 226
+Overfull \hbox (25.60753pt too wide) detected at line 276
 []
  []
 
 
-Overfull \hbox (69.32552pt too wide) detected at line 240
+Overfull \hbox (69.32552pt too wide) detected at line 290
 []
  []
 
-[18]
+[19]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 252.
+(mdframed)              on input line 302.
 
-Overfull \hbox (2.78377pt too wide) detected at line 260
+Overfull \hbox (2.78377pt too wide) detected at line 310
 [] [] [] [] \OMS/cmsy/m/n/10.95 ^^U [] [] \OML/cmm/m/it/10.95 c[]\OT1/cmr/m/n/1
 0.95 (\OML/cmm/m/it/10.95 s[]\OT1/cmr/m/n/10.95 ) \OMS/cmsy/m/n/10.95 ^^@ [] \O
 T1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 t \OT1/cmr/m/n/10.95 + 1)[](1 + \OML/cmm/
@@ -1557,192 +1557,191 @@ m/it/10.95 B\OT1/cmr/m/n/10.95 )[]\OML/cmm/m/it/10.95 :
  []
 
 
-Overfull \hbox (98.81395pt too wide) detected at line 285
+Overfull \hbox (98.81395pt too wide) detected at line 335
 []
  []
 
 
-Overfull \hbox (3.62474pt too wide) detected at line 293
+Overfull \hbox (3.62474pt too wide) detected at line 343
 [] \OMS/cmsy/m/n/10.95 ^^@ [] []\OML/cmm/m/it/10.95 B[] [] [] [] \OMS/cmsy/m/n/
 10.95 ^^U ^^@ [] \OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 t \OT1/cmr/m/n/10.95 +
  1)[](1 + \OML/cmm/m/it/10.95 B\OT1/cmr/m/n/10.95 )[]
  []
 
-[19]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 300.
-
-Overfull \hbox (159.00258pt too wide) detected at line 361
-[]
- []
-
+(mdframed)              on input line 350.
 [20]
-Overfull \hbox (48.73076pt too wide) detected at line 382
-[]
- []
-
-
-Overfull \hbox (67.80319pt too wide) detected at line 397
+Overfull \hbox (159.00258pt too wide) detected at line 411
 []
  []
 
 [21]
-Overfull \hbox (98.80354pt too wide) detected at line 457
+Overfull \hbox (48.73076pt too wide) detected at line 432
+[]
+ []
+
+
+Overfull \hbox (67.80319pt too wide) detected at line 447
 []
  []
 
 [22]
-Overfull \hbox (78.15157pt too wide) detected at line 478
+Overfull \hbox (98.80354pt too wide) detected at line 507
 []
  []
 
 [23]
+Overfull \hbox (78.15157pt too wide) detected at line 528
+[]
+ []
+
+[24]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 497.
+(mdframed)              on input line 547.
 
-Overfull \hbox (84.0211pt too wide) detected at line 510
+Overfull \hbox (84.0211pt too wide) detected at line 560
 [] [] \U/msb/m/n/10.95 E [] \OMS/cmsy/m/n/10.95 ^^T \OML/cmm/m/it/10.95 [] [] 
 []\OT1/cmr/m/n/10.95 (\OMS/cmsy/m/n/10.95 ^^@\OML/cmm/m/it/10.95 []\OT1/cmr/m/
 n/10.95 )[]\OML/cmm/m/it/10.95 t[] [] [] []:
  []
 
 
-Overfull \hbox (3.75868pt too wide) detected at line 536
-[]
- []
-
-[24]
-Overfull \hbox (119.62622pt too wide) detected at line 550
-[]
- []
-
-
-Overfull \hbox (102.54381pt too wide) detected at line 580
-[]
- []
-
-
-Overfull \hbox (41.31839pt too wide) detected at line 594
+Overfull \hbox (3.75868pt too wide) detected at line 586
 []
  []
 
 [25]
-Overfull \hbox (98.6379pt too wide) detected at line 607
+Overfull \hbox (119.62622pt too wide) detected at line 600
+[]
+ []
+
+
+Overfull \hbox (102.54381pt too wide) detected at line 630
+[]
+ []
+
+
+Overfull \hbox (41.31839pt too wide) detected at line 644
 []
  []
 
 [26]
-Overfull \hbox (86.26985pt too wide) detected at line 654
-[]
- []
-
-
-Overfull \hbox (150.66641pt too wide) detected at line 684
-[]
- []
-
-
-Overfull \hbox (122.50734pt too wide) detected at line 713
+Overfull \hbox (98.6379pt too wide) detected at line 657
 []
  []
 
 [27]
-Overfull \hbox (60.36168pt too wide) detected at line 735
+Overfull \hbox (86.26985pt too wide) detected at line 704
+[]
+ []
+
+
+Overfull \hbox (150.66641pt too wide) detected at line 734
+[]
+ []
+
+
+Overfull \hbox (122.50734pt too wide) detected at line 763
 []
  []
 
 [28]
-Overfull \hbox (15.23224pt too wide) detected at line 762
+Overfull \hbox (60.36168pt too wide) detected at line 785
+[]
+ []
+
+[29]
+Overfull \hbox (15.23224pt too wide) detected at line 812
 [] [] \U/msb/m/n/10.95 E [] \OMS/cmsy/m/n/10.95 ^^T []\OT1/cmr/m/n/10.95 (\OML/
 cmm/m/it/10.95 t \OT1/cmr/m/n/10.95 + 1)[] [] \U/msb/m/n/10.95 E [] \OT1/cmr/m/
 n/10.95 = 0
  []
 
 
-Overfull \hbox (57.3295pt too wide) detected at line 780
+Overfull \hbox (57.3295pt too wide) detected at line 830
 []
  []
 
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 785.
+(mdframed)              on input line 835.
 
-Overfull \hbox (84.0211pt too wide) detected at line 798
+Overfull \hbox (84.0211pt too wide) detected at line 848
 [] [] \U/msb/m/n/10.95 E [] \OMS/cmsy/m/n/10.95 ^^U \OML/cmm/m/it/10.95 [] [] 
 []\OT1/cmr/m/n/10.95 (\OMS/cmsy/m/n/10.95 ^^@\OML/cmm/m/it/10.95 []\OT1/cmr/m/
 n/10.95 )[]\OML/cmm/m/it/10.95 t[] [] [] []:
  []
 
-[29]
-Overfull \hbox (37.49117pt too wide) detected at line 823
-[]
- []
-
-
-Overfull \hbox (85.1906pt too wide) detected at line 843
-[]
- []
-
 [30]
-Overfull \hbox (88.48825pt too wide) detected at line 876
+Overfull \hbox (37.49117pt too wide) detected at line 873
 []
  []
 
 
-Overfull \hbox (59.04085pt too wide) detected at line 901
-[]
- []
-
-
-Overfull \hbox (68.3369pt too wide) detected at line 920
+Overfull \hbox (85.1906pt too wide) detected at line 893
 []
  []
 
 [31]
-Overfull \hbox (57.3295pt too wide) detected at line 939
+Overfull \hbox (88.48825pt too wide) detected at line 926
+[]
+ []
+
+
+Overfull \hbox (59.04085pt too wide) detected at line 951
+[]
+ []
+
+
+Overfull \hbox (68.3369pt too wide) detected at line 970
+[]
+ []
+
+[32]
+Overfull \hbox (57.3295pt too wide) detected at line 989
 []
  []
 
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 944.
-[32]
-Overfull \hbox (62.5996pt too wide) detected at line 1011
-[]
- []
-
-
-Overfull \hbox (7.54301pt too wide) detected at line 1031
-[]
- []
-
+(mdframed)              on input line 994.
 [33]
-Overfull \hbox (88.7925pt too wide) detected at line 1045
+Overfull \hbox (62.5996pt too wide) detected at line 1061
 []
  []
 
 
-Overfull \hbox (125.75452pt too wide) detected at line 1094
+Overfull \hbox (7.54301pt too wide) detected at line 1081
 []
  []
 
 [34]
-Overfull \hbox (92.46626pt too wide) detected at line 1134
+Overfull \hbox (88.7925pt too wide) detected at line 1095
+[]
+ []
+
+
+Overfull \hbox (125.75452pt too wide) detected at line 1144
 []
  []
 
 [35]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 1142.
- [36]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 1184.
+Overfull \hbox (92.46626pt too wide) detected at line 1184
+[]
+ []
 
-Overfull \hbox (108.80887pt too wide) detected at line 1197
+[36]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 1192.
+ [37]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 1234.
+
+Overfull \hbox (108.80887pt too wide) detected at line 1247
 []\OMS/cmsy/m/n/10.95 f\OML/cmm/m/it/10.95 ^^\[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/
 it/10.95 t\OT1/cmr/m/n/10.95 ) \OMS/cmsy/m/n/10.95 ^^U \OML/cmm/m/it/10.95 l\OM
 S/cmsy/m/n/10.95 g \OT1/cmr/m/n/10.95 = [] = [] \OMS/cmsy/m/n/10.95 ^^S [] [] ^
@@ -1751,9 +1750,9 @@ S/cmsy/m/n/10.95 g \OT1/cmr/m/n/10.95 = [] = [] \OMS/cmsy/m/n/10.95 ^^S [] [] ^
 
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1209.
-[37]
-Overfull \hbox (62.00995pt too wide) detected at line 1227
+(mdframed)              on input line 1259.
+[38]
+Overfull \hbox (62.00995pt too wide) detected at line 1277
 []\U/msb/m/n/10.95 P\OT1/cmr/m/n/10.95 [\OML/cmm/m/it/10.95 E[]\OT1/cmr/m/n/10.
 95 ] = 1 \OMS/cmsy/m/n/10.95 ^^@ \U/msb/m/n/10.95 P\OT1/cmr/m/n/10.95 [(\OML/cm
 m/m/it/10.95 E[]\OT1/cmr/m/n/10.95 )[]] = 1 \OMS/cmsy/m/n/10.95 ^^@ \U/msb/m/n/
@@ -1763,9 +1762,9 @@ m/m/it/10.95 E[]\OT1/cmr/m/n/10.95 )[]] = 1 \OMS/cmsy/m/n/10.95 ^^@ \U/msb/m/n/
 
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1240.
-[38]
-Overfull \hbox (67.28311pt too wide) detected at line 1274
+(mdframed)              on input line 1290.
+[39]
+Overfull \hbox (67.28311pt too wide) detected at line 1324
 []\OML/cmm/m/it/10.95 D[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 r\OT1/cmr/m/n/
 10.95 ) = [] [](\OML/cmm/m/it/10.95 ^^W[]\OT1/cmr/m/n/10.95 )[] [] \U/bbm/m/n/1
 0.95 1[] \OT1/cmr/m/n/10.95 + [] [](\OML/cmm/m/it/10.95 ^^W[]\OT1/cmr/m/n/10.95
@@ -1773,60 +1772,57 @@ Overfull \hbox (67.28311pt too wide) detected at line 1274
  []
 
 
-Overfull \hbox (108.2203pt too wide) detected at line 1297
+Overfull \hbox (108.2203pt too wide) detected at line 1347
 []
  []
 
-[39]
-Overfull \hbox (48.02219pt too wide) detected at line 1356
+[40]
+Overfull \hbox (48.02219pt too wide) detected at line 1406
 []
  []
 
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1364.
-[40]
-Overfull \hbox (72.43637pt too wide) detected at line 1392
+(mdframed)              on input line 1414.
+[41]
+Overfull \hbox (72.43637pt too wide) detected at line 1442
 []
  []
 
 
-Overfull \hbox (53.56366pt too wide) detected at line 1407
+Overfull \hbox (53.56366pt too wide) detected at line 1457
 []\U/msb/m/n/10.95 E [] \OT1/cmr/m/n/10.95 = \U/msb/m/n/10.95 E [] \OT1/cmr/m/n
 /10.95 = \U/msb/m/n/10.95 E [] \OT1/cmr/m/n/10.95 = \U/msb/m/n/10.95 E []
  []
 
-) [41]
+) [42]
 \openout2 = `discussion.aux'.
 
  (./discussion.tex
 chapter 6.
-) [42
+) [43
 
 
 
 
-] [43
+] [44
 
 
 
 
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 154.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 154.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 158.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 158.
  (./thesis_main.aux (./introduction.aux) (./background.aux)
 (./limits.aux) (./applications.aux) (./weakconv.aux) (./discussion.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 154.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 154.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 158.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 158.
 Package rerunfilecheck Info: File `thesis_main.out' has not changed.
 (rerunfilecheck)             Checksum: 8D5DDFCFEF5EFACE5C275EA03DC1EC27;3895.
 
 
 LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
 Package logreq Info: Writing requests to 'thesis_main.run.xml'.
 \openout1 = `thesis_main.run.xml'.
@@ -1835,60 +1831,39 @@ Package logreq Info: Writing requests to 'thesis_main.run.xml'.
 Here is how much of TeX's memory you used:
  35128 strings out of 492649
  678638 string characters out of 6129623
- 1211831 words of memory out of 5000000
+ 1211835 words of memory out of 5000000
  38259 multiletter control sequences out of 15000+600000
  556796 words of font info for 74 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  64i,22n,66p,10565b,1441s stack positions out of 5000i,500n,10000p,200000b,80000s
-pdfTeX warning (dest): name{equation.5.3.73} has been referenced but does not
- exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{equation.5.2.26} has been referenced but does not e
-xist, replaced by a fixed one
-
-pdfTeX warning (dest): name{equation.5.2.25} has been referenced but does not e
-xist, replaced by a fixed one
-
-pdfTeX warning (dest): name{equation.5.2.24} has been referenced but does not e
-xist, replaced by a fixed one
-
-pdfTeX warning (dest): name{equation.5.1.9} has been referenced but does not ex
-ist, replaced by a fixed one
-
-pdfTeX warning (dest): name{equation.5.1.10} has been referenced but does not e
-xist, replaced by a fixed one
-
-pdfTeX warning (dest): name{equation.5.1.8} has been referenced but does not ex
-ist, replaced by a fixed one
-
- </Users/suzie/Library/texlive/2018/texmf-var/fonts/pk/ljfour/public/bbm/bbm8.6
-00pk> </Users/suzie/Library/texlive/2018/texmf-var/fonts/pk/ljfour/public/bbm/b
-bm10.657pk>{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}</us
-r/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr
-/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/
-local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/
-local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/l
-ocal/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></us
-r/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr
-/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/l
-ocal/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/loc
-al/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local
-/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/t
-exlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texl
-ive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive
-/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl10.pfb></usr/local/texlive/
-2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2
-018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/201
-8/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2018/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2018/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2018/te
-xmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/201
-8/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive
-/2018/texmf-dist/fonts/type1/adobe/utopia/putb8a.pfb>
-Output written on thesis_main.pdf (51 pages, 408733 bytes).
+ </Users/suzie/Library/texlive/2018/texmf-var/fonts/pk/ljfour/public/bbm/bbm8
+.600pk> </Users/suzie/Library/texlive/2018/texmf-var/fonts/pk/ljfour/public/bbm
+/bbm10.657pk>{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}</
+usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></u
+sr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
+r/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></us
+r/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr
+/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></
+usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></u
+sr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr
+/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/l
+ocal/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/loc
+al/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local
+/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/te
+xlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texli
+ve/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl10.pfb></usr/local/texliv
+e/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive
+/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2
+018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/201
+8/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2018
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2018/
+texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2
+018/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texli
+ve/2018/texmf-dist/fonts/type1/adobe/utopia/putb8a.pfb>
+Output written on thesis_main.pdf (52 pages, 412625 bytes).
 PDF statistics:
- 931 PDF objects out of 1000 (max. 8388607)
- 846 compressed objects within 9 object streams
+ 937 PDF objects out of 1000 (max. 8388607)
+ 851 compressed objects within 9 object streams
  253 named destinations out of 1000 (max. 500000)
  469 words of extra memory for PDF output out of 10000 (max. 10000000)
 

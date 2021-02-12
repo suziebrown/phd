@@ -33,9 +33,9 @@ to Kingman's $n$-coalescent as $N \to \infty$.
 
 \begin{proof}
 The structure of the proof follows \textcite{mohle1999}, albeit with considerable technical complication due to the lack of independence between generations (non-neutrality) in our model. \seb{is this the main/only source of complication?}
-Since we already have convergence of the finite-dimensional distributions (Theorem ?? \seb{refers to a previous chapter}), strengthening this to weak convergence requires relative compactness of the sequence of processes $\{ (G_{\tau_N(t)}^{(n,N)})_{t\geq0} \}_{N\in\mathbb{N}}$.
+Since we already have convergence of the finite-dimensional distributions (Theorem ?? \seb{refers to a previous chapter not yet written}), strengthening this to weak convergence requires relative compactness of the sequence of processes $\{ (G_{\tau_N(t)}^{(n,N)})_{t\geq0} \}_{N\in\mathbb{N}}$.
 
-We can apply \textcite[Chapter 3, Corollary 7.4]{ethier1986}: $\mathcal{P}_n$ is finite and therefore complete and separable, and the sample paths of $(G_{\tau_N(t)}^{(n,N)})_{t\geq0}$ live in $\mathcal{X}$, so the conditions of the corollary are satisfied.
+\textcite[Chapter 3, Corollary 7.4]{ethier1986} provides a necessary and sufficient condition for relative compactness: $\mathcal{P}_n$ is finite and therefore complete and separable, and the sample paths of $(G_{\tau_N(t)}^{(n,N)})_{t\geq0}$ live in $\mathcal{X}$, so the conditions of the corollary are satisfied.
 The corollary states that the sequence of processes $\{ (G_{\tau_N(t)}^{(n,N)})_{t\geq0} \}_{N\in\mathbb{N}}$ is relatively compact if and only if the following two conditions hold:
 \begin{enumerate}
 \item \label{item:relcomp1} For every $\varepsilon>0$, $t\geq 0$ there exists a compact set $\Gamma \subseteq \mathcal{P}_n$ such that
@@ -50,24 +50,25 @@ The corollary states that the sequence of processes $\{ (G_{\tau_N(t)}^{(n,N)})_
 \end{equation}
 where $\omega$ is the modulus of continuity:
 \begin{equation}
-\omega(G_{\tau_N(t)}^{(n,N)}, \delta, t) := \inf \max_{i \in [K]} 
-        \sup_{u,v \in [T_{i-1}, T_i)} \rho( G_{\tau_N(u)}^{(n,N)}, G_{\tau_N(v)}^{(n,N)} )
+\omega(G_{\tau_N(\cdot)}^{(n,N)}, \delta, t) := \inf \max_{i \in [K]} 
+        \sup_{u,v \in [T_{i-1}, T_i)} \rho\left( 
+        G_{\tau_N(u)}^{(n,N)}, G_{\tau_N(v)}^{(n,N)} \right)
 \end{equation}
 with the infimum taken over all partitions of the form $0=T_0<T_1<\cdots <T_{K-1} <t \leq T_K$ such that $\min_{i\in[K]} (T_i - T_{i-1}) > \delta$. \seb{use a different letter not $K$?}
 \end{enumerate}
-In our case, Condition \ref{item:relcomp1} is satisfied automatically with $\Gamma = \mathcal{P}_n$, since $\mathcal{P}_n$ is finite and hence compact. 
-The intuition behind condition \ref{item:relcomp2} is that the jumps of the process must be ``well-separated''. 
+In our case, Condition~\ref{item:relcomp1} is satisfied automatically with $\Gamma = \mathcal{P}_n$, since $\mathcal{P}_n$ is finite and hence compact. 
+Intuitively, Condition~\ref{item:relcomp2} ensures that the jumps of the process are well-separated. 
 In our case where $\rho$ is the zero-one metric, we see that $\rho( G_{\tau_N(u)}^{(n,N)}, G_{\tau_N(v)}^{(n,N)} )$ is equal to 1 if there is a jump between times $u$ and $v$, and 0 otherwise.
-Taking the supremum and maximum then indicates whether there is a jump within any of the intervals of the given partition; this can only be equal to zero if all of the jumps occur exactly at the times $T_0, \dots, T_k$. 
+Taking the supremum and maximum then indicates whether there is a jump inside any of the intervals of the given partition; this can only be equal to zero if all of the jumps up to time $t$ occur exactly at the times $T_0, \dots, T_K$. 
 %The supremum over $u,v$ then indicates whether there is a jump at any time in the interval $[T_i, T_{i-1})$. 
 %Similarly, the maximum over $i$ then indicates whether there is a jump within any of the intervals defined by that particular partition; this can only be equal to zero if all of the jumps occur exactly at the times $T_0, \dots, T_k$. 
 The infimum over all allowed partitions, then, can only be equal to zero if no two jumps occur less than $\delta$ (unscaled) time apart, because of the restriction we placed on these partitions.
 
-The proof is concentrated on proving Condition \ref{item:relcomp2}.
+The proof is concentrated on proving Condition~\ref{item:relcomp2}.
 To do this, we use a coupling with another process that contains all of the jumps of the genealogical process, with the addition of some extra jumps. This process is constructed in such a way that it can be shown to satisfy Condition 2, and hence so does the genealogical process.
 
-Define $p_t := \max_{\xi\in E} \{1 - p_{\xi\xi}(t)\} = 1 - p_{\Delta\Delta}(t)$, where $\Delta$ denotes the trivial partition of $\{1,\dots,n\}$ into singletons. For a proof that the maximum is attained at $\xi = \Delta$, see Lemma \ref{thm:maximum_pr}. 
-Following \textcite{mohle1999}, we now construct the two-dimensional \seb{conditionally on $\mathcal{F}$ ?} Markov process $(Z_t, S_t)_{t \in \mathbb{N}_0}$ with transition probabilities
+Define $p_t := \max_{\xi\in \mathcal{P}_n} \{1 - p_{\xi\xi}(t)\} = 1 - p_{\Delta\Delta}(t)$, where $\Delta$ denotes the trivial partition of singletons $\{ \{1\},\dots, \{n\} \}$. For a proof that the maximum is attained at $\xi = \Delta$, see Lemma \ref{thm:maximum_pr}. 
+Following \textcite{mohle1999}, we now construct the two-dimensional \seb{conditionally on $\mathcal{F}$ ?} Markov process $(Z_t, S_t)_{t \in \mathbb{N}_0}$ on $\mathbb{N}_0 \times \mathcal{P}_n$ with transition probabilities
 \begin{equation}
 \Prob(Z_t = j , S_t = \eta \mid Z_{t-1} = i, S_{t-1} = \xi)
 = \begin{cases}
@@ -82,12 +83,61 @@ The construction is such that the marginal $(S_t)$ has the same distribution as 
 
 Denote by $0=T_0^{(N)}<T_1^{(N)}<\dots$ the jump times of the rescaled process $(Z_{\tau_N(t)})_{t\geq0}$, and by $\varpi_i^{(N)} := T_i^{(N)} - T_{i-1}^{(N)}$ the corresponding holding times.
 
-...
+Suppose that for some fixed $t>0$, there exist $m \in \mathbb{N}$ and $\delta >0$ such that
+$\varpi_i^{(N)} > \delta$ for all $i\in \{1,\dots,m\}$, and
+$T_m^{(N)} \geq t$.
+Then
+$K_N := \min\{i : T_i^{(N)} \geq t\}$
+is well-defined with $1\leq K_N \leq m$,
+and $T_1^{(N)} , \dots, T_{K_N}^{(N)}$ form a partition of the form required for Condition~\ref{item:relcomp2}, 
+Indeed $(Z_{\tau_N(\cdot)})$ is constant on every interval $[ T_{i-1}^{(N)} , T_i^{(N)} )$, so $\omega( (Z_{\tau_N(\cdot))} , \delta, t ) = 0$. 
+We therefore have that
+for each $m \in \mathbb{N}$ and $\delta >0$,
+\begin{equation}
+\Prob[ \omega( (Z_{\tau_N(\cdot)}) , \delta, t ) < \varepsilon ]
+\geq \Prob[ T_m^{(N)} \geq t, \varpi_i^{(N)} > \delta \,\forall i\in \{1,\dots,m\} ] .
+\end{equation}
+Thus a sufficient condition for Condition~\ref{item:relcomp2} is: 
+for any $\varepsilon>0$, $t>0$, there exist $m\in\mathbb{N}$, $\delta>0$ such that
+\begin{equation}
+\liminf_{N\to\infty} 
+        \Prob[ T_m^{(N)} \geq t, \varpi_i^{(N)} > \delta \,\forall i\in \{1,\dots,m\} ]
+\geq 1-\varepsilon .
+\end{equation}
+Since $T_m^{(N)} = \varpi_1^{(N)} + \cdots + \varpi_m^{(N)}$, there is a positive correlation between $T_m^{(N)}$ and each of the $\varpi_i^{(N)}$, so
+\begin{align}
+\Prob[ T_m^{(N)} \geq &t, \varpi_i^{(N)} > \delta \,\forall i\in \{1,\dots,m\} ] 
+        \notag\\
+&= \Prob[ T_m^{(N)} \geq t \mid \varpi_i^{(N)} > \delta \,\forall i\in \{1,\dots,m\} ]
+        \,\Prob[ \varpi_i^{(N)} > \delta \,\forall i\in \{1,\dots,m\} ] \notag\\
+&\geq \Prob[ T_m^{(N)} \geq t ]
+        \,\Prob[ \varpi_i^{(N)} > \delta \,\forall i\in \{1,\dots,m\} ] .
+\end{align}
+%Due to Lemma ?? we have that $\tau_1^{(N)}, \dots, \tau_m^{(N)}$ converge jointly in distribution to i.i.d $Exp(\alpha_n t)$- distributed random variables, and hence $T_m^{(N)}$ converges in distribution to a $Gamma(m, \alpha_n t)$-distributed random variable.
+Due to Lemma ??, \seb{This lemma should give the limiting distribution of the $\varpi$s.}
+\begin{equation}
+\liminf_{N\to\infty} \Prob[ \varpi_i^{(N)} > \delta \,\forall i\in \{1,\dots,m\} ]
+= (e^{-\alpha_n \delta})^m
+\end{equation}
+and
+\begin{equation}
+\liminf_{N\to\infty} \Prob[ T_m^{(N)} \geq t ]
+= \liminf_{N\to\infty} \Prob[ \varpi_1^{(N)} + \cdots + \varpi_m^{(N)} \geq t ]
+= e^{-\alpha_n \delta} \sum_{i=0}^{m-1} \frac{(\alpha_n t)^i}{i!} .
+\end{equation}
+using the series expansion for the Erlang cumulative distribution function. \seb{citation?}
+Hence 
+\begin{equation}
+\liminf_{N\to\infty} 
+        \Prob[ T_m^{(N)} \geq t, \varpi_i^{(N)} > \delta \,\forall i\in \{1,\dots,m\} ]
+\geq (e^{-\alpha_n \delta})^{m+1} \sum_{i=0}^{m-1} \frac{(\alpha_n t)^i}{i!} ,
+\end{equation}
+which can be made $\geq 1-\varepsilon$ by taking $m$ sufficiently large and $\delta$ sufficiently small.
+This argument applies for any $\varepsilon$, $t$, so Condition~\ref{item:relcomp2} is satisfied, and the proof is complete.
 \end{proof}
 
 \begin{lemma}\label{thm:maximum_pr}
-$\max_{\xi\in E} (1 - p_{\xi\xi}(t)) = 1 - p_{\Delta\Delta}(t)$.
-\seb{I need to fix notation; perhaps the set $E$ could become $\mathcal{P}$ (for partitions) or something?}
+$\max_{\xi\in \mathcal{P}_n} (1 - p_{\xi\xi}(t)) = 1 - p_{\Delta\Delta}(t)$.
 \end{lemma}
 
 \begin{proof}
