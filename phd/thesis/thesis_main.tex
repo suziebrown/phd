@@ -35,6 +35,7 @@
 %%% BIBLIOGRAPHY
 \usepackage[citestyle=authoryear, sorting=nyt, backend=biber]{biblatex} %%% use \cite, \textcite and \parencite commands in text
 \addbibresource{../latex/smc.bib}
+%% I need to fix the bibliography so that (1) it doesn't display numbers, (2) it displays initials only for first names?, (3) it doesn't print in some bizarre-looking style.
 
 %%% MATHS PACKAGES
 \usepackage{amsmath}
@@ -58,10 +59,16 @@
 \newcommand{\E}{\mathbb{E}}
 \newcommand{\Et}{\mathbb{E}_t}
 \newcommand{\V}{\operatorname{Var}}
+\newcommand{\eqdist}{\overset{d}{=}}
 \newcommand{\I}[1]{\mathbbm{1}_{\{#1\}}}
 \newcommand{\1}[1]{\mathbbm{1}_{#1}}
 \newcommand{\Mn}{\operatorname{Multinomial}}
+\newcommand{\Cat}{\operatorname{Categorical}}
+\newcommand{\Exp}{\operatorname{Exp}}
 \newcommand{\flnw}[1][i]{\lfloor N w_t^{(#1)} \rfloor}
+
+%%% ALGORITHMS
+\usepackage[plain]{algorithm2e}
 
 %%% HYPERLINKS (must load last)
 \usepackage{hyperref}
@@ -116,6 +123,14 @@ Parts of this thesis have been published by the author:
 %%% The abstract must be no more than 300 words and may be single-spaced to ensure it fits on one page.
 
 %%% A list of acronyms must be placed either here or at the end of the thesis, and its location indicated in the ToC.
+
+\chapter[List of Acronyms]{List of Acronyms}
+\begin{tabular}{p{0.1\textwidth} p{0.8\textwidth}}
+SMC & sequential Monte Carlo \\
+i.i.d. & independent and identically distributed \\
+MRCA & most recent common ancestor \\
+\end{tabular}
+
 
 \chapter[Notation]{Notation and conventions}
 \begin{tabular}{p{0.1\textwidth} p{0.8\textwidth}}

@@ -19,6 +19,83 @@
 
 \refsection{0}
   \datalist[entry]{nyt/global//global/global}
+    \entry{baum1970}{article}{}
+      \name{author}{4}{}{%
+        {{uniquename=0,uniquepart=base,hash=4df2ad455942f6f13e125e4ac93740be}{%
+           family={Baum},
+           familyi={B\bibinitperiod},
+           given={Leonard\bibnamedelima E.},
+           giveni={L\bibinitperiod\bibinitdelim E\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=8ea4b0d08cb69e7a6c9b2b460ece7f63}{%
+           family={Petrie},
+           familyi={P\bibinitperiod},
+           given={Ted},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=0046a927a2069287ad40e434300dd33a}{%
+           family={Soules},
+           familyi={S\bibinitperiod},
+           given={George},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=c24f874021783a3c48c8c5844d51b6e1}{%
+           family={Weiss},
+           familyi={W\bibinitperiod},
+           given={Norman},
+           giveni={N\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {JSTOR}%
+      }
+      \strng{namehash}{9d34b3b0d00c6c21059e0f605ebd7e80}
+      \strng{fullhash}{d87f9a729f969c23da364fc87001e845}
+      \strng{bibnamehash}{9d34b3b0d00c6c21059e0f605ebd7e80}
+      \strng{authorbibnamehash}{9d34b3b0d00c6c21059e0f605ebd7e80}
+      \strng{authornamehash}{9d34b3b0d00c6c21059e0f605ebd7e80}
+      \strng{authorfullhash}{d87f9a729f969c23da364fc87001e845}
+      \field{sortinit}{B}
+      \field{sortinithash}{276475738cc058478c1677046f857703}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Annals of Mathematical Statistics}
+      \field{title}{A Maximization Technique Occurring in the Statistical Analysis of Probabilistic Functions of {Markov} Chains}
+      \field{volume}{41}
+      \field{year}{1970}
+      \field{pages}{164\bibrangedash 171}
+      \range{pages}{8}
+    \endentry
+    \entry{berestycki2009}{book}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=ddc27efb31a501fdc483329b99fea17f}{%
+           family={Berestycki},
+           familyi={B\bibinitperiod},
+           given={Nathana{ë}l},
+           giveni={N\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {ArXiv}%
+      }
+      \strng{namehash}{ddc27efb31a501fdc483329b99fea17f}
+      \strng{fullhash}{ddc27efb31a501fdc483329b99fea17f}
+      \strng{bibnamehash}{ddc27efb31a501fdc483329b99fea17f}
+      \strng{authorbibnamehash}{ddc27efb31a501fdc483329b99fea17f}
+      \strng{authornamehash}{ddc27efb31a501fdc483329b99fea17f}
+      \strng{authorfullhash}{ddc27efb31a501fdc483329b99fea17f}
+      \field{sortinit}{B}
+      \field{sortinithash}{276475738cc058478c1677046f857703}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{number}{0909.3985}
+      \field{title}{Recent Progress in Coalescent Theory}
+      \field{year}{2009}
+    \endentry
     \entry{brown2021}{article}{}
       \name{author}{4}{}{%
         {{uniquename=0,uniquepart=base,hash=fdbccafd0759a39bd5ff9b5ea9739883}{%
@@ -70,6 +147,70 @@
       \verb 10.1214/20-EJP561
       \endverb
     \endentry
+    \entry{cannings1974}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=c20b3968ffa937c666fe68df21266117}{%
+           family={Cannings},
+           familyi={C\bibinitperiod},
+           given={C.},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press}%
+      }
+      \strng{namehash}{c20b3968ffa937c666fe68df21266117}
+      \strng{fullhash}{c20b3968ffa937c666fe68df21266117}
+      \strng{bibnamehash}{c20b3968ffa937c666fe68df21266117}
+      \strng{authorbibnamehash}{c20b3968ffa937c666fe68df21266117}
+      \strng{authornamehash}{c20b3968ffa937c666fe68df21266117}
+      \strng{authorfullhash}{c20b3968ffa937c666fe68df21266117}
+      \field{sortinit}{C}
+      \field{sortinithash}{963e9d84a3da2344e8833203de5aed05}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Advances in Applied Probability}
+      \field{number}{2}
+      \field{title}{The Latent Roots of Certain {Markov} Chains Arising in Genetics: A New Approach, I. Haploid Models}
+      \field{volume}{6}
+      \field{year}{1974}
+      \field{pages}{260\bibrangedash 290}
+      \range{pages}{31}
+    \endentry
+    \entry{cannings1975}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=c20b3968ffa937c666fe68df21266117}{%
+           family={Cannings},
+           familyi={C\bibinitperiod},
+           given={C.},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press}%
+      }
+      \strng{namehash}{c20b3968ffa937c666fe68df21266117}
+      \strng{fullhash}{c20b3968ffa937c666fe68df21266117}
+      \strng{bibnamehash}{c20b3968ffa937c666fe68df21266117}
+      \strng{authorbibnamehash}{c20b3968ffa937c666fe68df21266117}
+      \strng{authornamehash}{c20b3968ffa937c666fe68df21266117}
+      \strng{authorfullhash}{c20b3968ffa937c666fe68df21266117}
+      \field{sortinit}{C}
+      \field{sortinithash}{963e9d84a3da2344e8833203de5aed05}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Advances in Applied Probability}
+      \field{number}{2}
+      \field{title}{The Latent Roots of Certain {Markov} Chains Arising in Genetics: A New Approach, II. Further Haploid Models}
+      \field{volume}{7}
+      \field{year}{1975}
+      \field{pages}{264\bibrangedash 282}
+      \range{pages}{19}
+    \endentry
     \entry{durrett2019}{book}{}
       \name{author}{1}{}{%
         {{uniquename=0,uniquepart=base,hash=175a15e34b656dab74bea645e2ed84d0}{%
@@ -101,6 +242,33 @@
       \verb{doi}
       \verb 10.1017/9781108591034
       \endverb
+    \endentry
+    \entry{etheridge2011}{book}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=54c38cbe8a4f8972c44ada3677485ffc}{%
+           family={Etheridge},
+           familyi={E\bibinitperiod},
+           given={Alison},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{54c38cbe8a4f8972c44ada3677485ffc}
+      \strng{fullhash}{54c38cbe8a4f8972c44ada3677485ffc}
+      \strng{bibnamehash}{54c38cbe8a4f8972c44ada3677485ffc}
+      \strng{authorbibnamehash}{54c38cbe8a4f8972c44ada3677485ffc}
+      \strng{authornamehash}{54c38cbe8a4f8972c44ada3677485ffc}
+      \strng{authorfullhash}{54c38cbe8a4f8972c44ada3677485ffc}
+      \field{sortinit}{E}
+      \field{sortinithash}{f615fb9c6fba11c6f962fb3fd599810e}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Some Mathematical Models from Population Genetics: {É}cole D'{É}t{é} de Probabilit{é}s de Saint-Flour XXXIX-2009}
+      \field{year}{2011}
     \endentry
     \entry{ethier1986}{book}{}
       \name{author}{2}{}{%
@@ -134,6 +302,156 @@
       \field{labeltitlesource}{title}
       \field{title}{Markov Processes: Characterization and Convergence}
       \field{year}{2009}
+    \endentry
+    \entry{fisher1923}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=2c42cd9f3654a6a775b4e404f842b7b5}{%
+           family={Fisher},
+           familyi={F\bibinitperiod},
+           given={Ronald\bibnamedelima Aylmer},
+           giveni={R\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press}%
+      }
+      \strng{namehash}{2c42cd9f3654a6a775b4e404f842b7b5}
+      \strng{fullhash}{2c42cd9f3654a6a775b4e404f842b7b5}
+      \strng{bibnamehash}{2c42cd9f3654a6a775b4e404f842b7b5}
+      \strng{authorbibnamehash}{2c42cd9f3654a6a775b4e404f842b7b5}
+      \strng{authornamehash}{2c42cd9f3654a6a775b4e404f842b7b5}
+      \strng{authorfullhash}{2c42cd9f3654a6a775b4e404f842b7b5}
+      \field{sortinit}{F}
+      \field{sortinithash}{669c706c6f1fbf3b5a83d26f1d9e9e72}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Proceedings of the Royal Society of Edinburgh}
+      \field{title}{On the Dominance Ratio}
+      \field{volume}{42}
+      \field{year}{1923}
+      \field{pages}{321\bibrangedash 341}
+      \range{pages}{21}
+    \endentry
+    \entry{fisher1930}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=2c42cd9f3654a6a775b4e404f842b7b5}{%
+           family={Fisher},
+           familyi={F\bibinitperiod},
+           given={Ronald\bibnamedelima Aylmer},
+           giveni={R\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{2c42cd9f3654a6a775b4e404f842b7b5}
+      \strng{fullhash}{2c42cd9f3654a6a775b4e404f842b7b5}
+      \strng{bibnamehash}{2c42cd9f3654a6a775b4e404f842b7b5}
+      \strng{authorbibnamehash}{2c42cd9f3654a6a775b4e404f842b7b5}
+      \strng{authornamehash}{2c42cd9f3654a6a775b4e404f842b7b5}
+      \strng{authorfullhash}{2c42cd9f3654a6a775b4e404f842b7b5}
+      \field{sortinit}{F}
+      \field{sortinithash}{669c706c6f1fbf3b5a83d26f1d9e9e72}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Proceedings of the Royal Society of Edinburgh}
+      \field{title}{The Distribution of Gene Ratios for Rare Mutations}
+      \field{volume}{50}
+      \field{year}{1930}
+      \field{pages}{205\bibrangedash 220}
+      \range{pages}{16}
+    \endentry
+    \entry{jazwinski2007}{book}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=87f554ca758cc49e1dd9c710a5a4e776}{%
+           family={Jazwinski},
+           familyi={J\bibinitperiod},
+           given={Andrew\bibnamedelima H.},
+           giveni={A\bibinitperiod\bibinitdelim H\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Courier Corporation}%
+      }
+      \strng{namehash}{87f554ca758cc49e1dd9c710a5a4e776}
+      \strng{fullhash}{87f554ca758cc49e1dd9c710a5a4e776}
+      \strng{bibnamehash}{87f554ca758cc49e1dd9c710a5a4e776}
+      \strng{authorbibnamehash}{87f554ca758cc49e1dd9c710a5a4e776}
+      \strng{authornamehash}{87f554ca758cc49e1dd9c710a5a4e776}
+      \strng{authorfullhash}{87f554ca758cc49e1dd9c710a5a4e776}
+      \field{sortinit}{J}
+      \field{sortinithash}{fce5f8d0bd05e8d93f3dbe21c78897ca}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Stochastic Processes and Filtering Theory}
+      \field{year}{2007}
+    \endentry
+    \entry{kalman1960}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=9fb0dafbf7fbe0408bfb40f5232f7665}{%
+           family={Kalman},
+           familyi={K\bibinitperiod},
+           given={Rudolph\bibnamedelima Emil},
+           giveni={R\bibinitperiod\bibinitdelim E\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {American Society of Mechanical Engineers}%
+      }
+      \strng{namehash}{9fb0dafbf7fbe0408bfb40f5232f7665}
+      \strng{fullhash}{9fb0dafbf7fbe0408bfb40f5232f7665}
+      \strng{bibnamehash}{9fb0dafbf7fbe0408bfb40f5232f7665}
+      \strng{authorbibnamehash}{9fb0dafbf7fbe0408bfb40f5232f7665}
+      \strng{authornamehash}{9fb0dafbf7fbe0408bfb40f5232f7665}
+      \strng{authorfullhash}{9fb0dafbf7fbe0408bfb40f5232f7665}
+      \field{sortinit}{K}
+      \field{sortinithash}{9fd838a31ba64d981e8f44562bd33f89}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Basic Engineering}
+      \field{number}{1}
+      \field{title}{A New Approach to Linear Filtering and Prediction Problems}
+      \field{volume}{82}
+      \field{year}{1960}
+      \field{pages}{35\bibrangedash 45}
+      \range{pages}{11}
+    \endentry
+    \entry{kingman1982gene}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=ee1e0d2cdea2686aec099d0e62aecf1e}{%
+           family={Kingman},
+           familyi={K\bibinitperiod},
+           given={John\bibnamedelimb F.\bibnamedelimi C.},
+           giveni={J\bibinitperiod\bibinitdelim F\bibinitperiod\bibinitdelim C\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press}%
+      }
+      \strng{namehash}{ee1e0d2cdea2686aec099d0e62aecf1e}
+      \strng{fullhash}{ee1e0d2cdea2686aec099d0e62aecf1e}
+      \strng{bibnamehash}{ee1e0d2cdea2686aec099d0e62aecf1e}
+      \strng{authorbibnamehash}{ee1e0d2cdea2686aec099d0e62aecf1e}
+      \strng{authornamehash}{ee1e0d2cdea2686aec099d0e62aecf1e}
+      \strng{authorfullhash}{ee1e0d2cdea2686aec099d0e62aecf1e}
+      \field{sortinit}{K}
+      \field{sortinithash}{9fd838a31ba64d981e8f44562bd33f89}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Applied Probability}
+      \field{number}{A}
+      \field{title}{On the Genealogy of Large Populations}
+      \field{volume}{19}
+      \field{year}{1982}
+      \field{pages}{27\bibrangedash 43}
+      \range{pages}{17}
     \endentry
     \entry{koskela2018}{report}{}
       \name{author}{4}{}{%
@@ -214,6 +532,38 @@
       \field{pages}{446\bibrangedash 460}
       \range{pages}{15}
     \endentry
+    \entry{moran1958}{inproceedings}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=2e0c98eea5635a80047ac90aa2718a96}{%
+           family={Moran},
+           familyi={M\bibinitperiod},
+           given={Patrick\bibnamedelimb Alfred\bibnamedelima Pierce},
+           giveni={P\bibinitperiod\bibinitdelim A\bibinitperiod\bibinitdelim P\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press}%
+      }
+      \strng{namehash}{2e0c98eea5635a80047ac90aa2718a96}
+      \strng{fullhash}{2e0c98eea5635a80047ac90aa2718a96}
+      \strng{bibnamehash}{2e0c98eea5635a80047ac90aa2718a96}
+      \strng{authorbibnamehash}{2e0c98eea5635a80047ac90aa2718a96}
+      \strng{authornamehash}{2e0c98eea5635a80047ac90aa2718a96}
+      \strng{authorfullhash}{2e0c98eea5635a80047ac90aa2718a96}
+      \field{sortinit}{M}
+      \field{sortinithash}{cfd219b90152c06204fab207bc6c7cab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Mathematical Proceedings of the Cambridge Philosophical Society}
+      \field{number}{1}
+      \field{title}{Random Processes in Genetics}
+      \field{volume}{54}
+      \field{year}{1958}
+      \field{pages}{60\bibrangedash 71}
+      \range{pages}{12}
+    \endentry
     \entry{mosimann1962}{article}{}
       \name{author}{1}{}{%
         {{uniquename=0,uniquepart=base,hash=da37a051d8d8cf6b936d516fec9271bb}{%
@@ -245,6 +595,213 @@
       \field{year}{1962}
       \field{pages}{65\bibrangedash 82}
       \range{pages}{18}
+    \endentry
+    \entry{rauch1965}{article}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,uniquepart=base,hash=f6ee2bf1565ffe7f0bb59c9f7623ac09}{%
+           family={Rauch},
+           familyi={R\bibinitperiod},
+           given={Herbert\bibnamedelima E.},
+           giveni={H\bibinitperiod\bibinitdelim E\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=60da915ee57e0b9878920fa41e41806c}{%
+           family={Striebel},
+           familyi={S\bibinitperiod},
+           given={C.\bibnamedelimi T.},
+           giveni={C\bibinitperiod\bibinitdelim T\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=26101857e347ffa86ac7e7488884cdad}{%
+           family={Tung},
+           familyi={T\bibinitperiod},
+           given={F.},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{41f1387e22caa041ba8bf793deb7a329}
+      \strng{fullhash}{41f1387e22caa041ba8bf793deb7a329}
+      \strng{bibnamehash}{41f1387e22caa041ba8bf793deb7a329}
+      \strng{authorbibnamehash}{41f1387e22caa041ba8bf793deb7a329}
+      \strng{authornamehash}{41f1387e22caa041ba8bf793deb7a329}
+      \strng{authorfullhash}{41f1387e22caa041ba8bf793deb7a329}
+      \field{sortinit}{R}
+      \field{sortinithash}{da6b42bd3ab22fee61abed031ee405f7}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{AIAA Journal}
+      \field{number}{8}
+      \field{title}{Maximum Likelihood Estimates of Linear Dynamic Systems}
+      \field{volume}{3}
+      \field{year}{1965}
+      \field{pages}{1445\bibrangedash 1450}
+      \range{pages}{6}
+    \endentry
+    \entry{verma1988}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,uniquepart=base,hash=2e06f78670eb35570c8e647e35752258}{%
+           family={Verma},
+           familyi={V\bibinitperiod},
+           given={Thomas},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=809f695b398afbb54b544c49e8d1bbbb}{%
+           family={Pearl},
+           familyi={P\bibinitperiod},
+           given={Judea},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {Minneapolis, MN, Mountain View, CA}%
+      }
+      \strng{namehash}{d6bfa96cdb6186a1452295c2e7176070}
+      \strng{fullhash}{d6bfa96cdb6186a1452295c2e7176070}
+      \strng{bibnamehash}{d6bfa96cdb6186a1452295c2e7176070}
+      \strng{authorbibnamehash}{d6bfa96cdb6186a1452295c2e7176070}
+      \strng{authornamehash}{d6bfa96cdb6186a1452295c2e7176070}
+      \strng{authorfullhash}{d6bfa96cdb6186a1452295c2e7176070}
+      \field{sortinit}{V}
+      \field{sortinithash}{75dd7385c90b2252c3ae853a80ca853b}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the 4th Workshop on Uncertainty in Artificial Intelligence}
+      \field{title}{Causal Networks: Semantics and Expressiveness}
+      \field{year}{1988}
+      \field{pages}{352\bibrangedash 359}
+      \range{pages}{8}
+    \endentry
+    \entry{vidoni1999}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=184eae5e38f9d422b39f8853b79d9a9b}{%
+           family={Vidoni},
+           familyi={V\bibinitperiod},
+           given={Paolo},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley Online Library}%
+      }
+      \strng{namehash}{184eae5e38f9d422b39f8853b79d9a9b}
+      \strng{fullhash}{184eae5e38f9d422b39f8853b79d9a9b}
+      \strng{bibnamehash}{184eae5e38f9d422b39f8853b79d9a9b}
+      \strng{authorbibnamehash}{184eae5e38f9d422b39f8853b79d9a9b}
+      \strng{authornamehash}{184eae5e38f9d422b39f8853b79d9a9b}
+      \strng{authorfullhash}{184eae5e38f9d422b39f8853b79d9a9b}
+      \field{sortinit}{V}
+      \field{sortinithash}{75dd7385c90b2252c3ae853a80ca853b}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of the Royal Statistical Society: Series B (Statistical Methodology)}
+      \field{number}{1}
+      \field{title}{Exponential Family State Space Models Based on a Conjugate Latent Process}
+      \field{volume}{61}
+      \field{year}{1999}
+      \field{pages}{213\bibrangedash 221}
+      \range{pages}{9}
+    \endentry
+    \entry{wakeley2009}{book}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=d4c57052af8d3ef98635b54b3503e084}{%
+           family={Wakeley},
+           familyi={W\bibinitperiod},
+           given={John},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Roberts \& Co. Publishers}%
+      }
+      \strng{namehash}{d4c57052af8d3ef98635b54b3503e084}
+      \strng{fullhash}{d4c57052af8d3ef98635b54b3503e084}
+      \strng{bibnamehash}{d4c57052af8d3ef98635b54b3503e084}
+      \strng{authorbibnamehash}{d4c57052af8d3ef98635b54b3503e084}
+      \strng{authornamehash}{d4c57052af8d3ef98635b54b3503e084}
+      \strng{authorfullhash}{d4c57052af8d3ef98635b54b3503e084}
+      \field{sortinit}{W}
+      \field{sortinithash}{ecb89ff85896a47dc313960773ac311d}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Coalescent Theory: An Introduction}
+      \field{year}{2009}
+    \endentry
+    \entry{wan2000}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,uniquepart=base,hash=83bf4a7e7742379dfdf470d197d41c9e}{%
+           family={Wan},
+           familyi={W\bibinitperiod},
+           given={Eric\bibnamedelima A.},
+           giveni={E\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=6b87c2cb32ffbfac99ec0b3e2a3b106a}{%
+           family={Merwe},
+           familyi={M\bibinitperiod},
+           given={Rudolph},
+           giveni={R\bibinitperiod},
+           givenun=0,
+           prefix={van\bibnamedelima der},
+           prefixi={v\bibinitperiod\bibinitdelim d\bibinitperiod},
+           prefixun=0}}%
+      }
+      \list{organization}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{da2d55295edcff79c173856997ec57e8}
+      \strng{fullhash}{da2d55295edcff79c173856997ec57e8}
+      \strng{bibnamehash}{da2d55295edcff79c173856997ec57e8}
+      \strng{authorbibnamehash}{da2d55295edcff79c173856997ec57e8}
+      \strng{authornamehash}{da2d55295edcff79c173856997ec57e8}
+      \strng{authorfullhash}{da2d55295edcff79c173856997ec57e8}
+      \field{sortinit}{W}
+      \field{sortinithash}{ecb89ff85896a47dc313960773ac311d}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the IEEE 2000 Adaptive Systems for Signal Processing, Communications, and Control Symposium}
+      \field{title}{The Unscented {Kalman} Filter for Nonlinear Estimation}
+      \field{year}{2000}
+      \field{pages}{153\bibrangedash 158}
+      \range{pages}{6}
+    \endentry
+    \entry{wright1931}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=f23690c7a566b5607094b5dc80dd3d22}{%
+           family={Wright},
+           familyi={W\bibinitperiod},
+           given={Sewall},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Genetics Society of America}%
+      }
+      \strng{namehash}{f23690c7a566b5607094b5dc80dd3d22}
+      \strng{fullhash}{f23690c7a566b5607094b5dc80dd3d22}
+      \strng{bibnamehash}{f23690c7a566b5607094b5dc80dd3d22}
+      \strng{authorbibnamehash}{f23690c7a566b5607094b5dc80dd3d22}
+      \strng{authornamehash}{f23690c7a566b5607094b5dc80dd3d22}
+      \strng{authorfullhash}{f23690c7a566b5607094b5dc80dd3d22}
+      \field{sortinit}{W}
+      \field{sortinithash}{ecb89ff85896a47dc313960773ac311d}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Genetics}
+      \field{number}{2}
+      \field{title}{Evolution in {Mendelian} Populations}
+      \field{volume}{16}
+      \field{year}{1931}
+      \field{pages}{97\bibrangedash 159}
+      \range{pages}{63}
     \endentry
   \enddatalist
 \endrefsection
