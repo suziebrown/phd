@@ -1,10 +1,8 @@
-# ---- Kingman n-coalescent example plot ----
+# ---- Plot a realisation of n-coalescent ----
 
 using Random
 using Distributions
 using Plots
-using PhyloTrees
-
 
 N=10
 
