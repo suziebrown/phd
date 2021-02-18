@@ -5,6 +5,8 @@ At the age of twenty-one he wrote a treatise upon the Binomial Theorem, which ha
 }
 {\textsc{Sherlock Holmes}} %\\The Final Problem
 
+\draft{Some motivation/discussion about weak convergence: why it is more useful than FDDs, that the following theorem has the same conditions as the FDDs one...}
+
 We start by defining a suitable metric space.
 Let $\mathcal{P}_n$ be the space of partitions of $\{1,\dots,n\}$.
 Denote by $\mathcal{X}$ the set of all functions mapping $[0,\infty)$ to $\mathcal{P}_n$ that are right-continuous with left limits.
@@ -22,7 +24,7 @@ for any $\xi, \eta \in \mathcal{P}_n$.
 
 
 \begin{theorem}\label{thm:weakconv}
-Let $\nu_t^{(1:N)}$ denote the offspring numbers in an interacting particle system satisfying the standing assumption and such that, for any $N$ sufficiently large, for all finite $t$, $\Prob\{ \tau_N(t) = \infty \} =0$. Suppose that there exists a deterministic sequence $(b_N)_{N\geq1}$ such that ${\lim}_{N\to\infty} b_N =0$ and
+Let $\nu_t^{(1:N)}$ denote the offspring numbers in an interacting particle system satisfying the standing assumption and such that, for any $N$ sufficiently large, for all finite $t$, $\Prob\{ \tau_N(t) = \infty \} =0$. Suppose that there exists a deterministic sequence $(b_N)_{N\in\mathbb{N}}$ such that ${\lim}_{N\to\infty} b_N =0$ and
 \begin{equation}
 \frac{1}{(N)_3} \sum_{i = 1}^N \Et\{ (\nu_t^{(i)})_3 \}  \leq b_N \frac{1}{(N)_2} \sum_{i = 1}^N \Et\{ (\nu_t^{(i)})_2 \}
 \end{equation}
@@ -32,7 +34,7 @@ to Kingman's $n$-coalescent as $N \to \infty$.
 \end{theorem}
 
 \begin{proof}
-The structure of the proof follows \textcite{mohle1999}, albeit with considerable technical complication due to the lack of independence between generations (non-neutrality) in our model. \seb{is this the main/only source of complication?}
+The structure of the proof follows \textcite{mohle1999}, albeit with considerable technical complication due to the dependence between generations \seb{(non-neutrality)} in our model. \seb{Is this the main/only source of complication?}
 Since we already have convergence of the finite-dimensional distributions (Theorem ?? \seb{refers to a previous chapter not yet written}), strengthening this to weak convergence requires relative compactness of the sequence of processes $\{ (G_{\tau_N(t)}^{(n,N)})_{t\geq0} \}_{N\in\mathbb{N}}$.
 
 \textcite[Chapter 3, Corollary 7.4]{ethier1986} provides a necessary and sufficient condition for relative compactness: $\mathcal{P}_n$ is finite and therefore complete and separable, and the sample paths of $(G_{\tau_N(t)}^{(n,N)})_{t\geq0}$ live in $\mathcal{X}$, so the conditions of the corollary are satisfied.
@@ -54,7 +56,7 @@ where $\omega$ is the modulus of continuity:
         \sup_{u,v \in [T_{i-1}, T_i)} \rho\left( 
         G_{\tau_N(u)}^{(n,N)}, G_{\tau_N(v)}^{(n,N)} \right)
 \end{equation}
-with the infimum taken over all partitions of the form $0=T_0<T_1<\cdots <T_{K-1} <t \leq T_K$ such that $\min_{i\in[K]} (T_i - T_{i-1}) > \delta$. \seb{use a different letter not $K$?}
+with the infimum taken over all partitions of the form $0=T_0<T_1<\cdots <T_{K-1} <t \leq T_K$ such that $\min_{i\in[K]} (T_i - T_{i-1}) > \delta$. \seb{Clarify that such a partition with any $K$ is valid, i.e. $K$ is not fixed.}
 \end{enumerate}
 In our case, Condition~\ref{item:relcomp1} is satisfied automatically with $\Gamma = \mathcal{P}_n$, since $\mathcal{P}_n$ is finite and hence compact. 
 Intuitively, Condition~\ref{item:relcomp2} ensures that the jumps of the process are well-separated. 
@@ -68,9 +70,9 @@ The proof is concentrated on proving Condition~\ref{item:relcomp2}.
 To do this, we use a coupling with another process that contains all of the jumps of the genealogical process, with the addition of some extra jumps. This process is constructed in such a way that it can be shown to satisfy Condition 2, and hence so does the genealogical process.
 
 Define $p_t := \max_{\xi\in \mathcal{P}_n} \{1 - p_{\xi\xi}(t)\} = 1 - p_{\Delta\Delta}(t)$, where $\Delta$ denotes the trivial partition of singletons $\{ \{1\},\dots, \{n\} \}$. For a proof that the maximum is attained at $\xi = \Delta$, see Lemma \ref{thm:maximum_pr}. 
-Following \textcite{mohle1999}, we now construct the two-dimensional \seb{conditionally on $\mathcal{F}$ ?} Markov process $(Z_t, S_t)_{t \in \mathbb{N}_0}$ on $\mathbb{N}_0 \times \mathcal{P}_n$ with transition probabilities
+Following \textcite{mohle1999}, we now construct the two-dimensional \seb{conditionally on $\mathcal{F}$?} Markov process $(Z_t, S_t)_{t \in \mathbb{N}_0}$ on $\mathbb{N}_0 \times \mathcal{P}_n$ with transition probabilities
 \begin{equation}
-\Prob(Z_t = j , S_t = \eta \mid Z_{t-1} = i, S_{t-1} = \xi)
+\Prob[ Z_t = j , S_t = \eta \mid Z_{t-1} = i, S_{t-1} = \xi] %, \mathcal{F}_{t-1}]
 = \begin{cases}
 1 - p_t &\quad \text{if } j=i \text{ and } \xi=\eta \\
 p_{\xi\xi}(t) + p_t - 1  &\quad \text{if } j=i+1 \text{ and } \xi=\eta \\
@@ -80,17 +82,18 @@ p_{\xi\eta}(t) &\quad \text{if } j=i+1 \text{ and } \xi\neq\eta \\
 \end{equation}
 and initial state $Z_0=0$, $S_0 = \Delta$.
 The construction is such that the marginal $(S_t)$ has the same distribution as the genealogical process of interest, and $(Z_t)$ has jumps at all the times $(S_t)$ does plus some extra jumps. (The definition of $p_t$ ensures that the probability in the second case is non-negative, attaining the value zero when $\xi=\Delta$.)
+\seb{And the transition probabilities (jump times) of $Z$ do not depend on the current state.}
 
 Denote by $0=T_0^{(N)}<T_1^{(N)}<\dots$ the jump times of the rescaled process $(Z_{\tau_N(t)})_{t\geq0}$, and by $\varpi_i^{(N)} := T_i^{(N)} - T_{i-1}^{(N)}$ the corresponding holding times.
 
-Suppose that for some fixed $t>0$, there exist $m \in \mathbb{N}$ and $\delta >0$ such that
+Suppose that for some $t>0$, there exists $m \in \mathbb{N}$ and $\delta >0$ such that
 $\varpi_i^{(N)} > \delta$ for all $i\in \{1,\dots,m\}$, and
 $T_m^{(N)} \geq t$.
 Then
 $K_N := \min\{i : T_i^{(N)} \geq t\}$
 is well-defined with $1\leq K_N \leq m$,
-and $T_1^{(N)} , \dots, T_{K_N}^{(N)}$ form a partition of the form required for Condition~\ref{item:relcomp2}, 
-Indeed $(Z_{\tau_N(\cdot)})$ is constant on every interval $[ T_{i-1}^{(N)} , T_i^{(N)} )$, so $\omega( (Z_{\tau_N(\cdot))} , \delta, t ) = 0$. 
+and $T_1^{(N)} , \dots, T_{K_N}^{(N)}$ form a partition of the form required for Condition~\ref{item:relcomp2}.
+Indeed $(Z_{\tau_N(\cdot)})$ is constant on every interval $[ T_{i-1}^{(N)} , T_i^{(N)} )$ by construction, so $\omega( (Z_{\tau_N(\cdot))} , \delta, t ) = 0$. 
 We therefore have that
 for each $m \in \mathbb{N}$ and $\delta >0$,
 \begin{equation}
@@ -99,7 +102,7 @@ for each $m \in \mathbb{N}$ and $\delta >0$,
 \end{equation}
 Thus a sufficient condition for Condition~\ref{item:relcomp2} is: 
 for any $\varepsilon>0$, $t>0$, there exist $m\in\mathbb{N}$, $\delta>0$ such that
-\begin{equation}
+\begin{equation}\label{eq:condition2b}
 \liminf_{N\to\infty} 
         \Prob[ T_m^{(N)} \geq t, \varpi_i^{(N)} > \delta \,\forall i\in \{1,\dots,m\} ]
 \geq 1-\varepsilon .
@@ -113,8 +116,7 @@ Since $T_m^{(N)} = \varpi_1^{(N)} + \cdots + \varpi_m^{(N)}$, there is a positiv
 &\geq \Prob[ T_m^{(N)} \geq t ]
         \,\Prob[ \varpi_i^{(N)} > \delta \,\forall i\in \{1,\dots,m\} ] .
 \end{align}
-%Due to Lemma ?? we have that $\tau_1^{(N)}, \dots, \tau_m^{(N)}$ converge jointly in distribution to i.i.d $Exp(\alpha_n t)$- distributed random variables, and hence $T_m^{(N)}$ converges in distribution to a $Gamma(m, \alpha_n t)$-distributed random variable.
-Due to Lemma ??, \seb{This lemma should give the limiting distribution of the $\varpi$s.}
+Due to Lemma \ref{thm:holdingtimes_distn}, the limiting distributions of $\varpi_i^{(N)}$ are i.i.d. $\Exp(\alpha_n)$, so
 \begin{equation}
 \liminf_{N\to\infty} \Prob[ \varpi_i^{(N)} > \delta \,\forall i\in \{1,\dots,m\} ]
 = (e^{-\alpha_n \delta})^m
@@ -133,7 +135,7 @@ Hence
 \geq (e^{-\alpha_n \delta})^{m+1} \sum_{i=0}^{m-1} \frac{(\alpha_n t)^i}{i!} ,
 \end{equation}
 which can be made $\geq 1-\varepsilon$ by taking $m$ sufficiently large and $\delta$ sufficiently small.
-This argument applies for any $\varepsilon$, $t$, so Condition~\ref{item:relcomp2} is satisfied, and the proof is complete.
+Since this argument applies for any $\varepsilon$ and $t$, \eqref{eq:condition2b} and hence Condition~\ref{item:relcomp2} is satisfied, and the proof is complete.
 \end{proof}
 
 \begin{lemma}\label{thm:maximum_pr}
@@ -169,6 +171,67 @@ p_{\xi^\prime\xi^\prime}(t)
 = p_{\xi\xi}(t) .
 \end{equation}
 Thus $p_{\xi\xi}(t)$ is decreasing in the number of blocks of $\xi$, and is therefore minimised by taking $\xi = \Delta$, which achieves the maximum $n$ blocks. This choice in turn maximises $1-p_{\xi\xi}(t)$, as required.
+\end{proof}
+
+
+\begin{lemma}\label{thm:holdingtimes_distn}
+The finite-dimensional distributions of $\varpi_1^{(N)} , \varpi_2^{(N)} , \dots$ converge as $N\to\infty$ to those of $\varpi_1, \varpi_2, \dots$, where the $\varpi_i$ are independent $\Exp(\alpha_n)$ distributed random variables.
+\end{lemma}
+
+\begin{proof}
+There is a continuous bijection between the jump times $T_1^{(N)} ,T_2^{(N)},\dots$ and the holding times $\varpi_1^{(N)}, \varpi_2^{(N)}, \dots$, so convergence of the holding times to $\varpi_1, \varpi_2,\dots$ is equivalent to convergence of the jump times to $T_1, T_2, \dots$, where $T_i := \varpi_1+\dots+\varpi_i$. 
+We will work with the jump times, following the structure of \textcite[Lemma 3.2]{mohle1999}.
+
+The idea is to prove by induction that, for any $k\in\mathbb{N}$ and $t_1,\dots,t_k >0$,
+\begin{equation}\label{eq:518}
+\lim_{N\to\infty} \Prob[ T_1^{(N)} \leq t_1, \dots , T_k^{(N)} \leq t_k ]
+= \Prob[ T_1 \leq t_1, \dots , T_k \leq t_k ] .
+\end{equation}
+Take the basis case $k=1$. Then 
+\begin{equation}
+\Prob[ T_1 \leq t ] 
+= \Prob[ \varpi_1 \leq t ] = 1 - e^{-\alpha_n t}
+\end{equation}
+and $T_1^{(N)} >t$ if and only if $Z$ has no jumps up to time $t$:
+\seb{Expectation appears by tower property to remove (implicit) conditioning in transition probabilities?}
+\begin{equation}
+\Prob[T_1^{(N)} >t] 
+= \E\left[ \prod_{r=1}^{\tau_N(t)} (1-p_r) \right] .
+\end{equation}
+Lemma \ref{thm:basis} shows that this probability converges to $e^{-\alpha_n t}$ as required.
+
+For the induction step, assume that \eqref{eq:518} holds for some $k$. 
+We have the following decomposition:
+\begin{equation}
+\Prob[ T_1^{(N)} \leq t_1, \dots , T_{k+1}^{(N)} \leq t_{k+1} ]
+= \Prob[ T_1^{(N)} \leq t_1, \dots , T_k^{(N)} \leq t_k ]
+        - \Prob[ T_1^{(N)} \leq t_1, \dots , T_k^{(N)} \leq t_k, T_{k+1}^{(N)} > t_{k+1} ] .
+\end{equation}
+The first term on the RHS converges to $\Prob[ T_1 \leq t_1, \dots , T_k \leq t_k ]$ by the induction hypothesis, and it remains to show that
+\begin{equation}
+\lim_{N\to\infty} 
+        \Prob[ T_1^{(N)} \leq t_1, \dots , T_k^{(N)} \leq t_k, T_{k+1}^{(N)} > t_{k+1} ]
+= \Prob[ T_1\leq t_1, \dots , T_k \leq t_k, T_{k+1} > t_{k+1} ] .
+\end{equation}
+As shown in \textcite{mohle1999}, the RHS
+\begin{equation}
+\Prob[ T_1\leq t_1, \dots , T_k \leq t_k, T_{k+1} > t_{k+1} ]
+= \alpha_n^k e^{-\alpha_n t} 
+        \sum_{\substack{i_1\leq \dots\leq i_{k-1}\\ \in \{0,\dots,k\} :
+        \\ i_j \geq j \forall j}} 
+        \prod_{j=1}^k \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})! } .
+\end{equation}
+The event on the LHS can be written \parencite{mohle1999}
+\begin{equation}
+\Prob[ T_1^{(N)} \leq t_1, \dots , T_k^{(N)} \leq t_k, T_{k+1}^{(N)} > t_{k+1} ]
+= \E \left[ \sum_{\substack{r_1 <\dots< r_k :\\ r_i \leq \tau_N(t_i) \forall i}}
+        \left( \prod_{i=1}^k p_{r_i} \right)
+        \left( \prod_{\substack{r=1 \\ \notin \{r_1,\dots,r_k\} }}^{\tau_N(t)} 
+        (1-p_r) \right) \right] ,
+\end{equation}
+that is, there are jumps at some times $r_1, \dots, r_k$ and identity transitions at all other times.
+Due to Lemmata \ref{thm:inductionUB} and \ref{thm:inductionLB}, this probability converges to the correct limit.
+This completes the induction.
 \end{proof}
 
 %%%------------
