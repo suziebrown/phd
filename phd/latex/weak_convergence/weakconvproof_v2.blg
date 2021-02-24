@@ -1,46 +1,5 @@
-This is BibTeX, Version 0.99d (TeX Live 2018)
-Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
-The top-level auxiliary file: weakconvproof_v2.aux
-The style file: agsm.bst
-Database file #1: ../smc.bib
-You've used 3 entries,
-            2909 wiz_defined-function locations,
-            660 strings with 5364 characters,
-and the built_in function-call counts, 15273 in all, are:
-= -- 2506
-> -- 206
-< -- 1
-+ -- 1217
-- -- 63
-* -- 1346
-:= -- 3042
-add.period$ -- 3
-call.type$ -- 3
-change.case$ -- 42
-chr.to.int$ -- 3
-cite$ -- 3
-duplicate$ -- 44
-empty$ -- 92
-format.name$ -- 71
-if$ -- 2733
-int.to.chr$ -- 5
-int.to.str$ -- 0
-missing$ -- 2
-newline$ -- 12
-num.names$ -- 32
-pop$ -- 8
-preamble$ -- 1
-purify$ -- 45
-quote$ -- 0
-skip$ -- 39
-stack$ -- 0
-substring$ -- 3582
-swap$ -- 7
-text.length$ -- 43
-text.prefix$ -- 0
-top$ -- 0
-type$ -- 12
-warning$ -- 0
-while$ -- 67
-width$ -- 0
-write$ -- 43
+[0] Config.pm:302> INFO - This is Biber 2.11
+[0] Config.pm:305> INFO - Logfile is 'weakconvproof_v2.blg'
+[38] biber-darwin:313> INFO - === Wed Feb 24, 2021, 17:35:37
+[219] Utils.pm:209> ERROR - Cannot find control file 'weakconvproof_v2.bcf'! - Did latex run successfully on your .tex file before you ran biber?
+[220] Biber.pm:114> INFO - ERRORS: 1
