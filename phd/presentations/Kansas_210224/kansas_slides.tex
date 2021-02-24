@@ -92,7 +92,7 @@
 
 
 \begin{frame}{Sequential Monte Carlo}
-\begin{itemize}
+\begin{itemize}[<+->]
 \item Monte Carlo = approximating probability distributions via sampling % especially to approximate expectations
 \item Sequence of probability distributions % e.g. over time, example on next slide
 \item Dimension of distributions increases along the sequence
@@ -160,7 +160,7 @@ $p(x_{s} \mid y_{1:t})$ & ``smoothing''
 \end{frame}
 
 \begin{frame}{State space models}
-\begin{itemize}
+\begin{itemize}[<+->]
 \item \textbf{Kalman filter} and \textbf{Rauch-Tung-Striebel smoother} give exact solutions, but only for linear Gaussian models
 \item \textbf{Markov chain Monte Carlo} fails due to high dimension and high correlation between dimensions
 \item \textbf{Sequential Monte Carlo} has computational complexity that is linear in $t$, and can update posteriors on-line
@@ -195,7 +195,7 @@ $p(x_{s} \mid y_{1:t})$ & ``smoothing''
 
 
 \begin{frame}{Sequential importance sampling}
-\begin{itemize}
+\begin{itemize}[<+->]
 \item Idea: use weighted samples from one time step to construct a proposal for the next step
 \item Multiplying weights over time causes \textit{weight degeneracy}% would be great to have an animation illustrating this...
 \item Can avoid this problem by resampling
@@ -258,9 +258,7 @@ Properties:
 
 
 \begin{frame}{Sequential Monte Carlo}
-%Approximate a sequence of distributions by simulating a population of particles evolving in time
 Initialise by sampling $N$ particles from $\mu(\cdot)$.\\[10pt]
-%\pause
 Iterate these steps:
 \begin{enumerate}
 \item \textbf{Mutate} particles via Markov transition kernel $M_t$
@@ -489,7 +487,7 @@ Iterate these steps:
 \begin{frame}{Mitigating ancestral degeneracy}
 \vspace{-1cm}
 Resample less often? \\
-%\pause
+\pause
 \textbf{Adaptive resampling}: only resample when effective sample size falls below some threshold.
 \vspace{1cm}
 
@@ -583,7 +581,7 @@ Resample less often? \\
 \begin{frame}{Mitigating ancestral degeneracy}
 \vspace{-1cm}
 Resample more cleverly? \\
-%\pause
+\pause
 \textbf{Low-variance resampling}: resample in a way that reduces the extra randomness added by the resampling step.
 \vspace{1cm}
 
@@ -680,8 +678,8 @@ Resample more cleverly? \\
 \begin{frame}{Mitigating ancestral degeneracy}
 \vspace{-1cm}
 Make use of killed samples? \\
-%\pause
-\textbf{Backward simulation}: use a backward pass to sample new ancestors for the terminal particles.
+\pause
+\textbf{Backward sampling}: use a backward pass to sample new ancestors for the terminal particles.
 \vspace{1cm}
 
 \centering
@@ -785,6 +783,7 @@ Make use of killed samples? \\
 
 
 \begin{frame}{Analysing genealogies}
+\pause
 \begin{itemize}
 \item How many particles should I use to maintain $k$ distinct trajectories across time horizon $T$?
 \item How big a lag can I use in fixed-lag smoothing?
@@ -891,11 +890,6 @@ Make use of killed samples? \\
 \draw[thick, darkred] (6,-2)--(6,-4);
 \draw[thick, darkred] (6,-2)--(8,-2);
 \draw[thick, darkred] (6,-4)--(8,-4);
-%
-%\node at (8.3,0) {1};
-%\node at (8.3,-1) {2};
-%\node at (8.3,-2) {3};
-%\node at (8.3,-4) {4};
 \end{tikzpicture}
 \end{frame}
 
@@ -903,13 +897,13 @@ Make use of killed samples? \\
 \begin{frame}{Encoding genealogies}
 \begin{itemize}
 \item Label time in reverse
-%\pause
+\pause
 \item Population of $N$ particles; $N\to\infty$
 \item Sample $n\leq N$ terminal particles at random
-%\pause
+\pause
 \item Describe genealogy by stochastic process $(G_t^{(n,N)})_{t\in\mathbb{N}_0}$ on space of partitions of $\{1,\dots,n\}$
 \item Elements $i, j$ are in the same block of the partition $G_t^{(n,N)}$ iff particles $i$ and $j$ share a common ancestor at time $t$
-%\pause
+\pause
 \item Initially $G_0^{(n,N)} = \{ \{1\}, \dots, \{n\} \}$
 \item The only possible non-identity transitions are those that merge blocks
 \item The trivial partition $\{ \{ 1,\dots, n \} \}$ is an absorbing state
@@ -1061,7 +1055,7 @@ Pair merger probability conditional on $( \vt{1},\dots, \vt{N} )$:
 \begin{equation*}
 c_N(t) = \frac{1}{(N)_2} \sum_{i=1}^N (\vt{i})_2
 \end{equation*}
-%\pause
+\pause
 Rescale time by inverse:
 \begin{equation*}
 \tau_N(t) := \inf\left\{ s\geq 1 : \sum_{r=1}^s c_N(r) \geq t \right\}
@@ -1073,16 +1067,16 @@ Rescale time by inverse:
 Conditions:
 \begin{itemize}
 \item Parent-offspring assignments are uniform given offspring counts
-%\pause
+\pause
 \item Time scale does not explode (i.e.\ $\PR[\tau_N(t)=\infty]=0$ for all finite $t$)
-%\pause
+\pause
 \item There exists a sequence $(b_N)$ such that $\lim_{N\to\infty} b_N = 0$ and
 \begin{equation*}
 \frac{1}{(N)_3} \sum_{i=1}^N \E_t [ (\vt{i})_3 ]
 \leq b_N \frac{1}{(N)_2} \sum_{i=1}^N \E_t [ (\vt{i})_2 ]
 \end{equation*}
 \end{itemize}
-%\pause
+\pause
 Then the time-rescaled genealogies $\left( G_{\tau_N(t)}^{(n,N)} \right)_{t\geq0}$ converge weakly to Kingman's $n$-coalescent as $N\to\infty$.
 \end{frame}
 
@@ -1101,14 +1095,14 @@ Resample from a Categorical distribution, so offspring counts are Multinomial:
 \begin{equation*}
 (\vt{1} , \dots, \vt{N}) \sim \Mn \left( N, (\wt{1},\dots,\wt{N}) \right)
 \end{equation*}
-%\pause
+\pause
 Suppose the transition kernels $M_t$ admit densities $m_t$, and $\forall x, x^\prime$,
 \begin{equation*}
 \frac{1}{a} \leq g_t(x, x^\prime) \leq a \qquad
 \varepsilon h(x^\prime) \leq m_t(x, x^\prime) \leq \frac{1}{\varepsilon} h(x^\prime) 
 \end{equation*}
 for constants $0<\varepsilon\leq 1\leq a<\infty$, and probability distribution $h(\cdot)$.\\[10pt]
-%\pause
+\pause
 Then the rescaled genealogies converge to the $n$-coalescent.\footnote{J Koskela, PA Jenkins, AM Johansen, D Span\`o. \textit{Annals of Statistics}, 2020.}
 \end{frame}
 
@@ -1122,39 +1116,38 @@ Y_i \mid X_i =
   \lfloor X_i \rfloor +1 & \text{with probability } X_i - \lfloor X_i \rfloor 
 \end{cases}
 \end{equation*}
-%\pause
+\pause
 \begin{itemize}
 \item Take $X_i = N\wt{i}$ and $Y_i = \vt{i}$
 \item By construction $\E[Y_i \mid \mathbf{X}] = X_i$
 \item Require further constraint $Y_1 + \cdots + Y_N = N$
-%\pause
-\item \textbf{Examples:} systematic resampling, residual-stratified resampling
-%, branching system\footnote{D Crisan, T Lyons. \textit{Probability Theory \& Related Fields}, 1997.}, SSP\footnote{M Gerber, N Whiteley, N Chopin. \textit{Annals of Statistics}, 2019.} resampling
+\pause
+\item \textbf{Examples:} systematic resampling, residual-stratified resampling, ...
 \end{itemize}
 \end{frame}
 
 
 \begin{frame}{Stochastic rounding}
 Resample using any stochastic rounding procedure.\\[10pt]
-%\pause
+\pause
 Suppose the transition kernels $M_t$ admit densities $m_t$, and $\forall x, x^\prime$,
 \begin{equation*}
 \frac{1}{a} \leq g_t(x, x^\prime) \leq a \qquad
 \varepsilon \leq m_t(x, x^\prime) \leq \frac{1}{\varepsilon} 
 \end{equation*}
 for constants $0<\varepsilon\leq 1\leq a<\infty$.\\[10pt]
-%\pause
-Then the rescaled genealogies converge to the $n$-coalescent.
+\pause
+Then the rescaled genealogies converge to the $n$-coalescent\footnote{S Brown, PA Jenkins, AM Johansen, J Koskela,  \textit{Electronic Journal of Probability}, 2021.}.
 \end{frame}
 
 
 \begin{frame}{Quantities of interest}
 \begin{columns}
 \begin{column}{0.45\textwidth}
-\begin{itemize}%[<+->]
+\begin{itemize}
 \item Time to MRCA: first time when there is only one distinct lineage
 \item $t_k$: for how long are there exactly $k$ distinct lineages
-\item Total branch length: storage cost
+\item Total branch length
 \end{itemize}
 \end{column}
 \begin{column}{0.45\textwidth}
@@ -1164,17 +1157,9 @@ Then the rescaled genealogies converge to the $n$-coalescent.
 \end{frame}
 
 
-\begin{frame}{Comparing resampling schemes}
-\begin{itemize}
-\item The expected time scale is the same for every stochastic rounding scheme
-\item Coalescence is faster for multinomial resampling than for stochastic rounding
-\end{itemize}
-\end{frame}
-
-
 \begin{frame}{Mitigating ancestral degeneracy, revisited}
-%\pause
-\begin{itemize}%[<+->]
+\pause
+\begin{itemize}[<+->]
 \item \textbf{Adaptive resampling}: should slow down the time-scale on which the coalescent is recovered (it may have some other effect)
 \item \textbf{Low-variance resampling}: stochastic rounding schemes have minimal variance
 \item \textbf{Backward simulation}: the backward-in-time process is not a pure coalescent, and is not induced by resampling
@@ -1196,7 +1181,6 @@ Then the rescaled genealogies converge to the $n$-coalescent.
 \item Other resampling schemes (stratified, residual-multinomial, ...)
 \item Effect of adaptive resampling
 \item Estimating the time scale $\tau_N$ a priori (since it depends on observed offspring counts)
-\item Finite-$N$ behaviour
 \end{itemize}
 \end{frame}
 
@@ -1211,9 +1195,17 @@ Then the rescaled genealogies converge to the $n$-coalescent.
 %%%_______________________________________________
 %%% extra slides about CSMC in case of leftover time:
 
+\begin{frame}{Comparing resampling schemes}
+\begin{itemize}
+\item The expected time scale is the same for every stochastic rounding scheme
+\item Coalescence is faster for multinomial resampling than for stochastic rounding
+\end{itemize}
+\end{frame}
+
+
 \begin{frame}{Conditional SMC}
 A particle Gibbs\footnote{C Andrieu, A Doucet, R Holenstein. \textit{Journal of the Royal Statistical Society B}, 2010.} scenario...
-\begin{itemize}%[<+->]
+\begin{itemize}[<+->]
 \item Want to target $p(\theta, x_{0:T} \mid y_{0:T})$
 \item Gibbs sampler: alternate samples from \\
 \hspace{1cm} $p(\theta \mid x_{0:T}, y_{0:T})$ (easy) and \\
@@ -1247,7 +1239,7 @@ A particle Gibbs\footnote{C Andrieu, A Doucet, R Holenstein. \textit{Journal of 
 \draw[darkred, ultra thick] (5,-0.5)--(7,-0.5);
 \draw[darkred, ultra thick] (4,0)--(5,-0.5);
 \end{tikzpicture}
-%\pause
+\pause
 okay
 \end{column}
 \begin{column}{0.45\textwidth}
@@ -1277,15 +1269,15 @@ not okay
 
 \begin{frame}{Conditional SMC}
 Consider a conditional SMC algorithm with multinomial resampling.\\[10pt]
-%\pause
+\pause
 Assume
 \begin{equation*}
 \frac{1}{a} \leq g_t(x, x^\prime) \leq a \qquad
 \varepsilon h(x^\prime) \leq m_t(x, x^\prime) \leq \frac{1}{\varepsilon} h(x^\prime) .
 \end{equation*}
 
-%\pause
-Then the rescaled genealogies converge to the $n$-coalescent.
+\pause
+Then the rescaled genealogies converge to the $n$-coalescent\footnote{S Brown, PA Jenkins, AM Johansen, J Koskela,  \textit{Electronic Journal of Probability}, 2021.}.
 \end{frame}
 
 \end{document}
