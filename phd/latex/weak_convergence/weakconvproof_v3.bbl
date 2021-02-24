@@ -1,0 +1,188 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.9 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nyt/global//global/global}
+    \entry{brown2021}{article}{}
+      \name{author}{4}{}{%
+        {{uniquename=0,uniquepart=base,hash=fdbccafd0759a39bd5ff9b5ea9739883}{%
+           family={Brown},
+           familyi={B\bibinitperiod},
+           given={Suzie},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=965ba62a239c33d192ae4fc5dee134e6}{%
+           family={Jenkins},
+           familyi={J\bibinitperiod},
+           given={Paul\bibnamedelima A.},
+           giveni={P\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=17d1caa8d265744784c2779daffb0a90}{%
+           family={Johansen},
+           familyi={J\bibinitperiod},
+           given={Adam\bibnamedelima M.},
+           giveni={A\bibinitperiod\bibinitdelim M\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=9b74b02c1ef5fc6fd3d8f21b8ce9be68}{%
+           family={Koskela},
+           familyi={K\bibinitperiod},
+           given={Jere},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{70c1acd1a5507761ee2e85681bd21729}
+      \strng{fullhash}{889ea9a62c8330287f9623a49f08fd3e}
+      \strng{bibnamehash}{70c1acd1a5507761ee2e85681bd21729}
+      \strng{authorbibnamehash}{70c1acd1a5507761ee2e85681bd21729}
+      \strng{authornamehash}{70c1acd1a5507761ee2e85681bd21729}
+      \strng{authorfullhash}{889ea9a62c8330287f9623a49f08fd3e}
+      \field{sortinit}{B}
+      \field{sortinithash}{276475738cc058478c1677046f857703}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1083-6489}
+      \field{journaltitle}{Electronic Journal of Probability}
+      \field{number}{1}
+      \field{title}{Simple Conditions for Convergence of Sequential {Monte} {Carlo} Genealogies with Applications}
+      \field{volume}{26}
+      \field{year}{2021}
+      \field{pages}{1\bibrangedash 22}
+      \range{pages}{22}
+      \verb{doi}
+      \verb 10.1214/20-EJP561
+      \endverb
+    \endentry
+    \entry{ethier1986}{book}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,uniquepart=base,hash=a45f2eb8285ae9ba8a91156b575327cd}{%
+           family={Ethier},
+           familyi={E\bibinitperiod},
+           given={Stewart\bibnamedelima N.},
+           giveni={S\bibinitperiod\bibinitdelim N\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=5e35655c3b358ba169619d83bfbdb38e}{%
+           family={Kurtz},
+           familyi={K\bibinitperiod},
+           given={Thomas\bibnamedelima G.},
+           giveni={T\bibinitperiod\bibinitdelim G\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {John Wiley \& Sons}%
+      }
+      \strng{namehash}{643c59d13c6db724b5feafdea6777f7f}
+      \strng{fullhash}{643c59d13c6db724b5feafdea6777f7f}
+      \strng{bibnamehash}{643c59d13c6db724b5feafdea6777f7f}
+      \strng{authorbibnamehash}{643c59d13c6db724b5feafdea6777f7f}
+      \strng{authornamehash}{643c59d13c6db724b5feafdea6777f7f}
+      \strng{authorfullhash}{643c59d13c6db724b5feafdea6777f7f}
+      \field{sortinit}{E}
+      \field{sortinithash}{f615fb9c6fba11c6f962fb3fd599810e}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Markov Processes: Characterization and Convergence}
+      \field{year}{2009}
+    \endentry
+    \entry{koskela2018}{report}{}
+      \name{author}{4}{}{%
+        {{uniquename=0,uniquepart=base,hash=9b74b02c1ef5fc6fd3d8f21b8ce9be68}{%
+           family={Koskela},
+           familyi={K\bibinitperiod},
+           given={Jere},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=965ba62a239c33d192ae4fc5dee134e6}{%
+           family={Jenkins},
+           familyi={J\bibinitperiod},
+           given={Paul\bibnamedelima A.},
+           giveni={P\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=17d1caa8d265744784c2779daffb0a90}{%
+           family={Johansen},
+           familyi={J\bibinitperiod},
+           given={Adam\bibnamedelima M.},
+           giveni={A\bibinitperiod\bibinitdelim M\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=077dc9906b1d1d467839d082636e7113}{%
+           family={Spanò},
+           familyi={S\bibinitperiod},
+           given={Dario},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{institution}{1}{%
+        {ArXiv}%
+      }
+      \strng{namehash}{0c20a152cbf08f66f0c1ef81feba93ac}
+      \strng{fullhash}{7afd68e6bc1a63166dd7429d0bdfd696}
+      \strng{bibnamehash}{0c20a152cbf08f66f0c1ef81feba93ac}
+      \strng{authorbibnamehash}{0c20a152cbf08f66f0c1ef81feba93ac}
+      \strng{authornamehash}{0c20a152cbf08f66f0c1ef81feba93ac}
+      \strng{authorfullhash}{7afd68e6bc1a63166dd7429d0bdfd696}
+      \field{sortinit}{K}
+      \field{sortinithash}{9fd838a31ba64d981e8f44562bd33f89}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{number}{1804.01811}
+      \field{title}{Asymptotic genealogies of interacting particle systems with an application to sequential {M}onte {C}arlo}
+      \field{type}{Mathematics e-print}
+      \field{year}{2018}
+    \endentry
+    \entry{mohle1999}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=b6cd56499245b16ab003cae95de7eae7}{%
+           family={M{ö}hle},
+           familyi={M\bibinitperiod},
+           given={Martin},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press}%
+      }
+      \strng{namehash}{b6cd56499245b16ab003cae95de7eae7}
+      \strng{fullhash}{b6cd56499245b16ab003cae95de7eae7}
+      \strng{bibnamehash}{b6cd56499245b16ab003cae95de7eae7}
+      \strng{authorbibnamehash}{b6cd56499245b16ab003cae95de7eae7}
+      \strng{authornamehash}{b6cd56499245b16ab003cae95de7eae7}
+      \strng{authorfullhash}{b6cd56499245b16ab003cae95de7eae7}
+      \field{sortinit}{M}
+      \field{sortinithash}{cfd219b90152c06204fab207bc6c7cab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Applied Probability}
+      \field{number}{2}
+      \field{title}{Weak Convergence to the Coalescent in Neutral Population Models}
+      \field{volume}{36}
+      \field{year}{1999}
+      \field{pages}{446\bibrangedash 460}
+      \range{pages}{15}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
