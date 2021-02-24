@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  18 FEB 2021 18:38
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  24 FEB 2021 17:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1450,7 +1450,7 @@ chapter 1.
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.158 \include{introduction}
+l.159 \include{introduction}
                              [1
 
 
@@ -1899,7 +1899,7 @@ chapter 6.
 
 
 ]
-Overfull \hbox (0.1127pt too wide) in paragraph at lines 172--172
+Overfull \hbox (0.1127pt too wide) in paragraph at lines 173--173
 []\OT1/cmr/m/n/10.95 Nathana^^?el Beresty-cki. \OT1/cmr/m/it/10.95 Re-cent Prog
 ress in Co-a-les-cent The-ory\OT1/cmr/m/n/10.95 . 0909.3985. ArXiv, 2009. 
  []
@@ -1911,12 +1911,12 @@ ress in Co-a-les-cent The-ory\OT1/cmr/m/n/10.95 . 0909.3985. ArXiv, 2009.
 
 
 ] [52]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 173.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 173.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 174.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 174.
  (./thesis_main.aux (./introduction.aux) (./background.aux)
 (./limits.aux) (./applications.aux) (./weakconv.aux) (./discussion.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 173.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 173.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 174.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 174.
 Package rerunfilecheck Info: File `thesis_main.out' has not changed.
 (rerunfilecheck)             Checksum: 88729C9C0B7F8DB519622C78A4673170;4016.
 
@@ -1930,7 +1930,7 @@ Package logreq Info: Writing requests to 'thesis_main.run.xml'.
 Here is how much of TeX's memory you used:
  36221 strings out of 492649
  697231 string characters out of 6129623
- 1238938 words of memory out of 5000000
+ 1239100 words of memory out of 5000000
  39282 multiletter control sequences out of 15000+600000
  558341 words of font info for 80 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1960,7 +1960,7 @@ exmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2018/te
 xmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/201
 8/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive
 /2018/texmf-dist/fonts/type1/adobe/utopia/putb8a.pfb>
-Output written on thesis_main.pdf (61 pages, 468004 bytes).
+Output written on thesis_main.pdf (61 pages, 468065 bytes).
 PDF statistics:
  1078 PDF objects out of 1200 (max. 8388607)
  977 compressed objects within 10 object streams
