@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  24 FEB 2021 17:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  25 FEB 2021 16:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -781,7 +781,7 @@ Package biblatex Info: ... file 'blx-dm.def' found.
 (/usr/local/texlive/2018/texmf-dist/tex/latex/biblatex/blx-dm.def
 File: blx-dm.def 2018/03/04 v3.11 biblatex localization (PK/MW)
 )
-Package biblatex Info: Trying to load biblatex citestyle data model...
+Package biblatex Info: Trying to load biblatex style data model...
 Package biblatex Info: ... file 'authoryear.dbx' not found.
 Package biblatex Info: Trying to load biblatex custom data model...
 Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
@@ -886,11 +886,11 @@ File: biblatex.def 2018/03/04 v3.11 biblatex compatibility (PK/MW)
 \c@biburllcpenalty=\count391
 \c@smartand=\count392
 )
-Package biblatex Info: Trying to load bibliography style 'numeric'...
-Package biblatex Info: ... file 'numeric.bbx' found.
+Package biblatex Info: Trying to load bibliography style 'authoryear'...
+Package biblatex Info: ... file 'authoryear.bbx' found.
 
-(/usr/local/texlive/2018/texmf-dist/tex/latex/biblatex/bbx/numeric.bbx
-File: numeric.bbx 2018/03/04 v3.11 biblatex bibliography style (PK/MW)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/biblatex/bbx/authoryear.bbx
+File: authoryear.bbx 2018/03/04 v3.11 biblatex bibliography style (PK/MW)
 Package biblatex Info: Trying to load bibliography style 'standard'...
 Package biblatex Info: ... file 'standard.bbx' found.
 
@@ -1115,20 +1115,20 @@ File: english.lbx 2018/03/04 v3.11 biblatex localization (PK/MW)
 (./weakconvproof_v3.aux)
 \openout1 = `weakconvproof_v3.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 46.
-LaTeX Font Info:    ... okay on input line 46.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 46.
-LaTeX Font Info:    ... okay on input line 46.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 46.
-LaTeX Font Info:    ... okay on input line 46.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 46.
-LaTeX Font Info:    ... okay on input line 46.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 46.
-LaTeX Font Info:    ... okay on input line 46.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 46.
-LaTeX Font Info:    ... okay on input line 46.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 46.
-LaTeX Font Info:    ... okay on input line 46.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1204,9 +1204,9 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'weakconvproof_v3.bbl' found.
  (./weakconvproof_v3.bbl)
-Package biblatex Info: Reference section=0 on input line 46.
-Package biblatex Info: Reference segment=0 on input line 46.
-Package hyperref Info: Link coloring OFF on input line 46.
+Package biblatex Info: Reference section=0 on input line 47.
+Package biblatex Info: Reference segment=0 on input line 47.
+Package hyperref Info: Link coloring OFF on input line 47.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -1216,147 +1216,146 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count428
 )
-LaTeX Info: Redefining \ref on input line 46.
-LaTeX Info: Redefining \pageref on input line 46.
-LaTeX Info: Redefining \nameref on input line 46.
+LaTeX Info: Redefining \ref on input line 47.
+LaTeX Info: Redefining \pageref on input line 47.
+LaTeX Info: Redefining \nameref on input line 47.
 
 (./weakconvproof_v3.out) (./weakconvproof_v3.out)
 \@outlinefile=\write6
 \openout6 = `weakconvproof_v3.out'.
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 48.
+LaTeX Font Info:    Try loading font information for U+msa on input line 49.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 48.
+LaTeX Font Info:    Try loading font information for U+msb on input line 49.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 64.
- [1
+) [1
 
 {/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 177.
- [2]
+(mdframed)              on input line 124.
+ [2] [3]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 213.
- [3]
+(mdframed)              on input line 246.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 276.
+(mdframed)              on input line 295.
  [4]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 345.
+(mdframed)              on input line 358.
  [5]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 414.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 462.
+(mdframed)              on input line 421.
 
 [6]
-LaTeX Font Info:    Try loading font information for U+bbm on input line 496.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 490.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 538.
+ [7]
+LaTeX Font Info:    Try loading font information for U+bbm on input line 572.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/bbm-macros/ubbm.fd
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
-) [7]
-[8] [9]
+)
+[8] [9] [10]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 673.
+(mdframed)              on input line 742.
 
-Overfull \hbox (28.07458pt too wide) detected at line 726
+Overfull \hbox (28.07458pt too wide) detected at line 796
 []
  []
 
-[10] [11]
-Overfull \hbox (7.70302pt too wide) detected at line 862
+[11] [12]
+Overfull \hbox (7.70302pt too wide) detected at line 931
 []
  []
 
-[12] [13]
+[13] [14]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 966.
- [14] [15] [16]
+(mdframed)              on input line 1035.
+ [15] [16] [17]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1123.
+(mdframed)              on input line 1193.
 
-Overfull \hbox (30.69878pt too wide) detected at line 1187
+Overfull \hbox (30.69878pt too wide) detected at line 1258
 []
  []
 
-[17] [18]
-Overfull \hbox (30.63094pt too wide) detected at line 1287
+[18] [19]
+Overfull \hbox (30.63094pt too wide) detected at line 1358
 []
  []
 
-[19] [20]
+[20]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1337.
+(mdframed)              on input line 1408.
  [21]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1358.
+(mdframed)              on input line 1429.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1400.
+(mdframed)              on input line 1472.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1425.
+(mdframed)              on input line 1497.
  [22]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1456.
+(mdframed)              on input line 1529.
  [23] [24]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1580.
+(mdframed)              on input line 1655.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1632.
+(mdframed)              on input line 1707.
  [25]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 1667
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 1742
 .
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 1667.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 1742.
 
  [26]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1735.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1735.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1810.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1810.
 
 (./weakconvproof_v3.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1735.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1735.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1810.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1810.
 
 Package rerunfilecheck Info: File `weakconvproof_v3.out' has not changed.
-(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
+(rerunfilecheck)             Checksum: 8C3EE046819055A3DF3E797B17B0DB7C;104.
 Package logreq Info: Writing requests to 'weakconvproof_v3.run.xml'.
 \openout1 = `weakconvproof_v3.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 32519 strings out of 492649
- 626061 string characters out of 6129623
- 1050724 words of memory out of 5000000
- 35809 multiletter control sequences out of 15000+600000
+ 32493 strings out of 492649
+ 625803 string characters out of 6129623
+ 1054131 words of memory out of 5000000
+ 35854 multiletter control sequences out of 15000+600000
  539657 words of font info for 60 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,22n,54p,10405b,1440s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,22n,54p,10405b,1439s stack positions out of 5000i,500n,10000p,200000b,80000s
  </Users/suzie/Library/texlive/2018/texmf-var/fonts/pk/ljfour/public/bbm/bbm1
 0.600pk></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx
 10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx1
@@ -1379,10 +1378,10 @@ live/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texl
 ive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/
 texlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/lo
 cal/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
-Output written on weakconvproof_v3.pdf (26 pages, 338917 bytes).
+Output written on weakconvproof_v3.pdf (26 pages, 342338 bytes).
 PDF statistics:
- 546 PDF objects out of 1000 (max. 8388607)
- 491 compressed objects within 5 object streams
- 176 named destinations out of 1000 (max. 500000)
- 13 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 495 PDF objects out of 1000 (max. 8388607)
+ 440 compressed objects within 5 object streams
+ 106 named destinations out of 1000 (max. 500000)
+ 29 words of extra memory for PDF output out of 10000 (max. 10000000)
 

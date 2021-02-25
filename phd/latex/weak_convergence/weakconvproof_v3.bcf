@@ -373,7 +373,8 @@
     <bcf:option datatype="boolean">doi</bcf:option>
     <bcf:option datatype="boolean">eprint</bcf:option>
     <bcf:option datatype="boolean">related</bcf:option>
-    <bcf:option datatype="boolean">subentry</bcf:option>
+    <bcf:option datatype="boolean">dashed</bcf:option>
+    <bcf:option datatype="boolean">mergedate</bcf:option>
     <bcf:option datatype="integer">mincrossrefs</bcf:option>
     <bcf:option datatype="integer">minxrefs</bcf:option>
     <bcf:option datatype="integer">maxnames</bcf:option>
@@ -1974,30 +1975,22 @@
     <bcf:datasource type="file" datatype="bibtex">../smc.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="0">
-    <bcf:citekey order="1">mohle1999</bcf:citekey>
-    <bcf:citekey order="2">ethier1986</bcf:citekey>
-    <bcf:citekey order="3">mohle1999</bcf:citekey>
-    <bcf:citekey order="4">koskela2018</bcf:citekey>
+    <bcf:citekey order="1">koskela2018</bcf:citekey>
+    <bcf:citekey order="2">koskela2018</bcf:citekey>
+    <bcf:citekey order="3">brown2021</bcf:citekey>
+    <bcf:citekey order="4">brown2021</bcf:citekey>
     <bcf:citekey order="5">mohle1999</bcf:citekey>
-    <bcf:citekey order="6">mohle1999</bcf:citekey>
-    <bcf:citekey order="7">mohle1999</bcf:citekey>
-    <bcf:citekey order="8">koskela2018</bcf:citekey>
+    <bcf:citekey order="6">brown2021</bcf:citekey>
+    <bcf:citekey order="7">ethier1986</bcf:citekey>
+    <bcf:citekey order="8">mohle1999</bcf:citekey>
     <bcf:citekey order="9">koskela2018</bcf:citekey>
-    <bcf:citekey order="10">koskela2018</bcf:citekey>
-    <bcf:citekey order="11">brown2021</bcf:citekey>
-    <bcf:citekey order="12">brown2021</bcf:citekey>
+    <bcf:citekey order="10">mohle1999</bcf:citekey>
+    <bcf:citekey order="11">mohle1999</bcf:citekey>
+    <bcf:citekey order="12">mohle1999</bcf:citekey>
     <bcf:citekey order="13">koskela2018</bcf:citekey>
-    <bcf:citekey order="14">brown2021</bcf:citekey>
-    <bcf:citekey order="15">brown2021</bcf:citekey>
-    <bcf:citekey order="16">brown2021</bcf:citekey>
-    <bcf:citekey order="17">brown2021</bcf:citekey>
-    <bcf:citekey order="18">mohle1999</bcf:citekey>
-    <bcf:citekey order="19">brown2021</bcf:citekey>
-    <bcf:citekey order="20">brown2021</bcf:citekey>
-    <bcf:citekey order="21">brown2021</bcf:citekey>
-    <bcf:citekey order="22">brown2021</bcf:citekey>
-    <bcf:citekey order="23">koskela2018</bcf:citekey>
-    <bcf:citekey order="24">koskela2018</bcf:citekey>
+    <bcf:citekey order="14">mohle1999</bcf:citekey>
+    <bcf:citekey order="15">koskela2018</bcf:citekey>
+    <bcf:citekey order="16">koskela2018</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nyt">
