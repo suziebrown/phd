@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  24 FEB 2021 17:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  26 FEB 2021 11:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1609,18 +1609,18 @@ t/10.95 ;
 
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 241.
+(mdframed)              on input line 240.
 
-Overfull \hbox (29.05421pt too wide) in paragraph at lines 249--255
+Overfull \hbox (5.60147pt too wide) in paragraph at lines 248--254
 []  $[][]$ 
  []
 
 [24]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 310.
+(mdframed)              on input line 309.
 
-Overfull \hbox (2.78377pt too wide) detected at line 318
+Overfull \hbox (2.78377pt too wide) detected at line 317
 [] [] [] [] \OMS/cmsy/m/n/10.95 ^^T [] [] \OML/cmm/m/it/10.95 c[]\OT1/cmr/m/n/1
 0.95 (\OML/cmm/m/it/10.95 s[]\OT1/cmr/m/n/10.95 ) + [] (\OML/cmm/m/it/10.95 t \
 OT1/cmr/m/n/10.95 + 1)[](1 + \OML/cmm/m/it/10.95 B\OT1/cmr/m/n/10.95 )[]\OML/cm
@@ -1628,21 +1628,21 @@ m/m/it/10.95 :
  []
 
 
-Overfull \hbox (66.79228pt too wide) detected at line 343
+Overfull \hbox (66.79228pt too wide) detected at line 342
 [] [] \OML/cmm/m/it/10.95 B[] [] [] [] \OT1/cmr/m/n/10.95 = [] []\OML/cmm/m/it/
 10.95 B[] [] [] [] :
  []
 
 [25]
-Overfull \hbox (69.32552pt too wide) detected at line 367
+Overfull \hbox (69.32552pt too wide) detected at line 366
 []
  []
 
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 379.
+(mdframed)              on input line 378.
 
-Overfull \hbox (2.78377pt too wide) detected at line 387
+Overfull \hbox (2.78377pt too wide) detected at line 386
 [] [] [] [] \OMS/cmsy/m/n/10.95 ^^U [] [] \OML/cmm/m/it/10.95 c[]\OT1/cmr/m/n/1
 0.95 (\OML/cmm/m/it/10.95 s[]\OT1/cmr/m/n/10.95 ) \OMS/cmsy/m/n/10.95 ^^@ [] \O
 T1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 t \OT1/cmr/m/n/10.95 + 1)[](1 + \OML/cmm/
@@ -1650,12 +1650,12 @@ m/it/10.95 B\OT1/cmr/m/n/10.95 )[]\OML/cmm/m/it/10.95 :
  []
 
 
-Overfull \hbox (98.81395pt too wide) detected at line 412
+Overfull \hbox (98.81395pt too wide) detected at line 411
 []
  []
 
 [26]
-Overfull \hbox (3.62474pt too wide) detected at line 420
+Overfull \hbox (3.62474pt too wide) detected at line 419
 [] \OMS/cmsy/m/n/10.95 ^^@ [] []\OML/cmm/m/it/10.95 B[] [] [] [] \OMS/cmsy/m/n/
 10.95 ^^U ^^@ [] \OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 t \OT1/cmr/m/n/10.95 +
  1)[](1 + \OML/cmm/m/it/10.95 B\OT1/cmr/m/n/10.95 )[]
@@ -1663,96 +1663,96 @@ Overfull \hbox (3.62474pt too wide) detected at line 420
 
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 428.
+(mdframed)              on input line 427.
 [27]
-Overfull \hbox (104.00688pt too wide) detected at line 501
+Overfull \hbox (104.00688pt too wide) detected at line 500
 []
  []
 
 
-Overfull \hbox (74.07811pt too wide) detected at line 522
+Overfull \hbox (74.07811pt too wide) detected at line 521
 []
  []
 
 [28]
-Overfull \hbox (106.66096pt too wide) detected at line 537
+Overfull \hbox (106.66096pt too wide) detected at line 536
 []
  []
 
 [29]
-Overfull \hbox (105.30492pt too wide) detected at line 599
+Overfull \hbox (105.30492pt too wide) detected at line 598
 []
  []
 
 
-Overfull \hbox (84.65294pt too wide) detected at line 620
+Overfull \hbox (84.65294pt too wide) detected at line 619
 []
  []
 
 [30]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 641.
+(mdframed)              on input line 640.
 
-Overfull \hbox (41.57306pt too wide) detected at line 654
+Overfull \hbox (41.57306pt too wide) detected at line 653
 [] [] \U/msb/m/n/10.95 E [] \OMS/cmsy/m/n/10.95 ^^T \OML/cmm/m/it/10.95 []e[] 
 [] [] []:
  []
 
 [31]
-Overfull \hbox (29.10603pt too wide) detected at line 680
+Overfull \hbox (29.10603pt too wide) detected at line 679
 []
  []
 
 
-Overfull \hbox (144.97357pt too wide) detected at line 694
+Overfull \hbox (144.97357pt too wide) detected at line 693
 []
  []
 
 
-Overfull \hbox (102.54381pt too wide) detected at line 725
+Overfull \hbox (102.54381pt too wide) detected at line 724
 []
  []
 
 [32]
-Overfull \hbox (66.66574pt too wide) detected at line 740
+Overfull \hbox (66.66574pt too wide) detected at line 739
 []
  []
 
 
-Overfull \hbox (98.6379pt too wide) detected at line 753
+Overfull \hbox (98.6379pt too wide) detected at line 752
 []
  []
 
 [33]
-Overfull \hbox (86.26985pt too wide) detected at line 800
+Overfull \hbox (86.26985pt too wide) detected at line 799
 []
  []
 
 [34]
-Overfull \hbox (118.19992pt too wide) detected at line 830
+Overfull \hbox (118.19992pt too wide) detected at line 829
 []
  []
 
 
-Overfull \hbox (60.36168pt too wide) detected at line 860
+Overfull \hbox (60.36168pt too wide) detected at line 859
 []
  []
 
 [35]
-Overfull \hbox (60.36168pt too wide) detected at line 882
+Overfull \hbox (60.36168pt too wide) detected at line 881
 []
  []
 
 [36]
-Overfull \hbox (15.23224pt too wide) detected at line 912
+Overfull \hbox (15.23224pt too wide) detected at line 911
 [] [] \U/msb/m/n/10.95 E [] \OMS/cmsy/m/n/10.95 ^^T []\OT1/cmr/m/n/10.95 (\OML/
 cmm/m/it/10.95 t \OT1/cmr/m/n/10.95 + 1)[] [] \U/msb/m/n/10.95 E [] \OT1/cmr/m/
 n/10.95 = 0
  []
 
 
-Overfull \hbox (8.79257pt too wide) in paragraph at lines 912--915
+Overfull \hbox (8.79257pt too wide) in paragraph at lines 911--914
 \OT1/cmr/m/n/10.95 by Brown et al. ([]2021[], Equa-tion (3.5)). By Lem-mata []5
 .12[], []5.11[] and []5.14[], $[][] \U/msb/m/n/10.95 P\OT1/cmr/m/n/10.95 [\OMS/
 cmsy/m/n/10.95 f\OML/cmm/m/it/10.95 ^^\[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.9
@@ -1760,93 +1760,93 @@ cmsy/m/n/10.95 f\OML/cmm/m/it/10.95 ^^\[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.9
  []
 
 
-Overfull \hbox (57.3295pt too wide) detected at line 930
+Overfull \hbox (57.3295pt too wide) detected at line 929
 []
  []
 
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 935.
+(mdframed)              on input line 934.
 
-Overfull \hbox (41.57306pt too wide) detected at line 948
+Overfull \hbox (41.57306pt too wide) detected at line 947
 [] [] \U/msb/m/n/10.95 E [] \OMS/cmsy/m/n/10.95 ^^U \OML/cmm/m/it/10.95 []e[] 
 [] [] []:
  []
 
 [37]
-Overfull \hbox (43.99254pt too wide) detected at line 973
+Overfull \hbox (43.99254pt too wide) detected at line 972
 []
  []
 
 
-Overfull \hbox (85.1906pt too wide) detected at line 994
+Overfull \hbox (85.1906pt too wide) detected at line 993
 []
  []
 
 [38]
-Overfull \hbox (92.29518pt too wide) detected at line 1027
+Overfull \hbox (92.29518pt too wide) detected at line 1026
 []
  []
 
 
-Overfull \hbox (30.56253pt too wide) detected at line 1052
+Overfull \hbox (30.56253pt too wide) detected at line 1051
 []
  []
 
 [39]
-Overfull \hbox (78.6452pt too wide) detected at line 1071
+Overfull \hbox (78.6452pt too wide) detected at line 1070
 []
  []
 
 
-Overfull \hbox (57.3295pt too wide) detected at line 1092
+Overfull \hbox (57.3295pt too wide) detected at line 1091
 []
  []
 
 [40]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1097.
+(mdframed)              on input line 1096.
 
-Overfull \hbox (142.1838pt too wide) detected at line 1171
+Overfull \hbox (142.1838pt too wide) detected at line 1170
 []
  []
 
 [41]
-Overfull \hbox (3.14876pt too wide) in paragraph at lines 1193--1194
+Overfull \hbox (3.14876pt too wide) in paragraph at lines 1192--1193
 []\OT1/cmr/m/n/10.95 For the cor-re-spond-ing lower bound, by a mod-i-fi-ca-tio
 n of the lower bound in Lemma []5.3[][](b)[]
  []
 
 [42]
-Overfull \hbox (88.7925pt too wide) detected at line 1204
+Overfull \hbox (88.7925pt too wide) detected at line 1203
 []
  []
 
 
-Overfull \hbox (142.97559pt too wide) detected at line 1271
+Overfull \hbox (142.97559pt too wide) detected at line 1270
 []
  []
 
 [43]
-Overfull \hbox (74.69781pt too wide) detected at line 1313
+Overfull \hbox (74.69781pt too wide) detected at line 1312
 []
  []
 
 [44]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1321.
+(mdframed)              on input line 1320.
  [45]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1343.
+(mdframed)              on input line 1342.
  [46]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1385.
+(mdframed)              on input line 1384.
 
-Overfull \hbox (2.84853pt too wide) in paragraph at lines 1391--1392
+Overfull \hbox (2.84853pt too wide) in paragraph at lines 1390--1391
 []\OT1/cmr/m/n/10.95 We can re-place the event $\OMS/cmsy/m/n/10.95 f\OML/cmm/m
 /it/10.95 ^^\[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 t\OT1/cmr/m/n/10.95 ) \O
 MS/cmsy/m/n/10.95 ^^U \OML/cmm/m/it/10.95 l\OMS/cmsy/m/n/10.95 g$ \OT1/cmr/m/n/
@@ -1855,7 +1855,7 @@ MS/cmsy/m/n/10.95 ^^U \OML/cmm/m/it/10.95 l\OMS/cmsy/m/n/10.95 g$ \OT1/cmr/m/n/
  []
 
 
-Overfull \hbox (108.80887pt too wide) detected at line 1398
+Overfull \hbox (108.80887pt too wide) detected at line 1397
 []\OMS/cmsy/m/n/10.95 f\OML/cmm/m/it/10.95 ^^\[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/
 it/10.95 t\OT1/cmr/m/n/10.95 ) \OMS/cmsy/m/n/10.95 ^^U \OML/cmm/m/it/10.95 l\OM
 S/cmsy/m/n/10.95 g \OT1/cmr/m/n/10.95 = [] = [] \OMS/cmsy/m/n/10.95 ^^S [] [] ^
@@ -1864,9 +1864,9 @@ S/cmsy/m/n/10.95 g \OT1/cmr/m/n/10.95 = [] = [] \OMS/cmsy/m/n/10.95 ^^S [] [] ^
 
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1410.
+(mdframed)              on input line 1409.
 
-Overfull \hbox (54.74672pt too wide) detected at line 1428
+Overfull \hbox (54.74672pt too wide) detected at line 1427
 []\U/msb/m/n/10.95 P\OT1/cmr/m/n/10.95 [\OML/cmm/m/it/10.95 E[]\OT1/cmr/m/n/10.
 95 ] = 1 \OMS/cmsy/m/n/10.95 ^^@ \U/msb/m/n/10.95 P\OT1/cmr/m/n/10.95 [\OML/cmm
 /m/it/10.95 E[]\OT1/cmr/m/n/10.95 ] = 1 \OMS/cmsy/m/n/10.95 ^^@ \U/msb/m/n/10.9
@@ -1876,9 +1876,9 @@ Overfull \hbox (54.74672pt too wide) detected at line 1428
 
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1441.
+(mdframed)              on input line 1440.
 [47]
-Overfull \hbox (67.28311pt too wide) detected at line 1475
+Overfull \hbox (67.28311pt too wide) detected at line 1474
 []\OML/cmm/m/it/10.95 D[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 r\OT1/cmr/m/n/
 10.95 ) = [] [](\OML/cmm/m/it/10.95 ^^W[]\OT1/cmr/m/n/10.95 )[] [] \U/bbm/m/n/1
 0.95 1[] \OT1/cmr/m/n/10.95 + [] [](\OML/cmm/m/it/10.95 ^^W[]\OT1/cmr/m/n/10.95
@@ -1886,26 +1886,26 @@ Overfull \hbox (67.28311pt too wide) detected at line 1475
  []
 
 
-Overfull \hbox (108.2203pt too wide) detected at line 1498
+Overfull \hbox (108.2203pt too wide) detected at line 1497
 []
  []
 
 [48]
-Overfull \hbox (48.02219pt too wide) detected at line 1557
+Overfull \hbox (48.02219pt too wide) detected at line 1556
 []
  []
 
 [49]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1565.
+(mdframed)              on input line 1564.
 
-Overfull \hbox (72.43637pt too wide) detected at line 1593
+Overfull \hbox (72.43637pt too wide) detected at line 1592
 []
  []
 
 
-Overfull \hbox (53.56366pt too wide) detected at line 1608
+Overfull \hbox (53.56366pt too wide) detected at line 1607
 []\U/msb/m/n/10.95 E [] \OT1/cmr/m/n/10.95 = \U/msb/m/n/10.95 E [] \OT1/cmr/m/n
 /10.95 = \U/msb/m/n/10.95 E [] \OT1/cmr/m/n/10.95 = \U/msb/m/n/10.95 E []
  []
@@ -1913,9 +1913,9 @@ Overfull \hbox (53.56366pt too wide) detected at line 1608
 [50]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1619.
+(mdframed)              on input line 1618.
 
-Overfull \hbox (81.27669pt too wide) detected at line 1639
+Overfull \hbox (81.27669pt too wide) detected at line 1638
 []
  []
 
@@ -1991,7 +1991,7 @@ exmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2018/te
 xmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/201
 8/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive
 /2018/texmf-dist/fonts/type1/adobe/utopia/putb8a.pfb>
-Output written on thesis_main.pdf (64 pages, 477262 bytes).
+Output written on thesis_main.pdf (64 pages, 477263 bytes).
 PDF statistics:
  1143 PDF objects out of 1200 (max. 8388607)
  1038 compressed objects within 11 object streams
