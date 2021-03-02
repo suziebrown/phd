@@ -362,6 +362,70 @@
       \field{pages}{205\bibrangedash 220}
       \range{pages}{16}
     \endentry
+    \entry{fu2006}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=b0ba93e0f8d65b82c9dccacfce2224f5}{%
+           family={Fu},
+           familyi={F\bibinitperiod},
+           given={Y.-X.},
+           giveni={Y\bibinithyphendelim X\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{b0ba93e0f8d65b82c9dccacfce2224f5}
+      \strng{fullhash}{b0ba93e0f8d65b82c9dccacfce2224f5}
+      \strng{bibnamehash}{b0ba93e0f8d65b82c9dccacfce2224f5}
+      \strng{authorbibnamehash}{b0ba93e0f8d65b82c9dccacfce2224f5}
+      \strng{authornamehash}{b0ba93e0f8d65b82c9dccacfce2224f5}
+      \strng{authorfullhash}{b0ba93e0f8d65b82c9dccacfce2224f5}
+      \field{sortinit}{F}
+      \field{sortinithash}{669c706c6f1fbf3b5a83d26f1d9e9e72}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issue}{4}
+      \field{journaltitle}{Theoretical Population Biology}
+      \field{title}{Exact Coalescent for the {Wright}--{Fisher} Model}
+      \field{volume}{69}
+      \field{year}{2006}
+      \field{pages}{385\bibrangedash 394}
+      \range{pages}{10}
+    \endentry
+    \entry{hardy1918}{article}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,uniquepart=base,hash=1060fa386a5f18d1ba64493dc48fd8a2}{%
+           family={Hardy},
+           familyi={H\bibinitperiod},
+           given={Godfrey\bibnamedelima Harold},
+           giveni={G\bibinitperiod\bibinitdelim H\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=347ed01b775415c64e42ebfbd02d3976}{%
+           family={Ramanujan},
+           familyi={R\bibinitperiod},
+           given={Srinivasa\bibnamedelima Aaiyangar},
+           giveni={S\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{660f71ebc29af12522e308a76a77f66e}
+      \strng{fullhash}{660f71ebc29af12522e308a76a77f66e}
+      \strng{bibnamehash}{660f71ebc29af12522e308a76a77f66e}
+      \strng{authorbibnamehash}{660f71ebc29af12522e308a76a77f66e}
+      \strng{authornamehash}{660f71ebc29af12522e308a76a77f66e}
+      \strng{authorfullhash}{660f71ebc29af12522e308a76a77f66e}
+      \field{sortinit}{H}
+      \field{sortinithash}{5f15a7bc777ad49ff15aa4d2831b1681}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Proceedings of the London Mathematical Society}
+      \field{number}{1}
+      \field{title}{Asymptotic Formulae in Combinatory Analysis}
+      \field{volume}{s2-17}
+      \field{year}{1918}
+      \field{pages}{75\bibrangedash 115}
+      \range{pages}{41}
+    \endentry
     \entry{jazwinski2007}{book}{}
       \name{author}{1}{}{%
         {{uniquename=0,uniquepart=base,hash=87f554ca758cc49e1dd9c710a5a4e776}{%
