@@ -37,6 +37,11 @@ function outransition(oldpos::Array{Float64,1}, delta::Float64, sigma::Float64)
     N = length(oldpos)
     rand(Normal(), N) .* delta^(0.5) .+ (1-delta) .* oldpos
 end
+# alternative method where random numbers are fixed (e.g. for comparing algms)
+function outransition(oldpos::Array{Float64,1}, delta::Float64, sigma::Float64, rands::Array{Float64,1})
+    N = length(oldpos)
+    rands .* delta^(0.5) .+ (1-delta) .* oldpos
+end
 
 # calculate potentials between particle positions and observations (to compute weights)
 function oupotential(pos::Array{Float64,1}, obs::Float64, delta::Float64, sigma::Float64)
