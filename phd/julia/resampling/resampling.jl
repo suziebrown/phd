@@ -1,4 +1,6 @@
 ### Implementation of different resampling schemes
+# OBSOLETE: a complete resampling implementation can be found at:
+# phd/julia/resampling/resampling_CP2020
 
 using Distributions
 
