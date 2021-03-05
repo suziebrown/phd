@@ -211,14 +211,41 @@
       \field{pages}{264\bibrangedash 282}
       \range{pages}{19}
     \endentry
+    \entry{durrett2008}{book}{}
+      \name{author}{1}{}{%
+        {{uniquename=2,uniquepart=given,hash=dbdc52e17e1d92513591b9fd1361d03b}{%
+           family={Durrett},
+           familyi={D\bibinitperiod},
+           given={Richard},
+           giveni={R\bibinitperiod},
+           givenun=2}}%
+      }
+      \list{publisher}{1}{%
+        {Springer Science \& Business Media}%
+      }
+      \strng{namehash}{dbdc52e17e1d92513591b9fd1361d03b}
+      \strng{fullhash}{dbdc52e17e1d92513591b9fd1361d03b}
+      \strng{bibnamehash}{dbdc52e17e1d92513591b9fd1361d03b}
+      \strng{authorbibnamehash}{dbdc52e17e1d92513591b9fd1361d03b}
+      \strng{authornamehash}{dbdc52e17e1d92513591b9fd1361d03b}
+      \strng{authorfullhash}{dbdc52e17e1d92513591b9fd1361d03b}
+      \field{sortinit}{D}
+      \field{sortinithash}{2ef1bd9a78cc71eb74d7231c635177b8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Probability Models for {DNA} Sequence Evolution}
+      \field{year}{2008}
+    \endentry
     \entry{durrett2019}{book}{}
       \name{author}{1}{}{%
-        {{uniquename=0,uniquepart=base,hash=175a15e34b656dab74bea645e2ed84d0}{%
+        {{uniquename=2,uniquepart=given,hash=175a15e34b656dab74bea645e2ed84d0}{%
            family={Durrett},
            familyi={D\bibinitperiod},
            given={Rick},
            giveni={R\bibinitperiod},
-           givenun=0}}%
+           givenun=2}}%
       }
       \list{publisher}{1}{%
         {Cambridge University Press}%
@@ -485,6 +512,35 @@
       \field{pages}{35\bibrangedash 45}
       \range{pages}{11}
     \endentry
+    \entry{kingman1982exch}{inproceedings}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=ee1e0d2cdea2686aec099d0e62aecf1e}{%
+           family={Kingman},
+           familyi={K\bibinitperiod},
+           given={John\bibnamedelimb F.\bibnamedelimi C.},
+           giveni={J\bibinitperiod\bibinitdelim F\bibinitperiod\bibinitdelim C\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {North-Holland, Amsterdam}%
+      }
+      \strng{namehash}{ee1e0d2cdea2686aec099d0e62aecf1e}
+      \strng{fullhash}{ee1e0d2cdea2686aec099d0e62aecf1e}
+      \strng{bibnamehash}{ee1e0d2cdea2686aec099d0e62aecf1e}
+      \strng{authorbibnamehash}{ee1e0d2cdea2686aec099d0e62aecf1e}
+      \strng{authornamehash}{ee1e0d2cdea2686aec099d0e62aecf1e}
+      \strng{authorfullhash}{ee1e0d2cdea2686aec099d0e62aecf1e}
+      \field{sortinit}{K}
+      \field{sortinithash}{9fd838a31ba64d981e8f44562bd33f89}
+      \field{extradate}{1}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the International Conference on Exchangeability in Probability and Statistics, Rome, 6th-9th April, 1981, in Honour of Professor Bruno de Finetti}
+      \field{title}{Exchangeability and the Evolution of Large Populations}
+      \field{year}{1982}
+    \endentry
     \entry{kingman1982gene}{article}{}
       \name{author}{1}{}{%
         {{uniquename=0,uniquepart=base,hash=ee1e0d2cdea2686aec099d0e62aecf1e}{%
@@ -505,6 +561,7 @@
       \strng{authorfullhash}{ee1e0d2cdea2686aec099d0e62aecf1e}
       \field{sortinit}{K}
       \field{sortinithash}{9fd838a31ba64d981e8f44562bd33f89}
+      \field{extradate}{2}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
@@ -516,6 +573,39 @@
       \field{year}{1982}
       \field{pages}{27\bibrangedash 43}
       \range{pages}{17}
+    \endentry
+    \entry{kingman1982coal}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=ee1e0d2cdea2686aec099d0e62aecf1e}{%
+           family={Kingman},
+           familyi={K\bibinitperiod},
+           given={John\bibnamedelimb F.\bibnamedelimi C.},
+           giveni={J\bibinitperiod\bibinitdelim F\bibinitperiod\bibinitdelim C\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{ee1e0d2cdea2686aec099d0e62aecf1e}
+      \strng{fullhash}{ee1e0d2cdea2686aec099d0e62aecf1e}
+      \strng{bibnamehash}{ee1e0d2cdea2686aec099d0e62aecf1e}
+      \strng{authorbibnamehash}{ee1e0d2cdea2686aec099d0e62aecf1e}
+      \strng{authornamehash}{ee1e0d2cdea2686aec099d0e62aecf1e}
+      \strng{authorfullhash}{ee1e0d2cdea2686aec099d0e62aecf1e}
+      \field{sortinit}{K}
+      \field{sortinithash}{9fd838a31ba64d981e8f44562bd33f89}
+      \field{extradate}{3}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Stochastic Processes and Their Applications}
+      \field{number}{3}
+      \field{title}{The Coalescent}
+      \field{volume}{13}
+      \field{year}{1982}
+      \field{pages}{235\bibrangedash 248}
+      \range{pages}{14}
     \endentry
     \entry{koskela2018}{report}{}
       \name{author}{4}{}{%

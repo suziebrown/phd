@@ -140,8 +140,8 @@ Notice that $\nu_t^{(1:N)}$ can be expressed as a function of $a_t^{(1:N)}$, and
 \section{Coalescent theory}
 
 \subsection{Kingman's coalescent}
-\draft{Define the $n$-coalescent, and Kingman's coalescent as extension of it. (Do I need to introduce random partitions first?)}
-\seb{Include Kingman citations!}
+The Kingman coalescent \parencite{kingman1982gene, kingman1982coal, kingman1982exch} is a continuous-time Markov process on the space of partitions of $\mathbb{N}$. For our purposes we need only consider its restriction to $\{1,\dots,n\}$, termed the $n$-coalescent (defined below), since we only ever consider finite samples from a population. 
+However, an excellent probabilistic introduction to the Kingman coalescent from the point-of-view of exchangeable random partitions can be found in \textcite[Chapters 1--2]{berestycki2009}. \seb{or \textcite{wakeley2009} ? or \textcite{durrett2008} ?}
 \begin{defn}
 \label{def:kingman}
 The \emph{$n$-coalescent} is the homogeneous continuous-time Markov process on the set of partitions of $\{1,\dots,n\}$ with infinitesimal generator $Q$ having entries
@@ -154,8 +154,6 @@ q_{\xi,\eta} = \begin{cases}
 \end{equation}
 where $\xi$ and $\eta$ are partitions of $\{1,...,n\}$, $|\xi|$ denotes the number of blocks in $\xi$, and $\xi \prec \eta$ means that $\eta$ is obtained from $\xi$ by merging exactly one pair of blocks.
 \end{defn}
-The $n$-coalescent can also be characterised as the restriction to $[n]$ of \emph{Kingman's coalescent}, the analogous process supported on partitions of $\mathbb{N}$.
-Kingman's coalescent is a canonical model in coalescent theory, underpinned by the rich theory of exchangeable random partitions. An excursion into these areas is beyond the scope of this work, since our results only ever consider finite samples from the population (the setting of the $n$-coalescent), but an excellent introduction to Kingman's coalescent from this perspective can be found in \textcite[Chapters 1--2]{berestycki2009}. \seb{or \textcite{wakeley2009} ?}
 
 \begin{figure}
 \centering
@@ -163,49 +161,87 @@ Kingman's coalescent is a canonical model in coalescent theory, underpinned by t
 \caption[The $n$-coalescent]{A realisation of the $n$-coalescent with $n=50$.}
 \end{figure}
 
+A particularly attractive feature of the $n$-coalescent is its tractability; its distribution and those of many statistics of interest are available in closed form (Section \ref{sec:KCproperties}).
+It turns out also to be extremely useful as a limiting distribution in population genetics, including the genealogies of a wide range of population models in its domain of attraction (Section \ref{sec:popgenmodels}).
 
-\subsection{Properties}
-\draft{Properties of Kingman's coalescent / $n$-coalescent. Distributions of branch length, waiting times, time to MRCA. Coming down from infinity.}
 
-The simplicity of $Q$ allows various properties of the $n$-coalescent to be studied analytically.
+\subsection{Properties}\label{sec:KCproperties}
+The simplicity of $Q$ allows various properties of the $n$-coalescent to be studied analytically. \seb{Refer to more exhaustive studies of the properties in the literature, e.g.\ \textcite[Section 1.2]{durrett2008}.}
 Starting with $n$ blocks, exactly $n-1$ coalescences are required to reach the absorbing state where all blocks have coalesced, known in the population genetics literature as the \emph{most recent common ancestor} (MRCA).
 
-\seb{Include a diagram clarifying definitions of $t_i, T_i, T_{MRCA}$; similar to the KC realisation but smaller $n$ and all the relevant time intervals labelled.}
-Denote by $t_2, t_3 \dots, t_n$ the waiting times between coalescent events, where $t_i$ is the amount of time for which the coalescent has exactly $i$ distinct lineages.
-A simple consequence of Definition~\ref{def:kingman} is that these waiting times are independent and have distributions
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}
+% horizontal lines
+\draw[dotted, gray] (-0.5,-1)--(6,-1);
+\draw[dotted, gray] (-0.5,-0.2)--(6,-0.2);
+\draw[dotted, gray] (-0.5,0.5)--(6,0.5);
+\draw[dotted, gray] (-0.5,1.3)--(6,1.3);
+\draw[dotted, gray] (-0.5,3.3)--(6,3.3);
+
+% tree
+\draw[thick] (0,-1)--(0,-0.2);
+\draw[thick] (1,-1)--(1,-0.2);
+\draw[thick] (0,-0.2)--(1,-0.2);
+\draw[thick] (0.5,-0.2)--(0.5,1.3);
+\draw[thick] (2,-1)--(2,1.3);
+\draw[thick] (0.5,1.3)--(2,1.3);
+\draw[thick] (3,-1)--(3,0.5);
+\draw[thick] (4,-1)--(4,0.5);
+\draw[thick] (3,0.5)--(4,0.5);
+\draw[thick] (1.25,1.3)--(1.25,3.3);
+\draw[thick] (3.5,0.5)--(3.5,3.3);
+\draw[thick] (1.25,3.3)--(3.5,3.3);
+
+% interval arrows
+\draw[<->] (5,-1)--(5,-0.2);
+\draw[<->] (5,-0.2)--(5,0.5);
+\draw[<->] (5,0.5)--(5,1.3);
+\draw[<->] (5,1.3)--(5,3.3);
+
+% small t's
+\node at (5.2, -0.6) {\footnotesize{$t_5$}};
+\node at (5.2, 0.15) {\footnotesize{$t_4$}};
+\node at (5.2, 0.9) {\footnotesize{$t_3$}};
+\node at (5.2, 2.3) {\footnotesize{$t_2$}};
+
+% capital T's
+\node[anchor=west] at (6, -1) {\footnotesize{$T_5 = 0$}};
+\node[anchor=west] at (6, -0.2) {\footnotesize{$T_4$}};
+\node[anchor=west] at (6, 0.5) {\footnotesize{$T_3$}};
+\node[anchor=west] at (6, 1.3) {\footnotesize{$T_2$}};
+\node[anchor=west] at (6, 3.3) {\footnotesize{$T_1 = T_{MRCA}$}};
+\end{tikzpicture}
+\caption{Diagram illustrating the definitions of $t_i$, $T_i$.}
+\label{fig:KC_timedefns}
+\end{figure}
+
+Denote by $t_2, t_3 \dots, t_n$ the waiting times between coalescent events, where $t_i$ is the amount of time for which the coalescent has exactly $i$ distinct lineages (see Figure~\ref{fig:KC_timedefns}).
+A consequence of Definition~\ref{def:kingman} is that these waiting times are independent and have distributions
 \begin{equation}
 t_i \sim \Exp\left( \binom{i}{2} \right) .
 \end{equation}
-%The waiting times between coalescence events $t_1, t_2, \dots, t_{n-1}$ \seb{it would probably be better to define $t_k=$ time spent with $k$ lineages, to make indexing less confusing} are independent and distributed according to
-%\begin{equation}
-%t_i \sim \Exp\left( \binom{n-i+1}{2} \right) .
-%\end{equation}
-The partial sum $T_k := \sum_{i=k+1}^n t_i$ gives the total time up to the $(n-k)^{th}$ coalescence event, i.e.\ the first time at which there are only $k$ lineages remaining. 
-%This has the distribution
-%\begin{equation}
-%T_{MRCA} 
-%\eqdist \sum_{i=1}^{n-1} \Exp\left( \binom{n-i+1}{2} \right)
-%\end{equation}
-%under which many expectations can be calculated explicitly.
-Of particular interest is the time to the most recent common ancestor, $T_{MRCA} := T_1$.
+The partial sum $T_k := \sum_{i=k+1}^n t_i$ gives the total time up to the $(n-k)^{th}$ coalescence event, i.e.\ the first time at which there are only $k$ lineages remaining out of the initial $n$ (see Figure~\ref{fig:KC_timedefns}).
+
+Of particular interest is the tree height or time to the most recent common ancestor, $T_{MRCA} := T_1$.
 With some algebra we find, for instance,
-\begin{align}
+\begin{equation}
 \E[ T_{MRCA} ] 
 = \sum_{i=2}^{n} \E[t_i]
 = \sum_{i=2}^n \frac{2}{i(i-1)}
 = 2 \sum_{i=2}^n \left\{ \frac{1}{i-1} - \frac{1}{i} \right\}
-= 2 \left( 1 - \frac{1}{n} \right) .
-%\underset{n\to\infty}{\longrightarrow} 2 .
-\end{align}
+= 2 \left( 1 - \frac{1}{n} \right)
+\end{equation}
 and
 \begin{equation}
 \V[ T_{MRCA} ] 
 = \sum_{i=2}^n \V[t_i]
-= \sum_{i=2}^n \left( \frac{2}{i(i-1)} \right)^2
-\underset{n\to\infty}{\longrightarrow} \frac{4}{3}(\pi^2 - 9) .
+= \sum_{i=2}^n \left( \frac{2}{i(i-1)} \right)^2 .
 \end{equation}
-\seb{Plot mean with sd-ribbon over $n$ for an illustration?}\\
-\seb{We are not taking $n\to\infty$ so why are these limits of interest?? Perhaps an approximation would be more useful (like harmonic numbers $\simeq$ log thing).}
+The expected tree height converges to 2 as $n\to\infty$, and the variance converges to $4(\pi^2 - 9)/3 \simeq 1.16$.
+The somewhat surprising fact that the tree height does not diverge with $n$ is a result of the very high rate of coalescence close to the bottom of the tree. This rate is large enough that the full Kingman coalescent (on $\mathbb{N}$) \emph{comes down from infinity}, that is, despite starting with infinitely many blocks, after any positive amount of time these have coalesced into finitely many blocks.
+\seb{Plot mean with sd-ribbon over $n$ for an illustration? SD ribbon isn't the right thing; since we apparently know the actual distribution, plot a high density interval of that. (also for $L$)}
+
 Another quantity of interest is the total branch length,
 $ L := \sum_{i=2}^n i t_i $.
 For instance
@@ -213,15 +249,18 @@ For instance
 \E[ L ] 
 = \sum_{i=2}^n i \E[ t_i ]
 = \sum_{i=2}^n \frac{2}{i-1}
-= \sum_{i=1}^{n-1} \frac{2}{i} ,
+= \sum_{i=1}^{n-1} \frac{2}{i} %,
+\simeq 2 \ln(n-1) 
 \end{equation}
-a harmonic series, and
+%a harmonic series, 
+and
 \begin{equation}
 \V[ L ] 
 = \sum_{i=2}^n i^2 \V[ t_i ]
 = \sum_{i=2}^n \frac{4}{(i-1)^2}
 = \sum_{i=1}^{n-1} \frac{4}{i^2} .
 \end{equation}
+Note that although the mean total branch length diverges with $n$, the variance converges to a constant, $4\pi /6 \simeq 6.6$.
 
 
 \subsection{Models in population genetics}\label{sec:popgenmodels}
@@ -233,7 +272,9 @@ Common to all of these models are the following assumptions:
 \item The offspring distributions are identical at each generation, and independent between generations
 \item These models are all \emph{neutral}, i.e.\ the offspring distribution is exchangeable.
 \end{itemize}
-\seb{Since offspring exchangeable, distribution of parental indices equivalent to distribution of offspring counts. Define offspring counts in terms of parental indices. Explain what ``neutral'' means from the biological perspective.}
+As before \seb{section/eq ref?}, we define offspring counts in terms of parental indices as $\nu_j := |\{ i: a_i = j\}|$.
+Under the assumption of neutrality, it is sufficient to consider only the offspring counts, rather than the parental indices (which generally carry more information).
+From a biological perspective, neutrality encodes the absence of natural selection, i.e.\ no individual in the population is ``fitter'' than another.
 
 \subsubsection{Wright-Fisher model}
 The neutral Wright-Fisher model \parencite{fisher1923, fisher1930, wright1931} is one of the most studied models in population genetics.
@@ -248,14 +289,14 @@ The joint distribution of the offspring counts is therefore
 Since the Multinomial distribution is exchangeable, this model is neutral.
 There are several non-neutral variants of the Wright-Fisher model \seb{citations?}, but they are typically much less tractable than the neutral one.
 
-Kingman showed in his original papers introducing the Kingman coalescent \parencite{kingman1982gene} that, under a certain time-scaling, genealogies of the neutral Wright-Fisher model converge to the Kingman coalescent as $N\to\infty$.
+Kingman showed in his original papers introducing the Kingman coalescent \parencite{kingman1982gene} that, under a certain time-scaling \seb{which is what?}, genealogies of the neutral Wright-Fisher model converge to the Kingman coalescent as $N\to\infty$.
 
 \subsubsection{Cannings model}
 The neutral Cannings model \parencite{cannings1974, cannings1975} is a more general construction which encompasses the neutral Wright-Fisher model as a special case.
 
 In the Cannings model, the particular offspring distribution is not specified; we only require that it is exchangeable, i.i.d.\ between generations, and preserves the population size. In particular, the probability of observing offspring counts $(v_1, \dots, v_N)$ must be invariant under permutations of this vector.
 
-Genealogies of the neutral Cannings model also converge to the Kingman coalescent, under some conditions and a suitable time-scaling, as $N\to\infty$ \parencite[Section 2.2]{etheridge2011}.
+Genealogies of the neutral Cannings model also converge to the Kingman coalescent, under some conditions and a suitable time-scaling \seb{which is what?}, as $N\to\infty$ \parencite[see for example][Section 2.2]{etheridge2011}. \seb{original reference for this?}
 
 \subsubsection{Moran model}
 The neutral Moran model \parencite{moran1958}, while perhaps less biologically relevant, is mathematically appealing because its simple dynamics make it particularly tractable.
@@ -264,15 +305,18 @@ At each time step, an ordered pair of individuals is selected uniformly at rando
 %Usually the model is thought of as having ``overlapping generations'': the individuals having one offspring are considered to be not reproducing but rather surviving to appear again in the next generation.
 %However, one can equally think of it as having non-overlapping generations and a low variance reproduction mechanism.
 This is another special case of the neutral Cannings model, where the offspring distribution is now uniform over all permutations of $(0,2,1,1,\dots,1)$.
-Therefore we know that under a suitable time-scaling, its genealogies converge to the Kingman coalescent.
-\seb{Something should be said about the difference between Moran and WF time scales at this point.}
+Therefore we know that under a suitable time-scaling \seb{which is what?}, its genealogies converge to the Kingman coalescent. \seb{but it would be good to cite a Moran-specific convegrence result if that preceded the Cannings class.}
+\seb{Emphasise the difference between Moran and WF time scales.}
 
 %The mathematical tractability of this model stems from the fact that, if we formulate it a little more carefully, its pre-limiting behaviour is exactly that of a rescaled Kingman coalescent. This requires us to work in continuous time, and now we say that the pairs are chosen to die/reproduce with exponential rate $\binom{N}{2}$. This gives the unit pairwise merger rate we need, and we can clearly see that the only possible mergers are between one pair of lineages at a time.
 
 
 \subsection{Particle populations}
-\draft{Particles = individuals, iterations = generations. In what ways is SMC like a population model? (constant population size, non-overlapping generations, discrete time). In what ways is SMC not like a population model? (non-neutral, non-Markov?)}
-
+Much of the population genetics framework transfers readily to the case of SMC. The population is now a population of particles, with each iteration of the SMC algorithm corresponding to a generation, and resampling playing the part of reproduction.
+In fact, SMC ``populations'' are in some ways more suited to these population models than actual populations of organisms.
+The assumptions that the population has constant size $N$ and that reproduction occurs only at discrete generations are satisfied by construction.
+However, we cannot assume independence between generations: as seen in Figure~\ref{fig:cond_indep_graph}, the offspring counts at subsequent generations are not independent without some conditioning. In fact, after marginalising out the information about the positions of the particles, the genealogical process is not even Markovian.
+Nor is our model neutral: the resampling distribution depends on the weight of each particle (the weight plays the role of fitness in a non-neutral population model).
 
 \section{Sequential Monte Carlo genealogies}
 
