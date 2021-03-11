@@ -222,7 +222,10 @@ A consequence of Definition~\ref{def:kingman} is that these waiting times are in
 t_i \sim \Exp\left( \binom{i}{2} \right) .
 \end{equation}
 The partial sum $T_k := \sum_{i=k+1}^n t_i$ gives the total time up to the $(n-k)^{th}$ coalescence event, i.e.\ the first time at which there are only $k$ lineages remaining out of the initial $n$ (see Figure~\ref{fig:KC_timedefns}).
+The partial sums, being sums of independent Exponential random variables, have HyperExponential distributions.
 
+
+\subsubsection{Time to MRCA}
 Of particular interest is the tree height or time to the most recent common ancestor, $T_{MRCA} := T_1$.
 With some algebra we find, for instance,
 \begin{equation}
@@ -242,6 +245,8 @@ The expected tree height converges to 2 as $n\to\infty$, and the variance conver
 The somewhat surprising fact that the tree height does not diverge with $n$ is a result of the very high rate of coalescence close to the bottom of the tree. This rate is large enough that the full Kingman coalescent (on $\mathbb{N}$) \emph{comes down from infinity}, that is, despite starting with infinitely many blocks, after any positive amount of time these have coalesced into finitely many blocks.
 \seb{Plot mean with sd-ribbon over $n$ for an illustration? SD ribbon isn't the right thing; since we apparently know the actual distribution, plot a high density interval of that. (also for $L$)}
 
+
+\subsubsection{Total branch length}
 Another quantity of interest is the total branch length,
 $ L := \sum_{i=2}^n i t_i $.
 For instance
@@ -263,6 +268,34 @@ and
 Note that although the mean total branch length diverges with $n$, the variance converges to a constant, $4\pi /6 \simeq 6.6$.
 
 
+\subsubsection{Probability that sample MRCA equals population MRCA}
+One other interesting quantity is the probability that a random sample of $k$ lineages has the same as the MRCA as the entire population (of size $N$). As $N\to\infty$, this probability converges to $(k-1)/(k+1)$ \parencite[e.g.][Theorem 1.7]{durrett2008}.
+To see this, consider the two subtrees produced by cutting the tree just below the population MRCA. The sample of $k$ lineages coalesces before the population MRCA if and only if all $k$ sampled leaves lie in just one of these two subtrees.
+A basic consequence of the exchangeability of the $n$-coalescent is that the proportion of leaves in, say, the left subtree is uniformly distributed on $[0,1]$.
+Calling this proportion $X$, we have
+\begin{equation*}
+\Prob [k \text{ random lineages all in one subtree} \mid X=x]
+= x^k + (1-x)^k
+\end{equation*}
+Integrating against the distribution of $X$, the probability of interest is
+\begin{equation*}
+\Prob[k \text{-sample MRCA } = \text{ population MRCA} ]
+= 1- \int_0^1 \{ x^k + (1-x)^k \} dx
+= \frac{k-1}{k+1}
+\end{equation*}
+as required.
+
+The above is based on properties of the full Kingman coalescent, but similar results are available for the $n$-coalescent.
+Consider now a subsample of size $k$ among $n$ lineages that follow the $n$-coalescent. What is the probability that these $k$ lineages have the same MRCA as all $n$ lineages?
+This question is addressed in \textcite[Example 1]{saunders1984} and again in \textcite[Equation (3)]{spouge2014}, in both cases arising as a special case of more general results.
+The probability is 
+\begin{equation*}
+\frac{k-1}{k+1} \frac{n+1}{n-1}
+\end{equation*}
+and as $n\to\infty$ this agrees with the population-level result above.
+\seb{Include a direct proof for the $k=2$ case?}
+
+
 \subsection{Models in population genetics}\label{sec:popgenmodels}
 The Kingman coalescent is the limiting coalescent process (in the large population limit) for a surprisingly wide range of population models. Some important examples of models in Kingman's ``domain of attraction'' are introduced in this section.
 Common to all of these models are the following assumptions:
@@ -274,6 +307,7 @@ Common to all of these models are the following assumptions:
 \end{itemize}
 As before \seb{section/eq ref?}, we define offspring counts in terms of parental indices as $\nu_j := |\{ i: a_i = j\}|$.
 Under the assumption of neutrality, it is sufficient to consider only the offspring counts, rather than the parental indices (which generally carry more information).
+\seb{Crucially, in the neutral case, offspring counts carry all the information about the distribution of the genealogy that is contained in the parental indices.}
 From a biological perspective, neutrality encodes the absence of natural selection, i.e.\ no individual in the population is ``fitter'' than another.
 
 \subsubsection{Wright-Fisher model}
@@ -289,14 +323,14 @@ The joint distribution of the offspring counts is therefore
 Since the Multinomial distribution is exchangeable, this model is neutral.
 There are several non-neutral variants of the Wright-Fisher model \seb{citations?}, but they are typically much less tractable than the neutral one.
 
-Kingman showed in his original papers introducing the Kingman coalescent \parencite{kingman1982gene} that, under a certain time-scaling \seb{which is what?}, genealogies of the neutral Wright-Fisher model converge to the Kingman coalescent as $N\to\infty$.
+Kingman showed in his original papers introducing the Kingman coalescent \parencite{kingman1982gene} that, when time is scaled by a factor of $N$, genealogies of the neutral Wright-Fisher model converge to the Kingman coalescent as $N\to\infty$.
 
 \subsubsection{Cannings model}
 The neutral Cannings model \parencite{cannings1974, cannings1975} is a more general construction which encompasses the neutral Wright-Fisher model as a special case.
 
 In the Cannings model, the particular offspring distribution is not specified; we only require that it is exchangeable, i.i.d.\ between generations, and preserves the population size. In particular, the probability of observing offspring counts $(v_1, \dots, v_N)$ must be invariant under permutations of this vector.
 
-Genealogies of the neutral Cannings model also converge to the Kingman coalescent, under some conditions and a suitable time-scaling \seb{which is what?}, as $N\to\infty$ \parencite[see for example][Section 2.2]{etheridge2011}. \seb{original reference for this?}
+Genealogies of the neutral Cannings model also converge to the Kingman coalescent, under some conditions and a suitable time-scaling \seb{which is what?}, as $N\to\infty$ \parencite[see for example][Section 2.2]{etheridge2011}. \seb{original reference for this? is not any Kingman 1982 papers, and certainly not Cannings 1974/5 which predates KC}
 
 \subsubsection{Moran model}
 The neutral Moran model \parencite{moran1958}, while perhaps less biologically relevant, is mathematically appealing because its simple dynamics make it particularly tractable.
@@ -305,10 +339,7 @@ At each time step, an ordered pair of individuals is selected uniformly at rando
 %Usually the model is thought of as having ``overlapping generations'': the individuals having one offspring are considered to be not reproducing but rather surviving to appear again in the next generation.
 %However, one can equally think of it as having non-overlapping generations and a low variance reproduction mechanism.
 This is another special case of the neutral Cannings model, where the offspring distribution is now uniform over all permutations of $(0,2,1,1,\dots,1)$.
-Therefore we know that under a suitable time-scaling \seb{which is what?}, its genealogies converge to the Kingman coalescent. \seb{but it would be good to cite a Moran-specific convegrence result if that preceded the Cannings class.}
-\seb{Emphasise the difference between Moran and WF time scales.}
-
-%The mathematical tractability of this model stems from the fact that, if we formulate it a little more carefully, its pre-limiting behaviour is exactly that of a rescaled Kingman coalescent. This requires us to work in continuous time, and now we say that the pairs are chosen to die/reproduce with exponential rate $\binom{N}{2}$. This gives the unit pairwise merger rate we need, and we can clearly see that the only possible mergers are between one pair of lineages at a time.
+Therefore we know that under a suitable time-scaling, its genealogies converge to the Kingman coalescent. The time scale in this case is $N^2$, because reproduction happens at a rate $N$ times \seb{or is it technically N-1 times?} lower than in the Wright-Fisher model. \seb{also cite a Moran-specific convergence result: not sure where (it isn't in Kingman 1982* or in Moran 1958 which predates KC)}
 
 
 \subsection{Particle populations}
@@ -333,19 +364,315 @@ Nor is our model neutral: the resampling distribution depends on the weight of e
 \draft{Why are large population asymptotics useful? Existing results (path storage, KJJS).}
 
 
+
 \section{Resampling}
 
 \subsection{Definition}
-\draft{The job of resampling (map weights to counts). Define ``valid'' resampling schemes (the three rules). Counter-examples where these rules are violated (the examples I've mentioned in previous writings, plus optimal transport resampling [see email from James Thornton] and that one FC told me about recently [Huang et al 2020]).}
+As we have seen, resampling is necessary within SMC to ``reset'' the weights in order to prevent weight degeneracy.
+The basic role of a resampling scheme is to map the continuous weights to discrete offspring counts, in some ``sensible'' way (Definition~\ref{defn:resampling}).
+There are other considerations when choosing between the many possible resampling schemes; some of these are explored in Section~\ref{sec:goodresampling}, and some popular choices of resampling scheme are described in Section~\ref{sec:examples_resamplingschemes}.
 
-\subsection{What makes a good resampling scheme?}
+\begin{defn}\label{defn:resampling}
+For our purposes, a valid resampling scheme is a stochastic function mapping weights 
+$w_t^{(1:N)} \in \mathcal{S}_{N-1}$ 
+to offspring counts 
+$\nu_t^{(1:N)} \in \{0,\dots,N\}^N $
+that satisfies the following properties:
+\begin{enumerate}
+\item\label{item:resampling_property1} the population size is conserved:
+$ \sum_{i=1}^N \nu_t^{(i)} =N $ for all $N$
+\item\label{item:resampling_property2} the weights are uniform after resampling:
+$w_{t+}^{(i)} = 1/N$ for all $i$
+\item\label{item:resampling_property3} the resampling is unbiased:
+$ \E[ \nu_t^{(i)} \mid w_t^{(i)} ] = N w_t^{(i)} $ for all $i$.
+\end{enumerate}
+\end{defn}
+It is possible to design resampling schemes that violate these properties.
+For example, a scheme of \textcite{liu1998} uses the square roots of the weights for resampling, then corrects by setting non-uniform weights after resampling (violating conditions \ref{item:resampling_property2} and \ref{item:resampling_property3}).
+Resampling different numbers of particles in different iterations (violating condition \ref{item:resampling_property1}) is of course possible, but we typically have a fixed limit on computational resources, in which case it makes sense to simulate the maximum feasible number of particles $N$ at every iteration.
+Deterministic resampling schemes (which cannot generally be unbiased, violating condition \ref{item:resampling_property3}) have been used by some authors. These include schemes based on optimal transport \parencite{reich2013, myers2021, corenflos2021} and the importance support points resampling of \textcite{huang2020}.
+However, the majority of resampling schemes in the literature fit within Definition~\ref{defn:resampling}, and it is not typically advantageous to violate the properties \ref{item:resampling_property1}--\ref{item:resampling_property3}.
+
+
+
+\subsection{What makes a good resampling scheme?}\label{sec:goodresampling}
 \draft{Low-variance: variance of what? Different criteria/ definitions of optimality. Negative association. Link back to adaptive resampling: interaction between adaptive and low-variance resampling.}
 
-\subsection{Examples}
-\draft{Tour of the key resampling schemes (multinomial, residual-*, stratified, systematic, and the worst possible scheme). Comparison of properties of these, existing results comparing schemes. Implementation considerations. Theoretical justification (or lack of).}
+
+
+
+\subsection{Examples}\label{sec:examples_resamplingschemes}
+\draft{Tour of the key resampling schemes (multinomial, residual-*, stratified, systematic, and the worst possible scheme). Comparison of properties of these, existing results comparing schemes. Implementation considerations. Theoretical justification (or lack of). Mention computational complexity.}\\
+\seb{This whole section was dumped from elsewhere and needs redrafting.}
+
+ 
+\subsubsection{Multinomial resampling}
+Multinomial resampling \parencite{gordon1993,efron1994} is one of the simplest resampling schemes.
+The parental indices are chosen independently from $\{1, \dots, N\}$, each with probability given by the weight of the corresponding particle $w_t^{(i)}$. 
+That is, 
+\begin{equation*}
+a_t^{(1:N)} \sim \Cat( \{1,\dots, N\}, w_t^{(1:N)} ) .
+\end{equation*}
+This implies the joint distribution of the offspring counts is 
+\begin{equation*}
+\nu_t^{(1:N)} \eqdist \operatorname{Multinomial}(N, w_t^{(1:N)} ) .
+\end{equation*}
+Note that in this case the parental indices are chosen independently, but the resulting offspring counts are negatively correlated.
+
+A simple way to sample the parental indices is by inversion sampling: divide the unit interval into $N$ disjoint subintervals each of which will correspond to a certain index $i$ and has length equal to the weight $w_t^{(i)}$; then draw $N$ samples $U_i \sim \Unif(0,1)$ and classify them according to which of these subintervals they fall in.
+Explicitly, the parental index assigned to child $i$ is the index $a_i$ satisfying
+\begin{equation}\label{eq:syst_strat_resampling}
+\sum_{j=1}^{a_i -1} w_t^{(j)} \leq U_i \leq \sum_{j=1}^{a_i} w_t^{(j)}
+\end{equation}
+This is illustrated in Figure \ref{fig:resampling_mn}. 
+Note that there exist more efficient methods to sample from a Multinomial distribution, so the inversion method may not be used in practice.
+
+\subsubsection{Residual resampling}
+Residual resampling is described in \textcite{liu1998} and also in \textcite{whitley1994} where it is called ``remainder stochastic sampling''.
+
+Each particle $X_{t}^{(i)}$ is deterministically assigned $\lfloor N w_t^{(i)} \rfloor$ offspring, and the remaining $R := N- \sum_{i=1}^N \lfloor N w_{t}^{(i)} \rfloor$ offspring are assigned multinomially in proportion to the unaccounted-for weight. 
+This yields a vector of offspring counts
+\begin{equation*}
+\nu_t^{(1:N)} \eqdist \lfloor N w_t^{(1:N)} \rfloor +  \operatorname{Multinomial}(R, (N w_t^{(1:N)} - \lfloor N w_t^{(1:N)}\rfloor)/R) .
+\end{equation*}
+The deterministic part ensures that every particle with weight $>1/N$ is guaranteed to survive. This is a desirable property as it prevents the random loss of high-weighted particles.
+
+\subsubsection{Stratified resampling}
+Stratified resampling is introduced in \cite{kitagawa1996}.
+
+The scheme proceeds like Multinomial resampling, except that the Uniform samples that are fed in to do the Categorical sampling are produced in a different way.
+Instead of sampling $N$ independent numbers from $\operatorname{U}(0,1)$, one number is sampled uniformly from each subinterval of length $1/N$. 
+That is, 
+\begin{equation*}
+U_i \sim \Unif \left(\frac{i-1}{N}, \frac{i}{N} \right) .
+\end{equation*}
+The parents are then assigned as in \eqref{eq:syst_strat_resampling}.
+(Of course this means that the offspring distribution is no longer Multinomial, since parental indices are not chosen independently.)
+This scheme ensures that the samples are ``well spread out'', again reducing the probability of randomly losing high-weighted particles.
+The method is illustrated in Figure \ref{fig:resampling_stratified}.
+
+\subsubsection{Systematic resampling}
+Systematic resampling is described in \textcite{carpenter1999} and also in \textcite{whitley1994} where it is called ``stochastic universal sampling''.
+
+Like stratified resampling, it constitutes a change to the random number generator for sampling from the Categorical distriubtion. 
+In this scheme, only one Uniform sample is drawn, $U \sim \operatorname{U}(0,1/N)$, and the other $N-1$ samples are generated deterministically by setting
+\begin{equation*}
+U_i = U + \frac{i-1}{N}
+\end{equation*}
+for each $i \in \{1, \dots, N\}$.
+The parental indices are again selected according to \eqref{eq:syst_strat_resampling}. 
+The method is illustrated in Figure \ref{fig:resampling_systematic}.
+This scheme again ensures the random numbers are ``well spread out'', even more so than with stratified resampling.
+
+Systematic resampling is often preferred among practitioners because it is extremely easy to implement and also computationally efficient, requiring only one random number to be generated.
+
+However, this scheme is known to exhibit pathological behaviour in some cases due to its dependence on the ordering of the subintervals \parencite{douc2005}. Such behaviour can be avoided by randomly permuting the intervals before sampling, and this is the recommended practice. 
+
+\begin{figure}
+\centering
+\subfloat[Multinomial resampling]{
+\begin{tikzpicture}
+%parallel lines
+\draw[thick] (0,0) -- (12,0);
+\draw (0,2) -- (12,2);
+% tick marks at ends
+\draw[thick] (0,0.1) --(0,-0.1);
+\draw[thick] (12,0.1) --(12,-0.1);
+\draw (0,2.1) --(0,1.9);
+\draw (12,2.1) --(12,1.9);
+% tick marks indicating weights
+\draw[thick] (3,0.1) --(3,-0.1);
+\draw[thick] (5,0.1) --(5,-0.1);
+\draw[thick] (11,0.1) --(11,-0.1);
+% weight labels
+\node at (1.5,-0.3) {$w_1$};
+\node at (4,-0.3) {$w_2$};
+\node at (8,-0.3) {$w_3$};
+\node at (11.5,-0.3) {$w_4$};
+% endpoint labels
+\node at (-0.2,2) {$0$};
+\node at (12.2,2) {$1$};
+% uniform points
+\filldraw[violet] (10.94,2) circle (2pt);
+\filldraw[violet] (1.06,2) circle (2pt);
+\filldraw[violet] (8.82,2) circle (2pt);
+\filldraw[violet] (3.16,2) circle (2pt);
+% arrows from random points
+\draw[thick, violet, ->] (10.94,2) -- (10.94,0);
+\draw[thick, violet, ->] (1.06,2) -- (1.06,0);
+\draw[thick, violet, ->] (8.82,2) -- (8.82,0);
+\draw[thick, violet, ->] (3.16,2) -- (3.16,0);
+\end{tikzpicture}
+\label{fig:resampling_mn}
+}\\
+\subfloat[Stratified resampling]{
+\begin{tikzpicture}
+%parallel lines
+\draw[thick] (0,0) -- (12,0);
+\draw (0,2) -- (12,2);
+% tick marks at ends
+\draw[thick] (0,0.1) --(0,-0.1);
+\draw[thick] (12,0.1) --(12,-0.1);
+\draw (0,2.1) --(0,1.9);
+\draw (12,2.1) --(12,1.9);
+% tick marks indicating weights
+\draw[thick] (3,0.1) --(3,-0.1);
+\draw[thick] (5,0.1) --(5,-0.1);
+\draw[thick] (11,0.1) --(11,-0.1);
+% tick marks indicating sampling intervals:
+\draw (3,2.1) --(3,1.9);
+\draw (6,2.1) --(6,1.9);
+\draw (9,2.1) --(9,1.9);
+% weight labels
+\node at (1.5,-0.3) {$w_1$};
+\node at (4,-0.3) {$w_2$};
+\node at (8,-0.3) {$w_3$};
+\node at (11.5,-0.3) {$w_4$};
+% endpoint labels
+\node at (-0.2,2) {$0$};
+\node at (12.2,2) {$1$};
+% stratified points
+\filldraw[violet] (2.735,2) circle (2pt);
+\filldraw[violet] (3.265,2) circle (2pt);
+\filldraw[violet] (8.205,2) circle (2pt);
+\filldraw[violet] (9.79,2) circle (2pt);
+% arrows from random points
+\draw[thick, violet, ->] (2.735,2) -- (2.735,0);
+\draw[thick, violet, ->] (3.265,2) -- (3.265,0);
+\draw[thick, violet, ->] (8.205,2) -- (8.205,0);
+\draw[thick, violet, ->] (9.79,2) -- (9.79,0);
+\end{tikzpicture}
+\label{fig:resampling_stratified}
+}\\
+\subfloat[Systematic resampling]{
+\begin{tikzpicture}
+%parallel lines
+\draw[thick] (0,0) -- (12,0);
+\draw (0,2) -- (12,2);
+% tick marks at ends
+\draw[thick] (0,0.1) --(0,-0.1);
+\draw[thick] (12,0.1) --(12,-0.1);
+\draw (0,2.1) --(0,1.9);
+\draw (12,2.1) --(12,1.9);
+% tick marks indicating weights
+\draw[thick] (3,0.1) --(3,-0.1);
+\draw[thick] (5,0.1) --(5,-0.1);
+\draw[thick] (11,0.1) --(11,-0.1);
+% tick marks indicating sampling intervals:
+\draw (3,2.1) --(3,1.9);
+\draw (6,2.1) --(6,1.9);
+\draw (9,2.1) --(9,1.9);
+% weight labels
+\node at (1.5,-0.3) {$w_1$};
+\node at (4,-0.3) {$w_2$};
+\node at (8,-0.3) {$w_3$};
+\node at (11.5,-0.3) {$w_4$};
+% endpoint labels
+\node at (-0.2,2) {$0$};
+\node at (12.2,2) {$1$};
+% stratified points
+\filldraw[violet] (2.735,2) circle (2pt);
+\filldraw[violet] (5.735,2) circle (2pt);
+\filldraw[violet] (8.735,2) circle (2pt);
+\filldraw[violet] (11.735,2) circle (2pt);
+% arrows from random points
+\draw[thick, violet, ->] (2.735,2) -- (2.735,0);
+\draw[thick, violet, ->] (5.735,2) -- (5.735,0);
+\draw[thick, violet, ->] (8.735,2) -- (8.735,0);
+\draw[thick, violet, ->] (11.735,2) -- (11.735,0);
+\end{tikzpicture}
+\label{fig:resampling_systematic}
+}\\
+\caption[Resampling using multinomial, stratified and systematic schemes]{Inversion sampling to obtain Multinomial offspring counts, where the Uniform variables for inversion are sampled in different ways. For this example $N=4$ and the weights are $w_{(1:4)} = \frac{1}{N}(1,\frac{2}{3},2,\frac{1}{3})$. In each case the samples to be inverted are seeded with the same $\Unif(0,1)$ samples.
+\subref{fig:resampling_mn} Sample $N$  independent $\Unif(0,1)$ random variables. In this example the sampled offspring counts are $(1,1,2,0)$.
+\subref{fig:resampling_stratified} The $\Unif(0,1)$ samples are transformed to Uniform draws from the intervals (0,0.25), (0.25,0.5), (0.5, 0.75), (0.75,1). In this example the sampled offspring counts are $(1,1,2,0)$.
+\subref{fig:resampling_systematic} Use only the first draw and transform it to a sample from $\Unif(0,0.25)$. For the subsequent samples, add 0.25 each time to obtain a sample in each interval. In this example the sampled offspring counts are $(1,0,2,1)$.}
+\end{figure}
+
+
+\subsubsection{Variance}
+The most straightforward choice of resampling scheme, and also the easiest to analyse, is multinomial. However, multinomial resampling is well known to be sub-optimal in terms of the resulting Monte Carlo variance, and is rarely used in practice.
+
+\textcite{douc2005} prove that both residual resampling and stratified resampling yield lower variance estimators. 
+The variance we are referring to here is the variance of Monte Carlo estimators of an arbitrary test function $f$, conditional on the past:
+\begin{equation*}
+\V\left[ \frac{1}{N} \sum_{i=1}^N f(X_t^{(i)}) \middle| \mathcal{F}_{t-1} \right]
+\end{equation*}
+The authors remark that, while the variance resulting from systematic resampling is not provably lower than that of multinomial resampling, empirical performance is comparable among residual, stratified and systematic resampling.
+
+
+\subsubsection{Star discrepancy}
+\draft{Something about syst vs. strat vs. mn in terms of star discrepancy (define that). See \textcite{hol2006} for inspiration.}
+
+
+\subsubsection{Support of offspring numbers}
+Let us consider the support of the marginal offspring distributions in each scheme, given the corresponding weight. Condition on the $i^{th}$ weight lying in the interval $w_t{(i)} \in [k/N, (k+1)/N]$, but leave the other weights unknown. By considering the best and worst cases for each scheme, we have: 
+\begin{description}
+\item[Multinomial:] $\nu_t^{(i)} \in \{0,\dots, N\}$
+\item[Residual:] $\nu_t^{(i)} \in \{k,\dots, k+R\} \subseteq \{k,\dots, N\}$
+\item[Stratified:] $\nu_t^{(i)} \in \{k-1, k, k+1, k+2\}$
+\item[Systematic:] $\nu_t^{(i)} \in \{k, k+1\}$
+\end{description}
+We see that multinomial resampling allows the possibility of very good particles having $0$ offspring, and of very bad particles having $N$ offspring (although the probabilities associated to these events are low).
+Residual resampling ensures that good particles do not die out, but still allows bad particles to possibly have many offspring.
+Stratified resampling is more restrictive, although it allows the possibility of a particle with weight $>1/N$ leaving no offspring.
+Systematic resampling is more restrictive still, allowing the number of offspring of each particle to vary from its expected value by no more than one.
+
+\subsubsection{Permutation invariance}
+A strange property of stratified and systematic resampling is that they are sensitive to the order in which the subintervals are placed. For example, in Figures \ref{fig:resampling_stratified} and \ref{fig:resampling_systematic} if the intervals $w_2$ and $w_4$ were swapped, the number of offspring assigned to particles 2 and 4 would be swapped in each case. 
+We can also see that because $w_1$ has weight $\geq 1/N$ and is placed first, it is guaranteed at least one offspring.
+
+This property can lead to pathological behaviour, but is easily avoided by applying a random permutation to the order of the subintervals.
+\textcite{gerber2017} also propose a variation on systematic resampling that avoids this property.
+
+\subsubsection{Degeneracy under equal weights}
+Suppose we somehow end up in the situation where all the weights are equal (i.e.\ $w_t^{(i)} = 1/N$ for all $i$).
+In this case, residual resampling will result in a deterministic assignment only: each particle will be assigned one offspring, and there will be no remainder left to assign randomly. This behaviour cannot be avoided, however the event that all weights are equal typically has zero measure.
+
+Stratified and systematic resampling will have the same result: the intervals for sampling will correspond exactly to the weighted subintervals, so no matter which random numbers are sampled, exactly one will fall in each subinterval.
+
+However, for stratified resampling, the formulation of \textcite{whitley1994} avoids this behaviour. He imagines subdivisions of a circle rather than an interval, and then ``spins the roulette wheel'' around it, which shifts the sampling intervals by a random amount and thus prevents this degeneracy.
+
+\subsubsection{Exchangeability}
+We will call a resampling scheme exchangeable if the resulting distribution of parental indices is invariant under permutations of the children. To put it another way, each child chooses its parent from the same marginal distribution.
+
+It is clear that multinomial resampling is exchangeable since in this case the parental indices are independent and identically distributed. However it is worth noting that some efficient implementations of multinomial sampling may not preserve exchangeability in practice.
+
+Stratified and systematic resampling are clearly not exchangeable since, for instance, child 1 is more likely to choose parent 1 than child $N$ is. However, this is merely a feature of the arbitrary ordering of the sampling steps: exchangeability can easily be reintroduced by applying a random permutation to the vector of parental indices after sampling.
+The same goes for residual resampling.
+
+
+\subsubsection{Computational complexity}
+All of the resampling algorithms discussed above can be implemented in $O(N)$ operations.
+Considering the complexity of each operation, \textcite{hol2004,hol2006} suggest that systematic resampling is fastest because it only requires one pseudo-random number generation, and multinomial resampling is slower than stratified resampling because of the transformations required. Residual resampling is hard to compare directly because a random fraction of the operations are deterministic, so the number of pseudo-random numbers required is less than $N$.
+This analysis was backed up by simulation experiments.
+However, the analysis of per-particle cost is sensitive to the particular implementation of each resampling scheme, the system implementation of pseudo-random number generation and arithmetic operations, and the hardware used.
+
+
+\subsubsection{Optimal resampling}
+\textcite{crisan1999} introduce another resampling scheme based on a branching process, which they show to be optimal in some sense. However, their algorithm is not widely used in practice because it is much more complicated to implement than alternatives like systematic resampling which perform just as well empirically, and share some of its optimality properties \parencite{bain2008}. 
+ 
+ 
+ 
 
 \subsection{Stochastic rounding}
 \draft{Define stochastic rounding. Resampling schemes contained by this class. General properties for this class (marginal distributions, negative association, minimum-variance).}
+
+\begin{defn}\label{defn:stochround}
+ Let $X=(X_1,\dots,X_N)$ be a $\mathbb{R}_+^N$-valued random variable. Then $Y=(Y_1,\dots,Y_N) \in \mathbb{N}^N$ is a \emph{stochastic rounding} of $X$ if each element $Y_i$ takes values
+\begin{equation*}
+Y_i \mid X_i =
+\begin{cases}
+ \lfloor X_i \rfloor & \text{with probability } 1- X_i+ \lfloor X_i \rfloor \\
+  \lfloor X_i \rfloor +1 & \text{with probability } X_i- \lfloor X_i \rfloor .
+\end{cases}
+\end{equation*}
+\end{defn}
+
+By construction, $\E(Y_i) = X_i$ for each $i$. Taking $X$ to be $N$ times the vector of particle weights, we can therefore use stochastic rounding to construct a valid resampling scheme, under the further constraint that $Y_1 + \dots + Y_N = N$.
+Several ways to enforce this constraint on the joint distribution have been proposed, including systematic resampling, residual resampling with stratified or systematic residuals, the branching system of \textcite{crisan1997}, and the Srinivasan sampling process resampling introduced in \textcite{gerber2017}.
+
+
 
 
 \section{Conditional SMC}

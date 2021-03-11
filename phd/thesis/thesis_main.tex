@@ -18,12 +18,16 @@
 %%% GENERAL FORMATTING
 %%%Probably best to put formatting commands in a separate file. Consider changing: fonts, margins (must be at least 4cm at left and 1.5cm around edges), header/footer, references/citations, algorithms, captions, paragraph indents, chapter/equation numbering, ..
 \usepackage[a4paper, inner=4cm, outer=2cm, top=3cm, bottom=3cm]{geometry}
-\usepackage{graphicx}
-\usepackage{tikz}
-%%% add user-defined colours here: I'm using <gray!20> and <gray> in the weak conv graph e.g.
+\renewcommand{\arraystretch}{1.2}
 \usepackage{enumitem}
 \usepackage[nobreak]{mdframed} % The nobreak option should probably be set locally in the final document, since breaks may be required in longer theorems.
 \renewcommand{\sfdefault}{put} % this isn't actually a sans font, so might be better to use something like phv (helvetica), but I rather like this font for headings.
+
+%%% GRAPHICS
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{subfig}
+%%% add user-defined colours here: I'm using <gray!20> and <gray> in the weak conv graph e.g.
 
 %%% EPIGRAPHS
 \usepackage{epigraph}
@@ -65,6 +69,7 @@
 \newcommand{\Mn}{\operatorname{Multinomial}}
 \newcommand{\Cat}{\operatorname{Categorical}}
 \newcommand{\Exp}{\operatorname{Exp}}
+\newcommand{\Unif}{\operatorname{Uniform}}
 \newcommand{\flnw}[1][i]{\lfloor N w_t^{(#1)} \rfloor}
 
 %%% ALGORITHMS
@@ -137,6 +142,7 @@ MRCA & most recent common ancestor \\
 $\mathbb{N}$ & the natural numbers starting from one, $\{1,2,\dots \}$ \\
 $\mathbb{N}_0$ & the natural numbers starting from zero, $\{0,1,2,\dots \}$ \\
 $[a]$ & the set $\{1,2,\dots,a\}$ where $a\in\mathbb{N}$ \\
+$\mathcal{S}_k$ & the $k$-dimensional unit simplex $\{ x_{1:k+1} \geq 0 : \sum_{i=1}^{k+1} x_i = 1 \}$ \\
 $(a)_b$ & the falling factorial $a (a-1) \cdots (a-b+1)$ 
     where $a,b \in \mathbb{N}$ \\
 $\prod_{\emptyset}$ & the empty product is taken to be $1$\\
