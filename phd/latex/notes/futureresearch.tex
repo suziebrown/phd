@@ -31,11 +31,13 @@
 \section*{Resampling}
 \begin{itemize}
 \item Compare residual-stratified vs. stratified resampling (and residual-systematic vs systematic): are they equivalent? What if the weights are sorted? Maybe start by coding up an exploratory experiment.
+\item Explore more generally the effect of pre-sorting the weights. How does this link with results of Gerber Chopin Whiteley (where they sort by particle position, if I remember rightly)?
 \item Compare theoretical computation/storage costs and parallelisability between the different resampling schemes.
 \item Is there a nice set of weights that will nicely illustrate all the points I want to make about resampling schemes?
 \item Can the comparison of time-scales for different schemes be wrangled into/ related to a direct comparison of the variances? Is this even useful?
 \item Don't forget the resampling scheme that's even worse than multinomial: sampling once from Categorical and replicating it N times. This leads to a star-shaped coalescent, which sets a precedent for non-Kingman Lambda coalescents from SMC genealogies.
 \item (See marked notebook 3 page circa Jun/Jul 2020 for some more thoughts/ideas.)
+\item Does residual-systematic share the same pathological behaviour as systematic resampling? E.g.\ try plugging it into the pathoglogical example from Douc Cappe Moulines.
 \item (Just for fun:) in stochastic rounding, how many possible ways are there to assign the offspring counts? Consider that each of the N counts takes one of two possible values, but this will overcount a lot because we are also constrained by offspring counts summing to N.
 \item (Conjecture:) pre-sorting of weights reduces resampling variance, but increases the coalescence rate. Intuition: when weights are sorted, small weights that sum to less than 1/N are grouped together so only one of them can have a child. (It may be that this effect is entirely cancelled by the reduction in variance elsewhere.)
 \end{itemize}
