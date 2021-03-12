@@ -80,7 +80,7 @@ function smc_example_fast(N::Int64, T::Int64, observations::Array{Float64,1}, in
     return cN
 end
 
-# Now with various different resampling schemes, but the same transition rands
+# ** Main function ** Now with various different resampling schemes, but the same transition rands
 function smc_example_compare(N::Int64, T::Int64, observations::Array{Float64,1}, initialsam::Function, transition::Function, potential::Function)
     # pre-allocate memory
     parents_mn = Array{Int64, 1}(undef, N)
@@ -201,21 +201,16 @@ end
 T=150 #time horizon
 N=150 # number of particles
 # OU process parameters:
+# sigma >> delta means observations are less informative, so resampling schemes differ more.
 delta = 0.1 # step size & transition noise (variance)
 sigma = 1.0 # observation noise (s.d.)
 # generate realisation
 mysimobs = ousim(T, delta, sigma, false)
-#mysimcN = smc_example(N, T, mysimobs, ouinit, outransition, oupotential)
-#mysimcN = smc_example_fast(N, T, mysimobs, ouinit, outransition, oupotential)
-#sumcN = cumsum(mysimcN)
 
-# PLOTS
-# plot observations:
+# plot observations (optional: provides reference e.g. for flat portions of tau fn ~ outliers):
 scatter(0:T, mysimobs, marker=(:circle, 0.6, :black), leg=false)
-# plot tau_N:
-#plot([0;sumcN], 0:T, line=(:steppre, 0.6, :black), leg=false, xaxis="t", yaxis="tau_N(t)")
 
-# Comparison
+# Calculate tau values for all resampling schemes
 mysimcNs = smc_example_compare(N, T, mysimobs, ouinit, outransition, oupotential)
 sumcN_mn = cumsum(mysimcNs.cN_mn)
 sumcN_strat = cumsum(mysimcNs.cN_strat)
@@ -224,6 +219,7 @@ sumcN_resmn = cumsum(mysimcNs.cN_resmn)
 sumcN_resstrat = cumsum(mysimcNs.cN_resstrat)
 sumcN_ressyst = cumsum(mysimcNs.cN_ressyst)
 
+# Plot concurrently tau_N(t) vs t for all resampling schemes
 plot([0;sumcN_mn], 0:T, line=(:steppre, 0.6, :black), lab="multinomial", legend=:bottomright, xaxis="t", yaxis="tau_N(t)")
 plot!([0;sumcN_strat], 0:T, line=(:steppre, 0.6, :green), lab="stratified")
 plot!([0;sumcN_syst], 0:T, line=(:steppre, 0.6, :blue), lab="systematic")
@@ -231,3 +227,6 @@ plot!([0;sumcN_resmn], 0:T, line=(:steppre, 0.6, :red), lab="residual-mn")
 plot!([0;sumcN_resstrat], 0:T, line=(:steppre, 0.6, :purple), lab="residual-strat")
 plot!([0;sumcN_ressyst], 0:T, line=(:steppre, 0.6, :orange), lab="residual-syst")
 title!("T = $(T), N = $(N), delta = $(delta), sigma = $(sigma)")
+
+# Export plot as PDF
+# savefig("mylovelyplot.pdf")
