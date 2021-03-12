@@ -38,6 +38,7 @@
 \item Don't forget the resampling scheme that's even worse than multinomial: sampling once from Categorical and replicating it N times. This leads to a star-shaped coalescent, which sets a precedent for non-Kingman Lambda coalescents from SMC genealogies.
 \item (See marked notebook 3 page circa Jun/Jul 2020 for some more thoughts/ideas.)
 \item Does residual-systematic share the same pathological behaviour as systematic resampling? E.g.\ try plugging it into the pathoglogical example from Douc Cappe Moulines.
+\item The difference $\Delta_i$, as defined in \texttt{phd/latex/randomised\_rounding/randomised\_rounding.pdf}, seems to tend to a quadratic in the weight as $N\to\infty$. Prove it?
 \item (Just for fun:) in stochastic rounding, how many possible ways are there to assign the offspring counts? Consider that each of the N counts takes one of two possible values, but this will overcount a lot because we are also constrained by offspring counts summing to N.
 \item (Conjecture:) pre-sorting of weights reduces resampling variance, but increases the coalescence rate. Intuition: when weights are sorted, small weights that sum to less than 1/N are grouped together so only one of them can have a child. (It may be that this effect is entirely cancelled by the reduction in variance elsewhere.)
 \end{itemize}
