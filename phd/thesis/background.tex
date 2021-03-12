@@ -17,6 +17,7 @@ Anyone who considers arithmetical methods of producing random digits is, of cour
 
 \subsection{Exact solutions}
 \seb{This section needs redrafting, but all the content I wanted is here.}
+\draft{What about ensemble Kalman filter?}
 
 In the case of linear Gaussian state space models, the posterior distributions of interest are also Gaussian, with mean and covariance available analytically by way of the Kalman filter \parencite{kalman1960} and Rauch-Tung-Striebel (RTS) smoother recursions \parencite{rauch1965}. Recursions are also available for some other conjugate models: see for example \textcite{vidoni1999}.
 Another analytic case occurs if the state space $\mathcal{X}$ is finite, in which case any integrals become finite sums, and the forward-backward algorithm \parencite{baum1970} yields the exact posteriors.
@@ -670,7 +671,7 @@ Y_i \mid X_i =
 \end{defn}
 
 By construction, $\E(Y_i) = X_i$ for each $i$. Taking $X$ to be $N$ times the vector of particle weights, we can therefore use stochastic rounding to construct a valid resampling scheme, under the further constraint that $Y_1 + \dots + Y_N = N$.
-Several ways to enforce this constraint on the joint distribution have been proposed, including systematic resampling, residual resampling with stratified or systematic residuals, the branching system of \textcite{crisan1997}, and the Srinivasan sampling process resampling introduced in \textcite{gerber2017}.
+Several ways to enforce this constraint on the joint distribution have been proposed, including systematic resampling, residual resampling with systematic residuals, the branching system of \textcite{crisan1997}, and the Srinivasan sampling process resampling introduced in \textcite{gerber2017}.
 
 
 

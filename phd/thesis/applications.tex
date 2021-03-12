@@ -70,7 +70,40 @@ where
 b_N := \frac{1}{N-2}\frac{(a^2+1)^3}{2} \underset{N\to\infty}{\longrightarrow} 0
 \end{equation*}
 is independent of $\mathcal{F}_\infty$, satisfying \eqref{eq:mainthmcond}.
-The result follows by applying Theorem \ref{thm:generalconv}.
+The result follows by applying Theorem \ref{thm:FDDconv}.
+\end{proof}
+
+\newpage
+\begin{proof}[Proof version 2]
+Recall that the sequence of $\sigma$-algebras
+\begin{equation}\label{eq:defn_Ht}
+\mathcal{H}_t := \sigma(X_{t-1}^{(1:N)}, X_t^{(1:N)}, w_{t-1}^{(1:N)}, w_t^{(1:N)} )
+\end{equation}
+are such that $\nu_t^{(1:N)}$ is conditionally independent of the filtration $\mathcal{F}_{t-1}$ given $\mathcal{H}_t$.
+With stochastic rounding, each offspring count can take only two values almost surely: $\nu_t^{(i)} \in \{\flnw, \flnw +1\}$.  
+Denote $p_0^{(i)} := \Prob[ \nu_t^{(i)} = \flnw \mid \mathcal{H}_t ]$ and $p_1^{(i)} := \Prob[ \nu_t^{(i)} = \flnw +1 \mid \mathcal{H}_t ] = 1-p_0^{(i)}$.
+Now
+\begin{equation*}
+\E [(\nu_t^{(i)})_2 \mid \mathcal{H}_t ]
+= p_0^{(i)} (\flnw)_2 + p_1^{(i)} (\flnw +1)_2
+\end{equation*}
+and
+\begin{align*}
+\E [(\nu_t^{(i)})_3 \mid \mathcal{H}_t ]
+&= p_0^{(i)} (\flnw)_3 + p_1^{(i)} (\flnw +1)_3 \\
+&= p_0^{(i)} (\flnw -2)(\flnw)_2 + p_1^{(i)} (\flnw -1)(\flnw +1)_2 \\
+&\leq (\flnw -1) \{ p_0^{(i)} (\flnw)_2 + p_1^{(i)} (\flnw +1)_2 \} \\
+&= (\flnw -1) \E [(\nu_t^{(i)})_2 \mid \mathcal{H}_t ] \\
+&\leq (a^2 -1) \E [(\nu_t^{(i)})_2 \mid \mathcal{H}_t ]
+\end{align*}
+The last line uses the almost sure bound $w_t^{(i)} \leq a^2 /N$ which follows from \eqref{eq:gq_bounds_sr} along with the form of the weights in Algorithm \ref{alg:SMC}.
+Note that some terms in the above expressions may be equal to zero when $w_t^{(i)}$ is small enough, but the bound always holds nonetheless.
+Since the above holds for all $i$, we have
+\begin{equation*}
+\frac{1}{(N)_3} \sum_{i=1}^{N} \E [(\nu_t^{(i)})_3 \mid \mathcal{H}_t ]
+\leq \frac{a^2-1}{N-2} \frac{1}{(N)_2} \E [(\nu_t^{(i)})_2 \mid \mathcal{H}_t ]
+\end{equation*}
+satisfying \eqref{eq:mainthmcond} with $b_N := (a^2-1)/(N-2) \rightarrow 0$.
 \end{proof}
 
 
@@ -159,6 +192,9 @@ This ensures, for all $t <\infty$, that $\Prob\left[ \exists s<\infty : \sum_{r=
 
 \section{Stratified resampling}
 \draft{Proof for this one is in progress, but shouldn't be too difficult. Like SRs, there are only finitely many possible counts conditional on weights, so the same kind of proof will work (but with four cases instead of two).}
+
+\section{Residual resampling with stratified residuals}
+\draft{This one doesn't fit under the SRs umbrella as previously claimed --- oops! Proof for this one is in progress, but shouldn't be too difficult. Like SRs, there are only finitely many possible counts conditional on weights, so the same kind of proof will work (but with four cases instead of two).}
 
 \section{The worst possible resampling scheme}
 \draft{Remark that this one doesn't converge to KC, but rather to a star-shaped coalescent.}
@@ -255,7 +291,7 @@ We apply the tower property and conditional independence as in Corollary~\ref{th
 \leq \frac{1}{N} \left\{ \frac{3 a^6}{2 \varepsilon^6} + \frac{a^{10}}{\varepsilon^{10}} \right\}
 =: b_N \underset{N\to\infty}{\longrightarrow} 0.
 \end{align*}
-Thus \eqref{eq:mainthmcond} is satisfied. It remains to show that, for $N$ sufficiently large, $\Prob[ \tau_N(t) = \infty ] =0$ for all finite $t$, a technicality which is proved in Lemma \ref{thm:CSMC_nontriviality} in Appendix~\ref{app:finiteness}. Applying Theorem \ref{thm:generalconv} gives the result.
+Thus \eqref{eq:mainthmcond} is satisfied. It remains to show that, for $N$ sufficiently large, $\Prob[ \tau_N(t) = \infty ] =0$ for all finite $t$, a technicality which is proved in Lemma \ref{thm:CSMC_nontriviality}. Applying Theorem~\ref{thm:FDDconv} gives the result.
 \end{proof}
 
 
