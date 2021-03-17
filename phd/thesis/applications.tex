@@ -8,7 +8,6 @@
 
 
 \section{Stratified resampling}
-\draft{Proof for this one is in progress, but shouldn't be too difficult. Like SRs, there are only finitely many possible counts conditional on weights, so the same kind of proof will work (but with four cases instead of two).}
 
 \begin{corollary}\label{thm:stratified}
 Consider an SMC algorithm using stratified resampling, such that the standing assumption is satisfied.
@@ -58,6 +57,7 @@ The result then follows by applying Theorem~\ref{thm:FDDconv}.
 \end{proof}
 
 
+
 \begin{lemma}\label{thm:strat_nontriviality}
 Consider an SMC algorithm using stratified resampling.
 Suppose that 
@@ -71,6 +71,7 @@ uniformly in $x,x^\prime$ for some $\varepsilon \in (0,1]$, and that there exist
  for infinitely many $t$. Then, for all $N>1$, $\Prob[ \tau_N(t) = \infty ] =0$ for all finite $t$.
 \end{lemma}
 
+\draft{Finish constructing the proof.}
 \begin{proof}
 It is sufficient to prove, under the conditions, that
 \begin{equation}\label{eq:strat_nontriv_suffcond}
@@ -94,8 +95,6 @@ Firstly,
 &\leq \Prob[ \nu_t^{(i^\star)} =1 \mid \mathcal{H}_t ] ,
 \end{align*}
 where $i^\star := \argmax_i \{ w_t^{(i)} \}$ (but note that the inequality holds when $i^\star$ is taken to be any particular index).
-
-
 
 ...
 \end{proof}
@@ -194,6 +193,7 @@ The extra condition that the transition densities are bounded above and away fro
 The second condition is required to ensure that, at least infinitely often, the weights are not equal to $(1,\dots,1)/N$, since stochastic rounding is degenerate under equal weights and this will cause the time scale to explode. 
 It is hardly conceivable that any real SMC algorithm would fail to satisfy this condition, which effectively ensures that the weights cannot be ``too well-behaved''.
 
+\draft{If I find a more elegant proof for e.g. stratified, I can use the techniques to simplify this one a bit too.}
 \begin{proof}
 Let $\mathcal{H}_t$ be defined as in \eqref{eq:defn_Ht}. The first step is to show that whenever $\max_i w_t^{(i)} \geq (1+\delta)/N$, $\Prob[  c_N(t) > 2/N^2 \mid \mathcal{H}_t ] = \Prob[ c_N(t) \neq 0 \mid \mathcal{H}_t ]$ is bounded below uniformly in $t$.
 For this purpose we need consider only weight vectors such that $w_t^{(i)} \in (0,2/N)$ for all $i$; otherwise $\Prob[ c_N(t) \neq 0 \mid \mathcal{H}_t ] =1$ by the definition of stochastic rounding.
@@ -274,7 +274,6 @@ This ensures, for all $t <\infty$, that $\Prob\left[ \exists s<\infty : \sum_{r=
 
 
 \section{Residual resampling with stratified residuals}
-\draft{This one doesn't fit under the SRs umbrella as previously claimed --- oops! Proof for this one is in progress, but shouldn't be too difficult. Like SRs, there are only finitely many possible counts conditional on weights, so the same kind of proof will work (now with three cases).}
 
 \begin{corollary}\label{thm:residual_stratified}
 Consider an SMC algorithm using residual resampling with stratified residuals, such that the standing assumption is satisfied.
@@ -295,6 +294,9 @@ We can apply exactly the proof of Corollary~\ref{thm:stratified}, except that re
 as required.
 The result then follows by applying Theorem~\ref{thm:FDDconv}.
 \end{proof}
+
+\draft{State and prove finite time-scale lemma.}
+
 
 
 \section{Residual resampling with multinomial residuals}
@@ -417,4 +419,4 @@ By an argument analogous to the conclusion of Lemma \ref{thm:SR_nontriviality}, 
 
 
 \subsection{Effect of ancestor sampling}
-\draft{Argue that ancestor sampling removes bias towards assigning offspring to immortal line, and leaves exactly the same genealogy as standard SMC with multinomial resampling.}
+\draft{Argue that ancestor sampling removes bias towards assigning offspring to immortal line, and leaves exactly the same genealogy as standard SMC with multinomial resampling. Most of this section can be lifted from my ancestor sampling note.}
