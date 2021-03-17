@@ -270,31 +270,46 @@ Note that although the mean total branch length diverges with $n$, the variance 
 
 
 \subsubsection{Probability that sample MRCA equals population MRCA}
-One other interesting quantity is the probability that a random sample of $k$ lineages has the same as the MRCA as the entire population (of size $N$). As $N\to\infty$, this probability converges to $(k-1)/(k+1)$ \parencite[e.g.][Theorem 1.7]{durrett2008}.
-To see this, consider the two subtrees produced by cutting the tree just below the population MRCA. The sample of $k$ lineages coalesces before the population MRCA if and only if all $k$ sampled leaves lie in just one of these two subtrees.
-A basic consequence of the exchangeability of the $n$-coalescent is that the proportion of leaves in, say, the left subtree is uniformly distributed on $[0,1]$.
+One other interesting quantity is the probability that the MRCA of $k$ random lineages coincides with the population MRCA \parencite[e.g.][Theorem 1.7]{durrett2008}.
+Denote by $S_k$ the relevant event: that a random sample of $k$ lineages has the same as the MRCA as the population.
+Consider the two subtrees produced by cutting the tree just below the population MRCA. The sample of $k$ lineages coalesces before the population MRCA if and only if all $k$ sampled leaves lie in just one of these two subtrees.
+A basic consequence of the exchangeability of the $n$-coalescent is that, in the limit $N\to\infty$, the proportion of leaves in the left subtree is uniformly distributed on $[0,1]$.
 Calling this proportion $X$, we have
 \begin{equation*}
-\Prob [k \text{ random lineages all in one subtree} \mid X=x]
+\Prob [ S_k^c \mid X=x]
 = x^k + (1-x)^k
 \end{equation*}
 Integrating against the distribution of $X$, the probability of interest is
 \begin{equation*}
-\Prob[k \text{-sample MRCA } = \text{ population MRCA} ]
-= 1- \int_0^1 \{ x^k + (1-x)^k \} dx
+\Prob[ S_k ]
+= 1- \int_0^1 [ x^k + (1-x)^k ] dx
 = \frac{k-1}{k+1}
 \end{equation*}
 as required.
 
 The above is based on properties of the full Kingman coalescent, but similar results are available for the $n$-coalescent.
-Consider now a subsample of size $k$ among $n$ lineages that follow the $n$-coalescent. What is the probability that these $k$ lineages have the same MRCA as all $n$ lineages?
-This question is addressed in \textcite[Example 1]{saunders1984} and again in \textcite[Equation (3)]{spouge2014}, in both cases arising as a special case of more general results.
-The probability is 
+Consider now a subsample of size $k$ among $n$ lineages that follow the $n$-coalescent.
+Denote by $S_{k,n}$ the event that these $k$ lineages have the same MRCA as all $n$ lineages.
+This probability of this event is calculated in \textcite[Example 1]{saunders1984} and again in \textcite[Equation (3)]{spouge2014}, in both cases arising as a special case of more general results. A direct proof is given below.
+
+Let $X$ be the number of leaves in the left subtree. So $X \in \{1,\dots,n-1\} $ and, like before, a consequence of exchangeability is that $X$ is uniformly distributed on that set.
+Now that the total number of branches is finite, we have to count more carefully. Conditional on $X$ we have
 \begin{equation*}
-\frac{k-1}{k+1} \frac{n+1}{n-1}
+\Prob [S_{k,n}^c \mid X=x]
+= \left[ \binom{x}{k} + \binom{n-x}{k} \right] \binom{n}{k}^{-1} .
 \end{equation*}
-and as $n\to\infty$ this agrees with the population-level result above.
-\seb{Include a direct proof for the $k=2$ case?}
+Integrating against the distribution of $X$ gives
+\begin{align*}
+\Prob[ S_{k,n} ]
+&= 1 - \frac{1}{n-1} \binom{n}{k}^{-1} \, \sum_{x=1}^{n-1} 
+        \left[ \binom{x}{k} + \binom{n-x}{k} \right] \\
+&= 1 - \frac{1}{n-1} \binom{n}{k}^{-1} 
+        \left[ \binom{n}{k+1} + \binom{n}{k+1} \right] \\
+&= \frac{k-1}{k+1} \frac{n+1}{n-1}
+\end{align*}
+using binomial identities and some algebra.
+As $n\to\infty$ this agrees with the population-level result above.
+
 
 
 \subsection{Models in population genetics}\label{sec:popgenmodels}

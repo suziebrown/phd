@@ -5,109 +5,177 @@
 \section{Multinomial resampling}
 \draft{This is the easy-to-analyse scheme, because conditionally i.i.d., and was presented in KJJS already. Now (with our simpler conditions) it is easier to show.}
 
-\subsection{Proof of main condition}
-
-\subsection{Proof of finite time scale condition}
 
 
-\section{Stochastic rounding}
+\section{Stratified resampling}
+\draft{Proof for this one is in progress, but shouldn't be too difficult. Like SRs, there are only finitely many possible counts conditional on weights, so the same kind of proof will work (but with four cases instead of two).}
 
-
-\subsection{Proof of main condition}
-
-\begin{corollary}\label{thm:stochrounding}
-Consider an SMC algorithm using any stochastic rounding as its resampling scheme, such that the standing assumption is satisfied.
+\begin{corollary}\label{thm:stratified}
+Consider an SMC algorithm using stratified resampling, such that the standing assumption is satisfied.
 Assume that there exists a constant $a\in [1,\infty)$ such that for all $x, x^\prime, t$,
 \begin{equation}\label{eq:gq_bounds_sr}
-\frac{1}{a} \leq g_t(x, x^\prime) \leq a . %, \quad
-%\varepsilon \leq q_t(x, x^\prime) \leq \frac{1}{\varepsilon} .
+\frac{1}{a} \leq g_t(x, x^\prime) \leq a .
 \end{equation}
 Assume that $\Prob[ \tau_N(t) = \infty] =0$ for all finite $t$.
 Let $(G_t^{(n,N)})_{t\geq0}$ denote the genealogy of a random sample of $n$ terminal particles from the output of the algorithm when the total number of particles used is $N$. Then, for any fixed $n$, the time-scaled genealogy $(G_{\tau_N(t)}^{(n,N)})_{t\geq0}$ converges to Kingman's $n$-coalescent as $N\to \infty$, in the sense of finite-dimensional distributions.
 \end{corollary}
 
 \begin{proof}
-Using the forward-time Markov property of SMC, and the associated conditional dependence graph, for each $N$ we establish a sequence of $\sigma$-algebras
-\begin{equation}\label{eq:defn_Ht}
-\mathcal{H}_t := \sigma(X_{t-1}^{(1:N)}, X_t^{(1:N)}, w_{t-1}^{(1:N)}, w_t^{(1:N)} )
-\end{equation}
-such that $\nu_t^{(1:N)}$ is conditionally independent of the filtration $\mathcal{F}_{t-1}$ given $\mathcal{H}_t$. The full D-separation argument is presented in Appendix~\ref{app:dseparation}.
-
-Defining the family sizes $\nu_t^{(i)} = |\{ j : a_t^{(j)} = i \}|$ as functions of $a_t^{(1:N)}$, we have the almost sure constraint $\nu_t^{(i)} \in \{\flnw, \flnw +1\}$.  Denote $p_0^{(i)} := \Prob[ \nu_t^{(i)} = \flnw \mid \mathcal{H}_t ]$ and $p_1^{(i)} := \Prob[ \nu_t^{(i)} = \flnw +1 \mid \mathcal{H}_t ] = 1-p_0^{(i)}$. 
-
-We obtain the following upper bounds, using the almost sure bounds $w_t^{(i)} \leq a^2/N$ which follow from \eqref{eq:gq_bounds_sr} along with the form of the weights in Algorithm \ref{alg:SMC}:
-\begin{align*}
-\E[(\nu_t^{(i)})_3 \mid \mathcal{H}_t] &= p_0^{(i)} (\flnw)_3 + p_1^{(i)} (\flnw + 1)_3 \\
-&= \flnw (\flnw -1) \{ p_0^{(i)} (\flnw -2) + p_1^{(i)} (\flnw +1) \} \\
-&= \flnw (\flnw -1) \{ \flnw (p_0^{(i)} + p_1^{(i)}) -2 p_0^{(i)} + p_1^{(i)} \} \\
-&= \flnw (\flnw -1) \{ \flnw -2 p_0^{(i)} + p_1^{(i)} \} \\
-&\leq a^2 (a^2 -1) (a^2 -0 +1) \1{\flnw \geq 2} \\
-&\leq (a^2 +1)^3 \1{\flnw \geq 2} .
-\end{align*}
-We also have the lower bounds
-\begin{align*}
-\E[(\nu_t^{(i)})_2 \mid \mathcal{H}_t] &= p_0^{(i)} (\flnw)_2 + p_1^{(i)} (\flnw + 1)_2 \\
-&= \flnw \{ p_0^{(i)} (\flnw -1) + p_1^{(i)} (\flnw +1) \} \\
-&= \flnw \{ \flnw (p_0^{(i)} + p_1^{(i)}) - p_0^{(i)} + p_1^{(i)} \} \\
-&= \flnw \{ \flnw - p_0^{(i)} + p_1^{(i)} \} \\
-&\geq 2 (2 -1 +0) \1{\flnw \geq 2} = 2 \1{\flnw \geq 2} .
-\end{align*}
-Applying the tower property and conditional independence,
-\begin{align*}
-\frac{1}{(N)_2} \sum_{i=1}^N \Et [( \nu_t^{(i)} )_2 ] 
-&= \frac{1}{(N)_2} \Et\left[ \sum_{i=1}^N \E\left[ (\nu_t^{(i)})_2 \mid \mathcal{H}_t, \mathcal{F}_{t-1} \right] \right] \\
-&= \frac{1}{(N)_2} \Et\left[ \sum_{i=1}^N \E\left[ (\nu_t^{(i)})_2 \mid \mathcal{H}_t \right] \right]
-\geq \frac{1}{(N)_2} 2 \Et\left[ |\{i:\flnw\geq 2\}| \right] 
-\end{align*}
-and similarly
-\begin{align*}
-\frac{1}{(N)_3} \sum_{i=1}^N \Et [( \nu_t^{(i)} )_3 ] 
-&\leq \frac{1}{(N)_3}  (a^2+1)^3 \Et\left[ |\{i:\flnw\geq 2\}| \right] \\
-&\leq b_N  \frac{1}{(N)_2} \sum_{i=1}^N \Et [( \nu_t^{(i)} )_2 ]
-\end{align*}
-where
-\begin{equation*}
-b_N := \frac{1}{N-2}\frac{(a^2+1)^3}{2} \underset{N\to\infty}{\longrightarrow} 0
-\end{equation*}
-is independent of $\mathcal{F}_\infty$, satisfying \eqref{eq:mainthmcond}.
-The result follows by applying Theorem \ref{thm:FDDconv}.
-\end{proof}
-
-\newpage
-\begin{proof}[Proof version 2]
 Recall that the sequence of $\sigma$-algebras
 \begin{equation}\label{eq:defn_Ht}
 \mathcal{H}_t := \sigma(X_{t-1}^{(1:N)}, X_t^{(1:N)}, w_{t-1}^{(1:N)}, w_t^{(1:N)} )
 \end{equation}
 are such that $\nu_t^{(1:N)}$ is conditionally independent of the filtration $\mathcal{F}_{t-1}$ given $\mathcal{H}_t$.
-With stochastic rounding, each offspring count can take only two values almost surely: $\nu_t^{(i)} \in \{\flnw, \flnw +1\}$.  
-Denote $p_0^{(i)} := \Prob[ \nu_t^{(i)} = \flnw \mid \mathcal{H}_t ]$ and $p_1^{(i)} := \Prob[ \nu_t^{(i)} = \flnw +1 \mid \mathcal{H}_t ] = 1-p_0^{(i)}$.
+With stratified resampling, conditional on the weights each offspring count almost surely takes one of four values: $\nu_t^{(i)} \in \{ \flnw -1, \flnw, \flnw +1, \flnw +2 \}$.  
+Denote $p_j^{(i)} := \Prob[ \nu_t^{(i)} = \flnw +j \mid \mathcal{H}_t ]$ for $j=-1,0,1,2$.
 Now
-\begin{equation*}
+\begin{align*}
 \E [(\nu_t^{(i)})_2 \mid \mathcal{H}_t ]
-= p_0^{(i)} (\flnw)_2 + p_1^{(i)} (\flnw +1)_2
-\end{equation*}
+&= p_{-1}^{(i)} (\flnw -1)_2 + p_0^{(i)} (\flnw)_2 + p_1^{(i)} (\flnw +1)_2 \\
+    &\hspace{3cm} + p_2^{(i)} (\flnw +2)_2
+\end{align*}
 and
 \begin{align*}
 \E [(\nu_t^{(i)})_3 \mid \mathcal{H}_t ]
-&= p_0^{(i)} (\flnw)_3 + p_1^{(i)} (\flnw +1)_3 \\
-&= p_0^{(i)} (\flnw -2)(\flnw)_2 + p_1^{(i)} (\flnw -1)(\flnw +1)_2 \\
-&\leq (\flnw -1) \{ p_0^{(i)} (\flnw)_2 + p_1^{(i)} (\flnw +1)_2 \} \\
-&= (\flnw -1) \E [(\nu_t^{(i)})_2 \mid \mathcal{H}_t ] \\
-&\leq (a^2 -1) \E [(\nu_t^{(i)})_2 \mid \mathcal{H}_t ]
+&= p_{-1}^{(i)} (\flnw -1)_3 + p_0^{(i)} (\flnw)_3 + p_1^{(i)} (\flnw +1)_3 \\
+    &\hspace{1cm} + p_2^{(i)} (\flnw +2)_3 \\
+&= p_{-1}^{(i)} (\flnw -3)(\flnw -1)_2 + p_0^{(i)} (\flnw -2)(\flnw)_2 \\
+     &\hspace{1cm} + p_1^{(i)} (\flnw -1)(\flnw +1)_2 
+         + p_2^{(i)} \flnw (\flnw +2)_2 \\
+&\leq \flnw \{ p_0^{(i)} (\flnw)_2 + p_1^{(i)} (\flnw +1)_2 \} \\
+&= \flnw ]\E [(\nu_t^{(i)})_2 \mid \mathcal{H}_t ] \\
+&\leq a^2 \E [(\nu_t^{(i)})_2 \mid \mathcal{H}_t ]
 \end{align*}
 The last line uses the almost sure bound $w_t^{(i)} \leq a^2 /N$ which follows from \eqref{eq:gq_bounds_sr} along with the form of the weights in Algorithm \ref{alg:SMC}.
 Note that some terms in the above expressions may be equal to zero when $w_t^{(i)}$ is small enough, but the bound always holds nonetheless.
 Since the above holds for all $i$, applying the tower rule we have
 \begin{equation*}
 \frac{1}{(N)_3} \sum_{i=1}^{N} \Et [(\nu_t^{(i)})_3 ]
-\leq \frac{a^2-1}{N-2} \frac{1}{(N)_2} \Et [(\nu_t^{(i)})_2 ]
+\leq \frac{a^2}{N-2} \frac{1}{(N)_2} \Et [(\nu_t^{(i)})_2 ]
 \end{equation*}
-satisfying \eqref{eq:mainthmcond} with $b_N := (a^2-1)/(N-2) \rightarrow 0$.
+satisfying \eqref{eq:mainthmcond} with $b_N := a^2/(N-2) \rightarrow 0$.
+The result then follows by applying Theorem~\ref{thm:FDDconv}.
 \end{proof}
 
 
-\subsection{Finite time scale}
+\begin{lemma}\label{thm:strat_nontriviality}
+Consider an SMC algorithm using stratified resampling.
+Suppose that 
+\begin{equation*}
+\varepsilon \leq q_t(x, x^\prime) \leq \varepsilon^{-1}
+\end{equation*}
+uniformly in $x,x^\prime$ for some $\varepsilon \in (0,1]$, and that there exist $\zeta >0$ and $\delta \in (0,1)$ such that 
+\begin{equation*}
+\Prob[ \max_i w_t^{(i)} - \min_i w_t^{(i)} \geq 2\delta/N \mid \mathcal{F}_{t-1} ] \geq \zeta
+\end{equation*}
+ for infinitely many $t$. Then, for all $N>1$, $\Prob[ \tau_N(t) = \infty ] =0$ for all finite $t$.
+\end{lemma}
+
+\begin{proof}
+It is sufficient to prove, under the conditions, that
+\begin{equation}\label{eq:strat_nontriv_suffcond}
+\sum_{r=0}^\infty \Prob[ c_N(r) > 2/N^2  \mid \mathcal{F}_{r-1} ] = \infty .
+\end{equation}
+By the filtered Borel-Cantelli lemma (see for example \cite[Theorem 4.3.4]{durrett2019}), this implies that, almost surely,
+$c_N(r) > 2/N^2$ for infinitely many $r$.
+Thus, for any $t<\infty$,
+\begin{equation}
+\Prob[ \tau_N(t) < \infty ]
+= \Prob\left[ \exists s<\infty : \sum_{r=1}^s c_N(r) \geq t \right]
+= 1
+\end{equation}
+which is the desired result.
+
+Now we have to prove \eqref{eq:strat_nontriv_suffcond}.
+Firstly,
+\begin{align*}
+\Prob[ c_N(t) \leq 2/N^2 \mid \mathcal{H}_t ]
+&= \Prob[ \nu_t^{(i)} =1 \,\forall i\in\{1,\dots,N\} \mid \mathcal{H}_t ] \\
+&\leq \Prob[ \nu_t^{(i^\star)} =1 \mid \mathcal{H}_t ] ,
+\end{align*}
+where $i^\star := \argmax_i \{ w_t^{(i)} \}$ (but note that the inequality holds when $i^\star$ is taken to be any particular index).
+
+
+
+...
+\end{proof}
+
+
+
+\section{Stochastic rounding}
+
+\begin{corollary}\label{thm:stochrounding}
+Consider an SMC algorithm using any stochastic rounding as its resampling scheme, such that the standing assumption is satisfied.
+Assume that there exists a constant $a\in [1,\infty)$ such that for all $x, x^\prime, t$,
+\begin{equation}
+\frac{1}{a} \leq g_t(x, x^\prime) \leq a . %, \quad
+%\varepsilon \leq q_t(x, x^\prime) \leq \frac{1}{\varepsilon} .
+\end{equation}
+Assume that $\Prob[ \tau_N(t) = \infty] =0$ for all finite $t$.
+Let $(G_t^{(n,N)})_{t\geq0}$ denote the genealogy of a random sample of $n$ terminal particles from the output of the algorithm when the total number of particles used is $N$. Then, for any fixed $n$, the time-scaled genealogy $(G_{\tau_N(t)}^{(n,N)})_{t\geq0}$ converges to Kingman's $n$-coalescent as $N\to \infty$, in the sense of finite-dimensional distributions.
+\end{corollary}
+\seb{By the way, does the lack of conditions of $q_t$ here imply that we do not even need the transition kernels to admit densities?}
+
+%%% This proof is obsolete; ``proof version 2'' should work :)
+%\begin{proof}
+%Using the forward-time Markov property of SMC, and the associated conditional dependence graph, for each $N$ we establish a sequence of $\sigma$-algebras
+%\begin{equation}
+%\mathcal{H}_t := \sigma(X_{t-1}^{(1:N)}, X_t^{(1:N)}, w_{t-1}^{(1:N)}, w_t^{(1:N)} )
+%\end{equation}
+%such that $\nu_t^{(1:N)}$ is conditionally independent of the filtration $\mathcal{F}_{t-1}$ given $\mathcal{H}_t$. The full D-separation argument is presented in Appendix~\ref{app:dseparation}.
+%
+%Defining the family sizes $\nu_t^{(i)} = |\{ j : a_t^{(j)} = i \}|$ as functions of $a_t^{(1:N)}$, we have the almost sure constraint $\nu_t^{(i)} \in \{\flnw, \flnw +1\}$.  Denote $p_0^{(i)} := \Prob[ \nu_t^{(i)} = \flnw \mid \mathcal{H}_t ]$ and $p_1^{(i)} := \Prob[ \nu_t^{(i)} = \flnw +1 \mid \mathcal{H}_t ] = 1-p_0^{(i)}$. 
+%
+%We obtain the following upper bounds, using the almost sure bounds $w_t^{(i)} \leq a^2/N$ which follow from \eqref{eq:gq_bounds_sr} along with the form of the weights in Algorithm \ref{alg:SMC}:
+%\begin{align*}
+%\E[(\nu_t^{(i)})_3 \mid \mathcal{H}_t] &= p_0^{(i)} (\flnw)_3 + p_1^{(i)} (\flnw + 1)_3 \\
+%&= \flnw (\flnw -1) \{ p_0^{(i)} (\flnw -2) + p_1^{(i)} (\flnw +1) \} \\
+%&= \flnw (\flnw -1) \{ \flnw (p_0^{(i)} + p_1^{(i)}) -2 p_0^{(i)} + p_1^{(i)} \} \\
+%&= \flnw (\flnw -1) \{ \flnw -2 p_0^{(i)} + p_1^{(i)} \} \\
+%&\leq a^2 (a^2 -1) (a^2 -0 +1) \1{\flnw \geq 2} \\
+%&\leq (a^2 +1)^3 \1{\flnw \geq 2} .
+%\end{align*}
+%We also have the lower bounds
+%\begin{align*}
+%\E[(\nu_t^{(i)})_2 \mid \mathcal{H}_t] &= p_0^{(i)} (\flnw)_2 + p_1^{(i)} (\flnw + 1)_2 \\
+%&= \flnw \{ p_0^{(i)} (\flnw -1) + p_1^{(i)} (\flnw +1) \} \\
+%&= \flnw \{ \flnw (p_0^{(i)} + p_1^{(i)}) - p_0^{(i)} + p_1^{(i)} \} \\
+%&= \flnw \{ \flnw - p_0^{(i)} + p_1^{(i)} \} \\
+%&\geq 2 (2 -1 +0) \1{\flnw \geq 2} = 2 \1{\flnw \geq 2} .
+%\end{align*}
+%Applying the tower property and conditional independence,
+%\begin{align*}
+%\frac{1}{(N)_2} \sum_{i=1}^N \Et [( \nu_t^{(i)} )_2 ] 
+%&= \frac{1}{(N)_2} \Et\left[ \sum_{i=1}^N \E\left[ (\nu_t^{(i)})_2 \mid \mathcal{H}_t, \mathcal{F}_{t-1} \right] \right] \\
+%&= \frac{1}{(N)_2} \Et\left[ \sum_{i=1}^N \E\left[ (\nu_t^{(i)})_2 \mid \mathcal{H}_t \right] \right]
+%\geq \frac{1}{(N)_2} 2 \Et\left[ |\{i:\flnw\geq 2\}| \right] 
+%\end{align*}
+%and similarly
+%\begin{align*}
+%\frac{1}{(N)_3} \sum_{i=1}^N \Et [( \nu_t^{(i)} )_3 ] 
+%&\leq \frac{1}{(N)_3}  (a^2+1)^3 \Et\left[ |\{i:\flnw\geq 2\}| \right] \\
+%&\leq b_N  \frac{1}{(N)_2} \sum_{i=1}^N \Et [( \nu_t^{(i)} )_2 ]
+%\end{align*}
+%where
+%\begin{equation*}
+%b_N := \frac{1}{N-2}\frac{(a^2+1)^3}{2} \underset{N\to\infty}{\longrightarrow} 0
+%\end{equation*}
+%is independent of $\mathcal{F}_\infty$, satisfying \eqref{eq:mainthmcond}.
+%The result follows by applying Theorem \ref{thm:FDDconv}.
+%\end{proof}
+
+\begin{proof}[Proof version 2]
+We can apply exactly the proof of Corollary~\ref{thm:stratified}, except that stochastic rounding is more restrictive than stratified resampling, so that the only possible offspring counts (almost surely, conditional on weights) are $\nu_t^{(i)} \in \{ \flnw, \flnw +1 \}$. We simply set $p_{-1}^{(i)} = p_{2}^{(i)} = 0$ in the proof of Corollary~\ref{thm:stratified} to see that
+\begin{equation*}
+\frac{1}{(N)_3} \sum_{i=1}^{N} \Et [(\nu_t^{(i)})_3 ]
+\leq \frac{a^2}{N-2} \frac{1}{(N)_2} \Et [(\nu_t^{(i)})_2 ]
+\end{equation*}
+as required.
+The result then follows by applying Theorem~\ref{thm:FDDconv}.
+\end{proof}
+
+
+We can also show, under additional conditions, that the assumption $\Prob[ \tau_N(t) = \infty ] =0$ for all finite $t$ holds.
 
 \begin{lemma}\label{thm:SR_nontriviality}
 Consider an SMC algorithm using any stochastic rounding as its resampling scheme.
@@ -121,6 +189,10 @@ uniformly in $x,x^\prime$ for some $\varepsilon \in (0,1]$, and that there exist
 \end{equation*}
  for infinitely many $t$. Then, for all $N>1$, $\Prob[ \tau_N(t) = \infty ] =0$ for all finite $t$.
 \end{lemma}
+
+The extra condition that the transition densities are bounded above and away from zero \seb{... say something intelligent}.
+The second condition is required to ensure that, at least infinitely often, the weights are not equal to $(1,\dots,1)/N$, since stochastic rounding is degenerate under equal weights and this will cause the time scale to explode. 
+It is hardly conceivable that any real SMC algorithm would fail to satisfy this condition, which effectively ensures that the weights cannot be ``too well-behaved''.
 
 \begin{proof}
 Let $\mathcal{H}_t$ be defined as in \eqref{eq:defn_Ht}. The first step is to show that whenever $\max_i w_t^{(i)} \geq (1+\delta)/N$, $\Prob[  c_N(t) > 2/N^2 \mid \mathcal{H}_t ] = \Prob[ c_N(t) \neq 0 \mid \mathcal{H}_t ]$ is bounded below uniformly in $t$.
@@ -198,11 +270,35 @@ This ensures, for all $t <\infty$, that $\Prob\left[ \exists s<\infty : \sum_{r=
 \end{proof}
 
 
-\section{Stratified resampling}
-\draft{Proof for this one is in progress, but shouldn't be too difficult. Like SRs, there are only finitely many possible counts conditional on weights, so the same kind of proof will work (but with four cases instead of two).}
+
+
 
 \section{Residual resampling with stratified residuals}
-\draft{This one doesn't fit under the SRs umbrella as previously claimed --- oops! Proof for this one is in progress, but shouldn't be too difficult. Like SRs, there are only finitely many possible counts conditional on weights, so the same kind of proof will work (but with four cases instead of two).}
+\draft{This one doesn't fit under the SRs umbrella as previously claimed --- oops! Proof for this one is in progress, but shouldn't be too difficult. Like SRs, there are only finitely many possible counts conditional on weights, so the same kind of proof will work (now with three cases).}
+
+\begin{corollary}\label{thm:residual_stratified}
+Consider an SMC algorithm using residual resampling with stratified residuals, such that the standing assumption is satisfied.
+Assume that there exists a constant $a\in [1,\infty)$ such that for all $x, x^\prime, t$,
+\begin{equation}
+\frac{1}{a} \leq g_t(x, x^\prime) \leq a .
+\end{equation}
+Assume that $\Prob[ \tau_N(t) = \infty] =0$ for all finite $t$.
+Let $(G_t^{(n,N)})_{t\geq0}$ denote the genealogy of a random sample of $n$ terminal particles from the output of the algorithm when the total number of particles used is $N$. Then, for any fixed $n$, the time-scaled genealogy $(G_{\tau_N(t)}^{(n,N)})_{t\geq0}$ converges to Kingman's $n$-coalescent as $N\to \infty$, in the sense of finite-dimensional distributions.
+\end{corollary}
+
+\begin{proof}
+We can apply exactly the proof of Corollary~\ref{thm:stratified}, except that residual-stratified resampling is more restrictive than stratified resampling, so that the only possible offspring counts (almost surely, conditional on weights) are $\nu_t^{(i)} \in \{ \flnw, \flnw +1, \flnw +2 \}$. We simply set $p_{-1}^{(i)} = 0$ in the proof of Corollary~\ref{thm:stratified} to see that
+\begin{equation*}
+\frac{1}{(N)_3} \sum_{i=1}^{N} \Et [(\nu_t^{(i)})_3 ]
+\leq \frac{a^2}{N-2} \frac{1}{(N)_2} \Et [(\nu_t^{(i)})_2 ]
+\end{equation*}
+as required.
+The result then follows by applying Theorem~\ref{thm:FDDconv}.
+\end{proof}
+
+
+\section{Residual resampling with multinomial residuals}
+\draft{If I manage to prove this corollary, it would make this chapter satisfyingly complete :-)}
 
 \section{The worst possible resampling scheme}
 \draft{Remark that this one doesn't converge to KC, but rather to a star-shaped coalescent.}
@@ -211,8 +307,6 @@ This ensures, for all $t <\infty$, that $\Prob\left[ \exists s<\infty : \sum_{r=
 \section{Conditional SMC}
 \draft{Why CSMC is qualitatively different to, say, standard SMC with multinomial resampling (immortal particle etc.). Reasons for restriction to multinomial resampling, conjecture that limit theorem holds for other schemes in CSMC.}
 
-
-\subsection{Proof of main condition}
 
 \begin{corollary}\label{thm:CSMC_newassns}
 Consider a conditional SMC algorithm using multinomial resampling, such that the standing assumption is satisfied. Assume there exist constants $\varepsilon\in (0,1], a\in [1,\infty)$ and probability density $h$ such that for all $x, x^\prime, t$,
@@ -303,7 +397,6 @@ Thus \eqref{eq:mainthmcond} is satisfied. It remains to show that, for $N$ suffi
 \end{proof}
 
 
-\subsection{Finite time scale}
 
 \begin{lemma}\label{thm:CSMC_nontriviality}
 Consider a conditional SMC algorithm using multinomial resampling, satisfying the standing assumption and \eqref{eq:gq_bounds_csmc}. 
