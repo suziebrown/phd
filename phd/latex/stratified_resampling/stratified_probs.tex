@@ -71,7 +71,7 @@ The corresponding probabilities and hence finite time-scale proof for residual-s
 Consider the marginal distribution of one offspring count $\nu_t^{(i)}$ conditional on the corresponding weight $w_t^{(i)}$. Henceforth we drop from the notation the dependence on $t$ and $i$, which are to be considered fixed throughout the following.
 As we have already seen, the possible values of $\nu$ are restricted conditional on $w$ to $\{ \flnw-1, \flnw, \flnw+1, \flnw+2 \}$. Denote by $p_i$ the conditional probability $\Prob[ \nu = \flnw + i \mid w ]$, for $i = -1,0,1,2$.
 
-We consider first a specific case (of particular interest for the finite time-scale proof) where $w= (1+\delta)/N$. 
+We consider first a specific case (of particular interest for the finite time-scale proof) where $w= (1+\delta)/N$, with $\delta \in [0,1)$.
 First let's look at $p_0 = \Prob[ \nu = 1 \mid w = (1+\delta)/N ]$.
 Thinking about the inversion sampling schematic, %(Figure ??),
 the resampling probabilities will depend upon where the length-$w$ interval falls with respect to the length-$(1/N)$ intervals for sampling. We split the possibilities into three cases (Figure~\ref{fig:cases}).
@@ -129,7 +129,34 @@ p_0 \in \left[ \frac{1-\delta}{2}, 1- \frac{3\delta}{4} \right] .
 \end{equation}
 
 
-
+\section*{Another thing}
+Now let $w= 2+\delta$ for some $\delta \in [0,1)$.
+Let's calculate $p_{-1} = \Prob[ \nu = 1 \mid w = (2+\delta)/N ]$.
+Again thinking about how the inversion sampling intervals could fall, there is only one case in which $p_{-1}$ is non-zero (Figure \ref{fig:cases2}).
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.5\textwidth]{cases2_sketch.jpg}
+\caption{The only case giving non-zero probability $p_{-1}$.}
+\label{fig:cases2}
+\end{figure}
+In this case,
+\begin{equation}
+p_{-1} 
+= (1-x_L)(1-x_R)
+= (1-x_L)(x_L - \delta) .
+\end{equation}
+This is a negative quadratic in $x_L$, with its unique maximum at $x_L=x_R= (1+\delta)/2$.
+The maximum value of $p_{-1}$ is then
+\begin{equation}
+p_{-1}
+= \frac{1}{4} (1 - \delta)^2
+\leq \frac{1}{4}
+\end{equation}
+independently of $\delta$.
+So we have, for any $\delta$,
+\begin{equation}
+p_{-1} \in \left[ 0, \frac{1}{4} \right] .
+\end{equation}
 
 
 
