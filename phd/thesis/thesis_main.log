@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  12 MAR 2021 19:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  16 MAR 2021 13:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1614,27 +1614,27 @@ Package mdframed Info: mdframed detected package amsthm
 (mdframed)              on input line 112.
 
 [27]
-Overfull \hbox (7.31442pt too wide) detected at line 131
+Overfull \hbox (7.31442pt too wide) detected at line 139
 []
  []
 
 [28]
 
 LaTeX Warning: Reference `app:dseparation' on page 29 undefined on input line 1
-76.
+84.
 
 [29]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 209.
+(mdframed)              on input line 217.
  [30] [31]
-Overfull \hbox (6.1646pt too wide) detected at line 284
+Overfull \hbox (6.1646pt too wide) detected at line 292
 []
  []
 
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 300.
+(mdframed)              on input line 308.
 [32]) [33]
 \openout2 = `weakconv.aux'.
 
@@ -2071,7 +2071,7 @@ dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2018/texmf-d
 ist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2018/tex
 mf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2018
 /texmf-dist/fonts/type1/adobe/utopia/putb8a.pfb>
-Output written on thesis_main.pdf (81 pages, 568399 bytes).
+Output written on thesis_main.pdf (81 pages, 568796 bytes).
 PDF statistics:
  1404 PDF objects out of 1440 (max. 8388607)
  1273 compressed objects within 13 object streams

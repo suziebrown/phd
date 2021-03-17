@@ -98,10 +98,10 @@ and
 \end{align*}
 The last line uses the almost sure bound $w_t^{(i)} \leq a^2 /N$ which follows from \eqref{eq:gq_bounds_sr} along with the form of the weights in Algorithm \ref{alg:SMC}.
 Note that some terms in the above expressions may be equal to zero when $w_t^{(i)}$ is small enough, but the bound always holds nonetheless.
-Since the above holds for all $i$, we have
+Since the above holds for all $i$, applying the tower rule we have
 \begin{equation*}
-\frac{1}{(N)_3} \sum_{i=1}^{N} \E [(\nu_t^{(i)})_3 \mid \mathcal{H}_t ]
-\leq \frac{a^2-1}{N-2} \frac{1}{(N)_2} \E [(\nu_t^{(i)})_2 \mid \mathcal{H}_t ]
+\frac{1}{(N)_3} \sum_{i=1}^{N} \Et [(\nu_t^{(i)})_3 ]
+\leq \frac{a^2-1}{N-2} \frac{1}{(N)_2} \Et [(\nu_t^{(i)})_2 ]
 \end{equation*}
 satisfying \eqref{eq:mainthmcond} with $b_N := (a^2-1)/(N-2) \rightarrow 0$.
 \end{proof}
@@ -111,7 +111,15 @@ satisfying \eqref{eq:mainthmcond} with $b_N := (a^2-1)/(N-2) \rightarrow 0$.
 
 \begin{lemma}\label{thm:SR_nontriviality}
 Consider an SMC algorithm using any stochastic rounding as its resampling scheme.
-Suppose that $\varepsilon \leq q_t(x, x^\prime) \leq \varepsilon^{-1}$ uniformly for some $\varepsilon \in (0,1]$, and that there exist $\zeta >0$ and $\delta \in (0,1)$ such that $\Prob[ \max_i w_t^{(i)} - \min_i w_t^{(i)} \geq 2\delta/N \mid \mathcal{F}_{t-1} ] \geq \zeta$ for infinitely many $t$. Then, for all $N>1$, $\Prob[ \tau_N(t) = \infty ] =0$ for all finite $t$.
+Suppose that 
+\begin{equation*}
+\varepsilon \leq q_t(x, x^\prime) \leq \varepsilon^{-1}
+\end{equation*}
+uniformly in $x,x^\prime$ for some $\varepsilon \in (0,1]$, and that there exist $\zeta >0$ and $\delta \in (0,1)$ such that 
+\begin{equation*}
+\Prob[ \max_i w_t^{(i)} - \min_i w_t^{(i)} \geq 2\delta/N \mid \mathcal{F}_{t-1} ] \geq \zeta
+\end{equation*}
+ for infinitely many $t$. Then, for all $N>1$, $\Prob[ \tau_N(t) = \infty ] =0$ for all finite $t$.
 \end{lemma}
 
 \begin{proof}
