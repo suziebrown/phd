@@ -16,20 +16,19 @@ Anyone who considers arithmetical methods of producing random digits is, of cour
 \draft{What quantities do we want to infer? Why is this generally difficult? Filtering, prediction, smoothing, likelihood/normalising constant.}
 
 \subsection{Exact solutions}
-\seb{This section needs redrafting, but all the content I wanted is here.}
-\draft{What about ensemble Kalman filter?}
+If the state space model has linear dynamics with Gaussian errors, the posterior distributions of interest are also Gaussian with mean and covariance satisying recursions, implemented by the Kalman filter \parencite{kalman1960} and Rauch-Tung-Striebel smoother \parencite{rauch1965}. Recursions are also available for some other conjugate models: see for example \textcite{vidoni1999}.
+Another analytic case occurs if the state space $\mathcal{X}$ is finite, in which case any integrals become finite sums, and the forward-backward algorithm \parencite{baum1970} yields the exact posteriors. However, if the state space becomes large (albeit finite), exact computation becomes infeasible.
 
-In the case of linear Gaussian state space models, the posterior distributions of interest are also Gaussian, with mean and covariance available analytically by way of the Kalman filter \parencite{kalman1960} and Rauch-Tung-Striebel (RTS) smoother recursions \parencite{rauch1965}. Recursions are also available for some other conjugate models: see for example \textcite{vidoni1999}.
-Another analytic case occurs if the state space $\mathcal{X}$ is finite, in which case any integrals become finite sums, and the forward-backward algorithm \parencite{baum1970} yields the exact posteriors.
+If the model is Gaussian but non-linear, the posterior filtering distributions can be estimated using the \emph{extended Kalman filter} (see for example \textcite{jazwinski2007}), which applies a first-order approximation in order to make use of the Kalman filter. This method performs well on models that are ``almost linear''. The resulting predictor is only \emph{optimal} when the model is actually linear, in which case the extended Kalman filter coincides with the Kalman filter.
 
-If the model is Gaussian but non-linear, the posterior filtering distributions can be estimated using the \emph{extended Kalman filter} (see for example \textcite{jazwinski2007}), which applies a first-order linearisation in order to make use of the Kalman filter. This method performs well on models that are ``almost linear''. The resulting predictor is only \emph{optimal} when the model is actually linear, in which case the extended Kalman filter coincides with the Kalman filter.
+For models that are high-dimensional or highly non-linear or for which gradients are not readily available, the exact Kalman filter updates can be replaced by sample approximations.
+The \emph{ensemble Kalman filter} \parencite{evensen1994} uses a Monte Carlo sample from the current time, propagates these points through the transition dynamics, and uses the sample covariance as an estimator of the updated covariance matrix. The means (which are cheaper to evaluate and more stable than the covariances) are still updated using the Kalman filter recursion, based on the estimated covariance.
+The \emph{unscented Kalman filter} \parencite{wan2000} uses a deterministic sample chosen via the \emph{unscented transformation}, which is then propagated through the non-linear transition to obtain a characterisation of the distribution at the next time step. The sample consists of $2d+1$ points, where $d$ is the dimension of the state space, and is a sufficient characterisation of a Gaussian distribution. The sample points define a Gaussian approximation to the updated distribution.
 
-For models that are highly non-linear or for which gradients are not readily available, a more suitable method is the \emph{unscented Kalman filter} \parencite{wan2000}. This involves taking a representative sample (which is chosen deterministically using the \emph{unscented transformation}) to characterise the distribution at time $t$, and then propagating these points through the non-linear transition $F$ to obtain a characterisation of the distribution at time $t+1$. \seb{This is getting closer to SMC, hmm?}
-
-In more complex models such techniques are not feasible, and we are forced to resort to Monte Carlo methods.
-For state space models, Markov chain Monte Carlo methods perform woefully due to the high dimension of the parameter space and high correlation between dimensions. 
-But we can exploit the sequential nature of the underlying dynamics to decompose the problem into a sequence of inferences of more manageable dimension.
-This is the motivation behind sequential Monte Carlo (SMC) methods.
+In complex or high-dimensional models, such techniques may not be feasible, in which case we must resort to Monte Carlo methods.
+Markov chain Monte Carlo performs woefully on state space models due to the high dimension of the parameter space and high correlation between dimensions. 
+But we can exploit the sequential nature of the underlying dynamics to decompose the problem into a sequence of inferences of fixed dimension.
+This is the motivation behind sequential Monte Carlo (SMC).
 
 
 \subsection{Feynman-Kac models}
@@ -699,12 +698,136 @@ Several ways to enforce this constraint on the joint distribution have been prop
 The idea behind particle MCMC methods is to use SMC steps within the MCMC updates in a way that improves the mixing properties of the Markov chain.
 In certain models, generally those including some highly correlated sequential components, this strategy can be very effective.
 
+One popular particle MCMC algorithm is particle marginal Metropolis-Hastings \parencite{andrieu2010}[Section 2.4.2], a pseudo-marginal MCMC algorithm in which SMC provides an unbiased likelihood estimate with which to compute the Metropolis-Hastings acceptance probability.
+The following exposition will focus on another particle MCMC algorithm, namely the particle Gibbs sampler \parencite{andrieu2010}[Section 2.4.3], which is more interesting from the point-of-view of SMC genealogies.
+
 The following scenario illustrates the power of particle MCMC, and is a good model to have in mind as we go on to discuss particle Gibbs and ancestor sampling.
 \draft{Include the model from the start of my ancestor sampling note. Emphasise that the inference itself is not sequential; we are targeting one static posterior distribution, on a fixed time horizon.}
 
 
 \subsection{Particle Gibbs algorithm}
 \draft{Present particle Gibbs algorithm (for the specific model just introduced?, but note that of course the algorithm is more general). Explain why CSMC is required within particle Gibbs.}
+\seb{The following was dumped from elsewhere and NEEDS REDRAFTING.}\\
+
+The scenario we present is a particle Gibbs algorithm for filtering with unknown parameters. The method applies more generally to particle Gibbs (for which the reader is directed to \textcite[Chapter 5]{lindsten2013}), but we find this particular scenario to be simple and instructive. \seb{To generalise to Del Moral's SMC framework basically requires just the change of notation $g \to G_t, f \to M_t$.}
+
+Consider the following hidden Markov model, parametrised by a constant parameter $\theta$ which may be multidimensional.
+\seb{Define the spaces in which theta,X,Y live?}
+\begin{align*}
+Y_t \mid X_t &\sim g_\theta(\cdot \mid X_t)\\
+X_{t} \mid X_{t-1} &\sim f_\theta(\cdot \mid X_{t-1})\\
+X_0 &\sim \mu_\theta(\cdot) \\
+\theta &\sim p(\cdot)
+\end{align*}
+\seb{Add ranges for t in first two lines.}
+\seb{Use q instead of f for better congruity with other sections?}
+We work on a fixed time horizon $T \in \mathbb{N}$, which is necessary to implement the particle Gibbs algorithm.
+\seb{Can be artificially imposed by block sampling if doing online-ish inference?}
+The measures corresponding to $\mu_\theta$, $f_\theta$ and $g_\theta$ are assumed to be known and to admit densities, and we are also given a fixed sequence of observations $y_{1:T}$. 
+\seb{Either mention that f,g can depend on t, or make this explicit  in the notation.}
+\seb{Don't really need to include prior on theta; it's not relevant to CSMC step.}
+
+Our aim is to generate Monte Carlo samples from the joint distribution of $X_{0:T}$ and $\theta$ conditional on $y_{1:T}$. Outside of models admitting closed-form solutions, this is typically the most practical way to draw samples from the marginal distributions of either $theta$ or any subset of the states $X_{0:T}$, by marginalising the Monte Carlo samples. 
+
+The structure of the model invites Gibbs sampling: alternating between updating $\theta$ conditional on $X_{0:T}$, and updating $X_{0:T}$ conditional on $\theta$.
+\seb{``These conditionals are typically much easier to sample from that the corresponding marginals.'' (due to the dependence structure in the HMM).}
+The $\theta$ update consists of sampling from 
+\begin{equation*}
+p(\theta \mid x_{0:T}, y_{1:T}) \propto p(\theta) p(x_{0:T}, y_{1:T} \mid \theta) ,
+\end{equation*}
+which can be achieved quite easily with a Metropolis--Hastings step.
+The $X$ update is the `difficult' part, requiring a sample from
+\begin{equation*}
+p(x_{0:T} \mid \theta , y_{1:T}) =: \gamma_T^\theta(x_{0:T}) .
+\end{equation*}
+\seb{Define gamma for general s too:
+\begin{equation*}
+\gamma_s^\theta(x_{0:s}) \propto \mu_\theta(x_0) g_\theta(y_0\mid x_0) \prod_{r=1}^s f_\theta(x_r \mid x_{r-1}) g_\theta(y_r \mid x_r) .
+\end{equation*}
+}
+This target distribution is suited to sequential Monte Carlo, and this is where the `particle' part of particle Gibbs comes in.
+We update all of the hidden states $X_{0:T}$ in one Gibbs step, which consists of drawing one sample from a particle filter. To target the correct distribution, we use conditional SMC for these updates, conditional on the sample of $X_{0:T}$ from the previous sweep. 
+
+\seb{Refer back to the CSMC algorithm which I've already written down somewhere, explaining how the inputs to the algorithm correspond to functions/quantities introduced in this setting.}
+
+
 
 \subsection{Ancestor sampling}
 \draft{Algorithm (or required changes to generic algorithm). Relation to backward sampling. When can it be implemented? Effect on performance (when is it effective?). Maybe illustrate/motivate with some plots as in the ancestor sampling note.}
+\seb{The following was dumped from elsewhere and NEEDS REDRAFTING.}\\
+
+Ancestor sampling was first suggested by Nick Whiteley in the discussion on \textcite{andrieu2010}. Its contribution is to reduce autocorrelation between samples obtained using the particle Gibbs algorithm \parencite{andrieu2010}.
+\seb{Proper way to cite discussion of paper?}
+
+\subsubsection{Ancestral degeneracy leads to poor mixing}
+Particle Gibbs runs into problems when the time horizon $T$ is large compared to the number of particles $N$. $T$ is determined by the application at hand, and $N$ is limited by computational resources, so we may not be able to control their relative size. 
+The source of the problem is ancestral degeneracy. 
+We know that in standard SMC algorithms this problem exists and its effect is to increase the variance of our Monte Carlo estimates. 
+In particle Gibbs, the $N$ simulated trajectories are not used to estimate anything; only one trajectory is sampled at each step, and becomes one state a Markov chain Monte Carlo estimate. Ancestral degeneracy now has a less direct effect: it causes the Markov chain to mix slowly. 
+
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{plots/lindsten_figure.png}
+\caption{PLACEHOLDER. Copied from \textcite{lindsten2013}.}
+\label{fig:PG_ancdegen}
+\end{figure}
+
+To see why, take a look at Figure \ref{fig:PG_ancdegen}. In Figure \ref{fig:PG_ancdegen}a we have just completed the $r^{th}$ Gibbs sweep, sampling $\theta[r]$ and $x_{0:T}[r]$. For the $(r+1)^{th}$ sweep, we take as immortal trajectory $x_{0:T}^* = x_{0:T}[r]$, and run conditional SMC. Due to ancestral degeneracy, many of the resulting trajectories coalesce, and since the immortal trajectory must survive across the whole time window, they tend to coalesce onto the immortal trajectory (Figure \ref{fig:PG_ancdegen}b). Now we obtain the next sample $x_{0:T}[r+1]$ by sampling a trajectory among the $N$ we have just simulated. Whichever one we choose, it has a high amount of overlap with the immortal trajectory, i.e.\ the previous sample $x_{0:T}[r]$. This behaviour tends to repeat at every iteration, meaning the early $X$ coordinates are getting `stuck' (rarely being updated). This is clearly a problem for the mixing of the Markov chain.
+\seb{Another way to explain this is that the variables defining the immortal trajectory (indices and states) are never refreshed during the Gibbs sweep - this is the explanation given in Lindsten Ch5.}
+It renders the particle Gibbs algorithm impractical for any such model where the time horizon $T$ is too large: either we must run the Markov chain for longer, or increase the number of particles $N$ in the conditional SMC step, neither of which is feasible on a limited computational budget. 
+
+
+\subsubsection{The solution: ancestor sampling}
+
+An effective solution (where it is possible to implement it) was proposed by Nick Whiteley and is known as ancestor sampling.
+It consists of a simple modification to the resampling step within the conditional SMC algorithm. 
+In the basic CSMC algorithm, at each time step the particles are resampled by multinomial resampling according to their weights. That is, at each time $t$, each non-immortal offspring is assigned a parent as so:
+\begin{equation*}
+\Prob[a_t^{(j)} = i] \propto w_t^{(i)} ,
+\end{equation*}
+while the immortal offspring is deterministically assigned to the immortal parent.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{plots/immresample.jpg}
+\caption{PLACEHOLDER. Interpretation of a resampling weight for the immortal offspring.}
+\label{fig:resample_immortal}
+\end{figure}
+
+In ancestor sampling we do the same thing, except that the immortal particle is also resampled, rather than being deterministically assigned:
+\begin{equation*}
+\Prob[a_t^{(j)} = i] \propto
+\begin{cases}
+w_t^{(i)} &\text{non-immortal particles}\\
+w_t^{(i)} \frac{\gamma_T^\theta((x_{0:t-1}^{(i)}, x_{t:T}^*))}{\gamma_{t-1}^\theta(x_{0:t-1}^{(i)})} &\text{immortal particle} .
+\end{cases}
+\end{equation*}
+The ratio of $\gamma$s can be interpreted as the conditional probability of the trajectory continuing with $x_{t:T}^*$ given is starts with $x_{0:t-1}^{(i)}$ (see Figure \ref{fig:resample_immortal}).
+Using the structure of the hidden Markov model defined earlier, we can rewrite the ratio
+\begin{equation*}
+\frac{\gamma_T^\theta((x_{0:t-1}^{(i)}, x_{t:T}^*))}{\gamma_{t-1}^\theta(x_{0:t-1}^{(i)})}
+\propto f_\theta(x_t^* \mid x_{t-1}^{(i)}) g_\theta(y_t \mid x_t^*) \prod_{s=t}^T f_\theta(x_r^* \mid x_{r-1}^*) g_\theta(y_r \mid x_r^*)
+\propto f_\theta(x_t^* \mid x_{t-1}^{(i)}) .
+\end{equation*}
+\seb{Should the first propto actually be equality?}
+So it looks like it should also be pretty easy to implement ancestor sampling for our model. \seb{Write down the pseudocode to prove it?}
+The only catch is that we need to be able to evaluate $f_\theta$ pointwise, whereas in the basic algorithm we only need to draw samples from $f_\theta$. This will rule out ancestor sampling in some applications.
+
+
+\subsubsection{Why ancestor sampling works}
+
+Ancestor sampling is backward sampling, but only for the immortal trajectory. (It isn't possible to do backward sampling during the forward sweep for any except the immortal trajectory - see that we can't evaluate the required $\gamma$s without knowing the future states, which are known only for the immortal trajectory.)
+We know that backward sampling (on all trajectories, in a separate backward sweep) eradicates ancestral degeneracy. But we've only backward-sampled one trajectory, leaving the other $N-1$ trajectories to do their coalescing thing.
+
+The important point is that ancestor sampling does not prevent ancestral degeneracy (it mitigates it a tiny bit like $1/N$). Ancestral degeneracy is pretty much as severe as ever; the difference is that the trajectories no longer coalesce preferentially onto the immortal trajectory. There is no longer an immortal trajectory to coalesce onto. An illustration of this can be seen in Figure \ref{fig:whyASworks}.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{plots/ancsampworks.jpg}
+\caption{PLACEHOLDER. Illustration of how ancestor sampling prevents coalescence onto the immortal trajectory.}
+\label{fig:whyASworks}
+\end{figure}
+
+Remember, the problem with ancestral degeneracy in particle Gibbs was that it induced strong autocorrelation among consecutive samples of $X_{0:T}$. It isn't a problem that the trajectories coalesce, as long as the thing they coalesce to is able to move, readily exploring the state space. This is achieved with ancestor sampling.
+
+\seb{Why is ancestor sampling even a valid thing to do (i.e. still targetting the right thing)? Extended state space argument?(I think there is one in Lindsten Ch5). No need to go into it here unless there is a simple intuitive explanation to put the reader's mind at rest.}

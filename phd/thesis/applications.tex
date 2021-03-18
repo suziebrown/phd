@@ -57,7 +57,7 @@ Note that some terms in the above expressions may be equal to zero when $w_t^{(i
 Since the above holds for all $i$, applying the tower rule we have
 \begin{equation*}
 \frac{1}{(N)_3} \sum_{i=1}^{N} \Et [(\nu_t^{(i)})_3 ]
-\leq \frac{a^2}{N-2} \frac{1}{(N)_2} \Et [(\nu_t^{(i)})_2 ]
+\leq \frac{a^2}{N-2} \frac{1}{(N)_2} \sum_{i=1}^{N} \Et [(\nu_t^{(i)})_2 ]
 \end{equation*}
 satisfying \eqref{eq:mainthmcond} with $b_N := a^2/(N-2) \rightarrow 0$.
 The result then follows by applying Theorem~\ref{thm:FDDconv}.
@@ -174,7 +174,7 @@ Let $(G_t^{(n,N)})_{t\geq0}$ denote the genealogy of a random sample of $n$ term
 We can apply exactly the proof of Corollary~\ref{thm:stratified}, except that stochastic rounding is more restrictive than stratified resampling, so that the only possible offspring counts (almost surely, conditional on weights) are $\nu_t^{(i)} \in \{ \flnw, \flnw +1 \}$. We simply set $p_{-1}^{(i)} = p_{2}^{(i)} = 0$ in the proof of Corollary~\ref{thm:stratified} to see that
 \begin{equation*}
 \frac{1}{(N)_3} \sum_{i=1}^{N} \Et [(\nu_t^{(i)})_3 ]
-\leq \frac{a^2}{N-2} \frac{1}{(N)_2} \Et [(\nu_t^{(i)})_2 ]
+\leq \frac{a^2}{N-2} \frac{1}{(N)_2} \sum_{i=1}^{N} \Et [(\nu_t^{(i)})_2 ]
 \end{equation*}
 as required.
 The result then follows by applying Theorem~\ref{thm:FDDconv}.
@@ -296,7 +296,7 @@ Let $(G_t^{(n,N)})_{t\geq0}$ denote the genealogy of a random sample of $n$ term
 We can apply exactly the proof of Corollary~\ref{thm:stratified}, except that residual-stratified resampling is more restrictive than stratified resampling, so that the only possible offspring counts (almost surely, conditional on weights) are $\nu_t^{(i)} \in \{ \flnw, \flnw +1, \flnw +2 \}$. We simply set $p_{-1}^{(i)} = 0$ in the proof of Corollary~\ref{thm:stratified} to see that
 \begin{equation*}
 \frac{1}{(N)_3} \sum_{i=1}^{N} \Et [(\nu_t^{(i)})_3 ]
-\leq \frac{a^2}{N-2} \frac{1}{(N)_2} \Et [(\nu_t^{(i)})_2 ]
+\leq \frac{a^2}{N-2} \frac{1}{(N)_2} \sum_{i=1}^{N} \Et [(\nu_t^{(i)})_2 ]
 \end{equation*}
 as required.
 The result then follows by applying Theorem~\ref{thm:FDDconv}.
@@ -426,4 +426,29 @@ By an argument analogous to the conclusion of Lemma \ref{thm:SR_nontriviality}, 
 
 
 \subsection{Effect of ancestor sampling}
-\draft{Argue that ancestor sampling removes bias towards assigning offspring to immortal line, and leaves exactly the same genealogy as standard SMC with multinomial resampling. Most of this section can be lifted from my ancestor sampling note.}
+\draft{Argue that ancestor sampling removes bias towards assigning offspring to immortal line, and leaves exactly the same genealogy as standard SMC with multinomial resampling.}
+\seb{The following was dumped from elsewhere and NEEDS REDRAFTING.}\\
+
+Ancestor sampling interrupts the immortal trajectory, splitting it into disjoint pieces (see Figure \ref{fig:whyASworks}b). So perhaps it doesn't make sense to talk about genealogies, now that we don't have a strictly coalescing process evolving backwards in time.
+
+\seb{Probably need some conditioning e.g.\ on $\mathcal{H}_t$ in the following equations.}
+But let's look at this resampling scheme backwards in time anyway. With the time indices now reversed, and the notation made consistent with our work on genealogies, we have
+\begin{equation*}
+\Prob[a_t^{(j)} = a_i] \propto
+\begin{cases}
+w_t^{(a_i)} q_{t-1}(X_t^{(a_i)}, X_{t-1}^{(j)}) &\text{non-immortal particles}\\
+w_t^{(a_i)} q_{t-1}(X_t^{(a_i)}, X_{t-1}^*) &\text{immortal particle} .
+\end{cases} .
+\end{equation*}
+\seb{Might be neater to avoid bringing in $j$ at all, and write $a_t^{(i)} = a_i$ etc.}
+But when $j$ is the index of the immortal particle, $X_{t-1}^{(j)} = X_{t-1}^*$, so the reverse-time view makes no distinction between the immortal particle and others in terms of how their parents are chosen. We have
+\begin{equation*}
+\Prob[a_t^{(j)} = a_i] \propto
+w_t^{(a_i)} q_{t-1}(X_t^{(a_i)}, X_{t-1}^{(j)})
+\end{equation*}
+for all particles. 
+This is the same probability we get with multinomial resampling in standard SMC.
+
+This viewpoint gives us another intuition about the effect of ancestor sampling: the immortal particle is no longer specially favoured when it comes to producing offspring. In the basic algorithm, the immortal parent produces on average one more offspring at each generation than any other parent (and must produce at least one offspring). It follows that the immortal line cannot die out (is immortal), and also that it is a more likely site for coalescence events (i.e.\ producing at least two offspring) than any other parent. 
+With ancestor sampling, the immortal parent loses this advantage; it is treated just like the other parents. It is no longer a particularly favourable site for coalescing, so the trajectory onto which everyone coalesces might just as well be any of the other $N-1$ trajectories. This prevents the Markov chain getting stuck as in Figure \ref{fig:PG_ancdegen}.
+

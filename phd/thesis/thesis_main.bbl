@@ -19,6 +19,50 @@
 
 \refsection{0}
   \datalist[entry]{nyt/global//global/global}
+    \entry{andrieu2010}{article}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,uniquepart=base,hash=ac7a0b060593ea80a10f55d530432a50}{%
+           family={Andrieu},
+           familyi={A\bibinitperiod},
+           given={Christophe},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=aca5faad8b57b96b59c12fc59d0b6eb4}{%
+           family={Doucet},
+           familyi={D\bibinitperiod},
+           given={Arnaud},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=3fa139cb7d5195e095f29975804e6f31}{%
+           family={Holenstein},
+           familyi={H\bibinitperiod},
+           given={Roman},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley Online Library}%
+      }
+      \strng{namehash}{39c0c746d8c218374cd32883c930e3f5}
+      \strng{fullhash}{39c0c746d8c218374cd32883c930e3f5}
+      \strng{bibnamehash}{39c0c746d8c218374cd32883c930e3f5}
+      \strng{authorbibnamehash}{39c0c746d8c218374cd32883c930e3f5}
+      \strng{authornamehash}{39c0c746d8c218374cd32883c930e3f5}
+      \strng{authorfullhash}{39c0c746d8c218374cd32883c930e3f5}
+      \field{sortinit}{A}
+      \field{sortinithash}{d77c7cdd82ff690d4c3ef13216f92f0b}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of the Royal Statistical Society: Series B (Statistical Methodology)}
+      \field{number}{3}
+      \field{title}{Particle {Markov} Chain {Monte} {Carlo} Methods}
+      \field{volume}{72}
+      \field{year}{2010}
+      \field{pages}{269\bibrangedash 342}
+      \range{pages}{74}
+    \endentry
     \entry{bain2008}{book}{}
       \name{author}{2}{}{%
         {{uniquename=0,uniquepart=base,hash=ad8dea0e5a6f101ab9dc12bb03869671}{%
@@ -605,6 +649,38 @@
       \field{title}{Markov Processes: Characterization and Convergence}
       \field{year}{2009}
     \endentry
+    \entry{evensen1994}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=66b68a5e0b4f5f4ab6eea212262aa674}{%
+           family={Evensen},
+           familyi={E\bibinitperiod},
+           given={Geir},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley Online Library}%
+      }
+      \strng{namehash}{66b68a5e0b4f5f4ab6eea212262aa674}
+      \strng{fullhash}{66b68a5e0b4f5f4ab6eea212262aa674}
+      \strng{bibnamehash}{66b68a5e0b4f5f4ab6eea212262aa674}
+      \strng{authorbibnamehash}{66b68a5e0b4f5f4ab6eea212262aa674}
+      \strng{authornamehash}{66b68a5e0b4f5f4ab6eea212262aa674}
+      \strng{authorfullhash}{66b68a5e0b4f5f4ab6eea212262aa674}
+      \field{sortinit}{E}
+      \field{sortinithash}{f615fb9c6fba11c6f962fb3fd599810e}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Geophysical Research: Oceans}
+      \field{number}{C5}
+      \field{title}{Sequential Data Assimilation with a Nonlinear Quasi-Geostrophic Model Using {Monte} {Carlo} Methods to Forecast Error Statistics}
+      \field{volume}{99}
+      \field{year}{1994}
+      \field{pages}{10143\bibrangedash 10162}
+      \range{pages}{20}
+    \endentry
     \entry{fisher1923}{article}{}
       \name{author}{1}{}{%
         {{uniquename=0,uniquepart=base,hash=2c42cd9f3654a6a775b4e404f842b7b5}{%
@@ -1160,6 +1236,44 @@
       \field{title}{Asymptotic genealogies of interacting particle systems with an application to sequential {M}onte {C}arlo}
       \field{type}{Mathematics e-print}
       \field{year}{2018}
+    \endentry
+    \entry{lindsten2013}{article}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,uniquepart=base,hash=0274b443331930dc611dd367a7c198a5}{%
+           family={Lindsten},
+           familyi={L\bibinitperiod},
+           given={Fredrik},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=7f2b2564530f33fef41fee824ebf0a4c}{%
+           family={Sch{ö}n},
+           familyi={S\bibinitperiod},
+           given={Thomas\bibnamedelima B},
+           giveni={T\bibinitperiod\bibinitdelim B\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Now Publishers, Inc.}%
+      }
+      \strng{namehash}{4819f125757232201c6029fa088a6362}
+      \strng{fullhash}{4819f125757232201c6029fa088a6362}
+      \strng{bibnamehash}{4819f125757232201c6029fa088a6362}
+      \strng{authorbibnamehash}{4819f125757232201c6029fa088a6362}
+      \strng{authornamehash}{4819f125757232201c6029fa088a6362}
+      \strng{authorfullhash}{4819f125757232201c6029fa088a6362}
+      \field{sortinit}{L}
+      \field{sortinithash}{2c7981aaabc885868aba60f0c09ee20f}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Foundations and Trends in Machine Learning}
+      \field{number}{1}
+      \field{title}{Backward Simulation Methods for {Monte} {Carlo} Statistical Inference}
+      \field{volume}{6}
+      \field{year}{2013}
+      \field{pages}{1\bibrangedash 143}
+      \range{pages}{143}
     \endentry
     \entry{liu1998}{article}{}
       \name{author}{2}{}{%
