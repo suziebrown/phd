@@ -4,9 +4,9 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\nonumberline Abstract}{vi}{chapter*.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\nonumberline List of Acronyms}{vii}{chapter*.6}
+\contentsline {chapter}{\nonumberline List of Abbreviations}{vii}{chapter*.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\nonumberline Notation}{viii}{chapter*.7}
+\contentsline {chapter}{\nonumberline Notation and Conventions}{viii}{chapter*.7}
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
 \defcounter {refsection}{0}\relax 
@@ -66,45 +66,45 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.4.3}Examples}{11}{subsection.2.4.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Multinomial resampling}{11}{section*.18}
+\contentsline {subsubsection}{\nonumberline Multinomial resampling}{11}{section*.19}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Residual resampling}{12}{section*.19}
+\contentsline {subsubsection}{\nonumberline Residual resampling}{12}{section*.20}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Stratified resampling}{12}{section*.20}
+\contentsline {subsubsection}{\nonumberline Stratified resampling}{13}{section*.21}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Systematic resampling}{13}{section*.21}
+\contentsline {subsubsection}{\nonumberline Systematic resampling}{13}{section*.22}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Variance}{13}{section*.23}
+\contentsline {subsubsection}{\nonumberline Variance}{15}{section*.24}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Star discrepancy}{15}{section*.24}
+\contentsline {subsubsection}{\nonumberline Star discrepancy}{15}{section*.25}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Support of offspring numbers}{15}{section*.25}
+\contentsline {subsubsection}{\nonumberline Support of offspring numbers}{15}{section*.26}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Permutation invariance}{15}{section*.26}
+\contentsline {subsubsection}{\nonumberline Permutation invariance}{16}{section*.27}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Degeneracy under equal weights}{15}{section*.27}
+\contentsline {subsubsection}{\nonumberline Degeneracy under equal weights}{16}{section*.28}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Exchangeability}{16}{section*.28}
+\contentsline {subsubsection}{\nonumberline Exchangeability}{16}{section*.29}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Computational complexity}{16}{section*.29}
+\contentsline {subsubsection}{\nonumberline Computational complexity}{17}{section*.30}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Optimal resampling}{16}{section*.30}
+\contentsline {subsubsection}{\nonumberline Optimal resampling}{17}{section*.31}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.4.4}Stochastic rounding}{17}{subsection.2.4.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.5}Conditional SMC}{17}{section.2.5}
+\contentsline {section}{\numberline {2.5}Conditional SMC}{18}{section.2.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.5.1}Particle MCMC}{17}{subsection.2.5.1}
+\contentsline {subsection}{\numberline {2.5.1}Particle MCMC}{18}{subsection.2.5.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.5.2}Particle Gibbs algorithm}{17}{subsection.2.5.2}
+\contentsline {subsection}{\numberline {2.5.2}Particle Gibbs algorithm}{18}{subsection.2.5.2}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.5.3}Ancestor sampling}{19}{subsection.2.5.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Ancestral degeneracy leads to poor mixing}{19}{section*.31}
+\contentsline {subsubsection}{\nonumberline Ancestral degeneracy leads to poor mixing}{20}{section*.32}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline The solution: ancestor sampling}{21}{section*.33}
+\contentsline {subsubsection}{\nonumberline The solution: ancestor sampling}{21}{section*.34}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Why ancestor sampling works}{22}{section*.35}
+\contentsline {subsubsection}{\nonumberline Why ancestor sampling works}{22}{section*.36}
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {3}Limits}{24}{chapter.3}
 \defcounter {refsection}{0}\relax 

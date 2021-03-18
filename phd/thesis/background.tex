@@ -420,6 +420,38 @@ However, the majority of resampling schemes in the literature fit within Definit
 \draft{Tour of the key resampling schemes (multinomial, residual-*, stratified, systematic, and the worst possible scheme). Comparison of properties of these, existing results comparing schemes. Implementation considerations. Theoretical justification (or lack of). Mention computational complexity.}\\
 \seb{This whole section was dumped from elsewhere and needs redrafting.}
 
+\begin{table}[ht]
+\centering
+\begin{tabular}{ l | c c c c c }
+\hline\hline
+& \thead{support of $\nu_t^{(i)}$ given\\ $ k/N \leq w_t^{(i)} < (k+1)/N$} 
+        & \thead{stochastic\\ rounding?}       
+        & \thead{degenerate if\\ $w_t^{(1:N)} =$\\ $(1,\dots,1)/N$?} 
+        & \thead{sensitive to\\ permutations\\ of weights?} 
+        & \thead{number of\\ PRNG calls} \\
+\hline
+\texttt{multi} & $\{0,\dots,N\}$ & $\times$ & $\times$ & $\times$ & $N$ \\
+\texttt{star} & $\{0, N\}$ & $\times$ & $\times$ 
+        & $\times$ & $1$ \\
+\texttt{strat} & $\{k-1, k, k+1, k+2\}$ & $\times$ & $\checkmark$ 
+        & $\checkmark$ & $N$ \\
+\texttt{syst} & $\{k, k+1\}$ & $\checkmark$ & $\checkmark$ 
+        & $\checkmark$ & $1$ \\
+\texttt{res-multi} & $\{k,\dots,N\}$ & $\times$ & $\checkmark$ 
+        & $\checkmark$ & $\leq N$ \\
+\texttt{res-star} & $\{k, N\}$ & $\times$ & $\checkmark$ 
+        & & $1$ \\
+\texttt{res-strat} & $\{k, k+1, k+2\}$ & $\times$ & $\checkmark$ 
+        & $\checkmark$ & $\leq N$ \\
+\texttt{res-syst} & $\{k, k+1\}$ & $\checkmark$ & $\checkmark$ 
+        & $\checkmark$ & $1$ \\
+\texttt{ssp} & & & & & \\
+\texttt{branching} & & & & & \\
+\hline\hline
+\end{tabular}
+\caption{Properties of resampling schemes}
+\end{table} 
+ 
  
 \subsubsection{Multinomial resampling}
 Multinomial resampling \parencite{gordon1993,efron1994} is one of the simplest resampling schemes.

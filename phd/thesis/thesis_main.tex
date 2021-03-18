@@ -18,10 +18,13 @@
 %%% GENERAL FORMATTING
 %%%Probably best to put formatting commands in a separate file. Consider changing: fonts, margins (must be at least 4cm at left and 1.5cm around edges), header/footer, references/citations, algorithms, captions, paragraph indents, chapter/equation numbering, ..
 \usepackage[a4paper, inner=4cm, outer=2cm, top=3cm, bottom=3cm]{geometry}
-\renewcommand{\arraystretch}{1.2}
 \usepackage{enumitem}
 \usepackage[nobreak]{mdframed} % The nobreak option should probably be set locally in the final document, since breaks may be required in longer theorems.
 \renewcommand{\sfdefault}{put} % this isn't actually a sans font, so might be better to use something like phv (helvetica), but I rather like this font for headings.
+
+%%% TABLES
+\renewcommand{\arraystretch}{1.4}
+\usepackage{makecell}
 
 %%% GRAPHICS
 \usepackage{graphicx}
@@ -131,7 +134,7 @@ Parts of this thesis have been published by the author:
 
 %%% A list of acronyms must be placed either here or at the end of the thesis, and its location indicated in the ToC.
 
-\chapter[List of Acronyms]{List of Acronyms}
+\chapter{List of Abbreviations}
 \begin{tabular}{p{0.1\textwidth} p{0.8\textwidth}}
 SMC & sequential Monte Carlo \\
 i.i.d. & independent and identically distributed \\
@@ -139,7 +142,7 @@ MRCA & most recent common ancestor \\
 \end{tabular}
 
 
-\chapter[Notation]{Notation and conventions}
+\chapter{Notation and Conventions}
 \begin{tabular}{p{0.1\textwidth} p{0.8\textwidth}}
 $\mathbb{N}$ & the natural numbers starting from one, $\{1,2,\dots \}$ \\
 $\mathbb{N}_0$ & the natural numbers starting from zero, $\{0,1,2,\dots \}$ \\
