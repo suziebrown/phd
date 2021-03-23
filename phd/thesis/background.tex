@@ -165,7 +165,7 @@ A particularly attractive feature of the $n$-coalescent is its tractability; its
 It turns out also to be extremely useful as a limiting distribution in population genetics, including the genealogies of a wide range of population models in its domain of attraction (Section \ref{sec:popgenmodels}).
 
 
-\subsection{Properties}\label{sec:KCproperties}
+\subsection{Properties of Kingman's coalescent}\label{sec:KCproperties}
 The simplicity of $Q$ allows various properties of the $n$-coalescent to be studied analytically. \seb{Refer to more exhaustive studies of the properties in the literature, e.g.\ \textcite[Section 1.2]{durrett2008}.}
 Starting with $n$ blocks, exactly $n-1$ coalescences are required to reach the absorbing state where all blocks have coalesced, known in the population genetics literature as the \emph{most recent common ancestor} (MRCA).
 
@@ -224,6 +224,7 @@ t_i \sim \Exp\left( \binom{i}{2} \right) .
 The partial sum $T_k := \sum_{i=k+1}^n t_i$ gives the total time up to the $(n-k)^{th}$ coalescence event, i.e.\ the first time at which there are only $k$ lineages remaining out of the initial $n$ (see Figure~\ref{fig:KC_timedefns}).
 The partial sums, being sums of independent Exponential random variables, have HyperExponential distributions.
 
+\seb{Refer back to the following three properties later on with reference to their relevance in SMC.}
 
 \subsubsection{Time to MRCA}
 Of particular interest is the tree height or time to the most recent common ancestor, $T_{MRCA} := T_1$.
@@ -381,11 +382,12 @@ Nor is our model neutral: the resampling distribution depends on the weight of e
 
 
 \section{Resampling}
-
-\subsection{Definition}
 As we have seen, resampling is necessary within SMC to ``reset'' the weights in order to prevent weight degeneracy.
 The basic role of a resampling scheme is to map the continuous weights to discrete offspring counts, in some ``sensible'' way (Definition~\ref{defn:resampling}).
-There are other considerations when choosing between the many possible resampling schemes; some of these are explored in Section~\ref{sec:goodresampling}, and some popular choices of resampling scheme are described in Section~\ref{sec:examples_resamplingschemes}.
+The choice of resampling scheme is explored in detail in this section.
+%There are other considerations when choosing between the many possible resampling schemes; some of these are explored in Section~\ref{sec:resampling_properties}, and some popular choices of resampling scheme are described in Section~\ref{sec:examples_resamplingschemes}.
+
+\subsection{Definition}
 
 \begin{defn}\label{defn:resampling}
 For our purposes, a valid resampling scheme is a stochastic function mapping weights 
@@ -404,20 +406,21 @@ $ \E[ \nu_t^{(i)} \mid w_t^{(i)} ] = N w_t^{(i)} $ for all $i$.
 \end{defn}
 It is possible to design resampling schemes that violate these properties.
 For example, a scheme of \textcite{liu1998} uses the square roots of the weights for resampling, then corrects by setting non-uniform weights after resampling (violating conditions \ref{item:resampling_property2} and \ref{item:resampling_property3}).
+\seb{\textcite[p.890, point (d)]{fearnhead2003} also appears to resample such that the weights are not uniform after resampling.}
+%
 Resampling different numbers of particles in different iterations (violating condition \ref{item:resampling_property1}) is of course possible, but we typically have a fixed limit on computational resources, in which case it makes sense to simulate the maximum feasible number of particles $N$ at every iteration.
+%
 Deterministic resampling schemes (which cannot generally be unbiased, violating condition \ref{item:resampling_property3}) have been used by some authors. These include schemes based on optimal transport \parencite{reich2013, myers2021, corenflos2021} and the importance support points resampling of \textcite{huang2020}.
 However, the majority of resampling schemes in the literature fit within Definition~\ref{defn:resampling}, and it is not typically advantageous to violate the properties \ref{item:resampling_property1}--\ref{item:resampling_property3}.
 
-
-
-\subsection{What makes a good resampling scheme?}\label{sec:goodresampling}
-\draft{Low-variance: variance of what? Different criteria/ definitions of optimality. Negative association. Link back to adaptive resampling: interaction between adaptive and low-variance resampling.}
-
+Within Definition~\ref{defn:resampling} there is still a great deal of flexibility. Many different resampling schemes have been proposed in the literature, some of which perform better than others.
+ Section~\ref{sec:examples_resamplingschemes} introduces some important resampling schemes, and their properties are discussed in Section~\ref{sec:resampling_properties}. 
+These are summarised in Table~\ref{tab:resampling_properties}.
 
 
 
 \subsection{Examples}\label{sec:examples_resamplingschemes}
-\draft{Tour of the key resampling schemes (multinomial, residual-*, stratified, systematic, and the worst possible scheme). Comparison of properties of these, existing results comparing schemes. Implementation considerations. Theoretical justification (or lack of). Mention computational complexity.}\\
+\draft{Tour of the key resampling schemes (multinomial, residual-*, stratified, systematic, and the worst possible scheme).}\\
 \seb{This whole section was dumped from elsewhere and needs redrafting.}
 
 \begin{table}[ht]
@@ -428,7 +431,7 @@ However, the majority of resampling schemes in the literature fit within Definit
         & \thead{stochastic\\ rounding?}       
         & \thead{degenerate if\\ $w_t^{(1:N)} =$\\ $(1,\dots,1)/N$?} 
         & \thead{sensitive to\\ permutations\\ of weights?} 
-        & \thead{number of\\ PRNG calls} \\
+        & \thead{PRNG\\ calls} \\
 \hline
 \texttt{multi} & $\{0,\dots,N\}$ & $\times$ & $\times$ & $\times$ & $N$ \\
 \texttt{star} & $\{0, N\}$ & $\times$ & $\times$ 
@@ -438,18 +441,19 @@ However, the majority of resampling schemes in the literature fit within Definit
 \texttt{syst} & $\{k, k+1\}$ & $\checkmark$ & $\checkmark$ 
         & $\checkmark$ & $1$ \\
 \texttt{res-multi} & $\{k,\dots,N\}$ & $\times$ & $\checkmark$ 
-        & $\checkmark$ & $\leq N$ \\
+        & $\times$ & $\leq N$ \\
 \texttt{res-star} & $\{k, N\}$ & $\times$ & $\checkmark$ 
-        & & $1$ \\
+        & $\times$ & $1$ \\
 \texttt{res-strat} & $\{k, k+1, k+2\}$ & $\times$ & $\checkmark$ 
         & $\checkmark$ & $\leq N$ \\
 \texttt{res-syst} & $\{k, k+1\}$ & $\checkmark$ & $\checkmark$ 
         & $\checkmark$ & $1$ \\
-\texttt{ssp} & & & & & \\
-\texttt{branching} & & & & & \\
+\texttt{ssp} & $\{k, k+1\}$? & $\checkmark$? & $\checkmark$? & $\checkmark$? & ? \\
+\texttt{branching} & $\{k, k+1\}$? & $\checkmark$? & $\checkmark$? & $\checkmark$? & ? \\
 \hline\hline
 \end{tabular}
 \caption{Properties of resampling schemes}
+\label{tab:resampling_properties}
 \end{table} 
  
  
@@ -472,7 +476,11 @@ Explicitly, the parental index assigned to child $i$ is the index $a_i$ satisfyi
 \sum_{j=1}^{a_i -1} w_t^{(j)} \leq U_i \leq \sum_{j=1}^{a_i} w_t^{(j)}
 \end{equation}
 This is illustrated in Figure \ref{fig:resampling_mn}. 
-Note that there exist more efficient methods to sample from a Multinomial distribution, so the inversion method may not be used in practice.
+%Note that there exist more efficient methods to sample from a Multinomial distribution, so the inversion method may not be used in practice.
+
+Fast implementations of multinomial resampling rely on the $U_i$s being sorted, which speeds up the search step \eqref{eq:syst_strat_resampling}. Sorting $N$ numbers is an $O(N\log N)$ operation, but in fact we can directly sample the order statistics of a $\Unif[0,1]$ distribution \seb{[citations: \textcite{chopin2020}, and a different (or possibly equivalent) method in \textcite{hol2006}] ---explore whether these methods are equivalent}.
+This allows multinomial resampling to be implemented at $O(N)$ cost, with the side-effect that the sampled ancestral indices will be ordered.
+
 
 \subsubsection{Residual resampling}
 Residual resampling is described in \textcite{liu1998} and also in \textcite{whitley1994} where it is called ``remainder stochastic sampling''.
@@ -483,6 +491,7 @@ This yields a vector of offspring counts
 \nu_t^{(1:N)} \eqdist \lfloor N w_t^{(1:N)} \rfloor +  \operatorname{Multinomial}(R, (N w_t^{(1:N)} - \lfloor N w_t^{(1:N)}\rfloor)/R) .
 \end{equation*}
 The deterministic part ensures that every particle with weight $>1/N$ is guaranteed to survive. This is a desirable property as it prevents the random loss of high-weighted particles.
+
 
 \subsubsection{Stratified resampling}
 Stratified resampling is introduced in \cite{kitagawa1996}.
@@ -497,6 +506,7 @@ The parents are then assigned as in \eqref{eq:syst_strat_resampling}.
 (Of course this means that the offspring distribution is no longer Multinomial, since parental indices are not chosen independently.)
 This scheme ensures that the samples are ``well spread out'', again reducing the probability of randomly losing high-weighted particles.
 The method is illustrated in Figure \ref{fig:resampling_stratified}.
+
 
 \subsubsection{Systematic resampling}
 Systematic resampling is described in \textcite{carpenter1999} and also in \textcite{whitley1994} where it is called ``stochastic universal sampling''.
@@ -514,6 +524,7 @@ This scheme again ensures the random numbers are ``well spread out'', even more 
 Systematic resampling is often preferred among practitioners because it is extremely easy to implement and also computationally efficient, requiring only one random number to be generated.
 
 However, this scheme is known to exhibit pathological behaviour in some cases due to its dependence on the ordering of the subintervals \parencite{douc2005}. Such behaviour can be avoided by randomly permuting the intervals before sampling, and this is the recommended practice. 
+
 
 \begin{figure}
 \centering
@@ -636,6 +647,30 @@ However, this scheme is known to exhibit pathological behaviour in some cases du
 \subref{fig:resampling_systematic} Use only the first draw and transform it to a sample from $\Unif(0,0.25)$. For the subsequent samples, add 0.25 each time to obtain a sample in each interval. In this example the sampled offspring counts are $(1,0,2,1)$.}
 \end{figure}
 
+\subsubsection{Star resampling}
+For the sake of comparison, we also construct a resampling scheme which is the worst possible (in some sense).
+Sample
+\begin{equation*}
+a_t \sim \Cat( \{1,\dots, N\}, w_t^{(1:N)} )
+\end{equation*}
+and set $a_t^{(i)} = a_t$ for all $i$.
+The resulting offspring counts are all equal to zero except for $\nu_t^{(a_t)}$, which is equal to $N$.
+This resampling scheme is indeed unbiased, since each offspring count has marginal distribution
+\begin{equation*}
+\nu_t^{(i)}  \mid w_t^{(1:N)} 
+= \begin{cases}
+0 & \text{w.p. } 1-w_t^{(i)} \\
+N & \text{w.p. } w_t^{(i)} .
+\end{cases}
+\end{equation*}
+We also see these offspring counts have the highest possible marginal variance, subject to $\E[ \nu_t^{(i)}  \mid w_t^{(i)} ] = Nw_t^{(i)}$ and $\nu_t^{(i)} \in \{0,\dots,N\}$.
+
+I call this scheme \emph{star resampling} because the parent-offspring relationships at each iteration form a star graph.
+
+
+\subsection{Properties}\label{sec:resampling_properties}
+\draft{Low-variance: variance of what? Different criteria/ definitions of optimality. Link back to adaptive resampling: interaction between adaptive and low-variance resampling. Comparison of properties of these, existing results comparing schemes. Implementation considerations. Theoretical justification (or lack of). Mention computational complexity.}
+\seb{This section was dumped from elsewhere and most of its subsections need redrafting.}
 
 \subsubsection{Variance}
 The most straightforward choice of resampling scheme, and also the easiest to analyse, is multinomial. However, multinomial resampling is well known to be sub-optimal in terms of the resulting Monte Carlo variance, and is rarely used in practice.
@@ -645,15 +680,21 @@ The variance we are referring to here is the variance of Monte Carlo estimators 
 \begin{equation*}
 \V\left[ \frac{1}{N} \sum_{i=1}^N f(X_t^{(i)}) \middle| \mathcal{F}_{t-1} \right]
 \end{equation*}
+\seb{I'm not sure $\mathcal{F}$ is the right filtration; we need to condition on positions etc. as well as offspring counts for the calculations to work? And don't we want a forward-in-time filtration to calculate the one-step variance? Use $\mathcal{G}_t$ as in DCM05 and add it to the notation list too.}
 The authors remark that, while the variance resulting from systematic resampling is not provably lower than that of multinomial resampling, empirical performance is comparable among residual, stratified and systematic resampling.
+
+
+\subsubsection{Negative association}
+\draft{Definition from \textcite{gerber2017}. Why is it a good criterion? Which resampling schemes do/don't satisfy it? Also, this could be added as a column in Table~\ref{tab:resampling_properties}.}
 
 
 \subsubsection{Star discrepancy}
 \draft{Something about syst vs. strat vs. mn in terms of star discrepancy (define that). See \textcite{hol2006} for inspiration.}
+\seb{Does not appear in Table~\ref{tab:resampling_properties} since it only makes sense for resampling schemes based on inversion sampling.}
 
 
 \subsubsection{Support of offspring numbers}
-Let us consider the support of the marginal offspring distributions in each scheme, given the corresponding weight. Condition on the $i^{th}$ weight lying in the interval $w_t{(i)} \in [k/N, (k+1)/N]$, but leave the other weights unknown. By considering the best and worst cases for each scheme, we have: 
+Let us consider the support of the marginal offspring distributions in each scheme, given the corresponding weight. Condition on the $i^{th}$ weight lying in the interval $w_t^{(i)} \in [k/N, (k+1)/N]$, but leave the other weights unknown. By considering the best and worst cases for each scheme, we have: 
 \begin{description}
 \item[Multinomial:] $\nu_t^{(i)} \in \{0,\dots, N\}$
 \item[Residual:] $\nu_t^{(i)} \in \{k,\dots, k+R\} \subseteq \{k,\dots, N\}$
@@ -665,12 +706,18 @@ Residual resampling ensures that good particles do not die out, but still allows
 Stratified resampling is more restrictive, although it allows the possibility of a particle with weight $>1/N$ leaving no offspring.
 Systematic resampling is more restrictive still, allowing the number of offspring of each particle to vary from its expected value by no more than one.
 
+
 \subsubsection{Permutation invariance}
 A strange property of stratified and systematic resampling is that they are sensitive to the order in which the subintervals are placed. For example, in Figures \ref{fig:resampling_stratified} and \ref{fig:resampling_systematic} if the intervals $w_2$ and $w_4$ were swapped, the number of offspring assigned to particles 2 and 4 would be swapped in each case. 
 We can also see that because $w_1$ has weight $\geq 1/N$ and is placed first, it is guaranteed at least one offspring.
 
 This property can lead to pathological behaviour, but is easily avoided by applying a random permutation to the order of the subintervals.
 \textcite{gerber2017} also propose a variation on systematic resampling that avoids this property.
+
+
+\subsubsection{Sorting}
+\draft{Results from \textcite{gerber2017} about benefits of sorting. What about sorting instead by weights?}
+
 
 \subsubsection{Degeneracy under equal weights}
 Suppose we somehow end up in the situation where all the weights are equal (i.e.\ $w_t^{(i)} = 1/N$ for all $i$).
@@ -680,6 +727,7 @@ Stratified and systematic resampling will have the same result: the intervals fo
 
 However, for stratified resampling, the formulation of \textcite{whitley1994} avoids this behaviour. He imagines subdivisions of a circle rather than an interval, and then ``spins the roulette wheel'' around it, which shifts the sampling intervals by a random amount and thus prevents this degeneracy.
 
+
 \subsubsection{Exchangeability}
 We will call a resampling scheme exchangeable if the resulting distribution of parental indices is invariant under permutations of the children. To put it another way, each child chooses its parent from the same marginal distribution.
 
@@ -687,10 +735,12 @@ It is clear that multinomial resampling is exchangeable since in this case the p
 
 Stratified and systematic resampling are clearly not exchangeable since, for instance, child 1 is more likely to choose parent 1 than child $N$ is. However, this is merely a feature of the arbitrary ordering of the sampling steps: exchangeability can easily be reintroduced by applying a random permutation to the vector of parental indices after sampling.
 The same goes for residual resampling.
+\seb{This property will not appear in Table~\ref{tab:resampling_properties} since it depends upon the particular implementation.}
 
 
 \subsubsection{Computational complexity}
-All of the resampling algorithms discussed above can be implemented in $O(N)$ operations.
+All of the resampling algorithms discussed in Section~\ref{sec:examples_resamplingschemes} can be implemented in $O(N)$ operations.
+\seb{Even \texttt{star} and \texttt{SSP} and \texttt{branching}? If it turns out to differ depending on resampling scheme then include it as a column in Table~\ref{tab:resampling_properties}.}
 Considering the complexity of each operation, \textcite{hol2004,hol2006} suggest that systematic resampling is fastest because it only requires one pseudo-random number generation, and multinomial resampling is slower than stratified resampling because of the transformations required. Residual resampling is hard to compare directly because a random fraction of the operations are deterministic, so the number of pseudo-random numbers required is less than $N$.
 This analysis was backed up by simulation experiments.
 However, the analysis of per-particle cost is sensitive to the particular implementation of each resampling scheme, the system implementation of pseudo-random number generation and arithmetic operations, and the hardware used.
@@ -698,7 +748,7 @@ However, the analysis of per-particle cost is sensitive to the particular implem
 
 \subsubsection{Optimal resampling}
 \textcite{crisan1999} introduce another resampling scheme based on a branching process, which they show to be optimal in some sense. However, their algorithm is not widely used in practice because it is much more complicated to implement than alternatives like systematic resampling which perform just as well empirically, and share some of its optimality properties \parencite{bain2008}. 
- 
+\seb{Possibly add an ``optimality'' column in Table~\ref{tab:resampling_properties} containing in what sense a scheme might be considered optimal.}
  
  
 
@@ -718,6 +768,7 @@ Y_i \mid X_i =
 
 By construction, $\E(Y_i) = X_i$ for each $i$. Taking $X$ to be $N$ times the vector of particle weights, we can therefore use stochastic rounding to construct a valid resampling scheme, under the further constraint that $Y_1 + \dots + Y_N = N$.
 Several ways to enforce this constraint on the joint distribution have been proposed, including systematic resampling, residual resampling with systematic residuals, the branching system of \textcite{crisan1997}, and the Srinivasan sampling process resampling introduced in \textcite{gerber2017}.
+\seb{Properties shared by all SRs: support of offspring counts, degeneracy under equal weights, others?}
 
 
 
@@ -734,7 +785,7 @@ One popular particle MCMC algorithm is particle marginal Metropolis-Hastings \pa
 The following exposition will focus on another particle MCMC algorithm, namely the particle Gibbs sampler \parencite{andrieu2010}[Section 2.4.3], which is more interesting from the point-of-view of SMC genealogies.
 
 The following scenario illustrates the power of particle MCMC, and is a good model to have in mind as we go on to discuss particle Gibbs and ancestor sampling.
-\draft{Include the model from the start of my ancestor sampling note. Emphasise that the inference itself is not sequential; we are targeting one static posterior distribution, on a fixed time horizon.}
+\draft{Emphasise that the inference itself is not sequential; we are targeting one static posterior distribution, on a fixed time horizon.}
 
 
 \subsection{Particle Gibbs algorithm}

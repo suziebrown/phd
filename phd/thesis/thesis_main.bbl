@@ -332,6 +332,39 @@
       \field{pages}{2\bibrangedash 7}
       \range{pages}{6}
     \endentry
+    \entry{chopin2020}{book}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,uniquepart=base,hash=23c0c7d947415c68f4949167db1ca938}{%
+           family={Chopin},
+           familyi={C\bibinitperiod},
+           given={Nicolas},
+           giveni={N\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=50a963e7060e271c091dfda34ee18cc5}{%
+           family={Papaspiliopoulos},
+           familyi={P\bibinitperiod},
+           given={Omiros},
+           giveni={O\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{6d4161a2d8b0f9c967a9d330d7e040e5}
+      \strng{fullhash}{6d4161a2d8b0f9c967a9d330d7e040e5}
+      \strng{bibnamehash}{6d4161a2d8b0f9c967a9d330d7e040e5}
+      \strng{authorbibnamehash}{6d4161a2d8b0f9c967a9d330d7e040e5}
+      \strng{authornamehash}{6d4161a2d8b0f9c967a9d330d7e040e5}
+      \strng{authorfullhash}{6d4161a2d8b0f9c967a9d330d7e040e5}
+      \field{sortinit}{C}
+      \field{sortinithash}{963e9d84a3da2344e8833203de5aed05}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{An Introduction to Sequential {Monte} {Carlo}}
+      \field{year}{2020}
+    \endentry
     \entry{corenflos2021}{report}{}
       \name{author}{4}{}{%
         {{uniquename=0,uniquepart=base,hash=500462c41dd886082f1f8861030c76c6}{%
@@ -680,6 +713,44 @@
       \field{year}{1994}
       \field{pages}{10143\bibrangedash 10162}
       \range{pages}{20}
+    \endentry
+    \entry{fearnhead2003}{article}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,uniquepart=base,hash=b2d637bf71149fe879204a2bb21e932f}{%
+           family={Fearnhead},
+           familyi={F\bibinitperiod},
+           given={Paul},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=78a1e41bfddabe1075f6c2999b47d591}{%
+           family={Clifford},
+           familyi={C\bibinitperiod},
+           given={Peter},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley Online Library}%
+      }
+      \strng{namehash}{24b6bb1dd514add0e60e3c08fce64811}
+      \strng{fullhash}{24b6bb1dd514add0e60e3c08fce64811}
+      \strng{bibnamehash}{24b6bb1dd514add0e60e3c08fce64811}
+      \strng{authorbibnamehash}{24b6bb1dd514add0e60e3c08fce64811}
+      \strng{authornamehash}{24b6bb1dd514add0e60e3c08fce64811}
+      \strng{authorfullhash}{24b6bb1dd514add0e60e3c08fce64811}
+      \field{sortinit}{F}
+      \field{sortinithash}{669c706c6f1fbf3b5a83d26f1d9e9e72}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of the Royal Statistical Society: Series B (Statistical Methodology)}
+      \field{number}{4}
+      \field{title}{On-line Inference for Hidden {Markov} Models via Particle Filters}
+      \field{volume}{65}
+      \field{year}{2003}
+      \field{pages}{887\bibrangedash 899}
+      \range{pages}{13}
     \endentry
     \entry{fisher1923}{article}{}
       \name{author}{1}{}{%

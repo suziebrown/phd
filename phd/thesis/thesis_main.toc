@@ -62,94 +62,100 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.4.1}Definition}{10}{subsection.2.4.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.4.2}What makes a good resampling scheme?}{11}{subsection.2.4.2}
-\defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.4.3}Examples}{11}{subsection.2.4.3}
+\contentsline {subsection}{\numberline {2.4.2}Examples}{11}{subsection.2.4.2}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\nonumberline Multinomial resampling}{11}{section*.19}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Residual resampling}{12}{section*.20}
+\contentsline {subsubsection}{\nonumberline Residual resampling}{13}{section*.20}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\nonumberline Stratified resampling}{13}{section*.21}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\nonumberline Systematic resampling}{13}{section*.22}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Variance}{15}{section*.24}
+\contentsline {subsubsection}{\nonumberline Star resampling}{15}{section*.24}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Star discrepancy}{15}{section*.25}
+\contentsline {subsection}{\numberline {2.4.3}Properties}{15}{subsection.2.4.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Support of offspring numbers}{15}{section*.26}
+\contentsline {subsubsection}{\nonumberline Variance}{15}{section*.25}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Permutation invariance}{16}{section*.27}
+\contentsline {subsubsection}{\nonumberline Negative association}{16}{section*.26}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Degeneracy under equal weights}{16}{section*.28}
+\contentsline {subsubsection}{\nonumberline Star discrepancy}{16}{section*.27}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Exchangeability}{16}{section*.29}
+\contentsline {subsubsection}{\nonumberline Support of offspring numbers}{16}{section*.28}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Computational complexity}{17}{section*.30}
+\contentsline {subsubsection}{\nonumberline Permutation invariance}{16}{section*.29}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Optimal resampling}{17}{section*.31}
+\contentsline {subsubsection}{\nonumberline Sorting}{17}{section*.30}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.4.4}Stochastic rounding}{17}{subsection.2.4.4}
+\contentsline {subsubsection}{\nonumberline Degeneracy under equal weights}{17}{section*.31}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\nonumberline Exchangeability}{17}{section*.32}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\nonumberline Computational complexity}{17}{section*.33}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\nonumberline Optimal resampling}{18}{section*.34}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.4.4}Stochastic rounding}{18}{subsection.2.4.4}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {2.5}Conditional SMC}{18}{section.2.5}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.5.1}Particle MCMC}{18}{subsection.2.5.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.5.2}Particle Gibbs algorithm}{18}{subsection.2.5.2}
+\contentsline {subsection}{\numberline {2.5.2}Particle Gibbs algorithm}{19}{subsection.2.5.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.5.3}Ancestor sampling}{19}{subsection.2.5.3}
+\contentsline {subsection}{\numberline {2.5.3}Ancestor sampling}{20}{subsection.2.5.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Ancestral degeneracy leads to poor mixing}{20}{section*.32}
+\contentsline {subsubsection}{\nonumberline Ancestral degeneracy leads to poor mixing}{21}{section*.35}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline The solution: ancestor sampling}{21}{section*.34}
+\contentsline {subsubsection}{\nonumberline The solution: ancestor sampling}{22}{section*.37}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Why ancestor sampling works}{22}{section*.36}
+\contentsline {subsubsection}{\nonumberline Why ancestor sampling works}{23}{section*.39}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {3}Limits}{24}{chapter.3}
+\contentsline {chapter}{\numberline {3}Limits}{25}{chapter.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.1}Encoding genealogies}{24}{section.3.1}
+\contentsline {section}{\numberline {3.1}Encoding genealogies}{25}{section.3.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.1.1}The genealogical process}{24}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.1}The genealogical process}{25}{subsection.3.1.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.1.2}Time scale}{24}{subsection.3.1.2}
+\contentsline {subsection}{\numberline {3.1.2}Time scale}{25}{subsection.3.1.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.1.3}Transition probabilities}{26}{subsection.3.1.3}
+\contentsline {subsection}{\numberline {3.1.3}Transition probabilities}{27}{subsection.3.1.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.2}An existing limit theorem}{29}{section.3.2}
+\contentsline {section}{\numberline {3.2}An existing limit theorem}{30}{section.3.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.3}A new limit theorem}{29}{section.3.3}
+\contentsline {section}{\numberline {3.3}A new limit theorem}{30}{section.3.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.3.1}Proof of theorem}{30}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.1}Proof of theorem}{31}{subsection.3.3.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {4}Applications}{31}{chapter.4}
+\contentsline {chapter}{\numberline {4}Applications}{32}{chapter.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.1}Multinomial resampling}{31}{section.4.1}
+\contentsline {section}{\numberline {4.1}Multinomial resampling}{32}{section.4.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.2}Stratified resampling}{31}{section.4.2}
+\contentsline {section}{\numberline {4.2}Stratified resampling}{32}{section.4.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.3}Stochastic rounding}{33}{section.4.3}
+\contentsline {section}{\numberline {4.3}Stochastic rounding}{34}{section.4.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.4}Residual resampling with stratified residuals}{36}{section.4.4}
+\contentsline {section}{\numberline {4.4}Residual resampling with stratified residuals}{37}{section.4.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.5}Residual resampling with multinomial residuals}{37}{section.4.5}
+\contentsline {section}{\numberline {4.5}Residual resampling with multinomial residuals}{38}{section.4.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.6}The worst possible resampling scheme}{37}{section.4.6}
+\contentsline {section}{\numberline {4.6}The worst possible resampling scheme}{38}{section.4.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.7}Conditional SMC}{37}{section.4.7}
+\contentsline {section}{\numberline {4.7}Conditional SMC}{38}{section.4.7}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.7.1}Effect of ancestor sampling}{40}{subsection.4.7.1}
+\contentsline {subsection}{\numberline {4.7.1}Effect of ancestor sampling}{41}{subsection.4.7.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {5}Weak Convergence}{42}{chapter.5}
+\contentsline {chapter}{\numberline {5}Weak Convergence}{43}{chapter.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.1}Bounds on sum-products}{47}{section.5.1}
+\contentsline {section}{\numberline {5.1}Bounds on sum-products}{48}{section.5.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.2}Main components of weak convergence}{50}{section.5.2}
+\contentsline {section}{\numberline {5.2}Main components of weak convergence}{51}{section.5.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.3}Indicators}{68}{section.5.3}
+\contentsline {section}{\numberline {5.3}Indicators}{69}{section.5.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.4}Other useful results}{73}{section.5.4}
+\contentsline {section}{\numberline {5.4}Other useful results}{74}{section.5.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.5}Dependency graph}{74}{section.5.5}
+\contentsline {section}{\numberline {5.5}Dependency graph}{75}{section.5.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {6}Discussion}{76}{chapter.6}
+\contentsline {chapter}{\numberline {6}Discussion}{77}{chapter.6}
