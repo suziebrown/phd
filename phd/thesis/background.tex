@@ -420,8 +420,33 @@ These are summarised in Table~\ref{tab:resampling_properties}.
 
 
 \subsection{Examples}\label{sec:examples_resamplingschemes}
-\draft{Tour of the key resampling schemes (multinomial, residual-*, stratified, systematic, and the worst possible scheme).}\\
 \seb{This whole section was dumped from elsewhere and needs redrafting.}
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{ l l }
+\hline\hline
+Abbreviation & Description \\% & Defined in Section \\
+\hline
+\texttt{multi} & multinomial resampling \\%& \ref{sec:resampling_multinomial} \\
+\texttt{star} & star resampling \\%& \ref{sec:resampling_star} \\
+\texttt{strat} & stratified resampling \\%& \ref{sec:resampling_stratified} \\
+\texttt{syst} & systematic resampling \\%& \ref{sec:resampling_systematic} \\
+\texttt{res-multi} & residual resampling with multinomial residuals \\
+        %& \ref{sec:resampling_residual} \\
+\texttt{res-star} & residual resampling with star residuals \\
+        %& \ref{sec:resampling_residual} \\
+\texttt{res-strat} & residual resampling with stratified residuals \\
+        %& \ref{sec:resampling_residual} \\
+\texttt{res-syst} & residual resampling with systematic residuals \\
+        %& \ref{sec:resampling_residual} \\
+\texttt{ssp} & Srinivasan sampling procedure resampling \\%& \\
+\texttt{branching} & \\%& \\
+\hline\hline
+\end{tabular}
+\caption{Abbreviations for resampling schemes}
+\label{tab:resampling_abbrevs}
+\end{table} 
 
 \begin{table}[ht]
 \centering
@@ -457,7 +482,7 @@ These are summarised in Table~\ref{tab:resampling_properties}.
 \end{table} 
  
  
-\subsubsection{Multinomial resampling}
+\subsubsection{Multinomial resampling}%\label{sec:resampling_multinomial}
 Multinomial resampling \parencite{gordon1993,efron1994} is one of the simplest resampling schemes.
 The parental indices are chosen independently from $\{1, \dots, N\}$, each with probability given by the weight of the corresponding particle $w_t^{(i)}$. 
 That is, 
@@ -482,18 +507,24 @@ Fast implementations of multinomial resampling rely on the $U_i$s being sorted, 
 This allows multinomial resampling to be implemented at $O(N)$ cost, with the side-effect that the sampled ancestral indices will be ordered.
 
 
-\subsubsection{Residual resampling}
+\subsubsection{Residual resampling}%\label{sec:resampling_residual}
 Residual resampling is described in \textcite{liu1998} and also in \textcite{whitley1994} where it is called ``remainder stochastic sampling''.
 
-Each particle $X_{t}^{(i)}$ is deterministically assigned $\lfloor N w_t^{(i)} \rfloor$ offspring, and the remaining $R := N- \sum_{i=1}^N \lfloor N w_{t}^{(i)} \rfloor$ offspring are assigned multinomially in proportion to the unaccounted-for weight. 
-This yields a vector of offspring counts
+Each particle $X_{t}^{(i)}$ is deterministically assigned $\flnw$ offspring and the remaining $R := N- \sum_{i=1}^N \flnw$ offspring are assigned stichastically according to the residual weights
 \begin{equation*}
-\nu_t^{(1:N)} \eqdist \lfloor N w_t^{(1:N)} \rfloor +  \operatorname{Multinomial}(R, (N w_t^{(1:N)} - \lfloor N w_t^{(1:N)}\rfloor)/R) .
+r^{(i)} := ( Nw_t^{(i)} - \flnw) /R .
 \end{equation*}
-The deterministic part ensures that every particle with weight $>1/N$ is guaranteed to survive. This is a desirable property as it prevents the random loss of high-weighted particles.
+
+The stochastic part can be done using any of the other basic resampling schemes (e.g.\ multinomial, stratified, systematic). Most presentations focus on the case where multinomial resampling is used for the residuals, which is by no means the most sensible option. We will explore several different options in what follows.
+
+%This yields a vector of offspring counts
+%\begin{equation*}
+%\nu_t^{(1:N)} \eqdist \lfloor N w_t^{(1:N)} \rfloor +  \operatorname{Multinomial}(R, (N w_t^{(1:N)} - \lfloor N w_t^{(1:N)}\rfloor)/R) .
+%\end{equation*}
+%The deterministic part ensures that every particle with weight $>1/N$ is guaranteed to survive. This is a desirable property as it prevents the random loss of high-weighted particles.
 
 
-\subsubsection{Stratified resampling}
+\subsubsection{Stratified resampling}%\label{sec:resampling_stratified}
 Stratified resampling is introduced in \cite{kitagawa1996}.
 
 The scheme proceeds like Multinomial resampling, except that the Uniform samples that are fed in to do the Categorical sampling are produced in a different way.
@@ -508,7 +539,7 @@ This scheme ensures that the samples are ``well spread out'', again reducing the
 The method is illustrated in Figure \ref{fig:resampling_stratified}.
 
 
-\subsubsection{Systematic resampling}
+\subsubsection{Systematic resampling}%\label{sec:resampling_systematic}
 Systematic resampling is described in \textcite{carpenter1999} and also in \textcite{whitley1994} where it is called ``stochastic universal sampling''.
 
 Like stratified resampling, it constitutes a change to the random number generator for sampling from the Categorical distriubtion. 
@@ -647,7 +678,7 @@ However, this scheme is known to exhibit pathological behaviour in some cases du
 \subref{fig:resampling_systematic} Use only the first draw and transform it to a sample from $\Unif(0,0.25)$. For the subsequent samples, add 0.25 each time to obtain a sample in each interval. In this example the sampled offspring counts are $(1,0,2,1)$.}
 \end{figure}
 
-\subsubsection{Star resampling}
+\subsubsection{Star resampling}%\label{sec:resampling_star}
 For the sake of comparison, we also construct a resampling scheme which is the worst possible (in some sense).
 Sample
 \begin{equation*}
@@ -673,15 +704,114 @@ I call this scheme \emph{star resampling} because the parent-offspring relations
 \seb{This section was dumped from elsewhere and most of its subsections need redrafting.}
 
 \subsubsection{Variance}
-The most straightforward choice of resampling scheme, and also the easiest to analyse, is multinomial. However, multinomial resampling is well known to be sub-optimal in terms of the resulting Monte Carlo variance, and is rarely used in practice.
+Some results comparing the Monte Carlo variance associated with different resampling schemes were presented in \textcite{douc2005}. 
+Their results, plus some others, are presented in Proposition~\ref{thm:resampling_var_compare}.
 
-\textcite{douc2005} prove that both residual resampling and stratified resampling yield lower variance estimators. 
-The variance we are referring to here is the variance of Monte Carlo estimators of an arbitrary test function $f$, conditional on the past:
+Let $(\mathcal{G}_t)_{t\geq0}$ be the filtration generated by the particle positions and weights up to and including time $t$.
+Let $\tilde{X}_t^{(i)}$ denote position of the $i$th resampled particle.
+Of direct interest for the performance of the SMC algorithm is the one-step Monte Carlo variance induced by resampling, that is
+\begin{equation}\label{eq:resamplingMCvariance}
+\rho(\varphi) 
+:= \V\left[ \frac{1}{N} \sum_{i=1}^N \varphi (\tilde{X}_t^{(i)}) \midd \mathcal{G}_t \right]
+\end{equation}
+where $\varphi$ is an arbitrary test function.
+%Proposition~\ref{thm:resampling_var_compare} compares this variance across different resampling schemes.
+
+\begin{prop}[Variance of resampling schemes]\label{thm:resampling_var_compare}
+Let $\rho_{\texttt{multi}}$ etc.\ denote the variance \eqref{eq:resamplingMCvariance} under the various resampling schemes, as abbreviated in Table~\ref{tab:resampling_abbrevs}.
+For any square-integrable\seb{?} function $\varphi$,
+\begin{enumerate}[label=(\alph*)]
+\item \label{item:resampling_var1} \hspace{5pt}
+$\begin{aligned}
+    \rho_{\texttt{multi}}(\varphi) 
+    \geq \rho_{\texttt{res-multi}}(\varphi)
+\end{aligned}$
+\item \label{item:resampling_var2} \hspace{5pt}
+$\begin{aligned}
+    \rho_{\texttt{multi}}(\varphi) 
+    \geq \rho_{\texttt{strat}}(\varphi)
+\end{aligned}$
+\item \label{item:resampling_var3} \hspace{5pt}
+$\begin{aligned}
+    \rho_{\texttt{star}}(\varphi) 
+    = N \rho_{\texttt{multi}}(\varphi)
+\end{aligned}$
+\item \label{item:resampling_var4} \hspace{5pt}
+$\begin{aligned}
+    \rho_{\texttt{res-star}}(\varphi) 
+    \geq \rho_{\texttt{res-multi}}(\varphi) 
+    \geq \rho_{\texttt{res-strat}}(\varphi)
+\end{aligned}$
+\end{enumerate}
+\end{prop}
+\draft{Say which parts were proved in \textcite{douc2005} or not.}
+
+\begin{proof}
+\textbf{multinomial resampling:} the resampled indices are conditionally i.i.d., so
+\begin{align*}
+\rho_{\texttt{multi}}(\varphi)
+&= \V\left[ \frac{1}{N} \sum_{i=1}^N \varphi (\tilde{X}_t^{(i)}) 
+        \midd \mathcal{G}_t \right]
+= \frac{1}{N} \V\left[ \varphi (\tilde{X}_t^{(i)}) 
+        \midd \mathcal{G}_t \right] \\
+&= \frac{1}{N} \left\{ \E\left[ \varphi^2(\tilde{X}_t^{(i)}) \midd \mathcal{G}_t \right]
+        - \E\left[ \varphi(\tilde{X}_t^{(i)}) \midd \mathcal{G}_t \right]^2 \right\} \\
+&= \frac{1}{N} \sum_{j=1}^N \varphi^2(X_t^{(j)}) 
+        \Prob[\tilde{X}_t^{(i)} = X_t^{(j)} \mid \mathcal{G}_t ]
+        - \frac{1}{N} \left\{ \sum_{j=1}^N \varphi(X_t^{(j)}) 
+        \Prob[\tilde{X}_t^{(i)} = X_t^{(j)} \mid \mathcal{G}_t ] \right\}^2 \\
+&= \frac{1}{N} \sum_{j=1}^N \varphi^2(X_t^{(j)}) w_t^{(j)}
+        - \frac{1}{N} \left\{ \sum_{j=1}^N \varphi(X_t^{(j)}) w_t^{(j)} \right\}^2 .        
+\end{align*}
+
+\textbf{residual-multinomial resampling:} the Monte Carlo estimate in \eqref{eq:resamplingMCvariance} can be decomposed into a sum of conditionally deterministic terms plus a sum of conditionally i.i.d. terms: conditional on $\mathcal{G}_t$,
 \begin{equation*}
-\V\left[ \frac{1}{N} \sum_{i=1}^N f(X_t^{(i)}) \middle| \mathcal{F}_{t-1} \right]
+\frac{1}{N} \sum_{i=1}^N \varphi (\tilde{X}_t^{(i)})
+= \frac{1}{N} \sum_{i=1}^N \flnw \varphi (X_t^{(i)})
+        + \frac{1}{N} \sum_{i=1}^R \varphi (\hat{X}_t^{(i)})
 \end{equation*}
-\seb{I'm not sure $\mathcal{F}$ is the right filtration; we need to condition on positions etc. as well as offspring counts for the calculations to work? And don't we want a forward-in-time filtration to calculate the one-step variance? Use $\mathcal{G}_t$ as in DCM05 and add it to the notation list too.}
-The authors remark that, while the variance resulting from systematic resampling is not provably lower than that of multinomial resampling, empirical performance is comparable among residual, stratified and systematic resampling.
+where
+$ \hat{X}_t^{(i)} \sim^{\text{iid}} \Mn( R, r^{(1:N)} ) $.
+The first sum is conditionally deterministic and hence does not contribute to the Monte Carlo variance \eqref{eq:resamplingMCvariance}. By a similar calculation to that for multinomial resampling,
+\begin{align*}
+\rho_{\texttt{res-multi}}(\varphi)
+&= \V\left[ \frac{1}{N} \sum_{i=1}^R \varphi (\hat{X}_t^{(i)}) 
+        \midd \mathcal{G}_t \right] \\
+&= \frac{R}{N^2} \sum_{j=1}^N \varphi^2(X_t^{(j)}) r^{(j)}
+        - \frac{R}{N^2} \left\{ \sum_{j=1}^N \varphi(X_t^{(j)}) r^{(j)} \right\}^2 \\
+&= \frac{1}{N} \sum_{j=1}^N \varphi^2(X_t^{(j)}) w_t^{(j)}
+        - \frac{1}{N^2} \sum_{j=1}^N \varphi^2(X_t^{(j)}) \flnw
+        - \frac{R}{N^2} \left\{ \sum_{j=1}^N \varphi(X_t^{(j)}) r^{(j)} \right\}^2 . 
+\end{align*}
+By a similar argument, it can be shown that \seb{(using the star resampling part below, which should probably be moved to above here...)}
+\begin{equation}
+\rho_{\texttt{res-star}}(\varphi)
+= R \rho_{\texttt{res-multi}}(\varphi)
+\geq \rho_{\texttt{res-multi}}(\varphi) ,
+\end{equation}
+proving the first inequality in \ref{item:resampling_var4}.
+
+\textbf{star resampling:} all of the $\tilde{X}_t^{(i)}$s are equal, say $\tilde{X}_t^{(1)} = \dots = \tilde{X}_t^{(N)} = X_t^\star$, so
+\begin{align*}
+\rho_{\texttt{star}}(\varphi)
+&= \V\left[ \frac{1}{N} \sum_{i=1}^N \varphi(\tilde{X}_t^{(i)}) \midd \mathcal{G}_t \right]
+= \V\left[ \varphi( X_t^\star) \mid \mathcal{G}_t \right] \\
+&= \E\left[ \varphi^2( X_t^\star) \mid \mathcal{G}_t \right]
+        - \E\left[ \varphi( X_t^\star) \mid \mathcal{G}_t \right]^2 \\
+&= \sum_{j=1}^N \varphi^2(X_t^{(j)}) 
+        \Prob[ X_t^\star = X_t^{(j)} \mid \mathcal{G}_t ]
+        - \left\{ \sum_{j=1}^N \varphi(X_t^{(j)}) 
+        \Prob[ X_t^\star = X_t^{(j)} \mid \mathcal{G}_t ] \right\}^2 \\
+&= \sum_{j=1}^N \varphi^2(X_t^{(j)}) w_t^{(j)}
+        - \left\{ \sum_{j=1}^N \varphi(X_t^{(j)}) w_t^{(j)} \right\}^2 \\
+&= N \rho_{\texttt{multi}}(\varphi) .
+\end{align*}
+This proves part \ref{item:resampling_var3}.
+
+...
+\end{proof}
+
+\draft{Can't do a formal variance comparison for syst (and others?).}
 
 
 \subsubsection{Negative association}
@@ -691,6 +821,24 @@ The authors remark that, while the variance resulting from systematic resampling
 \subsubsection{Star discrepancy}
 \draft{Something about syst vs. strat vs. mn in terms of star discrepancy (define that). See \textcite{hol2006} for inspiration.}
 \seb{Does not appear in Table~\ref{tab:resampling_properties} since it only makes sense for resampling schemes based on inversion sampling.}
+%
+%Since resampling can itself be thought of as a Monte Carlo procedure, it is also open to the tools of quasi-Monte Carlo.
+%The idea is to use sample points that are more regularly spaced, with the hope that this will reduce the variance of Monte Carlo estimators.
+
+The \emph{star discrepancy}\seb{[citation]} is a measure of the regularity of a given set of points $u_{1:N}$ in the unit hypercube. For our purposes it is sufficient to define the star discrepancy in one dimension:
+\begin{equation}
+D^\star (u_1, \dots, u_N) := \sup_{u \in [0,1]} \left| \frac{1}{N} \sum_{i=1}^N \I{u_i \leq u} -u \right| .
+\end{equation}
+The quantity inside the supremum is the difference between the empirical CDF of the observed points $u_{1:N}$ and the CDF of the Uniform distribution on $[0,1]$.
+%Thus $D^\star$ tells us, in a specific sense, how far our points are from being uniformly spaced.
+The star discrepancy is used in quasi-Monte Carlo, where ``low-discrepancy'' points are used in place of uniform samples to decrease the variance of Monte Carlo estimates.
+
+We have noted already \seb{we haven't actually, but we should} that resampling can itself be viewed as a Monte Carlo procedure.
+From this point-of-view, stratified and systematic resampling are in fact quasi-Monte Carlo versions of multinomial resampling.
+%We presented multinomial sampling via its inversion sampling implementation. Quasi-Monte Carlo aims to reduce the variance of Monte Carlo estimates by using low-discrepancy points instead of i.i.d. Uniform points for inversion sampling. Stratified and systematic resampling do just that, providing a more regular set of points to feed into the inversion sampler.
+
+\draft{Calculate/compare discrepancy for each mn/strat/syst. Can't achieve minimal discrepancy $1/(2N)$ because we need marginally uniform points for unbiasedness (so really this is RQMC).}
+
 
 
 \subsubsection{Support of offspring numbers}
