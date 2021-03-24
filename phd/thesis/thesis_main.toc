@@ -18,7 +18,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.1.2}Inference in SSMs}{2}{subsection.2.1.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.1.3}Exact solutions}{2}{subsection.2.1.3}
+\contentsline {subsection}{\numberline {2.1.3}Exact solutions \xspace \leavevmode {\color {red}$\text {$\mathsurround \z@ \mathchar "458$}$}\xspace }{2}{subsection.2.1.3}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.1.4}Feynman-Kac models}{3}{subsection.2.1.4}
 \defcounter {refsection}{0}\relax 
@@ -26,11 +26,11 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.1.6}Theoretical justification}{4}{subsection.2.1.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.2}Coalescent theory}{4}{section.2.2}
+\contentsline {section}{\numberline {2.2}Coalescent theory \xspace \leavevmode {\color {red}$\text {$\mathsurround \z@ \mathchar "458$}$}\xspace }{4}{section.2.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.2.1}Kingman's coalescent}{4}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.1}Kingman's coalescent \xspace \leavevmode {\color {red}$\text {$\mathsurround \z@ \mathchar "458$}$}\xspace }{4}{subsection.2.2.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.2.2}Properties of Kingman's coalescent}{5}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.2.2}Properties of Kingman's coalescent \xspace \leavevmode {\color {red}$\text {$\mathsurround \z@ \mathchar "458$}$}\xspace }{5}{subsection.2.2.2}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\nonumberline Time to MRCA}{6}{section*.12}
 \defcounter {refsection}{0}\relax 
@@ -38,7 +38,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\nonumberline Probability that sample MRCA equals population MRCA}{7}{section*.14}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.2.3}Models in population genetics}{8}{subsection.2.2.3}
+\contentsline {subsection}{\numberline {2.2.3}Models in population genetics \xspace \leavevmode {\color {red}$\text {$\mathsurround \z@ \mathchar "458$}$}\xspace }{8}{subsection.2.2.3}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\nonumberline Wright-Fisher model}{8}{section*.15}
 \defcounter {refsection}{0}\relax 
@@ -46,7 +46,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\nonumberline Moran model}{9}{section*.17}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.2.4}Particle populations}{9}{subsection.2.2.4}
+\contentsline {subsection}{\numberline {2.2.4}Particle populations \xspace \leavevmode {\color {red}$\text {$\mathsurround \z@ \mathchar "458$}$}\xspace }{10}{subsection.2.2.4}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {2.3}Sequential Monte Carlo genealogies}{10}{section.2.3}
 \defcounter {refsection}{0}\relax 
@@ -58,55 +58,55 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.3.4}Asymptotics}{10}{subsection.2.3.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.4}Resampling}{10}{section.2.4}
+\contentsline {section}{\numberline {2.4}Resampling \xspace \leavevmode {\color {red}$\sim $}\xspace }{10}{section.2.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.4.1}Definition}{10}{subsection.2.4.1}
+\contentsline {subsection}{\numberline {2.4.1}Definition \xspace \leavevmode {\color {red}$\text {$\mathsurround \z@ \mathchar "458$}$}\xspace }{11}{subsection.2.4.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.4.2}Examples}{11}{subsection.2.4.2}
+\contentsline {subsection}{\numberline {2.4.2}Examples \xspace \leavevmode {\color {red}$\sim $}\xspace }{11}{subsection.2.4.2}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\nonumberline Multinomial resampling}{11}{section*.20}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Residual resampling}{12}{section*.21}
+\contentsline {subsubsection}{\nonumberline Residual resampling \xspace \leavevmode {\color {red}$\text {$\mathsurround \z@ \mathchar "458$}$}\xspace }{13}{section*.21}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\nonumberline Stratified resampling}{13}{section*.22}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\nonumberline Systematic resampling}{14}{section*.23}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Star resampling}{14}{section*.25}
+\contentsline {subsubsection}{\nonumberline Star resampling \xspace \leavevmode {\color {red}$\text {$\mathsurround \z@ \mathchar "458$}$}\xspace }{14}{section*.25}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.4.3}Properties}{14}{subsection.2.4.3}
+\contentsline {subsection}{\numberline {2.4.3}Properties \xspace \leavevmode {\color {red}$\sim $}\xspace }{16}{subsection.2.4.3}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\nonumberline Variance}{16}{section*.26}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\nonumberline Negative association}{18}{section*.27}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Star discrepancy}{18}{section*.28}
+\contentsline {subsubsection}{\nonumberline Star discrepancy \xspace \leavevmode {\color {red}$\text {$\mathsurround \z@ \mathchar "458$}$}\xspace }{18}{section*.28}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Support of offspring numbers}{18}{section*.29}
+\contentsline {subsubsection}{\nonumberline Support of offspring numbers \xspace \leavevmode {\color {red}$\text {$\mathsurround \z@ \mathchar "458$}$}\xspace }{19}{section*.29}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\nonumberline Permutation invariance}{19}{section*.30}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Sorting}{19}{section*.31}
+\contentsline {subsubsection}{\nonumberline Sorting}{20}{section*.31}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Degeneracy under equal weights}{19}{section*.32}
+\contentsline {subsubsection}{\nonumberline Degeneracy under equal weights}{20}{section*.32}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Exchangeability}{19}{section*.33}
+\contentsline {subsubsection}{\nonumberline Exchangeability \xspace \leavevmode {\color {red}$\text {$\mathsurround \z@ \mathchar "458$}$}\xspace }{20}{section*.33}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Computational complexity}{20}{section*.34}
+\contentsline {subsubsection}{\nonumberline Computational complexity \xspace \leavevmode {\color {red}$\text {$\mathsurround \z@ \mathchar "458$}$}\xspace }{20}{section*.34}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Optimal resampling}{20}{section*.35}
+\contentsline {subsubsection}{\nonumberline Optimal resampling}{21}{section*.35}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.4.4}Stochastic rounding}{20}{subsection.2.4.4}
+\contentsline {subsection}{\numberline {2.4.4}Stochastic rounding \xspace \leavevmode {\color {red}$\sim $}\xspace }{21}{subsection.2.4.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.5}Conditional SMC}{21}{section.2.5}
+\contentsline {section}{\numberline {2.5}Conditional SMC}{22}{section.2.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.5.1}Particle MCMC}{21}{subsection.2.5.1}
+\contentsline {subsection}{\numberline {2.5.1}Particle MCMC \xspace \leavevmode {\color {red}$\text {$\mathsurround \z@ \mathchar "458$}$}\xspace }{22}{subsection.2.5.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.5.2}Particle Gibbs algorithm}{21}{subsection.2.5.2}
+\contentsline {subsection}{\numberline {2.5.2}Particle Gibbs algorithm \xspace \leavevmode {\color {red}$\sim $}\xspace }{22}{subsection.2.5.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.5.3}Ancestor sampling}{23}{subsection.2.5.3}
+\contentsline {subsection}{\numberline {2.5.3}Ancestor sampling \xspace \leavevmode {\color {red}$\sim $}\xspace }{23}{subsection.2.5.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Ancestral degeneracy leads to poor mixing}{23}{section*.36}
+\contentsline {subsubsection}{\nonumberline Ancestral degeneracy leads to poor mixing}{24}{section*.36}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\nonumberline The solution: ancestor sampling}{25}{section*.38}
 \defcounter {refsection}{0}\relax 
@@ -114,13 +114,13 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {3}Limits}{28}{chapter.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.1}Encoding genealogies}{28}{section.3.1}
+\contentsline {section}{\numberline {3.1}Encoding genealogies \xspace \leavevmode {\color {red}$\sim $}\xspace }{28}{section.3.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.1.1}The genealogical process}{28}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.1}The genealogical process \xspace \leavevmode {\color {red}$\text {$\mathsurround \z@ \mathchar "458$}$}\xspace }{28}{subsection.3.1.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.1.2}Time scale}{28}{subsection.3.1.2}
+\contentsline {subsection}{\numberline {3.1.2}Time scale \xspace \leavevmode {\color {red}$\text {$\mathsurround \z@ \mathchar "458$}$}\xspace }{28}{subsection.3.1.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.1.3}Transition probabilities}{30}{subsection.3.1.3}
+\contentsline {subsection}{\numberline {3.1.3}Transition probabilities \xspace \leavevmode {\color {red}$\sim $}\xspace }{30}{subsection.3.1.3}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {3.2}An existing limit theorem}{33}{section.3.2}
 \defcounter {refsection}{0}\relax 
@@ -132,30 +132,30 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {4.1}Multinomial resampling}{35}{section.4.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.2}Stratified resampling}{35}{section.4.2}
+\contentsline {section}{\numberline {4.2}Stratified resampling \xspace \leavevmode {\color {red}$\sim $}\xspace }{35}{section.4.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.3}Stochastic rounding}{37}{section.4.3}
+\contentsline {section}{\numberline {4.3}Stochastic rounding \xspace \leavevmode {\color {red}$\text {$\mathsurround \z@ \mathchar "458$}$}\xspace }{37}{section.4.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.4}Residual resampling with stratified residuals}{40}{section.4.4}
+\contentsline {section}{\numberline {4.4}Residual resampling with stratified residuals \xspace \leavevmode {\color {red}$\sim $}\xspace }{40}{section.4.4}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {4.5}Residual resampling with multinomial residuals}{41}{section.4.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.6}The worst possible resampling scheme}{41}{section.4.6}
+\contentsline {section}{\numberline {4.6}Star resampling}{41}{section.4.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.7}Conditional SMC}{41}{section.4.7}
+\contentsline {section}{\numberline {4.7}Conditional SMC \xspace \leavevmode {\color {red}$\sim $}\xspace }{41}{section.4.7}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.7.1}Effect of ancestor sampling}{44}{subsection.4.7.1}
+\contentsline {subsection}{\numberline {4.7.1}Effect of ancestor sampling \xspace \leavevmode {\color {red}$\sim $}\xspace }{44}{subsection.4.7.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {5}Weak Convergence}{46}{chapter.5}
+\contentsline {chapter}{\numberline {5}Weak Convergence \xspace \leavevmode {\color {red}$\text {$\mathsurround \z@ \mathchar "458$}$}\xspace }{46}{chapter.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.1}Bounds on sum-products}{51}{section.5.1}
+\contentsline {section}{\numberline {5.1}Bounds on sum-products \xspace \leavevmode {\color {red}$\text {$\mathsurround \z@ \mathchar "458$}$}\xspace }{51}{section.5.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.2}Main components of weak convergence}{54}{section.5.2}
+\contentsline {section}{\numberline {5.2}Main components of weak convergence \xspace \leavevmode {\color {red}$\text {$\mathsurround \z@ \mathchar "458$}$}\xspace }{54}{section.5.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.3}Indicators}{72}{section.5.3}
+\contentsline {section}{\numberline {5.3}Indicators \xspace \leavevmode {\color {red}$\text {$\mathsurround \z@ \mathchar "458$}$}\xspace }{72}{section.5.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.4}Other useful results}{77}{section.5.4}
+\contentsline {section}{\numberline {5.4}Other useful results \xspace \leavevmode {\color {red}$\text {$\mathsurround \z@ \mathchar "458$}$}\xspace }{77}{section.5.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.5}Dependency graph}{78}{section.5.5}
+\contentsline {section}{\numberline {5.5}Dependency graph \xspace \leavevmode {\color {red}$\text {$\mathsurround \z@ \mathchar "458$}$}\xspace }{78}{section.5.5}
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {6}Discussion}{80}{chapter.6}

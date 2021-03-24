@@ -7,50 +7,50 @@
 \BOOKMARK [1][-]{section.2.1}{Sequential Monte Carlo}{chapter.2}% 7
 \BOOKMARK [2][-]{subsection.2.1.1}{Motivation}{section.2.1}% 8
 \BOOKMARK [2][-]{subsection.2.1.2}{Inference in SSMs}{section.2.1}% 9
-\BOOKMARK [2][-]{subsection.2.1.3}{Exact solutions}{section.2.1}% 10
+\BOOKMARK [2][-]{subsection.2.1.3}{Exact solutions "458}{section.2.1}% 10
 \BOOKMARK [2][-]{subsection.2.1.4}{Feynman-Kac models}{section.2.1}% 11
 \BOOKMARK [2][-]{subsection.2.1.5}{Sequential Monte Carlo for Feynman-Kac models}{section.2.1}% 12
 \BOOKMARK [2][-]{subsection.2.1.6}{Theoretical justification}{section.2.1}% 13
-\BOOKMARK [1][-]{section.2.2}{Coalescent theory}{chapter.2}% 14
-\BOOKMARK [2][-]{subsection.2.2.1}{Kingman's coalescent}{section.2.2}% 15
-\BOOKMARK [2][-]{subsection.2.2.2}{Properties of Kingman's coalescent}{section.2.2}% 16
-\BOOKMARK [2][-]{subsection.2.2.3}{Models in population genetics}{section.2.2}% 17
-\BOOKMARK [2][-]{subsection.2.2.4}{Particle populations}{section.2.2}% 18
+\BOOKMARK [1][-]{section.2.2}{Coalescent theory "458}{chapter.2}% 14
+\BOOKMARK [2][-]{subsection.2.2.1}{Kingman's coalescent "458}{section.2.2}% 15
+\BOOKMARK [2][-]{subsection.2.2.2}{Properties of Kingman's coalescent "458}{section.2.2}% 16
+\BOOKMARK [2][-]{subsection.2.2.3}{Models in population genetics "458}{section.2.2}% 17
+\BOOKMARK [2][-]{subsection.2.2.4}{Particle populations "458}{section.2.2}% 18
 \BOOKMARK [1][-]{section.2.3}{Sequential Monte Carlo genealogies}{chapter.2}% 19
 \BOOKMARK [2][-]{subsection.2.3.1}{From particles to genealogies}{section.2.3}% 20
 \BOOKMARK [2][-]{subsection.2.3.2}{Performance}{section.2.3}% 21
 \BOOKMARK [2][-]{subsection.2.3.3}{Mitigating ancestral degeneracy}{section.2.3}% 22
 \BOOKMARK [2][-]{subsection.2.3.4}{Asymptotics}{section.2.3}% 23
-\BOOKMARK [1][-]{section.2.4}{Resampling}{chapter.2}% 24
-\BOOKMARK [2][-]{subsection.2.4.1}{Definition}{section.2.4}% 25
-\BOOKMARK [2][-]{subsection.2.4.2}{Examples}{section.2.4}% 26
-\BOOKMARK [2][-]{subsection.2.4.3}{Properties}{section.2.4}% 27
-\BOOKMARK [2][-]{subsection.2.4.4}{Stochastic rounding}{section.2.4}% 28
+\BOOKMARK [1][-]{section.2.4}{Resampling \040}{chapter.2}% 24
+\BOOKMARK [2][-]{subsection.2.4.1}{Definition "458}{section.2.4}% 25
+\BOOKMARK [2][-]{subsection.2.4.2}{Examples \040}{section.2.4}% 26
+\BOOKMARK [2][-]{subsection.2.4.3}{Properties \040}{section.2.4}% 27
+\BOOKMARK [2][-]{subsection.2.4.4}{Stochastic rounding \040}{section.2.4}% 28
 \BOOKMARK [1][-]{section.2.5}{Conditional SMC}{chapter.2}% 29
-\BOOKMARK [2][-]{subsection.2.5.1}{Particle MCMC}{section.2.5}% 30
-\BOOKMARK [2][-]{subsection.2.5.2}{Particle Gibbs algorithm}{section.2.5}% 31
-\BOOKMARK [2][-]{subsection.2.5.3}{Ancestor sampling}{section.2.5}% 32
+\BOOKMARK [2][-]{subsection.2.5.1}{Particle MCMC "458}{section.2.5}% 30
+\BOOKMARK [2][-]{subsection.2.5.2}{Particle Gibbs algorithm \040}{section.2.5}% 31
+\BOOKMARK [2][-]{subsection.2.5.3}{Ancestor sampling \040}{section.2.5}% 32
 \BOOKMARK [0][-]{chapter.3}{Limits}{}% 33
-\BOOKMARK [1][-]{section.3.1}{Encoding genealogies}{chapter.3}% 34
-\BOOKMARK [2][-]{subsection.3.1.1}{The genealogical process}{section.3.1}% 35
-\BOOKMARK [2][-]{subsection.3.1.2}{Time scale}{section.3.1}% 36
-\BOOKMARK [2][-]{subsection.3.1.3}{Transition probabilities}{section.3.1}% 37
+\BOOKMARK [1][-]{section.3.1}{Encoding genealogies \040}{chapter.3}% 34
+\BOOKMARK [2][-]{subsection.3.1.1}{The genealogical process "458}{section.3.1}% 35
+\BOOKMARK [2][-]{subsection.3.1.2}{Time scale "458}{section.3.1}% 36
+\BOOKMARK [2][-]{subsection.3.1.3}{Transition probabilities \040}{section.3.1}% 37
 \BOOKMARK [1][-]{section.3.2}{An existing limit theorem}{chapter.3}% 38
 \BOOKMARK [1][-]{section.3.3}{A new limit theorem}{chapter.3}% 39
 \BOOKMARK [2][-]{subsection.3.3.1}{Proof of theorem}{section.3.3}% 40
 \BOOKMARK [0][-]{chapter.4}{Applications}{}% 41
 \BOOKMARK [1][-]{section.4.1}{Multinomial resampling}{chapter.4}% 42
-\BOOKMARK [1][-]{section.4.2}{Stratified resampling}{chapter.4}% 43
-\BOOKMARK [1][-]{section.4.3}{Stochastic rounding}{chapter.4}% 44
-\BOOKMARK [1][-]{section.4.4}{Residual resampling with stratified residuals}{chapter.4}% 45
+\BOOKMARK [1][-]{section.4.2}{Stratified resampling \040}{chapter.4}% 43
+\BOOKMARK [1][-]{section.4.3}{Stochastic rounding "458}{chapter.4}% 44
+\BOOKMARK [1][-]{section.4.4}{Residual resampling with stratified residuals \040}{chapter.4}% 45
 \BOOKMARK [1][-]{section.4.5}{Residual resampling with multinomial residuals}{chapter.4}% 46
-\BOOKMARK [1][-]{section.4.6}{The worst possible resampling scheme}{chapter.4}% 47
-\BOOKMARK [1][-]{section.4.7}{Conditional SMC}{chapter.4}% 48
-\BOOKMARK [2][-]{subsection.4.7.1}{Effect of ancestor sampling}{section.4.7}% 49
-\BOOKMARK [0][-]{chapter.5}{Weak Convergence}{}% 50
-\BOOKMARK [1][-]{section.5.1}{Bounds on sum-products}{chapter.5}% 51
-\BOOKMARK [1][-]{section.5.2}{Main components of weak convergence}{chapter.5}% 52
-\BOOKMARK [1][-]{section.5.3}{Indicators}{chapter.5}% 53
-\BOOKMARK [1][-]{section.5.4}{Other useful results}{chapter.5}% 54
-\BOOKMARK [1][-]{section.5.5}{Dependency graph}{chapter.5}% 55
+\BOOKMARK [1][-]{section.4.6}{Star resampling}{chapter.4}% 47
+\BOOKMARK [1][-]{section.4.7}{Conditional SMC \040}{chapter.4}% 48
+\BOOKMARK [2][-]{subsection.4.7.1}{Effect of ancestor sampling \040}{section.4.7}% 49
+\BOOKMARK [0][-]{chapter.5}{Weak Convergence "458}{}% 50
+\BOOKMARK [1][-]{section.5.1}{Bounds on sum-products "458}{chapter.5}% 51
+\BOOKMARK [1][-]{section.5.2}{Main components of weak convergence "458}{chapter.5}% 52
+\BOOKMARK [1][-]{section.5.3}{Indicators "458}{chapter.5}% 53
+\BOOKMARK [1][-]{section.5.4}{Other useful results "458}{chapter.5}% 54
+\BOOKMARK [1][-]{section.5.5}{Dependency graph "458}{chapter.5}% 55
 \BOOKMARK [0][-]{chapter.6}{Discussion}{}% 56
