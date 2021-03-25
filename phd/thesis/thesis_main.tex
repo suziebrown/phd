@@ -1,5 +1,6 @@
 \documentclass[oneside]{scrbook} %%% remove oneside option for final hard copy
 \usepackage[onehalfspacing]{setspace} %%% remove this option for final copy
+\usepackage{lscape} % for landscape tables
 
 %%% see
 % https://warwick.ac.uk/services/dc/pgrassessments/gtehdr/presentation_th?
@@ -72,9 +73,11 @@
 \newcommand{\1}[1]{\mathbbm{1}_{#1}}
 \newcommand{\midd}{\,\middle|\,}        % for big conditional probability bar
 \newcommand{\Mn}{\operatorname{Multinomial}}
+\newcommand{\Bin}{\operatorname{Binomial}}
 \newcommand{\Cat}{\operatorname{Categorical}}
 \newcommand{\Exp}{\operatorname{Exp}}
 \newcommand{\Unif}{\operatorname{Uniform}}
+\newcommand{\Bern}{\operatorname{Bernoulli}}
 \newcommand{\flnw}[1][i]{\lfloor N w_t^{(#1)} \rfloor}
 \DeclareMathOperator*{\argmin}{argmin}
 \DeclareMathOperator*{\argmax}{argmax}
@@ -114,6 +117,7 @@ January 2021 %%% update submission date (month year)
 \tableofcontents
 \listoffigures
 \listoftables
+%%% Also include a list of algorithms/listings somehow
 
 \chapter{Acknowledgements}
 I would like to thank... %%% supervisors, funding body, people who helped me with research, other people who supported me

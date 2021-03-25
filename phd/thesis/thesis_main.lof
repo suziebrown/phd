@@ -18,32 +18,34 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {\relax 2.3}{\ignorespaces Diagram illustrating the definitions of $t_i$, $T_i$ in the $n$-coalescent.\relax }}{6}{figure.caption.11}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 2.4}{\ignorespaces Resampling using multinomial, stratified and systematic schemes}}{15}{figure.caption.24}
+\contentsline {figure}{\numberline {\relax 2.4}{\ignorespaces PLACEHOLDER Cases for stratified resampling with a fixed weight}}{16}{figure.caption.23}
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Multinomial resampling}}}{15}{subfigure.4.1}
+\contentsline {figure}{\numberline {\relax 2.5}{\ignorespaces Resampling using multinomial, stratified and systematic schemes}}{17}{figure.caption.26}
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Stratified resampling}}}{15}{subfigure.4.2}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Multinomial resampling}}}{17}{subfigure.5.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Systematic resampling}}}{15}{subfigure.4.3}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Stratified resampling}}}{17}{subfigure.5.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 2.5}{\ignorespaces PLACEHOLDER. Copied from \textcite {lindsten2013}.\relax }}{24}{figure.caption.37}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Systematic resampling}}}{17}{subfigure.5.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 2.6}{\ignorespaces PLACEHOLDER. Interpretation of a resampling weight for the immortal offspring.\relax }}{25}{figure.caption.39}
+\contentsline {figure}{\numberline {\relax 2.6}{\ignorespaces PLACEHOLDER. Copied from \textcite {lindsten2013}.\relax }}{29}{figure.caption.41}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 2.7}{\ignorespaces PLACEHOLDER. Illustration of how ancestor sampling prevents coalescence onto the immortal trajectory.\relax }}{27}{figure.caption.41}
+\contentsline {figure}{\numberline {\relax 2.7}{\ignorespaces PLACEHOLDER. Interpretation of a resampling weight for the immortal offspring.\relax }}{30}{figure.caption.43}
 \defcounter {refsection}{0}\relax 
-\addvspace {10\p@ }
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 3.1}{\ignorespaces Illustration of how the sample genealogy is encoded}}{29}{figure.caption.42}
-\defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Resampling relationships}}}{29}{subfigure.1.1}
-\defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Genealogy of terminal particles}}}{29}{subfigure.1.2}
+\contentsline {figure}{\numberline {\relax 2.8}{\ignorespaces PLACEHOLDER. Illustration of how ancestor sampling prevents coalescence onto the immortal trajectory.\relax }}{32}{figure.caption.45}
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {\relax 3.1}{\ignorespaces Illustration of how the sample genealogy is encoded}}{34}{figure.caption.46}
+\defcounter {refsection}{0}\relax 
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Resampling relationships}}}{34}{subfigure.1.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Genealogy of terminal particles}}}{34}{subfigure.1.2}
+\defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 5.1}{\ignorespaces Structure of weak convergence proof}}{79}{figure.caption.43}
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {\relax 5.1}{\ignorespaces Structure of weak convergence proof}}{84}{figure.caption.47}
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
