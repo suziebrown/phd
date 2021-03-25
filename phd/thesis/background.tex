@@ -496,7 +496,7 @@ Abbreviation & Description \\% & Defined in Section \\
 \end{landscape}
  
  
-\subsubsection{Multinomial resampling}%\label{sec:resampling_multinomial}
+\subsubsection{Multinomial resampling \seb{$\checkmark$} }%\label{sec:resampling_multinomial}
 Multinomial resampling \parencite{gordon1993,efron1994} is one of the simplest resampling schemes.
 The parental indices are chosen independently from $\{1, \dots, N\}$, each with probability given by the weight of the corresponding particle $w_t^{(i)}$. 
 That is, 
@@ -507,17 +507,17 @@ This implies the joint distribution of the offspring counts is
 \begin{equation*}
 \nu_t^{(1:N)} \eqdist \operatorname{Multinomial}(N, w_t^{(1:N)} ) .
 \end{equation*}
-Note that in this case the parental indices are chosen independently, but the resulting offspring counts are negatively correlated.
+Although the parental indices are chosen independently, but the resulting offspring counts are negatively correlated. \seb{link to GCW19's negative association?}
 
-A simple way to sample the parental indices is by inversion sampling: divide the unit interval into $N$ disjoint subintervals each of which will correspond to a certain index $i$ and has length equal to the weight $w_t^{(i)}$; then draw $N$ samples $U_i \sim \Unif(0,1)$ and classify them according to which of these subintervals they fall in.
+A simple way to sample the parental indices is to use inversion sampling: partition the unit interval into $N$ subintervals each of which will correspond to a certain index $i$ and has length equal to the weight $w_t^{(i)}$; then draw $N$ samples $U_i \sim \Unif(0,1)$ and classify them according to which of these subintervals they fall in.
 Explicitly, the parental index assigned to child $i$ is the index $a_i$ satisfying
 \begin{equation}\label{eq:syst_strat_resampling}
-\sum_{j=1}^{a_i -1} w_t^{(j)} \leq U_i \leq \sum_{j=1}^{a_i} w_t^{(j)}
+\sum_{j=1}^{a_i -1} w_t^{(j)} \leq U_i \leq \sum_{j=1}^{a_i} w_t^{(j)} .
 \end{equation}
 This is illustrated in Figure \ref{fig:resampling_mn}. 
 %Note that there exist more efficient methods to sample from a Multinomial distribution, so the inversion method may not be used in practice.
 
-Fast implementations of multinomial resampling rely on the $U_i$s being sorted, which speeds up the search step \eqref{eq:syst_strat_resampling}. Sorting $N$ numbers is an $O(N\log N)$ operation, but in fact we can directly sample the order statistics of a $\Unif[0,1]$ distribution \seb{[citations: \textcite{chopin2020}, and a different (or possibly equivalent) method in \textcite{hol2006}] ---explore whether these methods are equivalent}.
+Fast implementations of multinomial resampling rely on $U_1,\dots,U_N$ being pre-sorted, which speeds up the search step \eqref{eq:syst_strat_resampling}. Sorting $N$ numbers is an $O(N\log N)$ operation, but in fact this is not necessary because we can directly sample the order statistics of a $\Unif[0,1]$ distribution \seb{[citations: \textcite{chopin2020}, and a different (or possibly equivalent) method in \textcite{hol2006}] ---explore whether these methods are equivalent}.
 This allows multinomial resampling to be implemented at $O(N)$ cost, with the side-effect that the sampled ancestral indices will be ordered.
 
 
@@ -539,7 +539,7 @@ The stochastic part can be done using any of the other basic resampling schemes 
 %The deterministic part ensures that every particle with weight $>1/N$ is guaranteed to survive. This is a desirable property as it prevents the random loss of high-weighted particles.
 
 
-\subsubsection{Stratified resampling}%\label{sec:resampling_stratified}
+\subsubsection{Stratified resampling \seb{$\checkmark$} }%\label{sec:resampling_stratified}
 Stratified resampling is introduced in \cite{kitagawa1996}.
 
 As in multinomial resampling, stratified resampling uses inversion sampling to dample the parental indices. However, the samples used for inversion sampling are no longer i.i.d. $\Unif[0,1]$ samples. Instead, one number is sampled from each subinterval of length $1/N$; that is, 
@@ -773,7 +773,7 @@ The set-up of \textcite{crisan1999} does not require the number of particles to 
 
 
 \subsubsection{Marginal variance of offspring counts}
-\draft{Mention negative association, teaser for later, to do with covariance between counts rather than marginal variance.}
+\draft{Add workings/results for strat and res-strat (see sora). Mention negative association $=$ teaser for later, which has to do with covariance between counts rather than marginal variance.}
 
 One indication of the performance could be the variance of the resampled offspring counts. For instance we might ask what is the marginal variance of $\nu_t^{(i)}$, conditional on the corresponding weight $w_t^{(i)}$.
 
@@ -1060,8 +1060,8 @@ However, the analysis of per-particle cost is sensitive to the particular implem
  
  
 
-\subsection{Stochastic rounding \seb{$\sim$} }\label{sec:SRs}
-\draft{Define stochastic rounding. Resampling schemes contained by this class. General properties for this class (marginal distributions, negative association, minimum-variance). State explicitly that marginal SR count = $\flnw$ + Bernoulli($Nw_t^{(i)} - \flnw$).}
+\subsection{Stochastic rounding \seb{$\checkmark$} }\label{sec:SRs}
+\draft{Also say something about negative association \`a la GCW19.}
 
 \begin{defn}\label{defn:stochround}
  Let $X=(X_1,\dots,X_N)$ be a $\mathbb{R}_+^N$-valued random variable. Then $Y=(Y_1,\dots,Y_N) \in \mathbb{N}^N$ is a \emph{stochastic rounding} of $X$ if each element $Y_i$ takes values
@@ -1075,9 +1075,18 @@ Y_i \mid X_i =
 \end{defn}
 
 By construction, $\E(Y_i) = X_i$ for each $i$. Taking $X$ to be $N$ times the vector of particle weights, we can therefore use stochastic rounding to construct a valid resampling scheme, under the further constraint that $Y_1 + \dots + Y_N = N$.
-Several ways to enforce this constraint on the joint distribution have been proposed, including systematic resampling, residual resampling with systematic residuals, the branching system of \textcite{crisan1997}, and the Srinivasan sampling process resampling introduced in \textcite{gerber2017}.
+Several ways to enforce this constraint on the joint distribution have been proposed, including systematic resampling, residual resampling with systematic residuals, the minimal variance branching system of \textcite{crisan1997}, and the Srinivasan sampling process resampling introduced in \textcite{gerber2017}.
 
-Some of the properties discussed earlier are common to every stochastic rounding scheme. By definition the support of an offspring count $\nu_t^{(i)}$, if the associated weight lies in the interval $k/N \leq w_t^{(i)} < (k+1)/N$, is $\{ k, k+1\}$. All stochastic roundings are also degenerate by definition when the weights are all equal, i.e.\ $w_t^{(1:N)} = (1,\dots, 1)/N$.
+Explicitly, the offspring counts are marginally distributed according to 
+\begin{equation}
+\nu_t^{(i)} \mid w_t^{(i)}
+\eqdist \flnw + \Bern( Nw_t^{(i)} - \flnw ) .
+\end{equation}
+
+Some of the properties discussed earlier are common to every stochastic rounding scheme. 
+Since all such schemes give offspring counts with the same marginal distributions, properties such as the marginal offspring variance are common to all stochastic roundings. Indeed it is easy to see that the marginal variance of the offspring counts, $\V[ \nu_t^{(i)} \mid w_t^{(i)} ]$ is as small as possible under the constraint of unbiasedness \seb{(refer to the property in Defintion~\ref{defn:resampling}?)}, and as such this is sometimes referred to as minimal-variance resampling.
+By definition the support of an offspring count $\nu_t^{(i)}$, if the associated weight lies in the interval $k/N \leq w_t^{(i)} < (k+1)/N$, is $\{ k, k+1\}$. 
+All stochastic roundings are also degenerate by definition when the weights are all equal, i.e.\ $w_t^{(1:N)} = (1,\dots, 1)/N$.
 
 
 
