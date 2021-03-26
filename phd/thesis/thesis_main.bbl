@@ -1102,6 +1102,42 @@
       \field{title}{Stochastic Processes and Filtering Theory}
       \field{year}{2007}
     \endentry
+    \entry{joag1983}{article}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,uniquepart=base,hash=61a556b14496057adbab7e2e4a6f7a52}{%
+           family={Joag-Dev},
+           familyi={J\bibinithyphendelim D\bibinitperiod},
+           given={Kumar},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=5159406e1fbe21592356e9b1bd07bb95}{%
+           family={Proschan},
+           familyi={P\bibinitperiod},
+           given={Frank},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {JSTOR}%
+      }
+      \strng{namehash}{b08d7ab5a732bd56f07cac3fc0e94a35}
+      \strng{fullhash}{b08d7ab5a732bd56f07cac3fc0e94a35}
+      \strng{bibnamehash}{b08d7ab5a732bd56f07cac3fc0e94a35}
+      \strng{authorbibnamehash}{b08d7ab5a732bd56f07cac3fc0e94a35}
+      \strng{authornamehash}{b08d7ab5a732bd56f07cac3fc0e94a35}
+      \strng{authorfullhash}{b08d7ab5a732bd56f07cac3fc0e94a35}
+      \field{sortinit}{J}
+      \field{sortinithash}{fce5f8d0bd05e8d93f3dbe21c78897ca}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Annals of Statistics}
+      \field{title}{Negative Association of Random Variables with Applications}
+      \field{year}{1983}
+      \field{pages}{286\bibrangedash 295}
+      \range{pages}{10}
+    \endentry
     \entry{kalman1960}{article}{}
       \name{author}{1}{}{%
         {{uniquename=0,uniquepart=base,hash=9fb0dafbf7fbe0408bfb40f5232f7665}{%
