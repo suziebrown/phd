@@ -1,5 +1,5 @@
 ### RESAMPLING ALGORITHMS a la Chopin & Papaspiliopoulos
-### (based on ALgms 9.1--9.6 in their 2020 book)
+#   (based on ALgms 9.1--9.6 in their 2020 book)
 
 function icdf(N::Int64, weight::Array{Float64,1}, seeds::Array{Float64,1})
     # seeds must be an ORDERED vector length N of numbers in [0,1]
