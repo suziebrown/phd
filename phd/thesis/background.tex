@@ -379,6 +379,20 @@ Nor is our model neutral: the resampling distribution depends on the weight of e
 \subsection{Performance}
 \draft{How do genealogies affect performance? Variance (and variance estimation?), storage cost. Ancestral degeneracy.}
 
+\begin{figure}[ht]
+\centering
+\subfloat[Multinomial resampling]{
+\includegraphics[width=0.5\textwidth]{plots/ancdegen_mn.pdf}
+\label{fig:ancdegen_mn}
+}
+\subfloat[Adaptive minimum-variance resampling]{
+\includegraphics[width=0.5\textwidth]{plots/ancdegen_adaptsyst.pdf}
+\label{fig:ancdegen_adaptsyst}
+}
+\caption[Ancestral degeneracy illustration]{Illustration of ancestral degeneracy and the mitigating effect of low-variance and adpative resampling. \subref{fig:ancdegen_mn} with multinomial resampling, \subref{fig:ancdegen_adaptsyst} the same system with adaptive systematic resampling.}
+\label{fig:ancestral_degeneracy}
+\end{figure}
+
 \subsection{Mitigating ancestral degeneracy}
 \draft{Low-variance resampling (save details for next section). Adaptive resampling: idea of balancing weight/ancestral degeneracy; rule of thumb for implementing it; when is it effective or not?; necessary changes to our generic SMC algorithm (calculation of weights in particular). Backward sampling: when is it possible to do this?}
 

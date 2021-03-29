@@ -18,25 +18,31 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {\relax 2.3}{\ignorespaces Diagram illustrating the definitions of $t_i$, $T_i$ in the $n$-coalescent.\relax }}{6}{figure.caption.11}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 2.4}{\ignorespaces PLACEHOLDER Cases for stratified resampling with a fixed weight}}{14}{figure.caption.22}
+\contentsline {figure}{\numberline {\relax 2.4}{\ignorespaces Ancestral degeneracy illustration}}{10}{figure.caption.18}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 2.5}{\ignorespaces Resampling using multinomial, stratified and systematic schemes}}{16}{figure.caption.25}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Multinomial resampling}}}{10}{subfigure.4.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Multinomial resampling}}}{16}{subfigure.5.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Adaptive minimum-variance resampling}}}{10}{subfigure.4.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Stratified resampling}}}{16}{subfigure.5.2}
+\contentsline {figure}{\numberline {\relax 2.5}{\ignorespaces PLACEHOLDER Cases for stratified resampling with a fixed weight}}{14}{figure.caption.23}
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Systematic resampling}}}{16}{subfigure.5.3}
+\contentsline {figure}{\numberline {\relax 2.6}{\ignorespaces Resampling using multinomial, stratified and systematic schemes}}{16}{figure.caption.26}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 2.6}{\ignorespaces PLACEHOLDER. Copied from \textcite {lindsten2013}.\relax }}{30}{figure.caption.41}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Multinomial resampling}}}{16}{subfigure.6.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 2.7}{\ignorespaces PLACEHOLDER. Interpretation of a resampling weight for the immortal offspring.\relax }}{31}{figure.caption.43}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Stratified resampling}}}{16}{subfigure.6.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 2.8}{\ignorespaces PLACEHOLDER. Illustration of how ancestor sampling prevents coalescence onto the immortal trajectory.\relax }}{32}{figure.caption.45}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Systematic resampling}}}{16}{subfigure.6.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {\relax 2.7}{\ignorespaces PLACEHOLDER. Copied from \textcite {lindsten2013}.\relax }}{30}{figure.caption.42}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {\relax 2.8}{\ignorespaces PLACEHOLDER. Interpretation of a resampling weight for the immortal offspring.\relax }}{31}{figure.caption.44}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {\relax 2.9}{\ignorespaces PLACEHOLDER. Illustration of how ancestor sampling prevents coalescence onto the immortal trajectory.\relax }}{32}{figure.caption.46}
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 3.1}{\ignorespaces Illustration of how the sample genealogy is encoded}}{35}{figure.caption.46}
+\contentsline {figure}{\numberline {\relax 3.1}{\ignorespaces Illustration of how the sample genealogy is encoded}}{35}{figure.caption.47}
 \defcounter {refsection}{0}\relax 
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Resampling relationships}}}{35}{subfigure.1.1}
 \defcounter {refsection}{0}\relax 
@@ -46,6 +52,6 @@
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 5.1}{\ignorespaces Structure of weak convergence proof}}{85}{figure.caption.47}
+\contentsline {figure}{\numberline {\relax 5.1}{\ignorespaces Structure of weak convergence proof}}{85}{figure.caption.48}
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
