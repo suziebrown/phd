@@ -1452,6 +1452,40 @@
       \field{pages}{446\bibrangedash 460}
       \range{pages}{15}
     \endentry
+    \entry{mohle2003}{article}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,uniquepart=base,hash=91dc4d416f310afc5cf0edbfc909f0cf}{%
+           family={Möhle},
+           familyi={M\bibinitperiod},
+           given={Martin},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=1940412646c2d90b785da664aaae82fe}{%
+           family={Sagitov},
+           familyi={S\bibinitperiod},
+           given={Serik},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{c973138d14f3ec478361e082419d4283}
+      \strng{fullhash}{c973138d14f3ec478361e082419d4283}
+      \strng{bibnamehash}{c973138d14f3ec478361e082419d4283}
+      \strng{authorbibnamehash}{c973138d14f3ec478361e082419d4283}
+      \strng{authornamehash}{c973138d14f3ec478361e082419d4283}
+      \strng{authorfullhash}{c973138d14f3ec478361e082419d4283}
+      \field{sortinit}{M}
+      \field{sortinithash}{cfd219b90152c06204fab207bc6c7cab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Mathematical Biology}
+      \field{title}{Coalescent Patterns in Exchangeable Diploid Population Models}
+      \field{volume}{47}
+      \field{year}{2003}
+      \field{pages}{337\bibrangedash 352}
+      \range{pages}{16}
+    \endentry
     \entry{moran1958}{inproceedings}{}
       \name{author}{1}{}{%
         {{uniquename=0,uniquepart=base,hash=2e0c98eea5635a80047ac90aa2718a96}{%
