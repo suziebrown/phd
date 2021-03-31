@@ -778,13 +778,17 @@ Another way to quantify this property is by considering the maximum possible dif
 
 
 
-\subsubsection{Degeneracy under equal weights}
-Suppose we somehow end up in the situation where all the weights are equal (i.e.\ $w_t^{(i)} = 1/N$ for all $i$).
-In this case, residual resampling will result in a deterministic assignment only: each particle will be assigned one offspring, and there will be no remainder left to assign randomly. This behaviour cannot be avoided, however the event that all weights are equal typically has zero measure.
+\subsubsection{Degeneracy under equal weights \seb{$\checkmark$} }
+In the case where all of the weights are multiples of $1/N$, low-variance schemes such as residual and systematic resampling become fully deterministic. 
+Since $\flnw = Nw_t^{(i)}$ for each $i$, residual resampling will have $R=0$ leaving no remainder to be assigned stochastically. 
+In systematic resampling exactly $\flnw = Nw_t^{(i)}$ samples will fall in the $i^{th}$ interval.
+In particular, if $w_t^{(1:N)} = (1,\dots, 1)/N$ then each parent is assigned exactly one offspring deterministcially, so there is effectively no resampling.
 
-Stratified and systematic resampling will have the same result: the intervals for sampling will correspond exactly to the weighted subintervals, so no matter which random numbers are sampled, exactly one will fall in each subinterval.
+The same phenomenon occurs with stratified resampling, but not if one uses Whitley's roulette wheel description\seb{(Figure ??)}. The random phase shift introduced by ``spinning the wheel'' prevents the inversion sampling intervals from lining up exactly with the weight intervals, so the resampled offspring counts may vary from their means by one either side.
+\textcite{whitley1994} does not describe stratified resampling, but we see that unlike with systematic resampling, the roulette wheel description is not equivalent to the standard inversion sampling description. 
+For stratified resampling, the roulette wheel adds some extra randomness, so the straightforward inversion sampler is preferred.
 
-However, for stratified resampling, the formulation of \textcite{whitley1994} avoids this behaviour. He imagines subdivisions of a circle rather than an interval, and then ``spins the roulette wheel'' around it, which shifts the sampling intervals by a random amount and thus prevents this degeneracy.
+If the state space is continuous, the event that all weights are multiples of $1/N$ typically has zero measure, but with non-zero probability we can get arbitrarily close to this regime in which resampling becomes deterministic.
 
 
 
@@ -1037,12 +1041,12 @@ The same goes for residual resampling.
 
 
 
-\subsubsection{Permutation invariance}
-A strange property of stratified and systematic resampling is that they are sensitive to the order in which the subintervals are placed. For example, in Figures \ref{fig:resampling_stratified} and \ref{fig:resampling_systematic} if the intervals $w_2$ and $w_4$ were swapped, the number of offspring assigned to particles 2 and 4 would be swapped in each case. 
+\subsubsection{Permutation invariance \seb{$\checkmark$} }
+A strange property of stratified and systematic resampling is that they are sensitive to the order in which the subintervals are placed. For example, in Figures \ref{fig:resampling_stratified} and \ref{fig:resampling_systematic} if the intervals $w_2$ and $w_4$ were swapped, the number of offspring assigned to particles 2 and 4 would be swapped in each case. \seb{Better to use an example where \emph{distribution} of offspring counts (conditional on the weights but not on the Uniform samples) differs depending on order. Such an example is included in my YRM19 presentation on resampling.}
 We can also see that because $w_1$ has weight $\geq 1/N$ and is placed first, it is guaranteed at least one offspring.
 
 This property can lead to pathological behaviour, but is easily avoided by applying a random permutation to the order of the subintervals.
-\textcite{gerber2017} also propose a variation on systematic resampling that avoids this property.
+The SSP resampling scheme of \textcite{gerber2017} is intended to share the benefits of systematic resampling whilst avoiding this property.
 
 
 
