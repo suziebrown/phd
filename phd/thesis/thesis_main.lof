@@ -24,34 +24,40 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Adaptive minimum-variance resampling}}}{10}{subfigure.4.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 2.5}{\ignorespaces PLACEHOLDER Cases for stratified resampling with a fixed weight}}{14}{figure.caption.23}
+\contentsline {figure}{\numberline {\relax 2.5}{\ignorespaces Resampling using multinomial, stratified and systematic schemes}}{14}{figure.caption.22}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 2.6}{\ignorespaces Resampling using multinomial, stratified and systematic schemes}}{16}{figure.caption.26}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Multinomial resampling}}}{14}{subfigure.5.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Multinomial resampling}}}{16}{subfigure.6.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Stratified resampling}}}{14}{subfigure.5.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Stratified resampling}}}{16}{subfigure.6.2}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Systematic resampling}}}{14}{subfigure.5.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Systematic resampling}}}{16}{subfigure.6.3}
+\contentsline {figure}{\numberline {\relax 2.6}{\ignorespaces Cases for stratified resampling with a fixed weight}}{16}{figure.caption.24}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 2.7}{\ignorespaces PLACEHOLDER. Copied from \textcite {lindsten2013}.\relax }}{31}{figure.caption.42}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Case 1}}}{16}{subfigure.6.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 2.8}{\ignorespaces PLACEHOLDER. Interpretation of a resampling weight for the immortal offspring.\relax }}{32}{figure.caption.44}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Case 2. $\delta _L+\delta _R=\delta $. Includes Case 1 when $\delta _L=0$ or $\delta _R=0$\xspace \leavevmode {\color {red}so don't separate Case 1}\xspace .}}}{16}{subfigure.6.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 2.9}{\ignorespaces PLACEHOLDER. Illustration of how ancestor sampling prevents coalescence onto the immortal trajectory.\relax }}{33}{figure.caption.46}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Case 3 (when $k\geq 1$). $x_L+x_R=1+\delta $.}}}{16}{subfigure.6.3}
 \defcounter {refsection}{0}\relax 
-\addvspace {10\p@ }
+\contentsline {figure}{\numberline {\relax 2.7}{\ignorespaces PLACEHOLDER. Copied from \textcite {lindsten2013}.\relax }}{32}{figure.caption.42}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 3.1}{\ignorespaces Illustration of how the sample genealogy is encoded}}{36}{figure.caption.47}
+\contentsline {figure}{\numberline {\relax 2.8}{\ignorespaces PLACEHOLDER. Interpretation of a resampling weight for the immortal offspring.\relax }}{33}{figure.caption.44}
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Resampling relationships}}}{36}{subfigure.1.1}
-\defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Genealogy of terminal particles}}}{36}{subfigure.1.2}
+\contentsline {figure}{\numberline {\relax 2.9}{\ignorespaces PLACEHOLDER. Illustration of how ancestor sampling prevents coalescence onto the immortal trajectory.\relax }}{34}{figure.caption.46}
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {\relax 3.1}{\ignorespaces Illustration of how the sample genealogy is encoded}}{37}{figure.caption.47}
+\defcounter {refsection}{0}\relax 
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Resampling relationships}}}{37}{subfigure.1.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Genealogy of terminal particles}}}{37}{subfigure.1.2}
+\defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 5.1}{\ignorespaces Structure of weak convergence proof}}{90}{figure.caption.48}
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {\relax 5.1}{\ignorespaces Structure of weak convergence proof}}{91}{figure.caption.48}
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
