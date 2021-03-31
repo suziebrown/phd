@@ -347,7 +347,7 @@ The proof follows \textcite[Proof of Lemma 1 Case 1]{koskela2018} but with the t
 
 
 
-\section{An existing limit theorem}
+\section{An existing limit theorem \seb{$\sim$} }
 \draft{State KJJS theorem. Discuss the conditions in detail. Give outline of proof. Say somewhere that we can only get pair-merger-only limits because we take a sparse sample; obviously SMC resampling can induce $>$pair mergers. State the standing assumption somewhere.}
 
 \begin{theorem}[\cite{koskela2018}]\label{thm:kjjs_mainthm}
@@ -373,6 +373,22 @@ for some constant $C_{ t, s } > 0$ that is independent of $N$.
 Then $( G_{ \tau_N( t ) }^{ ( n, N ) } )_{ t \geq 0 }$ converges to the Kingman $n$-coalescent in the sense of finite-dimensional distributions as $N \rightarrow \infty$. 
 \end{theorem}
 
+As we saw in Section~??, the $n$-coalescent is \emph{exchangeable}, so for instance the pair of lineages merging at each event is chosen uniformly. 
+The standing assumption is a weaker condition than exchangeability of the particles within a generation, which is sufficient to admit an exchangeable process in the limit.
+Exchangeability of the particles would imply neutrality, an unreasonable assumption in the setting of SMC. 
+In contrast, the standing assumption can easily be enforced upon any SMC algorithm by permuting the offspring immediately after resampling.
+%, without qualitatively affecting the dynamics.
+
+To ensure samples of size $n$ have Kingman genealogies in the limit, with pair mergers only, we require that multiple mergers (that is, where more than two lineages merge into one, or where two or more mergers happen simultaneously) occur on a slower time scale than pair mergers. 
+This is the role of condition \eqref{eq:kjjs_big_merger_bound}.
+
+Conditions \eqref{eq:kjjs_binary_bound} and \eqref{eq:kjjs_binary_bound_2} ensure that the limiting process is continuous and has the required unit pair merger rate.
+%, and will not be violated by any reasonable SMC algorithm. 
+For \eqref{eq:kjjs_binary_bound} to fail to hold, the expected number of mergers at some generation would have to be $O(N)$. This can only happen if the resampling scheme is very bad (e.g.\ star resampling) or the weights are particularly badly-behaved. The latter is ruled out in the corollaries of Chapter~4?? by imposing bounds on the potential functions; this is discussed more in Section~??.
+
+Condition \ref{eq:kjjs_tau_bound} specifies that the time scale must be $O(N)$. As we saw in Section~??, this is the correct scale for the Wright-Fisher model, but for instance the Moran model has time scale $O(N^2)$ and hence violates this condition. 
+Since we know that the Moran model also has Kingman genealogies in the limit, condition \ref{eq:kjjs_tau_bound} clearly is not necessary. 
+The simplified statement of the theorem (Theorem~\ref{thm:FDDconv}) does not impose any such condition on the time scale.
 
 
 
@@ -387,7 +403,7 @@ for all $N$, uniformly in $t \geq 1$.
 Then the rescaled genealogical process $(G_{\tau_N(t)}^{(n,N)})_{t\geq0}$ converges in the sense of finite-dimensional distributions to Kingman's $n$-coalescent as $N \to \infty$.
 \end{theorem}
 
-On the RHS of \eqref{eq:mainthmcond} is the filtered expectation of $c_N(t)$, i.e.\ the expected pair merger rate, and the LHS is the corresponding rate of triple mergers. Intuitively, \eqref{eq:mainthmcond} says that pair mergers dominate triple mergers, the expected rate of which vanishes, as $N\to\infty$. As we will see, this implies that pair mergers also dominate all other larger mergers, such as simultaneous pair mergers.
+On the RHS of \eqref{eq:mainthmcond} is the filtered expectation of $c_N(t)$, i.e.\ the expected pair merger rate, and the LHS is the corresponding rate of triple mergers. Intuitively, \eqref{eq:mainthmcond} says that pair mergers dominate triple mergers, the expected rate of which vanishes as $N\to\infty$. As we will see, this implies that pair mergers also dominate all other larger mergers, such as simultaneous pair mergers.
 
 Our result improves on Theorem~\ref{thm:kjjs_mainthm} by eliminating the restrictive condition \eqref{eq:kjjs_tau_bound}, which is shown in Lemma~\ref{lem:removeass4}\seb{?!} to be unnecessary. This allows our result to apply to some models not previously included; for example the neutral Moran model of population genetics violates \eqref{eq:kjjs_tau_bound} but is included in Theorem~\ref{thm:FDDconv}. 
 In neutral models the straightforward analogue of \eqref{eq:mainthmcond} is necessary and sufficient \parencite[Theorem 5.4]{mohle2003}, suggesting that in general this condition is not significantly stronger than \eqref{eq:kjjs_big_merger_bound}--\eqref{eq:kjjs_binary_bound_2} combined.
@@ -398,7 +414,7 @@ As such, we are able to verify the conditions of Theorem~\ref{thm:FDDconv} in se
 
 
 \subsection{Proof of theorem \seb{$\sim$} }
-\draft{Proof that KJJS conditions are implied by ours. Modification of KJJS proof (or even write out a complete proof?) using weaker bound on $p_{\xi\xi}$ (that bound should have been stated and proved already in transition probabilities section).}
+\draft{Explain relationship between this and KJJS theorem, e.g.\ which conditions are implied by each other (with a diagram?!). Proof that KJJS conditions are implied by ours. Modification of KJJS proof (or even write out a complete proof?) using weaker bound on $p_{\xi\xi}$ (that bound should have been stated and proved already in transition probabilities section).}
 \seb{Still need to add the proof of KJJS theorem with changed assumption (sec3.1 in BJJK).}
 
 The series of Lemmata \ref{lem:removeass3}--\ref{lem:removeass2} below show that the assumptions \eqref{eq:oldass1}--\eqref{eq:oldass3} follow from \eqref{eq:mainthmcond}. Lemma \ref{lem:removeass4} allows us to remove condition \eqref{eq:oldass4} by improving upon some arguments from the proof of \textcite[Theorem 1]{koskela2018}; this argument is presented in detail in Section~\ref{sec:proof}.
