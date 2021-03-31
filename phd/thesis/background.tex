@@ -662,7 +662,7 @@ This scheme ensures that the samples are ``well spread out'', which reduces the 
 
 It will be useful later on to have a better idea about the marginal distributions of $\nu_t^{(i)}$ that are induced by stratified resampling. There are complex dependencies between the offspring counts, but we can still find some constraints on the distribution of each count conditional on the corresponding weight.
 Write the $i^{th}$ weight in the form $w_t^{(i)} = (k + \delta)/N$, where $\delta \in [0,1)$ and $k\in \{0,\dots,N-1\}$.
-Considering the illustration Figure~\ref{fig:resampling_stratified}, the distribution of $\nu_t^{(i)}$ depends not only on $w_t^{(i)}$ but also on where the $i^{th}$ weight interval falls with respect to the length-$(1/N)$ intervals. There are three cases to consider, which are illustrated in Figure~\ref{fig:strat_cases}. Note that Case 3 \seb{replace with subfig reference} cannot happen if $k=0$.
+Considering the illustration Figure~\ref{fig:resampling_stratified}, the distribution of $\nu_t^{(i)}$ depends not only on $w_t^{(i)}$ but also on where the $i^{th}$ weight interval falls with respect to the length-$(1/N)$ intervals. There are two cases to consider, which are illustrated in Figure~\ref{fig:strat_cases}. Note that Case \subref{fig:strat_case2} cannot happen if $k=0$.
 
 %\begin{figure}
 %\centering
@@ -673,35 +673,35 @@ Considering the illustration Figure~\ref{fig:resampling_stratified}, the distrib
 
 \begin{figure}
 \centering
-\subfloat[Case 1]{
-\begin{tikzpicture}
-% w subinterval
-\draw[thick] (0,0)--(1.9,0);
-\draw[thick,dotted] (1.9,0)--(2.3,0);
-\draw[thick] (2.3,0)--(4.8,0);
-\draw[thick] (0,0.1)--(0,-0.1);
-\draw[thick] (4.8,0.1)--(4.8,-0.1);
-\node[anchor=north] at (2.4,0) {$w$};
-% length labels
-\draw[<->] (0,-0.4)--(4,-0.4);
-\node[anchor=north] at (2,-0.4) {$k/N$};
-\draw[<->] (4,-0.4)--(4.8,-0.4);
-\node[anchor=north] at (4.4,-0.4) {$\delta/N$};
-% sampling interval
-\draw (-0.5,1.5)--(8.5,1.5);
-\draw[dotted] (-1,1.5)--(-0.5,1.5);
-\draw[dotted] (8.5,1.5)--(9,1.5);
-\draw (0,1.6)--(0,1.4);
-\draw (4,1.6)--(4,1.4);
-\draw (8,1.6)--(8,1.4);
-\node[anchor=south] at (2,1.5) {$k/N$};
-\node[anchor=south] at (6,1.5) {$1/N$};
-% vertical dividers
-\draw[dashed, gray] (0,1.4)--(0,0.1);
-\draw[dashed, gray] (4,1.4)--(4,0.1);
-\end{tikzpicture}
-}\\
-\subfloat[Case 2. $\delta_L+\delta_R=\delta$. Includes Case 1 when $\delta_L=0$ or $\delta_R=0$\seb{so don't separate Case 1}.]{
+%\subfloat[Case 1]{
+%\begin{tikzpicture}
+%% w subinterval
+%\draw[thick] (0,0)--(1.9,0);
+%\draw[thick,dotted] (1.9,0)--(2.3,0);
+%\draw[thick] (2.3,0)--(4.8,0);
+%\draw[thick] (0,0.1)--(0,-0.1);
+%\draw[thick] (4.8,0.1)--(4.8,-0.1);
+%\node[anchor=north] at (2.4,0) {$w$};
+%% length labels
+%\draw[<->] (0,-0.4)--(4,-0.4);
+%\node[anchor=north] at (2,-0.4) {$k/N$};
+%\draw[<->] (4,-0.4)--(4.8,-0.4);
+%\node[anchor=north] at (4.4,-0.4) {$\delta/N$};
+%% sampling interval
+%\draw (-0.5,1.5)--(8.5,1.5);
+%\draw[dotted] (-1,1.5)--(-0.5,1.5);
+%\draw[dotted] (8.5,1.5)--(9,1.5);
+%\draw (0,1.6)--(0,1.4);
+%\draw (4,1.6)--(4,1.4);
+%\draw (8,1.6)--(8,1.4);
+%\node[anchor=south] at (2,1.5) {$k/N$};
+%\node[anchor=south] at (6,1.5) {$1/N$};
+%% vertical dividers
+%\draw[dashed, gray] (0,1.4)--(0,0.1);
+%\draw[dashed, gray] (4,1.4)--(4,0.1);
+%\end{tikzpicture}
+%}\\
+\subfloat[The parent under consideration is automatically assigned $k$ offspring, plus up to two more. ($\delta_L+\delta_R=\delta$.)]{
 \begin{tikzpicture}
 % w subinterval
 \draw[thick] (0,0)--(1.9,0);
@@ -732,8 +732,9 @@ Considering the illustration Figure~\ref{fig:resampling_stratified}, the distrib
 \draw[dashed, gray] (0.3,1.4)--(0.3,0.1);
 \draw[dashed, gray] (4.3,1.4)--(4.3,0.1);
 \end{tikzpicture}
+\label{fig:strat_case1}
 }\\
-\subfloat[Case 3 (when $k\geq1$). $x_L+x_R=1+\delta$.]{
+\subfloat[This case can only occur when $k\geq1$. The parent under consideration is automatically assigned $k-1$ offspring, plus up to two more. ($x_L+x_R=1+\delta$.)]{
 \begin{tikzpicture}
 % w subinterval
 \draw[thick] (-2,0)--(1.9,0);
@@ -764,29 +765,30 @@ Considering the illustration Figure~\ref{fig:resampling_stratified}, the distrib
 \draw[dashed, gray] (0.3,1.4)--(0.3,0.1);
 \draw[dashed, gray] (4.3,1.4)--(4.3,0.1);
 \end{tikzpicture}
+\label{fig:strat_case2}
 }
-\caption[Cases for stratified resampling with a fixed weight]{Cases for stratified resampling with a fixed weight. Case 3 is only valid for $k\geq1$.}
+\caption[Cases for stratified resampling with a fixed weight]{Cases for stratified resampling with a fixed weight}
 \label{fig:strat_cases}
 \end{figure}
 
 
-Notice that in any case, $\nu_t^{(i)} \in \{k-1,k,k+1,k+2\}$ almost surely. 
+In any case $\nu_t^{(i)} \in \{k-1,k,k+1,k+2\}$ almost surely. 
 To define a probability distribution over these four values, we introduce the notation $p_j := \Prob[ \nu_t^{(i)} = \flnw +j \mid w_t^{(i)} ]$, for $j=-1,0,1,2$. 
-Since the sample within each interval of length $1/N$ is uniform over that interval, we find the probabilities given in Table~\ref{tab:strat_probs}, in terms of $\delta$ and the other quantities $\delta_L, \delta_R, x_L, x_R$ defined in the Figure. The probabilities do not depend on $k$, but of course the corresponding values of $\nu_t^{(i)}$ do. (Note that $\delta_L+\delta_R=\delta$ and $x_L+x_R=1+\delta$.)
+Since the sample within each interval of length $1/N$ is uniform over that interval, we find the probabilities given in Table~\ref{tab:strat_probs}, in terms of $\delta$ and the other quantities $\delta_L, \delta_R, x_L, x_R$ defined in Figure~\ref{fig:strat_cases}. The probabilities do not depend on $k$, but of course the corresponding values of $\nu_t^{(i)}$ do. By definition $\delta_L+\delta_R=\delta$ and $x_L+x_R=1+\delta$.
 
 \begin{table}[ht]
 \centering
-\begin{tabular}{ c | c c c }
+\begin{tabular}{ c | c c }
 \hline\hline
-& Case 1 & Case 2 & Case 3\\
+& Case \subref{fig:strat_case1} & Case \subref{fig:strat_case2}\\
 \hline
-$p_{-1}$ & 0 & 0 & $x_Lx_R-\delta$\\
-$p_0$ & $1-\delta$ & $1-\delta + \delta_L\delta_R$ & $1+\delta-2x_Lx_R$\\
-$p_1$ & $\delta$ & $\delta-2\delta_L\delta_R$ & $x_Lx_R$\\
-$p_2$ & 0 & $\delta_L\delta_R$ & 0\\
+$p_{-1}$ & 0 & $x_Lx_R-\delta$\\
+$p_0$ & $1-\delta + \delta_L\delta_R$ & $1+\delta-2x_Lx_R$\\
+$p_1$ & $\delta-2\delta_L\delta_R$ & $x_Lx_R$\\
+$p_2$ & $\delta_L\delta_R$ & 0\\
 \hline\hline
 \end{tabular}
-\caption[Analysis of distribution of offspring counts under stratified resampling]{Marginal probability distribution of $\nu_t^{(i)}$ conditional on $w_t^{(i)}$, in terms of $\delta$ and the quantities defined in Figure~\ref{fig:strat_cases}. \seb{Once Figure~\ref{fig:strat_cases} is made properly and labelled with subfig, we can refer to the subfig labels for the Cases in this table.}}
+\caption[Analysis of distribution of offspring counts under stratified resampling]{Marginal probability distribution of $\nu_t^{(i)}$ conditional on $w_t^{(i)}$, in terms of $\delta$ and the quantities defined in Figure~\ref{fig:strat_cases}.}
 \label{tab:strat_probs}
 \end{table}
 
@@ -974,16 +976,35 @@ and we find
 \end{align*}
 
 For stratified resampling, we can use the constraints on the marginal offspring distribution that were derived in Section~\ref{sec:examples_resamplingschemes}. Recall that, conditional on $w_t^{(i)}$, $\nu_t^{(i)} = \flnw + j$ with probability $p_{j}$ for $j=-1,0,1,2$.
-Using the values of $p_{-1},p_0,p_1,p_2$ in the three cases of Figure~\ref{fig:strat_cases}, as summarised in Table~\ref{tab:strat_probs}, we find the overall bound
-%We found that $p_{-1}$ and $p_2$ were at most $1/4$, and only one of them is non-zero.
-%Thus the variance is maximised when $p=(1/4, 0, 3/4, 0)$ or $p=(0,3/4, 0, 1/4)$, both of which yield a variance of $3/4$:
+We can use the values of $p_{-1},p_0,p_1,p_2$ in the two cases of Figure~\ref{fig:strat_cases}, as summarised in Table~\ref{tab:strat_probs}, to bound the variance. First write
 \begin{align*}
 \V[ \nu_t^{(i)} \mid w_t^{(i)} ]
 &= \E[ (\nu_t^{(i)} - \flnw)^2 \mid w_t^{(i)} ] 
         - \E[ \nu_t^{(i)} -\flnw \mid w_t^{(i)} ]^2 \\
-&= p_{-1} + p_1 + 4p_2 - (-p_{-1} + p_1 + 2p_2)^2
-\leq 1/2 .
+&= p_{-1} + p_1 + 4p_2 - (-p_{-1} + p_1 + 2p_2)^2 .
+%\leq 1/2 .
 \end{align*}
+In Case~\subref{fig:strat_case1}, we have
+\begin{equation*}
+\V[ \nu_t^{(i)} \mid w_t^{(i)} ]
+= (\delta -2\delta_L\delta_R + 4\delta_L\delta_R) 
+        - (\delta - 2\delta_L\delta_R + 2\delta_L\delta_R)^2
+= \delta +2\delta_L\delta_R - \delta^2
+\end{equation*}
+which is maximised at $\delta_L=\delta_R=\delta/2$ for a maximum variance of $\delta(1-\delta/2)$, which is at most $1/2$.
+In Case~\subref{fig:strat_case2}, we have
+\begin{equation*}
+\V[ \nu_t^{(i)} \mid w_t^{(i)} ]
+= (x_Lx_R -\delta + x_Lx_R) - (-x_Lx_R + \delta + x_Lx_R)^2
+= \delta + 2x_Lx_R -\delta^2
+\end{equation*}
+which is maximised at $x_L=x_R=(1+\delta)/2$ for a maximum variance of $(1-\delta^2)/2$, which is at most $1/2$.
+Overall we have the bound
+\begin{equation*}
+\V[ \nu_t^{(i)} \mid w_t^{(i)} ]
+\leq \frac{1}{2}
+\end{equation*}
+for any $w_t^{(1:N)}$.
 
 Residual-stratified resampling has the further constraint that $p_{-1} =0$ (i.e.\ Case 3 of Figure~\ref{fig:strat_cases} doesn't occur) since the residual weights are between $0$ and $1/R$. However this does not give an improvement on the stratified bound:
 \begin{equation*}
