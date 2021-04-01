@@ -814,11 +814,12 @@ for $i = 1, \dots, N $.
 The parental indices are again selected according to \eqref{eq:syst_strat_resampling}. 
 The method is illustrated in Figure \ref{fig:resampling_systematic}.
 
-\textcite{whitley1994} describes a slightly different picture, where the interval $[0,1]$ is joined up into a circle, and the systematic samples are evenly spaced pointers on an outer ring, which is spun around like a roulette wheel to sample a random phase which, modulo 1, is equal to $u$.\seb{figure please}
+\textcite{kitagawa1994} suggests a deterministic scheme in which the random $u$ is replaced by a fixed $\alpha\in[0,1]$; but, being deterministic, this scheme does not satisfy the unbiasedness property (condition~\ref{item:resampling_property1} in Definition~\ref{defn:resampling}).
+\textcite{whitley1994} describes systematic resampling using a different picture, whereby the interval $[0,1]$ is joined up into a circle, and the systematic samples are evenly spaced pointers on an outer ring, which is spun around like a roulette wheel to sample a random phase which, modulo 1, is equal to $u$.\seb{figure please}
 For systematic resampling, Whitley's ``roulette wheel'' representation is equivalent to that of Figure~\ref{fig:resampling_systematic}.
 
 Like stratified resampling, systematic resampling ensures the random numbers are ``well spread out''; the resulting samples are even more constrained than with stratified resampling. 
-Systematic resampling also has the advantage of being extremely easy to implement and also computationally efficient, requiring only one sample from a pseudo-random number generator (PRNG) followed by some elementary operations.
+Systematic resampling also has the advantage of being extremely easy to implement and also computationally efficient, requiring only one sample from a pseudo-random number generator (PRNG) followed by $O(N)$ elementary operations.
 
 However, this scheme is known to exhibit pathological behaviour in some cases because its performance depends on the ordering of the weights. A simple example of this phenomenon is presented in \textcite{douc2005}. 
 Such behaviour can be avoided by randomly permuting the weights before resampling, and this is the recommended practice. 
@@ -1152,10 +1153,10 @@ The inequality is an application of Jensen's inequality, since
 
 
 
-\subsubsection{Exchangeability \seb{$\checkmark$} }
+\subsubsection{Exchangeability \seb{$\sim$} }
 We will call a resampling scheme exchangeable if the resulting distribution of parental indices is invariant under permutations of the children. To put it another way, each child chooses its parent from the same marginal distribution.
 
-It is clear that multinomial resampling is exchangeable since in this case the parental indices are independent and identically distributed. However it is worth noting that efficient implementations of multinomial sampling may not preserve exchangeability in practice.
+It is clear that multinomial resampling is exchangeable since in this case the parental indices are independent and identically distributed. However the efficient implementation of multinomial sampling that takes sorted inputs does not preserve exchangeability.
 
 Stratified and systematic resampling are clearly not exchangeable since, for instance, child 1 is more likely to choose parent 1 than child $N$ is. However, this is merely a feature of the arbitrary ordering of the sampling steps: exchangeability can easily be reintroduced (at $O(N)$ cost) by applying a random permutation to the vector of parental indices after sampling.
 The same goes for residual resampling.
@@ -1182,7 +1183,7 @@ The SSP resampling scheme of \textcite{gerber2017} is intended to share the bene
 
 \subsubsection{Computational complexity \seb{$\checkmark$} }
 All of the resampling algorithms discussed in Section~\ref{sec:examples_resamplingschemes} can be implemented in $O(N)$ operations.
-\seb{Even \texttt{star} and \texttt{SSP} and \texttt{branching}? If it turns out to differ depending on resampling scheme then include it as a column in Table~\ref{tab:resampling_properties}. --- I think we can't say for \texttt{branching} becaue it dpeends on implementation, but \textcite[Corollary 18]{crisan1999} seems to imply $O(N^2)$...?}
+\seb{Even \texttt{star} and \texttt{SSP} and \texttt{branching}? If it turns out to differ depending on resampling scheme then include it as a column in Table~\ref{tab:resampling_properties}. --- I think we can't say for \texttt{branching} becaue it dpeends on implementation, but \textcite[Corollary 18]{crisan1999} seems to imply $O(N^2)$...? SSP is definitely $O(N)$.}
 Considering the complexity of each operation, \textcite{hol2004,hol2006} suggest that systematic resampling is fastest because it only requires one pseudo-random number generation, and multinomial resampling is slower than stratified resampling because of the transformations required. Residual resampling is hard to compare directly because a random fraction of the operations are deterministic, so the number of pseudo-random numbers required is less than $N$.
 This analysis was backed up by simulation experiments.
 However, the analysis of per-particle cost is sensitive to the particular implementation of each resampling scheme, the system implementation of pseudo-random number generation and arithmetic operations, and the hardware used.
@@ -1223,15 +1224,15 @@ We have noted already \seb{we haven't actually, but we should} that resampling c
 From this point-of-view, stratified and systematic resampling are quasi-Monte Carlo versions of multinomial resampling, since they provide ``more regular'' points to be used in inversion sampling.
 
 In one dimension, the lowest-discrepancy point set is the regular grid $( \frac{1}{2N}, \frac{3}{2N}, \dots, \frac{2N-1}{2N} )$, which has star discrepancy $1/(2N)$ \seb{[citation]}.
-However, to maintain unbiasedness of resampling, the points must have marginal $\Unif[0,1]$ distributions, which the regular grid points clearly do not.
+However, to maintain unbiasedness of resampling, the points must have marginal $\Unif[0,1]$ distributions\seb{erm, they don't in e.g.\ strat and syst. what is the actual requirement?}, which the regular grid points clearly do not.
 The point sets generated in stratified and systematic resampling both have star discrepancy between $1/(2N)$ and $1/N$ almost surely, where the exact value depends on the realisation.
 This certainly seems to improve on independent uniform points which can have star discrepancy arbitrarily close to $1$, the maximum possible value, albeit with diminishing probability as $N$ increases.
 
 
 
-\subsubsection{Optimal resampling}
-\textcite{crisan1999} introduce another resampling scheme based on a branching process, which they show to be optimal in some sense. However, their algorithm is not widely used in practice because it is much more complicated to implement than alternatives like systematic resampling which perform just as well empirically, and share some of its optimality properties \parencite{bain2008}. 
-\seb{Possibly add an ``optimality'' column in Table~\ref{tab:resampling_properties} containing in what sense a scheme might be considered optimal.}
+%\subsubsection{Optimal resampling}
+%\textcite{crisan1999} introduce another resampling scheme based on a branching process, which they show to be optimal in some sense. However, their algorithm is not widely used in practice because it is much more complicated to implement than alternatives like systematic resampling which perform just as well empirically, and share some of its optimality properties \parencite{bain2008}. 
+%\seb{Possibly add an ``optimality'' column in Table~\ref{tab:resampling_properties} containing in what sense a scheme might be considered optimal.}
 
 
 
