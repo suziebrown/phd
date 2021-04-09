@@ -178,6 +178,10 @@ For all $t\in\mathbb{N}$, $t^\prime > s^\prime >0$,
     \leq \sum_{r=\tau_N(s^\prime)+1}^{\tau_N(t^\prime)} c_N(r) 
     \leq t^\prime - s^\prime +1 .
     \end{aligned}$
+\item \label{item:cN_property6} \hspace{5pt}
+    $\begin{aligned}
+    \tau_N(t^\prime) \geq t^\prime
+    \end{aligned}$
 \end{enumerate}
 %\begin{align}
 %& c_N(t) , D_N(t) \in [0,1] \label{eq:cN_property1}\\
@@ -205,7 +209,8 @@ D_N(t) &:= \frac{1}{(N)_2} \sum_{i=1}^N (\nu_t^{(i)})_2 \frac{1}{N} \left\{  \nu
 = \sum_{r=1}^{\tau_N(t^\prime)} c_N(r) 
         - \sum_{r=1}^{\tau_N(s^\prime)} c_N(r) ,
 \end{equation*}
-the result follows by applying \ref{item:cN_property4} to both sums.
+the result follows by applying \ref{item:cN_property4} to both sums.\\
+\textbf{\ref{item:cN_property6}} follows from \ref{item:cN_property1} and the definition of $\tau_N$ in \eqref{eq:defn_tauN}.
 \end{proof}
 
 
@@ -373,10 +378,10 @@ for some constant $C_{ t, s } > 0$ that is independent of $N$.
 Then $( G_{ \tau_N( t ) }^{ ( n, N ) } )_{ t \geq 0 }$ converges to the Kingman $n$-coalescent in the sense of finite-dimensional distributions as $N \rightarrow \infty$. 
 \end{theorem}
 
-As we saw in Section~??, the $n$-coalescent is \emph{exchangeable}, so for instance the pair of lineages merging at each event is chosen uniformly. 
+As we saw in Section~\ref{sec:coaltheory}, the $n$-coalescent is \emph{exchangeable}, so for instance the pair of lineages merging at each event is chosen uniformly. 
 The standing assumption is a weaker condition than exchangeability of the particles within a generation, which is sufficient to admit an exchangeable process in the limit.
 Exchangeability of the particles would imply neutrality, an unreasonable assumption in the setting of SMC. 
-In contrast, the standing assumption can easily be enforced upon any SMC algorithm by permuting the offspring immediately after resampling.
+In contrast, the standing assumption can easily be enforced upon any SMC algorithm by applying a random permutation to the offspring indices immediately after resampling.
 %, without qualitatively affecting the dynamics.
 
 To ensure samples of size $n$ have Kingman genealogies in the limit, with pair mergers only, we require that multiple mergers (that is, where more than two lineages merge into one, or where two or more mergers happen simultaneously) occur on a slower time scale than pair mergers. 
@@ -384,12 +389,18 @@ This is the role of condition \eqref{eq:kjjs_big_merger_bound}.
 
 Conditions \eqref{eq:kjjs_binary_bound} and \eqref{eq:kjjs_binary_bound_2} ensure that the limiting process is continuous and has the required unit pair merger rate.
 %, and will not be violated by any reasonable SMC algorithm. 
-For \eqref{eq:kjjs_binary_bound} to fail to hold, the expected number of mergers at some generation would have to be $O(N)$. This can only happen if the resampling scheme is very bad (e.g.\ star resampling) or the weights are particularly badly-behaved. The latter is ruled out in the corollaries of Chapter~4?? by imposing bounds on the potential functions; this is discussed more in Section~??.
+For \eqref{eq:kjjs_binary_bound} to fail to hold, the expected number of mergers at some generation would have to be $O(N)$. This can only happen if the resampling scheme is very bad (e.g.\ star resampling) or the weights are particularly badly-behaved. The latter is ruled out in the corollaries of Chapter~\ref{ch:appl} by imposing bounds on the potential functions; this is discussed further in Section~??.
 
-Condition \ref{eq:kjjs_tau_bound} specifies that the time scale must be $O(N)$. As we saw in Section~??, this is the correct scale for the Wright-Fisher model, but for instance the Moran model has time scale $O(N^2)$ and hence violates this condition. 
+Condition \eqref{eq:kjjs_tau_bound} specifies that the time scale must be $O(N)$. As we saw in Section~\ref{sec:popgenmodels}, this is the correct scale for the Wright-Fisher model, but for instance the Moran model has time scale $O(N^2)$ and hence violates this condition. 
 Since we know that the Moran model also has Kingman genealogies in the limit, condition \ref{eq:kjjs_tau_bound} clearly is not necessary. 
-The simplified statement of the theorem (Theorem~\ref{thm:FDDconv}) does not impose any such condition on the time scale.
+The simplified statement in Theorem~\ref{thm:FDDconv} does not impose any such condition on the time scale.
 
+The proof of \textcite{koskela2018} does not explicitly use \eqref{eq:kjjs_binary_bound} but rather the similar condition
+\begin{equation}\label{eq:kjjs_binary_bound_corrected}
+\lim_{ N \rightarrow \infty } \E[ c_N( \tau_N(t) ) ] = 0 .
+\end{equation}
+However, as we will see in the next section (Lemmata \ref{thm:DNimpliescN} and \ref{thm:DNimpliescN_2}), both \eqref{eq:kjjs_binary_bound} and \eqref{eq:kjjs_binary_bound_corrected} are implied by \eqref{eq:kjjs_big_merger_bound}, so the theorem is correct. 
+Such redundancies in the statement of Theorem~\ref{thm:kjjs_mainthm} are removed in Theorem~\ref{thm:FDDconv}.
 
 
 \section{A new limit theorem \seb{$\checkmark$} }
@@ -413,9 +424,40 @@ As we will see in Chapter~4, once we move beyond conditionally independent resam
 As such, we are able to verify the conditions of Theorem~\ref{thm:FDDconv} in several cases, whereas \textcite{koskela2018} only apply their theorem to multinomial resampling.
 
 
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[
+mynode/.style={rectangle, rounded corners, fill=gray!20, minimum size=5mm},
+]
+% nodes
+\node[mynode] at (0,0) {\eqref{eq:mainthmcond}};
+\node[mynode] at (4,0) {\eqref{eq:kjjs_big_merger_bound}};
+\node[mynode] at (4,2) {\eqref{eq:kjjs_binary_bound_2}};
+\node[mynode] at (8,0) {\eqref{eq:kjjs_binary_bound_corrected}};
+\node[mynode] at (4,-2) {\eqref{eq:kjjs_binary_bound}};
+% arrows
+\draw[->, thick] (0.6,0)-- node[anchor=south] 
+        {\footnotesize{Lemma~\ref{lem:removeass2}}} (3.5,0);
+\draw[->, thick] (4,0.3)-- node[anchor=west] 
+        {\footnotesize{Lemma~\ref{lem:removeass3}}} (4,1.7);
+\draw[->, thick] (4.5,0)-- node[anchor=south] 
+        {\footnotesize{Lemma~\ref{thm:DNimpliescN_2}}} (7.5,0);
+\draw[->, thick] (4,-0.3)-- node[anchor=west] 
+        {\footnotesize{Lemma~\ref{thm:DNimpliescN}}} (4,-1.7);
+\draw[->, thick] (0.6,0)-- node[sloped, anchor=center, text width=2cm] 
+        {\footnotesize{Brown~et~al.~2021 Lemma 3.4}} (3.5,-2);
+\end{tikzpicture}
+\caption[Dependencies between conditions of Theorems \ref{thm:kjjs_mainthm} and \ref{thm:FDDconv}]{Dependencies between conditions of Theorems \ref{thm:kjjs_mainthm} and \ref{thm:FDDconv}. Arrows represent logical implication; labels on arrows indicate the lemma in which the implication is stated.
+In \textcite[Lemma 3.4]{brown2021} the direct implication \eqref{eq:mainthmcond} $\Rightarrow$ \eqref{eq:kjjs_binary_bound} was proved, but here we will instead show that \eqref{eq:kjjs_big_merger_bound} $\Rightarrow$ \eqref{eq:kjjs_binary_bound}.
+}
+%The main condition of Theorem~\ref{thm:FDDconv}, \eqref{eq:mainthmcond}, implies the conditions \eqref{eq:kjjs_big_merger_bound}--\eqref{eq:kjjs_binary_bound} of Theorem~\ref{thm:kjjs_mainthm}.}
+\label{fig:FDD_proof_dependencies}
+\end{figure}
+
 \subsection{Proof of theorem \seb{$\sim$} }
 \draft{Explain relationship between this and KJJS theorem, e.g.\ which conditions are implied by each other (with a diagram?!). Proof that KJJS conditions are implied by ours. Modification of KJJS proof (or even write out a complete proof?) using weaker bound on $p_{\xi\xi}$ (that bound should have been stated and proved already in transition probabilities section).}
 \seb{Still need to add the proof of KJJS theorem with changed assumption (sec3.1 in BJJK).}
+\seb{Use $\epsilon$ for the proofs to distinguish from $\varepsilon$?}
 
 The series of Lemmata \ref{lem:removeass3}--\ref{lem:removeass2} below show that the assumptions \eqref{eq:oldass1}--\eqref{eq:oldass3} follow from \eqref{eq:mainthmcond}. Lemma \ref{lem:removeass4} allows us to remove condition \eqref{eq:oldass4} by improving upon some arguments from the proof of \textcite[Theorem 1]{koskela2018}; this argument is presented in detail in Section~\ref{sec:proof}.
 
@@ -437,48 +479,104 @@ which concludes the proof.
 \end{proof}
 
 
-
-\begin{lemma} \label{lem:removeass1}
-$\eqref{eq:mainthmcond} \Rightarrow \eqref{eq:kjjs_binary_bound}$.
+\begin{lemma} \label{thm:DNimpliescN}
+\eqref{eq:kjjs_big_merger_bound} $\Rightarrow$ \eqref{eq:kjjs_binary_bound}.
 \end{lemma}
 
 \begin{proof}
-Following the proof of \textcite[Lemma 5.5]{mohle2003}, we fix $\varepsilon > 0$ and define the event $A_i = \{ \nu_t^{(i)} \leq N \varepsilon \}$.
-Now
-\begin{align}
-\Et[ c_N( t ) ] 
-&= \frac{ 1 }{ ( N )_2 } \sum_{ i = 1 }^N \Et[ ( \nu_t^{(i)} )_2] 
-        = \frac{ 1 }{ ( N )_2 } \sum_{ i = 1 }^N \Big\{ \Et[ ( \nu_t^{(i)} )_2 \1{ A_i } ] 
-        + \Et[ ( \nu_t^{(i)} )_2 \1{ A_i^c } ] \Big\} \notag \\
-&\leq \frac{ \varepsilon }{ N - 1 } \sum_{ i = 1 }^N \Et[ \nu_t^{(i)} \1{ A_i }] 
-        + \sum_{ i = 1 }^N \Et[\1{ A_i^c }] \notag \\
-&\leq ( 1 + O( N^{ -1 } ) ) \varepsilon + \sum_{ i = 1 }^N 
-        \Prob[ \nu_t^{(i)} > N \varepsilon \mid \mathcal{F}_{t-1}]. \label{cond_cN}
-\end{align}
-For $N \geq 3 / \varepsilon$, Markov's inequality yields
-\begin{align}
-\sum_{ i = 1 }^N \Prob[ \nu_t^{(i)} > N \varepsilon \mid \mathcal{F}_{t-1} ] 
-&\leq \frac{ 1 }{ ( N \varepsilon )_3 } \sum_{ i = 1 }^N 
-        \Et[ ( \nu_t^{(i)} )_3] 
-        = \frac{ ( 1 + O( N^{ -1 } ) ) }{ \varepsilon^3 ( N )_3 } 
-        \sum_{ i = 1 }^N \Et[ ( \nu_t^{(i)} )_3] \notag \\
-&\leq ( 1 + O( N^{ -1 } ) ) \frac{ b_N }{ \varepsilon^3 } \Et[ c_N( t )] . \label{markovs_ineq}
-\end{align}
-Substituting \eqref{markovs_ineq} into \eqref{cond_cN} and using $c_N( t ) \leq 1$ results in
-\begin{equation*}
-\Et[ c_N( t )]
-\leq ( 1 + O( N^{ -1 } ) ) 
-        \Bigg( \varepsilon + \frac{ b_N }{ \varepsilon^3 } \Bigg) \underset{N\to\infty}{\longrightarrow} \varepsilon
-\end{equation*}
-since $b_N \rightarrow 0$. 
-As $\varepsilon > 0$ was arbitrary, we have
-\begin{equation*}
-\E[ c_N( t ) ] 
-= \E\left[ \Et[ c_N( t ) ] \right] 
-\rightarrow 0
-\end{equation*}
-as $N \rightarrow \infty$.
+Fix $\varepsilon>0$, and assume $N>2/\varepsilon$.
+Following \textcite{mohle2003}, define the events
+\begin{equation}\label{eq:define_Ai_events}
+A_i(r) := \{ \nu_r^{(i)} \leq N\varepsilon \} .
+\end{equation}
+Then
+\begin{align*}
+c_N(t)
+&= \frac{1}{(N)_2} \sum_{i=1}^N (\nu_t^{(i)})_2 [\1{A_i(t)} + \1{A_i(t)^c}] \\
+&\leq \frac{N\varepsilon}{(N)_2} \sum_{i=1}^N \nu_t^{(i)}
+        + \sum_{i=1}^N \1{A_i(t)^c} \\
+&= \frac{N\varepsilon}{N-1} + \sum_{i=1}^N \1{A_i(t)^c} .
+\end{align*}
+Taking expectations and applying the generalised Markov inequality,
+\begin{align*}
+\E[c_N(t)]
+&\leq \varepsilon\ON + \sum_{i=1}^N \Prob[ \nu_t^{(i)} > N\varepsilon ] \\
+&\leq \varepsilon\ON 
+        + \sum_{i=1}^N \frac{\E[ (\nu_t^{(i)})_3 ]}{(N\varepsilon)_3} \\
+&\leq \varepsilon\ON + \frac{N(N)_2}{(N\varepsilon)_3} \E[ D_N(t) ] \\
+&= \varepsilon\ON + \varepsilon^{-3}\ON \E[ D_N(t) ] \\
+&\leq \varepsilon\ON + \varepsilon^{-3}\ON 
+        \E\left[ \sum_{r=1}^t D_N(r) \right] \\
+&\leq \varepsilon\ON + \varepsilon^{-3}\ON
+        \E\left[ \sum_{r=\tau_N(0)+1}^{\tau_N(t)} D_N(r) \right] .
+\end{align*}
+Taking limits and using \eqref{eq:kjjs_big_merger_bound}, 
+\begin{equation}
+\lim_{N\to\infty} \E[c_N(t)] \leq \varepsilon .
+\end{equation}
+Since $\varepsilon$ was arbitrary this concludes the proof.
 \end{proof}
+
+
+\begin{lemma} \label{thm:DNimpliescN_2}
+\eqref{eq:kjjs_big_merger_bound} $\Rightarrow$ \eqref{eq:kjjs_binary_bound_corrected}.
+\end{lemma}
+
+\begin{proof}
+Analogously to the proof of Lemma~\ref{thm:DNimpliescN}, we find
+\begin{align*}
+\E[c_N(\tau_N(t))]
+&\leq \varepsilon\ON + \sum_{i=1}^N \Prob[ \nu_{\tau_N(t)}^{(i)} > N\varepsilon ] \\
+&\leq \varepsilon\ON + \varepsilon^{-3}\ON \E\left[ D_N(\tau_N(t)) \right] \\
+&\leq \varepsilon\ON + \varepsilon^{-3}\ON
+        \E\left[ \sum_{r=\tau_N(0)+1}^{\tau_N(t)} D_N(r) \right] \\
+&\underset{N\to\infty}{\longrightarrow} \varepsilon
+\end{align*}
+which concludes the proof.
+\end{proof}
+
+
+%\begin{lemma} \label{lem:removeass1}
+%$\eqref{eq:mainthmcond} \Rightarrow \eqref{eq:kjjs_binary_bound}$.
+%\end{lemma}
+%\seb{This lemma is obsolete. In Figure \ref{fig:FDD_proof_dependencies} I'll just refer to the proof in BJJK.}
+%\begin{proof}
+%Following the proof of \textcite[Lemma 5.5]{mohle2003}, we fix $\varepsilon > 0$ and define the event $A_i = \{ \nu_t^{(i)} \leq N \varepsilon \}$.
+%Now
+%\begin{align}
+%\Et[ c_N( t ) ] 
+%&= \frac{ 1 }{ ( N )_2 } \sum_{ i = 1 }^N \Et[ ( \nu_t^{(i)} )_2] 
+%        = \frac{ 1 }{ ( N )_2 } \sum_{ i = 1 }^N \Big\{ \Et[ ( \nu_t^{(i)} )_2 \1{ A_i } ] 
+%        + \Et[ ( \nu_t^{(i)} )_2 \1{ A_i^c } ] \Big\} \notag \\
+%&\leq \frac{ \varepsilon }{ N - 1 } \sum_{ i = 1 }^N \Et[ \nu_t^{(i)} \1{ A_i }] 
+%        + \sum_{ i = 1 }^N \Et[\1{ A_i^c }] \notag \\
+%&\leq ( 1 + O( N^{ -1 } ) ) \varepsilon + \sum_{ i = 1 }^N 
+%        \Prob[ \nu_t^{(i)} > N \varepsilon \mid \mathcal{F}_{t-1}]. \label{cond_cN}
+%\end{align}
+%For $N \geq 3 / \varepsilon$, Markov's inequality yields
+%\begin{align}
+%\sum_{ i = 1 }^N \Prob[ \nu_t^{(i)} > N \varepsilon \mid \mathcal{F}_{t-1} ] 
+%&\leq \frac{ 1 }{ ( N \varepsilon )_3 } \sum_{ i = 1 }^N 
+%        \Et[ ( \nu_t^{(i)} )_3] 
+%        = \frac{ ( 1 + O( N^{ -1 } ) ) }{ \varepsilon^3 ( N )_3 } 
+%        \sum_{ i = 1 }^N \Et[ ( \nu_t^{(i)} )_3] \notag \\
+%&\leq ( 1 + O( N^{ -1 } ) ) \frac{ b_N }{ \varepsilon^3 } \Et[ c_N( t )] . \label{markovs_ineq}
+%\end{align}
+%Substituting \eqref{markovs_ineq} into \eqref{cond_cN} and using $c_N( t ) \leq 1$ results in
+%\begin{equation*}
+%\Et[ c_N( t )]
+%\leq ( 1 + O( N^{ -1 } ) ) 
+%        \Bigg( \varepsilon + \frac{ b_N }{ \varepsilon^3 } \Bigg) \underset{N\to\infty}{\longrightarrow} \varepsilon
+%\end{equation*}
+%since $b_N \rightarrow 0$. 
+%As $\varepsilon > 0$ was arbitrary, we have
+%\begin{equation*}
+%\E[ c_N( t ) ] 
+%= \E\left[ \Et[ c_N( t ) ] \right] 
+%\rightarrow 0
+%\end{equation*}
+%as $N \rightarrow \infty$.
+%\end{proof}
 
 
 
@@ -506,7 +604,7 @@ The second is
         \Et[ ( \nu_t^{(i)} )_2 ( \nu_t^{(j)} )_2 ] + \frac{ \Et[ c_N( t ) ] }{ N } .         
         \label{DN_part_2}
 \end{align}
-Now, with $A_i$ defined as in Lemma \ref{lem:removeass1},
+Now, with the events $A_i$ defined as in \eqref{eq:define_Ai_events}\seb{should have explicit time-dependence},
 \begin{align}
 \sum_{ j=1 }^N \sum_{ i \neq j } \Et\{ ( \nu_t^{(i)} )_2 ( \nu_t^{(j)} )_2\} 
 &= \sum_{ j=1 }^N \sum_{ i \neq j } 
@@ -518,11 +616,16 @@ Now, with $A_i$ defined as in Lemma \ref{lem:removeass1},
 &\leq N^2 ( N )_2 \varepsilon \Et[ c_N( t )] + N^4 \sum_{ i = 1 }^N 
         \Prob[ \nu_t^{(i)} > N \varepsilon \mid \mathcal{F}_{t-1} ] . \label{DN_part_3}
 \end{align}
-Substituting \eqref{markovs_ineq} into \eqref{DN_part_3} yields
+For $N \geq 3 / \varepsilon$, by the generalised Markov inequality,
+\begin{align}\label{markovs_ineq}
+\sum_{ i = 1 }^N \Prob( \nu_t^{(i)} > N \varepsilon \mid \mathcal{F}_{t-1} ) &\leq \frac{ 1 }{ ( N \varepsilon )_3 } \sum_{ i = 1 }^N \Et\{ ( \nu_t^{(i)} )_3\} = \frac{ \{ 1 + O( N^{ -1 } ) \} }{ \varepsilon^3 ( N )_3 } \sum_{ i = 1 }^N \Et\{ ( \nu_t^{(i)} )_3\} \nonumber \\
+&\leq \{ 1 + O( N^{ -1 } ) \} \frac{ b_N }{ \varepsilon^3 } \Et\{ c_N( t )\}. 
+\end{align}
+Substituting \eqref{markovs_ineq} into \eqref{DN_part_3} gives
 \begin{equation}
 \sum_{ j=1 }^N \sum_{ i \neq j } \Et[ ( \nu_t^{(i)} )_2 ( \nu_t^{(j)} )_2 ]
 \leq N^4 (1 + O( N^{ -1 } ))
-        \Bigg( \varepsilon + \frac{ b_N }{ \varepsilon^3 } \Bigg) \Et[ c_N( t ) ] , \label{DN_part_4}
+        \Bigg( \varepsilon + \frac{ b_N }{ \varepsilon^3 } \Bigg) \Et[ c_N( t ) ] \label{DN_part_4}
 \end{equation}
 and substituting \eqref{DN_part_4} into \eqref{DN_part_2} gives
 \begin{equation}
