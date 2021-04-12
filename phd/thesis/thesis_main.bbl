@@ -63,39 +63,6 @@
       \field{pages}{269\bibrangedash 342}
       \range{pages}{74}
     \endentry
-    \entry{bain2008}{book}{}
-      \name{author}{2}{}{%
-        {{uniquename=0,uniquepart=base,hash=ad8dea0e5a6f101ab9dc12bb03869671}{%
-           family={Bain},
-           familyi={B\bibinitperiod},
-           given={Alan},
-           giveni={A\bibinitperiod},
-           givenun=0}}%
-        {{uniquename=0,uniquepart=base,hash=11e95b7ffb0671eae4b587fdbd11b74f}{%
-           family={Crisan},
-           familyi={C\bibinitperiod},
-           given={Dan},
-           giveni={D\bibinitperiod},
-           givenun=0}}%
-      }
-      \list{publisher}{1}{%
-        {Springer}%
-      }
-      \strng{namehash}{5d0a0d03cdbe3820a9b6bc10c84959be}
-      \strng{fullhash}{5d0a0d03cdbe3820a9b6bc10c84959be}
-      \strng{bibnamehash}{5d0a0d03cdbe3820a9b6bc10c84959be}
-      \strng{authorbibnamehash}{5d0a0d03cdbe3820a9b6bc10c84959be}
-      \strng{authornamehash}{5d0a0d03cdbe3820a9b6bc10c84959be}
-      \strng{authorfullhash}{5d0a0d03cdbe3820a9b6bc10c84959be}
-      \field{sortinit}{B}
-      \field{sortinithash}{276475738cc058478c1677046f857703}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{year}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{Fundamentals of Stochastic Filtering}
-      \field{year}{2008}
-    \endentry
     \entry{baum1970}{article}{}
       \name{author}{4}{}{%
         {{uniquename=0,uniquepart=base,hash=4df2ad455942f6f13e125e4ac93740be}{%
@@ -1944,6 +1911,7 @@
       \range{pages}{63}
     \endentry
   \enddatalist
+  \missing{kitagawa1994}
 \endrefsection
 \endinput
 
