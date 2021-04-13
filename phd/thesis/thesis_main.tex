@@ -56,11 +56,11 @@
 
 %%% MATHS ENVIRONMENTS
 \newmdtheoremenv[backgroundcolor=gray!20, linewidth=0pt]{theorem}{Theorem}[chapter]
-\newmdtheoremenv[backgroundcolor=gray!20, linewidth=0pt]{corollary}{Corollary}[chapter]
-\newmdtheoremenv[backgroundcolor=gray!20, linewidth=0pt]{prop}{Proposition}[chapter]
-\newmdtheoremenv[backgroundcolor=gray!20, linewidth=0pt]{lemma}{Lemma}[chapter]
+\newmdtheoremenv[backgroundcolor=gray!20, linewidth=0pt]{corollary}[theorem]{Corollary}
+\newmdtheoremenv[backgroundcolor=gray!20, linewidth=0pt]{prop}[theorem]{Proposition}
+\newmdtheoremenv[backgroundcolor=gray!20, linewidth=0pt]{lemma}[theorem]{Lemma}
 \theoremstyle{definition}
-\newmdtheoremenv[backgroundcolor=gray!20, linewidth=0pt]{defn}{Definition}[chapter]
+\newmdtheoremenv[backgroundcolor=gray!20, linewidth=0pt]{defn}[theorem]{Definition}
 \renewcommand{\qedsymbol}{$\blacksquare$}
 %\allowdisplaybreaks
 
