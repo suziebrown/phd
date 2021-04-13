@@ -463,6 +463,16 @@ The proof of \textcite{koskela2018} does not explicitly use \eqref{eq:kjjs_binar
 However, as we will see in the next section (Lemmata \ref{thm:DNimpliescN} and \ref{thm:DNimpliescN_2}), both \eqref{eq:kjjs_binary_bound} and \eqref{eq:kjjs_binary_bound_corrected} are implied by \eqref{eq:kjjs_big_merger_bound}, so the theorem is correct. 
 Such redundancies in the statement of Theorem~\ref{thm:kjjs_mainthm} are removed in Theorem~\ref{thm:FDDconv}.
 
+%%%%
+
+The proof of Theorem~\ref{thm:kjjs_mainthm} \parencite[i.e.][Theorem 1]{koskela2018} proceeds in three parts.
+The first is a vanishing upper bound on finite-dimensional distributions of the genealogical process when the path of the process involves any multiple mergers.
+%, either multiple simultaneous mergers or any merger involving more than two particles.
+The second is showing that, when the path of the genealogy consists of only single pair mergers, the finite-dimensional distributions of the $n$-coalescent upper bound those of the genealogical process in the limit $N \rightarrow \infty$.
+The final piece is a similar lower bound, which together with the upper bound establishes convergence of the finite-dimensional distributions.
+
+
+
 
 \section{A new limit theorem \seb{$\checkmark$} }
 
@@ -719,7 +729,7 @@ Now, with the events $A_i(t)$ defined as in \eqref{eq:define_Ai_events}\seb{shou
 \end{align}
 For $N \geq 3 / \epsilon$, by the generalised Markov inequality,
 \begin{align}\label{markovs_ineq}
-\sum_{ i = 1 }^N \Prob( \nu_t^{(i)} > N \epsilon \mid \mathcal{F}_{t-1} ) &\leq \frac{ 1 }{ ( N \epsilon )_3 } \sum_{ i = 1 }^N \Et\{ ( \nu_t^{(i)} )_3\} = \frac{ \{ 1 + O( N^{ -1 } ) \} }{ \epsilon^3 ( N )_3 } \sum_{ i = 1 }^N \Et\{ ( \nu_t^{(i)} )_3\} \nonumber \\
+\sum_{ i = 1 }^N \Prob( \nu_t^{(i)} > N \epsilon \mid \mathcal{F}_{t-1} ) &\leq \frac{ 1 }{ ( N \epsilon )_3 } \sum_{ i = 1 }^N \Et\{ ( \nu_t^{(i)} )_3\} = \frac{ \{ 1 + O( N^{ -1 } ) \} }{ \epsilon^3 ( N )_3 } \sum_{ i = 1 }^N \Et\{ ( \nu_t^{(i)} )_3\} \notag \\
 &\leq \{ 1 + O( N^{ -1 } ) \} \frac{ b_N }{ \epsilon^3 } \Et\{ c_N( t )\}. 
 \end{align}
 Substituting \eqref{markovs_ineq} into \eqref{DN_part_3} gives
@@ -761,8 +771,179 @@ and recalling that $\epsilon > 0$ was arbitrary concludes the proof.
 
 
 \subsection{Proof of theorem, part two}
-\draft{Modification of KJJS proof (or even write out a complete proof?) using weaker bound on $p_{\xi\xi}$ (that bound should have been stated and proved already in transition probabilities section) [sec3.1 in BJJK].}
+\draft{Modification of KJJS proof (or even write out a complete proof?) using weaker bound on $p_{\xi\xi}$ (that bound should have been stated and proved already in transition probabilities section).}
 
-To complete the proof of Theorem~\ref{thm:FDDconv} it remains to show that condition \eqref{eq:kjjs_tau_bound} is unnecessary.
+To complete the proof of Theorem~\ref{thm:FDDconv} it remains to show that condition \eqref{eq:kjjs_tau_bound} is unnecessary. We will show that (??)\seb{[the LB corresponding to Lemma~\ref{thm:pDelta_LB}. this is referred to locally as \ref{lem:removeass4}.]} can be used instead of \eqref{eq:kjjs_tau_bound} to obtain the same result.
+The only part of \textcite[Proof of Theorem 1]{koskela2018} making use of assumption \eqref{eq:kjjs_tau_bound} is the lower bound on finite-dimensional distributions of the genealogical process for paths involving single pair mergers only.
+A slight modification of the argument allows a similar lower bound to be obtained via (??)\seb{[the LB corresponding to Lemma~\ref{thm:pDelta_LB}]} such that as $N\to\infty$ the bound coincides with the corresponding finite-dimensional distribution of the $n$-coalescent, as required.
+The modified section of the proof is presented below, using the notation of \textcite{koskela2018} for ease of comparison.
 
+
+\begin{proof}
+Let $\chi^\star_d$ be the conditional transition probability of a transition from state $\eta_{d-1}$ to state $\eta_d$ at times $\tau_N(t_{d-1})$ and $\tau_N(t_d)$ respectively, conditional on the offspring counts between those times $\nu^{(1:N)}_{\tau_N(d-1) +1} , \dots, \nu^{(1:N)}_{\tau_N(d)}$. 
+This transition can happen via any valid path of merger events, but we restrict to paths involving binary mergers only, and denote by $\chi_d$ the conditional transition probability subject to this restriction.
+Considering the Proof of Theorem 1 in \textcite{koskela2018}, the derivation of an upper bound on $\chi_d$ holds without modification in our context; while the first step in the derivation of a lower bound which can be found on page 14 of that work involves the application of its Lemma 1 to bound $\chi_d$ from below.
+%The derivation of an upper bound on $\chi_d$ is unchanged from that in \textcite[Proof of Theorem 1]{koskela2018}.
+%The first step in the derivation of a lower bound in \textcite[Proof of Theorem 1, p. 14]{koskela2018} consists of applying \textcite[Lemma 1]{koskela2018} to bound $\chi_d$ from below.
+Instead, we apply Lemma \ref{lem:removeass4} to obtain
+\begin{align*}
+\chi_d 
+&\geq \sum_{\substack{ s_1 < \ldots < s_{ \alpha } 
+        \\= \tau_N( t_{ d - 1 } ) + 1 }}^{ \tau_N( t_d ) } 
+        ( \tilde{ Q }^{ \alpha } )_{ \eta_{ d - 1 } \eta_d } 
+        \Bigg( \prod_{ r = 1 }^{ \alpha } \Bigg[ c_N( s_r ) 
+        - \binom{ n - 2 }{ 2 } \ON D_N( s_r ) \Bigg] \Bigg) \\
+    &\hspace{2cm} \times \prod_{ \substack{ r = \tau_N( t_{ d - 1 } ) + 1 
+        \\ r \neq s_1, \ldots, r \neq s_{ \alpha } } }^{ \tau_N( t_d ) } 
+        \Bigg[ 1 - B_n \ON D_N( r ) 
+        - \binom{ | \eta_{ d - 1 } | - | \{ i : s_i < r \} | }{ 2 } \ON c_N( r ) \Bigg] .
+\end{align*}
+Here $\tilde{Q}$ is the matrix obtained from the generator $Q$ of Kingman's $n$-coalescent (see Definition \ref{def:kingman}) by setting the diagonal entries to 0.
+The number of pair-merger steps required to transition from $\eta_{d-1}$ to $\eta_d$ is $\alpha = |\eta_{d-1}| - |\eta_d|$. The sequences $s_1,\dots,s_\alpha$ denote the times at which these pair-mergers happen. 
+At the remaining times $r$ the partition is unchanged, and the bound in Lemma \ref{lem:removeass4} has been applied to the one-step transition probabilities corresponding to these identity transtions. The constant $B_n$ is that appearing in Lemma \ref{lem:removeass4}, where we replace $|\eta_d|$ by its upper bound $n$.
+A sum over an index vector of length zero should be interpreted as the identity operator here and in the following.
+
+The rest of the proof proceeds as in \textcite{koskela2018}, albeit from this modified initial lower bound.
+A multinomial expansion of the product on the second line yields 
+\begin{align*}
+\chi_d 
+&\geq \sum_{ \beta = 0 }^{ \tau_N( t_d ) - \tau_N( t_{ d - 1 } ) - \alpha } 
+        ( \tilde{ Q }^{ \alpha } )_{ \eta_{ d - 1 } \eta_d } 
+        \sum_{\substack{ ( \lambda, \mu ) \in \Pi_2( [ \alpha + \beta ] ) :
+        \\ | \lambda | = \alpha }} \ON^\beta \\
+    &\hspace{2cm}\times \sum_{\substack{ s_1 < \ldots < s_{ \alpha + \beta } 
+        \\= \tau_N( t_{ d - 1 } ) + 1 }}^{ \tau_N( t_d ) } \Bigg( \prod_{ r \in \lambda }
+        \Bigg[ c_N( s_r ) - \binom{ n - 2 }{ 2 } \ON D_N( s_r ) \Bigg] \Bigg)\\
+    &\hspace{2cm}\times \prod_{ r \in \mu } \Bigg\{ - 
+        \binom{ | \eta_{ d - 1 } | - | \{ i \in \lambda : i < r \} | }{ 2 } c_N( s_r ) 
+        - B_n D_N( s_r ) \Bigg\}
+\end{align*}
+where $\Pi_i([n])$ denotes the set of partitions of $\{1, \dots,n\}$ into exactly $i$ blocks.
+Expanding the product over $\lambda$ gives
+\begin{align*}
+\chi_d 
+&\geq \sum_{ \beta = 0 }^{ \tau_N( t_d ) - \tau_N( t_{ d - 1 } ) - \alpha } 
+        ( \tilde{ Q }^{ \alpha } )_{ \eta_{ d - 1 } \eta_d } 
+        \sum_{\substack{ ( \lambda, \mu, \pi ) \in \Pi_3( [ \alpha + \beta ] ) :
+        \\ | \mu | = \beta }} \binom{ n - 2 }{ 2 }^{ | \pi | } ( -1 )^{ | \pi | } \,
+        \ON^{ \beta + | \pi | } \\
+    &\qquad \times \sum_{\substack{ s_1 < \ldots < s_{ \alpha + \beta } 
+        \\ = \tau_N( t_{ d - 1 } ) + 1 }}^{ \tau_N( t_d ) } 
+        \Bigg\{ \prod_{ r \in \lambda } c_N( s_r ) \Bigg\} 
+        \Bigg\{ \prod_{ r \in \pi }  D_N( s_r ) \Bigg\} \\
+    &\qquad \times \prod_{ r \in \mu } \Bigg\{ - 
+        \binom{ | \eta_{ d - 1 } | - | \{ i \in \lambda \cup \pi : i < r \} | }{ 2 } c_N( s_r ) 
+        - B_n D_N( s_r ) \Bigg\}
+\end{align*}
+and expanding the product over $\mu$ results in
+\begin{align*}
+\chi_d 
+&\geq \sum_{ \beta = 0 }^{ \tau_N( t_d ) - \tau_N( t_{ d - 1 } ) - \alpha } 
+        ( \tilde{ Q }^{ \alpha } )_{ \eta_{ d - 1 } \eta_d } 
+        \sum_{\substack{ ( \lambda, \mu, \pi, \sigma ) \in \Pi_4( [ \alpha + \beta ] ) :
+        \\ | \mu | + | \sigma | = \beta }} B_n^{ | \sigma | } 
+        \binom{ n - 2 }{ 2 }^{ | \pi | } ( -1 )^{ | \pi | + | \sigma | } \\
+    &\qquad \times \ON^{ \beta + | \pi | } 
+        \Bigg\{ \prod_{ r \in \mu } - 
+        \binom{ | \eta_{ d - 1 } | - | \{ i \in \lambda \cup \pi : i < r \} | }{ 2 } \Bigg\} \\
+    &\qquad \times \sum_{\substack{ s_1 < \ldots < s_{ \alpha + \beta } 
+        \\ = \tau_N( t_{ d - 1 } ) + 1 }}^{ \tau_N( t_d ) } 
+        \Bigg\{ \prod_{ r \in \lambda \cup \mu } c_N( s_r ) \Bigg\} 
+        \prod_{ r \in \pi \cup \sigma }  D_N( s_r ) .
+\end{align*}
+Via a further multinomial expansion, the lower bound for the $k$-step transition probability can be written as
+\begin{align*}
+\lim_{ N \rightarrow \infty } \E\Bigg( \prod_{ d = 1 }^k \chi_d \Bigg) 
+&\geq \lim_{ N \rightarrow \infty } 
+        \E\Bigg[ \sum_{ \beta_1 = 0 }^{ \infty } \ldots \sum_{ \beta_k = 0 }^{ \infty }         
+        \sum_{\substack{ ( \lambda_1, \mu_1, \pi_1, \sigma_1 ) 
+        \in \Pi_4( [ \alpha_1 + \beta_1 ] ):\\  | \mu_1 | + | \sigma_1 | = \beta_1 }}
+        \ldots 
+        \sum_{\substack{ ( \lambda_k, \mu_k, \pi_k, \sigma_k ) 
+        \in \Pi_4( [ \alpha_k + \beta_k ] ) :\\ | \mu_k | + | \sigma_k | = \beta_k }} \\
+    &\qquad B_n^{ \sum_{ d = 1 }^k | \sigma_d | } 
+        \binom{ n - 2 }{ 2 }^{ \sum_{ d = 1 }^k| \pi_d | }
+        ( -1 )^{ \sum_{ d = 1 }^k | \pi_d | + | \sigma_d | } \,
+        \ON^{ | \bm{ \beta } | + \sum_{ d = 1 }^k | \pi_d | } \\
+    &\qquad \times \Bigg\{ \prod_{ d = 1 }^k 
+        ( \tilde{ Q }^{ \alpha_d } )_{ \eta_{ d - 1 } \eta_d } 
+        \prod_{ r \in \mu_d } - 
+        \binom{ | \eta_{ d - 1 } | - | \{ i \in \lambda_d \cup \pi_d : i < r \} | }{ 2 } 
+        \Bigg\} \\
+    &\qquad \times 
+        \sum_{\substack{ s_1^{ ( 1 ) } < \ldots < s_{ \alpha_1 + \beta_1 }^{ ( 1 ) } 
+        \\= \tau_N( t_0 ) + 1 }}^{ \tau_N( t_1 ) } \ldots 
+        \sum_{\substack{ s_1^{ ( k ) } < \ldots < s_{ \alpha_k + \beta_k }^{ ( k ) } 
+        \\= \tau_N( t_{ k - 1 } ) + 1 }}^{ \tau_N( t_k ) } \\
+    &\qquad \prod_{ d = 1 }^k 
+        \I{ \tau_N( t_d ) - \tau_N( t_{ d - 1 } ) \geq \alpha_d + \beta_d } 
+        \Bigg\{ \prod_{ r \in \lambda_d \cup \mu_d } c_N( s_r^{ ( d ) } ) \Bigg\} 
+        \prod_{ r \in \pi_d \cup \sigma_d }  D_N( s_r^{ ( d ) } ) \Bigg].
+\end{align*}
+An argument completely analogous to that in \textcite[Appendix]{koskela2018} shows that passing the expectation and the limit through the infinite sums is justified, whereupon the contribution of terms with $ \sum_{ d = 1 }^k ( | \pi_d | + | \sigma_d | ) > 0$ vanishes.
+To see why, follow the argument used to show that the contribution of multiple merger trajectories vanishes in the corresponding upper bound in \textcite{koskela2018}.
+That leaves
+\begin{align}
+\lim_{ N \rightarrow \infty } \E\Bigg( \prod_{ d = 1 }^k \chi_d \Bigg) 
+&\geq \sum_{ \beta_1 = 0 }^{ \infty } \ldots \sum_{ \beta_k = 0 }^{ \infty }
+        \sum_{\substack{ ( \lambda_1, \mu_1 ) \in \Pi_2( [ \alpha_1 + \beta_1 ] ) :
+        \\ | \mu_1 | = \beta_1 }} \ldots 
+        \sum_{\substack{ ( \lambda_k, \mu_k ) \in \Pi_2( [ \alpha_k + \beta_k ] ) :
+        \\ | \mu_k | = \beta_k }} \notag \\
+    &\qquad \Bigg\{ \prod_{ d = 1 }^k 
+        ( \tilde{ Q }^{ \alpha_d } )_{ \eta_{ d - 1 } \eta_d }
+        \prod_{ r \in \mu_d } - 
+        \binom{ | \eta_{ d - 1 } | - | \{ i \in \lambda_d \cup \pi_d : i < r \} | }{ 2 } 
+        \Bigg\} \notag \\
+    &\qquad \times \lim_{ N \rightarrow \infty } \E\Bigg[ 
+        \sum_{\substack{ s_1^{ ( 1 ) } < \ldots < s_{ \alpha_1 + \beta_1 }^{ ( 1 ) } 
+        \\= \tau_N( t_0 ) + 1 }}^{ \tau_N( t_1 ) } \ldots 
+        \sum_{\substack{ s_1^{ ( k ) } < \ldots < s_{ \alpha_k + \beta_k }^{ ( k ) } 
+        \\= \tau_N( t_{ k - 1 } ) + 1 }}^{ \tau_N( t_k ) } \notag \\
+    &\qquad \prod_{ d = 1 }^k 
+        \I{ \tau_N( t_d ) - \tau_N( t_{ d - 1 } ) \geq \alpha_d + \beta_d } 
+        \Bigg\{ \prod_{ r \in \lambda_d \cup \mu_d } c_N( s_r^{ ( d ) } ) \Bigg\} 
+        \Bigg]. \label{eq1}
+\end{align}
+Recall \parencite[Eq (11)]{koskela2018}:
+\begin{equation*}
+\sum_{\substack{ ( \lambda, \mu ) \in \Pi_2( [ \alpha + \beta ] ) :
+        \\ | \mu | = \beta }} ( \tilde{ Q }^{ \alpha } )_{ \eta_{ d - 1 } \eta_d } 
+        \prod_{ r \in \mu } - 
+        \binom{ | \eta_{ d - 1 } | - | \{ i \in \lambda \cup \pi : i < r \} | }{ 2 } 
+= ( Q^{ \alpha + \beta } )_{ \eta_{ d - 1 } \eta_d } .
+\end{equation*}
+Applying this $k$ times in \eqref{eq1} yields
+\begin{align*}
+\lim_{ N \rightarrow \infty } \E\Bigg( \prod_{ d = 1 }^k \chi_d \Bigg) 
+&\geq \sum_{ \beta_1 = 0 }^{ \infty } \ldots \sum_{ \beta_k = 0 }^{ \infty } 
+        \Bigg\{ \prod_{ d = 1 }^k 
+        ( Q^{ \alpha_d + \beta_d } )_{ \eta_{ d - 1 } \eta_d } \Bigg\} \\
+    &\qquad \times \lim_{ N \rightarrow \infty } \E\Bigg\{ 
+        \Bigg( \prod_{ d = 1 }^k 
+        \I{ \tau_N( t_d ) - \tau_N( t_{ d - 1 } ) \geq \alpha_d + \beta_d } \Bigg) \\
+    &\hspace{3cm} \sum_{\substack{ s_1^{ ( 1 ) } < \ldots < 
+        s_{ \alpha_1 + \beta_1 }^{ ( 1 ) } \\= \tau_N( t_0 ) + 1 }}^{ \tau_N( t_1 ) } \ldots 
+        \sum_{\substack{ s_1^{ ( k ) } < \ldots < s_{ \alpha_k + \beta_k }^{ ( k ) } 
+        \\= \tau_N( t_{ k - 1 } ) + 1 }}^{ \tau_N( t_k ) } 
+        \prod_{ d = 1 }^k \prod_{ r \in \lambda_d \cup \mu_d } 
+        c_N( s_r^{ ( d ) } ) \Bigg\}.
+\end{align*}
+We now apply equations (14) and (15), respectively, of \textcite{koskela2018},  to those terms with a negative ($|\bm{\beta}|$ odd) and positive ($|\bm(\beta)|$ even) sign, respectively, and obtain
+%\textcite[Eq (14)]{koskela2018} to those terms with a negative sign ($| \bm{ \beta } |$ odd) and \textcite[Eq (15)]{koskela2018} to those terms with a positive sign ($| \bm{ \beta } |$ even), and obtain
+\begin{align*}
+\lim_{ N \rightarrow \infty } \E\Bigg( \prod_{ d = 1 }^k \chi_d \Bigg) 
+&\geq \sum_{ \beta_1 = 0 }^{ \infty } \ldots \sum_{ \beta_k = 0 }^{ \infty } 
+        \Bigg\{ \prod_{ d = 1 }^k ( Q^{ \alpha_d + \beta_d } )_{ \eta_{ d - 1 } \eta_d } 
+        \frac{ ( t_d - t_{ d - 1 } )^{ \alpha_d + \beta_d } }{ ( \alpha_d + \beta_d ) ! } 
+        \Bigg\} \\
+    &\qquad\times \lim_{ N \rightarrow \infty } \E\Bigg( \prod_{ d = 1 }^k 
+        \I{ \tau_N( t_d ) - \tau_N( t_{ d - 1 } ) \geq \alpha_d + \beta_d } \Bigg) \\
+&\geq \sum_{ \beta_1 = 0 }^{ \infty } \ldots \sum_{ \beta_k = 0 }^{ \infty } 
+        \Bigg\{ \prod_{ d = 1 }^k ( Q^{ \alpha_d + \beta_d } )_{ \eta_{ d - 1 } \eta_d } 
+        \frac{ ( t_d - t_{ d - 1 } )^{ \alpha_d + \beta_d } }{ ( \alpha_d + \beta_d ) ! } 
+        \Bigg\}
+\end{align*}
+by \textcite[Equation (16)]{koskela2018}.
+\end{proof}
 

@@ -11,15 +11,15 @@ We start by defining a suitable metric space.
 Let $\mathcal{P}_n$ be the space of partitions of $\{1,\dots,n\}$.
 Denote by $\mathcal{X}$ the set of all functions mapping $[0,\infty)$ to $\mathcal{P}_n$ that are right-continuous with left limits.
 (Our rescaled genealogical process $(\mathcal{G}^{(n,N)}_{\tau_N(t)})_{t\geq0}$ and our encoding of the $n$-coalescent are piecewise-constant functions mapping time $t\in[0,\infty)$ to partitions, and thus live in the space $\mathcal{X}$.)
-Finally, equip the space $\mathcal{P}_n$ with the zero-one metric,
-\begin{equation}
+Finally, equip the space $\mathcal{P}_n$ with the discrete metric,
+\begin{equation*}
 \rho(\xi,\eta) 
 = 1- \delta_{\xi\eta} 
 := \begin{cases}
     0 &\text{if } \xi=\eta \\
     1 &\text{otherwise}
 \end{cases}
-\end{equation}
+\end{equation*}
 for any $\xi, \eta \in \mathcal{P}_n$.
 
 
@@ -34,13 +34,13 @@ to Kingman's $n$-coalescent as $N \to \infty$.
 \end{theorem}
 
 \begin{proof}[Proof of Theorem~\ref{thm:weakconv}]
-The structure of the proof follows \textcite{mohle1999}, albeit with considerable technical complication due to the dependence between generations in our model. \seb{Is this the main/only source of complication?}
-Since we already have convergence of the finite-dimensional distributions \parencite[Theorem 1]{brown2021}, strengthening this to weak convergence requires relative compactness of the sequence of processes $\{ (G_{\tau_N(t)}^{(n,N)})_{t\geq0} \}_{N\in\mathbb{N}}$.
+The structure of the proof follows \textcite{mohle1999}, albeit with considerable technical complication due to the dependence between generations\seb{(non-neutrality)} in our model. \seb{Is this the main/only source of complication?}
+Since we already have convergence of the finite-dimensional distributions (Theorem~\ref{FDDconv}), strengthening this to weak convergence requires relative compactness of the sequence of processes $\{ (G_{\tau_N(t)}^{(n,N)})_{t\geq0} \}_{N\in\mathbb{N}}$.
 
-\textcite[Chapter 3, Corollary 7.4]{ethier1986} provides a necessary and sufficient condition for relative compactness: $\mathcal{P}_n$ is finite and therefore complete and separable, and the sample paths of $(G_{\tau_N(t)}^{(n,N)})_{t\geq0}$ live in $\mathcal{X}$, so the conditions of the corollary are satisfied.
+\textcite[Chapter 3, Corollary 7.4]{ethier1986} provide a necessary and sufficient condition for relative compactness: $\mathcal{P}_n$ is finite and therefore complete and separable, and the sample paths of $(G_{\tau_N(t)}^{(n,N)})_{t\geq0}$ live in $\mathcal{X}$, so the conditions of their corollary are satisfied.
 The corollary states that the sequence of processes $\{ (G_{\tau_N(t)}^{(n,N)})_{t\geq0} \}_{N\in\mathbb{N}}$ is relatively compact if and only if the following two conditions hold:
 \begin{enumerate}
-\item \label{item:relcomp1} For every $\varepsilon>0$, $t\geq 0$ there exists a compact set $\Gamma \subseteq \mathcal{P}_n$ such that
+\item \label{item:relcomp1} For every $\varepsilon>0$, $t\geq 0$ there exists a compact set $\Gamma \subseteq \mathcal{P}_n$ such that\seb{again, use $\epsilon$ here and in the following to avoid confusion with $\varepsilon$ of Chapter 4.}
 \begin{equation*}
 \liminf_{N\to\infty} \Prob[ G_{\tau_N(t)}^{(n,N)} \in \Gamma ] 
 \geq 1-\varepsilon
@@ -50,7 +50,7 @@ The corollary states that the sequence of processes $\{ (G_{\tau_N(t)}^{(n,N)})_
 \liminf_{N\to\infty} \Prob[ \omega(G_{\tau_N(\cdot)}^{(n,N)}, \delta, t) < \varepsilon ] 
 \geq 1-\varepsilon
 \end{equation*}
-where $\omega$ is the modulus of continuity:
+where $\omega$ is the modified modulus of continuity:
 \begin{equation*}
 \omega(G_{\tau_N(\cdot)}^{(n,N)}, \delta, t) := \inf \max_{i \in [K]} 
         \sup_{u,v \in [T_{i-1}, T_i)} \rho\left( 
@@ -128,7 +128,7 @@ and
 = \liminf_{N\to\infty} \Prob[ \varpi_1^{(N)} + \cdots + \varpi_m^{(N)} \geq t ]
 = e^{-\alpha_n \delta} \sum_{i=0}^{m-1} \frac{(\alpha_n t)^i}{i!} .
 \end{equation*}
-using the series expansion for the Erlang cumulative distribution function. \seb{citation?}
+using the series expansion for the Erlang CDF. \seb{citation?}
 Hence 
 \begin{equation*}
 \liminf_{N\to\infty} 
@@ -148,7 +148,8 @@ $\max_{\xi\in \mathcal{P}_n} (1 - p_{\xi\xi}(t)) = 1 - p_{\Delta\Delta}(t)$.
 
 \begin{proof}
 Consider any $\xi \in E$ consisting of $k$ blocks ($1\leq k\leq n-1$), and any $\xi^\prime\in E$ consisting of $k+1$ blocks. 
-From the definition of $p_{\xi\eta}(t)$ \parencite[Equation (1)]{koskela2018},
+Setting $\eta=\xi$ in \eqref{eq:defn_pxieta},
+%\parencite[Equation (1)]{koskela2018},
 \begin{equation*}
 p_{\xi\xi}(t) 
 = \frac{1}{(N)_k} \sum_{\substack{i_1,\dots,i_k \\ \text{all distinct}}} 
@@ -249,7 +250,7 @@ The event on the LHS can be written \parencite{mohle1999}
         (1-p_r) \right) \right] ,
 \end{equation*}
 that is, there are jumps at some times $r_1, \dots, r_k$ and identity transitions at all other times.
-Due to Lemmata \ref{thm:inductionUB} and \ref{thm:inductionLB}, this probability converges to the correct limit.
+Lemmata \ref{thm:inductionUB} and \ref{thm:inductionLB} show that this probability converges to the correct limit.
 This completes the induction.
 \end{proof}
 
