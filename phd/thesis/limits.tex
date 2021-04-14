@@ -292,7 +292,7 @@ B_{|\xi|} = K (|\xi|-1)! (|\xi|-2) \exp( 2 \sqrt{2(|\xi|-2)} )
 \end{equation*}
 for some $K>0$ that does not depend on $|\xi|$.
 \end{prop}
-\seb{For weak convergence proof, refer to this proposition but rewrite the inequality using $\xi = \Delta$ and $\alpha_n$, to provide a local target for cross-referencing. Similarly for UB.}
+%\seb{For weak convergence proof, refer to this proposition but rewrite the inequality using $\xi = \Delta$ and $\alpha_n$, to provide a local target for cross-referencing. Similarly for UB.}
 \begin{proof}
 %The proof follows \textcite[Proof of Lemma 3.6]{brown2021}, but keeping the terms in $N$ explicit. --- I don't need to refer to BJJK as it's part of my work; just reproduce BJJK's workings nice and verbosely here :)
 We have the following expression for $p_{\xi\xi}(t)$, by subtracting all possible non-identity transitions (the omitted $k=|\xi|$ term would count identity transitions):
@@ -387,21 +387,17 @@ When $|\xi| \leq 2$, there are no terms with $k\leq |\xi|-2$, and the result is 
 
 
 \begin{prop}[Upper bound on identity transition probabilities]\label{thm:pDelta_UB}
-Let $\xi \in \mathcal{P}_n$, $N>...$ \seb{some threshold}. Then
+Let $\xi \in \mathcal{P}_n$. Then, for $N$ sufficiently large,
 \begin{equation*}
 p_{\xi\xi}(t)
-\leq 1 - \binom{|\xi|}{2} \frac{N^{n-2}}{(N-2)_{n-2}} 
+\leq 1 - \binom{|\xi|}{2} \{ 1 + O(N^{-1}) \} 
         \left[ c_N(t) - B_{|\xi|}^\prime D_N(t) \right]
 \end{equation*}
 where $B_{|\xi|}^\prime = \binom{|\xi|-1}{2}$.
 \end{prop}
 
-\begin{proof}
-The proof follows \textcite[Proof of Lemma 1 Case 1]{koskela2018} but with the terms in $N$ kept explicit. \seb{(where possible/only some of them?)}
+A proof is given in \textcite[Proof of Lemma 1 Case 1]{koskela2018}.\seb{refer to the erratum once available, which is more explicit about this proof.}
 
-
-...
-\end{proof}
 
 
 
@@ -787,7 +783,7 @@ This transition can happen via any valid path of merger events, but we restrict 
 Considering the Proof of Theorem 1 in \textcite{koskela2018}, the derivation of an upper bound on $\chi_d$ holds without modification in our context; while the first step in the derivation of a lower bound which can be found on page 14 of that work involves the application of its Lemma 1 to bound $\chi_d$ from below.
 %The derivation of an upper bound on $\chi_d$ is unchanged from that in \textcite[Proof of Theorem 1]{koskela2018}.
 %The first step in the derivation of a lower bound in \textcite[Proof of Theorem 1, p. 14]{koskela2018} consists of applying \textcite[Lemma 1]{koskela2018} to bound $\chi_d$ from below.
-Instead, we apply Proposition~\ref{thm:pDelta_LB} to obtain
+Instead, we apply Proposition~\ref{thm:pDelta_LB} to obtain, for sufficiently large $N$,
 \begin{align*}
 \chi_d 
 &\geq \sum_{\substack{ s_1 < \ldots < s_{ \alpha } 
@@ -808,7 +804,7 @@ The constant $\tilde{B}_n := B_n\binom{n}{2}$ where $B_n$ is the constant define
 %A sum over an index vector of length zero should be interpreted as the identity operator here and in the following.
 
 The rest of the proof proceeds as in \textcite{koskela2018}, albeit from this modified initial lower bound.
-A multinomial expansion of the product on the second line yields\seb{(noting that $\ON$ raised to any power is $\ON$)}
+A multinomial expansion of the product on the second line (noting that $(\ON)^a = \ON$ for any power $a\in\mathbb{R}$) yields
 \begin{align*}
 \chi_d 
 &\geq \left( \prod_{r=\tau_N(t_{d-1})+1}^{\tau_N(t_d)}

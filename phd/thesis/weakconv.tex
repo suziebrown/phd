@@ -458,7 +458,7 @@ Also recall the following properties from Proposition~\ref{thm:cN_properties}:
     \leq t^\prime +1 .\label{eq:cN_property4}
 \end{align}
 
-\seb{Also include the UB and LB on $p_{\Delta\Delta}$ here (refer to the bounds on $p_{\xi\xi}$ in previous chapter, plugging in $\xi=\Delta$). They are referenced a few times in this section as \eqref{eq:pDelta_UB} and \eqref{eq:pDelta_LB}.}
+
 
 \begin{lemma}[Basis step]\label{thm:basis}
 Assume \eqref{eq:mainthmcondition2} holds.
@@ -474,17 +474,18 @@ where $\alpha_n := n(n-1)/2$.
 We start by showing that
 $\lim_{N\to\infty}\E\left[ \prod_{r=1}^{\tau_N(t)} (1-p_r) \right] 
 \leq e^{-\alpha_n t}$.\\
-From \eqref{eq:pDelta_UB} we have for each $r$
+Setting $\xi=\Delta$ in Proposition~\ref{thm:pDelta_UB}, we have for each $r$
 \begin{equation} \label{eq:018}
 1-p_r
-= p_{\Delta\Delta}(r) \leq 1 - \alpha_n \frac{N^{n-2}}{(N-2)_{n-2}}
+= p_{\Delta\Delta}(r) 
+\leq 1 - \alpha_n \ON % \frac{N^{n-2}}{(N-2)_{n-2}}
         \left[ c_N(r) - B_n^\prime D_N(r) \right] .
 \end{equation}
 When $N \geq 3$, a sufficient condition to ensure the bound in \eqref{eq:018} is non-negative is that the event
 \begin{equation}\label{eq:defn_E1}
-E_N^{1}(r) := \left\{ c_N(r) \leq \frac{(N-2)_{n-2}}{\alpha_n N^{n-2}} \right\} 
+E_N^{1}(r) := \left\{ c_N(r) < \alpha_n^{-1} A_N \right\} 
 \end{equation}
-occurs.
+occurs, where $A_N = \ON$ as $N\to\infty$ and is independent of $r$ but will not be specified explicitly.
 We will also need to control the sign of $c_N(r) - B_n^\prime D_N(r)$, for which we define the event
 \begin{equation}\label{eq:defn_E2}
 E_N^2(r) := \left\{ c_N(r) \geq B_n^\prime D_N(r) \right\} ,
@@ -577,12 +578,12 @@ It remains to show the corresponding lower bound
     \lim_{N\to\infty} \E\left[ \prod_{r=1}^{\tau_N(t)} (1-p_r) \right] 
 \geq e^{-\alpha_n t} .
 \end{equation*}
-From \eqref{eq:pDelta_LB} we have
-\begin{equation*}
+Setting $\xi=\Delta$ in Proposition~\ref{thm:pDelta_LB}, we have
+\begin{equation}\label{eq:pDeltaDelta_LB}
 1-p_t
 = p_{\Delta\Delta}(t) \geq 1 - \frac{N^{n-2}}{(N-2)_{n-2}} \alpha_n 
     [ c_N(t) + B_n D_N(t) ] 
-\end{equation*}
+\end{equation}
 where $B_n >0$.
 Due to \eqref{eq:cN_property2}, a sufficient condition for this bound to be non-negative is
 \begin{equation}\label{eq:defn_E3}
@@ -771,7 +772,7 @@ Putting these together, we have
         \alpha_n (1 + B_n^\prime)
         \exp[ \alpha_n \ON (1 + B_n^\prime) (t+1) ] . \label{eq:034b}
 \end{align}
-Meanwhile, using the bound on $p_r$ from \eqref{eq:pDelta_LB} then applying a modification of Lemma~\ref{thm:sumprod2} where the sum is over ordered indices rather than distinct indices,
+Meanwhile, using the bound on $p_r$ from \eqref{eq:pDeltaDelta_LB} then applying a modification of Lemma~\ref{thm:sumprod2} where the sum is over ordered indices rather than distinct indices,
 \begin{align}
 \sum_{\substack{r_1 <\dots< r_k :\\ r_i \leq \tau_N(t_i) \forall i}}
         \prod_{i=1}^k p_{r_i}
