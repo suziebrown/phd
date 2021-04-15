@@ -426,9 +426,17 @@ Under the assumption \ref{standing_assumption} stated below, it is sufficient fo
 %valid assignments.
 \end{enumerate}
 
+As we saw in Section~\ref{sec:coaltheory}, the $n$-coalescent is \emph{exchangeable}, so for instance the pair of lineages merging at each event is chosen uniformly. 
+\ref{standing_assumption} is a weaker condition than exchangeability of the particles within a generation which is sufficient to admit an exchangeable process in the limit.
+Exchangeability of the particles would imply neutrality, an unreasonable assumption in the setting of SMC. 
+In contrast, \ref{standing_assumption} can easily be enforced upon any SMC algorithm by applying a random permutation to the offspring indices immediately after resampling.
+%, without qualitatively affecting the dynamics.
+
+\draft{A sentence introducing the theorem wouldn't go amiss...}
+
 \begin{theorem}[\cite{koskela2018}]\label{thm:kjjs_mainthm}
 Fix $n \leq N$ as the observed number of particles from the output of an interacting particle system with $N$ particles which satisfies \ref{standing_assumption}.
-Suppose also that for any $0 \leq s < t < \infty$, we have
+Suppose that for any $0 \leq s < t < \infty$, we have
 \begin{gather}\label{eq:kjjs_big_merger_bound}
 \lim_{ N \rightarrow \infty } \E\Bigg[ \sum_{ r = \tau_N( s ) + 1 }^{ \tau_N( t ) } D_N( r ) \Bigg] = 0, \\
 %\end{equation}
@@ -449,21 +457,15 @@ for some constant $C_{ t, s } > 0$ that is independent of $N$.
 Then $( G_{ \tau_N( t ) }^{ ( n, N ) } )_{ t \geq 0 }$ converges to the Kingman $n$-coalescent in the sense of finite-dimensional distributions as $N \rightarrow \infty$. 
 \end{theorem}
 
-As we saw in Section~\ref{sec:coaltheory}, the $n$-coalescent is \emph{exchangeable}, so for instance the pair of lineages merging at each event is chosen uniformly. 
-\ref{standing_assumption} is a weaker condition than exchangeability of the particles within a generation which is sufficient to admit an exchangeable process in the limit.
-Exchangeability of the particles would imply neutrality, an unreasonable assumption in the setting of SMC. 
-In contrast, \ref{standing_assumption} can easily be enforced upon any SMC algorithm by applying a random permutation to the offspring indices immediately after resampling.
-%, without qualitatively affecting the dynamics.
-
 To ensure samples of size $n$ have Kingman genealogies in the limit, with pair mergers only, we require that multiple mergers (that is, where more than two lineages merge into one, or where two or more mergers happen simultaneously) occur on a slower time scale than pair mergers. 
 This is the role of condition \eqref{eq:kjjs_big_merger_bound}.
 
 Conditions \eqref{eq:kjjs_binary_bound} and \eqref{eq:kjjs_binary_bound_2} ensure that the limiting process is continuous and has the required unit pair merger rate.
 %, and will not be violated by any reasonable SMC algorithm. 
-For \eqref{eq:kjjs_binary_bound} to fail to hold, the expected number of mergers at some generation would have to be $O(N)$. This can only happen if the resampling scheme is very bad (e.g.\ star resampling) or the weights are particularly badly-behaved. The latter is ruled out in the corollaries of Chapter~\ref{ch:appl} by imposing bounds on the potential functions; this is discussed further in Section~??.
+For \eqref{eq:kjjs_binary_bound} to fail to hold, the expected number of mergers at some generation would have to be $O(N^2)$. This can only happen if the resampling scheme is very bad (e.g.\ star resampling) or the weights are particularly badly-behaved. The latter is ruled out in the corollaries of Chapter~\ref{ch:appl} by imposing bounds on the potential functions; this is discussed further in Section~??\seb{add reference once that part is written}.
 
-Condition \eqref{eq:kjjs_tau_bound} specifies that the time scale must be $O(N)$. As we saw in Section~\ref{sec:popgenmodels}, this is the correct scale for the Wright-Fisher model, but for instance the Moran model has time scale $O(N^2)$ and hence violates this condition. 
-Since we know that the Moran model also has Kingman genealogies in the limit, condition \ref{eq:kjjs_tau_bound} clearly is not necessary. 
+Condition \eqref{eq:kjjs_tau_bound} specifies that the time scale must be $O(N)$. As we saw in Section~\ref{sec:popgenmodels}, this is the correct time scale for the Wright-Fisher model, but for instance the Moran model has time scale $O(N^2)$ and hence violates this condition. 
+Since we know that the neutral Moran model also has Kingman genealogies in the limit, condition \eqref{eq:kjjs_tau_bound} clearly is not necessary. 
 The simplified statement in Theorem~\ref{thm:FDDconv} does not impose any such condition on the time scale.
 
 The proof of \textcite{koskela2018} does not explicitly use \eqref{eq:kjjs_binary_bound} but rather the similar condition
@@ -478,13 +480,14 @@ Such redundancies in the statement of Theorem~\ref{thm:kjjs_mainthm} are removed
 The proof of Theorem~\ref{thm:kjjs_mainthm} \parencite[i.e.][Theorem 1]{koskela2018} proceeds in three parts.
 The first is a vanishing upper bound on finite-dimensional distributions of the genealogical process when the path of the process involves any multiple mergers.
 %, either multiple simultaneous mergers or any merger involving more than two particles.
-The second is showing that, when the path of the genealogy consists of only single pair mergers, the finite-dimensional distributions of the $n$-coalescent upper bound those of the genealogical process in the limit $N \rightarrow \infty$.
+The second is showing that, when the path of the genealogy consists of only single pair mergers, the finite-dimensional distributions of the $n$-coalescent upper bound those of the genealogical process in the limit $N\to\infty$.
 The final piece is a similar lower bound, which together with the upper bound establishes convergence of the finite-dimensional distributions.
 
 
 
 
 \section{A new limit theorem}
+\draft{Add a bit of waffle here...}
 
 \begin{theorem}\label{thm:FDDconv}
 Let $\nu_t^{(1:N)}$ denote the offspring numbers in an interacting particle system satisfying \ref{standing_assumption} such that, for any $N$ sufficiently large, $\Prob[ \tau_N(t) = \infty ] =0$ for all finite $t$. Suppose that there exists a deterministic sequence $(b_N)_{N\geq1}$ such that ${\lim}_{N\to\infty} b_N =0$ and
@@ -501,12 +504,15 @@ On the RHS of \eqref{eq:mainthmcond} is the filtered expectation of $c_N(t)$, i.
 Our result improves on Theorem~\ref{thm:kjjs_mainthm} by eliminating the restrictive condition \eqref{eq:kjjs_tau_bound}, which 
 %is shown in Lemma~\ref{lem:removeass4}\seb{?!} to be 
 we know is unnecessary. This allows our result to apply to some models not previously included; for example the neutral Moran model. %violates \eqref{eq:kjjs_tau_bound} but is included in Theorem~\ref{thm:FDDconv}. 
-In neutral models the straightforward analogue of \eqref{eq:mainthmcond} is both necessary and sufficient \parencite[Theorem 5.4]{mohle2003}, suggesting that in general this condition is not significantly stronger than \eqref{eq:kjjs_big_merger_bound}--\eqref{eq:kjjs_binary_bound_2} combined.
+Although we do not prove that Theorem~\ref{thm:FDDconv} is a true generalisation of Theorem~\ref{thm:kjjs_mainthm}, \textcite[Theorem 5.4]{mohle2003} showed that in neutral models the straightforward analogue of \eqref{eq:mainthmcond} is both necessary and sufficient, suggesting that in general this condition is not significantly stronger than \eqref{eq:kjjs_big_merger_bound}--\eqref{eq:kjjs_binary_bound_2} combined.
 
 Our conditions are also significantly easier to verify than those of Theorem~\ref{thm:kjjs_mainthm}. Not only are four conditions replaced with one, but the condition \eqref{eq:mainthmcond} only involves marginal moments of the offspring counts, whereas \eqref{eq:kjjs_big_merger_bound} and \eqref{eq:kjjs_binary_bound_2} involve mixed moments. 
-As we will see in Chapter~4, once we move beyond conditionally independent resampling schemes such as multinomial resampling, joint distributions of offspring counts are complex and it may only be feasible to calculate their marginal moments. 
-As such, we are able to verify the conditions of Theorem~\ref{thm:FDDconv} in several cases, whereas \textcite{koskela2018} only apply their theorem to multinomial resampling.
+As we will see in Chapter~4, once we move beyond conditionally independent resampling schemes such as multinomial resampling, the joint distributions of offspring counts become complex and it may only be feasible to calculate their moments marginally. 
+As such, we are able to verify the conditions of Theorem~\ref{thm:FDDconv} in several cases, including for resampling schemes that induce strong correlations between offspring counts, whereas \textcite{koskela2018} apply their theorem only to multinomial resampling.
 
+Our condition on the time scale, $\Prob[ \tau_N(t) = \infty ] =0$, is not very restrictive. Essentially, it rules out systems in which coalescences occur at only finitely many generations. 
+This condition is not actually necessary for Theorem~\ref{thm:FDDconv} to hold, as such, but if it is violated then the limiting object is an $n$-coalescent under an infinite time-scaling, that is $n$ lineages never coalescing.
+This would constitute a qualitatively different result and one that is of little interest for SMC, so we follow \textcite{mohle1998} in excluding it.
 
 
 \subsection{Proof of theorem}
@@ -515,7 +521,7 @@ As such, we are able to verify the conditions of Theorem~\ref{thm:FDDconv} in se
 First we prove that \eqref{eq:kjjs_binary_bound_corrected} and the assumptions \eqref{eq:kjjs_big_merger_bound}--\eqref{eq:kjjs_binary_bound_2} of Theorem~\ref{thm:kjjs_mainthm} all follow from \eqref{eq:mainthmcond}.
 Figure~\ref{fig:FDD_proof_dependencies} illustrates how the following Lemmata \ref{lem:removeass3}--\ref{lem:removeass2} fit together. 
 The argument differs slightly from that presented in \textcite{brown2021} in that we will here show $\eqref{eq:mainthmcond} \Rightarrow \eqref{eq:kjjs_big_merger_bound} \Rightarrow \eqref{eq:kjjs_binary_bound}$ rather than $\eqref{eq:mainthmcond} \Rightarrow \eqref{eq:kjjs_big_merger_bound}$ and $\eqref{eq:mainthmcond} \Rightarrow \eqref{eq:kjjs_binary_bound}$.
-This highlights the redundancy in of Theorem~\ref{thm:kjjs_mainthm}, where condition \eqref{eq:kjjs_big_merger_bound} directly implies two of the other stated conditions.
+This highlights the redundancy in Theorem~\ref{thm:kjjs_mainthm}, where condition \eqref{eq:kjjs_big_merger_bound} directly implies two of the other stated conditions.
 
 The second step in the proof is to show that condition \eqref{eq:kjjs_tau_bound} is not necessary. In particular, the parts of the proof of \textcite{koskela2018} which relied on \eqref{eq:kjjs_tau_bound} are rewritten using Proposition~\ref{thm:pDelta_LB} instead. 
 Proposition~\ref{thm:pDelta_LB} is a lower bound on the probability of an identity transition, which holds in general without the need for further conditions, so we really are removing condition \eqref{eq:kjjs_tau_bound} rather than substituting it for a different condition.
@@ -565,7 +571,7 @@ then for all $0 \leq s < t < \infty$
 \end{lemma}
 
 \begin{proof}
-It is sufficient to show that $c_N( t )^2 \leq D_N( t ) N/(N-1)$.
+%It is sufficient to show that $c_N( t )^2 \leq D_N( t ) N/(N-1)$.
 We have
 \begin{align*}
 c_N( t )^2 &= \frac{ 1 }{ N ( N - 1 ) ( N )_2 } \sum_{ i = 1 }^N ( \nu_t^{(i)})_2 \Bigg\{ \nu_t^{(i)} ( \nu_t^{(i)} - 1 ) + \sum_{\substack{j=1\\ j \neq i }}^N ( \nu_t^{(j)} )_2 \Bigg\} \\
@@ -574,7 +580,7 @@ c_N( t )^2 &= \frac{ 1 }{ N ( N - 1 ) ( N )_2 } \sum_{ i = 1 }^N ( \nu_t^{(i)})_
 &\leq \frac{ 1 }{ N ( N )_2 } \sum_{ i = 1 }^N ( \nu_t^{(i)})_2 \Bigg\{ \nu_t^{(i)} + \frac{ N / ( N - 1 ) }{ N } \sum_{\substack{j=1\\ j \neq i }}^N ( \nu_t^{(j)} )^2 \Bigg\} \\
 &\leq \frac{ N / ( N - 1 ) }{ N ( N )_2 } \sum_{ i = 1 }^N ( \nu_t^{(i)})_2 \Bigg\{ \nu_t^{(i)} + \frac{ 1 }{ N } \sum_{\substack{j=1\\ j \neq i }}^N ( \nu_t^{(j)} )^2 \Bigg\} = \frac{ N }{ N - 1 } D_N( t )
 \end{align*}
-which concludes the proof.
+which is sufficient for the result.
 \end{proof}
 
 
