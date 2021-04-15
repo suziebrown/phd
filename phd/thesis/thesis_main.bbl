@@ -1387,6 +1387,38 @@
       \field{pages}{1032\bibrangedash 1044}
       \range{pages}{13}
     \endentry
+    \entry{mohle1998}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=b6cd56499245b16ab003cae95de7eae7}{%
+           family={M{ö}hle},
+           familyi={M\bibinitperiod},
+           given={Martin},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press}%
+      }
+      \strng{namehash}{b6cd56499245b16ab003cae95de7eae7}
+      \strng{fullhash}{b6cd56499245b16ab003cae95de7eae7}
+      \strng{bibnamehash}{b6cd56499245b16ab003cae95de7eae7}
+      \strng{authorbibnamehash}{b6cd56499245b16ab003cae95de7eae7}
+      \strng{authornamehash}{b6cd56499245b16ab003cae95de7eae7}
+      \strng{authorfullhash}{b6cd56499245b16ab003cae95de7eae7}
+      \field{sortinit}{M}
+      \field{sortinithash}{cfd219b90152c06204fab207bc6c7cab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Applied Probability}
+      \field{number}{2}
+      \field{title}{Robustness Results for the Coalescent}
+      \field{volume}{35}
+      \field{year}{1998}
+      \field{pages}{438\bibrangedash 447}
+      \range{pages}{10}
+    \endentry
     \entry{mohle1999}{article}{}
       \name{author}{1}{}{%
         {{uniquename=0,uniquepart=base,hash=b6cd56499245b16ab003cae95de7eae7}{%
