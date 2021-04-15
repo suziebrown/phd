@@ -1,10 +1,10 @@
-\chapter{Limits}
+\chapter{Limits \seb{$\checkmark$} }
 
 %%% choose an epigraph to go here
 
-\section{Encoding genealogies \seb{$\sim$} }
+\section{Encoding genealogies}
 
-\subsection{The genealogical process \seb{$\checkmark$} }
+\subsection{The genealogical process}
 Before we can analyse genealogies, we need a way to encode them.
 The encoding will only include the information relevant to the sample genealogy, namely which lineages coalesce at which times. Information about particle positions and ``killed'' particles is ignored.
 
@@ -15,10 +15,10 @@ The genealogical process $(G_t^{(n,N)})_{t\in\mathbb{N}_0}$ for this sample is t
 
 A formulation where $G_t^{(n,N)}$ takes values in the space of equivalence relations from $[n]$ to $[n]$ is sometimes used \parencite[e.g.][]{mohle1999}; interpreting partition blocks as equivalence classes, this formulation is equivalent to ours.
 
-The initial (time 0) value of the process is the partition of singletons $G_0^{(n,N)} = \{ \{1\}, \dots, \{n\} \}$, since all of the terminal particles are separate.
-The only possible non-identity transitions are those that merge some blocks of the partition; this encodes the coalescence of the corresponding lineages.
+The initial value of the process is the partition of singletons $G_0^{(n,N)} = \{ \{1\}, \dots, \{n\} \}$, since all of the terminal particles are in separate lineages.
+The only possible non-identity transitions are those that merge some blocks of the partition, encoding the coalescence of the corresponding lineages.
 The trivial partition $\{ \{1,\dots,n\} \}$ is therefore an absorbing state, corresponding to all lineages in the sample having coalesced (i.e.\ the MRCA has been reached).
-The construction of the genealogical process from the resampling indices is illustrated in Figure \ref{fig:encoding_genealogy}.
+The construction of the genealogical process from the resampling relationships (i.e.\ the vector of parental indices at each generation) is illustrated in Figure \ref{fig:encoding_genealogy}.
 
 \begin{figure}
 \centering
@@ -126,32 +126,33 @@ The construction of the genealogical process from the resampling indices is illu
 \end{tikzpicture}
 \label{fig:encoding_b}
 }
-\caption[Illustration of how the sample genealogy is encoded]{Illustration of how the sample genealogy is encoded. \subref{fig:encoding_a} Relationships induced by resampling with six particles over four iterations. \subref{fig:encoding_b} The genealogy of the terminal particles, labelled with the value of the genealogical process $G_t$ at each time.}
+\caption[Illustration of how the sample genealogy is encoded]{Illustration of how the sample genealogy is encoded. \subref{fig:encoding_a} Relationships induced by resampling in a sample of $n=6$ particles over four iterations. \subref{fig:encoding_b} The genealogy of these six particles, labelled with the value of the genealogical process $G_t$ at each time.}
 \label{fig:encoding_genealogy}
 \end{figure}
 
 
-\subsection{Time scale \seb{$\checkmark$} }
-In order to get a continuous limit, we scale time by a function $\tau_N(\cdot)$. In the population genetics literature the time scale is typically deterministic (Section~\ref{sec:popgenmodels}), but in our case $\tau_N$ depends on the offspring counts and is therefore random.
+\subsection{Time scale}
+In order to have a well-defined limit for the genealogical process as $N\to\infty$, we must scale time by a suitable function $\tau_N(\cdot)$. In the population genetics literature the time scale function is typically deterministic (Section~\ref{sec:popgenmodels}), but in our case $\tau_N$ depends on the offspring counts and is therefore random.
 To define the time scale we first define the pair merger rate
 \begin{equation}\label{eq:defn_cN}
 c_N(t) := \frac{1}{(N)_2} \sum_{i=1}^N (\nu_t^{(i)})_2 .
 \end{equation}
 This is the probability, conditional on $\nu_t^{(1:N)}$, that a randomly chosen pair of lineages in generation $t$ merges exactly one generation back.
-To achieve the limiting pair merger rate of 1, as in the $n$-coalescent, we rescale time by the generalised inverse
+To achieve a limiting pair merger rate of 1, as in the $n$-coalescent, we rescale time by the generalised inverse
 \begin{equation}\label{eq:defn_tauN}
 \tau_N(t) := \inf \left\{ s \geq 1 : \sum_{r=1}^s c_N(r) \geq t \right\} .
 \end{equation}
 The function $\tau_N$ maps continuous to discrete time, providing the link between the discrete-time SMC dynamics and the continuous-time Kingman limit.
-We will also need the following quantity, which is an upper bound on the rate of multiple mergers (three or more lineages merging, or two or more simultaneous pairwise mergers):
+We will also need the following quantity, which is an upper bound on the conditional probability of a multiple merger (three or more lineages merging, or two or more simultaneous pairwise mergers):
 \begin{equation}\label{eq:defn_DN}
 D_N(t) := \frac{1}{N(N)_2} \sum_{i=1}^N (\nu_t^{(i)})_2
         \left\{ \nu_t^{(i)} + \frac{1}{N} \sum_{j\neq i} (\nu_t^{(j)})^2 \right\} .
 \end{equation} 
+This will be used to control the rate of multiple mergers, which must be dominated by the pair-merger rate as $N\to\infty$ if we are to recover a Kingman limit (in which almost surely the only non-identity transitions are pair mergers).
 %Let $\nu_t^{(i)}$ be the number of offspring in generation $t$ of particle $i$ ($t \in \mathbb{N}$, $i = 1,\dots, N$).
 %Let $(\mathcal{F}_t)$ be the reverse-time filtration generated by the offspring counts.
-Some basic properties are given in Proposition~\ref{thm:cN_properties}.
-\begin{prop}[Properties of $c_N$]\label{thm:cN_properties}
+Some basic properties of $c_N$, $D_N$ and $\tau_N$ are stated in Proposition~\ref{thm:cN_properties}.
+\begin{prop}\label{thm:cN_properties}
 For all $t\in\mathbb{N}$, $t^\prime > s^\prime >0$,
 \begin{enumerate}[label=(\alph*)]
 \item \label{item:cN_property1} \hspace{5pt}
@@ -198,7 +199,7 @@ For all $t\in\mathbb{N}$, $t^\prime > s^\prime >0$,
 D_N(t) &:= \frac{1}{(N)_2} \sum_{i=1}^N (\nu_t^{(i)})_2 \frac{1}{N} \left\{  \nu_t^{(i)} + \frac{1}{N} \sum_{j\neq i}^N (\nu_t^{(j)})^2 \right\} \\
 &\leq \frac{1}{(N)_2} \sum_{i=1}^N (\nu_t^{(i)})_2 \frac{1}{N} \left\{  \nu_t^{(i)} + \frac{1}{N} \sum_{j\neq i}^N N \nu_t^{(j)} \right\} \\
 &= \frac{1}{(N)_2} \sum_{i=1}^N (\nu_t^{(i)})_2 \frac{1}{N} \left\{ \sum_{j =1}^N \nu_t^{(j)} \right\}
-\leq \frac{1}{(N)_2} \sum_{i=1}^N (\nu_t^{(i)})_2
+= \frac{1}{(N)_2} \sum_{i=1}^N (\nu_t^{(i)})_2
 = c_N(t) .
 \end{align*}
 \textbf{\ref{item:cN_property3}} is immediate given \ref{item:cN_property1}.\\
@@ -214,7 +215,7 @@ the result follows by applying \ref{item:cN_property4} to both sums.\\
 \end{proof}
 
 
-Another useful property is the following, taken from \textcite[Lemma 2]{koskela2018}. There the special case $f(r) \equiv c_N(r)$ is proved, but the authors remark that the result also holds for other choices of $f$. Here we state the result in full generality.
+Another useful property is the following, based on \textcite[Lemma 2]{koskela2018}. There the special case $f(r) \equiv c_N(r)$ is proved, but the authors remark that the result also holds for other choices of $f$. Here we state the result in full generality.
 
 \begin{lemma}\label{thm:kjjslemma2}
 Fix $t>0$.
@@ -251,27 +252,26 @@ Since this holds for all $K\geq 1$,
 = \lim_{K\to\infty} \E \left[ \sum_{r=1}^{\tau_N(t) \wedge K} 
         \E [ f(r) \mid \mathcal{F}_{r-1} ] \right] .
 \end{equation*}
-The monotone convergence theorem allows the limit to pass inside the expectation on each side (since increasing $K$ can only increase each sum, by possibly adding non-negative terms). Hence
+The monotone convergence theorem allows the limit to pass inside the expectation on each side (since increasing $K$ can only increase each sum, by possibly adding some non-negative terms). Hence
 \begin{align*}
 \E \left[ \sum_{r=1}^{\tau_N(t)} f(r) \right]
 &= \E \left[ \lim_{K\to\infty} \sum_{r=1}^{\tau_N(t) \wedge K} f(r) \right]
 = \E \left[ \lim_{K\to\infty} \sum_{r=1}^{\tau_N(t) \wedge K} 
         \E [ f(r) \mid \mathcal{F}_{r-1} ] \right] \\
 &= \E \left[ \sum_{r=1}^{\tau_N(t)} 
-        \E [ f(r) \mid \mathcal{F}_{r-1} ] \right]
+        \E [ f(r) \mid \mathcal{F}_{r-1} ] \right] ,
 \end{align*}
 which concludes the proof.
 \end{proof}
 
 
 
-\subsection{Transition probabilities \seb{$\sim$} }
-\draft{Present bounds on $p_{\xi\xi}$ that will be used later (keeping big-O terms explicit where possible).}
-
-Let $\mathcal{P}_n$ be the space of partitions of $\{1,\dots,n\}$, and denote by $\Delta$ the partition of singletons $\{ \{1\},\dots, \{n\} \}$.
-For any $\xi, \eta \in \mathcal{P}_n$ and $t\in\mathbb{N}$, let $p_{\xi\eta}(t)$ denote the conditional transition probabilities of the genealogical process given $\nu_t^{(1:N)}$ ($t\in\mathbb{N}$, $\xi, \eta \in \mathcal{P}_n$).
-The transition probability $p_{\xi\eta}(t)$ can only be non-zero when $\eta$ can be obtained from $\xi$ by merging some blocks of $\xi$.
-Ordering the blocks by their least element, denote by $b_i$ the number of blocks of $\xi$ that merge to form block $i$ in $\eta$ ($i \in \{1,\dots, |\eta|\}$). Hence $b_1 + \cdots + b_{|\eta|} = |\xi|$.
+\subsection{Transition probabilities}
+%Let $\mathcal{P}_n$ be the space of partitions of $\{1,\dots,n\}$, and denote by $\Delta$ the partition of singletons $\{ \{1\},\dots, \{n\} \}$.
+Recall that $\mathcal{P}_n$ denotes the space of partitions of $\{1,\dots,n\}$.
+For any $\xi, \eta \in \mathcal{P}_n$ and $t\in\mathbb{N}$, let $p_{\xi\eta}(t)$ denote the conditional transition probabilities of the genealogical process given $\nu_t^{(1:N)}$. % ($t\in\mathbb{N}$, $\xi, \eta \in \mathcal{P}_n$).
+The transition probability $p_{\xi\eta}(t)$ can only be non-zero when $\eta$ is obtained from $\xi$ by merging some blocks of $\xi$ (i.e.\ some lineages coalescing).
+Ordering the blocks by their least element, denote by $b_i$ the number of blocks of $\xi$ that merge to form block $i$ in $\eta$, for each $i \in \{1,\dots, |\eta|\}$. Hence $b_1 + \cdots + b_{|\eta|} = |\xi|$.
 Then the transition probability is given by
 \begin{equation}\label{eq:defn_pxieta}
 p_{\xi\eta}(t) 
@@ -280,11 +280,12 @@ p_{\xi\eta}(t)
 \end{equation}
 We will only need to work directly with the identity transition probabilities $p_{\xi\xi}(t)$.
 Upper and lower bounds on these probabilities are presented in Propositions \ref{thm:pDelta_LB} and \ref{thm:pDelta_UB}.
-\begin{prop}[Lower bound on identity transition probabilities]\label{thm:pDelta_LB}
+\begin{prop}%[Lower bound on identity transition probabilities]
+\label{thm:pDelta_LB}
 Let $\xi \in \mathcal{P}_n$, $N>2$. Then
 \begin{equation*}
 p_{\xi\xi}(t)
-\geq 1 - \binom{|\xi|}{2} \frac{N^{n-2}}{(N-2)_{n-2}} \left[ c_N(t) + B_{|\xi|} D_N(t) \right]
+\geq 1 - \binom{|\xi|}{2} \frac{N^{|\xi|-2}}{(N-2)_{|\xi|-2}} \left[ c_N(t) + B_{|\xi|} D_N(t) \right]
 \end{equation*}
 where 
 \begin{equation*}
@@ -319,17 +320,17 @@ For the remaining terms we use
 \leq |\xi|! .
 \end{equation*}
 Thus
-\begin{align*}
+\begin{align}
 p_{ \xi \xi }( t ) 
 &\geq 1 - \frac{ 1 }{ ( N )_{ | \xi | } } \binom{|\xi|}{2}
         \sum_{ \substack{ i_1 \neq \ldots \neq i_{|\xi|-1} = 1 \\ \text{all distinct} } }^N 
-        ( \nu_t^{ ( i_1 ) } )_2 \nu_t^{(i_2)} \ldots \nu_t^{ ( i_{|\xi|-1} ) } \\
+        ( \nu_t^{ ( i_1 ) } )_2 \nu_t^{(i_2)} \ldots \nu_t^{ ( i_{|\xi|-1} ) } \notag\\
     &\qquad- \frac{ 1 }{ ( N )_{ | \xi | } } \sum_{ k = 1 }^{ | \xi | - 1 } 
         \sum_{ \substack{ b_1 \geq \ldots \geq b_k = 1 
         \\ b_1 + \ldots + b_k = | \xi | } }^{ | \xi | } |\xi|!
         \sum_{ \substack{ i_1 \neq \ldots \neq i_k = 1 \\ \text{all distinct} } }^N 
-        ( \nu_t^{ ( i_1 ) } )_{ b_1 } \ldots ( \nu_t^{ ( i_k ) } )_{ b_k }
-\end{align*}
+        ( \nu_t^{ ( i_1 ) } )_{ b_1 } \ldots ( \nu_t^{ ( i_k ) } )_{ b_k } \label{eq:pDeltaLB_1}
+\end{align}
 Now, for the $k=|\xi|-1$ term we use the bound
 \begin{equation*}
 \sum_{ i_1 \neq \ldots \neq i_{ | \xi | - 1 } = 1 }^N 
@@ -356,7 +357,7 @@ p_{ \xi \xi }( t )
         \Bigg\{ ( | \xi | - 2 ) \nu_t^{ ( i ) } + \binom{ | \xi | - 2 }{ 2 } \frac{1}{N} 
         \sum_{ j \neq i } ( \nu_t^{ ( j ) } )^2 \Bigg\} .
 \end{align*}
-The summands in the last line are independent of $k, b_i$, and the number of terms in the sums over $k$ and $b_1, \dots, b_k$ is bounded by $\gamma_{|\xi|-2} (|\xi|-2)$, where $\gamma_n$ is the number of integer partitions of $n$.
+The summands in the last line are independent of $k, b_1, \dots, b_k$, and the number of terms in the sums over $k$ and $b_1, \dots, b_k$ is bounded by $\gamma_{|\xi|-2} (|\xi|-2)$, where $\gamma_n$ is the number of integer partitions of $n$.
 By \textcite[Section 2]{hardy1918}, $\gamma_n < K e^{ 2 \sqrt{ 2 n } } / n$ for a constant $K > 0$ independent of $n$.
 Thus, for $|\xi| > 2$,
 \begin{align*}
@@ -382,11 +383,24 @@ B_{|\xi|}
 &= \binom{|\xi|}{2}^{-1} K \exp( 2 \sqrt{2(|\xi|-2)} ) |\xi|! \binom{ |\xi|-1}{2} \\
 &= K (|\xi|-1)! (|\xi|-2) \exp( 2 \sqrt{2(|\xi|-2)} ) .
 \end{align*}
-When $|\xi| \leq 2$, there are no terms with $k\leq |\xi|-2$, and the result is immediate.
+%When $|\xi| \leq 2$, there are no terms with $k\leq |\xi|-2$, and the result is immediate.
+When $|\xi| = 2$, \eqref{eq:pDeltaLB_1} becomes 
+\begin{equation*}
+p_{ \xi \xi }( t )
+\geq 1 - c_N(t)
+\end{equation*}
+and when $|\xi| = 1$, 
+\eqref{eq:pDeltaLB_1} becomes 
+\begin{equation*}
+p_{ \xi \xi }( t )
+\geq 1 ;
+\end{equation*}
+in both cases the result is immediate.
 \end{proof}
 
 
-\begin{prop}[Upper bound on identity transition probabilities]\label{thm:pDelta_UB}
+\begin{prop}%[Upper bound on identity transition probabilities]
+\label{thm:pDelta_UB}
 Let $\xi \in \mathcal{P}_n$. Then, for $N$ sufficiently large,
 \begin{equation*}
 p_{\xi\xi}(t)
@@ -396,13 +410,13 @@ p_{\xi\xi}(t)
 where $B_{|\xi|}^\prime = \binom{|\xi|-1}{2}$.
 \end{prop}
 
-A proof is given in \textcite[Proof of Lemma 1 Case 1]{koskela2018}.\seb{refer to the erratum once available, which is more explicit about this proof.}
+A proof is given in \textcite[Lemma 1 Case 1]{koskela2018}.\seb{refer to the erratum once available, which is more explicit about this proof.}
 
 
 
 
 
-\section{An existing limit theorem \seb{$\checkmark$} }
+\section{An existing limit theorem}
 \seb{Say somewhere that we can only get pair-merger-only limits because we take a sparse sample; obviously SMC resampling can induce $>$pair mergers.}
 
 Under the assumption \ref{standing_assumption} stated below, it is sufficient for our purposes to consider only offspring counts $\nu_t^{(1:N)} = (\nu_t^{(1)},\dots,\nu_t^{(N)})$, where $\nu_t^{(i)} = |\{ j: a_t^{(j)} =i \}|$, rather than the parental indices $a_t^{(1:N)}$ which are generally more informative.
@@ -470,7 +484,7 @@ The final piece is a similar lower bound, which together with the upper bound es
 
 
 
-\section{A new limit theorem \seb{$\checkmark$} }
+\section{A new limit theorem}
 
 \begin{theorem}\label{thm:FDDconv}
 Let $\nu_t^{(1:N)}$ denote the offspring numbers in an interacting particle system satisfying \ref{standing_assumption} such that, for any $N$ sufficiently large, $\Prob[ \tau_N(t) = \infty ] =0$ for all finite $t$. Suppose that there exists a deterministic sequence $(b_N)_{N\geq1}$ such that ${\lim}_{N\to\infty} b_N =0$ and
@@ -495,13 +509,16 @@ As such, we are able to verify the conditions of Theorem~\ref{thm:FDDconv} in se
 
 
 
-\subsection{Proof of theorem \seb{$\checkmark$} }
+\subsection{Proof of theorem}
 %The series of Lemmata \ref{lem:removeass3}--\ref{lem:removeass2} below show that the assumptions \eqref{eq:oldass1}--\eqref{eq:oldass3} follow from \eqref{eq:mainthmcond}. Lemma \ref{lem:removeass4} allows us to remove condition \eqref{eq:oldass4} by improving upon some arguments from the proof of \textcite[Theorem 1]{koskela2018}; this argument is presented in detail in Section~\ref{sec:proof}.
 
 First we prove that \eqref{eq:kjjs_binary_bound_corrected} and the assumptions \eqref{eq:kjjs_big_merger_bound}--\eqref{eq:kjjs_binary_bound_2} of Theorem~\ref{thm:kjjs_mainthm} all follow from \eqref{eq:mainthmcond}.
 Figure~\ref{fig:FDD_proof_dependencies} illustrates how the following Lemmata \ref{lem:removeass3}--\ref{lem:removeass2} fit together. 
 The argument differs slightly from that presented in \textcite{brown2021} in that we will here show $\eqref{eq:mainthmcond} \Rightarrow \eqref{eq:kjjs_big_merger_bound} \Rightarrow \eqref{eq:kjjs_binary_bound}$ rather than $\eqref{eq:mainthmcond} \Rightarrow \eqref{eq:kjjs_big_merger_bound}$ and $\eqref{eq:mainthmcond} \Rightarrow \eqref{eq:kjjs_binary_bound}$.
 This highlights the redundancy in of Theorem~\ref{thm:kjjs_mainthm}, where condition \eqref{eq:kjjs_big_merger_bound} directly implies two of the other stated conditions.
+
+The second step in the proof is to show that condition \eqref{eq:kjjs_tau_bound} is not necessary. In particular, the parts of the proof of \textcite{koskela2018} which relied on \eqref{eq:kjjs_tau_bound} are rewritten using Proposition~\ref{thm:pDelta_LB} instead. 
+Proposition~\ref{thm:pDelta_LB} is a lower bound on the probability of an identity transition, which holds in general without the need for further conditions, so we really are removing condition \eqref{eq:kjjs_tau_bound} rather than substituting it for a different condition.
 
 
 \begin{figure}[ht]
@@ -766,18 +783,15 @@ and recalling that $\epsilon > 0$ was arbitrary concludes the proof.
 
 
 
-\subsection{Proof of theorem, part two \seb{$\checkmark$}}
-\seb{Update KJJS references to point to relevant places in the erratum.}
+\seb{Update KJJS references in the following to point to relevant places in the erratum. The proof is similar to \texttt{Dropbox/SMC\_Genealogies\slash Asymptotic\_genealogies\_of\_interacting\_particle\_systems\slash Post\_acceptance\_correction\slash Erratum/AOS/Round\_3/Indicators/full\_redraft.pdf}, from page 22. We need to refer to the KJJS erratum (once published), rather than the arXiv version which is not correct (lacking some indicators) and doesn't contain all the required results, then update equation and lemma numbers etc.\ as required.}
+
 
 To complete the proof of Theorem~\ref{thm:FDDconv} it remains to show that condition \eqref{eq:kjjs_tau_bound} is unnecessary. We will show that Proposition~\ref{thm:pDelta_LB} can be used instead of \eqref{eq:kjjs_tau_bound} to obtain the same result.
 The only part of \textcite[Proof of Theorem 1]{koskela2018} making use of assumption \eqref{eq:kjjs_tau_bound} is the lower bound on finite-dimensional distributions of the genealogical process for paths involving single pair mergers only.
 A slight modification of the argument allows a similar lower bound to be obtained via Proposition~\ref{thm:pDelta_LB} such that as $N\to\infty$ the bound coincides with the corresponding finite-dimensional distribution of the $n$-coalescent, as required.
 The modified section of the proof is presented below, using the notation of \textcite{koskela2018} for ease of comparison.
 
-
 \begin{proof}
-\seb{This proof is similar to \texttt{Dropbox/SMC\_Genealogies\slash Asymptotic\_genealogies\_of\_interacting\_particle\_systems\slash Post\_acceptance\_correction\slash Erratum/AOS/Round\_3/Indicators/full\_redraft.pdf}, from page 22. We need to refer to the KJJS erratum (once published), rather than the arXiv version which is not correct (lacking some indicators) and doesn't contain all the required results, then update equation and lemma numbers etc.\ as required.}
-
 Let $\chi^\star_d$ be the conditional transition probability of a transition from state $\eta_{d-1}$ to state $\eta_d$ at times $\tau_N(t_{d-1})$ and $\tau_N(t_d)$ respectively, conditional on the offspring counts between those times $\nu^{(1:N)}_{\tau_N(d-1) +1} , \dots, \nu^{(1:N)}_{\tau_N(d)}$. 
 This transition can happen via any valid path of merger events, but we restrict to paths involving binary mergers only, and denote by $\chi_d$ the conditional transition probability subject to this restriction.
 Considering the Proof of Theorem 1 in \textcite{koskela2018}, the derivation of an upper bound on $\chi_d$ holds without modification in our context; while the first step in the derivation of a lower bound which can be found on page 14 of that work involves the application of its Lemma 1 to bound $\chi_d$ from below.
