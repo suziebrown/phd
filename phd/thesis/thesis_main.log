@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  15 APR 2021 15:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  16 APR 2021 14:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1603,34 +1603,6 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 140.
 
 
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 143.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 143.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathsurround' on input line 143.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\z@' on input line 143.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathchar' on input line 143.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 143.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 143.
-
-
 Overfull \hbox (7.032pt too wide) in paragraph at lines 144--146
 \OT1/cmr/m/n/10.95 The King-man co-a-les-cent (King-man []1982b[]; King-man []1
 982c[]; King-man []1982a[]) is a continuous-
@@ -1645,101 +1617,16 @@ File: plots/ncoalescent.pdf Graphic file (type pdf)
 <use plots/ncoalescent.pdf>
 Package pdftex.def Info: plots/ncoalescent.pdf  used on input line 161.
 (pdftex.def)             Requested size: 256.07741pt x 215.4614pt.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 169.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 169.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathsurround' on input line 169.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\z@' on input line 169.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathchar' on input line 169.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 169.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 169.
-
-[5 <./plots/ncoalescent.pdf>] [6] [7]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 316.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 316.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathsurround' on input line 316.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\z@' on input line 316.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathchar' on input line 316.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 316.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 316.
-
+ [5 <./plots/ncoalescent.pdf>] [6] [7]
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 320.
+
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 320.
- [8]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 362.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 362.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathsurround' on input line 362.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\z@' on input line 362.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathchar' on input line 362.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 362.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 362.
-
-[9]
+ [8] [9]
 <plots/ancdegen_mn.pdf, id=508, 602.25pt x 401.5pt>
 File: plots/ancdegen_mn.pdf Graphic file (type pdf)
 <use plots/ancdegen_mn.pdf>
@@ -2501,7 +2388,7 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 204.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 204.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 204.
 Package rerunfilecheck Info: File `thesis_main.out' has not changed.
-(rerunfilecheck)             Checksum: BBDCA3DB0F3FA44AE82F46AD49C29D04;3910.
+(rerunfilecheck)             Checksum: 43CBD6441ADAEBDFAFF017ED82D65B20;3890.
 Package logreq Info: Writing requests to 'thesis_main.run.xml'.
 \openout1 = `thesis_main.run.xml'.
 
@@ -2509,7 +2396,7 @@ Package logreq Info: Writing requests to 'thesis_main.run.xml'.
 Here is how much of TeX's memory you used:
  38068 strings out of 492649
  729577 string characters out of 6129623
- 1273167 words of memory out of 5000000
+ 1273153 words of memory out of 5000000
  40952 multiletter control sequences out of 15000+600000
  578713 words of font info for 141 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -2544,7 +2431,7 @@ ist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2018/texmf-dis
 t/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2018/texmf
 -dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2018/t
 exmf-dist/fonts/type1/adobe/utopia/putb8a.pfb>
-Output written on thesis_main.pdf (113 pages, 4960897 bytes).
+Output written on thesis_main.pdf (113 pages, 4960775 bytes).
 PDF statistics:
  1820 PDF objects out of 2073 (max. 8388607)
  1613 compressed objects within 17 object streams
