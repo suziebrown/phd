@@ -143,7 +143,7 @@ Notice that $\nu_t^{(1:N)}$ can be expressed as a function of $a_t^{(1:N)}$, and
 \subsection{Kingman's coalescent}
 The Kingman coalescent \parencite{kingman1982gene, kingman1982coal, kingman1982exch} is a continuous-time Markov process on the space of partitions of $\mathbb{N}$. For our purposes we need only consider its restriction to $\{1,\dots,n\}$, termed the $n$-coalescent (defined below), since we only ever consider finite samples from a population. 
 However, an excellent probabilistic introduction to the Kingman coalescent from the point-of-view of exchangeable random partitions can be found in \textcite[Chapters 1--2]{berestycki2009}. \seb{or \textcite{wakeley2009} ? or \textcite{durrett2008} ?}
-\begin{defn}
+\begin{defn}%[Kingman's $n$-coalescent]
 \label{def:kingman}
 The \emph{$n$-coalescent} is the homogeneous continuous-time Markov process on the set of partitions of $\{1,\dots,n\}$ with infinitesimal generator $Q$ having entries
 \begin{equation}\label{eq:KCgenerator}
@@ -650,9 +650,9 @@ As in multinomial resampling, stratified resampling uses inversion sampling to d
 U_i \sim \Unif \left(\frac{i-1}{N}, \frac{i}{N} \right) .
 \end{equation*}
 Alternatively, one may think of standard Uniform samples $u_1,\dots,u_N \sim^{iid} \Unif[0,1]$ with the transformation
-\begin{equation}
+\begin{equation*}
 U_i = \frac{u_i + i -1}{N}
-\end{equation}
+\end{equation*}
 to give the stratified samples $U_1,\dots,U_N$.
 
 The parents are then assigned as in \eqref{eq:syst_strat_resampling}.
@@ -905,33 +905,33 @@ If the state space is continuous, the event that all weights are multiples of $1
 One indication of the performance could be the variance of the resampled offspring counts. For instance we might ask what is the marginal variance of $\nu_t^{(i)}$, conditional on the corresponding weight $w_t^{(i)}$.
 
 In multinomial resampling, the marginal distributions are
-\begin{equation}
+\begin{equation*}
 \nu_t^{(i)} \mid w_t^{(i)} 
 \sim \Bin(N, w_t^{(i)})
-\end{equation}
+\end{equation*}
 so the variance is
-\begin{equation}
+\begin{equation*}
 \V[ \nu_t^{(i)} \mid w_t^{(i)} ]
 = N w_t^{(i)} ( 1- w_t^{(i)} ) .
-\end{equation}
+\end{equation*}
 Compare this to star resampling, where the marginal offspring counts
-\begin{equation}
+\begin{equation*}
 \nu_t^{(i)} \mid w_t^{(i)} 
 \eqdist N \Bern( w_t^{(i)} )
-\end{equation}
+\end{equation*}
 having variance
-\begin{equation}
+\begin{equation*}
 \V[ \nu_t^{(i)} \mid w_t^{(i)} ]
 = N^2 w_t^{(i)} ( 1- w_t^{(i)} ) ,
-\end{equation}
+\end{equation*}
 $N$ times larger than in the multinomial case.
 
 As pointed out in \textcite[p.557]{crisan1999}, their minimal variance branching process yields offspring variance
-\begin{equation}
+\begin{equation*}
 \V[ \nu_t^{(i)} \mid w_t^{(i)} ]
 = ( Nw_t^{(i)} -\flnw )(1- Nw_t^{(i)} + \flnw) 
 \leq \frac{1}{4} ,
-\end{equation}
+\end{equation*}
 since the stochastic part of $\nu_t^{(i)}$ is a $\Bern( Nw_t^{(i)} -\flnw )$ random variable (as seen in \eqref{eq:branching_distn}).
 The same marginal variance appears from systematic, residual-systematic and SSP resampling, since these all share the same marginal offspring distributions. We will see in Section~\ref{sec:SRs} that all of these schemes fall within the \emph{stochastic rounding} class, and the marginal offspring variance is a property shared by all stochastic roundings.
 
@@ -940,10 +940,10 @@ However, it is possible in some cases to find upper bounds on the variance, and 
 
 Residual-multinomial: $\nu_t^{(i)}$ depends on all of the other weights, as well as $w_t^{(i)}$, but only through the statistic $R := \sum (N w_t^{(i)} - \flnw)$.
 We have
-\begin{equation}
+\begin{equation*}
 \nu_t^{(i)} \mid w_t^{(i)} , R
 \eqdist \flnw + \Bin\left( R, \frac{Nw_t^{(i)} - \flnw}{R} \right) .
-\end{equation}
+\end{equation*}
 Using the law of total variance,
 \begin{align*}
 \V[ \nu_t^{(i)} \mid w_t^{(i)} ]
@@ -958,10 +958,10 @@ Using the law of total variance,
 &\leq Nw_t^{(i)} - \flnw .
 \end{align*}
 Similarly, for residual resampling with star residuals,
-\begin{equation}
+\begin{equation*}
 \nu_t^{(i)} \mid w_t^{(i)} , R
 \eqdist \flnw + R \Bern\left( \frac{Nw_t^{(i)} - \flnw}{R} \right) .
-\end{equation}
+\end{equation*}
 and we find
 \begin{align*}
 \V[ \nu_t^{(i)} \mid w_t^{(i)} ]
@@ -1198,9 +1198,9 @@ Following \textcite{gerber2017}, we use the definition of negative association f
 \begin{defn}
 Let $(Z_1, \dots, Z_n)$ be a collection of random variables. 
 $Z_{1:n}$ are said to be \emph{negatively associated} if, for every partition of $\{1,\dots, n\}$ into subsets $I$ and $J$, for all real-valued coordinatewise non-decreasing functions $\varphi, \psi$ for which the covariance is well defined,
-\begin{equation}
+\begin{equation*}
 \Cov \left[ \varphi( Z_I) , \psi(Z_J) \right] \leq 0 .
-\end{equation}
+\end{equation*}
 \end{defn}
 
 
@@ -1213,9 +1213,9 @@ $Z_{1:n}$ are said to be \emph{negatively associated} if, for every partition of
 %The idea is to use sample points that are more regularly spaced, with the hope that this will reduce the variance of Monte Carlo estimators.
 
 The \emph{star discrepancy}\seb{[citation]} is a measure of the regularity of a given set of points $u_{1:N}$ in the unit hypercube. For our purposes it is sufficient to define the star discrepancy in one dimension:
-\begin{equation}
+\begin{equation*}
 D^\star (u_1, \dots, u_N) := \sup_{u \in [0,1]} \left| \frac{1}{N} \sum_{i=1}^N \I{u_i \leq u} -u \right| .
-\end{equation}
+\end{equation*}
 The quantity inside the supremum is the difference between the empirical CDF of the observed points $u_{1:N}$ and the CDF of the Uniform distribution on $[0,1]$.
 %Thus $D^\star$ tells us, in a specific sense, how far our points are from being uniformly spaced.
 The star discrepancy is used in quasi-Monte Carlo, where ``low-discrepancy'' points are used in place of uniform samples to decrease the variance of Monte Carlo estimates.
@@ -1297,10 +1297,10 @@ By construction, $\E(Y_i) = X_i$ for each $i$. Taking $X$ to be $N$ times the ve
 Several ways to enforce this constraint on the joint distribution have been proposed, including systematic resampling, residual resampling with systematic residuals, the minimal variance branching system of \textcite{crisan1997}, and the Srinivasan sampling process resampling introduced in \textcite{gerber2017}.
 
 Explicitly, the offspring counts are marginally distributed according to 
-\begin{equation}
+\begin{equation*}
 \nu_t^{(i)} \mid w_t^{(i)}
 \eqdist \flnw + \Bern( Nw_t^{(i)} - \flnw ) .
-\end{equation}
+\end{equation*}
 
 Some of the properties discussed earlier are common to every stochastic rounding scheme. 
 Since all such schemes give offspring counts with the same marginal distributions, properties such as the marginal offspring variance are common to all stochastic roundings. Indeed it is easy to see that the marginal variance of the offspring counts, $\V[ \nu_t^{(i)} \mid w_t^{(i)} ]$ is as small as possible under the constraint of unbiasedness \seb{(refer to the property in Defintion~\ref{defn:resampling}?)}, and as such this is sometimes referred to as minimal-variance resampling.

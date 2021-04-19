@@ -55,6 +55,10 @@
 \usepackage{bbm}
 \usepackage{bm} %% used only in the proof section dumped from BJJK Sec3.1; try to remove the need for it?
 
+%%%% LIST OF THEOREMS ETC.
+%\usepackage{thmtools}
+%\renewcommand{\listtheoremname}{List of Definitions}
+
 %%% MATHS ENVIRONMENTS
 \newmdtheoremenv[backgroundcolor=gray!20, linewidth=0pt]{theorem}{Theorem}[chapter]
 \newmdtheoremenv[backgroundcolor=gray!20, linewidth=0pt]{corollary}[theorem]{Corollary}
@@ -121,6 +125,9 @@ January 2021 %%% update submission date (month year)
 \tableofcontents
 \listoffigures
 \listoftables
+%\listoftheorems[ignoreall,show={defn}]
+%\renewcommand{\listtheoremname}{List of Theorems}
+%\listoftheorems[ignoreall,show={theorem,prop}]
 %%% Also include a list of algorithms/listings somehow
 
 \chapter{Acknowledgements}
@@ -151,6 +158,8 @@ i.i.d. & independent and identically distributed \\
 MRCA & most recent common ancestor \\
 PRNG & pseudo-random number generator \\
 CDF & cumulative distribution function \\
+LHS & left hand side \\
+RHS & right hand side \\
 \end{tabular}
 
 

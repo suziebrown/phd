@@ -287,9 +287,9 @@ This ensures, for all $t <\infty$, that $\Prob\left[ \exists s<\infty : \sum_{r=
 \begin{corollary}\label{thm:residual_stratified}
 Consider an SMC algorithm using residual resampling with stratified residuals, such that the standing assumption is satisfied.
 Assume that there exists a constant $a\in [1,\infty)$ such that for all $x, x^\prime, t$,
-\begin{equation}
+\begin{equation*}
 \frac{1}{a} \leq g_t(x, x^\prime) \leq a .
-\end{equation}
+\end{equation*}
 Assume that $\Prob[ \tau_N(t) = \infty] =0$ for all finite $t$.
 Let $(G_t^{(n,N)})_{t\geq0}$ denote the genealogy of a random sample of $n$ terminal particles from the output of the algorithm when the total number of particles used is $N$. Then, for any fixed $n$, the time-scaled genealogy $(G_{\tau_N(t)}^{(n,N)})_{t\geq0}$ converges to Kingman's $n$-coalescent as $N\to \infty$, in the sense of finite-dimensional distributions.
 \end{corollary}
