@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  19 APR 2021 16:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  19 APR 2021 16:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1496,7 +1496,7 @@ LaTeX Font Info:    Font shape `OT1/put/bx/n' in size <6> not available
 (Font)              Font shape `OT1/put/b/n' tried instead on input line 117.
 
 Overfull \hbox (1.42336pt too wide) detected at line 161
- []\OT1/put/b/n/10.95 102
+ []\OT1/put/b/n/10.95 101
  []
 
 )
@@ -2499,20 +2499,21 @@ MS/cmsy/m/n/10.95 ^^U \OML/cmm/m/it/10.95 l\OMS/cmsy/m/n/10.95 g$ \OT1/cmr/m/n/
 
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1541.
+(mdframed)              on input line 1542.
+[97] [98]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1573.
-[97] [98] [99]
+(mdframed)              on input line 1666.
+ [99]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1751.
- [100]) [101]
+(mdframed)              on input line 1755.
+) [100]
 \openout2 = `discussion.aux'.
 
  (./discussion.tex
 chapter 6.
-) [102
+) [101
 
 
 
@@ -2535,13 +2536,13 @@ Overfull \hbox (3.95416pt too wide) in paragraph at lines 204--204
 r-i-son of Re-sam-pling Schemes
  []
 
-[103
+[102
 
 
 
 
 
-] [104] [105] [106]
+] [103] [104] [105]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 205.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 205.
  (./thesis_main.aux (./introduction.aux)
@@ -2549,27 +2550,17 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 205.
 (./discussion.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 205.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 205.
-
-
-Package rerunfilecheck Warning: File `thesis_main.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `thesis_main.out':
-(rerunfilecheck)             Before: BCFF99355E2EF27153E389FA3778D97C;3827
-(rerunfilecheck)             After:  B9AA4EEA5F8E23BD54F05DD143524B50;3852.
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
+Package rerunfilecheck Info: File `thesis_main.out' has not changed.
+(rerunfilecheck)             Checksum: B9AA4EEA5F8E23BD54F05DD143524B50;3852.
 Package logreq Info: Writing requests to 'thesis_main.run.xml'.
 \openout1 = `thesis_main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
  39067 strings out of 492649
- 754364 string characters out of 6129623
- 1283824 words of memory out of 5000000
- 41930 multiletter control sequences out of 15000+600000
+ 754374 string characters out of 6129623
+ 1283878 words of memory out of 5000000
+ 41931 multiletter control sequences out of 15000+600000
  579752 words of font info for 145 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  64i,22n,69p,10565b,1443s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2605,10 +2596,10 @@ fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/local/texlive/2018/texmf-dist/fo
 nts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2018/texmf-dis
 t/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2018/texmf
 -dist/fonts/type1/adobe/utopia/putb8a.pfb>
-Output written on thesis_main.pdf (115 pages, 4994347 bytes).
+Output written on thesis_main.pdf (114 pages, 4993536 bytes).
 PDF statistics:
- 1827 PDF objects out of 2073 (max. 8388607)
- 1615 compressed objects within 17 object streams
- 426 named destinations out of 1000 (max. 500000)
+ 1822 PDF objects out of 2073 (max. 8388607)
+ 1611 compressed objects within 17 object streams
+ 425 named destinations out of 1000 (max. 500000)
  489 words of extra memory for PDF output out of 10000 (max. 10000000)
 

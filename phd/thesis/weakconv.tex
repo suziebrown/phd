@@ -289,7 +289,7 @@ This completes the induction.
 \node[align=center] at (-6,3) (c4r1) {Lemma~\ref{thm:basis}\\[-3pt] 
         \textcolor{gray}{\textsc{basis}} };
 \node[align=center] at (4,3) (c7r1) {Theorem~\ref{thm:FDDconv}\\[-3pt] \textcolor{gray}{\textsc{f.d.d. conv.}} };
-\node at (-15,-3) (c1r1) {Lemma~\ref{thm:kjjslemma2}};
+\node at (-15,-2.25) (c1r1) {Lemma~\ref{thm:kjjslemma2}};
 \node at (4,-3) (c7r3) {Lemma~\ref{thm:maximum_pr}};
 \node at (0,0) (c6r1) {Lemma~\ref{thm:holdingtimes_distn}};
 \node[align=center] at (-3,6) (c5r1) {Proposition~\ref{thm:pDelta_LB}\\[-3pt] 
@@ -303,8 +303,8 @@ This completes the induction.
 \node at (-12,4.5) (c2r2) {Lemma~\ref{thm:sumprod1}\ref{thm:sumprod1_b}};
 \node at (-12,3) (c2r3) {Lemma~\ref{thm:sumprod2}};
 \node at (-12,1.5) (c2r4) {Lemma~\ref{thm:sumprod3}};
-\node at (-12,0) (c2r5) {Lemma~\ref{thm:indicators_tau}};
-\node at (-12,-1.5) (c2r6) {Lemma~\ref{thm:indicators_cN}};
+\node at (-12,-1.5) (c2r6) {Lemma~\ref{thm:indicators_tau}};
+\node at (-12,0) (c2r5) {Lemma~\ref{thm:indicators_cN}};
 \node at (-12,-3) (c2r7) {Lemma~\ref{thm:lim_AandB}};
 \node at (-12,-4.5) (c2r8) {Lemma~\ref{thm:indicators_DN}};
 \node at (-12,-6) (c2r9) {Lemma~\ref{thm:indicators_c2}};
@@ -314,9 +314,9 @@ This completes the induction.
 
 % arrows from column 1
 \draw[->] (c1r1)--(c2r8);
-\draw[->] (c1r1)--(c2r6);
+\draw[->] (c1r1)--(c2r5);
 % arrows from column 2
-\draw[->] (c2r6)--(c2r5);
+\draw[->] (c2r5)--(c2r6);
 \draw[->] (c2r1)--(c4r2);
 \draw[->] (c2r2)--(c4r1);
 \draw[->, dotted] (c2r2)--(c3r1);
@@ -1538,37 +1538,6 @@ by applying Lemma~\ref{thm:indicators_cN} with $K=t/l$.
 \end{proof}
 
 
-\begin{lemma}\label{thm:indicators_c2}
-Assume \eqref{eq:BJJK_eq3.5} holds.
-Fix $k\in\mathbb{N}$, a sequence of times $0 = t_0 \leq t_1 \leq \cdots \leq t_k \leq t$, and let $K_1,\dots,K_k$ be strictly positive constants.
-Define the events
-\begin{equation*}
-E_N := \bigcap_{j=1}^k \left\{ \sum_{s=\tau_N(t_{j-1})+1}^{\tau_N(t_j)}
-        c_N(s)^2 \leq K_j \right\} .
-\end{equation*}
-Then $\lim_{N\to\infty} \Prob[E_N] =1$.
-\end{lemma}
-
-\begin{proof}
-\begin{align*}
-\Prob[E_N]
-&= 1- \Prob[E_N^c]
-= 1- \Prob\left[ \bigcup_{j=1}^k \left\{ \sum_{s=\tau_N(t_{j-1})+1}
-        ^{\tau_N(t_j)} c_N(s)^2 > K_j \right\} \right] \\
-&\geq 1- \sum_{j=1}^k \Prob\left[ \sum_{s=\tau_N(t_{j-1})+1}
-        ^{\tau_N(t_j)} c_N(s)^2 \geq K_j \right] .
-\end{align*}
-Applying Markov's inequality,
-\begin{equation*}
-\Prob[E_N]
-\geq 1- \sum_{j=1}^k K_j^{-1} \E\left[ \sum_{s=\tau_N(t_{j-1})+1}
-        ^{\tau_N(t_j)} c_N(s)^2 \right]
-\underset{N\to\infty}{\longrightarrow} 1- \sum_{j=1}^k O(1) \times 0 
-= 1
-\end{equation*}
-by \eqref{eq:BJJK_eq3.5}.
-\end{proof}
-
 
 \begin{lemma}\label{thm:indicators_DN}
 Assume \eqref{eq:BJJK_eq3.4} holds.
@@ -1691,6 +1660,41 @@ Applying Lemma~\ref{thm:kjjslemma2} once more, with $f(r) = D_N(r)$,
 due to \eqref{eq:BJJK_eq3.4}.
 Substituting this back into \eqref{eq:050} concludes the proof.
 \end{proof}
+
+
+
+\begin{lemma}\label{thm:indicators_c2}
+Assume \eqref{eq:BJJK_eq3.5} holds.
+Fix $k\in\mathbb{N}$, a sequence of times $0 = t_0 \leq t_1 \leq \cdots \leq t_k \leq t$, and let $K_1,\dots,K_k$ be strictly positive constants.
+Define the events
+\begin{equation*}
+E_N := \bigcap_{j=1}^k \left\{ \sum_{s=\tau_N(t_{j-1})+1}^{\tau_N(t_j)}
+        c_N(s)^2 \leq K_j \right\} .
+\end{equation*}
+Then $\lim_{N\to\infty} \Prob[E_N] =1$.
+\end{lemma}
+
+\begin{proof}
+\begin{align*}
+\Prob[E_N]
+&= 1- \Prob[E_N^c]
+= 1- \Prob\left[ \bigcup_{j=1}^k \left\{ \sum_{s=\tau_N(t_{j-1})+1}
+        ^{\tau_N(t_j)} c_N(s)^2 > K_j \right\} \right] \\
+&\geq 1- \sum_{j=1}^k \Prob\left[ \sum_{s=\tau_N(t_{j-1})+1}
+        ^{\tau_N(t_j)} c_N(s)^2 \geq K_j \right] .
+\end{align*}
+Applying Markov's inequality,
+\begin{equation*}
+\Prob[E_N]
+\geq 1- \sum_{j=1}^k K_j^{-1} \E\left[ \sum_{s=\tau_N(t_{j-1})+1}
+        ^{\tau_N(t_j)} c_N(s)^2 \right]
+\underset{N\to\infty}{\longrightarrow} 1- \sum_{j=1}^k O(1) \times 0 
+= 1
+\end{equation*}
+by \eqref{eq:BJJK_eq3.5}.
+\end{proof}
+
+
 
 
 \section{Fubini \& dominated convergence conditions}
