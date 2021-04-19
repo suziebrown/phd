@@ -35,6 +35,8 @@ to Kingman's $n$-coalescent as $N \to \infty$.
 
 \begin{proof}[Proof of Theorem~\ref{thm:weakconv}]
 The structure of the proof follows \textcite{mohle1999}, albeit with considerable technical complication due to the dependence between generations\seb{(non-neutrality)} in our model. \seb{Is this the main/only source of complication?}
+To make it digestible, the proof is broken down into a number of results which are organised into sections; the relationships between these are shown in Figure~\ref{fig:weakconv_structure}.
+
 Since we already have convergence of the finite-dimensional distributions (Theorem~\ref{thm:FDDconv}), strengthening this to weak convergence requires relative compactness of the sequence of processes $\{ (G_{\tau_N(t)}^{(n,N)})_{t\geq0} \}_{N\in\mathbb{N}}$.
 
 \textcite[Chapter 3, Corollary 7.4]{ethier1986} provide a necessary and sufficient condition for relative compactness: $\mathcal{P}_n$ is finite and therefore complete and separable, and the sample paths of $(G_{\tau_N(t)}^{(n,N)})_{t\geq0}$ live in $\mathcal{X}$, so the conditions of their corollary are satisfied.
@@ -255,6 +257,106 @@ This completes the induction.
 \end{proof}
 
 
+\begin{landscape}
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[>=stealth, thick]
+%% grid lines horizontal
+%\draw[gray!20] (-15,0)--(6,0);
+%\draw[gray!20] (-15,3)--(6,3);
+%\draw[gray!20] (-15,6)--(6,6);
+%\draw[gray!20] (-15,-3)--(6,-3);
+%\draw[gray!20] (-15,-6)--(6,-6);
+%% grid lines vertical
+%\draw[gray!20] (0,6)--(0,-6);
+%\draw[gray!20] (4,6)--(4,-6);
+%\draw[gray!20] (-3,6)--(-3,-6);
+%\draw[gray!20] (-6,6)--(-6,-6);
+%\draw[gray!20] (-9,6)--(-9,-6);
+%\draw[gray!20] (-12,6)--(-12,-6);
+%\draw[gray!20] (-15,6)--(-15,-6);
+
+% phantom line (to add space below figure)
+\draw[white] (-15,-7)--(6,-7);
+
+% nodes
+\node[align=center,draw=gray] at (4,0) (c7r2) 
+        {Theorem~\ref{thm:weakconv}\\[-3pt] \textcolor{gray}{\textsc{weak conv.}}};
+\node[align=center] at (-6,-3) (c4r3) {Lemma~\ref{thm:inductionLB}\\[-3pt] 
+        \textcolor{gray}{\textsc{induction}} \\[-5pt] \textcolor{gray}{\textsc{l.b.}} };
+\node[align=center] at (-6,0) (c4r2) {Lemma~\ref{thm:inductionUB}\\[-3pt] 
+        \textcolor{gray}{\textsc{induction}} \\[-5pt] \textcolor{gray}{\textsc{u.b.}} };
+\node[align=center] at (-6,3) (c4r1) {Lemma~\ref{thm:basis}\\[-3pt] 
+        \textcolor{gray}{\textsc{basis}} };
+\node[align=center] at (4,3) (c7r1) {Theorem~\ref{thm:FDDconv}\\[-3pt] \textcolor{gray}{\textsc{f.d.d. conv.}} };
+\node at (-15,-3) (c1r1) {Lemma~\ref{thm:kjjslemma2}};
+\node at (4,-3) (c7r3) {Lemma~\ref{thm:maximum_pr}};
+\node at (0,0) (c6r1) {Lemma~\ref{thm:holdingtimes_distn}};
+\node[align=center] at (-3,6) (c5r1) {Proposition~\ref{thm:pDelta_LB}\\[-3pt] 
+        \textcolor{gray}{\textsc{trans. prob.}} \\[-5pt] \textcolor{gray}{\textsc{u.b.}} };
+\node[align=center] at (-3,-6) (c5r2) {Proposition~\ref{thm:pDelta_UB}\\[-3pt] 
+        \textcolor{gray}{\textsc{trans. prob.}} \\[-5pt] \textcolor{gray}{\textsc{l.b.}} };
+\node[align=center] at (0,-6) (c6r2) {Lemma~\ref{thm:DCT_Fubini}\\[-3pt] 
+        \textcolor{gray}{\textsc{d.c.t. cond.}} };
+\node at (-9,-6) (c3r1) {Lemma~\ref{thm:induction_sumprodcN}};
+\node at (-12,6) (c2r1) {Lemma~\ref{thm:sumprod1}\ref{thm:sumprod1_a}};
+\node at (-12,4.5) (c2r2) {Lemma~\ref{thm:sumprod1}\ref{thm:sumprod1_b}};
+\node at (-12,3) (c2r3) {Lemma~\ref{thm:sumprod2}};
+\node at (-12,1.5) (c2r4) {Lemma~\ref{thm:sumprod3}};
+\node at (-12,0) (c2r5) {Lemma~\ref{thm:indicators_tau}};
+\node at (-12,-1.5) (c2r6) {Lemma~\ref{thm:indicators_cN}};
+\node at (-12,-3) (c2r7) {Lemma~\ref{thm:lim_AandB}};
+\node at (-12,-4.5) (c2r8) {Lemma~\ref{thm:indicators_DN}};
+\node at (-12,-6) (c2r9) {Lemma~\ref{thm:indicators_c2}};
+
+% brace
+\draw[decorate, decoration={brace, amplitude=8}] (-10.9,0.2)--(-10.9, -3.2);
+
+% arrows from column 1
+\draw[->] (c1r1)--(c2r8);
+\draw[->] (c1r1)--(c2r6);
+% arrows from column 2
+\draw[->] (c2r6)--(c2r5);
+\draw[->] (c2r1)--(c4r2);
+\draw[->] (c2r2)--(c4r1);
+\draw[->, dotted] (c2r2)--(c3r1);
+\draw[->] (c2r3)--(c4r1);
+\draw[->, dotted] (c2r3)--(c4r2);
+\draw[->] (c2r4)--(c4r1);
+\draw[->, dotted] (c2r4)--(c4r3);
+\draw[->] (c2r8)--(c4r3);
+\draw[->] (c2r9)--(c3r1);
+\draw[->] (c2r7)--(c3r1);
+% arrows from brace
+\draw[->] (-10.6, -1.5)--(c4r1);
+\draw[->] (-10.6, -1.5)--(c4r2);
+\draw[->] (-10.6, -1.5)--(c4r3);
+% arrows from column 3
+\draw[->] (c3r1)--(c4r3);
+% arrows from column 4
+\draw[->] (c4r1)--(c6r1);
+\draw[->] (c4r2)--(c6r1);
+\draw[->] (c4r3)--(c6r1);
+% arrows from column 5
+\draw[->] (c5r1)--(c4r1);
+\draw[->] (c5r1)--(c4r2);
+\draw[->] (c5r2)--(c4r1);
+\draw[->] (c5r2)--(c4r2);
+\draw[->] (c5r2)--(c4r3);
+% arrows from column 6
+\draw[->] (c6r1)--(c7r2);
+\draw[->] (c6r2)--(c4r2);
+\draw[->] (c6r2)--(c4r3);
+% arrows from column 7
+\draw[->] (c7r1)--(c7r2);
+\draw[->] (c7r3)--(c7r2);
+\end{tikzpicture}
+\caption[Structure of weak convergence proof]{Graph showing dependencies between the lemmata used to prove weak convergence. Dotted arrows indicate dependence via a slight modification of the preceding lemma. Dependencies preceding Theorem~\ref{thm:FDDconv} are not shown; these are shown in Figure~??\seb{draw a corresponsing figure for fdd proof}.}
+\label{fig:weakconv_structure}
+\end{figure}
+\end{landscape}
+
+
 
 
 \section{Bounds on sum-products}
@@ -439,7 +541,7 @@ which concludes the proof.
 
 
 
-\section{Main components of weak convergence}
+\section{Main components of induction argument}
 Recall that the following conditions are all consequences of \eqref{eq:mainthmcondition2}: for all $t>s>0$,
 \begin{align}
 \E \left[ c_N(\tau_N(t)) \right] &\rightarrow 0 \label{eq:BJJK_eq3.3}\\
@@ -1591,7 +1693,7 @@ Substituting this back into \eqref{eq:050} concludes the proof.
 \end{proof}
 
 
-\section{Fubini/DCT conditions}
+\section{Fubini \& dominated convergence conditions}
 
 %The following Lemma is taken from \textcite[Lemma 2]{koskela2018}, where the function is set to $f(r) = c_N(r)$, but the authors remark that the result holds for other choices of function.
 %\begin{lemma}\label{thm:kjjslemma2}
@@ -1671,83 +1773,83 @@ For any fixed $t>0$,
 
 
 
-\section{Dependency graph}
-
-\seb{
-Missing links since this graph was updated:
-\begin{itemize}
-\item Lemma~\ref{thm:sumprod1}\ref{thm:sumprod1_a} is used three times in Lemma~\ref{thm:inductionUB}, but not anywhere else.
-\item Lemma~\ref{thm:sumprod1} in the current dependency graph is really referring to Lemma~\ref{thm:sumprod1}\ref{thm:sumprod1_b}.
-%\item Lemma~\ref{thm:DCT_Fubini}\ref{thm:DCTFubini_a} is used twice in Lemma~\ref{thm:basis}
-\item Lemma~\ref{thm:DCT_Fubini} %\ref{thm:DCTFubini_b} 
-is used in Lemmata \ref{thm:inductionLB} and \ref{thm:inductionUB}.
-\item Lemma~\ref{thm:lim_AandB} is used in Lemmata \ref{thm:basis}, \ref{thm:inductionUB}, \ref{thm:inductionLB} and \ref{thm:induction_sumprodcN}.
-\item Lemma~\ref{thm:maximum_pr} should also appear pointing to Theorem~\ref{thm:weakconv}.
-\item Theorem~\ref{thm:FDDconv} (FDD convergence) is also pretty instrumental in the weak convergence proof!
-\end{itemize}
-}
-
-\begin{figure}[ht]
-\centering
-\begin{tikzpicture}[>=stealth, thick]
-% boxes
-\filldraw[rounded corners, gray!20] (1.9,1.4)--(4.1,1.4)--(4.1,-2.4)--(1.9,-2.4)--cycle;
-\node[gray] at (3,1.6) {\textsc{indicators}};
-\filldraw[rounded corners, gray!20] (1.9,-3.1)--(4.1,-3.1)--(4.1,-5.9)--(1.9,-5.9)--cycle;
-\node[gray] at (3,-2.9) {\textsc{sum-products}};
-
-% nodes column 1
-\node at (0,-0.5) {Lemma~\ref{thm:kjjslemma2}};
-%nodes column 2 indics
-\node at (3,1) {Lemma~\ref{thm:indicators_c2}};
-\node at (3,0) {Lemma~\ref{thm:indicators_DN}};
-\node at (3,-1) {Lemma~\ref{thm:indicators_cN}};
-\node at (3,-2) {Lemma~\ref{thm:indicators_tau}};
-% nodes column 2 sumprods
-\node at (3,-3.5) {Lemma~\ref{thm:sumprod3}};
-\node at (3,-4.5) {Lemma~\ref{thm:sumprod2}};
-\node at (3,-5.5) {Lemma~\ref{thm:sumprod1}};
-%nodes column 3
-\node at (6,1) {Lemma~\ref{thm:induction_sumprodcN}};
-% nodes column 4
-\node[align=center] at (9,0) {Lemma~\ref{thm:inductionLB}\\[-3pt] \textcolor{gray}{\textsc{induction}} \\[-5pt] \textcolor{gray}{\textsc{l.b.}} };
-\node[align=center] at (9,-2) {Lemma~\ref{thm:inductionUB}\\[-3pt] \textcolor{gray}{\textsc{induction}} \\[-5pt] \textcolor{gray}{\textsc{u.b.}} };
-\node[align=center] at (9,-4) {Lemma~\ref{thm:basis}\\[-3pt] \textcolor{gray}{\textsc{basis}} };
-%nodes column 5
-\node at (12,0.5) {Lemma~\ref{thm:holdingtimes_distn}};
-\node[align=center] at (12,-2) {Theorem~\ref{thm:weakconv}\\[-3pt] \textcolor{gray}{\textsc{weak}}\\[-5pt] \textcolor{gray}{\textsc{conv.}} };
-
-% arrows column 1 to 2
-\draw[->] (1,-0.5)--(2,0);
-\draw[->] (1,-0.5)--(2,-1);
-%arrows column 2 to 2
-\draw[->] (3,-1.2)--(3,-1.8);
-%arrows column 2 to 3
-\draw[->] (4,1)--(5,1);
-\draw[->, dotted] (4,-5.5)--(6,0.8);
-%arrows column2 indics to 4
-\draw[->] (4,-2)--(8.1,0);
-\draw[->] (4,-2)--(8,-2);
-\draw[->] (4,-2)--(8.1,-4);
-\draw[->] (4,-1)--(8,0);
-\draw[->] (4,-1)--(8,-2);
-\draw[->] (4,-1)--(8.1,-4);
-\draw[->] (4,0)--(8,0);
-% arrows column 2 sumprods to 4
-\draw[->, dotted] (4,-3.5)--(8,0);
-\draw[->, dotted] (4,-4.5)--(8,-2);
-\draw[->] (4,-3.5)--(8,-4);
-\draw[->] (4,-4.5)--(8,-4);
-\draw[->] (4,-5.5)--(8,-4);
-% arrows column 3 to 4
-\draw[->] (7,0.9)--(8.1,0.2);
-\draw[->] (7,0.9)--(8.2,-1.6);
-%arrows column 4 to 5
-\draw[->] (9.9,-0.1)--(11.1,-1.6);
-\draw[->] (9.9,-2)--(11,-2);
-\draw[->] (9.9,-3.9)--(11.2,-2.3);
-% arrows column 5 to 5
-\draw[->] (12,0.2)--(12,-1.6);
-\end{tikzpicture}
-\caption[Structure of weak convergence proof]{Graph showing dependencies between the lemmata used to prove weak convergence. Dotted arrows indicate dependence via a slight modification of the preceding lemma.}
-\end{figure}
+%\seb{
+%Missing links since this graph was updated:
+%\begin{itemize}
+%\item Lemma~\ref{thm:sumprod1}\ref{thm:sumprod1_a} is used three times in Lemma~\ref{thm:inductionUB}, but not anywhere else.
+%\item Lemma~\ref{thm:sumprod1} in the current dependency graph is really referring to Lemma~\ref{thm:sumprod1}\ref{thm:sumprod1_b}.
+%%\item Lemma~\ref{thm:DCT_Fubini}\ref{thm:DCTFubini_a} is used twice in Lemma~\ref{thm:basis}
+%\item Lemma~\ref{thm:DCT_Fubini} %\ref{thm:DCTFubini_b} 
+%is used in Lemmata \ref{thm:inductionLB} and \ref{thm:inductionUB}.
+%\item Lemma~\ref{thm:lim_AandB} is used in Lemmata \ref{thm:basis}, \ref{thm:inductionUB}, \ref{thm:inductionLB} and \ref{thm:induction_sumprodcN}.
+%\item Lemma~\ref{thm:maximum_pr} should also appear pointing to Theorem~\ref{thm:weakconv}.
+%\item Theorem~\ref{thm:FDDconv} (FDD convergence) is also pretty instrumental in the weak convergence proof!
+%\end{itemize}
+%}
+%
+%\begin{landscape}
+%\begin{figure}[ht]
+%\centering
+%\begin{tikzpicture}[>=stealth, thick]
+%% boxes
+%\filldraw[rounded corners, gray!20] (1.9,1.4)--(4.1,1.4)--(4.1,-2.4)--(1.9,-2.4)--cycle;
+%\node[gray] at (3,1.6) {\textsc{indicators}};
+%\filldraw[rounded corners, gray!20] (1.9,-3.1)--(4.1,-3.1)--(4.1,-5.9)--(1.9,-5.9)--cycle;
+%\node[gray] at (3,-2.9) {\textsc{sum-products}};
+%
+%% nodes column 1
+%\node at (0,-0.5) {Lemma~\ref{thm:kjjslemma2}};
+%%nodes column 2 indics
+%\node at (3,1) {Lemma~\ref{thm:indicators_c2}};
+%\node at (3,0) {Lemma~\ref{thm:indicators_DN}};
+%\node at (3,-1) {Lemma~\ref{thm:indicators_cN}};
+%\node at (3,-2) {Lemma~\ref{thm:indicators_tau}};
+%% nodes column 2 sumprods
+%\node at (3,-3.5) {Lemma~\ref{thm:sumprod3}};
+%\node at (3,-4.5) {Lemma~\ref{thm:sumprod2}};
+%\node at (3,-5.5) {Lemma~\ref{thm:sumprod1}};
+%%nodes column 3
+%\node at (6,1) {Lemma~\ref{thm:induction_sumprodcN}};
+%% nodes column 4
+%\node[align=center] at (9,0) {Lemma~\ref{thm:inductionLB}\\[-3pt] \textcolor{gray}{\textsc{induction}} \\[-5pt] \textcolor{gray}{\textsc{l.b.}} };
+%\node[align=center] at (9,-2) {Lemma~\ref{thm:inductionUB}\\[-3pt] \textcolor{gray}{\textsc{induction}} \\[-5pt] \textcolor{gray}{\textsc{u.b.}} };
+%\node[align=center] at (9,-4) {Lemma~\ref{thm:basis}\\[-3pt] \textcolor{gray}{\textsc{basis}} };
+%%nodes column 5
+%\node at (12,0.5) {Lemma~\ref{thm:holdingtimes_distn}};
+%\node[align=center] at (12,-2) {Theorem~\ref{thm:weakconv}\\[-3pt] \textcolor{gray}{\textsc{weak}}\\[-5pt] \textcolor{gray}{\textsc{conv.}} };
+%
+%% arrows column 1 to 2
+%\draw[->] (1,-0.5)--(2,0);
+%\draw[->] (1,-0.5)--(2,-1);
+%%arrows column 2 to 2
+%\draw[->] (3,-1.2)--(3,-1.8);
+%%arrows column 2 to 3
+%\draw[->] (4,1)--(5,1);
+%\draw[->, dotted] (4,-5.5)--(6,0.8);
+%%arrows column2 indics to 4
+%\draw[->] (4,-2)--(8.1,0);
+%\draw[->] (4,-2)--(8,-2);
+%\draw[->] (4,-2)--(8.1,-4);
+%\draw[->] (4,-1)--(8,0);
+%\draw[->] (4,-1)--(8,-2);
+%\draw[->] (4,-1)--(8.1,-4);
+%\draw[->] (4,0)--(8,0);
+%% arrows column 2 sumprods to 4
+%\draw[->, dotted] (4,-3.5)--(8,0);
+%\draw[->, dotted] (4,-4.5)--(8,-2);
+%\draw[->] (4,-3.5)--(8,-4);
+%\draw[->] (4,-4.5)--(8,-4);
+%\draw[->] (4,-5.5)--(8,-4);
+%% arrows column 3 to 4
+%\draw[->] (7,0.9)--(8.1,0.2);
+%\draw[->] (7,0.9)--(8.2,-1.6);
+%%arrows column 4 to 5
+%\draw[->] (9.9,-0.1)--(11.1,-1.6);
+%\draw[->] (9.9,-2)--(11,-2);
+%\draw[->] (9.9,-3.9)--(11.2,-2.3);
+%% arrows column 5 to 5
+%\draw[->] (12,0.2)--(12,-1.6);
+%\end{tikzpicture}
+%\caption[Structure of weak convergence proof]{Graph showing dependencies between the lemmata used to prove weak convergence. Dotted arrows indicate dependence via a slight modification of the preceding lemma.}
+%\end{figure}
+%\end{landscape}
