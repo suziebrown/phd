@@ -12,12 +12,115 @@ The rest sit round and pluck blackberries.
 \section{Multinomial resampling}
 \draft{This is the easy-to-analyse scheme, because conditionally i.i.d., and was presented in KJJS already. Now (with our simpler conditions) it is easier to show.}
 
+\begin{corollary}\label{thm:multinomial}
+Consider an SMC algorithm using multinomial resampling, such that \ref{standing_assumption} is satisfied. Assume there exist constants $\varepsilon\in (0,1], a\in [1,\infty)$ and probability density $h$ such that for all $x, x^\prime, t$,
+\begin{equation}\label{eq:gq_bounds_mn}
+\frac{1}{a} \leq g_t(x, x^\prime) \leq a , \quad
+\varepsilon h(x^\prime) \leq q_t(x, x^\prime) \leq \frac{1}{\varepsilon} h(x^\prime) .
+\end{equation}
+Let $(G_t^{(n,N)})_{t\geq0}$ denote the genealogy of a random sample of $n$ terminal particles from the output of the algorithm when the total number of particles used is $N$. Then, for any fixed $n$, the time-scaled genealogy $(G_{\tau_N(t)}^{(n,N)})_{t\geq0}$ converges to Kingman's $n$-coalescent as $N\to \infty$, in the sense of finite-dimensional distributions.
+\end{corollary}
+
+\begin{proof}
+Define the conditioning $\sigma$-algebra $\mathcal{H}_t$ as in \eqref{eq:defn_Ht}.
+The parental indices are conditionally independent, with conditional law
+\begin{equation*}
+\Prob \left[ a_t^{(i)} = a_i \mid \mathcal{H}_t \right] 
+\propto w_t^{(a_i)} q_{t-1}(X_t^{(a_i)}, X_{t-1}^{(i)})
+\end{equation*}
+for each $i$, so the joint law is
+\begin{equation*}
+\Prob \left[ a_t^{(1:N)} = a_{1:N} \mid \mathcal{H}_t \right] 
+\propto \prod_{i=1}^N w_t^{(a_i)} q_{t-1}(X_t^{(a_i)}, X_{t-1}^{(i)}).
+\end{equation*}
+\textcite{koskela2018} makes the following observation, which follows from a balls-in-bins coupling.
+Assume \eqref{eq:gq_bounds_mn}. 
+Then for any function $f:\{1,\dots,N\}^N \to \mathbb{R}$ such that (for a fixed $i$) $f(a_t^{\prime(1:N)}) \geq f(a_t^{(1:N)})$ whenever $|\{j:a_t^{\prime(j)}=i\}| \geq |\{j:a_t^{(j)}=i\}|$,
+\begin{equation}\label{eq:mn_f_bound}
+\E[ f(A_{1,i}^{(1:N)}) ] 
+\leq \E[ f(a_t^{(1:N)}) \mid \mathcal{H}_t ]
+\leq \E[ f(A_{2,i}^{(1:N)}) ] 
+\end{equation}
+where the elements of $A_{1,i}^{(1:N)}, A_{2,i}^{(1:N)}$ are all mutually independent and independent of $\mathcal{F}_{\infty}$, and distributed according to
+\begin{align*}
+& A_{1,i}^{(j)} 
+\sim \Cat \left( (\varepsilon/a)^{\1{i=1} -\1{i\neq 1}} ,
+        \dots, (\varepsilon/a)^{\1{i=N} -\1{i\neq N}} \right)
+& A_{2,i}^{(j)} 
+\sim \Cat \left( (a/\varepsilon)^{\1{i=1} -\1{i\neq 1}} ,
+        \dots, (a/\varepsilon)^{\1{i=N} -\1{i\neq N}} \right)
+\end{align*}
+independently for each $j$, where the vector of probabilities is given up to a constant in the argument of Categorical distributions.
+We will use these random vectors to construct bounds that are independent of $\mathcal{F}_\infty$.
+Also define the corresponding offspring counts $V_1^{(i)} = |\{j: A_{1,i}^{(j)}=i\}|$, $V_2^{(i)} = |\{j: A_{2,i}^{(j)}=i\}|$, for $i=1,\dots,N$, which have marginal distributions
+\begin{align*}
+& V_1^{(i)} 
+\sim \Bin\left(N, \frac{\varepsilon/a}{(\varepsilon/a) + (N-1)(a/\varepsilon)} \right),\\
+& V_2^{(i)} 
+\sim \Bin\left( N, \frac{a/\varepsilon}{(a/\varepsilon) + (N-1)(\varepsilon/a)} \right) .
+\end{align*}
+Now consider the function $f_i(a_t^{(1:N)}) := (\nu_t^{(i)})_2$. We can apply \eqref{eq:mn_f_bound} to obtain the lower bound
+\begin{align}
+\frac{1}{(N)_2} \sum_{i=1}^N \E[ (\nu_t^{(i)})_2 \mid \mathcal{H}_t ]
+&\geq \frac{1}{(N)_2} \sum_{i=1}^N \E[ (V_1^{(i)})_2 ]
+= \frac{1}{(N)_2} \sum_{i=1}^N (N)_2 \left[ \frac{ \varepsilon/a}{ (\varepsilon/a) + (N-1)(a/\varepsilon) } \right]^2 \notag\\
+&\geq \sum_{i=1}^N \left[ \frac{ \varepsilon/a}{ N a/\varepsilon } \right]^2
+= \frac{\varepsilon^4}{Na^4} \label{eq:mn_cN_LB}
+\end{align}
+using the moments of the Binomial distribution \parencite[see for example]{mosimann1962}.
+Similarly, we derive an upper bound on $f_i(a_t^{(1:N)}) := (\nu_t^{(i)})_3$:
+\begin{align}
+\frac{1}{(N)_3} \sum_{i=1}^N \E[ (\nu_t^{(i)})_3 \mid \mathcal{H}_t]
+&\leq \frac{1}{(N)_3} \left[ \sum_{i=1}^N \E[ (V_2^{(i)})_3 ] \right]
+= \frac{1}{(N)_3} \sum_{i=1}^N (N)_3 \left[ \frac{ a/\varepsilon }{ (a/\varepsilon) + (N-1)(\varepsilon/a) } \right]^3 \notag\\
+&\leq \sum_{i=1}^N \left[ \frac{ a/\varepsilon }{ N \varepsilon/a } \right]^3
+= \frac{a^6}{N^2\varepsilon^6} . \label{eq:mn_cN3_UB}
+\end{align}
+The definition of $\mathcal{H}_t$ is such that, for any suitable function $f$, by the tower property and conditional independence we have
+\begin{equation}
+\Et[ f(\nu_t^{(1:N)}) ] 
+= \Et\left[ \E[ f(\nu_t^{(1:N)}) \mid \mathcal{H}_t, \mathcal{F}_{t-1} ] \right] 
+= \Et\left[ \E[ f(\nu_t^{(1:N)}) \mid \mathcal{H}_t ] \right] .\label{eq:condexp_HtFt}
+\end{equation}
+Applying this identity to \eqref{eq:mn_cN_LB} and \eqref{eq:mn_cN3_UB} we find
+\begin{align*}
+\frac{\frac{1}{(N)_3} \sum_{i=1}^N \Et[ (\nu_t^{(i)})_3 ]}{\frac{1}{(N)_2} \sum_{i=1}^N \Et[ (\nu_t^{(i)})_2 ]}
+&\leq \frac{ a^6 / (N^2 \varepsilon^6) }{ \varepsilon^4 / (N a^4) }
+= \frac{ a^{10} }{ N\varepsilon^{10} }
+=: b_N \underset{N\to\infty}{\longrightarrow} 0.
+\end{align*}
+Thus \eqref{eq:mainthmcond} is satisfied. 
+It remains to show that, for $N$ sufficiently large, $\Prob[ \tau_N(t) = \infty ] =0$ for all finite $t$, a technicality which is proved in Lemma \ref{thm:mn_nontriviality}. 
+Applying Theorem~\ref{thm:FDDconv} then yields the result.
+\end{proof}
+
+
+
+\begin{lemma}\label{thm:mn_nontriviality}
+Consider an SMC algorithm using multinomial resampling, satisfying \ref{standing_assumption} and \eqref{eq:gq_bounds_mn}. 
+Then, for all $N>2$, $\Prob[ \tau_N(t) = \infty ]=0$ for all finite $t$.
+\end{lemma}
+
+\begin{proof}
+Since $c_N(t) \in [0,1]$ almost surely and has strictly positive expectation, for any fixed $N$ the distribution of $c_N(t)$ with given expectation that maximises $\Prob[ c_N(t)=0 \mid \mathcal{F}_{t-1} ]$ is two atoms, at 0 and 1 respectively. To ensure the correct expectation, the atom at 1 should have mass $\Prob[ c_N(t)=1 \mid \mathcal{F}_{t-1} ] = \Et [ c_N(t) ]$, which is bounded below by \eqref{eq:mn_cN_LB}.
+If $c_N(t) > 0$ then $c_N(t) \geq 2/(N)_2 > 2/N^2$. Hence, in general $\Prob[ c_N(t) > 2/N^2 \mid \mathcal{F}_{t-1} ] \geq \Et [c_N(t)]$. Applying \eqref{eq:mn_cN_LB} along with \eqref{eq:condexp_HtFt}, we have for any finite $N$
+\begin{equation*}
+\sum_{t=0}^\infty \Prob[ c_N(t) > 2/N^2 \mid \mathcal{F}_{t-1} ]
+\geq \sum_{t=0}^\infty \Et [ c_N(t) ]
+\geq \sum_{t=0}^\infty \frac{\varepsilon^4}{Na^4}
+= \infty .
+\end{equation*}
+By a filtered version of the second Borel--Cantelli lemma \parencite[see for example][Theorem 4.3.4]{durrett2019}, this implies that $c_N(t) >2/N^2$ for infinitely many $t$, almost surely.
+This ensures, for all $t <\infty$, that $\Prob\left[ \exists s<\infty : \sum_{r=1}^s c_N(r) \geq t \right] =1$, which by definition of $\tau_N(t)$ is equivalent to $\Prob[ \tau_N(t) = \infty ] =0$.
+\end{proof}
+
+
 
 
 \section{Stratified resampling \seb{$\sim$} }
 
 \begin{corollary}\label{thm:stratified}
-Consider an SMC algorithm using stratified resampling, such that the standing assumption is satisfied.
+Consider an SMC algorithm using stratified resampling, such that \ref{standing_assumption} is satisfied.
 Assume that there exists a constant $a\in [1,\infty)$ such that for all $x, x^\prime, t$,
 \begin{equation}\label{eq:gq_bounds_sr}
 \frac{1}{a} \leq g_t(x, x^\prime) \leq a .
@@ -111,12 +214,11 @@ where $i^\star := \argmax_i \{ w_t^{(i)} \}$ (but note that the inequality holds
 \section{Stochastic rounding \seb{$\checkmark$} }
 
 \begin{corollary}\label{thm:stochrounding}
-Consider an SMC algorithm using any stochastic rounding as its resampling scheme, such that the standing assumption is satisfied.
+Consider an SMC algorithm using any stochastic rounding as its resampling scheme, such that \ref{standing_assumption} is satisfied.
 Assume that there exists a constant $a\in [1,\infty)$ such that for all $x, x^\prime, t$,
-\begin{equation}
-\frac{1}{a} \leq g_t(x, x^\prime) \leq a . %, \quad
-%\varepsilon \leq q_t(x, x^\prime) \leq \frac{1}{\varepsilon} .
-\end{equation}
+\begin{equation*}
+\frac{1}{a} \leq g_t(x, x^\prime) \leq a . 
+\end{equation*}
 Assume that $\Prob[ \tau_N(t) = \infty] =0$ for all finite $t$.
 Let $(G_t^{(n,N)})_{t\geq0}$ denote the genealogy of a random sample of $n$ terminal particles from the output of the algorithm when the total number of particles used is $N$. Then, for any fixed $n$, the time-scaled genealogy $(G_{\tau_N(t)}^{(n,N)})_{t\geq0}$ converges to Kingman's $n$-coalescent as $N\to \infty$, in the sense of finite-dimensional distributions.
 \end{corollary}
@@ -260,9 +362,7 @@ Thus
 \begin{equation*}
 \Prob[ c_N(t)>2/N^2 \mid \mathcal{H}_t ] \geq \delta \varepsilon^{2N}\1{\max_i w_t^{(i)} - \min_i w_t^{(i)} \geq 2\delta/N} .
 \end{equation*}
-Using the construction of $\mathcal{H}_t$
-%D-separation established in Appendix \ref{app:dseparation} 
-combined with the tower property, we have
+Using \eqref{eq:condexp_HtFt} we have
 \begin{align*}
 \Prob[ c_N(t)>2/N^2 \mid \mathcal{F}_{t-1} ]
 &=\Et\left[ \Prob[ c_N(t)>2/N^2 \mid \mathcal{H}_t, \mathcal{F}_{t-1} ] \right]
@@ -285,7 +385,7 @@ This ensures, for all $t <\infty$, that $\Prob\left[ \exists s<\infty : \sum_{r=
 \section{Residual resampling with stratified residuals \seb{$\sim$} }
 
 \begin{corollary}\label{thm:residual_stratified}
-Consider an SMC algorithm using residual resampling with stratified residuals, such that the standing assumption is satisfied.
+Consider an SMC algorithm using residual resampling with stratified residuals, such that \ref{standing_assumption} is satisfied.
 Assume that there exists a constant $a\in [1,\infty)$ such that for all $x, x^\prime, t$,
 \begin{equation*}
 \frac{1}{a} \leq g_t(x, x^\prime) \leq a .
@@ -320,7 +420,7 @@ The result then follows by applying Theorem~\ref{thm:FDDconv}.
 
 
 \begin{corollary}\label{thm:CSMC_newassns}
-Consider a conditional SMC algorithm using multinomial resampling, such that the standing assumption is satisfied. Assume there exist constants $\varepsilon\in (0,1], a\in [1,\infty)$ and probability density $h$ such that for all $x, x^\prime, t$,
+Consider a conditional SMC algorithm using multinomial resampling, such that \ref{standing_assumption} is satisfied. Assume there exist constants $\varepsilon\in (0,1], a\in [1,\infty)$ and probability density $h$ such that for all $x, x^\prime, t$,
 \begin{equation}\label{eq:gq_bounds_csmc}
 \frac{1}{a} \leq g_t(x, x^\prime) \leq a , \quad
 \varepsilon h(x^\prime) \leq q_t(x, x^\prime) \leq \frac{1}{\varepsilon} h(x^\prime) .
@@ -410,7 +510,7 @@ Thus \eqref{eq:mainthmcond} is satisfied. It remains to show that, for $N$ suffi
 
 
 \begin{lemma}\label{thm:CSMC_nontriviality}
-Consider a conditional SMC algorithm using multinomial resampling, satisfying the standing assumption and \eqref{eq:gq_bounds_csmc}. 
+Consider a conditional SMC algorithm using multinomial resampling, satisfying \ref{standing_assumption} and \eqref{eq:gq_bounds_csmc}. 
 Then, for all $N>2$, $\Prob[ \tau_N(t) = \infty ]=0$ for all finite $t$.
 \end{lemma}
 

@@ -798,6 +798,7 @@ To complete the proof of Theorem~\ref{thm:FDDconv} it remains to show that condi
 The only part of \textcite[Proof of Theorem 1]{koskela2018} making use of condition \eqref{eq:kjjs_tau_bound} is the lower bound on finite-dimensional distributions of the genealogical process for paths involving single pair mergers only.
 A slight modification of the argument allows a similar lower bound to be obtained via Proposition~\ref{thm:pDelta_LB} such that as $N\to\infty$ the bound coincides with the corresponding finite-dimensional distributions of the $n$-coalescent, as required.
 The modified section of the proof is presented below, using the notation of \textcite{koskela2018} for ease of comparison.
+\seb{Maybe I should actually write out a full proof of the new theorem?}
 
 \begin{proof}
 Let $\chi^\star_d$ be the conditional transition probability of a transition from state $\eta_{d-1}$ to state $\eta_d$ at times $\tau_N(t_{d-1})$ and $\tau_N(t_d)$ respectively, conditional on the offspring counts between those times $\nu^{(1:N)}_{\tau_N(d-1) +1} , \dots, \nu^{(1:N)}_{\tau_N(d)}$. 
@@ -992,6 +993,7 @@ We now apply equations (14) and (15), respectively, of \textcite{koskela2018},  
         \frac{ ( t_d - t_{ d - 1 } )^{ \alpha_d + \beta_d } }{ ( \alpha_d + \beta_d ) ! } 
         \Bigg\} 
 \end{align*}
-where the expectation of the indicators converges to 1 due to \textcite[Equation (16)]{koskela2018} and Lemma~\ref{thm:indicators_cN}. \seb{Or refer to \textcite[Equation (16)]{koskela2018} and Lemma 4 in the appendix of \texttt{full\_redraft.pdf}.}
+where the expectation of the indicators converges to 1 due to \textcite[Equation (16)]{koskela2018} and Lemma~\ref{thm:indicators_cN}\seb{and Lemma~\ref{thm:lim_AandB}}. 
+\seb{Or refer to \textcite[Equation (16)]{koskela2018} and Lemma 4 in the appendix of \texttt{full\_redraft.pdf}.}
 \end{proof}
 
