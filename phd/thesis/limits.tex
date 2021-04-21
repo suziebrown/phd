@@ -140,7 +140,7 @@ c_N(t) := \frac{1}{(N)_2} \sum_{i=1}^N (\nu_t^{(i)})_2 .
 This is the probability, conditional on $\nu_t^{(1:N)}$, that a randomly chosen pair of lineages in generation $t$ merges exactly one generation back.
 To achieve a limiting pair merger rate of 1, as in the $n$-coalescent, we rescale time by the generalised inverse
 \begin{equation}\label{eq:defn_tauN}
-\tau_N(t) := \inf \left\{ s \geq 1 : \sum_{r=1}^s c_N(r) \geq t \right\} .
+\tau_N(t) := \inf \left\{ s \in \mathbb{N} : \sum_{r=1}^s c_N(r) \geq t \right\} .
 \end{equation}
 The function $\tau_N$ maps continuous to discrete time, providing the link between the discrete-time SMC dynamics and the continuous-time Kingman limit.
 We will also need the following quantity, which is an upper bound on the conditional probability of a multiple merger (three or more lineages merging, or two or more simultaneous pairwise mergers):
