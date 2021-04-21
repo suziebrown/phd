@@ -25,10 +25,10 @@ Let $(G_t^{(n,N)})_{t\geq0}$ denote the genealogy of a random sample of $n$ term
 \begin{proof}
 Define the conditioning $\sigma$-algebra $\mathcal{H}_t$ as in \eqref{eq:defn_Ht}.
 The parental indices are conditionally independent, with conditional law
-\begin{equation*}
+\begin{equation}\label{eq:parentslaw_mn}
 \Prob \left[ a_t^{(i)} = a_i \mid \mathcal{H}_t \right] 
 \propto w_t^{(a_i)} q_{t-1}(X_t^{(a_i)}, X_{t-1}^{(i)})
-\end{equation*}
+\end{equation}
 for each $i$, so the joint law is
 \begin{equation*}
 \Prob \left[ a_t^{(1:N)} = a_{1:N} \mid \mathcal{H}_t \right] 
@@ -400,11 +400,15 @@ Under any time scale that results in a continuous-time limiting process, the coa
 
 
 
-\section{Conditional SMC \seb{$\sim$} }
-\draft{Why CSMC is qualitatively different to, say, standard SMC with multinomial resampling (immortal particle etc.). Reasons for restriction to multinomial resampling, conjecture that limit theorem holds for other schemes in CSMC.}
+\section{Conditional SMC \seb{$\checkmark$} }
+In conditional SMC, one ``immortal'' particle is treated differently to the others when it comes to assigning offspring to parents. This immortal particle is guaranteed at least one offspring, and has on average one more offspring than each of the other parents in each generation.
+This results in genealogies that are qualitatively different to those of a corresponding standard SMC algorithm. For one thing, the population MRCA is \emph{guaranteed} to be an immortal particle; there is a sense in which the immortal lineage \emph{attracts} coalescence events.
 
+Given this, we should not have been surprised if conditional SMC genealogies converged to a quite different coalescent process, perhaps a \emph{structured coalescent}\seb{[citation(s)]}.
+As it turns out, we still recover Kingman's $n$-coalescent in the large population limit (Theorem~\ref{thm:CSMC}). 
+A possible explanation for this is that, as $N\to\infty$, the probability of a given sample of size $n$ interacting with the immortal lineage (at least early on) vanishes, leaving a process that looks very much like the one induced by the corresponding standard SMC algorithm.
 
-\begin{corollary}\label{thm:CSMC_newassns}
+\begin{corollary}\label{thm:CSMC}
 Consider a conditional SMC algorithm using multinomial resampling, such that \ref{standing_assumption} is satisfied. Assume there exist constants $\varepsilon\in (0,1], a\in [1,\infty)$ and probability density $h$ such that for all $x, x^\prime, t$,
 \begin{equation}\label{eq:gq_bounds_csmc}
 \frac{1}{a} \leq g_t(x, x^\prime) \leq a , \quad
@@ -412,6 +416,8 @@ Consider a conditional SMC algorithm using multinomial resampling, such that \re
 \end{equation}
 Let $(G_t^{(n,N)})_{t\geq0}$ denote the genealogy of a random sample of $n$ terminal particles from the output of the algorithm when the total number of particles used is $N$. Then, for any fixed $n$, the time-scaled genealogy $(G_{\tau_N(t)}^{(n,N)})_{t\geq0}$ converges to Kingman's $n$-coalescent as $N\to \infty$, in the sense of finite-dimensional distributions.
 \end{corollary}
+We restrict here to the case of multinomial resampling, which seems to be the most commonly-used resampling scheme within conditional SMC. Implementing other resampling schemes while maintaining the immortal lineage is more involved, though by no means impossible.\seb{cite that unpublished paper by AMJ and Arnaud?}
+We conjecture that similar results hold for conditional SMC with other resampling schemes, as in the preceding corollaries.
 
 \begin{proof}
 Assume, without loss of generality, that the immortal particle takes index 1 in each generation. This significantly lightens the notation, but the same argument holds if the immortal indices are taken to be $a_{(0:T)}^\star$ rather than $(1,\dots,1)$.
@@ -509,30 +515,28 @@ By an argument analogous to the conclusion of Lemma \ref{thm:SR_nontriviality}, 
 \end{proof}
 
 
-\subsection{Effect of ancestor sampling \seb{$\sim$} }
-\draft{Argue that ancestor sampling removes bias towards assigning offspring to immortal line, and leaves exactly the same genealogy as standard SMC with multinomial resampling.}
-\seb{The following was dumped from elsewhere and NEEDS REDRAFTING.}\\
+\subsection{Effect of ancestor sampling}
+Ancestor sampling breaks up the immortal lineage into sections, so it is not really a lineage, and we do not really have a pure coalescent process backwards in time. Regardless, we shall throw caution to the wind and examine the resulting ``genealogies''.
 
-Ancestor sampling interrupts the immortal trajectory, splitting it into disjoint pieces (see Figure \ref{fig:whyASworks}b). So perhaps it doesn't make sense to talk about genealogies, now that we don't have a strictly coalescing process evolving backwards in time.
-
-\seb{Probably need some conditioning e.g.\ on $\mathcal{H}_t$ in the following equations.}
-But let's look at this resampling scheme backwards in time anyway. With the time indices now reversed, and the notation made consistent with our work on genealogies, we have
+Using the parent sampling probabilities specified in \eqref{eq:ancsamp_probs},
+now with time reversed and the notation made to fit with this study of genealogies, we obtain\seb{add one more step of working below to make it less ``magic''?}
 \begin{equation*}
-\Prob[a_t^{(j)} = a_i] \propto
+\Prob[a_t^{(i)} = a_i \mid \mathcal{H}_t ] \propto
 \begin{cases}
-w_t^{(a_i)} q_{t-1}(X_t^{(a_i)}, X_{t-1}^{(j)}) &\text{non-immortal particles}\\
-w_t^{(a_i)} q_{t-1}(X_t^{(a_i)}, X_{t-1}^*) &\text{immortal particle} .
-\end{cases} .
+w_t^{(a_i)} q_{t-1}(X_t^{(a_i)}, X_{t-1}^{(i)}) &\qquad i\in\text{non-immortal particles}\\
+w_t^{(a_i)} q_{t-1}(X_t^{(a_i)}, X_{t-1}^*) &\qquad i=\text{immortal particle} .
+\end{cases} 
 \end{equation*}
-\seb{Might be neater to avoid bringing in $j$ at all, and write $a_t^{(i)} = a_i$ etc.}
-But when $j$ is the index of the immortal particle, $X_{t-1}^{(j)} = X_{t-1}^*$, so the reverse-time view makes no distinction between the immortal particle and others in terms of how their parents are chosen. We have
+But when $i$ is the index of the immortal particle, $X_{t-1}^{(i)} = X_{t-1}^*$, so the above simplifies to
 \begin{equation*}
-\Prob[a_t^{(j)} = a_i] \propto
-w_t^{(a_i)} q_{t-1}(X_t^{(a_i)}, X_{t-1}^{(j)})
+\Prob[a_t^{(i)} = a_i \mid \mathcal{H}_t ] \propto
+w_t^{(a_i)} q_{t-1}(X_t^{(a_i)}, X_{t-1}^{(i)})
 \end{equation*}
-for all particles. 
-This is the same probability we get with multinomial resampling in standard SMC.
+for each $i$, which is exactly \eqref{eq:parentslaw_mn}, the law on parental indices under standard SMC with multinomial resampling.
+In other words, when parental indices are chosen, the immortal particle is treated exactly like all of the other particles; it has completely lost its ``reproductive advantage''.
+This means it is no more likely for lineages to coalesce onto the ``immortal'' lineage than onto any other lineage, so we do not see the behaviour of Figure~\ref{fig:PG_ancdegen} which caused the particle Gibbs chain to mix slowly over the sequential component.
+This supports the claim of Section~\ref{sec:ancsamp}: particle Gibbs with ancestor sampling still experiences ancestral degeneracy, but this no longer causes the sequential component to get stuck.
 
-This viewpoint gives us another intuition about the effect of ancestor sampling: the immortal particle is no longer specially favoured when it comes to producing offspring. In the basic algorithm, the immortal parent produces on average one more offspring at each generation than any other parent (and must produce at least one offspring). It follows that the immortal line cannot die out (is immortal), and also that it is a more likely site for coalescence events (i.e.\ producing at least two offspring) than any other parent. 
-With ancestor sampling, the immortal parent loses this advantage; it is treated just like the other parents. It is no longer a particularly favourable site for coalescing, so the trajectory onto which everyone coalesces might just as well be any of the other $N-1$ trajectories. This prevents the Markov chain getting stuck as in Figure \ref{fig:PG_ancdegen}.
+%This viewpoint gives us another intuition about the effect of ancestor sampling: the immortal particle is no longer specially favoured when it comes to producing offspring. In the basic algorithm, the immortal parent produces on average one more offspring at each generation than any other parent (and must produce at least one offspring). It follows that the immortal line cannot die out (is immortal), and also that it is a more likely site for coalescence events (i.e.\ producing at least two offspring) than any other parent. 
+%With ancestor sampling, the immortal parent loses this advantage; it is treated just like the other parents. It is no longer a particularly favourable site for coalescing, so the trajectory onto which everyone coalesces might just as well be any of the other $N-1$ trajectories. This prevents the Markov chain getting stuck as in Figure \ref{fig:PG_ancdegen}.
 

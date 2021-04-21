@@ -1373,7 +1373,7 @@ We update all of the hidden states $X_{0:T}$ in one Gibbs step, which consists o
 
 
 
-\subsection{Ancestor sampling \seb{$\sim$} }
+\subsection{Ancestor sampling \seb{$\sim$} } \label{sec:ancsamp}
 \draft{Algorithm (or required changes to generic algorithm). Relation to backward sampling. When can it be implemented? Effect on performance (when is it effective?). Maybe illustrate/motivate with some plots as in the ancestor sampling note.}
 \seb{The following was dumped from elsewhere and NEEDS REDRAFTING.}\\
 
@@ -1416,13 +1416,13 @@ while the immortal offspring is deterministically assigned to the immortal paren
 \end{figure}
 
 In ancestor sampling we do the same thing, except that the immortal particle is also resampled, rather than being deterministically assigned:
-\begin{equation*}
+\begin{equation}\label{eq:ancsamp_probs}
 \Prob[a_t^{(j)} = i] \propto
 \begin{cases}
 w_t^{(i)} &\text{non-immortal particles}\\
 w_t^{(i)} \frac{\gamma_T^\theta((x_{0:t-1}^{(i)}, x_{t:T}^*))}{\gamma_{t-1}^\theta(x_{0:t-1}^{(i)})} &\text{immortal particle} .
 \end{cases}
-\end{equation*}
+\end{equation}
 The ratio of $\gamma$s can be interpreted as the conditional probability of the trajectory continuing with $x_{t:T}^*$ given is starts with $x_{0:t-1}^{(i)}$ (see Figure \ref{fig:resample_immortal}).
 Using the structure of the hidden Markov model defined earlier, we can rewrite the ratio
 \begin{equation*}
