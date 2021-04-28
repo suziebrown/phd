@@ -701,7 +701,7 @@ Considering the illustration Figure~\ref{fig:resampling_stratified}, the distrib
 %\draw[dashed, gray] (4,1.4)--(4,0.1);
 %\end{tikzpicture}
 %}\\
-\subfloat[The parent under consideration is automatically assigned $k$ offspring, plus up to two more. ($\delta_L+\delta_R=\delta$.)]{
+\subfloat[The parent under consideration is automatically assigned $k$ offspring, plus up to two more. ($\delta_L+\delta_R=\delta$.) ]{ %\delta_L, \delta_R \in [0,\delta]. 
 \begin{tikzpicture}
 % w subinterval
 \draw[thick] (0,0)--(1.9,0);
@@ -734,7 +734,7 @@ Considering the illustration Figure~\ref{fig:resampling_stratified}, the distrib
 \end{tikzpicture}
 \label{fig:strat_case1}
 }\\
-\subfloat[This case can only occur when $k\geq1$. The parent under consideration is automatically assigned $k-1$ offspring, plus up to two more. ($x_L+x_R=1+\delta$.)]{
+\subfloat[This case can only occur when $k\geq1$. The parent under consideration is automatically assigned $k-1$ offspring, plus up to two more. ($x_L+x_R=1+\delta$.)]{ %$x_L,x_R \in [\delta,1] $. 
 \begin{tikzpicture}
 % w subinterval
 \draw[thick] (-2,0)--(1.9,0);
@@ -774,7 +774,7 @@ Considering the illustration Figure~\ref{fig:resampling_stratified}, the distrib
 
 In any case $\nu_t^{(i)} \in \{k-1,k,k+1,k+2\}$ almost surely. 
 To define a probability distribution over these four values, we introduce the notation $p_j := \Prob[ \nu_t^{(i)} = \flnw +j \mid w_t^{(i)} ]$, for $j=-1,0,1,2$. 
-Since the sample within each interval of length $1/N$ is uniform over that interval, we find the probabilities given in Table~\ref{tab:strat_probs}, in terms of $\delta$ and the other quantities $\delta_L, \delta_R, x_L, x_R$ defined in Figure~\ref{fig:strat_cases}. The probabilities do not depend on $k$, but of course the corresponding values of $\nu_t^{(i)}$ do. By definition $\delta_L+\delta_R=\delta$ and $x_L+x_R=1+\delta$.
+Since the sample within each interval of length $1/N$ is uniform over that interval, we find the probabilities given in Table~\ref{tab:strat_probs}, in terms of $\delta$ and the other quantities $\delta_L, \delta_R \in [0, \delta]$ and $x_L, x_R \in [\delta,1]$ defined in Figure~\ref{fig:strat_cases}. The probabilities do not depend on $k$, but of course the corresponding values of $\nu_t^{(i)}$ do. By definition $\delta_L+\delta_R=\delta$ and $x_L+x_R=1+\delta$.
 
 \begin{table}[ht]
 \centering
@@ -793,12 +793,12 @@ $p_2$ & $\delta_L\delta_R$ & 0 & 0 & $\delta^2 /4$ \\
 \label{tab:strat_probs}
 \end{table}
 
-By considering the constraints on $\delta_L, \delta_R, x_L, x_R$, we also have the following properties which hold in every case (i.e.\ for any $w_t^{(i)}$):
-\begin{itemize}
-\item $p_{-1} \leq 1/4$
-\item $p_{2} \leq 1/4$
-\item only one of $p_{-1}, p_2$ can be non-zero.
-\end{itemize}
+%By considering the constraints on $\delta_L, \delta_R, x_L, x_R$, we also have the following properties which hold in every case (i.e.\ for any $w_t^{(i)}$):
+%\begin{itemize}
+%\item $p_{-1} \leq 1/4$
+%\item $p_{2} \leq 1/4$
+%\item only one of $p_{-1}, p_2$ can be non-zero.
+%\end{itemize}
 
 
 
