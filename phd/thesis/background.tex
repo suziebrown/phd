@@ -778,17 +778,18 @@ Since the sample within each interval of length $1/N$ is uniform over that inter
 
 \begin{table}[ht]
 \centering
-\begin{tabular}{ c | c c }
+\begin{tabular}{ c | c c c c }
 \hline\hline
-& Case \subref{fig:strat_case1} & Case \subref{fig:strat_case2}\\
+& Case \subref{fig:strat_case1} & Case \subref{fig:strat_case2} & L.B. & U.B. \\
 \hline
-$p_{-1}$ & 0 & $x_Lx_R-\delta$\\
-$p_0$ & $1-\delta + \delta_L\delta_R$ & $1+\delta-2x_Lx_R$\\
-$p_1$ & $\delta-2\delta_L\delta_R$ & $x_Lx_R$\\
-$p_2$ & $\delta_L\delta_R$ & 0\\
+$p_{-1}$ & 0 & $x_Lx_R-\delta$ & 0 & $(1-\delta)^2 /4$ \\
+$p_0$ & $1-\delta + \delta_L\delta_R$ & $1+\delta-2x_Lx_R$ & $(1-\delta)^2 /2$ 
+        & $1 - 3\delta /4$ \\
+$p_1$ & $\delta-2\delta_L\delta_R$ & $x_Lx_R$ & $\delta /2$ & $(1+\delta)/2$ \\
+$p_2$ & $\delta_L\delta_R$ & 0 & 0 & $\delta^2 /4$ \\
 \hline\hline
 \end{tabular}
-\caption[Analysis of distribution of offspring counts under stratified resampling]{Marginal probability distribution of $\nu_t^{(i)}$ conditional on $w_t^{(i)}$, in terms of $\delta$ and the quantities defined in Figure~\ref{fig:strat_cases}.}
+\caption[Analysis of distribution of offspring counts under stratified resampling]{Marginal probability distribution of $\nu_t^{(i)}$ conditional on $w_t^{(i)}$, in terms of $\delta$ and the quantities defined in Figure~\ref{fig:strat_cases}, along with upper and lower bounds on these in terms of $\delta$ only.}
 \label{tab:strat_probs}
 \end{table}
 

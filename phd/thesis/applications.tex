@@ -118,7 +118,7 @@ This ensures, for all $t <\infty$, that $\Prob\left[ \exists s<\infty : \sum_{r=
 
 
 
-\section{Stratified resampling \seb{$\sim$} }
+\section{Stratified resampling \seb{$\checkmark$} }
 
 \begin{corollary}\label{thm:stratified}
 Consider an SMC algorithm using stratified resampling, such that \ref{standing_assumption} is satisfied.
@@ -175,28 +175,148 @@ Suppose that
 \begin{equation*}
 \varepsilon \leq q_t(x, x^\prime) \leq \varepsilon^{-1}
 \end{equation*}
-uniformly in $x,x^\prime$ for some $\varepsilon \in (0,1]$, and that there exist $\zeta >0$ and $\delta \in (0,1)$ such that 
+uniformly in $x,x^\prime$ for some $\varepsilon \in (0,1]$, and that there exist $\zeta >0$ and $\delta >0$ such that 
 \begin{equation*}
 \Prob[ \max_i w_t^{(i)} - \min_i w_t^{(i)} \geq 2\delta/N \mid \mathcal{F}_{t-1} ] \geq \zeta
 \end{equation*}
  for infinitely many $t$. Then, for all $N>1$, $\Prob[ \tau_N(t) = \infty ] =0$ for all finite $t$.
 \end{lemma}
 
-\draft{Finish constructing the proof.}
+
 \begin{proof}
 As argued in Lemma~\ref{thm:mn_nontriviality}, it is sufficient to prove that under the stated conditions
 \begin{equation*}
 \sum_{r=0}^\infty \Prob[ c_N(r) > 2/N^2  \mid \mathcal{F}_{r-1} ] = \infty .
 \end{equation*}
 Firstly,
-\begin{align*}
+\begin{align}
 \Prob[ c_N(t) \leq 2/N^2 \mid \mathcal{H}_t ]
-&= \Prob[ \nu_t^{(i)} =1 \,\forall i\in\{1,\dots,N\} \mid \mathcal{H}_t ] \\
-&\leq \Prob[ \nu_t^{(i^\star)} =1 \mid \mathcal{H}_t ] ,
-\end{align*}
+&= \Prob[ c_N(t) =0 \mid \mathcal{H}_t ]
+= \Prob[ \nu_t^{(i)} =1 \,\forall i\in\{1,\dots,N\} \mid \mathcal{H}_t ] \notag\\
+&\leq \Prob[ \nu_t^{(i^\star)} =1 \mid \mathcal{H}_t ] , \label{eq:cNnonzero}
+\end{align}
 where $i^\star := \argmax_i \{ w_t^{(i)} \}$ (but note that the inequality holds when $i^\star$ is taken to be any particular index).
+Define for each $k\in\{-1,0,1,2\}$
+\begin{equation*}
+p_k^{(i)} := \Prob \left[ \nu_t^{(i)} = \flnw + k \midd \mathcal{H}_t \right] .
+\end{equation*}
+Since stratified resampling almost surely results in $\nu_t^{(i)} \in \{ \flnw-1, \flnw, \flnw+1, \flnw+2 \}$ we have that
+\begin{equation*}
+\sum_{k=-1}^2 p_k^{(i)} 
+= \sum_{k=-1}^2 \Prob \left[ \nu_t^{(i)} = \flnw + k \midd w_t^{(1:N)} \right]
+= 1 .
+\end{equation*}
+Up to a proportionality constant $C$,
+\begin{align*}
+p_k^{(i)} 
+&= C \, \Prob \left[ \nu_t^{(i)} = \flnw + k \midd w_t^{(1:N)} \right] \\
+    &\qquad \times \sum_{\substack{a_{1:N} \in \{1,\dots,N\}^N : 
+        \\ |\{j: a_j=i\}|=\flnw +k }}
+        \Prob\left[ a_t^{(1:N)} = a_{1:N} \midd \nu_t^{(i)}, w_t^{(1:N)} \right]
+        \prod_{k=1}^N q_{t-1}( X_t^{(a_k)}, X_{t-1}^{(k)} ) 
+\end{align*}
+for each $k\in\{-1,0,1,2\}$.
+We can bound each probability above and below using the almost sure bounds on $q_{t-1}$ stated in the Lemma:
+\begin{equation*}
+C \, \Prob \left[ \nu_t^{(i)} = \flnw + k \midd w_t^{(1:N)} \right] \varepsilon^N
+\leq p_k^{(i)}
+\leq C \, \Prob \left[ \nu_t^{(i)} = \flnw + k \midd w_t^{(1:N)} \right] \varepsilon^{-N}
+\end{equation*}
+then eliminate the constant $C$ by normalising, to obtain lower bounds
+\begin{align}
+p_k^{(i)} 
+&\geq \frac{ C \, \Prob [ \nu_t^{(i)} = \flnw + k \mid w_t^{(1:N)} ] \varepsilon^N }{
+        \sum_{j=-1}^2 C \, \Prob [ \nu_t^{(i)} = \flnw + j \mid w_t^{(1:N)} ] 
+        \varepsilon^{-N} } \notag\\
+%&= \frac{ \Prob [ \nu_t^{(i)} = \flnw + k \mid w_t^{(1:N)} ] \varepsilon^N }{
+%        \varepsilon^{-N} } \notag\\
+&= \Prob [ \nu_t^{(i)} = \flnw + k \mid w_t^{(1:N)} ] \varepsilon^{2N} 
+        . \label{eq:strat_pbounds}
+\end{align}
 
-...
+Suppose that $\max_i w_t^{(i)} - \min_i w_t^{(i)} \geq 2\delta/N$. Then that at least one of $\{ \max_i w_t^{(i)} \geq (1+\delta)/N \}$ and $\{ \min_i w_t^{(i)} \leq (1-\delta)/N \}$ occurs. We will now examine each of these possibilities.
+
+We can always write the maximum weight as $w_t^{(i^\star)} = \frac{1+\delta^\prime}{N}$ for some $\delta^\prime \geq 0$. Then, using \eqref{eq:cNnonzero},
+\begin{equation*}
+\Prob[ c_N(t) > 2/N^2 \mid \mathcal{H}_t ]
+\geq 1- \Prob[ \nu_t^{(i^\star)} =1 \mid \mathcal{H}_t ]
+= \begin{cases}
+    1 - p_0^{(i^\star)} & \text{if } \delta^\prime \in [0,1) \\
+    1 - p_{-1}^{(i^\star)} & \text{if } \delta^\prime \in [1,2) \\
+    1 & \text{if } \delta^\prime \geq 3 .
+\end{cases}
+\end{equation*}
+If $\delta^\prime \in [0,1)$ then
+\begin{equation*}
+1 - p_0^{(i^\star)}
+= p_{-1}^{(i^\star)} + p_1^{(i^\star)} + p_2^{(i^\star)}
+\geq \left( 0 + \frac{\delta^\prime}{2} + 0 \right) \varepsilon^{2N} 
+= \frac{\delta^\prime \varepsilon^{2N} }{2}
+\end{equation*}
+using \eqref{eq:strat_pbounds} and the lower bounds in Table~\ref{tab:strat_probs}.
+Similarly, if $\delta^\prime \in [1,2)$ then
+\begin{equation*}
+1 - p_{-1}^{(i^\star)}
+= p_0^{(i^\star)} + p_1^{(i^\star)} + p_2^{(i^\star)}
+\geq \left( \frac{(1-\delta^\prime)^2}{2} + \frac{\delta^\prime}{2} + 0 \right)
+        \varepsilon^{2N} 
+\geq \frac{\delta^\prime \varepsilon^{2N} }{2} .
+\end{equation*}
+So overall, under the constraint $\max_i w_t^{(i)} \geq (1+\delta)/N$, we have
+\begin{equation*}
+\Prob[ c_N(t) > 2/N^2 \mid \mathcal{H}_t ]
+\geq \min_{\delta^\prime \geq \delta} 
+        \left\{ \frac{\delta^\prime \varepsilon^{2N} }{2} \right\}
+= \frac{ \delta \varepsilon^{2N} }{2} .
+\end{equation*}
+
+Now for the other case. Let $j^\star := \argmin_i \{ w_t^{(i)} \}$ and write
+$w_t^{(j^\star)} = \frac{1-\delta^\prime}{N}$, for some $\delta^\prime \in [0,1]$.
+Then we have
+\begin{equation*}
+\Prob[ c_N(t) > 2/N^2 \mid \mathcal{H}_t ]
+\geq 1- \Prob[ \nu_t^{(i^\star)} =1 \mid \mathcal{H}_t ]
+=\begin{cases}
+    1- p_1^{(j^\star)} & \text{if } \delta^\prime \in (0,1] \\
+    0 & \text{if } \delta^\prime =0 .
+\end{cases}
+\end{equation*}
+If $\delta^\prime \in (0,1]$ then
+\begin{equation*}
+1- p_1^{(j^\star)} = p_{-1}^{(j^\star)} + p_0^{(j^\star)} + p_2^{(j^\star)}
+\geq \left( 0 + \frac{ (\delta^\prime)^2 }{2} + 0 \right) \varepsilon^{2N}
+= \frac{ (\delta^\prime)^2 \varepsilon^{2N} }{2} ,
+\end{equation*}
+again using the lower bounds in Table~\ref{tab:strat_probs}.
+Therefore, under the constraint $\min_i w_t^{(i)} \leq (1-\delta)/N$, we have
+\begin{equation*}
+\Prob[ c_N(t) > 2/N^2 \mid \mathcal{H}_t ]
+\geq \min_{\delta^\prime \geq \delta} 
+        \left\{ \frac{ (\delta^\prime)^2 \varepsilon^{2N} }{2} 
+        \I{\delta^\prime \neq 0} \right\}
+= \frac{ \delta^2 \varepsilon^{2N} }{2} .
+\end{equation*}
+Combining both cases, we find for arbitrary $r$
+\begin{equation*}
+\Prob[ c_N(r) > 2/N^2 \mid \mathcal{H}_r ] 
+\geq  \frac{ \delta^2 \varepsilon^{2N} }{2}
+        \I{ \max_i w_r^{(i)} - \min_i w_r^{(i)} \geq 2\delta/N }
+\end{equation*}
+so
+\begin{align*}
+\Prob[ c_N(r) > 2/N^2 \mid \mathcal{F}_{r-1} ] 
+&\geq  \frac{ \delta^2 \varepsilon^{2N} }{2}
+        \Prob[ \max_i w_r^{(i)} - \min_i w_r^{(i)} \geq 2\delta/N 
+        \mid \mathcal{F}_{r-1} ] \\
+&\geq \zeta \frac{ \delta^2 \varepsilon^{2N} }{2}
+> 0
+\end{align*}
+for infinitely many $r$.
+Hence
+\begin{equation*}
+\sum_{r=0}^\infty \Prob[ c_N(r) > 2/N^2  \mid \mathcal{F}_{r-1} ] = \infty
+\end{equation*}
+as required.
 \end{proof}
 
 
