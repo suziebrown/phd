@@ -8,7 +8,8 @@ The rest sit round and pluck blackberries.
 }
 {\textsc{Elizabeth Barrett Browning}}
 
-\draft{Exaplin somewhere the purpose of the various conditions, e.g. on $g$ and $q$.}
+\draft{Explain somewhere the purpose of the various conditions, e.g. on $g$ and $q$.}
+\seb{Should the finite time-scale lemmas be propositions? They are not steps towards a larger result, the way the corollaries are currently stated, and they could be of independent interest...?}
 
 \section{Multinomial resampling \seb{$\checkmark$} }
 Multinomial resampling is often preferred in theoretical studies of SMC, because it renders the parental indices conditionally i.i.d. given the weights, making it relatively simple to analyse the resulting algorithm.
@@ -47,7 +48,7 @@ where the elements of $A_{1,i}^{(1:N)}, A_{2,i}^{(1:N)}$ are all mutually indepe
 \begin{align*}
 & A_{1,i}^{(j)} 
 \sim \Cat \left( (\varepsilon/a)^{\1{i=1} -\1{i\neq 1}} ,
-        \dots, (\varepsilon/a)^{\1{i=N} -\1{i\neq N}} \right)
+        \dots, (\varepsilon/a)^{\1{i=N} -\1{i\neq N}} \right) \\
 & A_{2,i}^{(j)} 
 \sim \Cat \left( (a/\varepsilon)^{\1{i=1} -\1{i\neq 1}} ,
         \dots, (a/\varepsilon)^{\1{i=N} -\1{i\neq N}} \right)
@@ -61,6 +62,13 @@ Also define the corresponding offspring counts $V_1^{(i)} = |\{j: A_{1,i}^{(j)}=
 & V_2^{(i)} 
 \sim \Bin\left( N, \frac{a/\varepsilon}{(a/\varepsilon) + (N-1)(\varepsilon/a)} \right) .
 \end{align*}
+\seb{ Could state that a particular consequence of \eqref{eq:mn_f_bound} and $V_1,V_2$ etc.\ is
+\begin{equation*}
+\frac{(N)_k}{N^k} \frac{\varepsilon^{2k}}{a^{2k}}
+\leq \E[ (\nu_t^{(i)})_k \mid \mathcal{H}_t ]
+\leq \frac{(N)_k}{N^k} \frac{a^{2k}}{\varepsilon^{2k}} .
+\end{equation*}
+for any $k\in\mathbb{N}$? This is easily proved in much the same way as the two special cases below. This could probably replace \eqref{eq:mn_f_bound} and the surrounding argument, since all $f$s we use are of this particular form.}
 Now consider the function $f_i(a_t^{(1:N)}) := (\nu_t^{(i)})_2$. We can apply \eqref{eq:mn_f_bound} to obtain the lower bound
 \begin{align}
 \frac{1}{(N)_2} \sum_{i=1}^N \E[ (\nu_t^{(i)})_2 \mid \mathcal{H}_t ]
@@ -153,7 +161,9 @@ and
 &= p_{-1}^{(i)} (\flnw -3)(\flnw -1)_2 + p_0^{(i)} (\flnw -2)(\flnw)_2 \\
      &\hspace{1cm} + p_1^{(i)} (\flnw -1)(\flnw +1)_2 
          + p_2^{(i)} \flnw (\flnw +2)_2 \\
-&\leq \flnw \{ p_0^{(i)} (\flnw)_2 + p_1^{(i)} (\flnw +1)_2 \} \\
+&\leq \flnw \Big\{ p_{-1}^{(i)} (\flnw -1)_2 + p_0^{(i)} (\flnw)_2 
+        + p_1^{(i)} (\flnw +1)_2 \\
+    &\hspace{1cm} + p_2^{(i)} (\flnw +2)_2 \Big\} \\
 &= \flnw ]\E [(\nu_t^{(i)})_2 \mid \mathcal{H}_t ] \\
 &\leq a^2 \E [(\nu_t^{(i)})_2 \mid \mathcal{H}_t ]
 \end{align*}
@@ -475,7 +485,66 @@ The result then follows by applying Theorem~\ref{thm:FDDconv}.
 \section{Residual resampling with multinomial residuals}
 \draft{If I manage to prove this corollary, it would make this chapter satisfyingly complete :-)}
 
+\begin{corollary}\label{thm:residual_multinomial}
+Consider an SMC algorithm using residual resampling with multinomial residuals, such that \ref{standing_assumption} is satisfied.
+Assume that there exists a constant $a\in [1,\infty)$ such that for all $x, x^\prime, t$,
+\begin{equation*}
+\frac{1}{a} \leq g_t(x, x^\prime) \leq a .
+\end{equation*}
+Assume that $\Prob[ \tau_N(t) = \infty] =0$ for all finite $t$.
+Let $(G_t^{(n,N)})_{t\geq0}$ denote the genealogy of a random sample of $n$ terminal particles from the output of the algorithm when the total number of particles used is $N$. Then, for any fixed $n$, the time-scaled genealogy $(G_{\tau_N(t)}^{(n,N)})_{t\geq0}$ converges to Kingman's $n$-coalescent as $N\to \infty$, in the sense of finite-dimensional distributions.
+\end{corollary}
 
+\begin{proof}
+With residual-multinomial resampling, for each $i$
+\begin{equation*}
+\nu_t^{(i)} \mid w_t^{(1:N)}
+\eqdist \flnw + X_i
+\end{equation*}
+where $X_i \sim \Bin(R, r_i)$. As usual, $R := N - \sum_{i=1}^N \flnw$ and $r_i := ( Nw_t^{(i)} - \flnw ) /R$.
+\seb{If $R=0$ then $r_i = 0$ for all $i$ and the following calculations remain correct.}
+We can therefore compute
+\begin{align*}
+\E [ (\nu_t^{(i)})_2 \mid w_t^{(1:N)} ]
+&= \E\left[ (\flnw + X_i) (\flnw + X_i -1) \midd w_t^{(1:N)} \right] \\
+&= (\flnw)_2 + 2\flnw E[ X_i \mid w_t^{(1:N)} ] + \E[ (X_i)_2 \mid w_t^{(1:N)} ] \\
+&= (\flnw)_2 + 2\flnw R r_i + (R)_2 r_i^2
+\end{align*}
+using the moments of the Binomial distribution.
+We also have
+\begin{align*}
+\E [ (\nu_t^{(i)})_3 \mid w_t^{(1:N)} ]
+&= \E\left[ (\flnw + X_i) (\flnw + X_i -1) (\flnw + X_i -2) \midd w_t^{(1:N)} \right] \\
+&= \flnw^3 + \flnw^2 \E[ 3X_i -3 \mid w_t^{(1:N)} ] \\
+    &\hspace{1cm}+ \flnw 
+        \E[ X_i(X_i-1) + X_i(X_i-2) + (X_i-1)(X_i-2) \mid w_t^{(1:N)} ] \\
+    &\hspace{1cm}+ \E[ (X_i)_3 \mid w_t^{(1:N)} ] \\
+&= \flnw^3 - 3\flnw^2 +3\flnw^2 \E[ X_i \mid w_t^{(1:N)} ] \\
+    &\hspace{1cm}+ \flnw \E[ 3X_i^2 - 6X_i +2 \mid w_t^{(1:N)} ] 
+        + E[(X_i)_3 \mid w_t^{(1:N)} ]\\
+&= \left( \flnw^3 - 3\flnw^2 + 2\flnw \right)
+        + 3 \left( \flnw^2 - \flnw \right) \E[ X_i \mid w_t^{(1:N)} ] \\
+    &\hspace{1cm}+ 3 \flnw \E[ (X_i)_2 \mid w_t^{(1:N)} ] 
+        + \E[ (X_i)_3 \mid w_t^{(1:N)} ] \\
+&= (\flnw)_3 + 3(\flnw)_2 R r_i + 3\flnw (R)_2 r_i^2 + (R)_3 r_i^3 \\
+&\leq \left( \flnw + R r_i \right) \left\{ (\flnw)_2 + 2\flnw R r_i 
+        + (R)_2 r_i^2 \right\} \\
+&= Nw_t^{(i)} \E[(\nu_t^{(i)})_2 \mid w_t^{(1:N)} ] \\
+&\leq a^2 \E[(\nu_t^{(i)})_2 \mid w_t^{(1:N)} ] ,
+\end{align*}
+using the almost sure bound $w_t^{(i)} \leq a^2/N$.
+
+...
+
+\seb{To complete the proof we need to exchange the conditioning on $w_t^{(1:N)}$ for conditioning on $\mathcal{H}_t$ so we can then invoke the D-separation and tower property to get:}
+\begin{equation*}
+\frac{1}{(N)_3} \sum_{i=1}^N \Et [ (\nu_t^{(i)})_3 ]
+\leq \frac{a^2}{N-2} \frac{1}{(N)_2} \sum_{i=1}^N \Et [ (\nu_t^{(i)})_2 ] .
+\end{equation*}
+Thus \eqref{eq:mainthmcond} is satisfied with $b_N = a^2/(N-2)$.
+\seb{The $\varepsilon$ might want to get involved here as well once we switch the conditioning, coming from bounds on $q_t$ (which would then have to be included in the statement of this corollary).}
+
+\end{proof}
 
 
 

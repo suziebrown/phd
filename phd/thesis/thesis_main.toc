@@ -76,7 +76,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\nonumberline Minimum-variance resampling}{17}{section*.28}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.4.3}Properties \xspace \leavevmode {\color {red}$\sim $}\xspace }{17}{subsection.2.4.3}
+\contentsline {subsection}{\numberline {2.4.3}Properties \xspace \leavevmode {\color {red}$\sim $}\xspace }{18}{subsection.2.4.3}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\nonumberline Support of offspring numbers \xspace \leavevmode {\color {red}$\text {$\mathsurround \z@ \mathchar "458$}$}\xspace }{18}{section*.29}
 \defcounter {refsection}{0}\relax 
@@ -90,13 +90,13 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\nonumberline Permutation invariance \xspace \leavevmode {\color {red}$\text {$\mathsurround \z@ \mathchar "458$}$}\xspace }{24}{section*.34}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Sorting}{24}{section*.35}
+\contentsline {subsubsection}{\nonumberline Sorting}{25}{section*.35}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\nonumberline Computational complexity \xspace \leavevmode {\color {red}$\text {$\mathsurround \z@ \mathchar "458$}$}\xspace }{25}{section*.36}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\nonumberline Negative association}{25}{section*.37}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Star discrepancy \xspace \leavevmode {\color {red}$\text {$\mathsurround \z@ \mathchar "458$}$}\xspace }{25}{section*.38}
+\contentsline {subsubsection}{\nonumberline Star discrepancy \xspace \leavevmode {\color {red}$\text {$\mathsurround \z@ \mathchar "458$}$}\xspace }{26}{section*.38}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.4.4}Stochastic rounding \xspace \leavevmode {\color {red}$\text {$\mathsurround \z@ \mathchar "458$}$}\xspace }{28}{subsection.2.4.4}
 \defcounter {refsection}{0}\relax 
@@ -134,28 +134,28 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {4.1}Multinomial resampling \xspace \leavevmode {\color {red}$\text {$\mathsurround \z@ \mathchar "458$}$}\xspace }{54}{section.4.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.2}Stratified resampling \xspace \leavevmode {\color {red}$\text {$\mathsurround \z@ \mathchar "458$}$}\xspace }{56}{section.4.2}
+\contentsline {section}{\numberline {4.2}Stratified resampling \xspace \leavevmode {\color {red}$\text {$\mathsurround \z@ \mathchar "458$}$}\xspace }{57}{section.4.2}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {4.3}Stochastic rounding \xspace \leavevmode {\color {red}$\text {$\mathsurround \z@ \mathchar "458$}$}\xspace }{60}{section.4.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.4}Residual resampling with stratified residuals \xspace \leavevmode {\color {red}$\sim $}\xspace }{63}{section.4.4}
+\contentsline {section}{\numberline {4.4}Residual resampling with stratified residuals \xspace \leavevmode {\color {red}$\sim $}\xspace }{64}{section.4.4}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {4.5}Residual resampling with multinomial residuals}{64}{section.4.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.6}Star resampling \xspace \leavevmode {\color {red}$\text {$\mathsurround \z@ \mathchar "458$}$}\xspace }{64}{section.4.6}
+\contentsline {section}{\numberline {4.6}Star resampling \xspace \leavevmode {\color {red}$\text {$\mathsurround \z@ \mathchar "458$}$}\xspace }{66}{section.4.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.7}Conditional SMC \xspace \leavevmode {\color {red}$\text {$\mathsurround \z@ \mathchar "458$}$}\xspace }{65}{section.4.7}
+\contentsline {section}{\numberline {4.7}Conditional SMC \xspace \leavevmode {\color {red}$\text {$\mathsurround \z@ \mathchar "458$}$}\xspace }{67}{section.4.7}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.7.1}Effect of ancestor sampling}{68}{subsection.4.7.1}
+\contentsline {subsection}{\numberline {4.7.1}Effect of ancestor sampling}{70}{subsection.4.7.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {5}Weak Convergence \xspace \leavevmode {\color {red}$\text {$\mathsurround \z@ \mathchar "458$}$}\xspace }{69}{chapter.5}
+\contentsline {chapter}{\numberline {5}Weak Convergence \xspace \leavevmode {\color {red}$\text {$\mathsurround \z@ \mathchar "458$}$}\xspace }{71}{chapter.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.1}Bounds on sum-products}{76}{section.5.1}
+\contentsline {section}{\numberline {5.1}Bounds on sum-products}{78}{section.5.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.2}Main components of induction argument}{79}{section.5.2}
+\contentsline {section}{\numberline {5.2}Main components of induction argument}{81}{section.5.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.3}Indicators}{98}{section.5.3}
+\contentsline {section}{\numberline {5.3}Indicators}{100}{section.5.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.4}Fubini \& dominated convergence conditions}{103}{section.5.4}
+\contentsline {section}{\numberline {5.4}Fubini \& dominated convergence conditions}{105}{section.5.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {6}Discussion}{104}{chapter.6}
+\contentsline {chapter}{\numberline {6}Discussion}{106}{chapter.6}
