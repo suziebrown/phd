@@ -36,56 +36,113 @@ for each $i$, so the joint law is
 \Prob \left[ a_t^{(1:N)} = a_{1:N} \mid \mathcal{H}_t \right] 
 \propto \prod_{i=1}^N w_t^{(a_i)} q_{t-1}(X_t^{(a_i)}, X_{t-1}^{(i)}).
 \end{equation*}
-\textcite{koskela2018} makes the following observation, which follows from a balls-in-bins coupling.
-Assume \eqref{eq:gq_bounds_mn}. 
-Then for any function $f:\{1,\dots,N\}^N \to \mathbb{R}$ such that (for a fixed $i$) $f(a_t^{\prime(1:N)}) \geq f(a_t^{(1:N)})$ whenever $|\{j:a_t^{\prime(j)}=i\}| \geq |\{j:a_t^{(j)}=i\}|$,
-\begin{equation}\label{eq:mn_f_bound}
-\E[ f(A_{1,i}^{(1:N)}) ] 
-\leq \E[ f(a_t^{(1:N)}) \mid \mathcal{H}_t ]
-\leq \E[ f(A_{2,i}^{(1:N)}) ] 
-\end{equation}
-where the elements of $A_{1,i}^{(1:N)}, A_{2,i}^{(1:N)}$ are all mutually independent and independent of $\mathcal{F}_{\infty}$, and distributed according to
-\begin{align*}
-& A_{1,i}^{(j)} 
-\sim \Cat \left( (\varepsilon/a)^{\1{i=1} -\1{i\neq 1}} ,
-        \dots, (\varepsilon/a)^{\1{i=N} -\1{i\neq N}} \right) \\
-& A_{2,i}^{(j)} 
-\sim \Cat \left( (a/\varepsilon)^{\1{i=1} -\1{i\neq 1}} ,
-        \dots, (a/\varepsilon)^{\1{i=N} -\1{i\neq N}} \right)
-\end{align*}
-independently for each $j$, where the vector of probabilities is given up to a constant in the argument of Categorical distributions.
-We will use these random vectors to construct bounds that are independent of $\mathcal{F}_\infty$.
-Also define the corresponding offspring counts $V_1^{(i)} = |\{j: A_{1,i}^{(j)}=i\}|$, $V_2^{(i)} = |\{j: A_{2,i}^{(j)}=i\}|$, for $i=1,\dots,N$, which have marginal distributions
+%
+%%%%%%%%%
+%
+The bounds on $g_t$ in \eqref{eq:gq_bounds_mn} imply 
+almost sure bounds on the weights
+%the almost sure bounds
+%\begin{equation*}
+%\frac{1}{a^2 N}
+%\leq w_t^{(i)}
+%\leq \frac{a^2}{N}
+%\end{equation*}
+which, along with the bounds on $q_{t-1}$ from \eqref{eq:gq_bounds_mn}, allows us to apply a balls-in-bins coupling presented in \textcite[Proof of Lemma 3]{koskela2018} to obtain bounds on expectations of functions of $a_t^{(1:N)}$.
+For any $k\in\mathbb{N}$ the function $a_t^{(1:N)} \to (\nu_t^{(i)})_k$ is $\{i\}$-increasing in the sense of \textcite{koskela2018}, so we obtain the bounds
+\begin{equation*}
+\E[ (V_1^{(i)})_k ]
+\leq \E[ (\nu_t^{(i)})_k \mid \mathcal{H}_t ]
+\leq \E[ (V_2^{(i)})_k ] ,
+\end{equation*}
+where
 \begin{align*}
 & V_1^{(i)} 
 \sim \Bin\left(N, \frac{\varepsilon/a}{(\varepsilon/a) + (N-1)(a/\varepsilon)} \right),\\
 & V_2^{(i)} 
 \sim \Bin\left( N, \frac{a/\varepsilon}{(a/\varepsilon) + (N-1)(\varepsilon/a)} \right) .
 \end{align*}
-\seb{ Could state that a particular consequence of \eqref{eq:mn_f_bound} and $V_1,V_2$ etc.\ is
+independently for each $i$ and independently of $\mathcal{F}_\infty$.
+Furthermore, using the moments of the Binomial distribution \parencite[see for example][p.?]{mosimann1962}
 \begin{equation*}
-\frac{(N)_k}{N^k} \frac{\varepsilon^{2k}}{a^{2k}}
-\leq \E[ (\nu_t^{(i)})_k \mid \mathcal{H}_t ]
+\E[ (V_1^{(i)})_k ]
+= (N)_k \left( \frac{ \varepsilon/a }{ (\varepsilon/a) + (N-1)(a/\varepsilon) } \right)^k
+\geq (N)_k \left( \frac{ \varepsilon/a }{ N(a/\varepsilon) } \right)^k
+= \frac{(N)_k}{N^k} \frac{\varepsilon^{2k}}{a^{2k}} .
+\end{equation*}
+Similarly, 
+\begin{equation*}
+\E[ (V_2^{(i)})_k ]
 \leq \frac{(N)_k}{N^k} \frac{a^{2k}}{\varepsilon^{2k}} .
 \end{equation*}
-for any $k\in\mathbb{N}$? This is easily proved in much the same way as the two special cases below. This could probably replace \eqref{eq:mn_f_bound} and the surrounding argument, since all $f$s we use are of this particular form.}
-Now consider the function $f_i(a_t^{(1:N)}) := (\nu_t^{(i)})_2$. We can apply \eqref{eq:mn_f_bound} to obtain the lower bound
-\begin{align}
+We therefore have the bounds
+\begin{equation}
+\frac{(N)_k}{N^k} \frac{\varepsilon^{2k}}{a^{2k}}
+\leq \E[ (\nu_t^{(i)})_k \mid \mathcal{H}_t ]
+\leq \frac{(N)_k}{N^k} \frac{a^{2k}}{\varepsilon^{2k}} .\label{eq:mn_nuk_bounds}
+\end{equation}
+Consequently,
+\begin{equation}
 \frac{1}{(N)_2} \sum_{i=1}^N \E[ (\nu_t^{(i)})_2 \mid \mathcal{H}_t ]
-&\geq \frac{1}{(N)_2} \sum_{i=1}^N \E[ (V_1^{(i)})_2 ]
-= \frac{1}{(N)_2} \sum_{i=1}^N (N)_2 \left[ \frac{ \varepsilon/a}{ (\varepsilon/a) + (N-1)(a/\varepsilon) } \right]^2 \notag\\
-&\geq \sum_{i=1}^N \left[ \frac{ \varepsilon/a}{ N a/\varepsilon } \right]^2
-= \frac{\varepsilon^4}{Na^4} \label{eq:mn_cN_LB}
-\end{align}
-using the moments of the Binomial distribution \parencite[see for example]{mosimann1962}.
-Similarly, we derive an upper bound on $f_i(a_t^{(1:N)}) := (\nu_t^{(i)})_3$:
-\begin{align}
-\frac{1}{(N)_3} \sum_{i=1}^N \E[ (\nu_t^{(i)})_3 \mid \mathcal{H}_t]
-&\leq \frac{1}{(N)_3} \left[ \sum_{i=1}^N \E[ (V_2^{(i)})_3 ] \right]
-= \frac{1}{(N)_3} \sum_{i=1}^N (N)_3 \left[ \frac{ a/\varepsilon }{ (a/\varepsilon) + (N-1)(\varepsilon/a) } \right]^3 \notag\\
-&\leq \sum_{i=1}^N \left[ \frac{ a/\varepsilon }{ N \varepsilon/a } \right]^3
-= \frac{a^6}{N^2\varepsilon^6} . \label{eq:mn_cN3_UB}
-\end{align}
+\geq \frac{\varepsilon^4}{Na^4} \label{eq:mn_cN_LB}
+\end{equation}
+and
+\begin{equation}
+\frac{1}{(N)_3} \sum_{i=1}^N \E[ (\nu_t^{(i)})_3 \mid \mathcal{H}_t ]
+\leq \frac{a^6}{N^2 \varepsilon^6} . \label{eq:mn_cN3_UB}
+\end{equation}
+%
+%%%%%%%%%
+%
+%\textcite{koskela2018} makes the following observation, which follows from a balls-in-bins coupling.
+%Assume \eqref{eq:gq_bounds_mn}. 
+%Then for any function $f:\{1,\dots,N\}^N \to \mathbb{R}$ such that (for a fixed $i$) $f(a_t^{\prime(1:N)}) \geq f(a_t^{(1:N)})$ whenever $|\{j:a_t^{\prime(j)}=i\}| \geq |\{j:a_t^{(j)}=i\}|$,
+%\begin{equation}\label{eq:mn_f_bound}
+%\E[ f(A_{1,i}^{(1:N)}) ] 
+%\leq \E[ f(a_t^{(1:N)}) \mid \mathcal{H}_t ]
+%\leq \E[ f(A_{2,i}^{(1:N)}) ] 
+%\end{equation}
+%where the elements of $A_{1,i}^{(1:N)}, A_{2,i}^{(1:N)}$ are all mutually independent and independent of $\mathcal{F}_{\infty}$, and distributed according to
+%\begin{align*}
+%& A_{1,i}^{(j)} 
+%\sim \Cat \left( (\varepsilon/a)^{\1{i=1} -\1{i\neq 1}} ,
+%        \dots, (\varepsilon/a)^{\1{i=N} -\1{i\neq N}} \right) \\
+%& A_{2,i}^{(j)} 
+%\sim \Cat \left( (a/\varepsilon)^{\1{i=1} -\1{i\neq 1}} ,
+%        \dots, (a/\varepsilon)^{\1{i=N} -\1{i\neq N}} \right)
+%\end{align*}
+%independently for each $j$, where the vector of probabilities is given up to a constant in the argument of Categorical distributions.
+%We will use these random vectors to construct bounds that are independent of $\mathcal{F}_\infty$.
+%Also define the corresponding offspring counts $V_1^{(i)} = |\{j: A_{1,i}^{(j)}=i\}|$, $V_2^{(i)} = |\{j: A_{2,i}^{(j)}=i\}|$, for $i=1,\dots,N$, which have marginal distributions
+%\begin{align*}
+%& V_1^{(i)} 
+%\sim \Bin\left(N, \frac{\varepsilon/a}{(\varepsilon/a) + (N-1)(a/\varepsilon)} \right),\\
+%& V_2^{(i)} 
+%\sim \Bin\left( N, \frac{a/\varepsilon}{(a/\varepsilon) + (N-1)(\varepsilon/a)} \right) .
+%\end{align*}
+%\seb{ Could state that a particular consequence of \eqref{eq:mn_f_bound} and $V_1,V_2$ etc.\ is
+%\begin{equation*}
+%\frac{(N)_k}{N^k} \frac{\varepsilon^{2k}}{a^{2k}}
+%\leq \E[ (\nu_t^{(i)})_k \mid \mathcal{H}_t ]
+%\leq \frac{(N)_k}{N^k} \frac{a^{2k}}{\varepsilon^{2k}} .
+%\end{equation*}
+%for any $k\in\mathbb{N}$? This is easily proved in much the same way as the two special cases below. This could probably replace \eqref{eq:mn_f_bound} and the surrounding argument, since all $f$s we use are of this particular form.}
+%Now consider the function $f_i(a_t^{(1:N)}) := (\nu_t^{(i)})_2$. We can apply \eqref{eq:mn_f_bound} to obtain the lower bound
+%\begin{align}
+%\frac{1}{(N)_2} \sum_{i=1}^N \E[ (\nu_t^{(i)})_2 \mid \mathcal{H}_t ]
+%&\geq \frac{1}{(N)_2} \sum_{i=1}^N \E[ (V_1^{(i)})_2 ]
+%= \frac{1}{(N)_2} \sum_{i=1}^N (N)_2 \left[ \frac{ \varepsilon/a}{ (\varepsilon/a) + (N-1)(a/\varepsilon) } \right]^2 \notag\\
+%&\geq \sum_{i=1}^N \left[ \frac{ \varepsilon/a}{ N a/\varepsilon } \right]^2
+%= \frac{\varepsilon^4}{Na^4} \label{eq:mn_cN_LB}
+%\end{align}
+%using the moments of the Binomial distribution \parencite[see for example]{mosimann1962}.
+%Similarly, we derive an upper bound on $f_i(a_t^{(1:N)}) := (\nu_t^{(i)})_3$:
+%\begin{align}
+%\frac{1}{(N)_3} \sum_{i=1}^N \E[ (\nu_t^{(i)})_3 \mid \mathcal{H}_t]
+%&\leq \frac{1}{(N)_3} \left[ \sum_{i=1}^N \E[ (V_2^{(i)})_3 ] \right]
+%= \frac{1}{(N)_3} \sum_{i=1}^N (N)_3 \left[ \frac{ a/\varepsilon }{ (a/\varepsilon) + (N-1)(\varepsilon/a) } \right]^3 \notag\\
+%&\leq \sum_{i=1}^N \left[ \frac{ a/\varepsilon }{ N \varepsilon/a } \right]^3
+%= \frac{a^6}{N^2\varepsilon^6} . \label{eq:mn_cN3_UB}
+%\end{align}
 The definition of $\mathcal{H}_t$ is such that, for any suitable function $f$, by the tower property and conditional independence we have
 \begin{equation}
 \Et[ f(\nu_t^{(1:N)}) ] 
@@ -482,7 +539,7 @@ The result then follows by applying Theorem~\ref{thm:FDDconv}.
 
 
 
-\section{Residual resampling with multinomial residuals}
+\section{Residual resampling with multinomial residuals \seb{$\sim$} }
 \draft{If I manage to prove this corollary, it would make this chapter satisfyingly complete :-)}
 
 \begin{corollary}\label{thm:residual_multinomial}
@@ -630,7 +687,7 @@ As in standard SMC with multinomial resampling, under \eqref{eq:gq_bounds_csmc} 
 \leq \E[ f(a_t^{(1:N)}) \mid \mathcal{H}_t ]
 \leq \E[ f(A_{2,i}^{(1:N)}) ] 
 \end{equation}
-where
+where now
 \begin{align*}
 & A_{1,i}^{(j)} \sim \begin{cases}
 \delta_1 \qquad & j=1 \\
