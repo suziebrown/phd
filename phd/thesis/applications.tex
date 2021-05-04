@@ -9,7 +9,6 @@ The rest sit round and pluck blackberries.
 {\textsc{Elizabeth Barrett Browning}}
 
 \draft{Explain somewhere the purpose of the various conditions, e.g. on $g$ and $q$.}
-\seb{Should the finite time-scale lemmas be propositions? They are not steps towards a larger result, the way the corollaries are currently stated, and they could be of independent interest...?}
 
 \section{Multinomial resampling \seb{$\checkmark$} }
 Multinomial resampling is often preferred in theoretical studies of SMC, because it renders the parental indices conditionally i.i.d. given the weights, making it relatively simple to analyse the resulting algorithm.
@@ -23,6 +22,8 @@ Consider an SMC algorithm using multinomial resampling, such that \ref{standing_
 \end{equation}
 Let $(G_t^{(n,N)})_{t\geq0}$ denote the genealogy of a random sample of $n$ terminal particles from the output of the algorithm when the total number of particles used is $N$. Then, for any fixed $n$, the time-scaled genealogy $(G_{\tau_N(t)}^{(n,N)})_{t\geq0}$ converges to Kingman's $n$-coalescent as $N\to \infty$, in the sense of finite-dimensional distributions.
 \end{corollary}
+
+\draft{Explain the purpose/interpretation of the bounds on $g$ and $q$.}
 
 \begin{proof}
 Define the conditioning $\sigma$-algebra $\mathcal{H}_t$ as in \eqref{eq:defn_Ht}.
@@ -200,6 +201,10 @@ Assume that $\Prob[ \tau_N(t) = \infty] =0$ for all finite $t$.
 Let $(G_t^{(n,N)})_{t\geq0}$ denote the genealogy of a random sample of $n$ terminal particles from the output of the algorithm when the total number of particles used is $N$. Then, for any fixed $n$, the time-scaled genealogy $(G_{\tau_N(t)}^{(n,N)})_{t\geq0}$ converges to Kingman's $n$-coalescent as $N\to \infty$, in the sense of finite-dimensional distributions.
 \end{corollary}
 
+\draft{Remark that bounds on $q$ are no longer needed, and explain why. Explain why we now include the finite time scale condition in the statement: it doesn't necessarily hold under the conditions stated here, as was the case in Corollary~\ref{thm:multinomial}.}
+
+\seb{By the way, does the lack of conditions of $q_t$ here imply that we do not even need the transition kernels to admit densities?}
+
 \begin{proof}
 Recall that the sequence of $\sigma$-algebras
 \begin{equation}\label{eq:defn_Ht}
@@ -253,6 +258,12 @@ uniformly in $x,x^\prime$ for some $\varepsilon \in (0,1]$, and that there exist
 \end{equation*}
  for infinitely many $t$. Then, for all $N>1$, $\Prob[ \tau_N(t) = \infty ] =0$ for all finite $t$.
 \end{prop}
+
+\draft{Comment that we now invoke the bounds on $q$, which were not needed to prove the rest of the corollary, and it may well be possible to prove the finite time scale condition without bounds on $q$.}
+
+The extra condition that the transition densities are bounded above and away from zero \seb{... say something intelligent}.
+The second condition is required to ensure that, at least infinitely often, the weights are not equal to $(1,\dots,1)/N$, since stochastic rounding is degenerate under equal weights and this will cause the time scale to explode. 
+It is hardly conceivable that any real SMC algorithm would fail to satisfy this condition, which effectively ensures that the weights cannot be ``too well-behaved''.
 
 
 \begin{proof}
@@ -404,7 +415,6 @@ Assume that there exists a constant $a\in [1,\infty)$ such that for all $x, x^\p
 Assume that $\Prob[ \tau_N(t) = \infty] =0$ for all finite $t$.
 Let $(G_t^{(n,N)})_{t\geq0}$ denote the genealogy of a random sample of $n$ terminal particles from the output of the algorithm when the total number of particles used is $N$. Then, for any fixed $n$, the time-scaled genealogy $(G_{\tau_N(t)}^{(n,N)})_{t\geq0}$ converges to Kingman's $n$-coalescent as $N\to \infty$, in the sense of finite-dimensional distributions.
 \end{corollary}
-\seb{By the way, does the lack of conditions of $q_t$ here imply that we do not even need the transition kernels to admit densities?}
 
 \begin{proof}
 We can apply exactly the proof of Corollary~\ref{thm:stratified}, except that stochastic rounding is more restrictive than stratified resampling, so that the only possible offspring counts (almost surely, conditional on weights) are $\nu_t^{(i)} \in \{ \flnw, \flnw +1 \}$. We simply set $p_{-1}^{(i)} = p_{2}^{(i)} = 0$ in the proof of Corollary~\ref{thm:stratified} to see that
@@ -431,10 +441,6 @@ uniformly in $x,x^\prime$ for some $\varepsilon \in (0,1]$, and that there exist
 \end{equation*}
  for infinitely many $t$. Then, for all $N>1$, $\Prob[ \tau_N(t) = \infty ] =0$ for all finite $t$.
 \end{prop}
-
-The extra condition that the transition densities are bounded above and away from zero \seb{... say something intelligent}.
-The second condition is required to ensure that, at least infinitely often, the weights are not equal to $(1,\dots,1)/N$, since stochastic rounding is degenerate under equal weights and this will cause the time scale to explode. 
-It is hardly conceivable that any real SMC algorithm would fail to satisfy this condition, which effectively ensures that the weights cannot be ``too well-behaved''.
 
 \draft{If I find a more elegant proof for e.g. stratified, I can use the techniques to simplify this one a bit too.}
 \begin{proof}
@@ -670,6 +676,8 @@ Let $(G_t^{(n,N)})_{t\geq0}$ denote the genealogy of a random sample of $n$ term
 We restrict here to the case of multinomial resampling, which seems to be the most commonly-used resampling scheme within conditional SMC. Implementing other resampling schemes while maintaining the immortal lineage is more involved, though by no means impossible.\seb{cite that unpublished paper by AMJ and Arnaud?}
 We conjecture that similar results hold for conditional SMC with other resampling schemes, as in the preceding corollaries.
 
+\draft{As one might expect, the conditions here (i.e. bounds on $g$, $q$) are the same as for multinomial resampling...}
+
 \begin{proof}
 Assume, without loss of generality, that the immortal particle takes index 1 in each generation. This significantly lightens the notation, but the same argument holds if the immortal indices are taken to be $a_{(0:T)}^\star$ rather than $(1,\dots,1)$.
 
@@ -844,7 +852,7 @@ The proof is exactly the same as Lemma~\ref{thm:mn_nontriviality}, since \eqref{
 Ancestor sampling breaks up the immortal lineage into sections, so it is not really a lineage, and we do not really have a pure coalescent process backwards in time. Regardless, we shall throw caution to the wind and examine the resulting ``genealogies''.
 
 Using the parent sampling probabilities specified in \eqref{eq:ancsamp_probs},
-now with time reversed and the notation made to fit with this study of genealogies, we obtain\seb{add one more step of working below to make it less ``magic''?}
+now with time reversed and the notation made to fit \seb{preferably the presentation in Chapter 2 should use the notation we want to use here} with this study of genealogies, we obtain\seb{add one more step of working below to make it less ``magic''?}
 \begin{equation*}
 \Prob[a_t^{(i)} = a_i \mid \mathcal{H}_t ] \propto
 \begin{cases}
