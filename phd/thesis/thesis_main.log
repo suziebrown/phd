@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  4 MAY 2021 11:24
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  4 MAY 2021 11:27
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2217,121 +2217,121 @@ Package refcheck Warning: Unused label `thm:SR_nontriviality' on input line 432
 .
 
 [61]
-Overfull \hbox (7.31442pt too wide) detected at line 460
+Overfull \hbox (7.31442pt too wide) detected at line 461
 []
  []
 
 [62]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 524.
+(hyperref)                removing `math shift' on input line 525.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\sim' on input line 524.
+(hyperref)                removing `\sim' on input line 525.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 524.
+(hyperref)                removing `math shift' on input line 525.
 
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 526.
+(mdframed)              on input line 527.
 
 Package refcheck Warning: Unused label `thm:residual_stratified' on input line 
-526.
+527.
 
 [63]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 552.
+(hyperref)                removing `math shift' on input line 553.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\sim' on input line 552.
+(hyperref)                removing `\sim' on input line 553.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 552.
+(hyperref)                removing `math shift' on input line 553.
 
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 555.
+(mdframed)              on input line 556.
 
 Package refcheck Warning: Unused label `thm:residual_multinomial' on input line
- 555.
+ 556.
 
 
-Overfull \hbox (36.917pt too wide) detected at line 601
+Overfull \hbox (36.917pt too wide) detected at line 602
 []
  []
 
 [64]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 618.
+(hyperref)                removing `math shift' on input line 622.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 618.
+(hyperref)                removing `math shift' on input line 622.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathsurround' on input line 618.
+(hyperref)                removing `\mathsurround' on input line 622.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\z@' on input line 618.
+(hyperref)                removing `\z@' on input line 622.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathchar' on input line 618.
+(hyperref)                removing `\mathchar' on input line 622.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 618.
+(hyperref)                removing `math shift' on input line 622.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 618.
+(hyperref)                removing `math shift' on input line 622.
 
 [65]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 660.
+(hyperref)                removing `math shift' on input line 664.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 660.
+(hyperref)                removing `math shift' on input line 664.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathsurround' on input line 660.
+(hyperref)                removing `\mathsurround' on input line 664.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\z@' on input line 660.
+(hyperref)                removing `\z@' on input line 664.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathchar' on input line 660.
+(hyperref)                removing `\mathchar' on input line 664.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 660.
+(hyperref)                removing `math shift' on input line 664.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 660.
+(hyperref)                removing `math shift' on input line 664.
 
 [66]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 668.
+(mdframed)              on input line 672.
  [67]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 831.
+(mdframed)              on input line 835.
  [68]) [69]
 \openout2 = `weakconv.aux'.
 
@@ -2644,7 +2644,7 @@ ts/type1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2018/texmf-dist/fonts
 ype1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2018/texmf-dist/fon
 ts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2018/texmf-dist
 /fonts/type1/adobe/utopia/putb8a.pfb>
-Output written on thesis_main.pdf (118 pages, 5012274 bytes).
+Output written on thesis_main.pdf (118 pages, 5012679 bytes).
 PDF statistics:
  1870 PDF objects out of 2073 (max. 8388607)
  1656 compressed objects within 17 object streams

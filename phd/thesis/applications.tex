@@ -8,7 +8,7 @@ The rest sit round and pluck blackberries.
 }
 {\textsc{Elizabeth Barrett Browning}}
 
-\draft{Explain somewhere the purpose of the various conditions, e.g. on $g$ and $q$.}
+\draft{Add some beginning-of-chapter waffle here.}
 
 \section{Multinomial resampling \seb{$\checkmark$} }
 Multinomial resampling is often preferred in theoretical studies of SMC, because it renders the parental indices conditionally i.i.d. given the weights, making it relatively simple to analyse the resulting algorithm.
@@ -442,7 +442,8 @@ uniformly in $x,x^\prime$ for some $\varepsilon \in (0,1]$, and that there exist
  for infinitely many $t$. Then, for all $N>1$, $\Prob[ \tau_N(t) = \infty ] =0$ for all finite $t$.
 \end{prop}
 
-\draft{If I find a more elegant proof for e.g. stratified, I can use the techniques to simplify this one a bit too.}
+\seb{If I find a more elegant proof for e.g. stratified, I can use the techniques to simplify this one a bit too.}
+
 \begin{proof}
 Let $\mathcal{H}_t$ be defined as in \eqref{eq:defn_Ht}. The first step is to show that whenever $\max_i w_t^{(i)} \geq (1+\delta)/N$, $\Prob[  c_N(t) > 2/N^2 \mid \mathcal{H}_t ] = \Prob[ c_N(t) \neq 0 \mid \mathcal{H}_t ]$ is bounded below uniformly in $t$.
 For this purpose we need consider only weight vectors such that $w_t^{(i)} \in (0,2/N)$ for all $i$; otherwise $\Prob[ c_N(t) \neq 0 \mid \mathcal{H}_t ] =1$ by the definition of stochastic rounding.
@@ -612,6 +613,9 @@ Thus \eqref{eq:mainthmcond} is satisfied with $b_N = a^2/(N-2)$.
 \seb{The $\varepsilon$ might want to get involved here as well once we switch the conditioning, coming from bounds on $q_t$ (which would then have to be included in the statement of this corollary).}
 
 \end{proof}
+
+\draft{State and prove finite time-scale lemma.}
+
 
 
 
