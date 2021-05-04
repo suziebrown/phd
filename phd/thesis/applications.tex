@@ -29,26 +29,30 @@ Define the conditioning $\sigma$-algebra $\mathcal{H}_t$ as in \eqref{eq:defn_Ht
 The parental indices are conditionally independent, with conditional law
 \begin{equation}\label{eq:parentslaw_mn}
 \Prob \left[ a_t^{(i)} = a_i \mid \mathcal{H}_t \right] 
-\propto w_t^{(a_i)} q_{t-1}(X_t^{(a_i)}, X_{t-1}^{(i)})
+%\propto w_t^{(a_i)} q_{t-1}(X_t^{(a_i)}, X_{t-1}^{(i)})
+\propto g_t( X_{t+1}^{a_t^{(a_i)}} , X_t^{(a_i)} ) q_{t-1}(X_t^{(a_i)}, X_{t-1}^{(i)})
 \end{equation}
 for each $i$, so the joint law is
 \begin{equation*}
 \Prob \left[ a_t^{(1:N)} = a_{1:N} \mid \mathcal{H}_t \right] 
-\propto \prod_{i=1}^N w_t^{(a_i)} q_{t-1}(X_t^{(a_i)}, X_{t-1}^{(i)}).
+%\propto \prod_{i=1}^N w_t^{(a_i)} q_{t-1}(X_t^{(a_i)}, X_{t-1}^{(i)}).
+\propto \prod_{i=1}^N g_t( X_{t+1}^{a_t^{(a_i)}} , X_t^{(a_i)} ) 
+        q_{t-1}(X_t^{(a_i)}, X_{t-1}^{(i)}).
 \end{equation*}
 %
 %%%%%%%%%
 %
-The bounds on $g_t$ in \eqref{eq:gq_bounds_mn} imply 
-almost sure bounds on the weights
-%the almost sure bounds
-%\begin{equation*}
-%\frac{1}{a^2 N}
-%\leq w_t^{(i)}
-%\leq \frac{a^2}{N}
-%\end{equation*}
-which, along with the bounds on $q_{t-1}$ from \eqref{eq:gq_bounds_mn}, allows us to apply a balls-in-bins coupling presented in \textcite[Proof of Lemma 3]{koskela2018} to obtain bounds on expectations of functions of $a_t^{(1:N)}$.
-For any $k\in\mathbb{N}$ the function $a_t^{(1:N)} \to (\nu_t^{(i)})_k$ is $\{i\}$-increasing in the sense of \textcite{koskela2018}, so we obtain the bounds
+%The bounds on $g_t$ in \eqref{eq:gq_bounds_mn} imply 
+%almost sure bounds on the weights
+%%the almost sure bounds
+%%\begin{equation*}
+%%\frac{1}{a^2 N}
+%%\leq w_t^{(i)}
+%%\leq \frac{a^2}{N}
+%%\end{equation*}
+%which, along with the bounds on $q_{t-1}$ from \eqref{eq:gq_bounds_mn}, allows us to apply a balls-in-bins coupling presented in \textcite[Proof of Lemma 3]{koskela2018} to obtain bounds on expectations of functions of $a_t^{(1:N)}$.
+Using the bounds \eqref{eq:gq_bounds_mn} and the balls-in-bins coupling of \textcite[Proof of Lemma 3]{koskela2018}, we can obtain bounds on expectations of functions of $a_t^{(1:N)}$.
+For any $k\in\mathbb{N}$ the function $a_t^{(1:N)} \to (\nu_t^{(i)})_k$ is $\{i\}$-increasing in the sense of \textcite{koskela2018}, so we may apply the bounds
 \begin{equation*}
 \E[ (V_1^{(i)})_k ]
 \leq \E[ (\nu_t^{(i)})_k \mid \mathcal{H}_t ]
@@ -62,7 +66,7 @@ where
 \sim \Bin\left( N, \frac{a/\varepsilon}{(a/\varepsilon) + (N-1)(\varepsilon/a)} \right) .
 \end{align*}
 independently for each $i$ and independently of $\mathcal{F}_\infty$.
-Furthermore, using the moments of the Binomial distribution \parencite[see for example][p.?]{mosimann1962}
+Furthermore, using the moments of the Binomial distribution \parencite[see for example][p. 67]{mosimann1962}
 \begin{equation*}
 \E[ (V_1^{(i)})_k ]
 = (N)_k \left( \frac{ \varepsilon/a }{ (\varepsilon/a) + (N-1)(a/\varepsilon) } \right)^k
@@ -75,12 +79,12 @@ Similarly,
 \leq \frac{(N)_k}{N^k} \frac{a^{2k}}{\varepsilon^{2k}} .
 \end{equation*}
 We therefore have the bounds
-\begin{equation}
+\begin{equation*}
 \frac{(N)_k}{N^k} \frac{\varepsilon^{2k}}{a^{2k}}
 \leq \E[ (\nu_t^{(i)})_k \mid \mathcal{H}_t ]
-\leq \frac{(N)_k}{N^k} \frac{a^{2k}}{\varepsilon^{2k}} .\label{eq:mn_nuk_bounds}
-\end{equation}
-Consequently,
+\leq \frac{(N)_k}{N^k} \frac{a^{2k}}{\varepsilon^{2k}} . %\label{eq:mn_nuk_bounds}
+\end{equation*}
+for each $k$. Consequently,
 \begin{equation}
 \frac{1}{(N)_2} \sum_{i=1}^N \E[ (\nu_t^{(i)})_2 \mid \mathcal{H}_t ]
 \geq \frac{\varepsilon^4}{Na^4} \label{eq:mn_cN_LB}
@@ -237,7 +241,7 @@ The result then follows by applying Theorem~\ref{thm:FDDconv}.
 
 
 
-\begin{lemma}\label{thm:strat_nontriviality}
+\begin{prop}\label{thm:strat_nontriviality}
 Consider an SMC algorithm using stratified resampling.
 Suppose that 
 \begin{equation*}
@@ -248,7 +252,7 @@ uniformly in $x,x^\prime$ for some $\varepsilon \in (0,1]$, and that there exist
 \Prob[ \max_i w_t^{(i)} - \min_i w_t^{(i)} \geq 2\delta/N \mid \mathcal{F}_{t-1} ] \geq \zeta
 \end{equation*}
  for infinitely many $t$. Then, for all $N>1$, $\Prob[ \tau_N(t) = \infty ] =0$ for all finite $t$.
-\end{lemma}
+\end{prop}
 
 
 \begin{proof}
@@ -415,18 +419,18 @@ The result then follows by applying Theorem~\ref{thm:FDDconv}.
 
 We can also show, under additional conditions, that the assumption $\Prob[ \tau_N(t) = \infty ] =0$ for all finite $t$ holds.
 
-\begin{lemma}\label{thm:SR_nontriviality}
+\begin{prop}\label{thm:SR_nontriviality}
 Consider an SMC algorithm using any stochastic rounding as its resampling scheme.
 Suppose that 
 \begin{equation*}
 \varepsilon \leq q_t(x, x^\prime) \leq \varepsilon^{-1}
 \end{equation*}
-uniformly in $x,x^\prime$ for some $\varepsilon \in (0,1]$, and that there exist $\zeta >0$ and $\delta \in (0,1)$ such that 
+uniformly in $x,x^\prime$ for some $\varepsilon \in (0,1]$, and that there exist $\zeta >0$ and $\delta >0$ such that 
 \begin{equation*}
 \Prob[ \max_i w_t^{(i)} - \min_i w_t^{(i)} \geq 2\delta/N \mid \mathcal{F}_{t-1} ] \geq \zeta
 \end{equation*}
  for infinitely many $t$. Then, for all $N>1$, $\Prob[ \tau_N(t) = \infty ] =0$ for all finite $t$.
-\end{lemma}
+\end{prop}
 
 The extra condition that the transition densities are bounded above and away from zero \seb{... say something intelligent}.
 The second condition is required to ensure that, at least infinitely often, the weights are not equal to $(1,\dots,1)/N$, since stochastic rounding is degenerate under equal weights and this will cause the time scale to explode. 
@@ -674,72 +678,144 @@ The parental indices are conditionally independent, as in standard SMC with mult
 \Prob \left[ a_t^{(i)} = a_i \mid \mathcal{H}_t \right] \propto
 \begin{cases}
 \1{a_i=1} &i=1 \\
-w_t^{(a_i)} q_{t-1}(X_t^{(a_i)}, X_{t-1}^{(i)}) &i=2,\dots,N ,
+g_t( X_{t+1}^{a_t^{(a_i)}} , X_t^{(a_i)} ) q_{t-1}(X_t^{(a_i)}, X_{t-1}^{(i)}) &i=2,\dots,N ,
+%w_t^{(a_i)} q_{t-1}(X_t^{(a_i)}, X_{t-1}^{(i)}) &i=2,\dots,N ,
 \end{cases}
 \end{equation*}
 resulting in the joint law
 \begin{equation*}
-\Prob \left[ a_t^{(1:N)} = a_{1:N} \mid \mathcal{H}_t \right] \propto \1{a_1 = 1} \prod_{i=2}^N w_t^{(a_i)} q_{t-1}(X_t^{(a_i)}, X_{t-1}^{(i)}).
+\Prob \left[ a_t^{(1:N)} = a_{1:N} \mid \mathcal{H}_t \right] 
+\propto \1{a_1 = 1} \prod_{i=2}^N g_t( X_{t+1}^{a_t^{(a_i)}} , X_t^{(a_i)} )  
+        q_{t-1}(X_t^{(a_i)}, X_{t-1}^{(i)}).
+%\propto \1{a_1 = 1} \prod_{i=2}^N w_t^{(a_i)} q_{t-1}(X_t^{(a_i)}, X_{t-1}^{(i)}).
 \end{equation*}
-As in standard SMC with multinomial resampling, under \eqref{eq:gq_bounds_csmc} we have
-\begin{equation}\label{eq:csmc_f_bound}
-\E[ f(A_{1,i}^{(1:N)}) ] 
-\leq \E[ f(a_t^{(1:N)}) \mid \mathcal{H}_t ]
-\leq \E[ f(A_{2,i}^{(1:N)}) ] 
-\end{equation}
+%%%
+As in Corollary~\ref{thm:multinomial}, under \eqref{eq:gq_bounds_csmc} we have bounds
+\begin{equation*}
+\E[ (V_1^{(i)})_k ]
+\leq \E[ (\nu_t^{(i)})_k \mid \mathcal{H}_t ]
+\leq \E[ (V_2^{(i)})_k ] ,
+\end{equation*}
 where now
 \begin{align*}
-& A_{1,i}^{(j)} \sim \begin{cases}
-\delta_1 \qquad & j=1 \\
-\operatorname{Categorical}\left( (\varepsilon/a)^{\1{i=1} -\1{i\neq 1}} ,\dots, (\varepsilon/a)^{\1{i=N} -\1{i\neq N}} \right) & j\neq 1 
-\end{cases} \\
-& A_{2,i}^{(j)} \sim \begin{cases}
-\delta_1 \qquad & j=1\\
-\operatorname{Categorical}\left( (a/\varepsilon)^{\1{i=1} -\1{i\neq 1}} ,\dots, (a/\varepsilon)^{\1{i=N} -\1{i\neq N}} \right) & j\neq 1
- \end{cases}
+& V_1^{(i)} 
+    \eqdist \1{i=1} + \operatorname{Binomial}\left(N-1, 
+        \frac{\varepsilon/a}{(\varepsilon/a) + (N-1)(a/\varepsilon)} \right) , \\
+& V_2^{(i)} 
+    \eqdist \1{i=1} + \operatorname{Binomial}\left( N-1, 
+        \frac{a/\varepsilon}{(a/\varepsilon) + (N-1)(\varepsilon/a)} \right) .
 \end{align*}
-independently for each $j$.
-The corresponding offspring counts have marginal distributions
-\begin{align*}
-& V_1^{(i)} \overset{d}{=} \1{i=1} + \operatorname{Binomial}\left(N-1, \frac{\varepsilon/a}{(\varepsilon/a) + (N-1)(a/\varepsilon)} \right) , \\
-& V_2^{(i)} \overset{d}{=} \1{i=1} + \operatorname{Binomial}\left( N-1, \frac{a/\varepsilon}{(a/\varepsilon) + (N-1)(\varepsilon/a)} \right) .
-\end{align*}
-Now consider the function $f_i(a_t^{(1:N)}) := (\nu_t^{(i)})_2$. We can apply \eqref{eq:csmc_f_bound} to obtain the lower bound
-\begin{align*}
-\frac{1}{(N)_2} \sum_{i=1}^N \E[ (\nu_t^{(i)})_2 \mid \mathcal{H}_t ]
-&\geq \frac{1}{(N)_2} \sum_{i=1}^N \E[ (V_1^{(i)})_2 ]
-=  \frac{1}{(N)_2} \left[ \E[ (V_1^{(1)})_2 ] + \sum_{i=2}^N \E[ (V_1^{(i)})_2 ] \right] \\
-&= \frac{1}{(N)_2} \Bigg[ \frac{(N-1)_2 (\varepsilon/a)^2}{\{(\varepsilon/a) + (N-1)(a/\varepsilon)\}^2} + \frac{2(N-1)(\varepsilon/a)}{(\varepsilon/a) + (N-1)(a/\varepsilon)}  \\
-&\qquad\qquad\qquad + \sum_{i=2}^N \frac{(N-1)_2 (\varepsilon/a)^2}{\{(\varepsilon/a) + (N-1)(a/\varepsilon)\}^2} \Bigg] \\
-&= \frac{1}{(N)_2} \left[ \frac{2(N-1)(\varepsilon/a)}{(\varepsilon/a) + (N-1)(a/\varepsilon)} + \sum_{i=1}^N \frac{(N-1)_2 (\varepsilon/a)^2}{\{(\varepsilon/a) + (N-1)(a/\varepsilon)\}^2} \right]
-\end{align*}
-using the identity $(X+1)_2 \equiv 2(X)_1 +(X)_2$.
-This is further bounded by
+independently for each $i$ and independently of $\mathcal{F}_\infty$.
+Furthermore, using the Binomial moments and the identity $(X+1)_2 \equiv 2(X)_1 +(X)_2$, one can show that
+\begin{equation*}
+\E[ (V_1^{(i)} )_2 ]
+\geq \begin{cases}
+\frac{(N-1)_2}{N^2}\frac{\varepsilon^4}{a^4} 
+        + \frac{2(N-1)}{N} \frac{\varepsilon^2}{a^2} &\text{if } i=1 \\
+\frac{(N-1)_2}{N^2}\frac{\varepsilon^4}{a^4} &\text{if } i\neq 1 .
+\end{cases}
+\end{equation*}
+Using the identity $(X+1)_3 \equiv 3(X)_2 +(X)_3$, we also have
+\begin{equation*}
+\E[ (V_2^{(i)} )_3 ]
+\leq \begin{cases}
+\frac{(N-1)_3}{N^3}\frac{a^6}{\varepsilon^6} 
+        + \frac{3(N-1)_2}{N^2} \frac{a^4}{\varepsilon^4} &\text{if } i=1 \\
+\frac{(N-1)_3}{N^3}\frac{a^6}{\varepsilon^6}  &\text{if } i\neq 1 .
+\end{cases}
+\end{equation*}
+We therefore have
 \begin{align}
 \frac{1}{(N)_2} \sum_{i=1}^N \E[ (\nu_t^{(i)})_2 \mid \mathcal{H}_t ]
-&\geq \frac{1}{(N)_2} \left\{ \frac{2(N-1)(\varepsilon/a)}{N(a/\varepsilon)} + \frac{(N)_3 (\varepsilon/a)^2}{N^2(a/\varepsilon)^2} \right\} \notag\\
-&= \frac{1}{N^2} \left\{\frac{2\varepsilon^2}{a^2} + \frac{(N-2)\varepsilon^4}{a^4}  \right\} . \label{eq:CSMC_cN_LB}
+&\geq \frac{1}{(N)_2} \sum_{i=1}^N \E[ ( V_1^{(i)} )_2 ]
+\geq \frac{1}{(N)_2} \left[ \frac{2(N-1)}{N} \frac{\varepsilon^2}{a^2}
+        + \sum_{i=1}^N \frac{(N-1)_2}{N^2}\frac{\varepsilon^4}{a^4} \right] \notag\\
+&= \frac{1}{N^2} \left[ 2 \frac{\varepsilon^2}{a^2} 
+        + (N-2) \frac{\varepsilon^4}{a^4} \right]
+   \geq \frac{\varepsilon^4}{Na^4} \label{eq:csmc_cN_LB}
 \end{align}
-Similarly, we derive an upper bound on $f_i(a_t^{(1:N)}) := (\nu_t^{(i)})_3$, this time using the identity $(X+1)_3 \equiv 3(X)_2 +(X)_3 $:
+and
 \begin{align*}
-\frac{1}{(N)_3} \sum_{i=1}^N \E[ (\nu_t^{(i)})_3 \mid \mathcal{H}_t]
-&\leq \frac{1}{(N)_3} \left[ \E[ (V_2^{(1)})_3 ] + \sum_{i=2}^N \E[ (V_2^{(i)})_3 ] \right] \\
-&\leq \frac{1}{(N)_3} \left[ \frac{ 3 (N-1)_2 (a/\varepsilon)^2}{\{(a/\varepsilon) + (N-1)(\varepsilon/a)\}^2} + \sum_{i=1}^N \frac{(N-1)_3 (a/\varepsilon)^3}{\{(a/\varepsilon) + (N-1)(\varepsilon/a)\}^3} \right] \\
-&\leq \frac{1}{(N)_3} \left\{ \frac{3(N-1)_2 (a/\varepsilon)^2}{N^2 (\varepsilon/a)^2} + \frac{(N)_4 (a/\varepsilon)^3}{N^3 (\varepsilon/a)^3} \right\} \\
-&= \frac{1}{(N)_3} \left\{ \frac{3(N-1)_2}{N^2} \frac{a^4}{\varepsilon^4} +\frac{(N)_4}{N^3} \frac{a^6}{\varepsilon^6} \right\} \\
-&= \frac{1}{N^3} \left\{ \frac{3a^4}{\varepsilon^4} + \frac{(N-3) a^6}{\varepsilon^6} \right\} .
+\frac{1}{(N)_3} \sum_{i=1}^N \E[ (\nu_t^{(i)})_3 \mid \mathcal{H}_t ]
+&\leq \frac{1}{(N)_3} \sum_{i=1}^N \E[ ( V_2^{(i)} )_3 ]
+\leq \frac{1}{(N)_3} \left[ \frac{3(N-1)_2}{N^2} \frac{a^4}{\varepsilon^4}
+        + \sum_{i=1}^N \frac{(N-1)_3}{N^3}\frac{a^6}{\varepsilon^6}  \right] \\
+&= \frac{1}{N^3} \left[ 3 \frac{a^4}{\varepsilon^4} 
+        + (N-3) \frac{a^6}{\varepsilon^6} \right]
+    \leq \frac{a^6}{N^2 \varepsilon^6} .
 \end{align*}
-Applying \eqref{eq:condexp_HtFt}, we can therefore upper bound the ratio by
-\begin{align*}
-\frac{\frac{1}{(N)_3} \sum_{i=1}^N \Et[ (\nu_t^{(i)})_3 ]}{\frac{1}{(N)_2} \sum_{i=1}^N \Et[ (\nu_t^{(i)})_2 ]}
-&\leq \frac{N^2}{N^3} \frac{ \frac{3a^4}{\varepsilon^4} + \frac{(N-3)a^6}{\varepsilon^6} }{ \frac{2\varepsilon^2}{a^2} + \frac{(N-2)\varepsilon^4}{a^4} }
-\leq \frac{1}{N} \frac{a^6}{\varepsilon^6}\, \frac{3 + (N-3) a^2 / \varepsilon^2 }{2 + (N-2) \varepsilon^2 / a^2} \\
-&\leq \frac{1}{N} \frac{a^6}{\varepsilon^6} \left\{ \frac{3}{2} + \frac{N-3}{N-2} \frac{a^4}{\varepsilon^4} \right\}
-\leq \frac{1}{N} \left\{ \frac{3 a^6}{2 \varepsilon^6} + \frac{a^{10}}{\varepsilon^{10}} \right\}
-=: b_N \underset{N\to\infty}{\longrightarrow} 0
-\end{align*}
+Hence, applying \eqref{eq:condexp_HtFt}, we can upper bound the ratio
+\begin{equation*}
+\frac{\frac{1}{(N)_3} \sum_{i=1}^N \Et[ (\nu_t^{(i)})_3 ]}{\frac{1}{(N)_2} 
+        \sum_{i=1}^N \Et[ (\nu_t^{(i)})_2 ]}
+\leq \frac{a^{10}}{N\varepsilon^{10}}
+=: b_N 
+\underset{N\to\infty}{\longrightarrow} 0
+\end{equation*}
 so \eqref{eq:mainthmcond} is satisfied. 
 Proof that the time scale is finite is relegated to Lemma \ref{thm:CSMC_nontriviality}, whence we conclude by applying Theorem~\ref{thm:FDDconv}.
+
+%%%%
+
+%As in standard SMC with multinomial resampling, under \eqref{eq:gq_bounds_csmc} we have
+%\begin{equation}\label{eq:csmc_f_bound}
+%\E[ f(A_{1,i}^{(1:N)}) ] 
+%\leq \E[ f(a_t^{(1:N)}) \mid \mathcal{H}_t ]
+%\leq \E[ f(A_{2,i}^{(1:N)}) ] 
+%\end{equation}
+%where now
+%\begin{align*}
+%& A_{1,i}^{(j)} \sim \begin{cases}
+%\delta_1 \qquad & j=1 \\
+%\operatorname{Categorical}\left( (\varepsilon/a)^{\1{i=1} -\1{i\neq 1}} ,\dots, (\varepsilon/a)^{\1{i=N} -\1{i\neq N}} \right) & j\neq 1 
+%\end{cases} \\
+%& A_{2,i}^{(j)} \sim \begin{cases}
+%\delta_1 \qquad & j=1\\
+%\operatorname{Categorical}\left( (a/\varepsilon)^{\1{i=1} -\1{i\neq 1}} ,\dots, (a/\varepsilon)^{\1{i=N} -\1{i\neq N}} \right) & j\neq 1
+% \end{cases}
+%\end{align*}
+%independently for each $j$.
+%The corresponding offspring counts have marginal distributions
+%\begin{align*}
+%& V_1^{(i)} \overset{d}{=} \1{i=1} + \operatorname{Binomial}\left(N-1, \frac{\varepsilon/a}{(\varepsilon/a) + (N-1)(a/\varepsilon)} \right) , \\
+%& V_2^{(i)} \overset{d}{=} \1{i=1} + \operatorname{Binomial}\left( N-1, \frac{a/\varepsilon}{(a/\varepsilon) + (N-1)(\varepsilon/a)} \right) .
+%\end{align*}
+%Now consider the function $f_i(a_t^{(1:N)}) := (\nu_t^{(i)})_2$. We can apply \eqref{eq:csmc_f_bound} to obtain the lower bound
+%\begin{align*}
+%\frac{1}{(N)_2} \sum_{i=1}^N \E[ (\nu_t^{(i)})_2 \mid \mathcal{H}_t ]
+%&\geq \frac{1}{(N)_2} \sum_{i=1}^N \E[ (V_1^{(i)})_2 ]
+%=  \frac{1}{(N)_2} \left[ \E[ (V_1^{(1)})_2 ] + \sum_{i=2}^N \E[ (V_1^{(i)})_2 ] \right] \\
+%&= \frac{1}{(N)_2} \Bigg[ \frac{(N-1)_2 (\varepsilon/a)^2}{\{(\varepsilon/a) + (N-1)(a/\varepsilon)\}^2} + \frac{2(N-1)(\varepsilon/a)}{(\varepsilon/a) + (N-1)(a/\varepsilon)}  \\
+%&\qquad\qquad\qquad + \sum_{i=2}^N \frac{(N-1)_2 (\varepsilon/a)^2}{\{(\varepsilon/a) + (N-1)(a/\varepsilon)\}^2} \Bigg] \\
+%&= \frac{1}{(N)_2} \left[ \frac{2(N-1)(\varepsilon/a)}{(\varepsilon/a) + (N-1)(a/\varepsilon)} + \sum_{i=1}^N \frac{(N-1)_2 (\varepsilon/a)^2}{\{(\varepsilon/a) + (N-1)(a/\varepsilon)\}^2} \right]
+%\end{align*}
+%using the identity $(X+1)_2 \equiv 2(X)_1 +(X)_2$.
+%This is further bounded by
+%\begin{align}
+%\frac{1}{(N)_2} \sum_{i=1}^N \E[ (\nu_t^{(i)})_2 \mid \mathcal{H}_t ]
+%&\geq \frac{1}{(N)_2} \left\{ \frac{2(N-1)(\varepsilon/a)}{N(a/\varepsilon)} + \frac{(N)_3 (\varepsilon/a)^2}{N^2(a/\varepsilon)^2} \right\} \notag\\
+%&= \frac{1}{N^2} \left\{\frac{2\varepsilon^2}{a^2} + \frac{(N-2)\varepsilon^4}{a^4}  \right\} . \label{eq:CSMC_cN_LB}
+%\end{align}
+%Similarly, we derive an upper bound on $f_i(a_t^{(1:N)}) := (\nu_t^{(i)})_3$, this time using the identity $(X+1)_3 \equiv 3(X)_2 +(X)_3 $:
+%\begin{align*}
+%\frac{1}{(N)_3} \sum_{i=1}^N \E[ (\nu_t^{(i)})_3 \mid \mathcal{H}_t]
+%&\leq \frac{1}{(N)_3} \left[ \E[ (V_2^{(1)})_3 ] + \sum_{i=2}^N \E[ (V_2^{(i)})_3 ] \right] \\
+%&\leq \frac{1}{(N)_3} \left[ \frac{ 3 (N-1)_2 (a/\varepsilon)^2}{\{(a/\varepsilon) + (N-1)(\varepsilon/a)\}^2} + \sum_{i=1}^N \frac{(N-1)_3 (a/\varepsilon)^3}{\{(a/\varepsilon) + (N-1)(\varepsilon/a)\}^3} \right] \\
+%&\leq \frac{1}{(N)_3} \left\{ \frac{3(N-1)_2 (a/\varepsilon)^2}{N^2 (\varepsilon/a)^2} + \frac{(N)_4 (a/\varepsilon)^3}{N^3 (\varepsilon/a)^3} \right\} \\
+%&= \frac{1}{(N)_3} \left\{ \frac{3(N-1)_2}{N^2} \frac{a^4}{\varepsilon^4} +\frac{(N)_4}{N^3} \frac{a^6}{\varepsilon^6} \right\} \\
+%&= \frac{1}{N^3} \left\{ \frac{3a^4}{\varepsilon^4} + \frac{(N-3) a^6}{\varepsilon^6} \right\} .
+%\end{align*}
+%Applying \eqref{eq:condexp_HtFt}, we can therefore upper bound the ratio by
+%\begin{align*}
+%\frac{\frac{1}{(N)_3} \sum_{i=1}^N \Et[ (\nu_t^{(i)})_3 ]}{\frac{1}{(N)_2} \sum_{i=1}^N \Et[ (\nu_t^{(i)})_2 ]}
+%&\leq \frac{N^2}{N^3} \frac{ \frac{3a^4}{\varepsilon^4} + \frac{(N-3)a^6}{\varepsilon^6} }{ \frac{2\varepsilon^2}{a^2} + \frac{(N-2)\varepsilon^4}{a^4} }
+%\leq \frac{1}{N} \frac{a^6}{\varepsilon^6}\, \frac{3 + (N-3) a^2 / \varepsilon^2 }{2 + (N-2) \varepsilon^2 / a^2} \\
+%&\leq \frac{1}{N} \frac{a^6}{\varepsilon^6} \left\{ \frac{3}{2} + \frac{N-3}{N-2} \frac{a^4}{\varepsilon^4} \right\}
+%\leq \frac{1}{N} \left\{ \frac{3 a^6}{2 \varepsilon^6} + \frac{a^{10}}{\varepsilon^{10}} \right\}
+%=: b_N \underset{N\to\infty}{\longrightarrow} 0
+%\end{align*}
+%so \eqref{eq:mainthmcond} is satisfied. 
+%Proof that the time scale is finite is relegated to Lemma \ref{thm:CSMC_nontriviality}, whence we conclude by applying Theorem~\ref{thm:FDDconv}.
 \end{proof}
 
 
@@ -750,15 +826,17 @@ Then, for all $N>2$, $\Prob[ \tau_N(t) = \infty ]=0$ for all finite $t$.
 \end{lemma}
 
 \begin{proof}
-Since $c_N(t) \in [0,1]$ almost surely and has strictly positive expectation, for any fixed $N$ the distribution of $c_N(t)$ with given expectation that maximises $\Prob[ c_N(t)=0 \mid \mathcal{F}_{t-1} ]$ is two atoms, at 0 and 1 respectively. To ensure the correct expectation, the atom at 1 should have mass $\Prob[ c_N(t)=1 \mid \mathcal{F}_{t-1} ] = \Et [ c_N(t) ]$, which is bounded below by \eqref{eq:CSMC_cN_LB}.
-If $c_N(t) > 0$ then $c_N(t) \geq 2/(N)_2 > 2/N^2$. Hence, in general $\Prob[ c_N(t) > 2/N^2 \mid \mathcal{F}_{t-1} ] \geq \Et [c_N(t)]$. Applying \eqref{eq:CSMC_cN_LB}, we have for any finite $N$,
-\begin{equation*}
-\sum_{t=0}^\infty \Prob[ c_N(t) > 2/N^2 \mid \mathcal{F}_{t-1} ]
-\geq \sum_{t=0}^\infty \Et [ c_N(t) ]
-\geq \sum_{t=0}^\infty \frac{1}{N^2} \left\{\frac{2\varepsilon^2}{a^2} + \frac{(N-2)\varepsilon^4}{a^4}  \right\}
-= \infty
-\end{equation*}
-By an argument analogous to the conclusion of Lemma \ref{thm:SR_nontriviality}, $\Prob[ \tau_N(t) = \infty ] =0$ for all $t < \infty$.
+The proof is exactly the same as Lemma~\ref{thm:mn_nontriviality}, since \eqref{eq:csmc_cN_LB} gives us exactly the same lower bound on $\Et [ c_N(t) ]$ that we had in standard SMC with multinomial resampling.
+%%%
+%Since $c_N(t) \in [0,1]$ almost surely and has strictly positive expectation, for any fixed $N$ the distribution of $c_N(t)$ with given expectation that maximises $\Prob[ c_N(t)=0 \mid \mathcal{F}_{t-1} ]$ is two atoms, at 0 and 1 respectively. To ensure the correct expectation, the atom at 1 should have mass $\Prob[ c_N(t)=1 \mid \mathcal{F}_{t-1} ] = \Et [ c_N(t) ]$, which is bounded below by \eqref{eq:CSMC_cN_LB}.
+%If $c_N(t) > 0$ then $c_N(t) \geq 2/(N)_2 > 2/N^2$. Hence, in general $\Prob[ c_N(t) > 2/N^2 \mid \mathcal{F}_{t-1} ] \geq \Et [c_N(t)]$. Applying \eqref{eq:CSMC_cN_LB}, we have for any finite $N$,
+%\begin{equation*}
+%\sum_{t=0}^\infty \Prob[ c_N(t) > 2/N^2 \mid \mathcal{F}_{t-1} ]
+%\geq \sum_{t=0}^\infty \Et [ c_N(t) ]
+%\geq \sum_{t=0}^\infty \frac{1}{N^2} \left\{\frac{2\varepsilon^2}{a^2} + \frac{(N-2)\varepsilon^4}{a^4}  \right\}
+%= \infty
+%\end{equation*}
+%By an argument analogous to the conclusion of Lemma \ref{thm:SR_nontriviality}, $\Prob[ \tau_N(t) = \infty ] =0$ for all $t < \infty$.
 \end{proof}
 
 
