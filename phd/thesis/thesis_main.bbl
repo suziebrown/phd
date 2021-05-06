@@ -455,6 +455,33 @@
       \field{pages}{549\bibrangedash 578}
       \range{pages}{30}
     \endentry
+    \entry{delmoral2004}{book}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=d771d04fc13831e7ab9152984eaa0d86}{%
+           family={Del\bibnamedelima Moral},
+           familyi={D\bibinitperiod\bibinitdelim M\bibinitperiod},
+           given={Pierre},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{d771d04fc13831e7ab9152984eaa0d86}
+      \strng{fullhash}{d771d04fc13831e7ab9152984eaa0d86}
+      \strng{bibnamehash}{d771d04fc13831e7ab9152984eaa0d86}
+      \strng{authorbibnamehash}{d771d04fc13831e7ab9152984eaa0d86}
+      \strng{authornamehash}{d771d04fc13831e7ab9152984eaa0d86}
+      \strng{authorfullhash}{d771d04fc13831e7ab9152984eaa0d86}
+      \field{sortinit}{D}
+      \field{sortinithash}{2ef1bd9a78cc71eb74d7231c635177b8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{Feynman}--{Kac} Formulae: Genealogical and Interacting Particle Systems with Applications}
+      \field{year}{2004}
+    \endentry
     \entry{douc2005}{inproceedings}{}
       \name{author}{3}{}{%
         {{uniquename=0,uniquepart=base,hash=8016e20ffe53cd289b6f027afc9eab01}{%
