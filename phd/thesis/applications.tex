@@ -31,13 +31,13 @@ The parental indices are conditionally independent, with conditional law
 \begin{equation}\label{eq:parentslaw_mn}
 \Prob \left[ a_t^{(i)} = a_i \mid \mathcal{H}_t \right] 
 %\propto w_t^{(a_i)} q_{t-1}(X_t^{(a_i)}, X_{t-1}^{(i)})
-\propto g_t( X_{t+1}^{a_t^{(a_i)}} , X_t^{(a_i)} ) q_{t-1}(X_t^{(a_i)}, X_{t-1}^{(i)})
+\propto g_t( X_{t+1}^{a_{t+1}^{(a_i)}} , X_t^{(a_i)} ) q_{t-1}(X_t^{(a_i)}, X_{t-1}^{(i)})
 \end{equation}
 for each $i$, so the joint law is
 \begin{equation*}
 \Prob \left[ a_t^{(1:N)} = a_{1:N} \mid \mathcal{H}_t \right] 
 %\propto \prod_{i=1}^N w_t^{(a_i)} q_{t-1}(X_t^{(a_i)}, X_{t-1}^{(i)}).
-\propto \prod_{i=1}^N g_t( X_{t+1}^{a_t^{(a_i)}} , X_t^{(a_i)} ) 
+\propto \prod_{i=1}^N g_t( X_{t+1}^{a_{t+1}^{(a_i)}} , X_t^{(a_i)} ) 
         q_{t-1}(X_t^{(a_i)}, X_{t-1}^{(i)}).
 \end{equation*}
 %
