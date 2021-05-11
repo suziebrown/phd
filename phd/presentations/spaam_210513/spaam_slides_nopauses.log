@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  11 MAY 2021 09:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  11 MAY 2021 09:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**spaam_slides.tex
-(./spaam_slides.tex
+**spaam_slides_nopauses.tex
+(./spaam_slides_nopauses.tex
 LaTeX2e <2018-04-01> patch level 2
 Babel <3.18> and hyphenation patterns for 84 language(s) loaded.
 (/usr/local/texlive/2018/texmf-dist/tex/latex/beamer/beamer.cls
@@ -683,7 +683,7 @@ Package: suffix 2006/07/15 1.5a Variant command support
 (/usr/local/texlive/2018/texmf-dist/tex/latex/natbib/bibentry.sty
 Package: bibentry 2007/10/30 1.5 (PWD)
 )
-No file spaam_slides.bbl.
+No file spaam_slides_nopauses.bbl.
 (/usr/local/texlive/2018/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
 (/usr/local/texlive/2018/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
 Package: pgf 2015/08/07 v3.0.1a (rcs-revision 1.15)
@@ -773,8 +773,8 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\\' on input line 68.
 
-(./spaam_slides.aux)
-\openout1 = `spaam_slides.aux'.
+(./spaam_slides_nopauses.aux)
+\openout1 = `spaam_slides_nopauses.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 71.
 LaTeX Font Info:    ... okay on input line 71.
@@ -871,9 +871,9 @@ LaTeX Info: Redefining \ref on input line 71.
 LaTeX Info: Redefining \pageref on input line 71.
 LaTeX Info: Redefining \nameref on input line 71.
 
-(./spaam_slides.out) (./spaam_slides.out)
+(./spaam_slides_nopauses.out) (./spaam_slides_nopauses.out)
 \@outlinefile=\write5
-\openout5 = `spaam_slides.out'.
+\openout5 = `spaam_slides_nopauses.out'.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 71.
@@ -951,7 +951,7 @@ Dictionary: translator-numbers-dictionary, Language: English
 (/usr/local/texlive/2018/texmf-dist/tex/latex/translator/translator-theorem-dic
 tionary-English.dict
 Dictionary: translator-theorem-dictionary, Language: English 
-) (./spaam_slides.nav) [1
+) (./spaam_slides_nopauses.nav) [1
 
 {/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 LaTeX Font Info:    Try loading font information for U+msa on input line 83.
@@ -1005,13 +1005,13 @@ Package pdftex.def Info: ncoalescent.pdf  used on input line 266.
 
 ]
 \tf@nav=\write6
-\openout6 = `spaam_slides.nav'.
+\openout6 = `spaam_slides_nopauses.nav'.
 
 \tf@toc=\write7
-\openout7 = `spaam_slides.toc'.
+\openout7 = `spaam_slides_nopauses.toc'.
 
 \tf@snm=\write8
-\openout8 = `spaam_slides.snm'.
+\openout8 = `spaam_slides_nopauses.snm'.
 
 
 
@@ -1021,20 +1021,20 @@ Package bibentry Warning: You have used \nobibliography*
 
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 385.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 385.
-(./spaam_slides.aux)
+(./spaam_slides_nopauses.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 385.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 385.
-Package rerunfilecheck Info: File `spaam_slides.out' has not changed.
+Package rerunfilecheck Info: File `spaam_slides_nopauses.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
  20428 strings out of 492649
- 402238 string characters out of 6129623
+ 402373 string characters out of 6129623
  498985 words of memory out of 5000000
  23822 multiletter control sequences out of 15000+600000
  15144 words of font info for 55 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 56i,15n,59p,806b,699s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 56i,15n,59p,815b,699s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
 ></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb>
 </usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></
@@ -1049,7 +1049,7 @@ local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/l
 ocal/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/loc
 al/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr
 /local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on spaam_slides.pdf (14 pages, 159257 bytes).
+Output written on spaam_slides_nopauses.pdf (14 pages, 159257 bytes).
 PDF statistics:
  184 PDF objects out of 1000 (max. 8388607)
  138 compressed objects within 2 object streams
