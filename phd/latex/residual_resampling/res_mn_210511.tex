@@ -1,0 +1,70 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=2cm]{geometry}
+
+% custom header/footer
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+\fancyhf{}
+\rfoot{\textsf{\thepage}}
+\lfoot{\textsf{Suzie Brown}}
+
+% maths
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{bbm}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newcommand{\Prob}{\mathbb{P}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Et}{\mathbb{E}_t}
+\newcommand{\V}{\operatorname{Var}}
+\newcommand{\I}[1]{\mathbbm{1}_{\{#1\}}}
+\newcommand{\1}[1]{\mathbbm{1}_{#1}}
+\newcommand{\flnw}[1][i]{\lfloor N w_t^{(#1)} \rfloor}
+\newcommand{\Ht}{\mathcal{H}_t}
+\newcommand{\Cat}{\operatorname{Categorical}}
+
+\title{Thoughts on residual-multinomial resampling}
+\author{Suzie Brown}
+\date{\today}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+
+\begin{itemize}
+\item $R:= N - \sum \flnw$ 
+\item $r_i := \frac{1}{R} ( Nw_t^{(i)} - \flnw )$
+\item Parent $i$ is deterministically assigned $\flnw$ offspring, for each $i$, and the remaining $R$ offspring are assigned to parents chosen independently $\sim \Cat(r_{1:N})$
+\item Let $\mathcal{I} \subseteq [N]$ denote the index set of offspring that are assigned to the ``deterministic slots''
+\item $|\mathcal{I}| = N-R = \sum \flnw$
+\item $\mathcal{I} \mid w_t^{(1:N)}$ is uniform over the $\binom{N}{R}$ possible subsets of size $N-R$, due to the Standing Assumption
+\item $a_t^{\mathcal{I}}$ and $a_t^{\mathcal{I}^c}$ are conditionally independent given $\mathcal{I}$, due to the Standing Assumption
+\item The assumed bounds on $g_t$ imply almost surely $w_t^{(i)} \in [ \frac{1}{a^2 N}, \frac{a^2}{N} ]$, hence $\flnw \in [a^{-2}, a^2] $ and $|\mathcal{I}|= O(N)$
+\end{itemize}
+So...
+\begin{equation}
+\Prob[ a_t^{(1:N)} = a_{1:N} \mid \mathcal{H}_t ]
+= \sum_{\mathcal{I}\subseteq[N]} \Prob[ \mathcal{I} \mid \mathcal{H}_t ]
+        \, \Prob[ a_t^{\mathcal{I}} = a_{\mathcal{I}} \mid \mathcal{I}, \mathcal{H}_t ]
+        \, \Prob[ a_t^{\mathcal{I}^c} = a_{\mathcal{I}^c} \mid \mathcal{I}, \mathcal{H}_t ]
+\end{equation}
+$\Prob[ \mathcal{I} \mid \mathcal{H}_t ]$ is not tractable, but will sum to one if the other terms can be bounded independently of $\mathcal{I}$.
+\begin{equation}
+\Prob[ a_t^{\mathcal{I}} = a_{\mathcal{I}} \mid \mathcal{I}, \mathcal{H}_t ]
+\propto \left( \prod_{i=1}^N \I{ |\{ j \in \mathcal{I} : a_j =i \}| = \flnw } \right)
+        \left( \prod_{i\in\mathcal{I}} q_{t-1}(X_t^{(a_i)}, X_{t-1}^{(i)} ) \right)
+\end{equation}
+Indicators ensure correct number of deterministic slots for each parent, $q$'s incorporate probability of particular parent-offspring assignment.
+\begin{equation}
+\Prob[ a_t^{\mathcal{I}^c} = a_{\mathcal{I}^c} \mid \mathcal{I}, \mathcal{H}_t ]
+\propto \prod_{i\in\mathcal{I}^c} r_{a_i} q_{t-1}(X_t^{(a_i)}, X_{t-1}^{(i)} ) 
+\end{equation}
+$r$'s are the probabilities from the Categorical sampling of parents, $q$'s as above.
+
+
+
+\end{document}
