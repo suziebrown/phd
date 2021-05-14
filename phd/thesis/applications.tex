@@ -22,8 +22,10 @@ Consider an SMC algorithm using multinomial resampling, such that \ref{standing_
 \end{equation}
 Let $(G_t^{(n,N)})_{t\geq0}$ denote the genealogy of a random sample of $n$ terminal particles from the output of the algorithm when the total number of particles used is $N$. Then, for any fixed $n$, the time-scaled genealogy $(G_{\tau_N(t)}^{(n,N)})_{t\geq0}$ converges to Kingman's $n$-coalescent as $N\to \infty$, in the sense of finite-dimensional distributions.
 \end{corollary}
-The bounds on $g_t$ and $q_t$ in \eqref{eq:gq_bounds_mn} are rather strong; they can only reasonably be expected to hold if the state space is compact. However they are widespread in the literature, where they are known as the \emph{strong mixing conditions} \parencite[Section 3.5.2]{delmoral2004}, because they greatly facilitate the theoretical analysis of SMC algorithms. It is often possible to relax these conditions at the expense of considerable technical complication.
-In the following proof, conditions \eqref{eq:gq_bounds_mn} ensure that the weights are all $O(N^{-1})$, none of them being too close to zero or one, which controls the relative rate of multiple mergers.
+The bounds on $g_t$ and $q_t$ in \eqref{eq:gq_bounds_mn} are rather strong; they can only reasonably be expected to hold if the state space is compact. 
+However, they are widespread in the literature, where they are known as the \emph{strong mixing conditions} \parencite[Section 3.5.2]{delmoral2004}, because they greatly facilitate the theoretical analysis of SMC algorithms. It is often possible to relax these conditions at the expense of considerable technical complication.
+The conditions on $g_t$ in \eqref{eq:gq_bounds_mn} ensure that the weights are all $O(N^{-1})$, none of them being too close to zero or one. Together with the bounds on $q_t$, this is enough to control the relative rate of multiple mergers, as seen in the following proof.
+%In the following proof, conditions \eqref{eq:gq_bounds_mn} ensure that the weights are all $O(N^{-1})$, none of them being too close to zero or one, which controls the relative rate of multiple mergers.
 
 \begin{proof}
 Define the conditioning $\sigma$-algebra $\mathcal{H}_t$ as in \eqref{eq:defn_Ht}.
@@ -200,8 +202,9 @@ Assume that there exists a constant $a\in [1,\infty)$ such that for all $x, x^\p
 Assume that $\Prob[ \tau_N(t) = \infty] =0$ for all finite $t$.
 Let $(G_t^{(n,N)})_{t\geq0}$ denote the genealogy of a random sample of $n$ terminal particles from the output of the algorithm when the total number of particles used is $N$. Then, for any fixed $n$, the time-scaled genealogy $(G_{\tau_N(t)}^{(n,N)})_{t\geq0}$ converges to Kingman's $n$-coalescent as $N\to \infty$, in the sense of finite-dimensional distributions.
 \end{corollary}
+Stratified resampling is, by design, much more restrictive than multinomial resampling. Once the weights are known there is little freedom in the offspring counts, so it is not surprising that control over the weights such as \eqref{eq:gq_bounds_sr} provides is sufficient without any additional control over the transition densities $q_t$. This is in contrast to multinomial resampling (Corollary~\ref{thm:multinomial}), where $g_t$ and $q_t$ are more or less on an equal footing, and we require both to be bounded.
 
-\draft{Remark that bounds on $q$ are no longer needed, and explain why. Explain why we now include the finite time scale condition in the statement: it doesn't necessarily hold under the conditions stated here, as was the case in Corollary~\ref{thm:multinomial}.}
+It is not immediately clear that the finite time scale condition $\Prob[ \tau_N(t) = \infty] =0$ holds under conditions \eqref{eq:gq_bounds_sr}, so it is included in the statement of the corollary. Proposition~\ref{thm:SR_nontriviality} presents some sufficient conditions for the finite time scale, but these are by no means necessary.
 
 \seb{By the way, does the lack of conditions of $q_t$ here imply that we do not even need the transition kernels to admit densities?}
 
@@ -253,16 +256,15 @@ Suppose that
 \varepsilon \leq q_t(x, x^\prime) \leq \varepsilon^{-1}
 \end{equation*}
 uniformly in $x,x^\prime$ for some $\varepsilon \in (0,1]$, and that there exist $\zeta >0$ and $\delta >0$ such that 
-\begin{equation*}
-\Prob[ \max_i w_t^{(i)} - \min_i w_t^{(i)} \geq 2\delta/N \mid \mathcal{F}_{t-1} ] \geq \zeta
-\end{equation*}
+\begin{equation}
+\Prob[ \max_i w_t^{(i)} - \min_i w_t^{(i)} \geq 2\delta/N \mid \mathcal{F}_{t-1} ] \geq \zeta \label{eq:strat_minmaxweight}
+\end{equation}
  for infinitely many $t$. Then, for all $N>1$, $\Prob[ \tau_N(t) = \infty ] =0$ for all finite $t$.
 \end{prop}
+We now require bounds on $q_t$, somewhat stronger than those in \eqref{eq:gq_bounds_mn} as the bounds are now uniform in $x^\prime$.
+We saw that such a condition was not necessary for Corollary \ref{thm:stratified}, and we do not believe it to be necessary here either; it is merely a convenient way to control the contributions from the transition density. The bounds established in the following proof are rather crude, particularly the terms in $\varepsilon$; it may well be possible to achieve similar bounds under less restrictive conditions.
 
-\draft{Comment that we now invoke the bounds on $q$, which were not needed to prove the rest of the corollary, and it may well be possible to prove the finite time scale condition without bounds on $q$.}
-
-The extra condition that the transition densities are bounded above and away from zero \seb{... say something intelligent}.
-The second condition is required to ensure that, at least infinitely often, the weights are not equal to $(1,\dots,1)/N$, since stochastic rounding is degenerate under equal weights and this will cause the time scale to explode. 
+The second condition \eqref{eq:strat_minmaxweight} is required to ensure that, at least infinitely often, the weights are not equal to $(1,\dots,1)/N$, since stochastic rounding is degenerate under equal weights and this will cause the time scale to explode. 
 It is hardly conceivable that any real SMC algorithm would fail to satisfy this condition, which effectively ensures that the weights cannot be ``too well-behaved''.
 
 
@@ -680,7 +682,7 @@ Let $(G_t^{(n,N)})_{t\geq0}$ denote the genealogy of a random sample of $n$ term
 We restrict here to the case of multinomial resampling, which seems to be the most commonly-used resampling scheme within conditional SMC. Implementing other resampling schemes while maintaining the immortal lineage is more involved, though by no means impossible.\seb{cite that unpublished paper by AMJ and Arnaud?}
 We conjecture that similar results hold for conditional SMC with other resampling schemes, as in the preceding corollaries.
 
-\draft{As one might expect, the conditions here (i.e. bounds on $g$, $q$) are the same as for multinomial resampling...}
+The conditions \eqref{eq:gq_bounds_csmc} are, as one might expect, identical to those assumed in the case of standard SMC with multinomial resampling (Corollary~\ref{thm:multinomial}).
 
 \begin{proof}
 Assume, without loss of generality, that the immortal particle takes index 1 in each generation. This significantly lightens the notation, but the same argument holds if the immortal indices are taken to be $a_{(0:T)}^\star$ rather than $(1,\dots,1)$.
