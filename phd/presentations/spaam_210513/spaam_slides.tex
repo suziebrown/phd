@@ -93,7 +93,7 @@
 \filldraw[darkred] (0,2.2) circle (6pt);
 \node[rectangle, draw=black] at (0,4) {$t$};
 
-%\pause
+\pause
 
 \node[text width = 10em, text centered] at (2.5,4) {{``mutate'' $X_t$ through\\ Markov kernel $K_t$}};
 
@@ -107,7 +107,7 @@
 \filldraw[darkred] (5,1.2) circle (6pt);
 \filldraw[darkred] (5,3) circle (6pt);
 
-%\pause
+\pause
 
 \node[text width = 10em, text centered] at (7.5,4) {{``fitness'' $\propto g_t(X_t)$}};
 
@@ -121,7 +121,7 @@
 \filldraw[darkred] (10,1.2) circle (7pt);
 \filldraw[darkred] (10,3) circle (2pt);
 
-%\pause
+\pause
 
 \node[text width = 10em, text centered] at (12.5,4) {{individual $i$ has\\ $\nu_t^{(i)}$ ``offspring''\\ according to fitness}};
 
@@ -135,10 +135,10 @@
 \filldraw[darkred] (14.9,0.07) circle (6pt);
 \filldraw[darkred] (15,1.2) circle (6pt);
 
-\draw[darkred] (14.8,3.2) -- (15.2, 2.8);
-\draw[darkred] (14.8,2.8) -- (15.2, 3.2);
-\draw[darkred] (14.8,-0.7) -- (15.2, -1.1);
-\draw[darkred] (14.8,-1.1) -- (15.2, -0.7);
+\draw[darkred, thick] (14.8,3.2) -- (15.2, 2.8);
+\draw[darkred, thick] (14.8,2.8) -- (15.2, 3.2);
+\draw[darkred, thick] (14.8,-0.7) -- (15.2, -1.1);
+\draw[darkred, thick] (14.8,-1.1) -- (15.2, -0.7);
 
 \node[rectangle, draw=black] at (15.2,4) {$t+1$};
 \end{tikzpicture}
@@ -165,7 +165,7 @@
 \filldraw (2,-2) circle (6pt);
 \filldraw (2,-3) circle (6pt);
 
-%\pause
+\pause
 
 \filldraw (4,0) circle (6pt);
 \filldraw (4,-1) circle (6pt);
@@ -197,7 +197,7 @@
 \draw[->, thick] (6.3,-2)--(7.7,-2);
 \draw[->, thick] (6.3,-2)--(7.7,-3);
 
-%\pause
+\pause
 
 \filldraw[darkred] (8,0) circle (5pt);
 \filldraw[darkred] (6,0) circle (5pt);
@@ -293,9 +293,11 @@ Then the rescaled genealogy of $n$ individuals converges weakly to the $n$-coale
 \begin{frame}{Sufficient conditions, neutral case}
 \begin{itemize}
 \item Exchangeability = neutrality (genotype does not affect number of offspring)
+\pause
 \item System completely specified by distribution of $\nu^{(1:N)}$
 \item \textbf{Wright-Fisher model:} $\nu^{(1:N)} \sim \Mn( N, (\frac{1}{N},\dots, \frac{1}{N}) )$
 \item \textbf{Moran model:} $\nu^{(1:N)}$ uniform over permutations of $(2,0,1,\dots, 1)$
+\pause
 \item Since $\sum \nu^{(i)} = N$ and individuals are exchangeable, $\E[\nu^{(i)}] = 1$.
 \item Case $\sigma^2 = 0$ would mean no coalescences in the limit
 \end{itemize}
@@ -323,7 +325,7 @@ c_N := \frac{N \E[ ( \nu^{(1)} )_2 ] }{(N)_2}
 \begin{frame}{Necessary and sufficient conditions, neutral case}
 \begin{itemize}
 \item The condition $c_N >0$ plays the same role as Kingman's condition $\sigma^2 >0$
-\item $c_N = \frac{\V[\nu^{(1)}]}{N-1}$, so $c_N \to 0$ is less restrictive than Kingman's condition $\V[ \nu^{(1)} ] \to \sigma^2$
+\item $c_N = \frac{\V[\nu^{(1)}]}{N-1}$, so $c_N \to 0$ is weaker than Kingman's condition $\V[ \nu^{(1)} ] \to \sigma^2$
 \item Only requires control up to 3rd moment, cf.\ Kingman requires \emph{all} moments finite
 \end{itemize}
 \end{frame}
