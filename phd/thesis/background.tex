@@ -662,7 +662,9 @@ This scheme ensures that the samples are ``well spread out'', which reduces the 
 
 It will be useful later on to have a better idea about the marginal distributions of $\nu_t^{(i)}$ that are induced by stratified resampling. There are complex dependencies between the offspring counts, but we can still find some constraints on the distribution of each count conditional on the corresponding weight.
 Write the $i^{th}$ weight in the form $w_t^{(i)} = (k + \delta)/N$, where $\delta \in [0,1)$ and $k\in \{0,\dots,N-1\}$.
-Considering the illustration Figure~\ref{fig:resampling_stratified}, the distribution of $\nu_t^{(i)}$ depends not only on $w_t^{(i)}$ but also on where the $i^{th}$ weight interval falls with respect to the length-$(1/N)$ intervals. There are two cases to consider, which are illustrated in Figure~\ref{fig:strat_cases}. Note that Case \subref{fig:strat_case2} cannot happen if $k=0$.
+Considering the illustration Figure~\ref{fig:resampling_stratified}, the distribution of $\nu_t^{(i)}$ depends not only on $w_t^{(i)}$ but also on where the $i^{th}$ weight interval falls with respect to the length-$(1/N)$ intervals. There are two cases to consider, which are illustrated in Figure~\ref{fig:strat_cases}.
+The distinction between Cases \subref{fig:strat_case1} and \subref{fig:strat_case2} is whether the ``overhang'' is less than or greater than $1/N$. Arrangements such that one or both ends have no overhang are included in Case \subref{fig:strat_case1}, with the relevant overhang lengths ($\delta_L$ and/or $\delta_R$) set to zero.
+Note that Case \subref{fig:strat_case2} cannot happen if $k=0$.
 
 %\begin{figure}
 %\centering
