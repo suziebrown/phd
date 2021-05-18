@@ -251,19 +251,18 @@ The result then follows by applying Theorem~\ref{thm:FDDconv}.
 
 \begin{prop}\label{thm:strat_nontriviality}
 Consider an SMC algorithm using stratified resampling.
-Suppose that 
+Suppose that there exists a constant $\varepsilon \in (0,1]$ and a probability density $h$
 \begin{equation*}
-\varepsilon \leq q_t(x, x^\prime) \leq \varepsilon^{-1}
+\varepsilon h(x') \leq q_t(x, x^\prime) \leq \varepsilon^{-1} h(x')
 \end{equation*}
-uniformly in $x,x^\prime$ for some $\varepsilon \in (0,1]$, and that there exist $\zeta >0$ and $\delta >0$ such that 
+uniformly in $x$, and that there exist $\zeta >0$ and $\delta >0$ such that 
 \begin{equation}
 \Prob[ \max_i w_t^{(i)} - \min_i w_t^{(i)} \geq 2\delta/N \mid \mathcal{F}_{t-1} ] \geq \zeta \label{eq:strat_minmaxweight}
 \end{equation}
  for infinitely many $t$. Then, for all $N>1$, $\Prob[ \tau_N(t) = \infty ] =0$ for all finite $t$.
 \end{prop}
-We now require bounds on $q_t$, somewhat stronger than those in \eqref{eq:gq_bounds_mn} as the bounds are now uniform in $x^\prime$.
-\seb{Are we sure they need to be uniform in $x^\prime$?}
-We saw that such a condition was not necessary for Corollary \ref{thm:stratified}, and we do not believe it to be necessary here either; it is merely a convenient way to control the contributions from the transition density. The bounds established in the following proof are rather crude, particularly the terms in $\varepsilon$; it may well be possible to achieve similar bounds under less restrictive conditions.
+We now assume $q_t$ is bounded above and away from zero, as in \eqref{eq:gq_bounds_mn}.
+We saw that such a condition was not necessary for Corollary~\ref{thm:stratified}, and we do not believe it to be necessary here either; it is merely a convenient way to control the contributions from the transition density. The bounds established in the following proof are rather crude, particularly the terms in $\varepsilon$; it may well be possible to achieve similar bounds under less restrictive conditions.
 
 The second condition \eqref{eq:strat_minmaxweight} is required to ensure that, at least infinitely often, the weights are not equal to $(1,\dots,1)/N$, since stochastic rounding is degenerate under equal weights and this will cause the time scale to explode. 
 It is hardly conceivable that any real SMC algorithm would fail to satisfy this condition, which effectively ensures that the weights cannot be ``too well-behaved''.
@@ -303,22 +302,27 @@ p_k^{(i)}
 \end{align*}
 for each $k\in\{-1,0,1,2\}$.
 We can bound each probability above and below using the almost sure bounds on $q_{t-1}$ from the statement of the Proposition:
-\begin{equation*}
-C \, \Prob \left[ \nu_t^{(i)} = \flnw + k \midd w_t^{(1:N)} \right] \varepsilon^N
-\leq p_k^{(i)}
-\leq C \, \Prob \left[ \nu_t^{(i)} = \flnw + k \midd w_t^{(1:N)} \right] \varepsilon^{-N}
-\end{equation*}
-then eliminate the constant $C$ by normalising, to obtain lower bounds
+\begin{align*}
+p_k^{(i)}
+&\geq C \, \Prob \left[ \nu_t^{(i)} = \flnw + k \midd w_t^{(1:N)} \right] \varepsilon^N
+        \prod_{j=1}^N h(X_{t-1}^{(j)}) , \\
+p_k^{(i)}
+&\leq C \, \Prob \left[ \nu_t^{(i)} = \flnw + k \midd w_t^{(1:N)} \right] 
+        \varepsilon^{-N} \prod_{j=1}^N h(X_{t-1}^{(j)}) ,
+\end{align*}
+then eliminate the proportionality constant $C$ by normalising, to obtain lower bounds
 \begin{align}
 p_k^{(i)} 
-&\geq \frac{ C \, \Prob [ \nu_t^{(i)} = \flnw + k \mid w_t^{(1:N)} ] \varepsilon^N }{
+&\geq \frac{ C \, \Prob [ \nu_t^{(i)} = \flnw + k \mid w_t^{(1:N)} ] 
+        \varepsilon^N \prod_{j=1}^N h(X_{t-1}^{(j)}) }{
         \sum_{j=-1}^2 C \, \Prob [ \nu_t^{(i)} = \flnw + j \mid w_t^{(1:N)} ] 
-        \varepsilon^{-N} } \notag\\
+        \varepsilon^{-N} \prod_{j=1}^N h(X_{t-1}^{(j)}) } \notag\\
 %&= \frac{ \Prob [ \nu_t^{(i)} = \flnw + k \mid w_t^{(1:N)} ] \varepsilon^N }{
 %        \varepsilon^{-N} } \notag\\
 &= \Prob [ \nu_t^{(i)} = \flnw + k \mid w_t^{(1:N)} ] \varepsilon^{2N} 
-        . \label{eq:strat_pbounds}
+        \label{eq:strat_pbounds}
 \end{align}
+for each $k$.
 
 Suppose that $\max_i w_t^{(i)} - \min_i w_t^{(i)} \geq 2\delta/N$. Then that at least one of $\{ \max_i w_t^{(i)} \geq (1+\delta)/N \}$ and $\{ \min_i w_t^{(i)} \leq (1-\delta)/N \}$ occurs. We will now examine each of these possibilities.
 
@@ -434,11 +438,11 @@ We can also show, under additional conditions, that the assumption $\Prob[ \tau_
 
 \begin{prop}\label{thm:SR_nontriviality}
 Consider an SMC algorithm using any stochastic rounding as its resampling scheme.
-Suppose that 
+Suppose that there exists a constant $\varepsilon \in (0,1]$ and a probability density $h$
 \begin{equation*}
-\varepsilon \leq q_t(x, x^\prime) \leq \varepsilon^{-1}
+\varepsilon h(x') \leq q_t(x, x^\prime) \leq \varepsilon^{-1} h(x')
 \end{equation*}
-uniformly in $x,x^\prime$ for some $\varepsilon \in (0,1]$, and that there exist $\zeta >0$ and $\delta >0$ such that 
+uniformly in $x$, and that there exist $\zeta >0$ and $\delta >0$ such that 
 \begin{equation*}
 \Prob[ \max_i w_t^{(i)} - \min_i w_t^{(i)} \geq 2\delta/N \mid \mathcal{F}_{t-1} ] \geq \zeta
 \end{equation*}
@@ -626,11 +630,11 @@ The result then follows by applying Theorem~\ref{thm:FDDconv}.
 
 \begin{prop}\label{thm:resstrat_nontriviality}
 Consider an SMC algorithm using residual resampling with stratified residuals.
-Suppose that 
+Suppose that there exists a constant $\varepsilon \in (0,1]$ and a probability density $h$
 \begin{equation*}
-\varepsilon \leq q_t(x, x^\prime) \leq \varepsilon^{-1}
+\varepsilon h(x') \leq q_t(x, x^\prime) \leq \varepsilon^{-1} h(x')
 \end{equation*}
-uniformly in $x,x^\prime$ for some $\varepsilon \in (0,1]$, and that there exist $\zeta >0$ and $\delta >0$ such that 
+uniformly in $x$, and that there exist $\zeta >0$ and $\delta >0$ such that 
 \begin{equation*}
 \Prob[ \max_i w_t^{(i)} - \min_i w_t^{(i)} \geq 2\delta/N \mid \mathcal{F}_{t-1} ] \geq \zeta
 \end{equation*}
