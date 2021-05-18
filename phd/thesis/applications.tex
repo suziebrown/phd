@@ -262,6 +262,7 @@ uniformly in $x,x^\prime$ for some $\varepsilon \in (0,1]$, and that there exist
  for infinitely many $t$. Then, for all $N>1$, $\Prob[ \tau_N(t) = \infty ] =0$ for all finite $t$.
 \end{prop}
 We now require bounds on $q_t$, somewhat stronger than those in \eqref{eq:gq_bounds_mn} as the bounds are now uniform in $x^\prime$.
+\seb{Are we sure they need to be uniform in $x^\prime$?}
 We saw that such a condition was not necessary for Corollary \ref{thm:stratified}, and we do not believe it to be necessary here either; it is merely a convenient way to control the contributions from the transition density. The bounds established in the following proof are rather crude, particularly the terms in $\varepsilon$; it may well be possible to achieve similar bounds under less restrictive conditions.
 
 The second condition \eqref{eq:strat_minmaxweight} is required to ensure that, at least infinitely often, the weights are not equal to $(1,\dots,1)/N$, since stochastic rounding is degenerate under equal weights and this will cause the time scale to explode. 
@@ -298,7 +299,7 @@ p_k^{(i)}
     &\qquad \times \sum_{\substack{a_{1:N} \in \{1,\dots,N\}^N : 
         \\ |\{j: a_j=i\}|=\flnw +k }}
         \Prob\left[ a_t^{(1:N)} = a_{1:N} \midd \nu_t^{(i)}, w_t^{(1:N)} \right]
-        \prod_{k=1}^N q_{t-1}( X_t^{(a_k)}, X_{t-1}^{(k)} ) 
+        \prod_{j=1}^N q_{t-1}( X_t^{(a_j)}, X_{t-1}^{(j)} ) 
 \end{align*}
 for each $k\in\{-1,0,1,2\}$.
 We can bound each probability above and below using the almost sure bounds on $q_{t-1}$ from the statement of the Proposition:
@@ -601,7 +602,7 @@ and we conclude as in Proposition~\ref{thm:strat_nontriviality}.
 
 
 
-\section{Residual resampling with stratified residuals \seb{$\sim$} }
+\section{Residual resampling with stratified residuals \seb{$\checkmark$} }
 
 \begin{corollary}\label{thm:residual_stratified}
 Consider an SMC algorithm using residual resampling with stratified residuals, such that \ref{standing_assumption} is satisfied.
@@ -623,8 +624,110 @@ as required.
 The result then follows by applying Theorem~\ref{thm:FDDconv}.
 \end{proof}
 
-\draft{State and prove finite time-scale lemma.}
+\begin{prop}\label{thm:resstrat_nontriviality}
+Consider an SMC algorithm using residual resampling with stratified residuals.
+Suppose that 
+\begin{equation*}
+\varepsilon \leq q_t(x, x^\prime) \leq \varepsilon^{-1}
+\end{equation*}
+uniformly in $x,x^\prime$ for some $\varepsilon \in (0,1]$, and that there exist $\zeta >0$ and $\delta >0$ such that 
+\begin{equation*}
+\Prob[ \max_i w_t^{(i)} - \min_i w_t^{(i)} \geq 2\delta/N \mid \mathcal{F}_{t-1} ] \geq \zeta
+\end{equation*}
+ for infinitely many $t$. Then, for all $N>1$, $\Prob[ \tau_N(t) = \infty ] =0$ for all finite $t$.
+\end{prop}
 
+\begin{proof}
+Define $p_k^{(i)}$ for $k\in\{-1,0,1,2\}$ as in \eqref{eq:pk_defn}. In the case of residual resampling with stratified residuals, $p_{-1}^{(i)} =0$. 
+%and we also have
+%\begin{align*}
+%&\Prob[ \nu_t^{(i)} = \flnw \mid w_t^{(1:N)} ]
+%= 1- N w_t^{(i)} + \flnw , \\
+%&\Prob[ \nu_t^{(i)} = \flnw +1 \mid w_t^{(1:N)} ]
+%= N w_t^{(i)} - \flnw .
+%\end{align*}
+%Combining this with \eqref{eq:strat_pbounds},
+%\begin{align}
+%p_0^{(i)} 
+%&\geq ( 1- N w_t^{(i)} + \flnw ) \varepsilon^{2N} , \notag\\
+%p_1^{(i)} 
+%&\geq ( N w_t^{(i)} - \flnw ) \varepsilon^{2N} . \label{eq:SR_pk_LB}
+%\end{align}
+Define $i^\star := \argmax_i \{ w_t^{(i)} \}$ and write
+$w_t^{(i^\star)} = \frac{1+\delta^\prime}{N}$, for some $\delta^\prime \geq 0$.
+Then, using \eqref{eq:cNnonzero}, 
+\begin{equation*}
+\Prob[ c_N(t) > 2/N^2 \mid \mathcal{H}_t ]
+\geq 1- \Prob[ \nu_t^{(i^\star)} =1 \mid \mathcal{H}_t ]
+= \begin{cases}
+    1 - p_0^{(i^\star)} & \text{if } \delta^\prime \in (0,1) \\
+    0 & \text{if } \delta^\prime = 0 \\
+    1 & \text{if } \delta^\prime \geq 1 .
+\end{cases}
+\end{equation*}
+In the case $\delta^\prime \in (0,1)$ we have
+\begin{equation*}
+\Prob[ c_N(t) > 2/N^2 \mid \mathcal{H}_t ]
+\geq 1 - p_0^{(i^\star)}
+= p_1^{(i^\star)} + p_2^{(i^\star)} 
+\geq p_1^{(i^\star)} .
+\end{equation*}
+Also, the residual weight in this case is $r_{i^\star} = \delta^\prime /R$, for some $R\in\{1, \dots, N-1\}$ ($R \neq 0$ since $\delta^\prime > 0$).
+Therefore $\Prob[ \nu_t^{(i^\star)} = \flnw[i^\star] + 1 \mid w_t^{(1:N)} ]$ is the probability that stratified resampling with $R$ individuals assigns exactly 1 offspring to a parent with weight $\delta^\prime /R$. According to Table~\ref{tab:strat_probs}(lower bound on $p_1$), this probability is $\geq \delta^\prime /2$.
+Hence, using \eqref{eq:strat_pbounds}, 
+\begin{equation*}
+\Prob[ c_N(t) > 2/N^2 \mid \mathcal{H}_t ]
+\geq \frac{\delta^\prime}{2} \varepsilon^{2N} .
+\end{equation*}
+This means that, subject to $\max_i w_t^{(i)} \geq (1+\delta)/N$,
+\begin{equation*}
+\Prob[ c_N(t) > 2/N^2 \mid \mathcal{H}_t ]
+\geq \min_{\delta^\prime \geq \delta} 
+        \left\{ \frac{\delta^\prime \varepsilon^{2N}}{2} \right\}
+= \frac{ \delta \varepsilon^{2N} }{2} .
+\end{equation*}
+Now, a similar calculation with the minimal weight:
+let $j^\star := \argmin_i \{ w_t^{(i)} \}$ and
+$w_t^{(j^\star)} = \frac{1-\delta^\prime}{N}$, for some 
+$\delta^\prime \in [0,1]$.
+Using \eqref{eq:cNnonzero},
+\begin{equation*}
+\Prob[ c_N(t) > 2/N^2 \mid \mathcal{H}_t ]
+\geq 1- \Prob[ \nu_t^{(j^\star)} =1 \mid \mathcal{H}_t ]
+= \begin{cases}
+    1 - p_1^{(j^\star)} & \text{if } \delta^\prime \in (0,1) \\
+    0 & \text{if } \delta^\prime = 0 \\
+    1 & \text{if } \delta^\prime = 1 .
+\end{cases}
+\end{equation*}
+If $\delta^\prime \in (0,1)$ then $r_{j^\star} = (1- \delta^\prime)/R$, for some $R\in\{1, \dots, N-1\}$, and
+\begin{equation*}
+1 - p_1^{(j^\star)}
+= p_0^{(j^\star)} + p_2^{(j^\star)}
+\geq p_0^{(j^\star)} .
+\end{equation*}
+Now $\Prob[ \nu_t^{(j^\star)} = \flnw[j^\star] \mid w_t^{(1:N)} ]$ is the probability that stratified resampling with $R$ individuals assigns exactly 0 offspring to a parent with weight $(1-\delta^\prime) /R$. According to Table~\ref{tab:strat_probs} (lower bound on $p_0$), this probability is $\geq (\delta^\prime)^2 /2$.
+Hence, using \eqref{eq:strat_pbounds}, 
+\begin{equation*}
+\Prob[ c_N(t) > 2/N^2 \mid \mathcal{H}_t ]
+\geq \frac{(\delta^\prime)^2}{2} \varepsilon^{2N} .
+\end{equation*}
+Therefore, using \eqref{eq:strat_pbounds}, we have that subject to $\min_i w_t^{(i)} \leq (1-\delta)/N$
+\begin{equation*}
+\Prob[ c_N(t) > 2/N^2 \mid \mathcal{H}_t ]
+\geq \min_{\delta^\prime \geq \delta} 
+        \left\{ \frac{ (\delta^\prime)^2 \varepsilon^{2N} }{2} 
+        \I{\delta^\prime \neq 0} \right\}
+= \frac{\delta^2}{2} \varepsilon^{2N} .
+\end{equation*}
+Combining the cases for the maximum and minimum weight we have that
+\begin{equation*}
+\Prob[ c_N(t) > 2/N^2 \mid \mathcal{H}_t ] 
+\geq \frac{ \delta^2 \varepsilon^{2N} }{2} 
+        \I{ \max_i w_t^{(i)} - \min_i w_t^{(i)} \geq 2\delta/N }
+\end{equation*}
+and we conclude as in Proposition~\ref{thm:strat_nontriviality}.
+\end{proof}
 
 
 
