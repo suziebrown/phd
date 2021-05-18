@@ -922,6 +922,44 @@
       \field{pages}{107\bibrangedash 113}
       \range{pages}{7}
     \endentry
+    \entry{griffiths2016}{article}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,uniquepart=base,hash=2c7834b8f320e6f6e08cc9128b1cd266}{%
+           family={Griffiths},
+           familyi={G\bibinitperiod},
+           given={Robert},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=e908ce7aa109ccc4bf5158a548c3dab2}{%
+           family={Mano},
+           familyi={M\bibinitperiod},
+           given={Shuhei},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Taylor \& Francis}%
+      }
+      \strng{namehash}{fb4803c6ef79c513ff6f13ffcaa8d854}
+      \strng{fullhash}{fb4803c6ef79c513ff6f13ffcaa8d854}
+      \strng{bibnamehash}{fb4803c6ef79c513ff6f13ffcaa8d854}
+      \strng{authorbibnamehash}{fb4803c6ef79c513ff6f13ffcaa8d854}
+      \strng{authornamehash}{fb4803c6ef79c513ff6f13ffcaa8d854}
+      \strng{authorfullhash}{fb4803c6ef79c513ff6f13ffcaa8d854}
+      \field{sortinit}{G}
+      \field{sortinithash}{5e8d2bf9d38de41b1528bd307546008f}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Stochastic Models}
+      \field{number}{4}
+      \field{title}{The Star-shaped $\Lambda$-coalescent and {Fleming--Viot} Process}
+      \field{volume}{32}
+      \field{year}{2016}
+      \field{pages}{606\bibrangedash 631}
+      \range{pages}{26}
+    \endentry
     \entry{hardy1918}{article}{}
       \name{author}{2}{}{%
         {{uniquename=0,uniquepart=base,hash=1060fa386a5f18d1ba64493dc48fd8a2}{%
@@ -1338,6 +1376,43 @@
       \field{type}{Mathematics e-print}
       \field{year}{2018}
     \endentry
+    \entry{lee2019}{unpublished}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,uniquepart=base,hash=b03496173658ac066e649b50540c712e}{%
+           family={Lee},
+           familyi={L\bibinitperiod},
+           given={Anthony},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=b2c64deb00eb81a0d60c218a05607576}{%
+           family={Murray},
+           familyi={M\bibinitperiod},
+           given={Lawrence},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=17d1caa8d265744784c2779daffb0a90}{%
+           family={Johansen},
+           familyi={J\bibinitperiod},
+           given={Adam\bibnamedelima M.},
+           giveni={A\bibinitperiod\bibinitdelim M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{5f0871873bf8ccfd98723c3081f69f32}
+      \strng{fullhash}{5f0871873bf8ccfd98723c3081f69f32}
+      \strng{bibnamehash}{5f0871873bf8ccfd98723c3081f69f32}
+      \strng{authorbibnamehash}{5f0871873bf8ccfd98723c3081f69f32}
+      \strng{authornamehash}{5f0871873bf8ccfd98723c3081f69f32}
+      \strng{authorfullhash}{5f0871873bf8ccfd98723c3081f69f32}
+      \field{sortinit}{L}
+      \field{sortinithash}{2c7981aaabc885868aba60f0c09ee20f}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Unpublished}
+      \field{title}{Resampling in Conditional SMC Algorithms}
+      \field{year}{2019}
+    \endentry
     \entry{lindsten2013}{article}{}
       \name{author}{2}{}{%
         {{uniquename=0,uniquepart=base,hash=0274b443331930dc611dd367a7c198a5}{%
@@ -1624,6 +1699,68 @@
       \field{year}{2021}
       \field{pages}{110055}
       \range{pages}{1}
+    \endentry
+    \entry{notohara1990}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=c6ffa2883d4d1aff31f0e5dbdc081550}{%
+           family={Notohara},
+           familyi={N\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{c6ffa2883d4d1aff31f0e5dbdc081550}
+      \strng{fullhash}{c6ffa2883d4d1aff31f0e5dbdc081550}
+      \strng{bibnamehash}{c6ffa2883d4d1aff31f0e5dbdc081550}
+      \strng{authorbibnamehash}{c6ffa2883d4d1aff31f0e5dbdc081550}
+      \strng{authornamehash}{c6ffa2883d4d1aff31f0e5dbdc081550}
+      \strng{authorfullhash}{c6ffa2883d4d1aff31f0e5dbdc081550}
+      \field{sortinit}{N}
+      \field{sortinithash}{f7242c3ed3dc50029fca1be76c497c7c}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Mathematical Biology}
+      \field{number}{1}
+      \field{title}{The Coalescent and the Genealogical Process in Geographically Structured Population}
+      \field{volume}{29}
+      \field{year}{1990}
+      \field{pages}{59\bibrangedash 75}
+      \range{pages}{17}
+    \endentry
+    \entry{pitman1999}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=081ad72db47fd3469ec24c44f405d377}{%
+           family={Pitman},
+           familyi={P\bibinitperiod},
+           given={Jim},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {JSTOR}%
+      }
+      \strng{namehash}{081ad72db47fd3469ec24c44f405d377}
+      \strng{fullhash}{081ad72db47fd3469ec24c44f405d377}
+      \strng{bibnamehash}{081ad72db47fd3469ec24c44f405d377}
+      \strng{authorbibnamehash}{081ad72db47fd3469ec24c44f405d377}
+      \strng{authornamehash}{081ad72db47fd3469ec24c44f405d377}
+      \strng{authorfullhash}{081ad72db47fd3469ec24c44f405d377}
+      \field{sortinit}{P}
+      \field{sortinithash}{8d51b3d5b78d75b54308d706b9bbe285}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Annals of Probability}
+      \field{title}{Coalescents with Multiple Collisions}
+      \field{year}{1999}
+      \field{pages}{1870\bibrangedash 1902}
+      \range{pages}{33}
     \endentry
     \entry{rauch1965}{article}{}
       \name{author}{3}{}{%
