@@ -63,7 +63,7 @@
 
 \title{Stratified resampling ++}
 \author{Suzie Brown}
-\date{28 April 2021}
+\date{21 May 2021}
 
 \begin{document}
 \maketitle
@@ -77,8 +77,8 @@
 
 
 There are complex dependencies between the offspring counts, but we can still find some constraints on the distribution of each count conditional on the corresponding weight.
-Write the $i^{th}$ weight in the form $w_t^{(i)} = (k + \delta)/N$, where $\delta \in [0,1)$ and $k\in \{0,\dots,N-1\}$.
-The distribution of $\nu_t^{(i)}$ depends not only on $w_t^{(i)}$ but also on where the $i^{th}$ weight interval falls with respect to the length-$(1/N)$ intervals for inversion sampling. There are two cases to consider, which are illustrated in Figure~\ref{fig:strat_cases}. Note that Case \subref{fig:strat_case2} cannot happen if $k=0$.
+Write the $i^{th}$ weight in the form $w_t^{(i)} = (K + \delta)/N$, where $\delta \in [0,1)$ and $K\in \{0,\dots,N-1\}$.
+The distribution of $\nu_t^{(i)}$ depends not only on $w_t^{(i)}$ but also on where the $i^{th}$ weight interval falls with respect to the length-$(1/N)$ intervals for inversion sampling. There are two cases to consider, which are illustrated in Figure~\ref{fig:strat_cases}. Note that Case \subref{fig:strat_case2} cannot happen if $K=0$.
 
 %\begin{figure}
 %\centering
@@ -117,7 +117,7 @@ The distribution of $\nu_t^{(i)}$ depends not only on $w_t^{(i)}$ but also on wh
 %\draw[dashed, gray] (4,1.4)--(4,0.1);
 %\end{tikzpicture}
 %}\\
-\subfloat[The parent under consideration is automatically assigned $k$ offspring, plus up to two more. ($\delta_L+\delta_R=\delta$.) ]{ %\delta_L, \delta_R \in [0,\delta]. 
+\subfloat[The parent under consideration is automatically assigned $K$ offspring, plus up to two more. ($\delta_L+\delta_R=\delta$.) ]{ %\delta_L, \delta_R \in [0,\delta]. 
 \begin{tikzpicture}
 % w subinterval
 \draw[thick] (0,0)--(1.9,0);
@@ -142,7 +142,7 @@ The distribution of $\nu_t^{(i)}$ depends not only on $w_t^{(i)}$ but also on wh
 \draw (4.3,1.6)--(4.3,1.4);
 \draw (8.3,1.6)--(8.3,1.4);
 \node[anchor=south] at (-1.7,1.5) {$1/N$};
-\node[anchor=south] at (2.3,1.5) {$k/N$};
+\node[anchor=south] at (2.3,1.5) {$K/N$};
 \node[anchor=south] at (6.3,1.5) {$1/N$};
 % vertical dividers
 \draw[dashed, gray] (0.3,1.4)--(0.3,0.1);
@@ -150,7 +150,7 @@ The distribution of $\nu_t^{(i)}$ depends not only on $w_t^{(i)}$ but also on wh
 \end{tikzpicture}
 \label{fig:strat_case1}
 }\\
-\subfloat[This case can only occur when $k\geq1$. The parent under consideration is automatically assigned $k-1$ offspring, plus up to two more. ($x_L+x_R=1+\delta$.)]{ %$x_L,x_R \in [\delta,1] $. 
+\subfloat[This case can only occur when $K\geq1$. The parent under consideration is automatically assigned $K-1$ offspring, plus up to two more. ($x_L+x_R=1+\delta$.)]{ %$x_L,x_R \in [\delta,1] $. 
 \begin{tikzpicture}
 % w subinterval
 \draw[thick] (-2,0)--(1.9,0);
@@ -161,7 +161,7 @@ The distribution of $\nu_t^{(i)}$ depends not only on $w_t^{(i)}$ but also on wh
 \node[anchor=north] at (2.4,0) {$w$};
 % length labels
 \draw[<->] (0.3,-0.4)--(4.3,-0.4);
-\node[anchor=north] at (2,-0.4) {$(k-1)/N$};
+\node[anchor=north] at (2,-0.4) {$(K-1)/N$};
 \draw[<->] (4.3,-0.4)--(6.8,-0.4);
 \node[anchor=north] at (5.55,-0.4) {$x_R/N$};
 \draw[<->] (-2,-0.4)--(0.3,-0.4);
@@ -175,7 +175,7 @@ The distribution of $\nu_t^{(i)}$ depends not only on $w_t^{(i)}$ but also on wh
 \draw (4.3,1.6)--(4.3,1.4);
 \draw (8.3,1.6)--(8.3,1.4);
 \node[anchor=south] at (-1.7,1.5) {$1/N$};
-\node[anchor=south] at (2.3,1.5) {$(k-1)/N$};
+\node[anchor=south] at (2.3,1.5) {$(K-1)/N$};
 \node[anchor=south] at (6.3,1.5) {$1/N$};
 % vertical dividers
 \draw[dashed, gray] (0.3,1.4)--(0.3,0.1);
@@ -183,7 +183,7 @@ The distribution of $\nu_t^{(i)}$ depends not only on $w_t^{(i)}$ but also on wh
 \end{tikzpicture}
 \label{fig:strat_case2}
 }
-\caption[Cases for stratified resampling with a fixed weight]{Cases for stratified resampling with a fixed weight $w = (k+\delta)/N$}
+\caption[Cases for stratified resampling with a fixed weight]{Cases for stratified resampling with a fixed weight $w = (K+\delta)/N$}
 \label{fig:strat_cases}
 \end{figure}
 
@@ -197,11 +197,11 @@ Since the sample within each interval of length $1/N$ is uniform over that inter
 \begin{tabular}{ c | c c | c c }
 & Case \subref{fig:strat_case1} & Case \subref{fig:strat_case2} & L.B. & U.B. \\
 \hline
-$p_{-1}$ & 0 & $x_Lx_R-\delta$ & 0 & $(1-\delta)^2 /4$ \\
+$p_{-1}$ & 0 & $x_Lx_R-\delta$ & 0 & $1/4$ \\
 $p_0$ & $1-\delta + \delta_L\delta_R$ & $1+\delta-2x_Lx_R$ & $(1-\delta)^2 /2$ 
         & $1 - 3\delta /4$ \\
 $p_1$ & $\delta-2\delta_L\delta_R$ & $x_Lx_R$ & $\delta /2$ & $(1+\delta)/2$ \\
-$p_2$ & $\delta_L\delta_R$ & 0 & 0 & $\delta^2 /4$ \\
+$p_2$ & $\delta_L\delta_R$ & 0 & 0 & $1/4$ \\
 \end{tabular}
 \caption[Analysis of distribution of offspring counts under stratified resampling]{Marginal probability distribution of $\nu_t^{(i)}$ conditional on $w_t^{(i)}$, in terms of $\delta$ and the quantities defined in Figure~\ref{fig:strat_cases}, along with upper and lower bounds on these in terms of $\delta$ only.}
 \label{tab:strat_probs}
@@ -275,7 +275,7 @@ Suppose that
 \begin{equation*}
 \varepsilon \leq q_t(x, x^\prime) \leq \varepsilon^{-1}
 \end{equation*}
-uniformly in $x,x^\prime$ for some $\varepsilon \in (0,1]$, and that there exist $\zeta >0$ and $\delta >0$ such that 
+uniformly in $x,x^\prime$ for some $\varepsilon \in (0,1]$, and that there exist $\zeta >0$ and $\delta \in (0,1)$ such that 
 \begin{equation*}
 \Prob[ \max_i w_t^{(i)} - \min_i w_t^{(i)} \geq 2\delta/N \mid \mathcal{F}_{t-1} ] \geq \zeta
 \end{equation*}
@@ -343,31 +343,51 @@ We can always write the maximum weight as $w_t^{(i^\star)} = \frac{1+\delta^\pri
 = \begin{cases}
     1 - p_0^{(i^\star)} & \text{if } \delta^\prime \in [0,1) \\
     1 - p_{-1}^{(i^\star)} & \text{if } \delta^\prime \in [1,2) \\
-    1 & \text{if } \delta^\prime \geq 3 .
+    1 & \text{if } \delta^\prime \geq 2 .
 \end{cases}
 \end{equation*}
 If $\delta^\prime \in [0,1)$ then
+%\begin{equation*}
+%1 - p_0^{(i^\star)}
+%= p_{-1}^{(i^\star)} + p_1^{(i^\star)} + p_2^{(i^\star)}
+%\geq \left( 0 + \frac{\delta^\prime}{2} + 0 \right) \varepsilon^{2N} 
+%= \frac{\delta^\prime \varepsilon^{2N} }{2}
+%\end{equation*}
 \begin{equation*}
 1 - p_0^{(i^\star)}
-= p_{-1}^{(i^\star)} + p_1^{(i^\star)} + p_2^{(i^\star)}
-\geq \left( 0 + \frac{\delta^\prime}{2} + 0 \right) \varepsilon^{2N} 
-= \frac{\delta^\prime \varepsilon^{2N} }{2}
+%\geq 1 - \left( 1- \frac{3\delta^\prime}{4} \right) \varepsilon^{2N} 
+\geq \frac{3\delta^\prime \varepsilon^{2N} }{4}
 \end{equation*}
-using \eqref{eq:strat_pbounds} and the lower bounds in Table~\ref{tab:strat_probs}.
-Similarly, if $\delta^\prime \in [1,2)$ then
+using \eqref{eq:strat_pbounds} and %the lower bounds in 
+Table~\ref{tab:strat_probs} ($p_0$, U.B.).
+Similarly, if $\delta^\prime \in [1,2)$ then by Table~\ref{tab:strat_probs} ($p_{-1}$, U.B.),
+%\begin{equation*}
+%1 - p_{-1}^{(i^\star)}
+%= p_0^{(i^\star)} + p_1^{(i^\star)} + p_2^{(i^\star)}
+%\geq \left( \frac{(1-\delta^\prime)^2}{2} + \frac{\delta^\prime}{2} + 0 \right)
+%        \varepsilon^{2N} 
+%\geq \frac{\delta^\prime \varepsilon^{2N} }{2} .
+%\end{equation*}
 \begin{equation*}
 1 - p_{-1}^{(i^\star)}
-= p_0^{(i^\star)} + p_1^{(i^\star)} + p_2^{(i^\star)}
-\geq \left( \frac{(1-\delta^\prime)^2}{2} + \frac{\delta^\prime}{2} + 0 \right)
+\geq \left( 1- \frac{1}{4} \right)
         \varepsilon^{2N} 
-\geq \frac{\delta^\prime \varepsilon^{2N} }{2} .
+\geq \frac{3 \varepsilon^{2N} }{4} .
 \end{equation*}
 So overall, under the constraint $\max_i w_t^{(i)} \geq (1+\delta)/N$, we have
+%\begin{equation*}
+%\Prob[ c_N(t) > 2/N^2 \mid \mathcal{H}_t ]
+%\geq \min_{\delta^\prime \geq \delta} 
+%        \left\{ \frac{\delta^\prime \varepsilon^{2N} }{2} \right\}
+%= \frac{ \delta \varepsilon^{2N} }{2} .
+%\end{equation*}
 \begin{equation*}
 \Prob[ c_N(t) > 2/N^2 \mid \mathcal{H}_t ]
 \geq \min_{\delta^\prime \geq \delta} 
-        \left\{ \frac{\delta^\prime \varepsilon^{2N} }{2} \right\}
-= \frac{ \delta \varepsilon^{2N} }{2} .
+        \left\{ \frac{3\delta^\prime \varepsilon^{2N} }{4}\I{\delta^\prime \in [0,1)}
+        + \frac{3 \varepsilon^{2N} }{4}\I{\delta^\prime \in [1,2)}
+        + I{\delta^\prime \geq 2} \right\}
+= \frac{ 3\delta \varepsilon^{2N} }{4} .
 \end{equation*}
 
 Now for the other case. Let $j^\star := \argmin_i \{ w_t^{(i)} \}$ and write
@@ -375,40 +395,53 @@ $w_t^{(j^\star)} = \frac{1-\delta^\prime}{N}$, for some $\delta^\prime \in [0,1]
 Then we have
 \begin{equation*}
 \Prob[ c_N(t) > 2/N^2 \mid \mathcal{H}_t ]
-\geq 1- \Prob[ \nu_t^{(i^\star)} =1 \mid \mathcal{H}_t ]
+\geq 1- \Prob[ \nu_t^{(j^\star)} =1 \mid \mathcal{H}_t ]
 =\begin{cases}
     1- p_1^{(j^\star)} & \text{if } \delta^\prime \in (0,1] \\
     0 & \text{if } \delta^\prime =0 .
 \end{cases}
 \end{equation*}
 If $\delta^\prime \in (0,1]$ then
+%\begin{equation*}
+%1- p_1^{(j^\star)} 
+%= p_{-1}^{(j^\star)} + p_0^{(j^\star)} + p_2^{(j^\star)}
+%\geq \left( 0 + \frac{ (\delta^\prime)^2 }{2} + 0 \right) \varepsilon^{2N}
+%= \frac{ (\delta^\prime)^2 \varepsilon^{2N} }{2} ,
+%\end{equation*}
 \begin{equation*}
-1- p_1^{(j^\star)} = p_{-1}^{(j^\star)} + p_0^{(j^\star)} + p_2^{(j^\star)}
-\geq \left( 0 + \frac{ (\delta^\prime)^2 }{2} + 0 \right) \varepsilon^{2N}
-= \frac{ (\delta^\prime)^2 \varepsilon^{2N} }{2} ,
+1- p_1^{(j^\star)}
+\geq \left( 1- \frac{1+ (1-\delta^\prime)}{2} \right) \varepsilon^{2N}
+= \frac{ \delta^\prime \varepsilon^{2N} }{2} ,
 \end{equation*}
-again using the lower bounds in Table~\ref{tab:strat_probs}.
+again using Table~\ref{tab:strat_probs} ($p_1$, U.B.).
 Therefore, under the constraint $\min_i w_t^{(i)} \leq (1-\delta)/N$, we have
+%\begin{equation*}
+%\Prob[ c_N(t) > 2/N^2 \mid \mathcal{H}_t ]
+%\geq \min_{\delta^\prime \geq \delta} 
+%        \left\{ \frac{ (\delta^\prime)^2 \varepsilon^{2N} }{2} 
+%        \I{\delta^\prime \neq 0} \right\}
+%= \frac{ \delta^2 \varepsilon^{2N} }{2} .
+%\end{equation*}
 \begin{equation*}
 \Prob[ c_N(t) > 2/N^2 \mid \mathcal{H}_t ]
 \geq \min_{\delta^\prime \geq \delta} 
-        \left\{ \frac{ (\delta^\prime)^2 \varepsilon^{2N} }{2} 
+        \left\{ \frac{ \delta^\prime \varepsilon^{2N} }{2} 
         \I{\delta^\prime \neq 0} \right\}
-= \frac{ \delta^2 \varepsilon^{2N} }{2} .
+= \frac{ \delta \varepsilon^{2N} }{2} .
 \end{equation*}
 Combining both cases, we find for arbitrary $r$
 \begin{equation*}
 \Prob[ c_N(r) > 2/N^2 \mid \mathcal{H}_r ] 
-\geq  \frac{ \delta^2 \varepsilon^{2N} }{2}
+\geq  \frac{ \delta \varepsilon^{2N} }{2}
         \I{ \max_i w_r^{(i)} - \min_i w_r^{(i)} \geq 2\delta/N }
 \end{equation*}
 so
 \begin{align*}
 \Prob[ c_N(r) > 2/N^2 \mid \mathcal{F}_{r-1} ] 
-&\geq  \frac{ \delta^2 \varepsilon^{2N} }{2}
+&\geq  \frac{ \delta \varepsilon^{2N} }{2}
         \Prob[ \max_i w_r^{(i)} - \min_i w_r^{(i)} \geq 2\delta/N 
         \mid \mathcal{F}_{r-1} ] \\
-&\geq \zeta \frac{ \delta^2 \varepsilon^{2N} }{2}
+&\geq \zeta \frac{ \delta \varepsilon^{2N} }{2}
 > 0
 \end{align*}
 for infinitely many $r$.
