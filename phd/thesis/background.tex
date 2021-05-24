@@ -1351,7 +1351,7 @@ The measures corresponding to $\mu_\theta$, $f_\theta$ and $g_\theta$ are assume
 \seb{Either mention that f,g can depend on t, or make this explicit  in the notation.}
 \seb{Don't really need to include prior on theta; it's not relevant to CSMC step.}
 
-Our aim is to generate Monte Carlo samples from the joint distribution of $X_{0:T}$ and $\theta$ conditional on $y_{1:T}$. Outside of models admitting closed-form solutions, this is typically the most practical way to draw samples from the marginal distributions of either $theta$ or any subset of the states $X_{0:T}$, by marginalising the Monte Carlo samples. 
+Our aim is to generate Monte Carlo samples from the joint distribution of $X_{0:T}$ and $\theta$ conditional on $y_{1:T}$. Outside of models admitting closed-form solutions, this is typically the most practical way to draw samples from the marginal distributions of either $\theta$ or any subset of the states $X_{0:T}$, by marginalising the Monte Carlo samples. 
 
 The structure of the model invites Gibbs sampling: alternating between updating $\theta$ conditional on $X_{0:T}$, and updating $X_{0:T}$ conditional on $\theta$.
 \seb{``These conditionals are typically much easier to sample from that the corresponding marginals.'' (due to the dependence structure in the HMM).}
