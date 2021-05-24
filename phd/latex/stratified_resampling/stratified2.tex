@@ -203,7 +203,7 @@ $p_0$ & $1-\delta + \delta_L\delta_R$ & $1+\delta-2x_Lx_R$ & $(1-\delta)^2 /2$
 $p_1$ & $\delta-2\delta_L\delta_R$ & $x_Lx_R$ & $\delta /2$ & $(1+\delta)/2$ \\
 $p_2$ & $\delta_L\delta_R$ & 0 & 0 & $1/4$ \\
 \end{tabular}
-\caption[Analysis of distribution of offspring counts under stratified resampling]{Marginal probability distribution of $\nu_t^{(i)}$ conditional on $w_t^{(i)}$, in terms of $\delta$ and the quantities defined in Figure~\ref{fig:strat_cases}, along with upper and lower bounds on these in terms of $\delta$ only.}
+\caption[Analysis of distribution of offspring counts under stratified resampling]{Marginal probability distribution of $\nu_t^{(i)}$ conditional on $w_t^{(i)}$, in terms of $\delta$ and the quantities defined in Figure~\ref{fig:strat_cases}, along with upper and lower bounds on these in terms of $\delta$ only, which hold in both cases i.e.\ whenever $w_t^{(i)} = (K+\delta)/N$.}
 \label{tab:strat_probs}
 \end{table}
 
@@ -296,11 +296,11 @@ Firstly,
 &\leq \Prob[ \nu_t^{(i^\star)} =1 \mid \mathcal{H}_t ] , \label{eq:cNnonzero}
 \end{align}
 where $i^\star := \argmax_i \{ w_t^{(i)} \}$ (but note that the inequality holds when $i^\star$ is taken to be any particular index).
-Define for each $k\in\{-1,0,1,2\}$
+Define for any $k\in\mathbb{Z}$
 \begin{equation*}
 p_k^{(i)} := \Prob \left[ \nu_t^{(i)} = \flnw + k \midd \mathcal{H}_t \right] .
 \end{equation*}
-Since stratified resampling almost surely results in $\nu_t^{(i)} \in \{ \flnw-1, \flnw, \flnw+1, \flnw+2 \}$ we have that
+Since stratified resampling almost surely results in $\nu_t^{(i)} \in \{ \flnw-1, \flnw, \flnw+1, \flnw+2 \}$ we have that $p_k^{(i)} \equiv 0$ for $k\notin \{-1,0,1,2\}$, and
 \begin{equation*}
 \sum_{k=-1}^2 p_k^{(i)} 
 = \sum_{k=-1}^2 \Prob \left[ \nu_t^{(i)} = \flnw + k \midd w_t^{(1:N)} \right]
@@ -313,7 +313,7 @@ p_k^{(i)}
     &\qquad \times \sum_{\substack{a_{1:N} \in \{1,\dots,N\}^N : 
         \\ |\{j: a_j=i\}|=\flnw +k }}
         \Prob\left[ a_t^{(1:N)} = a_{1:N} \midd \nu_t^{(i)}, w_t^{(1:N)} \right]
-        \prod_{k=1}^N q_{t-1}( X_t^{(a_k)}, X_{t-1}^{(k)} ) 
+        \prod_{j=1}^N q_{t-1}( X_t^{(a_j)}, X_{t-1}^{(j)} ) 
 \end{align*}
 for each $k\in\{-1,0,1,2\}$.
 We can bound each probability above and below using the almost sure bounds on $q_{t-1}$ stated in the Lemma:
@@ -336,17 +336,18 @@ p_k^{(i)}
 
 Suppose that $\max_i w_t^{(i)} - \min_i w_t^{(i)} \geq 2\delta/N$. Then that at least one of $\{ \max_i w_t^{(i)} \geq (1+\delta)/N \}$ and $\{ \min_i w_t^{(i)} \leq (1-\delta)/N \}$ occurs. We will now examine each of these possibilities.
 
-We can always write the maximum weight as $w_t^{(i^\star)} = \frac{1+\delta^\prime}{N}$ for some $\delta^\prime \geq 0$. Then, using \eqref{eq:cNnonzero},
+We can always write the maximum weight as $w_t^{(i^\star)} = \frac{1+\gamma}{N}$ for some $\gamma \geq 0$. Then, using \eqref{eq:cNnonzero},
 \begin{equation*}
 \Prob[ c_N(t) > 2/N^2 \mid \mathcal{H}_t ]
 \geq 1- \Prob[ \nu_t^{(i^\star)} =1 \mid \mathcal{H}_t ]
 = \begin{cases}
-    1 - p_0^{(i^\star)} & \text{if } \delta^\prime \in [0,1) \\
-    1 - p_{-1}^{(i^\star)} & \text{if } \delta^\prime \in [1,2) \\
-    1 & \text{if } \delta^\prime \geq 2 .
+    0 & \text{if } \gamma = 0 \\
+    1 - p_0^{(i^\star)} & \text{if } \gamma \in (0,1) \\
+    1 - p_{-1}^{(i^\star)} & \text{if } \gamma \in [1,2) \\
+    1 & \text{if } \gamma \geq 2 .
 \end{cases}
 \end{equation*}
-If $\delta^\prime \in [0,1)$ then
+If $\gamma \in (0,1)$ then
 %\begin{equation*}
 %1 - p_0^{(i^\star)}
 %= p_{-1}^{(i^\star)} + p_1^{(i^\star)} + p_2^{(i^\star)}
@@ -356,11 +357,11 @@ If $\delta^\prime \in [0,1)$ then
 \begin{equation*}
 1 - p_0^{(i^\star)}
 %\geq 1 - \left( 1- \frac{3\delta^\prime}{4} \right) \varepsilon^{2N} 
-\geq \frac{3\delta^\prime \varepsilon^{2N} }{4}
+\geq \frac{3\gamma \varepsilon^{2N} }{4}
 \end{equation*}
 using \eqref{eq:strat_pbounds} and %the lower bounds in 
 Table~\ref{tab:strat_probs} ($p_0$, U.B.).
-Similarly, if $\delta^\prime \in [1,2)$ then by Table~\ref{tab:strat_probs} ($p_{-1}$, U.B.),
+Similarly, if $\gamma \in [1,2)$ then by Table~\ref{tab:strat_probs} ($p_{-1}$, U.B.),
 %\begin{equation*}
 %1 - p_{-1}^{(i^\star)}
 %= p_0^{(i^\star)} + p_1^{(i^\star)} + p_2^{(i^\star)}
@@ -383,25 +384,25 @@ So overall, under the constraint $\max_i w_t^{(i)} \geq (1+\delta)/N$, we have
 %\end{equation*}
 \begin{equation*}
 \Prob[ c_N(t) > 2/N^2 \mid \mathcal{H}_t ]
-\geq \min_{\delta^\prime \geq \delta} 
-        \left\{ \frac{3\delta^\prime \varepsilon^{2N} }{4}\I{\delta^\prime \in [0,1)}
-        + \frac{3 \varepsilon^{2N} }{4}\I{\delta^\prime \in [1,2)}
-        + I{\delta^\prime \geq 2} \right\}
+\geq \min_{\gamma \geq \delta} 
+        \left\{ \frac{3\gamma \varepsilon^{2N} }{4}\I{\gamma \in [0,1)}
+        + \frac{3 \varepsilon^{2N} }{4}\I{\gamma \in [1,2)}
+        + \I{\gamma \geq 2} \right\}
 = \frac{ 3\delta \varepsilon^{2N} }{4} .
 \end{equation*}
 
-Now for the other case. Let $j^\star := \argmin_i \{ w_t^{(i)} \}$ and write
-$w_t^{(j^\star)} = \frac{1-\delta^\prime}{N}$, for some $\delta^\prime \in [0,1]$.
+Now for the minimum weight. Let $j^\star := \argmin_i \{ w_t^{(i)} \}$ and write
+$w_t^{(j^\star)} = \frac{1-\gamma}{N}$, for some $\gamma \in [0,1]$.
 Then we have
 \begin{equation*}
 \Prob[ c_N(t) > 2/N^2 \mid \mathcal{H}_t ]
 \geq 1- \Prob[ \nu_t^{(j^\star)} =1 \mid \mathcal{H}_t ]
 =\begin{cases}
-    1- p_1^{(j^\star)} & \text{if } \delta^\prime \in (0,1] \\
-    0 & \text{if } \delta^\prime =0 .
+    1- p_1^{(j^\star)} & \text{if } \gamma \in (0,1] \\
+    0 & \text{if } \gamma =0 .
 \end{cases}
 \end{equation*}
-If $\delta^\prime \in (0,1]$ then
+If $\gamma \in (0,1]$ then
 %\begin{equation*}
 %1- p_1^{(j^\star)} 
 %= p_{-1}^{(j^\star)} + p_0^{(j^\star)} + p_2^{(j^\star)}
@@ -410,8 +411,8 @@ If $\delta^\prime \in (0,1]$ then
 %\end{equation*}
 \begin{equation*}
 1- p_1^{(j^\star)}
-\geq \left( 1- \frac{1+ (1-\delta^\prime)}{2} \right) \varepsilon^{2N}
-= \frac{ \delta^\prime \varepsilon^{2N} }{2} ,
+\geq \left( 1- \frac{1+ (1-\gamma)}{2} \right) \varepsilon^{2N}
+= \frac{ \gamma \varepsilon^{2N} }{2} ,
 \end{equation*}
 again using Table~\ref{tab:strat_probs} ($p_1$, U.B.).
 Therefore, under the constraint $\min_i w_t^{(i)} \leq (1-\delta)/N$, we have
@@ -424,9 +425,10 @@ Therefore, under the constraint $\min_i w_t^{(i)} \leq (1-\delta)/N$, we have
 %\end{equation*}
 \begin{equation*}
 \Prob[ c_N(t) > 2/N^2 \mid \mathcal{H}_t ]
-\geq \min_{\delta^\prime \geq \delta} 
-        \left\{ \frac{ \delta^\prime \varepsilon^{2N} }{2} 
-        \I{\delta^\prime \neq 0} \right\}
+\geq \min_{\gamma \geq \delta} 
+        \left\{ \frac{ \gamma \varepsilon^{2N} }{2} 
+        %\I{\gamma \neq 0}
+        \right\}
 = \frac{ \delta \varepsilon^{2N} }{2} .
 \end{equation*}
 Combining both cases, we find for arbitrary $r$
