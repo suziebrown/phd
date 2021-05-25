@@ -619,7 +619,7 @@ uniformly in $x$, and that there exist $\zeta >0$ and $\delta >0$ such that
 
 \begin{proof}
 Define $p_k^{(i)}$ for $k\in\mathbb{Z}$ as in \eqref{eq:pk_defn}. In the case of stochastic rounding,
-$p_{k}^{(i)} =0$ for all $k\notin {0,1}$, and we also have
+$p_{k}^{(i)} =0$ for all $k\notin\{0,1\}$, and we also have
 \begin{align*}
 &\Prob[ \nu_t^{(i)} = \flnw \mid w_t^{(1:N)} ]
 = 1- N w_t^{(i)} + \flnw , \\
@@ -735,7 +735,7 @@ uniformly in $x$, and that there exist $\zeta >0$ and $\delta >0$ such that
 \end{prop}
 
 \begin{proof}
-Define $p_k^{(i)}$ for $k\in\{-1,0,1,2\}$ as in \eqref{eq:pk_defn}. In the case of residual resampling with stratified residuals, $p_{-1}^{(i)} =0$. 
+Define $p_k^{(i)}$ for $k\in\mathbb{Z}$ as in \eqref{eq:pk_defn}. In the case of residual resampling with stratified residuals, $p_{k}^{(i)} =0$ for all $k\notin\{0,1,2\}$. 
 %and we also have
 %\begin{align*}
 %&\Prob[ \nu_t^{(i)} = \flnw \mid w_t^{(1:N)} ]
@@ -751,76 +751,77 @@ Define $p_k^{(i)}$ for $k\in\{-1,0,1,2\}$ as in \eqref{eq:pk_defn}. In the case 
 %&\geq ( N w_t^{(i)} - \flnw ) \varepsilon^{2N} . \label{eq:SR_pk_LB}
 %\end{align}
 Define $i^\star := \argmax_i \{ w_t^{(i)} \}$ and write
-$w_t^{(i^\star)} = \frac{1+\delta^\prime}{N}$, for some $\delta^\prime \geq 0$.
+$w_t^{(i^\star)} = \frac{1+\gamma}{N}$, for some $\gamma \geq 0$.
 Then, using \eqref{eq:cNnonzero}, 
 \begin{equation*}
 \Prob[ c_N(t) > 2/N^2 \mid \mathcal{H}_t ]
 \geq 1- \Prob[ \nu_t^{(i^\star)} =1 \mid \mathcal{H}_t ]
 = \begin{cases}
-    1 - p_0^{(i^\star)} & \text{if } \delta^\prime \in (0,1) \\
-    0 & \text{if } \delta^\prime = 0 \\
-    1 & \text{if } \delta^\prime \geq 1 .
+    1 - p_0^{(i^\star)} & \text{if } \gamma \in (0,1) \\
+    0 & \text{if } \gamma = 0 \\
+    1 & \text{if } \gamma \geq 1 .
 \end{cases}
 \end{equation*}
-In the case $\delta^\prime \in (0,1)$ we have
+In the case $\gamma \in (0,1)$ we have
 \begin{equation*}
 \Prob[ c_N(t) > 2/N^2 \mid \mathcal{H}_t ]
 \geq 1 - p_0^{(i^\star)}
 = p_1^{(i^\star)} + p_2^{(i^\star)} 
 \geq p_1^{(i^\star)} .
 \end{equation*}
-Also, the residual weight in this case is $r_{i^\star} = \delta^\prime /R$, for some $R\in\{1, \dots, N-1\}$ ($R \neq 0$ since $\delta^\prime > 0$).
-Therefore $\Prob[ \nu_t^{(i^\star)} = \flnw[i^\star] + 1 \mid w_t^{(1:N)} ]$ is the probability that stratified resampling with $R$ individuals assigns exactly 1 offspring to a parent with weight $\delta^\prime /R$. According to Table~\ref{tab:strat_probs}(lower bound on $p_1$), this probability is $\geq \delta^\prime /2$.
+Also, the residual weight in this case is $r_{i^\star} = \gamma /R$, for some $R\in\{1, \dots, N-1\}$ (since $\gamma > 0$, $R \neq 0$).
+Therefore $\Prob[ \nu_t^{(i^\star)} = \flnw[i^\star] + 1 \mid w_t^{(1:N)} ]$ is the probability that stratified resampling with $R$ individuals assigns exactly 1 offspring to a parent with weight $\gamma /R$. According to Table~\ref{tab:strat_probs} (lower bound on $p_1$), this probability is at least $\gamma /2$.
 Hence, using \eqref{eq:strat_pbounds}, 
 \begin{equation*}
 \Prob[ c_N(t) > 2/N^2 \mid \mathcal{H}_t ]
-\geq \frac{\delta^\prime}{2} \varepsilon^{2N} .
+\geq \frac{\gamma}{2} \varepsilon^{2N} .
 \end{equation*}
 This means that, subject to $\max_i w_t^{(i)} \geq (1+\delta)/N$,
 \begin{equation*}
 \Prob[ c_N(t) > 2/N^2 \mid \mathcal{H}_t ]
-\geq \min_{\delta^\prime \geq \delta} 
-        \left\{ \frac{\delta^\prime \varepsilon^{2N}}{2} \right\}
-= \frac{ \delta \varepsilon^{2N} }{2} .
+\geq \min_{\gamma \geq \delta} 
+        \left\{ \frac{\gamma }{2} \varepsilon^{2N} \right\}
+= \frac{1}{2} \delta \varepsilon^{2N} .
 \end{equation*}
 Now, a similar calculation with the minimal weight:
 let $j^\star := \argmin_i \{ w_t^{(i)} \}$ and
-$w_t^{(j^\star)} = \frac{1-\delta^\prime}{N}$, for some 
-$\delta^\prime \in [0,1]$.
+$w_t^{(j^\star)} = \frac{1-\gamma}{N}$, for some 
+$\gamma \in [0,1]$.
 Using \eqref{eq:cNnonzero},
 \begin{equation*}
 \Prob[ c_N(t) > 2/N^2 \mid \mathcal{H}_t ]
 \geq 1- \Prob[ \nu_t^{(j^\star)} =1 \mid \mathcal{H}_t ]
 = \begin{cases}
-    1 - p_1^{(j^\star)} & \text{if } \delta^\prime \in (0,1) \\
-    0 & \text{if } \delta^\prime = 0 \\
-    1 & \text{if } \delta^\prime = 1 .
+    1 - p_1^{(j^\star)} & \text{if } \gamma \in (0,1) \\
+    0 & \text{if } \gamma = 0 \\
+    1 & \text{if } \gamma = 1 .
 \end{cases}
 \end{equation*}
-If $\delta^\prime \in (0,1)$ then $r_{j^\star} = (1- \delta^\prime)/R$, for some $R\in\{1, \dots, N-1\}$, and
+If $\gamma \in (0,1)$ then $r_{j^\star} = (1- \gamma)/R$, for some $R\in\{1, \dots, N-1\}$, and
 \begin{equation*}
 1 - p_1^{(j^\star)}
 = p_0^{(j^\star)} + p_2^{(j^\star)}
 \geq p_0^{(j^\star)} .
 \end{equation*}
-Now $\Prob[ \nu_t^{(j^\star)} = \flnw[j^\star] \mid w_t^{(1:N)} ]$ is the probability that stratified resampling with $R$ individuals assigns exactly 0 offspring to a parent with weight $(1-\delta^\prime) /R$. According to Table~\ref{tab:strat_probs} (lower bound on $p_0$), this probability is $\geq (\delta^\prime)^2 /2$.
+Now $\Prob[ \nu_t^{(j^\star)} = \flnw[j^\star] \mid w_t^{(1:N)} ]$ is the probability that stratified resampling with $R$ individuals assigns exactly 0 offspring to a parent with weight $(1-\gamma) /R$. According to Table~\ref{tab:strat_probs} (lower bound on $p_0$), this probability is at least $\gamma^2/2$.
 Hence, using \eqref{eq:strat_pbounds}, 
 \begin{equation*}
 \Prob[ c_N(t) > 2/N^2 \mid \mathcal{H}_t ]
-\geq \frac{(\delta^\prime)^2}{2} \varepsilon^{2N} .
+\geq \frac{\gamma^2}{2} \varepsilon^{2N} .
 \end{equation*}
 Therefore, using \eqref{eq:strat_pbounds}, we have that subject to $\min_i w_t^{(i)} \leq (1-\delta)/N$
 \begin{equation*}
 \Prob[ c_N(t) > 2/N^2 \mid \mathcal{H}_t ]
-\geq \min_{\delta^\prime \geq \delta} 
-        \left\{ \frac{ (\delta^\prime)^2 \varepsilon^{2N} }{2} 
-        \I{\delta^\prime \neq 0} \right\}
-= \frac{\delta^2}{2} \varepsilon^{2N} .
+\geq \min_{\gamma \geq \delta} 
+        \left\{ \frac{ \gamma^2 }{2}  \varepsilon^{2N}
+        %\I{\gamma \neq 0} 
+        \right\}
+= \frac{1}{2} \delta^2 \varepsilon^{2N} .
 \end{equation*}
 Combining the cases for the maximum and minimum weight we have that
 \begin{equation*}
 \Prob[ c_N(t) > 2/N^2 \mid \mathcal{H}_t ] 
-\geq \frac{ \delta^2 \varepsilon^{2N} }{2} 
+\geq \frac{1}{2} \delta^2 \varepsilon^{2N}
         \I{ \max_i w_t^{(i)} - \min_i w_t^{(i)} \geq 2\delta/N }
 \end{equation*}
 and we conclude as in Proposition~\ref{thm:strat_nontriviality}.
