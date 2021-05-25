@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  25 MAY 2021 11:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  25 MAY 2021 11:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2243,14 +2243,16 @@ Package mdframed Info: mdframed detected package amsthm
 Package refcheck Warning: Unused label `thm:residual_stratified' on input line 
 704.
 
+[63]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 724.
 
+
 Package refcheck Warning: Unused label `thm:resstrat_nontriviality' on input li
 ne 724.
 
-[63] [64]
+[64]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 833.
@@ -2652,10 +2654,10 @@ ts/type1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2018/texmf-dist/fonts
 ype1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2018/texmf-dist/fon
 ts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2018/texmf-dist
 /fonts/type1/adobe/utopia/putb8a.pfb>
-Output written on thesis_main.pdf (120 pages, 5019757 bytes).
+Output written on thesis_main.pdf (120 pages, 5020386 bytes).
 PDF statistics:
- 1920 PDF objects out of 2073 (max. 8388607)
- 1703 compressed objects within 18 object streams
+ 1922 PDF objects out of 2073 (max. 8388607)
+ 1705 compressed objects within 18 object streams
  434 named destinations out of 1000 (max. 500000)
  489 words of extra memory for PDF output out of 10000 (max. 10000000)
 

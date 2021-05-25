@@ -426,15 +426,15 @@ We can always write the maximum weight as $w_t^{(i^\star)} = \frac{1+\gamma}{N}$
     1 & \text{if } \gamma \geq 2 .
 \end{cases}
 \end{equation*}
-If $\gamma \in (0,1)$ then
+If $\gamma \in (0,1)$ then the ``overhang'' in the sense of Figure~\ref{fig:strat_cases} is $\gamma$, and
 \begin{equation*}
 1 - p_0^{(i^\star)}
 %\geq 1 - \left( 1- \frac{3\delta^\prime}{4} \right) \varepsilon^{2N} 
 \geq \frac{3\gamma }{4} \varepsilon^{2N}
 \end{equation*}
 using \eqref{eq:strat_nonpbounds} and %the lower bounds in 
-Table~\ref{tab:strat_probs} ($p_0$, U.B.).
-Similarly, if $\gamma \in [1,2)$ then by Table~\ref{tab:strat_probs} ($p_{-1}$, U.B.),
+Table~\ref{tab:strat_probs} (upper bound on $p_0$).
+Similarly, if $\gamma \in [1,2)$ then the overhang is $\gamma-1$ and by Table~\ref{tab:strat_probs} (upper bound on $p_{-1}$),
 \begin{equation*}
 1 - p_{-1}^{(i^\star)}
 \geq \left( 1- \frac{1}{4} \right)
@@ -462,13 +462,13 @@ Then we have
     0 & \text{if } \gamma =0 .
 \end{cases}
 \end{equation*}
-If $\gamma \in (0,1]$ then
+If $\gamma \in (0,1]$ then the ``overhang'' in the sense of Figure~\ref{fig:strat_cases} is $1-\gamma$, and
 \begin{equation*}
 1- p_1^{(j^\star)}
 \geq \left( 1- \frac{1+ (1-\gamma)}{2} \right) \varepsilon^{2N}
 = \frac{ \gamma }{2} \varepsilon^{2N} ,
 \end{equation*}
-again using Table~\ref{tab:strat_probs} ($p_1$, U.B.).
+again using Table~\ref{tab:strat_probs} (upper bound on $p_1$).
 Therefore, under the constraint $\min_i w_t^{(i)} \leq (1-\delta)/N$, we have
 \begin{equation*}
 \Prob[ c_N(t) > 2/N^2 \mid \mathcal{H}_t ]
