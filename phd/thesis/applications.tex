@@ -215,7 +215,12 @@ Recall that the sequence of $\sigma$-algebras
 \end{equation}
 are such that $\nu_t^{(1:N)}$ is conditionally independent of the filtration $\mathcal{F}_{t-1}$ given $\mathcal{H}_t$.
 With stratified resampling, conditional on the weights each offspring count almost surely takes one of four values: $\nu_t^{(i)} \in \{ \flnw -1, \flnw, \flnw +1, \flnw +2 \}$.  
-Denote $p_j^{(i)} := \Prob[ \nu_t^{(i)} = \flnw +j \mid \mathcal{H}_t ]$ for $j=-1,0,1,2$.
+Define for each $k\in\mathbb{Z}$
+\begin{equation}\label{eq:pk_defn}
+p_k^{(i)} := \Prob \left[ \nu_t^{(i)} = \flnw + k \midd \mathcal{H}_t \right] .
+\end{equation}
+Then $p_k^{(i)} \equiv 0$ for $k\notin \{-1,0,1,2\}$.
+%Denote $p_j^{(i)} := \Prob[ \nu_t^{(i)} = \flnw +j \mid \mathcal{H}_t ]$ for $j=-1,0,1,2$.
 Now
 \begin{align*}
 \E [(\nu_t^{(i)})_2 \mid \mathcal{H}_t ]
@@ -281,11 +286,7 @@ Firstly,
 &\leq \Prob[ \nu_t^{(i^\star)} =1 \mid \mathcal{H}_t ] , \label{eq:cNnonzero}
 \end{align}
 where $i^\star := \argmax_i \{ w_t^{(i)} \}$ (but note that the inequality holds when $i^\star$ is taken to be any particular index).
-Define for each $k\in\mathbb{Z}$
-\begin{equation}\label{eq:pk_defn}
-p_k^{(i)} := \Prob \left[ \nu_t^{(i)} = \flnw + k \midd \mathcal{H}_t \right] .
-\end{equation}
-Since stratified resampling almost surely results in $\nu_t^{(i)} \in \{ \flnw-1, \flnw, \flnw+1, \flnw+2 \}$ we have that $p_k^{(i)} \equiv 0$ for $k\notin \{-1,0,1,2\}$, and
+Define $p_k^{(i)}$ as in \eqref{eq:pk_defn} and recall that, under stratified resampling, $p_k^{(i)} \equiv 0$ for $k\notin \{-1,0,1,2\}$ and
 \begin{equation*}
 \sum_{k=-1}^2 p_k^{(i)} 
 = \sum_{k=-1}^2 \Prob \left[ \nu_t^{(i)} = \flnw + k \midd w_t^{(1:N)} \right]
@@ -540,6 +541,7 @@ uniformly in $x$, and that there exist $\zeta >0$ and $\delta >0$ such that
 \end{equation*}
  for infinitely many $t$. Then, for all $N>1$, $\Prob[ \tau_N(t) = \infty ] =0$ for all finite $t$.
 \end{prop}
+This result was published in \textcite[Lemma B.1]{brown2021} with the slightly stronger conditions where the bounds on $q_t$ are also uniform in $x^\prime$. It has since been noted that the conditions given here are sufficient; the $h$ terms can be  cancelled as seen in \eqref{eq:strat_pbounds}.
 
 %\seb{If I find a more elegant proof for e.g. stratified, I can use the techniques to simplify this one a bit too.}
 %

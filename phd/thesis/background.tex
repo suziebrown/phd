@@ -662,9 +662,14 @@ This scheme ensures that the samples are ``well spread out'', which reduces the 
 
 It will be useful later on to have a better idea about the marginal distributions of $\nu_t^{(i)}$ that are induced by stratified resampling. There are complex dependencies between the offspring counts, but we can still find some constraints on the distribution of each count conditional on the corresponding weight.
 Write the $i^{th}$ weight in the form $w_t^{(i)} = (K + \delta)/N$, where $\delta \in [0,1)$ and $K\in \{0,\dots,N-1\}$.
-Considering the illustration Figure~\ref{fig:resampling_stratified}, the distribution of $\nu_t^{(i)}$ depends not only on $w_t^{(i)}$ but also on where the $i^{th}$ weight interval falls with respect to the length-$(1/N)$ intervals. There are two cases to consider, which are illustrated in Figure~\ref{fig:strat_cases}.
-The distinction between Cases \subref{fig:strat_case1} and \subref{fig:strat_case2} is whether the ``overhang'' is less than or greater than $1/N$. Arrangements such that one or both ends have no overhang are included in Case \subref{fig:strat_case1}, with the relevant overhang lengths ($\delta_L$ and/or $\delta_R$) set to zero.
-Note that Case \subref{fig:strat_case2} cannot happen if $K=0$.
+Considering the illustration Figure~\ref{fig:resampling_stratified}, the distribution of $\nu_t^{(i)}$ depends not only on $w_t^{(i)}$ but also on where the $i^{th}$ weight interval falls with respect to the length-$(1/N)$ intervals. 
+Denote the left overhang $\delta_L$.
+There are two cases to consider, which are illustrated in Figure~\ref{fig:strat_cases}.
+In Case~\subref{fig:strat_case1} the total overhang is less than $1/N$ and $\delta_L \in [0,\delta]$.
+In Case~\subref{fig:strat_case2} the total overhang is greater than $1/N$ and $\delta_L \in (\delta, 1)$.
+%The distinction between Cases \subref{fig:strat_case1} and \subref{fig:strat_case2} is whether the ``overhang'' is less than or greater than $1/N$. 
+Arrangements such that one or both ends have no overhang are special cases of Case \subref{fig:strat_case1}, with the $\delta_L \in \{0,\delta\}$.
+Note that Case \subref{fig:strat_case2} cannot occur if $K=0$.
 
 %\begin{figure}
 %\centering
@@ -703,7 +708,7 @@ Note that Case \subref{fig:strat_case2} cannot happen if $K=0$.
 %\draw[dashed, gray] (4,1.4)--(4,0.1);
 %\end{tikzpicture}
 %}\\
-\subfloat[The parent under consideration is automatically assigned $K$ offspring, plus up to two more. $\delta_L+\delta_R=\delta$.]{ %\delta_L, \delta_R \in [0,\delta]. 
+\subfloat[The overhang is less than one; $ \delta_L \in {[0, \delta]} $. The parent under consideration is automatically assigned $K$ offspring, plus up to two more.]{
 \begin{tikzpicture}
 % w subinterval
 \draw[thick] (0,0)--(1.9,0);
@@ -714,11 +719,11 @@ Note that Case \subref{fig:strat_case2} cannot happen if $K=0$.
 \node[anchor=north] at (2.4,0) {$w$};
 % length labels
 \draw[<->] (0.3,-0.4)--(4.3,-0.4);
-\node[anchor=north] at (2,-0.4) {$K/N$};
+\node[anchor=north] at (2,-0.4) {$\frac{K}{N}$};
 \draw[<->] (4.3,-0.4)--(4.8,-0.4);
-\node[anchor=north] at (4.55,-0.4) {$\delta_R/N$};
+\node[anchor=north] at (4.55,-0.4) {$\frac{\delta-\delta_L}{N}$};
 \draw[<->] (0,-0.4)--(0.3,-0.4);
-\node[anchor=north] at (0.15,-0.4) {$\delta_L/N$};
+\node[anchor=north] at (0.15,-0.4) {$\frac{\delta_L}{N}$};
 % sampling interval
 \draw (-4.2,1.5)--(8.8,1.5);
 \draw[dotted] (-4.7,1.5)--(-4.2,1.5);
@@ -727,9 +732,9 @@ Note that Case \subref{fig:strat_case2} cannot happen if $K=0$.
 \draw (0.3,1.6)--(0.3,1.4);
 \draw (4.3,1.6)--(4.3,1.4);
 \draw (8.3,1.6)--(8.3,1.4);
-\node[anchor=south] at (-1.7,1.5) {$1/N$};
-\node[anchor=south] at (2.3,1.5) {$K/N$};
-\node[anchor=south] at (6.3,1.5) {$1/N$};
+\node[anchor=south] at (-1.7,1.5) {$\frac{1}{N}$};
+\node[anchor=south] at (2.3,1.5) {$\frac{K}{N}$};
+\node[anchor=south] at (6.3,1.5) {$\frac{1}{N}$};
 % vertical dividers
 \draw[dashed, gray] (0.3,1.4)--(0.3,0.1);
 \draw[dashed, gray] (4.3,1.4)--(4.3,0.1);
@@ -738,7 +743,7 @@ Note that Case \subref{fig:strat_case2} cannot happen if $K=0$.
 \end{tikzpicture}
 \label{fig:strat_case1}
 }\\
-\subfloat[This case can only occur when $K\geq1$. The parent under consideration is automatically assigned $K-1$ offspring, plus up to two more. $x_L+x_R=1+\delta$.]{ %$x_L,x_R \in [\delta,1] $. 
+\subfloat[The overhang is greater than one (this case can only occur when $K\geq1$); $\delta_L \in (\delta,1)$. The parent under consideration is automatically assigned $K-1$ offspring, plus up to two more.]{
 \begin{tikzpicture}
 % w subinterval
 \draw[thick] (-2,0)--(1.9,0);
@@ -749,11 +754,11 @@ Note that Case \subref{fig:strat_case2} cannot happen if $K=0$.
 \node[anchor=north] at (2.4,0) {$w$};
 % length labels
 \draw[<->] (0.3,-0.4)--(4.3,-0.4);
-\node[anchor=north] at (2,-0.4) {$(K-1)/N$};
+\node[anchor=north] at (2,-0.4) {$\frac{K-1}{N}$};
 \draw[<->] (4.3,-0.4)--(6.8,-0.4);
-\node[anchor=north] at (5.55,-0.4) {$x_R/N$};
+\node[anchor=north] at (5.55,-0.4) {$\frac{1+\delta-\delta_L}{N}$};
 \draw[<->] (-2,-0.4)--(0.3,-0.4);
-\node[anchor=north] at (-1.15,-0.4) {$x_L/N$};
+\node[anchor=north] at (-1.15,-0.4) {$\frac{\delta_L}{N}$};
 % sampling interval
 \draw (-4.2,1.5)--(8.8,1.5);
 \draw[dotted] (-4.7,1.5)--(-4.2,1.5);
@@ -762,9 +767,9 @@ Note that Case \subref{fig:strat_case2} cannot happen if $K=0$.
 \draw (0.3,1.6)--(0.3,1.4);
 \draw (4.3,1.6)--(4.3,1.4);
 \draw (8.3,1.6)--(8.3,1.4);
-\node[anchor=south] at (-1.7,1.5) {$1/N$};
-\node[anchor=south] at (2.3,1.5) {$(K-1)/N$};
-\node[anchor=south] at (6.3,1.5) {$1/N$};
+\node[anchor=south] at (-1.7,1.5) {$\frac{1}{N}$};
+\node[anchor=south] at (2.3,1.5) {$\frac{K-1}{N}$};
+\node[anchor=south] at (6.3,1.5) {$\frac{1}{N}$};
 % vertical dividers
 \draw[dashed, gray] (0.3,1.4)--(0.3,0.1);
 \draw[dashed, gray] (4.3,1.4)--(4.3,0.1);
@@ -773,29 +778,29 @@ Note that Case \subref{fig:strat_case2} cannot happen if $K=0$.
 \end{tikzpicture}
 \label{fig:strat_case2}
 }
-\caption[Cases for stratified resampling with a fixed weight]{Cases for stratified resampling with a fixed weight $w = (K+\delta)/N$}
+\caption[Cases for stratified resampling with a fixed weight]{Cases for stratified resampling with a fixed weight $w = (K+\delta)/N$.}
 \label{fig:strat_cases}
 \end{figure}
 
 
 In any case $\nu_t^{(i)} \in \{K-1, K, K+1, K+2\}$ almost surely. 
-To define a probability distribution over these four values, we introduce the notation $p_j := \Prob[ \nu_t^{(i)} = \flnw +j \mid w_t^{(i)} ]$, for $j=-1,0,1,2$.\seb{Change notation to avoid confusion with $p_k^{(i)}$'s in Chapter~\ref{ch:appl}.}
-Since the sample within each interval of length $1/N$ is uniform over that interval, we find the probabilities given in Table~\ref{tab:strat_probs}, in terms of $\delta$ and the other quantities $\delta_L, \delta_R \in [0, \delta]$ and $x_L, x_R \in (\delta,1)$ defined in Figure~\ref{fig:strat_cases}. The probabilities do not depend on $K$, but of course the corresponding values of $\nu_t^{(i)}$ do. By definition $\delta_L+\delta_R=\delta$ and $x_L+x_R=1+\delta$.
+To define a probability distribution over these four values, we introduce the notation $p_j := \Prob[ \nu_t^{(i)} = \flnw +j \mid w_t^{(i)} ]$, for $j=-1,0,1,2$.\seb{Change notation to avoid confusion with $p_k^{(i)}$'s in Chapter~\ref{ch:appl}?}
+Since the sample within each interval of length $1/N$ is uniform over that interval, we find the probabilities given in Table~\ref{tab:strat_probs}, in terms of $\delta$ and $\delta_L$. The probabilities do not depend on $K$, but of course the corresponding values of $\nu_t^{(i)}$ do.
 
 \begin{table}[ht]
 \centering
-\begin{tabular}{ c | c c c c }
+\begin{tabular}{ c | c c | c c }
 \hline\hline
 & Case \subref{fig:strat_case1} & Case \subref{fig:strat_case2} & L.B. & U.B. \\
 \hline
-$p_{-1}$ & 0 & $x_Lx_R-\delta$ & 0 & $1/4$ \\
-$p_0$ & $1-\delta + \delta_L\delta_R$ & $1+\delta-2x_Lx_R$ & $(1-\delta)^2 /2$ 
+$p_{-1}$ & 0 & $\delta_L(1+\delta - \delta_L) -\delta$ & 0 & $1/4$ \\
+$p_0$ & $1-\delta + \delta_L(\delta -\delta_L)$ & $1+\delta-2\delta_L(1+\delta -\delta_L)$ & $(1-\delta)^2 /2$ 
         & $1 - 3\delta /4$ \\
-$p_1$ & $\delta-2\delta_L\delta_R$ & $x_Lx_R$ & $\delta /2$ & $(1+\delta)/2$ \\
-$p_2$ & $\delta_L\delta_R$ & 0 & 0 & $1/4$ \\
+$p_1$ & $\delta-2\delta_L(\delta -\delta_L)$ & $\delta_L(1+\delta -\delta_L)$ & $\delta /2$ & $(1+\delta)/2$ \\
+$p_2$ & $\delta_L(\delta -\delta_L)$ & 0 & 0 & $1/4$ \\
 \hline\hline
 \end{tabular}
-\caption[Analysis of distribution of offspring counts under stratified resampling]{Marginal probability distribution of $\nu_t^{(i)}$ conditional on $w_t^{(i)}$, in terms of $\delta$ and the quantities defined in Figure~\ref{fig:strat_cases}, along with upper and lower bounds on these in terms of $\delta$ only, which hold in both cases i.e.\ whenever $w_t^{(i)} = (K+\delta)/N$.}
+\caption[Analysis of distribution of offspring counts under stratified resampling]{Marginal probability distribution of $\nu_t^{(i)}$ conditional on $w_t^{(i)} = (K+\delta)/N$, in terms of $\delta$ and the ``left overhang'' $\delta_L$, along with upper and lower bounds on these in terms of $\delta$ only, which hold in both cases.}
 \label{tab:strat_probs}
 \end{table}
 
