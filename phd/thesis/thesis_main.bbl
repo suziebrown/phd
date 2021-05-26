@@ -1553,6 +1553,44 @@
       \field{pages}{446\bibrangedash 460}
       \range{pages}{15}
     \endentry
+    \entry{mohle2001}{article}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,uniquepart=base,hash=b6cd56499245b16ab003cae95de7eae7}{%
+           family={M{ö}hle},
+           familyi={M\bibinitperiod},
+           given={Martin},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=1940412646c2d90b785da664aaae82fe}{%
+           family={Sagitov},
+           familyi={S\bibinitperiod},
+           given={Serik},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Institute of Mathematical Statistics}%
+      }
+      \strng{namehash}{7b28cea84f9657a4420fed06db351e19}
+      \strng{fullhash}{7b28cea84f9657a4420fed06db351e19}
+      \strng{bibnamehash}{7b28cea84f9657a4420fed06db351e19}
+      \strng{authorbibnamehash}{7b28cea84f9657a4420fed06db351e19}
+      \strng{authornamehash}{7b28cea84f9657a4420fed06db351e19}
+      \strng{authorfullhash}{7b28cea84f9657a4420fed06db351e19}
+      \field{sortinit}{M}
+      \field{sortinithash}{cfd219b90152c06204fab207bc6c7cab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Annals of Probability}
+      \field{number}{4}
+      \field{title}{A Classification of Coalescent Processes for Haploid Exchangeable Population Models}
+      \field{volume}{29}
+      \field{year}{2001}
+      \field{pages}{1547\bibrangedash 1562}
+      \range{pages}{16}
+    \endentry
     \entry{mohle2003}{article}{}
       \name{author}{2}{}{%
         {{uniquename=0,uniquepart=base,hash=91dc4d416f310afc5cf0edbfc909f0cf}{%

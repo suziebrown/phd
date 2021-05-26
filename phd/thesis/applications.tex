@@ -8,7 +8,13 @@ The rest sit round and pluck blackberries.
 }
 {\textsc{Elizabeth Barrett Browning}}
 
-\draft{Add some beginning-of-chapter waffle here.}
+
+Theorem~\ref{thm:FDDconv} gives verifiable conditions under which interacting particle systems with dynamics in the form of Algorithm~\ref{alg:SMC} have asymptotically Kingman genealogies. 
+The work was motivated by SMC algorithms, which have the required form. However, certain choices of state space and dynamics within the context of Algorithm~\ref{alg:SMC} yield systems that are not very SMC-like but may have applications in other fields such as population genetics. 
+For instance, we have generally imagined that the resampling scheme is unbiased, but this is by no means necessary for Theorem~\ref{thm:FDDconv}; it is just that biased resampling schemes are of little use in SMC.
+
+The applications presented in this chapter are all motivated by SMC, but an interesting area of future research would be to explore the implications of Theorem~\ref{thm:FDDconv} in other contexts. From the population genetics point-of-view, Theorem~\ref{thm:FDDconv} may be seen as a complement to the convergence criteria for neutral models \parencite[e.g.][]{mohle2001} discussed in Section ??\seb{add the section reference once that part of ch2 is written}.
+
 
 \section{Multinomial resampling \seb{$\checkmark$} }
 Multinomial resampling is often preferred in theoretical studies of SMC, because it renders the parental indices conditionally i.i.d. given the weights, making it relatively simple to analyse the resulting algorithm.
@@ -805,25 +811,25 @@ If $\gamma \in (0,1)$ then $r_{j^\star} = (1- \gamma)/R$, for some $R\in\{1, \do
 = p_0^{(j^\star)} + p_2^{(j^\star)}
 \geq p_0^{(j^\star)} .
 \end{equation*}
-Now $\Prob[ \nu_t^{(j^\star)} = \flnw[j^\star] \mid w_t^{(1:N)} ]$ is the probability that stratified resampling with $R$ individuals assigns exactly 0 offspring to a parent with weight $(1-\gamma) /R$. According to Table~\ref{tab:strat_probs} (lower bound on $p_0$), this probability is at least $\gamma^2/2$.
+Now $\Prob[ \nu_t^{(j^\star)} = \flnw[j^\star] \mid w_t^{(1:N)} ]$ is the probability that stratified resampling with $R$ individuals assigns exactly 0 offspring to a parent with weight $(1-\gamma) /R$. According to Table~\ref{tab:strat_probs} (lower bound on $p_0$), this probability is at least $\gamma/2$.
 Hence, using \eqref{eq:strat_pbounds}, 
 \begin{equation*}
 \Prob[ c_N(t) > 2/N^2 \mid \mathcal{H}_t ]
-\geq \frac{\gamma^2}{2} \varepsilon^{2N} .
+\geq \frac{\gamma}{2} \varepsilon^{2N} .
 \end{equation*}
 Therefore, using \eqref{eq:strat_pbounds}, we have that subject to $\min_i w_t^{(i)} \leq (1-\delta)/N$
 \begin{equation*}
 \Prob[ c_N(t) > 2/N^2 \mid \mathcal{H}_t ]
 \geq \min_{\gamma \geq \delta} 
-        \left\{ \frac{ \gamma^2 }{2}  \varepsilon^{2N}
+        \left\{ \frac{ \gamma }{2}  \varepsilon^{2N}
         %\I{\gamma \neq 0} 
         \right\}
-= \frac{1}{2} \delta^2 \varepsilon^{2N} .
+= \frac{1}{2} \delta \varepsilon^{2N} .
 \end{equation*}
 Combining the cases for the maximum and minimum weight we have that
 \begin{equation*}
 \Prob[ c_N(t) > 2/N^2 \mid \mathcal{H}_t ] 
-\geq \frac{1}{2} \delta^2 \varepsilon^{2N}
+\geq \frac{1}{2} \delta \varepsilon^{2N}
         \I{ \max_i w_t^{(i)} - \min_i w_t^{(i)} \geq 2\delta/N }
 \end{equation*}
 and we conclude as in Proposition~\ref{thm:strat_nontriviality}.
