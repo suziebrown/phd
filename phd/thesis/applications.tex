@@ -9,17 +9,18 @@ The rest sit round and pluck blackberries.
 {\textsc{Elizabeth Barrett Browning}}
 
 
-Theorem~\ref{thm:FDDconv} gives verifiable conditions under which interacting particle systems with dynamics in the form of Algorithm~\ref{alg:SMC} have asymptotically Kingman genealogies. 
+Theorem~\ref{thm:weakconv} gives verifiable conditions under which interacting particle systems with dynamics in the form of Algorithm~\ref{alg:SMC} have asymptotically Kingman genealogies. 
 The work was motivated by SMC algorithms, which have the required form. However, certain choices of state space and dynamics within the context of Algorithm~\ref{alg:SMC} yield systems that are not very SMC-like but may have applications in other fields such as population genetics. 
-For instance, we have generally imagined that the resampling scheme is unbiased, but this is by no means necessary for Theorem~\ref{thm:FDDconv}; it is just that biased resampling schemes are of little use in SMC.
+For instance, we have generally imagined that the resampling scheme is unbiased, but this is by no means necessary for Theorem~\ref{thm:weakconv} (or indeed Theorem~\ref{thm:FDDconv}); it is just that biased resampling schemes are of little use in SMC.
 
-The applications presented in this chapter are all motivated by SMC, but an interesting area of future research would be to explore the implications of Theorem~\ref{thm:FDDconv} in other contexts. From the population genetics point-of-view, Theorem~\ref{thm:FDDconv} may be seen as a complement to the convergence criteria for neutral models \parencite[e.g.][]{mohle2001} discussed in Section ??\seb{add the section reference once that part of ch2 is written}.
+The applications presented in this chapter are all motivated by SMC, but an interesting area of future research would be to explore the implications of Theorem~\ref{thm:weakconv} in other contexts. From the population genetics point-of-view, Theorem~\ref{thm:weakconv} may be seen as a complement to the convergence criteria for neutral models \parencite[e.g.][]{mohle2001} discussed in Section ??\seb{add the section reference once that part of ch2 is written}, so it would be interesting to construct some corollaries for classical non-neutral population models.
 
 
 \section{Multinomial resampling}
 \label{sec:corol_mn}
 Multinomial resampling is often preferred in theoretical studies of SMC, because it renders the parental indices conditionally i.i.d. given the weights, making it relatively simple to analyse the resulting algorithm.
-The result of Corollary~\ref{thm:multinomial} was proved in \textcite[Corollary 1]{koskela2018}. Nonetheless it is included here, firstly to demonstrate the relative ease with which it is proved under Theorem~\ref{thm:FDDconv} as opposed to \textcite[Theorem 1]{koskela2018}, and secondly to outline the proof technique before proceeding to more complex resampling schemes.
+The convergence of finite-dimensional distributions for multinomial resampling was proved in \textcite[Corollary 1]{koskela2018}, but we are now able to prove an analogous weak convergence result. The following proof also demonstrates the relative ease with which we can verify Theorem~\ref{thm:FDDconv} as opposed to \textcite[Theorem 1]{koskela2018}.
+%The result of Corollary~\ref{thm:multinomial} was proved in \textcite[Corollary 1]{koskela2018}. It is also included here, firstly to demonstrate the relative ease with which it is proved under Theorem~\ref{thm:FDDconv} as opposed to \textcite[Theorem 1]{koskela2018}, and secondly to introduce the proof technique before proceeding to more complex resampling schemes.
 
 \begin{corollary}\label{thm:multinomial}
 Consider an SMC algorithm using multinomial resampling, such that \ref{standing_assumption} is satisfied. Assume there exist constants $\varepsilon\in (0,1], a\in [1,\infty)$ and probability density $h$ such that for all $x, x^\prime, t$,
@@ -27,7 +28,7 @@ Consider an SMC algorithm using multinomial resampling, such that \ref{standing_
 \frac{1}{a} \leq g_t(x, x^\prime) \leq a , \quad
 \varepsilon h(x^\prime) \leq q_t(x, x^\prime) \leq \frac{1}{\varepsilon} h(x^\prime) .
 \end{equation}
-Let $(G_t^{(n,N)})_{t\geq0}$ denote the genealogy of a random sample of $n$ terminal particles from the output of the algorithm when the total number of particles used is $N$. Then, for any fixed $n$, the time-scaled genealogy $(G_{\tau_N(t)}^{(n,N)})_{t\geq0}$ converges to Kingman's $n$-coalescent as $N\to \infty$, in the sense of finite-dimensional distributions.
+Let $(G_t^{(n,N)})_{t\geq0}$ denote the genealogy of a random sample of $n$ terminal particles from the output of the algorithm among a total of $N$ particles. Then, for any fixed $n$, the time-scaled genealogy $(G_{\tau_N(t)}^{(n,N)})_{t\geq0}$ converges weakly to Kingman's $n$-coalescent as $N\to \infty$.%, in the sense of finite-dimensional distributions.
 \end{corollary}
 The bounds on $g_t$ and $q_t$ in \eqref{eq:gq_bounds_mn} are rather strong; they can only reasonably be expected to hold if the state space is compact. 
 However, they are widespread in the literature, where they are known as the \emph{strong mixing conditions} \parencite[Section 3.5.2]{delmoral2004}, because they greatly facilitate the theoretical analysis of SMC algorithms. It is often possible to relax these conditions at the expense of considerable technical complication.
@@ -35,8 +36,13 @@ The conditions on $g_t$ in \eqref{eq:gq_bounds_mn} ensure that the weights are a
 %In the following proof, conditions \eqref{eq:gq_bounds_mn} ensure that the weights are all $O(N^{-1})$, none of them being too close to zero or one, which controls the relative rate of multiple mergers.
 
 \begin{proof}
-Define the conditioning $\sigma$-algebra $\mathcal{H}_t$ as in \eqref{eq:defn_Ht}.
-The parental indices are conditionally independent, with conditional law
+%Define the $\sigma$-algebras $\mathcal{H}_t$ as in \eqref{eq:defn_Ht}.
+Recall that the sequence of $\sigma$-algebras
+\begin{equation}\label{eq:defn_Ht}
+\mathcal{H}_t := \sigma(X_{t-1}^{(1:N)}, X_t^{(1:N)}, w_{t-1}^{(1:N)}, w_t^{(1:N)} )
+\end{equation}
+are such that $\nu_t^{(1:N)}$ is conditionally independent of the filtration $\mathcal{F}_{t-1}$ given $\mathcal{H}_t$.
+Conditional on $\mathcal{H}_t$ the parental indices are independent, with conditional law
 \begin{equation}\label{eq:parentslaw_mn}
 \Prob \left[ a_t^{(i)} = a_i \mid \mathcal{H}_t \right] 
 %\propto w_t^{(a_i)} q_{t-1}(X_t^{(a_i)}, X_{t-1}^{(i)})
@@ -172,7 +178,7 @@ Applying this identity to \eqref{eq:mn_cN_LB} and \eqref{eq:mn_cN3_UB} we find
 \end{align*}
 Thus \eqref{eq:mainthmcond} is satisfied. 
 It remains to show that, for $N$ sufficiently large, $\Prob[ \tau_N(t) = \infty ] =0$ for all finite $t$, a technicality which is proved in Lemma \ref{thm:mn_nontriviality}. 
-Applying Theorem~\ref{thm:FDDconv} then yields the result.
+Applying Theorem~\ref{thm:weakconv} then yields the result.
 \end{proof}
 
 
@@ -184,7 +190,7 @@ Then, for all $N>2$, $\Prob[ \tau_N(t) = \infty ]=0$ for all finite $t$.
 
 \begin{proof}
 Since $c_N(t) \in [0,1]$ almost surely and has strictly positive expectation, for any fixed $N$ the distribution of $c_N(t)$ with given expectation that maximises $\Prob[ c_N(t)=0 \mid \mathcal{F}_{t-1} ]$ is two atoms, at 0 and 1 respectively. To ensure the correct expectation, the atom at 1 should have mass $\Prob[ c_N(t)=1 \mid \mathcal{F}_{t-1} ] = \Et [ c_N(t) ]$, which is bounded below by \eqref{eq:mn_cN_LB}.
-If $c_N(t) > 0$ then $c_N(t) \geq 2/(N)_2 > 2/N^2$. Hence, in general $\Prob[ c_N(t) > 2/N^2 \mid \mathcal{F}_{t-1} ] \geq \Et [c_N(t)]$. Applying \eqref{eq:mn_cN_LB} along with \eqref{eq:condexp_HtFt}, we have for any finite $N$
+If $c_N(t) > 0$ then $c_N(t) \geq 2/(N)_2 > 2/N^2$. Hence, in general $\Prob[ c_N(t) > 2/N^2 \mid \mathcal{F}_{t-1} ] \geq \Et [c_N(t)]$ \seb{the above explanation could be a bit more verbose/explicit}. Applying \eqref{eq:mn_cN_LB} along with \eqref{eq:condexp_HtFt}, we have for any finite $N$
 \begin{equation*}
 \sum_{t=0}^\infty \Prob[ c_N(t) > 2/N^2 \mid \mathcal{F}_{t-1} ]
 \geq \sum_{t=0}^\infty \Et [ c_N(t) ]
@@ -207,7 +213,7 @@ Assume that there exists a constant $a\in [1,\infty)$ such that for all $x, x^\p
 \frac{1}{a} \leq g_t(x, x^\prime) \leq a .
 \end{equation}
 Assume that $\Prob[ \tau_N(t) = \infty] =0$ for all finite $t$.
-Let $(G_t^{(n,N)})_{t\geq0}$ denote the genealogy of a random sample of $n$ terminal particles from the output of the algorithm when the total number of particles used is $N$. Then, for any fixed $n$, the time-scaled genealogy $(G_{\tau_N(t)}^{(n,N)})_{t\geq0}$ converges to Kingman's $n$-coalescent as $N\to \infty$, in the sense of finite-dimensional distributions.
+Let $(G_t^{(n,N)})_{t\geq0}$ denote the genealogy of a random sample of $n$ terminal particles from the output of the algorithm among a total of $N$ particles. Then, for any fixed $n$, the time-scaled genealogy $(G_{\tau_N(t)}^{(n,N)})_{t\geq0}$ converges weakly to Kingman's $n$-coalescent as $N\to \infty$.%, in the sense of finite-dimensional distributions.
 \end{corollary}
 Stratified resampling is, by design, much more restrictive than multinomial resampling. Once the weights are known there is little freedom in the offspring counts, so it is not surprising that control over the weights such as \eqref{eq:gq_bounds_sr} provides is sufficient without any additional control over the transition densities $q_t$. This is in contrast to multinomial resampling (Corollary~\ref{thm:multinomial}), where $g_t$ and $q_t$ are more or less on an equal footing, and we require both to be bounded.
 
@@ -216,11 +222,7 @@ It is not immediately clear that the finite time scale condition $\Prob[ \tau_N(
 \seb{By the way, does the lack of conditions of $q_t$ here imply that we do not even need the transition kernels to admit densities?}
 
 \begin{proof}
-Recall that the sequence of $\sigma$-algebras
-\begin{equation}\label{eq:defn_Ht}
-\mathcal{H}_t := \sigma(X_{t-1}^{(1:N)}, X_t^{(1:N)}, w_{t-1}^{(1:N)}, w_t^{(1:N)} )
-\end{equation}
-are such that $\nu_t^{(1:N)}$ is conditionally independent of the filtration $\mathcal{F}_{t-1}$ given $\mathcal{H}_t$.
+Define the $\sigma$-algebras $\mathcal{H}_t$ as in \eqref{eq:defn_Ht}.
 With stratified resampling, conditional on the weights each offspring count almost surely takes one of four values: $\nu_t^{(i)} \in \{ \flnw -1, \flnw, \flnw +1, \flnw +2 \}$.  
 Define for each $k\in\mathbb{Z}$
 \begin{equation}\label{eq:pk_defn}
@@ -235,35 +237,35 @@ Now
     &\hspace{3cm} + p_2^{(i)} (\flnw +2)_2
 \end{align*}
 and
-\begin{align*}
+\begin{align}
 \E [(\nu_t^{(i)})_3 \mid \mathcal{H}_t ]
-&= p_{-1}^{(i)} (\flnw -1)_3 + p_0^{(i)} (\flnw)_3 + p_1^{(i)} (\flnw +1)_3 \\
-    &\hspace{1cm} + p_2^{(i)} (\flnw +2)_3 \\
-&= p_{-1}^{(i)} (\flnw -3)(\flnw -1)_2 + p_0^{(i)} (\flnw -2)(\flnw)_2 \\
+&= p_{-1}^{(i)} (\flnw -1)_3 + p_0^{(i)} (\flnw)_3 + p_1^{(i)} (\flnw +1)_3 \notag\\
+    &\hspace{1cm} + p_2^{(i)} (\flnw +2)_3 \notag\\
+&= p_{-1}^{(i)} (\flnw -3)(\flnw -1)_2 + p_0^{(i)} (\flnw -2)(\flnw)_2 \notag\\
      &\hspace{1cm} + p_1^{(i)} (\flnw -1)(\flnw +1)_2 
-         + p_2^{(i)} \flnw (\flnw +2)_2 \\
+         + p_2^{(i)} \flnw (\flnw +2)_2 \notag\\
 &\leq \flnw \Big\{ p_{-1}^{(i)} (\flnw -1)_2 + p_0^{(i)} (\flnw)_2 
-        + p_1^{(i)} (\flnw +1)_2 \\
-    &\hspace{1cm} + p_2^{(i)} (\flnw +2)_2 \Big\} \\
-&= \flnw ]\E [(\nu_t^{(i)})_2 \mid \mathcal{H}_t ] \\
-&\leq a^2 \E [(\nu_t^{(i)})_2 \mid \mathcal{H}_t ]
-\end{align*}
+        + p_1^{(i)} (\flnw +1)_2 \notag\\
+    &\hspace{1cm} + p_2^{(i)} (\flnw +2)_2 \Big\} \notag\\
+&= \flnw ]\E [(\nu_t^{(i)})_2 \mid \mathcal{H}_t ] \notag\\
+&\leq a^2 \E [(\nu_t^{(i)})_2 \mid \mathcal{H}_t ] . \label{eq:strat_v2_versus_v3}
+\end{align}
 The last line uses the almost sure bound $w_t^{(i)} \leq a^2 /N$ which follows from \eqref{eq:gq_bounds_sr} along with the form of the weights in Algorithm \ref{alg:SMC}.
-Note that some terms in the above expressions may be equal to zero when $w_t^{(i)}$ is small enough, but the bound always holds nonetheless.
-Since the above holds for all $i$, applying the tower rule we have
+Note that some terms in the above expressions may be equal to zero when $w_t^{(i)}$ is small enough, but the bound still holds in these cases.
+Since \eqref{eq:strat_v2_versus_v3} holds for all $i$, applying the tower rule we have
 \begin{equation*}
 \frac{1}{(N)_3} \sum_{i=1}^{N} \Et [(\nu_t^{(i)})_3 ]
-\leq \frac{a^2}{N-2} \frac{1}{(N)_2} \sum_{i=1}^{N} \Et [(\nu_t^{(i)})_2 ]
+\leq \frac{a^2}{N-2} \frac{1}{(N)_2} \sum_{i=1}^{N} \Et [(\nu_t^{(i)})_2 ] ,
 \end{equation*}
 satisfying \eqref{eq:mainthmcond} with $b_N := a^2/(N-2) \rightarrow 0$.
-The result then follows by applying Theorem~\ref{thm:FDDconv}.
+The result follows by applying Theorem~\ref{thm:weakconv}.
 \end{proof}
 
 
 
 \begin{prop}\label{thm:strat_nontriviality}
 Consider an SMC algorithm using stratified resampling.
-Suppose that there exists a constant $\varepsilon \in (0,1]$ and a probability density $h$
+Suppose that there exists a constant $\varepsilon \in (0,1]$ and a probability density $h$ such that
 \begin{equation*}
 \varepsilon h(x') \leq q_t(x, x^\prime) \leq \varepsilon^{-1} h(x')
 \end{equation*}
@@ -276,8 +278,8 @@ uniformly in $x$, and that there exist $\zeta >0$ and $\delta >0$ such that
 We now assume $q_t$ is bounded above and away from zero, as in \eqref{eq:gq_bounds_mn}.
 We saw that such a condition was not necessary for Corollary~\ref{thm:stratified}, and we do not believe it to be necessary here either; it is merely a convenient way to control the contributions from the transition density. The bounds established in the following proof are rather crude, particularly the terms in $\varepsilon$; it may well be possible to achieve similar bounds under less restrictive conditions.
 
-The second condition \eqref{eq:strat_minmaxweight} is required to ensure that, at least infinitely often, the weights are not equal to $(1,\dots,1)/N$, since stochastic rounding is degenerate under equal weights and this will cause the time scale to explode. 
-It is hardly conceivable that any real SMC algorithm would fail to satisfy this condition, which effectively ensures that the weights cannot be ``too well-behaved''.
+The second condition \eqref{eq:strat_minmaxweight} is required to ensure that, at least infinitely often, the weights are not equal to $(1,\dots,1)/N$, since stratified resampling is degenerate under equal weights, which could cause the time scale to explode. 
+It is hardly conceivable that any real SMC algorithm would fail to satisfy this very mild condition, which effectively ensures that the weights cannot be ``too well-behaved''.
 
 
 \begin{proof}
@@ -309,16 +311,16 @@ p_k^{(i)}
         \prod_{j=1}^N q_{t-1}( X_t^{(a_j)}, X_{t-1}^{(j)} ) 
 \end{align*}
 for each $k\in\{-1,0,1,2\}$.
-We can bound each probability above and below using the almost sure bounds on $q_{t-1}$ from the statement of the Proposition:
+We can bound each probability above and below using the almost sure bounds on $q_{t-1}$ from the statement of the Proposition (once the bounds on $q_{t-1}$ are brought outside, the remaining sum of probabilities is equal to one):
 \begin{align*}
 p_k^{(i)}
 &\geq C \, \Prob \left[ \nu_t^{(i)} = \flnw + k \midd w_t^{(1:N)} \right] \varepsilon^N
         \prod_{j=1}^N h(X_{t-1}^{(j)}) , \\
 p_k^{(i)}
 &\leq C \, \Prob \left[ \nu_t^{(i)} = \flnw + k \midd w_t^{(1:N)} \right] 
-        \varepsilon^{-N} \prod_{j=1}^N h(X_{t-1}^{(j)}) ,
+        \varepsilon^{-N} \prod_{j=1}^N h(X_{t-1}^{(j)}) .
 \end{align*}
-then eliminate the proportionality constant $C$ by normalising, to obtain lower bounds
+We then eliminate the proportionality constant $C$ by normalising, to obtain lower bounds
 \begin{align}
 p_k^{(i)} 
 &\geq \frac{ C \, \Prob [ \nu_t^{(i)} = \flnw + k \mid w_t^{(1:N)} ] 
@@ -440,8 +442,7 @@ If $\gamma \in (0,1)$ then the ``overhang'' in the sense of Figure~\ref{fig:stra
 %\geq 1 - \left( 1- \frac{3\delta^\prime}{4} \right) \varepsilon^{2N} 
 \geq \frac{3\gamma }{4} \varepsilon^{2N}
 \end{equation*}
-using \eqref{eq:strat_nonpbounds} and %the lower bounds in 
-Table~\ref{tab:strat_probs} (upper bound on $p_0$).
+using Table~\ref{tab:strat_probs} (upper bound on $p_0$) and \eqref{eq:strat_nonpbounds}.
 Similarly, if $\gamma \in [1,2)$ then the overhang is $\gamma-1$ and by Table~\ref{tab:strat_probs} (upper bound on $p_{-1}$),
 \begin{equation*}
 1 - p_{-1}^{(i^\star)}
@@ -449,7 +450,7 @@ Similarly, if $\gamma \in [1,2)$ then the overhang is $\gamma-1$ and by Table~\r
         \varepsilon^{2N} 
 \geq \frac{3}{4} \varepsilon^{2N} .
 \end{equation*}
-So overall, under the constraint $\max_i w_t^{(i)} \geq (1+\delta)/N$, we have
+Overall, under the constraint $\max_i w_t^{(i)} \geq (1+\delta)/N$, we have
 \begin{equation*}
 \Prob[ c_N(t) > 2/N^2 \mid \mathcal{H}_t ]
 \geq \min_{\gamma \geq \delta} 
@@ -459,9 +460,9 @@ So overall, under the constraint $\max_i w_t^{(i)} \geq (1+\delta)/N$, we have
 = \frac{3}{4} \delta \varepsilon^{2N} .
 \end{equation*}
 
-Now we construct a similar argument for the minimum weight. Let $j^\star := \argmin_i \{ w_t^{(i)} \}$ and write
+We now construct a similar argument for the minimum weight. Let $j^\star := \argmin_i \{ w_t^{(i)} \}$ and write
 $w_t^{(j^\star)} = \frac{1-\gamma}{N}$, for some $\gamma \in [0,1]$.
-Then we have
+Then by \eqref{eq:cNnonzero} we have
 \begin{equation*}
 \Prob[ c_N(t) > 2/N^2 \mid \mathcal{H}_t ]
 \geq 1- \Prob[ \nu_t^{(j^\star)} =1 \mid \mathcal{H}_t ]
@@ -476,7 +477,7 @@ If $\gamma \in (0,1]$ then the ``overhang'' in the sense of Figure~\ref{fig:stra
 \geq \left( 1- \frac{1+ (1-\gamma)}{2} \right) \varepsilon^{2N}
 = \frac{ \gamma }{2} \varepsilon^{2N} ,
 \end{equation*}
-again using Table~\ref{tab:strat_probs} (upper bound on $p_1$).
+using Table~\ref{tab:strat_probs} (upper bound on $p_1$).
 Therefore, under the constraint $\min_i w_t^{(i)} \leq (1-\delta)/N$, we have
 \begin{equation*}
 \Prob[ c_N(t) > 2/N^2 \mid \mathcal{H}_t ]
@@ -492,9 +493,10 @@ Combining both cases, we find for arbitrary $r$
 \geq  \frac{1}{2} \delta \varepsilon^{2N} 
         \I{ \max_i w_r^{(i)} - \min_i w_r^{(i)} \geq 2\delta/N }
 \end{equation*}
-so
+so, by the tower rule and conditional independence,
 \begin{align*}
 \Prob[ c_N(r) > 2/N^2 \mid \mathcal{F}_{r-1} ] 
+&= \E_r \left[ \Prob[ c_N(r) > 2/N^2 \mid \mathcal{H}_r ] \right] \\
 &\geq  \frac{1}{2} \delta \varepsilon^{2N} 
         \Prob[ \max_i w_r^{(i)} - \min_i w_r^{(i)} \geq 2\delta/N 
         \mid \mathcal{F}_{r-1} ] \\
@@ -520,25 +522,23 @@ Assume that there exists a constant $a\in [1,\infty)$ such that for all $x, x^\p
 \frac{1}{a} \leq g_t(x, x^\prime) \leq a . 
 \end{equation*}
 Assume that $\Prob[ \tau_N(t) = \infty] =0$ for all finite $t$.
-Let $(G_t^{(n,N)})_{t\geq0}$ denote the genealogy of a random sample of $n$ terminal particles from the output of the algorithm when the total number of particles used is $N$. Then, for any fixed $n$, the time-scaled genealogy $(G_{\tau_N(t)}^{(n,N)})_{t\geq0}$ converges to Kingman's $n$-coalescent as $N\to \infty$, in the sense of finite-dimensional distributions.
+Let $(G_t^{(n,N)})_{t\geq0}$ denote the genealogy of a random sample of $n$ terminal particles from the output of the algorithm among a total of $N$ particles. Then, for any fixed $n$, the time-scaled genealogy $(G_{\tau_N(t)}^{(n,N)})_{t\geq0}$ converges weakly to Kingman's $n$-coalescent as $N\to \infty$.%, in the sense of finite-dimensional distributions.
 \end{corollary}
 
 \begin{proof}
-We can apply exactly the proof of Corollary~\ref{thm:stratified}, except that stochastic rounding is more restrictive than stratified resampling, so that the only possible offspring counts (almost surely, conditional on weights) are $\nu_t^{(i)} \in \{ \flnw, \flnw +1 \}$. We simply set $p_{-1}^{(i)} = p_{2}^{(i)} = 0$ in the proof of Corollary~\ref{thm:stratified} to see that
+We can apply exactly the proof of Corollary~\ref{thm:stratified}, except that stochastic rounding is more restrictive than stratified resampling, so that conditional on $w_t^{(1:N)}$ the only possible offspring counts (almost surely) are $\nu_t^{(i)} \in \{ \flnw, \flnw +1 \}$. We simply set $p_{-1}^{(i)} = p_{2}^{(i)} = 0$ in the proof of Corollary~\ref{thm:stratified} to see that
 \begin{equation*}
 \frac{1}{(N)_3} \sum_{i=1}^{N} \Et [(\nu_t^{(i)})_3 ]
 \leq \frac{a^2}{N-2} \frac{1}{(N)_2} \sum_{i=1}^{N} \Et [(\nu_t^{(i)})_2 ]
 \end{equation*}
 as required.
-The result then follows by applying Theorem~\ref{thm:FDDconv}.
+The result then follows by applying Theorem~\ref{thm:weakconv}.
 \end{proof}
-
-
 We can also show, under additional conditions, that the assumption $\Prob[ \tau_N(t) = \infty ] =0$ for all finite $t$ holds.
 
 \begin{prop}\label{thm:SR_nontriviality}
 Consider an SMC algorithm using any stochastic rounding as its resampling scheme.
-Suppose that there exists a constant $\varepsilon \in (0,1]$ and a probability density $h$
+Suppose that there exists a constant $\varepsilon \in (0,1]$ and a probability density $h$ such that
 \begin{equation*}
 \varepsilon h(x') \leq q_t(x, x^\prime) \leq \varepsilon^{-1} h(x')
 \end{equation*}
@@ -548,7 +548,7 @@ uniformly in $x$, and that there exist $\zeta >0$ and $\delta >0$ such that
 \end{equation*}
  for infinitely many $t$. Then, for all $N>1$, $\Prob[ \tau_N(t) = \infty ] =0$ for all finite $t$.
 \end{prop}
-This result was published in \textcite[Lemma B.1]{brown2021} with the slightly stronger conditions where the bounds on $q_t$ are also uniform in $x^\prime$. It has since been noted that the conditions given here are sufficient; the $h$ terms can be  cancelled as seen in \eqref{eq:strat_pbounds}.
+This result was published in \textcite[Lemma B.1]{brown2021} with the slightly stronger conditions where the bounds on $q_t$ are also uniform in $x^\prime$. It has since been noted that the conditions given here are sufficient; the $h$ terms can be  cancelled as in \eqref{eq:strat_pbounds}.
 
 %\seb{If I find a more elegant proof for e.g. stratified, I can use the techniques to simplify this one a bit too.}
 %
@@ -628,7 +628,7 @@ This result was published in \textcite[Lemma B.1]{brown2021} with the slightly s
 
 \begin{proof}
 Define $p_k^{(i)}$ for $k\in\mathbb{Z}$ as in \eqref{eq:pk_defn}. In the case of stochastic rounding,
-$p_{k}^{(i)} =0$ for all $k\notin\{0,1\}$, and we also have
+$p_{k}^{(i)} \equiv 0$ for all $k\notin\{0,1\}$, and we also have
 \begin{align*}
 &\Prob[ \nu_t^{(i)} = \flnw \mid w_t^{(1:N)} ]
 = 1- N w_t^{(i)} + \flnw , \\
@@ -676,8 +676,8 @@ Then, again using \eqref{eq:cNnonzero},
 \Prob[ c_N(t) > 2/N^2 \mid \mathcal{H}_t ]
 \geq 1- \Prob[ \nu_t^{(j^\star)} =1 \mid \mathcal{H}_t ]
 = \begin{cases}
-    1 - p_1^{(j^\star)} & \text{if } \gamma \in (0,1) \\
     0 & \text{if } \gamma = 0 \\
+    1 - p_1^{(j^\star)} & \text{if } \gamma \in (0,1) \\
     1 & \text{if } \gamma = 1 .
 \end{cases}
 \end{equation*}
@@ -718,22 +718,23 @@ Assume that there exists a constant $a\in [1,\infty)$ such that for all $x, x^\p
 \frac{1}{a} \leq g_t(x, x^\prime) \leq a .
 \end{equation*}
 Assume that $\Prob[ \tau_N(t) = \infty] =0$ for all finite $t$.
-Let $(G_t^{(n,N)})_{t\geq0}$ denote the genealogy of a random sample of $n$ terminal particles from the output of the algorithm when the total number of particles used is $N$. Then, for any fixed $n$, the time-scaled genealogy $(G_{\tau_N(t)}^{(n,N)})_{t\geq0}$ converges to Kingman's $n$-coalescent as $N\to \infty$, in the sense of finite-dimensional distributions.
+Let $(G_t^{(n,N)})_{t\geq0}$ denote the genealogy of a random sample of $n$ terminal particles from the output of the algorithm among a total of $N$ particles. Then, for any fixed $n$, the time-scaled genealogy $(G_{\tau_N(t)}^{(n,N)})_{t\geq0}$ converges weakly to Kingman's $n$-coalescent as $N\to \infty$.%, in the sense of finite-dimensional distributions.
 \end{corollary}
 
 \begin{proof}
-We can apply exactly the proof of Corollary~\ref{thm:stratified}, except that residual-stratified resampling is more restrictive than stratified resampling, so that the only possible offspring counts (almost surely, conditional on weights) are $\nu_t^{(i)} \in \{ \flnw, \flnw +1, \flnw +2 \}$. We simply set $p_{-1}^{(i)} = 0$ in the proof of Corollary~\ref{thm:stratified} to see that
+We can apply exactly the proof of Corollary~\ref{thm:stratified}, except that residual-stratified resampling is more restrictive than stratified resampling, so that conditional on $w_t^{(1:N)}$ the only possible offspring counts (almost surely) are $\nu_t^{(i)} \in \{ \flnw, \flnw +1, \flnw +2 \}$. We simply set $p_{-1}^{(i)} = 0$ in the proof of Corollary~\ref{thm:stratified} to see that
 \begin{equation*}
 \frac{1}{(N)_3} \sum_{i=1}^{N} \Et [(\nu_t^{(i)})_3 ]
 \leq \frac{a^2}{N-2} \frac{1}{(N)_2} \sum_{i=1}^{N} \Et [(\nu_t^{(i)})_2 ]
 \end{equation*}
 as required.
-The result then follows by applying Theorem~\ref{thm:FDDconv}.
+The result then follows by applying Theorem~\ref{thm:weakconv}.
 \end{proof}
+We can also show, under additional conditions, that the assumption $\Prob[ \tau_N(t) = \infty ] =0$ for all finite $t$ holds.
 
 \begin{prop}\label{thm:resstrat_nontriviality}
 Consider an SMC algorithm using residual resampling with stratified residuals.
-Suppose that there exists a constant $\varepsilon \in (0,1]$ and a probability density $h$
+Suppose that\seb{for each $t$} there exists a constant $\varepsilon \in (0,1]$ and a probability density $h$ such that
 \begin{equation*}
 \varepsilon h(x') \leq q_t(x, x^\prime) \leq \varepsilon^{-1} h(x')
 \end{equation*}
@@ -745,7 +746,7 @@ uniformly in $x$, and that there exist $\zeta >0$ and $\delta >0$ such that
 \end{prop}
 
 \begin{proof}
-Define $p_k^{(i)}$ for $k\in\mathbb{Z}$ as in \eqref{eq:pk_defn}. In the case of residual resampling with stratified residuals, $p_{k}^{(i)} =0$ for all $k\notin\{0,1,2\}$. 
+Define $p_k^{(i)}$ for $k\in\mathbb{Z}$ as in \eqref{eq:pk_defn}. In the case of residual resampling with stratified residuals, $p_{k}^{(i)} \equiv 0$ for all $k\notin\{0,1,2\}$. 
 %and we also have
 %\begin{align*}
 %&\Prob[ \nu_t^{(i)} = \flnw \mid w_t^{(1:N)} ]
@@ -767,21 +768,24 @@ Then, using \eqref{eq:cNnonzero},
 \Prob[ c_N(t) > 2/N^2 \mid \mathcal{H}_t ]
 \geq 1- \Prob[ \nu_t^{(i^\star)} =1 \mid \mathcal{H}_t ]
 = \begin{cases}
-    1 - p_0^{(i^\star)} & \text{if } \gamma \in (0,1) \\
     0 & \text{if } \gamma = 0 \\
+    1 - p_0^{(i^\star)} & \text{if } \gamma \in (0,1) \\
     1 & \text{if } \gamma \geq 1 .
 \end{cases}
 \end{equation*}
 In the case $\gamma \in (0,1)$ we have
 \begin{equation*}
-\Prob[ c_N(t) > 2/N^2 \mid \mathcal{H}_t ]
-\geq 1 - p_0^{(i^\star)}
+%\Prob[ c_N(t) > 2/N^2 \mid \mathcal{H}_t ]
+%\geq 
+1 - p_0^{(i^\star)}
 = p_1^{(i^\star)} + p_2^{(i^\star)} 
-\geq p_1^{(i^\star)} .
+\geq p_1^{(i^\star)} 
+\geq \Prob[ \nu_t^{(i^\star)} = \flnw[i^\star] + 1 \mid w_t^{(1:N)} ] \varepsilon^{2N}
 \end{equation*}
+by \eqref{eq:strat_pbounds}.
 Also, the residual weight in this case is $r_{i^\star} = \gamma /R$, for some $R\in\{1, \dots, N-1\}$ (since $\gamma > 0$, $R \neq 0$).
 Therefore $\Prob[ \nu_t^{(i^\star)} = \flnw[i^\star] + 1 \mid w_t^{(1:N)} ]$ is the probability that stratified resampling with $R$ individuals assigns exactly 1 offspring to a parent with weight $\gamma /R$. According to Table~\ref{tab:strat_probs} (lower bound on $p_1$), this probability is at least $\gamma /2$.
-Hence, using \eqref{eq:strat_pbounds}, 
+Hence
 \begin{equation*}
 \Prob[ c_N(t) > 2/N^2 \mid \mathcal{H}_t ]
 \geq \frac{\gamma}{2} \varepsilon^{2N} .
@@ -793,8 +797,8 @@ This means that, subject to $\max_i w_t^{(i)} \geq (1+\delta)/N$,
         \left\{ \frac{\gamma }{2} \varepsilon^{2N} \right\}
 = \frac{1}{2} \delta \varepsilon^{2N} .
 \end{equation*}
-Now, a similar calculation with the minimal weight:
-let $j^\star := \argmin_i \{ w_t^{(i)} \}$ and
+Now a similar calculation for the minimum weight:
+let $j^\star := \argmin_i \{ w_t^{(i)} \}$ and write
 $w_t^{(j^\star)} = \frac{1-\gamma}{N}$, for some 
 $\gamma \in [0,1]$.
 Using \eqref{eq:cNnonzero},
@@ -802,8 +806,8 @@ Using \eqref{eq:cNnonzero},
 \Prob[ c_N(t) > 2/N^2 \mid \mathcal{H}_t ]
 \geq 1- \Prob[ \nu_t^{(j^\star)} =1 \mid \mathcal{H}_t ]
 = \begin{cases}
-    1 - p_1^{(j^\star)} & \text{if } \gamma \in (0,1) \\
     0 & \text{if } \gamma = 0 \\
+    1 - p_1^{(j^\star)} & \text{if } \gamma \in (0,1) \\
     1 & \text{if } \gamma = 1 .
 \end{cases}
 \end{equation*}
@@ -811,10 +815,12 @@ If $\gamma \in (0,1)$ then $r_{j^\star} = (1- \gamma)/R$, for some $R\in\{1, \do
 \begin{equation*}
 1 - p_1^{(j^\star)}
 = p_0^{(j^\star)} + p_2^{(j^\star)}
-\geq p_0^{(j^\star)} .
+\geq p_0^{(j^\star)} 
+\geq \Prob[ \nu_t^{(j^\star)} = \flnw[j^\star] \mid w_t^{(1:N)} ] \varepsilon^{2N} 
 \end{equation*}
+by \eqref{eq:strat_pbounds}.
 Now $\Prob[ \nu_t^{(j^\star)} = \flnw[j^\star] \mid w_t^{(1:N)} ]$ is the probability that stratified resampling with $R$ individuals assigns exactly 0 offspring to a parent with weight $(1-\gamma) /R$. According to Table~\ref{tab:strat_probs} (lower bound on $p_0$), this probability is at least $\gamma/2$.
-Hence, using \eqref{eq:strat_pbounds}, 
+Hence 
 \begin{equation*}
 \Prob[ c_N(t) > 2/N^2 \mid \mathcal{H}_t ]
 \geq \frac{\gamma}{2} \varepsilon^{2N} .
@@ -828,7 +834,7 @@ Therefore, using \eqref{eq:strat_pbounds}, we have that subject to $\min_i w_t^{
         \right\}
 = \frac{1}{2} \delta \varepsilon^{2N} .
 \end{equation*}
-Combining the cases for the maximum and minimum weight we have that
+Combining the cases for the maximum and minimum weight we have
 \begin{equation*}
 \Prob[ c_N(t) > 2/N^2 \mid \mathcal{H}_t ] 
 \geq \frac{1}{2} \delta \varepsilon^{2N}
@@ -841,11 +847,11 @@ and we conclude as in Proposition~\ref{thm:strat_nontriviality}.
 
 
 \section{Residual resampling with multinomial residuals}
-We believe that an analogous result holds when the resampling scheme used is residual with multinomial residuals. Considering the ordering by variance presented in Proposition~\ref{thm:resampling_var_compare}, residual-multinomial resampling sits between the multinomial scheme and the residual-stratified scheme, both of which admit the convergence result (Corollaries~\ref{thm:multinomial} and \ref{thm:residual_stratified}).
+We believe that an analogous result holds when the resampling scheme used is residual resampling with multinomial residuals. Considering the ordering by variance presented in Proposition~\ref{thm:resampling_var_compare}, the residual-multinomial scheme sits between the multinomial scheme and the residual-stratified scheme, both of which admit the desired convergence result (Corollaries~\ref{thm:multinomial} and \ref{thm:residual_stratified}).
 
-However, we were so far unable to prove a similar corollary for the residual-multinomial scheme.
-The techniques used for other residual schemes (Section~\ref{sec:corol_resstrat}) fail here because the number of offspring assigned to each individual is not upper bounded by $\flnw$ plus a constant (as many as $R = O(N)$ residual offspring may be assigned to a single individual).
-The technique used for multinomial resampling (Section~\ref{sec:corol_mn}) also fails here; although we have a closed-form expression for the joint distribution of parental indices, it is not a straightforward product form because of the additional dependence between offspring counts induced by the deterministic assignments, so it is unclear how to recover the marginal distributions.
+However, we have so far been unable to prove a similar corollary for the residual-multinomial scheme.
+The techniques used for other residual schemes (see Section~\ref{sec:corol_resstrat}) fail here because the number of offspring assigned to each individual is not upper bounded by $\flnw$ plus a constant; as many as $R = O(N)$ residual offspring may be assigned to a single individual.
+The technique used for multinomial resampling (Section~\ref{sec:corol_mn}) also fails here: although we have a closed-form expression for the joint distribution of parental indices, it is not a straightforward product form because of the additional dependence between offspring counts induced by the deterministic assignments, so it is unclear how to recover the marginal distributions.
 
 \draft{If I manage to prove this corollary, it would make this chapter satisfyingly complete :-) Res-star might prove an easier starting point.}
 %
@@ -856,7 +862,7 @@ The technique used for multinomial resampling (Section~\ref{sec:corol_mn}) also 
 %\frac{1}{a} \leq g_t(x, x^\prime) \leq a .
 %\end{equation*}
 %Assume that $\Prob[ \tau_N(t) = \infty] =0$ for all finite $t$.
-%Let $(G_t^{(n,N)})_{t\geq0}$ denote the genealogy of a random sample of $n$ terminal particles from the output of the algorithm when the total number of particles used is $N$. Then, for any fixed $n$, the time-scaled genealogy $(G_{\tau_N(t)}^{(n,N)})_{t\geq0}$ converges to Kingman's $n$-coalescent as $N\to \infty$, in the sense of finite-dimensional distributions.
+%Let $(G_t^{(n,N)})_{t\geq0}$ denote the genealogy of a random sample of $n$ terminal particles from the output of the algorithm when the total number of particles used is $N$. Then, for any fixed $n$, the time-scaled genealogy $(G_{\tau_N(t)}^{(n,N)})_{t\geq0}$ converges weakly to Kingman's $n$-coalescent as $N\to \infty$.%, in the sense of finite-dimensional distributions.
 %\end{corollary}
 %
 %\begin{proof}
@@ -930,7 +936,7 @@ The vector of offspring counts is at every generation some permutation of $(N,0,
 \end{align*}
 so no suitable sequence $b_N$ can be found.
 Now we know that Theorem~\ref{thm:FDDconv} does not apply, but this is not enough because condition \eqref{eq:mainthmcond} was not proved to be necessary.
-However, we know exactly what the genealogy of $n$ particles from this SMC algorithm looks like (Figure~\ref{fig:star_genealogy}).
+But in fact we know exactly what the genealogy of $n$ particles from this SMC algorithm looks like (Figure~\ref{fig:star_genealogy}).
 \begin{figure}[ht]
 \centering
 \begin{tikzpicture}
@@ -949,29 +955,29 @@ However, we know exactly what the genealogy of $n$ particles from this SMC algor
 Whatever time scale is used, we cannot get away from the fact that this genealogy involves multiple mergers; it cannot converge to the $n$-coalescent.
 
 The limiting genealogy is more like a \emph{star coalescent} \parencite{pitman1999, griffiths2016}. This is the coalescent process comprising an $\Exp(1)$-distributed event time at which all of the lineages merge into one.
-In the case of star resampling we have $c_N(t) \equiv 1$, so the time-scaling function $\tau_N(t)$ defined in \eqref{eq:defn_tauN} converges pointwise to the identity function $\tau(t) \equiv t$ as $N\to\infty$, and this does not yield a continuous-time limit.
-Under any time scale that results in a continuous-time limiting process, the coalescent event time converges to $0$, rather than the usual $\Exp(1)$-distributed random variable.
 
+In the case of star resampling we have $c_N(t) \equiv 1$, so the time-scaling function $\tau_N(t)$ defined in \eqref{eq:defn_tauN} converges pointwise to the identity function $\tau(t) \equiv t$ as $N\to\infty$, and this does not yield a continuous-time limit.
+Under any time scale that results in a continuous-time limiting process, the coalescent event time converges to $0$, rather than the usual $\Exp(1)$-distributed random variable. The resulting genealogy is a variant star coalescent where the distribution of the event time is a point mass at $0$. A fun consequence of this is that this coalescent comes down from infinity, while the star coalescent does not\seb{if I decide not to write about cdf$\infty$ in ch2 then remove this last sentence}.
 
 
 
 
 
 \section{Conditional SMC}
-In conditional SMC, one ``immortal'' particle is treated differently to the others when it comes to assigning offspring to parents. This immortal particle is guaranteed at least one offspring, and has on average one more offspring than each of the other parents in each generation.
+In conditional SMC, one ``immortal'' particle is treated differently to the others when it comes to assigning offspring to parents. The immortal particle is guaranteed at least one offspring, and has on average one more offspring than each of the other parents in each generation.
 This results in genealogies that are qualitatively different to those of a corresponding standard SMC algorithm. For one thing, the population MRCA is \emph{guaranteed} to be an immortal particle; there is a sense in which the immortal lineage \emph{attracts} coalescence events.
 
 Given this, we should not have been surprised if conditional SMC genealogies converged to a quite different coalescent process, perhaps a \emph{structured coalescent} \parencite{notohara1990}.
-As it turns out, we still recover Kingman's $n$-coalescent in the large population limit (Theorem~\ref{thm:CSMC}). 
-A possible explanation for this is that, as $N\to\infty$, the probability of a given sample of size $n$ interacting with the immortal lineage (at least early on) vanishes, leaving a process that looks very much like the one induced by the corresponding standard SMC algorithm.
+As it turns out, we still recover Kingman's $n$-coalescent in the large population limit (Corollary~\ref{thm:CSMC}). 
+A possible explanation for this is that, as $N\to\infty$, the probability of a given sample of size $n$ interacting with the immortal lineage (before its within-sample MRCA) vanishes, leaving a process that looks very much like the one induced by the corresponding standard SMC algorithm.
 
 \begin{corollary}\label{thm:CSMC}
-Consider a conditional SMC algorithm using multinomial resampling, such that \ref{standing_assumption} is satisfied. Assume there exist constants $\varepsilon\in (0,1], a\in [1,\infty)$ and probability density $h$ such that for all $x, x^\prime, t$,
+Consider a conditional SMC algorithm using multinomial resampling, such that \ref{standing_assumption} is satisfied. Assume there exist constants $\varepsilon\in (0,1]$ and $a\in [1,\infty)$ and probability density $h$ such that for all $x, x^\prime, t$,
 \begin{equation}\label{eq:gq_bounds_csmc}
 \frac{1}{a} \leq g_t(x, x^\prime) \leq a , \quad
 \varepsilon h(x^\prime) \leq q_t(x, x^\prime) \leq \frac{1}{\varepsilon} h(x^\prime) .
 \end{equation}
-Let $(G_t^{(n,N)})_{t\geq0}$ denote the genealogy of a random sample of $n$ terminal particles from the output of the algorithm when the total number of particles used is $N$. Then, for any fixed $n$, the time-scaled genealogy $(G_{\tau_N(t)}^{(n,N)})_{t\geq0}$ converges to Kingman's $n$-coalescent as $N\to \infty$, in the sense of finite-dimensional distributions.
+Let $(G_t^{(n,N)})_{t\geq0}$ denote the genealogy of a random sample of $n$ terminal particles from the output of the algorithm among a total of $N$ particles. Then, for any fixed $n$, the time-scaled genealogy $(G_{\tau_N(t)}^{(n,N)})_{t\geq0}$ converges weakly to Kingman's $n$-coalescent as $N\to \infty$.%, in the sense of finite-dimensional distributions.
 \end{corollary}
 We restrict here to the case of multinomial resampling, which seems to be the most commonly-used resampling scheme within conditional SMC. Implementing other resampling schemes while maintaining the immortal lineage is more involved, though by no means impossible \parencite{lee2019}.
 We conjecture that similar results hold for conditional SMC with other resampling schemes, as in the preceding corollaries.
@@ -979,9 +985,10 @@ We conjecture that similar results hold for conditional SMC with other resamplin
 The conditions \eqref{eq:gq_bounds_csmc} are, as one might expect, identical to those assumed in the case of standard SMC with multinomial resampling (Corollary~\ref{thm:multinomial}).
 
 \begin{proof}
-Assume, without loss of generality, that the immortal particle takes index 1 in each generation. This significantly lightens the notation, but the same argument holds if the immortal indices are taken to be $a_{(0:T)}^\star$ rather than $(1,\dots,1)$.
+Assume, without loss of generality, that the immortal particle takes index 1 in each generation. This assumption is valid due to \ref{standing_assumption}, and significantly lightens the notation, but the same argument holds if the immortal indices are taken to be $a_{(0:T)}^\star$ rather than $(1,\dots,1)$.
 
-The parental indices are conditionally independent, as in standard SMC with multinomial resampling, but we have to treat $i=1$ as a special case. The conditional law on the $i^{th}$ parental index is
+Define $\mathcal{H}_t$ as in \eqref{eq:defn_Ht}.
+The parental indices are conditionally independent given $\mathcal{H}_t$, as in standard SMC with multinomial resampling, but we have to treat $i=1$ as a special case. The conditional law on the $i^{th}$ parental index is
 \begin{equation*}
 \Prob \left[ a_t^{(i)} = a_i \mid \mathcal{H}_t \right] \propto
 \begin{cases}
@@ -1061,7 +1068,7 @@ Hence, applying \eqref{eq:condexp_HtFt}, we can upper bound the ratio
 \underset{N\to\infty}{\longrightarrow} 0
 \end{equation*}
 so \eqref{eq:mainthmcond} is satisfied. 
-Proof that the time scale is finite is relegated to Lemma \ref{thm:CSMC_nontriviality}, whence we conclude by applying Theorem~\ref{thm:FDDconv}.
+Proof that the time scale is finite is relegated to Lemma \ref{thm:CSMC_nontriviality}, whence we conclude by applying Theorem~\ref{thm:weakconv}.
 
 %%%%
 
@@ -1134,7 +1141,7 @@ Then, for all $N>2$, $\Prob[ \tau_N(t) = \infty ]=0$ for all finite $t$.
 \end{lemma}
 
 \begin{proof}
-The proof is exactly the same as Lemma~\ref{thm:mn_nontriviality}, since \eqref{eq:csmc_cN_LB} gives us exactly the same lower bound on $\Et [ c_N(t) ]$ that we had in standard SMC with multinomial resampling.
+The proof is identical to that of Lemma~\ref{thm:mn_nontriviality}, since \eqref{eq:csmc_cN_LB} gives us exactly the same lower bound on $\Et [ c_N(t) ]$ that we had in standard SMC with multinomial resampling.
 %%%
 %Since $c_N(t) \in [0,1]$ almost surely and has strictly positive expectation, for any fixed $N$ the distribution of $c_N(t)$ with given expectation that maximises $\Prob[ c_N(t)=0 \mid \mathcal{F}_{t-1} ]$ is two atoms, at 0 and 1 respectively. To ensure the correct expectation, the atom at 1 should have mass $\Prob[ c_N(t)=1 \mid \mathcal{F}_{t-1} ] = \Et [ c_N(t) ]$, which is bounded below by \eqref{eq:CSMC_cN_LB}.
 %If $c_N(t) > 0$ then $c_N(t) \geq 2/(N)_2 > 2/N^2$. Hence, in general $\Prob[ c_N(t) > 2/N^2 \mid \mathcal{F}_{t-1} ] \geq \Et [c_N(t)]$. Applying \eqref{eq:CSMC_cN_LB}, we have for any finite $N$,
@@ -1149,7 +1156,7 @@ The proof is exactly the same as Lemma~\ref{thm:mn_nontriviality}, since \eqref{
 
 
 \subsection{Effect of ancestor sampling}
-Ancestor sampling breaks up the immortal lineage into sections, so it is not really a lineage, and we do not really have a pure coalescent process backwards in time. Regardless, we shall throw caution to the wind and examine the resulting ``genealogies''.
+Ancestor sampling breaks up the immortal lineage into sections, so it is not really a lineage anymore, and we do not really have a pure coalescent process backwards in time. Regardless, we shall throw caution to the wind and examine the resulting ``genealogies''.
 
 Using the parent sampling probabilities specified in \eqref{eq:ancsamp_probs},
 now with time reversed and the notation made to fit \seb{preferably the presentation in Chapter 2 should use the notation we want to use here} with this study of genealogies, we obtain\seb{add one more step of working below to make it less ``magic''?}
