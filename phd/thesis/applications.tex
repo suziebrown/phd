@@ -1,4 +1,4 @@
-\chapter{Applications}\label{ch:appl}
+\chapter{Applications \seb{$\checkmark$} }\label{ch:appl}
 
 \epigraph{
 Earth's crammed with heaven, \\
@@ -16,7 +16,8 @@ For instance, we have generally imagined that the resampling scheme is unbiased,
 The applications presented in this chapter are all motivated by SMC, but an interesting area of future research would be to explore the implications of Theorem~\ref{thm:FDDconv} in other contexts. From the population genetics point-of-view, Theorem~\ref{thm:FDDconv} may be seen as a complement to the convergence criteria for neutral models \parencite[e.g.][]{mohle2001} discussed in Section ??\seb{add the section reference once that part of ch2 is written}.
 
 
-\section{Multinomial resampling \seb{$\checkmark$} }
+\section{Multinomial resampling}
+\label{sec:corol_mn}
 Multinomial resampling is often preferred in theoretical studies of SMC, because it renders the parental indices conditionally i.i.d. given the weights, making it relatively simple to analyse the resulting algorithm.
 The result of Corollary~\ref{thm:multinomial} was proved in \textcite[Corollary 1]{koskela2018}. Nonetheless it is included here, firstly to demonstrate the relative ease with which it is proved under Theorem~\ref{thm:FDDconv} as opposed to \textcite[Theorem 1]{koskela2018}, and secondly to outline the proof technique before proceeding to more complex resampling schemes.
 
@@ -197,7 +198,7 @@ This ensures, for all $t <\infty$, that $\Prob\left[ \exists s<\infty : \sum_{r=
 
 
 
-\section{Stratified resampling \seb{$\checkmark$} }
+\section{Stratified resampling}
 
 \begin{corollary}\label{thm:stratified}
 Consider an SMC algorithm using stratified resampling, such that \ref{standing_assumption} is satisfied.
@@ -510,7 +511,7 @@ as required.
 
 
 
-\section{Stochastic rounding \seb{$\checkmark$} }
+\section{Stochastic rounding}
 
 \begin{corollary}\label{thm:stochrounding}
 Consider an SMC algorithm using any stochastic rounding as its resampling scheme, such that \ref{standing_assumption} is satisfied.
@@ -707,7 +708,8 @@ and we conclude as in Proposition~\ref{thm:strat_nontriviality}.
 
 
 
-\section{Residual resampling with stratified residuals \seb{$\checkmark$} }
+\section{Residual resampling with stratified residuals}
+\label{sec:corol_resstrat}
 
 \begin{corollary}\label{thm:residual_stratified}
 Consider an SMC algorithm using residual resampling with stratified residuals, such that \ref{standing_assumption} is satisfied.
@@ -838,76 +840,82 @@ and we conclude as in Proposition~\ref{thm:strat_nontriviality}.
 
 
 
-\section{Residual resampling with multinomial residuals \seb{$\sim$} }
-\draft{If I manage to prove this corollary, it would make this chapter satisfyingly complete :-)}
+\section{Residual resampling with multinomial residuals}
+We believe that an analogous result holds when the resampling scheme used is residual with multinomial residuals. Considering the ordering by variance presented in Proposition~\ref{thm:resampling_var_compare}, residual-multinomial resampling sits between the multinomial scheme and the residual-stratified scheme, both of which admit the convergence result (Corollaries~\ref{thm:multinomial} and \ref{thm:residual_stratified}).
 
-\begin{corollary}\label{thm:residual_multinomial}
-Consider an SMC algorithm using residual resampling with multinomial residuals, such that \ref{standing_assumption} is satisfied.
-Assume that there exists a constant $a\in [1,\infty)$ such that for all $x, x^\prime, t$,
-\begin{equation*}
-\frac{1}{a} \leq g_t(x, x^\prime) \leq a .
-\end{equation*}
-Assume that $\Prob[ \tau_N(t) = \infty] =0$ for all finite $t$.
-Let $(G_t^{(n,N)})_{t\geq0}$ denote the genealogy of a random sample of $n$ terminal particles from the output of the algorithm when the total number of particles used is $N$. Then, for any fixed $n$, the time-scaled genealogy $(G_{\tau_N(t)}^{(n,N)})_{t\geq0}$ converges to Kingman's $n$-coalescent as $N\to \infty$, in the sense of finite-dimensional distributions.
-\end{corollary}
+However, we were so far unable to prove a similar corollary for the residual-multinomial scheme.
+The techniques used for other residual schemes (Section~\ref{sec:corol_resstrat}) fail here because the number of offspring assigned to each individual is not upper bounded by $\flnw$ plus a constant (as many as $R = O(N)$ residual offspring may be assigned to a single individual).
+The technique used for multinomial resampling (Section~\ref{sec:corol_mn}) also fails here; although we have a closed-form expression for the joint distribution of parental indices, it is not a straightforward product form because of the additional dependence between offspring counts induced by the deterministic assignments, so it is unclear how to recover the marginal distributions.
 
-\begin{proof}
-With residual-multinomial resampling, for each $i$
-\begin{equation*}
-\nu_t^{(i)} \mid w_t^{(1:N)}
-\eqdist \flnw + X_i
-\end{equation*}
-where $X_i \sim \Bin(R, r_i)$. As usual, $R := N - \sum_{i=1}^N \flnw$ and $r_i := ( Nw_t^{(i)} - \flnw ) /R$.
-\seb{If $R=0$ then $r_i = 0$ for all $i$ and the following calculations remain correct.}
-We can therefore compute
-\begin{align*}
-\E [ (\nu_t^{(i)})_2 \mid w_t^{(1:N)} ]
-&= \E\left[ (\flnw + X_i) (\flnw + X_i -1) \midd w_t^{(1:N)} \right] \\
-&= (\flnw)_2 + 2\flnw E[ X_i \mid w_t^{(1:N)} ] + \E[ (X_i)_2 \mid w_t^{(1:N)} ] \\
-&= (\flnw)_2 + 2\flnw R r_i + (R)_2 r_i^2
-\end{align*}
-using the moments of the Binomial distribution.
-We also have
-\begin{align*}
-\E [ (\nu_t^{(i)})_3 \mid w_t^{(1:N)} ]
-&= \E\left[ (\flnw + X_i) (\flnw + X_i -1) (\flnw + X_i -2) \midd w_t^{(1:N)} \right] \\
-&= \flnw^3 + \flnw^2 \E[ 3X_i -3 \mid w_t^{(1:N)} ] \\
-    &\hspace{1cm}+ \flnw 
-        \E[ X_i(X_i-1) + X_i(X_i-2) + (X_i-1)(X_i-2) \mid w_t^{(1:N)} ] \\
-    &\hspace{1cm}+ \E[ (X_i)_3 \mid w_t^{(1:N)} ] \\
-&= \flnw^3 - 3\flnw^2 +3\flnw^2 \E[ X_i \mid w_t^{(1:N)} ] \\
-    &\hspace{1cm}+ \flnw \E[ 3X_i^2 - 6X_i +2 \mid w_t^{(1:N)} ] 
-        + E[(X_i)_3 \mid w_t^{(1:N)} ]\\
-&= \left( \flnw^3 - 3\flnw^2 + 2\flnw \right)
-        + 3 \left( \flnw^2 - \flnw \right) \E[ X_i \mid w_t^{(1:N)} ] \\
-    &\hspace{1cm}+ 3 \flnw \E[ (X_i)_2 \mid w_t^{(1:N)} ] 
-        + \E[ (X_i)_3 \mid w_t^{(1:N)} ] \\
-&= (\flnw)_3 + 3(\flnw)_2 R r_i + 3\flnw (R)_2 r_i^2 + (R)_3 r_i^3 \\
-&\leq \left( \flnw + R r_i \right) \left\{ (\flnw)_2 + 2\flnw R r_i 
-        + (R)_2 r_i^2 \right\} \\
-&= Nw_t^{(i)} \E[(\nu_t^{(i)})_2 \mid w_t^{(1:N)} ] \\
-&\leq a^2 \E[(\nu_t^{(i)})_2 \mid w_t^{(1:N)} ] ,
-\end{align*}
-using the almost sure bound $w_t^{(i)} \leq a^2/N$.
+\draft{If I manage to prove this corollary, it would make this chapter satisfyingly complete :-) Res-star might prove an easier starting point.}
+%
+%\begin{corollary}\label{thm:residual_multinomial}
+%Consider an SMC algorithm using residual resampling with multinomial residuals, such that \ref{standing_assumption} is satisfied.
+%Assume that there exists a constant $a\in [1,\infty)$ such that for all $x, x^\prime, t$,
+%\begin{equation*}
+%\frac{1}{a} \leq g_t(x, x^\prime) \leq a .
+%\end{equation*}
+%Assume that $\Prob[ \tau_N(t) = \infty] =0$ for all finite $t$.
+%Let $(G_t^{(n,N)})_{t\geq0}$ denote the genealogy of a random sample of $n$ terminal particles from the output of the algorithm when the total number of particles used is $N$. Then, for any fixed $n$, the time-scaled genealogy $(G_{\tau_N(t)}^{(n,N)})_{t\geq0}$ converges to Kingman's $n$-coalescent as $N\to \infty$, in the sense of finite-dimensional distributions.
+%\end{corollary}
+%
+%\begin{proof}
+%With residual-multinomial resampling, for each $i$
+%\begin{equation*}
+%\nu_t^{(i)} \mid w_t^{(1:N)}
+%\eqdist \flnw + X_i
+%\end{equation*}
+%where $X_i \sim \Bin(R, r_i)$. As usual, $R := N - \sum_{i=1}^N \flnw$ and $r_i := ( Nw_t^{(i)} - \flnw ) /R$.
+%\seb{If $R=0$ then $r_i = 0$ for all $i$ and the following calculations remain correct.}
+%We can therefore compute
+%\begin{align*}
+%\E [ (\nu_t^{(i)})_2 \mid w_t^{(1:N)} ]
+%&= \E\left[ (\flnw + X_i) (\flnw + X_i -1) \midd w_t^{(1:N)} \right] \\
+%&= (\flnw)_2 + 2\flnw E[ X_i \mid w_t^{(1:N)} ] + \E[ (X_i)_2 \mid w_t^{(1:N)} ] \\
+%&= (\flnw)_2 + 2\flnw R r_i + (R)_2 r_i^2
+%\end{align*}
+%using the moments of the Binomial distribution.
+%We also have
+%\begin{align*}
+%\E [ (\nu_t^{(i)})_3 \mid w_t^{(1:N)} ]
+%&= \E\left[ (\flnw + X_i) (\flnw + X_i -1) (\flnw + X_i -2) \midd w_t^{(1:N)} \right] \\
+%&= \flnw^3 + \flnw^2 \E[ 3X_i -3 \mid w_t^{(1:N)} ] \\
+%    &\hspace{1cm}+ \flnw 
+%        \E[ X_i(X_i-1) + X_i(X_i-2) + (X_i-1)(X_i-2) \mid w_t^{(1:N)} ] \\
+%    &\hspace{1cm}+ \E[ (X_i)_3 \mid w_t^{(1:N)} ] \\
+%&= \flnw^3 - 3\flnw^2 +3\flnw^2 \E[ X_i \mid w_t^{(1:N)} ] \\
+%    &\hspace{1cm}+ \flnw \E[ 3X_i^2 - 6X_i +2 \mid w_t^{(1:N)} ] 
+%        + E[(X_i)_3 \mid w_t^{(1:N)} ]\\
+%&= \left( \flnw^3 - 3\flnw^2 + 2\flnw \right)
+%        + 3 \left( \flnw^2 - \flnw \right) \E[ X_i \mid w_t^{(1:N)} ] \\
+%    &\hspace{1cm}+ 3 \flnw \E[ (X_i)_2 \mid w_t^{(1:N)} ] 
+%        + \E[ (X_i)_3 \mid w_t^{(1:N)} ] \\
+%&= (\flnw)_3 + 3(\flnw)_2 R r_i + 3\flnw (R)_2 r_i^2 + (R)_3 r_i^3 \\
+%&\leq \left( \flnw + R r_i \right) \left\{ (\flnw)_2 + 2\flnw R r_i 
+%        + (R)_2 r_i^2 \right\} \\
+%&= Nw_t^{(i)} \E[(\nu_t^{(i)})_2 \mid w_t^{(1:N)} ] \\
+%&\leq a^2 \E[(\nu_t^{(i)})_2 \mid w_t^{(1:N)} ] ,
+%\end{align*}
+%using the almost sure bound $w_t^{(i)} \leq a^2/N$.
+%
+%...
+%
+%\seb{To complete the proof we need to exchange the conditioning on $w_t^{(1:N)}$ for conditioning on $\mathcal{H}_t$ so we can then invoke the D-separation and tower property to get:}
+%\begin{equation*}
+%\frac{1}{(N)_3} \sum_{i=1}^N \Et [ (\nu_t^{(i)})_3 ]
+%\leq \frac{a^2}{N-2} \frac{1}{(N)_2} \sum_{i=1}^N \Et [ (\nu_t^{(i)})_2 ] .
+%\end{equation*}
+%Thus \eqref{eq:mainthmcond} is satisfied with $b_N = a^2/(N-2)$.
+%\seb{The $\varepsilon$ might want to get involved here as well once we switch the conditioning, coming from bounds on $q_t$ (which would then have to be included in the statement of this corollary).}
+%
+%\end{proof}
+%
+%\draft{State and prove finite time-scale lemma.}
 
-...
-
-\seb{To complete the proof we need to exchange the conditioning on $w_t^{(1:N)}$ for conditioning on $\mathcal{H}_t$ so we can then invoke the D-separation and tower property to get:}
-\begin{equation*}
-\frac{1}{(N)_3} \sum_{i=1}^N \Et [ (\nu_t^{(i)})_3 ]
-\leq \frac{a^2}{N-2} \frac{1}{(N)_2} \sum_{i=1}^N \Et [ (\nu_t^{(i)})_2 ] .
-\end{equation*}
-Thus \eqref{eq:mainthmcond} is satisfied with $b_N = a^2/(N-2)$.
-\seb{The $\varepsilon$ might want to get involved here as well once we switch the conditioning, coming from bounds on $q_t$ (which would then have to be included in the statement of this corollary).}
-
-\end{proof}
-
-\draft{State and prove finite time-scale lemma.}
 
 
 
-
-\section{Star resampling \seb{$\checkmark$} }
+\section{Star resampling}
 One might ask the question: is it possible to construct an SMC algorithm whose genealogies converge to some non-trivial limit other than the $n$-coalescent?
 The answer is yes, as we now illustrate.
 
@@ -949,7 +957,7 @@ Under any time scale that results in a continuous-time limiting process, the coa
 
 
 
-\section{Conditional SMC \seb{$\checkmark$} }
+\section{Conditional SMC}
 In conditional SMC, one ``immortal'' particle is treated differently to the others when it comes to assigning offspring to parents. This immortal particle is guaranteed at least one offspring, and has on average one more offspring than each of the other parents in each generation.
 This results in genealogies that are qualitatively different to those of a corresponding standard SMC algorithm. For one thing, the population MRCA is \emph{guaranteed} to be an immortal particle; there is a sense in which the immortal lineage \emph{attracts} coalescence events.
 
