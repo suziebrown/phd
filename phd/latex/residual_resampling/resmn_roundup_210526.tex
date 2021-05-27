@@ -33,10 +33,12 @@
 \newcommand{\I}[1]{\mathbbm{1}_{\{#1\}}}
 \newcommand{\1}[1]{\mathbbm{1}_{#1}}
 \newcommand{\flnw}[1][i]{\lfloor N w_t^{(#1)} \rfloor}
+\newcommand{\wbar}[2][t]{\bar{w}_{#1}^{(#2)}}
 \newcommand{\Ht}{\mathcal{H}_t}
 \newcommand{\midd}{\,\middle|\,} % big conditioning bar
 \newcommand{\Cat}{\operatorname{Categorical}}
 \newcommand{\Bin}{\operatorname{Binomial}}
+\newcommand{\Mn}{\operatorname{Multinomial}}
 
 %%% ANNOTATIONS
 \usepackage{color}
@@ -53,6 +55,8 @@
 
 
 \section{Conditioning on the index set of deterministically-assigned offspring}
+
+One way to separate the effects of the deterministic assignments from those of the stochastic (residual) assignments is to condition on which offspring will be assigned deterministically (resp. stochastically).\\
 
 \begin{itemize}
 \item $R:= N - \sum \flnw$ 
@@ -88,6 +92,8 @@ $r$'s are the probabilities from the Categorical sampling of parents, $q$'s as a
 
 
 \section{Correct dominance of moments but with the wrong conditioning}
+
+We set out to verify directly the main theorem condition in the case of residual-multinomial resampling. The desired relation was derived in the case where the conditioning was on the vector of weights, rather than on $\mathcal{H}_t$ (which takes into account information about one step in the future and can be exchanged for $\mathcal{F}_{t-1}$ due to conditional indpependence + tower rule) or $\mathcal{F}_{t-1}$ directly (which generally makes computing anything a bit impossible).\\
 
 With residual-multinomial resampling, for each $i$
 \begin{equation*}
@@ -343,10 +349,85 @@ Examining the table, we can see that the function $\E[c_3^r(t) |w_t^{(1:3)}]$ is
 
 \section{Coupling between multinomial and residual-multinomial resampling}
 
+The idea was to find a coupling between the multinomial/categorical distribution induced by multinomial resampling and the multinomial/categorical distribution induced by the stochastic part of residual resampling. It didn't work because these distributions are parametrised by a different weight vector in each case: $w_{1:N}$ in the multinomial scheme, and $r_{1:N}$ in the residual-multinomial scheme. So it was not possible to prove any kind of dominance using the coupling method.
 
 
 
 
+\section{Direct computation of the filtered moments}
+
+The hope with this attempt was to show directly, without any intermediate conditioning that the filtered expectations (being the objects we are actually interesting), the desired ordering between residual-multinomial and multinomial resampling. Up to now I have been unable to show that the expression derived below for $\E[c^r_N(t) |\mathcal{F}_{t-1}]$ is bounded by the corresponding quantity for multinomial resampling. 
+
+Even if this were shown, we'd still need the opposite inequality for the third factorial moments. Then the bounds obtained in the multinomial resampling corollary could be applied for residual-multinomial too. 
+
+It seems to me that we should not really expect opposite inequalities to hold for second versus third moments, since we know (or at least feel) that residual-multinomial gives ``more concentrated'' offspring counts, so there could be a convex ordering which would imply the inequality the same way around for both second and third factorial monents (since both $(\nu)_2$ and $(\nu)_3$ are convex functions on $\mathbb{N}$.\\
+
+
+
+
+The offspring counts are sampled according to:
+\begin{align*}
+& \nu_t^{(i)} = \lfloor N w_t^{(i)} \rfloor + X_i \\
+& X_i \sim \Mn (N-k, (\wbar{1}, \dots, \wbar{N}))
+\end{align*}
+where $k := \sum_{i=1}^N \lfloor N w_t^{(i)} \rfloor$ is the number of offspring assigned deterministically, and $\wbar{i} := \frac{Nw_t^{(i)} - \lfloor N w_t^{(i)} \rfloor}{N - k}$ are the residual weights. Let us also define the residuals $r_i := Nw_t^{(i)} - \lfloor N w_t^{(i)} \rfloor$. So $\sum_{i=1}^N r_i = N-k$.
+
+The coalescence rate is defined as
+\begin{equation*}
+c_N(t) := \frac{1}{(N)_2} \sum_{i=1}^{N} (\nu_t^{(i)})_2.
+\end{equation*}
+We will use $c_N^m(t)$ and $c_N^r(t)$ to denote the coalescence rates with multinomial and residual resampling respectively.
+The expectation then comes out as
+\begin{align*}
+\E[(\nu_t^{(i)})_2 |\mathcal{F}_{t-1}] &= \E[(\nu_t^{(i)})^2 |\mathcal{F}_{t-1}] - \E[\nu_t^{(i)} |\mathcal{F}_{t-1}] \\
+&= \E[\lfloor Nw_t^{(i)} \rfloor^2 |\mathcal{F}_{t-1}] + 2 \E[\lfloor Nw_t^{(i)} \rfloor r_i |\mathcal{F}_{t-1}] + \E\left[ r_i \left(1 - \frac{r_i}{N-k} + r_i \right) |\mathcal{F}_{t-1} \right] - \E[Nw_t^{(i)} |\mathcal{F}_{t-1}] \\
+&=\E[ \lfloor Nw_t^{(i)} \rfloor^2 |\mathcal{F}_{t-1}] - \E[ \lfloor Nw_t^{(i)} \rfloor |\mathcal{F}_{t-1}] + 2 \E[ \lfloor Nw_t^{(i)} \rfloor r_i |\mathcal{F}_{t-1}] + \E\left[ r_i^2 \left(1- \frac{1}{N-k} \right) |\mathcal{F}_{t-1}\right] \\
+&= \E[ (Nw_t^{(i)})^2 |\mathcal{F}_{t-1}] - \E[ \lfloor Nw_t^{(i)} \rfloor |\mathcal{F}_{t-1}] - \E\left[ \frac{r_i^2}{N-k} |\mathcal{F}_{t-1} \right]
+\end{align*}
+so we get
+\begin{align}
+\E[c^r_N(t) |\mathcal{F}_{t-1}] &=  \frac{1}{(N)_2}  \sum_{i=1}^{N} \E[(\nu_t^{(i)})_2 |\mathcal{F}_{t-1} ]\notag\\
+&= \frac{N}{N-1} \sum_{i=1}^{N} \E[(w_t^{(i)})^2 |\mathcal{F}_{t-1}] - \frac{1}{(N)_2} \sum_{i=1}^{N} \E\left[ \frac{r_i^2}{N-k} |\mathcal{F}_{t-1} \right] - \frac{1}{(N)_2} \E[k |\mathcal{F}_{t-1}] \notag\\
+&= \E[c^{m}_N(t) |\mathcal{F}_{t-1}] \left( 1 + \frac{1}{N-1} \right) - \frac{1}{(N)_2}  \E\left[ \frac{\sum_{i=1}^{N} (Nw_t^{(i)} - \lfloor Nw_t^{(i)}\rfloor)^2}{\sum_{j=1}^{N} (Nw_t^{(j)} - \lfloor Nw_t^{(j)}\rfloor)} \middle|\mathcal{F}_{t-1} \right] \notag\\
+&\qquad -\frac{1}{(N)_2} \E \left[ \sum_{i=1}^{N} \lfloor Nw_t^{(i)}\rfloor \middle|\mathcal{F}_{t-1} \right]
+\label{eq:cNt_1}
+\end{align}
+\textbf{Sanity check:}\\
+When the weights are all equal (almost surely), $w_t^{(i)} \equiv 1/N$, we should have $\E[c^r_N(t) |\mathcal{F}_{t-1}] = 0$ since each particle will have exactly one offspring so it is impossible for any lineages to coalesce. In this case we have $\E[c^{m}_N(t) |\mathcal{F}_{t-1}] = \sum_{i=1}^{N} \E[(w_t^{(i)})^2 |\mathcal{F}_{t-1}] = 1/N$ for multinomial resampling. We also have that $Nw_t^{(i)} \equiv \lfloor Nw_t^{(i)} \rfloor \equiv 1$ and hence $r_i = 0$ and $k=N$. Thus the RHS comes out as
+\begin{equation*}
+\frac{1}{N}\frac{N}{N-1} - 0 - \frac{1}{(N)_2} N = \frac{1}{N-1} - \frac{1}{N-1} = 0
+\end{equation*}
+as expected.\\
+
+We can write it in a different form by combining the second and third terms of \eqref{eq:cNt_1}:
+\begin{align*}
+&- \frac{1}{(N)_2}  \E\left[ \frac{\sum_{i=1}^{N} (Nw_t^{(i)} - \lfloor Nw_t^{(i)}\rfloor)^2}{\sum_{j=1}^{N} (Nw_t^{(j)} - \lfloor Nw_t^{(j)}\rfloor)} |\mathcal{F}_{t-1} \right] 
+-\frac{1}{(N)_2} \E \left[ \sum_{k=1}^{N} \lfloor Nw_t^{(k)}\rfloor \middle|\mathcal{F}_{t-1} \right] \\
+&=: - \frac{1}{(N)_2} \E[A |\mathcal{F}_{t-1}]
+\end{align*}
+Then
+\begin{align*}
+A &=
+ \frac{\sum_{i=1}^{N} (Nw_t^{(i)} - \lfloor Nw_t^{(i)}\rfloor)^2}{\sum_{j=1}^{N} (Nw_t^{(j)} - \lfloor Nw_t^{(j)}\rfloor)} 
++ \sum_{k=1}^{N} \lfloor Nw_t^{(k)}\rfloor \\
+&= \frac{\sum_{i=1}^{N} (Nw_t^{(i)} - \lfloor Nw_t^{(i)}\rfloor)^2 + \sum_{i=1}^N\sum_{k=1}^N \lfloor Nw_t^{(k)} \rfloor (Nw_t^{(i)}- \lfloor Nw_t^{(i)} \rfloor)}{\sum_{j=1}^{N} (Nw_t^{(j)} - \lfloor Nw_t^{(j)}\rfloor)} \\
+&=: \frac{A^\prime}{\sum_{j=1}^{N} (Nw_t^{(j)} - \lfloor Nw_t^{(j)}\rfloor)} 
+\end{align*}
+Then
+\begin{align*}
+A^\prime &=
+\sum_{i=1}^{N} (Nw_t^{(i)} - \lfloor Nw_t^{(i)}\rfloor)^2 + \sum_{i=1}^N\sum_{k=1}^N \lfloor Nw_t^{(k)} \rfloor (Nw_t^{(i)}- \lfloor Nw_t^{(i)} \rfloor)\\
+&= \sum_{i=1}^{N} \left\{ \left(Nw_t^{(i)} - \lfloor Nw_t^{(i)}\rfloor \right)^2 + \lfloor Nw_t^{(i)} \rfloor \left(Nw_t^{(i)} - \lfloor Nw_t^{(i)}\rfloor \right)
++ \sum_{k\neq i} \lfloor Nw_t^{(k)} \rfloor \left(Nw_t^{(i)} - \lfloor Nw_t^{(i)}\rfloor \right) \right\}\\
+&= \sum_{i=1}^{N} \left\{ (Nw_t^{(i)})^2 - Nw_t^{(i)} \lfloor Nw_t^{(i)} \rfloor 
++ \sum_{k\neq i} \lfloor Nw_t^{(k)} \rfloor \left(Nw_t^{(i)} - \lfloor Nw_t^{(i)}\rfloor \right) \right\}\\
+ &= \sum_{i=1}^{N} \left\{ \left(Nw_t^{(i)} - \lfloor Nw_t^{(i)} \rfloor \right) \left( Nw_t^{(i)} + \sum_{k\neq i} \lfloor Nw_t^{(k)} \rfloor \right) \right\}
+\end{align*}
+So we have
+\begin{align*}
+\E[c^r_N(t) |\mathcal{F}_{t-1}] &=  \E[c^{m}_N(t) |\mathcal{F}_{t-1}] \left( 1 + \frac{1}{N-1} \right) \\
+&\qquad- \frac{1}{(N)_2}  \E\left[ \frac{\sum_{i=1}^{N} \left(Nw_t^{(i)} - \lfloor Nw_t^{(i)} \rfloor \right) \left( Nw_t^{(i)} + \sum_{k\neq i} \lfloor Nw_t^{(k)} \rfloor \right) }{\sum_{j=1}^{N} \left(Nw_t^{(j)} - \lfloor Nw_t^{(j)}\rfloor\right)} \middle|\mathcal{F}_{t-1} \right] .
+\end{align*}
 
 
 
