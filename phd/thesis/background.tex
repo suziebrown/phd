@@ -167,6 +167,8 @@ It turns out also to be extremely useful as a limiting distribution in populatio
 
 
 \subsection{Properties of Kingman's coalescent}\label{sec:KCproperties}
+\draft{Possibly also include a section about coming down from infinity (just define it basically).}\\
+
 The simplicity of $Q$ allows various properties of the $n$-coalescent to be studied analytically. \seb{Refer to more exhaustive studies of the properties in the literature, e.g.\ \textcite[Section 1.2]{durrett2008}.}
 Starting with $n$ blocks, exactly $n-1$ coalescences are required to reach the absorbing state where all blocks have coalesced, known in the population genetics literature as the \emph{most recent common ancestor} (MRCA).
 
@@ -1077,6 +1079,7 @@ $\begin{aligned}
 \end{enumerate}
 \end{prop}
 Parts \ref{item:resampling_var1} and \ref{item:resampling_var2} were proved in \textcite[Section 3]{douc2005}. The second inequality in \ref{item:resampling_var4} is stated in \textcite[p.9]{gerber2017} and follows from \ref{item:resampling_var2}, as shown below.
+\seb{Don't include proofs for things that were already proved by someone else, unless this really adds value.}
 
 \begin{proof}
 \textbf{multinomial resampling:} the resampled indices are conditionally i.i.d., so
@@ -1465,4 +1468,4 @@ The important point is that ancestor sampling does not prevent ancestral degener
 
 Remember, the problem with ancestral degeneracy in particle Gibbs was that it induced strong autocorrelation among consecutive samples of $X_{0:T}$. It isn't a problem that the trajectories coalesce, as long as the thing they coalesce to is able to move, readily exploring the state space. This is achieved with ancestor sampling.
 
-\seb{Why is ancestor sampling even a valid thing to do (i.e. still targetting the right thing)? Extended state space argument?(I think there is one in Lindsten Ch5). No need to go into it here unless there is a simple intuitive explanation to put the reader's mind at rest.}
+\seb{Why is ancestor sampling even a valid thing to do (i.e. still targetting the right thing)? Extended state space argument?(I think there is one in Lindsten Ch5). No need to go into it here unless there is a simple intuitive explanation to put the reader's mind at rest. --- Just mention that it's a special application of backward sampling. Is that enough?}
