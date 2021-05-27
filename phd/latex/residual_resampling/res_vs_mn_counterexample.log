@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  4 APR 2019 10:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  26 MAY 2021 16:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -690,12 +690,17 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 69.
 (/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Underfull \hbox (badness 10000) in paragraph at lines 74--76
+Underfull \hbox (badness 10000) in paragraph at lines 72--73
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 77--87
+Underfull \hbox (badness 10000) in paragraph at lines 76--78
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 79--89
 
  []
 
@@ -704,11 +709,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 77--87
 {/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 (./res_vs_mn_counterexample.aux) ) 
 Here is how much of TeX's memory you used:
- 15111 strings out of 492649
- 288137 string characters out of 6129623
- 339913 words of memory out of 5000000
- 18691 multiletter control sequences out of 15000+600000
- 10588 words of font info for 42 fonts, out of 8000000 for 9000
+ 15114 strings out of 492649
+ 288176 string characters out of 6129623
+ 339925 words of memory out of 5000000
+ 18693 multiletter control sequences out of 15000+600000
+ 10756 words of font info for 43 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,11n,54p,433b,250s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2018/texmf-dist/fonts/typ
@@ -722,11 +727,12 @@ amsfonts/cm/cmr7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/ams
 fonts/cm/cmss10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsf
 onts/cm/cmsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfo
 nts/cm/cmsy7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfont
-s/symbols/msbm10.pfb>
-Output written on res_vs_mn_counterexample.pdf (1 page, 100216 bytes).
+s/cm/cmtt10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts
+/symbols/msbm10.pfb>
+Output written on res_vs_mn_counterexample.pdf (1 page, 113201 bytes).
 PDF statistics:
- 55 PDF objects out of 1000 (max. 8388607)
- 40 compressed objects within 1 object stream
+ 59 PDF objects out of 1000 (max. 8388607)
+ 43 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
