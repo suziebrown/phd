@@ -31,11 +31,15 @@
 
 \title{Residual resampling in SMC}
 \author{Suzie Brown}
-\date{\today}
+\date{3 April 2019}
 
 \begin{document}
 \maketitle
 \thispagestyle{fancy}
+
+THIS DOCUMENT IS OBSOLETE. The calculations in section 1 are flawed because the definition of $c_N$ used is not correct. Sections 2 and 3 have been rendered irrelevant since we simplified the theorem conditions to involve $\E_t[(\nu_i)_2]$ and $\E_t[(\nu_i)_3]$ only.\\
+\hrule
+\vspace{10pt}
 
 %*intro*
 %
@@ -75,6 +79,8 @@ We shall calculate the expected coalescence rate in the case of residual resampl
 \begin{equation*}
 c_N(t) := \frac{1}{(N)_2} \sum_{i=1}^{N} \E\left[ (\vt{i})_2 \right].
 \end{equation*}
+\textbf{Edit 27 May 2021:} the above expression is not even correct; in our setting $c_N$ is random and does not have the expectation in its definition.\\
+
 The inner expectation comes out as
 \begin{align*}
 \E[(\vt{i})_2] &= \E[(\vt{i})^2] - \E[\vt{i}] \\

@@ -37,11 +37,16 @@
 
 \title{Coupling argument for residual resampling}
 \author{Suzie Brown}
-\date{\today}
+\date{13 February 2019}
 
 \begin{document}
 \maketitle
 \thispagestyle{fancy}
+
+THIS DOCUMENT IS OBSOLETE. All the calculations in it are incorrect (except the comments just below and later in red about why it's incorrect), so it is of next to no value.\\
+
+\textbf{Edit 27 May 2020:} my mistake in the following calculations was writing that the $k$ residual offspring are assigned multinomially with weights $w$, when in fact the weights should be the residual weights $\neq w$.\\
+\hrule
 
 Consider a population of $N$ particles at time $t$, having fixed weights $(\wt{1},\dots, \wt{N})$ respectively. These will be the parents, and we consider assigning to them $N$ offspring which will form the next generation. 
 Let $(a_1, \dots, a_N)$ denote the vector of parental indices of each child, and $(v_1, \dots, v_N)$ the resulting offspring counts for each parent. That is, $v_i = \sum_{j=1}^N \I{a_j = i} $. We will use a superscript $m$ or $r$ to denote the multinomial or residual schemes respectively.\\

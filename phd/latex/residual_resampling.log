@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  5 APR 2019 11:30
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  27 MAY 2021 16:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -174,7 +174,7 @@ s
 \f@nch@O@olf=\skip58
 \f@nch@O@orf=\skip59
 )
-No file residual_resampling.aux.
+(./residual_resampling.aux)
 \openout1 = `residual_resampling.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 36.
@@ -189,6 +189,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 36.
 LaTeX Font Info:    ... okay on input line 36.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 36.
 LaTeX Font Info:    ... okay on input line 36.
+
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -232,19 +233,23 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 37.
 (/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
+Underfull \hbox (badness 10000) in paragraph at lines 40--41
+
+ []
+
 
 Package natbib Warning: Citation `koskela2018' on page 1 undefined on input lin
-e 74.
+e 79.
 
 [1
 
 {/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Overfull \hbox (24.32297pt too wide) detected at line 112
+Overfull \hbox (24.32297pt too wide) detected at line 117
 []
  []
 
 
-Overfull \hbox (49.18988pt too wide) detected at line 120
+Overfull \hbox (49.18988pt too wide) detected at line 125
 []
  []
 
@@ -254,13 +259,13 @@ Package natbib Warning: There were undefined citations.
 
 [2] (./residual_resampling.aux) ) 
 Here is how much of TeX's memory you used:
- 2269 strings out of 492649
- 28499 string characters out of 6129623
- 107288 words of memory out of 5000000
+ 2271 strings out of 492649
+ 28547 string characters out of 6129623
+ 107299 words of memory out of 5000000
  6144 multiletter control sequences out of 15000+600000
  11501 words of font info for 45 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 27i,10n,43p,716b,241s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 27i,11n,43p,716b,257s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2018/texmf-dist/fonts/type
 1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1
 /public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/
@@ -277,7 +282,7 @@ nts/cm/cmr5.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts
 cmsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/c
 msy7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbol
 s/msbm10.pfb>
-Output written on residual_resampling.pdf (2 pages, 148664 bytes).
+Output written on residual_resampling.pdf (2 pages, 150353 bytes).
 PDF statistics:
  71 PDF objects out of 1000 (max. 8388607)
  51 compressed objects within 1 object stream
