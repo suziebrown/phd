@@ -9,13 +9,71 @@ Anyone who considers arithmetical methods of producing random digits is, of cour
 
 \section{Sequential Monte Carlo}
 
-\subsection{Motivation}
 \draft{Being Bayesian. SSMs/HMMs. Example(s) of SSM (1D train?).}
+The idea of Monte Carlo is to use (pseudo-)random numbers to approximate expectations under an intractable probability distribution of interest.
+Sequential Monte Carlo (SMC) is a class of Monte Carlo algorithms which are implemented sequentially, allowing efficient sampling from \emph{sequences} of distributions.
+SMC was developed for inference in intractable state space models (details in Section\seb{??}) and introduced to the statistics community by \textcite{gordon1993}.
+The basic idea behind SMC is sequential importance sampling, whereby the posterior importance samples from one target distribution are used to generate proposal samples for the next. A full derivation of the SMC recursions is beyond the scope of this work, but the reader is referred to\seb{[citations]} for more background. Here it will suffice to include a motivation in the context of state space models (Section\seb{??}) followed by a formalism in terms of Feynman-Kac models (Section\seb{??}).
 
-\subsection{Inference in SSMs}
-\draft{What quantities do we want to infer? Why is this generally difficult? Filtering, prediction, smoothing, likelihood/normalising constant.}
 
-\subsection{Exact solutions \seb{$\checkmark$} }
+
+
+
+\subsection{State space models \seb{$\checkmark$} }
+State space models (sometimes called hidden Markov models) are a flexible class of statistical models which are suitable in all sorts of applications where observations appear sequentially.
+The general model has two components: a Markov process $(X_t)_{t\in\mathbb{N}_0}$ representing the (unobservable) underlying state of the system, and a sequence $(Y_t)_{t\in\mathbb{N}_0}$ of noisy observations of the underlying state. The model is characterised by its conditional independence structure (Figure~\ref{fig:SSM}) along with an initial distribution $\mu$, the Markov ``transition'' kernels $(K_t)_{t\in\mathbb{N}}$ and the ``emission'' distributions $(g_t)_{t\in\mathbb{N}_0}$. 
+Written as a hierarchical model,
+\begin{align*}
+X_0 &\sim \mu(\cdot) & \\
+X_{t+1} \mid X_t &\sim K_{t+1}(\cdot | X_t) & \text{for } t=0, 1, \dots \\
+Y_t \mid X_t &\sim g_t(\cdot | X_t) & \text{for } t=0, 1, \dots \\
+\end{align*}
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}
+\filldraw[gray!10] (0,0) circle (0.4);
+\filldraw[gray!10] (0,2.2) circle (0.4);
+\filldraw[gray!10] (3,0) circle (0.4);
+\filldraw[gray!10] (3,2.2) circle (0.4);
+\node at (3,2.2) {$Y_{t+1}$};
+\node at (3,0) {$X_{t+1}$};
+\node at (0,2.2) {$Y_{t}$};
+\node at (0,0) {$X_{t}$};
+\node at (-2,0) {$\dots$};
+\node at (5.1,0) {$\dots$};
+\draw[->] (-1.7,0)-- node[anchor=north] {\footnotesize{$K_t$}} (-0.5,0);
+\draw[->] (0.5,0)-- node[anchor=north] {\footnotesize{$K_{t+1}$}} (2.5,0);
+\draw[->] (3.5,0)-- node[anchor=north] {\footnotesize{$K_{t+2}$}} (4.7,0); 
+\draw[->] (0,0.5)-- node[anchor=west] {\footnotesize{$g_t$}} (0,1.7);
+\draw[->] (3,0.5)-- node[anchor=west] {\footnotesize{$g_{t+1}$}} (3,1.7);
+\end{tikzpicture}
+\caption[Graphical depiction of a general state space model]{Graphical depiction of a general state space model. $(X_t)$ is a Markov process with transition kernels $(K_t)$ representing the underlying state of the system. $Y_t$ is a noisy observation of $X_t$ for each $t$.}
+\label{fig:SSM}
+\end{figure}
+
+Here $X$ and/or $Y$ may be multivariate, observation times need not be equally spaced, and straightforward generalisations of the stated model can allow for situations in which observations are not available as often as the state is updated (up to and including the extreme where the state is a continuous-time Markov process but the observations are available only at discrete times), or on the other hand where observations are observed more frequently than the state is updated.
+
+Applications include: target tracking, where $X$ is the true position of some object and $Y$ encodes some measurements from sensors e.g.\ radar; stochastic volatility, where $X$ is the volatility and $Y$ is the observed value e.g.\ the price of a stock; change-point detection; and pretty much any other application in which there is an observed time series from which one would like to infer underlying states.
+
+The principal inferences of interest in state space models are:
+\begin{description}
+\item [filtering] inferring the current state $x_t$ from the observations up to now $y_{0:t}$
+\item [prediction] inferring a future state $x_{t+h}$ from the observations up to now $y_{0:t}$
+\item [smoothing] inferring the sequence of states up to now $x_{0:t}$ from the observations up to now $y_{0:t}$
+\item [fixed-lag smoothing] inferring the last $h$ states $x_{t-h:t}$ from the observations up to now $y_{0:t}$
+\end{description}
+If the dynamics of the state space model are parametrised by some $\theta$, i.e.\ $g_t, K_t$ depend on $\theta$, we may also be interested in parameter inference and/or computing the likelihood of the observed data given a certain value of $\theta$.
+
+In certain cases, these inference problems may be solved analytically (Section\seb{??}), but this is not typically the case. For intractable models we must resort to Monte Carlo methods. However, state space inference is problematic even with Monte Carlo. 
+The main difficulties are that the dimension of the target distribution increases along the sequence, and there is strong dependence between consecutive distributions. Markov chain Monte Carlo (MCMC), for instance, is known to struggle with highly correlated targets\seb{[citation]} and its performance drops drastically as dimension increases, despite convergence rates that are supposedly independent of dimension\seb{[citation]}.
+
+As we will see in Section\seb{??}, sequential Monte Carlo overcomes these problems, turning the problematic properties of the target distribution to its benefit. Correlation between consecutive targets is exploited for sequential updating, which takes in its stride the incrementing dimensionality. The resulting linear-in-$t$ computational complexity also allows inference to be performed on-line, that is, as observations arrive.
+
+
+
+
+\subsection{Exact inference in state space models \seb{$\checkmark$} }
 If the state space model has linear dynamics with Gaussian errors, the posterior distributions of interest are also Gaussian with mean and covariance satisying recursions, implemented by the Kalman filter \parencite{kalman1960} and Rauch-Tung-Striebel smoother \parencite{rauch1965}. Recursions are also available for some other conjugate models: see for example \textcite{vidoni1999}.
 Another analytic case occurs if the state space $\mathcal{X}$ is finite, in which case any integrals become finite sums, and the forward-backward algorithm \parencite{baum1970} yields the exact posteriors. However, if the state space becomes large (albeit finite), exact computation becomes infeasible.
 
