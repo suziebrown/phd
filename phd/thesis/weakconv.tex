@@ -1,11 +1,15 @@
 \chapter{Weak Convergence \seb{$\checkmark$} }
 
-\epigraph{
-At the age of twenty-one he wrote a treatise upon the Binomial Theorem, which has had a European vogue. On the strength of it he won the Mathematical Chair at one of our smaller universities, and had, to all appearances, a most brilliant career before him.
-}
-{\textsc{Sherlock Holmes}} %\\The Final Problem
+%\epigraph{
+%At the age of twenty-one he wrote a treatise upon the Binomial Theorem, which has had a European vogue. On the strength of it he won the Mathematical Chair at one of our smaller universities, and had, to all appearances, a most brilliant career before him.
+%}
+%{\textsc{Sherlock Holmes}} %\\The Final Problem
 
-\draft{Some motivation/discussion about weak convergence: why it is more useful than FDDs, that the following theorem has the same conditions as the FDDs one...}
+In this chapter we present a weak convergence result which is identical to Theorem~\ref{thm:FDDconv} except that the mode of convergence is strengthened from convergence of the finite-dimensional distributions to weak convergence. 
+Weak convergence is desirable because it implies convergence of a strictly larger class of functions of genealogies, granting access to the distributions of statistics such as the time to the sample MRCA, the total branch length, and the probability that the MRCA of a subsample is equal to the sample MRCA\seb{okay, technically if this one is going to be a ``statistic'', I'm talking about the indicator on this event}. 
+
+The extension from Theorem~\ref{thm:FDDconv} to weak convergence requires an additional tightness argument. The proof is rather long-winded since we do not make such strong simplifying assumptions on the dynamics of the interacting particle system as are seen for example in \textcite{mohle1999}\seb{and others...?}. The proof is broken down into a series of technical results which culminate in Theorem~\ref{thm:weakconv}. The overall structure of the proof is depicted graphically in Figure~\ref{fig:weakconv_structure}.
+
 
 We start by defining a suitable metric space.
 Let $\mathcal{P}_n$ be the space of partitions of $\{1,\dots,n\}$.
@@ -42,15 +46,15 @@ Since we already have convergence of the finite-dimensional distributions (Theor
 \textcite[Chapter 3, Corollary 7.4]{ethier1986} provide a necessary and sufficient condition for relative compactness: $\mathcal{P}_n$ is finite and therefore complete and separable, and the sample paths of $(G_{\tau_N(t)}^{(n,N)})_{t\geq0}$ live in $\mathcal{X}$, so the conditions of their corollary are satisfied.
 The corollary states that the sequence of processes $\{ (G_{\tau_N(t)}^{(n,N)})_{t\geq0} \}_{N\in\mathbb{N}}$ is relatively compact if and only if the following two conditions hold:
 \begin{enumerate}
-\item \label{item:relcomp1} For every $\varepsilon>0$, $t\geq 0$ there exists a compact set $\Gamma \subseteq \mathcal{P}_n$ such that\seb{again, use $\epsilon$ here and in the following to avoid confusion with $\varepsilon$ of Chapter 4.}
+\item \label{item:relcomp1} For every $\epsilon>0$, $t\geq 0$ there exists a compact set $\Gamma \subseteq \mathcal{P}_n$ such that
 \begin{equation*}
 \liminf_{N\to\infty} \Prob[ G_{\tau_N(t)}^{(n,N)} \in \Gamma ] 
-\geq 1-\varepsilon
+\geq 1-\epsilon
 \end{equation*}
-\item \label{item:relcomp2} For every $\varepsilon>0$, $t>0$ there exists $\delta>0$ such that
+\item \label{item:relcomp2} For every $\epsilon>0$, $t>0$ there exists $\delta>0$ such that
 \begin{equation*}
-\liminf_{N\to\infty} \Prob[ \omega(G_{\tau_N(\cdot)}^{(n,N)}, \delta, t) < \varepsilon ] 
-\geq 1-\varepsilon
+\liminf_{N\to\infty} \Prob[ \omega(G_{\tau_N(\cdot)}^{(n,N)}, \delta, t) < \epsilon ] 
+\geq 1-\epsilon
 \end{equation*}
 where $\omega$ is the modified modulus of continuity:
 \begin{equation*}
@@ -58,7 +62,7 @@ where $\omega$ is the modified modulus of continuity:
         \sup_{u,v \in [T_{i-1}, T_i)} \rho\left( 
         G_{\tau_N(u)}^{(n,N)}, G_{\tau_N(v)}^{(n,N)} \right)
 \end{equation*}
-with the infimum taken over all partitions of the form $0=T_0<T_1<\cdots <T_{K-1} <t \leq T_K$ such that $\min_{i\in[K]} (T_i - T_{i-1}) > \delta$. \seb{Clarify that such a partition with any $K$ is valid, i.e. $K$ is not fixed.}
+with the infimum taken over all partitions of the form $0=T_0<T_1<\cdots <T_{K-1} <t \leq T_K$ (for some $K$) such that $\min_{i\in[K]} (T_i - T_{i-1}) > \delta$. 
 \end{enumerate}
 In our case, Condition~\ref{item:relcomp1} is satisfied automatically with $\Gamma = \mathcal{P}_n$, since $\mathcal{P}_n$ is finite and hence compact. 
 Intuitively, Condition~\ref{item:relcomp2} ensures that the jumps of the process are well-separated. 
@@ -71,19 +75,20 @@ To do this, we use a coupling with another process that contains all of the jump
 
 Define $p_t := \max_{\xi\in \mathcal{P}_n} \{1 - p_{\xi\xi}(t)\} = 1 - p_{\Delta\Delta}(t)$, where $\Delta$ denotes the trivial partition of singletons $\{ \{1\},\dots, \{n\} \}$. For a proof that the maximum is attained at $\xi = \Delta$, see Lemma \ref{thm:maximum_pr}. 
 Following \textcite{mohle1999}, we now construct the two-dimensional Markov process $(Z_t, S_t)_{t \in \mathbb{N}_0}$ on $\mathbb{N}_0 \times \mathcal{P}_n$ with transition probabilities
-\begin{align*}
-\Prob[ Z_t = j , S_t = \eta \mid Z_{t-1} = i&, S_{t-1} = \xi, \mathcal{F}_\infty] \\
+\begin{align}
+\Prob[ Z_t = j , S_t = \eta \mid Z_{t-1} = i&, S_{t-1} = \xi, \mathcal{F}_\infty] \notag\\
 &= \begin{cases}
 1 - p_t &\quad \text{if } j=i \text{ and } \xi=\eta \\
 p_{\xi\xi}(t) + p_t - 1  &\quad \text{if } j=i+1 \text{ and } \xi=\eta \\
 p_{\xi\eta}(t) &\quad \text{if } j=i+1 \text{ and } \xi\neq\eta \\
 0 &\quad \text{otherwise} 
 \end{cases}
-\end{align*}
+\label{eq:constructed_chain}
+\end{align}
 and initial state $Z_0=0$, $S_0 = \Delta$.
 Unlike the corresponding process in \textcite{mohle1999}, in our case the transition probabilities depend on offspring counts, thus the process is only Markovian conditional on $\mathcal{F}_\infty$. It can be thought of as a Markov process in a random environment.
 
-The construction is such that the marginal $(S_t)$ has the same distribution as the genealogical process of interest, and $(Z_t)$ has jumps at all the times $(S_t)$ does plus some extra jumps. (The definition of $p_t$ ensures that the probability in the second case is non-negative, attaining the value zero when $\xi=\Delta$.)
+The construction is such that the marginal $(S_t)$ has the same distribution as the genealogical process of interest, and $(Z_t)$ has jumps at all the times $(S_t)$ does plus some extra jumps. The definition of $p_t$ ensures that the probability in the second case of \eqref{eq:constructed_chain} is non-negative, attaining the value zero when $\xi=\Delta$.
 \seb{And the transition probabilities (jump times) of $Z$ do not depend on the current state.}
 
 Denote by $0=T_0^{(N)}<T_1^{(N)}<\dots$ the jump times of the rescaled process $(Z_{\tau_N(t)})_{t\geq0}$, and by $\varpi_i^{(N)} := T_i^{(N)} - T_{i-1}^{(N)}$ the corresponding holding times.
@@ -99,15 +104,15 @@ Indeed $(Z_{\tau_N(\cdot)})$ is constant on every interval $[ T_{i-1}^{(N)} , T_
 We therefore have that
 for each $m \in \mathbb{N}$ and $\delta >0$,
 \begin{equation*}
-\Prob[ \omega( (Z_{\tau_N(\cdot)}) , \delta, t ) < \varepsilon ]
+\Prob[ \omega( (Z_{\tau_N(\cdot)}) , \delta, t ) < \epsilon ]
 \geq \Prob[ T_m^{(N)} \geq t, \varpi_i^{(N)} > \delta \,\forall i\in \{1,\dots,m\} ] .
 \end{equation*}
 Thus a sufficient condition for Condition~\ref{item:relcomp2} is: 
-for any $\varepsilon>0$, $t>0$, there exist $m\in\mathbb{N}$, $\delta>0$ such that
+for any $\epsilon>0$, $t>0$, there exist $m\in\mathbb{N}$, $\delta>0$ such that
 \begin{equation}\label{eq:condition2b}
 \liminf_{N\to\infty} 
         \Prob[ T_m^{(N)} \geq t, \varpi_i^{(N)} > \delta \,\forall i\in \{1,\dots,m\} ]
-\geq 1-\varepsilon .
+\geq 1-\epsilon .
 \end{equation}
 Since $T_m^{(N)} = \varpi_1^{(N)} + \cdots + \varpi_m^{(N)}$, there is a positive correlation between $T_m^{(N)}$ and each of the $\varpi_i^{(N)}$, and the $\varpi_i^{(N)}$'s are independent
 \seb{conditionally... should all these probabilities be conditioned on $\mathcal{F}_\infty$?}, so
@@ -130,15 +135,15 @@ and
 = \liminf_{N\to\infty} \Prob[ \varpi_1^{(N)} + \cdots + \varpi_m^{(N)} \geq t ]
 = e^{-\alpha_n \delta} \sum_{i=0}^{m-1} \frac{(\alpha_n t)^i}{i!} .
 \end{equation*}
-using the series expansion for the Erlang CDF. \seb{citation?}
+using the series expansion for the Erlang CDF \parencite[see for example][Chapter 15]{forbes2011}.
 Hence 
 \begin{equation*}
 \liminf_{N\to\infty} 
         \Prob[ T_m^{(N)} \geq t, \varpi_i^{(N)} > \delta \,\forall i\in \{1,\dots,m\} ]
 \geq (e^{-\alpha_n \delta})^{m+1} \sum_{i=0}^{m-1} \frac{(\alpha_n t)^i}{i!} ,
 \end{equation*}
-which can be made $\geq 1-\varepsilon$ by taking $m$ sufficiently large and $\delta$ sufficiently small.
-Since this argument applies for any $\varepsilon$ and $t$, \eqref{eq:condition2b} and hence Condition~\ref{item:relcomp2} is satisfied, and the proof is complete.
+which can be made $\geq 1-\epsilon$ by taking $m$ sufficiently large and $\delta$ sufficiently small.
+Since this argument applies for any $\epsilon$ and $t$, \eqref{eq:condition2b} and hence Condition~\ref{item:relcomp2} is satisfied, and the proof is complete.
 \end{proof}
 
 
@@ -351,7 +356,7 @@ This completes the induction.
 \draw[->] (c7r1)--(c7r2);
 \draw[->] (c7r3)--(c7r2);
 \end{tikzpicture}
-\caption[Structure of weak convergence proof]{Graph showing dependencies between the lemmata used to prove weak convergence. Dotted arrows indicate dependence via a slight modification of the preceding lemma. Dependencies preceding Theorem~\ref{thm:FDDconv} are not shown; these are shown in Figure~??\seb{draw a corresponsing figure for fdd proof}.}
+\caption[Structure of weak convergence proof]{Graph showing dependencies between the lemmata used to prove weak convergence. Dotted arrows indicate dependence via a slight modification of the preceding lemma. Dependencies preceding Theorem~\ref{thm:FDDconv} are not shown; these are shown in Figure~??\seb{draw a corresponding figure for fdd proof, or delete this sentence?}.}
 \label{fig:weakconv_structure}
 \end{figure}
 \end{landscape}
@@ -471,7 +476,7 @@ Separating the term $I=l$,
 In the second term on the RHS, there is always at least one $D_N$ term, so using \eqref{eq:cN_property2} we can write
 \begin{align}
 \sum_{I=0}^{l-1}\binom{l}{I} B^{l-I} &\sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)}
-        \left( \prod_{i=1}^I c_N(s_i) \right) \left( \prod_{j=I+1}^l D_N(s_j) \right) \\
+        \left( \prod_{i=1}^I c_N(s_i) \right) \left( \prod_{j=I+1}^l D_N(s_j) \right) \notag\\
 &\leq \sum_{I=0}^{l-1}\binom{l}{I} B^{l-I} 
         \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)}
         \left( \prod_{i=1}^{l-1} c_N(s_i) \right) D_N(s_l) \notag\\

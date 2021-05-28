@@ -805,6 +805,51 @@
       \field{pages}{205\bibrangedash 220}
       \range{pages}{16}
     \endentry
+    \entry{forbes2011}{book}{}
+      \name{author}{4}{}{%
+        {{uniquename=0,uniquepart=base,hash=a579ba603148c7cb469c7bd7ac58a62e}{%
+           family={Forbes},
+           familyi={F\bibinitperiod},
+           given={Catherine},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=f48a6f6e2dd3feadce26424956719a2a}{%
+           family={Evans},
+           familyi={E\bibinitperiod},
+           given={Merran},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=b87e4fbe6a70199c53e56aad7fe4c6f3}{%
+           family={Hastings},
+           familyi={H\bibinitperiod},
+           given={Nicholas},
+           giveni={N\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=c9d8e4a946898da962cc4fa38b3f63bc}{%
+           family={Peacock},
+           familyi={P\bibinitperiod},
+           given={Brian},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {John Wiley \& Sons}%
+      }
+      \strng{namehash}{ae2303858f34aff858c2af6a595ce9f9}
+      \strng{fullhash}{3e1d2d8c355a547d86a4d2515c899dff}
+      \strng{bibnamehash}{ae2303858f34aff858c2af6a595ce9f9}
+      \strng{authorbibnamehash}{ae2303858f34aff858c2af6a595ce9f9}
+      \strng{authornamehash}{ae2303858f34aff858c2af6a595ce9f9}
+      \strng{authorfullhash}{3e1d2d8c355a547d86a4d2515c899dff}
+      \field{sortinit}{F}
+      \field{sortinithash}{669c706c6f1fbf3b5a83d26f1d9e9e72}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Statistical Distributions}
+      \field{year}{2011}
+    \endentry
     \entry{fu2006}{article}{}
       \name{author}{1}{}{%
         {{uniquename=0,uniquepart=base,hash=b0ba93e0f8d65b82c9dccacfce2224f5}{%

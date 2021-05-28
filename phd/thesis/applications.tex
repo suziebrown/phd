@@ -1,19 +1,19 @@
 \chapter{Applications \seb{$\checkmark$} }\label{ch:appl}
 
-\epigraph{
-Earth's crammed with heaven, \\
-And every common bush afire with God, \\
-But only he who sees takes off his shoes; \\
-The rest sit round and pluck blackberries.
-}
-{\textsc{Elizabeth Barrett Browning}}
+%\epigraph{
+%Earth's crammed with heaven, \\
+%And every common bush afire with God, \\
+%But only he who sees takes off his shoes; \\
+%The rest sit round and pluck blackberries.
+%}
+%{\textsc{Elizabeth Barrett Browning}}
 
 
 Theorem~\ref{thm:weakconv} gives verifiable conditions under which interacting particle systems with dynamics in the form of Algorithm~\ref{alg:SMC} have asymptotically Kingman genealogies. 
 The work was motivated by SMC algorithms, which have the required form. However, certain choices of state space and dynamics within the context of Algorithm~\ref{alg:SMC} yield systems that are not very SMC-like but may have applications in other fields such as population genetics. 
 For instance, we have generally imagined that the resampling scheme is unbiased, but this is by no means necessary for Theorem~\ref{thm:weakconv} (or indeed Theorem~\ref{thm:FDDconv}); it is just that biased resampling schemes are of little use in SMC.
 
-The applications presented in this chapter are all motivated by SMC, but an interesting area of future research would be to explore the implications of Theorem~\ref{thm:weakconv} in other contexts. From the population genetics point-of-view, Theorem~\ref{thm:weakconv} may be seen as a complement to the convergence criteria for neutral models \parencite[e.g.][]{mohle2001} discussed in Section ??\seb{add the section reference once that part of ch2 is written}, so it would be interesting to construct some corollaries for classical non-neutral population models.
+The applications presented in this chapter are all motivated by SMC, but an interesting area of future research would be to explore the implications of Theorem~\ref{thm:weakconv} in other contexts. From the population genetics point-of-view, Theorem~\ref{thm:weakconv} may be seen as a complement to the convergence criteria for neutral models \parencite[e.g.][]{mohle1999} discussed in Section ??\seb{add the section reference once that part of Chapter~\ref{ch:bg} is written}, so it would be interesting to construct some corollaries for classical non-neutral population models.
 
 
 \section{Multinomial resampling}
@@ -265,7 +265,7 @@ The result follows by applying Theorem~\ref{thm:weakconv}.
 
 \begin{prop}\label{thm:strat_nontriviality}
 Consider an SMC algorithm using stratified resampling.
-Suppose that there exists a constant $\varepsilon \in (0,1]$ and a probability density $h$ such that
+Suppose that\seb{for each $t$? --- actually, isn't is sufficient that these bounds exist for infinitely many $t$?} there exists a constant $\varepsilon \in (0,1]$ and a probability density $h$ such that
 \begin{equation*}
 \varepsilon h(x') \leq q_t(x, x^\prime) \leq \varepsilon^{-1} h(x')
 \end{equation*}
@@ -734,7 +734,7 @@ We can also show, under additional conditions, that the assumption $\Prob[ \tau_
 
 \begin{prop}\label{thm:resstrat_nontriviality}
 Consider an SMC algorithm using residual resampling with stratified residuals.
-Suppose that\seb{for each $t$} there exists a constant $\varepsilon \in (0,1]$ and a probability density $h$ such that
+Suppose that there exists a constant $\varepsilon \in (0,1]$ and a probability density $h$ such that
 \begin{equation*}
 \varepsilon h(x') \leq q_t(x, x^\prime) \leq \varepsilon^{-1} h(x')
 \end{equation*}

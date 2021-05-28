@@ -1,4 +1,5 @@
 \chapter{Background}
+\label{ch:bg}
 
 \epigraph{
 Anyone who considers arithmetical methods of producing random digits is, of course, in a state of sin.
@@ -8,12 +9,10 @@ Anyone who considers arithmetical methods of producing random digits is, of cour
 
 
 \section{Sequential Monte Carlo}
-
-\draft{Being Bayesian. SSMs/HMMs. Example(s) of SSM (1D train?).}
 The idea of Monte Carlo is to use (pseudo-)random numbers to approximate expectations under an intractable probability distribution of interest.
 Sequential Monte Carlo (SMC) is a class of Monte Carlo algorithms which are implemented sequentially, allowing efficient sampling from \emph{sequences} of distributions.
 SMC was developed for inference in intractable state space models (details in Section\seb{??}) and introduced to the statistics community by \textcite{gordon1993}.
-The basic idea behind SMC is sequential importance sampling, whereby the posterior importance samples from one target distribution are used to generate proposal samples for the next. A full derivation of the SMC recursions is beyond the scope of this work, but the reader is referred to\seb{[citations]} for more background. Here it will suffice to include a motivation in the context of state space models (Section\seb{??}) followed by a formalism in terms of Feynman-Kac models (Section\seb{??}).
+The basic idea behind SMC is sequential importance sampling, whereby the posterior importance samples from one target distribution are used to generate proposal samples for the next. A full derivation of the SMC recursions is beyond the scope of this work, but the reader is referred to\seb{[citations]} for more background. Here it will suffice to include a motivation in the context of state space models (Section\seb{??}) followed by the formalism of Feynman-Kac models (Section\seb{??}).
 
 
 
@@ -21,14 +20,6 @@ The basic idea behind SMC is sequential importance sampling, whereby the posteri
 
 \subsection{State space models \seb{$\checkmark$} }
 State space models (sometimes called hidden Markov models) are a flexible class of statistical models which are suitable in all sorts of applications where observations appear sequentially.
-The general model has two components: a Markov process $(X_t)_{t\in\mathbb{N}_0}$ representing the (unobservable) underlying state of the system, and a sequence $(Y_t)_{t\in\mathbb{N}_0}$ of noisy observations of the underlying state. The model is characterised by its conditional independence structure (Figure~\ref{fig:SSM}) along with an initial distribution $\mu$, the Markov ``transition'' kernels $(K_t)_{t\in\mathbb{N}}$ and the ``emission'' distributions $(g_t)_{t\in\mathbb{N}_0}$. 
-Written as a hierarchical model,
-\begin{align*}
-X_0 &\sim \mu(\cdot) & \\
-X_{t+1} \mid X_t &\sim K_{t+1}(\cdot | X_t) & \text{for } t=0, 1, \dots \\
-Y_t \mid X_t &\sim g_t(\cdot | X_t) & \text{for } t=0, 1, \dots \\
-\end{align*}
-
 \begin{figure}[ht]
 \centering
 \begin{tikzpicture}
@@ -51,6 +42,13 @@ Y_t \mid X_t &\sim g_t(\cdot | X_t) & \text{for } t=0, 1, \dots \\
 \caption[Graphical depiction of a general state space model]{Graphical depiction of a general state space model. $(X_t)$ is a Markov process with transition kernels $(K_t)$ representing the underlying state of the system. $Y_t$ is a noisy observation of $X_t$ for each $t$.}
 \label{fig:SSM}
 \end{figure}
+The general model has two components: a Markov process $(X_t)_{t\in\mathbb{N}_0}$ representing the (unobservable) underlying state of the system, and a sequence $(Y_t)_{t\in\mathbb{N}_0}$ of noisy observations of the underlying state. The model is characterised by its conditional independence structure (Figure~\ref{fig:SSM}) along with an initial distribution $\mu$, the Markov ``transition'' kernels $(K_t)_{t\in\mathbb{N}}$ and the ``emission'' distributions $(g_t)_{t\in\mathbb{N}_0}$. 
+Written as a hierarchical model,
+\begin{align*}
+X_0 &\sim \mu(\cdot) & \\
+X_{t+1} \mid X_t &\sim K_{t+1}(\cdot | X_t) & \text{for } t=0, 1, \dots \\
+Y_t \mid X_t &\sim g_t(\cdot | X_t) & \text{for } t=0, 1, \dots \\
+\end{align*}
 
 Here $X$ and/or $Y$ may be multivariate, observation times need not be equally spaced, and straightforward generalisations of the stated model can allow for situations in which observations are not available as often as the state is updated (up to and including the extreme where the state is a continuous-time Markov process but the observations are available only at discrete times), or on the other hand where observations are observed more frequently than the state is updated.
 
@@ -124,7 +122,7 @@ By a D-separation argument \parencite[see][]{verma1988}, the nodes highlighted i
 \mathcal{H}_t = \sigma(X_{t-1}^{(1:N)}, X_t^{(1:N)}, w_{t-1}^{(1:N)}, w_t^{(1:N)} ).
 \end{equation*}
 Notice that $\nu_t^{(1:N)}$ can be expressed as a function of $a_t^{(1:N)}$, and as such carries less information.
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \begin{tikzpicture}[>=stealth]
 % separatrix
@@ -1051,7 +1049,7 @@ and we find
 \end{align*}
 
 For stratified resampling, we can use the constraints on the marginal offspring distribution that were derived in Section~\ref{sec:examples_resamplingschemes}. Recall that, conditional on $w_t^{(i)}$, $\nu_t^{(i)} = \flnw + j$ with probability $p_{j}$ for $j=-1,0,1,2$.
-We can use the values of $p_{-1},p_0,p_1,p_2$ in the two cases of Figure~\ref{fig:strat_cases}, as summarised in Table~\ref{tab:strat_probs}, to bound the variance. First write
+We can use the values of $p_{-1},p_0,p_1,p_2$ in the two cases of Figure~\ref{fig:strat_cases}\seb{these calculations will need updating since Table~\ref{tab:strat_probs} is now more informative}, as summarised in Table~\ref{tab:strat_probs}, to bound the variance. First write
 \begin{align*}
 \V[ \nu_t^{(i)} \mid w_t^{(i)} ]
 &= \E[ (\nu_t^{(i)} - \flnw)^2 \mid w_t^{(i)} ] 
