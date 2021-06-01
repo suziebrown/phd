@@ -40,7 +40,7 @@ State space models (sometimes called hidden Markov models) are a flexible class 
 \draw[->] (0,0.5)-- node[anchor=west] {\footnotesize{$g_t$}} (0,1.7);
 \draw[->] (3,0.5)-- node[anchor=west] {\footnotesize{$g_{t+1}$}} (3,1.7);
 \end{tikzpicture}
-\caption[Graphical depiction of a general state space model]{Graphical depiction of a general state space model. $(X_t)$ is a Markov process with transition kernels $(K_t)$ representing the underlying state of the system. $Y_t$ is a noisy observation of $X_t$ for each $t$.}
+\caption[Graphical depiction of a general state space model]{Graphical depiction of a general state space model. $(X_t)$ is a Markov process with transition kernels $(K_t)$ representing the underlying state of the system. $Y_t$ is a noisy observation of $X_t$ for each $t$.\seb{Include also the $t-1$ column in this graph for greater clarity.}}
 \label{fig:SSM}
 \end{figure}
 The general model has two components: a Markov process $(X_t)_{t\in\mathbb{N}_0}$ representing the (unobservable) underlying state of the system, and a sequence $(Y_t)_{t\in\mathbb{N}_0}$ of noisy observations of the underlying state. The model is characterised by its conditional independence structure (Figure~\ref{fig:SSM}) along with an initial distribution $\mu$, the Markov ``transition'' kernels $(K_t)_{t\in\mathbb{N}}$ and the ``emission'' distributions $(g_t)_{t\in\mathbb{N}_0}$. 
@@ -60,7 +60,7 @@ The principal inferences of interest in state space models are:
 \begin{description}
 \item [filtering] $p(x_t\mid y_{0:t})$: inferring the current state $x_t$ from the observations up to now $y_{0:t}$
 \item [prediction] $p(x_{t+h}\mid y_{0:t})$: inferring a future state $x_{t+h}$ from the observations up to now $y_{0:t}$
-\item [smoothing] $p(x_{0:t}\mid y_{0:t})$: inferring the sequence of states up to now $x_{0:t}$ from the observations up to now $y_{0:t}$
+\item [(complete) smoothing] $p(x_{0:t}\mid y_{0:t})$: inferring the sequence of states up to now $x_{0:t}$ from the observations up to now $y_{0:t}$
 \item [fixed-lag smoothing] $p(x_{t-h:t}\mid y_{0:t})$: inferring the last $h$ states $x_{t-h:t}$ from the observations up to now $y_{0:t}$
 \end{description}
 If the dynamics of the state space model are parametrised by some $\theta$, i.e.\ $g_t, K_t$ depend on $\theta$, we may also be interested in parameter inference and/or computing the likelihood $p(y_{0:t})$ of the observed data given a certain value of $\theta$.
@@ -117,7 +117,7 @@ G_t (x_{t-1}, x_t) &:= g_t( y_t \mid x_t ) & \text{for } t=1,\dots,T . \label{eq
 This is not the only Feynman-Kac model for \eqref{eq:SSM_spec}; this corresponds to the ``bootstrap'' SMC algorithm, which is the simplest implementation but may be significantly outperformed in practice by more involved algorithms such as the ``guided''\seb{[citation]} and ``auxiliary'' \parencite{pitt1999, carpenter1999} variants. Feynman-Kac formalisms for these variants are presented in \textcite[Section 5.1.2]{chopin2020}.
 
 It remains to demonstrate that the measures $\mathbb{Q}_t$ arising from \eqref{eq:bootstrapFK} are sufficient for all the usual inference problems in the corresponding state space model \eqref{eq:SSM_spec}.
-By construction, the full smoothing distribution is precisely
+By construction, the complete smoothing distribution is precisely
 \begin{align*}
 \mathbb{Q}_t (dx_{0:t})
 &= \frac{1}{L_t} G_0(x_0) \mathbb{M}_0(dx_0)
@@ -142,28 +142,94 @@ The next section describes how we may obtain samples from $\mathbb{Q}_t(dx_{0:T}
 \subsection{Sequential Monte Carlo for Feynman-Kac models}
 \draft{Present generic algorithm. State the SMC estimators of the quantities of interest. Include the dependence diagram and note that the offspring counts are not independent at each time, but can be made so by conditioning on the separatrix $\mathcal{H}$.}
 
+In order to implement the SMC algorithm corresponding to a given Feynman-Kac model, we need to be able to sample from $\mathbb{M}_0$ and from $M_t(x, \cdot)$ for all $x,t$; and evaluate $G_t(x, y)$ pointwise for each $x,y, t$.
+Under these conditions we may implement Algorithm~\ref{alg:SMC}, which describes a generic SMC algorithm. 
+The only free choices are the parameter $N$ which dictates the number of particles used, and the \textsc{resample} procedure, which can have a profound effect on performance and is discussed in detail in Section~\ref{sec:resampling}.
+However, remember that given a particular state space model there is a choice of possible Feynman-Kac descriptions, and this choice can also strongly affect performance.
+
+%\vspace{10pt}
+%\begin{algorithm}
+%\DontPrintSemicolon
+%\KwData{$N, T, \mu, (K_t)_{t=1}^T, (g_t)_{t=0}^T$}
+%\lFor{$i \in \{1,\dots,N\}$}{ 
+%	Sample $X_0^{(i)} \sim \mu(\cdot)$
+%}
+%\lFor{$i \in \{1,\dots, N\}$}{
+%		$w_{0}^{(i)} \gets  \left\{{\sum_{j=1}^N g_0(X_0^{(j)})}\right\}^{-1}{g_0(X_0^{(i)})} $ 
+%	}
+%\For{$t \in \{0,\dots, T-1\}$}{
+%	Sample $a_t^{(1:N)} \sim $ \textsc{resample}$(\{1,\dots ,N\}, w_t^{(1:N)}$)\;
+%	\lFor{$i \in \{1,\dots,N\}$}{
+%		Sample $X_{t+1}^{(i)} \sim K_{t+1}(X_t^{(a_t^{(i)})}, \cdot)$
+%	}
+%	\lFor{$i \in \{1,\dots, N\}$}{	
+%		$w_{t+1}^{(i)} \gets \Big\{ {\sum_{j=1}^Ng_{t+1}(X_t^{(a_t^{(j)})},X_{t+1}^{(j)}) }\Big\}^{-1} g_{t+1}(X_t^{(a_t^{(i)})},X_{t+1}^{(i)}) $
+%	}
+%}
+%\caption{Sequential Monte Carlo}\label{alg:SMC_SSM}
+%\end{algorithm}
+%\vspace{10pt}
+
 \vspace{10pt}
 \begin{algorithm}
 \DontPrintSemicolon
-\KwData{$N, T, \mu, (K_t)_{t=1}^T, (g_t)_{t=0}^T$}
+\KwData{$N, T, \mathbb{M}_0, (M_t)_{t=1}^T, (G_t)_{t=0}^T$}
 \lFor{$i \in \{1,\dots,N\}$}{ 
-	Sample $X_0^{(i)} \sim \mu(\cdot)$
+	Sample $X_0^{(i)} \sim \mathbb{M}_0(\cdot)$
 }
 \lFor{$i \in \{1,\dots, N\}$}{
-		$w_{0}^{(i)} \gets  \left\{{\sum_{j=1}^N g_0(X_0^{(j)})}\right\}^{-1}{g_0(X_0^{(i)})} $ 
+		$w_{0}^{(i)} \gets  \left\{{\sum_{j=1}^N G_0(X_0^{(j)})}\right\}^{-1}{G_0(X_0^{(i)})} $ 
 	}
 \For{$t \in \{0,\dots, T-1\}$}{
 	Sample $a_t^{(1:N)} \sim $ \textsc{resample}$(\{1,\dots ,N\}, w_t^{(1:N)}$)\;
 	\lFor{$i \in \{1,\dots,N\}$}{
-		Sample $X_{t+1}^{(i)} \sim K_{t+1}(X_t^{(a_t^{(i)})}, \cdot)$
+		Sample $X_{t+1}^{(i)} \sim M_{t+1}(X_t^{(a_t^{(i)})}, \cdot)$
 	}
 	\lFor{$i \in \{1,\dots, N\}$}{	
-		$w_{t+1}^{(i)} \gets \Big\{ {\sum_{j=1}^Ng_{t+1}(X_t^{(a_t^{(j)})},X_{t+1}^{(j)}) }\Big\}^{-1} g_{t+1}(X_t^{(a_t^{(i)})},X_{t+1}^{(i)}) $
+		$w_{t+1}^{(i)} \gets \Big\{ {\sum_{j=1}^N G_{t+1}(X_t^{(a_t^{(j)})},X_{t+1}^{(j)}) }\Big\}^{-1} G_{t+1}(X_t^{(a_t^{(i)})},X_{t+1}^{(i)}) $
 	}
 }
-\caption{Sequential Monte Carlo}\label{alg:SMC}
+\caption{Sequential Monte Carlo for a generic Feynman-Kac model}
+\label{alg:SMC}
 \end{algorithm}
 \vspace{10pt}
+
+The output of Algorithm~\ref{alg:SMC} is, for $i=1,\dots, N$ and $t=0,\dots,T$, the \emph{states} $X_t^{(i)} \in \mathcal{X}$\seb{in general the state space can vary over time}, the \emph{weights} $w_t^{(i)} \in [0,1]$ and, for $i=1,\dots, N$ and $t=0,\dots,T-1$, the \emph{parental indices} $a_t^{(i)}$.
+Depending on the application, one may want to retain only a subset of this output.
+
+This output can be used to construct discrete approximations of the various distributions of interest, which can be used to estimate integrals against test functions in the usual way.
+The filtering distribution $p(x_t \mid y_{0:t})$ is approximated by
+\begin{equation*}
+\sum_{i=1}^N w_t^{(i)} \delta_{ X_t^{(i)} } ,
+\end{equation*}
+where $\delta_x$ denotes a unit mass at $x$.
+That is, expectations of appropriate test functions $\varphi : \mathcal{X} \mapsto \mathbb{R}$ are approximated by
+\begin{equation*}
+\E[ \phi(x_t) \mid y_{0:t} ]
+\simeq \sum_{i=1}^N w_t^{(i)} \varphi( X_t^{(i)} ) .
+\end{equation*}
+The meaning of approximation (or $\simeq$) here will be clarified in Section~\ref{sec:SMC_theory}.
+To approximate the smoothing distribution, we first define the \emph{trajectories} of states $X_{t,0:t}^{(i)}$ (for each $i \in \{1,\dots,N\}$) by setting $X_{t,t}^{(i)} := X_t^{(i)}$ and tracing back through the ancestors via the recursion $X_{t,s}{(i)} = X_{t,s+1}^{( a_t^{(i)} )}$ for each $s \in \{0,\dots, t\}$. 
+Then we construct the approximation
+\begin{equation*}
+\sum_{i=1}^N w_t^{(i)} \delta_{ X_{t,0:t}^{(i)} } 
+\end{equation*}
+of the smoothing distribution $p(x_{0:t} \mid y_{0:t})$.
+Similar approximations can be constructed for prediction and fixed-lag smoothing\seb{...be explicit or no?}.
+We can also approximate the marginal likelihood by using the \emph{unnormalised} weights\seb{should I introduce notation e.g. $\tilde{w}$ for the unnormalised weights, and give them a separate line in Algorithm~\ref{alg:SMC}, and include them in the possible outputs of the algorithm?}:
+\begin{equation*}
+L_t 
+\simeq \frac{1}{N} \sum_{i=1}^N G_0(X_0^{(i)}) \prod_{t=1}^T \frac{1}{N}
+        \sum_{i=1}^N G_t( X_{t-1}^{ a_{t-1}^{(i)} }, X_t^{(i)} ) .
+\end{equation*}
+
+
+...
+
+%%%
+\seb{Include here the dependence graph without the filtration and separatrix, and then include this embellished version later on when I first make reference to the D-separation argument (namely in Section~\ref{sec:SMC_genealogies} or just before). Then the graph version here should be labelled forward-in-time; currently it's labelled backwards which is just confusing for the reader.}\\
+
+\seb{Include arrows to and from the "..." extensions? Might make it visually clearer that this is just a section of a larger graph.}\\
 
 Figure \ref{fig:cond_indep_graph} shows part of the conditional dependence graph implied by Algorithm \ref{alg:SMC}. Our aim is to find a $\sigma$-algebra $\mathcal{H}_t$ at each time $t$ that separates the ancestral process (encoded by $a_t^{(1:N)}$) from the filtration $\mathcal{F}_{t-1}$. That is, $a_t^{(1:N)}$ is conditionally independent of $\mathcal{F}_{t-1}$ given $\mathcal{H}_t$.
 By a D-separation argument \parencite[see][]{verma1988}, the nodes highlighted in grey suffice as the generator of $\mathcal{H}_t$. That is, for each $t$, we take
@@ -239,6 +305,7 @@ Notice that $\nu_t^{(1:N)}$ can be expressed as a function of $a_t^{(1:N)}$, and
 
 
 \subsection{Theoretical justification}
+\label{sec:SMC_theory}
 \draft{How come SMC works? Convergence results (briefly!) e.g. Lp bounds, CLT, stability.}
 
 
@@ -479,6 +546,7 @@ Nor is our model neutral: the resampling distribution depends on the weight of e
 
 
 \section{Sequential Monte Carlo genealogies}
+\label{sec:SMC_genealogies}
 
 \subsection{From particles to genealogies}
 \draft{How does the SMC algorithm induce a genealogy? (resampling = parent-child relationship).}
@@ -509,6 +577,7 @@ Nor is our model neutral: the resampling distribution depends on the weight of e
 
 
 \section{Resampling \seb{$\sim$} }
+\label{sec:resampling}
 As we have seen, resampling is necessary within SMC to ``reset'' the weights in order to prevent weight degeneracy.
 The basic role of a resampling scheme is to map the continuous weights to discrete offspring counts, in some ``sensible'' way (Definition~\ref{defn:resampling}).
 The choice of resampling scheme is explored in detail in this section.
