@@ -19,6 +19,7 @@ The basic idea behind SMC is sequential importance sampling, whereby the posteri
 
 
 \subsection{State space models \seb{$\checkmark$} }
+\label{sec:SSMs}
 State space models (sometimes called hidden Markov models) are a flexible class of statistical models which are suitable in all sorts of applications where observations appear sequentially.
 \begin{figure}[ht]
 \centering
@@ -44,11 +45,12 @@ State space models (sometimes called hidden Markov models) are a flexible class 
 \end{figure}
 The general model has two components: a Markov process $(X_t)_{t\in\mathbb{N}_0}$ representing the (unobservable) underlying state of the system, and a sequence $(Y_t)_{t\in\mathbb{N}_0}$ of noisy observations of the underlying state. The model is characterised by its conditional independence structure (Figure~\ref{fig:SSM}) along with an initial distribution $\mu$, the Markov ``transition'' kernels $(K_t)_{t\in\mathbb{N}}$ and the ``emission'' distributions $(g_t)_{t\in\mathbb{N}_0}$. 
 Written as a hierarchical model,
-\begin{align*}
-X_0 &\sim \mu(\cdot) & \\
-X_{t+1} \mid X_t &\sim K_{t+1}(\cdot | X_t) & \text{for } t=0, 1, \dots \\
-Y_t \mid X_t &\sim g_t(\cdot | X_t) & \text{for } t=0, 1, \dots \\
-\end{align*}
+\begin{align}
+X_0 &\sim \mu(\cdot) & \notag\\
+X_{t+1} \mid X_t &\sim K_{t+1}(\cdot | X_t) & \text{for } t=0, 1, \dots
+        \label{eq:SSM_spec}\\
+Y_t \mid X_t &\sim g_t(\cdot | X_t) & \text{for } t=0, 1, \dots \notag\\
+\end{align}
 
 Here $X$ and/or $Y$ may be multivariate, observation times need not be equally spaced, and straightforward generalisations of the stated model can allow for situations in which observations are not available as often as the state is updated (up to and including the extreme where the state is a continuous-time Markov process but the observations are available only at discrete times), or on the other hand where observations are observed more frequently than the state is updated.
 
@@ -56,12 +58,12 @@ Applications include: target tracking, where $X$ is the true position of some ob
 
 The principal inferences of interest in state space models are:
 \begin{description}
-\item [filtering] inferring the current state $x_t$ from the observations up to now $y_{0:t}$
-\item [prediction] inferring a future state $x_{t+h}$ from the observations up to now $y_{0:t}$
-\item [smoothing] inferring the sequence of states up to now $x_{0:t}$ from the observations up to now $y_{0:t}$
-\item [fixed-lag smoothing] inferring the last $h$ states $x_{t-h:t}$ from the observations up to now $y_{0:t}$
+\item [filtering] $p(x_t\mid y_{0:t})$: inferring the current state $x_t$ from the observations up to now $y_{0:t}$
+\item [prediction] $p(x_{t+h}\mid y_{0:t})$: inferring a future state $x_{t+h}$ from the observations up to now $y_{0:t}$
+\item [smoothing] $p(x_{0:t}\mid y_{0:t})$: inferring the sequence of states up to now $x_{0:t}$ from the observations up to now $y_{0:t}$
+\item [fixed-lag smoothing] $p(x_{t-h:t}\mid y_{0:t})$: inferring the last $h$ states $x_{t-h:t}$ from the observations up to now $y_{0:t}$
 \end{description}
-If the dynamics of the state space model are parametrised by some $\theta$, i.e.\ $g_t, K_t$ depend on $\theta$, we may also be interested in parameter inference and/or computing the likelihood of the observed data given a certain value of $\theta$.
+If the dynamics of the state space model are parametrised by some $\theta$, i.e.\ $g_t, K_t$ depend on $\theta$, we may also be interested in parameter inference and/or computing the likelihood $p(y_{0:t})$ of the observed data given a certain value of $\theta$.
 
 In certain cases, these inference problems may be solved analytically (Section\seb{??}), but this is not typically the case. For intractable models we must resort to Monte Carlo methods. However, state space inference is problematic even with Monte Carlo. 
 The main difficulties are that the dimension of the target distribution increases along the sequence, and there is strong dependence between consecutive distributions. Markov chain Monte Carlo (MCMC), for instance, is known to struggle with highly correlated targets\seb{[citation]} and its performance drops drastically as dimension increases, despite convergence rates that are supposedly independent of dimension\seb{[citation]}.
@@ -87,8 +89,55 @@ But we can exploit the sequential nature of the underlying dynamics to decompose
 This is the motivation behind sequential Monte Carlo (SMC).
 
 
-\subsection{Feynman-Kac models}
-\draft{Define a generic FK model. Show that this class includes all SSMs. Example of non-SSM that is FK?}
+\subsection{Feynman-Kac models \seb{$\checkmark$} }
+\draft{Example of non-SSM that is FK?}
+
+State space models are very natural and intuitive applications, but they do not do justice to the scope of SMC algorithms, which is much wider.
+On the other hand, the \emph{Feynman-Kac} formalism captures the full scope, since every SMC algorithm is a Monte Carlo approximation of some Feynman-Kac model.
+Before formally introducing SMC let us therefore define a generic Feynman-Kac model.
+For a more in-depth study, the reader is directed to the exhaustive books by \textcite{delmoral2004, delmoral2013} or the more accessible \textcite[Chapter 5]{chopin2020}.
+
+Define a state space $\mathcal{X}$ and a time horizon $T$.
+The basic components of the Feynman-Kac model are a Markov law, defined by an initial distribution $\mathbb{M}_0$ and transition kernels $M_t$ for $t=1,\dots,T$; and a sequence of ``potential'' functions $G_0 : \mathcal{X} \mapsto [0,\infty)$  and $G_t : \mathcal{X}^2 \mapsto [0,\infty)$ for $t=1,\dots,T$.
+From these we construct a sequence of Feynman-Kac measures $(\mathbb{Q}_t)_{t=0:T}$ defined by the changes of measure
+\begin{equation}
+\mathbb{Q}_t (dx_{0:T}) = \frac{1}{L_t} G_0(x_0) \mathbb{M}_0(dx_0)
+        \left\{ \prod_{s=1}^t G_s(x_{s-1}, x_s) \right\} 
+        \left\{ \prod_{s=1}^T M_s(x_{s-1}, dx_s) \right\} , \label{eq:FKmeasure}
+\end{equation}
+where $L_t$ is the normalising constant required to make $\mathbb{Q}_t$ a probability measure. Other quantities such as $\mathbb{Q}_t (dx_{0:t})$ can be obtained as marginals of \eqref{eq:FKmeasure}, allowing us to treat all of the inference problems described in Section~\ref{sec:SSMs} by approximating $\mathbb{Q}_t$ and then possibly marginalising.
+
+The generic state space model introduced in \eqref{eq:SSM_spec} may be described by a Feynman-Kac model where:
+\begin{align}
+\mathbb{M}_0 &:= \mu \notag\\
+M_t (x_{t-1}, dx_t) &:= K_t (dx_t \mid x_{t-1}) & \text{for } t=1,\dots,T \notag\\
+G_0 (x_0) &:= g_0 ( y_0 \mid x_0 ) \notag\\
+G_t (x_{t-1}, x_t) &:= g_t( y_t \mid x_t ) & \text{for } t=1,\dots,T . \label{eq:bootstrapFK}
+\end{align}
+This is not the only Feynman-Kac model for \eqref{eq:SSM_spec}; this corresponds to the ``bootstrap'' SMC algorithm, which is the simplest implementation but may be significantly outperformed in practice by more involved algorithms such as the ``guided''\seb{[citation]} and ``auxiliary'' \parencite{pitt1999, carpenter1999} variants. Feynman-Kac formalisms for these variants are presented in \textcite[Section 5.1.2]{chopin2020}.
+
+It remains to demonstrate that the measures $\mathbb{Q}_t$ arising from \eqref{eq:bootstrapFK} are sufficient for all the usual inference problems in the corresponding state space model \eqref{eq:SSM_spec}.
+By construction, the full smoothing distribution is precisely
+\begin{align*}
+\mathbb{Q}_t (dx_{0:t})
+&= \frac{1}{L_t} G_0(x_0) \mathbb{M}_0(dx_0)
+        \prod_{s=1}^t G_s(x_{s-1}, x_s) M_s(x_{s-1}, dx_s) \\
+&= g_0(y_0 \mid x_0) \mu(dx_0) 
+        \prod_{s=1}^t g_s(y_s \mid x_s) K_s(dx_s \mid x_{s-1}) \\
+&= p(dx_{0:t} \mid y_{0:t}) .
+\end{align*}
+The filtering, prediction and fixed-lag smoothing distributions are all also marginals of $\mathbb{Q}_t(dx_{0:T})$:
+\begin{align*}
+p(x_t \mid y_{0:t}) &= \mathbb{Q}_t (dx_t) \\
+p(x_{t+h} \mid y_{0:t}) &= \mathbb{Q}_t (dx_{t+h}) \\
+p(x_{t-h:t} \mid y_{0:t}) &= \mathbb{Q}_t (dx_{t-h:t}) ,
+\end{align*}
+while the likelihood $p(y_{0:t}) = L_t$.
+The upshot of this is that we have access to a Monte Carlo approximation of $\mathbb{Q}_t(dx_{0:T})$ then we can conduct inference on all of these distributions, since marginalisation of Monte Carlo samples is trivial. The likelihood, on the other hand, is not obtained by marginalisation; nevertheless, approximations of the likelihood can also be obtained ``for free''. 
+The next section describes how we may obtain samples from $\mathbb{Q}_t(dx_{0:T})$.
+
+
+
 
 \subsection{Sequential Monte Carlo for Feynman-Kac models}
 \draft{Present generic algorithm. State the SMC estimators of the quantities of interest. Include the dependence diagram and note that the offspring counts are not independent at each time, but can be made so by conditioning on the separatrix $\mathcal{H}$.}

@@ -482,6 +482,34 @@
       \field{title}{{Feynman}--{Kac} Formulae: Genealogical and Interacting Particle Systems with Applications}
       \field{year}{2004}
     \endentry
+    \entry{delmoral2013}{book}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=d771d04fc13831e7ab9152984eaa0d86}{%
+           family={Del\bibnamedelima Moral},
+           familyi={D\bibinitperiod\bibinitdelim M\bibinitperiod},
+           given={Pierre},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{2}{%
+        {Chapman}%
+        {Hall/CRC}%
+      }
+      \strng{namehash}{d771d04fc13831e7ab9152984eaa0d86}
+      \strng{fullhash}{d771d04fc13831e7ab9152984eaa0d86}
+      \strng{bibnamehash}{d771d04fc13831e7ab9152984eaa0d86}
+      \strng{authorbibnamehash}{d771d04fc13831e7ab9152984eaa0d86}
+      \strng{authornamehash}{d771d04fc13831e7ab9152984eaa0d86}
+      \strng{authorfullhash}{d771d04fc13831e7ab9152984eaa0d86}
+      \field{sortinit}{D}
+      \field{sortinithash}{2ef1bd9a78cc71eb74d7231c635177b8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Mean Field Simulation for {Monte} {Carlo} Integration}
+      \field{year}{2013}
+    \endentry
     \entry{douc2005}{inproceedings}{}
       \name{author}{3}{}{%
         {{uniquename=0,uniquepart=base,hash=8016e20ffe53cd289b6f027afc9eab01}{%
@@ -1598,44 +1626,6 @@
       \field{pages}{446\bibrangedash 460}
       \range{pages}{15}
     \endentry
-    \entry{mohle2001}{article}{}
-      \name{author}{2}{}{%
-        {{uniquename=0,uniquepart=base,hash=b6cd56499245b16ab003cae95de7eae7}{%
-           family={M{ö}hle},
-           familyi={M\bibinitperiod},
-           given={Martin},
-           giveni={M\bibinitperiod},
-           givenun=0}}%
-        {{uniquename=0,uniquepart=base,hash=1940412646c2d90b785da664aaae82fe}{%
-           family={Sagitov},
-           familyi={S\bibinitperiod},
-           given={Serik},
-           giveni={S\bibinitperiod},
-           givenun=0}}%
-      }
-      \list{publisher}{1}{%
-        {Institute of Mathematical Statistics}%
-      }
-      \strng{namehash}{7b28cea84f9657a4420fed06db351e19}
-      \strng{fullhash}{7b28cea84f9657a4420fed06db351e19}
-      \strng{bibnamehash}{7b28cea84f9657a4420fed06db351e19}
-      \strng{authorbibnamehash}{7b28cea84f9657a4420fed06db351e19}
-      \strng{authornamehash}{7b28cea84f9657a4420fed06db351e19}
-      \strng{authorfullhash}{7b28cea84f9657a4420fed06db351e19}
-      \field{sortinit}{M}
-      \field{sortinithash}{cfd219b90152c06204fab207bc6c7cab}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{year}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{The Annals of Probability}
-      \field{number}{4}
-      \field{title}{A Classification of Coalescent Processes for Haploid Exchangeable Population Models}
-      \field{volume}{29}
-      \field{year}{2001}
-      \field{pages}{1547\bibrangedash 1562}
-      \range{pages}{16}
-    \endentry
     \entry{mohle2003}{article}{}
       \name{author}{2}{}{%
         {{uniquename=0,uniquepart=base,hash=91dc4d416f310afc5cf0edbfc909f0cf}{%
@@ -1844,6 +1834,44 @@
       \field{year}{1999}
       \field{pages}{1870\bibrangedash 1902}
       \range{pages}{33}
+    \endentry
+    \entry{pitt1999}{article}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,uniquepart=base,hash=e06a489da13592701fc16fd6bca850e4}{%
+           family={Pitt},
+           familyi={P\bibinitperiod},
+           given={Michael\bibnamedelima K.},
+           giveni={M\bibinitperiod\bibinitdelim K\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=297d9c8d6a4dcfbed876803d5cbba67b}{%
+           family={Shephard},
+           familyi={S\bibinitperiod},
+           given={Neil},
+           giveni={N\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Taylor \& Francis Group}%
+      }
+      \strng{namehash}{ef80a5466e4d85b3d6d48c7c19fbe6b0}
+      \strng{fullhash}{ef80a5466e4d85b3d6d48c7c19fbe6b0}
+      \strng{bibnamehash}{ef80a5466e4d85b3d6d48c7c19fbe6b0}
+      \strng{authorbibnamehash}{ef80a5466e4d85b3d6d48c7c19fbe6b0}
+      \strng{authornamehash}{ef80a5466e4d85b3d6d48c7c19fbe6b0}
+      \strng{authorfullhash}{ef80a5466e4d85b3d6d48c7c19fbe6b0}
+      \field{sortinit}{P}
+      \field{sortinithash}{8d51b3d5b78d75b54308d706b9bbe285}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of the American Statistical Association}
+      \field{number}{446}
+      \field{title}{Filtering via Simulation: Auxiliary Particle Filters}
+      \field{volume}{94}
+      \field{year}{1999}
+      \field{pages}{590\bibrangedash 599}
+      \range{pages}{10}
     \endentry
     \entry{rauch1965}{article}{}
       \name{author}{3}{}{%
