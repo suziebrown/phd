@@ -14,17 +14,17 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {\relax 2.1}{\ignorespaces Graphical depiction of a general state space model}}{3}{figure.caption.8}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 2.2}{\ignorespaces Conditional dependence structure of SMC algorithm}}{9}{figure.caption.10}
+\contentsline {figure}{\numberline {\relax 2.2}{\ignorespaces Conditional dependence structure of SMC algorithm}}{8}{figure.caption.10}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 2.3}{\ignorespaces The $n$-coalescent}}{10}{figure.caption.11}
+\contentsline {figure}{\numberline {\relax 2.3}{\ignorespaces The $n$-coalescent}}{9}{figure.caption.11}
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {\relax 2.4}{\ignorespaces Diagram illustrating the definitions of $t_i$, $T_i$ in the $n$-coalescent.\relax }}{10}{figure.caption.12}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 2.5}{\ignorespaces Ancestral degeneracy illustration}}{15}{figure.caption.19}
+\contentsline {figure}{\numberline {\relax 2.5}{\ignorespaces Ancestral degeneracy illustration}}{14}{figure.caption.19}
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Multinomial resampling}}}{15}{subfigure.5.1}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Multinomial resampling}}}{14}{subfigure.5.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Adaptive minimum-variance resampling}}}{15}{subfigure.5.2}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Adaptive minimum-variance resampling}}}{14}{subfigure.5.2}
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {\relax 2.6}{\ignorespaces Resampling using multinomial, stratified and systematic schemes}}{18}{figure.caption.23}
 \defcounter {refsection}{0}\relax 
@@ -34,11 +34,11 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Systematic resampling}}}{18}{subfigure.6.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 2.7}{\ignorespaces Cases for stratified resampling with a fixed weight}}{20}{figure.caption.25}
+\contentsline {figure}{\numberline {\relax 2.7}{\ignorespaces Cases for stratified resampling with a fixed weight}}{19}{figure.caption.25}
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {The overhang is less than one; $ \delta _L \in {[0, \delta ]} $. The parent under consideration is automatically assigned $K$ offspring, plus up to two more.}}}{20}{subfigure.7.1}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {The overhang is less than one; $ \delta _L \in {[0, \delta ]} $. The parent under consideration is automatically assigned $K$ offspring, plus up to two more.}}}{19}{subfigure.7.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {The overhang is greater than one (this case can only occur when $K\geq 1$); $\delta _L \in (\delta ,1)$. The parent under consideration is automatically assigned $K-1$ offspring, plus up to two more.}}}{20}{subfigure.7.2}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {The overhang is greater than one (this case can only occur when $K\geq 1$); $\delta _L \in (\delta ,1)$. The parent under consideration is automatically assigned $K-1$ offspring, plus up to two more.}}}{19}{subfigure.7.2}
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {\relax 2.8}{\ignorespaces PLACEHOLDER. Copied from \textcite {lindsten2013}.\relax }}{35}{figure.caption.42}
 \defcounter {refsection}{0}\relax 
@@ -62,6 +62,8 @@
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 5.1}{\ignorespaces Sample genealogy induced by star resampling\relax }}{106}{figure.caption.50}
+\contentsline {figure}{\numberline {\relax 5.1}{\ignorespaces Conditional dependence structure of SMC algorithm}}{94}{figure.caption.50}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {\relax 5.2}{\ignorespaces Sample genealogy induced by star resampling\relax }}{106}{figure.caption.51}
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }

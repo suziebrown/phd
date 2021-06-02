@@ -226,56 +226,37 @@ L_t
 
 ...
 
-%%%
-\seb{Include here the dependence graph without the filtration and separatrix, and then include this embellished version later on when I first make reference to the D-separation argument (namely in Section~\ref{sec:SMC_genealogies} or just before). Then the graph version here should be labelled forward-in-time; currently it's labelled backwards which is just confusing for the reader.}\\
 
-\seb{Include arrows to and from the "..." extensions? Might make it visually clearer that this is just a section of a larger graph.}\\
-
-Figure \ref{fig:cond_indep_graph} shows part of the conditional dependence graph implied by Algorithm \ref{alg:SMC}. Our aim is to find a $\sigma$-algebra $\mathcal{H}_t$ at each time $t$ that separates the ancestral process (encoded by $a_t^{(1:N)}$) from the filtration $\mathcal{F}_{t-1}$. That is, $a_t^{(1:N)}$ is conditionally independent of $\mathcal{F}_{t-1}$ given $\mathcal{H}_t$.
-By a D-separation argument \parencite[see][]{verma1988}, the nodes highlighted in grey suffice as the generator of $\mathcal{H}_t$. That is, for each $t$, we take
-\begin{equation*}
-\mathcal{H}_t = \sigma(X_{t-1}^{(1:N)}, X_t^{(1:N)}, w_{t-1}^{(1:N)}, w_t^{(1:N)} ).
-\end{equation*}
+Figure \ref{fig:cond_indep_graph} shows part of the conditional dependence graph implied by Algorithm \ref{alg:SMC}.
 Notice that $\nu_t^{(1:N)}$ can be expressed as a function of $a_t^{(1:N)}$, and as such carries less information.
 \begin{figure}[ht]
 \centering
 \begin{tikzpicture}[>=stealth]
-% separatrix
-\filldraw[gray!20, rounded corners] (3.2,0.5)--(8.6,0.5)--(8.6,-2.5)--(3.2,-2.5)--cycle;
-\node[gray!70] at (8.9,0.3) {$\mathcal{H}_t$};
 % left dots
 \node at (-2,0) {...};
 \node at (-2,-2) {...};
 \node at (-2,-4) {...};
 \node at (-2,-6) {...};
 % labels (t+1)
-\node at (0,0) {$X_{t+1}^{(1:N)}$};
-\node at (0,-2) {$w_{t+1}^{(1:N)}$};
-\node at (0,-4) {$a_{t+1}^{(1:N)}$};
-\node at (0,-6) {$\nu_{t+1}^{(1:N)}$};
+\node at (0,0) {$X_{t-1}^{(1:N)}$};
+\node at (0,-2) {$w_{t-1}^{(1:N)}$};
+\node at (0,-4) {$a_{t-1}^{(1:N)}$};
+\node at (0,-6) {$\nu_{t-1}^{(1:N)}$};
 % labels t
 \node at (4,0) {$X_{t}^{(1:N)}$};
 \node at (4,-2) {$w_{t}^{(1:N)}$};
 \node at (4,-4) {$a_{t}^{(1:N)}$};
 \node at (4,-6) {$\nu_{t}^{(1:N)}$};
 % labels (t-1)
-\node at (8,0) {$X_{t-1}^{(1:N)}$};
-\node at (8,-2) {$w_{t-1}^{(1:N)}$};
-\node at (8,-4) {$a_{t-1}^{(1:N)}$};
-\node at (8,-6) {$\nu_{t-1}^{(1:N)}$};
+\node at (8,0) {$X_{t+1}^{(1:N)}$};
+\node at (8,-2) {$w_{t+1}^{(1:N)}$};
+\node at (8,-4) {$a_{t+1}^{(1:N)}$};
+\node at (8,-6) {$\nu_{t+1}^{(1:N)}$};
 % right dots
 \node at (10,0) {...};
 \node at (10,-2) {...};
 \node at (10,-4) {...};
 \node at (10,-6) {...};
-%filtrations
-\draw [rounded corners, dashed, gray] (11,-6.6)--(7,-6.6)--(7,-5.5)--(11,-5.5);
-\draw [rounded corners, dashed, gray] (11,-6.8)--(3,-6.8)--(3,-5.3)--(11,-5.3);
-\draw [rounded corners, dashed, gray] (11,-7)--(-1,-7)--(-1,-5.1)--(11,-5.1);
-% filtration labels
-\node[gray] at (7.5,-6.4) {\footnotesize{$\mathcal{F}_{t-1}$}};
-\node[gray] at (3.3,-6.6) {\footnotesize{$\mathcal{F}_{t}$}};
-\node[gray] at (-0.5,-6.8) {\footnotesize{$\mathcal{F}_{t+1}$}};
 % arrows (t+1) -> t
 \draw[->] (0.5,0)--(3.4,0);
 \draw[->] (0.5,0)--(3.4,-2);
@@ -298,8 +279,14 @@ Notice that $\nu_t^{(1:N)}$ can be expressed as a function of $a_t^{(1:N)}$, and
 \draw[->] (8,-0.3)--(8,-1.7);
 \draw[->] (8,-2.3)--(8,-3.7);
 \draw[->] (8,-4.3)--(8,-5.7);
+% arrows ... -> t+1
+\draw[->] (-1.6,0)--(-0.6,0);
+\draw[->] (-1.6,-2)--(-0.6,-2);
+% arrows t-1 -> ...
+\draw[->] (8.5,0)--(9.5,0);
+\draw[->] (8.5,-4)--(9.5,-4);
 \end{tikzpicture}
-\caption[Conditional dependence structure of SMC algorithm]{Part of the conditional dependence graph implied by Algorithm \ref{alg:SMC}. The direction of time is from left to right. The reverse-time filtration is indicated by the dashed areas. The nodes highlighted in grey generate the separatrix $\mathcal{H}_t$ between $a_t^{(1:N)}$ and $\mathcal{F}_{t-1}$.\seb{Use the same shades of grey here as elsewhere}}
+\caption[Conditional dependence structure of SMC algorithm]{Part of the conditional dependence graph implied by Algorithm~\ref{alg:SMC}. The direction of time is from left to right.}
 \label{fig:cond_indep_graph}
 \end{figure}
 

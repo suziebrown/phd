@@ -30,7 +30,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.2.2}Properties of Kingman's coalescent}{9}{subsection.2.2.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Time to MRCA}{11}{section*.13}
+\contentsline {subsubsection}{\nonumberline Time to MRCA}{10}{section*.13}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\nonumberline Total branch length}{11}{section*.14}
 \defcounter {refsection}{0}\relax 
@@ -38,13 +38,13 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.2.3}Models in population genetics}{12}{subsection.2.2.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Wright-Fisher model}{13}{section*.16}
+\contentsline {subsubsection}{\nonumberline Wright-Fisher model}{12}{section*.16}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\nonumberline Cannings model}{13}{section*.17}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Moran model}{14}{section*.18}
+\contentsline {subsubsection}{\nonumberline Moran model}{13}{section*.18}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.2.4}Particle populations}{14}{subsection.2.2.4}
+\contentsline {subsection}{\numberline {2.2.4}Particle populations}{13}{subsection.2.2.4}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {2.3}Sequential Monte Carlo genealogies}{14}{section.2.3}
 \defcounter {refsection}{0}\relax 
@@ -52,7 +52,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.3.2}Performance}{14}{subsection.2.3.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.3.3}Mitigating ancestral degeneracy}{15}{subsection.2.3.3}
+\contentsline {subsection}{\numberline {2.3.3}Mitigating ancestral degeneracy}{14}{subsection.2.3.3}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.3.4}Asymptotics}{15}{subsection.2.3.4}
 \defcounter {refsection}{0}\relax 
@@ -64,11 +64,11 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\nonumberline Multinomial resampling \xspace \leavevmode {\color {red}$\text {$\mathsurround \z@ \mathchar "458$}$}\xspace }{16}{section*.21}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Residual resampling \xspace \leavevmode {\color {red}$\text {$\mathsurround \z@ \mathchar "458$}$}\xspace }{18}{section*.22}
+\contentsline {subsubsection}{\nonumberline Residual resampling \xspace \leavevmode {\color {red}$\text {$\mathsurround \z@ \mathchar "458$}$}\xspace }{17}{section*.22}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Stratified resampling \xspace \leavevmode {\color {red}$\text {$\mathsurround \z@ \mathchar "458$}$}\xspace }{19}{section*.24}
+\contentsline {subsubsection}{\nonumberline Stratified resampling \xspace \leavevmode {\color {red}$\text {$\mathsurround \z@ \mathchar "458$}$}\xspace }{17}{section*.24}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Systematic resampling \xspace \leavevmode {\color {red}$\text {$\mathsurround \z@ \mathchar "458$}$}\xspace }{19}{section*.27}
+\contentsline {subsubsection}{\nonumberline Systematic resampling \xspace \leavevmode {\color {red}$\text {$\mathsurround \z@ \mathchar "458$}$}\xspace }{20}{section*.27}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\nonumberline Star resampling \xspace \leavevmode {\color {red}$\text {$\mathsurround \z@ \mathchar "458$}$}\xspace }{21}{section*.28}
 \defcounter {refsection}{0}\relax 
@@ -78,21 +78,21 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\nonumberline Support of offspring numbers \xspace \leavevmode {\color {red}$\text {$\mathsurround \z@ \mathchar "458$}$}\xspace }{22}{section*.30}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Degeneracy under equal weights \xspace \leavevmode {\color {red}$\text {$\mathsurround \z@ \mathchar "458$}$}\xspace }{23}{section*.31}
+\contentsline {subsubsection}{\nonumberline Degeneracy under equal weights \xspace \leavevmode {\color {red}$\text {$\mathsurround \z@ \mathchar "458$}$}\xspace }{22}{section*.31}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\nonumberline Marginal variance of offspring counts \xspace \leavevmode {\color {red}$\text {$\mathsurround \z@ \mathchar "458$}$}\xspace }{23}{section*.32}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Contribution to the Monte Carlo variance}{26}{section*.33}
+\contentsline {subsubsection}{\nonumberline Contribution to the Monte Carlo variance}{25}{section*.33}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\nonumberline Exchangeability \xspace \leavevmode {\color {red}$\sim $}\xspace }{28}{section*.34}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Permutation invariance \xspace \leavevmode {\color {red}$\text {$\mathsurround \z@ \mathchar "458$}$}\xspace }{29}{section*.35}
+\contentsline {subsubsection}{\nonumberline Permutation invariance \xspace \leavevmode {\color {red}$\text {$\mathsurround \z@ \mathchar "458$}$}\xspace }{28}{section*.35}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\nonumberline Sorting}{29}{section*.36}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\nonumberline Computational complexity \xspace \leavevmode {\color {red}$\text {$\mathsurround \z@ \mathchar "458$}$}\xspace }{29}{section*.37}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Negative association}{30}{section*.38}
+\contentsline {subsubsection}{\nonumberline Negative association}{29}{section*.38}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\nonumberline Star discrepancy \xspace \leavevmode {\color {red}$\text {$\mathsurround \z@ \mathchar "458$}$}\xspace }{30}{section*.39}
 \defcounter {refsection}{0}\relax 
@@ -140,7 +140,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {5}Applications}{93}{chapter.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.1}Multinomial resampling}{93}{section.5.1}
+\contentsline {section}{\numberline {5.1}Multinomial resampling}{94}{section.5.1}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {5.2}Stratified resampling}{96}{section.5.2}
 \defcounter {refsection}{0}\relax 
@@ -150,10 +150,10 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {5.5}Residual resampling with multinomial residuals}{105}{section.5.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.6}Star resampling}{105}{section.5.6}
+\contentsline {section}{\numberline {5.6}Star resampling}{106}{section.5.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.7}Conditional SMC}{106}{section.5.7}
+\contentsline {section}{\numberline {5.7}Conditional SMC}{107}{section.5.7}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {5.7.1}Effect of ancestor sampling}{109}{subsection.5.7.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {6}Discussion}{110}{chapter.6}
+\contentsline {chapter}{\numberline {6}Discussion}{111}{chapter.6}

@@ -14,7 +14,98 @@ Theorem~\ref{thm:weakconv} gives verifiable conditions under which interacting p
 The work was motivated by SMC algorithms, which have the required form. However, certain choices of state space and dynamics within the context of Algorithm~\ref{alg:SMC} yield systems that are not very SMC-like but may have applications in other fields such as population genetics. 
 For instance, we have generally imagined that the resampling scheme is unbiased, but this is by no means necessary for Theorem~\ref{thm:weakconv} (or indeed Theorem~\ref{thm:FDDconv}); it is just that biased resampling schemes are of little use in SMC.
 
-The applications presented in this chapter are all motivated by SMC, but an interesting area of future research would be to explore the implications of Theorem~\ref{thm:weakconv} in other contexts. From the population genetics point-of-view, Theorem~\ref{thm:weakconv} may be seen as a complement to the convergence criteria for neutral models \parencite[e.g.][]{mohle1999} discussed in Section ??\seb{add the section reference once that part of Chapter~\ref{ch:bg} is written}, so it would be interesting to construct some corollaries for classical non-neutral population models.
+The applications presented in this chapter are all motivated by SMC, but an interesting area of future research would be to explore the implications of Theorem~\ref{thm:weakconv} in other contexts. From the population genetics point-of-view, Theorem~\ref{thm:weakconv} may be seen as a complement to the convergence criteria for neutral models \parencite[e.g.][]{mohle1999} discussed in Section ??\seb{add the section reference once that part of Chapter~\ref{ch:bg} is written}, so it would be interesting to construct some corollaries for classical non-neutral population models.\\
+
+For many of the following results it will be necessary to compute filtered expectations $\Et[\cdot]$, which are generally difficult to compute directly. 
+To simplify the computations we introduce a sequence of $\sigma$-algebras $(\mathcal{H}_t)$, defined below, such that filtered expectations can be written in terms of conditional expectations given $\mathcal{H}_t$.
+
+Figure \ref{fig:cond_indep_graph_Ht} shows a section of the conditional dependence graph implied by Algorithm \ref{alg:SMC}, as in Figure~\ref{fig:cond_indep_graph}, except that time is now labelled in reverse. The $\sigma$-algebra
+\begin{equation}\label{eq:defn_Ht}
+\mathcal{H}_t := \sigma(X_{t-1}^{(1:N)}, X_t^{(1:N)}, w_{t-1}^{(1:N)}, w_t^{(1:N)} ) ,
+\end{equation}
+at each time $t$, forms a separatrix (in the sense of d-separation; see \textcite{verma1988}) between the parental indices $a_t^{(1:N)}$ and the previous $\sigma$-algebra $\mathcal{F}_{t-1}$ in the filtration. 
+That is, $a_t^{(1:N)}$ is conditionally independent of $\mathcal{F}_{t-1}$ given $\mathcal{H}_t$.
+The practical upshot of this is that we can use the tower rule along with conditional independence to write filtered expectations as
+\begin{equation}
+\Et[ f(\nu_t^{(1:N)}) ] 
+= \Et\left[ \E[ f(\nu_t^{(1:N)}) \mid \mathcal{H}_t, \mathcal{F}_{t-1} ] \right] 
+= \Et\left[ \E[ f(\nu_t^{(1:N)}) \mid \mathcal{H}_t ] \right] . \label{eq:condexp_HtFt}
+\end{equation}
+As we will see, this enables us to compute bounds on the filtered expectations of interest relatively easily.
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[>=stealth]
+% separatrix
+\filldraw[gray!20, rounded corners] (3.2,0.5)--(8.6,0.5)--(8.6,-2.5)--(3.2,-2.5)--cycle;
+\node[gray!70] at (7.2,0.7) {$\mathcal{H}_t$};
+% left dots
+\node at (-2,0) {...};
+\node at (-2,-2) {...};
+\node at (-2,-4) {...};
+\node at (-2,-6) {...};
+% labels (t+1)
+\node at (0,0) {$X_{t+1}^{(1:N)}$};
+\node at (0,-2) {$w_{t+1}^{(1:N)}$};
+\node at (0,-4) {$a_{t+1}^{(1:N)}$};
+\node at (0,-6) {$\nu_{t+1}^{(1:N)}$};
+% labels t
+\node at (4,0) {$X_{t}^{(1:N)}$};
+\node at (4,-2) {$w_{t}^{(1:N)}$};
+\node at (4,-4) {$a_{t}^{(1:N)}$};
+\node at (4,-6) {$\nu_{t}^{(1:N)}$};
+% labels (t-1)
+\node at (8,0) {$X_{t-1}^{(1:N)}$};
+\node at (8,-2) {$w_{t-1}^{(1:N)}$};
+\node at (8,-4) {$a_{t-1}^{(1:N)}$};
+\node at (8,-6) {$\nu_{t-1}^{(1:N)}$};
+% right dots
+\node at (10,0) {...};
+\node at (10,-2) {...};
+\node at (10,-4) {...};
+\node at (10,-6) {...};
+%filtrations
+\draw [rounded corners, dashed, gray] (11,-6.6)--(7,-6.6)--(7,-5.5)--(11,-5.5);
+\draw [rounded corners, dashed, gray] (11,-6.8)--(3,-6.8)--(3,-5.3)--(11,-5.3);
+\draw [rounded corners, dashed, gray] (11,-7)--(-1,-7)--(-1,-5.1)--(11,-5.1);
+% filtration labels
+\node[gray] at (7.5,-6.4) {\footnotesize{$\mathcal{F}_{t-1}$}};
+\node[gray] at (3.3,-6.6) {\footnotesize{$\mathcal{F}_{t}$}};
+\node[gray] at (-0.5,-6.8) {\footnotesize{$\mathcal{F}_{t+1}$}};
+% arrows (t+1) -> t
+\draw[->] (0.5,0)--(3.4,0);
+\draw[->] (0.5,0)--(3.4,-2);
+\draw[->] (0.5,-4)--(3.4,-2.1);
+\draw[->] (0.5,-4)--(3.4,-0.1);
+% arrows t -> (t-1)
+\draw[->] (4.5,0)--(7.4,0);
+\draw[->] (4.5,0)--(7.4,-2);
+\draw[->] (4.5,-4)--(7.4,-2.1);
+\draw[->] (4.5,-4)--(7.4,-0.1);
+% vertical arrows (t+1)
+\draw[->] (0,-0.3)--(0,-1.7);
+\draw[->] (0,-2.3)--(0,-3.7);
+\draw[->] (0,-4.3)--(0,-5.7);
+% vertical arrows t
+\draw[->] (4,-0.3)--(4,-1.7);
+\draw[->] (4,-2.3)--(4,-3.7);
+\draw[->] (4,-4.3)--(4,-5.7);
+% vertical arrows (t-1)
+\draw[->] (8,-0.3)--(8,-1.7);
+\draw[->] (8,-2.3)--(8,-3.7);
+\draw[->] (8,-4.3)--(8,-5.7);
+% arrows ... -> t+1
+\draw[->] (-1.6,0)--(-0.6,0);
+\draw[->] (-1.6,-2)--(-0.6,-2);
+% arrows t-1 -> ...
+\draw[->] (8.5,0)--(9.5,0);
+\draw[->] (8.5,-4)--(9.5,-4);
+\end{tikzpicture}
+\caption[Conditional dependence structure of SMC algorithm]{Part of the conditional dependence graph implied by Algorithm \ref{alg:SMC}. The direction of time is from left to right. The reverse-time filtration is indicated by the dashed areas. The nodes highlighted in grey generate the separatrix $\mathcal{H}_t$ between $a_t^{(1:N)}$ and $\mathcal{F}_{t-1}$.\seb{Use the same shades of grey here as elsewhere}}
+\label{fig:cond_indep_graph_Ht}
+\end{figure}
+
+
 
 
 \section{Multinomial resampling}
@@ -38,11 +129,12 @@ The conditions on $g_t$ in \eqref{eq:gq_bounds_mn} ensure that the weights are a
 
 \begin{proof}
 %Define the $\sigma$-algebras $\mathcal{H}_t$ as in \eqref{eq:defn_Ht}.
-Recall that the sequence of $\sigma$-algebras
-\begin{equation}\label{eq:defn_Ht}
-\mathcal{H}_t := \sigma(X_{t-1}^{(1:N)}, X_t^{(1:N)}, w_{t-1}^{(1:N)}, w_t^{(1:N)} )
-\end{equation}
-are such that $\nu_t^{(1:N)}$ is conditionally independent of the filtration $\mathcal{F}_{t-1}$ given $\mathcal{H}_t$.
+%Recall that the sequence of $\sigma$-algebras
+%\begin{equation}%\label{eq:defn_Ht}
+%\mathcal{H}_t := \sigma(X_{t-1}^{(1:N)}, X_t^{(1:N)}, w_{t-1}^{(1:N)}, w_t^{(1:N)} )
+%\end{equation}
+%are such that $\nu_t^{(1:N)}$ is conditionally independent of the filtration $\mathcal{F}_{t-1}$ given $\mathcal{H}_t$.
+Define $\mathcal{H}_t$ as in \eqref{eq:defn_Ht}.
 Conditional on $\mathcal{H}_t$ the parental indices are independent, with conditional law
 \begin{equation}\label{eq:parentslaw_mn}
 \Prob \left[ a_t^{(i)} = a_i \mid \mathcal{H}_t \right] 
@@ -164,13 +256,14 @@ and
 %&\leq \sum_{i=1}^N \left[ \frac{ a/\varepsilon }{ N \varepsilon/a } \right]^3
 %= \frac{a^6}{N^2\varepsilon^6} . \label{eq:mn_cN3_UB}
 %\end{align}
-The definition of $\mathcal{H}_t$ is such that, for any suitable function $f$, by the tower property and conditional independence we have
-\begin{equation}
-\Et[ f(\nu_t^{(1:N)}) ] 
-= \Et\left[ \E[ f(\nu_t^{(1:N)}) \mid \mathcal{H}_t, \mathcal{F}_{t-1} ] \right] 
-= \Et\left[ \E[ f(\nu_t^{(1:N)}) \mid \mathcal{H}_t ] \right] .\label{eq:condexp_HtFt}
-\end{equation}
-Applying this identity to \eqref{eq:mn_cN_LB} and \eqref{eq:mn_cN3_UB} we find
+%
+%The definition of $\mathcal{H}_t$ is such that, for any suitable function $f$, by the tower property and conditional independence we have
+%\begin{equation}
+%\Et[ f(\nu_t^{(1:N)}) ] 
+%= \Et\left[ \E[ f(\nu_t^{(1:N)}) \mid \mathcal{H}_t, \mathcal{F}_{t-1} ] \right] 
+%= \Et\left[ \E[ f(\nu_t^{(1:N)}) \mid \mathcal{H}_t ] \right] .\label{eq:condexp_HtFt}
+%\end{equation}
+Applying \eqref{eq:condexp_HtFt} to \eqref{eq:mn_cN_LB} and \eqref{eq:mn_cN3_UB} we find
 \begin{align*}
 \frac{\frac{1}{(N)_3} \sum_{i=1}^N \Et[ (\nu_t^{(i)})_3 ]}{\frac{1}{(N)_2} \sum_{i=1}^N \Et[ (\nu_t^{(i)})_2 ]}
 &\leq \frac{ a^6 / (N^2 \varepsilon^6) }{ \varepsilon^4 / (N a^4) }
