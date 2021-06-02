@@ -57,6 +57,7 @@ X_{t+1} \mid X_t &\sim K_{t+1}(\cdot | X_t) & \text{for } t=0, 1, \dots
         \label{eq:SSM_spec}\\
 Y_t \mid X_t &\sim g_t(\cdot | X_t) & \text{for } t=0, 1, \dots \notag
 \end{align}
+The index $t$ will frequently be referred to as ``time'', since in most applications the sequence is indeed a time series, but it need not be.
 
 Here $X$ and/or $Y$ may be multivariate and observation times need not be equally spaced. Straightforward generalisations of the stated model can allow for situations in which observations are not available as often as the state is updated (up to and including the extreme where the state is a continuous-time Markov process but the observations are available only at discrete times) or on the other hand where observations are observed more frequently than the state is updated.
 
@@ -152,7 +153,7 @@ The next section describes how we may obtain samples from $\mathbb{Q}_t(dx_{0:T}
 \label{sec:SMC_FK}
 In order to implement the SMC algorithm corresponding to a given Feynman-Kac model, we need to be able to sample from $\mathbb{M}_0$ and from $M_t(x, \cdot)$ for all $x,t$; and evaluate $G_t(x, y)$ pointwise for each $x,y, t$.
 Under these conditions we may implement Algorithm~\ref{alg:SMC}, which describes a generic SMC algorithm. 
-The only free choices are the parameter $N$ which dictates the number of particles used, and the \textsc{resample} procedure, which can have a profound effect on performance and is discussed in detail in Section~\ref{sec:resampling}.
+The only free choices are the parameter $N$ which dictates the number of ``particles'' used, and the \textsc{resample} procedure, which can have a profound effect on performance and is discussed in detail in Section~\ref{sec:resampling}.
 However, remember that given a particular state space model there is a choice of possible Feynman-Kac descriptions, and this choice can also strongly affect performance.
 
 %\vspace{10pt}
@@ -1524,8 +1525,8 @@ All stochastic roundings are also degenerate by definition when the weights are 
 
 \section{Conditional SMC \seb{$\sim$} }
 
-\subsection{Particle MCMC \seb{$\checkmark$} }
-\draft{Motivate particle MCMC methods.}
+\subsection{Particle MCMC \seb{$\sim$} }
+\seb{Redraft this subsection.}\\
 
 The idea behind particle MCMC methods is to use SMC steps within the MCMC updates in a way that improves the mixing properties of the Markov chain.
 In certain models, generally those including some highly correlated sequential components, this strategy can be very effective.
@@ -1537,50 +1538,165 @@ The following scenario illustrates the power of particle MCMC, and is a good mod
 \draft{Emphasise that the inference itself is not sequential; we are targeting one static posterior distribution, on a fixed time horizon.}
 
 
-\subsection{Particle Gibbs algorithm \seb{$\sim$} }
-\draft{Present particle Gibbs algorithm (for the specific model just introduced?, but note that of course the algorithm is more general). Explain why CSMC is required within particle Gibbs.}
-\seb{The following was dumped from elsewhere and NEEDS REDRAFTING.}\\
-
-The scenario we present is a particle Gibbs algorithm for filtering with unknown parameters. The method applies more generally to particle Gibbs (for which the reader is directed to \textcite[Chapter 5]{lindsten2013}), but we find this particular scenario to be simple and instructive. \seb{To generalise to Del Moral's SMC framework basically requires just the change of notation $g \to G_t, f \to M_t$.}
-
-Consider the following hidden Markov model, parametrised by a constant parameter $\theta$ which may be multidimensional.
-\seb{Define the spaces in which theta,X,Y live?}
+\subsection{Particle Gibbs algorithm \seb{$\checkmark$} }
+\draft{note that of course the algorithm is more general than this peculiar example.}\\
+Consider a parametrised state space model of the form
 \begin{align*}
-Y_t \mid X_t &\sim g_\theta(\cdot \mid X_t)\\
-X_{t} \mid X_{t-1} &\sim f_\theta(\cdot \mid X_{t-1})\\
-X_0 &\sim \mu_\theta(\cdot) \\
-\theta &\sim p(\cdot)
+X_0 &\sim \mu_\theta(\cdot) & \\
+X_{t+1} \mid X_{t} &\sim K_\theta(\cdot \mid X_{t}) &\text{for } t=0,\dots, T-1 \\
+Y_t \mid X_t &\sim g_\theta(\cdot \mid X_t) &\text{for } t=0,\dots, T \\
+\theta &\sim p(\cdot) &
 \end{align*}
-\seb{Add ranges for t in first two lines.}
-\seb{Use q instead of f for better congruity with other sections?}
-We work on a fixed time horizon $T \in \mathbb{N}$, which is necessary to implement the particle Gibbs algorithm.
-\seb{Can be artificially imposed by block sampling if doing online-ish inference?}
-The measures corresponding to $\mu_\theta$, $f_\theta$ and $g_\theta$ are assumed to be known and to admit densities, and we are also given a fixed sequence of observations $y_{1:T}$. 
-\seb{Either mention that f,g can depend on t, or make this explicit  in the notation.}
-\seb{Don't really need to include prior on theta; it's not relevant to CSMC step.}
+exactly like \eqref{eq:SSM_spec} except that the specification is now parametrised by $\theta$ (which may be multi-dimensional), and we place a prior distribution on $\theta$. 
+For notational simplicity we now assume that the kernels $K_\theta$ and potential functions $g_\theta$ do not depend on $t$, although the concept generalises readily to non-time-homogeneous dynamics.
+As usual, $\mu$, $K_\theta$, $g_\theta$ and $p$ are part of the model and are assumed to be known but not necessarily tractable.
 
-Our aim is to generate Monte Carlo samples from the joint distribution of $X_{0:T}$ and $\theta$ conditional on $y_{1:T}$. Outside of models admitting closed-form solutions, this is typically the most practical way to draw samples from the marginal distributions of either $\theta$ or any subset of the states $X_{0:T}$, by marginalising the Monte Carlo samples. 
+Notice that we are now working with a finite time horizon $T\in\mathbb{N}$. The inference of interest here is not inherently sequential; we are building an MCMC algorithm to sample from a single target distribution which happens to include some sequentially correlated components.
 
-The structure of the model invites Gibbs sampling: alternating between updating $\theta$ conditional on $X_{0:T}$, and updating $X_{0:T}$ conditional on $\theta$.
-\seb{``These conditionals are typically much easier to sample from that the corresponding marginals.'' (due to the dependence structure in the HMM).}
-The $\theta$ update consists of sampling from 
+Suppose that, given some data $y_{0:T}$, we wish to generate Monte Carlo samples from the joint posterior distribution of $X_{0:T}$ and $\theta$. (Even if we are only interested in inferring $\theta$, for instance, it is often more practical to target the joint posterior and then marginalise.)
+The conditional dependence structure invites the use of a (partially-collapsed) Gibbs sampler, sampling alternately from the conditional distributions $p(\theta \mid x_{0:T}, y_{0:T})$ and $p(x_{0:T} \mid \theta, y_{0:T})$.
+The $\theta$ update,
 \begin{equation*}
-p(\theta \mid x_{0:T}, y_{1:T}) \propto p(\theta) p(x_{0:T}, y_{1:T} \mid \theta) ,
+p(\theta \mid x_{0:T}, y_{0:T}) \propto p(\theta) p(x_{0:T}, y_{0:T} \mid \theta) ,
 \end{equation*}
-which can be achieved quite easily with a Metropolis--Hastings step.
-The $X$ update is the `difficult' part, requiring a sample from
+is often quite straightforward, if not analytically then by using a Metropolis-Hastings step based on the current sampled values of $\theta$ and $x_{0:t}$. 
+The $X$ update, meanwhile, is high-dimensional with strong sequential correlations: exactly the situation in which one might use SMC. 
+For the $X$ update, we need a sample from
 \begin{equation*}
-p(x_{0:T} \mid \theta , y_{1:T}) =: \gamma_T^\theta(x_{0:T}) .
+p(dx_{0:T} \mid \theta, y_{0:T}) 
+\propto \mu_\theta(dx_0) g_\theta(y_0\mid x_0) \prod_{s=1}^T K_\theta(dx_s \mid x_{s-1}) g_\theta(y_s \mid x_s) ,
 \end{equation*}
-\seb{Define gamma for general s too:
-\begin{equation*}
-\gamma_s^\theta(x_{0:s}) \propto \mu_\theta(x_0) g_\theta(y_0\mid x_0) \prod_{r=1}^s f_\theta(x_r \mid x_{r-1}) g_\theta(y_r \mid x_r) .
-\end{equation*}
+which can be obtained by running an SMC smoother then sampling one trajectory from its output in proportion to the associated weight.
+
+However, the Markov chain associated to the procedure just described does not admit $p(x_{0:T},\theta \mid y_{0:T})$ as an invariant distribution. It \emph{approximately} targets this distribution, with some bias.
+A Gibbs sampler targeting $p(x_{0:T},\theta \mid y_{0:T})$ exactly can be constructed by replacing the SMC step with a \emph{conditional SMC} step, which takes into account the value of $x_{0:T}$ sampled at the previous iteration, as well as the observations and the current value of $\theta$.
+
+A conditional SMC algorithm for this scenario is presented in Algorithm~\ref{alg:condSMC}.
+In contrast to Algorithm~\ref{alg:SMC}, the input now includes $x_{0:T}^\star$ and $a_{0:T}^\star$, which encode the states and parental indices, respectively, of the ``immortal trajectory'' (so called because it ``survives'' the SMC run with probability one). Within a particle Gibbs algorithm, the immortal trajectory is set to the trajectory sampled at the previous iteration.
+The resampling step now assigns the immortal offspring to the immortal parent deterministically, and the state of the immortal particle is also updated deterministically rather than via the Markov kernel.
+As in standard SMC, there is a choice of \textsc{resample} procedures, but some care is needed to ensure the correct treatment of the immortal particle \parencite{lee2019}.
+%Here we take the \textsc{resample} procedure for the non-immortal particles to be Categorical sampling of parental indices (known as \emph{multinomial resampling}; see Section~??). It is possible to use other resampling schemes, but 
+%\begin{algorithm}[ht]
+%\vspace*{10pt}
+%\DontPrintSemicolon
+%\KwData{$N, T, \mu, (K_t)_{t=1}^T, (g_t)_{t=0}^T, x_{0:T}^\star, a_{0:T}^\star$}
+%Set $X_0^{(a_0^\star)} \gets x_0^\star$\;
+%\lFor{$i \in \{1,\dots,N\} \setminus a_0^\star$}{
+%	Sample $X_0^{(i)} \sim \mu(\cdot)$
+%}
+%\lFor{$i \in \{1,\dots, N\}$}{
+%		$w_{0}^{(i)} \gets  \left\{ {\sum_{j=1}^N g_0(X_0^{(j)})}\right \}^{-1}{g_0(X_0^{(i)})} $
+%}                
+%\For{$t \in \{0,\dots, T-1\}$}{
+%	Set $a_t^{(a_{t+1}^\star)} \gets a_t^\star$, 	$X_{t+1}^{(a_{t+1}^\star)} \gets x_{t+1}^\star$\;
+%        Sample $a_t^{(1:N)}\setminus a_t^\star \sim \Cat(\{1,\dots,N\}, w_t^{(1:N)})$\;
+%	\lFor{$i \in \{1,\dots,N\}$}{
+%		Sample $X_{t+1}^{(i)} \sim K_{t+1}(X_t^{(a_t^{(i)})}, \cdot)$
+%	}
+%    	\lFor{$i \in \{1,\dots, N\}$}{	
+%		$w_{t+1}^{(i)} \gets \Big\{ {\sum_{j=1}^N g_{t+1}(X_t^{(a_t^{(j)})},X_{t+1}^{(j)}) }\Big\}^{-1} g_{t+1}(X_t^{(a_t^{(i)})},X_{t+1}^{(i)}) $
+%	}          
+%}
+%\vspace*{10pt}
+%\caption[Conditional sequential Monte Carlo with multinomial resampling]{Conditional sequential Monte Carlo with multinomial resampling. The ``immortal particle'' at each time has its new state and parental index set deterministically according to the values of $x_{0:T}^\star$ and $a_{0:T}^\star$ given as input.}
+%\label{alg:condSMC}
+%\end{algorithm}
+\begin{algorithm}[ht]
+\vspace*{10pt}
+\DontPrintSemicolon
+\KwData{$N, T, \mu, K_\theta, g_\theta, x_{0:T}^\star, a_{0:T}^\star$}
+Set $X_0^{(a_0^\star)} \gets x_0^\star$\;
+\lFor{$i \in \{1,\dots,N\} \setminus a_0^\star$}{
+	Sample $X_0^{(i)} \sim \mu(\cdot)$
 }
-This target distribution is suited to sequential Monte Carlo, and this is where the `particle' part of particle Gibbs comes in.
-We update all of the hidden states $X_{0:T}$ in one Gibbs step, which consists of drawing one sample from a particle filter. To target the correct distribution, we use conditional SMC for these updates, conditional on the sample of $X_{0:T}$ from the previous sweep. 
+\lFor{$i \in \{1,\dots, N\}$}{
+		$w_{0}^{(i)} \gets  \left\{ {\sum_{j=1}^N g_\theta(X_0^{(j)})}\right \}^{-1}{g_\theta(X_0^{(i)})} $
+}                
+\For{$t \in \{0,\dots, T-1\}$}{
+	Set $a_t^{(a_{t+1}^\star)} \gets a_t^\star$, 	$X_{t+1}^{(a_{t+1}^\star)} \gets x_{t+1}^\star$\;
+        Sample $a_t^{(1:N)}\setminus a_t^\star \sim \textsc{resample}(\{1,\dots,N\}, w_t^{(1:N)})$\;
+	\lFor{$i \in \{1,\dots,N\}$}{
+		Sample $X_{t+1}^{(i)} \sim K_\theta(X_t^{(a_t^{(i)})}, \cdot)$
+	}
+    	\lFor{$i \in \{1,\dots, N\}$}{	
+		$w_{t+1}^{(i)} \gets \Big\{ {\sum_{j=1}^N g_\theta(X_t^{(a_t^{(j)})},X_{t+1}^{(j)}) }\Big\}^{-1} g_\theta(X_t^{(a_t^{(i)})},X_{t+1}^{(i)}) $
+	}          
+}
+\vspace*{10pt}
+\caption[Conditional sequential Monte Carlo for a parametrised state space model]{Conditional sequential Monte Carlo for a parametrised state space model. The ``immortal particle'' at each time has its new state and parental index set deterministically according to the values of $x_{0:T}^\star$ and $a_{0:T}^\star$ given as input.}
+\label{alg:condSMC}
+\end{algorithm}
+The complete particle Gibbs algorithm for this example then consists of alternately sampling from the full conditional distribution of $\theta$ (e.g.\ using a Metropolis-Hastings update) and sampling a trajectory $(x_{0:T}, a_{0:T})$ using conditional SMC. See \textcite[Section 2.4.3]{andrieu2010} for more details.
 
-\seb{Refer back to the CSMC algorithm which I've already written down somewhere, explaining how the inputs to the algorithm correspond to functions/quantities introduced in this setting.}
+%% Turns out trying to write the algorithm explicitly is a nightmare.
+%The complete particle Gibbs algorithm for this example is summarised in Algorithm~\seb{??}. As was eluded to earlier, it consists of alternately sampling from the full conditional distribution of $\theta$ (using a Metropolis-Hastings update) and sampling a trajectory $x_{0:T}$ using conditional SMC.
+%\seb{put the alg here}
+%
+%\begin{algorithm}[ht]
+%\vspace*{10pt}
+%\DontPrintSemicolon
+%\KwData{$M, N, T, \tilde{p}, \mu, K_\theta, g_\theta$}
+%Set $X_0^{(a_0^\star)} \gets x_0^\star$\;
+%\For{$i \in \{1,\dots,M\}$}{
+%	Sample $\tilde{\theta} \sim \tilde{p}( \cdot \mid \theta[i-1] )$
+%	Sample $U \sim \Unif[0,1]$
+%	\If{$U \leq \frac{ p( \tilde{\theta} ) p(X[i], y_{0:T} \mid \tilde{\theta} ) \tilde{p}( theta[i-1] \mid \tilde{\theta} ) }{ p(\theta[i-1]) p(X[i], y_{0:T} \mid \theta[i-1]) \tilde{p}( \tilde{\theta} \mid \theta[i-1] ) }$}{
+%	    Set $\theta[i] \gets \tilde{\theta}$
+%	}
+%	\Else{ $\theta[i] \gets \theta[i-1]$ }
+%    Set $( (X_{T,0:T}^{(i)})_{i}, (w_T^{(i)})_{i} ) \gets$ \texttt{ConditionalSMC}$(N, T, \mu, K_\theta, g_\theta, X[i-1], A[i-1])$
+%    Sample $j \sim \Cat(\{ 1,\dots,N \}, w_T^{(1:N)}$ %$X_T \sim \Cat(\{ X_T^{(1)}, \dots, X_T^{(N)} \}, w_T^{(1:N)}$
+%    Set $X[i] \gets X_{T,0:T}^{(j)} $
+%}
+%\vspace*{10pt}
+%\caption[Particle Gibbs for a parametrised state space model]{Particle Gibbs for a parametrised state space model}
+%\label{alg:particleGibbs}
+%\end{algorithm}
+%
+%
+%%%%
+%\seb{The following was dumped from elsewhere and NEEDS REDRAFTING.}\\
+%
+%The scenario we present is a particle Gibbs algorithm for filtering with unknown parameters. The method applies more generally to particle Gibbs (for which the reader is directed to \textcite[Chapter 5]{lindsten2013}), but we find this particular scenario to be simple and instructive. \seb{To generalise to Del Moral's SMC framework basically requires just the change of notation $g \to G_t, f \to M_t$.}
+%
+%Consider the following hidden Markov model, parametrised by a constant parameter $\theta$ which may be multidimensional.
+%\seb{Define the spaces in which theta,X,Y live?}
+%\begin{align*}
+%Y_t \mid X_t &\sim g_\theta(\cdot \mid X_t)\\
+%X_{t} \mid X_{t-1} &\sim f_\theta(\cdot \mid X_{t-1})\\
+%X_0 &\sim \mu_\theta(\cdot) \\
+%\theta &\sim p(\cdot)
+%\end{align*}
+%\seb{Add ranges for t in first two lines.}
+%\seb{Use q instead of f for better congruity with other sections?}
+%We work on a fixed time horizon $T \in \mathbb{N}$, which is necessary to implement the particle Gibbs algorithm.
+%\seb{Can be artificially imposed by block sampling if doing online-ish inference?}
+%The measures corresponding to $\mu_\theta$, $f_\theta$ and $g_\theta$ are assumed to be known and to admit densities, and we are also given a fixed sequence of observations $y_{1:T}$. 
+%\seb{Either mention that f,g can depend on t, or make this explicit  in the notation.}
+%\seb{Don't really need to include prior on theta; it's not relevant to CSMC step.}
+%
+%Our aim is to generate Monte Carlo samples from the joint distribution of $X_{0:T}$ and $\theta$ conditional on $y_{1:T}$. Outside of models admitting closed-form solutions, this is typically the most practical way to draw samples from the marginal distributions of either $\theta$ or any subset of the states $X_{0:T}$, by marginalising the Monte Carlo samples. 
+%
+%The structure of the model invites Gibbs sampling: alternating between updating $\theta$ conditional on $X_{0:T}$, and updating $X_{0:T}$ conditional on $\theta$.
+%\seb{``These conditionals are typically much easier to sample from that the corresponding marginals.'' (due to the dependence structure in the HMM).}
+%The $\theta$ update consists of sampling from 
+%\begin{equation*}
+%p(\theta \mid x_{0:T}, y_{1:T}) \propto p(\theta) p(x_{0:T}, y_{1:T} \mid \theta) ,
+%\end{equation*}
+%which can be achieved quite easily with a Metropolis--Hastings step.
+%The $X$ update is the `difficult' part, requiring a sample from
+%\begin{equation*}
+%p(x_{0:T} \mid \theta , y_{1:T}) =: \gamma_T^\theta(x_{0:T}) .
+%\end{equation*}
+%\seb{Define gamma for general s too:
+%\begin{equation*}
+%\gamma_s^\theta(x_{0:s}) \propto \mu_\theta(x_0) g_\theta(y_0\mid x_0) \prod_{r=1}^s f_\theta(x_r \mid x_{r-1}) g_\theta(y_r \mid x_r) .
+%\end{equation*}
+%}
+%This target distribution is suited to sequential Monte Carlo, and this is where the `particle' part of particle Gibbs comes in.
+%We update all of the hidden states $X_{0:T}$ in one Gibbs step, which consists of drawing one sample from a particle filter. To target the correct distribution, we use conditional SMC for these updates, conditional on the sample of $X_{0:T}$ from the previous sweep. 
+%
+%\seb{Refer back to the CSMC algorithm which I've already written down somewhere, explaining how the inputs to the algorithm correspond to functions/quantities introduced in this setting.}
 
 
 
@@ -1590,6 +1706,9 @@ We update all of the hidden states $X_{0:T}$ in one Gibbs step, which consists o
 
 Ancestor sampling was first suggested by Nick Whiteley in the discussion on \textcite{andrieu2010}. Its contribution is to reduce autocorrelation between samples obtained using the particle Gibbs algorithm \parencite{andrieu2010}.
 \seb{Proper way to cite discussion of paper?}
+
+
+
 
 \subsubsection{Ancestral degeneracy leads to poor mixing}
 Particle Gibbs runs into problems when the time horizon $T$ is large compared to the number of particles $N$. $T$ is determined by the application at hand, and $N$ is limited by computational resources, so we may not be able to control their relative size. 

@@ -100,60 +100,60 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {2.5}Conditional SMC \xspace \leavevmode {\color {red}$\sim $}\xspace }{33}{section.2.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.5.1}Particle MCMC \xspace \leavevmode {\color {red}$\text {$\mathsurround \z@ \mathchar "458$}$}\xspace }{33}{subsection.2.5.1}
+\contentsline {subsection}{\numberline {2.5.1}Particle MCMC \xspace \leavevmode {\color {red}$\sim $}\xspace }{33}{subsection.2.5.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.5.2}Particle Gibbs algorithm \xspace \leavevmode {\color {red}$\sim $}\xspace }{34}{subsection.2.5.2}
+\contentsline {subsection}{\numberline {2.5.2}Particle Gibbs algorithm \xspace \leavevmode {\color {red}$\text {$\mathsurround \z@ \mathchar "458$}$}\xspace }{34}{subsection.2.5.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.5.3}Ancestor sampling \xspace \leavevmode {\color {red}$\sim $}\xspace }{35}{subsection.2.5.3}
+\contentsline {subsection}{\numberline {2.5.3}Ancestor sampling \xspace \leavevmode {\color {red}$\sim $}\xspace }{36}{subsection.2.5.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Ancestral degeneracy leads to poor mixing}{35}{section*.41}
+\contentsline {subsubsection}{\nonumberline Ancestral degeneracy leads to poor mixing}{36}{section*.42}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline The solution: ancestor sampling}{37}{section*.43}
+\contentsline {subsubsection}{\nonumberline The solution: ancestor sampling}{38}{section*.44}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Why ancestor sampling works}{38}{section*.45}
+\contentsline {subsubsection}{\nonumberline Why ancestor sampling works}{39}{section*.46}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {3}Limits}{40}{chapter.3}
+\contentsline {chapter}{\numberline {3}Limits}{41}{chapter.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.1}Encoding genealogies}{40}{section.3.1}
+\contentsline {section}{\numberline {3.1}Encoding genealogies}{41}{section.3.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.1.1}The genealogical process}{40}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.1}The genealogical process}{41}{subsection.3.1.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.1.2}Time scale}{40}{subsection.3.1.2}
+\contentsline {subsection}{\numberline {3.1.2}Time scale}{41}{subsection.3.1.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.1.3}Transition probabilities}{43}{subsection.3.1.3}
+\contentsline {subsection}{\numberline {3.1.3}Transition probabilities}{44}{subsection.3.1.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.2}An existing limit theorem}{46}{section.3.2}
+\contentsline {section}{\numberline {3.2}An existing limit theorem}{47}{section.3.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.3}A new limit theorem}{48}{section.3.3}
+\contentsline {section}{\numberline {3.3}A new limit theorem}{49}{section.3.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.3.1}Proof of theorem}{50}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.1}Proof of theorem}{51}{subsection.3.3.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {4}Weak Convergence}{59}{chapter.4}
+\contentsline {chapter}{\numberline {4}Weak Convergence}{60}{chapter.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.1}Bounds on sum-products}{66}{section.4.1}
+\contentsline {section}{\numberline {4.1}Bounds on sum-products}{67}{section.4.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.2}Main components of induction argument}{69}{section.4.2}
+\contentsline {section}{\numberline {4.2}Main components of induction argument}{70}{section.4.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.3}Indicators}{88}{section.4.3}
+\contentsline {section}{\numberline {4.3}Indicators}{89}{section.4.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.4}Fubini \& dominated convergence conditions}{93}{section.4.4}
+\contentsline {section}{\numberline {4.4}Fubini \& dominated convergence conditions}{94}{section.4.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {5}Applications}{94}{chapter.5}
+\contentsline {chapter}{\numberline {5}Applications}{95}{chapter.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.1}Multinomial resampling}{95}{section.5.1}
+\contentsline {section}{\numberline {5.1}Multinomial resampling}{96}{section.5.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.2}Stratified resampling}{97}{section.5.2}
+\contentsline {section}{\numberline {5.2}Stratified resampling}{98}{section.5.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.3}Stochastic rounding}{102}{section.5.3}
+\contentsline {section}{\numberline {5.3}Stochastic rounding}{103}{section.5.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.4}Residual resampling with stratified residuals}{104}{section.5.4}
+\contentsline {section}{\numberline {5.4}Residual resampling with stratified residuals}{105}{section.5.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.5}Residual resampling with multinomial residuals}{106}{section.5.5}
+\contentsline {section}{\numberline {5.5}Residual resampling with multinomial residuals}{107}{section.5.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.6}Star resampling}{107}{section.5.6}
+\contentsline {section}{\numberline {5.6}Star resampling}{108}{section.5.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.7}Conditional SMC}{108}{section.5.7}
+\contentsline {section}{\numberline {5.7}Conditional SMC}{109}{section.5.7}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.7.1}Effect of ancestor sampling}{110}{subsection.5.7.1}
+\contentsline {subsection}{\numberline {5.7.1}Effect of ancestor sampling}{111}{subsection.5.7.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {6}Discussion}{112}{chapter.6}
+\contentsline {chapter}{\numberline {6}Discussion}{113}{chapter.6}
