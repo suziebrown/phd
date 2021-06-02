@@ -8,17 +8,17 @@ Anyone who considers arithmetical methods of producing random digits is, of cour
 {\textsc{John von Neumann}}
 
 
-\section{Sequential Monte Carlo}
+\section{Sequential Monte Carlo \seb{$\checkmark$} }
 The idea of Monte Carlo is to use (pseudo-)random numbers to approximate expectations under an intractable probability distribution of interest.
 Sequential Monte Carlo (SMC) is a class of Monte Carlo algorithms which are implemented sequentially, allowing efficient sampling from \emph{sequences} of distributions.
-SMC was developed for inference in intractable state space models (details in Section\seb{??}) and introduced to the statistics community by \textcite{gordon1993}.
-The basic idea behind SMC is sequential importance sampling, whereby the posterior importance samples from one target distribution are used to generate proposal samples for the next. A full derivation of the SMC recursions is beyond the scope of this work, but the reader is referred to\seb{[citations]} for more background. Here it will suffice to include a motivation in the context of state space models (Section\seb{??}) followed by the formalism of Feynman-Kac models (Section\seb{??}).
+SMC was developed for inference in intractable state space models (details in Section~\ref{sec:SSMs}) and introduced to the statistics community by \textcite{gordon1993}.
+The basic idea behind SMC is sequential importance sampling, whereby the posterior importance samples from one target distribution are used to generate proposal samples for the next. A full derivation of the SMC recursions is beyond the scope of this work, but the reader is referred to e.g.\ \textcite{doucet2009, chopin2020} for more background. Here it will suffice to include a motivation in the context of state space models (Section~\ref{sec:SSMs}) followed by the formalism of Feynman-Kac models (Section~\ref{sec:FKmodels}).
 
 
 
 
 
-\subsection{State space models \seb{$\checkmark$} }
+\subsection{State space models}
 \label{sec:SSMs}
 State space models (sometimes called hidden Markov models) are a flexible class of statistical models which are suitable in all sorts of applications where observations appear sequentially.
 \begin{figure}[ht]
@@ -71,15 +71,16 @@ The principal inferences of interest in state space models are:
 \end{description}
 If the dynamics of the state space model are parametrised by some $\theta$, i.e.\ $g_t, K_t$ depend on $\theta$, we may also be interested in parameter inference and/or computing the likelihood $p(y_{0:t})$ of the observed data given a certain value of $\theta$.
 
-In certain cases, these inference problems may be solved analytically (Section\seb{??}), but this is not typically the case. For intractable models we must resort to Monte Carlo methods. However, state space inference is problematic even with Monte Carlo. 
+In certain cases, these inference problems may be solved analytically (Section~\ref{sec:SSM_exact_inference}), but this is not typically the case. For intractable models we must resort to Monte Carlo methods. However, state space inference is problematic even with Monte Carlo. 
 The main difficulties are that the dimension of the target distribution increases along the sequence, and there is strong dependence between consecutive distributions. Markov chain Monte Carlo (MCMC), for instance, is known to struggle with highly correlated targets\seb{[citation]} and its performance drops drastically as dimension increases, despite convergence rates that are supposedly independent of dimension\seb{[citation]}.
 
-As we will see in Section\seb{??}, sequential Monte Carlo overcomes these problems, turning the problematic properties of the target distribution to its benefit. Correlation between consecutive targets is exploited for sequential updating, which takes in its stride the incrementing dimensionality. The resulting linear-in-$t$ computational complexity also allows inference to be performed on-line, that is, as observations arrive.
+As we will see in Section~\ref{sec:SMC_FK}, sequential Monte Carlo overcomes these problems, turning the problematic properties of the target distribution to its benefit. Correlation between consecutive targets is exploited for sequential updating, which takes in its stride the incrementing dimensionality. The resulting linear-in-$t$ computational complexity also allows inference to be performed on-line, that is, as observations arrive.
 
 
 
 
-\subsection{Exact inference in state space models \seb{$\checkmark$} }
+\subsection{Exact inference in state space models}
+\label{sec:SSM_exact_inference}
 If the state space model has linear dynamics with Gaussian errors, the posterior distributions of interest are also Gaussian with mean and covariance satisying recursions, implemented by the Kalman filter \parencite{kalman1960} and Rauch-Tung-Striebel smoother \parencite{rauch1965}. Recursions are also available for some other conjugate models: see for example \textcite{vidoni1999}.
 Another analytic case occurs if the state space $\mathcal{X}$ is finite, in which case any integrals become finite sums, and the forward-backward algorithm \parencite{baum1970} yields the exact posteriors. However, if the state space becomes large (albeit finite), exact computation becomes infeasible.
 
@@ -95,7 +96,8 @@ But we can exploit the sequential nature of the underlying dynamics to decompose
 This is the motivation behind sequential Monte Carlo (SMC).
 
 
-\subsection{Feynman-Kac models \seb{$\checkmark$} }
+\subsection{Feynman-Kac models}
+\label{sec:FKmodels}
 \draft{Example of non-SSM that is FK?}
 
 State space models are very natural and intuitive applications, but they do not do justice to the scope of SMC algorithms, which is much wider.
@@ -147,6 +149,7 @@ The next section describes how we may obtain samples from $\mathbb{Q}_t(dx_{0:T}
 
 
 \subsection{Sequential Monte Carlo for Feynman-Kac models}
+\label{sec:SMC_FK}
 In order to implement the SMC algorithm corresponding to a given Feynman-Kac model, we need to be able to sample from $\mathbb{M}_0$ and from $M_t(x, \cdot)$ for all $x,t$; and evaluate $G_t(x, y)$ pointwise for each $x,y, t$.
 Under these conditions we may implement Algorithm~\ref{alg:SMC}, which describes a generic SMC algorithm. 
 The only free choices are the parameter $N$ which dictates the number of particles used, and the \textsc{resample} procedure, which can have a profound effect on performance and is discussed in detail in Section~\ref{sec:resampling}.
@@ -198,6 +201,8 @@ However, remember that given a particular state space model there is a choice of
 \label{alg:SMC}
 \end{algorithm}
 
+Because Algorithm~\ref{alg:SMC} proceeds sequentially, its computational cost is linear in the time horizon $T$. Furthermore, the bootstrap algorithm, where the Feynman-Kac model is \eqref{eq:bootstrapFK}, processes the data $y_{0:T}$ one observation at a time via $G_t(x_t) = g_t(y_t \mid x_t)$. This means that the bootstrap SMC algorithm can also be run on-line, incorporating each observation as it becomes available.
+This is in stark contrast to a standard MCMC approach, for example, which would have to process all of the data at once up to a fixed time horizon. Adding one more observation would require running the MCMC algorithm from scratch on the extended target, making the computational cost (of generating samples from the whole sequence of target distributions, which is what SMC achieves) at least quadratic in time and rendering on-line inference infeasible.
 
 The output of Algorithm~\ref{alg:SMC} is, for $i=1,\dots, N$ and $t=0,\dots,T$, the \emph{states} $X_t^{(i)} \in \mathcal{X}$\seb{in general the state space can vary over time}, the \emph{weights} $w_t^{(i)} \in [0,1]$ and, for $i=1,\dots, N$ and $t=0,\dots,T-1$, the \emph{parental indices} $a_t^{(i)}$.
 Depending on the application, one may want to retain only a subset of this output.
@@ -210,30 +215,31 @@ The filtering distribution $p(x_t \mid y_{0:t})$ is approximated by
 where $\delta_x$ denotes a unit mass at $x$.
 That is, expectations of appropriate test functions $\varphi : \mathcal{X} \mapsto \mathbb{R}$ are approximated by
 \begin{equation*}
-\E[ \phi(x_t) \mid y_{0:t} ]
+\E[ \varphi(x_t) \mid y_{0:t} ]
 \simeq \sum_{i=1}^N w_t^{(i)} \varphi( X_t^{(i)} ) .
 \end{equation*}
-The meaning of approximation (or $\simeq$) here will be clarified in Section~\ref{sec:SMC_theory}.
+The precise meaning of approximation (or $\simeq$) will be clarified in Section~\ref{sec:SMC_theory}.
 To approximate the smoothing distribution, we first define the \emph{trajectories} of states $X_{t,0:t}^{(i)}$ (for each $i \in \{1,\dots,N\}$) by setting $X_{t,t}^{(i)} := X_t^{(i)}$ and tracing back through the ancestors via the recursion $X_{t,s}{(i)} = X_{t,s+1}^{( a_t^{(i)} )}$ for each $s \in \{0,\dots, t\}$. 
-Then we construct the approximation
+We then construct the approximation
 \begin{equation*}
 \sum_{i=1}^N w_t^{(i)} \delta_{ X_{t,0:t}^{(i)} } 
 \end{equation*}
 of the smoothing distribution $p(x_{0:t} \mid y_{0:t})$.
 Similar approximations can be constructed for prediction and fixed-lag smoothing\seb{...be explicit or no?}.
-We can also approximate the marginal likelihood by using the \emph{unnormalised} weights\seb{should I introduce notation e.g. $\tilde{w}$ for the unnormalised weights, and give them a separate line in Algorithm~\ref{alg:SMC}, and include them in the possible outputs of the algorithm?}:
-\begin{equation*}
+We can also approximate the marginal likelihood using the \emph{unnormalised} weights\seb{should I introduce notation e.g. $\tilde{w}$ for the unnormalised weights, and give them a separate line in Algorithm~\ref{alg:SMC}, and include them in the possible outputs of the algorithm?}:
+\begin{equation}\label{eq:likelihood_estimate}
 L_t 
 \simeq \frac{1}{N} \sum_{i=1}^N G_0(X_0^{(i)}) \prod_{t=1}^T \frac{1}{N}
         \sum_{i=1}^N G_t( X_{t-1}^{ a_{t-1}^{(i)} }, X_t^{(i)} ) .
+\end{equation}
+Define the \emph{offspring counts} for each $i,t$
+\begin{equation*}
+\nu_t^{(i)} := |\{ j: a_t^{(j)} = i \}| ,
 \end{equation*}
+the number of copies of particle $i$ of generation $t$ appearing in generation $t+1$ by resampling.
+Notice that $\nu_t^{(1:N)}$ is expressed as a non-injective function of $a_t^{(1:N)}$, and as such carries less information.
 
-
-...
-
-
-Figure \ref{fig:cond_indep_graph} shows part of the conditional dependence graph implied by Algorithm \ref{alg:SMC}.
-Notice that $\nu_t^{(1:N)}$ can be expressed as a function of $a_t^{(1:N)}$, and as such carries less information.
+Figure~\ref{fig:cond_indep_graph} shows a section of the conditional dependence graph implied by Algorithm~\ref{alg:SMC}.
 \begin{figure}[ht]
 \centering
 \begin{tikzpicture}[>=stealth]
@@ -296,12 +302,34 @@ Notice that $\nu_t^{(1:N)}$ can be expressed as a function of $a_t^{(1:N)}$, and
 \end{figure}
 
 
+
+
+
 \subsection{Theoretical justification}
 \label{sec:SMC_theory}
-\draft{How come SMC works? Convergence results (briefly!) e.g. Lp bounds, CLT, stability.}
+It can be shown that SMC approximations of expectations of test functions satisfy various desirable properties. For instance, it is quite easy to show that the filtering approximations converge:
+\begin{equation*}
+\sum_{i=1}^N w_t^{(i)} \varphi( X_t^{(i)} ) 
+\longrightarrow \mathbb{Q}_t(\varphi) ,
+\end{equation*}
+almost surely and in the $L_2$ sense, as $N\to\infty$, under some conditions.
+Moreover, they satisfy a central limit theorem:
+\begin{equation*}
+\sqrt{N} \left( \sum_{i=1}^N w_t^{(i)} \varphi( X_t^{(i)} ) - \mathbb{Q}_t(\varphi) \right)
+\longrightarrow  \N( 0, \sigma_t(\varphi) )
+\end{equation*}
+in distribution, as $N\to\infty$. Under additional conditions, the asymptotic variances $\sigma_t(\varphi)$ are stable over $t$, justifying the use of SMC filtering on-line.
+It can also easily be shown that the likelihood estimates \eqref{eq:likelihood_estimate} are unbiased \parencite[see for example][Proposition 16.3]{chopin2020}.
+
+There are many other results concerning convergence, stability and error bounds for SMC algorithms. A full exposition of these results and their conditions is beyond the scope of this work, but the book by \textcite{delmoral2013} provides an exhaustive treatment, and some of the key ideas and results are developed in the more accessible book by \textcite[Chapter 11]{chopin2020}.
+Suffice it to say that SMC algorithms enjoy enough theoretical properties to be useful in practice.
 
 
-\section{Coalescent theory \seb{$\checkmark$} }\label{sec:coaltheory}
+
+
+
+\section{Coalescent theory \seb{$\checkmark$} }
+\label{sec:coaltheory}
 \draft{Write a paragraph introducing the section.}
 
 \subsection{Kingman's coalescent}

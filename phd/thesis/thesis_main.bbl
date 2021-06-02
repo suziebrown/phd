@@ -552,6 +552,42 @@
       \field{pages}{64\bibrangedash 69}
       \range{pages}{6}
     \endentry
+    \entry{doucet2009}{incollection}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,uniquepart=base,hash=aca5faad8b57b96b59c12fc59d0b6eb4}{%
+           family={Doucet},
+           familyi={D\bibinitperiod},
+           given={Arnaud},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=17d1caa8d265744784c2779daffb0a90}{%
+           family={Johansen},
+           familyi={J\bibinitperiod},
+           given={Adam\bibnamedelima M.},
+           giveni={A\bibinitperiod\bibinitdelim M\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {OUP}%
+      }
+      \strng{namehash}{e023bba3ac0075634464dc6fed59cf44}
+      \strng{fullhash}{e023bba3ac0075634464dc6fed59cf44}
+      \strng{bibnamehash}{e023bba3ac0075634464dc6fed59cf44}
+      \strng{authorbibnamehash}{e023bba3ac0075634464dc6fed59cf44}
+      \strng{authornamehash}{e023bba3ac0075634464dc6fed59cf44}
+      \strng{authorfullhash}{e023bba3ac0075634464dc6fed59cf44}
+      \field{sortinit}{D}
+      \field{sortinithash}{2ef1bd9a78cc71eb74d7231c635177b8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Handbook of nonlinear filtering}
+      \field{title}{A Tutorial on Particle Filtering and Smoothing: Fifteen Years Later}
+      \field{year}{2011}
+      \field{pages}{656\bibrangedash 704}
+      \range{pages}{49}
+    \endentry
     \entry{durrett2008}{book}{}
       \name{author}{1}{}{%
         {{uniquename=0,uniquepart=base,hash=dbdc52e17e1d92513591b9fd1361d03b}{%

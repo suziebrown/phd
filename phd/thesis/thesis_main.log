@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  2 JUN 2021 09:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  2 JUN 2021 11:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1347,20 +1347,20 @@ File: english.lbx 2018/03/04 v3.11 biblatex localization (PK/MW)
 (./weakconv.aux) (./applications.aux) (./discussion.aux))
 \openout1 = `thesis_main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 102.
-LaTeX Font Info:    ... okay on input line 102.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 102.
-LaTeX Font Info:    ... okay on input line 102.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 102.
-LaTeX Font Info:    ... okay on input line 102.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 102.
-LaTeX Font Info:    ... okay on input line 102.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 102.
-LaTeX Font Info:    ... okay on input line 102.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 102.
-LaTeX Font Info:    ... okay on input line 102.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 102.
-LaTeX Font Info:    ... okay on input line 102.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 103.
+LaTeX Font Info:    ... okay on input line 103.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 103.
+LaTeX Font Info:    ... okay on input line 103.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 103.
+LaTeX Font Info:    ... okay on input line 103.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 103.
+LaTeX Font Info:    ... okay on input line 103.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 103.
+LaTeX Font Info:    ... okay on input line 103.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 103.
+LaTeX Font Info:    ... okay on input line 103.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 103.
+LaTeX Font Info:    ... okay on input line 103.
 
 (/usr/local/texlive/2018/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -1440,9 +1440,9 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'thesis_main.bbl' found.
  (./thesis_main.bbl)
-Package biblatex Info: Reference section=0 on input line 102.
-Package biblatex Info: Reference segment=0 on input line 102.
-Package hyperref Info: Link coloring OFF on input line 102.
+Package biblatex Info: Reference section=0 on input line 103.
+Package biblatex Info: Reference segment=0 on input line 103.
+Package hyperref Info: Link coloring OFF on input line 103.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -1452,9 +1452,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count444
 )
-LaTeX Info: Redefining \ref on input line 102.
-LaTeX Info: Redefining \pageref on input line 102.
-LaTeX Info: Redefining \nameref on input line 102.
+LaTeX Info: Redefining \ref on input line 103.
+LaTeX Info: Redefining \pageref on input line 103.
+LaTeX Info: Redefining \nameref on input line 103.
 
 (./thesis_main.out) (./thesis_main.out)
 \@outlinefile=\write6
@@ -1468,16 +1468,16 @@ options: showrefs, showcites, msgs, chckunlbld
 
 
 {/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    Try loading font information for OT1+put on input line 126.
+LaTeX Font Info:    Try loading font information for OT1+put on input line 127.
 
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/ot1put.fd
 File: ot1put.fd 2001/06/04 font definitions for OT1/put.
 )
 LaTeX Font Info:    Font shape `OT1/put/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/put/b/n' tried instead on input line 126.
+(Font)              Font shape `OT1/put/b/n' tried instead on input line 127.
 LaTeX Font Info:    Font shape `OT1/put/bx/n' in size <20.74> not available
-(Font)              Font shape `OT1/put/b/n' tried instead on input line 126.
+(Font)              Font shape `OT1/put/b/n' tried instead on input line 127.
 
 (./thesis_main.toc
 LaTeX Font Info:    Try loading font information for U+msa on input line 15.
@@ -1495,7 +1495,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 ]
 Overfull \hbox (1.42336pt too wide) detected at line 159
- []\OT1/put/b/n/10.95 111
+ []\OT1/put/b/n/10.95 112
  []
 
 )
@@ -1545,7 +1545,7 @@ chapter 1.
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.200 \include{introduction}
+l.201 \include{introduction}
                              [1
 
 
@@ -1558,476 +1558,417 @@ l.200 \include{introduction}
 chapter 2.
 LaTeX Font Info:    Font shape `OT1/put/bx/n' in size <14.4> not available
 (Font)              Font shape `OT1/put/b/n' tried instead on input line 11.
+LaTeX Font Info:    Font shape `OT1/put/bx/n' in size <10> not available
+(Font)              Font shape `OT1/put/b/n' tried instead on input line 11.
+LaTeX Font Info:    Font shape `OT1/put/bx/n' in size <7> not available
+(Font)              Font shape `OT1/put/b/n' tried instead on input line 11.
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 11.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 11.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\mathsurround' on input line 11.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\z@' on input line 11.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\mathchar' on input line 11.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 11.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 11.
+
 LaTeX Font Info:    Font shape `OT1/put/bx/n' in size <12> not available
 (Font)              Font shape `OT1/put/b/n' tried instead on input line 21.
-LaTeX Font Info:    Font shape `OT1/put/bx/n' in size <8> not available
-(Font)              Font shape `OT1/put/b/n' tried instead on input line 21.
-LaTeX Font Info:    Font shape `OT1/put/bx/n' in size <6> not available
-(Font)              Font shape `OT1/put/b/n' tried instead on input line 21.
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 21.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 21.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathsurround' on input line 21.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\z@' on input line 21.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathchar' on input line 21.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 21.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 21.
-
 [2
 
 
 
 
-] [3]
+] [3] [4] [5] [6] [7] [8]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 82.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 82.
+(hyperref)                removing `math shift' on input line 331.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathsurround' on input line 82.
+(hyperref)                removing `math shift' on input line 331.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\z@' on input line 82.
+(hyperref)                removing `\mathsurround' on input line 331.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathchar' on input line 82.
+(hyperref)                removing `\z@' on input line 331.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 82.
+(hyperref)                removing `\mathchar' on input line 331.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 82.
-
-[4]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 98.
+(hyperref)                removing `math shift' on input line 331.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 98.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathsurround' on input line 98.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\z@' on input line 98.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathchar' on input line 98.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 98.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 98.
-
-[5] [6] [7]
-LaTeX Font Info:    Font shape `OT1/put/bx/n' in size <10> not available
-(Font)              Font shape `OT1/put/b/n' tried instead on input line 304.
-LaTeX Font Info:    Font shape `OT1/put/bx/n' in size <7> not available
-(Font)              Font shape `OT1/put/b/n' tried instead on input line 304.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 304.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 304.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathsurround' on input line 304.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\z@' on input line 304.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathchar' on input line 304.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 304.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 304.
+(hyperref)                removing `math shift' on input line 331.
 
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 310.
+(mdframed)              on input line 338.
 
-Package refcheck Warning: Unused label `eq:KCgenerator' on input line 313.
+Package refcheck Warning: Unused label `eq:KCgenerator' on input line 341.
 
-[8]
-<plots/ncoalescent.pdf, id=479, 456.70625pt x 423.5825pt>
+[9]
+<plots/ncoalescent.pdf, id=499, 456.70625pt x 423.5825pt>
 File: plots/ncoalescent.pdf Graphic file (type pdf)
 <use plots/ncoalescent.pdf>
-Package pdftex.def Info: plots/ncoalescent.pdf  used on input line 325.
+Package pdftex.def Info: plots/ncoalescent.pdf  used on input line 353.
 (pdftex.def)             Requested size: 256.07741pt x 215.4614pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 334--335
+Underfull \hbox (badness 10000) in paragraph at lines 362--363
 
  []
 
-[9 <./plots/ncoalescent.pdf>]
+[10 <./plots/ncoalescent.pdf>]
 
-Package refcheck Warning: Unlabelled equation (\relax 2.5) on input line 390.
+Package refcheck Warning: Unlabelled equation (\relax 2.6) on input line 418.
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 390.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 418.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <9> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 390.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 418.
 
 
-Package refcheck Warning: Unlabelled equation (\relax 2.6) on input line 405.
+Package refcheck Warning: Unlabelled equation (\relax 2.7) on input line 433.
 
 
-Package refcheck Warning: Unlabelled equation (\relax 2.7) on input line 411.
-
-[10]
-
-Package refcheck Warning: Unlabelled equation (\relax 2.8) on input line 427.
-
-
-Package refcheck Warning: Unlabelled equation (\relax 2.9) on input line 435.
+Package refcheck Warning: Unlabelled equation (\relax 2.8) on input line 439.
 
 [11]
+
+Package refcheck Warning: Unlabelled equation (\relax 2.9) on input line 455.
+
+
+Package refcheck Warning: Unlabelled equation (\relax 2.10) on input line 463.
+
+[12]
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 486.
- [12] [13]
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 514.
+ [13] [14]
 
-Package refcheck Warning: Unused label `sec:SMC_genealogies' on input line 541.
+Package refcheck Warning: Unused label `sec:SMC_genealogies' on input line 569.
 
 
-<plots/ancdegen_mn.pdf, id=549, 602.25pt x 401.5pt>
+<plots/ancdegen_mn.pdf, id=568, 602.25pt x 401.5pt>
 File: plots/ancdegen_mn.pdf Graphic file (type pdf)
 <use plots/ancdegen_mn.pdf>
-Package pdftex.def Info: plots/ancdegen_mn.pdf  used on input line 554.
+Package pdftex.def Info: plots/ancdegen_mn.pdf  used on input line 582.
 (pdftex.def)             Requested size: 213.39568pt x 142.26698pt.
 
-Package refcheck Warning: Unused label `fig:ancdegen_mn' on input line 554.
+Package refcheck Warning: Unused label `fig:ancdegen_mn' on input line 582.
 
-<plots/ancdegen_adaptsyst.pdf, id=550, 602.25pt x 401.5pt>
+<plots/ancdegen_adaptsyst.pdf, id=569, 602.25pt x 401.5pt>
 File: plots/ancdegen_adaptsyst.pdf Graphic file (type pdf)
 <use plots/ancdegen_adaptsyst.pdf>
-Package pdftex.def Info: plots/ancdegen_adaptsyst.pdf  used on input line 558.
+Package pdftex.def Info: plots/ancdegen_adaptsyst.pdf  used on input line 586.
 (pdftex.def)             Requested size: 213.39568pt x 142.26698pt.
 
 Package refcheck Warning: Unused label `fig:ancdegen_adaptsyst' on input line 5
-58.
+86.
 
 
-Overfull \hbox (21.89996pt too wide) in paragraph at lines 554--559
+Overfull \hbox (21.89996pt too wide) in paragraph at lines 582--587
  [][][][] 
  []
 
 
 Package refcheck Warning: Unused label `fig:ancestral_degeneracy' on input line
- 560.
+ 588.
 
-[14 <./plots/ancdegen_mn.pdf> <./plots/ancdegen_adaptsyst.pdf>]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 571.
-
+[15 <./plots/ancdegen_mn.pdf> <./plots/ancdegen_adaptsyst.pdf>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\sim' on input line 571.
+(hyperref)                removing `math shift' on input line 599.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 571.
+(hyperref)                removing `\sim' on input line 599.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 578.
+(hyperref)                removing `math shift' on input line 599.
+
+LaTeX Font Info:    Font shape `OT1/put/bx/n' in size <8> not available
+(Font)              Font shape `OT1/put/b/n' tried instead on input line 606.
+LaTeX Font Info:    Font shape `OT1/put/bx/n' in size <6> not available
+(Font)              Font shape `OT1/put/b/n' tried instead on input line 606.
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 606.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 578.
+(hyperref)                removing `math shift' on input line 606.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathsurround' on input line 578.
+(hyperref)                removing `\mathsurround' on input line 606.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\z@' on input line 578.
+(hyperref)                removing `\z@' on input line 606.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathchar' on input line 578.
+(hyperref)                removing `\mathchar' on input line 606.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 578.
+(hyperref)                removing `math shift' on input line 606.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 578.
+(hyperref)                removing `math shift' on input line 606.
 
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 581.
-[15]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 611.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\sim' on input line 611.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 611.
-
+(mdframed)              on input line 609.
 [16]
-Underfull \hbox (badness 1783) in paragraph at lines 808--808
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 639.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\sim' on input line 639.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 639.
+
+[17]
+Underfull \hbox (badness 1783) in paragraph at lines 836--836
 [][][]|\OT1/cmr/m/n/10.95 In-ver-sion sam-pling to ob-tain Multi-no-mial off-sp
 ring counts, where the
  []
 
-[17] [18]
+[18] [19]
 
-Package refcheck Warning: Unused label `fig:strat_case1' on input line 913.
+Package refcheck Warning: Unused label `fig:strat_case1' on input line 941.
 
 
-Package refcheck Warning: Unused label `fig:strat_case2' on input line 948.
+Package refcheck Warning: Unused label `fig:strat_case2' on input line 976.
 
-[19] [20]
-Overfull \hbox (29.59613pt too wide) in paragraph at lines 1041--1042
+[20] [21]
+Overfull \hbox (29.59613pt too wide) in paragraph at lines 1069--1070
 [][]\OT1/cmr/m/n/10.95 Also write about []Ger-ber, Chopin, and White-ley ([]201
 9[]), which in some sense ex-tends/formalises
  []
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1046.
+(hyperref)                removing `math shift' on input line 1074.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\sim' on input line 1046.
+(hyperref)                removing `\sim' on input line 1074.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1046.
+(hyperref)                removing `math shift' on input line 1074.
 
-[21] [22] [23]
-Overfull \hbox (9.04958pt too wide) in paragraph at lines 1120--1122
+[22] [23] [24]
+Overfull \hbox (9.04958pt too wide) in paragraph at lines 1148--1150
 []\OT1/cmr/m/n/10.95 The marginal vari-ance is harder to cal-cu-late for other 
 schemes such as residual-multinomial
  []
 
-[24] [25]
+[25] [26]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1220.
- [26]
-Overfull \hbox (2.1504pt too wide) detected at line 1303
+(mdframed)              on input line 1248.
+ [27]
+Overfull \hbox (2.1504pt too wide) detected at line 1331
 []
  []
 
 
-Overfull \hbox (21.46716pt too wide) detected at line 1325
+Overfull \hbox (21.46716pt too wide) detected at line 1353
 []
  []
 
-[27] [28]
+[28] [29]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1381.
- [29]
-LaTeX Font Info:    Try loading font information for U+bbm on input line 1400.
+(mdframed)              on input line 1409.
+ [30]
+LaTeX Font Info:    Try loading font information for U+bbm on input line 1428.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/bbm-macros/ubbm.fd
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
 )
-Overfull \hbox (0.3939pt too wide) in paragraph at lines 1409--1413
+Overfull \hbox (0.3939pt too wide) in paragraph at lines 1437--1441
 []\OT1/cmr/m/n/10.95 In one di-men-sion, the lowest-discrepancy point set is th
 e reg-u-lar grid $([]\OML/cmm/m/it/10.95 ; []; [] ; []\OT1/cmr/m/n/10.95 )$,
  []
 
-[30] [31
+[31] [32
 
 ]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1466.
+(hyperref)                removing `math shift' on input line 1494.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1466.
+(hyperref)                removing `math shift' on input line 1494.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathsurround' on input line 1466.
+(hyperref)                removing `\mathsurround' on input line 1494.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\z@' on input line 1466.
+(hyperref)                removing `\z@' on input line 1494.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathchar' on input line 1466.
+(hyperref)                removing `\mathchar' on input line 1494.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1466.
+(hyperref)                removing `math shift' on input line 1494.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1466.
+(hyperref)                removing `math shift' on input line 1494.
 
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1468.
+(mdframed)              on input line 1496.
 
-Package refcheck Warning: Unused label `defn:stochround' on input line 1468.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1497.
+Package refcheck Warning: Unused label `defn:stochround' on input line 1496.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\sim' on input line 1497.
+(hyperref)                removing `math shift' on input line 1525.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1497.
+(hyperref)                removing `\sim' on input line 1525.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1499.
+(hyperref)                removing `math shift' on input line 1525.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1499.
+(hyperref)                removing `math shift' on input line 1527.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathsurround' on input line 1499.
+(hyperref)                removing `math shift' on input line 1527.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\z@' on input line 1499.
+(hyperref)                removing `\mathsurround' on input line 1527.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathchar' on input line 1499.
+(hyperref)                removing `\z@' on input line 1527.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1499.
+(hyperref)                removing `\mathchar' on input line 1527.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1499.
+(hyperref)                removing `math shift' on input line 1527.
 
 
-Overfull \hbox (2.99547pt too wide) in paragraph at lines 1505--1507
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 1527.
+
+
+Overfull \hbox (2.99547pt too wide) in paragraph at lines 1533--1535
 \OT1/cmr/m/n/10.95 which SMC pro-vides an un-bi-ased like-li-hood es-ti-mate wi
 th which to com-pute the Metropolis-
  []
 
-[32
+[33
 
 ]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1512.
+(hyperref)                removing `math shift' on input line 1540.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\sim' on input line 1512.
+(hyperref)                removing `\sim' on input line 1540.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1512.
+(hyperref)                removing `math shift' on input line 1540.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1513--1515
-
- []
-
-[33]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1559.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\sim' on input line 1559.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1559.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1560--1562
+Underfull \hbox (badness 10000) in paragraph at lines 1541--1543
 
  []
 
 [34]
-<plots/lindsten_figure.png, id=820, 641.39626pt x 665.48625pt>
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 1587.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\sim' on input line 1587.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 1587.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1588--1590
+
+ []
+
+[35]
+<plots/lindsten_figure.png, id=840, 641.39626pt x 665.48625pt>
 File: plots/lindsten_figure.png Graphic file (type png)
 <use plots/lindsten_figure.png>
-Package pdftex.def Info: plots/lindsten_figure.png  used on input line 1574.
+Package pdftex.def Info: plots/lindsten_figure.png  used on input line 1602.
 (pdftex.def)             Requested size: 341.43437pt x 354.25966pt.
- [35 <./plots/lindsten_figure.png>]
-<plots/immresample.jpg, id=832, 730.4088pt x 291.0072pt>
+ [36 <./plots/lindsten_figure.png>]
+<plots/immresample.jpg, id=852, 730.4088pt x 291.0072pt>
 File: plots/immresample.jpg Graphic file (type jpg)
 <use plots/immresample.jpg>
-Package pdftex.def Info: plots/immresample.jpg  used on input line 1596.
+Package pdftex.def Info: plots/immresample.jpg  used on input line 1624.
 (pdftex.def)             Requested size: 341.43437pt x 136.03185pt.
- [36 <./plots/immresample.jpg>]
-<plots/ancsampworks.jpg, id=842, 703.428pt x 662.9568pt>
+ [37 <./plots/immresample.jpg>]
+<plots/ancsampworks.jpg, id=861, 703.428pt x 662.9568pt>
 File: plots/ancsampworks.jpg Graphic file (type jpg)
 <use plots/ancsampworks.jpg>
-Package pdftex.def Info: plots/ancsampworks.jpg  used on input line 1630.
+Package pdftex.def Info: plots/ancsampworks.jpg  used on input line 1658.
 (pdftex.def)             Requested size: 341.43437pt x 321.79668pt.
 )
-[37 <./plots/ancsampworks.jpg>] [38]
+[38 <./plots/ancsampworks.jpg>] [39]
 \openout2 = `limits.aux'.
 
  (./limits.tex
@@ -2041,7 +1982,7 @@ Package refcheck Warning: Unused label `fig:encoding_b' on input line 129.
 
 Package refcheck Warning: Unused label `eq:defn_cN' on input line 138.
 
-[39
+[40
 
 
 
@@ -2053,11 +1994,11 @@ Package refcheck Warning: Unused label `eq:defn_DN' on input line 148.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 156.
-[40]
+[41]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 221.
- [41] [42]
+ [42] [43]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 284.
@@ -2069,19 +2010,19 @@ cmr/m/n/10.95 1$ term (which counts sin-gle pair merg-ers), for which $(\OML/cm
 m/m/it/10.95 b[]; b[]; [] ; b[]\OT1/cmr/m/n/10.95 ) =
  []
 
-[43] [44]
+[44] [45]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 403.
- [45]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 439.
  [46]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
+(mdframed)              on input line 439.
+ [47]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
 (mdframed)              on input line 495.
- [47] [48]
+ [48] [49]
 Overfull \hbox (16.37553pt too wide) in paragraph at lines 554--554
 [][][][][]\OT1/cmr/m/n/9 Brown et al. 2021 
  []
@@ -2089,11 +2030,11 @@ Overfull \hbox (16.37553pt too wide) in paragraph at lines 554--554
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 564.
-[49]
+[50]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 590.
- [50]
+ [51]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 637.
@@ -2108,7 +2049,7 @@ m/n/10.95 )[]$ \OT1/cmr/m/it/10.95 such that $[][]\OML/cmm/m/it/10.95 b[] \OT1/
 cmr/m/n/10.95 =
  []
 
-[51] [52]
+[52] [53]
 Overfull \hbox (101.82979pt too wide) in paragraph at lines 795--796
 \OT1/cmr/m/n/10.95 proof is sim-i-lar to \OT1/cmtt/m/n/10.95 Dropbox/SMC[]Genea
 logies/Asymptotic[]genealogies[]of[]interacting[]particle[]systems/
@@ -2120,7 +2061,7 @@ Overfull \hbox (20.12596pt too wide) in paragraph at lines 795--796
 s/full[]redraft.pdf\OT1/cmr/m/n/10.95 , from
  []
 
-[53] [54] [55] [56]) [57]
+[54] [55] [56] [57]) [58]
 \openout2 = `weakconv.aux'.
 
  (./weakconv.tex
@@ -2128,20 +2069,20 @@ chapter 4.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 30.
-[58
+[59
 
 
 
 
-] [59] [60]
+] [60] [61]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 152.
- [61]
+ [62]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 204.
- [62]
+ [63]
 Overfull \hbox (1.4709pt too wide) detected at line 258
 \U/msb/m/n/10.95 P\OT1/cmr/m/n/10.95 [\OML/cmm/m/it/10.95 T[] \OMS/cmsy/m/n/10.
 95 ^^T \OML/cmm/m/it/10.95 t[]; [] ; T[] \OMS/cmsy/m/n/10.95 ^^T \OML/cmm/m/it/
@@ -2149,11 +2090,11 @@ Overfull \hbox (1.4709pt too wide) detected at line 258
 10.95 ;
  []
 
-[63]
+[64]
 
 LaTeX Warning: Float too large for page by 11.28517pt on input line 361.
 
-[64]
+[65]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 369.
@@ -2173,10 +2114,10 @@ Overfull \hbox (0.9588pt too wide) detected at line 440
 /it/10.95 :
  []
 
-[65
+[66
 
 
-] [66]
+] [67]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 501.
@@ -2200,21 +2141,21 @@ Overfull \hbox (5.4497pt too wide) detected at line 542
 [](1 + \OML/cmm/m/it/10.95 B\OT1/cmr/m/n/10.95 )[]
  []
 
-[67]
+[68]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 570.
- [68]
+ [69]
 Overfull \hbox (12.55362pt too wide) detected at line 644
 []
  []
 
-[69] [70]
+[70] [71]
 Overfull \hbox (32.69763pt too wide) detected at line 739
 []
  []
 
-[71]
+[72]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 781.
@@ -2224,13 +2165,13 @@ Overfull \hbox (39.7481pt too wide) detected at line 795
 [] []:
  []
 
-[72] [73] [74]
+[73] [74] [75]
 Overfull \hbox (8.07634pt too wide) in paragraph at lines 917--919
 \OT1/cmr/m/n/10.95 Combining [] with the other prod-uct, the ex-pres-sion in-si
 de the ex-pec-ta-tion in Lemma []4.8[][]
  []
 
-[75]
+[76]
 Overfull \hbox (13.54465pt too wide) detected at line 970
 []
  []
@@ -2240,7 +2181,7 @@ Overfull \hbox (17.82137pt too wide) detected at line 1000
 []
  []
 
-[76] [77]
+[77] [78]
 Overfull \hbox (13.40727pt too wide) detected at line 1051
 [] \U/msb/m/n/10.95 E [] \OMS/cmsy/m/n/10.95 ^^T []\OT1/cmr/m/n/10.95 (\OML/cmm
 /m/it/10.95 t \OT1/cmr/m/n/10.95 + 1)[] [] \U/msb/m/n/10.95 E [] \OT1/cmr/m/n/1
@@ -2256,12 +2197,12 @@ Overfull \hbox (39.7481pt too wide) detected at line 1090
 [] []:
  []
 
-[78] [79]
+[79] [80]
 Overfull \hbox (39.96754pt too wide) detected at line 1165
 []
  []
 
-[80] [81]
+[81] [82]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 1237.
@@ -2270,7 +2211,7 @@ Overfull \hbox (7.69235pt too wide) detected at line 1302
 []
  []
 
-[82] [83]
+[83] [84]
 Overfull \hbox (3.14876pt too wide) in paragraph at lines 1324--1325
 []\OT1/cmr/m/n/10.95 For the cor-re-spond-ing lower bound, by a mod-i-fi-ca-tio
 n of the lower bound in Lemma []4.4[][][](b)[][]
@@ -2281,15 +2222,15 @@ Overfull \hbox (20.29185pt too wide) detected at line 1403
 []
  []
 
-[84] [85] [86]
+[85] [86] [87]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 1457.
- [87]
+ [88]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 1478.
- [88]
+ [89]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 1521.
@@ -2305,15 +2246,15 @@ MS/cmsy/m/n/10.95 ^^U \OML/cmm/m/it/10.95 l\OMS/cmsy/m/n/10.95 g$ \OT1/cmr/m/n/
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 1547.
-[89] [90]
+[90] [91]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 1671.
- [91]
+ [92]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 1760.
-) [92]
+) [93]
 \openout2 = `applications.aux'.
 
  (./applications.tex
@@ -2323,7 +2264,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 17--18
 
  []
 
-[93
+[94
 
 
 
@@ -2332,18 +2273,18 @@ Underfull \hbox (badness 10000) in paragraph at lines 17--18
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 117.
- [94] [95]
+ [95] [96]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 280.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 303.
- [96] [97]
+ [97] [98]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 360.
- [98] [99] [100]
+ [99] [100] [101]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 612.
@@ -2351,15 +2292,15 @@ Package mdframed Info: mdframed detected package amsthm
 
 Package refcheck Warning: Unused label `thm:stochrounding' on input line 612.
 
-[101]
+[102]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 633.
- [102]
+ [103]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 808.
- [103]
+ [104]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 829.
@@ -2368,67 +2309,67 @@ Package mdframed Info: mdframed detected package amsthm
 Package refcheck Warning: Unused label `thm:resstrat_nontriviality' on input li
 ne 829.
 
-[104] [105] [106]
+[105] [106] [107]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 1068.
- [107] [108]
+ [108] [109]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 1232.
- [109]) [110]
+ [110]) [111]
 \openout2 = `discussion.aux'.
 
  (./discussion.tex
 chapter 6.
-) [111
+) [112
 
 
 
 
 ]
-Overfull \hbox (2.82875pt too wide) in paragraph at lines 214--214
+Overfull \hbox (2.82875pt too wide) in paragraph at lines 215--215
 [][]\OT1/cmr/m/n/10.95 Christophe An-drieu, Ar-naud Doucet, and Ro-man Holen-st
 ein. ``Par-ti-cle Markov Chain
  []
 
 
-Overfull \hbox (0.1127pt too wide) in paragraph at lines 214--214
+Overfull \hbox (0.1127pt too wide) in paragraph at lines 215--215
 [][]\OT1/cmr/m/n/10.95 Nathana^^?el Beresty-cki. \OT1/cmr/m/it/10.95 Re-cent Pr
 ogress in Co-a-les-cent The-ory\OT1/cmr/m/n/10.95 . 0909.3985. ArXiv, 2009. 
  []
 
-[112
+[113
 
 
 
 
 
 ]
-Overfull \hbox (3.95416pt too wide) in paragraph at lines 214--214
+Overfull \hbox (3.95416pt too wide) in paragraph at lines 215--215
 [][]\OT1/cmr/m/n/10.95 Randal Douc, Olivier Capp^^Se, and Eric Moulines. ``Com-
 par-i-son of Re-sam-pling Schemes
  []
 
-[113] [114] [115] [116]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 215.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 215.
+[114] [115] [116] [117]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 216.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 216.
  (./thesis_main.aux (./introduction.aux)
 (./background.aux) (./limits.aux) (./weakconv.aux) (./applications.aux)
 (./discussion.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 215.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 215.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 216.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 216.
 Package rerunfilecheck Info: File `thesis_main.out' has not changed.
-(rerunfilecheck)             Checksum: B4F3C153BA2C5A5331B5C03B951A35E4;3786.
+(rerunfilecheck)             Checksum: 12DE755697201334E56A196D05907858;3776.
 Package logreq Info: Writing requests to 'thesis_main.run.xml'.
 \openout1 = `thesis_main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 39399 strings out of 492649
- 759459 string characters out of 6129623
- 1290162 words of memory out of 5000000
- 42244 multiletter control sequences out of 15000+600000
+ 39423 strings out of 492649
+ 759917 string characters out of 6129623
+ 1290603 words of memory out of 5000000
+ 42265 multiletter control sequences out of 15000+600000
  576451 words of font info for 133 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  68i,22n,77p,10565b,1729s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2463,10 +2404,10 @@ ts/type1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2018/texmf-dist/fonts
 ype1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2018/texmf-dist/fon
 ts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2018/texmf-dist
 /fonts/type1/adobe/utopia/putb8a.pfb>
-Output written on thesis_main.pdf (125 pages, 5039515 bytes).
+Output written on thesis_main.pdf (126 pages, 5043372 bytes).
 PDF statistics:
- 2000 PDF objects out of 2073 (max. 8388607)
- 1778 compressed objects within 18 object streams
- 446 named destinations out of 1000 (max. 500000)
+ 2019 PDF objects out of 2073 (max. 8388607)
+ 1796 compressed objects within 18 object streams
+ 449 named destinations out of 1000 (max. 500000)
  481 words of extra memory for PDF output out of 10000 (max. 10000000)
 
