@@ -1537,6 +1537,8 @@ The following exposition will focus on another particle MCMC algorithm, namely t
 The following scenario illustrates the power of particle MCMC, and is a good model to have in mind as we go on to discuss particle Gibbs and ancestor sampling.
 \draft{Emphasise that the inference itself is not sequential; we are targeting one static posterior distribution, on a fixed time horizon.}
 
+\seb{Sort out notation e.g.\ $x^\star$ versus $X^\star$}
+
 
 \subsection{Particle Gibbs algorithm \seb{$\checkmark$} }
 \draft{note that of course the algorithm is more general than this peculiar example.}\\
@@ -1562,10 +1564,10 @@ p(\theta \mid x_{0:T}, y_{0:T}) \propto p(\theta) p(x_{0:T}, y_{0:T} \mid \theta
 is often quite straightforward, if not analytically then by using a Metropolis-Hastings step based on the current sampled values of $\theta$ and $x_{0:t}$. 
 The $X$ update, meanwhile, is high-dimensional with strong sequential correlations: exactly the situation in which one might use SMC. 
 For the $X$ update, we need a sample from
-\begin{equation*}
+\begin{equation}\label{eq:PG_Xposterior}
 p(dx_{0:T} \mid \theta, y_{0:T}) 
 \propto \mu_\theta(dx_0) g_\theta(y_0\mid x_0) \prod_{s=1}^T K_\theta(dx_s \mid x_{s-1}) g_\theta(y_s \mid x_s) ,
-\end{equation*}
+\end{equation}
 which can be obtained by running an SMC smoother then sampling one trajectory from its output in proportion to the associated weight.
 
 However, the Markov chain associated to the procedure just described does not admit $p(x_{0:T},\theta \mid y_{0:T})$ as an invariant distribution. It \emph{approximately} targets this distribution, with some bias.
@@ -1710,7 +1712,7 @@ The complete particle Gibbs algorithm for this example then consists of alternat
 
 
 \subsubsection{Ancestral degeneracy leads to poor mixing}
-We have seen in Section~?? that the phenomenon of ancestral degeneracy can severely affect the performance of SMC algorithms, particularly in smoothing applications.
+We have seen in Section~\ref{sec:SMC_genealogies} that the phenomenon of ancestral degeneracy can severely affect the performance of SMC algorithms, particularly in smoothing applications.
 The SMC update of particle Gibbs is a smoothing problem, however it requires only one sampled trajectory from the smoothing distribution, so one might imagine that we are safe from the curse of ancestral degeneracy.
 In fact, the loss of ancestors causes a different problem for particle Gibbs: it prevents some components of the Markov chain being refreshed, so that the chain mixes slowly.
 
@@ -1724,14 +1726,6 @@ For further intuition on this phenomenon the reader is directed to \textcite[Sec
 
 The meaning of $T$ ``too large'' here depends on the model and the type of SMC update used, but typically $T$ is determined by the application and $N$ is limited by computational resources, so we may not be able to control their relative size. The other brute-force approach would be to increase the number of iterations of the MCMC algorithm, but this too is infeasible on a limited computational budget.
 It is therefore worth investing some effort to find an alternative solution to the problem of ancestral degeneracy within particle Gibbs.
-
-
-
-
-
-
-
-
 
 %Particle Gibbs runs into problems when the time horizon $T$ is large compared to the number of particles $N$. $T$ is determined by the application at hand, and $N$ is limited by computational resources, so we may not be able to control their relative size. 
 %The source of the problem is ancestral degeneracy. 
@@ -1751,23 +1745,61 @@ It is therefore worth investing some effort to find an alternative solution to t
 
 
 \subsubsection{The solution: ancestor sampling}
+An effective solution (where it is possible to implement it) was proposed by \textcite{whiteley2010} and is known as \emph{ancestor sampling}.
+It consists of a simple modification to the resampling step within the conditional SMC algorithm. 
+In the basic algorithm with multinomial resampling, at each time step the non-immortal particles are resampled by multinomial resampling according to their weights, while the immortal offspring is deterministically assigned to the immortal parent. That is, at time $t$, for each $i \in \{1,\dots, N\}$,\seb{these LHSs need some conditioning! is the conditioning in the next display correct?}
+\begin{equation*}
+\Prob[a_t^{(j)} = i] \propto 
+\begin{cases}
+w_t^{(i)} & j \text{ non-immortal} \\
+\I{i = a_t^\star} & j \text{ immortal} .
+\end{cases}
+\end{equation*}
+
+Ancestor sampling alters the resampling step by including a backwards sampling\seb{simulation?} step for the immortal particle. Instead of deterministically inheriting the ``correct'' parent, the immortal particle samples its parent among all $N$ possible parents.
+This is justified in the same way as backwards sampling in general (Section~??), provided the ancestor sampling probabilities are chosen correctly, although we now apply the backwards sampling step to the immortal trajectory only.
+The correct resampling probabilities are, for each $i$,\seb{I think we have to assume $p$s (i.e. $\mu$ and $K$) admit densities at this point, and drop the $d$'s}
+\begin{equation}\label{eq:ancsamp_probs}
+\Prob[a_t^{(j)} = i \mid X_{0:t-1}^{(1:N)}, X_{t:T}^\star ] \propto
+\begin{cases}
+w_t^{(i)} & j \text{ non-immortal}\\
+w_t^{(i)} \frac{p( d(x_{0:t-1}^{(i)}, x_{t:T}^*) \mid \theta, y_{0:T} )}
+        {p( dx_{0:t-1}^{(i)} \mid \theta, y_{0:t-1} ) } 
+        & j \text{ immortal} .
+\end{cases}
+\end{equation}
+To simplify the ratio, notice that
+\begin{equation*}
+p( dx_{0:t-1}^{(i)} \mid \theta, y_{0:t-1} )
+\propto \mu_\theta(dx_0^{(i)}) g_\theta(y_0 \mid x_0^{(i)}) 
+        \prod_{s=1}^{t-1} K_\theta(dx_s^{(i)} \mid x_{s-1}^{(i)}) 
+        g_\theta(y_s \mid x_s^{(i)})
+\end{equation*}
+and
+\begin{align*}
+p( d(x_{0:t-1}^{(i)}, x_{t:T}^*) \mid \theta, y_{0:T} )
+&\propto \mu_\theta(dx_0^{(i)}) g_\theta(y_0 \mid x_0^{(i)}) 
+        \left\{ \prod_{s=1}^{t-1} K_\theta(dx_s^{(i)} \mid x_{s-1}^{(i)})
+        g_\theta(y_s \mid x_s^{(i)}) \right\} \\
+    &\qquad\times K_\theta(dx_t^\star \mid x_{t-1}^{(i)}) g_\theta(y_t \mid x_t^\star)
+        \left\{ \prod_{s=t+1}^T K_\theta(dx_s^\star \mid x_{s-1}^\star)
+        g_\theta(y_s \mid x_s^\star) \right\} ,
+\end{align*}
+and the ratio becomes\seb{I think the first proportionality hides the likelihood ratio $p(y_{0:T}|\theta)/p(y_{0:t-1}|\theta)$ --- see \eqref{eq:PG_Xposterior} --- it might make things clearer if I keep such constants explicit for longer}
+\begin{align*}
+\frac{p( d(x_{0:t-1}^{(i)}, x_{t:T}^*) \mid \theta, y_{0:T} )}
+        {p( dx_{0:t-1}^{(i)} \mid \theta, y_{0:t-1} ) }
+&\propto K_\theta(dx_t^* \mid x_{t-1}^{(i)}) g_\theta(y_t \mid x_t^*) \prod_{s=t}^T 
+        K_\theta(dx_s^* \mid x_{s-1}^*) g_\theta(y_s \mid x_s^*) \\
+&\propto K_\theta(dx_t^* \mid x_{t-1}^{(i)}) .
+\end{align*}
 
 
 
 ...\\
-\seb{The following was dumped from elsewhere and NEEDS REDRAFTING.}\\
+
 %%%%
-
-Ancestor sampling was first suggested by \textcite{whiteley2010}. Its contribution is to reduce autocorrelation between samples obtained using the particle Gibbs algorithm.
-
-
-An effective solution (where it is possible to implement it) was proposed by Nick Whiteley and is known as ancestor sampling.
-It consists of a simple modification to the resampling step within the conditional SMC algorithm. 
-In the basic CSMC algorithm, at each time step the particles are resampled by multinomial resampling according to their weights. That is, at each time $t$, each non-immortal offspring is assigned a parent as so:
-\begin{equation*}
-\Prob[a_t^{(j)} = i] \propto w_t^{(i)} ,
-\end{equation*}
-while the immortal offspring is deterministically assigned to the immortal parent.
+\seb{The following was dumped from elsewhere and NEEDS REDRAFTING.}\\
 
 \begin{figure}
 \centering
@@ -1777,7 +1809,7 @@ while the immortal offspring is deterministically assigned to the immortal paren
 \end{figure}
 
 In ancestor sampling we do the same thing, except that the immortal particle is also resampled, rather than being deterministically assigned:
-\begin{equation}\label{eq:ancsamp_probs}
+\begin{equation}%\label{eq:ancsamp_probs}
 \Prob[a_t^{(j)} = i] \propto
 \begin{cases}
 w_t^{(i)} &\text{non-immortal particles}\\

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  3 JUN 2021 13:24
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  3 JUN 2021 14:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1672,15 +1672,12 @@ Package refcheck Warning: Unlabelled equation (\relax 2.10) on input line 464.
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 515.
  [13] [14]
-
-Package refcheck Warning: Unused label `sec:SMC_genealogies' on input line 570.
-
-
 <plots/ancdegen_mn.pdf, id=568, 602.25pt x 401.5pt>
 File: plots/ancdegen_mn.pdf Graphic file (type pdf)
 <use plots/ancdegen_mn.pdf>
 Package pdftex.def Info: plots/ancdegen_mn.pdf  used on input line 583.
 (pdftex.def)             Requested size: 213.39568pt x 142.26698pt.
+
 
 Package refcheck Warning: Unused label `fig:ancdegen_mn' on input line 583.
 
@@ -1905,70 +1902,93 @@ th which to com-pute the Metropolis-
 ]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1541.
+(hyperref)                removing `math shift' on input line 1543.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1541.
+(hyperref)                removing `math shift' on input line 1543.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathsurround' on input line 1541.
+(hyperref)                removing `\mathsurround' on input line 1543.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\z@' on input line 1541.
+(hyperref)                removing `\z@' on input line 1543.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathchar' on input line 1541.
+(hyperref)                removing `\mathchar' on input line 1543.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1541.
+(hyperref)                removing `math shift' on input line 1543.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1541.
+(hyperref)                removing `math shift' on input line 1543.
 
 [34]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1703.
+(hyperref)                removing `math shift' on input line 1705.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\sim' on input line 1703.
+(hyperref)                removing `\sim' on input line 1705.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1703.
+(hyperref)                removing `math shift' on input line 1705.
 
 [35]
-<plots/lindsten_figure.png, id=848, 641.39626pt x 665.48625pt>
+<plots/lindsten_figure.png, id=850, 641.39626pt x 665.48625pt>
 File: plots/lindsten_figure.png Graphic file (type png)
 <use plots/lindsten_figure.png>
-Package pdftex.def Info: plots/lindsten_figure.png  used on input line 1743.
+Package pdftex.def Info: plots/lindsten_figure.png  used on input line 1737.
 (pdftex.def)             Requested size: 341.43437pt x 354.25966pt.
+ [36] [37 <./plots/lindsten_figure.png>]
+Overfull \hbox (10.72044pt too wide) detected at line 1787
+[]
+ []
 
-Underfull \hbox (badness 10000) in paragraph at lines 1757--1760
+
+Overfull \hbox (39.53647pt too wide) in paragraph at lines 1787--1789
+\OT1/cmr/m/n/10.95 and the ra-tio be-comes []I think the first pro-por-tion-al-
+ity hides the like-li-hood ra-tio $\OML/cmm/m/it/10.95 p\OT1/cmr/m/n/10.95 (\OM
+L/cmm/m/it/10.95 y[]\OMS/cmsy/m/n/10.95 j\OML/cmm/m/it/10.95 ^^R\OT1/cmr/m/n/10
+.95 )\OML/cmm/m/it/10.95 =p\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 y[]\OMS/cmsy
+/m/n/10.95 j\OML/cmm/m/it/10.95 ^^R\OT1/cmr/m/n/10.95 )$
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1799--1800
 
  []
 
-[36] [37 <./plots/lindsten_figure.png>]
-<plots/immresample.jpg, id=864, 730.4088pt x 291.0072pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 1802--1803
+
+ []
+
+[38]
+<plots/immresample.jpg, id=873, 730.4088pt x 291.0072pt>
 File: plots/immresample.jpg Graphic file (type jpg)
 <use plots/immresample.jpg>
-Package pdftex.def Info: plots/immresample.jpg  used on input line 1774.
+Package pdftex.def Info: plots/immresample.jpg  used on input line 1806.
 (pdftex.def)             Requested size: 341.43437pt x 136.03185pt.
- [38 <./plots/immresample.jpg>]
-<plots/ancsampworks.jpg, id=873, 703.428pt x 662.9568pt>
+
+
+Package refcheck Warning: Unlabelled equation (\relax 2.16) on input line 1818.
+
+
+[39 <./plots/immresample.jpg>]
+<plots/ancsampworks.jpg, id=882, 703.428pt x 662.9568pt>
 File: plots/ancsampworks.jpg Graphic file (type jpg)
 <use plots/ancsampworks.jpg>
-Package pdftex.def Info: plots/ancsampworks.jpg  used on input line 1808.
+Package pdftex.def Info: plots/ancsampworks.jpg  used on input line 1840.
 (pdftex.def)             Requested size: 341.43437pt x 321.79668pt.
-)
-[39 <./plots/ancsampworks.jpg>] [40]
+) [40 <./plots/ancsampworks.jpg>]
 \openout2 = `limits.aux'.
 
  (./limits.tex
@@ -2361,23 +2381,15 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 216.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 216.
 Package rerunfilecheck Info: File `thesis_main.out' has not changed.
 (rerunfilecheck)             Checksum: 467E528B9C1D5169E71E45C3036261F3;3776.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-
-Package biblatex Warning: Please rerun LaTeX.
-(biblatex)                Page breaks have changed.
-
 Package logreq Info: Writing requests to 'thesis_main.run.xml'.
 \openout1 = `thesis_main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 39436 strings out of 492649
- 760152 string characters out of 6129623
- 1290704 words of memory out of 5000000
- 42273 multiletter control sequences out of 15000+600000
+ 39444 strings out of 492649
+ 760296 string characters out of 6129623
+ 1290804 words of memory out of 5000000
+ 42279 multiletter control sequences out of 15000+600000
  577053 words of font info for 135 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  68i,22n,77p,10565b,1729s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2412,10 +2424,10 @@ ts/type1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2018/texmf-dist/fonts
 ype1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2018/texmf-dist/fon
 ts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2018/texmf-dist
 /fonts/type1/adobe/utopia/putb8a.pfb>
-Output written on thesis_main.pdf (127 pages, 5046753 bytes).
+Output written on thesis_main.pdf (127 pages, 5050567 bytes).
 PDF statistics:
- 2033 PDF objects out of 2073 (max. 8388607)
- 1808 compressed objects within 19 object streams
- 454 named destinations out of 1000 (max. 500000)
+ 2037 PDF objects out of 2073 (max. 8388607)
+ 1812 compressed objects within 19 object streams
+ 456 named destinations out of 1000 (max. 500000)
  481 words of extra memory for PDF output out of 10000 (max. 10000000)
 
