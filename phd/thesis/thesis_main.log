@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  2 JUN 2021 18:25
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  3 JUN 2021 13:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1944,28 +1944,28 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 1703.
 
+[35]
+<plots/lindsten_figure.png, id=848, 641.39626pt x 665.48625pt>
+File: plots/lindsten_figure.png Graphic file (type png)
+<use plots/lindsten_figure.png>
+Package pdftex.def Info: plots/lindsten_figure.png  used on input line 1743.
+(pdftex.def)             Requested size: 341.43437pt x 354.25966pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1704--1706
+Underfull \hbox (badness 10000) in paragraph at lines 1757--1760
 
  []
 
-[35]
-<plots/lindsten_figure.png, id=847, 641.39626pt x 665.48625pt>
-File: plots/lindsten_figure.png Graphic file (type png)
-<use plots/lindsten_figure.png>
-Package pdftex.def Info: plots/lindsten_figure.png  used on input line 1721.
-(pdftex.def)             Requested size: 341.43437pt x 354.25966pt.
- [36] [37 <./plots/lindsten_figure.png>]
+[36] [37 <./plots/lindsten_figure.png>]
 <plots/immresample.jpg, id=864, 730.4088pt x 291.0072pt>
 File: plots/immresample.jpg Graphic file (type jpg)
 <use plots/immresample.jpg>
-Package pdftex.def Info: plots/immresample.jpg  used on input line 1743.
+Package pdftex.def Info: plots/immresample.jpg  used on input line 1774.
 (pdftex.def)             Requested size: 341.43437pt x 136.03185pt.
  [38 <./plots/immresample.jpg>]
 <plots/ancsampworks.jpg, id=873, 703.428pt x 662.9568pt>
 File: plots/ancsampworks.jpg Graphic file (type jpg)
 <use plots/ancsampworks.jpg>
-Package pdftex.def Info: plots/ancsampworks.jpg  used on input line 1777.
+Package pdftex.def Info: plots/ancsampworks.jpg  used on input line 1808.
 (pdftex.def)             Requested size: 341.43437pt x 321.79668pt.
 )
 [39 <./plots/ancsampworks.jpg>] [40]
@@ -2361,15 +2361,23 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 216.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 216.
 Package rerunfilecheck Info: File `thesis_main.out' has not changed.
 (rerunfilecheck)             Checksum: 467E528B9C1D5169E71E45C3036261F3;3776.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package biblatex Warning: Please rerun LaTeX.
+(biblatex)                Page breaks have changed.
+
 Package logreq Info: Writing requests to 'thesis_main.run.xml'.
 \openout1 = `thesis_main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 39433 strings out of 492649
- 760044 string characters out of 6129623
- 1289673 words of memory out of 5000000
- 42271 multiletter control sequences out of 15000+600000
+ 39436 strings out of 492649
+ 760152 string characters out of 6129623
+ 1290704 words of memory out of 5000000
+ 42273 multiletter control sequences out of 15000+600000
  577053 words of font info for 135 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  68i,22n,77p,10565b,1729s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2404,10 +2412,10 @@ ts/type1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2018/texmf-dist/fonts
 ype1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2018/texmf-dist/fon
 ts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2018/texmf-dist
 /fonts/type1/adobe/utopia/putb8a.pfb>
-Output written on thesis_main.pdf (127 pages, 5046652 bytes).
+Output written on thesis_main.pdf (127 pages, 5046753 bytes).
 PDF statistics:
  2033 PDF objects out of 2073 (max. 8388607)
  1808 compressed objects within 19 object streams
- 453 named destinations out of 1000 (max. 500000)
+ 454 named destinations out of 1000 (max. 500000)
  481 words of extra memory for PDF output out of 10000 (max. 10000000)
 

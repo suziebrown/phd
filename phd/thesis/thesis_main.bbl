@@ -2189,6 +2189,38 @@
       \field{pages}{153\bibrangedash 158}
       \range{pages}{6}
     \endentry
+    \entry{whiteley2010}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=54f298378a05eefa8496fcea832c3d7e}{%
+           family={Whiteley},
+           familyi={W\bibinitperiod},
+           given={Nick},
+           giveni={N\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley Online Library}%
+      }
+      \strng{namehash}{54f298378a05eefa8496fcea832c3d7e}
+      \strng{fullhash}{54f298378a05eefa8496fcea832c3d7e}
+      \strng{bibnamehash}{54f298378a05eefa8496fcea832c3d7e}
+      \strng{authorbibnamehash}{54f298378a05eefa8496fcea832c3d7e}
+      \strng{authornamehash}{54f298378a05eefa8496fcea832c3d7e}
+      \strng{authorfullhash}{54f298378a05eefa8496fcea832c3d7e}
+      \field{sortinit}{W}
+      \field{sortinithash}{ecb89ff85896a47dc313960773ac311d}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of the Royal Statistical Society: Series B (Statistical Methodology)}
+      \field{number}{3}
+      \field{title}{Discussion on ``Particle {Markov} Chain {Monte} {Carlo} Methods''}
+      \field{volume}{72}
+      \field{year}{2010}
+      \field{pages}{306\bibrangedash 307}
+      \range{pages}{2}
+    \endentry
     \entry{whitley1994}{article}{}
       \name{author}{1}{}{%
         {{uniquename=0,uniquepart=base,hash=b64bc2becad49e7b8be65b1b7ca374f1}{%
