@@ -1079,7 +1079,7 @@ We conjecture that similar results hold for conditional SMC with other resamplin
 The conditions \eqref{eq:gq_bounds_csmc} are, as one might expect, identical to those assumed in the case of standard SMC with multinomial resampling (Corollary~\ref{thm:multinomial}).
 
 \begin{proof}
-Assume, without loss of generality, that the immortal particle takes index 1 in each generation. This assumption is valid due to \ref{standing_assumption}, and significantly lightens the notation, but the same argument holds if the immortal indices are taken to be $a_{(0:T)}^\star$ rather than $(1,\dots,1)$.
+Assume, without loss of generality, that the immortal particle takes index 1 in each generation. This assumption is valid due to \ref{standing_assumption}, and significantly lightens the notation, but the same argument holds if the immortal indices are taken to be $a_{0:T}^\star$ rather than $(1,\dots,1)$.
 
 Define $\mathcal{H}_t$ as in \eqref{eq:defn_Ht}.
 The parental indices are conditionally independent given $\mathcal{H}_t$, as in standard SMC with multinomial resampling, but we have to treat $i=1$ as a special case. The conditional law on the $i^{th}$ parental index is
@@ -1250,6 +1250,7 @@ The proof is identical to that of Lemma~\ref{thm:mn_nontriviality}, since \eqref
 
 
 \subsection{Effect of ancestor sampling}
+\label{sec:ancsamp_genealogy}
 Ancestor sampling breaks up the immortal lineage into sections, so it is not really a lineage anymore, and we do not really have a pure coalescent process backwards in time. Regardless, we shall throw caution to the wind and examine the resulting ``genealogies''.
 
 Using the parent sampling probabilities specified in \eqref{eq:ancsamp_probs},
@@ -1258,10 +1259,10 @@ now with time reversed and the notation made to fit \seb{preferably the presenta
 \Prob[a_t^{(i)} = a_i \mid \mathcal{H}_t ] \propto
 \begin{cases}
 w_t^{(a_i)} q_{t-1}(X_t^{(a_i)}, X_{t-1}^{(i)}) &\qquad i\in\text{non-immortal particles}\\
-w_t^{(a_i)} q_{t-1}(X_t^{(a_i)}, X_{t-1}^*) &\qquad i=\text{immortal particle} .
+w_t^{(a_i)} q_{t-1}(X_t^{(a_i)}, x_{t-1}^\star) &\qquad i=\text{immortal particle} .
 \end{cases} 
 \end{equation*}
-But when $i$ is the index of the immortal particle, $X_{t-1}^{(i)} = X_{t-1}^*$, so the above simplifies to
+But when $i$ is the index of the immortal particle, $X_{t-1}^{(i)} = x_{t-1}^\star$, so the above simplifies to
 \begin{equation*}
 \Prob[a_t^{(i)} = a_i \mid \mathcal{H}_t ] \propto
 w_t^{(a_i)} q_{t-1}(X_t^{(a_i)}, X_{t-1}^{(i)})

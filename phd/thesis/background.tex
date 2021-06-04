@@ -1551,6 +1551,7 @@ Y_t \mid X_t &\sim g_\theta(\cdot \mid X_t) &\text{for } t=0,\dots, T \\
 \end{align*}
 exactly like \eqref{eq:SSM_spec} except that the specification is now parametrised by $\theta$ (which may be multi-dimensional), and we place a prior distribution on $\theta$. 
 For notational simplicity we now assume that the kernels $K_\theta$ and potential functions $g_\theta$ do not depend on $t$, although the concept generalises readily to non-time-homogeneous dynamics.
+\seb{In Section~\ref{sec:ancsamp_genealogy}, we require a time index on $q$, so maybe it's worth keeping the time dependence in this section too, e.g.\ $K_t^\theta$?}
 As usual, $\mu$, $K_\theta$, $g_\theta$ and $p$ are part of the model and are assumed to be known but not necessarily tractable.
 
 Notice that we are now working with a finite time horizon $T\in\mathbb{N}$. The inference of interest here is not inherently sequential; we are building an MCMC algorithm to sample from a single target distribution which happens to include some sequentially correlated components.
@@ -1758,53 +1759,58 @@ w_t^{(i)} & j \text{ non-immortal} \\
 
 Ancestor sampling alters the resampling step by including a backwards sampling\seb{simulation?} step for the immortal particle. Instead of deterministically inheriting the ``correct'' parent, the immortal particle samples its parent among all $N$ possible parents.
 This is justified in the same way as backwards sampling in general (Section~??), provided the ancestor sampling probabilities are chosen correctly, although we now apply the backwards sampling step to the immortal trajectory only.
-The correct resampling probabilities are, for each $i$,\seb{I think we have to assume $p$s (i.e. $\mu$ and $K$) admit densities at this point, and drop the $d$'s}
+
+Now assume that the smoothing distributions admit densities, that is $\mu_\theta(\cdot)$ and $K_\theta(\cdot\mid x)$, for any $x$, admit densities. Denote the density of $K_\theta$ by $q_\theta$. Define the trajectories $X_{s, 0:s}^{(i)}$ (for any $s,i$) as before, by tracing back the states of the parents starting from $X_s^{(i)}$.
+Then the correct resampling probabilities are, for each $i$,
 \begin{equation}\label{eq:ancsamp_probs}
-\Prob[a_t^{(j)} = i \mid X_{0:t-1}^{(1:N)}, X_{t:T}^\star ] \propto
-\begin{cases}
+\Prob[a_t^{(j)} = i \mid X_{0:t-1}^{(1:N)}, x_{0:T}^\star, a_{0:T}^\star ] 
+\propto \begin{cases}
 w_t^{(i)} & j \text{ non-immortal}\\
-w_t^{(i)} \frac{p( d(x_{0:t-1}^{(i)}, x_{t:T}^*) \mid \theta, y_{0:T} )}
-        {p( dx_{0:t-1}^{(i)} \mid \theta, y_{0:t-1} ) } 
+w_t^{(i)} \frac{
+        p( (X_{t-1, 0:t-1}^{(i)}, a_{0:t-1}^{(1:N)}, x_{t:T}^\star) \mid \theta, y_{0:T} )}
+        {p( X_{t-1, 0:t-1}^{(i)} \mid \theta, y_{0:t-1} ) } 
         & j \text{ immortal} .
 \end{cases}
 \end{equation}
-The ratio of densities can be interpreted as the conditional probability that the whole trajectory is $(x_{0:t-1}^{(i)}, x_{t:T}^*)$ given that the first $t-1$ states are $x_{0:t-1}^{(i)}$.
+The ratio of densities can be interpreted as the conditional probability that the whole trajectory is the concatenation of $(X_{t-1, 0:t-1}^{(i)}$ with $x_{t:T}^\star)$, given that its first $t-1$ states are $X_{t-1, 0:t-1}^{(i)}$.
 To simplify the ratio, we can use \eqref{eq:PG_Xposterior} to write
 \begin{equation*}
-p( dx_{0:t-1}^{(i)} \mid \theta, y_{0:t-1} )
-\propto \mu_\theta(dx_0^{(i)}) g_\theta(y_0 \mid x_0^{(i)}) 
-        \prod_{s=1}^{t-1} K_\theta(dx_s^{(i)} \mid x_{s-1}^{(i)}) 
-        g_\theta(y_s \mid x_s^{(i)})
+p( X_{t-1, 0:t-1}^{(i)} \mid \theta, y_{0:t-1} )
+\propto \mu_\theta( X_{t-1,0}^{(i)} ) g_\theta( y_0 \mid X_{t-1,0}^{(i)} ) 
+        \prod_{s=1}^{t-1} q_\theta( X_{t-1,s}^{(i)} \mid X_{t-1,s-1}^{(i)} ) 
+        g_\theta( y_s \mid X_{t-1,s}^{(i)} )
 \end{equation*}
-and
+and\seb{actually, this explicit trajectory notation is going to make all this much heavier... but perhaps it's worth it for the clarity?}
 \begin{align*}
-p( d(x_{0:t-1}^{(i)}, x_{t:T}^\star) \mid \theta, y_{0:T} )
-&\propto \mu_\theta(dx_0^{(i)}) g_\theta(y_0 \mid x_0^{(i)}) 
-        \left\{ \prod_{s=1}^{t-1} K_\theta(dx_s^{(i)} \mid x_{s-1}^{(i)})
-        g_\theta(y_s \mid x_s^{(i)}) \right\} \\
-    &\qquad\times K_\theta(dx_t^\star \mid x_{t-1}^{(i)}) g_\theta(y_t \mid x_t^\star)
-        \left\{ \prod_{s=t+1}^T K_\theta(dx_s^\star \mid x_{s-1}^\star)
+p( (X_{t-1, 0:t-1}^{(i)}, x_{t:T}^\star) \mid \theta, y_{0:T} )
+&\propto \mu_\theta( X_{t-1,0}^{(i)} ) g_\theta( y_0 \mid X_{t-1,0}^{(i)} ) 
+        \left\{ \prod_{s=1}^{t-1} q_\theta( X_{t-1,s}^{(i)} \mid X_{t-1,s-1}^{(i)} )
+        g_\theta( y_s \mid X_{t-1,s}^{(i)} ) \right\} \\
+    &\qquad\times q_\theta( x_{t}^\star \mid X_{t-1,t-1}^{(i)} ) 
+        g_\theta( y_t \mid x_t^\star )
+        \left\{ \prod_{s=t+1}^T q_\theta(x_s^\star \mid x_{s-1}^\star)
         g_\theta(y_s \mid x_s^\star) \right\} .
 \end{align*}
 The ratio then becomes\seb{I think the first proportionality hides the likelihood ratio $p(y_{0:T}|\theta)/p(y_{0:t-1}|\theta)$ --- see \eqref{eq:PG_Xposterior} --- it might make things clearer if I keep such constants explicit for longer}
 \begin{align*}
-\frac{p( d(x_{0:t-1}^{(i)}, x_{t:T}^\star) \mid \theta, y_{0:T} )}
-        {p( dx_{0:t-1}^{(i)} \mid \theta, y_{0:t-1} ) }
-&\propto K_\theta(dx_t^\star \mid x_{t-1}^{(i)}) g_\theta(y_t \mid x_t^\star) 
-        \prod_{s=t}^T K_\theta(dx_s^\star \mid x_{s-1}^\star) 
-        g_\theta(y_s \mid x_s^\star) \\
-&\propto K_\theta(dx_t^\star \mid x_{t-1}^{(i)}) .
+\frac{p( ( X_{t-1,0:t-1}^{(i)}, x_{t:T}^\star ) \mid \theta, y_{0:T} )}
+        {p( X_{t-1, 0:t-1}^{(i)} \mid \theta, y_{0:t-1} ) }
+&\propto q_\theta( x_t^\star \mid X_{t-1,t-1}^{(i)} ) g_\theta( y_t \mid x_t^\star ) 
+        \prod_{s=t}^T q_\theta( x_s^\star \mid x_{s-1}^\star ) 
+        g_\theta( y_s \mid x_s^\star ) \\
+&\propto q_\theta( x_t^\star \mid X_{t-1,t-1}^{(i)} ) \\
+&= q_\theta( x_t^\star \mid X_{t-1}^{(i)} )  .
 \end{align*}
 The probabilities in \eqref{eq:ancsamp_probs} become
 \begin{equation}
 \Prob[a_t^{(j)} = i \mid X_{0:t-1}^{(1:N)}, X_{t:T}^\star ] \propto
 \begin{cases}
 w_t^{(i)} & j \text{ non-immortal}\\
-w_t^{(i)} q_\theta(x_t^\star \mid x_{t-1}^{(i)}) & j \text{ immortal} .
+w_t^{(i)} q_\theta( x_t^\star \mid X_{t-1}^{(i)} ) & j \text{ immortal} .
 \end{cases}
 \end{equation}
 Therefore, in order to do ancestor sampling, we need a stronger assumption on the Markov kernels than was required to simply run the conditional SMC algorithm: we now require that $K_\theta$ admits a density $q_\theta$ and that this density can be evaluated pointwise, whereas previously we only needed to draw samples from $K_\theta$\seb{or rather from $K_\theta(\cdot \mid x)$ for all $x$}.
-This will rule out ancestor sampling in some applications.
+This additional requirement rules out ancestor sampling in some applications.
 
 Recall that the usual backward simulation procedure requires a full forward pass to calculate the future states before the backward simulation probabilities can be computed. Ancestor resampling, on the other hand, does not require a forward pass because it only computes backward simulation probabilities for the immortal trajectory, for which all the future states are known in advance. This means that ancestor sampling can be implemented on-line.
 
