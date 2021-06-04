@@ -1748,17 +1748,17 @@ It is therefore worth investing some effort to find an alternative solution to t
 \subsubsection{The solution: ancestor sampling}
 An effective solution (where it is possible to implement it) was proposed by \textcite{whiteley2010} and is known as \emph{ancestor sampling}.
 It consists of a simple modification to the resampling step within the conditional SMC algorithm. 
-In the basic algorithm with multinomial resampling, at each time step the non-immortal particles are resampled by multinomial resampling according to their weights, while the immortal offspring is deterministically assigned to the immortal parent. That is, at time $t$, for each $i \in \{1,\dots, N\}$,\seb{these LHSs need some conditioning! is the conditioning in the next display correct?}
+In the basic algorithm with multinomial resampling, at each time step the non-immortal particles are resampled by multinomial resampling according to their weights, while the immortal offspring is deterministically assigned to the immortal parent. That is, at time $t$, for each $i \in \{1,\dots, N\}$,\seb{Is the following LHS conditioning correct? No: you can't calculate the weight from the info given!}
 \begin{equation*}
-\Prob[a_t^{(j)} = i] \propto 
-\begin{cases}
+\Prob[a_t^{(j)} = i \mid X_{0:t-1}^{(1:N)}, x_{0:T}^\star, a_{0:T}^\star ] 
+\propto \begin{cases}
 w_t^{(i)} & j \text{ non-immortal} \\
 \I{i = a_t^\star} & j \text{ immortal} .
 \end{cases}
 \end{equation*}
 
-Ancestor sampling alters the resampling step by including a backwards sampling\seb{simulation?} step for the immortal particle. Instead of deterministically inheriting the ``correct'' parent, the immortal particle samples its parent among all $N$ possible parents.
-This is justified in the same way as backwards sampling in general (Section~??), provided the ancestor sampling probabilities are chosen correctly, although we now apply the backwards sampling step to the immortal trajectory only.
+Ancestor sampling combines the resampling step with a backward simulation step for the immortal particle. Instead of deterministically inheriting the ``correct'' parent, the immortal particle samples its parent among all $N$ possible parents.
+This is justified in the same way as backwards simulation in general (Section~??), provided the ancestor sampling probabilities are chosen correctly, although we now apply the backwards sampling step to the immortal trajectory only.
 
 Now assume that the smoothing distributions admit densities, that is $\mu_\theta(\cdot)$ and $K_\theta(\cdot\mid x)$, for any $x$, admit densities. Denote the density of $K_\theta$ by $q_\theta$. Define the trajectories $X_{s, 0:s}^{(i)}$ (for any $s,i$) as before, by tracing back the states of the parents starting from $X_s^{(i)}$.
 Then the correct resampling probabilities are, for each $i$,
@@ -1767,7 +1767,7 @@ Then the correct resampling probabilities are, for each $i$,
 \propto \begin{cases}
 w_t^{(i)} & j \text{ non-immortal}\\
 w_t^{(i)} \frac{
-        p( (X_{t-1, 0:t-1}^{(i)}, a_{0:t-1}^{(1:N)}, x_{t:T}^\star) \mid \theta, y_{0:T} )}
+        p( (X_{t-1, 0:t-1}^{(i)}, x_{t:T}^\star) \mid \theta, y_{0:T} )}
         {p( X_{t-1, 0:t-1}^{(i)} \mid \theta, y_{0:t-1} ) } 
         & j \text{ immortal} .
 \end{cases}
@@ -1803,8 +1803,8 @@ The ratio then becomes\seb{I think the first proportionality hides the likelihoo
 \end{align*}
 The probabilities in \eqref{eq:ancsamp_probs} become
 \begin{equation}
-\Prob[a_t^{(j)} = i \mid X_{0:t-1}^{(1:N)}, X_{t:T}^\star ] \propto
-\begin{cases}
+\Prob[a_t^{(j)} = i \mid X_{0:t-1}^{(1:N)}, x_{0:T}^\star, a_{0:T}^\star ] 
+\propto \begin{cases}
 w_t^{(i)} & j \text{ non-immortal}\\
 w_t^{(i)} q_\theta( x_t^\star \mid X_{t-1}^{(i)} ) & j \text{ immortal} .
 \end{cases}
