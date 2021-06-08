@@ -181,20 +181,20 @@ However, remember that given a particular state space model there is a choice of
 \begin{algorithm}
 \vspace*{10pt}
 \DontPrintSemicolon
-\KwData{$N, T, \mathbb{M}_0, (M_t)_{t=1}^T, (G_t)_{t=0}^T$}
+\KwIn{$T, N, \mathbb{M}_0, (M_t)_{t=1}^T, (G_t)_{t=0}^T$}
 \lFor{$i \in \{1,\dots,N\}$}{ 
 	Sample $X_0^{(i)} \sim \mathbb{M}_0(\cdot)$
 }
 \lFor{$i \in \{1,\dots, N\}$}{
 		$w_{0}^{(i)} \gets  \left\{{\sum_{j=1}^N G_0(X_0^{(j)})}\right\}^{-1}{G_0(X_0^{(i)})} $ 
 	}
-\For{$t \in \{0,\dots, T-1\}$}{
-	Sample $a_t^{(1:N)} \sim $ \textsc{resample}$(\{1,\dots ,N\}, w_t^{(1:N)}$)\;
+\For{$t \in \{1,\dots, T\}$}{
+	Sample $a_{t-1}^{(1:N)} \sim $ \textsc{resample}$(\{1,\dots ,N\}, w_{t-1}^{(1:N)}$)\;
 	\lFor{$i \in \{1,\dots,N\}$}{
-		Sample $X_{t+1}^{(i)} \sim M_{t+1}(X_t^{(a_t^{(i)})}, \cdot)$
+		Sample $X_{t}^{(i)} \sim M_{t}(X_{t-1}^{(a_{t-1}^{(i)})}, \cdot)$
 	}
 	\lFor{$i \in \{1,\dots, N\}$}{	
-		$w_{t+1}^{(i)} \gets \Big\{ {\sum_{j=1}^N G_{t+1}(X_t^{(a_t^{(j)})},X_{t+1}^{(j)}) }\Big\}^{-1} G_{t+1}(X_t^{(a_t^{(i)})},X_{t+1}^{(i)}) $
+		$w_{t}^{(i)} \gets \Big\{ {\sum_{j=1}^N G_{t}(X_{t-1}^{(a_{t-1}^{(j)})}, X_{t}^{(j)}) }\Big\}^{-1} G_{t}(X_{t-1}^{(a_{t-1}^{(i)})},X_{t}^{(i)}) $
 	}
 }
 \vspace*{10pt}
@@ -1621,14 +1621,14 @@ Set $X_0^{(a_0^\star)} \gets x_0^\star$\;
 \lFor{$i \in \{1,\dots, N\}$}{
 		$w_{0}^{(i)} \gets \left\{ {\sum_{j=1}^N g_0^\theta(y_0 \mid X_0^{(j)})}\right \}^{-1}{g_0^\theta(y_0 \mid X_0^{(i)})} $
 }                
-\For{$t \in \{0,\dots, T-1\}$}{
-	Set $a_t^{(a_{t+1}^\star)} \gets a_t^\star$, 	$X_{t+1}^{(a_{t+1}^\star)} \gets x_{t+1}^\star$\;
-        Sample $a_t^{(1:N)}\setminus a_t^\star \sim \textsc{resample}(\{1,\dots,N\}, w_t^{(1:N)})$\;
-	\lFor{$i \in \{1,\dots,N\}$}{
-		Sample $X_{t+1}^{(i)} \sim K_{t+1}^\theta( \cdot \mid X_t^{(a_t^{(i)})} )$
+\For{$t \in \{1,\dots, T\}$}{
+	Set $a_{t-1}^{(a_{t}^\star)} \gets a_{t-1}^\star$, 	$X_{t}^{(a_{t}^\star)} \gets x_{t}^\star$\;
+        Sample $a_{t-1}^{(1:N)}\setminus a_{t-1}^\star \sim \textsc{resample}(\{1,\dots,N\}, w_{t-1}^{(1:N)})$\;
+	\lFor{$i \in \{1,\dots,N\} \setminus a_t^\star$}{
+		Sample $X_{t}^{(i)} \sim K_{t}^\theta( \cdot \mid X_{t-1}^{(a_{t-1}^{(i)})} )$
 	}
     	\lFor{$i \in \{1,\dots, N\}$}{	
-		$w_{t+1}^{(i)} \gets \Big\{ {\sum_{j=1}^N g_{t+1}^\theta(y_{t+1} \mid X_{t+1}^{(j)}) }\Big\}^{-1} g_{t+1}^\theta(y_{t+1} \mid X_{t+1}^{(i)}) $
+		$w_{t}^{(i)} \gets \Big\{ {\sum_{j=1}^N g_{t}^\theta(y_{t} \mid X_{t}^{(j)}) }\Big\}^{-1} g_{t}^\theta(y_{t} \mid X_{t}^{(i)}) $
 	}          
 }
 \vspace*{10pt}
@@ -1777,15 +1777,15 @@ Set $X_0^{(a_0^\star)} \gets x_0^\star$\;
 \lFor{$i \in \{1,\dots, N\}$}{
 		$w_{0}^{(i)} \gets  \left\{ {\sum_{j=1}^N g_0^\theta(y_0 \mid X_0^{(j)})}\right \}^{-1}{g_0^\theta(y_0 \mid X_0^{(i)})} $
 }                
-\For{$t \in \{0,\dots, T-1\}$}{
-	Set $X_{t+1}^{(a_{t+1}^\star)} \gets x_{t+1}^\star$\;
-	Sample $a_t^{(a_{t+1}^\star)} \sim \Cat\left( \{1,\dots,N\}, w_t^{(1:N)} q_{t+1}^\theta(x_{t+1}^\star \mid X_{t}^{(1:N)}) \right)$\;
-        Sample $a_t^{(1:N)}\setminus a_t^\star \sim \textsc{resample}(\{1,\dots,N\}, w_t^{(1:N)})$\;
-	\lFor{$i \in \{1,\dots,N\}$}{
-		Sample $X_{t+1}^{(i)} \sim q_{t+1}^\theta( \cdot \mid X_t^{(a_t^{(i)})} )$
+\For{$t \in \{1,\dots, T\}$}{
+	Set $X_{t}^{(a_{t}^\star)} \gets x_{t}^\star$\;
+	Sample $a_{t-1}^{(a_{t}^\star)} \sim \Cat\left( \{1,\dots,N\}, w_{t-1}^{(1:N)} q_{t}^\theta(x_{t}^\star \mid X_{t-1}^{(1:N)}) \right)$\;
+        Sample $a_{t-1}^{(1:N)}\setminus a_{t-1}^\star \sim \textsc{resample}(\{1,\dots,N\}, w_{t-1}^{(1:N)})$\;
+	\lFor{$i \in \{1,\dots,N\} \setminus a_t^\star$}{
+		Sample $X_{t}^{(i)} \sim q_{t}^\theta( \cdot \mid X_{t-1}^{(a_{t-1}^{(i)})} )$
 	}
     	\lFor{$i \in \{1,\dots, N\}$}{	
-		$w_{t+1}^{(i)} \gets \Big\{ {\sum_{j=1}^N g_{t+1}^\theta( y_{t+1} \mid X_{t+1}^{(j)}) }\Big\}^{-1} g_{t+1}^\theta( t_{t+1} \mid X_{t+1}^{(i)}) $
+		$w_{t}^{(i)} \gets \Big\{ {\sum_{j=1}^N g_{t}^\theta( y_{t} \mid X_{t}^{(j)}) }\Big\}^{-1} g_{t}^\theta( y_{t} \mid X_{t}^{(i)}) $
 	}          
 }
 \vspace*{10pt}
@@ -1810,7 +1810,7 @@ To simplify the ratio, we can use \eqref{eq:PG_Xposterior} to write
 p( X_{t,0:t}^{(i)} \mid \theta, y_{0:t} )
 \propto \mu^\theta( X_{t,0}^{(i)} ) g_0^\theta( y_0 \mid X_{t,0}^{(i)} ) 
         \prod_{s=1}^{t} q_s^\theta( X_{t,s}^{(i)} \mid X_{t,s-1}^{(i)} ) 
-        g_s^theta( y_s \mid X_{t,s}^{(i)} )
+        g_s^\theta( y_s \mid X_{t,s}^{(i)} )
 \end{equation*}
 and %\seb{actually, this explicit trajectory notation is going to make all this much heavier... but perhaps it's worth it for the clarity?}
 \begin{align*}
