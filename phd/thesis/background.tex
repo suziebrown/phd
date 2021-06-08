@@ -46,7 +46,7 @@ State space models (sometimes called hidden Markov models) are a flexible class 
 \draw[->] (0,0.5)-- node[anchor=west] {\footnotesize{$g_t$}} (0,1.7);
 \draw[->] (3,0.5)-- node[anchor=west] {\footnotesize{$g_{t+1}$}} (3,1.7);
 \end{tikzpicture}
-\caption[Graphical depiction of a general state space model]{Graphical depiction of a general state space model. $(X_t)$ is a Markov process with transition kernels $(K_t)$ representing the underlying state of the system. $Y_t$ is a noisy observation of $X_t$ for each $t$.}
+\caption[State space model]{Graphical depiction of a general state space model. $(X_t)$ is a Markov process with transition kernels $(K_t)$ representing the underlying state of the system. $Y_t$ is a noisy observation of $X_t$ for each $t$.}
 \label{fig:SSM}
 \end{figure}
 The general model has two components: a Markov process $(X_t)_{t\in\mathbb{N}_0}$ representing the (unobservable) underlying state of the system, and a sequence $(Y_t)_{t\in\mathbb{N}_0}$ of noisy observations of the underlying state. The model is characterised by its conditional independence structure (Figure~\ref{fig:SSM}) along with an initial distribution $\mu$, the Markov ``transition'' kernels $(K_t)_{t\in\mathbb{N}}$ and the ``emission'' distributions $(g_t)_{t\in\mathbb{N}_0}$. 
@@ -408,7 +408,7 @@ Starting with $n$ blocks, exactly $n-1$ coalescences are required to reach the a
 \node[anchor=west] at (6, 1.3) {\footnotesize{$T_2$}};
 \node[anchor=west] at (6, 3.3) {\footnotesize{$T_1 = T_{MRCA}$}};
 \end{tikzpicture}
-\caption{Diagram illustrating the definitions of $t_i$, $T_i$ in the $n$-coalescent.}
+\caption{Definitions of $t_i$, $T_i$ in the $n$-coalescent.}
 \label{fig:KC_timedefns}
 \end{figure}
 
@@ -585,7 +585,7 @@ Nor is our model neutral: the resampling distribution depends on the weight of e
 \includegraphics[width=0.5\textwidth]{plots/ancdegen_adaptsyst.pdf}
 \label{fig:ancdegen_adaptsyst}
 }
-\caption[Ancestral degeneracy illustration]{Illustration of ancestral degeneracy and the mitigating effect of low-variance and adpative resampling. \subref{fig:ancdegen_mn} with multinomial resampling, \subref{fig:ancdegen_adaptsyst} the same system with adaptive systematic resampling.}
+\caption[Ancestral degeneracy]{Illustration of ancestral degeneracy and the mitigating effect of low-variance and adpative resampling. \subref{fig:ancdegen_mn} with multinomial resampling, \subref{fig:ancdegen_adaptsyst} the same system with adaptive systematic resampling.}
 \label{fig:ancestral_degeneracy}
 \end{figure}
 
@@ -828,7 +828,7 @@ The stochastic part can be done using any of the other basic resampling schemes 
 \end{tikzpicture}
 \label{fig:resampling_systematic}
 }\\
-\caption[Resampling using multinomial, stratified and systematic schemes]{Inversion sampling to obtain Multinomial offspring counts, where the (marginally) Uniform variables for inversion are sampled in different ways. For this example $N=4$ and the weights are $w_{(1:4)} = \frac{1}{N}(1,\frac{2}{3},2,\frac{1}{3})$. 
+\caption[Inversion sampling for multinomial, stratified and systematic resampling]{Inversion sampling to obtain Multinomial offspring counts, where the (marginally) Uniform variables for inversion are sampled in different ways. For this example $N=4$ and the weights are $w_{(1:4)} = \frac{1}{N}(1,\frac{2}{3},2,\frac{1}{3})$. 
 \seb{Also make the same diagram in Whitley's ``roulette wheel'' style, to illustrate the difference. Or maybe make it for the ``degeneracy under equal weights'' section just illustrating the difference it makes in stratified resampling.}
 %In each case the samples to be inverted are seeded with the same $\Unif(0,1)$ samples.
 %\subref{fig:resampling_mn} Sample $N$  independent $\Unif(0,1)$ random variables. In this example the sampled offspring counts are $(1,1,2,0)$.
@@ -2010,7 +2010,7 @@ In turn, the sampled trajectory that is output does not overlap unduly with the 
 \end{tikzpicture}
 \label{fig:whyASworks_b}
 }
-\caption[Illustration of how ancestor sampling prevents coalescence onto the immortal trajectory]{Illustration of how ancestor sampling prevents coalescence onto the immortal trajectory. Immortal particles are highlighted in purple, along with their parent-offspring edges (the given ones in \subref{fig:whyASworks_a} and the ancestor-sampled ones in \subref{fig:whyASworks_b}). The resulting lineages of the terminal particles are highlighted in grey. 
+\caption[Why ancestor sampling works]{Illustration of how ancestor sampling prevents coalescence onto the immortal trajectory. Immortal particles are highlighted in purple, along with their parent-offspring edges (the given ones in \subref{fig:whyASworks_a} and the ancestor-sampled ones in \subref{fig:whyASworks_b}). The resulting lineages of the terminal particles are highlighted in grey. 
 In \subref{fig:whyASworks_a}, the lineages of the terminal particles coalesce onto the immortal trajectory. Imagine time stretching further back: the lineages would continue to coincide with the immortal trajectory forever. 
 In \subref{fig:whyASworks_b}, the lineages still coalesce, but not onto the immortal trajectory. The immortal trajectory no longer exists as a lineage.}
 \label{fig:whyASworks}

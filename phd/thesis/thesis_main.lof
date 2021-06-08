@@ -12,21 +12,21 @@
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 2.1}{\ignorespaces Graphical depiction of a general state space model}}{3}{figure.caption.8}
+\contentsline {figure}{\numberline {\relax 2.1}{\ignorespaces State space model}}{3}{figure.caption.8}
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {\relax 2.2}{\ignorespaces Conditional dependence structure of SMC algorithm}}{8}{figure.caption.10}
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {\relax 2.3}{\ignorespaces The $n$-coalescent}}{10}{figure.caption.11}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 2.4}{\ignorespaces Diagram illustrating the definitions of $t_i$, $T_i$ in the $n$-coalescent.\relax }}{11}{figure.caption.12}
+\contentsline {figure}{\numberline {\relax 2.4}{\ignorespaces Definitions of $t_i$, $T_i$ in the $n$-coalescent.\relax }}{11}{figure.caption.12}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 2.5}{\ignorespaces Ancestral degeneracy illustration}}{15}{figure.caption.19}
+\contentsline {figure}{\numberline {\relax 2.5}{\ignorespaces Ancestral degeneracy}}{15}{figure.caption.19}
 \defcounter {refsection}{0}\relax 
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Multinomial resampling}}}{15}{subfigure.5.1}
 \defcounter {refsection}{0}\relax 
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Adaptive minimum-variance resampling}}}{15}{subfigure.5.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 2.6}{\ignorespaces Resampling using multinomial, stratified and systematic schemes}}{19}{figure.caption.23}
+\contentsline {figure}{\numberline {\relax 2.6}{\ignorespaces Inversion sampling for multinomial, stratified and systematic resampling}}{19}{figure.caption.23}
 \defcounter {refsection}{0}\relax 
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Multinomial resampling}}}{19}{subfigure.6.1}
 \defcounter {refsection}{0}\relax 
@@ -42,7 +42,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {\relax 2.8}{\ignorespaces PLACEHOLDER. Copied from \textcite {lindsten2013}.\relax }}{37}{figure.caption.43}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 2.9}{\ignorespaces Illustration of how ancestor sampling prevents coalescence onto the immortal trajectory}}{40}{figure.caption.47}
+\contentsline {figure}{\numberline {\relax 2.9}{\ignorespaces Why ancestor sampling works}}{40}{figure.caption.47}
 \defcounter {refsection}{0}\relax 
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {without ancestor sampling}}}{40}{subfigure.9.1}
 \defcounter {refsection}{0}\relax 
@@ -50,7 +50,7 @@
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 3.1}{\ignorespaces Illustration of how the sample genealogy is encoded}}{42}{figure.caption.48}
+\contentsline {figure}{\numberline {\relax 3.1}{\ignorespaces Encoding the sample genealogy}}{42}{figure.caption.48}
 \defcounter {refsection}{0}\relax 
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Resampling relationships}}}{42}{subfigure.1.1}
 \defcounter {refsection}{0}\relax 
