@@ -1887,13 +1887,132 @@ But here we are only backward-simulating one of the $N$ particles, leaving the o
 
 Recall that in particle Gibbs ancestral degeneracy is not itself a problem, because we only require a single sample from the smoothing distribution. 
 The problem is that the consecutive samples are highly correlated, because of  the repeated coalescence onto the immortal lineage.
-The contribution of ancestor sampling is to break up the immortal lineage (see Figure~\ref{fig:whyASworks}), so that while the non-immortal trajectories may still coalesce, they no longer preferentially coalesce onto the immortal trajectory. 
+The contribution of ancestor sampling is to break up the immortal trajectory so that it no longer appears in the sampled lineages; see Figure~\ref{fig:whyASworks}. While the non-immortal trajectories may still coalesce, they no longer preferentially coalesce onto the immortal trajectory. 
 In turn, the sampled trajectory that is output does not overlap unduly with the immortal trajectory that was the previous output, and this completely solves the problem of the slow-mixing particle Gibbs chain.
-
-\begin{figure}
+%
+%\begin{figure}
+%\centering
+%\includegraphics[width=0.8\textwidth]{plots/ancsampworks.jpg}
+%\caption{PLACEHOLDER. Illustration of how ancestor sampling prevents coalescence onto the immortal trajectory.}
+%\label{fig:whyASworks_temp}
+%\end{figure}
+\begin{figure}[ht]
 \centering
-\includegraphics[width=0.8\textwidth]{plots/ancsampworks.jpg}
-\caption{PLACEHOLDER. Illustration of how ancestor sampling prevents coalescence onto the immortal trajectory.}
+\subfloat[without ancestor sampling]{
+\begin{tikzpicture}
+% highlight lineage 1 (immortal lineage)
+\draw[line width=6pt, gray!40] (0,0.8)--(2,1);
+\draw[line width=6pt, gray!40] (2,1)--(4,0);
+\draw[line width=6pt, gray!40] (4,0)--(6,0.3);
+\draw[line width=6pt, gray!40] (6,0.3)--(8,1.8);
+% highlight lineage 2
+\draw[line width=6pt, gray!40] (2,1)--(4,0.9);
+\draw[line width=6pt, gray!40] (4,0.9)--(6,0.7);
+\draw[line width=6pt, gray!40] (6,0.7)--(8,0.8);
+% highlight lineage 3
+\draw[line width=6pt, gray!40] (6,0.7)--(8,0.1);
+%
+% lines column 1-2
+\draw[thick] (0,0)--(2,0.1);
+\draw[thick, violet] (0,0.8)--(2,1);
+\draw[thick] (0,0)--(2,1.8);
+% lines column 2-3
+\draw[thick, violet] (2,1)--(4,0);
+\draw[thick] (2,1)--(4,0.9);
+\draw[thick] (2,1)--(4,2.2);
+% lines column 3-4
+\draw[thick, violet] (4,0)--(6,0.3);
+\draw[thick] (4,0.9)--(6,0.7);
+\draw[thick] (4,2.2)--(6,1.7);
+% lines column 4-5
+\draw[thick] (6,0.7)--(8,0.1);
+\draw[thick] (6,0.7)--(8,0.8);
+\draw[thick, violet] (6,0.3)--(8,1.8);
+%
+% nodes column 1
+\filldraw (0,0) circle (4pt);
+\filldraw[violet] (0,0.8) circle (4pt);
+\filldraw (0,2) circle (4pt);
+% nodes column 2
+\filldraw (2,0.1) circle (4pt);
+\filldraw[violet] (2,1) circle (4pt);
+\filldraw (2,1.8) circle (4pt);
+% nodes column 3
+\filldraw[violet] (4,0) circle (4pt);
+\filldraw (4,0.9) circle (4pt);
+\filldraw (4,2.2) circle (4pt);
+% nodes column 4
+\filldraw[violet] (6,0.3) circle (4pt);
+\filldraw (6,0.7) circle (4pt);
+\filldraw (6,1.7) circle (4pt);
+% nodes column 5
+\filldraw (8,0.1) circle (4pt);
+\filldraw (8,0.8) circle (4pt);
+\filldraw[violet] (8,1.8) circle (4pt);
+% fake line to add space
+\draw[white] (0,-0.4)--(1,-0.4);
+\end{tikzpicture}
+\label{fig:whyASworks_a}
+}\\
+\subfloat[with ancestor sampling]{
+\begin{tikzpicture}
+% highlight lineage 1
+\draw[line width=6pt, gray!40] (0,0)--(2,1);
+\draw[line width=6pt, gray!40] (2,1)--(4,2.2);
+\draw[line width=6pt, gray!40] (4,2.2)--(6,1.7);
+\draw[line width=6pt, gray!40] (6,1.7)--(8,1.8);
+% highlight lineage 2
+\draw[line width=6pt, gray!40] (2,1)--(4,0.9);
+\draw[line width=6pt, gray!40] (4,0.9)--(6,0.7);
+\draw[line width=6pt, gray!40] (6,0.7)--(8,0.8);
+% highlight lineage 3
+\draw[line width=6pt, gray!40] (6,0.7)--(8,0.1);
+%
+% lines column 1-2
+\draw[thick] (0,0)--(2,0.1);
+\draw[thick, violet] (0,0)--(2,1);
+\draw[thick] (0,0)--(2,1.8);
+% lines column 2-3
+\draw[thick, violet] (2,0.1)--(4,0);
+\draw[thick] (2,1)--(4,0.9);
+\draw[thick] (2,1)--(4,2.2);
+% lines column 3-4
+\draw[thick, violet] (4,0)--(6,0.3);
+\draw[thick] (4,0.9)--(6,0.7);
+\draw[thick] (4,2.2)--(6,1.7);
+% lines column 4-5
+\draw[thick] (6,0.7)--(8,0.1);
+\draw[thick] (6,0.7)--(8,0.8);
+\draw[thick, violet] (6,1.7)--(8,1.8);
+%
+% nodes column 1
+\filldraw (0,0) circle (4pt);
+\filldraw[violet] (0,0.8) circle (4pt);
+\filldraw (0,2) circle (4pt);
+% nodes column 2
+\filldraw (2,0.1) circle (4pt);
+\filldraw[violet] (2,1) circle (4pt);
+\filldraw (2,1.8) circle (4pt);
+% nodes column 3
+\filldraw[violet] (4,0) circle (4pt);
+\filldraw (4,0.9) circle (4pt);
+\filldraw (4,2.2) circle (4pt);
+% nodes column 4
+\filldraw[violet] (6,0.3) circle (4pt);
+\filldraw (6,0.7) circle (4pt);
+\filldraw (6,1.7) circle (4pt);
+% nodes column 5
+\filldraw (8,0.1) circle (4pt);
+\filldraw (8,0.8) circle (4pt);
+\filldraw[violet] (8,1.8) circle (4pt);
+% fake line to add space
+\draw[white] (0,-0.4)--(1,-0.4);
+\end{tikzpicture}
+\label{fig:whyASworks_b}
+}
+\caption[Illustration of how ancestor sampling prevents coalescence onto the immortal trajectory]{Illustration of how ancestor sampling prevents coalescence onto the immortal trajectory. Immortal particles are highlighted in purple, along with their parent-offspring edges (the given ones in \subref{fig:whyASworks_a} and the ancestor-sampled ones in \subref{fig:whyASworks_b}). The resulting lineages of the terminal particles are highlighted in grey. 
+In \subref{fig:whyASworks_a}, the lineages of the terminal particles coalesce onto the immortal trajectory. Imagine time stretching further back: the lineages would continue to coincide with the immortal trajectory forever. 
+In \subref{fig:whyASworks_b}, the lineages still coalesce, but not onto the immortal trajectory. The immortal trajectory no longer exists as a lineage.}
 \label{fig:whyASworks}
 \end{figure}
 
