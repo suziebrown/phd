@@ -1789,7 +1789,7 @@ Set $X_0^{(a_0^\star)} \gets x_0^\star$\;
 	}          
 }
 \vspace*{10pt}
-\caption[Conditional sequential Monte Carlo with ancestor sampling]{Conditional sequential Monte Carlo with ancestor sampling for a parametrised state space model. The parent of the ``immortal particle'' is updated at each iteration via an on-line backward simulation step.\seb{Notation: $x^{(1:N)} y^{(1:N)}$ should be interpreted as element-wise multiplication in the above.}}
+\caption[Conditional sequential Monte Carlo with ancestor sampling]{Conditional sequential Monte Carlo with ancestor sampling for a parametrised state space model. The parent of the ``immortal particle'' is updated at each iteration via an on-line backward simulation step. The second parameter of the Categorical variable should be interpreted element-wise.}
 \label{alg:condSMC_ancsamp}
 \end{algorithm}
 Now assume that the smoothing distributions admit densities, that is $\mu_\theta(\cdot)$ and $K_\theta(\cdot\mid x)$, for any $x$, admit densities. Denote the density of $K_\theta$ by $q_\theta$. Define the trajectories $X_{s, 0:s}^{(i)}$ (for any $s,i$) as before, by tracing back the states of the parents starting from $X_s^{(i)}$.
@@ -1823,7 +1823,8 @@ p( (X_{t,0:t}^{(i)}, x_{t+1:T}^\star) \mid \theta, y_{0:T} )
         \left\{ \prod_{s=t+2}^T q_\theta(x_s^\star \mid x_{s-1}^\star)
         g_\theta(y_s \mid x_s^\star) \right\} .
 \end{align*}
-The ratio then becomes\seb{I think the first proportionality hides the likelihood ratio $p(y_{0:T}|\theta)/p(y_{0:t-1}|\theta)$ --- see \eqref{eq:PG_Xposterior} --- it might make things clearer if I keep such constants explicit for longer?}
+The ratio then becomes
+%\seb{I think the first proportionality hides the likelihood ratio $p(y_{0:T}|\theta)/p(y_{0:t-1}|\theta)$ --- see \eqref{eq:PG_Xposterior} --- it might make things clearer if I keep such constants explicit for longer?}
 \begin{align*}
 \frac{p( ( X_{t,0:t}^{(i)}, x_{t+1:T}^\star ) \mid \theta, y_{0:T} )}
         {p( X_{t,0:t}^{(i)} \mid \theta, y_{0:t} ) }
