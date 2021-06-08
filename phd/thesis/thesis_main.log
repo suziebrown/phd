@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  7 JUN 2021 20:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  8 JUN 2021 09:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1920,10 +1920,10 @@ y/m/n/10.95 j\OML/cmm/m/it/10.95 ^^R\OT1/cmr/m/n/10.95 )$
  []
 
 [39]
-<plots/ancsampworks.jpg, id=872, 703.428pt x 662.9568pt>
+<plots/ancsampworks.jpg, id=873, 703.428pt x 662.9568pt>
 File: plots/ancsampworks.jpg Graphic file (type jpg)
 <use plots/ancsampworks.jpg>
-Package pdftex.def Info: plots/ancsampworks.jpg  used on input line 1896.
+Package pdftex.def Info: plots/ancsampworks.jpg  used on input line 1895.
 (pdftex.def)             Requested size: 341.43437pt x 321.79668pt.
 ) [40 <./plots/ancsampworks.jpg>]
 \openout2 = `limits.aux'.
@@ -2323,10 +2323,10 @@ Package logreq Info: Writing requests to 'thesis_main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 39437 strings out of 492649
- 760136 string characters out of 6129623
- 1289799 words of memory out of 5000000
- 42274 multiletter control sequences out of 15000+600000
+ 39441 strings out of 492649
+ 760241 string characters out of 6129623
+ 1289866 words of memory out of 5000000
+ 42277 multiletter control sequences out of 15000+600000
  577053 words of font info for 135 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  68i,22n,77p,10565b,1729s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2361,10 +2361,10 @@ ts/type1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2018/texmf-dist/fonts
 ype1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2018/texmf-dist/fon
 ts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2018/texmf-dist
 /fonts/type1/adobe/utopia/putb8a.pfb>
-Output written on thesis_main.pdf (127 pages, 3816406 bytes).
+Output written on thesis_main.pdf (127 pages, 3816418 bytes).
 PDF statistics:
- 2027 PDF objects out of 2073 (max. 8388607)
- 1803 compressed objects within 19 object streams
- 455 named destinations out of 1000 (max. 500000)
+ 2028 PDF objects out of 2073 (max. 8388607)
+ 1804 compressed objects within 19 object streams
+ 456 named destinations out of 1000 (max. 500000)
  460 words of extra memory for PDF output out of 10000 (max. 10000000)
 

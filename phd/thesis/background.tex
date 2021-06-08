@@ -1789,7 +1789,7 @@ Set $X_0^{(a_0^\star)} \gets x_0^\star$\;
 	}          
 }
 \vspace*{10pt}
-\caption[Conditional sequential Monte Carlo with ancestor sampling]{Conditional sequential Monte Carlo with ancestor sampling for a parametrised state space model. The parent of the ``immortal particle'' is updated at each iteration via an on-line backward simulation step.}
+\caption[Conditional sequential Monte Carlo with ancestor sampling]{Conditional sequential Monte Carlo with ancestor sampling for a parametrised state space model. The parent of the ``immortal particle'' is updated at each iteration via an on-line backward simulation step.\seb{Notation: $x^{(1:N)} y^{(1:N)}$ should be interpreted as element-wise multiplication in the above.}}
 \label{alg:condSMC_ancsamp}
 \end{algorithm}
 Now assume that the smoothing distributions admit densities, that is $\mu_\theta(\cdot)$ and $K_\theta(\cdot\mid x)$, for any $x$, admit densities. Denote the density of $K_\theta$ by $q_\theta$. Define the trajectories $X_{s, 0:s}^{(i)}$ (for any $s,i$) as before, by tracing back the states of the parents starting from $X_s^{(i)}$.
@@ -1835,18 +1835,17 @@ The ratio then becomes\seb{I think the first proportionality hides the likelihoo
 &= q_\theta( x_{t+1}^\star \mid X_{t}^{(i)} )  .
 \end{align*}
 The probabilities in \eqref{eq:ancsamp_probs} become
-\begin{equation*}
+\begin{equation}\label{eq:ancsamp_probs_simplified}
 \Prob[a_t^{(j)} = i \mid X_{0:t}^{(1:N)}, x_{0:T}^\star, a_{0:T}^\star ] 
 \propto \begin{cases}
 w_t^{(i)} & j \text{ non-immortal}\\
 w_t^{(i)} q_\theta( x_{t+1}^\star \mid X_{t}^{(i)} ) & j \text{ immortal} .
 \end{cases}
-\end{equation*}
-\seb{Refer to this equation in Applications chapter when I "magic" up the ancestor sampling result.}
-Therefore, in order to do ancestor sampling, we need a stronger assumption on the Markov kernels than was required to simply run the conditional SMC algorithm: we now require that $K_\theta$ admits a density $q_\theta$ and that this density can be evaluated pointwise, whereas previously we only needed to draw samples from $K_\theta$\seb{or rather from $K_\theta(\cdot \mid x)$ for all $x$}.
+\end{equation}
+Therefore, in order to do ancestor sampling, we need a stronger assumption on the Markov kernels than was required to simply run the conditional SMC algorithm: we now require that $K_\theta$ admits a density $q_\theta$ and that $q_\theta(\cdot \mid x)$ can be evaluated pointwise for any $x$, whereas previously we only needed to draw samples from $K_\theta(\cdot\mid x)$ for any $x$.
 This additional requirement rules out ancestor sampling in some applications.
 
-Recall that the usual backward simulation procedure requires a full forward pass to calculate the future states before the backward simulation probabilities can be computed. Ancestor resampling, on the other hand, does not require a forward pass because it only computes backward simulation probabilities for the immortal trajectory, for which all the future states are known in advance. This means that ancestor sampling can be implemented on-line.
+Recall that the usual backward simulation procedure requires a full forward pass to calculate the future states before the backward simulation probabilities can be computed. Ancestor sampling, on the other hand, does not require a forward pass because it only computes backward simulation probabilities for the immortal trajectory, for which all the future states are known in advance. This means that ancestor sampling can be implemented on-line.
 
 %...\\
 %
