@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  8 JUN 2021 16:30
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  8 JUN 2021 16:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -949,8 +949,8 @@ Package biblatex Info: ... file 'blx-dm.def' found.
 (/usr/local/texlive/2018/texmf-dist/tex/latex/biblatex/blx-dm.def
 File: blx-dm.def 2018/03/04 v3.11 biblatex localization (PK/MW)
 )
-Package biblatex Info: Trying to load biblatex citestyle data model...
-Package biblatex Info: ... file 'authoryear-icomp.dbx' not found.
+Package biblatex Info: Trying to load biblatex style data model...
+Package biblatex Info: ... file 'authoryear.dbx' not found.
 Package biblatex Info: Trying to load biblatex custom data model...
 Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
 \c@afterword=\count330
@@ -1054,11 +1054,11 @@ File: biblatex.def 2018/03/04 v3.11 biblatex compatibility (PK/MW)
 \c@biburllcpenalty=\count403
 \c@smartand=\count404
 )
-Package biblatex Info: Trying to load bibliography style 'numeric'...
-Package biblatex Info: ... file 'numeric.bbx' found.
+Package biblatex Info: Trying to load bibliography style 'authoryear'...
+Package biblatex Info: ... file 'authoryear.bbx' found.
 
-(/usr/local/texlive/2018/texmf-dist/tex/latex/biblatex/bbx/numeric.bbx
-File: numeric.bbx 2018/03/04 v3.11 biblatex bibliography style (PK/MW)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/biblatex/bbx/authoryear.bbx
+File: authoryear.bbx 2018/03/04 v3.11 biblatex bibliography style (PK/MW)
 Package biblatex Info: Trying to load bibliography style 'standard'...
 Package biblatex Info: ... file 'standard.bbx' found.
 
@@ -2265,15 +2265,15 @@ ne 829.
 [106] [107] [108]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1068.
+(mdframed)              on input line 1069.
  [109] [110]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1232.
+(mdframed)              on input line 1233.
 
 
 Package refcheck Warning: Unused label `sec:ancsamp_genealogy' on input line 12
-53.
+54.
 
 [111]) [112]
 \openout2 = `discussion.aux'.
@@ -2285,36 +2285,24 @@ chapter 6.
 
 
 
-]
-Overfull \hbox (2.82875pt too wide) in paragraph at lines 215--215
-[][]\OT1/cmr/m/n/10.95 Christophe An-drieu, Ar-naud Doucet, and Ro-man Holen-st
-ein. ``Par-ti-cle Markov Chain
+] [114
+
+
+
+
+
+] [115]
+Overfull \hbox (2.69765pt too wide) in paragraph at lines 215--215
+[][][]\OT1/cmr/m/n/10.95 (1982c). ``The Co-a-les-cent''. In: \OT1/cmr/m/it/10.9
+5 Stochas-tic Pro-cesses and Their Ap-pli-ca-tions \OT1/cmr/m/n/10.95 13.3, pp.
+ 235{
  []
 
-
-Overfull \hbox (0.1127pt too wide) in paragraph at lines 215--215
-[][]\OT1/cmr/m/n/10.95 Nathana^^?el Beresty-cki. \OT1/cmr/m/it/10.95 Re-cent Pr
-ogress in Co-a-les-cent The-ory\OT1/cmr/m/n/10.95 . 0909.3985. ArXiv, 2009. 
- []
-
-[114
-
-
-
-
-
-]
-Overfull \hbox (3.95416pt too wide) in paragraph at lines 215--215
-[][]\OT1/cmr/m/n/10.95 Randal Douc, Olivier Capp^^Se, and Eric Moulines. ``Com-
-par-i-son of Re-sam-pling Schemes
- []
-
-[115] [116] [117] [118]
+[116] [117]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 216.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 216.
- (./thesis_main.aux (./introduction.aux)
-(./background.aux) (./limits.aux) (./weakconv.aux) (./applications.aux)
-(./discussion.aux))
+ (./thesis_main.aux (./introduction.aux) (./background.aux)
+(./limits.aux) (./weakconv.aux) (./applications.aux) (./discussion.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 216.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 216.
 Package rerunfilecheck Info: File `thesis_main.out' has not changed.
@@ -2324,10 +2312,10 @@ Package logreq Info: Writing requests to 'thesis_main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 39444 strings out of 492649
- 760305 string characters out of 6129623
- 1289892 words of memory out of 5000000
- 42280 multiletter control sequences out of 15000+600000
+ 39455 strings out of 492649
+ 760563 string characters out of 6129623
+ 1291839 words of memory out of 5000000
+ 42292 multiletter control sequences out of 15000+600000
  577053 words of font info for 135 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  68i,22n,77p,10565b,1729s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2362,10 +2350,10 @@ ts/type1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2018/texmf-dist/fonts
 ype1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2018/texmf-dist/fon
 ts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2018/texmf-dist
 /fonts/type1/adobe/utopia/putb8a.pfb>
-Output written on thesis_main.pdf (127 pages, 1110361 bytes).
+Output written on thesis_main.pdf (126 pages, 1109586 bytes).
 PDF statistics:
- 2035 PDF objects out of 2073 (max. 8388607)
- 1808 compressed objects within 19 object streams
- 458 named destinations out of 1000 (max. 500000)
+ 2030 PDF objects out of 2073 (max. 8388607)
+ 1804 compressed objects within 19 object streams
+ 457 named destinations out of 1000 (max. 500000)
  455 words of extra memory for PDF output out of 10000 (max. 10000000)
 
