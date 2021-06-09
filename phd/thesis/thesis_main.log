@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  9 JUN 2021 09:11
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  9 JUN 2021 10:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1494,7 +1494,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 
 ]
-Overfull \hbox (1.42336pt too wide) detected at line 155
+Overfull \hbox (1.42336pt too wide) detected at line 153
  []\OT1/put/b/n/10.95 113
  []
 
@@ -1633,7 +1633,7 @@ Package mdframed Info: mdframed detected package amsthm
 Package refcheck Warning: Unused label `eq:KCgenerator' on input line 342.
 
 [9]
-<plots/ncoalescent.pdf, id=483, 456.70625pt x 423.5825pt>
+<plots/ncoalescent.pdf, id=488, 456.70625pt x 423.5825pt>
 File: plots/ncoalescent.pdf Graphic file (type pdf)
 <use plots/ncoalescent.pdf>
 Package pdftex.def Info: plots/ncoalescent.pdf  used on input line 354.
@@ -1672,7 +1672,7 @@ Package refcheck Warning: Unlabelled equation (\relax 2.10) on input line 464.
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 515.
  [13] [14]
-<plots/ancdegen_mn.pdf, id=552, 602.25pt x 401.5pt>
+<plots/ancdegen_mn.pdf, id=557, 602.25pt x 401.5pt>
 File: plots/ancdegen_mn.pdf Graphic file (type pdf)
 <use plots/ancdegen_mn.pdf>
 Package pdftex.def Info: plots/ancdegen_mn.pdf  used on input line 583.
@@ -1681,7 +1681,7 @@ Package pdftex.def Info: plots/ancdegen_mn.pdf  used on input line 583.
 
 Package refcheck Warning: Unused label `fig:ancdegen_mn' on input line 583.
 
-<plots/ancdegen_adaptsyst.pdf, id=553, 602.25pt x 401.5pt>
+<plots/ancdegen_adaptsyst.pdf, id=558, 602.25pt x 401.5pt>
 File: plots/ancdegen_adaptsyst.pdf Graphic file (type pdf)
 <use plots/ancdegen_adaptsyst.pdf>
 Package pdftex.def Info: plots/ancdegen_adaptsyst.pdf  used on input line 587.
@@ -1868,59 +1868,52 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\sim' on input line 1526.
+(hyperref)                removing `math shift' on input line 1526.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\mathsurround' on input line 1526.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\z@' on input line 1526.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\mathchar' on input line 1526.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 1526.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1540--1541
-
- []
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 1526.
 
 [33
 
-] [34]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1712.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\sim' on input line 1712.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1712.
-
-[35]
-<plots/PG_degen.pdf, id=834, 602.25pt x 401.5pt>
+] [34] [35]
+<plots/PG_degen.pdf, id=838, 602.25pt x 401.5pt>
 File: plots/PG_degen.pdf Graphic file (type pdf)
 <use plots/PG_degen.pdf>
-Package pdftex.def Info: plots/PG_degen.pdf  used on input line 1746.
+Package pdftex.def Info: plots/PG_degen.pdf  used on input line 1625.
 (pdftex.def)             Requested size: 341.43437pt x 227.6321pt.
  [36]
-
-Package refcheck Warning: Unused label `alg:condSMC_ancsamp' on input line 1795
-.
-
-[37 <./plots/PG_degen.pdf>]
-Overfull \hbox (42.75757pt too wide) detected at line 1827
+Overfull \hbox (42.75757pt too wide) detected at line 1706
 []
  []
 
-
-Overfull \hbox (1.96576pt too wide) detected at line 1839
+[37 <./plots/PG_degen.pdf>]
+Overfull \hbox (1.96576pt too wide) detected at line 1718
 []
  []
 
 [38]
 
-Package refcheck Warning: Unused label `fig:whyASworks_a' on input line 1959.
+Package refcheck Warning: Unused label `fig:whyASworks_a' on input line 1803.
 
 
-Package refcheck Warning: Unused label `fig:whyASworks_b' on input line 2015.
+Package refcheck Warning: Unused label `fig:whyASworks_b' on input line 1859.
 
 ) [39] [40]
 \openout2 = `limits.aux'.
@@ -2306,17 +2299,27 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 217.
 (./limits.aux) (./weakconv.aux) (./applications.aux) (./discussion.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 217.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 217.
-Package rerunfilecheck Info: File `thesis_main.out' has not changed.
-(rerunfilecheck)             Checksum: AF402143AD5DEF4F0D353C5FC9C66304;3662.
+
+
+Package rerunfilecheck Warning: File `thesis_main.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `thesis_main.out':
+(rerunfilecheck)             Before: 4F1164F4ACEE110DAE2561B7C115EF9B;3749
+(rerunfilecheck)             After:  9F6DA208D8908DE897DBA6BD80869C11;3817.
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package logreq Info: Writing requests to 'thesis_main.run.xml'.
 \openout1 = `thesis_main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 39454 strings out of 492649
- 760546 string characters out of 6129623
- 1291789 words of memory out of 5000000
- 42292 multiletter control sequences out of 15000+600000
+ 39457 strings out of 492649
+ 760619 string characters out of 6129623
+ 1291742 words of memory out of 5000000
+ 42295 multiletter control sequences out of 15000+600000
  577053 words of font info for 135 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  68i,22n,77p,10565b,1729s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2351,10 +2354,10 @@ ts/type1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2018/texmf-dist/fonts
 ype1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2018/texmf-dist/fon
 ts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2018/texmf-dist
 /fonts/type1/adobe/utopia/putb8a.pfb>
-Output written on thesis_main.pdf (126 pages, 820659 bytes).
+Output written on thesis_main.pdf (126 pages, 821239 bytes).
 PDF statistics:
- 2026 PDF objects out of 2073 (max. 8388607)
- 1802 compressed objects within 19 object streams
+ 2031 PDF objects out of 2073 (max. 8388607)
+ 1807 compressed objects within 19 object streams
  457 named destinations out of 1000 (max. 500000)
- 455 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 463 words of extra memory for PDF output out of 10000 (max. 10000000)
 

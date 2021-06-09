@@ -1523,30 +1523,19 @@ All stochastic roundings are also degenerate by definition when the weights are 
 
 
 
-\section{Conditional SMC \seb{$\sim$} }
-
-%\subsection{Particle MCMC \seb{$\sim$} }
-%
-%The idea behind particle MCMC methods is to use SMC steps within the MCMC updates in a way that improves the mixing properties of the Markov chain.
-%In certain models, generally those including some highly correlated sequential components, this strategy can be very effective.
-%
-%One popular particle MCMC algorithm is particle marginal Metropolis-Hastings \parencite{andrieu2010}[Section 2.4.2], a pseudo-marginal MCMC algorithm in which SMC provides an unbiased likelihood estimate with which to compute the Metropolis-Hastings acceptance probability.
-%The following exposition will focus on another particle MCMC algorithm, namely the particle Gibbs sampler \parencite{andrieu2010}[Section 2.4.3], which is more interesting from the point-of-view of SMC genealogies.
-%
-%The following scenario illustrates the power of particle MCMC, and is a good model to have in mind as we go on to discuss particle Gibbs and ancestor sampling.
-
-\draft{Emphasise that the inference itself is not sequential; we are targeting one static posterior distribution, on a fixed time horizon.}
-
-\seb{Sort out notation e.g.\ $x^\star$ versus $X^\star$}\\
-
-
-\textcite{andrieu2010} proposes a number of ``particle MCMC'' algorithms, which combine SMC with MCMC in order to improve performance in certain situations.
+\section{Conditional SMC \seb{$\checkmark$} }
+\seb{Be consistent with upper/lower case letters: $X,x$ etc.}\\
+\textcite{andrieu2010} propose a number of ``particle MCMC'' algorithms, which combine SMC with MCMC in order to improve performance in certain situations.
 One of their algorithms, the \emph{particle Gibbs} sampler \parencite[Section 2.4.3]{andrieu2010}, is of particular interest in the current work. For one thing, genealogies are particularly critical to its performance, and for another, the particle step uses a variant SMC algorithm which alters the distribution of genealogies.
 
-To motivate particle Gibbs, we introduce a parametrised state space model and explain how combining SMC updates with MCMC sampling allows us to tackle the related inferences effectively.
-The particle Gibbs algorithm can be applied much more broadly, but this application is particularly intuitive and exhibits all the features of interest to our genealogical study.
+In this section, we first introduce the particle Gibbs algorithm and the conditional SMC update, then discuss how ancestral degeneracy impacts the performance of particle Gibbs and how ancestor sampling mitigates this.
 
-%\subsection{Particle Gibbs algorithm \seb{$\checkmark$} }
+
+
+
+\subsection{Particle Gibbs}
+To motivate the particle Gibbs algorithm, we introduce a parametrised state space model and explain how combining SMC updates with MCMC sampling allows us to tackle the related inferences effectively.
+The particle Gibbs algorithm can be applied much more broadly, but this application is particularly intuitive and exhibits all the features of interest to our genealogical study.
 
 Consider a parametrised state space model of the form
 \begin{align*}
@@ -1556,19 +1545,18 @@ X_{t+1} \mid X_{t} &\sim K_{t+1}^\theta(\cdot \mid X_{t}) &\text{for } t=0,\dots
 Y_t \mid X_t &\sim g_t^\theta(\cdot \mid X_t) &\text{for } t=0,\dots, T
 \end{align*}
 exactly like \eqref{eq:SSM_spec} except that the specification is now parametrised by $\theta$ (which may be multi-dimensional), and we place a prior distribution on $\theta$. 
-%For notational simplicity we now assume that the kernels $K_\theta$ and potential functions $g_\theta$ do not depend on $t$, although the concept generalises readily to non-time-homogeneous dynamics.
-%\seb{In Section~\ref{sec:ancsamp_genealogy}, we require a time index on $q$, so maybe it's worth keeping the time dependence in this section too, e.g.\ $K_t^\theta$?}
-As usual, $\mu^\theta$, $(K_t^\theta)$, $(g_t^\theta)$ and $p$ are part of the model and are assumed to be known but not necessarily tractable.
-
-Notice that we are now working with a finite time horizon $T\in\mathbb{N}$. The inference of interest here is not inherently sequential; we are building an MCMC algorithm to sample from a single target distribution which happens to include some sequentially correlated components.
+As usual, $p$, $\mu^\theta$, $(K_t^\theta)$ and $(g_t^\theta)$ are part of the model and are assumed to be known but not necessarily tractable.
 
 Suppose that, given some data $y_{0:T}$, we wish to generate Monte Carlo samples from the joint posterior distribution of $X_{0:T}$ and $\theta$. (Even if we are only interested in inferring $\theta$, for instance, it is often more practical to target the joint posterior and then marginalise.)
-The conditional dependence structure invites the use of a (partially-collapsed) Gibbs sampler, sampling alternately from the conditional distributions $p(\theta \mid x_{0:T}, y_{0:T})$ and $p(x_{0:T} \mid \theta, y_{0:T})$.
+Notice that we are now working with a finite time horizon $T\in\mathbb{N}$. The inference of interest here is not inherently sequential; we are building an MCMC algorithm to sample from a single target distribution which happens to include some sequentially correlated components.
+
+
+The conditional dependence structure of the model invites the use of a (partially-collapsed) Gibbs sampler, sampling alternately from the conditional distributions $p(\theta \mid x_{0:T}, y_{0:T})$ and $p(x_{0:T} \mid \theta, y_{0:T})$.
 The $\theta$ update,
 \begin{equation*}
-p(\theta \mid x_{0:T}, y_{0:T}) \propto p(\theta) p(x_{0:T}, y_{0:T} \mid \theta) ,
+p(d\theta \mid x_{0:T}, y_{0:T}) \propto p(d\theta) p(x_{0:T}, y_{0:T} \mid \theta) ,
 \end{equation*}
-is often quite straightforward, if not analytically then by employing a Metropolis-Hastings step based on the current sampled values of $\theta$ and $x_{0:t}$. 
+is often quite straightforward, if not analytically then by employing a Metropolis-Hastings step based on the current sampled values of $\theta$ and $x_{0:T}$. 
 The $X$ update, meanwhile, is high-dimensional with strong sequential correlations: exactly the situation in which one might use SMC. 
 For the $X$ update, we need a sample from
 \begin{equation}\label{eq:PG_Xposterior}
@@ -1581,35 +1569,10 @@ However, the Markov chain associated to the procedure just described does not ad
 A Gibbs sampler targeting $p(x_{0:T},\theta \mid y_{0:T})$ exactly can be constructed by replacing the SMC step with a \emph{conditional SMC} step, which takes into account the value of $x_{0:T}$ sampled at the previous iteration, as well as the observations and the current value of $\theta$.
 
 A conditional SMC algorithm for this scenario is presented in Algorithm~\ref{alg:condSMC}.
-In contrast to Algorithm~\ref{alg:SMC}, the input now includes $x_{0:T}^\star$ and $a_{0:T}^\star$, which encode the states and parental indices, respectively, of the ``immortal trajectory'' (so called because it ``survives'' the SMC run with probability one). Within a particle Gibbs algorithm, the immortal trajectory is set to the trajectory sampled at the previous iteration.
+In contrast to Algorithm~\ref{alg:SMC}, the input now includes $x_{0:T}^\star$ and $a_{0:T}^\star$, which encode the states and parental indices, respectively, of the \emph{immortal trajectory} (so called because it ``survives'' the SMC run with probability one). Within a particle Gibbs algorithm, the immortal trajectory is set to the trajectory sampled at the previous iteration.
 The resampling step now assigns the immortal offspring to the immortal parent deterministically, and the state of the immortal particle is also updated deterministically rather than via the Markov kernel.
 As in standard SMC, there is a choice of \textsc{resample} procedures, but some care is needed to ensure the correct treatment of the immortal particle \parencite{lee2019}.
-%Here we take the \textsc{resample} procedure for the non-immortal particles to be Categorical sampling of parental indices (known as \emph{multinomial resampling}; see Section~??). It is possible to use other resampling schemes, but 
-%\begin{algorithm}[ht]
-%\vspace*{10pt}
-%\DontPrintSemicolon
-%\KwData{$N, T, \mu, (K_t)_{t=1}^T, (g_t)_{t=0}^T, x_{0:T}^\star, a_{0:T}^\star$}
-%Set $X_0^{(a_0^\star)} \gets x_0^\star$\;
-%\lFor{$i \in \{1,\dots,N\} \setminus a_0^\star$}{
-%	Sample $X_0^{(i)} \sim \mu(\cdot)$
-%}
-%\lFor{$i \in \{1,\dots, N\}$}{
-%		$w_{0}^{(i)} \gets  \left\{ {\sum_{j=1}^N g_0(X_0^{(j)})}\right \}^{-1}{g_0(X_0^{(i)})} $
-%}                
-%\For{$t \in \{0,\dots, T-1\}$}{
-%	Set $a_t^{(a_{t+1}^\star)} \gets a_t^\star$, 	$X_{t+1}^{(a_{t+1}^\star)} \gets x_{t+1}^\star$\;
-%        Sample $a_t^{(1:N)}\setminus a_t^\star \sim \Cat(\{1,\dots,N\}, w_t^{(1:N)})$\;
-%	\lFor{$i \in \{1,\dots,N\}$}{
-%		Sample $X_{t+1}^{(i)} \sim K_{t+1}(X_t^{(a_t^{(i)})}, \cdot)$
-%	}
-%    	\lFor{$i \in \{1,\dots, N\}$}{	
-%		$w_{t+1}^{(i)} \gets \Big\{ {\sum_{j=1}^N g_{t+1}(X_t^{(a_t^{(j)})},X_{t+1}^{(j)}) }\Big\}^{-1} g_{t+1}(X_t^{(a_t^{(i)})},X_{t+1}^{(i)}) $
-%	}          
-%}
-%\vspace*{10pt}
-%\caption[Conditional sequential Monte Carlo with multinomial resampling]{Conditional sequential Monte Carlo with multinomial resampling. The ``immortal particle'' at each time has its new state and parental index set deterministically according to the values of $x_{0:T}^\star$ and $a_{0:T}^\star$ given as input.}
-%\label{alg:condSMC}
-%\end{algorithm}
+
 \begin{algorithm}[ht]
 \vspace*{10pt}
 \DontPrintSemicolon
@@ -1632,114 +1595,30 @@ Set $X_0^{(a_0^\star)} \gets x_0^\star$\;
 	}          
 }
 \vspace*{10pt}
-\caption[Conditional sequential Monte Carlo for a parametrised state space model]{Conditional sequential Monte Carlo for a parametrised state space model. The ``immortal particle'' at each time has its new state and parental index set deterministically according to the values of $x_{0:T}^\star$ and $a_{0:T}^\star$ given as input.}
+\caption[Conditional sequential Monte Carlo for a parametrised state space model]{Conditional sequential Monte Carlo for a parametrised state space model. The immortal particle at each generation has its new state and parental index set deterministically according to the values of $x_{0:T}^\star$ and $a_{0:T}^\star$ given as input.}
 \label{alg:condSMC}
 \end{algorithm}
 The complete particle Gibbs algorithm for this example then consists of alternately sampling from the full conditional distribution of $\theta$ (e.g.\ using a Metropolis-Hastings update) and sampling a trajectory $(x_{0:T}, a_{0:T})$ using conditional SMC. See \textcite[Section 2.4.3]{andrieu2010} for more details.
 
-%% Turns out trying to write the algorithm explicitly is a nightmare.
-%The complete particle Gibbs algorithm for this example is summarised in Algorithm~\seb{??}. As was eluded to earlier, it consists of alternately sampling from the full conditional distribution of $\theta$ (using a Metropolis-Hastings update) and sampling a trajectory $x_{0:T}$ using conditional SMC.
-%\seb{put the alg here}
-%
-%\begin{algorithm}[ht]
-%\vspace*{10pt}
-%\DontPrintSemicolon
-%\KwData{$M, N, T, \tilde{p}, \mu, K_\theta, g_\theta$}
-%Set $X_0^{(a_0^\star)} \gets x_0^\star$\;
-%\For{$i \in \{1,\dots,M\}$}{
-%	Sample $\tilde{\theta} \sim \tilde{p}( \cdot \mid \theta[i-1] )$
-%	Sample $U \sim \Unif[0,1]$
-%	\If{$U \leq \frac{ p( \tilde{\theta} ) p(X[i], y_{0:T} \mid \tilde{\theta} ) \tilde{p}( theta[i-1] \mid \tilde{\theta} ) }{ p(\theta[i-1]) p(X[i], y_{0:T} \mid \theta[i-1]) \tilde{p}( \tilde{\theta} \mid \theta[i-1] ) }$}{
-%	    Set $\theta[i] \gets \tilde{\theta}$
-%	}
-%	\Else{ $\theta[i] \gets \theta[i-1]$ }
-%    Set $( (X_{T,0:T}^{(i)})_{i}, (w_T^{(i)})_{i} ) \gets$ \texttt{ConditionalSMC}$(N, T, \mu, K_\theta, g_\theta, X[i-1], A[i-1])$
-%    Sample $j \sim \Cat(\{ 1,\dots,N \}, w_T^{(1:N)}$ %$X_T \sim \Cat(\{ X_T^{(1)}, \dots, X_T^{(N)} \}, w_T^{(1:N)}$
-%    Set $X[i] \gets X_{T,0:T}^{(j)} $
-%}
-%\vspace*{10pt}
-%\caption[Particle Gibbs for a parametrised state space model]{Particle Gibbs for a parametrised state space model}
-%\label{alg:particleGibbs}
-%\end{algorithm}
-%
-%
-%%%%
-%\seb{The following was dumped from elsewhere and NEEDS REDRAFTING.}\\
-%
-%The scenario we present is a particle Gibbs algorithm for filtering with unknown parameters. The method applies more generally to particle Gibbs (for which the reader is directed to \textcite[Chapter 5]{lindsten2013}), but we find this particular scenario to be simple and instructive. \seb{To generalise to Del Moral's SMC framework basically requires just the change of notation $g \to G_t, f \to M_t$.}
-%
-%Consider the following hidden Markov model, parametrised by a constant parameter $\theta$ which may be multidimensional.
-%\seb{Define the spaces in which theta,X,Y live?}
-%\begin{align*}
-%Y_t \mid X_t &\sim g_\theta(\cdot \mid X_t)\\
-%X_{t} \mid X_{t-1} &\sim f_\theta(\cdot \mid X_{t-1})\\
-%X_0 &\sim \mu_\theta(\cdot) \\
-%\theta &\sim p(\cdot)
-%\end{align*}
-%\seb{Add ranges for t in first two lines.}
-%\seb{Use q instead of f for better congruity with other sections?}
-%We work on a fixed time horizon $T \in \mathbb{N}$, which is necessary to implement the particle Gibbs algorithm.
-%\seb{Can be artificially imposed by block sampling if doing online-ish inference?}
-%The measures corresponding to $\mu_\theta$, $f_\theta$ and $g_\theta$ are assumed to be known and to admit densities, and we are also given a fixed sequence of observations $y_{1:T}$. 
-%\seb{Either mention that f,g can depend on t, or make this explicit  in the notation.}
-%\seb{Don't really need to include prior on theta; it's not relevant to CSMC step.}
-%
-%Our aim is to generate Monte Carlo samples from the joint distribution of $X_{0:T}$ and $\theta$ conditional on $y_{1:T}$. Outside of models admitting closed-form solutions, this is typically the most practical way to draw samples from the marginal distributions of either $\theta$ or any subset of the states $X_{0:T}$, by marginalising the Monte Carlo samples. 
-%
-%The structure of the model invites Gibbs sampling: alternating between updating $\theta$ conditional on $X_{0:T}$, and updating $X_{0:T}$ conditional on $\theta$.
-%\seb{``These conditionals are typically much easier to sample from that the corresponding marginals.'' (due to the dependence structure in the HMM).}
-%The $\theta$ update consists of sampling from 
-%\begin{equation*}
-%p(\theta \mid x_{0:T}, y_{1:T}) \propto p(\theta) p(x_{0:T}, y_{1:T} \mid \theta) ,
-%\end{equation*}
-%which can be achieved quite easily with a Metropolis--Hastings step.
-%The $X$ update is the `difficult' part, requiring a sample from
-%\begin{equation*}
-%p(x_{0:T} \mid \theta , y_{1:T}) =: \gamma_T^\theta(x_{0:T}) .
-%\end{equation*}
-%\seb{Define gamma for general s too:
-%\begin{equation*}
-%\gamma_s^\theta(x_{0:s}) \propto \mu_\theta(x_0) g_\theta(y_0\mid x_0) \prod_{r=1}^s f_\theta(x_r \mid x_{r-1}) g_\theta(y_r \mid x_r) .
-%\end{equation*}
-%}
-%This target distribution is suited to sequential Monte Carlo, and this is where the `particle' part of particle Gibbs comes in.
-%We update all of the hidden states $X_{0:T}$ in one Gibbs step, which consists of drawing one sample from a particle filter. To target the correct distribution, we use conditional SMC for these updates, conditional on the sample of $X_{0:T}$ from the previous sweep. 
-%
-%\seb{Refer back to the CSMC algorithm which I've already written down somewhere, explaining how the inputs to the algorithm correspond to functions/quantities introduced in this setting.}
 
 
 
-\subsection{Ancestor sampling \seb{$\sim$} } \label{sec:ancsamp}
-\draft{Algorithm (or required changes to generic algorithm). Relation to backward sampling. When can it be implemented? Effect on performance (when is it effective?). Maybe illustrate/motivate with some plots as in the ancestor sampling note.}
-
-
-
-
-
-
-
-\subsubsection{Ancestral degeneracy leads to poor mixing}
+\subsection{Ancestral degeneracy in particle Gibbs}
 We have seen in Section~\ref{sec:SMC_genealogies} that the phenomenon of ancestral degeneracy can severely affect the performance of SMC algorithms, particularly in smoothing applications.
 The SMC update of particle Gibbs is a smoothing problem, however it requires only one sampled trajectory from the smoothing distribution, so one might imagine that we are safe from the curse of ancestral degeneracy.
 In fact, the loss of ancestors causes a different problem for particle Gibbs: it prevents some components of the Markov chain being refreshed, so that the chain mixes slowly.
 
-To see this, consider the illustration in Figure~\ref{fig:PG_ancdegen}.
-Figure \ref{fig:PG_ancdegen} represents the smoothing trajectories generated by the conditional SMC update at iteration $t$. The thick black line is the immortal trajectory given as input, that is the trajectory sampled by the conditional SMC update at iteration $t-1$. Backwards in time, the sampled trajectories quickly coalesce until at time $20$ all of the trajectories have coalesced. The common trajectory up to time $20$ must necessarily be part of the immortal trajectory.
-A new trajectory (highlighted in purple) is then sampled among the $N$ trajectories shown. Whichever trajectory we sample, it must overlap with the previously sampled trajectory at least from time $0$ to $20$.
-At the next iteration the newly sampled trajectories again coalesce onto the immortal trajectory, and this behaviour is repeated. 
-If $T$ is too large with respect to $N$, the early part of the trajectory will be updated only rarely, so the corresponding states mix very slowly.
+To see this, consider the illustration in Figure~\ref{fig:PG_ancdegen}, which shows the smoothing trajectories generated by a conditional SMC update at some iteration $r$. The thick black line is the immortal trajectory given as input, that is, the trajectory sampled by the conditional SMC update at iteration $r-1$. Backwards in time, the sampled trajectories quickly coalesce until at time $20$ all of the trajectories have coalesced. The common trajectory from time $0$ to $20$ must necessarily be part of the immortal trajectory.
+A new trajectory (highlighted in purple) is then sampled among the $N$ generated trajectories. Whichever trajectory we sample, it will certainly overlap with the previously sampled trajectory at least from time $0$ to $20$.
+
+At the next iteration the newly sampled trajectories will again coalesce onto the immortal trajectory, and this behaviour is repeated. 
+If $T$ is too large with respect to $N$, the early part of the trajectory will very rarely be updated, so the corresponding states will mix very slowly.
 For further intuition on this phenomenon the reader is directed to \textcite[Section 5.4]{lindsten2013} which provides a very clear exposition.
 %\seb{Also include a plot showing sticky realisations from a sequence of consecutive draws?}
-
-\seb{If the immortal trajectory is not ``typical'' of the target smoothing distribution, then the new lineages tend not to degenerate very quickly onto the immortal lineage, which would solve this problem. However, since the immortal trajectory is supposed to be (approaching) a sample from the target, this is not much comfort. Perhaps if perturbing $\theta$ profoundly changes the model? But I don't think that kind of instability is desirable either.}
+%\seb{If the immortal trajectory is not ``typical'' of the target smoothing distribution, then the new lineages tend not to degenerate very quickly onto the immortal lineage, which would solve this problem. However, since the immortal trajectory is supposed to be (approaching) a sample from the target, this is not much comfort. Perhaps if perturbing $\theta$ profoundly changes the model? But I don't think that kind of instability is desirable either.}
 
 The meaning of $T$ ``too large'' here depends on the model and the type of SMC update used, but typically $T$ is determined by the application and $N$ is limited by computational resources, so we may not be able to control their relative size. The other brute-force approach would be to increase the number of iterations of the MCMC algorithm, but this too is infeasible on a limited computational budget.
 It is therefore worth investing some effort to find an alternative solution to the problem of ancestral degeneracy within particle Gibbs.
-
-%Particle Gibbs runs into problems when the time horizon $T$ is large compared to the number of particles $N$. $T$ is determined by the application at hand, and $N$ is limited by computational resources, so we may not be able to control their relative size. 
-%The source of the problem is ancestral degeneracy. 
-%We know that in standard SMC algorithms this problem exists and its effect is to increase the variance of our Monte Carlo estimates. 
-%In particle Gibbs, the $N$ simulated trajectories are not used to estimate anything; only one trajectory is sampled at each step, and becomes one state a Markov chain Monte Carlo estimate. Ancestral degeneracy now has a less direct effect: it causes the Markov chain to mix slowly. 
 
 \begin{figure}
 \centering
@@ -1748,12 +1627,11 @@ It is therefore worth investing some effort to find an alternative solution to t
 \label{fig:PG_ancdegen}
 \end{figure}
 
-%To see why, take a look at Figure \ref{fig:PG_ancdegen}. In Figure \ref{fig:PG_ancdegen}a we have just completed the $r^{th}$ Gibbs sweep, sampling $\theta[r]$ and $x_{0:T}[r]$. For the $(r+1)^{th}$ sweep, we take as immortal trajectory $x_{0:T}^* = x_{0:T}[r]$, and run conditional SMC. Due to ancestral degeneracy, many of the resulting trajectories coalesce, and since the immortal trajectory must survive across the whole time window, they tend to coalesce onto the immortal trajectory (Figure \ref{fig:PG_ancdegen}b). Now we obtain the next sample $x_{0:T}[r+1]$ by sampling a trajectory among the $N$ we have just simulated. Whichever one we choose, it has a high amount of overlap with the immortal trajectory, i.e.\ the previous sample $x_{0:T}[r]$. This behaviour tends to repeat at every iteration, meaning the early $X$ coordinates are getting `stuck' (rarely being updated). This is clearly a problem for the mixing of the Markov chain.
-%\seb{Another way to explain this is that the variables defining the immortal trajectory (indices and states) are never refreshed during the Gibbs sweep - this is the explanation given in Lindsten Ch5.}
-%It renders the particle Gibbs algorithm impractical for any such model where the time horizon $T$ is too large: either we must run the Markov chain for longer, or increase the number of particles $N$ in the conditional SMC step, neither of which is feasible on a limited computational budget. 
 
 
-\subsubsection{The solution: ancestor sampling}
+
+
+\subsection{Ancestor sampling}\label{sec:ancsamp}
 An effective solution (where it is possible to implement it) was proposed by \textcite{whiteley2010} and is known as \emph{ancestor sampling}.
 It consists of a simple modification to the resampling step within the conditional SMC algorithm. 
 In the basic algorithm with multinomial resampling, at each time step the non-immortal particles are resampled by multinomial resampling according to their weights, while the immortal offspring is deterministically assigned to the immortal parent. That is, at time $t$, for each $i \in \{1,\dots, N\}$,
@@ -1767,6 +1645,7 @@ w_t^{(i)} & j \text{ non-immortal} \\
 
 Ancestor sampling combines the resampling step with a backward simulation step for the immortal particle. Instead of deterministically inheriting the ``correct'' parent, the immortal particle samples its parent among all $N$ possible parents.
 This is justified in the same way as backwards simulation in general (Section~??), provided the ancestor sampling probabilities are chosen correctly, although we now apply the backwards sampling step to the immortal trajectory only.
+Ancestor sampling can also be implemented for other choices of \textsc{resample}, using the same backward simulation probabilities (but of course the resampling probabilities for non-immortal particles will be different, and there may be some additional dependence between parental indices). For simplicity we here restrict ourselves to multinomial resampling.
 
 \begin{algorithm}[ht]
 \vspace*{10pt}
@@ -1794,7 +1673,7 @@ Set $X_0^{(a_0^\star)} \gets x_0^\star$\;
 \caption[Conditional sequential Monte Carlo with ancestor sampling]{Conditional sequential Monte Carlo with ancestor sampling for a parametrised state space model. The parent of the ``immortal particle'' is updated at each iteration via an on-line backward simulation step. The second parameter of the Categorical variable should be interpreted element-wise.}
 \label{alg:condSMC_ancsamp}
 \end{algorithm}
-Now assume that the smoothing distributions admit densities, that is $\mu^\theta(\cdot)$ and $K_t^\theta(\cdot\mid x)$, for any $x,t$, admit densities. Denote the density of $K_t^\theta$ by $q_t^\theta$. Define the trajectories $X_{s, 0:s}^{(i)}$ (for any $s,i$) as before, by tracing back the states of the parents starting from $X_{s,s}^{(i)} := X_s^{(i)}$.
+Assume that the smoothing distributions admit densities, that is $\mu^\theta(\cdot)$ and $K_t^\theta(\cdot\mid x)$ admit densities for all $x,t$. Denote the density of $K_t^\theta$ by $q_t^\theta$. Define the trajectories $X_{t, 0:t}^{(i)}$ (for any $t,i$) as in Section~\ref{sec:SMC_FK}, starting from $X_{t,t}^{(i)} := X_t^{(i)}$ and tracing back the states of the parents via $X_{t,s}{(i)} = X_{t,s+1}^{( a_t^{(i)} )}$.
 Then the correct resampling probabilities are, for each $i$,
 \begin{equation}\label{eq:ancsamp_probs}
 \Prob[a_t^{(j)} = i \mid X_{0:t}^{(1:N)}, x_{0:T}^\star, a_{0:T}^\star ] 
@@ -1806,8 +1685,8 @@ w_t^{(i)} \frac{
         & j \text{ immortal} .
 \end{cases}
 \end{equation}
-The ratio of densities can be interpreted as the conditional probability that the whole trajectory is the concatenation of $(X_{t,0:t}^{(i)}$ with $x_{t+1:T}^\star)$, given that its first $t+1$ states are $X_{t,0:t}^{(i)}$.
-To simplify the ratio, we can use \eqref{eq:PG_Xposterior} to write
+The ratio of densities can be interpreted as the conditional probability that the whole trajectory is the concatenation of $X_{t,0:t}^{(i)}$ with $x_{t+1:T}^\star$, given that its first $t+1$ states are $X_{t,0:t}^{(i)}$.
+To simplify the ratio, use \eqref{eq:PG_Xposterior} to write
 \begin{equation*}
 p( X_{t,0:t}^{(i)} \mid \theta, y_{0:t} )
 \propto \mu^\theta( X_{t,0}^{(i)} ) g_0^\theta( y_0 \mid X_{t,0}^{(i)} ) 
@@ -1845,60 +1724,25 @@ w_t^{(i)} & j \text{ non-immortal}\\
 w_t^{(i)} q_{t+1}^\theta( x_{t+1}^\star \mid X_{t}^{(i)} ) & j \text{ immortal} .
 \end{cases}
 \end{equation}
-Therefore, in order to do ancestor sampling, we need a stronger assumption on the Markov kernels than was required to simply run the conditional SMC algorithm: we now require that, for each $t$, $K_t^\theta$ admits a density $q_t^\theta$ and that $q_t^\theta(\cdot \mid x)$ can be evaluated pointwise for any $x$, whereas previously we only needed to draw samples from $K_t^\theta(\cdot\mid x)$ for any $x$.
+The conditional SMC algorithm with this adaptation is presented in Algorithm~\ref{alg:condSMC_ancsamp}.
+
+We see that, in order to do ancestor sampling, we need a stronger assumption on the Markov kernels than was required to simply run the conditional SMC algorithm: we now require that, for each $t$, $K_t^\theta$ admits a density $q_t^\theta$ and that $q_t^\theta(\cdot \mid x)$ can be evaluated pointwise for any $x$, whereas previously we only needed to draw samples from $K_t^\theta(\cdot\mid x)$ for any $x$.
 This additional requirement rules out ancestor sampling in some applications.
 
-Recall that the usual backward simulation procedure requires a full forward pass to calculate the future states before the backward simulation probabilities can be computed. Ancestor sampling, on the other hand, does not require a forward pass because it only computes backward simulation probabilities for the immortal trajectory, for which all the future states are known in advance. This means that ancestor sampling can be implemented on-line.
-
-%...\\
-%
-%%%%%
-%\seb{The following was dumped from elsewhere and NEEDS REDRAFTING.}\\
-%
-%\begin{figure}
-%\centering
-%\includegraphics[width=0.8\textwidth]{plots/immresample.jpg}
-%\caption{PLACEHOLDER. Interpretation of a resampling weight for the immortal offspring.}
-%\label{fig:resample_immortal}
-%\end{figure}
-%
-%In ancestor sampling we do the same thing, except that the immortal particle is also resampled, rather than being deterministically assigned:
-%\begin{equation}%\label{eq:ancsamp_probs}
-%\Prob[a_t^{(j)} = i] \propto
-%\begin{cases}
-%w_t^{(i)} &\text{non-immortal particles}\\
-%w_t^{(i)} \frac{\gamma_T^\theta((x_{0:t-1}^{(i)}, x_{t:T}^*))}{\gamma_{t-1}^\theta(x_{0:t-1}^{(i)})} &\text{immortal particle} .
-%\end{cases}
-%\end{equation}
-%The ratio of $\gamma$s can be interpreted as the conditional probability of the trajectory continuing with $x_{t:T}^*$ given is starts with $x_{0:t-1}^{(i)}$ (see Figure \ref{fig:resample_immortal}).
-%Using the structure of the hidden Markov model defined earlier, we can rewrite the ratio
-%\begin{equation*}
-%\frac{\gamma_T^\theta((x_{0:t-1}^{(i)}, x_{t:T}^*))}{\gamma_{t-1}^\theta(x_{0:t-1}^{(i)})}
-%\propto f_\theta(x_t^* \mid x_{t-1}^{(i)}) g_\theta(y_t \mid x_t^*) \prod_{s=t}^T f_\theta(x_r^* \mid x_{r-1}^*) g_\theta(y_r \mid x_r^*)
-%\propto f_\theta(x_t^* \mid x_{t-1}^{(i)}) .
-%\end{equation*}
-%\seb{Should the first propto actually be equality?}
-%So it looks like it should also be pretty easy to implement ancestor sampling for our model. \seb{Write down the pseudocode to prove it?}
-%The only catch is that we need to be able to evaluate $f_\theta$ pointwise, whereas in the basic algorithm we only need to draw samples from $f_\theta$. This will rule out ancestor sampling in some applications.
+Recall that the usual backward simulation procedure requires a full forward pass to calculate the future states before the backward simulation probabilities can be computed. Ancestor sampling, on the other hand, does not require a forward pass because it only computes backward simulation probabilities for the immortal trajectory, for which all the future states are known in advance. This means that the additional computational cost of implementing ancestor sampling is negligible.
 
 
 
 
 \subsubsection{Why ancestor sampling works}
-We know that complete backward simulation eradicates ancestral degeneracy by breaking up the lineages into disjoint pieces.
+We know that complete backward simulation eradicates ancestral degeneracy by breaking up the lineages into disjoint pieces (Section~??).
 But here we are only backward-simulating one of the $N$ particles, leaving the other $N-1$ lineages to coalesce as usual. So how does this help?
 
 Recall that in particle Gibbs ancestral degeneracy is not itself a problem, because we only require a single sample from the smoothing distribution. 
 The problem is that the consecutive samples are highly correlated, because of  the repeated coalescence onto the immortal lineage.
 The contribution of ancestor sampling is to break up the immortal trajectory so that it no longer appears in the sampled lineages; see Figure~\ref{fig:whyASworks}. While the non-immortal trajectories may still coalesce, they no longer preferentially coalesce onto the immortal trajectory. 
 In turn, the sampled trajectory that is output does not overlap unduly with the immortal trajectory that was the previous output, and this completely solves the problem of the slow-mixing particle Gibbs chain.
-%
-%\begin{figure}
-%\centering
-%\includegraphics[width=0.8\textwidth]{plots/ancsampworks.jpg}
-%\caption{PLACEHOLDER. Illustration of how ancestor sampling prevents coalescence onto the immortal trajectory.}
-%\label{fig:whyASworks_temp}
-%\end{figure}
+
 \begin{figure}[ht]
 \centering
 \subfloat[without ancestor sampling]{
@@ -2018,18 +1862,5 @@ In \subref{fig:whyASworks_a}, the lineages of the terminal particles coalesce on
 In \subref{fig:whyASworks_b}, the lineages still coalesce, but not onto the immortal trajectory. The immortal trajectory no longer exists as a lineage.}
 \label{fig:whyASworks}
 \end{figure}
-
-%...\\
-%
-%%%%%
-%\seb{The following was dumped from elsewhere and NEEDS REDRAFTING.}\\
-%
-%Ancestor sampling is backward sampling, but only for the immortal trajectory. (It isn't possible to do backward sampling during the forward sweep for any except the immortal trajectory - see that we can't evaluate the required $\gamma$s without knowing the future states, which are known only for the immortal trajectory.)
-%We know that backward sampling (on all trajectories, in a separate backward sweep) eradicates ancestral degeneracy. But we've only backward-sampled one trajectory, leaving the other $N-1$ trajectories to do their coalescing thing.
-%
-%The important point is that ancestor sampling does not prevent ancestral degeneracy (it mitigates it a tiny bit like $1/N$). Ancestral degeneracy is pretty much as severe as ever; the difference is that the trajectories no longer coalesce preferentially onto the immortal trajectory. There is no longer an immortal trajectory to coalesce onto. An illustration of this can be seen in Figure \ref{fig:whyASworks}.
-
-%
-%Remember, the problem with ancestral degeneracy in particle Gibbs was that it induced strong autocorrelation among consecutive samples of $X_{0:T}$. It isn't a problem that the trajectories coalesce, as long as the thing they coalesce to is able to move, readily exploring the state space. This is achieved with ancestor sampling.
 
 
