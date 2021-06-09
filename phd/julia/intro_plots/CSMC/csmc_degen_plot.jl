@@ -1,5 +1,55 @@
-### Attempt to make an illustrative plot showing the problem of ancestral
+### Make illustrative plot showing the problem of ancestral
 #   degeneracy within particle Gibbs.
+#
+#   All of the required functions are contained in this file (I think!)
+#
+
+using Statistics, StatsBase, Random, Distributions, Plots
+
+# generate a sequence of observations from an Orstein-Uhlenbeck process
+function ousim(T::Int64, delta::Float64, sigma::Float64, returnstates::Bool)
+    # pre-allocate arrays
+    states = Array{Float64}(undef, T+1)
+    observations = Array{Float64}(undef, T+1)
+
+    # generate Normal noise:
+    states_noise = rand(Normal(0, delta^(0.5)), T+1)
+    obs_noise = rand(Normal(0, sigma), T+1)
+
+    # initial states
+    states[1] = states_noise[1]
+    observations[1] = states[1] + obs_noise[1]
+
+    # simulate the process
+    for t in 2:T+1
+        states[t] = (1-delta) * states[t-1] + states_noise[t]
+        observations[t] = states[t] + obs_noise[t]
+    end
+
+    if returnstates
+        return (states = states, observations = observations)
+    else
+        return observations
+    end
+end
+
+# sample initial particle positions
+function ouinit(N::Int64, delta::Float64, sigma::Float64)
+    rand(Normal(0, delta^(0.5)), N)
+end
+
+# propagate states: sample new positions from current ones
+function outransition(oldpos::Array{Float64,1}, delta::Float64, sigma::Float64)
+    N = length(oldpos)
+    rand(Normal(), N) .* delta^(0.5) .+ (1-delta) .* oldpos
+end
+
+# calculate potentials between particle positions and observations (to compute weights)
+function oupotential(pos::Array{Float64,1}, obs::Float64, delta::Float64, sigma::Float64)
+    (2*pi)^(-0.5) * sigma^(-1) * exp.(-(obs .- pos).^2 / (2*sigma^2))
+end
+
+# one iteration of SMC (for drawing the immortal trajectory)
 function smc_example(N::Int64, T::Int64, observations::Array{Float64,1}, initialsam::Function, transition::Function, potential::Function, delta::Float64, sigma::Float64)
     # pre-allocate memory
     parents = Array{Int64, 2}(undef, T, N)
@@ -24,6 +74,7 @@ function smc_example(N::Int64, T::Int64, observations::Array{Float64,1}, initial
     return (positions = positions, weights = weights, parents=parents)
 end
 
+# one iteration of CSMC (for drawing all the new trajectories)
 function csmc_example(N::Int64, T::Int64, observations::Array{Float64,1}, initialsam::Function, transition::Function, potential::Function, immortal_positions::Array{Float64,1}, delta::Float64, sigma::Float64)
 
     # pre-allocate memory
@@ -55,6 +106,7 @@ function csmc_example(N::Int64, T::Int64, observations::Array{Float64,1}, initia
     return (positions = positions, weights = weights, parents=parents, immortal=immortal_indices)
 end
 
+# find the sequence of parental indices for each lineage
 function trace_lineage(N::Int64, T::Int64, parents::Array{Int64,2})
     ## pre-allocate memory
     lineages = Array{Int64, 2}(undef, T+1, N)
@@ -77,18 +129,22 @@ T=40
 N=20
 myobs = ousim(T, delta, sigma, false)
 
-mypreviter = smc_example(N,T,myobs,ouinit,outransition,oupotential, delta, sigma)
-myprevlineages = trace_lineage(N,T,mypreviter.parents)
-imm_index = sample(1:N, Weights(mypreviter.weights[T,:]))
-myimmindex = myprevlineages[:,imm_index]
+mypreviter = smc_example(N,T,myobs,ouinit,outransition,oupotential, delta, sigma) # run SMC to get ensemble of trajectories
+myprevlineages = trace_lineage(N,T,mypreviter.parents) # track the ancetsral indices for each trajectory (actually only need it for the chosen trajectory)
+imm_index = sample(1:N, Weights(mypreviter.weights[T,:])) # choose a lineage to keep as `prev iter' / 'immortal' output
+myimmindex = myprevlineages[:,imm_index] # ancestral indices of chosen immortal lineage
+
+# calculate positions of chosen immortal lineage
 myimmpos = Array{Float64,1}(undef,T+1)
 for t in 1:(T+1)
     myimmpos[t] = mypreviter.positions[t,myimmindex[t]]
 end
+
+# run csmc conditional on the chosen immortal lineage
 mysam = csmc_example(N,T,myobs,ouinit,outransition,oupotential,myimmpos, delta, sigma)
 
 
-## Compute genealogy
+## Compute genealogy positions
 gene_index = trace_lineage(N,T,mysam.parents)
 gene_pos = Array{Float64,2}(undef,T+1,N)
 for i in 1:N
@@ -98,13 +154,13 @@ for i in 1:N
 end
 
 ## Plot genealogy
-myancplot = plot(1:T+1, gene_pos[:,1], line=(:black), legend=false, xaxis="t", yaxis="position")#, ylims=(-0.5,N+0.5))
+myancplot = plot(1:T+1, gene_pos[:,1], line=(:black), legend=false, xaxis="t", yaxis="position", ticks = nothing, border = :none)#, ylims=(-0.5,N+0.5))
 for i in 2:N
-    plot!(1:T+1, gene_pos[:,i], line=:black)
+    plot!(1:T+1, gene_pos[:,i], line=:black) # add line for each trajectory
 end
+plot!(1:T+1, myimmpos, line=(5,:black)) # thick line shows immortal trajectory
+nextiter_index = sample(1:N, Weights(mysam.weights[T,:])) # sample a new trajectory from csmc output
+plot!(1:T+1, gene_pos[:,nextiter_index], line=(3,RGB(0.53, 0.0, 0.69))) # purple line shows newly sampled trajectory
 
-# STILL NEED TO HIGHLIGHT THE IMMORTAL LINEAGE AND THE NEWLY SAMPLED LINEAGE
-
-#title!("foo") ## change plot title for different cases
-myancplot
-#savefig("mylovelyplot.pdf") ## change file name for different cases
+myancplot # show plot
+#savefig("PG_degen.pdf") # save plot
