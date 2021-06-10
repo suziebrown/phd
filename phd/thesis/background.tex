@@ -613,8 +613,9 @@ Each line is the lineage of one of the terminal particles, indicating the index 
 \subref{fig:ancdegen_adaptsyst} the same system with adaptive systematic resampling.}
 \label{fig:ancestral_degeneracy}
 \end{figure}
-
-
+On the other hand, ancestral degeneracy actually improves the memory efficiency of SMC. We do not need to store all of the particles generated at each time (at memory cost $O(NT)$), only those that are included in the resulting genealogy. \textcite{jacob2015} provide an algorithm for efficient storage of the genealogy, reducing the asymptotic memory cost to $O(N\log N+T)$.
+However, it is certainly still worth trying to reduce ancestral degeneracy because to achieve a given level of error with a highly degenerate system will require such a large $N$ that the memory gains are cancelled.
+%(a) because computation is often the limiting factor rather than memory, and (b) 
 
 
 \subsubsection{Mitigating ancestral degeneracy}

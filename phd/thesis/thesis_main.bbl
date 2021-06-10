@@ -1216,6 +1216,50 @@
       \field{type}{techreport}
       \field{year}{2020}
     \endentry
+    \entry{jacob2015}{article}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,uniquepart=base,hash=eb15862f4553ea52855b7cdaf745225c}{%
+           family={Jacob},
+           familyi={J\bibinitperiod},
+           given={Pierre\bibnamedelima E.},
+           giveni={P\bibinitperiod\bibinitdelim E\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=f350d26e9939e4f7916760e09e28e5f6}{%
+           family={Murray},
+           familyi={M\bibinitperiod},
+           given={Lawrence\bibnamedelima M.},
+           giveni={L\bibinitperiod\bibinitdelim M\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=2951229f7951d6da501aa8ec82d424e8}{%
+           family={Rubenthaler},
+           familyi={R\bibinitperiod},
+           given={Sylvain},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{99a6d74d1da1294a482cdfc953522129}
+      \strng{fullhash}{99a6d74d1da1294a482cdfc953522129}
+      \strng{bibnamehash}{99a6d74d1da1294a482cdfc953522129}
+      \strng{authorbibnamehash}{99a6d74d1da1294a482cdfc953522129}
+      \strng{authornamehash}{99a6d74d1da1294a482cdfc953522129}
+      \strng{authorfullhash}{99a6d74d1da1294a482cdfc953522129}
+      \field{sortinit}{J}
+      \field{sortinithash}{fce5f8d0bd05e8d93f3dbe21c78897ca}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Statistics and Computing}
+      \field{number}{2}
+      \field{title}{Path Storage in the Particle Filter}
+      \field{volume}{25}
+      \field{year}{2015}
+      \field{pages}{487\bibrangedash 496}
+      \range{pages}{10}
+    \endentry
     \entry{jazwinski2007}{book}{}
       \name{author}{1}{}{%
         {{uniquename=0,uniquepart=base,hash=87f554ca758cc49e1dd9c710a5a4e776}{%
@@ -1493,11 +1537,11 @@
            given={Anthony},
            giveni={A\bibinitperiod},
            givenun=0}}%
-        {{uniquename=0,uniquepart=base,hash=b2c64deb00eb81a0d60c218a05607576}{%
+        {{uniquename=0,uniquepart=base,hash=f350d26e9939e4f7916760e09e28e5f6}{%
            family={Murray},
            familyi={M\bibinitperiod},
-           given={Lawrence},
-           giveni={L\bibinitperiod},
+           given={Lawrence\bibnamedelima M.},
+           giveni={L\bibinitperiod\bibinitdelim M\bibinitperiod},
            givenun=0}}%
         {{uniquename=0,uniquepart=base,hash=17d1caa8d265744784c2779daffb0a90}{%
            family={Johansen},
@@ -1506,12 +1550,12 @@
            giveni={A\bibinitperiod\bibinitdelim M\bibinitperiod},
            givenun=0}}%
       }
-      \strng{namehash}{5f0871873bf8ccfd98723c3081f69f32}
-      \strng{fullhash}{5f0871873bf8ccfd98723c3081f69f32}
-      \strng{bibnamehash}{5f0871873bf8ccfd98723c3081f69f32}
-      \strng{authorbibnamehash}{5f0871873bf8ccfd98723c3081f69f32}
-      \strng{authornamehash}{5f0871873bf8ccfd98723c3081f69f32}
-      \strng{authorfullhash}{5f0871873bf8ccfd98723c3081f69f32}
+      \strng{namehash}{b55923e24b2df80ec1d4cc4543c63ecb}
+      \strng{fullhash}{b55923e24b2df80ec1d4cc4543c63ecb}
+      \strng{bibnamehash}{b55923e24b2df80ec1d4cc4543c63ecb}
+      \strng{authorbibnamehash}{b55923e24b2df80ec1d4cc4543c63ecb}
+      \strng{authornamehash}{b55923e24b2df80ec1d4cc4543c63ecb}
+      \strng{authorfullhash}{b55923e24b2df80ec1d4cc4543c63ecb}
       \field{sortinit}{L}
       \field{sortinithash}{2c7981aaabc885868aba60f0c09ee20f}
       \field{extradatescope}{labelyear}
