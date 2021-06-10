@@ -574,7 +574,7 @@ Nor is our model neutral: the resampling distribution depends on the weight of e
 
 
 
-\section{Sequential Monte Carlo genealogies}
+\section{Sequential Monte Carlo genealogies \seb{$\checkmark$} }
 \label{sec:SMC_genealogies}
 %\subsection{From particles to genealogies}
 We have already seen that genetic terminology applies quite naturally to SMC.
@@ -586,8 +586,6 @@ We will see in this section that these genealogies, induced by resampling, are n
 
 
 \subsection{Ancestral degeneracy}
-\draft{How do genealogies affect performance? Variance (and variance estimation?), storage cost. Ancestral degeneracy.}
-
 Suppose we were using SMC to sample from the smoothing distribution of some state space model.
 As described in Section~\ref{sec:SMC_FK}, we run our chosen SMC algorithm forwards, then output the $N$ sampled trajectories $X_{t,0:t}^{(i)}$ (for each $i\in\{1,\dots,N\}$).
 Each trajectory was obtained by tracing back through the parent at each generation, starting from one of the terminal particles. 
@@ -653,10 +651,29 @@ Secondly, calculating the backward-simulation probabilities requires the Markov 
 
 
 \subsection{Asymptotic genealogies}
-\draft{Why are large population asymptotics useful? Existing results (path storage, KJJS).}
+If we had access to information about the behaviour of SMC genealogies a priori (i.e.\ without having run the algorithm), we would be in a position to answer many questions of interest. These include practical questions about tuning, for example:
+\begin{itemize}
+\item How many particles should I use in order to maintain (with high enough probability) a given level of error over a time horizon $T$?
+\item With $N$ particles, what is the largest lag over which fixed-lag smoothing produces reasonable estimates?
+\item How many particles should I use within particle Gibbs to ensure that (with high enough probability) at least two distinct trajectories are generated at each iteration?
+\end{itemize}
+This last question touches on a critical aspect of the performance of particle Gibbs algorithms, which is discussed in Section~\ref{sec:condSMC}.
+We could also consider theoretical questions, such as:
+\begin{itemize}
+\item For a given class of models and algorithms, what is the effect of ancestral degeneracy on how the estimators evolve over time?
+\item Which resampling schemes lead to the smallest amount of ancestral degeneracy?
+\item What is the effect on genealogies of adaptive resampling?
+\end{itemize}
+Many of these questions have already been partially addressed, without any explicit analysis of genealogies, by way of variance calculations and simulation experiments.
+But since these are all genealogical questions in essence, it would seem sensible to work directly with the genealogies, if possible.
+The problem is that the genealogy of particles is a complex object, it is random, and it can depend strongly on the particular choice of Feynman-Kac model and SMC implementation.
 
+It turns out that these problems can be somewhat overcome by considering the genealogies in an asymptotic regime where the number of particle $N$ tends to infinity.
+In this regime, many different particle systems exhibit genealogies of a common form, namely Kingman's $n$-coalescent under a suitable time-scale. The differences between various algorithms is then encoded in the time-scale function, which is still random but is a less complicated object than the genealogy itself (namely a c\`adl\`ag function rather than a labelled weighted tree).
+In the context of SMC, these asymptotic genealogies were first analysed by \textcite{koskela2018}. The simulations therein suggest that the asymptotic results transfer quite well to finite systems.
 
-
+One of the contributions of the current work is to demonstarte that Kingman-type genealogies arise from a wide variety of SMC algorithms, including those most commonly used in practice.
+This allows genealogies of different SMC algorithms, for instance, to be compared by investigating the corresponding time-scale functions.
 
 
 
@@ -1589,6 +1606,7 @@ All stochastic roundings are also degenerate by definition when the weights are 
 
 
 \section{Conditional SMC \seb{$\checkmark$} }
+\label{sec:condSMC}
 \seb{Be consistent with upper/lower case letters: $X,x$ etc.}\\
 \textcite{andrieu2010} propose a number of ``particle MCMC'' algorithms, which combine SMC with MCMC in order to improve performance in certain situations.
 One of their algorithms, the \emph{particle Gibbs} sampler \parencite[Section 2.4.3]{andrieu2010}, is of particular interest in the current work. For one thing, genealogies are particularly critical to its performance, and for another, the particle step uses a variant SMC algorithm which alters the distribution of genealogies.
