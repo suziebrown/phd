@@ -589,9 +589,9 @@ We will see in this section that these genealogies, induced by resampling, are n
 Suppose we were using SMC to sample from the smoothing distribution of some state space model.
 As described in Section~\ref{sec:SMC_FK}, we run our chosen SMC algorithm forwards, then output the $N$ sampled trajectories $X_{t,0:t}^{(i)}$ (for each $i\in\{1,\dots,N\}$).
 Each trajectory was obtained by tracing back through the parent at each generation, starting from one of the terminal particles. 
-This means that if two terminal particles $i$ and $j$ share a common ancestor at some generation $s$, then $X_{t,0:s}^{(i)}$ will be exactly equal to $X_{t,0:s}^{(j)}$, because their ancestries coincide up from time $0$ to $s$.
+This means that if two terminal particles $i$ and $j$ share a common ancestor at some generation $s$, then $X_{t,0:s}^{(i)}$ will be exactly equal to $X_{t,0:s}^{(j)}$, because their ancestries coincide from time $s$ to $0$.
 
-At every resampling step, some parents may be assigned more than one offspring each, so the further back in time you look, the more of the ancestries of the terminal particles have coalesced (see Figure~\ref{fig:ancdegen_mn}).
+At every resampling step, some parents may be assigned more than one offspring each, so the further back in time you look, the more of the ancestries of the terminal particles will have coalesced (see Figure~\ref{fig:ancdegen_mn}).
 The effect of this is that, instead of obtaining $N$ separate sampled trajectories, we actually obtain $N$ sampled trajectories that coalesce backwards in time, which means that the further back in time we look, the fewer distinct samples we have from the corresponding component of the target distribution.
 Particularly if we are interested in smoothing over a long time horizon, the variance of the SMC estimator is going to blow up.
 
@@ -618,7 +618,7 @@ However, it is certainly still worth trying to reduce ancestral degeneracy becau
 
 \subsubsection{Mitigating ancestral degeneracy}
 There are a few possible approaches to mitigating ancestral degeneracy.
-Firstly, we could try to reduce the number of offspring being assigned to any one parent in each resampling step. We can only go so far, because we need the resampling procedure to remain unbiased (Section~\ref{sec:SMC_FK}), but we can try to reduce the variance inherent in the resampling procedure. This idea, known as \emph{low-variance resampling}\seb{[citation?]} is discussed in detail in Section~\ref{sec:resampling}.
+Firstly, we could try to limit the number of offspring assigned to any one parent during each resampling step. We can only go so far, because we need the resampling procedure to remain unbiased (Section~\ref{sec:SMC_FK}), but we can try to reduce the variance inherent in the resampling procedure. This idea, known as \emph{low-variance resampling}\seb{[citation?]} is discussed in detail in Section~\ref{sec:resampling}.
 
 Another idea is to resample less often. Recall that the reason for resampling is to prevent weight degeneracy (that is, one of the weights tending to one while the others tend to zero). Now we see that, while solving one type of degeneracy, resampling creates another. The effect of ancestral degeneracy is essentially the same as that of weight degeneracy: both drastically increase the variance of the resulting SMC estimators. 
 We can therefore consider a trade-off between the two, which is the idea behind \emph{adaptive resampling}\seb{[citation]}.
@@ -626,13 +626,14 @@ The trick is to apply the resampling step only at iterations in which a certain 
 \begin{equation*}
 ESS(t) := \left\{ \sum_{i=1}^N (w_t^{(i)})^2 \right\}^{-1} ,
 \end{equation*}
-which decreases at each iteration, capturing the degeneration of the weights.
+which decreases as the weights degenerate.
 The resampling step is then applied only at iterations $t$ such that $ESS(t)$ is less than some pre-specified threshold, typically $N/2$\seb{[citation]}.
 
 If adaptive resampling is used, some trivial changes are required to the calculation of the weights in Algorithm~\ref{alg:SMC}, to allow for the importance weights to accumulate sequentially until the particles are resampled. See e.g.\ \textcite[Section 10.2]{chopin2020} for details.
 
 As well as mitigating ancestral degeneracy, adaptive resampling has the virtue of saving some computation (although the overall asymptotic complexity of the SMC algorithm remains the same).
-How significant these savings are depends on the particular application and choice of SMC algorithm. If the proposals (i.e.\ transition kernels) are not very close to their targets then the weights will degenerate rapidly and the effective sample size criterion (or similar) will not reduce the frequency of resampling very much.
+How effective adaptive resampling is depends on the particular application and choice of SMC algorithm. If the proposals (i.e.\ transition kernels) are not very close to their targets then the weights will degenerate rapidly and the effective sample size criterion (or similar) will not reduce the frequency of resampling very much.
+
 Low-variance resampling is also less effective under poor proposals: the resulting high-variance weights lead to high-variance offspring counts, even under minimum-variance resmapling schemes, because the resampling is required to be unbiased.
 
 Adaptive resampling and low-variance resampling can be combined, and this is widely considered to be the best practice when implementing SMC.
@@ -641,11 +642,11 @@ It is easy to see that the degeneration is much more severe in the former case.
 
 There is one technique that completely solves the problem of ancestral degeneracy, namely \emph{backward simulation}\seb{[citation]}. This involves running an SMC algorithm as usual (the ``forward pass''), and then sampling new ancestors for each particle during an additional ``backward pass''. 
 The backward-simulated parents in each generation are chosen among all $N$ particles, making use of particles that were not included in the forward-sampled trajectories.
-In terms of genealogies, the effect is that there is no longer any genealogy; the lineages are broken into fragments, so the notions of lineages and genealogies do not make sense.
+In terms of genealogies, the effect is striking; the lineages are broken into fragments, so there is no longer any such thing as a lineage or a genealogy.
 
-Since this work is about genealogies, we will not say much more about backward simulation. There are many situations in which it is impossible to implement and therefore the study of SMC genealogies is still of interest. 
+Since this work concerns genealogies, we will not say much more about backward simulation. There are many situations in which it is impossible to implement and therefore the study of SMC genealogies is still of interest. 
 Firstly, backward simulation inherently requires a forward and backward pass through all of the data, so it cannot be implemented on-line. 
-Secondly, calculating the backward-simulation probabilities requires the Markov kernels $M_t$ of the corresponding Feynman-Kac model to admit densities which can be evaluated pointwise. There are many models for which this is not the case, but where one may still simulate from $M_t$ and thus apply standard SMC algorithms.
+Secondly, calculating the backward-simulation probabilities requires the Markov kernels $M_t$ of the corresponding Feynman-Kac model to admit densities which can be evaluated pointwise. This is a much stronger requirement than the ability to simulate from $M_t$, which is the standard requirement for applying SMC algorithms.
 
 
 
@@ -660,20 +661,20 @@ If we had access to information about the behaviour of SMC genealogies a priori 
 This last question touches on a critical aspect of the performance of particle Gibbs algorithms, which is discussed in Section~\ref{sec:condSMC}.
 We could also consider theoretical questions, such as:
 \begin{itemize}
-\item For a given class of models and algorithms, what is the effect of ancestral degeneracy on how the estimators evolve over time?
+\item For a given class of models and algorithms, what is the effect of ancestral degeneracy on how the estimators behave over time?
 \item Which resampling schemes lead to the smallest amount of ancestral degeneracy?
 \item What is the effect on genealogies of adaptive resampling?
 \end{itemize}
 Many of these questions have already been partially addressed, without any explicit analysis of genealogies, by way of variance calculations and simulation experiments.
-But since these are all genealogical questions in essence, it would seem sensible to work directly with the genealogies, if possible.
+But since these are all genealogical questions by nature, it seems sensible to work directly with the genealogies, if possible.
 The problem is that the genealogy of particles is a complex object, it is random, and it can depend strongly on the particular choice of Feynman-Kac model and SMC implementation.
 
-It turns out that these problems can be somewhat overcome by considering the genealogies in an asymptotic regime where the number of particle $N$ tends to infinity.
-In this regime, many different particle systems exhibit genealogies of a common form, namely Kingman's $n$-coalescent under a suitable time-scale. The differences between various algorithms is then encoded in the time-scale function, which is still random but is a less complicated object than the genealogy itself (namely a c\`adl\`ag function rather than a labelled weighted tree).
-In the context of SMC, these asymptotic genealogies were first analysed by \textcite{koskela2018}. The simulations therein suggest that the asymptotic results transfer quite well to finite systems.
+It turns out that these problems can be somewhat overcome by considering the genealogies in an asymptotic regime where the number of particles $N$ tends to infinity.
+In this regime, many different particle systems exhibit genealogies of a common form, namely Kingman's $n$-coalescent under suitable time-scales. The differences between various algorithms is then encoded in the time-scale function, which is still random but is a less complicated object than the genealogy itself, namely a c\`adl\`ag function rather than a labelled weighted tree.
+In the context of SMC, these asymptotic genealogies were first analysed by \textcite{koskela2018}. The simulations therein suggest that such asymptotic results also transfer to finite systems, making them practically useful.
 
-One of the contributions of the current work is to demonstarte that Kingman-type genealogies arise from a wide variety of SMC algorithms, including those most commonly used in practice.
-This allows genealogies of different SMC algorithms, for instance, to be compared by investigating the corresponding time-scale functions.
+One of the contributions of the current work is to demonstrate that Kingman-type genealogies arise from a wide variety of SMC algorithms, including those most commonly used in practice.
+This allows, for instance, genealogies of different SMC algorithms to be compared by examining the corresponding time-scale functions.
 
 
 
