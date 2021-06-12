@@ -1194,8 +1194,7 @@ If the state space is continuous, the event that all weights are multiples of $1
 
 
 \subsubsection{Marginal variance of offspring counts \seb{$\checkmark$} }
-\draft{Mention negative association? $=$ teaser for later, which has to do with covariance between counts rather than marginal variance.}
-
+%\draft{Mention negative association? $=$ teaser for later, which has to do with covariance between counts rather than marginal variance.}
 One indication of the performance could be the variance of the resampled offspring counts. For instance we might ask what is the marginal variance of $\nu_t^{(i)}$, conditional on the corresponding weight $w_t^{(i)}$.
 
 In multinomial resampling, the marginal distributions are
@@ -1285,7 +1284,7 @@ Using the upper and lower bounds in Table~\ref{tab:strat_probs} and then optimis
 \V[ \nu_t^{(i)} \mid w_t^{(i)} ]
 \leq \frac{1}{4} + \frac{1+\delta}{2} + 1 - ( 0 + \frac{\delta}{2} + 0 )^2
 =\frac{1}{4}(7 + 2\delta - \delta^2)
-\leq \frac{9}{4} .
+\leq 2 .
 %= (\delta -2\delta_L\delta_R + 4\delta_L\delta_R) 
 %        - (\delta - 2\delta_L\delta_R + 2\delta_L\delta_R)^2
 %= \delta +2\delta_L\delta_R - \delta^2
@@ -1331,7 +1330,7 @@ Combining the two cases, we obtain an overall variance bound
 for residual-stratified resampling.
 
 Table~\ref{tab:resampling_properties} includes upper bounds on $\V[\nu_t^{(i)}]$ for various resampling schemes, independent of $w_t^{(i)}$. Those general bounds are derived from the results of this section, bounded above independently of the weights. Some of the bounds are certainly not tight.
-We could also calculate lower bounds on this variance for each scheme, but for all those schemes that degenerate under equal weights the lower bound would be equal to zero.\seb{worth calculating lower bounds for star and multi?}
+We could also try to bound this variance below, but for every resampling scheme the only lower bound valid for all $w_t^{(i)}$ is zero (consider the case $w_t^{(i)}=0$).
 
 
 
@@ -1586,9 +1585,9 @@ This certainly seems to improve on independent uniform points which can have sta
         & $\checkmark$ & $\leq N$ \\
 \texttt{res-syst} & $\{k, k+1\}$ & $1$ & $1/4$ & $\checkmark$ & $\checkmark$ 
         & $\checkmark$ & $1$ \\
-\texttt{ssp} & $\{k, k+1\}$? & $1$? & $1/4$? & $\checkmark$? & $\checkmark$? 
+\texttt{ssp} & $\{k, k+1\}$ & $1$ & $1/4$ & $\checkmark$ & $\checkmark$ 
         & $\checkmark$? & ? \\
-\texttt{branch} & $\{k, k+1\}$ & $1$ & $1/4$? & $\checkmark$ & $\checkmark$ 
+\texttt{branch} & $\{k, k+1\}$ & $1$ & $1/4$ & $\checkmark$ & $\checkmark$ 
         & & \\
 \hline\hline
 \end{tabular}
