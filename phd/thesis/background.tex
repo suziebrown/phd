@@ -1504,14 +1504,20 @@ The inequality is an application of Jensen's inequality, since
 
 
 
-\subsubsection{Exchangeability of offspring \seb{$\sim$} }
-We will call a resampling scheme exchangeable if the resulting distribution of parental indices is invariant under permutations of the children. To put it another way, each child chooses its parent from the same marginal distribution.
+\subsubsection{Exchangeability of offspring \seb{$\checkmark$} }
+We say that a resampling scheme leaves the offspring exchangeable if the resulting distribution of parental indices is invariant under permutations of the offspring. To put it another way, each child chooses its parent from the same marginal distribution.
 
-It is clear that multinomial resampling is exchangeable since in this case the parental indices are independent and identically distributed. However the efficient implementation of multinomial sampling that takes sorted inputs does not preserve exchangeability.
+It is clear that true multinomial resampling satisfies this property since the parental indices are independent and distributed according to the same Categorical distribution. 
+The same goes for star resampling. 
+However, as mentioned earlier, the efficient implementation of multinomial resampling that takes sorted inputs does not leave the offspring exchangeable.
+Stratified and systematic resampling do not either since, for instance, child 1 is more likely to choose parent 1 than child $N$ is.
+Residual resampling schemes are also typically implemented in such a way that the offspring are not exchangeable.
 
-Stratified and systematic resampling are clearly not exchangeable since, for instance, child 1 is more likely to choose parent 1 than child $N$ is. However, this is merely a feature of the arbitrary ordering of the sampling steps: exchangeability can easily be reintroduced (at $O(N)$ cost) by applying a random permutation to the vector of parental indices after sampling.
-The same goes for residual resampling.
-%\seb{This property will not appear in Table~\ref{tab:resampling_properties} since it depends upon the particular implementation.}
+Whichever resampling scheme is used, exchangeability of offspring can easily be reintroduced (at $O(N)$ cost) by applying a random permutation to the vector of parental indices after sampling.
+
+Operations in SMC that depend on the ancestral indices are typically independent of ordering, so outputting sorted ancestral indices after resampling is not expected to cause any problem.\seb{(?)}
+However, the results of Chapters~\ref{ch:limits} and \ref{ch:weakconv} rely on assumption \ref{standing_assumption} which amounts to exchangeability of offspring, so to be sure that the current genealogical study applies, a permutation should be appended to any non-exchangeable resampling procedure.
+
 
 
 
