@@ -28,46 +28,38 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {\relax 2.6}{\ignorespaces Inversion sampling for multinomial, stratified and systematic resampling}}{22}{figure.caption.24}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 2.7}{\ignorespaces Inversion sampling for multinomial, stratified and systematic resampling}}{23}{figure.caption.25}
+\contentsline {figure}{\numberline {\relax 2.7}{\ignorespaces Cases for stratified resampling with a fixed weight}}{24}{figure.caption.26}
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Multinomial resampling}}}{23}{subfigure.7.1}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {The overhang is less than one; $ \delta _L \in {[0, \delta ]} $. The parent under consideration is automatically assigned $K$ offspring, plus up to two more.}}}{24}{subfigure.7.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Stratified resampling}}}{23}{subfigure.7.2}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {The overhang is greater than one (this case can only occur when $K\geq 1$); $\delta _L \in (\delta ,1)$. The parent under consideration is automatically assigned $K-1$ offspring, plus up to two more.}}}{24}{subfigure.7.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Systematic resampling}}}{23}{subfigure.7.3}
+\contentsline {figure}{\numberline {\relax 2.8}{\ignorespaces Ancestral degeneracy in particle Gibbs}}{41}{figure.caption.44}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 2.8}{\ignorespaces Cases for stratified resampling with a fixed weight}}{24}{figure.caption.27}
+\contentsline {figure}{\numberline {\relax 2.9}{\ignorespaces Why ancestor sampling works}}{44}{figure.caption.47}
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {The overhang is less than one; $ \delta _L \in {[0, \delta ]} $. The parent under consideration is automatically assigned $K$ offspring, plus up to two more.}}}{24}{subfigure.8.1}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {without ancestor sampling}}}{44}{subfigure.9.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {The overhang is greater than one (this case can only occur when $K\geq 1$); $\delta _L \in (\delta ,1)$. The parent under consideration is automatically assigned $K-1$ offspring, plus up to two more.}}}{24}{subfigure.8.2}
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 2.9}{\ignorespaces Ancestral degeneracy in particle Gibbs}}{42}{figure.caption.45}
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 2.10}{\ignorespaces Why ancestor sampling works}}{45}{figure.caption.48}
-\defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {without ancestor sampling}}}{45}{subfigure.10.1}
-\defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {with ancestor sampling}}}{45}{subfigure.10.2}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {with ancestor sampling}}}{44}{subfigure.9.2}
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 3.1}{\ignorespaces Encoding the sample genealogy}}{47}{figure.caption.49}
+\contentsline {figure}{\numberline {\relax 3.1}{\ignorespaces Encoding the sample genealogy}}{46}{figure.caption.48}
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Resampling relationships}}}{47}{subfigure.1.1}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Resampling relationships}}}{46}{subfigure.1.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Genealogy of terminal particles}}}{47}{subfigure.1.2}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Genealogy of terminal particles}}}{46}{subfigure.1.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 3.2}{\ignorespaces Dependencies between conditions of Theorems \relax \ref {thm:kjjs_mainthm} and \relax \ref {thm:FDDconv}}}{56}{figure.caption.50}
-\defcounter {refsection}{0}\relax 
-\addvspace {10\p@ }
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 4.1}{\ignorespaces Structure of weak convergence proof}}{71}{figure.caption.51}
+\contentsline {figure}{\numberline {\relax 3.2}{\ignorespaces Dependencies between conditions of Theorems \relax \ref {thm:kjjs_mainthm} and \relax \ref {thm:FDDconv}}}{55}{figure.caption.49}
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 5.1}{\ignorespaces Construction of separatrix $\mathcal {H}_t$}}{101}{figure.caption.52}
+\contentsline {figure}{\numberline {\relax 4.1}{\ignorespaces Structure of weak convergence proof}}{70}{figure.caption.50}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 5.2}{\ignorespaces Sample genealogy induced by star resampling\relax }}{113}{figure.caption.53}
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {\relax 5.1}{\ignorespaces Construction of separatrix $\mathcal {H}_t$}}{100}{figure.caption.51}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {\relax 5.2}{\ignorespaces Sample genealogy induced by star resampling\relax }}{112}{figure.caption.52}
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }

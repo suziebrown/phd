@@ -775,7 +775,7 @@ Explicitly, the parental index assigned to child $i$ is the index $a_i$ satisfyi
 \begin{equation}\label{eq:syst_strat_resampling}
 \sum_{j=1}^{a_i -1} w_t^{(j)} \leq U_i \leq \sum_{j=1}^{a_i} w_t^{(j)} .
 \end{equation}
-This is illustrated in Figure \ref{fig:resampling_mn}. 
+This is illustrated in Figure \ref{fig:inv_resampling}. 
 %Note that there exist more efficient methods to sample from a Multinomial distribution, so the inversion method may not be used in practice.
 
 Fast implementations of multinomial resampling rely on $U_1,\dots,U_N$ being pre-sorted, which speeds up the search step \eqref{eq:syst_strat_resampling}. Sorting $N$ numbers requires $O(N\log N)$ computation, but in fact this is not necessary because we can directly sample the order statistics of a $\Unif[0,1]$ distribution, at $O(N)$ cost.
@@ -901,130 +901,128 @@ Top row (circles): in multinomial resampling, $u_{1:6}$ are fed directly into th
 Middle row (diamonds): in stratified resampling, $u_{1:6}$ are transformed so that one point lies in each subinterval of length $1/N$. The resulting offspring counts are $\nu^{(1:6)} = (2,0,1,1,2,0)$.\\
 Bottom row (squares): in systematic resampling, only $u_1$ is used, being transformed to equally spaced points. The resulting offspring counts are $\nu^{(1:6)} = (1,1,0,2,1,1)$.}
 \end{figure}
-
-
-\begin{figure}
-\centering
-\subfloat[Multinomial resampling]{
-\begin{tikzpicture}
-%parallel lines
-\draw[thick] (0,0) -- (12,0);
-\draw (0,2) -- (12,2);
-% tick marks at ends
-\draw[thick] (0,0.1) --(0,-0.1);
-\draw[thick] (12,0.1) --(12,-0.1);
-\draw (0,2.1) --(0,1.9);
-\draw (12,2.1) --(12,1.9);
-% tick marks indicating weights
-\draw[thick] (3,0.1) --(3,-0.1);
-\draw[thick] (5,0.1) --(5,-0.1);
-\draw[thick] (11,0.1) --(11,-0.1);
-% weight labels
-\node at (1.5,-0.3) {$w_1$};
-\node at (4,-0.3) {$w_2$};
-\node at (8,-0.3) {$w_3$};
-\node at (11.5,-0.3) {$w_4$};
-% endpoint labels
-\node at (-0.2,2) {$0$};
-\node at (12.2,2) {$1$};
-% uniform points
-\filldraw[violet] (10.94,2) circle (2pt);
-\filldraw[violet] (1.06,2) circle (2pt);
-\filldraw[violet] (8.82,2) circle (2pt);
-\filldraw[violet] (3.16,2) circle (2pt);
-% arrows from random points
-\draw[thick, violet, ->] (10.94,2) -- (10.94,0);
-\draw[thick, violet, ->] (1.06,2) -- (1.06,0);
-\draw[thick, violet, ->] (8.82,2) -- (8.82,0);
-\draw[thick, violet, ->] (3.16,2) -- (3.16,0);
-\end{tikzpicture}
-\label{fig:resampling_mn}
-}\\
-\subfloat[Stratified resampling]{
-\begin{tikzpicture}
-%parallel lines
-\draw[thick] (0,0) -- (12,0);
-\draw (0,2) -- (12,2);
-% tick marks at ends
-\draw[thick] (0,0.1) --(0,-0.1);
-\draw[thick] (12,0.1) --(12,-0.1);
-\draw (0,2.1) --(0,1.9);
-\draw (12,2.1) --(12,1.9);
-% tick marks indicating weights
-\draw[thick] (3,0.1) --(3,-0.1);
-\draw[thick] (5,0.1) --(5,-0.1);
-\draw[thick] (11,0.1) --(11,-0.1);
-% tick marks indicating sampling intervals:
-\draw (3,2.1) --(3,1.9);
-\draw (6,2.1) --(6,1.9);
-\draw (9,2.1) --(9,1.9);
-% weight labels
-\node at (1.5,-0.3) {$w_1$};
-\node at (4,-0.3) {$w_2$};
-\node at (8,-0.3) {$w_3$};
-\node at (11.5,-0.3) {$w_4$};
-% endpoint labels
-\node at (-0.2,2) {$0$};
-\node at (12.2,2) {$1$};
-% stratified points
-\filldraw[violet] (2.735,2) circle (2pt);
-\filldraw[violet] (3.265,2) circle (2pt);
-\filldraw[violet] (8.205,2) circle (2pt);
-\filldraw[violet] (9.79,2) circle (2pt);
-% arrows from random points
-\draw[thick, violet, ->] (2.735,2) -- (2.735,0);
-\draw[thick, violet, ->] (3.265,2) -- (3.265,0);
-\draw[thick, violet, ->] (8.205,2) -- (8.205,0);
-\draw[thick, violet, ->] (9.79,2) -- (9.79,0);
-\end{tikzpicture}
-\label{fig:resampling_stratified}
-}\\
-\subfloat[Systematic resampling]{
-\begin{tikzpicture}
-%parallel lines
-\draw[thick] (0,0) -- (12,0);
-\draw (0,2) -- (12,2);
-% tick marks at ends
-\draw[thick] (0,0.1) --(0,-0.1);
-\draw[thick] (12,0.1) --(12,-0.1);
-\draw (0,2.1) --(0,1.9);
-\draw (12,2.1) --(12,1.9);
-% tick marks indicating weights
-\draw[thick] (3,0.1) --(3,-0.1);
-\draw[thick] (5,0.1) --(5,-0.1);
-\draw[thick] (11,0.1) --(11,-0.1);
-% tick marks indicating sampling intervals:
-\draw (3,2.1) --(3,1.9);
-\draw (6,2.1) --(6,1.9);
-\draw (9,2.1) --(9,1.9);
-% weight labels
-\node at (1.5,-0.3) {$w_1$};
-\node at (4,-0.3) {$w_2$};
-\node at (8,-0.3) {$w_3$};
-\node at (11.5,-0.3) {$w_4$};
-% endpoint labels
-\node at (-0.2,2) {$0$};
-\node at (12.2,2) {$1$};
-% stratified points
-\filldraw[violet] (2.735,2) circle (2pt);
-\filldraw[violet] (5.735,2) circle (2pt);
-\filldraw[violet] (8.735,2) circle (2pt);
-\filldraw[violet] (11.735,2) circle (2pt);
-% arrows from random points
-\draw[thick, violet, ->] (2.735,2) -- (2.735,0);
-\draw[thick, violet, ->] (5.735,2) -- (5.735,0);
-\draw[thick, violet, ->] (8.735,2) -- (8.735,0);
-\draw[thick, violet, ->] (11.735,2) -- (11.735,0);
-\end{tikzpicture}
-\label{fig:resampling_systematic}
-}\\
-\caption[Inversion sampling for multinomial, stratified and systematic resampling]{Inversion sampling to obtain Multinomial offspring counts, where the (marginally) Uniform variables for inversion are sampled in different ways. For this example $N=4$ and the weights are $w_{(1:4)} = \frac{1}{N}(1,\frac{2}{3},2,\frac{1}{3})$. 
-%In each case the samples to be inverted are seeded with the same $\Unif(0,1)$ samples.
-%\subref{fig:resampling_mn} Sample $N$  independent $\Unif(0,1)$ random variables. In this example the sampled offspring counts are $(1,1,2,0)$.
-%\subref{fig:resampling_stratified} The $\Unif(0,1)$ samples are transformed to Uniform draws from the intervals (0,0.25), (0.25,0.5), (0.5, 0.75), (0.75,1). In this example the sampled offspring counts are $(1,1,2,0)$.
-%\subref{fig:resampling_systematic} Use only the first draw and transform it to a sample from $\Unif(0,0.25)$. For the subsequent samples, add 0.25 each time to obtain a sample in each interval. In this example the sampled offspring counts are $(1,0,2,1)$.
-}
-\end{figure}
+%\begin{figure}
+%\centering
+%\subfloat[Multinomial resampling]{
+%\begin{tikzpicture}
+%%parallel lines
+%\draw[thick] (0,0) -- (12,0);
+%\draw (0,2) -- (12,2);
+%% tick marks at ends
+%\draw[thick] (0,0.1) --(0,-0.1);
+%\draw[thick] (12,0.1) --(12,-0.1);
+%\draw (0,2.1) --(0,1.9);
+%\draw (12,2.1) --(12,1.9);
+%% tick marks indicating weights
+%\draw[thick] (3,0.1) --(3,-0.1);
+%\draw[thick] (5,0.1) --(5,-0.1);
+%\draw[thick] (11,0.1) --(11,-0.1);
+%% weight labels
+%\node at (1.5,-0.3) {$w_1$};
+%\node at (4,-0.3) {$w_2$};
+%\node at (8,-0.3) {$w_3$};
+%\node at (11.5,-0.3) {$w_4$};
+%% endpoint labels
+%\node at (-0.2,2) {$0$};
+%\node at (12.2,2) {$1$};
+%% uniform points
+%\filldraw[violet] (10.94,2) circle (2pt);
+%\filldraw[violet] (1.06,2) circle (2pt);
+%\filldraw[violet] (8.82,2) circle (2pt);
+%\filldraw[violet] (3.16,2) circle (2pt);
+%% arrows from random points
+%\draw[thick, violet, ->] (10.94,2) -- (10.94,0);
+%\draw[thick, violet, ->] (1.06,2) -- (1.06,0);
+%\draw[thick, violet, ->] (8.82,2) -- (8.82,0);
+%\draw[thick, violet, ->] (3.16,2) -- (3.16,0);
+%\end{tikzpicture}
+%\label{fig:resampling_mn}
+%}\\
+%\subfloat[Stratified resampling]{
+%\begin{tikzpicture}
+%%parallel lines
+%\draw[thick] (0,0) -- (12,0);
+%\draw (0,2) -- (12,2);
+%% tick marks at ends
+%\draw[thick] (0,0.1) --(0,-0.1);
+%\draw[thick] (12,0.1) --(12,-0.1);
+%\draw (0,2.1) --(0,1.9);
+%\draw (12,2.1) --(12,1.9);
+%% tick marks indicating weights
+%\draw[thick] (3,0.1) --(3,-0.1);
+%\draw[thick] (5,0.1) --(5,-0.1);
+%\draw[thick] (11,0.1) --(11,-0.1);
+%% tick marks indicating sampling intervals:
+%\draw (3,2.1) --(3,1.9);
+%\draw (6,2.1) --(6,1.9);
+%\draw (9,2.1) --(9,1.9);
+%% weight labels
+%\node at (1.5,-0.3) {$w_1$};
+%\node at (4,-0.3) {$w_2$};
+%\node at (8,-0.3) {$w_3$};
+%\node at (11.5,-0.3) {$w_4$};
+%% endpoint labels
+%\node at (-0.2,2) {$0$};
+%\node at (12.2,2) {$1$};
+%% stratified points
+%\filldraw[violet] (2.735,2) circle (2pt);
+%\filldraw[violet] (3.265,2) circle (2pt);
+%\filldraw[violet] (8.205,2) circle (2pt);
+%\filldraw[violet] (9.79,2) circle (2pt);
+%% arrows from random points
+%\draw[thick, violet, ->] (2.735,2) -- (2.735,0);
+%\draw[thick, violet, ->] (3.265,2) -- (3.265,0);
+%\draw[thick, violet, ->] (8.205,2) -- (8.205,0);
+%\draw[thick, violet, ->] (9.79,2) -- (9.79,0);
+%\end{tikzpicture}
+%\label{fig:resampling_stratified}
+%}\\
+%\subfloat[Systematic resampling]{
+%\begin{tikzpicture}
+%%parallel lines
+%\draw[thick] (0,0) -- (12,0);
+%\draw (0,2) -- (12,2);
+%% tick marks at ends
+%\draw[thick] (0,0.1) --(0,-0.1);
+%\draw[thick] (12,0.1) --(12,-0.1);
+%\draw (0,2.1) --(0,1.9);
+%\draw (12,2.1) --(12,1.9);
+%% tick marks indicating weights
+%\draw[thick] (3,0.1) --(3,-0.1);
+%\draw[thick] (5,0.1) --(5,-0.1);
+%\draw[thick] (11,0.1) --(11,-0.1);
+%% tick marks indicating sampling intervals:
+%\draw (3,2.1) --(3,1.9);
+%\draw (6,2.1) --(6,1.9);
+%\draw (9,2.1) --(9,1.9);
+%% weight labels
+%\node at (1.5,-0.3) {$w_1$};
+%\node at (4,-0.3) {$w_2$};
+%\node at (8,-0.3) {$w_3$};
+%\node at (11.5,-0.3) {$w_4$};
+%% endpoint labels
+%\node at (-0.2,2) {$0$};
+%\node at (12.2,2) {$1$};
+%% stratified points
+%\filldraw[violet] (2.735,2) circle (2pt);
+%\filldraw[violet] (5.735,2) circle (2pt);
+%\filldraw[violet] (8.735,2) circle (2pt);
+%\filldraw[violet] (11.735,2) circle (2pt);
+%% arrows from random points
+%\draw[thick, violet, ->] (2.735,2) -- (2.735,0);
+%\draw[thick, violet, ->] (5.735,2) -- (5.735,0);
+%\draw[thick, violet, ->] (8.735,2) -- (8.735,0);
+%\draw[thick, violet, ->] (11.735,2) -- (11.735,0);
+%\end{tikzpicture}
+%\label{fig:resampling_systematic}
+%}\\
+%\caption[Inversion sampling for multinomial, stratified and systematic resampling]{Inversion sampling to obtain Multinomial offspring counts, where the (marginally) Uniform variables for inversion are sampled in different ways. For this example $N=4$ and the weights are $w_{(1:4)} = \frac{1}{N}(1,\frac{2}{3},2,\frac{1}{3})$. 
+%%In each case the samples to be inverted are seeded with the same $\Unif(0,1)$ samples.
+%%\subref{fig:resampling_mn} Sample $N$  independent $\Unif(0,1)$ random variables. In this example the sampled offspring counts are $(1,1,2,0)$.
+%%\subref{fig:resampling_stratified} The $\Unif(0,1)$ samples are transformed to Uniform draws from the intervals (0,0.25), (0.25,0.5), (0.5, 0.75), (0.75,1). In this example the sampled offspring counts are $(1,1,2,0)$.
+%%\subref{fig:resampling_systematic} Use only the first draw and transform it to a sample from $\Unif(0,0.25)$. For the subsequent samples, add 0.25 each time to obtain a sample in each interval. In this example the sampled offspring counts are $(1,0,2,1)$.
+%}
+%\end{figure}
 
 
 
@@ -1043,13 +1041,13 @@ U_i = \frac{u_i + i -1}{N}
 to give the stratified samples $U_1,\dots,U_N$.
 
 The parents are then assigned as in \eqref{eq:syst_strat_resampling}.
-This is illustrated in Figure \ref{fig:resampling_stratified}.
+This is illustrated in Figure \ref{fig:inv_resampling}.
 The offspring distribution is no longer Multinomial, since parental indices are not chosen independently.
 This scheme ensures that the samples are ``well spread out'', which reduces the probability of randomly losing high-weight particles or duplicating low-weight particles.
 
 It will be useful later on to have a better idea about the marginal distributions of $\nu_t^{(i)}$ that are induced by stratified resampling. There are complex dependencies between the offspring counts, but we can still find some constraints on the distribution of each count conditional on the corresponding weight.
 Write the $i^{th}$ weight in the form $w_t^{(i)} = (K + \delta)/N$, where $\delta \in [0,1)$ and $K\in \{0,\dots,N-1\}$.
-Considering the illustration Figure~\ref{fig:resampling_stratified}, the distribution of $\nu_t^{(i)}$ depends not only on $w_t^{(i)}$ but also on where the $i^{th}$ weight interval falls with respect to the length-$(1/N)$ intervals. 
+Considering the illustration Figure~\ref{fig:inv_resampling}, the distribution of $\nu_t^{(i)}$ depends not only on $w_t^{(i)}$ but also on where the $i^{th}$ weight interval falls with respect to the length-$(1/N)$ intervals. 
 Denote the left overhang $\delta_L$.
 There are two cases to consider, which are illustrated in Figure~\ref{fig:strat_cases}.
 In Case~\subref{fig:strat_case1} the total overhang is less than $1/N$ and $\delta_L \in [0,\delta]$.
@@ -1215,11 +1213,11 @@ U_i = \frac{u+ i-1}{N}
 \end{equation*}
 for $i = 1, \dots, N $.
 The parental indices are again selected according to \eqref{eq:syst_strat_resampling}. 
-The method is illustrated in Figure \ref{fig:resampling_systematic}.
+The method is illustrated in Figure \ref{fig:inv_resampling}.
 
 \textcite{kitagawa1996} suggests a deterministic scheme in which the random $u$ is replaced by a fixed $\alpha\in[0,1]$; but, being deterministic, this scheme does not satisfy the unbiasedness property (condition~\ref{item:resampling_property1} in Definition~\ref{defn:resampling}).
 \textcite{whitley1994} describes systematic resampling using a different picture, whereby the interval $[0,1]$ is joined up into a circle, and the systematic samples are evenly spaced pointers on an outer ring, which is spun around like a roulette wheel to sample a random phase which, modulo 1, is equal to $u$.
-For systematic resampling, Whitley's ``roulette wheel'' representation is equivalent to that of Figure~\ref{fig:resampling_systematic}.
+For systematic resampling, Whitley's ``roulette wheel'' representation is equivalent to that of Figure~\ref{fig:inv_resampling}.
 
 Like stratified resampling, systematic resampling ensures the random numbers are ``well spread out''; the resulting samples are even more constrained than with stratified resampling. 
 Systematic resampling also has the advantage of being extremely easy to implement and also computationally efficient, requiring only one sample from a pseudo-random number generator (PRNG) followed by $O(N)$ elementary operations.
@@ -1727,7 +1725,7 @@ The minimal variance branching algorithm of \textcite{crisan1997} does not enfor
 
 
 \subsubsection{Star discrepancy \seb{$\checkmark$} }
-\draft{Include a diagram showing the quantity inside the $D^\star$ supremum, plotted over $u$, for mn/strat/syst? (sketched in sora --- use same weights and samples as in Figure~\ref{fig:resampling_mn}.)}
+\draft{Include a diagram showing the quantity inside the $D^\star$ supremum, plotted over $u$, for mn/strat/syst? (sketched in sora --- use same weights and samples as in Figure~\ref{fig:inv_resampling}.)}
 %\seb{Does not appear in Table~\ref{tab:resampling_properties} since it only makes sense for resampling schemes based on inversion sampling.}
 
 The \emph{star discrepancy} is a measure of the regularity of a given set of points $u_{1:N}$ in the unit hypercube. For our purposes it is sufficient to define the star discrepancy in one dimension, as in \textcite[Definition 1.2]{kuipers1974}:
