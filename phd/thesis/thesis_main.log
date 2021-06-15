@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  15 JUN 2021 10:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  15 JUN 2021 15:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -826,6 +826,16 @@ s.code.tex
 )
 (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/libraries/decorations/pgfli
 brarydecorations.pathreplacing.code.tex))
+(/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibraryshapes.geometric.code.tex
+File: tikzlibraryshapes.geometric.code.tex 2008/01/09 v3.0.1a (rcs-revision 1.1
+)
+
+(/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibrary
+shapes.geometric.code.tex
+File: pgflibraryshapes.geometric.code.tex 2008/06/26 v3.0.1a (rcs-revision 1.1)
+
+))
 (/usr/local/texlive/2018/texmf-dist/tex/latex/subfig/subfig.sty
 Package: subfig 2005/06/28 ver: 1.3 subfig package
 
@@ -1343,24 +1353,23 @@ File: english.lbx 2018/03/04 v3.11 biblatex localization (PK/MW)
 \@quotelevel=\count436
 \@quotereset=\count437
 
-(./thesis_main.aux (./introduction.aux) (./background.aux) (./limits.aux)
-(./weakconv.aux) (./applications.aux) (./discussion.aux))
+(./thesis_main.aux (./introduction.aux) (./background.aux))
 \openout1 = `thesis_main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 104.
-LaTeX Font Info:    ... okay on input line 104.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 104.
-LaTeX Font Info:    ... okay on input line 104.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 104.
-LaTeX Font Info:    ... okay on input line 104.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 104.
-LaTeX Font Info:    ... okay on input line 104.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 104.
-LaTeX Font Info:    ... okay on input line 104.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 104.
-LaTeX Font Info:    ... okay on input line 104.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 104.
-LaTeX Font Info:    ... okay on input line 104.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 105.
+LaTeX Font Info:    ... okay on input line 105.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 105.
+LaTeX Font Info:    ... okay on input line 105.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 105.
+LaTeX Font Info:    ... okay on input line 105.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 105.
+LaTeX Font Info:    ... okay on input line 105.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 105.
+LaTeX Font Info:    ... okay on input line 105.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 105.
+LaTeX Font Info:    ... okay on input line 105.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 105.
+LaTeX Font Info:    ... okay on input line 105.
 
 (/usr/local/texlive/2018/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -1440,9 +1449,9 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'thesis_main.bbl' found.
  (./thesis_main.bbl)
-Package biblatex Info: Reference section=0 on input line 104.
-Package biblatex Info: Reference segment=0 on input line 104.
-Package hyperref Info: Link coloring OFF on input line 104.
+Package biblatex Info: Reference section=0 on input line 105.
+Package biblatex Info: Reference segment=0 on input line 105.
+Package hyperref Info: Link coloring OFF on input line 105.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -1452,9 +1461,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count444
 )
-LaTeX Info: Redefining \ref on input line 104.
-LaTeX Info: Redefining \pageref on input line 104.
-LaTeX Info: Redefining \nameref on input line 104.
+LaTeX Info: Redefining \ref on input line 105.
+LaTeX Info: Redefining \pageref on input line 105.
+LaTeX Info: Redefining \nameref on input line 105.
 
 (./thesis_main.out) (./thesis_main.out)
 \@outlinefile=\write6
@@ -1468,52 +1477,42 @@ options: showrefs, showcites, msgs, chckunlbld
 
 
 {/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    Try loading font information for OT1+put on input line 128.
+LaTeX Font Info:    Try loading font information for OT1+put on input line 129.
 
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/ot1put.fd
 File: ot1put.fd 2001/06/04 font definitions for OT1/put.
 )
 LaTeX Font Info:    Font shape `OT1/put/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/put/b/n' tried instead on input line 128.
+(Font)              Font shape `OT1/put/b/n' tried instead on input line 129.
 LaTeX Font Info:    Font shape `OT1/put/bx/n' in size <20.74> not available
-(Font)              Font shape `OT1/put/b/n' tried instead on input line 128.
+(Font)              Font shape `OT1/put/b/n' tried instead on input line 129.
 
-(./thesis_main.toc
-LaTeX Font Info:    Try loading font information for U+msa on input line 15.
-
-(/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Try loading font information for U+msb on input line 15.
-
-(/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [1
-
-
-
-]
-Overfull \hbox (1.42336pt too wide) detected at line 155
- []\OT1/put/b/n/10.95 117
- []
-
-)
+(./thesis_main.toc)
 \tf@toc=\write7
 \openout7 = `thesis_main.toc'.
 
- [2] (./thesis_main.lof)
+ [1
+
+
+
+] (./thesis_main.lof)
 \tf@lof=\write8
 \openout8 = `thesis_main.lof'.
 
- [3
+ [2
 
 
 ] (./thesis_main.lot)
 \tf@lot=\write9
 \openout9 = `thesis_main.lot'.
 
- [4
+ [3
+
+
+]
+chapter without number
+[4
 
 
 ]
@@ -1523,17 +1522,20 @@ chapter without number
 
 ]
 chapter without number
-[6
+LaTeX Font Info:    Try loading font information for U+msa on input line 159.
+(/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 159.
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) [6
 
 
 ]
 chapter without number
 [7
-
-
-]
-chapter without number
-[8
 
 
 ]
@@ -1545,7 +1547,7 @@ chapter 1.
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.202 \include{introduction}
+l.203 \include{introduction}
                              [1
 
 
@@ -1556,6 +1558,9 @@ l.202 \include{introduction}
 
  (./background.tex
 chapter 2.
+
+Package refcheck Warning: Unused label `ch:bg' on input line 2.
+
 LaTeX Font Info:    Font shape `OT1/put/bx/n' in size <14.4> not available
 (Font)              Font shape `OT1/put/b/n' tried instead on input line 11.
 LaTeX Font Info:    Font shape `OT1/put/bx/n' in size <10> not available
@@ -1635,6 +1640,9 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 340.
 
+
+Package refcheck Warning: Unused label `sec:coaltheory' on input line 341.
+
 [9]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
@@ -1643,7 +1651,7 @@ Package mdframed Info: mdframed detected package amsthm
 
 Package refcheck Warning: Unused label `eq:KCgenerator' on input line 350.
 
-<plots/ncoalescent.pdf, id=483, 456.70625pt x 423.5825pt>
+<plots/ncoalescent.pdf, id=274, 456.70625pt x 423.5825pt>
 File: plots/ncoalescent.pdf Graphic file (type pdf)
 <use plots/ncoalescent.pdf>
 Package pdftex.def Info: plots/ncoalescent.pdf  used on input line 362.
@@ -1701,12 +1709,16 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 577.
 
-<plots/ancdegen_mn.pdf, id=557, 602.25pt x 401.5pt>
+
+Package refcheck Warning: Unused label `sec:SMC_genealogies' on input line 578.
+
+
+<plots/ancdegen_mn.pdf, id=350, 602.25pt x 401.5pt>
 File: plots/ancdegen_mn.pdf Graphic file (type pdf)
 <use plots/ancdegen_mn.pdf>
 Package pdftex.def Info: plots/ancdegen_mn.pdf  used on input line 603.
 (pdftex.def)             Requested size: 213.39568pt x 142.26698pt.
-<plots/ancdegen_adaptsyst.pdf, id=558, 602.25pt x 401.5pt>
+<plots/ancdegen_adaptsyst.pdf, id=351, 602.25pt x 401.5pt>
 File: plots/ancdegen_adaptsyst.pdf Graphic file (type pdf)
 <use plots/ancdegen_adaptsyst.pdf>
 Package pdftex.def Info: plots/ancdegen_adaptsyst.pdf  used on input line 607.
@@ -1722,6 +1734,9 @@ Overfull \hbox (21.89996pt too wide) in paragraph at lines 603--611
 
 [15] [16 <./plots/ancdegen_mn.pdf> <./plots/ancdegen_adaptsyst.pdf>] [17]
 
+LaTeX Warning: Reference `sec:condSMC' on page 18 undefined on input line 661.
+
+
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 683.
 
@@ -1733,220 +1748,587 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 683.
 
+
+LaTeX Warning: Reference `sec:resampling_properties' on page 18 undefined on in
+put line 689.
+
 [18]
 LaTeX Font Info:    Font shape `OT1/put/bx/n' in size <8> not available
-(Font)              Font shape `OT1/put/b/n' tried instead on input line 690.
+(Font)              Font shape `OT1/put/b/n' tried instead on input line 694.
 LaTeX Font Info:    Font shape `OT1/put/bx/n' in size <6> not available
-(Font)              Font shape `OT1/put/b/n' tried instead on input line 690.
+(Font)              Font shape `OT1/put/b/n' tried instead on input line 694.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 690.
+(hyperref)                removing `math shift' on input line 694.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 690.
+(hyperref)                removing `math shift' on input line 694.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathsurround' on input line 690.
+(hyperref)                removing `\mathsurround' on input line 694.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\z@' on input line 690.
+(hyperref)                removing `\z@' on input line 694.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathchar' on input line 690.
+(hyperref)                removing `\mathchar' on input line 694.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 690.
+(hyperref)                removing `math shift' on input line 694.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 690.
+(hyperref)                removing `math shift' on input line 694.
 
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 693.
+(mdframed)              on input line 696.
 
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 723.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 723.
+LaTeX Warning: Reference `sec:resampling_properties' on page 19 undefined on in
+put line 721.
 
 
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathsurround' on input line 723.
+LaTeX Warning: Reference `tab:resampling_properties' on page 19 undefined on in
+put line 722.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\z@' on input line 723.
+(hyperref)                removing `math shift' on input line 726.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathchar' on input line 723.
+(hyperref)                removing `math shift' on input line 726.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 723.
+(hyperref)                removing `\mathsurround' on input line 726.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 723.
-
-[19] [20]
-
-Package refcheck Warning: Unlabelled equation (\relax 2.12) on input line 782.
+(hyperref)                removing `\z@' on input line 726.
 
 
-Package refcheck Warning: Unlabelled equation (\relax 2.13) on input line 787.
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\mathchar' on input line 726.
 
 
-Underfull \hbox (badness 1783) in paragraph at lines 938--938
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 726.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 726.
+
+
+Package refcheck Warning: Unused label `tab:resampling_abbrevs' on input line 7
+53.
+
+[19]
+
+LaTeX Warning: Reference `fig:resampling_mn' on page 20 undefined on input line
+ 778.
+
+[20]
+
+Package refcheck Warning: Unlabelled equation (\relax 2.12) on input line 785.
+
+
+Package refcheck Warning: Unlabelled equation (\relax 2.13) on input line 790.
+
+
+Package refcheck Warning: Unused label `fig:resampling_stratified' on input lin
+e 981.
+
+
+Package refcheck Warning: Unused label `fig:resampling_systematic' on input lin
+e 1020.
+
+
+Underfull \hbox (badness 1783) in paragraph at lines 1027--1027
 [][][]|\OT1/cmr/m/n/10.95 In-ver-sion sam-pling to ob-tain Multi-no-mial off-sp
 ring counts, where the
  []
 
-[21] [22]
+[21]
 
-Package refcheck Warning: Unused label `fig:strat_case1' on input line 1044.
+LaTeX Warning: Reference `fig:resampling_stratified' on page 22 undefined on in
+put line 1047.
 
-[23] [24] [25]
+
+LaTeX Warning: Reference `fig:resampling_stratified' on page 22 undefined on in
+put line 1053.
+
+
+LaTeX Warning: Reference `fig:strat_cases' on page 22 undefined on input line 1
+055.
+
+
+LaTeX Warning: Reference `sub@fig:strat_case1' on page 22 undefined on input li
+ne 1056.
+
+
+LaTeX Warning: Reference `sub@fig:strat_case2' on page 22 undefined on input li
+ne 1057.
+
+
+LaTeX Warning: Reference `sub@fig:strat_case1' on page 22 undefined on input li
+ne 1059.
+
+
+LaTeX Warning: Reference `sub@fig:strat_case2' on page 22 undefined on input li
+ne 1060.
+
+[22] [23]
+
+Package refcheck Warning: Unused label `fig:strat_case1' on input line 1133.
+
+
+Package refcheck Warning: Unused label `fig:strat_case2' on input line 1168.
+
+
+Package refcheck Warning: Unused label `fig:strat_cases' on input line 1170.
+
+
+LaTeX Warning: Reference `tab:strat_probs' on page 24 undefined on input line 1
+177.
+
+
+LaTeX Warning: Reference `sub@fig:strat_case1' on page 24 undefined on input li
+ne 1183.
+
+
+LaTeX Warning: Reference `sub@fig:strat_case2' on page 24 undefined on input li
+ne 1183.
+
+
+Package refcheck Warning: Unused label `tab:strat_probs' on input line 1195.
+
+[24]
+
+LaTeX Warning: Reference `fig:resampling_systematic' on page 25 undefined on in
+put line 1219.
+
+
+LaTeX Warning: Reference `fig:resampling_systematic' on page 25 undefined on in
+put line 1223.
+
+[25]
+
+Package refcheck Warning: Unused label `eq:branching_distn' on input line 1257.
+
+
+
+LaTeX Warning: Reference `eq:branching_distn' on page 26 undefined on input lin
+e 1261.
+
+
+LaTeX Warning: Reference `eq:branching_distn' on page 26 undefined on input lin
+e 1266.
+
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1189.
+(hyperref)                removing `math shift' on input line 1278.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\sim' on input line 1189.
+(hyperref)                removing `\sim' on input line 1278.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1189.
+(hyperref)                removing `math shift' on input line 1278.
 
-[26] [27]
-Overfull \hbox (9.04958pt too wide) in paragraph at lines 1262--1264
+[26]
+
+LaTeX Warning: Reference `tab:resampling_properties' on page 27 undefined on in
+put line 1291.
+
+
+LaTeX Warning: Reference `tab:resampling_properties' on page 27 undefined on in
+put line 1296.
+
+[27]
+
+LaTeX Warning: Reference `eq:branching_distn' on page 28 undefined on input lin
+e 1348.
+
+
+LaTeX Warning: Reference `sec:SRs' on page 28 undefined on input line 1349.
+
+
+Overfull \hbox (9.04958pt too wide) in paragraph at lines 1351--1353
 []\OT1/cmr/m/n/10.95 The marginal vari-ance is harder to cal-cu-late for other 
 schemes such as residual-multinomial
  []
 
-[28] [29]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 1390.
- [30] [31] [32] [33]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 1618.
-LaTeX Font Info:    Try loading font information for U+bbm on input line 1647.
+[28]
 
+LaTeX Warning: Reference `fig:strat_cases' on page 29 undefined on input line 1
+393.
+
+
+LaTeX Warning: Reference `tab:strat_probs' on page 29 undefined on input line 1
+393.
+
+
+Package refcheck Warning: Unused label `eq:marg_var_strat' on input line 1400.
+
+[29]
+
+LaTeX Warning: Reference `tab:strat_probs' on page 30 undefined on input line 1
+402.
+
+
+LaTeX Warning: Reference `tab:strat_probs' on page 30 undefined on input line 1
+412.
+
+
+LaTeX Warning: Reference `fig:strat_case2' on page 30 undefined on input line 1
+428.
+
+
+LaTeX Warning: Reference `tab:strat_probs' on page 30 undefined on input line 1
+428.
+
+
+LaTeX Warning: Reference `eq:marg_var_strat' on page 30 undefined on input line
+ 1429.
+
+
+LaTeX Warning: Reference `sub@fig:strat_case1' on page 30 undefined on input li
+ne 1429.
+
+
+LaTeX Warning: Reference `tab:strat_probs' on page 30 undefined on input line 1
+429.
+
+
+LaTeX Warning: Reference `sub@fig:strat_case2' on page 30 undefined on input li
+ne 1438.
+
+
+LaTeX Warning: Reference `tab:resampling_properties' on page 30 undefined on in
+put line 1452.
+
+[30]
+
+Package refcheck Warning: Unused label `eq:resamplingMCvariance' on input line 
+1466.
+
+
+LaTeX Warning: Reference `thm:resampling_var_compare' on page 31 undefined on i
+nput line 1473.
+
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 1479.
+
+Package refcheck Warning: Unused label `thm:resampling_var_compare' on input li
+ne 1479.
+
+
+LaTeX Warning: Reference `eq:resamplingMCvariance' on page 31 undefined on inpu
+t line 1480.
+
+
+Package refcheck Warning: Unused label `item:resampling_var1' on input line 148
+3.
+
+
+Package refcheck Warning: Unused label `item:resampling_var2' on input line 148
+8.
+
+
+Package refcheck Warning: Unused label `item:resampling_var3' on input line 149
+3.
+
+
+Package refcheck Warning: Unused label `item:resampling_var4' on input line 149
+8.
+
+
+LaTeX Warning: Reference `item:resampling_var1' on page 31 undefined on input l
+ine 1509.
+
+
+LaTeX Warning: Reference `item:resampling_var2' on page 31 undefined on input l
+ine 1510.
+
+
+LaTeX Warning: Reference `item:resampling_var3' on page 31 undefined on input l
+ine 1511.
+
+[31]
+
+LaTeX Warning: Reference `item:resampling_var4' on page 32 undefined on input l
+ine 1534.
+
+
+LaTeX Warning: Reference `item:resampling_var2' on page 32 undefined on input l
+ine 1534.
+
+
+LaTeX Warning: Reference `eq:resamplingMCvariance' on page 32 undefined on inpu
+t line 1542.
+
+
+LaTeX Warning: Reference `eq:resamplingMCvariance' on page 32 undefined on inpu
+t line 1549.
+
+[32]
+
+LaTeX Warning: Reference `item:resampling_var4' on page 33 undefined on input l
+ine 1567.
+
+
+LaTeX Warning: Reference `ch:limits' on page 33 undefined on input line 1672.
+
+
+LaTeX Warning: Reference `ch:weakconv' on page 33 undefined on input line 1672.
+
+
+
+LaTeX Warning: Reference `standing_assumption' on page 33 undefined on input li
+ne 1672.
+
+
+LaTeX Warning: Reference `fig:resampling_stratified' on page 33 undefined on in
+put line 1680.
+
+
+LaTeX Warning: Reference `fig:resampling_systematic' on page 33 undefined on in
+put line 1680.
+
+[33]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 1707.
+ [34]
+
+LaTeX Warning: Reference `tab:resampling_properties' on page 35 undefined on in
+put line 1721.
+
+
+LaTeX Warning: Reference `tab:resampling_properties' on page 35 undefined on in
+put line 1722.
+
+
+LaTeX Warning: Reference `fig:resampling_mn' on page 35 undefined on input line
+ 1731.
+
+LaTeX Font Info:    Try loading font information for U+bbm on input line 1736.
 (/usr/local/texlive/2018/texmf-dist/tex/latex/bbm-macros/ubbm.fd
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
-) [34]
-Overfull \hbox (0.3939pt too wide) in paragraph at lines 1656--1661
+) [35]
+Overfull \hbox (0.3939pt too wide) in paragraph at lines 1745--1750
 []\OT1/cmr/m/n/10.95 In one di-men-sion, the lowest-discrepancy point set is th
 e reg-u-lar grid $([]\OML/cmm/m/it/10.95 ; []; [] ; []\OT1/cmr/m/n/10.95 )$,
  []
 
-[35] [36
+[36]
+
+LaTeX Warning: Reference `sec:resampling_properties' on page 37 undefined on in
+put line 1796.
+
+
+LaTeX Warning: Reference `sec:resampling_properties' on page 37 undefined on in
+put line 1796.
+
+[37
 
 ]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1715.
+(hyperref)                removing `math shift' on input line 1804.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1715.
+(hyperref)                removing `math shift' on input line 1804.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathsurround' on input line 1715.
+(hyperref)                removing `\mathsurround' on input line 1804.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\z@' on input line 1715.
+(hyperref)                removing `\z@' on input line 1804.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathchar' on input line 1715.
+(hyperref)                removing `\mathchar' on input line 1804.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1715.
+(hyperref)                removing `math shift' on input line 1804.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1715.
+(hyperref)                removing `math shift' on input line 1804.
+
+
+Package refcheck Warning: Unused label `sec:SRs' on input line 1804.
 
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1717.
+(mdframed)              on input line 1806.
 
-Package refcheck Warning: Unused label `defn:stochround' on input line 1717.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1746.
+Package refcheck Warning: Unused label `defn:stochround' on input line 1806.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1746.
+(hyperref)                removing `math shift' on input line 1835.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathsurround' on input line 1746.
+(hyperref)                removing `math shift' on input line 1835.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\z@' on input line 1746.
+(hyperref)                removing `\mathsurround' on input line 1835.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathchar' on input line 1746.
+(hyperref)                removing `\z@' on input line 1835.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1746.
+(hyperref)                removing `\mathchar' on input line 1835.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1746.
+(hyperref)                removing `math shift' on input line 1835.
 
-[37
 
-] [38] [39]
-<plots/PG_degen.pdf, id=883, 602.25pt x 401.5pt>
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 1835.
+
+[38
+
+]
+
+Package refcheck Warning: Unused label `eq:PG_Xposterior' on input line 1872.
+
+[39]
+
+LaTeX Warning: Reference `alg:condSMC' on page 40 undefined on input line 1881.
+
+
+
+Package refcheck Warning: Unused label `alg:condSMC' on input line 1909.
+
+[40]
+
+LaTeX Warning: Reference `fig:PG_ancdegen' on page 41 undefined on input line 1
+921.
+
+<plots/PG_degen.pdf, id=638, 602.25pt x 401.5pt>
 File: plots/PG_degen.pdf Graphic file (type pdf)
 <use plots/PG_degen.pdf>
-Package pdftex.def Info: plots/PG_degen.pdf  used on input line 1846.
+Package pdftex.def Info: plots/PG_degen.pdf  used on input line 1935.
 (pdftex.def)             Requested size: 341.43437pt x 227.6321pt.
- [40]
-Overfull \hbox (42.75757pt too wide) detected at line 1927
+
+Package refcheck Warning: Unused label `fig:PG_ancdegen' on input line 1937.
+
+
+Package refcheck Warning: Unused label `sec:ancsamp' on input line 1944.
+
+[41]
+
+Package refcheck Warning: Unused label `alg:condSMC_ancsamp' on input line 1984
+.
+
+
+Package refcheck Warning: Unused label `eq:ancsamp_probs' on input line 1988.
+
+
+LaTeX Warning: Reference `eq:PG_Xposterior' on page 42 undefined on input line 
+1999.
+
+
+Overfull \hbox (42.75757pt too wide) detected at line 2016
 []
  []
 
-[41 <./plots/PG_degen.pdf>]
-Overfull \hbox (1.96576pt too wide) detected at line 1939
+[42 <./plots/PG_degen.pdf>]
+Overfull \hbox (1.96576pt too wide) detected at line 2028
 []
  []
 
-[42]
 
-Package refcheck Warning: Unused label `fig:whyASworks_a' on input line 2024.
+LaTeX Warning: Reference `eq:ancsamp_probs' on page 43 undefined on input line 
+2029.
 
 
-Package refcheck Warning: Unused label `fig:whyASworks_b' on input line 2080.
+Package refcheck Warning: Unused label `eq:ancsamp_probs_simplified' on input l
+ine 2030.
 
-) [43] [44]
+
+LaTeX Warning: Reference `alg:condSMC_ancsamp' on page 43 undefined on input li
+ne 2037.
+
+[43]
+
+LaTeX Warning: Reference `fig:whyASworks' on page 44 undefined on input line 20
+53.
+
+
+Package refcheck Warning: Unused label `fig:whyASworks_a' on input line 2113.
+
+
+Package refcheck Warning: Unused label `fig:whyASworks_b' on input line 2169.
+
+
+LaTeX Warning: Reference `sub@fig:whyASworks_a' on page 44 undefined on input l
+ine 2172.
+
+
+LaTeX Warning: Reference `sub@fig:whyASworks_b' on page 44 undefined on input l
+ine 2172.
+
+
+LaTeX Warning: Reference `sub@fig:whyASworks_a' on page 44 undefined on input l
+ine 2172.
+
+
+LaTeX Warning: Reference `sub@fig:whyASworks_b' on page 44 undefined on input l
+ine 2172.
+
+
+LaTeX Warning: Reference `sub@fig:whyASworks_a' on page 44 undefined on input l
+ine 2172.
+
+
+LaTeX Warning: Reference `sub@fig:whyASworks_b' on page 44 undefined on input l
+ine 2172.
+
+
+LaTeX Warning: Reference `sub@fig:whyASworks_a' on page 44 undefined on input l
+ine 2172.
+
+
+LaTeX Warning: Reference `sub@fig:whyASworks_b' on page 44 undefined on input l
+ine 2172.
+
+
+Package refcheck Warning: Unused label `fig:whyASworks' on input line 2173.
+
+) [44] [45]
 \openout2 = `limits.aux'.
 
  (./limits.tex
 chapter 3.
+
+Package refcheck Warning: Unused label `ch:limits' on input line 2.
+
+
+LaTeX Warning: Reference `fig:encoding_genealogy' on page 46 undefined on input
+ line 30.
+
 
 Package refcheck Warning: Unused label `fig:encoding_a' on input line 99.
 
@@ -1954,28 +2336,137 @@ Package refcheck Warning: Unused label `fig:encoding_a' on input line 99.
 Package refcheck Warning: Unused label `fig:encoding_b' on input line 137.
 
 
+LaTeX Warning: Reference `sub@fig:encoding_a' on page 46 undefined on input lin
+e 138.
+
+
+LaTeX Warning: Reference `sub@fig:encoding_b' on page 46 undefined on input lin
+e 138.
+
+
+LaTeX Warning: Reference `sub@fig:encoding_a' on page 46 undefined on input lin
+e 138.
+
+
+LaTeX Warning: Reference `sub@fig:encoding_b' on page 46 undefined on input lin
+e 138.
+
+
+Package refcheck Warning: Unused label `fig:encoding_genealogy' on input line 1
+39.
+
+
 Package refcheck Warning: Unused label `eq:defn_cN' on input line 146.
 
-[45
+[46
 
 
 
 
 ]
 
+Package refcheck Warning: Unused label `eq:defn_tauN' on input line 151.
+
+
 Package refcheck Warning: Unused label `eq:defn_DN' on input line 156.
+
+
+LaTeX Warning: Reference `thm:cN_properties' on page 47 undefined on input line
+ 163.
 
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 164.
-[46]
+
+Package refcheck Warning: Unused label `thm:cN_properties' on input line 164.
+
+
+Package refcheck Warning: Unused label `item:cN_property1' on input line 167.
+
+
+Package refcheck Warning: Unused label `item:cN_property2' on input line 171.
+
+
+Package refcheck Warning: Unused label `item:cN_property3' on input line 175.
+
+
+Package refcheck Warning: Unused label `item:cN_property4' on input line 179.
+
+
+Package refcheck Warning: Unused label `item:cN_property5' on input line 185.
+
+
+Package refcheck Warning: Unused label `item:cN_property6' on input line 191.
+
+[47]
+
+LaTeX Warning: Reference `item:cN_property1' on page 48 undefined on input line
+ 205.
+
+
+LaTeX Warning: Reference `item:cN_property2' on page 48 undefined on input line
+ 206.
+
+
+LaTeX Warning: Reference `item:cN_property3' on page 48 undefined on input line
+ 214.
+
+
+LaTeX Warning: Reference `item:cN_property1' on page 48 undefined on input line
+ 214.
+
+
+LaTeX Warning: Reference `item:cN_property4' on page 48 undefined on input line
+ 215.
+
+
+LaTeX Warning: Reference `eq:defn_tauN' on page 48 undefined on input line 215.
+
+
+
+LaTeX Warning: Reference `item:cN_property5' on page 48 undefined on input line
+ 216.
+
+
+LaTeX Warning: Reference `item:cN_property4' on page 48 undefined on input line
+ 222.
+
+
+LaTeX Warning: Reference `item:cN_property6' on page 48 undefined on input line
+ 223.
+
+
+LaTeX Warning: Reference `item:cN_property1' on page 48 undefined on input line
+ 223.
+
+
+LaTeX Warning: Reference `eq:defn_tauN' on page 48 undefined on input line 223.
+
+
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 229.
- [47] [48]
+
+Package refcheck Warning: Unused label `thm:kjjslemma2' on input line 229.
+
+[48] [49]
+
+Package refcheck Warning: Unused label `eq:defn_pxieta' on input line 285.
+
+
+LaTeX Warning: Reference `thm:pDelta_LB' on page 50 undefined on input line 291
+.
+
+
+LaTeX Warning: Reference `thm:pDelta_UB' on page 50 undefined on input line 291
+.
+
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 292.
+
+Package refcheck Warning: Unused label `thm:pDelta_LB' on input line 293.
+
 
 Overfull \hbox (38.9648pt too wide) in paragraph at lines 321--322
 []\OT1/cmr/m/n/10.95 We sep-a-rate the $\OML/cmm/m/it/10.95 k \OT1/cmr/m/n/10.9
@@ -1984,37 +2475,438 @@ cmr/m/n/10.95 1$ term (which counts sin-gle pair merg-ers), for which $(\OML/cm
 m/m/it/10.95 b[]; b[]; [] ; b[]\OT1/cmr/m/n/10.95 ) =
  []
 
-[49] [50]
+
+Package refcheck Warning: Unused label `eq:pDeltaLB_1' on input line 342.
+
+[50] [51]
+
+LaTeX Warning: Reference `eq:pDeltaLB_1' on page 52 undefined on input line 396
+.
+
+
+LaTeX Warning: Reference `eq:pDeltaLB_1' on page 52 undefined on input line 402
+.
+
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 411.
- [51]
+
+Package refcheck Warning: Unused label `thm:pDelta_UB' on input line 412.
+
+
+LaTeX Warning: Reference `standing_assumption' on page 52 undefined on input li
+ne 429.
+
+
+Package refcheck Warning: Unused label `standing_assumption' on input line 432.
+
+
+[52]
+
+LaTeX Warning: Reference `standing_assumption' on page 53 undefined on input li
+ne 436.
+
+
+LaTeX Warning: Reference `standing_assumption' on page 53 undefined on input li
+ne 438.
+
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 447.
- [52]
+
+Package refcheck Warning: Unused label `thm:kjjs_mainthm' on input line 447.
+
+
+LaTeX Warning: Reference `standing_assumption' on page 53 undefined on input li
+ne 448.
+
+
+Package refcheck Warning: Unused label `eq:kjjs_big_merger_bound' on input line
+ 465.
+
+
+Package refcheck Warning: Unused label `eq:kjjs_binary_bound' on input line 465
+.
+
+
+Package refcheck Warning: Unused label `eq:kjjs_binary_bound_2' on input line 4
+65.
+
+
+Package refcheck Warning: Unused label `eq:kjjs_tau_bound' on input line 465.
+
+
+LaTeX Warning: Reference `eq:kjjs_big_merger_bound' on page 53 undefined on inp
+ut line 471.
+
+
+LaTeX Warning: Reference `eq:kjjs_binary_bound' on page 53 undefined on input l
+ine 473.
+
+
+LaTeX Warning: Reference `eq:kjjs_binary_bound_2' on page 53 undefined on input
+ line 473.
+
+
+LaTeX Warning: Reference `eq:kjjs_binary_bound' on page 53 undefined on input l
+ine 475.
+
+
+LaTeX Warning: Reference `ch:appl' on page 53 undefined on input line 475.
+
+
+LaTeX Warning: Reference `sec:corol_mn' on page 53 undefined on input line 475.
+
+
+[53]
+
+LaTeX Warning: Reference `eq:kjjs_tau_bound' on page 54 undefined on input line
+ 477.
+
+
+LaTeX Warning: Reference `eq:kjjs_tau_bound' on page 54 undefined on input line
+ 478.
+
+
+LaTeX Warning: Reference `thm:FDDconv' on page 54 undefined on input line 479.
+
+
+LaTeX Warning: Reference `eq:kjjs_binary_bound' on page 54 undefined on input l
+ine 481.
+
+
+Package refcheck Warning: Unused label `eq:kjjs_binary_bound_corrected' on inpu
+t line 482.
+
+
+LaTeX Warning: Reference `thm:DNimpliescN' on page 54 undefined on input line 4
+85.
+
+
+LaTeX Warning: Reference `thm:DNimpliescN_2' on page 54 undefined on input line
+ 485.
+
+
+LaTeX Warning: Reference `eq:kjjs_binary_bound' on page 54 undefined on input l
+ine 485.
+
+
+LaTeX Warning: Reference `eq:kjjs_binary_bound_corrected' on page 54 undefined 
+on input line 485.
+
+
+LaTeX Warning: Reference `eq:kjjs_big_merger_bound' on page 54 undefined on inp
+ut line 485.
+
+
+LaTeX Warning: Reference `thm:kjjs_mainthm' on page 54 undefined on input line 
+486.
+
+
+LaTeX Warning: Reference `thm:FDDconv' on page 54 undefined on input line 486.
+
+
+LaTeX Warning: Reference `thm:kjjs_mainthm' on page 54 undefined on input line 
+490.
+
+
+LaTeX Warning: Reference `thm:kjjs_mainthm' on page 54 undefined on input line 
+500.
+
+
+LaTeX Warning: Reference `thm:FDDconv' on page 54 undefined on input line 501.
+
+
+LaTeX Warning: Reference `thm:kjjs_mainthm' on page 54 undefined on input line 
+501.
+
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 503.
- [53] [54]
+
+Package refcheck Warning: Unused label `thm:FDDconv' on input line 503.
+
+
+LaTeX Warning: Reference `standing_assumption' on page 54 undefined on input li
+ne 504.
+
+
+Package refcheck Warning: Unused label `eq:mainthmcond' on input line 505.
+
+[54]
+
+LaTeX Warning: Reference `eq:mainthmcond' on page 55 undefined on input line 51
+3.
+
+
+LaTeX Warning: Reference `eq:mainthmcond' on page 55 undefined on input line 51
+3.
+
+
+LaTeX Warning: Reference `thm:kjjs_mainthm' on page 55 undefined on input line 
+515.
+
+
+LaTeX Warning: Reference `eq:kjjs_tau_bound' on page 55 undefined on input line
+ 515.
+
+
+LaTeX Warning: Reference `thm:FDDconv' on page 55 undefined on input line 518.
+
+
+LaTeX Warning: Reference `thm:kjjs_mainthm' on page 55 undefined on input line 
+518.
+
+
+LaTeX Warning: Reference `eq:mainthmcond' on page 55 undefined on input line 51
+8.
+
+
+LaTeX Warning: Reference `eq:kjjs_big_merger_bound' on page 55 undefined on inp
+ut line 518.
+
+
+LaTeX Warning: Reference `eq:kjjs_binary_bound_2' on page 55 undefined on input
+ line 518.
+
+
+LaTeX Warning: Reference `thm:kjjs_mainthm' on page 55 undefined on input line 
+520.
+
+
+LaTeX Warning: Reference `eq:mainthmcond' on page 55 undefined on input line 52
+0.
+
+
+LaTeX Warning: Reference `eq:kjjs_big_merger_bound' on page 55 undefined on inp
+ut line 520.
+
+
+LaTeX Warning: Reference `eq:kjjs_binary_bound_2' on page 55 undefined on input
+ line 520.
+
+
+LaTeX Warning: Reference `thm:FDDconv' on page 55 undefined on input line 522.
+
+
+LaTeX Warning: Reference `thm:FDDconv' on page 55 undefined on input line 525.
+
+
+LaTeX Warning: Reference `eq:kjjs_binary_bound_corrected' on page 55 undefined 
+on input line 532.
+
+
+LaTeX Warning: Reference `eq:kjjs_big_merger_bound' on page 55 undefined on inp
+ut line 532.
+
+
+LaTeX Warning: Reference `eq:kjjs_binary_bound_2' on page 55 undefined on input
+ line 532.
+
+
+LaTeX Warning: Reference `thm:kjjs_mainthm' on page 55 undefined on input line 
+532.
+
+
+LaTeX Warning: Reference `eq:mainthmcond' on page 55 undefined on input line 53
+2.
+
+
+LaTeX Warning: Reference `fig:FDD_proof_dependencies' on page 55 undefined on i
+nput line 533.
+
+
+LaTeX Warning: Reference `lem:removeass3' on page 55 undefined on input line 53
+3.
+
+
+LaTeX Warning: Reference `lem:removeass2' on page 55 undefined on input line 53
+3.
+
+
+LaTeX Warning: Reference `eq:mainthmcond' on page 55 undefined on input line 53
+4.
+
+
+LaTeX Warning: Reference `eq:kjjs_big_merger_bound' on page 55 undefined on inp
+ut line 534.
+
+
+LaTeX Warning: Reference `eq:kjjs_binary_bound' on page 55 undefined on input l
+ine 534.
+
+
+LaTeX Warning: Reference `eq:mainthmcond' on page 55 undefined on input line 53
+4.
+
+
+LaTeX Warning: Reference `eq:kjjs_big_merger_bound' on page 55 undefined on inp
+ut line 534.
+
+
+LaTeX Warning: Reference `eq:mainthmcond' on page 55 undefined on input line 53
+4.
+
+
+LaTeX Warning: Reference `eq:kjjs_binary_bound' on page 55 undefined on input l
+ine 534.
+
+
+LaTeX Warning: Reference `thm:kjjs_mainthm' on page 55 undefined on input line 
+535.
+
+
+LaTeX Warning: Reference `eq:kjjs_big_merger_bound' on page 55 undefined on inp
+ut line 535.
+
+[55]
+
+LaTeX Warning: Reference `eq:kjjs_tau_bound' on page 56 undefined on input line
+ 537.
+
+
+LaTeX Warning: Reference `eq:kjjs_tau_bound' on page 56 undefined on input line
+ 537.
+
+
+LaTeX Warning: Reference `thm:pDelta_LB' on page 56 undefined on input line 537
+.
+
+
+LaTeX Warning: Reference `thm:pDelta_LB' on page 56 undefined on input line 538
+.
+
+
+LaTeX Warning: Reference `eq:kjjs_tau_bound' on page 56 undefined on input line
+ 538.
+
+
+LaTeX Warning: Reference `eq:mainthmcond' on page 56 undefined on input line 54
+7.
+
+
+LaTeX Warning: Reference `eq:kjjs_big_merger_bound' on page 56 undefined on inp
+ut line 548.
+
+
+LaTeX Warning: Reference `eq:kjjs_binary_bound_2' on page 56 undefined on input
+ line 549.
+
+
+LaTeX Warning: Reference `eq:kjjs_binary_bound_corrected' on page 56 undefined 
+on input line 550.
+
+
+LaTeX Warning: Reference `eq:kjjs_binary_bound' on page 56 undefined on input l
+ine 551.
+
+
+LaTeX Warning: Reference `lem:removeass2' on page 56 undefined on input line 55
+4.
+
+
+LaTeX Warning: Reference `lem:removeass3' on page 56 undefined on input line 55
+6.
+
+
+LaTeX Warning: Reference `thm:DNimpliescN_2' on page 56 undefined on input line
+ 558.
+
+
+LaTeX Warning: Reference `thm:DNimpliescN' on page 56 undefined on input line 5
+60.
+
+
 Overfull \hbox (16.37553pt too wide) in paragraph at lines 562--562
 [][][][][]\OT1/cmr/m/n/9 Brown et al. 2021 
  []
 
+
+LaTeX Warning: Reference `thm:kjjs_mainthm' on page 56 undefined on input line 
+566.
+
+
+LaTeX Warning: Reference `thm:FDDconv' on page 56 undefined on input line 566.
+
+
+LaTeX Warning: Reference `eq:mainthmcond' on page 56 undefined on input line 56
+6.
+
+
+LaTeX Warning: Reference `eq:kjjs_binary_bound' on page 56 undefined on input l
+ine 566.
+
+
+LaTeX Warning: Reference `eq:kjjs_big_merger_bound' on page 56 undefined on inp
+ut line 566.
+
+
+LaTeX Warning: Reference `eq:kjjs_binary_bound' on page 56 undefined on input l
+ine 566.
+
+
+LaTeX Warning: Reference `thm:kjjs_mainthm' on page 56 undefined on input line 
+566.
+
+
+LaTeX Warning: Reference `thm:FDDconv' on page 56 undefined on input line 566.
+
+
+LaTeX Warning: Reference `eq:mainthmcond' on page 56 undefined on input line 56
+6.
+
+
+LaTeX Warning: Reference `eq:kjjs_binary_bound' on page 56 undefined on input l
+ine 566.
+
+
+LaTeX Warning: Reference `eq:kjjs_big_merger_bound' on page 56 undefined on inp
+ut line 566.
+
+
+LaTeX Warning: Reference `eq:kjjs_binary_bound' on page 56 undefined on input l
+ine 566.
+
+
+Package refcheck Warning: Unused label `fig:FDD_proof_dependencies' on input li
+ne 568.
+
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 572.
-[55]
+
+Package refcheck Warning: Unused label `lem:removeass3' on input line 572.
+
+[56]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 598.
- [56]
+
+
+Package refcheck Warning: Unused label `thm:DNimpliescN' on input line 598.
+
+
+Package refcheck Warning: Unused label `eq:define_Ai_events' on input line 613.
+
+
+[57]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 645.
+
+
+Package refcheck Warning: Unused label `thm:DNimpliescN_2' on input line 645.
+
+
+LaTeX Warning: Reference `thm:DNimpliescN' on page 58 undefined on input line 6
+58.
+
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 715.
+
+Package refcheck Warning: Unused label `lem:removeass2' on input line 715.
+
 
 Overfull \hbox (1.37184pt too wide) in paragraph at lines 717--718
 [][]\OT1/cmr/bx/n/10.95 Lemma 3.10. []\OT1/cmr/m/it/10.95 If there ex-ists a de
@@ -2023,7 +2915,54 @@ m/n/10.95 )[]$ \OT1/cmr/m/it/10.95 such that $[][]\OML/cmm/m/it/10.95 b[] \OT1/
 cmr/m/n/10.95 =
  []
 
-[57] [58]
+[58]
+
+Package refcheck Warning: Unused label `DN_part_1' on input line 737.
+
+
+Package refcheck Warning: Unused label `DN_part_2' on input line 747.
+
+
+LaTeX Warning: Reference `eq:define_Ai_events' on page 59 undefined on input li
+ne 748.
+
+
+Package refcheck Warning: Unused label `DN_part_3' on input line 759.
+
+
+Package refcheck Warning: Unused label `markovs_ineq' on input line 764.
+
+[59]
+
+LaTeX Warning: Reference `markovs_ineq' on page 60 undefined on input line 765.
+
+
+
+LaTeX Warning: Reference `DN_part_3' on page 60 undefined on input line 765.
+
+
+Package refcheck Warning: Unused label `DN_part_4' on input line 769.
+
+
+LaTeX Warning: Reference `DN_part_4' on page 60 undefined on input line 771.
+
+
+LaTeX Warning: Reference `DN_part_2' on page 60 undefined on input line 771.
+
+
+Package refcheck Warning: Unused label `DN_last' on input line 777.
+
+
+LaTeX Warning: Reference `DN_part_1' on page 60 undefined on input line 779.
+
+
+LaTeX Warning: Reference `DN_last' on page 60 undefined on input line 779.
+
+
+LaTeX Warning: Reference `thm:kjjslemma2' on page 60 undefined on input line 78
+5.
+
+
 Overfull \hbox (101.82979pt too wide) in paragraph at lines 803--804
 \OT1/cmr/m/n/10.95 proof is sim-i-lar to \OT1/cmtt/m/n/10.95 Dropbox/SMC[]Genea
 logies/Asymptotic[]genealogies[]of[]interacting[]particle[]systems/
@@ -2035,28 +2974,198 @@ Overfull \hbox (20.12596pt too wide) in paragraph at lines 803--804
 s/full[]redraft.pdf\OT1/cmr/m/n/10.95 , from
  []
 
-[59] [60] [61] [62]) [63]
+
+LaTeX Warning: Reference `thm:FDDconv' on page 60 undefined on input line 806.
+
+
+LaTeX Warning: Reference `eq:kjjs_tau_bound' on page 60 undefined on input line
+ 806.
+
+
+LaTeX Warning: Reference `thm:pDelta_LB' on page 60 undefined on input line 806
+.
+
+
+LaTeX Warning: Reference `eq:kjjs_tau_bound' on page 60 undefined on input line
+ 806.
+
+
+LaTeX Warning: Reference `eq:kjjs_tau_bound' on page 60 undefined on input line
+ 807.
+
+
+LaTeX Warning: Reference `thm:pDelta_LB' on page 60 undefined on input line 808
+.
+
+[60]
+
+LaTeX Warning: Reference `eq:kjjs_tau_bound' on page 61 undefined on input line
+ 815.
+
+
+LaTeX Warning: Reference `thm:pDelta_LB' on page 61 undefined on input line 818
+.
+
+
+LaTeX Warning: Reference `thm:pDelta_LB' on page 61 undefined on input line 834
+.
+
+
+LaTeX Warning: Reference `thm:pDelta_LB' on page 61 undefined on input line 835
+.
+
+[61] [62]
+
+Package refcheck Warning: Unused label `eq1' on input line 958.
+
+[63]
+
+LaTeX Warning: Reference `eq1' on page 64 undefined on input line 967.
+
+
+LaTeX Warning: Reference `thm:indicators_cN' on page 64 undefined on input line
+ 1005.
+
+
+LaTeX Warning: Reference `thm:lim_AandB' on page 64 undefined on input line 100
+5.
+
+) [64]
 \openout2 = `weakconv.aux'.
 
  (./weakconv.tex
 chapter 4.
+
+Package refcheck Warning: Unused label `ch:weakconv' on input line 2.
+
+
+LaTeX Warning: Reference `thm:FDDconv' on page 65 undefined on input line 9.
+
+
+LaTeX Warning: Reference `thm:FDDconv' on page 65 undefined on input line 12.
+
+
+LaTeX Warning: Reference `thm:weakconv' on page 65 undefined on input line 12.
+
+
+LaTeX Warning: Reference `fig:weakconv_structure' on page 65 undefined on input
+ line 12.
+
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 31.
-[64
+
+Package refcheck Warning: Unused label `thm:weakconv' on input line 31.
+
+
+LaTeX Warning: Reference `standing_assumption' on page 65 undefined on input li
+ne 32.
+
+
+Package refcheck Warning: Unused label `eq:mainthmcondition2' on input line 33.
+
+
+
+LaTeX Warning: Reference `thm:weakconv' on page 65 undefined on input line 41.
+
+
+LaTeX Warning: Reference `fig:weakconv_structure' on page 65 undefined on input
+ line 43.
+
+[65
 
 
 
 
-] [65] [66]
+]
+
+LaTeX Warning: Reference `thm:FDDconv' on page 66 undefined on input line 45.
+
+
+Package refcheck Warning: Unused label `item:relcomp1' on input line 50.
+
+
+Package refcheck Warning: Unused label `item:relcomp2' on input line 55.
+
+
+LaTeX Warning: Reference `item:relcomp1' on page 66 undefined on input line 68.
+
+
+
+LaTeX Warning: Reference `item:relcomp2' on page 66 undefined on input line 69.
+
+
+
+LaTeX Warning: Reference `item:relcomp2' on page 66 undefined on input line 74.
+
+
+
+LaTeX Warning: Reference `thm:maximum_pr' on page 66 undefined on input line 77
+.
+
+[66]
+
+Package refcheck Warning: Unused label `eq:constructed_chain' on input line 88.
+
+
+
+LaTeX Warning: Reference `eq:constructed_chain' on page 67 undefined on input l
+ine 92.
+
+
+LaTeX Warning: Reference `item:relcomp2' on page 67 undefined on input line 103
+.
+
+
+LaTeX Warning: Reference `item:relcomp2' on page 67 undefined on input line 111
+.
+
+
+Package refcheck Warning: Unused label `eq:condition2b' on input line 113.
+
+[67]
+
+LaTeX Warning: Reference `thm:holdingtimes_distn' on page 68 undefined on input
+ line 128.
+
+
+LaTeX Warning: Reference `eq:condition2b' on page 68 undefined on input line 14
+7.
+
+
+LaTeX Warning: Reference `item:relcomp2' on page 68 undefined on input line 147
+.
+
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 153.
- [67]
+
+Package refcheck Warning: Unused label `thm:maximum_pr' on input line 153.
+
+
+LaTeX Warning: Reference `eq:defn_pxieta' on page 68 undefined on input line 15
+9.
+
+[68]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 205.
- [68]
+
+
+Package refcheck Warning: Unused label `thm:holdingtimes_distn' on input line 2
+05.
+
+
+Package refcheck Warning: Unused label `eq:518' on input line 214.
+
+
+LaTeX Warning: Reference `thm:basis' on page 69 undefined on input line 229.
+
+[69]
+
+LaTeX Warning: Reference `eq:518' on page 70 undefined on input line 231.
+
+
 Overfull \hbox (1.4709pt too wide) detected at line 259
 \U/msb/m/n/10.95 P\OT1/cmr/m/n/10.95 [\OML/cmm/m/it/10.95 T[] \OMS/cmsy/m/n/10.
 95 ^^T \OML/cmm/m/it/10.95 t[]; [] ; T[] \OMS/cmsy/m/n/10.95 ^^T \OML/cmm/m/it/
@@ -2064,22 +3173,172 @@ Overfull \hbox (1.4709pt too wide) detected at line 259
 10.95 ;
  []
 
-[69]
 
-LaTeX Warning: Float too large for page by 11.28517pt on input line 362.
+LaTeX Warning: Reference `thm:inductionUB' on page 70 undefined on input line 2
+61.
+
+
+LaTeX Warning: Reference `thm:inductionLB' on page 70 undefined on input line 2
+61.
 
 [70]
+
+LaTeX Warning: Reference `thm:weakconv' on page 71 undefined on input line 290.
+
+
+
+LaTeX Warning: Reference `thm:inductionLB' on page 71 undefined on input line 2
+91.
+
+
+LaTeX Warning: Reference `thm:inductionUB' on page 71 undefined on input line 2
+93.
+
+
+LaTeX Warning: Reference `thm:basis' on page 71 undefined on input line 295.
+
+
+LaTeX Warning: Reference `thm:FDDconv' on page 71 undefined on input line 297.
+
+
+LaTeX Warning: Reference `thm:kjjslemma2' on page 71 undefined on input line 29
+8.
+
+
+LaTeX Warning: Reference `thm:maximum_pr' on page 71 undefined on input line 29
+9.
+
+
+LaTeX Warning: Reference `thm:holdingtimes_distn' on page 71 undefined on input
+ line 300.
+
+
+LaTeX Warning: Reference `thm:pDelta_LB' on page 71 undefined on input line 301
+.
+
+
+LaTeX Warning: Reference `thm:pDelta_UB' on page 71 undefined on input line 303
+.
+
+
+LaTeX Warning: Reference `thm:DCT_Fubini' on page 71 undefined on input line 30
+5.
+
+
+LaTeX Warning: Reference `thm:induction_sumprodcN' on page 71 undefined on inpu
+t line 307.
+
+
+LaTeX Warning: Reference `thm:sumprod1' on page 71 undefined on input line 308.
+
+
+
+LaTeX Warning: Reference `thm:sumprod1_a' on page 71 undefined on input line 30
+8.
+
+
+LaTeX Warning: Reference `thm:sumprod1' on page 71 undefined on input line 309.
+
+
+
+LaTeX Warning: Reference `thm:sumprod1_b' on page 71 undefined on input line 30
+9.
+
+
+LaTeX Warning: Reference `thm:sumprod2' on page 71 undefined on input line 310.
+
+
+
+LaTeX Warning: Reference `thm:sumprod3' on page 71 undefined on input line 311.
+
+
+
+LaTeX Warning: Reference `thm:indicators_tau' on page 71 undefined on input lin
+e 312.
+
+
+LaTeX Warning: Reference `thm:indicators_cN' on page 71 undefined on input line
+ 313.
+
+
+LaTeX Warning: Reference `thm:lim_AandB' on page 71 undefined on input line 314
+.
+
+
+LaTeX Warning: Reference `thm:indicators_DN' on page 71 undefined on input line
+ 315.
+
+
+LaTeX Warning: Reference `thm:indicators_c2' on page 71 undefined on input line
+ 316.
+
+
+LaTeX Warning: Reference `thm:FDDconv' on page 71 undefined on input line 360.
+
+
+LaTeX Warning: Reference `thm:FDDconv' on page 71 undefined on input line 360.
+
+
+Package refcheck Warning: Unused label `fig:weakconv_structure' on input line 3
+61.
+
+
+LaTeX Warning: Float too large for page by 11.34601pt on input line 362.
+
+[71]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 370.
+
+
+Package refcheck Warning: Unused label `thm:sumprod1' on input line 370.
+
+
+Package refcheck Warning: Unused label `thm:sumprod1_a' on input line 373.
+
+
+Package refcheck Warning: Unused label `thm:sumprod1_b' on input line 378.
+
 
 Overfull \hbox (29.05421pt too wide) in paragraph at lines 378--384
 []  $[][]$ 
  []
 
+
+LaTeX Warning: Reference `thm:sumprod1_a' on page 72 undefined on input line 38
+7.
+
+
+LaTeX Warning: Reference `eq:cN_property4' on page 72 undefined on input line 3
+94.
+
+
+Package refcheck Warning: Unused label `eq:039' on input line 395.
+
+
+LaTeX Warning: Reference `thm:sumprod1_b' on page 72 undefined on input line 39
+9.
+
+
+Package refcheck Warning: Unused label `eq:002' on input line 401.
+
+
+LaTeX Warning: Reference `eq:cN_property4' on page 72 undefined on input line 4
+07.
+
+
+LaTeX Warning: Reference `eq:002' on page 72 undefined on input line 407.
+
+
+LaTeX Warning: Reference `eq:cN_property1' on page 72 undefined on input line 4
+23.
+
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 433.
+
+Package refcheck Warning: Unused label `thm:sumprod2' on input line 433.
+
 
 Overfull \hbox (0.9588pt too wide) detected at line 441
 [] [] [] \OMS/cmsy/m/n/10.95 ^^T [] [] \OML/cmm/m/it/10.95 c[]\OT1/cmr/m/n/10.9
@@ -2088,13 +3347,39 @@ Overfull \hbox (0.9588pt too wide) detected at line 441
 /it/10.95 :
  []
 
-[71
+[72
 
 
-] [72]
+]
+
+Package refcheck Warning: Unused label `eq:010' on input line 456.
+
+
+Package refcheck Warning: Unused label `eq:012' on input line 476.
+
+
+LaTeX Warning: Reference `eq:cN_property2' on page 73 undefined on input line 4
+77.
+
+
+Package refcheck Warning: Unused label `eq:013' on input line 490.
+
+[73]
+
+LaTeX Warning: Reference `eq:039' on page 74 undefined on input line 491.
+
+
+Package refcheck Warning: Unused label `eq:014' on input line 493.
+
+
+LaTeX Warning: Reference `eq:012' on page 74 undefined on input line 498.
+
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 502.
+
+Package refcheck Warning: Unused label `thm:sumprod3' on input line 502.
+
 
 Overfull \hbox (0.9588pt too wide) detected at line 510
 [] [] [] \OMS/cmsy/m/n/10.95 ^^U [] [] \OML/cmm/m/it/10.95 c[]\OT1/cmr/m/n/10.9
@@ -2104,9 +3389,21 @@ t/10.95 B\OT1/cmr/m/n/10.95 )[]\OML/cmm/m/it/10.95 :
  []
 
 
+LaTeX Warning: Reference `eq:010' on page 74 undefined on input line 514.
+
+
+LaTeX Warning: Reference `eq:012' on page 74 undefined on input line 514.
+
+
 Overfull \hbox (2.56941pt too wide) detected at line 535
 []
  []
+
+
+LaTeX Warning: Reference `eq:013' on page 74 undefined on input line 537.
+
+
+LaTeX Warning: Reference `eq:014' on page 74 undefined on input line 537.
 
 
 Overfull \hbox (5.4497pt too wide) detected at line 543
@@ -2115,130 +3412,657 @@ Overfull \hbox (5.4497pt too wide) detected at line 543
 [](1 + \OML/cmm/m/it/10.95 B\OT1/cmr/m/n/10.95 )[]
  []
 
-[73]
+[74]
+
+LaTeX Warning: Reference `eq:mainthmcondition2' on page 75 undefined on input l
+ine 551.
+
+
+Package refcheck Warning: Unused label `eq:BJJK_eq3.3' on input line 558.
+
+
+Package refcheck Warning: Unused label `eq:BJJK_eq3.5' on input line 558.
+
+
+Package refcheck Warning: Unused label `eq:BJJK_eq3.4' on input line 558.
+
+
+LaTeX Warning: Reference `thm:cN_properties' on page 75 undefined on input line
+ 560.
+
+
+Package refcheck Warning: Unused label `eq:cN_property1' on input line 567.
+
+
+Package refcheck Warning: Unused label `eq:cN_property2' on input line 567.
+
+
+Package refcheck Warning: Unused label `eq:cN_property4' on input line 567.
+
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 571.
- [74]
+
+Package refcheck Warning: Unused label `thm:basis' on input line 571.
+
+
+LaTeX Warning: Reference `eq:mainthmcondition2' on page 75 undefined on input l
+ine 572.
+
+
+LaTeX Warning: Reference `thm:pDelta_UB' on page 75 undefined on input line 585
+.
+
+
+Package refcheck Warning: Unused label `eq:018' on input line 586.
+
+
+LaTeX Warning: Reference `eq:018' on page 75 undefined on input line 592.
+
+
+Package refcheck Warning: Unused label `eq:defn_E1' on input line 593.
+
+[75]
+
+Package refcheck Warning: Unused label `eq:defn_E2' on input line 598.
+
+
+Package refcheck Warning: Unused label `eq:019' on input line 623.
+
+
+LaTeX Warning: Reference `thm:sumprod3' on page 76 undefined on input line 624.
+
+
+
+LaTeX Warning: Reference `thm:sumprod1' on page 76 undefined on input line 624.
+
+
+
+LaTeX Warning: Reference `thm:sumprod1_b' on page 76 undefined on input line 62
+4.
+
+
 Overfull \hbox (12.55362pt too wide) detected at line 645
 []
  []
 
-[75] [76]
+
+Package refcheck Warning: Unused label `eq:021' on input line 666.
+
+[76]
+
+LaTeX Warning: Reference `eq:BJJK_eq3.3' on page 77 undefined on input line 667
+.
+
+
+LaTeX Warning: Reference `eq:BJJK_eq3.4' on page 77 undefined on input line 667
+.
+
+
+LaTeX Warning: Reference `thm:indicators_cN' on page 77 undefined on input line
+ 667.
+
+
+LaTeX Warning: Reference `thm:indicators_tau' on page 77 undefined on input lin
+e 667.
+
+
+LaTeX Warning: Reference `thm:indicators_DN' on page 77 undefined on input line
+ 667.
+
+
+Package refcheck Warning: Unused label `eq:022' on input line 681.
+
+
+LaTeX Warning: Reference `thm:pDelta_LB' on page 77 undefined on input line 689
+.
+
+
+Package refcheck Warning: Unused label `eq:pDeltaDelta_LB' on input line 690.
+
+[77]
+
+LaTeX Warning: Reference `eq:cN_property2' on page 78 undefined on input line 6
+96.
+
+
+Package refcheck Warning: Unused label `eq:defn_E3' on input line 697.
+
+
+LaTeX Warning: Reference `thm:sumprod2' on page 78 undefined on input line 718.
+
+
+
+LaTeX Warning: Reference `thm:sumprod1' on page 78 undefined on input line 718.
+
+
+
+LaTeX Warning: Reference `thm:sumprod1_b' on page 78 undefined on input line 71
+8.
+
+
 Overfull \hbox (32.69763pt too wide) detected at line 740
 []
  []
 
-[77]
+
+Package refcheck Warning: Unused label `eq:028' on input line 761.
+
+[78]
+
+LaTeX Warning: Reference `eq:BJJK_eq3.3' on page 79 undefined on input line 762
+.
+
+
+LaTeX Warning: Reference `eq:BJJK_eq3.4' on page 79 undefined on input line 762
+.
+
+
+LaTeX Warning: Reference `thm:indicators_tau' on page 79 undefined on input lin
+e 762.
+
+
+LaTeX Warning: Reference `thm:indicators_cN' on page 79 undefined on input line
+ 762.
+
+
+Package refcheck Warning: Unused label `eq:029' on input line 775.
+
+
+LaTeX Warning: Reference `eq:022' on page 79 undefined on input line 777.
+
+
+LaTeX Warning: Reference `eq:029' on page 79 undefined on input line 777.
+
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 782.
+
+Package refcheck Warning: Unused label `thm:inductionUB' on input line 782.
+
+
+LaTeX Warning: Reference `eq:mainthmcondition2' on page 79 undefined on input l
+ine 783.
+
 
 Overfull \hbox (39.7481pt too wide) detected at line 796
 [] \U/msb/m/n/10.95 E [] \OMS/cmsy/m/n/10.95 ^^T \OML/cmm/m/it/10.95 []e[] [] 
 [] []:
  []
 
-[78] [79] [80]
-Overfull \hbox (8.07634pt too wide) in paragraph at lines 918--920
-\OT1/cmr/m/n/10.95 Combining [] with the other prod-uct, the ex-pres-sion in-si
-de the ex-pec-ta-tion in Lemma []4.8[][]
- []
+[79]
+
+LaTeX Warning: Reference `eq:018' on page 80 undefined on input line 800.
+
+
+LaTeX Warning: Reference `eq:defn_E1' on page 80 undefined on input line 800.
+
+
+LaTeX Warning: Reference `eq:defn_E2' on page 80 undefined on input line 800.
+
+
+Package refcheck Warning: Unused label `eq:031' on input line 822.
+
+
+LaTeX Warning: Reference `eq:019' on page 80 undefined on input line 823.
+
+
+LaTeX Warning: Reference `eq:021' on page 80 undefined on input line 823.
+
+
+LaTeX Warning: Reference `eq:031' on page 80 undefined on input line 837.
+
+[80]
+
+LaTeX Warning: Reference `thm:sumprod1' on page 81 undefined on input line 868.
+
+
+
+LaTeX Warning: Reference `thm:sumprod1_a' on page 81 undefined on input line 86
+8.
+
+
+Package refcheck Warning: Unused label `eq:034b' on input line 882.
+
+
+LaTeX Warning: Reference `eq:pDeltaDelta_LB' on page 81 undefined on input line
+ 883.
+
+
+LaTeX Warning: Reference `thm:sumprod2' on page 81 undefined on input line 883.
+
+
+
+Package refcheck Warning: Unused label `eq:035' on input line 895.
 
 [81]
+
+LaTeX Warning: Reference `thm:sumprod1' on page 82 undefined on input line 906.
+
+
+
+LaTeX Warning: Reference `thm:sumprod1_a' on page 82 undefined on input line 90
+6.
+
+
+Package refcheck Warning: Unused label `eq:037' on input line 918.
+
+
+LaTeX Warning: Reference `eq:034b' on page 82 undefined on input line 919.
+
+
+LaTeX Warning: Reference `thm:inductionUB' on page 82 undefined on input line 9
+19.
+
+[82]
+
+LaTeX Warning: Reference `eq:035' on page 83 undefined on input line 943.
+
+
+LaTeX Warning: Reference `eq:037' on page 83 undefined on input line 943.
+
+
 Overfull \hbox (13.54465pt too wide) detected at line 971
 []
  []
+
+
+Package refcheck Warning: Unused label `eq:043' on input line 1001.
 
 
 Overfull \hbox (17.82137pt too wide) detected at line 1001
 []
  []
 
-[82] [83]
+[83]
+
+LaTeX Warning: Reference `eq:BJJK_eq3.3' on page 84 undefined on input line 100
+2.
+
+
+LaTeX Warning: Reference `eq:BJJK_eq3.4' on page 84 undefined on input line 100
+2.
+
+
+Package refcheck Warning: Unused label `eq:040' on input line 1023.
+
+
+LaTeX Warning: Reference `thm:DCT_Fubini' on page 84 undefined on input line 10
+24.
+
+[84]
+
+LaTeX Warning: Reference `thm:sumprod1' on page 85 undefined on input line 1044
+.
+
+
+LaTeX Warning: Reference `thm:sumprod1_a' on page 85 undefined on input line 10
+44.
+
+
 Overfull \hbox (13.40727pt too wide) detected at line 1052
 [] \U/msb/m/n/10.95 E [] \OMS/cmsy/m/n/10.95 ^^T []\OT1/cmr/m/n/10.95 (\OML/cmm
 /m/it/10.95 t \OT1/cmr/m/n/10.95 + 1)[] [] \U/msb/m/n/10.95 E [] \OT1/cmr/m/n/1
 0.95 = 0
  []
 
+
+LaTeX Warning: Reference `eq:BJJK_eq3.5' on page 85 undefined on input line 105
+3.
+
+
+LaTeX Warning: Reference `thm:indicators_tau' on page 85 undefined on input lin
+e 1054.
+
+
+LaTeX Warning: Reference `thm:indicators_cN' on page 85 undefined on input line
+ 1054.
+
+
+LaTeX Warning: Reference `thm:indicators_DN' on page 85 undefined on input line
+ 1054.
+
+
+LaTeX Warning: Reference `thm:induction_sumprodcN' on page 85 undefined on inpu
+t line 1054.
+
+
+LaTeX Warning: Reference `eq:040' on page 85 undefined on input line 1054.
+
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 1077.
+
+Package refcheck Warning: Unused label `thm:inductionLB' on input line 1077.
+
+
+LaTeX Warning: Reference `eq:mainthmcondition2' on page 85 undefined on input l
+ine 1078.
+
 
 Overfull \hbox (39.7481pt too wide) detected at line 1091
 [] \U/msb/m/n/10.95 E [] \OMS/cmsy/m/n/10.95 ^^U \OML/cmm/m/it/10.95 []e[] [] 
 [] []:
  []
 
-[84] [85]
+[85]
+
+Package refcheck Warning: Unused label `eq:032a' on input line 1104.
+
+
+LaTeX Warning: Reference `eq:028' on page 86 undefined on input line 1106.
+
+
+Package refcheck Warning: Unused label `eq:033a' on input line 1116.
+
+
+LaTeX Warning: Reference `eq:defn_E3' on page 86 undefined on input line 1117.
+
+
+LaTeX Warning: Reference `eq:021' on page 86 undefined on input line 1118.
+
+
+Package refcheck Warning: Unused label `eq:034a' on input line 1137.
+
+
+LaTeX Warning: Reference `eq:032a' on page 86 undefined on input line 1138.
+
+
+LaTeX Warning: Reference `eq:018' on page 86 undefined on input line 1139.
+
+
+Package refcheck Warning: Unused label `eq:050a' on input line 1140.
+
+[86]
+
+LaTeX Warning: Reference `eq:050a' on page 87 undefined on input line 1147.
+
+
+LaTeX Warning: Reference `eq:defn_E2' on page 87 undefined on input line 1147.
+
+
+LaTeX Warning: Reference `thm:sumprod3' on page 87 undefined on input line 1154
+.
+
+
 Overfull \hbox (39.96754pt too wide) detected at line 1166
 []
  []
 
-[86] [87]
+
+LaTeX Warning: Reference `eq:032a' on page 87 undefined on input line 1167.
+
+
+LaTeX Warning: Reference `eq:033a' on page 87 undefined on input line 1167.
+
+
+LaTeX Warning: Reference `eq:034a' on page 87 undefined on input line 1167.
+
+[87]
+
+LaTeX Warning: Reference `eq:BJJK_eq3.3' on page 88 undefined on input line 119
+2.
+
+
+LaTeX Warning: Reference `eq:BJJK_eq3.4' on page 88 undefined on input line 119
+2.
+
+
+Package refcheck Warning: Unused label `eq:056' on input line 1210.
+
+
+LaTeX Warning: Reference `thm:DCT_Fubini' on page 88 undefined on input line 12
+11.
+
+
+LaTeX Warning: Reference `thm:indicators_cN' on page 88 undefined on input line
+ 1212.
+
+
+LaTeX Warning: Reference `thm:indicators_DN' on page 88 undefined on input line
+ 1212.
+
+
+LaTeX Warning: Reference `thm:indicators_tau' on page 88 undefined on input lin
+e 1212.
+
+
+LaTeX Warning: Reference `thm:induction_sumprodcN' on page 88 undefined on inpu
+t line 1213.
+
+[88]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 1238.
+
+
+Package refcheck Warning: Unused label `thm:induction_sumprodcN' on input line 
+1238.
+
+
+LaTeX Warning: Reference `eq:mainthmcondition2' on page 89 undefined on input l
+ine 1239.
+
+
+LaTeX Warning: Reference `thm:sumprod1' on page 89 undefined on input line 1265
+.
+
+
+LaTeX Warning: Reference `thm:sumprod1_b' on page 89 undefined on input line 12
+65.
+
 
 Overfull \hbox (7.69235pt too wide) detected at line 1303
 []
  []
 
-[88] [89]
-Overfull \hbox (3.14876pt too wide) in paragraph at lines 1325--1326
-[]\OT1/cmr/m/n/10.95 For the cor-re-spond-ing lower bound, by a mod-i-fi-ca-tio
-n of the lower bound in Lemma []4.4[][][](b)[][]
- []
+[89]
+
+LaTeX Warning: Reference `thm:induction_sumprodcN' on page 90 undefined on inpu
+t line 1305.
+
+[90]
+
+LaTeX Warning: Reference `eq:BJJK_eq3.3' on page 91 undefined on input line 132
+3.
+
+
+LaTeX Warning: Reference `thm:sumprod1' on page 91 undefined on input line 1325
+.
+
+
+LaTeX Warning: Reference `thm:sumprod1_b' on page 91 undefined on input line 13
+25.
+
+
+LaTeX Warning: Reference `thm:indicators_c2' on page 91 undefined on input line
+ 1347.
 
 
 Overfull \hbox (20.29185pt too wide) detected at line 1404
 []
  []
 
-[90] [91] [92]
+[91] [92] [93]
+
+LaTeX Warning: Reference `eq:BJJK_eq3.5' on page 94 undefined on input line 144
+7.
+
+
+LaTeX Warning: Reference `thm:indicators_c2' on page 94 undefined on input line
+ 1447.
+
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 1458.
- [93]
+
+Package refcheck Warning: Unused label `thm:lim_AandB' on input line 1458.
+
+[94]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 1479.
- [94]
+
+
+Package refcheck Warning: Unused label `thm:indicators_cN' on input line 1479.
+
+
+LaTeX Warning: Reference `eq:BJJK_eq3.5' on page 95 undefined on input line 148
+0.
+
+
+Package refcheck Warning: Unused label `eq:034' on input line 1497.
+
+
+LaTeX Warning: Reference `thm:kjjslemma2' on page 95 undefined on input line 14
+98.
+
+
+LaTeX Warning: Reference `eq:034' on page 95 undefined on input line 1505.
+
+
+LaTeX Warning: Reference `thm:kjjslemma2' on page 95 undefined on input line 15
+05.
+
+
+LaTeX Warning: Reference `eq:BJJK_eq3.5' on page 95 undefined on input line 151
+2.
+
+[95]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 1522.
 
-Overfull \hbox (2.84853pt too wide) in paragraph at lines 1528--1529
-[]\OT1/cmr/m/n/10.95 We can re-place the event $\OMS/cmsy/m/n/10.95 f\OML/cmm/m
-/it/10.95 ^^\[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 t\OT1/cmr/m/n/10.95 ) \O
-MS/cmsy/m/n/10.95 ^^U \OML/cmm/m/it/10.95 l\OMS/cmsy/m/n/10.95 g$ \OT1/cmr/m/n/
-10.95 with an event of the form of $\OML/cmm/m/it/10.95 E[]$ \OT1/cmr/m/n/10.95
- in Lemma []4.12[][]: 
- []
+
+Package refcheck Warning: Unused label `thm:indicators_tau' on input line 1522.
+
+
+
+LaTeX Warning: Reference `thm:indicators_cN' on page 96 undefined on input line
+ 1528.
+
+
+LaTeX Warning: Reference `thm:indicators_cN' on page 96 undefined on input line
+ 1543.
 
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 1548.
-[95] [96]
+
+Package refcheck Warning: Unused label `thm:indicators_DN' on input line 1548.
+
+
+LaTeX Warning: Reference `eq:BJJK_eq3.4' on page 96 undefined on input line 154
+9.
+
+
+Package refcheck Warning: Unused label `eq:050' on input line 1572.
+
+
+LaTeX Warning: Reference `thm:kjjslemma2' on page 96 undefined on input line 15
+73.
+
+[96] [97]
+
+LaTeX Warning: Reference `thm:kjjslemma2' on page 98 undefined on input line 16
+51.
+
+
+LaTeX Warning: Reference `eq:BJJK_eq3.4' on page 98 undefined on input line 166
+6.
+
+
+LaTeX Warning: Reference `eq:050' on page 98 undefined on input line 1667.
+
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 1672.
- [97]
+
+Package refcheck Warning: Unused label `thm:indicators_c2' on input line 1672.
+
+
+LaTeX Warning: Reference `eq:BJJK_eq3.5' on page 98 undefined on input line 167
+3.
+
+[98]
+
+LaTeX Warning: Reference `eq:BJJK_eq3.5' on page 99 undefined on input line 170
+0.
+
+
+LaTeX Warning: Reference `thm:inductionUB' on page 99 undefined on input line 1
+760.
+
+
+LaTeX Warning: Reference `eq:043' on page 99 undefined on input line 1760.
+
+
+LaTeX Warning: Reference `thm:inductionLB' on page 99 undefined on input line 1
+760.
+
+
+LaTeX Warning: Reference `eq:056' on page 99 undefined on input line 1760.
+
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 1761.
-) [98]
+
+Package refcheck Warning: Unused label `thm:DCT_Fubini' on input line 1761.
+
+) [99]
 \openout2 = `applications.aux'.
 
  (./applications.tex
 chapter 5.
 
+Package refcheck Warning: Unused label `ch:appl' on input line 2.
+
+
+LaTeX Warning: Reference `thm:weakconv' on page 100 undefined on input line 13.
+
+
+
+LaTeX Warning: Reference `thm:weakconv' on page 100 undefined on input line 15.
+
+
+
+LaTeX Warning: Reference `thm:FDDconv' on page 100 undefined on input line 15.
+
+
+LaTeX Warning: Reference `thm:weakconv' on page 100 undefined on input line 17.
+
+
+
+LaTeX Warning: Reference `thm:weakconv' on page 100 undefined on input line 17.
+
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 17--18
 
  []
 
-[99
+
+LaTeX Warning: Reference `fig:cond_indep_graph_Ht' on page 100 undefined on inp
+ut line 22.
+
+
+Package refcheck Warning: Unused label `eq:defn_Ht' on input line 23.
+
+
+Package refcheck Warning: Unused label `eq:condexp_HtFt' on input line 32.
+
+
+Package refcheck Warning: Unused label `fig:cond_indep_graph_Ht' on input line 
+105.
+
+
+Package refcheck Warning: Unused label `sec:corol_mn' on input line 112.
+
+
+LaTeX Warning: Reference `thm:FDDconv' on page 100 undefined on input line 114.
+
+
+[100
 
 
 
@@ -2247,99 +4071,568 @@ Underfull \hbox (badness 10000) in paragraph at lines 17--18
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 117.
- [100] [101]
+
+
+Package refcheck Warning: Unused label `thm:multinomial' on input line 117.
+
+
+LaTeX Warning: Reference `standing_assumption' on page 101 undefined on input l
+ine 118.
+
+
+Package refcheck Warning: Unused label `eq:gq_bounds_mn' on input line 119.
+
+
+LaTeX Warning: Reference `eq:gq_bounds_mn' on page 101 undefined on input line 
+125.
+
+
+LaTeX Warning: Reference `eq:gq_bounds_mn' on page 101 undefined on input line 
+127.
+
+[101]
+
+LaTeX Warning: Reference `eq:defn_Ht' on page 102 undefined on input line 137.
+
+
+Package refcheck Warning: Unused label `eq:parentslaw_mn' on input line 139.
+
+
+LaTeX Warning: Reference `eq:gq_bounds_mn' on page 102 undefined on input line 
+163.
+
+
+Package refcheck Warning: Unused label `eq:mn_cN_LB' on input line 199.
+
+[102]
+
+Package refcheck Warning: Unused label `eq:mn_cN3_UB' on input line 204.
+
+
+LaTeX Warning: Reference `eq:condexp_HtFt' on page 103 undefined on input line 
+266.
+
+
+LaTeX Warning: Reference `eq:mn_cN_LB' on page 103 undefined on input line 266.
+
+
+
+LaTeX Warning: Reference `eq:mn_cN3_UB' on page 103 undefined on input line 266
+.
+
+
+LaTeX Warning: Reference `eq:mainthmcond' on page 103 undefined on input line 2
+73.
+
+
+LaTeX Warning: Reference `thm:mn_nontriviality' on page 103 undefined on input 
+line 274.
+
+
+LaTeX Warning: Reference `thm:weakconv' on page 103 undefined on input line 275
+.
+
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 280.
+
+Package refcheck Warning: Unused label `thm:mn_nontriviality' on input line 280
+.
+
+
+LaTeX Warning: Reference `standing_assumption' on page 103 undefined on input l
+ine 281.
+
+
+LaTeX Warning: Reference `eq:gq_bounds_mn' on page 103 undefined on input line 
+281.
+
+
+LaTeX Warning: Reference `eq:mn_cN_LB' on page 103 undefined on input line 286.
+
+
+
+LaTeX Warning: Reference `eq:mn_cN_LB' on page 103 undefined on input line 287.
+
+
+
+LaTeX Warning: Reference `eq:condexp_HtFt' on page 103 undefined on input line 
+287.
+
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 303.
- [102] [103]
+
+Package refcheck Warning: Unused label `thm:stratified' on input line 303.
+
+
+LaTeX Warning: Reference `standing_assumption' on page 103 undefined on input l
+ine 304.
+
+
+Package refcheck Warning: Unused label `eq:gq_bounds_sr' on input line 306.
+
+[103]
+
+LaTeX Warning: Reference `eq:gq_bounds_sr' on page 104 undefined on input line 
+312.
+
+
+LaTeX Warning: Reference `thm:multinomial' on page 104 undefined on input line 
+312.
+
+
+LaTeX Warning: Reference `eq:gq_bounds_sr' on page 104 undefined on input line 
+314.
+
+
+LaTeX Warning: Reference `thm:SR_nontriviality' on page 104 undefined on input 
+line 314.
+
+
+LaTeX Warning: Reference `eq:defn_Ht' on page 104 undefined on input line 319.
+
+
+Package refcheck Warning: Unused label `eq:pk_defn' on input line 322.
+
+
+Package refcheck Warning: Unused label `eq:strat_v2_versus_v3' on input line 34
+6.
+
+[104]
+
+LaTeX Warning: Reference `eq:gq_bounds_sr' on page 105 undefined on input line 
+347.
+
+
+LaTeX Warning: Reference `eq:strat_v2_versus_v3' on page 105 undefined on input
+ line 349.
+
+
+LaTeX Warning: Reference `eq:mainthmcond' on page 105 undefined on input line 3
+54.
+
+
+LaTeX Warning: Reference `thm:weakconv' on page 105 undefined on input line 355
+.
+
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 360.
- [104] [105] [106]
+
+Package refcheck Warning: Unused label `thm:strat_nontriviality' on input line 
+360.
+
+
+Package refcheck Warning: Unused label `eq:strat_minmaxweight' on input line 36
+8.
+
+
+LaTeX Warning: Reference `eq:gq_bounds_mn' on page 105 undefined on input line 
+372.
+
+
+LaTeX Warning: Reference `thm:stratified' on page 105 undefined on input line 3
+73.
+
+
+LaTeX Warning: Reference `eq:strat_minmaxweight' on page 105 undefined on input
+ line 375.
+
+[105]
+
+LaTeX Warning: Reference `thm:mn_nontriviality' on page 106 undefined on input 
+line 380.
+
+
+Package refcheck Warning: Unused label `eq:cNnonzero' on input line 390.
+
+
+LaTeX Warning: Reference `eq:pk_defn' on page 106 undefined on input line 392.
+
+
+Package refcheck Warning: Unused label `eq:strat_pbounds' on input line 428.
+
+[106]
+
+Package refcheck Warning: Unused label `eq:strat_nonpbounds' on input line 433.
+
+
+
+LaTeX Warning: Reference `eq:cNnonzero' on page 107 undefined on input line 522
+.
+
+
+LaTeX Warning: Reference `fig:strat_cases' on page 107 undefined on input line 
+533.
+
+
+LaTeX Warning: Reference `tab:strat_probs' on page 107 undefined on input line 
+539.
+
+
+LaTeX Warning: Reference `eq:strat_nonpbounds' on page 107 undefined on input l
+ine 539.
+
+
+LaTeX Warning: Reference `tab:strat_probs' on page 107 undefined on input line 
+540.
+
+
+LaTeX Warning: Reference `eq:cNnonzero' on page 107 undefined on input line 559
+.
+
+
+LaTeX Warning: Reference `fig:strat_cases' on page 107 undefined on input line 
+568.
+
+[107]
+
+LaTeX Warning: Reference `tab:strat_probs' on page 108 undefined on input line 
+574.
+
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 612.
 
-
 Package refcheck Warning: Unused label `thm:stochrounding' on input line 612.
 
-[107]
+
+LaTeX Warning: Reference `standing_assumption' on page 108 undefined on input l
+ine 613.
+
+
+LaTeX Warning: Reference `thm:stratified' on page 108 undefined on input line 6
+23.
+
+
+LaTeX Warning: Reference `thm:stratified' on page 108 undefined on input line 6
+23.
+
+[108]
+
+LaTeX Warning: Reference `thm:weakconv' on page 109 undefined on input line 629
+.
+
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 633.
- [108]
+
+Package refcheck Warning: Unused label `thm:SR_nontriviality' on input line 633
+.
+
+
+LaTeX Warning: Reference `eq:strat_pbounds' on page 109 undefined on input line
+ 645.
+
+
+LaTeX Warning: Reference `eq:pk_defn' on page 109 undefined on input line 724.
+
+
+LaTeX Warning: Reference `eq:strat_pbounds' on page 109 undefined on input line
+ 732.
+
+
+Package refcheck Warning: Unused label `eq:SR_pk_LB' on input line 738.
+
+
+LaTeX Warning: Reference `eq:cNnonzero' on page 109 undefined on input line 741
+.
+
+
+LaTeX Warning: Reference `eq:SR_pk_LB' on page 109 undefined on input line 757.
+
+
+[109]
+
+LaTeX Warning: Reference `eq:cNnonzero' on page 110 undefined on input line 768
+.
+
+
+LaTeX Warning: Reference `thm:strat_nontriviality' on page 110 undefined on inp
+ut line 799.
+
+
+Package refcheck Warning: Unused label `sec:corol_resstrat' on input line 806.
+
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 808.
- [109]
+
+Package refcheck Warning: Unused label `thm:residual_stratified' on input line 
+808.
+
+
+LaTeX Warning: Reference `standing_assumption' on page 110 undefined on input l
+ine 809.
+
+
+LaTeX Warning: Reference `thm:stratified' on page 110 undefined on input line 8
+19.
+
+
+LaTeX Warning: Reference `thm:stratified' on page 110 undefined on input line 8
+19.
+
+[110]
+
+LaTeX Warning: Reference `thm:weakconv' on page 111 undefined on input line 825
+.
+
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 829.
 
-
 Package refcheck Warning: Unused label `thm:resstrat_nontriviality' on input li
 ne 829.
 
-[110] [111] [112]
+
+LaTeX Warning: Reference `eq:pk_defn' on page 111 undefined on input line 843.
+
+
+LaTeX Warning: Reference `eq:cNnonzero' on page 111 undefined on input line 860
+.
+
+
+LaTeX Warning: Reference `eq:strat_pbounds' on page 111 undefined on input line
+ 879.
+
+
+LaTeX Warning: Reference `tab:strat_probs' on page 111 undefined on input line 
+881.
+
+
+LaTeX Warning: Reference `eq:cNnonzero' on page 111 undefined on input line 898
+.
+
+[111]
+
+LaTeX Warning: Reference `eq:strat_pbounds' on page 112 undefined on input line
+ 915.
+
+
+LaTeX Warning: Reference `tab:strat_probs' on page 112 undefined on input line 
+916.
+
+
+LaTeX Warning: Reference `eq:strat_pbounds' on page 112 undefined on input line
+ 922.
+
+
+LaTeX Warning: Reference `thm:strat_nontriviality' on page 112 undefined on inp
+ut line 937.
+
+
+LaTeX Warning: Reference `thm:resampling_var_compare' on page 112 undefined on 
+input line 944.
+
+
+LaTeX Warning: Reference `thm:multinomial' on page 112 undefined on input line 
+944.
+
+
+LaTeX Warning: Reference `thm:residual_stratified' on page 112 undefined on inp
+ut line 944.
+
+
+LaTeX Warning: Reference `sec:corol_resstrat' on page 112 undefined on input li
+ne 947.
+
+
+LaTeX Warning: Reference `sec:corol_mn' on page 112 undefined on input line 948
+.
+
+[112]
+
+LaTeX Warning: Reference `eq:mainthmcond' on page 113 undefined on input line 1
+023.
+
+
+LaTeX Warning: Reference `thm:FDDconv' on page 113 undefined on input line 1032
+.
+
+
+LaTeX Warning: Reference `eq:mainthmcond' on page 113 undefined on input line 1
+032.
+
+
+LaTeX Warning: Reference `fig:star_genealogy' on page 113 undefined on input li
+ne 1033.
+
+
+Package refcheck Warning: Unused label `fig:star_genealogy' on input line 1047.
+
+
+
+LaTeX Warning: Reference `eq:defn_tauN' on page 113 undefined on input line 105
+3.
+
+[113]
+
+LaTeX Warning: Reference `thm:CSMC' on page 114 undefined on input line 1066.
+
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 1069.
- [113] [114]
+
+Package refcheck Warning: Unused label `thm:CSMC' on input line 1069.
+
+
+LaTeX Warning: Reference `standing_assumption' on page 114 undefined on input l
+ine 1070.
+
+
+Package refcheck Warning: Unused label `eq:gq_bounds_csmc' on input line 1071.
+
+
+LaTeX Warning: Reference `eq:gq_bounds_csmc' on page 114 undefined on input lin
+e 1080.
+
+
+LaTeX Warning: Reference `thm:multinomial' on page 114 undefined on input line 
+1080.
+
+
+LaTeX Warning: Reference `standing_assumption' on page 114 undefined on input l
+ine 1083.
+
+[114]
+
+LaTeX Warning: Reference `eq:defn_Ht' on page 115 undefined on input line 1085.
+
+
+
+LaTeX Warning: Reference `thm:multinomial' on page 115 undefined on input line 
+1103.
+
+
+LaTeX Warning: Reference `eq:gq_bounds_csmc' on page 115 undefined on input lin
+e 1103.
+
+
+Package refcheck Warning: Unused label `eq:csmc_cN_LB' on input line 1146.
+
+[115]
+
+LaTeX Warning: Reference `eq:condexp_HtFt' on page 116 undefined on input line 
+1157.
+
+
+LaTeX Warning: Reference `eq:mainthmcond' on page 116 undefined on input line 1
+165.
+
+
+LaTeX Warning: Reference `thm:CSMC_nontriviality' on page 116 undefined on inpu
+t line 1166.
+
+
+LaTeX Warning: Reference `thm:weakconv' on page 116 undefined on input line 116
+6.
+
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 1233.
+
+Package refcheck Warning: Unused label `thm:CSMC_nontriviality' on input line 1
+233.
+
+
+LaTeX Warning: Reference `standing_assumption' on page 116 undefined on input l
+ine 1234.
+
+
+LaTeX Warning: Reference `eq:gq_bounds_csmc' on page 116 undefined on input lin
+e 1234.
+
+
+LaTeX Warning: Reference `thm:mn_nontriviality' on page 116 undefined on input 
+line 1239.
+
+
+LaTeX Warning: Reference `eq:csmc_cN_LB' on page 116 undefined on input line 12
+39.
 
 
 Package refcheck Warning: Unused label `sec:ancsamp_genealogy' on input line 12
 54.
 
-[115]) [116]
+
+LaTeX Warning: Reference `eq:ancsamp_probs_simplified' on page 116 undefined on
+ input line 1257.
+
+
+LaTeX Warning: Reference `eq:parentslaw_mn' on page 116 undefined on input line
+ 1273.
+
+
+LaTeX Warning: Reference `fig:PG_ancdegen' on page 116 undefined on input line 
+1275.
+
+
+LaTeX Warning: Reference `sec:ancsamp' on page 116 undefined on input line 1276
+.
+
+[116]) [117]
 \openout2 = `discussion.aux'.
 
  (./discussion.tex
 chapter 6.
-) [117
+) [118
 
 
 
 
-] [118
+] [119
 
 
 
 
 
-] [119]
-Overfull \hbox (2.69765pt too wide) in paragraph at lines 216--216
+] [120]
+Overfull \hbox (2.69765pt too wide) in paragraph at lines 217--217
 [][][]\OT1/cmr/m/n/10.95 (1982c). ``The Co-a-les-cent''. In: \OT1/cmr/m/it/10.9
 5 Stochas-tic Pro-cesses and Their Ap-pli-ca-tions \OT1/cmr/m/n/10.95 13.3, pp.
  235{
  []
 
-[120] [121]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 217.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 217.
+[121] [122]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 218.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 218.
  (./thesis_main.aux (./introduction.aux) (./background.aux)
 (./limits.aux) (./weakconv.aux) (./applications.aux) (./discussion.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 217.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 217.
-Package rerunfilecheck Info: File `thesis_main.out' has not changed.
-(rerunfilecheck)             Checksum: 61EF54BB9A5D3FA2EEC3FF6B7F5018AC;3674.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 218.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 218.
+
+
+Package rerunfilecheck Warning: File `thesis_main.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `thesis_main.out':
+(rerunfilecheck)             Before: BEDC514157C01D8E02EA92D1CDF7DCB1;1611
+(rerunfilecheck)             After:  61EF54BB9A5D3FA2EEC3FF6B7F5018AC;3674.
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package biblatex Warning: Please rerun LaTeX.
+(biblatex)                Page breaks have changed.
+
 Package logreq Info: Writing requests to 'thesis_main.run.xml'.
 \openout1 = `thesis_main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 39491 strings out of 492649
- 761101 string characters out of 6129623
- 1291787 words of memory out of 5000000
- 42321 multiletter control sequences out of 15000+600000
+ 39796 strings out of 492649
+ 771220 string characters out of 6129623
+ 1285228 words of memory out of 5000000
+ 42625 multiletter control sequences out of 15000+600000
  577053 words of font info for 135 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 68i,22n,77p,10565b,1727s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 68i,22n,77p,10565b,1723s stack positions out of 5000i,500n,10000p,200000b,80000s
  </Users/suzie/Library/texlive/2018/texmf-var/fonts/pk/ljfour/public/bbm/bbm1
 0.657pk>{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/l
 ocal/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/lo
@@ -2371,10 +4664,10 @@ ts/type1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2018/texmf-dist/fonts
 ype1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2018/texmf-dist/fon
 ts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2018/texmf-dist
 /fonts/type1/adobe/utopia/putb8a.pfb>
-Output written on thesis_main.pdf (130 pages, 835115 bytes).
+Output written on thesis_main.pdf (130 pages, 817421 bytes).
 PDF statistics:
- 2075 PDF objects out of 2487 (max. 8388607)
- 1847 compressed objects within 19 object streams
- 465 named destinations out of 1000 (max. 500000)
- 455 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1440 PDF objects out of 1440 (max. 8388607)
+ 1253 compressed objects within 13 object streams
+ 467 named destinations out of 1000 (max. 500000)
+ 223 words of extra memory for PDF output out of 10000 (max. 10000000)
 

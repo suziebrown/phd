@@ -1529,6 +1529,39 @@
       \field{type}{Mathematics e-print}
       \field{year}{2018}
     \endentry
+    \entry{kuipers1974}{book}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,uniquepart=base,hash=06289aff3647afb0986f7b52eb66b57c}{%
+           family={Kuipers},
+           familyi={K\bibinitperiod},
+           given={Lauwerens},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=e6a906e10e702599bf8ddd1d74d30a77}{%
+           family={Niederreiter},
+           familyi={N\bibinitperiod},
+           given={Harald},
+           giveni={H\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {John Wiley \& Sons}%
+      }
+      \strng{namehash}{398567b80cb48f8cb97680e518b6aea3}
+      \strng{fullhash}{398567b80cb48f8cb97680e518b6aea3}
+      \strng{bibnamehash}{398567b80cb48f8cb97680e518b6aea3}
+      \strng{authorbibnamehash}{398567b80cb48f8cb97680e518b6aea3}
+      \strng{authornamehash}{398567b80cb48f8cb97680e518b6aea3}
+      \strng{authorfullhash}{398567b80cb48f8cb97680e518b6aea3}
+      \field{sortinit}{K}
+      \field{sortinithash}{9fd838a31ba64d981e8f44562bd33f89}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Uniform Distribution of Sequences}
+      \field{year}{1974}
+    \endentry
     \entry{lee2019}{unpublished}{}
       \name{author}{3}{}{%
         {{uniquename=0,uniquepart=base,hash=b03496173658ac066e649b50540c712e}{%

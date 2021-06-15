@@ -683,12 +683,15 @@ This allows, for instance, genealogies of different SMC algorithms to be compare
 \section{Resampling \seb{$\sim$} }
 \label{sec:resampling}
 As we have seen, resampling is necessary within SMC to ``reset'' the weights in order to prevent weight degeneracy.
-The basic role of a resampling scheme is to map the continuous weights to discrete offspring counts, in some ``sensible'' way (Definition~\ref{defn:resampling}).
-The choice of resampling scheme is explored in detail in this section.
-%There are other considerations when choosing between the many possible resampling schemes; some of these are explored in Section~\ref{sec:resampling_properties}, and some popular choices of resampling scheme are described in Section~\ref{sec:examples_resamplingschemes}.
+Resampling is itself a Monte Carlo procedure: the discrete offspring counts can be viewed as stochastic estimates of the continuous weights.
+In order to obtain a valid SMC algorithm, these Monte Carlo samples must be unbiased; this and other desirable properties are formalised in Definition~\ref{defn:resampling}.
+There is a huge range of resampling procedures that satisfy these properties, some of which perform better than others. 
+Some of the most popular resampling schemes are introduced in Section~\ref{sec:examples_resamplingschemes} and their properties are explored in Section~\ref{sec:resampling_properties}.
+
+
+
 
 \subsection{Definition \seb{$\checkmark$} }
-\draft{Also say that resampling is itself a Monte Carlo procedure.}
 
 \begin{defn}\label{defn:resampling}
 For our purposes, a valid resampling scheme is a stochastic function mapping weights 
@@ -812,6 +815,92 @@ The stochastic part can be done using any of the other basic resampling schemes 
 %\end{equation*}
 %The deterministic part ensures that every particle with weight $>1/N$ is guaranteed to survive. This is a desirable property as it prevents the random loss of high-weighted particles.
 
+\begin{figure}
+\centering
+\begin{tikzpicture}
+%% w = (0.25, 0.05, 0.10, 0.35, 0.20, 0.05)
+%% u = (0.78, 0.29, 0.27, 0.92, 0.54, 0.36)
+%%parallel lines
+\draw[thick] (0,1) -- (12,1);
+%\draw (0,2) -- (12,2);
+%\draw (0,3) -- (12,3);
+%\draw (0,4) -- (12,4);
+%% endpoint labels
+\node at (-0.2,1) {$0$};
+\node at (12.2,1) {$1$};
+%% vertical lines indicating weight intervals
+\draw (0,4.6) --(0,0.6);
+\draw (3,4.6) --(3,0.6);
+\draw (3.6,4.6) --(3.6,0.6);
+\draw (4.8,4.6) --(4.8,0.6);
+\draw (9,4.6) --(9,0.6);
+\draw (11.4,4.6) --(11.4,0.6);
+\draw (12,4.6) --(12,0.6);
+%% weight labels
+\node at (1.5,0.7) {$w_1$};
+\node at (3.3,0.7) {$w_2$};
+\node at (4.2,0.7) {$w_3$};
+\node at (6.9,0.7) {$w_4$};
+\node at (10.2,0.7) {$w_5$};
+\node at (11.7,0.7) {$w_6$};
+%% vertical lines spaced 1/N apart
+\draw[dotted] (2,4.6) --(2,1);
+\draw[dotted] (4,4.6) --(4,1);
+\draw[dotted] (6,4.6) --(6,1);
+\draw[dotted] (8,4.6) --(8,1);
+\draw[dotted] (10,4.6) --(10,1);
+%% resampling scheme labels
+\node[anchor=west] at (12,4) {\texttt{multi}};
+\node[anchor=west] at (12,3) {\texttt{strat}};
+\node[anchor=west] at (12,2) {\texttt{syst}};
+%% multinomial points (top row)
+\filldraw[violet] (9.36,4) circle (2.5pt);
+%\node[anchor=south, violet] at (9.36,4) {$u_1$};
+\filldraw[violet] (3.48,4) circle (2.5pt);
+%\node[anchor=south, violet] at (3.54,4) {$u_2$};
+\filldraw[violet] (3.24,4) circle (2.5pt);
+%\node[anchor=south, violet] at (3.18,4) {$u_3$};
+\filldraw[violet] (11.04,4) circle (2.5pt);
+%\node[anchor=south, violet] at (11.04,4) {$u_4$};
+\filldraw[violet] (6.48,4) circle (2.5pt);
+%\node[anchor=south, violet] at (6.48,4) {$u_5$};
+\filldraw[violet] (4.32,4) circle (2.5pt);
+%\node[anchor=south, violet] at (4.32,4) {$u_6$};
+%% stratified points (middle row)
+\filldraw[violet] (1.46,3)--(1.56,3.1)--(1.66,3)--(1.56,2.9)--cycle;
+%\node[anchor=south, violet] at (1.56,3) {$u_1$};
+\filldraw[violet] (2.48,3)--(2.58,3.1)--(2.68,3)--(2.58,2.9)--cycle;
+%\node[anchor=south, violet] at (2.58,3) {$u_2$};
+\filldraw[violet] (4.44,3)--(4.54,3.1)--(4.64,3)--(4.54,2.9)--cycle;
+%\node[anchor=south, violet] at (4.54,3) {$u_3$};
+\filldraw[violet] (7.74,3)--(7.84,3.1)--(7.94,3)--(7.84,2.9)--cycle;
+%\node[anchor=south, violet] at (7.84,3) {$u_4$};
+\filldraw[violet] (8.98,3)--(9.08,3.1)--(9.18,3)--(9.08,2.9)--cycle;
+%\node[anchor=south, violet] at (9.12,3) {$u_5$};
+\filldraw[violet] (10.62,3)--(10.72,3.1)--(10.82,3)--(10.72,2.9)--cycle;
+%\node[anchor=south, violet] at (10.72,3) {$u_6$};
+%% systematic points (bottom row)
+\filldraw[violet] (1.46,1.9)--(1.46,2.1)--(1.66,2.1)--(1.66,1.9)--cycle;
+%\node[anchor=south, violet] at (1.56,2) {$u_1$};
+\filldraw[violet] (3.46,1.9)--(3.46,2.1)--(3.66,2.1)--(3.66,1.9)--cycle;
+%\node[anchor=south, violet] at (3.56,2) {$u_2$};
+\filldraw[violet] (5.46,1.9)--(5.46,2.1)--(5.66,2.1)--(5.66,1.9)--cycle;
+%\node[anchor=south, violet] at (5.56,2) {$u_3$};
+\filldraw[violet] (7.46,1.9)--(7.46,2.1)--(7.66,2.1)--(7.66,1.9)--cycle;
+%\node[anchor=south, violet] at (7.56,2) {$u_4$};
+\filldraw[violet] (9.46,1.9)--(9.46,2.1)--(9.66,2.1)--(9.66,1.9)--cycle;
+%\node[anchor=south, violet] at (9.56,2) {$u_5$};
+\filldraw[violet] (11.46,1.9)--(11.46,2.1)--(11.66,2.1)--(11.66,1.9)--cycle;
+%\node[anchor=south, violet] at (11.56,2) {$u_6$};
+\end{tikzpicture}
+\caption[Inversion sampling for multinomial, stratified and systematic resampling]{Inversion sampling interpretation of multinomial, stratified and systematic resampling.
+In this example, $N=6$, $w^{(1:6)} = (0.25,0.05,0.1,0.35,0.2,0.05)$ and the uniform random variables input to the resampling schemes are $u_{1:6} = (0.78, 0.29, 0.27, 0.92, 0.54, 0.36)$.
+The solid vertical lines show the partition of $[0,1]$ into subintervals of lengths $w^{(1:6)}$.
+The dotted vertical lines show the partition of $[0,1]$ into subintervals of length $1/N$, used for stratified and systematic resampling.\\
+Top row (circles): in multinomial resampling, $u_{1:6}$ are fed directly into the inversion sampler. Which subinterval $u_i$ falls into determines the parent of offspring $i$. The resulting offspring counts in this example are $\nu^{(1:6)} = (0,2,1,1,2,0)$.\\
+Middle row (diamonds): in stratified resampling, $u_{1:6}$ are transformed so that one point lies in each subinterval of length $1/N$. The resulting offspring counts are $\nu^{(1:6)} = (2,0,1,1,2,0)$.\\
+Bottom row (squares): in systematic resampling, only $u_1$ is used, being transformed to equally spaced points. The resulting offspring counts are $\nu^{(1:6)} = (1,1,0,2,1,1)$.}
+\end{figure}
 
 
 \begin{figure}
@@ -930,7 +1019,6 @@ The stochastic part can be done using any of the other basic resampling schemes 
 \label{fig:resampling_systematic}
 }\\
 \caption[Inversion sampling for multinomial, stratified and systematic resampling]{Inversion sampling to obtain Multinomial offspring counts, where the (marginally) Uniform variables for inversion are sampled in different ways. For this example $N=4$ and the weights are $w_{(1:4)} = \frac{1}{N}(1,\frac{2}{3},2,\frac{1}{3})$. 
-\seb{Also make the same diagram in Whitley's ``roulette wheel'' style, to illustrate the difference. Or maybe make it for the ``degeneracy under equal weights'' section just illustrating the difference it makes in stratified resampling.}
 %In each case the samples to be inverted are seeded with the same $\Unif(0,1)$ samples.
 %\subref{fig:resampling_mn} Sample $N$  independent $\Unif(0,1)$ random variables. In this example the sampled offspring counts are $(1,1,2,0)$.
 %\subref{fig:resampling_stratified} The $\Unif(0,1)$ samples are transformed to Uniform draws from the intervals (0,0.25), (0.25,0.5), (0.5, 0.75), (0.75,1). In this example the sampled offspring counts are $(1,1,2,0)$.
@@ -1130,7 +1218,7 @@ The parental indices are again selected according to \eqref{eq:syst_strat_resamp
 The method is illustrated in Figure \ref{fig:resampling_systematic}.
 
 \textcite{kitagawa1996} suggests a deterministic scheme in which the random $u$ is replaced by a fixed $\alpha\in[0,1]$; but, being deterministic, this scheme does not satisfy the unbiasedness property (condition~\ref{item:resampling_property1} in Definition~\ref{defn:resampling}).
-\textcite{whitley1994} describes systematic resampling using a different picture, whereby the interval $[0,1]$ is joined up into a circle, and the systematic samples are evenly spaced pointers on an outer ring, which is spun around like a roulette wheel to sample a random phase which, modulo 1, is equal to $u$.\seb{figure please}
+\textcite{whitley1994} describes systematic resampling using a different picture, whereby the interval $[0,1]$ is joined up into a circle, and the systematic samples are evenly spaced pointers on an outer ring, which is spun around like a roulette wheel to sample a random phase which, modulo 1, is equal to $u$.
 For systematic resampling, Whitley's ``roulette wheel'' representation is equivalent to that of Figure~\ref{fig:resampling_systematic}.
 
 Like stratified resampling, systematic resampling ensures the random numbers are ``well spread out''; the resulting samples are even more constrained than with stratified resampling. 
@@ -1163,7 +1251,7 @@ We also see these offspring counts have the highest possible marginal variance, 
 I call this scheme \emph{star resampling} because the parent-offspring relationships at each iteration form a star graph.
 
 
-\subsubsection{Minimum-variance resampling}
+\subsubsection{Minimal variance branching}
 The minimal variance branching algorithm of \textcite{crisan1999} provides a framework for minimal-variance resampling. The idea is to enforce minimal variance by resampling such that each offspring count $\nu_t^{(i)}$, conditionally on $w_t^{(i)}$, has marginal distribution
 \begin{equation}\label{eq:branching_distn}
 \nu_t^{(i)} \mid w_t^{(i)} \eqdist \flnw + \Bern(Nw_t^{(i)} - \flnw) .
@@ -1202,7 +1290,7 @@ Recall that the weights give an indication of how ``useful'' each particle is fo
 Residual resampling ensures that every particle with above-average (i.e.\ $>1/N$) weight has at least one offspring, avoiding the loss of high-weight particles. If the residuals are sampled using multinomial resampling then the duplication of low-weight particles is not avoided, $\nu_t^{(i)} \in \{k, \dots, k+R\} \subseteq \{k,\dots, N\}$, but this can be addressed by using a lower-variance scheme for the residual offspring. Various choices are included in Table~\ref{tab:resampling_properties}.
 
 Stratified resampling is more restrictive, $\nu_t^{(i)} \in \{k-1, k, k+1, k+2\}$, but allows the possibility of a particle with above-average weight having no offspring. 
-Systematic resampling has the smallest support, $\nu_t^{(i)} \in \{k, k+1\}$, that is possible whilst maintaining unbiasedness.
+Systematic resampling has the smallest support, $\nu_t^{(i)} \in \{k, k+1\}$, that is possible whilst maintaining unbiasedness, as do Srinivasan sampling procedure and minimal variance branching.
 
 Another way to quantify this property is by considering the maximum possible difference between the offspring count $\nu_t^{(i)}$ and its expected value $N w_t^{(i)}$. This is also presented in Table~\ref{tab:resampling_properties}.
 
@@ -1367,7 +1455,7 @@ We could also try to bound this variance below, but for every resampling scheme 
 
 
 
-\subsubsection{Contribution to the Monte Carlo variance}
+\subsubsection{Contribution to the Monte Carlo variance \seb{$\checkmark$} }
 While the variance of the offspring counts goes some way towards providing a comparison between the various resampling schemes, a more relevant property is the contribution of the resampling step to the Monte Carlo variance.
 This quantifies directly the effect that a certain choice of resampling scheme has on the variance of the Monte Carlo estimators.
 
@@ -1587,7 +1675,7 @@ However, the results of Chapters~\ref{ch:limits} and \ref{ch:weakconv} rely on a
 
 
 
-\subsubsection{Permutation invariance \seb{$\checkmark$} }
+\subsubsection{Permutation invariance \seb{$\sim$} }
 A strange property of stratified and systematic resampling is that they are sensitive to the order in which the subintervals are placed. For example, in Figures \ref{fig:resampling_stratified} and \ref{fig:resampling_systematic} if the intervals $w_2$ and $w_4$ were swapped, the number of offspring assigned to particles 2 and 4 would be swapped in each case. \seb{Better to use an example where \emph{distribution} of offspring counts (conditional on the weights but not on the Uniform samples) differs depending on order. Such an example is included in my YRM19 presentation on resampling.}
 We can also see that because $w_1$ has weight $\geq 1/N$ and is placed first, it is guaranteed at least one offspring.
 
@@ -1639,10 +1727,10 @@ The minimal variance branching algorithm of \textcite{crisan1997} does not enfor
 
 
 \subsubsection{Star discrepancy \seb{$\checkmark$} }
-\draft{(See \textcite{hol2006} for inspiration.) Include a diagram showing the quantity inside the $D^\star$ supremum, plotted over $u$, for mn/strat/syst? (sketched in sora --- use same weights and samples as in Figure~\ref{fig:resampling_mn}.)}
+\draft{Include a diagram showing the quantity inside the $D^\star$ supremum, plotted over $u$, for mn/strat/syst? (sketched in sora --- use same weights and samples as in Figure~\ref{fig:resampling_mn}.)}
 %\seb{Does not appear in Table~\ref{tab:resampling_properties} since it only makes sense for resampling schemes based on inversion sampling.}
 
-The \emph{star discrepancy}\seb{[citation]} is a measure of the regularity of a given set of points $u_{1:N}$ in the unit hypercube. For our purposes it is sufficient to define the star discrepancy in one dimension:
+The \emph{star discrepancy} is a measure of the regularity of a given set of points $u_{1:N}$ in the unit hypercube. For our purposes it is sufficient to define the star discrepancy in one dimension, as in \textcite[Definition 1.2]{kuipers1974}:
 \begin{equation*}
 D^\star (u_1, \dots, u_N) := \sup_{u \in [0,1]} \left| \frac{1}{N} \sum_{i=1}^N \I{u_i \leq u} -u \right| .
 \end{equation*}
@@ -1650,10 +1738,10 @@ The quantity inside the supremum is the difference between the empirical CDF of 
 Thus $D^\star$ measures, in a certain sense, how far the points are from being uniformly spaced.
 
 Star discrepancy is used in quasi-Monte Carlo, where ``low-discrepancy'' points are used in place of uniform samples to decrease the variance of Monte Carlo estimates.
-We have noted already \seb{we haven't actually, but we should} that resampling can itself be viewed as a Monte Carlo procedure.
-From this point-of-view, stratified and systematic resampling are quasi-Monte Carlo versions of multinomial resampling, since they provide ``more regular'' points to be used in inversion sampling.
+We have noted already that resampling can itself be viewed as a Monte Carlo procedure.
+From this point-of-view, stratified and systematic resampling are quasi-Monte Carlo versions of multinomial resampling, since they provide ``more regular'' point sets to be used in inversion sampling.
 
-In one dimension, the lowest-discrepancy point set is the regular grid $( \frac{1}{2N}, \frac{3}{2N}, \dots, \frac{2N-1}{2N} )$, which has star discrepancy $1/(2N)$ \seb{[citation]}.
+In one dimension, the lowest-discrepancy point set is the regular grid $( \frac{1}{2N}, \frac{3}{2N}, \dots, \frac{2N-1}{2N} )$, which has star discrepancy $\frac{1}{2N}$ \parencite[see for example][Corollary 1.2]{kuipers1974}.
 However, resampling based on a deterministic point set cannot be unbiased since the resulting parental indices are conditionally deterministic given the weights.
 Systematic resampling amounts to a randomisation of the regular grid, shifting each grid point by a random amount $u \sim \Unif[0,1/N]$.
 The point sets generated in systematic and stratified resampling both have star discrepancy between $1/(2N)$ and $1/N$ almost surely, where the exact value depends on the realisation.
