@@ -25,10 +25,10 @@
 \item Relax condition that potentials are bounded below (e.g.\ see Capp\'e, Moulines, Ryd\'en ``Inference in HMMs'', Chapter 9)
 \item Show that the condition of BJJK Theorem 1 is necessary as well as sufficient (e.g.\ see M\"ohle \& Sagitov 1998, 2001, 2003?)
 \item What is the effect of adaptive resampling?
-\item Corollaries also for residual-multinomial and stratified resampling.
+\item Corollaries also for residual-multinomial and residual-star resampling (although it might be a negative result in the case of residual-star).
 \item Rates of convergence (modifying more of M\"ohle's work).
-\item Could badly-behaved potentials produce a non-Kingman Lambda-coalescent? For example, use for potentials some heavy-tailed fitnesses like in Schweinsberg model. This is probably not interesting from an SMC point of view.
-\item A way to estimate coalescent rates a priori for some specific tractable class of models, say.
+\item Could badly-behaved potentials produce a non-Kingman Lambda-coalescent? For example, use for potentials some heavy-tailed fitnesses like in Schweinsberg model. (This is probably not interesting from an SMC point of view.)
+\item A way to estimate coalescent rates / time scale a priori, for some specific tractable class of models, say.
 \item Do our results apply to cloning models, or other continuous-time models?
 \item See if Jacob \& Rubenthaler's (``path storage in the PF'') brute-force technique can be adapted for use in Conditional SMC, to UB tree height
 \item Does CSMC with an ``unlikely'' immortal line converge to a structured coalescent?
@@ -36,12 +36,12 @@
 
 \section*{Resampling}
 \begin{itemize}
-\item Compare residual-stratified vs. stratified resampling (and residual-systematic vs systematic): are they equivalent? What if the weights are sorted? Maybe start by coding up an exploratory experiment.
+\item Is it possible to get an ordering result on the one-step Monte Carlo variance, for SSP resampling and/or residual-systematic resampling?
+\item Compare residual-systematic vs. systematic resampling: are they equivalent? What if the weights are sorted? Maybe start by coding up an exploratory experiment.
 \item Explore more generally the effect of pre-sorting the weights. How does this link with results of Gerber Chopin Whiteley (where they sort by particle position, if I remember rightly)?
 \item Compare theoretical computation/storage costs and parallelisability between the different resampling schemes.
 \item Is there a nice set of weights that will nicely illustrate all the points I want to make about resampling schemes?
 \item Can the comparison of time-scales for different schemes be wrangled into/ related to a direct comparison of the variances? Is this even useful?
-\item Don't forget the resampling scheme that's even worse than multinomial: sampling once from Categorical and replicating it N times. This leads to a star-shaped coalescent, which sets a precedent for non-Kingman Lambda coalescents from SMC genealogies.
 \item (See marked notebook 3 page circa Jun/Jul 2020 for some more thoughts/ideas.)
 \item Does residual-systematic share the same pathological behaviour as systematic resampling? E.g.\ try plugging it into the pathoglogical example from Douc Cappe Moulines.
 \item The difference $\Delta_i$, as defined in \texttt{phd/latex/randomised\_rounding/randomised\_rounding.pdf}, seems to tend to a quadratic in the weight as $N\to\infty$. Prove it?
@@ -51,8 +51,8 @@
 
 \section*{Simulation experiments}
 \begin{itemize}
-\item Now we (almost?) have weak convergence, redo similar experiments to those at end of KJJS, but without having to fudge the argument in order to apply FDD convergence.
-\item Code up all the different sampling schemes (and sorted/unsorted variants etc.) and come up with some useful (if only illustrative) experiments comparing them.
+\item Now we have weak convergence, redo similar experiments to those at end of KJJS, but without having to fudge it.
+\item Code up all the different sampling schemes (and sorted/unsorted variants etc.) and come up with some useful (if only illustrative) experiments comparing them. (I started doing this by plotting $\tau_N(t)$ against $t$, and got some nice results.)
 \item Decide which functions would be most interesting to illustrate the performance of resampling schemes, say using ternary diagrams. (See marked notebook 3 page at 8/7/20.)
 \item Explore pre-asymptotic behaviour of CSMC for example. I did some work on this previously.
 \item Make edits to my ternary plot ``library'' (see notebook 3 marked page at 8/7/20).
