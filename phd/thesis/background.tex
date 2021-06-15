@@ -1412,28 +1412,19 @@ $\begin{aligned}
 \end{aligned}$
 \end{enumerate}
 \end{prop}
-Parts \ref{item:resampling_var1} and \ref{item:resampling_var2} were proved in \textcite[Section 3]{douc2005}. The second inequality in \ref{item:resampling_var4} is stated in \textcite[p.9]{gerber2017} and follows from \ref{item:resampling_var2}, as shown below.
-\seb{Don't include proofs for things that were already proved by someone else, unless this really adds value.}
+%Parts \ref{item:resampling_var1} and \ref{item:resampling_var2} were proved in \textcite[Section 3]{douc2005}. The second inequality in \ref{item:resampling_var4} is stated in \textcite[p.9]{gerber2017} and follows from \ref{item:resampling_var2}, as shown below.
 
 \begin{proof}
-\textbf{multinomial resampling:} the resampled indices are conditionally i.i.d., so
-\begin{align*}
+\textbf{\ref{item:resampling_var1}} See \textcite[Section 3]{douc2005}.\\
+\textbf{\ref{item:resampling_var2}} See \textcite[Section 3]{douc2005}.\\
+\textbf{\ref{item:resampling_var3}}
+The following expression is derived in See \textcite[Section 3]{douc2005}:
+\begin{equation*}
 \rho_{\texttt{multi}}(\varphi)
-&= \V\left[ \frac{1}{N} \sum_{i=1}^N \varphi (\tilde{X}_t^{(i)}) 
-        \midd \mathcal{G}_t \right]
-= \frac{1}{N} \V\left[ \varphi (\tilde{X}_t^{(i)}) 
-        \midd \mathcal{G}_t \right] \\
-&= \frac{1}{N} \left\{ \E\left[ \varphi^2(\tilde{X}_t^{(i)}) \midd \mathcal{G}_t \right]
-        - \E\left[ \varphi(\tilde{X}_t^{(i)}) \midd \mathcal{G}_t \right]^2 \right\} \\
-&= \frac{1}{N} \sum_{j=1}^N \varphi^2(X_t^{(j)}) 
-        \Prob[\tilde{X}_t^{(i)} = X_t^{(j)} \mid \mathcal{G}_t ]
-        - \frac{1}{N} \left\{ \sum_{j=1}^N \varphi(X_t^{(j)}) 
-        \Prob[\tilde{X}_t^{(i)} = X_t^{(j)} \mid \mathcal{G}_t ] \right\}^2 \\
-&= \frac{1}{N} \sum_{j=1}^N \varphi^2(X_t^{(j)}) w_t^{(j)}
-        - \frac{1}{N} \left\{ \sum_{j=1}^N \varphi(X_t^{(j)}) w_t^{(j)} \right\}^2 .        
-\end{align*}
-
-\textbf{star resampling:} all of the resampled indices are equal, say $\tilde{X}_t^{(1)} = \dots = \tilde{X}_t^{(N)} = X_t^\star$, so
+= \frac{1}{N} \sum_{j=1}^N \varphi^2(X_t^{(j)}) w_t^{(j)}
+        - \frac{1}{N} \left\{ \sum_{j=1}^N \varphi(X_t^{(j)}) w_t^{(j)} \right\}^2 .
+\end{equation*}
+Under star resampling, all of the resampled indices are equal, say $\tilde{X}_t^{(1)} = \dots = \tilde{X}_t^{(N)} = X_t^\star$, so
 \begin{align*}
 \rho_{\texttt{star}}(\varphi)
 &= \V\left[ \frac{1}{N} \sum_{i=1}^N \varphi(\tilde{X}_t^{(i)}) \midd \mathcal{G}_t \right]
@@ -1446,60 +1437,131 @@ Parts \ref{item:resampling_var1} and \ref{item:resampling_var2} were proved in \
         \Prob[ X_t^\star = X_t^{(j)} \mid \mathcal{G}_t ] \right\}^2 \\
 &= \sum_{j=1}^N \varphi^2(X_t^{(j)}) w_t^{(j)}
         - \left\{ \sum_{j=1}^N \varphi(X_t^{(j)}) w_t^{(j)} \right\}^2 \\
-&= N \rho_{\texttt{multi}}(\varphi) .
+&= N \rho_{\texttt{multi}}(\varphi) ,
 \end{align*}
- This proves part \ref{item:resampling_var3}. Here we see the same factor of $N$ as we had with the marginal variance of offspring counts, due to the variance reduction achieved by taking $N$ independent copies (multinomial resampling) as opposed to $N$ identical copies (star resampling).
-
-\textbf{residual-multinomial resampling:} the Monte Carlo estimate in \eqref{eq:resamplingMCvariance} can be decomposed into a sum of conditionally deterministic terms plus a sum of conditionally i.i.d. terms: conditional on $\mathcal{G}_t$,
+as required.\\
+\textbf{\ref{item:resampling_var4}} The second inequality follows from \ref{item:resampling_var2} and is stated in \textcite[p.9]{gerber2017}.
+For the first inequality, we use the following expression from \textcite[Section 3]{douc2005}:
+\begin{equation*}
+\rho_{\texttt{res-multi}}(\varphi)
+= \frac{R}{N^2} \sum_{j=1}^N \varphi^2(X_t^{(j)}) r^{(j)}
+        - \frac{R}{N^2} \left( \sum_{j=1}^N \varphi(X_t^{(j)}) r^{(j)} \right)^2 .
+\end{equation*}
+A derivation similar to theirs can also be used for residual-star resampling. 
+First notice that, conditional on $\mathcal{G}_t$, the Monte Carlo estimate in \eqref{eq:resamplingMCvariance} can be decomposed into a sum of conditionally deterministic terms plus a sum of stochastic terms:
 \begin{equation*}
 \frac{1}{N} \sum_{i=1}^N \varphi (\tilde{X}_t^{(i)})
 = \frac{1}{N} \sum_{i=1}^N \flnw \varphi (X_t^{(i)})
-        + \frac{1}{N} \sum_{i=1}^R \varphi (\hat{X}_t^{(i)})
+        + \frac{1}{N} \sum_{i=1}^R \varphi (\hat{X}_t^{(i)}) ,
 \end{equation*}
-where
-$ \hat{X}_t^{(i)} \sim^{\text{iid}} \Mn( R, r^{(1:N)} ) $.
-The first sum is conditionally deterministic and hence does not contribute to the Monte Carlo variance \eqref{eq:resamplingMCvariance}. By a similar calculation to that for multinomial resampling,
+where the terms in the second sum are all equal, say $\hat{X}_t^{(1)} = \dots = \hat{X}_t^{(R)} = X_t^\star$.
+The first sum is conditionally deterministic and hence does not contribute to the Monte Carlo variance \eqref{eq:resamplingMCvariance}.
+We have
 \begin{align*}
-\rho_{\texttt{res-multi}}(\varphi)
-&= \V\left[ \frac{1}{N} \sum_{i=1}^R \varphi (\hat{X}_t^{(i)}) 
-        \midd \mathcal{G}_t \right] \\
-&= \frac{R}{N^2} \sum_{j=1}^N \varphi^2(X_t^{(j)}) r^{(j)}
-        - \frac{R}{N^2} \left( \sum_{j=1}^N \varphi(X_t^{(j)}) r^{(j)} \right)^2 \\
-&= \frac{1}{N} \sum_{j=1}^N \varphi^2(X_t^{(j)}) w_t^{(j)}
-        - \frac{1}{N^2} \sum_{j=1}^N \varphi^2(X_t^{(j)}) \flnw[j]
-        - \frac{R}{N^2} \left( \sum_{j=1}^N \varphi(X_t^{(j)}) r^{(j)} \right)^2 . 
-\end{align*}
-By a similar argument, it can be shown that
-\begin{equation*}
 \rho_{\texttt{res-star}}(\varphi)
-= R \,\rho_{\texttt{res-multi}}(\varphi)
-\geq \rho_{\texttt{res-multi}}(\varphi) ,
-\end{equation*}
-whenever $R\geq 1$, proving the first inequality in \ref{item:resampling_var4} (which holds trivially when $R=0$ because both residual schemes then have zero variance). \seb{Maybe I should do res-star explicitly actually; if I'm including proofs that have already been published then I ought to include proofs that haven't.}
-To prove \ref{item:resampling_var1}, write
-\begin{align*}
-\rho_{\texttt{res-multi}}(\varphi)
-&= \frac{1}{N} \sum_{j=1}^N \varphi^2(X_t^{(j)}) w_t^{(j)}
-        - \frac{1}{N} \left\{ \frac{1}{N} \sum_{j=1}^N \varphi^2(X_t^{(j)}) \flnw[j]
-        + \frac{R}{N} \left( \sum_{j=1}^N \varphi(X_t^{(j)}) r^{(j)} \right)^2
-        \right\} \\
-&\leq \frac{1}{N} \sum_{j=1}^N \varphi(X_t^{(j)}) w_t^{(j)}
-        - \frac{1}{N} \left\{ \frac{1}{N} \sum_{j=1}^N \varphi(X_t^{(j)}) \flnw[j]
-        + \frac{R}{N} \sum_{j=1}^N \varphi(X_t^{(j)}) r^{(j)}
-        \right\}^2 \\
-&= \frac{1}{N} \sum_{j=1}^N \varphi^2(X_t^{(j)}) w_t^{(j)}
-        - \frac{1}{N} \left\{ \sum_{j=1}^N \varphi(X_t^{(j)}) w_t^{(j)} \right\}^2
-        = \rho_{\texttt{multi}}(\varphi) .
+&= \V\left[ \frac{1}{N} \sum_{i=1}^R \varphi (\hat{X}_t^{(i)}) \midd \mathcal{G}_t \right] 
+= \V\left[ \frac{R}{N} \varphi (X_t^\star) \midd \mathcal{G}_t \right] \\
+&= \frac{R^2}{N^2} \E\left[ \varphi^2( X_t^\star) \mid \mathcal{G}_t \right]
+        - \frac{R^2}{N^2} \E\left[ \varphi( X_t^\star) \mid \mathcal{G}_t \right]^2 \\
+&= \frac{R^2}{N^2} \sum_{j=1}^N \varphi^2(X_t^{(j)}) 
+        \Prob[ X_t^\star = X_t^{(j)} \mid \mathcal{G}_t ]
+        - \frac{R^2}{N^2} \left\{ \sum_{j=1}^N \varphi(X_t^{(j)}) 
+        \Prob[ X_t^\star = X_t^{(j)} \mid \mathcal{G}_t ] \right\}^2 \\
+&= \frac{R^2}{N^2} \sum_{j=1}^N \varphi^2(X_t^{(j)}) w_t^{(j)}
+        - \frac{R^2}{N^2} \left\{ \sum_{j=1}^N \varphi(X_t^{(j)}) w_t^{(j)} \right\}^2 \\
+&= R \rho_{\texttt{res-multi}}(\varphi) \\
+&\geq \rho_{\texttt{res-multi}}(\varphi) 
 \end{align*}
-The inequality is an application of Jensen's inequality, since
-\begin{equation*}
-\sum_{j=1}^N \frac{ \flnw[j] }{N} + \frac{R}{N} = 1 .
-\end{equation*}
-
-
-
-...
+whenever $R\geq 1$. 
+If $R=0$ then all residual schemes have zero variance and \ref{item:resampling_var4} holds trivially.
 \end{proof}
+
+
+%%%%%
+%
+%\begin{proof}
+%\textbf{multinomial resampling:} the resampled indices are conditionally i.i.d., so
+%\begin{align*}
+%\rho_{\texttt{multi}}(\varphi)
+%&= \V\left[ \frac{1}{N} \sum_{i=1}^N \varphi (\tilde{X}_t^{(i)}) 
+%        \midd \mathcal{G}_t \right]
+%= \frac{1}{N} \V\left[ \varphi (\tilde{X}_t^{(i)}) 
+%        \midd \mathcal{G}_t \right] \\
+%&= \frac{1}{N} \left\{ \E\left[ \varphi^2(\tilde{X}_t^{(i)}) \midd \mathcal{G}_t \right]
+%        - \E\left[ \varphi(\tilde{X}_t^{(i)}) \midd \mathcal{G}_t \right]^2 \right\} \\
+%&= \frac{1}{N} \sum_{j=1}^N \varphi^2(X_t^{(j)}) 
+%        \Prob[\tilde{X}_t^{(i)} = X_t^{(j)} \mid \mathcal{G}_t ]
+%        - \frac{1}{N} \left\{ \sum_{j=1}^N \varphi(X_t^{(j)}) 
+%        \Prob[\tilde{X}_t^{(i)} = X_t^{(j)} \mid \mathcal{G}_t ] \right\}^2 \\
+%&= \frac{1}{N} \sum_{j=1}^N \varphi^2(X_t^{(j)}) w_t^{(j)}
+%        - \frac{1}{N} \left\{ \sum_{j=1}^N \varphi(X_t^{(j)}) w_t^{(j)} \right\}^2 .        
+%\end{align*}
+%
+%\textbf{star resampling:} all of the resampled indices are equal, say $\tilde{X}_t^{(1)} = \dots = \tilde{X}_t^{(N)} = X_t^\star$, so
+%\begin{align*}
+%\rho_{\texttt{star}}(\varphi)
+%&= \V\left[ \frac{1}{N} \sum_{i=1}^N \varphi(\tilde{X}_t^{(i)}) \midd \mathcal{G}_t \right]
+%= \V\left[ \varphi( X_t^\star) \mid \mathcal{G}_t \right] \\
+%&= \E\left[ \varphi^2( X_t^\star) \mid \mathcal{G}_t \right]
+%        - \E\left[ \varphi( X_t^\star) \mid \mathcal{G}_t \right]^2 \\
+%&= \sum_{j=1}^N \varphi^2(X_t^{(j)}) 
+%        \Prob[ X_t^\star = X_t^{(j)} \mid \mathcal{G}_t ]
+%        - \left\{ \sum_{j=1}^N \varphi(X_t^{(j)}) 
+%        \Prob[ X_t^\star = X_t^{(j)} \mid \mathcal{G}_t ] \right\}^2 \\
+%&= \sum_{j=1}^N \varphi^2(X_t^{(j)}) w_t^{(j)}
+%        - \left\{ \sum_{j=1}^N \varphi(X_t^{(j)}) w_t^{(j)} \right\}^2 \\
+%&= N \rho_{\texttt{multi}}(\varphi) .
+%\end{align*}
+% This proves part \ref{item:resampling_var3}. Here we see the same factor of $N$ as we had with the marginal variance of offspring counts, due to the variance reduction achieved by taking $N$ independent copies (multinomial resampling) as opposed to $N$ identical copies (star resampling).
+%
+%\textbf{residual-multinomial resampling:} the Monte Carlo estimate in \eqref{eq:resamplingMCvariance} can be decomposed into a sum of conditionally deterministic terms plus a sum of conditionally i.i.d. terms: conditional on $\mathcal{G}_t$,
+%\begin{equation*}
+%\frac{1}{N} \sum_{i=1}^N \varphi (\tilde{X}_t^{(i)})
+%= \frac{1}{N} \sum_{i=1}^N \flnw \varphi (X_t^{(i)})
+%        + \frac{1}{N} \sum_{i=1}^R \varphi (\hat{X}_t^{(i)})
+%\end{equation*}
+%where
+%$ \hat{X}_t^{(i)} \sim^{\text{iid}} \Mn( R, r^{(1:N)} ) $.
+%The first sum is conditionally deterministic and hence does not contribute to the Monte Carlo variance \eqref{eq:resamplingMCvariance}. By a similar calculation to that for multinomial resampling,
+%\begin{align*}
+%\rho_{\texttt{res-multi}}(\varphi)
+%&= \V\left[ \frac{1}{N} \sum_{i=1}^R \varphi (\hat{X}_t^{(i)}) 
+%        \midd \mathcal{G}_t \right] \\
+%&= \frac{R}{N^2} \sum_{j=1}^N \varphi^2(X_t^{(j)}) r^{(j)}
+%        - \frac{R}{N^2} \left( \sum_{j=1}^N \varphi(X_t^{(j)}) r^{(j)} \right)^2 \\
+%&= \frac{1}{N} \sum_{j=1}^N \varphi^2(X_t^{(j)}) w_t^{(j)}
+%        - \frac{1}{N^2} \sum_{j=1}^N \varphi^2(X_t^{(j)}) \flnw[j]
+%        - \frac{R}{N^2} \left( \sum_{j=1}^N \varphi(X_t^{(j)}) r^{(j)} \right)^2 . 
+%\end{align*}
+%By a similar argument, it can be shown that
+%\begin{equation*}
+%\rho_{\texttt{res-star}}(\varphi)
+%= R \,\rho_{\texttt{res-multi}}(\varphi)
+%\geq \rho_{\texttt{res-multi}}(\varphi) ,
+%\end{equation*}
+%whenever $R\geq 1$, proving the first inequality in \ref{item:resampling_var4} (which holds trivially when $R=0$ because both residual schemes then have zero variance). \seb{Maybe I should do res-star explicitly actually; if I'm including proofs that have already been published then I ought to include proofs that haven't.}
+%To prove \ref{item:resampling_var1}, write
+%\begin{align*}
+%\rho_{\texttt{res-multi}}(\varphi)
+%&= \frac{1}{N} \sum_{j=1}^N \varphi^2(X_t^{(j)}) w_t^{(j)}
+%        - \frac{1}{N} \left\{ \frac{1}{N} \sum_{j=1}^N \varphi^2(X_t^{(j)}) \flnw[j]
+%        + \frac{R}{N} \left( \sum_{j=1}^N \varphi(X_t^{(j)}) r^{(j)} \right)^2
+%        \right\} \\
+%&\leq \frac{1}{N} \sum_{j=1}^N \varphi(X_t^{(j)}) w_t^{(j)}
+%        - \frac{1}{N} \left\{ \frac{1}{N} \sum_{j=1}^N \varphi(X_t^{(j)}) \flnw[j]
+%        + \frac{R}{N} \sum_{j=1}^N \varphi(X_t^{(j)}) r^{(j)}
+%        \right\}^2 \\
+%&= \frac{1}{N} \sum_{j=1}^N \varphi^2(X_t^{(j)}) w_t^{(j)}
+%        - \frac{1}{N} \left\{ \sum_{j=1}^N \varphi(X_t^{(j)}) w_t^{(j)} \right\}^2
+%        = \rho_{\texttt{multi}}(\varphi) .
+%\end{align*}
+%The inequality is an application of Jensen's inequality, since
+%\begin{equation*}
+%\sum_{j=1}^N \frac{ \flnw[j] }{N} + \frac{R}{N} = 1 .
+%\end{equation*}
+%
+%...
+%\end{proof}
 
 
 
