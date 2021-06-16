@@ -1726,9 +1726,6 @@ The minimal variance branching algorithm of \textcite{crisan1997} does not enfor
 
 
 \subsubsection{Star discrepancy \seb{$\checkmark$} }
-\draft{Include a diagram showing the quantity inside the $D^\star$ supremum, plotted over $u$, for mn/strat/syst? (sketched in sora --- use same weights and samples as in Figure~\ref{fig:inv_resampling}.)}
-%\seb{Does not appear in Table~\ref{tab:resampling_properties} since it only makes sense for resampling schemes based on inversion sampling.}
-
 The \emph{star discrepancy} is a measure of the regularity of a given set of points $u_{1:N}$ in the unit hypercube. For our purposes it is sufficient to define the star discrepancy in one dimension, as in \textcite[Definition 1.2]{kuipers1974}:
 \begin{equation}\label{eq:defn_stardiscrepancy}
 D^\star (u_1, \dots, u_N)
@@ -1755,9 +1752,9 @@ Thus $D^\star$ measures, in a certain sense, how far the points are from being u
 \node[anchor=south] at (12,0) {$1$};
 \node[anchor=east] at (-0.2,0) {$0$};
 \node[anchor=east] at (0,1) {$\frac{1}{2N}$};
-\node[anchor=east] at (0,-1) {$\frac{-1}{2N}$};
+\node[anchor=east] at (0,-1) {$-\frac{1}{2N}$};
 \node[anchor=east] at (0,2) {$\frac{1}{N}$};
-\node[anchor=east] at (0,-2) {$\frac{-1}{N}$};
+\node[anchor=east] at (0,-2) {$-\frac{1}{N}$};
 %% regular grid points
 \draw[thick] (0,0)--(1,1)--(1,-1)--(3,1)--(3,-1)--(5,1)--(5,-1)--(7,1)--(7,-1)--(9,1)--(9,-1)--(11,1)--(11,-1)--(12,0);
 %% systematic grid points, u as in Figure~\ref{fig:inv_resampling}
@@ -1779,7 +1776,7 @@ Thus $D^\star$ measures, in a certain sense, how far the points are from being u
 \caption[Star discrepancy for multinomial, stratified and systematic resampling]{Plot of the function inside the supremum in \eqref{eq:defn_stardiscrepancy}, for four different point sets. The points $u_{1:6}$ used are the same as in Figure~\ref{fig:inv_resampling}.\\
 The solid black line corresponds to the regular grid, which achieves the minimal discrepancy $1/(2N)$, but cannot be used for resampling.
 The star discrepancy of stratified and systematic points varies between $1/(2N)$ and $1/N$ depending on the realisation. In this example, the star discrepancy of the systematic points is $0.78/N$ and of the stratified points is $0.92/N$.
-The star discrepancy of standard multinomial resampling (that is, i.i.d.\ Uniform points) can be as high as $1$; in this example it is $1.62/N$.}
+The star discrepancy of standard multinomial resampling (that is, i.i.d.\ Uniform points) can be arbitrarily close to $1$ for ``bad'' realisations; in this example it is $1.62/N$.}
 \label{fig:star_discrepancy}
 \end{figure}
 
@@ -1789,10 +1786,10 @@ From this point-of-view, stratified and systematic resampling are quasi-Monte Ca
 
 In one dimension, the lowest-discrepancy point set is the regular grid $( \frac{1}{2N}, \frac{3}{2N}, \dots, \frac{2N-1}{2N} )$, which has star discrepancy $\frac{1}{2N}$ \parencite[see for example][Corollary 1.2]{kuipers1974}.
 However, resampling based on a deterministic point set cannot be unbiased since the resulting parental indices are conditionally deterministic given the weights.
-Systematic resampling amounts to a randomisation of the regular grid, shifting each grid point by a random amount $u \sim \Unif[0,1/N]$.
-The point sets generated in systematic and stratified resampling both have star discrepancy between $1/(2N)$ and $1/N$ almost surely, where the exact value depends on the realisation.
+Systematic resampling amounts to a randomisation of the regular grid, shifting each grid point by a random amount $u \sim \Unif[0,1/N]$. This yields star discrepancy $D^\star = \max\{u, \frac{1}{N} -u\}$, which is between $1/(2N)$ and $1/N$ almost surely.
+The point sets generated in stratified resampling also have star discrepancy between $1/(2N)$ and $1/N$, where the exact value depends on the realisation.
 This certainly seems to improve on independent uniform points which can have star discrepancy arbitrarily close to $1$, the maximum possible value, albeit with diminishing probability as $N$ increases.
-
+Figure~\ref{fig:star_discrepancy} illustrates how the star discrepancy is computed, and how it compares between these sampling methods.
 
 
 %\subsubsection{Optimal resampling}
