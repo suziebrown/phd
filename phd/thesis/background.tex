@@ -1674,14 +1674,79 @@ However, the results of Chapters~\ref{ch:limits} and \ref{ch:weakconv} rely on a
 
 
 
-\subsubsection{Permutation invariance \seb{$\sim$} }
-A strange property of stratified and systematic resampling is that they are sensitive to the order in which the subintervals are placed. For example, in Figures \ref{fig:resampling_stratified} and \ref{fig:resampling_systematic} if the intervals $w_2$ and $w_4$ were swapped, the number of offspring assigned to particles 2 and 4 would be swapped in each case. \seb{Better to use an example where \emph{distribution} of offspring counts (conditional on the weights but not on the Uniform samples) differs depending on order. Such an example is included in my YRM19 presentation on resampling.}
-We can also see that because $w_1$ has weight $\geq 1/N$ and is placed first, it is guaranteed at least one offspring.
+\subsubsection{Permutation sensitivity \seb{$\sim$} }
+Some resampling schmes are sensitive to the order of the weights.
+That is, permuting the weight vector before resampling can affect the distribution of the resulting offspring counts.
 
-This property can lead to pathological behaviour, but is easily avoided by applying a random permutation to the order of the subintervals.
-The SSP resampling scheme of \textcite{gerber2017} is intended to share the benefits of systematic resampling whilst avoiding this property.
+For example, consider resampling schemes based on inversion sampling (multinomial, stratified, systematic). Figure~\ref{fig:permutation_sensitivity} shows two partitions of $[0,1]$ constructed from two permutations of the weight vector $w^{(1:6)} = (0.25,0.05,0.1,0.35,0.2,0.05)$.
+This does not affect the distribution of the offspring counts under multinomial resampling, although it will affect the distribution of the parental indices if the fast implementation is used.
 
+On the other hand, under stratified or systematic resampling the distribution of offspring counts is different for the two partitions. To see this, consider parents $2$ and $6$. When the weights are sorted, the probability that both of these parents are assigned a non-zero number of offspring is zero, because both of their subintervals lie within the same subinterval of length $1/N$, which gets exactly one inversion sampling point.
+When the weights are in their natural order, as in the top row of Figure~\ref{fig:permutation_sensitivity}, it is possible under stratified and systematic resampling for both parents $2$ and $6$ to be assigned one offspring.
+Clearly, then, the distribution of offspring counts under these resampling schemes differs between the two orderings of the weight vector pictured. 
 
+\draft{What effect does permutation sensitivity have on performance? Which other schemes do/don't have this property?}
+% For example, in Figures \ref{fig:resampling_stratified} and \ref{fig:resampling_systematic} if the intervals $w_2$ and $w_4$ were swapped, the number of offspring assigned to particles 2 and 4 would be swapped in each case. \seb{Better to use an example where \emph{distribution} of offspring counts (conditional on the weights but not on the Uniform samples) differs depending on order. Such an example is included in my YRM19 presentation on resampling.}
+%We can also see that because $w_1$ has weight $\geq 1/N$ and is placed first, it is guaranteed at least one offspring.
+%
+%This property can lead to pathological behaviour, but is easily avoided by applying a random permutation to the order of the subintervals.
+%The SSP resampling scheme of \textcite{gerber2017} is intended to share the benefits of systematic resampling whilst avoiding this property.
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}
+%% w = (0.25, 0.05, 0.10, 0.35, 0.20, 0.05)
+%% vertical lines spaced 1/N apart
+\draw[dotted] (0,-1.5) --(0,0.8);
+\draw[dotted] (2,-1.5) --(2,0.8);
+\draw[dotted] (4,-1.5) --(4,0.8);
+\draw[dotted] (6,-1.5) --(6,0.8);
+\draw[dotted] (8,-1.5) --(8,0.8);
+\draw[dotted] (10,-1.5) --(10,0.8);
+\draw[dotted] (12,-1.5) --(12,0.8);
+%% weight intervals, unsorted
+\draw[thick] (0,0) -- (12,0);
+\draw (0,-0.2) --(0,0.2);
+\draw (3,-0.2) --(3,0.2);
+\draw (3.6,-0.2) --(3.6,0.2);
+\draw (4.8,-0.2) --(4.8,0.2);
+\draw (9,-0.2) --(9,0.2);
+\draw (11.4,-0.2) --(11.4,0.2);
+\draw (12,-0.2) --(12,0.2);
+%% weight labels, unsorted
+\node[anchor=south] at (1.5,0) {$w_1$};
+\node[anchor=south] at (3.3,0) {$w_2$};
+\node[anchor=south] at (4.2,0) {$w_3$};
+\node[anchor=south] at (6.9,0) {$w_4$};
+\node[anchor=south] at (10.2,0) {$w_5$};
+\node[anchor=south] at (11.7,0) {$w_6$};
+%% weight intervals, sorted
+\draw[thick] (0,-1) -- (12,-1);
+\draw (0,-1.2) --(0,-0.8);
+\draw (4.2,-1.2) --(4.2,-0.8);
+\draw (7.2,-1.2) --(7.2,-0.8);
+\draw (9.6,-1.2) --(9.6,-0.8);
+\draw (10.8,-1.2) --(10.8,-0.8);
+\draw (11.4,-1.2) --(11.4,-0.8);
+\draw (12,-1.2) --(12,-0.8);
+%% weight labels, sorted
+\node[anchor=south] at (5.7,-1) {$w_1$};
+\node[anchor=south] at (11.1,-1) {$w_2$};
+\node[anchor=south] at (10.2,-1) {$w_3$};
+\node[anchor=south] at (2.1,-1) {$w_4$};
+\node[anchor=south] at (8.4,-1) {$w_5$};
+\node[anchor=south] at (11.7,-1) {$w_6$};
+%% labels sorted/unsorted
+\node[anchor=west] at (12.2,0) {\texttt{unsorted}};
+\node[anchor=west] at (12.2,-1) {\texttt{sorted}};
+\end{tikzpicture}
+\caption[Example where permuting weights can affect offspring counts]{An example for which permuting the weights can affect the conditional distribution of offspring counts under some resampling schemes.
+The example for $N=6$ used in Figure~\ref{fig:inv_resampling}. The top row shows the partition into weighted subintervals, in the natural order, as in Figure~\ref{fig:inv_resampling}. 
+The bottom row shows the partition corresponding to the same weights, but sorted in decreasing order. 
+The dotted lines are spaced $1/N$ apart.
+Under ``permutation-sensitive'' resampling schemes, the distribution of offspring counts differs depending on which partition is used.}
+\label{fig:permutation_sensitivity}
+\end{figure}
 
 
 \subsubsection{Sorting}
