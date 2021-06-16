@@ -1677,6 +1677,7 @@ However, the results of Chapters~\ref{ch:limits} and \ref{ch:weakconv} rely on a
 \subsubsection{Permutation sensitivity \seb{$\sim$} }
 Some resampling schmes are sensitive to the order of the weights.
 That is, permuting the weight vector before resampling can affect the distribution of the resulting offspring counts.
+Note that this entails a permutation of the parents, whereas the previous section was about permutations of offspring.
 
 For example, consider resampling schemes based on inversion sampling (multinomial, stratified, systematic). Figure~\ref{fig:permutation_sensitivity} shows two partitions of $[0,1]$ constructed from two permutations of the weight vector $w^{(1:6)} = (0.25,0.05,0.1,0.35,0.2,0.05)$.
 This does not affect the distribution of the offspring counts under multinomial resampling, although it will affect the distribution of the parental indices if the fast implementation is used.
@@ -1777,8 +1778,20 @@ $Z_{1:n}$ are said to be \emph{negatively associated} if, for every partition of
 \textcite{gerber2017} show that negative association of offspring counts is a desirable property which may be used, along with some other machinery, to establish certain weak convergence results for the resampled measures.
 
 Multinomial counts are negatively associated \parencite[Section 3.1]{joag1983}, which implies that residual-multinomial resampling also satisfies this property\seb{why is that? idea: deterministic parts have 0 correlation and the random parts are NA. same question for the other residual schemes mentioned below.}
-\textcite{gerber2017} construct a counter-example to demonstrate that systematic resampling violates the negative association property. It follows that residual-systematic resampling also violates this property.
-They also mention some resampling schemes that result in negatively associated counts: stratified resampling, and by implication residual-stratified resampling; star resampling (see the remark at the end of \textcite[Section 3.2]{gerber2017}), and by implication residual-star resampling.
+\textcite{gerber2017} construct a counter-example to demonstrate that systematic resampling violates the negative association property.
+For residual-systematic resampling, we can cook up a counterexample in the same spirit by taking $\varphi(x)=\psi(x)=\I{x=1}$, $I=\{1\}$, $J=\{3\}$ and considering a weight vector say $w^{(1:4)} = \frac{1}{8}(1,1,1,5)$ for $N=4$. Then the residual weights are $r^{(1:4)} = \frac{1}{4}(1,1,1,1)$ with $R=2$, so
+\begin{align*}
+\Cov \left[ \varphi( Z_I) , \psi(Z_J) \right]
+&= \E[ \varphi( Z_I) \psi(Z_J) ] - \E[\varphi( Z_I) ] \E[\psi(Z_J) ] \\
+&=\Prob[\nu^{(1)}=1, \nu^{(3)}=1] - \Prob[\nu^{(1)}=1] \Prob[\nu^{(3)}=1] \\
+&= \frac{1}{2} - \frac{1}{2} \times \frac{1}{2} 
+= \frac{1}{4}
+>0 ,
+\end{align*}
+since $\nu^{(3)}=1$ if and only if $\nu^{(1)}=1$. 
+So residual-systematic resampling also violates the negative association property.
+
+\textcite{gerber2017} also mention some resampling schemes that do result in negatively associated counts: stratified resampling, and by implication residual-stratified resampling; star resampling (see the remark at the end of \textcite[Section 3.2]{gerber2017}), and by implication residual-star resampling.
 The authors go on to introduce the Srinivasan sampling procedure resampling scheme, which by construction yields negatively associated offspring counts.
 
 These results are summarised in Table~\ref{tab:resampling_properties}.
@@ -1893,7 +1906,7 @@ Figure~\ref{fig:star_discrepancy} illustrates how the star discrepancy is comput
 \texttt{res-strat} & $\{k, k+1, k+2\}$ & $2$ & $1/2$ & $\times$ & $\checkmark$ 
         & $\checkmark$ & $\leq N$ & $\checkmark$ \\
 \texttt{res-syst} & $\{k, k+1\}$ & $1$ & $1/4$ & $\checkmark$ & $\checkmark$ 
-        & $\checkmark$ & $1$ & $\times$? \\
+        & $\checkmark$ & $1$ & $\times$ \\
 \texttt{ssp} & $\{k, k+1\}$ & $1$ & $1/4$ & $\checkmark$ & $\checkmark$ 
         & $\checkmark$? & ? & $\checkmark$ \\
 \texttt{branch} & $\{k, k+1\}$ & $1$ & $1/4$ & $\checkmark$ & $\checkmark$ 
