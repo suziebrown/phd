@@ -900,6 +900,7 @@ The dotted vertical lines show the partition of $[0,1]$ into subintervals of len
 Top row (circles): in multinomial resampling, $u_{1:6}$ are fed directly into the inversion sampler. Which subinterval $u_i$ falls into determines the parent of offspring $i$. The resulting offspring counts in this example are $\nu^{(1:6)} = (0,2,1,1,2,0)$.\\
 Middle row (diamonds): in stratified resampling, $u_{1:6}$ are transformed so that one point lies in each subinterval of length $1/N$. The resulting offspring counts are $\nu^{(1:6)} = (2,0,1,1,2,0)$.\\
 Bottom row (squares): in systematic resampling, only $u_1$ is used, being transformed to equally spaced points. The resulting offspring counts are $\nu^{(1:6)} = (1,1,0,2,1,1)$.}
+\label{fig:inv_resampling}
 \end{figure}
 %\begin{figure}
 %\centering
@@ -1729,11 +1730,58 @@ The minimal variance branching algorithm of \textcite{crisan1997} does not enfor
 %\seb{Does not appear in Table~\ref{tab:resampling_properties} since it only makes sense for resampling schemes based on inversion sampling.}
 
 The \emph{star discrepancy} is a measure of the regularity of a given set of points $u_{1:N}$ in the unit hypercube. For our purposes it is sufficient to define the star discrepancy in one dimension, as in \textcite[Definition 1.2]{kuipers1974}:
-\begin{equation*}
-D^\star (u_1, \dots, u_N) := \sup_{u \in [0,1]} \left| \frac{1}{N} \sum_{i=1}^N \I{u_i \leq u} -u \right| .
-\end{equation*}
+\begin{equation}\label{eq:defn_stardiscrepancy}
+D^\star (u_1, \dots, u_N)
+:= \sup_{u \in [0,1]} | d(u) |
+:= \sup_{u \in [0,1]} \left| u - \frac{1}{N} \sum_{i=1}^N \I{u_i \leq u} \right| .
+\end{equation}
 The quantity inside the supremum is the difference between the empirical CDF of the observed points $u_{1:N}$ and the CDF of the Uniform distribution on $[0,1]$.
 Thus $D^\star$ measures, in a certain sense, how far the points are from being uniformly spaced.
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}
+%% axes
+\draw[->] (-0.2,0)--(12.5,0);
+\draw[->] (0,-2.2)--(0,3.2);
+\draw (12,0.1)--(12,-0.1);
+\draw[gray!20] (0,1)--(12,1);
+\draw[gray!20] (0,-1)--(12,-1);
+\draw[gray!20] (0,2)--(12,2);
+\draw[gray!20] (0,-2)--(12,-2);
+%% axis labels
+\node[anchor=west] at (12.5,0) {$u$};
+\node[anchor=south] at (0,3.2) {$d(u)$};
+\node[anchor=south] at (12,0) {$1$};
+\node[anchor=east] at (-0.2,0) {$0$};
+\node[anchor=east] at (0,1) {$\frac{1}{2N}$};
+\node[anchor=east] at (0,-1) {$\frac{-1}{2N}$};
+\node[anchor=east] at (0,2) {$\frac{1}{N}$};
+\node[anchor=east] at (0,-2) {$\frac{-1}{N}$};
+%% regular grid points
+\draw[thick] (0,0)--(1,1)--(1,-1)--(3,1)--(3,-1)--(5,1)--(5,-1)--(7,1)--(7,-1)--(9,1)--(9,-1)--(11,1)--(11,-1)--(12,0);
+%% systematic grid points, u as in Figure~\ref{fig:inv_resampling}
+\draw[violet] (0,0)--(1.56,1.56)--(1.56,-0.44)--(3.56,1.56)--(3.56,-0.44)--(5.56,1.56)--(5.56,-0.44)--(7.56,1.56)--(7.56,-0.44)--(9.56,1.56)--(9.56,-0.44)--(11.56,1.56)--(11.56,-0.44)--(12,0);
+%% stratified grid points, ditto
+\draw[thick, blue, dotted] (0,0)--(1.56,1.56)--(1.56,-0.44)--(2.58,0.58)--(2.58,-1.42)--(4.54,0.54)--(4.54,-1.46)--(7.84,1.84)--(7.84, -0.16)--(9.08,1.08)--(9.08,-0.92)--(10.72,0.72)--(10.72,-1.28)--(12,0);
+%% multinomial points, ditto
+\draw[thick, magenta, dashed] (0,0)--(3.24,3.24)--(3.24,1.24)--(3.48,1.48)--(3.48,-0.52)--(4.32,0.32)--(4.32,-1.68)--(6.48,0.48)--(6.48,-1.52)--(9.36,1.36)--(9.36,-0.64)--(11.04,1.04)--(11.04,-0.96)--(12,0);
+%% legend
+\draw[thick, magenta, dashed] (9,2.8)--(10,2.8);
+\node[anchor=west] at (10,2.8) {\texttt{multi}};
+\draw[thick, blue, dotted] (9,3.2)--(10,3.2);
+\node[anchor=west] at (10,3.2) {\texttt{strat}};
+\draw[violet] (9,3.6)--(10,3.6);
+\node[anchor=west] at (10,3.6) {\texttt{syst}};
+\draw[thick] (9,4)--(10,4);
+\node[anchor=west] at (10,4) {\texttt{reg grid}};
+\end{tikzpicture}
+\caption[Star discrepancy for multinomial, stratified and systematic resampling]{Plot of the function inside the supremum in \eqref{eq:defn_stardiscrepancy}, for four different point sets. The points $u_{1:6}$ used are the same as in Figure~\ref{fig:inv_resampling}.\\
+The solid black line corresponds to the regular grid, which achieves the minimal discrepancy $1/(2N)$, but cannot be used for resampling.
+The star discrepancy of stratified and systematic points varies between $1/(2N)$ and $1/N$ depending on the realisation. In this example, the star discrepancy of the systematic points is $0.78/N$ and of the stratified points is $0.92/N$.
+The star discrepancy of standard multinomial resampling (that is, i.i.d.\ Uniform points) can be as high as $1$; in this example it is $1.62/N$.}
+\label{fig:star_discrepancy}
+\end{figure}
 
 Star discrepancy is used in quasi-Monte Carlo, where ``low-discrepancy'' points are used in place of uniform samples to decrease the variance of Monte Carlo estimates.
 We have noted already that resampling can itself be viewed as a Monte Carlo procedure.
