@@ -52,7 +52,7 @@ Introduces particle MCMC methods, including particle Gibbs with conditional SMC.
 Comparison of multinomial, stratified \& systematic resampling. And the effect of presorting. [in appendix]
 
 \subsection*{\cite{douc2005}}
-Comparison of Monte Carlo variance between multinomial, resmn, stratified, systematic. CLTs for resampled particles.
+Comparison of Monte Carlo variance between mutli, res-multi, strat, syst. CLTs for resampled particles.
 
 \subsection*{\cite{lee2019}}
 Implementation of lowvariance resampling within conditional SMC.
@@ -79,7 +79,7 @@ Implementation of lowvariance resampling within conditional SMC.
 \section*{BACKWARD SIMULATION}
 
 \subsection*{\cite{kitagawa1996}}
-Some solutions to ancestral degeneracy: fixed lag smoother, forwardbackwardtype algorithm.
+Some solutions to ancestral degeneracy: fixed lag smoother, forward-backward-type algorithm.
 
 \subsection*{\cite{doucet2009}}
 
@@ -87,8 +87,8 @@ Some solutions to ancestral degeneracy: fixed lag smoother, forwardbackwardtype 
 \subsection*{\cite{lindsten2013}}
 A whole book on backward simulation. [Chapter 5] describes backward simulation and ancestor sampling in particle MCMC.
 
-\subsection*{\cite{andrieu2010}}
-Nick Whiteley describes (briefly!) the idea of ancestor sampling in particle MCMC [see Nick's comment in discussion].
+\subsection*{\cite{whiteley2010}}
+In the discussion, Nick Whiteley introduces (remarkably briefly) the idea of ancestor sampling in particle Gibbs.
 
 %
 \section*{CONVERGENCE OF GENEALOGIES}
@@ -99,7 +99,7 @@ Also consider looking at: Donnelly Tavar\'e 1995 ``Coalescents and genealogical 
 \begin{itemize}
 \item Introduces the $n$-coalescent (in a very nice clear way) with the sam enotation we still use
 \item \textbf{Theorem:} suppose $\nu_{1:N}$ are exchangeable and independent across generations and $\V[\nu_1]\to\sigma^2 \in (0,\infty)$ and $\E[\nu_1^m] \leq M_m$ for all $m\in\mathbb{N}$. Then the $n$-genealogies scaled by $\lfloor N\sigma^{-2}t \rfloor$ converge to the $n$-coalescent in the sense of FDDs.
-\item $n$-coalescent also applies for models where $\nu_j$ are not exchangeable or independent across generations, as long as the genealogies are Markov at least up to error $O(N^{-1})$ and the transitions satisfy $p_{\xi\eta} = q_{\xi\eta}\sigma^2 N^{-1} + o(N^{-1}$
+\item $n$-coalescent also applies for models where $\nu_j$ are not exchangeable or independent across generations, as long as the genealogies are Markov at least up to error $O(N^{-1})$ and the transitions satisfy $p_{\xi\eta} = q_{\xi\eta}\sigma^2 N^{-1} + o(N^{-1})$, where $q$'s are transition probs of $n$-coalescent
 \item The $n$-coalescent is a good robust model for \emph{large neutral} populations
 \item Genealogy decouples into a jump chain and a pure death process
 \item There exists the Kingman coalescent as infinite-dimensional embedding of the $n$-coalescents
@@ -107,7 +107,8 @@ Also consider looking at: Donnelly Tavar\'e 1995 ``Coalescents and genealogical 
 
 
 \subsection*{\cite{kingman1982coal}}
-Broadly, this paper introduces the Kingman coalescent (as opposed to $n$-coalescent) and proves some properties...
+Broadly, this paper introduces the Kingman coalescent (as opposed to $n$-coalescent) and proves some properties
+
 
 \subsection*{\cite{mohle1998}}
 Necessary \& sufficient conditions for convergence of Cannings model to a coalescent process more general than Kingman. Allowing large mergers but not simultaneous mergers.
@@ -116,10 +117,20 @@ Necessary \& sufficient conditions for convergence of Cannings model to a coales
 \item Offspring counts must be independent but not necessarily identically distributed across generations
 \item This means time scale must be allowed to vary over time: $\tau_N$ becomes $\tau_N(t)$ and $c_N$ becomes $c_N(t)$, or $c(t)$ in M\"ohle's notation
 \item Only proves convergence of FDDs
+\item Conditions of theorem are still very strong, requiring infinitely many moments to be bounded. There is now a condition on one mixed moment that wasn't needed in Kingman1982.
+\item The conditions are sufficient but not necessary
 \item Time scale $\tau_N(t)$ is allowed to be chosen freely, but the theorem only holds when it is an appropriate function (i.e.\ an inverse of $c_N$ similar to the usual) so this is not a very great generalisation over defining $\tau$ in the usual way.
 \end{itemize}
 
+
 \subsection*{\cite{mohlesagitov1998}}
+\begin{itemize}
+\item Assume $\nu_{1:N}$ are exchangeable, and independent across generations, and the population size $N$ is constant
+\item Necessary \& sufficient conditions are given for (FDD) convergence of the genealogies to a $\Lambda$-coalescent, and the correct measure $\Lambda$ is uniquely constructed from infinitely many moment limits. (Note: M\"ohle's notation uses $\mu$ for the measure rather than $\Lambda$.)
+\item The conditions are: (I) infinitely many pure moment limits exist, slightly different from the condition 2a of M\"ohle1998; (II) the exchangeable version of the mixed moment condition 2b of M\"ohle1998.
+\item Under the additional condition $c_N\to0$ we also get weak convergence to the $\Lambda$-coalescent, although the proof is not explicit in this paper (it just refers to the methods of another work).
+\end{itemize}
+
 
 \subsection*{\cite{sagitov1999}}
 
