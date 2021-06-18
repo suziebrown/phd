@@ -1,121 +1,1025 @@
-\begin{thebibliography}{xx}
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.9 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
 
-\harvarditem[Andrieu et~al.]{Andrieu, Doucet \harvardand\
-  Holenstein}{2010}{andrieu2010}
-Andrieu, C., Doucet, A. \harvardand\ Holenstein, R.  \harvardyearleft
-  2010\harvardyearright , `Particle {Markov} chain {Monte} {Carlo} methods',
-  {\em Journal of the Royal Statistical Society: Series B (Statistical
-  Methodology)} {\bf 72}(3),~269--342.
 
-\harvarditem[Carpenter et~al.]{Carpenter, Clifford \harvardand\
-  Fearnhead}{1999}{carpenter1999}
-Carpenter, J., Clifford, P. \harvardand\ Fearnhead, P.  \harvardyearleft
-  1999\harvardyearright , `Improved particle filter for nonlinear problems',
-  {\em IEE Proceedings - Radar, Sonar and Navigation} {\bf 146}(1),~2--7.
+\refsection{0}
+  \datalist[entry]{nty/global//global/global}
+    \entry{andrieu2010}{article}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,uniquepart=base,hash=ac7a0b060593ea80a10f55d530432a50}{%
+           family={Andrieu},
+           familyi={A\bibinitperiod},
+           given={Christophe},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=aca5faad8b57b96b59c12fc59d0b6eb4}{%
+           family={Doucet},
+           familyi={D\bibinitperiod},
+           given={Arnaud},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=3fa139cb7d5195e095f29975804e6f31}{%
+           family={Holenstein},
+           familyi={H\bibinitperiod},
+           given={Roman},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley Online Library}%
+      }
+      \strng{namehash}{39c0c746d8c218374cd32883c930e3f5}
+      \strng{fullhash}{39c0c746d8c218374cd32883c930e3f5}
+      \strng{bibnamehash}{39c0c746d8c218374cd32883c930e3f5}
+      \strng{authorbibnamehash}{39c0c746d8c218374cd32883c930e3f5}
+      \strng{authornamehash}{39c0c746d8c218374cd32883c930e3f5}
+      \strng{authorfullhash}{39c0c746d8c218374cd32883c930e3f5}
+      \field{sortinit}{A}
+      \field{sortinithash}{d77c7cdd82ff690d4c3ef13216f92f0b}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of the Royal Statistical Society: Series B (Statistical Methodology)}
+      \field{number}{3}
+      \field{title}{Particle {Markov} Chain {Monte} {Carlo} Methods}
+      \field{volume}{72}
+      \field{year}{2010}
+      \field{pages}{269\bibrangedash 342}
+      \range{pages}{74}
+    \endentry
+    \entry{carpenter1999}{article}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,uniquepart=base,hash=e48e4558a3ee6d8d8621324b0313bf0b}{%
+           family={Carpenter},
+           familyi={C\bibinitperiod},
+           given={James},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=78a1e41bfddabe1075f6c2999b47d591}{%
+           family={Clifford},
+           familyi={C\bibinitperiod},
+           given={Peter},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=b2d637bf71149fe879204a2bb21e932f}{%
+           family={Fearnhead},
+           familyi={F\bibinitperiod},
+           given={Paul},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {IET}%
+      }
+      \strng{namehash}{d13da4a8c04a72928c92aebf564e8e18}
+      \strng{fullhash}{d13da4a8c04a72928c92aebf564e8e18}
+      \strng{bibnamehash}{d13da4a8c04a72928c92aebf564e8e18}
+      \strng{authorbibnamehash}{d13da4a8c04a72928c92aebf564e8e18}
+      \strng{authornamehash}{d13da4a8c04a72928c92aebf564e8e18}
+      \strng{authorfullhash}{d13da4a8c04a72928c92aebf564e8e18}
+      \field{sortinit}{C}
+      \field{sortinithash}{963e9d84a3da2344e8833203de5aed05}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEE Proceedings --- Radar, Sonar and Navigation}
+      \field{number}{1}
+      \field{title}{Improved Particle Filter for Nonlinear Problems}
+      \field{volume}{146}
+      \field{year}{1999}
+      \field{pages}{2\bibrangedash 7}
+      \range{pages}{6}
+    \endentry
+    \entry{chan2013}{article}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,uniquepart=base,hash=ed2a099d0e1b37970d22d72f9fe138a5}{%
+           family={Chan},
+           familyi={C\bibinitperiod},
+           given={Hock\bibnamedelima Peng},
+           giveni={H\bibinitperiod\bibinitdelim P\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=468dc2a2767c21816cfe42a659c69ac3}{%
+           family={Lai},
+           familyi={L\bibinitperiod},
+           given={Tze\bibnamedelima Leung},
+           giveni={T\bibinitperiod\bibinitdelim L\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Institute of Mathematical Statistics}%
+      }
+      \strng{namehash}{22dda261522093e42a23113721155e42}
+      \strng{fullhash}{22dda261522093e42a23113721155e42}
+      \strng{bibnamehash}{22dda261522093e42a23113721155e42}
+      \strng{authorbibnamehash}{22dda261522093e42a23113721155e42}
+      \strng{authornamehash}{22dda261522093e42a23113721155e42}
+      \strng{authorfullhash}{22dda261522093e42a23113721155e42}
+      \field{sortinit}{C}
+      \field{sortinithash}{963e9d84a3da2344e8833203de5aed05}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Annals of Statistics}
+      \field{number}{6}
+      \field{title}{A General Theory of Particle Filters in Hidden {Markov} Models and some Applications}
+      \field{volume}{41}
+      \field{year}{2013}
+      \field{pages}{2877\bibrangedash 2904}
+      \range{pages}{28}
+    \endentry
+    \entry{delmoral2013}{book}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=d771d04fc13831e7ab9152984eaa0d86}{%
+           family={Del\bibnamedelima Moral},
+           familyi={D\bibinitperiod\bibinitdelim M\bibinitperiod},
+           given={Pierre},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{2}{%
+        {Chapman}%
+        {Hall/CRC}%
+      }
+      \strng{namehash}{d771d04fc13831e7ab9152984eaa0d86}
+      \strng{fullhash}{d771d04fc13831e7ab9152984eaa0d86}
+      \strng{bibnamehash}{d771d04fc13831e7ab9152984eaa0d86}
+      \strng{authorbibnamehash}{d771d04fc13831e7ab9152984eaa0d86}
+      \strng{authornamehash}{d771d04fc13831e7ab9152984eaa0d86}
+      \strng{authorfullhash}{d771d04fc13831e7ab9152984eaa0d86}
+      \field{sortinit}{D}
+      \field{sortinithash}{2ef1bd9a78cc71eb74d7231c635177b8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Mean Field Simulation for {Monte} {Carlo} Integration}
+      \field{year}{2013}
+    \endentry
+    \entry{delmoral2012}{article}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,uniquepart=base,hash=d771d04fc13831e7ab9152984eaa0d86}{%
+           family={Del\bibnamedelima Moral},
+           familyi={D\bibinitperiod\bibinitdelim M\bibinitperiod},
+           given={Pierre},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=aca5faad8b57b96b59c12fc59d0b6eb4}{%
+           family={Doucet},
+           familyi={D\bibinitperiod},
+           given={Arnaud},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=fd2c45b545dcce044e994f763abfcd70}{%
+           family={Jasra},
+           familyi={J\bibinitperiod},
+           given={Ajay},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{2}{%
+        {Bernoulli Society for Mathematical Statistics}%
+        {Probability}%
+      }
+      \strng{namehash}{cb5c5bbefca1c68512be6e2dd77b36d9}
+      \strng{fullhash}{cb5c5bbefca1c68512be6e2dd77b36d9}
+      \strng{bibnamehash}{cb5c5bbefca1c68512be6e2dd77b36d9}
+      \strng{authorbibnamehash}{cb5c5bbefca1c68512be6e2dd77b36d9}
+      \strng{authornamehash}{cb5c5bbefca1c68512be6e2dd77b36d9}
+      \strng{authorfullhash}{cb5c5bbefca1c68512be6e2dd77b36d9}
+      \field{sortinit}{D}
+      \field{sortinithash}{2ef1bd9a78cc71eb74d7231c635177b8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Bernoulli}
+      \field{number}{1}
+      \field{title}{On Adaptive Resampling Strategies for Sequential {Monte} {Carlo} Methods}
+      \field{volume}{18}
+      \field{year}{2012}
+      \field{pages}{252\bibrangedash 278}
+      \range{pages}{27}
+    \endentry
+    \entry{douc2005}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,uniquepart=base,hash=8016e20ffe53cd289b6f027afc9eab01}{%
+           family={Douc},
+           familyi={D\bibinitperiod},
+           given={Randal},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=ab79ac72e5d18472a07f9b9e455fc391}{%
+           family={Capp{é}},
+           familyi={C\bibinitperiod},
+           given={Olivier},
+           giveni={O\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=32b961a3e53c735ea5488bf0af14a6da}{%
+           family={Moulines},
+           familyi={M\bibinitperiod},
+           given={Eric},
+           giveni={E\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{organization}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{3a43c7e946e98ec94bad14a598ba7f54}
+      \strng{fullhash}{3a43c7e946e98ec94bad14a598ba7f54}
+      \strng{bibnamehash}{3a43c7e946e98ec94bad14a598ba7f54}
+      \strng{authorbibnamehash}{3a43c7e946e98ec94bad14a598ba7f54}
+      \strng{authornamehash}{3a43c7e946e98ec94bad14a598ba7f54}
+      \strng{authorfullhash}{3a43c7e946e98ec94bad14a598ba7f54}
+      \field{sortinit}{D}
+      \field{sortinithash}{2ef1bd9a78cc71eb74d7231c635177b8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the 4th International Symposium on Image and Signal Processing and Analysis}
+      \field{title}{Comparison of Resampling Schemes for Particle Filtering}
+      \field{year}{2005}
+      \field{pages}{64\bibrangedash 69}
+      \range{pages}{6}
+    \endentry
+    \entry{doucet2009}{incollection}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,uniquepart=base,hash=aca5faad8b57b96b59c12fc59d0b6eb4}{%
+           family={Doucet},
+           familyi={D\bibinitperiod},
+           given={Arnaud},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=17d1caa8d265744784c2779daffb0a90}{%
+           family={Johansen},
+           familyi={J\bibinitperiod},
+           given={Adam\bibnamedelima M.},
+           giveni={A\bibinitperiod\bibinitdelim M\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {OUP}%
+      }
+      \strng{namehash}{e023bba3ac0075634464dc6fed59cf44}
+      \strng{fullhash}{e023bba3ac0075634464dc6fed59cf44}
+      \strng{bibnamehash}{e023bba3ac0075634464dc6fed59cf44}
+      \strng{authorbibnamehash}{e023bba3ac0075634464dc6fed59cf44}
+      \strng{authornamehash}{e023bba3ac0075634464dc6fed59cf44}
+      \strng{authorfullhash}{e023bba3ac0075634464dc6fed59cf44}
+      \field{sortinit}{D}
+      \field{sortinithash}{2ef1bd9a78cc71eb74d7231c635177b8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Handbook of Nonlinear Filtering}
+      \field{title}{A Tutorial on Particle Filtering and Smoothing: Fifteen Years Later}
+      \field{year}{2011}
+      \field{pages}{656\bibrangedash 704}
+      \range{pages}{49}
+    \endentry
+    \entry{gerber2017}{article}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,uniquepart=base,hash=89d9b932076f570b1be70fbe32180549}{%
+           family={Gerber},
+           familyi={G\bibinitperiod},
+           given={Mathieu},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=23c0c7d947415c68f4949167db1ca938}{%
+           family={Chopin},
+           familyi={C\bibinitperiod},
+           given={Nicolas},
+           giveni={N\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=54f298378a05eefa8496fcea832c3d7e}{%
+           family={Whiteley},
+           familyi={W\bibinitperiod},
+           given={Nick},
+           giveni={N\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Institute of Mathematical Statistics}%
+      }
+      \strng{namehash}{536e8f005241b81906789e80c1a06a78}
+      \strng{fullhash}{536e8f005241b81906789e80c1a06a78}
+      \strng{bibnamehash}{536e8f005241b81906789e80c1a06a78}
+      \strng{authorbibnamehash}{536e8f005241b81906789e80c1a06a78}
+      \strng{authornamehash}{536e8f005241b81906789e80c1a06a78}
+      \strng{authorfullhash}{536e8f005241b81906789e80c1a06a78}
+      \field{sortinit}{G}
+      \field{sortinithash}{5e8d2bf9d38de41b1528bd307546008f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Annals of Statistics}
+      \field{number}{4}
+      \field{title}{Negative Association, Ordering and Convergence of Resampling Methods}
+      \field{volume}{47}
+      \field{year}{2019}
+      \field{pages}{2236\bibrangedash 2260}
+      \range{pages}{25}
+    \endentry
+    \entry{gordon1993}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,uniquepart=base,hash=6c39fa789ec2f74d530d31b8ea602a0d}{%
+           family={Gordon},
+           familyi={G\bibinitperiod},
+           given={Neil\bibnamedelima J.},
+           giveni={N\bibinitperiod\bibinitdelim J\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=a7e8bde5ee5ab494cda57304b63ae6aa}{%
+           family={Salmond},
+           familyi={S\bibinitperiod},
+           given={David\bibnamedelima J.},
+           giveni={D\bibinitperiod\bibinitdelim J\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=99217a75326f89fc51db48115c356872}{%
+           family={Smith},
+           familyi={S\bibinitperiod},
+           given={Adrian\bibnamedelimb F.\bibnamedelimi M.},
+           giveni={A\bibinitperiod\bibinitdelim F\bibinitperiod\bibinitdelim M\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{organization}{1}{%
+        {IET}%
+      }
+      \strng{namehash}{35cd5376e27bf1564fc29820da5ac2b2}
+      \strng{fullhash}{35cd5376e27bf1564fc29820da5ac2b2}
+      \strng{bibnamehash}{35cd5376e27bf1564fc29820da5ac2b2}
+      \strng{authorbibnamehash}{35cd5376e27bf1564fc29820da5ac2b2}
+      \strng{authornamehash}{35cd5376e27bf1564fc29820da5ac2b2}
+      \strng{authorfullhash}{35cd5376e27bf1564fc29820da5ac2b2}
+      \field{sortinit}{G}
+      \field{sortinithash}{5e8d2bf9d38de41b1528bd307546008f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{IEE Proceedings F (Radar and Signal Processing)}
+      \field{number}{2}
+      \field{title}{Novel Approach to Nonlinear/Non-{Gaussian} {Bayesian} State Estimation}
+      \field{volume}{140}
+      \field{year}{1993}
+      \field{pages}{107\bibrangedash 113}
+      \range{pages}{7}
+    \endentry
+    \entry{jacob2015}{article}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,uniquepart=base,hash=eb15862f4553ea52855b7cdaf745225c}{%
+           family={Jacob},
+           familyi={J\bibinitperiod},
+           given={Pierre\bibnamedelima E.},
+           giveni={P\bibinitperiod\bibinitdelim E\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=f350d26e9939e4f7916760e09e28e5f6}{%
+           family={Murray},
+           familyi={M\bibinitperiod},
+           given={Lawrence\bibnamedelima M.},
+           giveni={L\bibinitperiod\bibinitdelim M\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=2951229f7951d6da501aa8ec82d424e8}{%
+           family={Rubenthaler},
+           familyi={R\bibinitperiod},
+           given={Sylvain},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{99a6d74d1da1294a482cdfc953522129}
+      \strng{fullhash}{99a6d74d1da1294a482cdfc953522129}
+      \strng{bibnamehash}{99a6d74d1da1294a482cdfc953522129}
+      \strng{authorbibnamehash}{99a6d74d1da1294a482cdfc953522129}
+      \strng{authornamehash}{99a6d74d1da1294a482cdfc953522129}
+      \strng{authorfullhash}{99a6d74d1da1294a482cdfc953522129}
+      \field{sortinit}{J}
+      \field{sortinithash}{fce5f8d0bd05e8d93f3dbe21c78897ca}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Statistics and Computing}
+      \field{number}{2}
+      \field{title}{Path Storage in the Particle Filter}
+      \field{volume}{25}
+      \field{year}{2015}
+      \field{pages}{487\bibrangedash 496}
+      \range{pages}{10}
+    \endentry
+    \entry{kingman1982gene}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=ee1e0d2cdea2686aec099d0e62aecf1e}{%
+           family={Kingman},
+           familyi={K\bibinitperiod},
+           given={John\bibnamedelimb F.\bibnamedelimi C.},
+           giveni={J\bibinitperiod\bibinitdelim F\bibinitperiod\bibinitdelim C\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press}%
+      }
+      \strng{namehash}{ee1e0d2cdea2686aec099d0e62aecf1e}
+      \strng{fullhash}{ee1e0d2cdea2686aec099d0e62aecf1e}
+      \strng{bibnamehash}{ee1e0d2cdea2686aec099d0e62aecf1e}
+      \strng{authorbibnamehash}{ee1e0d2cdea2686aec099d0e62aecf1e}
+      \strng{authornamehash}{ee1e0d2cdea2686aec099d0e62aecf1e}
+      \strng{authorfullhash}{ee1e0d2cdea2686aec099d0e62aecf1e}
+      \field{sortinit}{K}
+      \field{sortinithash}{9fd838a31ba64d981e8f44562bd33f89}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Applied Probability}
+      \field{number}{A}
+      \field{title}{On the Genealogy of Large Populations}
+      \field{volume}{19}
+      \field{year}{1982}
+      \field{pages}{27\bibrangedash 43}
+      \range{pages}{17}
+    \endentry
+    \entry{kingman1982coal}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=ee1e0d2cdea2686aec099d0e62aecf1e}{%
+           family={Kingman},
+           familyi={K\bibinitperiod},
+           given={John\bibnamedelimb F.\bibnamedelimi C.},
+           giveni={J\bibinitperiod\bibinitdelim F\bibinitperiod\bibinitdelim C\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{ee1e0d2cdea2686aec099d0e62aecf1e}
+      \strng{fullhash}{ee1e0d2cdea2686aec099d0e62aecf1e}
+      \strng{bibnamehash}{ee1e0d2cdea2686aec099d0e62aecf1e}
+      \strng{authorbibnamehash}{ee1e0d2cdea2686aec099d0e62aecf1e}
+      \strng{authornamehash}{ee1e0d2cdea2686aec099d0e62aecf1e}
+      \strng{authorfullhash}{ee1e0d2cdea2686aec099d0e62aecf1e}
+      \field{sortinit}{K}
+      \field{sortinithash}{9fd838a31ba64d981e8f44562bd33f89}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Stochastic Processes and Their Applications}
+      \field{number}{3}
+      \field{title}{The Coalescent}
+      \field{volume}{13}
+      \field{year}{1982}
+      \field{pages}{235\bibrangedash 248}
+      \range{pages}{14}
+    \endentry
+    \entry{kitagawa1996}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=0f0596895bc5916ca3bfd067173c3585}{%
+           family={Kitagawa},
+           familyi={K\bibinitperiod},
+           given={Genshiro},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Taylor \& Francis}%
+      }
+      \strng{namehash}{0f0596895bc5916ca3bfd067173c3585}
+      \strng{fullhash}{0f0596895bc5916ca3bfd067173c3585}
+      \strng{bibnamehash}{0f0596895bc5916ca3bfd067173c3585}
+      \strng{authorbibnamehash}{0f0596895bc5916ca3bfd067173c3585}
+      \strng{authornamehash}{0f0596895bc5916ca3bfd067173c3585}
+      \strng{authorfullhash}{0f0596895bc5916ca3bfd067173c3585}
+      \field{sortinit}{K}
+      \field{sortinithash}{9fd838a31ba64d981e8f44562bd33f89}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Computational and Graphical Statistics}
+      \field{number}{1}
+      \field{title}{{Monte} {Carlo} Filter and Smoother for Non-{Gaussian} Nonlinear State Space Models}
+      \field{volume}{5}
+      \field{year}{1996}
+      \field{pages}{1\bibrangedash 25}
+      \range{pages}{25}
+    \endentry
+    \entry{koskela2018}{report}{}
+      \name{author}{4}{}{%
+        {{uniquename=0,uniquepart=base,hash=9b74b02c1ef5fc6fd3d8f21b8ce9be68}{%
+           family={Koskela},
+           familyi={K\bibinitperiod},
+           given={Jere},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=965ba62a239c33d192ae4fc5dee134e6}{%
+           family={Jenkins},
+           familyi={J\bibinitperiod},
+           given={Paul\bibnamedelima A.},
+           giveni={P\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=17d1caa8d265744784c2779daffb0a90}{%
+           family={Johansen},
+           familyi={J\bibinitperiod},
+           given={Adam\bibnamedelima M.},
+           giveni={A\bibinitperiod\bibinitdelim M\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=077dc9906b1d1d467839d082636e7113}{%
+           family={Spanò},
+           familyi={S\bibinitperiod},
+           given={Dario},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{institution}{1}{%
+        {ArXiv}%
+      }
+      \strng{namehash}{0c20a152cbf08f66f0c1ef81feba93ac}
+      \strng{fullhash}{7afd68e6bc1a63166dd7429d0bdfd696}
+      \strng{bibnamehash}{0c20a152cbf08f66f0c1ef81feba93ac}
+      \strng{authorbibnamehash}{0c20a152cbf08f66f0c1ef81feba93ac}
+      \strng{authornamehash}{0c20a152cbf08f66f0c1ef81feba93ac}
+      \strng{authorfullhash}{7afd68e6bc1a63166dd7429d0bdfd696}
+      \field{sortinit}{K}
+      \field{sortinithash}{9fd838a31ba64d981e8f44562bd33f89}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{number}{1804.01811}
+      \field{title}{Asymptotic genealogies of interacting particle systems with an application to sequential {M}onte {C}arlo}
+      \field{type}{Mathematics e-print}
+      \field{year}{2018}
+    \endentry
+    \entry{lee2019}{unpublished}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,uniquepart=base,hash=b03496173658ac066e649b50540c712e}{%
+           family={Lee},
+           familyi={L\bibinitperiod},
+           given={Anthony},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=f350d26e9939e4f7916760e09e28e5f6}{%
+           family={Murray},
+           familyi={M\bibinitperiod},
+           given={Lawrence\bibnamedelima M.},
+           giveni={L\bibinitperiod\bibinitdelim M\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=17d1caa8d265744784c2779daffb0a90}{%
+           family={Johansen},
+           familyi={J\bibinitperiod},
+           given={Adam\bibnamedelima M.},
+           giveni={A\bibinitperiod\bibinitdelim M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{b55923e24b2df80ec1d4cc4543c63ecb}
+      \strng{fullhash}{b55923e24b2df80ec1d4cc4543c63ecb}
+      \strng{bibnamehash}{b55923e24b2df80ec1d4cc4543c63ecb}
+      \strng{authorbibnamehash}{b55923e24b2df80ec1d4cc4543c63ecb}
+      \strng{authornamehash}{b55923e24b2df80ec1d4cc4543c63ecb}
+      \strng{authorfullhash}{b55923e24b2df80ec1d4cc4543c63ecb}
+      \field{sortinit}{L}
+      \field{sortinithash}{2c7981aaabc885868aba60f0c09ee20f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Unpublished}
+      \field{title}{Resampling in Conditional SMC Algorithms}
+      \field{year}{2019}
+    \endentry
+    \entry{lee2018}{article}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,uniquepart=base,hash=b03496173658ac066e649b50540c712e}{%
+           family={Lee},
+           familyi={L\bibinitperiod},
+           given={Anthony},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=54f298378a05eefa8496fcea832c3d7e}{%
+           family={Whiteley},
+           familyi={W\bibinitperiod},
+           given={Nick},
+           giveni={N\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Oxford University Press}%
+      }
+      \strng{namehash}{3c02e015303bb481e92e3a6f718d47a6}
+      \strng{fullhash}{3c02e015303bb481e92e3a6f718d47a6}
+      \strng{bibnamehash}{3c02e015303bb481e92e3a6f718d47a6}
+      \strng{authorbibnamehash}{3c02e015303bb481e92e3a6f718d47a6}
+      \strng{authornamehash}{3c02e015303bb481e92e3a6f718d47a6}
+      \strng{authorfullhash}{3c02e015303bb481e92e3a6f718d47a6}
+      \field{sortinit}{L}
+      \field{sortinithash}{2c7981aaabc885868aba60f0c09ee20f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Biometrika}
+      \field{number}{3}
+      \field{title}{Variance Estimation in the Particle Filter}
+      \field{volume}{105}
+      \field{year}{2018}
+      \field{pages}{609\bibrangedash 625}
+      \range{pages}{17}
+    \endentry
+    \entry{li2020}{report}{}
+      \name{author}{4}{}{%
+        {{uniquename=0,uniquepart=base,hash=16eb757fd1f91106a57e4904ee7c845b}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Yichao},
+           giveni={Y\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=afa7f44126ad63c18b8912d5efd8e7bd}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Wenshuo},
+           giveni={W\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=c7968c111a43f205d32685150dcd2259}{%
+           family={Deng},
+           familyi={D\bibinitperiod},
+           given={Ke},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=58b6ab30975eca2201e264d805607d70}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={Jun\bibnamedelima S.},
+           giveni={J\bibinitperiod\bibinitdelim S\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{institution}{1}{%
+        {ArXiv}%
+      }
+      \strng{namehash}{eaf80a46b49f2411c28765648bdd3641}
+      \strng{fullhash}{0397940e1cb35b78e119fa3534b8f3e2}
+      \strng{bibnamehash}{eaf80a46b49f2411c28765648bdd3641}
+      \strng{authorbibnamehash}{eaf80a46b49f2411c28765648bdd3641}
+      \strng{authornamehash}{eaf80a46b49f2411c28765648bdd3641}
+      \strng{authorfullhash}{0397940e1cb35b78e119fa3534b8f3e2}
+      \field{sortinit}{L}
+      \field{sortinithash}{2c7981aaabc885868aba60f0c09ee20f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{number}{2004.01975}
+      \field{title}{Stratification and Optimal Resampling for Sequential {Monte} {Carlo}}
+      \field{type}{techreport}
+      \field{year}{2020}
+    \endentry
+    \entry{lindsten2013}{article}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,uniquepart=base,hash=0274b443331930dc611dd367a7c198a5}{%
+           family={Lindsten},
+           familyi={L\bibinitperiod},
+           given={Fredrik},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=a9c50cc5238a2ba930298ce64d118f68}{%
+           family={Sch{ö}n},
+           familyi={S\bibinitperiod},
+           given={Thomas\bibnamedelima B.},
+           giveni={T\bibinitperiod\bibinitdelim B\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Now Publishers, Inc.}%
+      }
+      \strng{namehash}{e22efcc57da478d01c3cc34ad0d2e5f0}
+      \strng{fullhash}{e22efcc57da478d01c3cc34ad0d2e5f0}
+      \strng{bibnamehash}{e22efcc57da478d01c3cc34ad0d2e5f0}
+      \strng{authorbibnamehash}{e22efcc57da478d01c3cc34ad0d2e5f0}
+      \strng{authornamehash}{e22efcc57da478d01c3cc34ad0d2e5f0}
+      \strng{authorfullhash}{e22efcc57da478d01c3cc34ad0d2e5f0}
+      \field{sortinit}{L}
+      \field{sortinithash}{2c7981aaabc885868aba60f0c09ee20f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Foundations and Trends in Machine Learning}
+      \field{number}{1}
+      \field{title}{Backward Simulation Methods for {Monte} {Carlo} Statistical Inference}
+      \field{volume}{6}
+      \field{year}{2013}
+      \field{pages}{1\bibrangedash 143}
+      \range{pages}{143}
+    \endentry
+    \entry{mohle1998}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=b6cd56499245b16ab003cae95de7eae7}{%
+           family={M{ö}hle},
+           familyi={M\bibinitperiod},
+           given={Martin},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press}%
+      }
+      \strng{namehash}{b6cd56499245b16ab003cae95de7eae7}
+      \strng{fullhash}{b6cd56499245b16ab003cae95de7eae7}
+      \strng{bibnamehash}{b6cd56499245b16ab003cae95de7eae7}
+      \strng{authorbibnamehash}{b6cd56499245b16ab003cae95de7eae7}
+      \strng{authornamehash}{b6cd56499245b16ab003cae95de7eae7}
+      \strng{authorfullhash}{b6cd56499245b16ab003cae95de7eae7}
+      \field{sortinit}{M}
+      \field{sortinithash}{cfd219b90152c06204fab207bc6c7cab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Applied Probability}
+      \field{number}{2}
+      \field{title}{Robustness Results for the Coalescent}
+      \field{volume}{35}
+      \field{year}{1998}
+      \field{pages}{438\bibrangedash 447}
+      \range{pages}{10}
+    \endentry
+    \entry{mohle2000}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=b6cd56499245b16ab003cae95de7eae7}{%
+           family={M{ö}hle},
+           familyi={M\bibinitperiod},
+           given={Martin},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {JSTOR}%
+      }
+      \strng{namehash}{b6cd56499245b16ab003cae95de7eae7}
+      \strng{fullhash}{b6cd56499245b16ab003cae95de7eae7}
+      \strng{bibnamehash}{b6cd56499245b16ab003cae95de7eae7}
+      \strng{authorbibnamehash}{b6cd56499245b16ab003cae95de7eae7}
+      \strng{authornamehash}{b6cd56499245b16ab003cae95de7eae7}
+      \strng{authorfullhash}{b6cd56499245b16ab003cae95de7eae7}
+      \field{sortinit}{M}
+      \field{sortinithash}{cfd219b90152c06204fab207bc6c7cab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Advances in Applied Probability}
+      \field{title}{Total Variation Distances and Rates of Convergence for Ancestral Coalescent Processes in Exchangeable Population Models}
+      \field{year}{2000}
+      \field{pages}{983\bibrangedash 993}
+      \range{pages}{11}
+    \endentry
+    \entry{mohle1999}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=b6cd56499245b16ab003cae95de7eae7}{%
+           family={M{ö}hle},
+           familyi={M\bibinitperiod},
+           given={Martin},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press}%
+      }
+      \strng{namehash}{b6cd56499245b16ab003cae95de7eae7}
+      \strng{fullhash}{b6cd56499245b16ab003cae95de7eae7}
+      \strng{bibnamehash}{b6cd56499245b16ab003cae95de7eae7}
+      \strng{authorbibnamehash}{b6cd56499245b16ab003cae95de7eae7}
+      \strng{authornamehash}{b6cd56499245b16ab003cae95de7eae7}
+      \strng{authorfullhash}{b6cd56499245b16ab003cae95de7eae7}
+      \field{sortinit}{M}
+      \field{sortinithash}{cfd219b90152c06204fab207bc6c7cab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Applied Probability}
+      \field{number}{2}
+      \field{title}{Weak Convergence to the Coalescent in Neutral Population Models}
+      \field{volume}{36}
+      \field{year}{1999}
+      \field{pages}{446\bibrangedash 460}
+      \range{pages}{15}
+    \endentry
+    \entry{mohlesagitov1998}{article}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,uniquepart=base,hash=b6cd56499245b16ab003cae95de7eae7}{%
+           family={M{ö}hle},
+           familyi={M\bibinitperiod},
+           given={Martin},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=1940412646c2d90b785da664aaae82fe}{%
+           family={Sagitov},
+           familyi={S\bibinitperiod},
+           given={Serik},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Citeseer}%
+      }
+      \strng{namehash}{7b28cea84f9657a4420fed06db351e19}
+      \strng{fullhash}{7b28cea84f9657a4420fed06db351e19}
+      \strng{bibnamehash}{7b28cea84f9657a4420fed06db351e19}
+      \strng{authorbibnamehash}{7b28cea84f9657a4420fed06db351e19}
+      \strng{authornamehash}{7b28cea84f9657a4420fed06db351e19}
+      \strng{authorfullhash}{7b28cea84f9657a4420fed06db351e19}
+      \field{sortinit}{M}
+      \field{sortinithash}{cfd219b90152c06204fab207bc6c7cab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{A Characterization of Ancestral Limit Processes Arising in Haploid Population Genetics Models}
+      \field{year}{1998}
+    \endentry
+    \entry{mohle2001}{article}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,uniquepart=base,hash=b6cd56499245b16ab003cae95de7eae7}{%
+           family={M{ö}hle},
+           familyi={M\bibinitperiod},
+           given={Martin},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=1940412646c2d90b785da664aaae82fe}{%
+           family={Sagitov},
+           familyi={S\bibinitperiod},
+           given={Serik},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Institute of Mathematical Statistics}%
+      }
+      \strng{namehash}{7b28cea84f9657a4420fed06db351e19}
+      \strng{fullhash}{7b28cea84f9657a4420fed06db351e19}
+      \strng{bibnamehash}{7b28cea84f9657a4420fed06db351e19}
+      \strng{authorbibnamehash}{7b28cea84f9657a4420fed06db351e19}
+      \strng{authornamehash}{7b28cea84f9657a4420fed06db351e19}
+      \strng{authorfullhash}{7b28cea84f9657a4420fed06db351e19}
+      \field{sortinit}{M}
+      \field{sortinithash}{cfd219b90152c06204fab207bc6c7cab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Annals of Probability}
+      \field{number}{4}
+      \field{title}{A Classification of Coalescent Processes for Haploid Exchangeable Population Models}
+      \field{volume}{29}
+      \field{year}{2001}
+      \field{pages}{1547\bibrangedash 1562}
+      \range{pages}{16}
+    \endentry
+    \entry{mohle2003}{article}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,uniquepart=base,hash=91dc4d416f310afc5cf0edbfc909f0cf}{%
+           family={Möhle},
+           familyi={M\bibinitperiod},
+           given={Martin},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=1940412646c2d90b785da664aaae82fe}{%
+           family={Sagitov},
+           familyi={S\bibinitperiod},
+           given={Serik},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{c973138d14f3ec478361e082419d4283}
+      \strng{fullhash}{c973138d14f3ec478361e082419d4283}
+      \strng{bibnamehash}{c973138d14f3ec478361e082419d4283}
+      \strng{authorbibnamehash}{c973138d14f3ec478361e082419d4283}
+      \strng{authornamehash}{c973138d14f3ec478361e082419d4283}
+      \strng{authorfullhash}{c973138d14f3ec478361e082419d4283}
+      \field{sortinit}{M}
+      \field{sortinithash}{cfd219b90152c06204fab207bc6c7cab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Mathematical Biology}
+      \field{title}{Coalescent Patterns in Exchangeable Diploid Population Models}
+      \field{volume}{47}
+      \field{year}{2003}
+      \field{pages}{337\bibrangedash 352}
+      \range{pages}{16}
+    \endentry
+    \entry{murray2016}{article}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,uniquepart=base,hash=f350d26e9939e4f7916760e09e28e5f6}{%
+           family={Murray},
+           familyi={M\bibinitperiod},
+           given={Lawrence\bibnamedelima M.},
+           giveni={L\bibinitperiod\bibinitdelim M\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=b03496173658ac066e649b50540c712e}{%
+           family={Lee},
+           familyi={L\bibinitperiod},
+           given={Anthony},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=eb15862f4553ea52855b7cdaf745225c}{%
+           family={Jacob},
+           familyi={J\bibinitperiod},
+           given={Pierre\bibnamedelima E.},
+           giveni={P\bibinitperiod\bibinitdelim E\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Taylor \& Francis}%
+      }
+      \strng{namehash}{2ca6f300dd279d2fd9b968fa50c903a8}
+      \strng{fullhash}{2ca6f300dd279d2fd9b968fa50c903a8}
+      \strng{bibnamehash}{2ca6f300dd279d2fd9b968fa50c903a8}
+      \strng{authorbibnamehash}{2ca6f300dd279d2fd9b968fa50c903a8}
+      \strng{authornamehash}{2ca6f300dd279d2fd9b968fa50c903a8}
+      \strng{authorfullhash}{2ca6f300dd279d2fd9b968fa50c903a8}
+      \field{sortinit}{M}
+      \field{sortinithash}{cfd219b90152c06204fab207bc6c7cab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Computational and Graphical Statistics}
+      \field{number}{3}
+      \field{title}{Parallel Resampling in the Particle Filter}
+      \field{volume}{25}
+      \field{year}{2016}
+      \field{pages}{789\bibrangedash 805}
+      \range{pages}{17}
+    \endentry
+    \entry{olsson2019}{article}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,uniquepart=base,hash=44df9175ec8220c69d48b228e18e5332}{%
+           family={Olsson},
+           familyi={O\bibinitperiod},
+           given={Jimmy},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=8016e20ffe53cd289b6f027afc9eab01}{%
+           family={Douc},
+           familyi={D\bibinitperiod},
+           given={Randal},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{2}{%
+        {Bernoulli Society for Mathematical Statistics}%
+        {Probability}%
+      }
+      \strng{namehash}{d3048f277065b9748abbe8fd216cae24}
+      \strng{fullhash}{d3048f277065b9748abbe8fd216cae24}
+      \strng{bibnamehash}{d3048f277065b9748abbe8fd216cae24}
+      \strng{authorbibnamehash}{d3048f277065b9748abbe8fd216cae24}
+      \strng{authornamehash}{d3048f277065b9748abbe8fd216cae24}
+      \strng{authorfullhash}{d3048f277065b9748abbe8fd216cae24}
+      \field{sortinit}{O}
+      \field{sortinithash}{dad3efd0836470093a7b4a7bb756eb8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Bernoulli}
+      \field{number}{2}
+      \field{title}{Numerically Stable Online Estimation of Variance in Particle Filters}
+      \field{volume}{25}
+      \field{year}{2019}
+      \field{pages}{1504\bibrangedash 1535}
+      \range{pages}{32}
+    \endentry
+    \entry{sagitov1999}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=1940412646c2d90b785da664aaae82fe}{%
+           family={Sagitov},
+           familyi={S\bibinitperiod},
+           given={Serik},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {JSTOR}%
+      }
+      \strng{namehash}{1940412646c2d90b785da664aaae82fe}
+      \strng{fullhash}{1940412646c2d90b785da664aaae82fe}
+      \strng{bibnamehash}{1940412646c2d90b785da664aaae82fe}
+      \strng{authorbibnamehash}{1940412646c2d90b785da664aaae82fe}
+      \strng{authornamehash}{1940412646c2d90b785da664aaae82fe}
+      \strng{authorfullhash}{1940412646c2d90b785da664aaae82fe}
+      \field{sortinit}{S}
+      \field{sortinithash}{322b1d5276f2f6c1bccdcd15920dbee6}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Applied Probability}
+      \field{title}{The General Coalescent with Asynchronous Mergers of Ancestral Lines}
+      \field{year}{1999}
+      \field{pages}{1116\bibrangedash 1125}
+      \range{pages}{10}
+    \endentry
+    \entry{whitley1994}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=b64bc2becad49e7b8be65b1b7ca374f1}{%
+           family={Whitley},
+           familyi={W\bibinitperiod},
+           given={Darrell},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{b64bc2becad49e7b8be65b1b7ca374f1}
+      \strng{fullhash}{b64bc2becad49e7b8be65b1b7ca374f1}
+      \strng{bibnamehash}{b64bc2becad49e7b8be65b1b7ca374f1}
+      \strng{authorbibnamehash}{b64bc2becad49e7b8be65b1b7ca374f1}
+      \strng{authornamehash}{b64bc2becad49e7b8be65b1b7ca374f1}
+      \strng{authorfullhash}{b64bc2becad49e7b8be65b1b7ca374f1}
+      \field{sortinit}{W}
+      \field{sortinithash}{ecb89ff85896a47dc313960773ac311d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Statistics and Computing}
+      \field{number}{2}
+      \field{title}{A Genetic Algorithm Tutorial}
+      \field{volume}{4}
+      \field{year}{1994}
+      \field{pages}{65\bibrangedash 85}
+      \range{pages}{21}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
 
-\harvarditem[Chan et~al.]{Chan, Lai et~al.}{2013}{chan2013}
-Chan, H.~P., Lai, T.~L. et~al.  \harvardyearleft 2013\harvardyearright , `A
-  general theory of particle filters in hidden {Markov} models and some
-  applications', {\em The Annals of Statistics} {\bf 41}(6),~2877--2904.
-
-\harvarditem{Del~Moral}{2013}{delmoral2013}
-Del~Moral, P.  \harvardyearleft 2013\harvardyearright , {\em Mean Field
-  Simulation for {Monte} {Carlo} Integration}, Chapman and Hall/CRC.
-
-\harvarditem[Del~Moral et~al.]{Del~Moral, Doucet, Jasra
-  et~al.}{2012}{delmoral2012}
-Del~Moral, P., Doucet, A., Jasra, A. et~al.  \harvardyearleft
-  2012\harvardyearright , `On adaptive resampling strategies for sequential
-  {Monte} {Carlo} methods', {\em Bernoulli} {\bf 18}(1),~252--278.
-
-\harvarditem[Douc et~al.]{Douc, Capp{\'e} \harvardand\
-  Moulines}{2005}{douc2005}
-Douc, R., Capp{\'e}, O. \harvardand\ Moulines, E.  \harvardyearleft
-  2005\harvardyearright , Comparison of resampling schemes for particle
-  filtering, {\em in} `Image and Signal Processing and Analysis, 2005. ISPA
-  2005. Proceedings of the 4th International Symposium on', IEEE, pp.~64--69.
-
-\harvarditem{Doucet \harvardand\ Johansen}{2011}{doucet2009}
-Doucet, A. \harvardand\ Johansen, A.~M.  \harvardyearleft 2011\harvardyearright
-  , A tutorial on particle filtering and smoothing: Fifteen years later, {\em
-  in} `Handbook of nonlinear filtering', OUP, pp.~656--704.
-
-\harvarditem[Gerber et~al.]{Gerber, Chopin \harvardand\
-  Whiteley}{2019}{gerber2017}
-Gerber, M., Chopin, N. \harvardand\ Whiteley, N.  \harvardyearleft
-  2019\harvardyearright , `Negative association, ordering and convergence of
-  resampling methods', {\em The Annals of Statistics} {\bf 47}(4),~2236--2260.
-
-\harvarditem[Gordon et~al.]{Gordon, Salmond \harvardand\
-  Smith}{1993}{gordon1993}
-Gordon, N.~J., Salmond, D.~J. \harvardand\ Smith, A.~F.  \harvardyearleft
-  1993\harvardyearright , Novel approach to nonlinear/non-{Gaussian} {Bayesian}
-  state estimation, {\em in} `IEE Proceedings F (Radar and Signal Processing)',
-  Vol. 140, IET, pp.~107--113.
-
-\harvarditem[Jacob et~al.]{Jacob, Murray \harvardand\
-  Rubenthaler}{2015}{jacob2015}
-Jacob, P.~E., Murray, L.~M. \harvardand\ Rubenthaler, S.  \harvardyearleft
-  2015\harvardyearright , `Path storage in the particle filter', {\em
-  Statistics and Computing} {\bf 25}(2),~487--496.
-
-\harvarditem{Kitagawa}{1996}{kitagawa1996}
-Kitagawa, G.  \harvardyearleft 1996\harvardyearright , `{Monte} {Carlo} filter
-  and smoother for non-{Gaussian} nonlinear state space models', {\em Journal
-  of Computational and Graphical Statistics} {\bf 5}(1),~1--25.
-
-\harvarditem[Koskela et~al.]{Koskela, Jenkins, Johansen \harvardand\
-  Span\`o}{2018}{koskela2018}
-Koskela, J., Jenkins, P.~A., Johansen, A.~M. \harvardand\ Span\`o, D.
-  \harvardyearleft 2018\harvardyearright , `Asymptotic genealogies of
-  interacting particle systems with an application to sequential {Monte}
-  {Carlo}', {\em arXiv preprint arXiv:1804.01811} .
-
-\harvarditem[Lee et~al.]{Lee, Murray \harvardand\ Johansen}{2019}{lee2019}
-Lee, A., Murray, L. \harvardand\ Johansen, A.~M.  \harvardyearleft
-  2019\harvardyearright , `Resampling in conditional {SMC} algorithms'.
-
-\harvarditem{Lee \harvardand\ Whiteley}{2018}{lee2018}
-Lee, A. \harvardand\ Whiteley, N.  \harvardyearleft 2018\harvardyearright ,
-  `Variance estimation in the particle filter', {\em Biometrika} {\bf
-  105}(3),~609--625.
-
-\harvarditem[Li et~al.]{Li, Wang, Deng \harvardand\ Liu}{2020}{li2020}
-Li, Y., Wang, W., Deng, K. \harvardand\ Liu, J.~S.  \harvardyearleft
-  2020\harvardyearright , `Stratification and optimal resampling for sequential
-  {Monte} {Carlo}', {\em arXiv preprint arXiv:2004.01975} .
-
-\harvarditem[Lindsten et~al.]{Lindsten, Sch{\"o}n et~al.}{2013}{lindsten2013}
-Lindsten, F., Sch{\"o}n, T.~B. et~al.  \harvardyearleft 2013\harvardyearright ,
-  `Backward simulation methods for {Monte} {Carlo} statistical inference', {\em
-  Foundations and Trends in Machine Learning} {\bf 6}(1),~1--143.
-
-\harvarditem{M{\"o}hle}{1998}{mohle1998}
-M{\"o}hle, M.  \harvardyearleft 1998\harvardyearright , `Robustness results for
-  the coalescent', {\em Journal of Applied Probability} {\bf 35}(2),~438--447.
-
-\harvarditem{M{\"o}hle}{1999}{mohle1999}
-M{\"o}hle, M.  \harvardyearleft 1999\harvardyearright , `Weak convergence to
-  the coalescent in neutral population models', {\em Journal of Applied
-  Probability} {\bf 36}(2),~446--460.
-
-\harvarditem[M{\"o}hle et~al.]{M{\"o}hle, Sagitov et~al.}{2001}{mohle2001}
-M{\"o}hle, M., Sagitov, S. et~al.  \harvardyearleft 2001\harvardyearright , `A
-  classification of coalescent processes for haploid exchangeable population
-  models', {\em The Annals of Probability} {\bf 29}(4),~1547--1562.
-
-\harvarditem[Murray et~al.]{Murray, Lee \harvardand\ Jacob}{2016}{murray2016}
-Murray, L.~M., Lee, A. \harvardand\ Jacob, P.~E.  \harvardyearleft
-  2016\harvardyearright , `Parallel resampling in the particle filter', {\em
-  Journal of Computational and Graphical Statistics} {\bf 25}(3),~789--805.
-
-\harvarditem[Olsson et~al.]{Olsson, Douc et~al.}{2019}{olsson2019}
-Olsson, J., Douc, R. et~al.  \harvardyearleft 2019\harvardyearright ,
-  `Numerically stable online estimation of variance in particle filters', {\em
-  Bernoulli} {\bf 25}(2),~1504--1535.
-
-\harvarditem{Whitley}{1994}{whitley1994}
-Whitley, D.  \harvardyearleft 1994\harvardyearright , `A genetic algorithm
-  tutorial', {\em Statistics and Computing} {\bf 4}(2),~65--85.
-
-\end{thebibliography}

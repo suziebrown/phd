@@ -3,112 +3,158 @@
 \usepackage[margin=2.5cm]{geometry}
 
 % bibliography
-\usepackage[round, sort&compress]{natbib}
-\usepackage{har2nat}
-\bibliographystyle{agsm}
+\usepackage[citestyle=authortitle-comp, backend=biber]{biblatex}
+\addbibresource{../smc.bib}
+\renewbibmacro*{cite:title}{%
+  \printtext[bibhyperref]{%
+    \printdate%
+    \setunit{\addcomma\space}
+    \printfield[citetitle]{labeltitle}%
+    }}
+    
+% maths
+\usepackage{amsmath}
+\usepackage{amssymb}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\V}{\operatorname{Var}}
 
-\title{Literature Review Notes}
+% metadata
+\title{Annotated Bibliography}
 \author{Suzie Brown}
+\date{}
+
 
 \begin{document}
 \maketitle
 
-%-----------------------------------
-\section*{Sequential Monte Carlo}
+%
+\section*{SEQUENTIAL MONTE CARLO}
 
-\textbf{\citet{gordon1993}}\\
+\subsection*{\cite{gordon1993}}
 Original reference for SMC.
-\\[5pt]
-\textbf{\citet{kitagawa1996}}\\
-Nice introduction to SMC. Review of other non-linear filtering techniques: extensions to Kalman filtering.
-\\[5pt]
-\textbf{\citet{delmoral2013}}\\
+
+\subsection*{\cite{kitagawa1996}}
+Nice introduction to SMC. Review of other nonlinear filtering techniques: extensions to Kalman filtering.
+
+\subsection*{\cite{delmoral2013}}
 Loads of rigorous results about SMC e.g.\ convergence, rates, CLTs.
-\\[5pt]
-\textbf{\citet{doucet2009}}\\
--
-\\[5pt]
-\textbf{\citet{andrieu2010}}\\
+
+\subsection*{\cite{doucet2009}}
+
+
+\subsection*{\cite{andrieu2010}}
 Introduces particle MCMC methods, including particle Gibbs with conditional SMC.
 
-%-----------------------------------
-\section*{Resampling}
+%
+\section*{RESAMPLING}
 
-\textbf{\citet{kitagawa1996}}\\
-Comparison of multinomial, stratified \& systematic resampling. And the effect of pre-sorting. [in appendix]
-\\[5pt]
-\textbf{\citet{douc2005}}\\
-Comparison of Monte Carlo variance between multinomial, res-mn, stratified, systematic. CLTs for resampled particles.
-\\[5pt]
-\textbf{\citet{lee2019}}\\
-Implementation of low-variance resampling within conditional SMC.
-\\[5pt]
-\textbf{\citet{murray2016}}\\
--
-\\[5pt]
-\textbf{\citet{whitley1994}}\\
--
-\\[5pt]
-\textbf{\citet{carpenter1999}}\\
--
-\\[5pt]
-\textbf{\citet{gerber2017}}\\
--
-\\[5pt]
-\textbf{\citet{li2020}}\\
--
-\\[5pt]
-\textbf{\citet{delmoral2012}}\\
--
+\subsection*{\cite{kitagawa1996}}
+Comparison of multinomial, stratified \& systematic resampling. And the effect of presorting. [in appendix]
 
-%-----------------------------------
-\section*{Backward Smoothing Methods}
+\subsection*{\cite{douc2005}}
+Comparison of Monte Carlo variance between multinomial, resmn, stratified, systematic. CLTs for resampled particles.
 
-\textbf{\citet{kitagawa1996}}\\
-Some solutions to ancestral degeneracy: fixed lag smoother, forward-backward-type algorithm.
-\\[5pt]
-\textbf{\citet{doucet2009}}\\
--
-\\[5pt]
-\textbf{\citet{lindsten2013}}\\
+\subsection*{\cite{lee2019}}
+Implementation of lowvariance resampling within conditional SMC.
+
+\subsection*{\cite{murray2016}}
+
+
+\subsection*{\cite{whitley1994}}
+
+
+\subsection*{\cite{carpenter1999}}
+
+
+\subsection*{\cite{gerber2017}}
+
+
+\subsection*{\cite{li2020}}
+
+
+\subsection*{\cite{delmoral2012}}
+
+
+%
+\section*{BACKWARD SIMULATION}
+
+\subsection*{\cite{kitagawa1996}}
+Some solutions to ancestral degeneracy: fixed lag smoother, forwardbackwardtype algorithm.
+
+\subsection*{\cite{doucet2009}}
+
+
+\subsection*{\cite{lindsten2013}}
 A whole book on backward simulation. [Chapter 5] describes backward simulation and ancestor sampling in particle MCMC.
-\\[5pt]
-\textbf{\citet{andrieu2010}}\\
+
+\subsection*{\cite{andrieu2010}}
 Nick Whiteley describes (briefly!) the idea of ancestor sampling in particle MCMC [see Nick's comment in discussion].
 
-%-----------------------------------
-\section*{Convergence of Genealogies}
+%
+\section*{CONVERGENCE OF GENEALOGIES}
 
-\textbf{\citet{mohle1998}}\\
+Also consider looking at: Donnelly Tavar\'e 1995 ``Coalescents and genealogical structure under neutrality''; Griffiths Tavar\'e 1994 ``Sampling theory for neutral alleles in a varying environment''; Marjoram 1992 ``Correlation structures in applied probability'' (PhD thesis, UCL).
+
+\subsection*{\cite{kingman1982gene}}
+\begin{itemize}
+\item Introduces the $n$-coalescent (in a very nice clear way) with the sam enotation we still use
+\item \textbf{Theorem:} suppose $\nu_{1:N}$ are exchangeable and independent across generations and $\V[\nu_1]\to\sigma^2 \in (0,\infty)$ and $\E[\nu_1^m] \leq M_m$ for all $m\in\mathbb{N}$. Then the $n$-genealogies scaled by $\lfloor N\sigma^{-2}t \rfloor$ converge to the $n$-coalescent in the sense of FDDs.
+\item $n$-coalescent also applies for models where $\nu_j$ are not exchangeable or independent across generations, as long as the genealogies are Markov at least up to error $O(N^{-1})$ and the transitions satisfy $p_{\xi\eta} = q_{\xi\eta}\sigma^2 N^{-1} + o(N^{-1}$
+\item The $n$-coalescent is a good robust model for \emph{large neutral} populations
+\item Genealogy decouples into a jump chain and a pure death process
+\item There exists the Kingman coalescent as infinite-dimensional embedding of the $n$-coalescents
+\end{itemize}
+
+
+\subsection*{\cite{kingman1982coal}}
+Broadly, this paper introduces the Kingman coalescent (as opposed to $n$-coalescent) and proves some properties...
+
+\subsection*{\cite{mohle1998}}
 Necessary \& sufficient conditions for convergence of Cannings model to a coalescent process more general than Kingman. Allowing large mergers but not simultaneous mergers.
-\\[5pt]
-\textbf{\citet{mohle2001}}\\
-Even more general result than \citet{mohle1998}, giving necessary \& sufficient conditions for convergence to a process allowing large and simultaneous mergers. I hope to adapt this result to prove necessity of our Theorem 1 conditions.
-\\[5pt]
-\textbf{\citet{mohle1999}}\\
--
+\begin{itemize}
+\item Population size can vary over time, but only deterministically
+\item Offspring counts must be independent but not necessarily identically distributed across generations
+\item This means time scale must be allowed to vary over time: $\tau_N$ becomes $\tau_N(t)$ and $c_N$ becomes $c_N(t)$, or $c(t)$ in M\"ohle's notation
+\item Only proves convergence of FDDs
+\item Time scale $\tau_N(t)$ is allowed to be chosen freely, but the theorem only holds when it is an appropriate function (i.e.\ an inverse of $c_N$ similar to the usual) so this is not a very great generalisation over defining $\tau$ in the usual way.
+\end{itemize}
 
-%-----------------------------------
-\section*{SMC Genealogies}
+\subsection*{\cite{mohlesagitov1998}}
 
-\textbf{\citet{jacob2015}}\\
+\subsection*{\cite{sagitov1999}}
+
+\subsection*{\cite{mohle1999}}
+
+\subsection*{\cite{mohle2000}}
+
+\subsection*{\cite{mohle2001}}
+Even more general result than \cite{mohle1998}, giving necessary \& sufficient conditions for convergence to a process allowing large and simultaneous mergers. I hope to adapt this result to prove necessity of our Theorem 1 conditions.
+
+\subsection*{\cite{mohle2003}}
+
+
+
+%
+\section*{SMC GENEALOGIES}
+
+\subsection*{\cite{jacob2015}}
 Description of ancestries as trunk+crown. Upper bound on storage cost via an approximate multinomial resampling scheme that is independent of weights. Numerical simulations suggesting similar results for stratified and systematic resampling (including an ordering on the schemes?). 
-\\[5pt]
-\textbf{\citet{koskela2018}}\\
--
 
-%-----------------------------------
-\section*{Variance Estimation}
+\subsection*{\cite{koskela2018}}
 
-\textbf{\citet{chan2013}}\\
--
-\\[5pt]
-\textbf{\citet{lee2018}}\\
--
-\\[5pt]
-\textbf{\citet{olsson2019}}\\
--
 
-%-----------------------------------
-\bibliography{../smc.bib}
+%
+\section*{VARIANCE ESTIMATION}
+
+\subsection*{\cite{chan2013}}
+
+
+\subsection*{\cite{lee2018}}
+
+
+\subsection*{\cite{olsson2019}}
+
+
+%
+
 \end{document}
