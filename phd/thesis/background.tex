@@ -151,6 +151,7 @@ The next section describes how we may obtain samples from $\mathbb{Q}_t(dx_{0:T}
 
 \subsection{Sequential Monte Carlo for Feynman-Kac models}
 \label{sec:SMC_FK}
+\seb{Explain somehwere in here that the weights are supposed to give an indication of how useful each particle is, and why resampling is necessary (to avoid weight degeneracy and waste of resources on hopeless particles.)}\\
 In order to implement the SMC algorithm corresponding to a given Feynman-Kac model, we need to be able to sample from $\mathbb{M}_0$ and from $M_t(x, \cdot)$ for all $x,t$; and evaluate $G_t(x, y)$ pointwise for each $x,y, t$.
 Under these conditions we may implement Algorithm~\ref{alg:SMC}, which describes a generic SMC algorithm. 
 The only free choices are the parameter $N$ which dictates the number of ``particles'' used, and the \textsc{resample} procedure.
@@ -781,14 +782,14 @@ This is illustrated in Figure \ref{fig:inv_resampling}.
 
 Fast implementations of multinomial resampling rely on $U_1,\dots,U_N$ being pre-sorted, which speeds up the search step \eqref{eq:syst_strat_resampling}. Sorting $N$ numbers requires $O(N\log N)$ computation, but this is not necessary since we can sample directly the order statistics of a $\Unif[0,1]$ distribution, at $O(N)$ cost.
 One way to do this \parencite[Proposition 9.1]{chopin2020} is to sample $X_i \sim \Exp(1)$ independently for $i=1,\dots,N+1$ and output the normalised sums
-\begin{equation}
+\begin{equation*}
 U_k := \frac{\sum_{i=1}^k X_i}{\sum_{i=1}^{N+1} X_i}
-\end{equation}
+\end{equation*}
 for $k=1,\dots,N$.
 Another method \parencite{hol2006} is to sample $X_i \sim \Unif[0,1]$ for $i=1,\dots,N$ and compute recursively
-\begin{equation}
+\begin{equation*}
 U_N := X_N^{1/N} , \qquad U_k := X_k^{1/k} U_{k+1} .
-\end{equation}
+\end{equation*}
 \seb{I'm not sure that this really gives the correct distribution...?}
 
 This allows multinomial resampling to be implemented at $O(N)$ cost. 
