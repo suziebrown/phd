@@ -123,7 +123,7 @@ M_t (x_{t-1}, dx_t) &:= K_t (dx_t \mid x_{t-1}) & \text{for } t=1,\dots,T \notag
 G_0 (x_0) &:= g_0 ( y_0 \mid x_0 ) \notag\\
 G_t (x_{t-1}, x_t) &:= g_t( y_t \mid x_t ) & \text{for } t=1,\dots,T . \label{eq:bootstrapFK}
 \end{align}
-This is not the only Feynman-Kac model for \eqref{eq:SSM_spec}; this corresponds to the ``bootstrap'' SMC algorithm, which is the simplest implementation but may be significantly outperformed in practice by more involved algorithms such as the ``guided''\seb{[citation]} and ``auxiliary'' \parencite{pitt1999, carpenter1999} variants. Feynman-Kac formalisms for these variants are presented for example in \textcite[Section 5.1.2]{chopin2020}.
+This is not the only Feynman-Kac model for \eqref{eq:SSM_spec}; this corresponds to the ``bootstrap'' SMC algorithm, which is the simplest implementation but may be significantly outperformed by more involved algorithms such as ``guided''\seb{[citation]} and ``auxiliary'' \parencite{pitt1999, carpenter1999} variants. Feynman-Kac formalisms for these variants are presented for example in \textcite[Section 5.1.2]{chopin2020}.
 \seb{Say something about the time horizon, which we have now fixed, but was infinite in SSMs section.}
 
 It remains to demonstrate that the measures $\mathbb{Q}_t$ arising from \eqref{eq:bootstrapFK} are sufficient for all the usual inference problems in the corresponding state space model \eqref{eq:SSM_spec}.
@@ -621,13 +621,13 @@ There are a few possible approaches to mitigating ancestral degeneracy.
 Firstly, we could try to limit the number of offspring assigned to any one parent during each resampling step. We can only go so far, because we need the resampling procedure to remain unbiased (Section~\ref{sec:SMC_FK}), but we can try to reduce the variance inherent in the resampling procedure. This idea, known as \emph{low-variance resampling}\seb{[citation?]} is discussed in detail in Section~\ref{sec:resampling}.
 
 Another idea is to resample less often. Recall that the reason for resampling is to prevent weight degeneracy (that is, one of the weights tending to one while the others tend to zero). Now we see that, while solving one type of degeneracy, resampling creates another. The effect of ancestral degeneracy is essentially the same as that of weight degeneracy: both drastically increase the variance of the resulting SMC estimators. 
-We can therefore consider a trade-off between the two, which is the idea behind \emph{adaptive resampling}\seb{[citation]}.
-The trick is to apply the resampling step only at iterations in which a certain criterion is met. The most  commonly-used criterion is based on the estimated \emph{effective sample size},
+We can therefore consider a trade-off between the two, which is the idea behind \emph{adaptive resampling}\parencite[Section 4]{liu1995}.
+The trick is to apply the resampling step only at iterations in which a certain criterion is met. The most commonly-used criterion, the one suggested in \textcite[Equation (14)]{liu1995} is based on the estimated \emph{effective sample size},
 \begin{equation*}
 ESS(t) := \left\{ \sum_{i=1}^N (w_t^{(i)})^2 \right\}^{-1} ,
 \end{equation*}
 which decreases as the weights degenerate.
-The resampling step is then applied only at iterations $t$ such that $ESS(t)$ is less than some pre-specified threshold, typically $N/2$\seb{[citation]}.
+The resampling step is then applied only at iterations $t$ such that $ESS(t)$ is less than some pre-specified threshold, typically $N/2$\seb{[citation?]}.
 
 If adaptive resampling is used, some trivial changes are required to the calculation of the weights in Algorithm~\ref{alg:SMC}, to allow for the importance weights to accumulate sequentially until the particles are resampled. See e.g.\ \textcite[Section 10.2]{chopin2020} for details.
 
@@ -682,10 +682,10 @@ This allows, for instance, genealogies of different SMC algorithms to be compare
 
 \section{Resampling \seb{$\sim$} }
 \label{sec:resampling}
-As we have seen, resampling is necessary within SMC to ``reset'' the weights in order to prevent weight degeneracy.
+As we have seen\seb{we actually haven't; this should have been made explicit in section~\ref{sec:SMC_FK}}, resampling is necessary within SMC to ``reset'' the weights in order to prevent weight degeneracy\seb{and may also help us make the most of our computational resources, not wasting them on hopeless particles}.
 Resampling is itself a Monte Carlo procedure: the discrete offspring counts can be viewed as stochastic estimates of the continuous weights.
 In order to obtain a valid SMC algorithm, these Monte Carlo samples must be unbiased; this and other desirable properties are formalised in Definition~\ref{defn:resampling}.
-There is a huge range of resampling procedures that satisfy these properties, some of which perform better than others. 
+There is a huge range of resampling procedures satisfying these properties, some of which perform better than others. 
 Some of the most popular resampling schemes are introduced in Section~\ref{sec:examples_resamplingschemes} and their properties are explored in Section~\ref{sec:resampling_properties}.
 
 
@@ -702,17 +702,19 @@ that satisfies the following properties:
 \begin{enumerate}
 \item\label{item:resampling_property1} the population size is conserved:
 $ \sum_{i=1}^N \nu_t^{(i)} =N $ for all $N$
-\item\label{item:resampling_property2} the weights are uniform after resampling:
+\item\label{item:resampling_property2} the weights are equal after resampling:
 $w_{t+}^{(i)} = 1/N$ for all $i$
 \item\label{item:resampling_property3} the resampling is unbiased:
 $ \E[ \nu_t^{(i)} \mid w_t^{(i)} ] = N w_t^{(i)} $ for all $i$.
 \end{enumerate}
 \end{defn}
 It is possible to design resampling schemes that violate these properties.
-For example, a scheme of \textcite{liu1998} uses the square roots of the weights for resampling, then corrects by setting non-uniform weights after resampling (violating conditions \ref{item:resampling_property2} and \ref{item:resampling_property3}).
-\seb{\textcite[p.890, point (d)]{fearnhead2003} also appears to resample such that the weights are not uniform after resampling.}
+For example, a scheme of \textcite{liu1998} uses the square roots of the weights for resampling, then corrects by setting unequal weights after resampling (violating conditions \ref{item:resampling_property2} and \ref{item:resampling_property3}).
+\textcite[Section 3.1]{liu2001} generalises this further, and suggests setting the resampling weights adaptively as a function of the true weights $w_t^{(1:N)}$.
+\textcite{fearnhead2003} also allows the weights to be unequal after resampling; see point (d) on p.890 therein.
 %
-Resampling different numbers of particles in different iterations (violating condition \ref{item:resampling_property1}) is of course possible, but we typically have a fixed limit on computational resources, in which case it makes sense to simulate the maximum feasible number of particles $N$ at every iteration.
+Resampling different (possibly random) numbers of particles in different iterations (violating condition \ref{item:resampling_property1}) is of course possible \parencite[for example][]{crisan1998}, but we typically have a fixed limit on computational resources, so in most cases it makes sense to simulate the maximum feasible number of particles $N$ at every iteration.
+There may be circumstances under which it is beneficially to allow the number of particles to vary adaptively or at random, but this is not commonly done in practice.
 %
 Deterministic resampling schemes (which cannot generally be unbiased, violating condition \ref{item:resampling_property3}) have been used by some authors. These include schemes based on optimal transport \parencite{reich2013, myers2021, corenflos2021} and the importance support points resampling of \textcite{huang2020}.
 However, the majority of resampling schemes in the literature fit within Definition~\ref{defn:resampling}, and it is not typically advantageous to violate the properties \ref{item:resampling_property1}--\ref{item:resampling_property3}.
@@ -746,7 +748,7 @@ Abbreviation & Description \\% & Defined in Section \\
 \texttt{res-syst} & residual resampling with systematic residuals \\
         %& \ref{sec:resampling_residual} \\
 \texttt{ssp} & Srinivasan sampling procedure resampling \\%& \\
-\texttt{branch} & minimal variance branching algorithm \\%& \\
+\texttt{mvb} & minimal variance branching algorithm \\%& \\
 \hline\hline
 \end{tabular}
 \caption{Abbreviations for resampling schemes}
@@ -1031,7 +1033,7 @@ Bottom row (squares): in systematic resampling, only $u_1$ is used, being transf
 %\label{sec:resampling_stratified}
 Stratified resampling is introduced in \cite{kitagawa1996}.
 
-As in multinomial resampling, stratified resampling uses inversion sampling to dample the parental indices. However, the samples used for inversion sampling are no longer i.i.d. $\Unif[0,1]$ samples. Instead, one number is sampled from each subinterval of length $1/N$; that is, 
+As in multinomial resampling, stratified resampling uses inversion sampling to sample the parental indices. However, the samples used for inversion sampling are no longer i.i.d. $\Unif[0,1]$ samples. Instead, one number is sampled from each subinterval of length $1/N$; that is, 
 \begin{equation*}
 U_i \sim \Unif \left(\frac{i-1}{N}, \frac{i}{N} \right) .
 \end{equation*}
@@ -1251,17 +1253,17 @@ I call this scheme \emph{star resampling} because the parent-offspring relations
 
 
 \subsubsection{Minimal variance branching}
-The minimal variance branching algorithm of \textcite{crisan1999} provides a framework for minimal-variance resampling. The idea is to enforce minimal variance by resampling such that each offspring count $\nu_t^{(i)}$, conditionally on $w_t^{(i)}$, has marginal distribution
+The minimal variance branching (MVB) algorithm of \textcite{crisan1999} provides a framework for minimal-variance resampling. The idea is to enforce minimal variance by resampling such that each offspring count $\nu_t^{(i)}$, conditionally on $w_t^{(i)}$, has marginal distribution
 \begin{equation}\label{eq:branching_distn}
 \nu_t^{(i)} \mid w_t^{(i)} \eqdist \flnw + \Bern(Nw_t^{(i)} - \flnw) .
 \end{equation}
 We will see later on that this is exactly the framework of \emph{stochastic rounding}.
-The set-up of \textcite{crisan1999} does not require the number of particles to remain constant from one generation to the next (Property~\ref{item:resampling_property1} in Definition~\ref{defn:resampling}), so their minimal variance branching algorithm could be implemented for instance by sampling each $\nu_t^{(i)}$ independently from \eqref{eq:branching_distn}. The authors remark that enforcing strictly negative correlation between the offspring counts can improve the rate of convergence, but they do not specify how this might be achieved.
+The set-up of \textcite{crisan1999} does not require the number of particles to remain constant from one generation to the next (Property~\ref{item:resampling_property1} in Definition~\ref{defn:resampling}), so the MVB algorithm could be implemented for instance by sampling each $\nu_t^{(i)}$ independently from \eqref{eq:branching_distn}. The authors remark that enforcing strictly negative correlation between the offspring counts can improve the rate of convergence, but they do not specify how this might be achieved.
 
 
 
 \subsubsection{Srinivasan sampling procedure}
-\textcite{gerber2017} builds on the work of \textcite{crisan1999} in that they construct a resampling scheme for which the marginal offspring counts are distributed as \eqref{eq:branching_distn}, but the number of particles is held constant and non-negative correlation of offspring counts is enforced. The resulting scheme is termed \emph{Srinivasan sampling procedure resampling}.
+\textcite{gerber2017} builds on the work of \textcite{crisan1999} in that they construct a resampling scheme for which the marginal offspring counts are distributed as \eqref{eq:branching_distn}, but the number of particles is held constant and non-negative correlation of offspring counts is enforced. The resulting scheme is termed \emph{Srinivasan sampling procedure (SSP) resampling}.
 
 The implementation is somewhat complicated compared to the other schemes we have seen \parencite[for full details see][Algorithm~1]{gerber2017} but a brief description is given here.
 The offspring counts are initialised at $Nw_t^{(i)}$, then we iterate through pairs of counts, rounding one of the pair up and the other down by an amount such that at least one of the pair ends up an integer. After at most $N$ such adjustments, all of the counts are integers and can be returned. Each iteration adds and subtracts the same amount so that the sum of the counts is preserved, ensuring that the number of particles remains constant. Which of the selected pair is increased/decreased in each iteration is chosen at random with probabilities that guarantee the resampling is unbiased.
@@ -1274,22 +1276,21 @@ As well as proposing this resampling scheme, \textcite{gerber2017} makes several
 
 
 \subsection{Properties \seb{$\sim$} }\label{sec:resampling_properties}
-\draft{Low-variance: variance of what? Different criteria/ definitions of optimality. Link back to adaptive resampling: interaction between adaptive and low-variance resampling. Comparison of properties of these, existing results comparing schemes. Implementation considerations. Theoretical justification (or lack of).}
-\seb{This section was dumped from elsewhere and most of its subsections need redrafting. Also add a paragraph here to introduce it, saying that everything is summarised in the table.}
-
+In this section we consider some important properties of resampling schemes, and see how the example schemes of Section~\ref{sec:examples_resamplingschemes} compare in terms of these.
+The findings are summarised in Table~\ref{tab:resampling_properties}, with the exception of a few properties that, say, depend on details of the implementation, or are applicable only to a subset of the schemes considered.
 
 
 \subsubsection{Support of offspring numbers \seb{$\checkmark$} }
-Let us consider the support of the marginal offspring distributions in each scheme, conditional on the weights. Suppose that the $i^{th}$ weight lies in the interval $w_t^{(i)} \in [k/N, (k+1)/N]$.
+Let us consider the support of the marginal offspring distributions in each scheme, conditional on the weights. Suppose that the $i^{th}$ weight lies in the interval $w_t^{(i)} \in [K/N, (K+1)/N]$.
 
 Under multinomial resampling, it is possible for $\nu_t^{(i)}$ to take any value from $0$ to $N$ (although some values are of course more likely than others).
 Thus it is possible for a high-weight particle to have zero offspring, or a low-weight particle to have many offspring, simply by chance.
 Recall that the weights give an indication of how ``useful'' each particle is for the approximation. Thus killing a high-weight particle is likely to increase the variance of the SMC estimates, while duplicating a low-weight particle wastes computational resources on propagating particles that will not contribute much to reducing that variance.
 
-Residual resampling ensures that every particle with above-average (i.e.\ $>1/N$) weight has at least one offspring, avoiding the loss of high-weight particles. If the residuals are sampled using multinomial resampling then the duplication of low-weight particles is not avoided, $\nu_t^{(i)} \in \{k, \dots, k+R\} \subseteq \{k,\dots, N\}$, but this can be addressed by using a lower-variance scheme for the residual offspring. Various choices are included in Table~\ref{tab:resampling_properties}.
+Residual resampling ensures that every particle with above-average (i.e.\ $>1/N$) weight has at least one offspring, avoiding the loss of high-weight particles. If the residuals are sampled using multinomial resampling then the duplication of low-weight particles is not avoided, $\nu_t^{(i)} \in \{K, \dots, K+R\} \subseteq \{K,\dots, N\}$, but this can be addressed by using a lower-variance scheme for the residual offspring. Various choices are included in Table~\ref{tab:resampling_properties}.
 
-Stratified resampling is more restrictive, $\nu_t^{(i)} \in \{k-1, k, k+1, k+2\}$, but allows the possibility of a particle with above-average weight having no offspring. 
-Systematic resampling has the smallest support, $\nu_t^{(i)} \in \{k, k+1\}$, that is possible whilst maintaining unbiasedness, as do Srinivasan sampling procedure and minimal variance branching.
+Stratified resampling is more restrictive, $\nu_t^{(i)} \in \{ K-1, K, K+1, K+2 \}$, but allows the possibility of a particle with above-average weight having no offspring. This is not quite as good as the erroneous claim of \textcite{douc2005} that $| \nu_t^{(i)} - Nw_t^{(i)} | \leq 1$ for stratified resampling.
+Systematic resampling has the smallest support, $\nu_t^{(i)} \in \{K, K+1\}$, that is possible whilst maintaining unbiasedness, as do SSP and MVBP resampling.
 
 Another way to quantify this property is by considering the maximum possible difference between the offspring count $\nu_t^{(i)}$ and its expected value $N w_t^{(i)}$. This is also presented in Table~\ref{tab:resampling_properties}.
 
@@ -1337,7 +1338,7 @@ having variance
 \end{equation*}
 $N$ times larger than in the multinomial case.
 
-As pointed out in \textcite[p.557]{crisan1999}, their minimal variance branching process yields offspring variance
+As pointed out in \textcite[p.557]{crisan1999}, their MVB process yields offspring variance
 \begin{equation*}
 \V[ \nu_t^{(i)} \mid w_t^{(i)} ]
 = ( Nw_t^{(i)} -\flnw )(1- Nw_t^{(i)} + \flnw) 
@@ -1368,6 +1369,7 @@ Using the law of total variance,
 %        + \V\left[ Nw_t^{(i)} \mid w_t^{(i)} \right] \\
 &\leq Nw_t^{(i)} - \flnw .
 \end{align*}
+Here we have excluded the case $R=0$, which implies the variance is zero.
 Similarly, for residual resampling with star residuals,
 \begin{equation*}
 \nu_t^{(i)} \mid w_t^{(i)} , R
@@ -1386,6 +1388,7 @@ and we find
 &= (Nw_t^{(i)} - \flnw) \E\left[ R \mid w_t^{(i)} \right]  - (Nw_t^{(i)} - \flnw)^2 \\
 &\leq N (Nw_t^{(i)} - \flnw) .
 \end{align*}
+Again, if $R=0$ then the variance is zero.
 
 For stratified resampling, we can use the constraints on the marginal offspring distribution that were derived in Section~\ref{sec:examples_resamplingschemes}. Recall that, conditional on $w_t^{(i)}$, $\nu_t^{(i)} = \flnw + j$ with probability $p_{j}$ for $j=-1,0,1,2$.
 We can use the expressions for $p_{-1},p_0,p_1,p_2$ in the two cases of Figure~\ref{fig:strat_cases}, as summarised in Table~\ref{tab:strat_probs}, to bound the variance. First write
@@ -1448,7 +1451,7 @@ Combining the two cases, we obtain an overall variance bound
 for residual-stratified resampling.
 
 Table~\ref{tab:resampling_properties} includes upper bounds on $\V[\nu_t^{(i)}]$ for various resampling schemes, independent of $w_t^{(i)}$. Those general bounds are derived from the results of this section, bounded above independently of the weights. Some of the bounds are certainly not tight.
-We could also try to bound this variance below, but for every resampling scheme the only lower bound valid for all $w_t^{(i)}$ is zero (consider the case $w_t^{(i)}=0$).
+We could also try to bound this variance below, but for every resampling scheme the only lower bound valid for all $w_t^{(i)}$ is zero (consider the case $w_t^{(i)}=0$) so this would not provide any more information.
 
 
 
@@ -1469,7 +1472,7 @@ where $\varphi$ is an arbitrary test function.
 
 Some results comparing this variance across different resampling schemes are presented in \textcite{douc2005}. 
 Their results, plus some additional ones, are presented in Proposition~\ref{thm:resampling_var_compare}.
-It may be possible to derive similar results regarding residual-stratified and Srinivasan sampling procedure resampling, but such results are hard to obtain due to the strong dependence between parental indices induced by these resampling schemes. 
+It may be possible to derive similar results regarding residual-stratified and SSP resampling, but such results are hard to obtain due to the strong dependence between parental indices induced by these resampling schemes. 
 This remains an interesting open problem.
 
 In the case of systematic (but not necessarily residual-systematic) resampling, no such variance comparison can be made. Systematic resampling generally yields low variance in practice, but it is possible to construct pathological cases in which it yields higher variance than multinomial resampling \parencite[Section 3.4]{douc2005} and it lacks theoretical support more generally \parencite[e.g.][Section 3.3]{gerber2017}.
@@ -1705,6 +1708,14 @@ Clearly, then, the distribution of offspring counts under these resampling schem
 \draw[dotted] (8,-1.5) --(8,0.8);
 \draw[dotted] (10,-1.5) --(10,0.8);
 \draw[dotted] (12,-1.5) --(12,0.8);
+%% labels for multiples of 1/N
+\node[anchor=north, gray] at (0,-1.5) {$0$};
+\node[anchor=north, gray] at (2,-1.5) {$\frac{1}{6}$};
+\node[anchor=north, gray] at (4,-1.5) {$\frac{2}{6}$};
+\node[anchor=north, gray] at (6,-1.5) {$\frac{3}{6}$};
+\node[anchor=north, gray] at (8,-1.5) {$\frac{4}{6}$};
+\node[anchor=north, gray] at (10,-1.5) {$\frac{5}{6}$};
+\node[anchor=north, gray] at (12,-1.5) {$1$};
 %% weight intervals, unsorted
 \draw[thick] (0,0) -- (12,0);
 \draw (0,-0.2) --(0,0.2);
@@ -1758,7 +1769,7 @@ Under ``permutation-sensitive'' resampling schemes, the distribution of offsprin
 \subsubsection{Computational complexity \seb{$\checkmark$} }
 All of the resampling algorithms discussed in Section~\ref{sec:examples_resamplingschemes} can be implemented in $O(N)$ operations.
 %\seb{Even \texttt{star} and \texttt{SSP} and \texttt{branching}? If it turns out to differ depending on resampling scheme then include it as a column in Table~\ref{tab:resampling_properties}. --- I think we can't say for \texttt{branching} becaue it dpeends on implementation, but \textcite[Corollary 18]{crisan1999} seems to imply $O(N^2)$...? SSP is definitely $O(N)$.}
-Considering the complexity of each operation, \textcite{hol2004,hol2006} suggest that systematic resampling is fastest because it only requires one pseudo-random number generation, and multinomial resampling is slower than stratified resampling because of the transformations required. Residual resampling is hard to compare directly because a random fraction of the operations are deterministic, so the number of pseudo-random numbers required is a random number less than $N$.
+Considering the complexity of each operation, \textcite{hol2004,hol2006} suggest that systematic resampling is fastest because it only requires one pseudo-random number generation, and multinomial resampling is slower than stratified resampling because of the transformations required (although this may depend on which fast implementation of multinomial sampling is used). Residual resampling is hard to compare directly because a random fraction of the operations are deterministic, so the number of pseudo-random numbers required is a random number less than $N$.
 Their analysis was backed up by simulation experiments.
 
 However, the analysis of per-particle cost is sensitive to the particular implementation of each resampling scheme, the system implementation of pseudo-random number generation and arithmetic operations, and the hardware used.
@@ -1792,10 +1803,10 @@ since $\nu^{(3)}=1$ if and only if $\nu^{(1)}=1$.
 So residual-systematic resampling also violates the negative association property.
 
 \textcite{gerber2017} also mention some resampling schemes that do result in negatively associated counts: stratified resampling, and by implication residual-stratified resampling; star resampling (see the remark at the end of \textcite[Section 3.2]{gerber2017}), and by implication residual-star resampling.
-The authors go on to introduce the Srinivasan sampling procedure resampling scheme, which by construction yields negatively associated offspring counts.
+The authors go on to introduce the SSP resampling scheme, which by construction yields negatively associated offspring counts.
 
 These results are summarised in Table~\ref{tab:resampling_properties}.
-The minimal variance branching algorithm of \textcite{crisan1997} does not enforce negative association, so this property depends on the particular implementation, and as such is left blank in Table~\ref{tab:resampling_properties}.
+The MVB algorithm does not enforce negative association, so this property depends on the particular implementation, and as such is left blank in Table~\ref{tab:resampling_properties}.
 
 
 
@@ -1909,7 +1920,7 @@ Figure~\ref{fig:star_discrepancy} illustrates how the star discrepancy is comput
         & $\checkmark$ & $1$ & $\times$ \\
 \texttt{ssp} & $\{k, k+1\}$ & $1$ & $1/4$ & $\checkmark$ & $\checkmark$ 
         & $\checkmark$? & ? & $\checkmark$ \\
-\texttt{branch} & $\{k, k+1\}$ & $1$ & $1/4$ & $\checkmark$ & $\checkmark$ 
+\texttt{mvb} & $\{k, k+1\}$ & $1$ & $1/4$ & $\checkmark$ & $\checkmark$ 
         & & & \\
 \hline\hline
 \end{tabular}
@@ -1935,7 +1946,7 @@ Y_i \mid X_i =
 \end{defn}
 
 By construction, $\E(Y_i) = X_i$ for each $i$. Taking $X$ to be $N$ times the vector of particle weights, we can therefore use stochastic rounding to construct a valid resampling scheme, under the further constraint that $Y_1 + \dots + Y_N = N$.
-Several ways to enforce this constraint on the joint distribution have been proposed, including systematic resampling, residual resampling with systematic residuals, the minimal variance branching system of \textcite{crisan1997}, and the Srinivasan sampling process resampling introduced in \textcite{gerber2017}.
+Several ways to enforce this constraint on the joint distribution have been proposed, including systematic resampling, residual resampling with systematic residuals, the MVB algorithm of \textcite{crisan1997}, and the SSP resampling introduced in \textcite{gerber2017}.
 
 Explicitly, the offspring counts are marginally distributed according to 
 \begin{equation*}

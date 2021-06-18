@@ -8,7 +8,7 @@
 
 %%% EDITING TOOLS
 %%% use this command to load only certain chapters during writing/editing process (cross-referencing with omitted chapters will still work, but it seems to break the ToC):
-%\includeonly{background, weakconv}
+\includeonly{background}
 
 %%% ANNOTATIONS
 \usepackage{color}
@@ -126,9 +126,11 @@ July 2021 %%% update submission date (month year)
 
 \frontmatter
 
-\tableofcontents
-\listoffigures
-\listoftables
+%%% Comment these out if using "includeonly":
+%\tableofcontents
+%\listoffigures
+%\listoftables
+
 %\listoftheorems[ignoreall,show={defn}]
 %\renewcommand{\listtheoremname}{List of Theorems}
 %\listoftheorems[ignoreall,show={theorem,prop}]
@@ -164,11 +166,13 @@ PRNG & pseudo-random number generator \\
 CDF & cumulative distribution function \\
 LHS & left hand side \\
 RHS & right hand side \\
+SSP & Srinivasan sampling process \\
+MVB & minimal variance branching \\
 \end{tabular}
 
 
 \chapter{Notation and Conventions}
-\seb{Also include indexing notation $X_{a:b}$, $X_{-a}$, and $X_A$ where $A$ is a set of indices. And big-O notation. And $\mathbb{Z}$ and $\mathbb{R}$?}
+\seb{Also include big-O notation. And $\mathbb{Z}$ and $\mathbb{R}$?}
 
 \begin{tabular}{p{0.1\textwidth} p{0.8\textwidth}}
 $\mathbb{N}$ & the natural numbers starting from one, $\{1,2,\dots \}$ \\
@@ -178,6 +182,9 @@ $\mathcal{S}_k$ & the $k$-dimensional unit simplex $\{ x_{1:k+1} \geq 0 : \sum_{
 $(a)_b$ & the falling factorial $a (a-1) \cdots (a-b+1)$ 
     where $a \in \mathbb{N}_0, b \in \mathbb{N}$, and define $(a)_0 = 1$. \seb{could even allow $a\in\mathbb{R}$ but I don't think I ever use it in that setting} \\
 $\binom{a}{b}$ & binomial coefficient where $a,b \in \mathbb{N}_0$, defined to be $0$ when $a<b$ \\
+$x_A$ & the subvector consisting of the elements of $x$ with index in set $A\subseteq\mathbb{N}$ \\
+$x_{a:b}$ & the subvector $x_A$ where $A = \{a,a+1, \dots,b\}$ \\
+$x_{-a}$ & the subvector $x_A$ where $A = \{1,2, \dots, a-1, a+1, \dots n\}$ and $n$ is the length of $x$ which should be clear from the context \\
 $\prod_{\emptyset}$ & the empty product is taken to be $1$ \\
 $\sum_{\emptyset}$ & the empty sum is taken to be $0$, while the sum over
     an index vector of length zero is the identity operator \seb{?} \\

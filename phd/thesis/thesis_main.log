@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  16 JUN 2021 16:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  17 JUN 2021 10:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1478,92 +1478,41 @@ options: showrefs, showcites, msgs, chckunlbld
 
 
 {/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    Try loading font information for OT1+put on input line 129.
-
+chapter without number
+LaTeX Font Info:    Try loading font information for OT1+put on input line 139.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/ot1put.fd
 File: ot1put.fd 2001/06/04 font definitions for OT1/put.
 )
 LaTeX Font Info:    Font shape `OT1/put/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/put/b/n' tried instead on input line 129.
+(Font)              Font shape `OT1/put/b/n' tried instead on input line 139.
 LaTeX Font Info:    Font shape `OT1/put/bx/n' in size <20.74> not available
-(Font)              Font shape `OT1/put/b/n' tried instead on input line 129.
+(Font)              Font shape `OT1/put/b/n' tried instead on input line 139.
+ [1
 
-(./thesis_main.toc
-LaTeX Font Info:    Try loading font information for U+msa on input line 15.
 
+
+]
+chapter without number
+[2
+
+
+]
+chapter without number
+LaTeX Font Info:    Try loading font information for U+msa on input line 161.
 (/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 15.
+LaTeX Font Info:    Try loading font information for U+msb on input line 161.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [1
-
-
-
-]
-Overfull \hbox (1.42336pt too wide) detected at line 137
- []\OT1/put/b/n/10.95 100
- []
-
-
-Overfull \hbox (1.42336pt too wide) detected at line 155
- []\OT1/put/b/n/10.95 118
- []
-
-)
-\tf@toc=\write7
-\openout7 = `thesis_main.toc'.
-
- [2] (./thesis_main.lof)
-\tf@lof=\write8
-\openout8 = `thesis_main.lof'.
-
- [3
-
-
-] (./thesis_main.lot)
-\tf@lot=\write9
-\openout9 = `thesis_main.lot'.
-
- [4
+) [3
 
 
 ]
 chapter without number
-[5
-
-
-]
-chapter without number
-[6
-
-
-]
-chapter without number
-[7
-
-
-]
-chapter without number
-[8
-
-
-]
-\openout2 = `introduction.aux'.
-
- (./introduction.tex
-chapter 1.
-)pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
- been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.203 \include{introduction}
-                             [1
-
-
+[4
 
 
 ]
@@ -1608,6 +1557,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 LaTeX Font Info:    Font shape `OT1/put/bx/n' in size <12> not available
 (Font)              Font shape `OT1/put/b/n' tried instead on input line 21.
 [2
+
 
 
 
@@ -1658,7 +1608,7 @@ Package mdframed Info: mdframed detected package amsthm
 
 Package refcheck Warning: Unused label `eq:KCgenerator' on input line 350.
 
-<plots/ncoalescent.pdf, id=487, 456.70625pt x 423.5825pt>
+<plots/ncoalescent.pdf, id=275, 456.70625pt x 423.5825pt>
 File: plots/ncoalescent.pdf Graphic file (type pdf)
 <use plots/ncoalescent.pdf>
 Package pdftex.def Info: plots/ncoalescent.pdf  used on input line 362.
@@ -1716,12 +1666,12 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 577.
 
-<plots/ancdegen_mn.pdf, id=561, 602.25pt x 401.5pt>
+<plots/ancdegen_mn.pdf, id=351, 602.25pt x 401.5pt>
 File: plots/ancdegen_mn.pdf Graphic file (type pdf)
 <use plots/ancdegen_mn.pdf>
 Package pdftex.def Info: plots/ancdegen_mn.pdf  used on input line 603.
 (pdftex.def)             Requested size: 213.39568pt x 142.26698pt.
-<plots/ancdegen_adaptsyst.pdf, id=562, 602.25pt x 401.5pt>
+<plots/ancdegen_adaptsyst.pdf, id=352, 602.25pt x 401.5pt>
 File: plots/ancdegen_adaptsyst.pdf Graphic file (type pdf)
 <use plots/ancdegen_adaptsyst.pdf>
 Package pdftex.def Info: plots/ancdegen_adaptsyst.pdf  used on input line 607.
@@ -1838,7 +1788,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 1276.
 
 [26] [27]
-Overfull \hbox (9.04958pt too wide) in paragraph at lines 1349--1351
+Overfull \hbox (9.04958pt too wide) in paragraph at lines 1348--1350
 []\OT1/cmr/m/n/10.95 The marginal vari-ance is harder to cal-cu-late for other 
 schemes such as residual-multinomial
  []
@@ -1846,17 +1796,17 @@ schemes such as residual-multinomial
 [28] [29]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1477.
+(mdframed)              on input line 1478.
  [30] [31] [32] [33]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1771.
-LaTeX Font Info:    Try loading font information for U+bbm on input line 1782.
+(mdframed)              on input line 1780.
+LaTeX Font Info:    Try loading font information for U+bbm on input line 1791.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/bbm-macros/ubbm.fd
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
 ) [34]
-Overfull \hbox (0.3939pt too wide) in paragraph at lines 1865--1871
+Overfull \hbox (0.3939pt too wide) in paragraph at lines 1874--1880
 []\OT1/cmr/m/n/10.95 In one di-men-sion, the lowest-discrepancy point set is th
 e reg-u-lar grid $([]\OML/cmm/m/it/10.95 ; []; [] ; []\OT1/cmr/m/n/10.95 )$,
  []
@@ -1866,524 +1816,171 @@ e reg-u-lar grid $([]\OML/cmm/m/it/10.95 ; []; [] ; []\OT1/cmr/m/n/10.95 )$,
 ]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1924.
+(hyperref)                removing `math shift' on input line 1933.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1924.
+(hyperref)                removing `math shift' on input line 1933.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathsurround' on input line 1924.
+(hyperref)                removing `\mathsurround' on input line 1933.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\z@' on input line 1924.
+(hyperref)                removing `\z@' on input line 1933.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathchar' on input line 1924.
+(hyperref)                removing `\mathchar' on input line 1933.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1924.
+(hyperref)                removing `math shift' on input line 1933.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1924.
+(hyperref)                removing `math shift' on input line 1933.
 
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1926.
+(mdframed)              on input line 1935.
 
-Package refcheck Warning: Unused label `defn:stochround' on input line 1926.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1955.
+Package refcheck Warning: Unused label `defn:stochround' on input line 1935.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1955.
+(hyperref)                removing `math shift' on input line 1964.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathsurround' on input line 1955.
+(hyperref)                removing `math shift' on input line 1964.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\z@' on input line 1955.
+(hyperref)                removing `\mathsurround' on input line 1964.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathchar' on input line 1955.
+(hyperref)                removing `\z@' on input line 1964.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1955.
+(hyperref)                removing `\mathchar' on input line 1964.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1955.
+(hyperref)                removing `math shift' on input line 1964.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 1964.
 
 [38
 
 ] [39] [40]
-<plots/PG_degen.pdf, id=902, 602.25pt x 401.5pt>
+<plots/PG_degen.pdf, id=706, 602.25pt x 401.5pt>
 File: plots/PG_degen.pdf Graphic file (type pdf)
 <use plots/PG_degen.pdf>
-Package pdftex.def Info: plots/PG_degen.pdf  used on input line 2055.
+Package pdftex.def Info: plots/PG_degen.pdf  used on input line 2064.
 (pdftex.def)             Requested size: 341.43437pt x 227.6321pt.
  [41] [42 <./plots/PG_degen.pdf>]
-Overfull \hbox (42.75757pt too wide) detected at line 2136
+Overfull \hbox (42.75757pt too wide) detected at line 2145
 []
  []
 
 [43]
-Overfull \hbox (1.96576pt too wide) detected at line 2148
+Overfull \hbox (1.96576pt too wide) detected at line 2157
 []
  []
 
 [44]
 
-Package refcheck Warning: Unused label `fig:whyASworks_a' on input line 2233.
+Package refcheck Warning: Unused label `fig:whyASworks_a' on input line 2242.
 
 
-Package refcheck Warning: Unused label `fig:whyASworks_b' on input line 2289.
+Package refcheck Warning: Unused label `fig:whyASworks_b' on input line 2298.
 
-) [45]
-\openout2 = `limits.aux'.
+) [45] [119
 
- (./limits.tex
-chapter 3.
 
-Package refcheck Warning: Unused label `fig:encoding_a' on input line 99.
 
 
-Package refcheck Warning: Unused label `fig:encoding_b' on input line 137.
-
-
-Package refcheck Warning: Unused label `eq:defn_cN' on input line 146.
-
-[46
-
-
-
-
-]
-
-Package refcheck Warning: Unused label `eq:defn_DN' on input line 156.
-
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 164.
-[47]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 229.
- [48] [49]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 292.
-
-Overfull \hbox (38.9648pt too wide) in paragraph at lines 321--322
-[]\OT1/cmr/m/n/10.95 We sep-a-rate the $\OML/cmm/m/it/10.95 k \OT1/cmr/m/n/10.9
-5 = \OMS/cmsy/m/n/10.95 j\OML/cmm/m/it/10.95 ^^X\OMS/cmsy/m/n/10.95 j ^^@ \OT1/
-cmr/m/n/10.95 1$ term (which counts sin-gle pair merg-ers), for which $(\OML/cm
-m/m/it/10.95 b[]; b[]; [] ; b[]\OT1/cmr/m/n/10.95 ) =
- []
-
-[50] [51]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 411.
- [52]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 447.
- [53]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 503.
- [54] [55]
-Overfull \hbox (16.37553pt too wide) in paragraph at lines 562--562
-[][][][][]\OT1/cmr/m/n/9 Brown et al. 2021 
- []
-
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 572.
-[56]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 598.
- [57]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 645.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 715.
-
-Overfull \hbox (1.37184pt too wide) in paragraph at lines 717--718
-[][]\OT1/cmr/bx/n/10.95 Lemma 3.10. []\OT1/cmr/m/it/10.95 If there ex-ists a de
--ter-min-is-tic se-quence $\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 b[]\OT1/cmr/
-m/n/10.95 )[]$ \OT1/cmr/m/it/10.95 such that $[][]\OML/cmm/m/it/10.95 b[] \OT1/
-cmr/m/n/10.95 =
- []
-
-[58] [59]
-Overfull \hbox (101.82979pt too wide) in paragraph at lines 803--804
-\OT1/cmr/m/n/10.95 proof is sim-i-lar to \OT1/cmtt/m/n/10.95 Dropbox/SMC[]Genea
-logies/Asymptotic[]genealogies[]of[]interacting[]particle[]systems/
- []
-
-
-Overfull \hbox (20.12596pt too wide) in paragraph at lines 803--804
-\OT1/cmtt/m/n/10.95 Post[]acceptance[]correction/Erratum/AOS/Round[]3/Indicator
-s/full[]redraft.pdf\OT1/cmr/m/n/10.95 , from
- []
-
-[60] [61] [62] [63]) [64]
-\openout2 = `weakconv.aux'.
-
- (./weakconv.tex
-chapter 4.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 31.
-[65
-
-
-
-
-] [66] [67]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 153.
- [68]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 205.
- [69]
-Overfull \hbox (1.4709pt too wide) detected at line 259
-\U/msb/m/n/10.95 P\OT1/cmr/m/n/10.95 [\OML/cmm/m/it/10.95 T[] \OMS/cmsy/m/n/10.
-95 ^^T \OML/cmm/m/it/10.95 t[]; [] ; T[] \OMS/cmsy/m/n/10.95 ^^T \OML/cmm/m/it/
-10.95 t[]; T[] > t[]\OT1/cmr/m/n/10.95 ] = \U/msb/m/n/10.95 E [] \OML/cmm/m/it/
-10.95 ;
- []
-
-[70]
-
-LaTeX Warning: Float too large for page by 11.28517pt on input line 362.
-
-[71]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 370.
-
-Overfull \hbox (29.05421pt too wide) in paragraph at lines 378--384
-[]  $[][]$ 
- []
-
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 433.
-
-Overfull \hbox (0.9588pt too wide) detected at line 441
-[] [] [] \OMS/cmsy/m/n/10.95 ^^T [] [] \OML/cmm/m/it/10.95 c[]\OT1/cmr/m/n/10.9
-5 (\OML/cmm/m/it/10.95 s[]\OT1/cmr/m/n/10.95 ) + [] (\OML/cmm/m/it/10.95 t \OT1
-/cmr/m/n/10.95 + 1)[](1 + \OML/cmm/m/it/10.95 B\OT1/cmr/m/n/10.95 )[]\OML/cmm/m
-/it/10.95 :
- []
-
-[72
-
-
-] [73]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 502.
-
-Overfull \hbox (0.9588pt too wide) detected at line 510
-[] [] [] \OMS/cmsy/m/n/10.95 ^^U [] [] \OML/cmm/m/it/10.95 c[]\OT1/cmr/m/n/10.9
-5 (\OML/cmm/m/it/10.95 s[]\OT1/cmr/m/n/10.95 ) \OMS/cmsy/m/n/10.95 ^^@ [] \OT1/
-cmr/m/n/10.95 (\OML/cmm/m/it/10.95 t \OT1/cmr/m/n/10.95 + 1)[](1 + \OML/cmm/m/i
-t/10.95 B\OT1/cmr/m/n/10.95 )[]\OML/cmm/m/it/10.95 :
- []
-
-
-Overfull \hbox (2.56941pt too wide) detected at line 535
-[]
- []
-
-
-Overfull \hbox (5.4497pt too wide) detected at line 543
-\OMS/cmsy/m/n/10.95 ^^@ [] []\OML/cmm/m/it/10.95 B[] [] [] [] \OMS/cmsy/m/n/10.
-95 ^^U ^^@ [] \OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 t \OT1/cmr/m/n/10.95 + 1)
-[](1 + \OML/cmm/m/it/10.95 B\OT1/cmr/m/n/10.95 )[]
- []
-
-[74]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 571.
- [75]
-Overfull \hbox (12.55362pt too wide) detected at line 645
-[]
- []
-
-[76] [77]
-Overfull \hbox (32.69763pt too wide) detected at line 740
-[]
- []
-
-[78]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 782.
-
-Overfull \hbox (39.7481pt too wide) detected at line 796
-[] \U/msb/m/n/10.95 E [] \OMS/cmsy/m/n/10.95 ^^T \OML/cmm/m/it/10.95 []e[] [] 
-[] []:
- []
-
-[79] [80] [81]
-Overfull \hbox (8.07634pt too wide) in paragraph at lines 918--920
-\OT1/cmr/m/n/10.95 Combining [] with the other prod-uct, the ex-pres-sion in-si
-de the ex-pec-ta-tion in Lemma []4.8[][]
- []
-
-[82]
-Overfull \hbox (13.54465pt too wide) detected at line 971
-[]
- []
-
-
-Overfull \hbox (17.82137pt too wide) detected at line 1001
-[]
- []
-
-[83] [84]
-Overfull \hbox (13.40727pt too wide) detected at line 1052
-[] \U/msb/m/n/10.95 E [] \OMS/cmsy/m/n/10.95 ^^T []\OT1/cmr/m/n/10.95 (\OML/cmm
-/m/it/10.95 t \OT1/cmr/m/n/10.95 + 1)[] [] \U/msb/m/n/10.95 E [] \OT1/cmr/m/n/1
-0.95 = 0
- []
-
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 1077.
-
-Overfull \hbox (39.7481pt too wide) detected at line 1091
-[] \U/msb/m/n/10.95 E [] \OMS/cmsy/m/n/10.95 ^^U \OML/cmm/m/it/10.95 []e[] [] 
-[] []:
- []
-
-[85] [86]
-Overfull \hbox (39.96754pt too wide) detected at line 1166
-[]
- []
-
-[87] [88]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 1238.
-
-Overfull \hbox (7.69235pt too wide) detected at line 1303
-[]
- []
-
-[89] [90]
-Overfull \hbox (3.14876pt too wide) in paragraph at lines 1325--1326
-[]\OT1/cmr/m/n/10.95 For the cor-re-spond-ing lower bound, by a mod-i-fi-ca-tio
-n of the lower bound in Lemma []4.4[][][](b)[][]
- []
-
-
-Overfull \hbox (20.29185pt too wide) detected at line 1404
-[]
- []
-
-[91] [92] [93]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 1458.
- [94]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 1479.
- [95]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 1522.
-
-Overfull \hbox (2.84853pt too wide) in paragraph at lines 1528--1529
-[]\OT1/cmr/m/n/10.95 We can re-place the event $\OMS/cmsy/m/n/10.95 f\OML/cmm/m
-/it/10.95 ^^\[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 t\OT1/cmr/m/n/10.95 ) \O
-MS/cmsy/m/n/10.95 ^^U \OML/cmm/m/it/10.95 l\OMS/cmsy/m/n/10.95 g$ \OT1/cmr/m/n/
-10.95 with an event of the form of $\OML/cmm/m/it/10.95 E[]$ \OT1/cmr/m/n/10.95
- in Lemma []4.12[][]: 
- []
-
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 1548.
-[96] [97]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 1672.
- [98]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 1761.
-) [99]
-\openout2 = `applications.aux'.
-
- (./applications.tex
-chapter 5.
-
-Underfull \hbox (badness 10000) in paragraph at lines 17--18
-
- []
-
-[100
-
-
-
-
-]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 117.
- [101] [102]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 280.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 303.
- [103] [104]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 360.
- [105] [106] [107]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 612.
-
-
-Package refcheck Warning: Unused label `thm:stochrounding' on input line 612.
-
-[108]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 633.
- [109]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 808.
- [110]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 829.
-
-
-Package refcheck Warning: Unused label `thm:resstrat_nontriviality' on input li
-ne 829.
-
-[111] [112] [113]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 1069.
- [114] [115]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 1233.
-
-
-Package refcheck Warning: Unused label `sec:ancsamp_genealogy' on input line 12
-54.
-
-[116]) [117]
-\openout2 = `discussion.aux'.
-
- (./discussion.tex
-chapter 6.
-) [118
-
-
-
-
-] [119
 
 
 
 
 
 ] [120]
-Overfull \hbox (2.69765pt too wide) in paragraph at lines 217--217
+Overfull \hbox (2.69765pt too wide) in paragraph at lines 224--224
 [][][]\OT1/cmr/m/n/10.95 (1982c). ``The Co-a-les-cent''. In: \OT1/cmr/m/it/10.9
 5 Stochas-tic Pro-cesses and Their Ap-pli-ca-tions \OT1/cmr/m/n/10.95 13.3, pp.
  235{
  []
 
-[121] [122]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 218.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 218.
+[121] [122] [123]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 225.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 225.
  (./thesis_main.aux (./introduction.aux) (./background.aux)
 (./limits.aux) (./weakconv.aux) (./applications.aux) (./discussion.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 218.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 218.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 225.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 225.
 Package rerunfilecheck Info: File `thesis_main.out' has not changed.
-(rerunfilecheck)             Checksum: 61EF54BB9A5D3FA2EEC3FF6B7F5018AC;3674.
+(rerunfilecheck)             Checksum: C6F56853E65D8E0658B8EB022D5C9CA8;2009.
 Package logreq Info: Writing requests to 'thesis_main.run.xml'.
 \openout1 = `thesis_main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 40028 strings out of 492649
- 774220 string characters out of 6129623
- 1312590 words of memory out of 5000000
- 42849 multiletter control sequences out of 15000+600000
- 577053 words of font info for 135 fonts, out of 8000000 for 9000
+ 39342 strings out of 492649
+ 764267 string characters out of 6129623
+ 1306067 words of memory out of 5000000
+ 42410 multiletter control sequences out of 15000+600000
+ 576694 words of font info for 134 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 68i,22n,77p,10565b,1727s stack positions out of 5000i,500n,10000p,200000b,80000s
- </Users/suzie/Library/texlive/2018/texmf-var/fonts/pk/ljfour/public/bbm/bbm1
-0.657pk>{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/l
-ocal/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/lo
-cal/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/loc
-al/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/local
-/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local
-/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/
-texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/loc
-al/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmitt10.pfb></usr/loc
-al/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/loca
-l/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/
-texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/te
-xlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texl
-ive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texl
-ive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texliv
-e/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/
-2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/201
-8/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2018/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2018/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmsl10.pfb></usr/local/texlive/2018/texmf
--dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2018/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2018/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2018/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2018/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2018/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2018/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmtt9.pfb></usr/local/texlive/2018/texmf-dist/fonts/t
-ype1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2018/texmf-dist/fon
-ts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2018/texmf-dist
-/fonts/type1/adobe/utopia/putb8a.pfb>
-Output written on thesis_main.pdf (131 pages, 841495 bytes).
+ 64i,18n,66p,10565b,1463s stack positions out of 5000i,500n,10000p,200000b,80000s
+pdfTeX warning (dest): name{Item.14} has been referenced but does not exist, 
+replaced by a fixed one
+
+pdfTeX warning (dest): name{chapter.4} has been referenced but does not exist, 
+replaced by a fixed one
+
+pdfTeX warning (dest): name{chapter.3} has been referenced but does not exist, 
+replaced by a fixed one
+
+ </Users/suzie/Library/texlive/2018/texmf-var/fonts/pk/ljfour/public/bbm/bbm10.
+657pk>{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/loc
+al/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/loca
+l/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local
+/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/local/t
+exlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/t
+exlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/te
+xlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmitt10.pfb></usr/local/te
+xlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/tex
+live/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texli
+ve/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive
+/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2
+018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/201
+8/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2018/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2018/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2018/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2018/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmsl10.pfb></usr/local/texlive/2018/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2018/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2018/texmf-dist/font
+s/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2018/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2018/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2018/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmtt9.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/
+public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2018/texmf-dist/fonts/ty
+pe1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2018/texmf-dist/font
+s/type1/adobe/utopia/putb8a.pfb>
+Output written on thesis_main.pdf (54 pages, 529272 bytes).
 PDF statistics:
- 2093 PDF objects out of 2487 (max. 8388607)
- 1860 compressed objects within 19 object streams
- 467 named destinations out of 1000 (max. 500000)
- 455 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 938 PDF objects out of 1000 (max. 8388607)
+ 826 compressed objects within 9 object streams
+ 240 named destinations out of 1000 (max. 500000)
+ 263 words of extra memory for PDF output out of 10000 (max. 10000000)
 

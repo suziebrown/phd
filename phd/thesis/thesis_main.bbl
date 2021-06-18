@@ -379,6 +379,47 @@
       \field{type}{techreport}
       \field{year}{2021}
     \endentry
+    \entry{crisan1998}{article}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,uniquepart=base,hash=11e95b7ffb0671eae4b587fdbd11b74f}{%
+           family={Crisan},
+           familyi={C\bibinitperiod},
+           given={Dan},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=d771d04fc13831e7ab9152984eaa0d86}{%
+           family={Del\bibnamedelima Moral},
+           familyi={D\bibinitperiod\bibinitdelim M\bibinitperiod},
+           given={Pierre},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=250da9bbbdb97dcfa01b57e8f50794a8}{%
+           family={Lyons},
+           familyi={L\bibinitperiod},
+           given={Terry},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{73c48fc1bf5d5a52191afbbf497aa019}
+      \strng{fullhash}{73c48fc1bf5d5a52191afbbf497aa019}
+      \strng{bibnamehash}{73c48fc1bf5d5a52191afbbf497aa019}
+      \strng{authorbibnamehash}{73c48fc1bf5d5a52191afbbf497aa019}
+      \strng{authornamehash}{73c48fc1bf5d5a52191afbbf497aa019}
+      \strng{authorfullhash}{73c48fc1bf5d5a52191afbbf497aa019}
+      \field{sortinit}{C}
+      \field{sortinithash}{963e9d84a3da2344e8833203de5aed05}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Markov Processes and Related Fields}
+      \field{number}{3}
+      \field{title}{Discrete Filtering Using Branching and Interacting Particle Systems}
+      \field{volume}{5}
+      \field{year}{1999}
+      \field{pages}{293\bibrangedash 318}
+      \range{pages}{26}
+    \endentry
     \entry{crisan1997}{article}{}
       \name{author}{2}{}{%
         {{uniquename=0,uniquepart=base,hash=11e95b7ffb0671eae4b587fdbd11b74f}{%
