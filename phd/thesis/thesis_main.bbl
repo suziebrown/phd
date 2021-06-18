@@ -140,57 +140,6 @@
       \field{title}{Recent Progress in Coalescent Theory}
       \field{year}{2009}
     \endentry
-    \entry{brown2021}{article}{}
-      \name{author}{4}{}{%
-        {{uniquename=0,uniquepart=base,hash=fdbccafd0759a39bd5ff9b5ea9739883}{%
-           family={Brown},
-           familyi={B\bibinitperiod},
-           given={Suzie},
-           giveni={S\bibinitperiod},
-           givenun=0}}%
-        {{uniquename=0,uniquepart=base,hash=965ba62a239c33d192ae4fc5dee134e6}{%
-           family={Jenkins},
-           familyi={J\bibinitperiod},
-           given={Paul\bibnamedelima A.},
-           giveni={P\bibinitperiod\bibinitdelim A\bibinitperiod},
-           givenun=0}}%
-        {{uniquename=0,uniquepart=base,hash=17d1caa8d265744784c2779daffb0a90}{%
-           family={Johansen},
-           familyi={J\bibinitperiod},
-           given={Adam\bibnamedelima M.},
-           giveni={A\bibinitperiod\bibinitdelim M\bibinitperiod},
-           givenun=0}}%
-        {{uniquename=0,uniquepart=base,hash=9b74b02c1ef5fc6fd3d8f21b8ce9be68}{%
-           family={Koskela},
-           familyi={K\bibinitperiod},
-           given={Jere},
-           giveni={J\bibinitperiod},
-           givenun=0}}%
-      }
-      \strng{namehash}{70c1acd1a5507761ee2e85681bd21729}
-      \strng{fullhash}{889ea9a62c8330287f9623a49f08fd3e}
-      \strng{bibnamehash}{70c1acd1a5507761ee2e85681bd21729}
-      \strng{authorbibnamehash}{70c1acd1a5507761ee2e85681bd21729}
-      \strng{authornamehash}{70c1acd1a5507761ee2e85681bd21729}
-      \strng{authorfullhash}{889ea9a62c8330287f9623a49f08fd3e}
-      \field{sortinit}{B}
-      \field{sortinithash}{276475738cc058478c1677046f857703}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{year}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{issn}{1083-6489}
-      \field{journaltitle}{Electronic Journal of Probability}
-      \field{number}{1}
-      \field{title}{Simple Conditions for Convergence of Sequential {Monte} {Carlo} Genealogies with Applications}
-      \field{volume}{26}
-      \field{year}{2021}
-      \field{pages}{1\bibrangedash 22}
-      \range{pages}{22}
-      \verb{doi}
-      \verb 10.1214/20-EJP561
-      \endverb
-    \endentry
     \entry{cannings1974}{article}{}
       \name{author}{1}{}{%
         {{uniquename=0,uniquepart=base,hash=96f188e220b92654d0db3000a9854d76}{%
@@ -656,38 +605,6 @@
       \field{title}{Probability Models for {DNA} Sequence Evolution}
       \field{year}{2008}
     \endentry
-    \entry{durrett2019}{book}{}
-      \name{author}{1}{}{%
-        {{uniquename=0,uniquepart=base,hash=dbdc52e17e1d92513591b9fd1361d03b}{%
-           family={Durrett},
-           familyi={D\bibinitperiod},
-           given={Richard},
-           giveni={R\bibinitperiod},
-           givenun=0}}%
-      }
-      \list{publisher}{1}{%
-        {Cambridge University Press}%
-      }
-      \strng{namehash}{dbdc52e17e1d92513591b9fd1361d03b}
-      \strng{fullhash}{dbdc52e17e1d92513591b9fd1361d03b}
-      \strng{bibnamehash}{dbdc52e17e1d92513591b9fd1361d03b}
-      \strng{authorbibnamehash}{dbdc52e17e1d92513591b9fd1361d03b}
-      \strng{authornamehash}{dbdc52e17e1d92513591b9fd1361d03b}
-      \strng{authorfullhash}{dbdc52e17e1d92513591b9fd1361d03b}
-      \field{sortinit}{D}
-      \field{sortinithash}{2ef1bd9a78cc71eb74d7231c635177b8}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{year}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{edition}{5}
-      \field{series}{Cambridge Series in Statistical and Probabilistic Mathematics}
-      \field{title}{Probability: Theory and Examples}
-      \field{year}{2019}
-      \verb{doi}
-      \verb 10.1017/9781108591034
-      \endverb
-    \endentry
     \entry{efron1994}{book}{}
       \name{author}{2}{}{%
         {{uniquename=0,uniquepart=base,hash=5470455fc7dceb3ccf6db38cb22a113d}{%
@@ -747,39 +664,6 @@
       \field{labeltitlesource}{title}
       \field{title}{Some Mathematical Models from Population Genetics: {É}cole D'{É}t{é} de Probabilit{é}s de Saint-Flour XXXIX-2009}
       \field{year}{2011}
-    \endentry
-    \entry{ethier1986}{book}{}
-      \name{author}{2}{}{%
-        {{uniquename=0,uniquepart=base,hash=a45f2eb8285ae9ba8a91156b575327cd}{%
-           family={Ethier},
-           familyi={E\bibinitperiod},
-           given={Stewart\bibnamedelima N.},
-           giveni={S\bibinitperiod\bibinitdelim N\bibinitperiod},
-           givenun=0}}%
-        {{uniquename=0,uniquepart=base,hash=5e35655c3b358ba169619d83bfbdb38e}{%
-           family={Kurtz},
-           familyi={K\bibinitperiod},
-           given={Thomas\bibnamedelima G.},
-           giveni={T\bibinitperiod\bibinitdelim G\bibinitperiod},
-           givenun=0}}%
-      }
-      \list{publisher}{1}{%
-        {John Wiley \& Sons}%
-      }
-      \strng{namehash}{643c59d13c6db724b5feafdea6777f7f}
-      \strng{fullhash}{643c59d13c6db724b5feafdea6777f7f}
-      \strng{bibnamehash}{643c59d13c6db724b5feafdea6777f7f}
-      \strng{authorbibnamehash}{643c59d13c6db724b5feafdea6777f7f}
-      \strng{authornamehash}{643c59d13c6db724b5feafdea6777f7f}
-      \strng{authorfullhash}{643c59d13c6db724b5feafdea6777f7f}
-      \field{sortinit}{E}
-      \field{sortinithash}{f615fb9c6fba11c6f962fb3fd599810e}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{year}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{Markov Processes: Characterization and Convergence}
-      \field{year}{2009}
     \endentry
     \entry{evensen1994}{article}{}
       \name{author}{1}{}{%
@@ -910,80 +794,6 @@
       \field{pages}{205\bibrangedash 220}
       \range{pages}{16}
     \endentry
-    \entry{forbes2011}{book}{}
-      \name{author}{4}{}{%
-        {{uniquename=0,uniquepart=base,hash=a579ba603148c7cb469c7bd7ac58a62e}{%
-           family={Forbes},
-           familyi={F\bibinitperiod},
-           given={Catherine},
-           giveni={C\bibinitperiod},
-           givenun=0}}%
-        {{uniquename=0,uniquepart=base,hash=f48a6f6e2dd3feadce26424956719a2a}{%
-           family={Evans},
-           familyi={E\bibinitperiod},
-           given={Merran},
-           giveni={M\bibinitperiod},
-           givenun=0}}%
-        {{uniquename=0,uniquepart=base,hash=b87e4fbe6a70199c53e56aad7fe4c6f3}{%
-           family={Hastings},
-           familyi={H\bibinitperiod},
-           given={Nicholas},
-           giveni={N\bibinitperiod},
-           givenun=0}}%
-        {{uniquename=0,uniquepart=base,hash=c9d8e4a946898da962cc4fa38b3f63bc}{%
-           family={Peacock},
-           familyi={P\bibinitperiod},
-           given={Brian},
-           giveni={B\bibinitperiod},
-           givenun=0}}%
-      }
-      \list{publisher}{1}{%
-        {John Wiley \& Sons}%
-      }
-      \strng{namehash}{ae2303858f34aff858c2af6a595ce9f9}
-      \strng{fullhash}{3e1d2d8c355a547d86a4d2515c899dff}
-      \strng{bibnamehash}{ae2303858f34aff858c2af6a595ce9f9}
-      \strng{authorbibnamehash}{ae2303858f34aff858c2af6a595ce9f9}
-      \strng{authornamehash}{ae2303858f34aff858c2af6a595ce9f9}
-      \strng{authorfullhash}{3e1d2d8c355a547d86a4d2515c899dff}
-      \field{sortinit}{F}
-      \field{sortinithash}{669c706c6f1fbf3b5a83d26f1d9e9e72}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{year}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{Statistical Distributions}
-      \field{year}{2011}
-    \endentry
-    \entry{fu2006}{article}{}
-      \name{author}{1}{}{%
-        {{uniquename=0,uniquepart=base,hash=56d4545fc09344f89a1eb97f5fa0fc2d}{%
-           family={Fu},
-           familyi={F\bibinitperiod},
-           given={Yun-Xin},
-           giveni={Y\bibinithyphendelim X\bibinitperiod},
-           givenun=0}}%
-      }
-      \strng{namehash}{56d4545fc09344f89a1eb97f5fa0fc2d}
-      \strng{fullhash}{56d4545fc09344f89a1eb97f5fa0fc2d}
-      \strng{bibnamehash}{56d4545fc09344f89a1eb97f5fa0fc2d}
-      \strng{authorbibnamehash}{56d4545fc09344f89a1eb97f5fa0fc2d}
-      \strng{authornamehash}{56d4545fc09344f89a1eb97f5fa0fc2d}
-      \strng{authorfullhash}{56d4545fc09344f89a1eb97f5fa0fc2d}
-      \field{sortinit}{F}
-      \field{sortinithash}{669c706c6f1fbf3b5a83d26f1d9e9e72}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{year}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{issue}{4}
-      \field{journaltitle}{Theoretical Population Biology}
-      \field{title}{Exact Coalescent for the {Wright}--{Fisher} Model}
-      \field{volume}{69}
-      \field{year}{2006}
-      \field{pages}{385\bibrangedash 394}
-      \range{pages}{10}
-    \endentry
     \entry{gerber2017}{article}{}
       \name{author}{3}{}{%
         {{uniquename=0,uniquepart=base,hash=89d9b932076f570b1be70fbe32180549}{%
@@ -1071,79 +881,6 @@
       \field{year}{1993}
       \field{pages}{107\bibrangedash 113}
       \range{pages}{7}
-    \endentry
-    \entry{griffiths2016}{article}{}
-      \name{author}{2}{}{%
-        {{uniquename=0,uniquepart=base,hash=2c7834b8f320e6f6e08cc9128b1cd266}{%
-           family={Griffiths},
-           familyi={G\bibinitperiod},
-           given={Robert},
-           giveni={R\bibinitperiod},
-           givenun=0}}%
-        {{uniquename=0,uniquepart=base,hash=e908ce7aa109ccc4bf5158a548c3dab2}{%
-           family={Mano},
-           familyi={M\bibinitperiod},
-           given={Shuhei},
-           giveni={S\bibinitperiod},
-           givenun=0}}%
-      }
-      \list{publisher}{1}{%
-        {Taylor \& Francis}%
-      }
-      \strng{namehash}{fb4803c6ef79c513ff6f13ffcaa8d854}
-      \strng{fullhash}{fb4803c6ef79c513ff6f13ffcaa8d854}
-      \strng{bibnamehash}{fb4803c6ef79c513ff6f13ffcaa8d854}
-      \strng{authorbibnamehash}{fb4803c6ef79c513ff6f13ffcaa8d854}
-      \strng{authornamehash}{fb4803c6ef79c513ff6f13ffcaa8d854}
-      \strng{authorfullhash}{fb4803c6ef79c513ff6f13ffcaa8d854}
-      \field{sortinit}{G}
-      \field{sortinithash}{5e8d2bf9d38de41b1528bd307546008f}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{year}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Stochastic Models}
-      \field{number}{4}
-      \field{title}{The Star-Shaped $\Lambda$-coalescent and {Fleming--Viot} Process}
-      \field{volume}{32}
-      \field{year}{2016}
-      \field{pages}{606\bibrangedash 631}
-      \range{pages}{26}
-    \endentry
-    \entry{hardy1918}{article}{}
-      \name{author}{2}{}{%
-        {{uniquename=0,uniquepart=base,hash=1060fa386a5f18d1ba64493dc48fd8a2}{%
-           family={Hardy},
-           familyi={H\bibinitperiod},
-           given={Godfrey\bibnamedelima Harold},
-           giveni={G\bibinitperiod\bibinitdelim H\bibinitperiod},
-           givenun=0}}%
-        {{uniquename=0,uniquepart=base,hash=347ed01b775415c64e42ebfbd02d3976}{%
-           family={Ramanujan},
-           familyi={R\bibinitperiod},
-           given={Srinivasa\bibnamedelima Aaiyangar},
-           giveni={S\bibinitperiod\bibinitdelim A\bibinitperiod},
-           givenun=0}}%
-      }
-      \strng{namehash}{660f71ebc29af12522e308a76a77f66e}
-      \strng{fullhash}{660f71ebc29af12522e308a76a77f66e}
-      \strng{bibnamehash}{660f71ebc29af12522e308a76a77f66e}
-      \strng{authorbibnamehash}{660f71ebc29af12522e308a76a77f66e}
-      \strng{authornamehash}{660f71ebc29af12522e308a76a77f66e}
-      \strng{authorfullhash}{660f71ebc29af12522e308a76a77f66e}
-      \field{sortinit}{H}
-      \field{sortinithash}{5f15a7bc777ad49ff15aa4d2831b1681}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{year}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Proceedings of the London Mathematical Society}
-      \field{number}{1}
-      \field{title}{Asymptotic Formulae in Combinatory Analysis}
-      \field{volume}{s2-17}
-      \field{year}{1918}
-      \field{pages}{75\bibrangedash 115}
-      \range{pages}{41}
     \endentry
     \entry{hol2004}{thesis}{}
       \name{author}{1}{}{%
@@ -1678,6 +1415,44 @@
       \field{pages}{1\bibrangedash 143}
       \range{pages}{143}
     \endentry
+    \entry{liu1995}{article}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,uniquepart=base,hash=58b6ab30975eca2201e264d805607d70}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={Jun\bibnamedelima S.},
+           giveni={J\bibinitperiod\bibinitdelim S\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=5bb19d0f142e7bd52543c9c4cf45c4c7}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Rong},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Taylor \& Francis Group}%
+      }
+      \strng{namehash}{275c4d33650964af2ec6fc120d815c7d}
+      \strng{fullhash}{275c4d33650964af2ec6fc120d815c7d}
+      \strng{bibnamehash}{275c4d33650964af2ec6fc120d815c7d}
+      \strng{authorbibnamehash}{275c4d33650964af2ec6fc120d815c7d}
+      \strng{authornamehash}{275c4d33650964af2ec6fc120d815c7d}
+      \strng{authorfullhash}{275c4d33650964af2ec6fc120d815c7d}
+      \field{sortinit}{L}
+      \field{sortinithash}{2c7981aaabc885868aba60f0c09ee20f}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of the American Statistical Association}
+      \field{number}{430}
+      \field{title}{Blind Deconvolution via Sequential Imputations}
+      \field{volume}{90}
+      \field{year}{1995}
+      \field{pages}{567\bibrangedash 576}
+      \range{pages}{10}
+    \endentry
     \entry{liu1998}{article}{}
       \name{author}{2}{}{%
         {{uniquename=0,uniquepart=base,hash=58b6ab30975eca2201e264d805607d70}{%
@@ -1716,103 +1491,47 @@
       \field{pages}{1032\bibrangedash 1044}
       \range{pages}{13}
     \endentry
-    \entry{mohle1998}{article}{}
-      \name{author}{1}{}{%
-        {{uniquename=0,uniquepart=base,hash=b6cd56499245b16ab003cae95de7eae7}{%
-           family={M{ö}hle},
-           familyi={M\bibinitperiod},
-           given={Martin},
-           giveni={M\bibinitperiod},
+    \entry{liu2001}{incollection}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,uniquepart=base,hash=58b6ab30975eca2201e264d805607d70}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={Jun\bibnamedelima S.},
+           giveni={J\bibinitperiod\bibinitdelim S\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=5bb19d0f142e7bd52543c9c4cf45c4c7}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Rong},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=396c127c522b611eace9d9e75391167a}{%
+           family={Logvinenko},
+           familyi={L\bibinitperiod},
+           given={Tanya},
+           giveni={T\bibinitperiod},
            givenun=0}}%
       }
       \list{publisher}{1}{%
-        {Cambridge University Press}%
+        {Springer}%
       }
-      \strng{namehash}{b6cd56499245b16ab003cae95de7eae7}
-      \strng{fullhash}{b6cd56499245b16ab003cae95de7eae7}
-      \strng{bibnamehash}{b6cd56499245b16ab003cae95de7eae7}
-      \strng{authorbibnamehash}{b6cd56499245b16ab003cae95de7eae7}
-      \strng{authornamehash}{b6cd56499245b16ab003cae95de7eae7}
-      \strng{authorfullhash}{b6cd56499245b16ab003cae95de7eae7}
-      \field{sortinit}{M}
-      \field{sortinithash}{cfd219b90152c06204fab207bc6c7cab}
+      \strng{namehash}{1b6249ec3616e0ff75d9492f1e789514}
+      \strng{fullhash}{1b6249ec3616e0ff75d9492f1e789514}
+      \strng{bibnamehash}{1b6249ec3616e0ff75d9492f1e789514}
+      \strng{authorbibnamehash}{1b6249ec3616e0ff75d9492f1e789514}
+      \strng{authornamehash}{1b6249ec3616e0ff75d9492f1e789514}
+      \strng{authorfullhash}{1b6249ec3616e0ff75d9492f1e789514}
+      \field{sortinit}{L}
+      \field{sortinithash}{2c7981aaabc885868aba60f0c09ee20f}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Journal of Applied Probability}
-      \field{number}{2}
-      \field{title}{Robustness Results for the Coalescent}
-      \field{volume}{35}
-      \field{year}{1998}
-      \field{pages}{438\bibrangedash 447}
-      \range{pages}{10}
-    \endentry
-    \entry{mohle1999}{article}{}
-      \name{author}{1}{}{%
-        {{uniquename=0,uniquepart=base,hash=b6cd56499245b16ab003cae95de7eae7}{%
-           family={M{ö}hle},
-           familyi={M\bibinitperiod},
-           given={Martin},
-           giveni={M\bibinitperiod},
-           givenun=0}}%
-      }
-      \list{publisher}{1}{%
-        {Cambridge University Press}%
-      }
-      \strng{namehash}{b6cd56499245b16ab003cae95de7eae7}
-      \strng{fullhash}{b6cd56499245b16ab003cae95de7eae7}
-      \strng{bibnamehash}{b6cd56499245b16ab003cae95de7eae7}
-      \strng{authorbibnamehash}{b6cd56499245b16ab003cae95de7eae7}
-      \strng{authornamehash}{b6cd56499245b16ab003cae95de7eae7}
-      \strng{authorfullhash}{b6cd56499245b16ab003cae95de7eae7}
-      \field{sortinit}{M}
-      \field{sortinithash}{cfd219b90152c06204fab207bc6c7cab}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{year}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Journal of Applied Probability}
-      \field{number}{2}
-      \field{title}{Weak Convergence to the Coalescent in Neutral Population Models}
-      \field{volume}{36}
-      \field{year}{1999}
-      \field{pages}{446\bibrangedash 460}
-      \range{pages}{15}
-    \endentry
-    \entry{mohle2003}{article}{}
-      \name{author}{2}{}{%
-        {{uniquename=0,uniquepart=base,hash=91dc4d416f310afc5cf0edbfc909f0cf}{%
-           family={Möhle},
-           familyi={M\bibinitperiod},
-           given={Martin},
-           giveni={M\bibinitperiod},
-           givenun=0}}%
-        {{uniquename=0,uniquepart=base,hash=1940412646c2d90b785da664aaae82fe}{%
-           family={Sagitov},
-           familyi={S\bibinitperiod},
-           given={Serik},
-           giveni={S\bibinitperiod},
-           givenun=0}}%
-      }
-      \strng{namehash}{c973138d14f3ec478361e082419d4283}
-      \strng{fullhash}{c973138d14f3ec478361e082419d4283}
-      \strng{bibnamehash}{c973138d14f3ec478361e082419d4283}
-      \strng{authorbibnamehash}{c973138d14f3ec478361e082419d4283}
-      \strng{authornamehash}{c973138d14f3ec478361e082419d4283}
-      \strng{authorfullhash}{c973138d14f3ec478361e082419d4283}
-      \field{sortinit}{M}
-      \field{sortinithash}{cfd219b90152c06204fab207bc6c7cab}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{year}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Journal of Mathematical Biology}
-      \field{title}{Coalescent Patterns in Exchangeable Diploid Population Models}
-      \field{volume}{47}
-      \field{year}{2003}
-      \field{pages}{337\bibrangedash 352}
-      \range{pages}{16}
+      \field{booktitle}{Sequential {Monte} {Carlo} Methods in Practice}
+      \field{title}{A Theoretical Framework for Sequential Importance Sampling with Resampling}
+      \field{year}{2001}
+      \field{pages}{225\bibrangedash 246}
+      \range{pages}{22}
     \endentry
     \entry{moran1958}{inproceedings}{}
       \name{author}{1}{}{%
@@ -1845,38 +1564,6 @@
       \field{year}{1958}
       \field{pages}{60\bibrangedash 71}
       \range{pages}{12}
-    \endentry
-    \entry{mosimann1962}{article}{}
-      \name{author}{1}{}{%
-        {{uniquename=0,uniquepart=base,hash=da37a051d8d8cf6b936d516fec9271bb}{%
-           family={Mosimann},
-           familyi={M\bibinitperiod},
-           given={James\bibnamedelima E.},
-           giveni={J\bibinitperiod\bibinitdelim E\bibinitperiod},
-           givenun=0}}%
-      }
-      \list{publisher}{1}{%
-        {JSTOR}%
-      }
-      \strng{namehash}{da37a051d8d8cf6b936d516fec9271bb}
-      \strng{fullhash}{da37a051d8d8cf6b936d516fec9271bb}
-      \strng{bibnamehash}{da37a051d8d8cf6b936d516fec9271bb}
-      \strng{authorbibnamehash}{da37a051d8d8cf6b936d516fec9271bb}
-      \strng{authornamehash}{da37a051d8d8cf6b936d516fec9271bb}
-      \strng{authorfullhash}{da37a051d8d8cf6b936d516fec9271bb}
-      \field{sortinit}{M}
-      \field{sortinithash}{cfd219b90152c06204fab207bc6c7cab}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{year}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Biometrika}
-      \field{number}{1/2}
-      \field{title}{On the Compound Multinomial Distribution, the Multivariate $\beta$-Distribution, and Correlations among Proportions}
-      \field{volume}{49}
-      \field{year}{1962}
-      \field{pages}{65\bibrangedash 82}
-      \range{pages}{18}
     \endentry
     \entry{myers2021}{article}{}
       \name{author}{4}{}{%
@@ -1926,68 +1613,6 @@
       \field{year}{2021}
       \field{pages}{110055}
       \range{pages}{1}
-    \endentry
-    \entry{notohara1990}{article}{}
-      \name{author}{1}{}{%
-        {{uniquename=0,uniquepart=base,hash=ee637881bf169ed118c2e259bf273acf}{%
-           family={Notohara},
-           familyi={N\bibinitperiod},
-           given={Morihiro},
-           giveni={M\bibinitperiod},
-           givenun=0}}%
-      }
-      \list{publisher}{1}{%
-        {Springer}%
-      }
-      \strng{namehash}{ee637881bf169ed118c2e259bf273acf}
-      \strng{fullhash}{ee637881bf169ed118c2e259bf273acf}
-      \strng{bibnamehash}{ee637881bf169ed118c2e259bf273acf}
-      \strng{authorbibnamehash}{ee637881bf169ed118c2e259bf273acf}
-      \strng{authornamehash}{ee637881bf169ed118c2e259bf273acf}
-      \strng{authorfullhash}{ee637881bf169ed118c2e259bf273acf}
-      \field{sortinit}{N}
-      \field{sortinithash}{f7242c3ed3dc50029fca1be76c497c7c}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{year}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Journal of Mathematical Biology}
-      \field{number}{1}
-      \field{title}{The Coalescent and the Genealogical Process in Geographically Structured Population}
-      \field{volume}{29}
-      \field{year}{1990}
-      \field{pages}{59\bibrangedash 75}
-      \range{pages}{17}
-    \endentry
-    \entry{pitman1999}{article}{}
-      \name{author}{1}{}{%
-        {{uniquename=0,uniquepart=base,hash=081ad72db47fd3469ec24c44f405d377}{%
-           family={Pitman},
-           familyi={P\bibinitperiod},
-           given={Jim},
-           giveni={J\bibinitperiod},
-           givenun=0}}%
-      }
-      \list{publisher}{1}{%
-        {JSTOR}%
-      }
-      \strng{namehash}{081ad72db47fd3469ec24c44f405d377}
-      \strng{fullhash}{081ad72db47fd3469ec24c44f405d377}
-      \strng{bibnamehash}{081ad72db47fd3469ec24c44f405d377}
-      \strng{authorbibnamehash}{081ad72db47fd3469ec24c44f405d377}
-      \strng{authornamehash}{081ad72db47fd3469ec24c44f405d377}
-      \strng{authorfullhash}{081ad72db47fd3469ec24c44f405d377}
-      \field{sortinit}{P}
-      \field{sortinithash}{8d51b3d5b78d75b54308d706b9bbe285}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{year}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Annals of Probability}
-      \field{title}{Coalescents with Multiple Collisions}
-      \field{year}{1999}
-      \field{pages}{1870\bibrangedash 1902}
-      \range{pages}{33}
     \endentry
     \entry{pitt1999}{article}{}
       \name{author}{2}{}{%
@@ -2173,41 +1798,35 @@
       \field{pages}{51\bibrangedash 54}
       \range{pages}{4}
     \endentry
-    \entry{verma1988}{inproceedings}{}
-      \name{author}{2}{}{%
-        {{uniquename=0,uniquepart=base,hash=2e06f78670eb35570c8e647e35752258}{%
-           family={Verma},
-           familyi={V\bibinitperiod},
-           given={Thomas},
-           giveni={T\bibinitperiod},
-           givenun=0}}%
-        {{uniquename=0,uniquepart=base,hash=809f695b398afbb54b544c49e8d1bbbb}{%
-           family={Pearl},
-           familyi={P\bibinitperiod},
-           given={Judea},
-           giveni={J\bibinitperiod},
+    \entry{srinivasan2001}{inproceedings}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=60aac07958f6a0525e0aa9e250d2d0d3}{%
+           family={Srinivasan},
+           familyi={S\bibinitperiod},
+           given={Aravind},
+           giveni={A\bibinitperiod},
            givenun=0}}%
       }
-      \list{location}{1}{%
-        {Minneapolis, MN, Mountain View, CA}%
+      \list{organization}{1}{%
+        {IEEE}%
       }
-      \strng{namehash}{d6bfa96cdb6186a1452295c2e7176070}
-      \strng{fullhash}{d6bfa96cdb6186a1452295c2e7176070}
-      \strng{bibnamehash}{d6bfa96cdb6186a1452295c2e7176070}
-      \strng{authorbibnamehash}{d6bfa96cdb6186a1452295c2e7176070}
-      \strng{authornamehash}{d6bfa96cdb6186a1452295c2e7176070}
-      \strng{authorfullhash}{d6bfa96cdb6186a1452295c2e7176070}
-      \field{sortinit}{V}
-      \field{sortinithash}{75dd7385c90b2252c3ae853a80ca853b}
+      \strng{namehash}{60aac07958f6a0525e0aa9e250d2d0d3}
+      \strng{fullhash}{60aac07958f6a0525e0aa9e250d2d0d3}
+      \strng{bibnamehash}{60aac07958f6a0525e0aa9e250d2d0d3}
+      \strng{authorbibnamehash}{60aac07958f6a0525e0aa9e250d2d0d3}
+      \strng{authornamehash}{60aac07958f6a0525e0aa9e250d2d0d3}
+      \strng{authorfullhash}{60aac07958f6a0525e0aa9e250d2d0d3}
+      \field{sortinit}{S}
+      \field{sortinithash}{322b1d5276f2f6c1bccdcd15920dbee6}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{booktitle}{Proceedings of the 4th Workshop on Uncertainty in Artificial Intelligence}
-      \field{title}{Causal Networks: Semantics and Expressiveness}
-      \field{year}{1988}
-      \field{pages}{352\bibrangedash 359}
-      \range{pages}{8}
+      \field{booktitle}{Proceedings of the 42nd IEEE Symposium on Foundations of Computer Science}
+      \field{title}{Distributions on Level-Sets with Applications to Approximation Algorithms}
+      \field{year}{2001}
+      \field{pages}{588\bibrangedash 597}
+      \range{pages}{10}
     \endentry
     \entry{vidoni1999}{article}{}
       \name{author}{1}{}{%
