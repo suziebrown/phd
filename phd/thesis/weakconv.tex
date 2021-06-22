@@ -134,14 +134,14 @@ and
 \begin{equation*}
 \liminf_{N\to\infty} \Prob[ T_m^{(N)} \geq t ]
 = \liminf_{N\to\infty} \Prob[ \varpi_1^{(N)} + \cdots + \varpi_m^{(N)} \geq t ]
-= e^{-\alpha_n \delta} \sum_{i=0}^{m-1} \frac{(\alpha_n t)^i}{i!} .
+= e^{-\alpha_n t} \sum_{i=0}^{m-1} \frac{(\alpha_n t)^i}{i!} .
 \end{equation*}
 using the series expansion for the Erlang CDF \parencite[see for example][Chapter 15]{forbes2011}.
 Hence 
 \begin{equation*}
 \liminf_{N\to\infty} 
         \Prob[ T_m^{(N)} \geq t, \varpi_i^{(N)} > \delta \,\forall i\in \{1,\dots,m\} ]
-\geq (e^{-\alpha_n \delta})^{m+1} \sum_{i=0}^{m-1} \frac{(\alpha_n t)^i}{i!} ,
+\geq (e^{-\alpha_n \delta})^m e^{-\alpha_n t} \sum_{i=0}^{m-1} \frac{(\alpha_n t)^i}{i!} ,
 \end{equation*}
 which can be made $\geq 1-\epsilon$ by taking $m$ sufficiently large and $\delta$ sufficiently small.
 Since this argument applies for any $\epsilon$ and $t$, \eqref{eq:condition2b} and hence Condition~\ref{item:relcomp2} is satisfied, and the proof is complete.

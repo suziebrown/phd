@@ -1679,8 +1679,7 @@ However, the results of Chapters~\ref{ch:limits} and \ref{ch:weakconv} rely on a
 
 
 
-\subsubsection{Permutation sensitivity \seb{$\sim$} }
-\seb{link back to systematic, where we said that permutation sensitivity can cause pathological behaviour.}
+\subsubsection{Permutation sensitivity and sorting \seb{$\sim$} }
 Some resampling schemes are sensitive to the order of the weights.
 That is, permuting the weight vector before resampling can affect the distribution of the resulting offspring counts.
 Note that this entails a permutation of the parents, whereas the previous section was about permutations of offspring.
@@ -1691,8 +1690,7 @@ This does not affect the distribution of the offspring counts under multinomial 
 On the other hand, under stratified or systematic resampling the distribution of offspring counts is different for the two partitions. To see this, consider parents $2$ and $6$. When the weights are sorted, the probability that both of these parents are assigned a non-zero number of offspring is zero, because both of their subintervals lie within the same subinterval of length $1/N$, which gets exactly one inversion sampling point.
 When the weights are in their natural order, as in the top row of Figure~\ref{fig:permutation_sensitivity}, it is possible under stratified and systematic resampling for both parents $2$ and $6$ to be assigned one offspring.
 Clearly, then, the distribution of offspring counts under these resampling schemes differs between the two orderings of the weight vector pictured. 
-
-\draft{Which other schemes do/don't have this property?\\ What effect does permutation sensitivity have on performance? --- perhaps we just lead into the ``Sortin'' section to answer that...}
+Table~\ref{tab:resampling_properties} summarises which resampling schemes are permutation-sensitive  or not.
 % For example, in Figures \ref{fig:resampling_stratified} and \ref{fig:resampling_systematic} if the intervals $w_2$ and $w_4$ were swapped, the number of offspring assigned to particles 2 and 4 would be swapped in each case. \seb{Better to use an example where \emph{distribution} of offspring counts (conditional on the weights but not on the Uniform samples) differs depending on order. Such an example is included in my YRM19 presentation on resampling.}
 %We can also see that because $w_1$ has weight $\geq 1/N$ and is placed first, it is guaranteed at least one offspring.
 %
@@ -1764,9 +1762,20 @@ Under ``permutation-sensitive'' resampling schemes, the distribution of offsprin
 \label{fig:permutation_sensitivity}
 \end{figure}
 
+%\subsubsection{Sorting}
+Related to this phenomenon, \textcite{gerber2017} prove some striking theoretical results concerning the effects of pre-sorting the particles. They show that sorting the particles in order of their states prior to resampling improves the rate of decay of resampling error from the usual $O(N^{-1})$ to $O(N^{1-\frac{1}{d}})$, where $d$ is the dimension of the state space. 
+In dimension $d=1$, this supports the numerical results of \textcite{kitagawa1996}, who observed empirically that sorting improved the convergence rate from $O(N^{-1})$ to $O(N^{-2})$ when working in one dimension.
 
-\subsubsection{Sorting}
-\draft{Results from \textcite{gerber2017} about benefits of sorting. What about sorting instead by weights?}
+In dimension $d\geq2$ things are more complicated because there is no full ordering of the state space. \textcite{gerber2017} get around this by mapping the state space onto $[0,1]^d$ and sorting by the Hilbert curve. 
+The variance reduction from sorting the particles diminishes as the dimension increases, so in practice this has to be weighed up against the $O(N\log N)$ cost of sorting.
+
+Another remarkable result of \textcite{gerber2017} is that, when the particles are sorted by their states, systematic resampling admits some theoretical support that was lacking in the unsorted case.
+Recall that the possibly pathological behaviour of systematic resampling was related to ``bad'' orderings of the weight intervals; sorting the particles evidently prevents this.
+
+The intuition behind these results\seb{(I guess...)} is that sorting particles by their positions ensures that the stratified and systematic resampling schemes select parents from a good range of locations in state space. The sorting step prevents the sampled parents being concentrated in one small part of the state space purely by a chance ordering of the weight intervals.
+These results are only relevant to resampling schemes based on inversion sampling with fairly evenly-spaced points. Notably, multinomial resampling is not affected by sorting, since it is invariant under permutations of the weight vector.
+%\seb{I'm not sure about SSP; GCW imply that sorting is unnecessary in SSP because it's so great anyway, but they don't actually claim that SSP is unnaffected by sorting. My intuition is that it probably is affected, in some complex way.}
+
 
 
 
@@ -1857,14 +1866,14 @@ Thus $D^\star$ measures, in a certain sense, how far the points are from being u
 %% multinomial points, ditto
 \draw[thick, magenta, dashed] (0,0)--(3.24,3.24)--(3.24,1.24)--(3.48,1.48)--(3.48,-0.52)--(4.32,0.32)--(4.32,-1.68)--(6.48,0.48)--(6.48,-1.52)--(9.36,1.36)--(9.36,-0.64)--(11.04,1.04)--(11.04,-0.96)--(12,0);
 %% legend
-\draw[thick, magenta, dashed] (9,2.8)--(10,2.8);
-\node[anchor=west] at (10,2.8) {\texttt{multi}};
-\draw[thick, blue, dotted] (9,3.2)--(10,3.2);
-\node[anchor=west] at (10,3.2) {\texttt{strat}};
-\draw[violet] (9,3.6)--(10,3.6);
-\node[anchor=west] at (10,3.6) {\texttt{syst}};
-\draw[thick] (9,4)--(10,4);
-\node[anchor=west] at (10,4) {\texttt{reg grid}};
+\draw[thick, magenta, dashed] (9.8,2.5)--(10.8,2.5);
+\node[anchor=west] at (10.8,2.5) {\texttt{multi}};
+\draw[thick, blue, dotted] (9.8,2.9)--(10.8,2.9);
+\node[anchor=west] at (10.8,2.9) {\texttt{strat}};
+\draw[violet] (9.8,3.3)--(10.8,3.3);
+\node[anchor=west] at (10.8,3.3) {\texttt{syst}};
+\draw[thick] (9.8,3.7)--(10.8,3.7);
+\node[anchor=west] at (10.8,3.7) {\texttt{reg grid}};
 \end{tikzpicture}
 \caption[Star discrepancy for multinomial, stratified and systematic resampling]{Plot of the function inside the absolute value in \eqref{eq:defn_stardiscrepancy}, for four different point sets. The points $u_{1:6}$ used are the same as in Figure~\ref{fig:inv_resampling}.\\
 The solid black line corresponds to the regular grid, which achieves the minimal discrepancy $1/(2N)$, but cannot be used for resampling.
