@@ -90,10 +90,19 @@ A whole book on backward simulation. [Chapter 5] describes backward simulation a
 \subsection*{\cite{whiteley2010}}
 In the discussion, Nick Whiteley introduces (remarkably briefly) the idea of ancestor sampling in particle Gibbs.
 
-%
+
+
+
+
 \section*{CONVERGENCE OF GENEALOGIES}
 
-Also consider looking at: Donnelly Tavar\'e 1995 ``Coalescents and genealogical structure under neutrality''; Griffiths Tavar\'e 1994 ``Sampling theory for neutral alleles in a varying environment''; Marjoram 1992 ``Correlation structures in applied probability'' (PhD thesis, UCL).
+Also consider looking at: 
+Tavar\'e 1984 ``Line-of-descent and genealogical processes, and their applications in population genetics models''; 
+Donnelly 1991 ``Weak convergence to  a Markov chain with an entrance boundary: ancestral processes in population genetics''; 
+Donnelly Tavar\'e 1995 ``Coalescents and genealogical structure under neutrality''; 
+Griffiths Tavar\'e 1994 ``Sampling theory for neutral alleles in a varying environment''; 
+Marjoram 1992 ``Correlation structures in applied probability'' (PhD thesis, UCL);
+Pitman 1999 ``Coalescents with multiple collisions''.
 
 \subsection*{\cite{kingman1982gene}}
 \begin{itemize}
@@ -144,17 +153,47 @@ Necessary \& sufficient conditions for convergence of Cannings model to a coales
 
 
 \subsection*{\cite{mohle1999}}
+\begin{itemize}
+\item Population size can vary over time, but only deterministically
+\item Offspring counts must be independent but not necessarily identically distributed across generations --- this ensures the genealogical process is Markovian, but not time-homogeneous
+\item Individuals are not necessarily exchangeable, but our standing assumption (here called the ``random assignment condition'') is assumed
+\item Time scale $\tau_N(t)$ is allowed to be chosen freely, but the theorem only holds when it is an appropriate function (i.e.\ an inverse of $c_N$ similar to the usual) so this is not a very great generalisation over defining $\tau$ in the usual way.
+\item Theorem conditions are exactly the same as in M\"ohle1998
+\item Convergence is now proved additionally in the weak sense, as opposed to just FDDs
+\item Proof technique is overall the one I used for weak convergence of SMC genealogies, except M\"ohle's doesn't have the external expectations. These expectations appear in my proof because the coupled process can only be defined conditionally on $\mathcal{F}_\infty$, because the generations are not independent
+\end{itemize}
+
 
 \subsection*{\cite{mohle2000}}
+\begin{itemize}
+\item Fixed population size $N$
+\item Offspring counts are exchangeable and i.i.d. across generations
+\item Treats full characterisation of possible limiting coalescents (I think the class is known as $\Xi$-coalescents), where there are possibly simultaneous and/or multiple mergers. The particular limiting coalescent can be characterised by (mixed) factorial moments, here denoted $\Phi_a(b_1,\dots,b_a)$. These quantities are central to the analysis, and results are given in terms of them, so can be applied to any exchangeable model.
+\item It is shown that the Kingman coalescent appears as the limit if and only if $ \lim \frac{\E[(\nu_1)_3]}{N\E[(\nu_1)_2]} =0$. (See equation (14) or (16).) This is the exchangeable version of the main theorem condition I use in my SMC genealogies work. I think this work is the earliest use of this simplified condition.
+\item Total variation bounds are proved in the general case, left in terms of the particular transition probabilities of the model (see Thm 1).
+\item More specific bounds are calculated for the case where the model is in the domain of attraction of Kingman's coalescent (i.e. second moments dominate third moments, as above / in equation (14)). The bounds have a simple form and are left in terms of $c_N$ and some $\Phi$ functions which correspond to $\E[(\nu_1)_3]$ and $\E[(\nu_1)_2(\nu_2)_2]$, which could easily be computed for a given model. It is clear that under the conditions of convergence to KC, the given TV bound converges to zero, as expected.
+\end{itemize}
+
 
 \subsection*{\cite{mohle2001}}
-Even more general result than \cite{mohle1998}, giving necessary \& sufficient conditions for convergence to a process allowing large and simultaneous mergers. I hope to adapt this result to prove necessity of our Theorem 1 conditions.
+\begin{itemize}
+\item Constant population size $N$
+\item Offspring counts are exchangeable within generations and i.i.d. between generations --- implies the genealogical process is a time-homogeneous Markov chain
+\item Treats full variety of possible limits for exchangeable models (again, I think the family is $\Xi$-coalescents)
+\item Presents necessary and sufficient conditions for weak convergence to an appropriate $\Xi$-coalescent, and the particular $\Xi$ is uniquely determined by moments of the offspring distribution
+\item A proof of FDD convergence is given. When $c_N\to c\neq0$ the limiting process is discrete and weak convergence follows immediately from FDDs. When $c_N\to0$ the limit is continuous and tightness is needed for weak comvergence; the proof is not presented, just a reference to M\"ohle1999.
+\item Since the conditions given are necessary and sufficient, and can be applied to any exchangeable (Cannings-type) model, this constitutes a complete characterisation of the limiting genealogies for this class of models.
+\item Section 6 gives a cute bit of history of coalescent theory
+\end{itemize}
+
 
 \subsection*{\cite{mohle2003}}
 
 
 
-%
+
+
+
 \section*{SMC GENEALOGIES}
 
 \subsection*{\cite{jacob2015}}
