@@ -125,7 +125,7 @@ Necessary \& sufficient conditions for convergence of Cannings model to a coales
 
 \subsection*{\cite{mohlesagitov1998}}
 \begin{itemize}
-\item Assume $\nu_{1:N}$ are exchangeable, and independent across generations, and the population size $N$ is constant
+\item Assume $\nu_{1:N}$ are exchangeable, and i.i.d. across generations, and the population size $N$ is constant
 \item Necessary \& sufficient conditions are given for (FDD) convergence of the genealogies to a $\Lambda$-coalescent, and the correct measure $\Lambda$ is uniquely constructed from infinitely many moment limits. (Note: M\"ohle's notation uses $\mu$ for the measure rather than $\Lambda$.)
 \item The conditions are: (I) infinitely many pure moment limits exist, slightly different from the condition 2a of M\"ohle1998; (II) the exchangeable version of the mixed moment condition 2b of M\"ohle1998.
 \item Under the additional condition $c_N\to0$ we also get weak convergence to the $\Lambda$-coalescent, although the proof is not explicit in this paper (it just refers to the methods of another work).
@@ -133,6 +133,15 @@ Necessary \& sufficient conditions for convergence of Cannings model to a coales
 
 
 \subsection*{\cite{sagitov1999}}
+\begin{itemize}
+\item Assume $\nu_{1:N}$ are exchangeable, and i.i.d. across generations, and the population size $N$ is constant
+\item $k$-mergers (but not simultaneous mergers) are allowed
+\item 3 necessary conditions are given for FDD convergence to some limit of the form $p_{\xi\eta} = \delta_{\xi\eta} + V_N q_{\xi\eta} + o(V_N)$, where $Q=(q_{\xi\eta})$ is some Markov generator, and $V_N \to 0$.
+\item Additionally, a subset of the necessary conditions are shown to be sufficient for the above asymptotic relation to hold with specific $Q$ corresponding to a $\Lambda$-coalescent, on the (constant, deterministic) time scale $T_N^{-1} \sim V_N$.
+\item Unfortunately I didn't really understand the second and third conditions...
+\item As one would expect, the necessary conditions can be shown to hold when Kingman's condition $\sup_N \E[\nu_1^k]<\infty \forall k\geq 2$ applies (see Remark 1)
+\end{itemize}
+
 
 \subsection*{\cite{mohle1999}}
 
