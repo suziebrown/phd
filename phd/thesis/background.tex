@@ -1,14 +1,14 @@
 \chapter{Background}
 \label{ch:bg}
 
-\epigraph{
-Anyone who considers arithmetical methods of producing random digits is, of course, in a state of sin.
-}
-% For, as has been pointed out several times, there is no such thing as a random number --- there are only methods to produce random numbers, and a strict arithmetic procedure of course is not such a method.
-{\textsc{John von Neumann}}
+%\epigraph{
+%Anyone who considers arithmetical methods of producing random digits is, of course, in a state of sin.
+%}
+%% For, as has been pointed out several times, there is no such thing as a random number --- there are only methods to produce random numbers, and a strict arithmetic procedure of course is not such a method.
+%{\textsc{John von Neumann}}
 
 
-\section{Sequential Monte Carlo \seb{$\checkmark$} }
+\section{Sequential Monte Carlo}
 The idea of Monte Carlo is to use (pseudo-)random numbers to approximate expectations under an intractable probability distribution of interest.
 Sequential Monte Carlo (SMC) is a class of Monte Carlo algorithms which are implemented sequentially, allowing efficient sampling from \emph{sequences} of distributions.
 SMC was developed for inference in intractable state space models (details in Section~\ref{sec:SSMs}) and introduced to the statistics community by \textcite{gordon1993}.
@@ -99,14 +99,14 @@ This is the motivation behind sequential Monte Carlo (SMC).
 
 \subsection{Feynman-Kac models}
 \label{sec:FKmodels}
-\draft{Example of non-SSM that is FK?}
+\draft{Example of non-SSM that is FK? --- obvious options are SMC samplers e.g.\ for rare event simulation or sequential ABC or tempering.}
 
 State space models are very natural and intuitive applications, but they do not do justice to the scope of SMC algorithms, which is much wider.
 On the other hand, the \emph{Feynman-Kac} formalism captures the full scope, since every SMC algorithm is a Monte Carlo approximation of some Feynman-Kac model.
 Before formally introducing SMC let us therefore define a generic Feynman-Kac model.
 For a more in-depth study, the reader is directed to the exhaustive books by \textcite{delmoral2004, delmoral2013} or the more accessible \textcite[Chapter 5]{chopin2020}.
 
-Define a state space $\mathcal{X}$ and a time horizon $T$.
+Define a state space $\mathcal{X}$ and a time horizon $T$. In this \_ we assume that the state space is common for all times: this is often not the case in practice, but the generalisation to a sequence of state spaces is straightforward.
 The basic components of the Feynman-Kac model are a Markov law, defined by an initial distribution $\mathbb{M}_0$ and transition kernels $M_t$ for $t=1,\dots,T$; and a sequence of ``potential'' functions $G_0 : \mathcal{X} \mapsto [0,\infty)$  and $G_t : \mathcal{X}^2 \mapsto [0,\infty)$ for $t=1,\dots,T$.
 From these we construct a sequence of Feynman-Kac measures $(\mathbb{Q}_t)_{t=0:T}$ defined by the changes of measure
 \begin{equation}
@@ -235,8 +235,10 @@ We then construct the approximation
 \sum_{i=1}^N w_t^{(i)} \delta_{ X_{t,0:t}^{(i)} } 
 \end{equation*}
 of the smoothing distribution $p(x_{0:t} \mid y_{0:t})$.
-Similar approximations can be constructed for prediction and fixed-lag smoothing\seb{...be explicit or no?}.
-We can also approximate the marginal likelihood using the \emph{unnormalised} weights\seb{should I introduce notation e.g. $\tilde{w}$ for the unnormalised weights, and give them a separate line in Algorithm~\ref{alg:SMC}, and include them in the possible outputs of the algorithm?}:
+Similar approximations can be constructed for prediction and fixed-lag smoothing.
+%\seb{...be explicit or no?}.
+We can also approximate the marginal likelihood using the \emph{unnormalised} weights:
+%\seb{should I introduce notation e.g. $\tilde{w}$ for the unnormalised weights, and give them a separate line in Algorithm~\ref{alg:SMC}, and include them in the possible outputs of the algorithm?}
 \begin{equation}\label{eq:likelihood_estimate}
 L_t 
 \simeq \frac{1}{N} \sum_{i=1}^N G_0(X_0^{(i)}) \prod_{t=1}^T \frac{1}{N}
@@ -338,7 +340,7 @@ Suffice it to say that SMC algorithms enjoy enough theoretical properties to be 
 
 
 
-\section{Coalescent theory \seb{$\checkmark$} }
+\section{Coalescent theory}
 \label{sec:coaltheory}
 \draft{Write a paragraph introducing the section.}
 
@@ -423,9 +425,9 @@ Starting with $n$ blocks, exactly $n-1$ coalescences are required to reach the a
 
 Denote by $t_2, t_3 \dots, t_n$ the waiting times between coalescent events, where $t_i$ is the amount of time for which the coalescent has exactly $i$ distinct lineages (see Figure~\ref{fig:KC_timedefns}).
 A consequence of Definition~\ref{def:kingman} is that these waiting times are independent and have distributions
-\begin{equation}
+\begin{equation*}
 t_i \sim \Exp\left( \binom{i}{2} \right) .
-\end{equation}
+\end{equation*}
 The partial sum $T_k := \sum_{i=k+1}^n t_i$ gives the total time up to the $(n-k)^{th}$ coalescence event, i.e.\ the first time at which there are only $k$ lineages remaining out of the initial $n$ (see Figure~\ref{fig:KC_timedefns}).
 The partial sums, being sums of independent Exponential random variables, have HyperExponential distributions.
 
@@ -434,19 +436,19 @@ The partial sums, being sums of independent Exponential random variables, have H
 \subsubsection{Time to MRCA}
 Of particular interest is the tree height or time to the most recent common ancestor, $T_{MRCA} := T_1$.
 With some algebra we find, for instance,
-\begin{equation}
+\begin{equation*}
 \E[ T_{MRCA} ] 
 = \sum_{i=2}^{n} \E[t_i]
 = \sum_{i=2}^n \frac{2}{i(i-1)}
 = 2 \sum_{i=2}^n \left\{ \frac{1}{i-1} - \frac{1}{i} \right\}
 = 2 \left( 1 - \frac{1}{n} \right)
-\end{equation}
+\end{equation*}
 and
-\begin{equation}
+\begin{equation*}
 \V[ T_{MRCA} ] 
 = \sum_{i=2}^n \V[t_i]
 = \sum_{i=2}^n \left( \frac{2}{i(i-1)} \right)^2 .
-\end{equation}
+\end{equation*}
 The expected tree height converges to 2 as $n\to\infty$, and the variance converges to $4(\pi^2 - 9)/3 \simeq 1.16$.
 The somewhat surprising fact that the tree height does not diverge with $n$ is a result of the very high rate of coalescence close to the bottom of the tree. This rate is large enough that the full Kingman coalescent (on $\mathbb{N}$) \emph{comes down from infinity}, that is, despite starting with infinitely many blocks, after any positive amount of time these have coalesced into finitely many blocks.
 \seb{Plot mean with sd-ribbon over $n$ for an illustration? SD ribbon isn't the right thing; since we apparently know the actual distribution, plot a high density interval of that. (also for $L$)}
@@ -456,21 +458,21 @@ The somewhat surprising fact that the tree height does not diverge with $n$ is a
 Another quantity of interest is the total branch length,
 $ L := \sum_{i=2}^n i t_i $.
 For instance
-\begin{equation}
+\begin{equation*}
 \E[ L ] 
 = \sum_{i=2}^n i \E[ t_i ]
 = \sum_{i=2}^n \frac{2}{i-1}
 = \sum_{i=1}^{n-1} \frac{2}{i} %,
 \simeq 2 \ln(n-1) 
-\end{equation}
+\end{equation*}
 %a harmonic series, 
 and
-\begin{equation}
+\begin{equation*}
 \V[ L ] 
 = \sum_{i=2}^n i^2 \V[ t_i ]
 = \sum_{i=2}^n \frac{4}{(i-1)^2}
 = \sum_{i=1}^{n-1} \frac{4}{i^2} .
-\end{equation}
+\end{equation*}
 Note that although the mean total branch length diverges with $n$, the variance converges to a constant, $4\pi /6 \simeq 6.6$.
 
 
@@ -575,7 +577,7 @@ Nor is our model neutral: the resampling distribution depends on the weight of e
 
 
 
-\section{Sequential Monte Carlo genealogies \seb{$\checkmark$} }
+\section{Sequential Monte Carlo genealogies}
 \label{sec:SMC_genealogies}
 %\subsection{From particles to genealogies}
 We have seen that genetic terminology applies quite naturally to SMC.
@@ -681,7 +683,7 @@ This allows, for instance, genealogies of different SMC algorithms to be compare
 
 
 
-\section{Resampling \seb{$\sim$} }
+\section{Resampling}
 \label{sec:resampling}
 As we have seen\seb{we actually haven't; this should have been made explicit in section~\ref{sec:SMC_FK}}, resampling is necessary within SMC to ``reset'' the weights in order to prevent weight degeneracy\seb{and may also help us make the most of our computational resources, not wasting them on hopeless particles}.
 Resampling is itself a Monte Carlo procedure: the discrete offspring counts can be viewed as stochastic estimates of the continuous weights.
@@ -692,7 +694,7 @@ Some of the most popular resampling schemes are introduced in Section~\ref{sec:e
 
 
 
-\subsection{Definition \seb{$\checkmark$} }
+\subsection{Definition}
 
 \begin{defn}\label{defn:resampling}
 For our purposes, a valid resampling scheme is a stochastic function mapping weights 
@@ -725,7 +727,7 @@ Within Definition~\ref{defn:resampling} there is still a great deal of flexibili
 
 
 
-\subsection{Examples \seb{$\checkmark$} }
+\subsection{Examples}
 \label{sec:examples_resamplingschemes}
 \draft{Argue in each case that the scheme is unbiased.}
 
@@ -1276,12 +1278,12 @@ As well as proposing this resampling scheme, \textcite{gerber2017} make several 
 
 
 
-\subsection{Properties \seb{$\sim$} }\label{sec:resampling_properties}
+\subsection{Properties}\label{sec:resampling_properties}
 In this section we consider some important properties of resampling schemes, and see how the example schemes of Section~\ref{sec:examples_resamplingschemes} compare in terms of these.
 The findings are summarised in Table~\ref{tab:resampling_properties}, with the exception of a few properties which depend on details of the implementation or are applicable only to a subset of the resampling schemes considered.
 
 
-\subsubsection{Support of offspring numbers \seb{$\checkmark$} }
+\subsubsection{Support of offspring numbers}
 Let us consider the support of the marginal offspring distributions in each scheme, conditional on the weights. Suppose that the $i^{th}$ weight lies in the interval $w_t^{(i)} \in [K/N, (K+1)/N]$.
 
 Under multinomial resampling, it is possible for $\nu_t^{(i)}$ to take any value from $0$ to $N$ (although some values are of course more likely than others).
@@ -1298,7 +1300,7 @@ Another way to quantify this property is by considering the maximum possible dif
 
 
 
-\subsubsection{Degeneracy under equal weights \seb{$\checkmark$} }
+\subsubsection{Degeneracy under equal weights}
 In the case where all of the weights are multiples of $1/N$, low-variance schemes such as residual and systematic resampling become fully deterministic. 
 Since $\flnw = Nw_t^{(i)}$ for each $i$, residual resampling will have $R=0$, leaving no remainder to be assigned stochastically. 
 In systematic resampling exactly $\flnw = Nw_t^{(i)}$ samples will fall in the $i^{th}$ interval.
@@ -1313,7 +1315,7 @@ If the state space is continuous, the event that all weights are multiples of $1
 
 
 
-\subsubsection{Marginal variance of offspring counts \seb{$\checkmark$} }
+\subsubsection{Marginal variance of offspring counts}
 %\draft{Mention negative association? $=$ teaser for later, which has to do with covariance between counts rather than marginal variance.}
 \seb{Redraft this paragraph; it's a bit clumsy atm.}
 One indication of the performance of resampling could be the variance of the resampled offspring counts. For instance we might ask what is the marginal variance of $\nu_t^{(i)}$, conditional on the corresponding weight $w_t^{(i)}$. We want this to be low, limiting the additional randomness introduced to our Monte Carlo estimates by the resampling step.
@@ -1459,7 +1461,7 @@ We could also try to bound this variance below, but for every resampling scheme 
 
 
 
-\subsubsection{Contribution to the Monte Carlo variance \seb{$\checkmark$} }
+\subsubsection{Contribution to the Monte Carlo variance}
 While the variance of the offspring counts goes some way towards providing a comparison between the various resampling schemes, a more relevant property is the contribution of the resampling step to the Monte Carlo variance.
 This quantifies directly the effect of a certain choice of resampling scheme on the variance of the resulting Monte Carlo estimators.
 
@@ -1660,7 +1662,7 @@ If $R=0$ then all residual schemes have zero variance and \ref{item:resampling_v
 
 
 
-\subsubsection{Exchangeability of offspring \seb{$\checkmark$} }
+\subsubsection{Exchangeability of offspring}
 We say that a resampling scheme leaves the offspring exchangeable if the resulting distribution of parental indices is invariant under permutations of the offspring. To put it another way, each child chooses its parent from the same marginal distribution.
 
 It is clear that true multinomial resampling satisfies this property since the parental indices are independent and distributed according to the same Categorical distribution. 
@@ -1679,7 +1681,7 @@ However, the results of Chapters~\ref{ch:limits} and \ref{ch:weakconv} rely on a
 
 
 
-\subsubsection{Permutation sensitivity and sorting \seb{$\sim$} }
+\subsubsection{Permutation sensitivity and sorting}
 Some resampling schemes are sensitive to the order of the weights.
 That is, permuting the weight vector before resampling can affect the distribution of the resulting offspring counts.
 Note that this entails a permutation of the parents, whereas the previous section was about permutations of offspring.
@@ -1779,7 +1781,7 @@ These results are only relevant to resampling schemes based on inversion samplin
 
 
 
-\subsubsection{Computational complexity \seb{$\checkmark$} }
+\subsubsection{Computational complexity}
 All of the resampling algorithms discussed in Section~\ref{sec:examples_resamplingschemes} can be implemented in $O(N)$ operations.
 %\seb{Even \texttt{star} and \texttt{SSP} and \texttt{branching}? If it turns out to differ depending on resampling scheme then include it as a column in Table~\ref{tab:resampling_properties}. --- I think we can't say for \texttt{branching} becaue it dpeends on implementation, but \textcite[Corollary 18]{crisan1999} seems to imply $O(N^2)$...? SSP is definitely $O(N)$.}
 Considering the complexity of each operation, \textcite{hol2006} suggest that systematic resampling is fastest because it only requires one pseudo-random number generation, and multinomial resampling is slower than stratified resampling because of the transformations required (although this may depend on which fast implementation of multinomial sampling is used). Residual resampling is hard to compare directly because a random fraction of the operations are deterministic, so the number of pseudo-random numbers required is a random number between $0$ and $N-1$, but the authors' simulation experiments place it between multinomial and stratified resampling.
@@ -1789,7 +1791,7 @@ However, the analysis of per-particle cost is sensitive to the particular implem
 
 
 
-\subsubsection{Negative association \seb{$\checkmark$} }
+\subsubsection{Negative association}
 Following \textcite{gerber2017}, we use the definition of negative association from \textcite{joag1983}.
 \begin{defn}
 Let $(Z_1, \dots, Z_n)$ be a collection of random variables. 
@@ -1827,7 +1829,7 @@ The MVB algorithm does not enforce negative association, so this property depend
 
 
 
-\subsubsection{Star discrepancy \seb{$\checkmark$} }
+\subsubsection{Star discrepancy}
 The \emph{star discrepancy} is a measure of the regularity of a given set of points $u_{1:N}$ in the unit hypercube. For our purposes it is sufficient to define the star discrepancy in one dimension, as in \textcite[Definition 1.2]{kuipers1974}:
 \begin{equation}\label{eq:defn_stardiscrepancy}
 D^\star (u_1, \dots, u_N)
@@ -1945,7 +1947,8 @@ Figure~\ref{fig:star_discrepancy} illustrates how the star discrepancy is comput
  
  
 
-\subsection{Stochastic rounding \seb{$\checkmark$} }\label{sec:SRs}
+\subsection{Stochastic rounding}
+\label{sec:SRs}
 
 \begin{defn}\label{defn:stochround}
  Let $X=(X_1,\dots,X_N)$ be a $\mathbb{R}_+^N$-valued random variable. Then $Y=(Y_1,\dots,Y_N) \in \mathbb{N}^N$ is a \emph{stochastic rounding} of $X$ if each element $Y_i$ takes values
@@ -1976,7 +1979,7 @@ All stochastic roundings are also degenerate when the weights are all equal, i.e
 
 
 
-\section{Conditional SMC \seb{$\checkmark$} }
+\section{Conditional SMC}
 \label{sec:condSMC}
 \seb{Be consistent with upper/lower case letters: $X,x$ etc.}\\
 \textcite{andrieu2010} propose a number of ``particle MCMC'' algorithms, which combine SMC with MCMC in order to improve performance in certain situations.
