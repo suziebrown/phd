@@ -7,9 +7,10 @@
 %{\textsc{Sherlock Holmes}} %\\The Final Problem
 
 In this chapter we present a weak convergence result which is identical to Theorem~\ref{thm:FDDconv} except that the mode of convergence is strengthened from convergence of the finite-dimensional distributions to weak convergence. 
-Weak convergence is desirable because it implies convergence of a strictly larger class of functions of genealogies, granting access to the distributions of statistics such as the time to the sample MRCA, the total branch length, and the probability that the MRCA of a subsample is equal to the sample MRCA\seb{okay, technically if this one is going to be a ``statistic'', I'm talking about the indicator on this event}. 
+Weak convergence is desirable because it implies convergence of a strictly larger class of functions of genealogies, granting access to the distributions of statistics such as the time to the sample MRCA, the total branch length, and the probability that the MRCA of a subsample is equal to the sample MRCA.
+%\seb{okay, technically if this one is going to be a ``statistic'', I'm talking about the indicator on this event}. 
 
-The extension from Theorem~\ref{thm:FDDconv} to weak convergence requires an additional tightness argument. The proof is rather long-winded since we do not make such strong simplifying assumptions on the dynamics of the interacting particle system as are seen for example in \textcite{mohle1999}\seb{and others...?}. The proof is broken down into a series of technical results which culminate in Theorem~\ref{thm:weakconv}. The overall structure of the proof is depicted graphically in Figure~\ref{fig:weakconv_structure}.
+The extension from Theorem~\ref{thm:FDDconv} to weak convergence requires an additional tightness argument. The proof is rather long-winded since we do not have the strong assumptions on the dynamics of the interacting particle system that are exploited for example in \textcite{mohle1999}. The proof is broken down into a series of technical results which culminate in Theorem~\ref{thm:weakconv}. The overall structure of the proof is depicted graphically in Figure~\ref{fig:weakconv_structure}.
 
 
 We start by defining a suitable metric space.
@@ -39,7 +40,7 @@ to Kingman's $n$-coalescent as $N \to \infty$.
 \end{theorem}
 
 \begin{proof}[Proof of Theorem~\ref{thm:weakconv}]
-The structure of the proof follows \textcite{mohle1999}, albeit with considerable technical complication due to the dependence between generations\seb{(non-neutrality)} in our model. \seb{Is this the main/only source of complication?}
+The structure of the proof follows \textcite{mohle1999}, albeit with considerable technical complication due to the dependence between generations\seb{(non-neutrality)} in our model.
 To make it digestible, the proof is broken down into a number of results which are organised into sections; the relationships between these are shown in Figure~\ref{fig:weakconv_structure}.
 
 Since we already have convergence of the finite-dimensional distributions (Theorem~\ref{thm:FDDconv}), strengthening this to weak convergence requires relative compactness of the sequence of processes $\{ (G_{\tau_N(t)}^{(n,N)})_{t\geq0} \}_{N\in\mathbb{N}}$.
@@ -63,7 +64,7 @@ where $\omega$ is the modified modulus of continuity:
         \sup_{u,v \in [T_{i-1}, T_i)} \rho\left( 
         G_{\tau_N(u)}^{(n,N)}, G_{\tau_N(v)}^{(n,N)} \right)
 \end{equation*}
-with the infimum taken over all partitions of the form $0=T_0<T_1<\cdots <T_{K-1} <t \leq T_K$ (for some $K$) such that $\min_{i\in[K]} (T_i - T_{i-1}) > \delta$. 
+with the infimum taken over all partitions of the form $0=T_0<T_1<\cdots <T_{K-1} <t \leq T_K$ (for any $K$) such that $\min_{i\in[K]} (T_i - T_{i-1}) > \delta$. 
 \end{enumerate}
 In our case, Condition~\ref{item:relcomp1} is satisfied automatically with $\Gamma = \mathcal{P}_n$, since $\mathcal{P}_n$ is finite and hence compact. 
 Intuitively, Condition~\ref{item:relcomp2} ensures that the jumps of the process are well-separated. 
@@ -118,14 +119,14 @@ for any $\epsilon>0$, $t>0$, there exist $m\in\mathbb{N}$, $\delta>0$ such that
 Since $T_m^{(N)} = \varpi_1^{(N)} + \cdots + \varpi_m^{(N)}$, there is a positive correlation between $T_m^{(N)}$ and each of the $\varpi_i^{(N)}$, and the $\varpi_i^{(N)}$'s are independent
 \seb{conditionally... should all these probabilities be conditioned on $\mathcal{F}_\infty$?}, so
 \begin{align*}
-\Prob[ T_m^{(N)} \geq &t, \varpi_i^{(N)} > \delta \,\forall i\in \{1,\dots,m\} ] 
+\Prob[ T_m^{(N)} \geq t &, \varpi_i^{(N)} > \delta \,\forall i\in \{1,\dots,m\} ] 
         \\
 &= \Prob[ T_m^{(N)} \geq t \mid \varpi_i^{(N)} > \delta \,\forall i\in \{1,\dots,m\} ]
         \,\Prob[ \varpi_i^{(N)} > \delta \,\forall i\in \{1,\dots,m\} ] \\
 &\geq \Prob[ T_m^{(N)} \geq t ]
         \,\Prob[ \varpi_i^{(N)} > \delta \,\forall i\in \{1,\dots,m\} ] .
 \end{align*}
-Due to Lemma \ref{thm:holdingtimes_distn}, the limiting distributions of $\varpi_i^{(N)}$ are i.i.d. $\Exp(\alpha_n)$, so
+Due to Lemma \ref{thm:holdingtimes_distn}, the limiting distributions of $\varpi_i^{(N)}$ are i.i.d. $\Exp(\alpha_n)$, where $\alpha_n := n(n-1)/2$, so
 \begin{equation*}
 \liminf_{N\to\infty} \Prob[ \varpi_i^{(N)} > \delta \,\forall i\in \{1,\dots,m\} ]
 = (e^{-\alpha_n \delta})^m
@@ -196,7 +197,7 @@ p_{\xi^\prime\xi^\prime}(t)
 \leq  \frac{N-k}{(N)_k(N-k)} \sum_{\substack{i_1,\dots,i_k \\ \text{all distinct:} \\ \nu_t^{(i_1)},\dots,\nu_t^{(i_k)} > 0 }} \nu_t^{(i_1)} \cdots \nu_t^{(i_k)} 
 = p_{\xi\xi}(t) .
 \end{equation*}
-Thus $p_{\xi\xi}(t)$ is decreasing in the number of blocks of $\xi$, and is therefore minimised by taking $\xi = \Delta$, which achieves the maximum $n$ blocks. This choice in turn maximises $1-p_{\xi\xi}(t)$, as required.
+Thus $p_{\xi\xi}(t)$ is decreasing in the number of blocks of $\xi$, and is therefore minimised by taking $\xi = \Delta$, which uniquely achieves the maximum $n$ blocks. This choice in turn maximises $1-p_{\xi\xi}(t)$, as required.
 \end{proof}
 
 
@@ -241,7 +242,7 @@ The first term on the RHS converges to $\Prob[ T_1 \leq t_1, \dots , T_k \leq t_
         \Prob[ T_1^{(N)} \leq t_1, \dots , T_k^{(N)} \leq t_k, T_{k+1}^{(N)} > t_{k+1} ]
 = \Prob[ T_1\leq t_1, \dots , T_k \leq t_k, T_{k+1} > t_{k+1} ] .
 \end{equation*}
-As shown in \textcite{mohle1999}, the RHS
+As shown in \textcite{mohle1999},
 \begin{equation*}
 \Prob[ T_1\leq t_1, \dots , T_k \leq t_k, T_{k+1} > t_{k+1} ]
 = \alpha_n^k e^{-\alpha_n t} 
@@ -249,7 +250,7 @@ As shown in \textcite{mohle1999}, the RHS
         \\ i_j \geq j \forall j}} 
         \prod_{j=1}^k \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})! } .
 \end{equation*}
-The event on the LHS can be written \parencite{mohle1999}
+The event on the LHS can be written
 \begin{equation*}
 \Prob[ T_1^{(N)} \leq t_1, \dots , T_k^{(N)} \leq t_k, T_{k+1}^{(N)} > t_{k+1} ]
 = \E \left[ \sum_{\substack{r_1 <\dots< r_k :\\ r_i \leq \tau_N(t_i) \forall i}}
@@ -258,6 +259,7 @@ The event on the LHS can be written \parencite{mohle1999}
         (1-p_r) \right) \right] ,
 \end{equation*}
 that is, there are jumps at some times $r_1, \dots, r_k$ and identity transitions at all other times.
+A similar expression is derived in \textcite{mohle1999}, but here we have an additional outer expectation because the probabilities $p_r$ are random.
 Lemmata \ref{thm:inductionUB} and \ref{thm:inductionLB} show that this probability converges to the correct limit.
 This completes the induction.
 \end{proof}
@@ -385,13 +387,13 @@ t^l - \left( \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right) \binom{l}{2} (t+1)^{l-2}
 \end{lemma}
 
 \begin{proof} \textbf{\ref{thm:sumprod1_a}}
-It is a true fact that
+Firstly, we have the inequality
 \begin{equation*}
 \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)} \prod_{j=1}^l c_N(s_j)
 \leq \left( \sum_{s=0}^{\tau_N(t)} c_N(s) \right)^l ,
 \end{equation*}
 as can be seen by considering the multinomial expansion of the RHS.
-Applying \eqref{eq:cN_property4},
+Applying Proposition~\ref{thm:cN_properties}\ref{item:cN_property4},
 \begin{equation}\label{eq:039}
 \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)} \prod_{j=1}^l c_N(s_j)
 \leq (t+1)^l .
@@ -404,7 +406,7 @@ As pointed out in \textcite[Equation (8)]{koskela2018},
         - \binom{l}{2} \left( \sum_{s=0}^{\tau_N(t)} c_N(s)^2 \right)
         \left( \sum_{s=0}^{\tau_N(t)} c_N(s) \right)^{l-2} .
 \end{equation}
-Applying \eqref{eq:cN_property4} on the RHS of \eqref{eq:002} yields the lower bound.
+Applying Proposition~\ref{thm:cN_properties}\ref{item:cN_property4} on the RHS of \eqref{eq:002} yields the lower bound.
 
 For the upper bound we have
 \begin{equation*}
@@ -420,7 +422,7 @@ A binomial expansion yields
 = t^l + \sum_{i=0}^{l-1} \binom{l}{i} t^i c_N(\tau_N(t))^{l-i}
 = t^l + c_N(\tau_N(t)) \sum_{i=0}^{l-1} \binom{l}{i} t^i c_N(\tau_N(t))^{l-1-i} ,
 \end{equation*}
-then by \eqref{eq:cN_property1},
+then by Proposition~\ref{thm:cN_properties}\ref{item:cN_property1},
 \begin{equation*}
 \sum_{i=0}^{l-1} \binom{l}{i} t^i c_N(\tau_N(t))^{l-1-i}
 \leq \sum_{i=0}^{l-1} \binom{l}{i} t^i
@@ -474,7 +476,7 @@ Separating the term $I=l$,
         \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)}
         \left( \prod_{i=1}^I c_N(s_i) \right) \left( \prod_{j=I+1}^l D_N(s_j) \right). \label{eq:012}
 \end{align}
-In the second term on the RHS, there is always at least one $D_N$ term, so using \eqref{eq:cN_property2} we can write
+In the second term on the RHS, there is always at least one $D_N$ term, so using Proposition~\ref{thm:cN_properties}\ref{item:cN_property2} we can write
 \begin{align}
 \sum_{I=0}^{l-1}\binom{l}{I} B^{l-I} &\sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)}
         \left( \prod_{i=1}^I c_N(s_i) \right) \left( \prod_{j=I+1}^l D_N(s_j) \right) \notag\\
@@ -556,7 +558,7 @@ Recall that the following conditions are all consequences of \eqref{eq:mainthmco
 \E\left[ \sum_{r=\tau_N(s)+1}^{\tau_N(t)} D_N(r) \right] &\rightarrow 0
         \label{eq:BJJK_eq3.4}
 \end{align}
-as $N\to\infty$.
+as $N\to\infty$. (See Lemmata~\ref{lem:removeass3}, \ref{thm:DNimpliescN} and \ref{lem:removeass2} for proofs.)
 Also recall the following properties from Proposition~\ref{thm:cN_properties}:
 \begin{align}
 & c_N(t) , D_N(t) \in [0,1] \label{eq:cN_property1}\\
@@ -664,6 +666,7 @@ Collecting some terms,
     &\qquad+ \left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right)
         \exp[ \alpha_n \ON (t+1) (1+B_n^\prime) ] . \label{eq:021}
 \end{align}
+The requirement $\tau_N(t) \geq l$ has been dropped in the second term because the additional terms there are all positive and we only need an upper bound.
 Now, taking the expectation and limit, then applying \eqref{eq:BJJK_eq3.3}--\eqref{eq:BJJK_eq3.4}, and Lemmata \ref{thm:indicators_cN}, \ref{thm:indicators_tau} and \ref{thm:indicators_DN} to deal with the indicators,
 \begin{align}
 \lim_{N\to\infty} \E \left[ \prod_{r=1}^{\tau_N(t)} (1-p_r) \right]
@@ -759,7 +762,7 @@ Collecting terms,
     &\qquad- \left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right)
         \exp[ \alpha_n \ON (t+1) (1+B_n) ]. \label{eq:028}
 \end{align}
-Now, taking the expectation and limit, and applying \eqref{eq:BJJK_eq3.3}--\eqref{eq:BJJK_eq3.4} to show that all but the first sum vanish, and Lemmata \ref{thm:indicators_tau} and \ref{thm:indicators_cN} to show that $\lim_{N\to\infty} \Prob[ \{\tau_N(t) \geq l\} \cap E_N^3 ] =1$,
+Now, taking the expectation and limit, and applying \eqref{eq:BJJK_eq3.3}--\eqref{eq:BJJK_eq3.4} to show that all but the first sum vanish, and Lemmata~\ref{thm:indicators_cN} and \ref{thm:indicators_tau} to show that $\lim_{N\to\infty} \Prob[ \{\tau_N(t) \geq l\} \cap E_N^3 ] =1$,
 \begin{align}
 \lim_{N\to\infty} \E \left[ \prod_{r=1}^{\tau_N(t)} (1-p_r) \right]
 &\geq \sum_{l=0}^{\infty} (-\alpha_n)^l \ON \frac{1}{l!} t^l 
@@ -834,7 +837,7 @@ The penultimate line above is exactly the expansion we had in the basis step \eq
     &\qquad+ \left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right)
         \exp[ \alpha_n \ON (t+1) (1+B_n^\prime) ] .
 \end{align*}
-For the last line of \eqref{eq:031},
+For the last line of \eqref{eq:031}, recalling that $D_N(t) \leq c_N(t)$ (Proposition~\ref{thm:cN_properties}\ref{item:cN_property2}),
 \begin{align*}
 - \sum_{l=1}^{\tau_N(t) -k} (-\alpha_n)^l \ON \frac{1}{l!}
         &\sum_{\substack{s_1\neq\dots\neq s_l \\ \exists i,i^\prime 
@@ -916,7 +919,7 @@ which, using Lemma~\ref{thm:sumprod1}\ref{thm:sumprod1_a}, also leads to the det
 &\leq \alpha_n^k \ON (1 + B_n)^k \frac{1}{k!} (t+1)^k. 
         \label{eq:037}
 \end{align}
-Combining \eqref{eq:034b} with the other product, the expression inside the expectation in Lemma~\ref{thm:inductionUB} is bounded above by
+Combining this sum-product with \eqref{eq:034b}, the expression inside the expectation in Lemma~\ref{thm:inductionUB} is bounded above by
 \begin{align*}
 \sum_{\substack{r_1 <\dots< r_k :\\ r_i \leq \tau_N(t_i) \forall i}}
         &\left( \prod_{i=1}^k p_{r_i} \right)
@@ -1051,7 +1054,7 @@ Hence
 = 0 
 \end{equation*}
 by \eqref{eq:BJJK_eq3.5}.
-By Lemmata \ref{thm:indicators_tau}, \ref{thm:indicators_cN} and \ref{thm:indicators_DN}, $\lim_{N\to\infty} \Prob[ \{ \tau_N(t)\geq k+l \} \cap E_N^1 \cap E_N^2 ] =1$,  so we can apply Lemma~\ref{thm:induction_sumprodcN} to the remaining expectations in \eqref{eq:040}, yielding
+By Lemmata~\ref{thm:indicators_cN}, \ref{thm:indicators_tau} and \ref{thm:indicators_DN}, $\lim_{N\to\infty} \Prob[ \{ \tau_N(t)\geq k+l \} \cap E_N^1 \cap E_N^2 ] =1$,  so we can apply Lemma~\ref{thm:induction_sumprodcN} to the remaining expectations in \eqref{eq:040}, yielding
 \begin{align*}
 &\lim_{N\to\infty} \E \left[ 
         \sum_{\substack{r_1 <\dots< r_k :\\ r_i \leq \tau_N(t_i) \forall i}}
@@ -1459,9 +1462,8 @@ We have shown that the upper and lower bounds coincide, so the result follows.
 Let $(A_N) , (B_N)$ be sequences of events. 
 If $\lim_{N\to\infty}\Prob[A_N] =1$ and $\lim_{N\to\infty}\Prob[B_N]=1$ then $\lim_{N\to\infty} \Prob [A_N \cap B_N] =1$.
 \end{lemma}
-\seb{The above might be so obvious as to go unstated, but it is very important because it means we don't have to deal with intersections of dependent events!
-Here is a little proof just to be sure:}
-
+%\seb{The above might be so obvious as to go unstated, but it is very important because it means we don't have to deal with intersections of dependent events!
+%Here is a little proof just to be sure:}
 \begin{proof}
 \begin{align*}
 &\lim_{N\to\infty} \Prob[A_N] =1 \textbf{ and } 
@@ -1471,10 +1473,10 @@ Here is a little proof just to be sure:}
 \Rightarrow &\lim_{N\to\infty} \left\{ \Prob[A_N^c] 
         + \Prob[B_N^c] \right\} =0 \notag\\
 \Rightarrow &\lim_{N\to\infty} \Prob[A_N^c \cup B_N^c] =0 \notag\\
-\Leftrightarrow &\lim_{N\to\infty} \Prob[ A_N \cap B_N ] =1.
+\Leftrightarrow &\lim_{N\to\infty} \Prob[ A_N \cap B_N ] =1. \qedhere
 \end{align*}
-The only part of this argument that I find potentially controversial is going from the third to the fourth line, which is an application of the sandwich theorem (since $0 \leq \Prob[A_N^c \cup B_N^c] \leq \Prob[A_N^c] + \Prob[B_N^c]$).
 \end{proof}
+%The only part of this argument that I find potentially controversial is going from the third to the fourth line, which is an application of the sandwich theorem (since $0 \leq \Prob[A_N^c \cup B_N^c] \leq \Prob[A_N^c] + \Prob[B_N^c]$).
 
 \begin{lemma}\label{thm:indicators_cN}
 Assume \eqref{eq:BJJK_eq3.5} holds.
@@ -1572,8 +1574,9 @@ Let $K$ be a constant not depending on $N, r$, but which may depend on $n$.
 \end{align}
 where the final inequality is an application of Lemma~\ref{thm:kjjslemma2} with $f(r) = \I{ c_N(r) \leq K D_N(r) }$.
 
-Fix $0 < \varepsilon < K^{-1}/2$ and assume $N > \max\{ \varepsilon^{-1}, (K^{-1} - 2\varepsilon)^{-1} \}$. For each $r,i$ define the event $A_i(r) := \{ \nu_r^{(i)} \leq N\varepsilon \}$.
-Conditional on $\mathcal{F}_{r-1}$, we have
+Fix $0 < \varepsilon < 1/(2K)$ and assume $N > \max\{ \varepsilon^{-1}, (K^{-1} - 2\varepsilon)^{-1} \}$. For each $r,i$ define the event $A_i(r) := \{ \nu_r^{(i)} \leq N\varepsilon \}$.
+%Conditional on $\mathcal{F}_{r-1}$, we have
+We have
 \begin{align*}
 D_N(r)
 &= \frac{1}{N(N)_2} \sum_{i=1}^N (\nu_r^{(j)})_2 \left[ \nu_r^{(i)} 
@@ -1610,7 +1613,7 @@ D_N(r)
 \leq c_N(r) \left( 2\varepsilon + \frac{1}{N} \right)
         + \sum_{i=1}^N \1{A_i^c(r)} .
 \end{equation*}
-Hence, still conditional on $\mathcal{F}_{r-1}$,
+Hence%, still conditional on $\mathcal{F}_{r-1}$,
 \begin{align*}
 \left\{ c_N(r) \leq K D_N(r) \right\}
 &\subseteq \left\{ c_N(r) \leq K c_N(r) (2\varepsilon + N^{-1}) 
@@ -1694,7 +1697,7 @@ Applying Markov's inequality,
 \Prob[E_N]
 \geq 1- \sum_{j=1}^k K_j^{-1} \E\left[ \sum_{s=\tau_N(t_{j-1})+1}
         ^{\tau_N(t_j)} c_N(s)^2 \right]
-\underset{N\to\infty}{\longrightarrow} 1- \sum_{j=1}^k O(1) \times 0 
+\underset{N\to\infty}{\longrightarrow} 1- \sum_{j=1}^k K_j^{-1} \times 0 
 = 1
 \end{equation*}
 by \eqref{eq:BJJK_eq3.5}.
@@ -1773,12 +1776,19 @@ For any fixed $t>0$,
 \E \left[ \sum_{l=0}^\infty \Bigg| (-\alpha_n)^l \ON \frac{1}{l!} t^l 
         \sum_{\substack{r_1 < \cdots < r_k : \\ r_i \leq \tau_N(t_i) \forall i}}
         \prod_{i=1}^k c_N(r_i) \Bigg| \right]
+&= \E \left[ \sum_{l=0}^\infty \alpha_n^l \ON \frac{1}{l!} t^l 
+        \sum_{\substack{r_1 < \cdots < r_k : \\ r_i \leq \tau_N(t_i) \forall i}}
+        \prod_{i=1}^k c_N(r_i) \right] \\
+&\leq \E \left[ \sum_{l=0}^\infty \alpha_n^l \ON \frac{1}{l!} t^l 
+        \sum_{r_1 \neq \cdots \neq r_k}^{\tau_N(t)}
+        \prod_{i=1}^k c_N(r_i) \right] \\        
 &\leq \E \left[ \sum_{l=0}^\infty \alpha_n^l \ON \frac{1}{l!} t^l 
         (t+1)^k \right] \\
-&\hspace{-4cm}= \E[ \exp\{ \alpha_n t \ON \} (t+1)^k ]
-= \exp\{ \alpha_n t \ON \} (t+1)^k
-< \infty .
+&= \E[ \exp\{ \alpha_n t \ON \} (t+1)^k ]\\
+&= \exp\{ \alpha_n t \ON \} (t+1)^k
+< \infty 
 \end{align*}
+where the bound on the sum-product comes from Lemma~\ref{thm:sumprod1}\ref{thm:sumprod1_a}.
 \end{proof}
 
 

@@ -309,11 +309,11 @@ Assume that there exists a constant $a\in [1,\infty)$ such that for all $x, x^\p
 Assume that $\Prob[ \tau_N(t) = \infty] =0$ for all finite $t$.
 Let $(G_t^{(n,N)})_{t\geq0}$ denote the genealogy of a random sample of $n$ terminal particles from the output of the algorithm among a total of $N$ particles. Then, for any fixed $n$, the time-scaled genealogy $(G_{\tau_N(t)}^{(n,N)})_{t\geq0}$ converges weakly to Kingman's $n$-coalescent as $N\to \infty$.%, in the sense of finite-dimensional distributions.
 \end{corollary}
-Stratified resampling is, by design, much more restrictive than multinomial resampling. Once the weights are known there is little freedom in the offspring counts, so it is not surprising that control over the weights such as \eqref{eq:gq_bounds_sr} provides is sufficient without any additional control over the transition densities $q_t$. This is in contrast to multinomial resampling (Corollary~\ref{thm:multinomial}), where $g_t$ and $q_t$ are more or less on an equal footing, and we require both to be bounded.
+Stratified resampling is, by design, much more restrictive than multinomial resampling. Once the weights are known there is little freedom in the offspring counts, so it is not surprising that control over the weights such as \eqref{eq:gq_bounds_sr} provides is sufficient without any additional control over the transition densities $q_t$. 
+Indeed the transition kernels need not even admit densities.
+This is in contrast to multinomial resampling (Corollary~\ref{thm:multinomial}), where $g_t$ and $q_t$ are more or less on an equal footing, and we require both to be bounded.
 
 It is not immediately clear that the finite time scale condition $\Prob[ \tau_N(t) = \infty] =0$ holds under conditions \eqref{eq:gq_bounds_sr}, so it is included in the statement of the corollary. Proposition~\ref{thm:SR_nontriviality} presents some sufficient conditions for the finite time scale, but these are by no means necessary.
-
-\seb{By the way, does the lack of conditions of $q_t$ here imply that we do not even need the transition kernels to admit densities?}
 
 \begin{proof}
 Define the $\sigma$-algebras $\mathcal{H}_t$ as in \eqref{eq:defn_Ht}.
@@ -1050,7 +1050,7 @@ Whatever time scale is used, we cannot get away from the fact that this genealog
 
 The limiting genealogy is more like a \emph{star coalescent} \parencite{pitman1999, griffiths2016}. This is the coalescent process comprising an $\Exp(1)$-distributed event time at which all of the lineages merge into one.
 
-In the case of star resampling we have $c_N(t) \equiv 1$, so the time-scaling function $\tau_N(t)$ defined in \eqref{eq:defn_tauN} converges pointwise to the identity function $\tau(t) \equiv t$ as $N\to\infty$, and this does not yield a continuous-time limit.
+In the case of star resampling we have $c_N(t) \equiv 1$, so the time-scaling function $\tau_N(t)$ defined in \eqref{eq:defn_tauN} is the identity function $\tau(t) \equiv t$ for all $N$, and this does not yield a continuous-time limit.
 Under any time scale that results in a continuous-time limiting process, the coalescent event time converges to $0$, rather than the usual $\Exp(1)$-distributed random variable. The resulting genealogy is a variant star coalescent where the distribution of the event time is a point mass at $0$. A fun consequence of this is that this coalescent comes down from infinity instantaneously, while the star coalescent does not. 
 \seb{If I decide not to write about cdf$\infty$ in ch2 then remove this last sentence}.
 
@@ -1064,7 +1064,7 @@ This results in genealogies that are qualitatively different to those of a corre
 
 Given this, we should not have been surprised if conditional SMC genealogies converged to a quite different coalescent process, perhaps a \emph{structured coalescent} \parencite{notohara1990}.
 As it turns out, we still recover Kingman's $n$-coalescent in the large population limit (Corollary~\ref{thm:CSMC}). 
-A possible explanation for this is that, as $N\to\infty$, the probability of a given sample of size $n$ interacting with the immortal lineage (before its within-sample MRCA) vanishes, leaving a process that looks very much like the one induced by the corresponding standard SMC algorithm.
+The explanation for this is that, as $N\to\infty$, the probability of a given sample of size $n$ interacting with the immortal lineage (before its within-sample MRCA) vanishes, leaving a process that looks very much like the one induced by the corresponding standard SMC algorithm.
 
 \begin{corollary}\label{thm:CSMC}
 Consider a conditional SMC algorithm using multinomial resampling, such that \ref{standing_assumption} is satisfied. Assume there exist constants $\varepsilon\in (0,1]$ and $a\in [1,\infty)$ and probability density $h$ such that for all $x, x^\prime, t$,
@@ -1074,7 +1074,7 @@ Consider a conditional SMC algorithm using multinomial resampling, such that \re
 \end{equation}
 Let $(G_t^{(n,N)})_{t\geq0}$ denote the genealogy of a random sample of $n$ terminal particles from the output of the algorithm among a total of $N$ particles. Then, for any fixed $n$, the time-scaled genealogy $(G_{\tau_N(t)}^{(n,N)})_{t\geq0}$ converges weakly to Kingman's $n$-coalescent as $N\to \infty$.%, in the sense of finite-dimensional distributions.
 \end{corollary}
-We restrict here to the case of multinomial resampling, which seems to be the most commonly-used resampling scheme within conditional SMC. Implementing other resampling schemes while maintaining the immortal lineage is more involved, though by no means impossible \parencite{lee2019}.
+We restrict here to the case of multinomial resampling, which seems to be the most commonly-used resampling scheme within conditional SMC. Implementing other resampling schemes while maintaining the immortal lineage is more involved, though by no means impossible \parencite[for details see][for example]{lee2019}.
 We conjecture that similar results hold for conditional SMC with other resampling schemes, as in the preceding corollaries.
 
 The conditions \eqref{eq:gq_bounds_csmc} are, as one might expect, identical to those assumed in the case of standard SMC with multinomial resampling (Corollary~\ref{thm:multinomial}).
@@ -1252,7 +1252,9 @@ The proof is identical to that of Lemma~\ref{thm:mn_nontriviality}, since \eqref
 
 \subsection{Effect of ancestor sampling}
 \label{sec:ancsamp_genealogy}
-Ancestor sampling breaks up the immortal lineage into sections, so it is not really a lineage anymore, and we do not really have a pure coalescent process backwards in time. Regardless, we shall throw caution to the wind and examine the resulting ``genealogies''.
+Ancestor sampling breaks up the immortal lineage into sections, so it is not really a lineage any more.
+We can still trace genealogies of terminal particles by tracing back their lineages as usual, except that some parts of these lineages may be ancestor-sampled links rather than links from the original forward lineages (see Figure~\ref{fig:whyASworks_b}).
+%, and we do not really have a pure coalescent process backwards in time. Regardless, we shall throw caution to the wind and examine the resulting ``genealogies''.
 
 Using the parent sampling probabilities specified in \eqref{eq:ancsamp_probs_simplified},
 now with time reversed,
