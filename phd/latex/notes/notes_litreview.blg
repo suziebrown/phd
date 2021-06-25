@@ -1,17 +1,17 @@
 [0] Config.pm:302> INFO - This is Biber 2.11
 [0] Config.pm:305> INFO - Logfile is 'notes_litreview.blg'
-[54] biber-darwin:313> INFO - === Fri Jun 18, 2021, 16:06:07
-[82] Biber.pm:371> INFO - Reading 'notes_litreview.bcf'
-[200] Biber.pm:857> INFO - Found 28 citekeys in bib section 0
-[221] Biber.pm:3976> INFO - Processing section 0
-[235] Biber.pm:4136> INFO - Looking for bibtex format file '../smc.bib' for section 0
-[241] bibtex.pm:1500> INFO - LaTeX decoding ...
-[438] bibtex.pm:1316> INFO - Found BibTeX data source '../smc.bib'
-[445] Utils.pm:193> WARN - Duplicate entry key: 'lee2019' in file '../smc.bib', skipping ...
-[670] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[670] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[670] Biber.pm:3804> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-US'
-[670] Biber.pm:3810> INFO - No sort tailoring available for locale 'en-US'
-[704] bbl.pm:617> INFO - Writing 'notes_litreview.bbl' with encoding 'UTF-8'
-[727] bbl.pm:720> INFO - Output to notes_litreview.bbl
-[728] Biber.pm:110> INFO - WARNINGS: 1
+[55] biber-darwin:313> INFO - === Thu Jun 24, 2021, 13:18:08
+[85] Biber.pm:371> INFO - Reading 'notes_litreview.bcf'
+[206] Biber.pm:857> INFO - Found 31 citekeys in bib section 0
+[223] Biber.pm:3976> INFO - Processing section 0
+[236] Biber.pm:4136> INFO - Looking for bibtex format file '../smc.bib' for section 0
+[242] bibtex.pm:1500> INFO - LaTeX decoding ...
+[453] bibtex.pm:1316> INFO - Found BibTeX data source '../smc.bib'
+[461] Utils.pm:193> WARN - Duplicate entry key: 'lee2019' in file '../smc.bib', skipping ...
+[708] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[709] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[709] Biber.pm:3804> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-US'
+[709] Biber.pm:3810> INFO - No sort tailoring available for locale 'en-US'
+[752] bbl.pm:617> INFO - Writing 'notes_litreview.bbl' with encoding 'UTF-8'
+[776] bbl.pm:720> INFO - Output to notes_litreview.bbl
+[776] Biber.pm:110> INFO - WARNINGS: 1

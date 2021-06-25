@@ -961,6 +961,36 @@
       \field{pages}{1504\bibrangedash 1535}
       \range{pages}{32}
     \endentry
+    \entry{pitman1999}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=081ad72db47fd3469ec24c44f405d377}{%
+           family={Pitman},
+           familyi={P\bibinitperiod},
+           given={Jim},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {JSTOR}%
+      }
+      \strng{namehash}{081ad72db47fd3469ec24c44f405d377}
+      \strng{fullhash}{081ad72db47fd3469ec24c44f405d377}
+      \strng{bibnamehash}{081ad72db47fd3469ec24c44f405d377}
+      \strng{authorbibnamehash}{081ad72db47fd3469ec24c44f405d377}
+      \strng{authornamehash}{081ad72db47fd3469ec24c44f405d377}
+      \strng{authorfullhash}{081ad72db47fd3469ec24c44f405d377}
+      \field{sortinit}{P}
+      \field{sortinithash}{8d51b3d5b78d75b54308d706b9bbe285}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Annals of Probability}
+      \field{number}{4}
+      \field{title}{Coalescents with Multiple Collisions}
+      \field{volume}{27}
+      \field{year}{1999}
+      \field{pages}{1870\bibrangedash 1902}
+      \range{pages}{33}
+    \endentry
     \entry{sagitov1999}{article}{}
       \name{author}{1}{}{%
         {{uniquename=0,uniquepart=base,hash=1940412646c2d90b785da664aaae82fe}{%
@@ -988,6 +1018,66 @@
       \field{year}{1999}
       \field{pages}{1116\bibrangedash 1125}
       \range{pages}{10}
+    \endentry
+    \entry{tavare1984}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=f2593166c5157aef754039726280e2b9}{%
+           family={Tavar{é}},
+           familyi={T\bibinitperiod},
+           given={Simon},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{f2593166c5157aef754039726280e2b9}
+      \strng{fullhash}{f2593166c5157aef754039726280e2b9}
+      \strng{bibnamehash}{f2593166c5157aef754039726280e2b9}
+      \strng{authorbibnamehash}{f2593166c5157aef754039726280e2b9}
+      \strng{authornamehash}{f2593166c5157aef754039726280e2b9}
+      \strng{authorfullhash}{f2593166c5157aef754039726280e2b9}
+      \field{sortinit}{T}
+      \field{sortinithash}{6f7aff9db9dcfeb7f95fd5bbd2f78df9}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Theoretical Population Biology}
+      \field{number}{2}
+      \field{title}{Line-of-Descent and Genealogical Processes, and Their Applications in Population Genetics Models}
+      \field{volume}{26}
+      \field{year}{1984}
+      \field{pages}{119\bibrangedash 164}
+      \range{pages}{46}
+    \endentry
+    \entry{whiteley2010}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=54f298378a05eefa8496fcea832c3d7e}{%
+           family={Whiteley},
+           familyi={W\bibinitperiod},
+           given={Nick},
+           giveni={N\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley Online Library}%
+      }
+      \strng{namehash}{54f298378a05eefa8496fcea832c3d7e}
+      \strng{fullhash}{54f298378a05eefa8496fcea832c3d7e}
+      \strng{bibnamehash}{54f298378a05eefa8496fcea832c3d7e}
+      \strng{authorbibnamehash}{54f298378a05eefa8496fcea832c3d7e}
+      \strng{authornamehash}{54f298378a05eefa8496fcea832c3d7e}
+      \strng{authorfullhash}{54f298378a05eefa8496fcea832c3d7e}
+      \field{sortinit}{W}
+      \field{sortinithash}{ecb89ff85896a47dc313960773ac311d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of the Royal Statistical Society: Series B (Statistical Methodology)}
+      \field{number}{3}
+      \field{title}{Discussion on `Particle {Markov} Chain {Monte} {Carlo} Methods'}
+      \field{volume}{72}
+      \field{year}{2010}
+      \field{pages}{306\bibrangedash 307}
+      \range{pages}{2}
     \endentry
     \entry{whitley1994}{article}{}
       \name{author}{1}{}{%

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  22 JUN 2021 15:06
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  24 JUN 2021 13:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -472,10 +472,8 @@ near/Non-Gaussian
 [1
 
 {/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-
-LaTeX Warning: Citation 'whiteley2010' on page 2 undefined on input line 90.
-
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 109.
+
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
@@ -483,24 +481,16 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 109.
  [2] [3] [4]
-[5] (./notes_litreview.aux)
-
-LaTeX Warning: There were undefined references.
-
-
-Package biblatex Warning: Please (re)run Biber on the file:
-(biblatex)                notes_litreview
-(biblatex)                and rerun LaTeX afterwards.
-
+[5] [6] (./notes_litreview.aux)
 Package logreq Info: Writing requests to 'notes_litreview.run.xml'.
 \openout1 = `notes_litreview.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 8809 strings out of 492649
- 153044 string characters out of 6129623
- 576984 words of memory out of 5000000
- 12618 multiletter control sequences out of 15000+600000
+ 8812 strings out of 492649
+ 153187 string characters out of 6129623
+ 576018 words of memory out of 5000000
+ 12621 multiletter control sequences out of 15000+600000
  12208 words of font info for 47 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,6n,52p,831b,925s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -519,10 +509,10 @@ live/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texli
 ve/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texliv
 e/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/te
 xlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
-Output written on notes_litreview.pdf (5 pages, 169145 bytes).
+Output written on notes_litreview.pdf (6 pages, 170710 bytes).
 PDF statistics:
- 80 PDF objects out of 1000 (max. 8388607)
- 57 compressed objects within 1 object stream
+ 83 PDF objects out of 1000 (max. 8388607)
+ 59 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
