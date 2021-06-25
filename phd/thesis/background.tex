@@ -12,7 +12,7 @@
 The idea of Monte Carlo is to use (pseudo-)random numbers to approximate expectations under an intractable probability distribution of interest.
 Sequential Monte Carlo (SMC) is a class of Monte Carlo algorithms which are implemented sequentially, allowing efficient sampling from \emph{sequences} of distributions.
 SMC was developed for inference in intractable state space models (details in Section~\ref{sec:SSMs}) and introduced to the statistics community by \textcite{gordon1993}.
-The basic idea behind SMC is sequential importance sampling, whereby the posterior importance samples from one target distribution are used to generate proposal samples for the next. A full derivation of the SMC recursions is beyond the scope of this work, but the reader is referred to e.g.\ \textcite{doucet2009, chopin2020} for more background. Here it will suffice to include a motivation in the context of state space models (Section~\ref{sec:SSMs}) followed by the formalism of Feynman-Kac models (Section~\ref{sec:FKmodels}).
+The basic idea behind SMC is that of sequential importance sampling, whereby the posterior importance samples from one target distribution are used to generate proposals for the next. A full derivation of the SMC recursions is beyond the scope of this work, but the reader is referred to e.g.\ \textcite{doucet2009, chopin2020} for more background. Here it suffices to provide a motivation in the context of state space models (Section~\ref{sec:SSMs}) and the formalism of Feynman-Kac models (Section~\ref{sec:FKmodels}).
 
 
 
@@ -46,7 +46,7 @@ State space models (sometimes called hidden Markov models) are a flexible class 
 \draw[->] (0,0.5)-- node[anchor=west] {\footnotesize{$g_t$}} (0,1.7);
 \draw[->] (3,0.5)-- node[anchor=west] {\footnotesize{$g_{t+1}$}} (3,1.7);
 \end{tikzpicture}
-\caption[State space model]{Graphical depiction of a general state space model. $(X_t)$ is a Markov process with transition kernels $(K_t)$ representing the underlying state of the system. $Y_t$ is a noisy observation of $X_t$ for each $t$.}
+\caption[State space model]{Conditional independence graph for a general state space model. $(X_t)$ is a Markov process with transition kernels $(K_t)$ representing the underlying state of the system. $Y_t$ is a noisy observation of $X_t$ for each $t$.}
 \label{fig:SSM}
 \end{figure}
 The general model has two components: a Markov process $(X_t)_{t\in\mathbb{N}_0}$ representing the (unobservable) underlying state of the system, and a sequence $(Y_t)_{t\in\mathbb{N}_0}$ of noisy observations of the underlying state. The model is characterised by its conditional independence structure (Figure~\ref{fig:SSM}) along with an initial distribution $\mu$, the Markov ``transition'' kernels $(K_t)_{t\in\mathbb{N}}$ and the ``emission'' distributions $(g_t)_{t\in\mathbb{N}_0}$. 
@@ -61,7 +61,7 @@ The index $t$ will frequently be referred to as ``time'', since in most applicat
 
 Here $X$ and/or $Y$ may be multivariate and observation times need not be equally spaced. Straightforward generalisations of the stated model can allow for situations in which observations are not available as often as the state is updated (up to and including the extreme where the state is a continuous-time Markov process but the observations are available only at discrete times) or on the other hand where observations are observed more frequently than the state is updated.
 
-Applications include: target tracking, where $X$ is the true position of some object and $Y$ encodes some measurements from sensors e.g.\ radar; stochastic volatility, where $X$ is the volatility and $Y$ is the observed value e.g.\ the price of a stock; change-point detection; and pretty much any other application in which there is an observed time series from which one would like to infer underlying states.
+Applications include target tracking, where $X$ is the true position of some object and $Y$ encodes some measurements from sensors e.g.\ radar; stochastic volatility models, where $X$ is the volatility and $Y$ is the observed value e.g.\ the price of a stock; change-point detection; and many other applications in which there is an observed time series from which one would like to do inference or prediction.
 
 The principal inferences of interest in state space models are:
 \begin{description}
@@ -70,26 +70,27 @@ The principal inferences of interest in state space models are:
 \item [(complete) smoothing] $p(x_{0:t}\mid y_{0:t})$: inferring the sequence of states up to now $x_{0:t}$ from the observations up to now $y_{0:t}$
 \item [fixed-lag smoothing] $p(x_{t-h:t}\mid y_{0:t})$: inferring the last $h$ states $x_{t-h:t}$ from the observations up to now $y_{0:t}$
 \end{description}
-If the dynamics of the state space model are parametrised by some $\theta$, i.e.\ $g_t, K_t$ depend on $\theta$, we may also be interested in parameter inference and/or computing the likelihood $p(y_{0:t})$ of the observed data given a certain value of $\theta$.
+If the dynamics of the state space model are parametrised by some $\theta$, i.e.\ $g_t$ and/or $K_t$ depend on $\theta$, we may also be interested in parameter inference or computing the likelihood $p(y_{0:t})$ of the observed data for particular values of $\theta$.
 
 In certain cases, these inference problems may be solved analytically (Section~\ref{sec:SSM_exact_inference}), but this is not typically the case. For intractable models we must resort to Monte Carlo methods. However, state space inference is problematic even with Monte Carlo. 
-The main difficulties are that the dimension of the target distribution increases along the sequence, and there is strong dependence between consecutive distributions. Markov chain Monte Carlo (MCMC), for instance, is known to struggle with highly correlated targets\seb{[citation]} and its performance drops drastically as dimension increases, despite convergence rates that are supposedly independent of dimension\seb{[citation]}.
+The main difficulties are that the dimension of the target distribution increases along the sequence, and that there is strong dependence between consecutive distributions. Markov chain Monte Carlo (MCMC), for instance, is known to struggle with highly correlated targets\seb{[citation]} and its performance drops drastically as dimension increases, despite convergence rates that are supposedly independent of dimension\seb{[citation]}.
 
-As we will see in Section~\ref{sec:SMC_FK}, sequential Monte Carlo overcomes these problems, turning the problematic properties of the target distribution to its benefit. Correlation between consecutive targets is exploited for sequential updating, which takes in its stride the incrementing dimensionality. The resulting linear-in-$t$ computational complexity also allows inference to be performed on-line, that is, as observations arrive.
+As we will see in Section~\ref{sec:SMC_FK}, sequential Monte Carlo overcomes these problems, turning the problematic properties of the target distribution to its benefit. Correlation between consecutive targets is exploited for sequential updating, which is able to handle the incrementing dimensionality. The resulting linear-in-$t$ computational complexity also allows inference to be performed on-line, that is, updating the posterior distribution(s) as observations arrive.
 
 
 
 
 \subsection{Exact inference in state space models}
 \label{sec:SSM_exact_inference}
-If the state space model has linear dynamics with Gaussian errors, the posterior distributions of interest are also Gaussian with mean and covariance satisying recursions, implemented by the Kalman filter \parencite{kalman1960} and Rauch-Tung-Striebel smoother \parencite{rauch1965}. Recursions are also available for some other conjugate models: see for example \textcite{vidoni1999}.
+If the state space model has linear dynamics with Gaussian errors, the posterior distributions of interest are also Gaussian. The posterior mean and covariance satisfy certain recursions, implemented by the Kalman filter \parencite{kalman1960} and Rauch-Tung-Striebel smoother \parencite{rauch1965}. 
+Recursions are also available for some other conjugate models: see for example \textcite{vidoni1999}.
 Another analytic case occurs if the state space $\mathcal{X}$ is finite, in which case any integrals become finite sums, and the forward-backward algorithm \parencite{baum1970} yields the exact posteriors. However, if the state space becomes large (albeit finite), exact computation becomes infeasible.
 
 If the model is Gaussian but non-linear, the posterior filtering distributions can be estimated using the \emph{extended Kalman filter} (see for example \textcite{jazwinski2007}), which applies a first-order approximation in order to make use of the Kalman filter. This method performs well on models that are ``almost linear''. The resulting predictor is only \emph{optimal} when the model is actually linear, in which case the extended Kalman filter coincides with the Kalman filter.
 
 For models that are high-dimensional or highly non-linear or for which gradients are not readily available, the exact Kalman filter updates can be replaced by sample approximations.
 The \emph{ensemble Kalman filter} \parencite{evensen1994} uses a Monte Carlo sample from the current time, propagates these points through the transition dynamics, and uses the sample covariance as an estimator of the updated covariance matrix. The means (which are cheaper to evaluate and more stable than the covariances) are still updated using the Kalman filter recursion, based on the estimated covariance.
-The \emph{unscented Kalman filter} \parencite{wan2000} uses a deterministic sample chosen via the \emph{unscented transformation}, which is then propagated through the non-linear transition to obtain a characterisation of the distribution at the next time step. The sample consists of $2d+1$ points, where $d$ is the dimension of the state space, and is a sufficient characterisation of a Gaussian distribution. The sample points define a Gaussian approximation to the updated distribution.
+The \emph{unscented Kalman filter} \parencite{wan2000} uses a deterministic sample chosen via the \emph{unscented transformation}, which is then propagated through the non-linear transition kernel to obtain a characterisation of the distribution at the next time step. The sample consists of $2d+1$ points, where $d$ is the dimension of the state space, and defines a Gaussian approximation to the updated distribution. If the model is really linear-Gaussian then the sample points are sufficient to recover the correct distribution.
 
 In complex or high-dimensional models, such techniques may not be feasible, in which case we must resort to Monte Carlo methods.
 Markov chain Monte Carlo performs woefully on state space models due to the high dimension of the parameter space and high correlation between dimensions. 
@@ -102,12 +103,14 @@ This is the motivation behind sequential Monte Carlo (SMC).
 \draft{Example of non-SSM that is FK? --- obvious options are SMC samplers e.g.\ for rare event simulation or sequential ABC or tempering.}
 
 State space models are very natural and intuitive applications, but they do not do justice to the scope of SMC algorithms, which is much wider.
-On the other hand, the \emph{Feynman-Kac} formalism captures the full scope, since every SMC algorithm is a Monte Carlo approximation of some Feynman-Kac model.
+On the other hand, 
+%the \emph{Feynman-Kac} formalism captures the full scope, since 
+every SMC algorithm is a Monte Carlo approximation of some \emph{Feynman-Kac} model.
 Before formally introducing SMC let us therefore define a generic Feynman-Kac model.
 For a more in-depth study, the reader is directed to the exhaustive books by \textcite{delmoral2004, delmoral2013} or the more accessible \textcite[Chapter 5]{chopin2020}.
 
-Define a state space $\mathcal{X}$ and a time horizon $T$. In this \_ we assume that the state space is common for all times: this is often not the case in practice, but the generalisation to a sequence of state spaces is straightforward.
-The basic components of the Feynman-Kac model are a Markov law, defined by an initial distribution $\mathbb{M}_0$ and transition kernels $M_t$ for $t=1,\dots,T$; and a sequence of ``potential'' functions $G_0 : \mathcal{X} \mapsto [0,\infty)$  and $G_t : \mathcal{X}^2 \mapsto [0,\infty)$ for $t=1,\dots,T$.
+Define a state space $\mathcal{X}$ and a time horizon $T$. In this presentation we assume that the state space $\mathcal{X}$ is common for all times: this is often not the case in practice, but the generalisation to a sequence of state spaces is straightforward.
+The basic components of the Feynman-Kac model are a Markov law, defined by an initial distribution $\mathbb{M}_0$ on $\mathcal{X}$ and transition kernels $M_t: \mathcal{X} \mapsto \mathcal{X}$ for $t=1,\dots,T$; and a sequence of ``potential'' functions $G_0 : \mathcal{X} \mapsto [0,\infty)$  and $G_t : \mathcal{X}^2 \mapsto [0,\infty)$ for $t=1,\dots,T$.
 From these we construct a sequence of Feynman-Kac measures $(\mathbb{Q}_t)_{t=0:T}$ defined by the changes of measure
 \begin{equation}
 \mathbb{Q}_t (dx_{0:T}) = \frac{1}{L_t} G_0(x_0) \mathbb{M}_0(dx_0)
@@ -143,7 +146,7 @@ p(x_{t+h} \mid y_{0:t}) &= \mathbb{Q}_t (dx_{t+h}) \\
 p(x_{t-h:t} \mid y_{0:t}) &= \mathbb{Q}_t (dx_{t-h:t}) ,
 \end{align*}
 while the likelihood $p(y_{0:t}) = L_t$.
-The upshot of this is that we have access to a Monte Carlo approximation of $\mathbb{Q}_t(dx_{0:T})$ then we can conduct inference on all of these distributions, since marginalisation of Monte Carlo samples is trivial. The likelihood, on the other hand, is not obtained by marginalisation; nevertheless, approximations of the likelihood can also be obtained ``for free''. 
+The upshot of this is that we have access to a Monte Carlo approximation of $\mathbb{Q}_t(dx_{0:T})$ then we can conduct inference on any of these distributions, since marginalisation of Monte Carlo samples is trivial. The likelihood, on the other hand, is not obtained by marginalisation; nevertheless, we will see that approximations of the likelihood can also be obtained ``for free''. 
 The next section describes how we may obtain samples from $\mathbb{Q}_t(dx_{0:T})$.
 
 
@@ -151,43 +154,12 @@ The next section describes how we may obtain samples from $\mathbb{Q}_t(dx_{0:T}
 
 \subsection{Sequential Monte Carlo for Feynman-Kac models}
 \label{sec:SMC_FK}
-\seb{Explain somehwere in here that the weights are supposed to give an indication of how useful each particle is, and why resampling is necessary (to avoid weight degeneracy and waste of resources on hopeless particles.)}\\
 In order to implement the SMC algorithm corresponding to a given Feynman-Kac model, we need to be able to sample from $\mathbb{M}_0$ and from $M_t(x, \cdot)$ for all $x,t$; and evaluate $G_t(x, y)$ pointwise for each $x,y, t$.
 Under these conditions we may implement Algorithm~\ref{alg:SMC}, which describes a generic SMC algorithm. 
 The only free choices are the parameter $N$ which dictates the number of ``particles'' used, and the \textsc{resample} procedure.
-However, remember that given a particular state space model there is a choice of possible Feynman-Kac descriptions, and this choice can strongly affect performance.
+However, remember that given a particular state space model there is also a choice of possible Feynman-Kac descriptions, and this choice can strongly affect performance.
 
-The choice of \textsc{resample} procedure can also have a profound effect on performance and is discussed in detail in Section~\ref{sec:resampling}. To ensure Algorithm~\ref{alg:SMC} is valid, we will assume that \textsc{resample} satisfies the following properties:
-\begin{itemize}
-\item the population size $N$ is conserved;
-\item given $w_{t-1}^{(1:N)}$, the expected cardinality of $\{j: a_{t-1}^{(j)} = i\}$ is proportional to $w_{t-1}^{(i)}$.
-\end{itemize}
-The latter property is known as \emph{unbiasedness}.
-These requirements are made rigorous in Definition~\ref{defn:resampling}.
-
-%\vspace{10pt}
-%\begin{algorithm}
-%\DontPrintSemicolon
-%\KwData{$N, T, \mu, (K_t)_{t=1}^T, (g_t)_{t=0}^T$}
-%\lFor{$i \in \{1,\dots,N\}$}{ 
-%	Sample $X_0^{(i)} \sim \mu(\cdot)$
-%}
-%\lFor{$i \in \{1,\dots, N\}$}{
-%		$w_{0}^{(i)} \gets  \left\{{\sum_{j=1}^N g_0(X_0^{(j)})}\right\}^{-1}{g_0(X_0^{(i)})} $ 
-%	}
-%\For{$t \in \{0,\dots, T-1\}$}{
-%	Sample $a_t^{(1:N)} \sim $ \textsc{resample}$(\{1,\dots ,N\}, w_t^{(1:N)}$)\;
-%	\lFor{$i \in \{1,\dots,N\}$}{
-%		Sample $X_{t+1}^{(i)} \sim K_{t+1}(X_t^{(a_t^{(i)})}, \cdot)$
-%	}
-%	\lFor{$i \in \{1,\dots, N\}$}{	
-%		$w_{t+1}^{(i)} \gets \Big\{ {\sum_{j=1}^Ng_{t+1}(X_t^{(a_t^{(j)})},X_{t+1}^{(j)}) }\Big\}^{-1} g_{t+1}(X_t^{(a_t^{(i)})},X_{t+1}^{(i)}) $
-%	}
-%}
-%\caption{Sequential Monte Carlo}\label{alg:SMC_SSM}
-%\end{algorithm}
-%\vspace{10pt}
-\begin{algorithm}
+\begin{algorithm}[ht]
 \vspace*{10pt}
 \DontPrintSemicolon
 \KwIn{$T, N, \mathbb{M}_0, (M_t)_{t=1}^T, (G_t)_{t=0}^T$}
@@ -211,47 +183,26 @@ These requirements are made rigorous in Definition~\ref{defn:resampling}.
 \label{alg:SMC}
 \end{algorithm}
 
-Because Algorithm~\ref{alg:SMC} proceeds sequentially, its computational cost is linear in the time horizon $T$. Furthermore, the bootstrap algorithm, where the Feynman-Kac model is \eqref{eq:bootstrapFK}, processes the data $y_{0:T}$ one observation at a time via $G_t(x_t) = g_t(y_t \mid x_t)$. This means that the bootstrap SMC algorithm can also be run on-line, incorporating each observation as it becomes available.
-This is in stark contrast to a standard MCMC approach, for example, which would have to process all of the data at once up to a fixed time horizon. Adding one more observation would require running the MCMC algorithm from scratch on the extended target, making the computational cost (of generating samples from the whole sequence of target distributions, which is what SMC achieves) at least quadratic in time and rendering on-line inference infeasible.
+The choice of \textsc{resample} procedure can also have a profound effect on performance and is discussed in detail in Section~\ref{sec:resampling}. 
+Resampling is not necessary for the algorithm to be valid, but it is important to ensure good performance. Its purpose is to periodically ``reset'' the weights $w_t^{(1:N)}$, preventing \emph{weight degeneracy}. This is the phenomenon that multiplying importance weights over time causes the variance of the weights to increase exponentially, until after some iterations practically all of the weight is concentrated on one particle, with the rest having weights very close to zero. This means that the Monte Carlo sample (of size $N$) essentially consists of just one sample, so that the Monte Carlo approximations have very high variance.
 
-The output of Algorithm~\ref{alg:SMC} is, for $i=1,\dots, N$ and $t=0,\dots,T$, the \emph{states} $X_t^{(i)} \in \mathcal{X}$\seb{in general the state space can vary over time}, the \emph{weights} $w_t^{(i)} \in [0,1]$ and, for $i=1,\dots, N$ and $t=0,\dots,T-1$, the \emph{parental indices} $a_t^{(i)}$.
-Depending on the application, one may want to retain only a subset of this output.
+The idea of resampling is to make multiple copies of particles with high weights and eliminate particles with low weights, then reset the weights to $w_t^{(1:N)} = (1,\dots,1)/N$. Done correctly, this procedure does not introduce any bias and, although it increases variance in the short term by adding extra randomness, it improves stability in the long term.
+It also prevents a lot of computational budget being ``wasted'' simulating low-weight particles which do not contribute much to the approximation.
 
-This output can be used to construct discrete approximations of the various distributions of interest, which can be used to estimate integrals against test functions in the usual way.
-The filtering distribution $p(x_t \mid y_{0:t})$ is approximated by
+For each $i=1,\dots,N$, the \textsc{resample} procedure selects a \emph{parent}, indexed by $a_{t-1}^{(i)} \in \{1,\dots,N\}$, which copies its state to the $i$th particle in the next iteration. These copies are then mutated independently and so the algorithm goes on.
+We define the \emph{offspring counts} for each $i,t$ as
 \begin{equation*}
-\sum_{i=1}^N w_t^{(i)} \delta_{ X_t^{(i)} } ,
+\nu_{t-1}^{(i)} := |\{ j: a_{t-1}^{(j)} = i \}| ,
 \end{equation*}
-where $\delta_x$ denotes a unit mass at $x$.
-That is, expectations of appropriate test functions $\varphi : \mathcal{X} \mapsto \mathbb{R}$ are approximated by
-\begin{equation*}
-\E[ \varphi(x_t) \mid y_{0:t} ]
-\simeq \sum_{i=1}^N w_t^{(i)} \varphi( X_t^{(i)} ) .
-\end{equation*}
-The precise meaning of approximation (or $\simeq$) will be clarified in Section~\ref{sec:SMC_theory}.
-To approximate the smoothing distribution, we first define the \emph{trajectories} of states $X_{t,0:t}^{(i)}$ (for each $i \in \{1,\dots,N\}$) by setting $X_{t,t}^{(i)} := X_t^{(i)}$ and tracing back through the ancestors via the recursion $X_{t,s}{(i)} = X_{t,s+1}^{( a_t^{(i)} )}$ for each $s \in \{0,\dots, t\}$. 
-We then construct the approximation
-\begin{equation*}
-\sum_{i=1}^N w_t^{(i)} \delta_{ X_{t,0:t}^{(i)} } 
-\end{equation*}
-of the smoothing distribution $p(x_{0:t} \mid y_{0:t})$.
-Similar approximations can be constructed for prediction and fixed-lag smoothing.
-%\seb{...be explicit or no?}.
-We can also approximate the marginal likelihood using the \emph{unnormalised} weights:
-%\seb{should I introduce notation e.g. $\tilde{w}$ for the unnormalised weights, and give them a separate line in Algorithm~\ref{alg:SMC}, and include them in the possible outputs of the algorithm?}
-\begin{equation}\label{eq:likelihood_estimate}
-L_t 
-\simeq \frac{1}{N} \sum_{i=1}^N G_0(X_0^{(i)}) \prod_{t=1}^T \frac{1}{N}
-        \sum_{i=1}^N G_t( X_{t-1}^{ a_{t-1}^{(i)} }, X_t^{(i)} ) .
-\end{equation}
-Define the \emph{offspring counts} for each $i,t$
-\begin{equation*}
-\nu_t^{(i)} := |\{ j: a_t^{(j)} = i \}| ,
-\end{equation*}
-the number of copies of particle $i$ of generation $t$ appearing in generation $t+1$ by resampling.
-Notice that $\nu_t^{(1:N)}$ is expressed as a non-injective function of $a_t^{(1:N)}$, and as such carries less information.
+the number of copies of particle $i$ of generation $t$ appearing in generation $t+1$ by resampling. Notice that $\nu_t^{(1:N)}$ is expressed as a non-injective function of $a_t^{(1:N)}$, and as such carries less information.
+To ensure Algorithm~\ref{alg:SMC} is valid, we assume that the resampling procedure satisfies the following properties:
+\begin{itemize}
+\item the population size $N$ is conserved;
+\item given $w_{t-1}^{(1:N)}$, the expectation of $\nu_{t-1}^{(i)}$ is proportional to $w_{t-1}^{(i)}$ for each $i$.
+\end{itemize}
+The latter property is known as \emph{unbiasedness}.
+These requirements are made rigorous in Definition~\ref{defn:resampling}.
 
-Figure~\ref{fig:cond_indep_graph} shows a section of the conditional dependence graph implied by Algorithm~\ref{alg:SMC}.
 \begin{figure}[ht]
 \centering
 \begin{tikzpicture}[>=stealth]
@@ -312,6 +263,65 @@ Figure~\ref{fig:cond_indep_graph} shows a section of the conditional dependence 
 \caption[Conditional dependence structure of SMC algorithm]{Part of the conditional dependence graph implied by Algorithm~\ref{alg:SMC}. The direction of time is from left to right.}
 \label{fig:cond_indep_graph}
 \end{figure}
+%\vspace{10pt}
+%\begin{algorithm}
+%\DontPrintSemicolon
+%\KwData{$N, T, \mu, (K_t)_{t=1}^T, (g_t)_{t=0}^T$}
+%\lFor{$i \in \{1,\dots,N\}$}{ 
+%	Sample $X_0^{(i)} \sim \mu(\cdot)$
+%}
+%\lFor{$i \in \{1,\dots, N\}$}{
+%		$w_{0}^{(i)} \gets  \left\{{\sum_{j=1}^N g_0(X_0^{(j)})}\right\}^{-1}{g_0(X_0^{(i)})} $ 
+%	}
+%\For{$t \in \{0,\dots, T-1\}$}{
+%	Sample $a_t^{(1:N)} \sim $ \textsc{resample}$(\{1,\dots ,N\}, w_t^{(1:N)}$)\;
+%	\lFor{$i \in \{1,\dots,N\}$}{
+%		Sample $X_{t+1}^{(i)} \sim K_{t+1}(X_t^{(a_t^{(i)})}, \cdot)$
+%	}
+%	\lFor{$i \in \{1,\dots, N\}$}{	
+%		$w_{t+1}^{(i)} \gets \Big\{ {\sum_{j=1}^Ng_{t+1}(X_t^{(a_t^{(j)})},X_{t+1}^{(j)}) }\Big\}^{-1} g_{t+1}(X_t^{(a_t^{(i)})},X_{t+1}^{(i)}) $
+%	}
+%}
+%\caption{Sequential Monte Carlo}\label{alg:SMC_SSM}
+%\end{algorithm}
+%\vspace{10pt}
+Figure~\ref{fig:cond_indep_graph} shows a section of the conditional dependence graph implied by Algorithm~\ref{alg:SMC}.
+Because Algorithm~\ref{alg:SMC} proceeds sequentially, with each iteration incorporating a constant amount of data, its computational cost is linear in the time horizon $T$. Furthermore, the bootstrap algorithm, where the Feynman-Kac model is \eqref{eq:bootstrapFK}, processes the data $y_{0:T}$ one observation at a time via $G_t(x_t) = g_t(y_t \mid x_t)$. This means that the bootstrap SMC algorithm can also be run on-line, incorporating each observation as it becomes available.
+This is in stark contrast to a standard MCMC approach, for example, which would have to process all of the data at once up to a fixed time horizon. Adding one more observation would require running the MCMC algorithm from scratch on the extended target, making the computational cost at least linear \emph{per time point} and rendering on-line inference infeasible.
+
+The output of Algorithm~\ref{alg:SMC} is, for $i=1,\dots, N$ and $t=0,\dots,T$, the \emph{states} $X_t^{(i)} \in \mathcal{X}$, the \emph{weights} $w_t^{(i)} \in [0,1]$ and, for $i=1,\dots, N$ and $t=0,\dots,T-1$, the \emph{parental indices} $a_t^{(i)} \in \{1,\dots,N\}$.
+Depending on the application, one may want to retain only a subset of this output, which can reduce the memory cost.
+
+The output can be used to construct discrete approximations of the various distributions of interest, with which one may estimate integrals against test functions, i.e.\ expectations.
+The filtering distribution $p(x_t \mid y_{0:t})$ is approximated by the empirical measure
+\begin{equation*}
+\sum_{i=1}^N w_t^{(i)} \delta_{ X_t^{(i)} } ,
+\end{equation*}
+where $\delta_x$ denotes a unit mass at $x$.
+That is, expectations of appropriate test functions $\varphi : \mathcal{X} \mapsto \mathbb{R}$ are approximated by their expectations with respect to the empirical measure,
+\begin{equation*}
+\E[ \varphi(x_t) \mid y_{0:t} ]
+\simeq \sum_{i=1}^N w_t^{(i)} \varphi( X_t^{(i)} ) .
+\end{equation*}
+The precise meaning of approximation (or $\simeq$) will be clarified in Section~\ref{sec:SMC_theory}.
+To approximate the smoothing distribution, we first define the \emph{trajectories} of states $X_{t,0:t}^{(i)}$ (for each $i \in \{1,\dots,N\}$) by setting $X_{t,t}^{(i)} := X_t^{(i)}$ and tracing back through the ancestors via the recursion $X_{t,s}{(i)} = X_{t,s+1}^{( a_t^{(i)} )}$ for each $s \in \{0,\dots, t\}$. 
+We can then construct the approximation
+\begin{equation*}
+\sum_{i=1}^N w_t^{(i)} \delta_{ X_{t,0:t}^{(i)} } 
+\end{equation*}
+of the smoothing distribution $p(x_{0:t} \mid y_{0:t})$, and we can calculate expectations as above.
+Similar approximations can be constructed for prediction and fixed-lag smoothing.
+%\seb{...be explicit or no?}.
+We can also approximate the marginal likelihood using the \emph{unnormalised} weights:
+%\seb{should I introduce notation e.g. $\tilde{w}$ for the unnormalised weights, and give them a separate line in Algorithm~\ref{alg:SMC}, and include them in the possible outputs of the algorithm?}
+\begin{equation}\label{eq:likelihood_estimate}
+L_t 
+\simeq \frac{1}{N} \sum_{i=1}^N G_0(X_0^{(i)}) \prod_{t=1}^T \frac{1}{N}
+        \sum_{i=1}^N G_t( X_{t-1}^{ a_{t-1}^{(i)} }, X_t^{(i)} ) .
+\end{equation}
+The unnormalised weights could be output directly from Algorithm~\ref{alg:SMC}, or re-calculated from the states as here.
+
+
 
 
 

@@ -23,6 +23,7 @@
 \usepackage[nobreak]{mdframed} % The nobreak option should probably be set locally in the final document, since breaks may be required in longer theorems.
 \renewcommand{\sfdefault}{put} % this isn't actually a sans font, so might be better to use something like phv (helvetica), but I rather like this font for headings.
 % change big-O notation to use mathcal O?
+\usepackage{booktabs, longtable} % For multi-page tables
 
 %%% TABLES
 \renewcommand{\arraystretch}{1.4}
@@ -172,9 +173,8 @@ MVB & minimal variance branching \\
 
 
 \chapter{Notation and Conventions}
-\seb{Also include big-O notation. And $\mathbb{Z}$ and $\mathbb{R}$?}
 
-\begin{tabular}{p{0.1\textwidth} p{0.8\textwidth}}
+\begin{longtable}{p{0.1\textwidth} p{0.8\textwidth}}
 $\mathbb{N}$ & the natural numbers starting from one, $\{1,2,\dots \}$ \\
 $\mathbb{N}_0$ & the natural numbers starting from zero, $\{0,1,2,\dots \}$ \\
 $[a]$ & the set $\{1,2,\dots,a\}$ where $a\in\mathbb{N}$ \seb{also allow $a=0$ in which case $[a] = \emptyset$?} \\
@@ -183,8 +183,8 @@ $(a)_b$ & the falling factorial $a (a-1) \cdots (a-b+1)$
     where $a \in \mathbb{N}_0, b \in \mathbb{N}$, and define $(a)_0 = 1$. \seb{could even allow $a\in\mathbb{R}$ but I don't think I ever use it in that setting} \\
 $\binom{a}{b}$ & binomial coefficient where $a,b \in \mathbb{N}_0$, defined to be $0$ when $a<b$ \\
 $x_A$ & the subvector consisting of the elements of $x$ with index in set $A\subseteq\mathbb{N}$ \\
-$x_{a:b}$ & the subvector $x_A$ where $A = \{a,a+1, \dots,b\}$ \\
-$x_{-a}$ & the subvector $x_A$ where $A = \{1,2, \dots, a-1, a+1, \dots n\}$ and $n$ is the length of $x$ which should be clear from the context \\
+$x_{a:b}$ & the subvector $x_A$ where $A = \{a,a+1, \dots,b\}$ for $a<b\in\mathbb{N}$, defined to be the empty vector when $a>b$ \\
+$x_{-a}$ & the subvector $x_A$ where $A = \{1,2, \dots, a-1, a+1, \dots n\}$, $a\in\{1,\dots,n\}$, and $n$ is the length of $x$ which should be clear from context \\
 $\prod_{\emptyset}$ & the empty product is taken to be $1$ \\
 $\sum_{\emptyset}$ & the empty sum is taken to be $0$, while the sum over
     an index vector of length zero is the identity operator \seb{?} \\
@@ -196,9 +196,12 @@ $\V$ & variance \\
 $\Cov$ & covariance \\
 $A^c$ & the complement of set $A$\\
 $|A|$ & the cardinality of set $A$\\
+$O(\cdot)$ & standard asymptotic notation: $f(x) = O(g(x))$ if there exist $M\in[0,\infty), x_0 \in \mathbb{R}$ such that $f(x) \leq Mg(x)$ for all $x\geq x_0$ \\
+$o(\cdot)$ & standard asymptotic notation: $f(x) = o(g(x))$ if for all $\varepsilon>0$ there exists $x_0$ such that for all $x\geq x_0$, $f(x) \leq \varepsilon g(x)$ \\
+$\Omega(\cdot)$ & standard asymptotic notation: $f(x) = \Omega(g(x))$ if and only if $g(x) = o(f(x))$ \\
 $\ON$ & asymptotic notation for a function that converges to $1$ as $N\to\infty$ \\
 %\seb{Note that $(\ON)^a = \ON$ for any $a\in \mathbb{R}$.} \\
-\end{tabular}
+\end{longtable}
 
 
 \mainmatter
