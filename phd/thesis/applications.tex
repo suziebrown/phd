@@ -359,18 +359,20 @@ The result follows by applying Theorem~\ref{thm:weakconv}.
 
 \begin{prop}\label{thm:strat_nontriviality}
 Consider an SMC algorithm using stratified resampling.
-Suppose that\seb{for each $t$? --- actually, isn't it sufficient that these bounds exist for infinitely many $t$?} there exists a constant $\varepsilon \in (0,1]$ and a probability density $h$ such that
+Suppose that there exists a constant $\varepsilon \in (0,1]$ and a probability density $h$ such that
 \begin{equation*}
 \varepsilon h(x') \leq q_t(x, x^\prime) \leq \varepsilon^{-1} h(x')
 \end{equation*}
-uniformly in $x$, and that there exist $\zeta >0$ and $\delta >0$ such that 
+uniformly in $x,t$, and that there exist $\zeta >0$ and $\delta \in (0,1)$ such that 
 \begin{equation}
 \Prob[ \max_i w_t^{(i)} - \min_i w_t^{(i)} \geq 2\delta/N \mid \mathcal{F}_{t-1} ] \geq \zeta \label{eq:strat_minmaxweight}
 \end{equation}
  for infinitely many $t$. Then, for all $N>1$, $\Prob[ \tau_N(t) = \infty ] =0$ for all finite $t$.
 \end{prop}
 We now assume $q_t$ is bounded above and away from zero, as in \eqref{eq:gq_bounds_mn}.
-We saw that such a condition was not necessary for Corollary~\ref{thm:stratified}, and we do not believe it to be necessary here either; it is merely a convenient way to control the contributions from the transition density. The bounds established in the following proof are rather crude, particularly the terms in $\varepsilon$; it may well be possible to achieve similar bounds under less restrictive conditions.
+We saw that such a condition was not necessary for Corollary~\ref{thm:stratified}, and we do not believe it to be necessary here either; it is merely a convenient way to control the contributions from the transition density. Indeed, the terms in $\varepsilon$ appearing in the bounds established in the following proof are rather crude.
+In fact, the stated condition is rather stronger than necessary: we only need the bounds on $q_t$ to hold for infinitely many $t$, rather than for all $t$. We use this stronger statement to avoid complicating the proof.
+%The bounds established in the following proof are rather crude, particularly the terms in $\varepsilon$, so it may well be possible to achieve similar bounds under even less restrictive conditions on $q_t$.
 
 The second condition \eqref{eq:strat_minmaxweight} is required to ensure that, at least infinitely often, the weights are not equal to $(1,\dots,1)/N$, since stratified resampling is degenerate under equal weights, which could cause the time scale to explode. 
 It is hardly conceivable that any real SMC algorithm would fail to satisfy this very mild condition, which effectively ensures that the weights cannot be ``too well-behaved''.
@@ -636,13 +638,14 @@ Suppose that there exists a constant $\varepsilon \in (0,1]$ and a probability d
 \begin{equation*}
 \varepsilon h(x') \leq q_t(x, x^\prime) \leq \varepsilon^{-1} h(x')
 \end{equation*}
-uniformly in $x$, and that there exist $\zeta >0$ and $\delta >0$ such that 
+uniformly in $x,t$, and that there exist $\zeta >0$ and $\delta \in (0,1)$ such that 
 \begin{equation*}
 \Prob[ \max_i w_t^{(i)} - \min_i w_t^{(i)} \geq 2\delta/N \mid \mathcal{F}_{t-1} ] \geq \zeta
 \end{equation*}
  for infinitely many $t$. Then, for all $N>1$, $\Prob[ \tau_N(t) = \infty ] =0$ for all finite $t$.
 \end{prop}
 This result was published in \textcite[Lemma B.1]{brown2021} with the slightly stronger conditions where the bounds on $q_t$ are also uniform in $x^\prime$. It has since been noted that the conditions given here are sufficient; the $h$ terms can be  cancelled as in \eqref{eq:strat_pbounds}.
+As was the case for Proposition~\ref{thm:strat_nontriviality}, for convenience the conditions on $q_t$ are made stronger than necessary.
 
 %\seb{If I find a more elegant proof for e.g. stratified, I can use the techniques to simplify this one a bit too.}
 %
@@ -832,7 +835,7 @@ Suppose that there exists a constant $\varepsilon \in (0,1]$ and a probability d
 \begin{equation*}
 \varepsilon h(x') \leq q_t(x, x^\prime) \leq \varepsilon^{-1} h(x')
 \end{equation*}
-uniformly in $x$, and that there exist $\zeta >0$ and $\delta >0$ such that 
+uniformly in $x$, and that there exist $\zeta >0$ and $\delta \in (0,1)$ such that 
 \begin{equation*}
 \Prob[ \max_i w_t^{(i)} - \min_i w_t^{(i)} \geq 2\delta/N \mid \mathcal{F}_{t-1} ] \geq \zeta
 \end{equation*}
@@ -1078,6 +1081,7 @@ We restrict here to the case of multinomial resampling, which seems to be the mo
 We conjecture that similar results hold for conditional SMC with other resampling schemes, as in the preceding corollaries.
 
 The conditions \eqref{eq:gq_bounds_csmc} are, as one might expect, identical to those assumed in the case of standard SMC with multinomial resampling (Corollary~\ref{thm:multinomial}).
+These should be interpreted as holding uniformly in the choice of immortal trajectory.
 
 \begin{proof}
 Assume, without loss of generality, that the immortal particle takes index 1 in each generation. This assumption is valid due to \ref{standing_assumption}, and significantly lightens the notation, but the same argument holds if the immortal indices are taken to be $a_{0:T}^\star$ rather than $(1,\dots,1)$.
