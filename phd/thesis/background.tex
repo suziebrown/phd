@@ -553,12 +553,27 @@ As in Section~\ref{sec:SMC_FK}, we define offspring counts in terms of parental 
 Since the assignment of offsrping to parents is i.i.d.\ across generations, there is no dependence on $t$.
 Also, under the assumption of exchangeability, it is sufficient to consider only the offspring counts, rather than the parental indices (which generally carry more information).
 %\seb{Crucially, in the neutral case, offspring counts carry all the information about the distribution of the genealogy that is contained in the parental indices.}
-From a biological perspective, neutrality encodes the absence of natural selection, i.e.\ no individual in the population is ``fitter'' than another.
-\seb{Think about what actually constitutes neutrality, and write something intelligent here.}
+These models are all \emph{neutral}, that is exhibiting no natural selection, because the offspring counts at each generation are independent, so there can be no preferential propagation of certain ``fitter'' lineages.
+
+
+
+
+\subsubsection{Cannings model}
+The neutral Cannings model \parencite{cannings1974, cannings1975} is a general class which encompasses some other important models as special cases.
+
+The Cannings model does not specify a particular distribution for the offspring counts; it just requires that the distribution is exchangeable, i.i.d.\ between generations, and preserves the population size. In particular, the probability of observing offspring counts $(v_1, \dots, v_N)$ must be invariant under permutations of this vector.
+
+Rescaled genealogies of the neutral Cannings model converge to the Kingman coalescent as $N\to\infty$, under some conditions on the moments of the offspring distribution\seb{[citation]}. 
+For example, one may apply the sufficient conditions of \textcite{kingman1982gene}:
+if $\V[\nu_1] \to \sigma^2 \in (0,\infty)$ and $\E[\nu_1^k]$ is bounded for all $k\in\mathbb{N}$ then, under the time scaling $N\sigma^{-2}$, the genealogies of the neutral Cannings model converge to the Kingman coalescent.
+%\parencite[see for example][Section 2.2]{etheridge2011}. \seb{original reference for this? is not any Kingman 1982 papers, and certainly not Cannings 1974/5 which predates KC}
+
+
+
 
 \subsubsection{Wright-Fisher model}
 The neutral Wright-Fisher model \parencite{fisher1923, fisher1930, wright1931} is one of the most studied models in population genetics.
-At each time step the existing generation dies and is replaced by $N$ offspring. The offspring descend from parents $(a_1, \dots, a_N)$ which are selected according to
+At each generation the existing population dies and is replaced by $N$ offspring. The offspring descend from parents $(a_1, \dots, a_N)$ which are selected according to
 \begin{equation*}
 a_i \overset{iid}{\sim} \Cat(\{1, \dots, N\}, (1/N, \dots, 1/N)).
 \end{equation*}
@@ -566,38 +581,70 @@ The joint distribution of the offspring counts is therefore
 \begin{equation*}
 (v_1,\dots, v_N) \sim \Mn(N, (1/N, \dots, 1/N)).
 \end{equation*}
-Since the Multinomial distribution is exchangeable, this model is neutral.
-There are several non-neutral variants of the Wright-Fisher model \seb{citations?}, but they are typically much less tractable than the neutral one.
+Since the Multinomial distribution is exchangeable, the Wright-Fisher model is a special case of the Cannings model.
+%There are several non-neutral variants of the Wright-Fisher model \seb{citations?}, but they are typically much less tractable than the neutral one.
 
-\textcite{kingman1982gene} showed that, when time is scaled by a factor of $N$, genealogies of the neutral Wright-Fisher model converge to the Kingman coalescent as $N\to\infty$.
+\textcite{kingman1982gene} showed that the Wright-Fisher model satisfies his sufficient conditions, and thus the resulting genealogies, appropriately rescaled, converge to the Kingman coalescent as $N\to\infty$.
+The correct time scale in this instance is $N$, since
+\begin{equation*}
+\V[\nu_1] = N\frac{1}{N} \left
+(1 - \frac{1}{N}\right)
+=\frac{N-1}{N}
+\to 1 
+=: \sigma^2 ,
+\end{equation*}
+so $N\sigma^{-2} = N$.
 
-\subsubsection{Cannings model}
-The neutral Cannings model \parencite{cannings1974, cannings1975} is a more general construction which encompasses the neutral Wright-Fisher model as a special case.
 
-In the Cannings model, the particular offspring distribution is not specified; we only require that it is exchangeable, i.i.d.\ between generations, and preserves the population size. In particular, the probability of observing offspring counts $(v_1, \dots, v_N)$ must be invariant under permutations of this vector.
-
-Genealogies of the neutral Cannings model also converge to the Kingman coalescent, under some conditions\seb{spell them out --- they aren't that complicated!} and a suitable time-scaling \seb{which is what?}, as $N\to\infty$\seb{[citation]}.
-%\parencite[see for example][Section 2.2]{etheridge2011}. \seb{original reference for this? is not any Kingman 1982 papers, and certainly not Cannings 1974/5 which predates KC}
 
 \subsubsection{Moran model}
 The neutral Moran model \parencite{moran1958}, while perhaps less biologically relevant, is mathematically appealing because its simple dynamics make it particularly tractable.
 
-At each time step, an ordered pair of individuals is selected uniformly at random. The first individual in this pair dies (i.e.\ leaves no offspring in the next generation), while the other reproduces (leaving two offspring). All of the other individuals leave exactly one offspring.
-%Usually the model is thought of as having ``overlapping generations'': the individuals having one offspring are considered to be not reproducing but rather surviving to appear again in the next generation.
-%However, one can equally think of it as having non-overlapping generations and a low variance reproduction mechanism.
+At each generation, an ordered pair of individuals is selected uniformly at random. The first individual in this pair dies (i.e.\ leaves no offspring in the next generation), while the other reproduces (leaving two offspring). All of the other individuals leave exactly one offspring.
 This is another special case of the neutral Cannings model, where the offspring distribution is now uniform over all permutations of $(0,2,1,1,\dots,1)$.
-Therefore we know that under a suitable time-scaling, its genealogies converge to the Kingman coalescent\seb{[citation]}. 
-The time scale in this case is $N^2$, because reproduction happens at a rate $N$ times \seb{or is it technically N-1 times?} lower than in the Wright-Fisher model. 
+
+Under a suitable time-scaling, its genealogies converge to the Kingman coalescent\seb{[citation]}, although the sufficient conditions of \textcite{kingman1982gene} do not apply:
+\begin{align*}
+\V[\nu_1] 
+&= \E[\nu_1^2] - \E[\nu_1]^2
+= (0 + 1 \cdot \frac{N-2}{N} + 4 \cdot \frac{1}{N}) - (0 + 1 \cdot \frac{N-2}{N} + 2 \cdot \frac{1}{N})^2 \\
+&= \frac{N+2}{N} - 1^2
+= \frac{2}{N}
+\to 0 ,
+\end{align*}
+violating the condition that $\sigma^2 >0$. 
+However, that condition turns out not to be necessary \seb{[citation]}, and $\V[\nu_1]$ gives us the correct time scale on which to recover the Kingman coalescent: $N(\V[\nu_1])^{-1} = N^2/2$.
+It makes sense that the time scale is an order bigger than in the Wright-Fisher model, because the Moran model has a reproduction rate $O(N)$ times lower than in the Wright-Fisher model: at each generation $2$ individuals are involved in reproduction, as opposed to $N$ in the Wright-Fisher model.
 %\seb{also cite a Moran-specific convergence result: not sure where (it isn't in Kingman 1982* or in Moran 1958 which predates KC)}
+
+
+
+
+\subsection{Other convergence results}
+The original work of \textcite{kingman1982gene} provides sufficient conditions for convergence of finite-dimensional distributions in the class of Cannings models.
+\textcite{mohle1998} provides another set of sufficient conditions which apply to the wider class of models in which the population size may vary deterministically, the offspring distributions are independent but not identical across generations, and exchangeability is replaced by the weaker ``random assignment'' condition. 
+For that class of models under the same conditions, \textcite{mohle1999} proved that the genealogical process converges weakly as well as in the sense of finite-dimensional distributions.
+\textcite{mohle2000} gives a simpler condition which is necessary and sufficient for convergence of Cannings genealogies to the Kingman coalescent. % that N&S condition is the exchangeable version of our main theorem condition.
+
+Meanwhile many similar results were proved where the limiting process is not necessarily the Kingman coalescent.
+Relaxing the conditions to allow large mergers in the limit admits $\Lambda$-coalescents as limiting processes, with the Kingman coalescent as a special case \parencite{pitman1999, sagitov1999, mohlesagitov1998}.
+If simultaneous mergers are also allowed, the limiting process is a $\Xi$-coalescent \parencite{mohle2001}, and this class encompasses all possible limiting genealogies of Cannings models.
+
+The focus of the current work is on systems that admit Kingman genealogies in the limit, among a wider class of models where, like \textcite{mohle1998, mohle1999}, exchangeability is relaxed to random assignment, and we also do not require independence between generations. 
+%In particular, this class of models is non-neutral.
+Our main condition, which is introduced in Chapter~\ref{ch:limits}, can be considered a non-exchangeable non-neutral analogue of the condition for convergence to the Kingman coalescent presented in \textcite{mohle2000}.
+
+
 
 
 \subsection{Particle populations}
 Much of the population genetics framework transfers readily to the case of SMC. The population is now a population of particles, with each iteration of the SMC algorithm corresponding to a generation, and resampling playing the part of reproduction.
 In fact, SMC ``populations'' are in some ways more suited to these population models than actual populations of organisms.
 The assumptions that the population has constant size $N$ and that reproduction occurs only at discrete generations are satisfied by construction.
-However, we cannot assume independence between generations: as seen in Figure~\ref{fig:cond_indep_graph}, the offspring counts at subsequent generations are not independent without some conditioning. In fact, after marginalising out the information about the positions of the particles, the genealogical process is not even Markovian.
-Nor is our model neutral: the resampling distribution depends on the weight of each particle (the weight plays the role of fitness in a non-neutral population model).
 
+However, we cannot assume independence between generations: as seen in Figure~\ref{fig:cond_indep_graph}, the offspring counts at subsequent generations are not independent without some conditioning. 
+This means that SMC populations are not neutral.
+In fact, after marginalising out the information about the positions of the particles, the genealogical process is not even Markovian.
 
 
 

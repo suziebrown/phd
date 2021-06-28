@@ -112,34 +112,6 @@
       \field{pages}{164\bibrangedash 171}
       \range{pages}{8}
     \endentry
-    \entry{berestycki2009}{book}{}
-      \name{author}{1}{}{%
-        {{uniquename=0,uniquepart=base,hash=ddc27efb31a501fdc483329b99fea17f}{%
-           family={Berestycki},
-           familyi={B\bibinitperiod},
-           given={Nathana{ë}l},
-           giveni={N\bibinitperiod},
-           givenun=0}}%
-      }
-      \list{publisher}{1}{%
-        {ArXiv}%
-      }
-      \strng{namehash}{ddc27efb31a501fdc483329b99fea17f}
-      \strng{fullhash}{ddc27efb31a501fdc483329b99fea17f}
-      \strng{bibnamehash}{ddc27efb31a501fdc483329b99fea17f}
-      \strng{authorbibnamehash}{ddc27efb31a501fdc483329b99fea17f}
-      \strng{authornamehash}{ddc27efb31a501fdc483329b99fea17f}
-      \strng{authorfullhash}{ddc27efb31a501fdc483329b99fea17f}
-      \field{sortinit}{B}
-      \field{sortinithash}{276475738cc058478c1677046f857703}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{year}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{number}{0909.3985}
-      \field{title}{Recent Progress in Coalescent Theory}
-      \field{year}{2009}
-    \endentry
     \entry{brown2021}{article}{}
       \name{author}{4}{}{%
         {{uniquename=0,uniquepart=base,hash=fdbccafd0759a39bd5ff9b5ea9739883}{%
@@ -682,33 +654,6 @@
       \field{labeltitlesource}{title}
       \field{title}{An Introduction to the Bootstrap}
       \field{year}{1994}
-    \endentry
-    \entry{etheridge2011}{book}{}
-      \name{author}{1}{}{%
-        {{uniquename=0,uniquepart=base,hash=54c38cbe8a4f8972c44ada3677485ffc}{%
-           family={Etheridge},
-           familyi={E\bibinitperiod},
-           given={Alison},
-           giveni={A\bibinitperiod},
-           givenun=0}}%
-      }
-      \list{publisher}{1}{%
-        {Springer}%
-      }
-      \strng{namehash}{54c38cbe8a4f8972c44ada3677485ffc}
-      \strng{fullhash}{54c38cbe8a4f8972c44ada3677485ffc}
-      \strng{bibnamehash}{54c38cbe8a4f8972c44ada3677485ffc}
-      \strng{authorbibnamehash}{54c38cbe8a4f8972c44ada3677485ffc}
-      \strng{authornamehash}{54c38cbe8a4f8972c44ada3677485ffc}
-      \strng{authorfullhash}{54c38cbe8a4f8972c44ada3677485ffc}
-      \field{sortinit}{E}
-      \field{sortinithash}{f615fb9c6fba11c6f962fb3fd599810e}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{year}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{Some Mathematical Models from Population Genetics: {É}cole D'{É}t{é} de Probabilit{é}s de Saint-Flour XXXIX-2009}
-      \field{year}{2011}
     \endentry
     \entry{ethier1986}{book}{}
       \name{author}{2}{}{%
@@ -1793,6 +1738,107 @@
       \field{pages}{446\bibrangedash 460}
       \range{pages}{15}
     \endentry
+    \entry{mohle2000}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=b6cd56499245b16ab003cae95de7eae7}{%
+           family={M{ö}hle},
+           familyi={M\bibinitperiod},
+           given={Martin},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {JSTOR}%
+      }
+      \strng{namehash}{b6cd56499245b16ab003cae95de7eae7}
+      \strng{fullhash}{b6cd56499245b16ab003cae95de7eae7}
+      \strng{bibnamehash}{b6cd56499245b16ab003cae95de7eae7}
+      \strng{authorbibnamehash}{b6cd56499245b16ab003cae95de7eae7}
+      \strng{authornamehash}{b6cd56499245b16ab003cae95de7eae7}
+      \strng{authorfullhash}{b6cd56499245b16ab003cae95de7eae7}
+      \field{sortinit}{M}
+      \field{sortinithash}{cfd219b90152c06204fab207bc6c7cab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Advances in Applied Probability}
+      \field{title}{Total Variation Distances and Rates of Convergence for Ancestral Coalescent Processes in Exchangeable Population Models}
+      \field{year}{2000}
+      \field{pages}{983\bibrangedash 993}
+      \range{pages}{11}
+    \endentry
+    \entry{mohlesagitov1998}{article}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,uniquepart=base,hash=b6cd56499245b16ab003cae95de7eae7}{%
+           family={M{ö}hle},
+           familyi={M\bibinitperiod},
+           given={Martin},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=1940412646c2d90b785da664aaae82fe}{%
+           family={Sagitov},
+           familyi={S\bibinitperiod},
+           given={Serik},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Citeseer}%
+      }
+      \strng{namehash}{7b28cea84f9657a4420fed06db351e19}
+      \strng{fullhash}{7b28cea84f9657a4420fed06db351e19}
+      \strng{bibnamehash}{7b28cea84f9657a4420fed06db351e19}
+      \strng{authorbibnamehash}{7b28cea84f9657a4420fed06db351e19}
+      \strng{authornamehash}{7b28cea84f9657a4420fed06db351e19}
+      \strng{authorfullhash}{7b28cea84f9657a4420fed06db351e19}
+      \field{sortinit}{M}
+      \field{sortinithash}{cfd219b90152c06204fab207bc6c7cab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{A Characterization of Ancestral Limit Processes Arising in Haploid Population Genetics Models}
+      \field{year}{1998}
+    \endentry
+    \entry{mohle2001}{article}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,uniquepart=base,hash=b6cd56499245b16ab003cae95de7eae7}{%
+           family={M{ö}hle},
+           familyi={M\bibinitperiod},
+           given={Martin},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=1940412646c2d90b785da664aaae82fe}{%
+           family={Sagitov},
+           familyi={S\bibinitperiod},
+           given={Serik},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Institute of Mathematical Statistics}%
+      }
+      \strng{namehash}{7b28cea84f9657a4420fed06db351e19}
+      \strng{fullhash}{7b28cea84f9657a4420fed06db351e19}
+      \strng{bibnamehash}{7b28cea84f9657a4420fed06db351e19}
+      \strng{authorbibnamehash}{7b28cea84f9657a4420fed06db351e19}
+      \strng{authornamehash}{7b28cea84f9657a4420fed06db351e19}
+      \strng{authorfullhash}{7b28cea84f9657a4420fed06db351e19}
+      \field{sortinit}{M}
+      \field{sortinithash}{cfd219b90152c06204fab207bc6c7cab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Annals of Probability}
+      \field{number}{4}
+      \field{title}{A Classification of Coalescent Processes for Haploid Exchangeable Population Models}
+      \field{volume}{29}
+      \field{year}{2001}
+      \field{pages}{1547\bibrangedash 1562}
+      \range{pages}{16}
+    \endentry
     \entry{mohle2003}{article}{}
       \name{author}{2}{}{%
         {{uniquename=0,uniquepart=base,hash=91dc4d416f310afc5cf0edbfc909f0cf}{%
@@ -2115,6 +2161,36 @@
       \field{pages}{A2013\bibrangedash A2024}
       \range{pages}{-1}
     \endentry
+    \entry{sagitov1999}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=1940412646c2d90b785da664aaae82fe}{%
+           family={Sagitov},
+           familyi={S\bibinitperiod},
+           given={Serik},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {JSTOR}%
+      }
+      \strng{namehash}{1940412646c2d90b785da664aaae82fe}
+      \strng{fullhash}{1940412646c2d90b785da664aaae82fe}
+      \strng{bibnamehash}{1940412646c2d90b785da664aaae82fe}
+      \strng{authorbibnamehash}{1940412646c2d90b785da664aaae82fe}
+      \strng{authornamehash}{1940412646c2d90b785da664aaae82fe}
+      \strng{authorfullhash}{1940412646c2d90b785da664aaae82fe}
+      \field{sortinit}{S}
+      \field{sortinithash}{322b1d5276f2f6c1bccdcd15920dbee6}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Applied Probability}
+      \field{title}{The General Coalescent with Asynchronous Mergers of Ancestral Lines}
+      \field{year}{1999}
+      \field{pages}{1116\bibrangedash 1125}
+      \range{pages}{10}
+    \endentry
     \entry{saunders1984}{article}{}
       \name{author}{3}{}{%
         {{uniquename=0,uniquepart=base,hash=195cfae3267a744f3859c45b27bf87d7}{%
@@ -2285,33 +2361,6 @@
       \field{year}{1999}
       \field{pages}{213\bibrangedash 221}
       \range{pages}{9}
-    \endentry
-    \entry{wakeley2009}{book}{}
-      \name{author}{1}{}{%
-        {{uniquename=0,uniquepart=base,hash=d4c57052af8d3ef98635b54b3503e084}{%
-           family={Wakeley},
-           familyi={W\bibinitperiod},
-           given={John},
-           giveni={J\bibinitperiod},
-           givenun=0}}%
-      }
-      \list{publisher}{1}{%
-        {Roberts \& Co. Publishers}%
-      }
-      \strng{namehash}{d4c57052af8d3ef98635b54b3503e084}
-      \strng{fullhash}{d4c57052af8d3ef98635b54b3503e084}
-      \strng{bibnamehash}{d4c57052af8d3ef98635b54b3503e084}
-      \strng{authorbibnamehash}{d4c57052af8d3ef98635b54b3503e084}
-      \strng{authornamehash}{d4c57052af8d3ef98635b54b3503e084}
-      \strng{authorfullhash}{d4c57052af8d3ef98635b54b3503e084}
-      \field{sortinit}{W}
-      \field{sortinithash}{ecb89ff85896a47dc313960773ac311d}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{year}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{Coalescent Theory: An Introduction}
-      \field{year}{2009}
     \endentry
     \entry{wan2000}{inproceedings}{}
       \name{author}{2}{}{%

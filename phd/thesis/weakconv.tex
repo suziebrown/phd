@@ -15,8 +15,8 @@ The extension from Theorem~\ref{thm:FDDconv} to weak convergence requires an add
 
 We start by defining a suitable metric space.
 Let $\mathcal{P}_n$ be the space of partitions of $\{1,\dots,n\}$.
-Denote by $\mathcal{X}$ the set of all functions mapping $[0,\infty)$ to $\mathcal{P}_n$ that are right-continuous with left limits.
-(Our rescaled genealogical process $(\mathcal{G}^{(n,N)}_{\tau_N(t)})_{t\geq0}$ and our encoding of the $n$-coalescent are piecewise-constant functions mapping time $t\in[0,\infty)$ to partitions, and thus live in the space $\mathcal{X}$.)
+Denote by $\mathcal{D}$ the set of all functions mapping $[0,\infty)$ to $\mathcal{P}_n$ that are right-continuous with left limits.
+(Our rescaled genealogical process $(\mathcal{G}^{(n,N)}_{\tau_N(t)})_{t\geq0}$ and our encoding of the $n$-coalescent are piecewise-constant functions mapping time $t\in[0,\infty)$ to partitions, and thus live in the space $\mathcal{D}$.)
 Finally, equip the space $\mathcal{P}_n$ with the discrete metric,
 \begin{equation*}
 \rho(\xi,\eta) 
@@ -35,7 +35,7 @@ Let $\nu_t^{(1:N)}$ denote the offspring numbers in an interacting particle syst
 \frac{1}{(N)_3} \sum_{i = 1}^N \Et\left[ (\nu_t^{(i)})_3 \right]  \leq b_N \frac{1}{(N)_2} \sum_{i = 1}^N \Et\left[ (\nu_t^{(i)})_2 \right]
 \end{equation}
 almost surely for all $N$, uniformly in $t \geq 1$.
-Then the rescaled genealogical process $(G_{\tau_N(t)}^{(n,N)})_{t\geq0}$ converges weakly in $(\mathcal{X}, \rho)$
+Then the rescaled genealogical process $(G_{\tau_N(t)}^{(n,N)})_{t\geq0}$ converges weakly in $(\mathcal{D}, \rho)$
 to Kingman's $n$-coalescent as $N \to \infty$.
 \end{theorem}
 
@@ -45,7 +45,7 @@ To make it digestible, the proof is broken down into a number of results which a
 
 Since we already have convergence of the finite-dimensional distributions (Theorem~\ref{thm:FDDconv}), strengthening this to weak convergence requires relative compactness of the sequence of processes $\{ (G_{\tau_N(t)}^{(n,N)})_{t\geq0} \}_{N\in\mathbb{N}}$.
 
-\textcite[Chapter 3, Corollary 7.4]{ethier1986} provide a necessary and sufficient condition for relative compactness: $\mathcal{P}_n$ is finite and therefore complete and separable, and the sample paths of $(G_{\tau_N(t)}^{(n,N)})_{t\geq0}$ live in $\mathcal{X}$, so the conditions of their corollary are satisfied.
+\textcite[Chapter 3, Corollary 7.4]{ethier1986} provide a necessary and sufficient condition for relative compactness: $\mathcal{P}_n$ is finite and therefore complete and separable, and the sample paths of $(G_{\tau_N(t)}^{(n,N)})_{t\geq0}$ live in $\mathcal{D}$, so the conditions of their corollary are satisfied.
 The corollary states that the sequence of processes $\{ (G_{\tau_N(t)}^{(n,N)})_{t\geq0} \}_{N\in\mathbb{N}}$ is relatively compact if and only if the following two conditions hold:
 \begin{enumerate}
 \item \label{item:relcomp1} For every $\epsilon>0$, $t\geq 0$ there exists a compact set $\Gamma \subseteq \mathcal{P}_n$ such that
