@@ -392,13 +392,13 @@ We start by proving some upper and lower bounds on sums of products of various q
 \begin{lemma}\label{thm:sumprod1}
 Fix $t>0$, $l\in\mathbb{N}$.
 \begin{enumerate}[label=(\alph*)]
-\item \label{thm:sumprod1_a} \hspace{1cm}
+\item \label{thm:sumprod1_a} %\hspace{0.2cm}
 $\begin{aligned}
 \sum_{\substack{ s_1, \dots, s_l =1 \\ \text{\normalfont{all distinct}} }}^{\tau_N(t)}
         \prod_{j=1}^l c_N(s_j)
     \leq (t+1)^l
 \end{aligned}$
-\item \label{thm:sumprod1_b} \hspace{1cm}
+\item \label{thm:sumprod1_b} %\hspace{0.2cm}
 $\begin{aligned}
 t^l - \left( \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right) \binom{l}{2} (t+1)^{l-2} 
     \leq \sum_{\substack{ s_1, \dots, s_l =1 \\ \text{\normalfont{all distinct}} }}
@@ -484,7 +484,8 @@ We start with a binomial expansion:
         \left( \prod_{i\in\mathcal{I}} c_N(s_i) \right)
         \left( \prod_{j\notin\mathcal{I}} D_N(s_j) \right) \label{eq:010}
 \end{align}
-where $[l] := \{1,\dots,l\}$. Since the sum is over all permutations of $s_1,\dots,s_l$, we may arbitrarily choose an ordering for $\{1,\dots,l\}$ such that $\mathcal{I} = \{ 1,\dots, |\mathcal{I}| \}$:
+where $[l] := \{1,\dots,l\}$. Since we are summing over all permutations of $s_1,\dots,s_l$, the particular partition of $\{1,\dots,l\}$ into $(\mathcal{I},\mathcal{I}^c)$ is not important; only the size of $\mathcal{I}$ matters. We may therefore replace the sum over $\mathcal{I}$ with a sum over $I:= |\mathcal{I}|$ and, without loss of generality, set $\mathcal{I} = \{1,\dots,I\}$:
+%we may arbitrarily choose an ordering for $\{1,\dots,l\}$ such that $\mathcal{I} = \{ 1,\dots, |\mathcal{I}| \}$:
 \begin{align*}
 \sum_{\mathcal{I} \subseteq [l]} B^{l-|\mathcal{I}|}
         \sum_{\substack{ s_1, \dots, s_l =1 \\ \text{all distinct} }}^{\tau_N(t)}

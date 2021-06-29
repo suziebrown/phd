@@ -371,10 +371,11 @@ while for the other terms we have \parencite[similarly to][Lemma 1 Case 3]{koske
 \begin{align*}
 \sum_{ \substack{ i_1, \ldots, i_k = 1 \\ \text{all distinct} } }^N 
         &( \nu_t^{ ( i_1 ) } )_{ b_1 } \ldots ( \nu_t^{ ( i_k ) } )_{ b_k } 
-        \leq \sum_{ i = 1 }^N ( \nu_t^{ ( i ) } )_2 \Bigg( N^{ | \xi | - 2 } 
+        \leq \sum_{ i = 1 }^N ( \nu_t^{ ( i ) } )_2 
+        \Bigg\{ \Bigg( \sum_{j=1}^N \nu_t^{(j)} \Bigg)^{|\xi|-2}
         - \sum_{ \substack{ j_1, \ldots, j_{ | \xi | - 2 } = 1 
         \\ \text{all distinct and } \neq i } }^N 
-        \nu_t^{ ( j_1 ) } \ldots \nu_t^{ ( j_{ | \xi | - 2 } ) } \Bigg) \\
+        \nu_t^{ ( j_1 ) } \ldots \nu_t^{ ( j_{ | \xi | - 2 } ) } \Bigg\} \\
 &\leq \sum_{ i = 1 }^N ( \nu_t^{ ( i ) } )_2 
         \Bigg\{ N^{ | \xi | - 2 } - ( N - \nu_t^{ ( i ) } )^{ | \xi | - 2 } 
         + \binom{ | \xi | - 2 }{ 2 } \sum_{ j \neq i } ( \nu_t^{ ( j ) } )^2 

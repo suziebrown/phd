@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  29 JUN 2021 17:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  29 JUN 2021 19:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1549,12 +1549,12 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 ]
 Overfull \hbox (1.42336pt too wide) detected at line 137
- []\OT1/put/b/n/10.95 103
+ []\OT1/put/b/n/10.95 104
  []
 
 
 Overfull \hbox (1.42336pt too wide) detected at line 155
- []\OT1/put/b/n/10.95 121
+ []\OT1/put/b/n/10.95 122
  []
 
 )
@@ -1770,39 +1770,44 @@ cmr/m/n/10.95 1$ term (which counts sin-gle pair merg-ers), for which $(\OML/cm
 m/m/it/10.95 b[]; b[]; [] ; b[]\OT1/cmr/m/n/10.95 ) =
  []
 
+
+Overfull \hbox (11.66469pt too wide) detected at line 387
+[]
+ []
+
 [53]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 448.
+(mdframed)              on input line 449.
  [54]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 471.
+(mdframed)              on input line 472.
  [55]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 527.
+(mdframed)              on input line 528.
  [56]
-Overfull \hbox (16.37553pt too wide) in paragraph at lines 586--586
+Overfull \hbox (16.37553pt too wide) in paragraph at lines 587--587
 [][][][][]\OT1/cmr/m/n/9 Brown et al. 2021 
  []
 
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 596.
+(mdframed)              on input line 597.
 [57] [58]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 622.
+(mdframed)              on input line 623.
  [59]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 671.
+(mdframed)              on input line 672.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 741.
+(mdframed)              on input line 742.
 
-Overfull \hbox (1.37184pt too wide) in paragraph at lines 743--744
+Overfull \hbox (1.37184pt too wide) in paragraph at lines 744--745
 [][]\OT1/cmr/bx/n/10.95 Lemma 3.10. []\OT1/cmr/m/it/10.95 If there ex-ists a de
 -ter-min-is-tic se-quence $\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 b[]\OT1/cmr/
 m/n/10.95 )[]$ \OT1/cmr/m/it/10.95 such that $[][]\OML/cmm/m/it/10.95 b[] \OT1/
@@ -1810,13 +1815,13 @@ cmr/m/n/10.95 =
  []
 
 [60] [61]
-Overfull \hbox (101.82979pt too wide) in paragraph at lines 829--830
+Overfull \hbox (101.82979pt too wide) in paragraph at lines 830--831
 \OT1/cmr/m/n/10.95 proof is sim-i-lar to \OT1/cmtt/m/n/10.95 Dropbox/SMC[]Genea
 logies/Asymptotic[]genealogies[]of[]interacting[]particle[]systems/
  []
 
 
-Overfull \hbox (20.12596pt too wide) in paragraph at lines 829--830
+Overfull \hbox (20.12596pt too wide) in paragraph at lines 830--831
 \OT1/cmtt/m/n/10.95 Post[]acceptance[]correction/Erratum/AOS/Round[]3/Indicator
 s/full[]redraft.pdf\OT1/cmr/m/n/10.95 , from
  []
@@ -1856,8 +1861,8 @@ Package mdframed Info: mdframed detected package amsthm
  changed the theorem header of amsthm
 (mdframed)              on input line 392.
 
-Overfull \hbox (33.52528pt too wide) in paragraph at lines 401--408
-[]  $[][]$ 
+Overfull \hbox (2.27423pt too wide) in paragraph at lines 402--408
+[]$[][]$ 
  []
 
 [74
@@ -1878,9 +1883,9 @@ Overfull \hbox (9.90094pt too wide) detected at line 470
 [75]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 536.
+(mdframed)              on input line 537.
 
-Overfull \hbox (9.90094pt too wide) detected at line 545
+Overfull \hbox (9.90094pt too wide) detected at line 546
 [] [] [] \OMS/cmsy/m/n/10.95 ^^U [] [] \OML/cmm/m/it/10.95 c[]\OT1/cmr/m/n/10.9
 5 (\OML/cmm/m/it/10.95 s[]\OT1/cmr/m/n/10.95 ) \OMS/cmsy/m/n/10.95 ^^@ [] \OT1/
 cmr/m/n/10.95 (\OML/cmm/m/it/10.95 t \OT1/cmr/m/n/10.95 + 1)[](1 + \OML/cmm/m/i
@@ -1888,12 +1893,12 @@ t/10.95 B\OT1/cmr/m/n/10.95 )[]\OML/cmm/m/it/10.95 :
  []
 
 
-Overfull \hbox (15.98262pt too wide) detected at line 573
+Overfull \hbox (15.98262pt too wide) detected at line 574
 []
  []
 
 [76]
-Overfull \hbox (9.92078pt too wide) detected at line 581
+Overfull \hbox (9.92078pt too wide) detected at line 582
 \OMS/cmsy/m/n/10.95 ^^@ [] []\OML/cmm/m/it/10.95 B[] [] [] [] \OMS/cmsy/m/n/10.
 95 ^^U ^^@ [] \OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 t \OT1/cmr/m/n/10.95 + 1)
 [](1 + \OML/cmm/m/it/10.95 B\OT1/cmr/m/n/10.95 )[]
@@ -1902,50 +1907,50 @@ Overfull \hbox (9.92078pt too wide) detected at line 581
 [77]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 612.
+(mdframed)              on input line 613.
  [78]
-Overfull \hbox (17.02469pt too wide) detected at line 696
+Overfull \hbox (17.02469pt too wide) detected at line 697
 []
  []
 
 [79] [80]
-Overfull \hbox (32.69763pt too wide) detected at line 797
+Overfull \hbox (32.69763pt too wide) detected at line 798
 []
  []
 
 [81]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 839.
+(mdframed)              on input line 840.
 
-Overfull \hbox (39.7481pt too wide) detected at line 853
+Overfull \hbox (39.7481pt too wide) detected at line 854
 [] \U/msb/m/n/10.95 E [] \OMS/cmsy/m/n/10.95 ^^T \OML/cmm/m/it/10.95 []e[] [] 
 [] []:
  []
 
 [82] [83]
-Overfull \hbox (0.24968pt too wide) detected at line 924
+Overfull \hbox (0.24968pt too wide) detected at line 925
 []
  []
 
 [84]
-Overfull \hbox (6.1905pt too wide) in paragraph at lines 975--977
+Overfull \hbox (6.1905pt too wide) in paragraph at lines 976--978
 \OT1/cmr/m/n/10.95 Combining this sum-product with [], the ex-pres-sion in-side
  the ex-pec-ta-tion in Lemma []4.8[][]
  []
 
 [85]
-Overfull \hbox (13.54465pt too wide) detected at line 1028
+Overfull \hbox (13.54465pt too wide) detected at line 1029
 []
  []
 
 
-Overfull \hbox (17.82137pt too wide) detected at line 1058
+Overfull \hbox (17.82137pt too wide) detected at line 1059
 []
  []
 
 [86] [87]
-Overfull \hbox (13.40727pt too wide) detected at line 1109
+Overfull \hbox (13.40727pt too wide) detected at line 1110
 [] \U/msb/m/n/10.95 E [] \OMS/cmsy/m/n/10.95 ^^T []\OT1/cmr/m/n/10.95 (\OML/cmm
 /m/it/10.95 t \OT1/cmr/m/n/10.95 + 1)[] [] \U/msb/m/n/10.95 E [] \OT1/cmr/m/n/1
 0.95 = 0
@@ -1953,46 +1958,46 @@ Overfull \hbox (13.40727pt too wide) detected at line 1109
 
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1134.
+(mdframed)              on input line 1135.
 
-Overfull \hbox (39.7481pt too wide) detected at line 1148
+Overfull \hbox (39.7481pt too wide) detected at line 1149
 [] \U/msb/m/n/10.95 E [] \OMS/cmsy/m/n/10.95 ^^U \OML/cmm/m/it/10.95 []e[] [] 
 [] []:
  []
 
 [88] [89]
-Overfull \hbox (39.96754pt too wide) detected at line 1223
+Overfull \hbox (39.96754pt too wide) detected at line 1224
 []
  []
 
 [90] [91]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1295.
+(mdframed)              on input line 1296.
  [92] [93]
-Overfull \hbox (3.14876pt too wide) in paragraph at lines 1387--1388
+Overfull \hbox (3.14876pt too wide) in paragraph at lines 1388--1389
 []\OT1/cmr/m/n/10.95 For the cor-re-spond-ing lower bound, by a mod-i-fi-ca-tio
 n of the lower bound in Lemma []4.4[][][](b)[][]
  []
 
 [94]
-Overfull \hbox (5.532pt too wide) detected at line 1450
+Overfull \hbox (5.532pt too wide) detected at line 1451
 []
  []
 
 [95] [96] [97]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1527.
+(mdframed)              on input line 1528.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1547.
+(mdframed)              on input line 1548.
  [98]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1590.
+(mdframed)              on input line 1591.
 
-Overfull \hbox (2.84853pt too wide) in paragraph at lines 1596--1597
+Overfull \hbox (2.84853pt too wide) in paragraph at lines 1597--1598
 []\OT1/cmr/m/n/10.95 We can re-place the event $\OMS/cmsy/m/n/10.95 f\OML/cmm/m
 /it/10.95 ^^\[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 t\OT1/cmr/m/n/10.95 ) \O
 MS/cmsy/m/n/10.95 ^^U \OML/cmm/m/it/10.95 l\OMS/cmsy/m/n/10.95 g$ \OT1/cmr/m/n/
@@ -2002,15 +2007,15 @@ MS/cmsy/m/n/10.95 ^^U \OML/cmm/m/it/10.95 l\OMS/cmsy/m/n/10.95 g$ \OT1/cmr/m/n/
 
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1616.
+(mdframed)              on input line 1617.
 [99] [100] [101]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1744.
+(mdframed)              on input line 1745.
  [102]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1833.
+(mdframed)              on input line 1834.
 ) [103]
 \openout2 = `applications.aux'.
 
@@ -2111,14 +2116,6 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 229.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 229.
 Package rerunfilecheck Info: File `thesis_main.out' has not changed.
 (rerunfilecheck)             Checksum: 7BCCD95F2B75C0DFEF31AA6A78EE316C;3708.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-
-Package biblatex Warning: Please rerun LaTeX.
-(biblatex)                Page breaks have changed.
-
 Package logreq Info: Writing requests to 'thesis_main.run.xml'.
 \openout1 = `thesis_main.run.xml'.
 
@@ -2126,7 +2123,7 @@ Package logreq Info: Writing requests to 'thesis_main.run.xml'.
 Here is how much of TeX's memory you used:
  40167 strings out of 492649
  776318 string characters out of 6129623
- 1314284 words of memory out of 5000000
+ 1313285 words of memory out of 5000000
  42984 multiletter control sequences out of 15000+600000
  564336 words of font info for 100 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -2162,7 +2159,7 @@ ts/type1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2018/texmf-dist/fonts
 ype1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2018/texmf-dist/fon
 ts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2018/texmf-dist
 /fonts/type1/adobe/utopia/putb8a.pfb>
-Output written on thesis_main.pdf (137 pages, 858832 bytes).
+Output written on thesis_main.pdf (137 pages, 859067 bytes).
 PDF statistics:
  2167 PDF objects out of 2487 (max. 8388607)
  1927 compressed objects within 20 object streams
