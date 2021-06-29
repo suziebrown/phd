@@ -172,41 +172,45 @@ Setting $\eta=\xi$ in \eqref{eq:defn_pxieta},
 %\parencite[Equation (1)]{koskela2018},
 \begin{equation*}
 p_{\xi\xi}(t) 
-= \frac{1}{(N)_k} \sum_{\substack{i_1,\dots,i_k \\ \text{all distinct}}} 
+= \frac{1}{(N)_k} \sum_{\substack{i_1,\dots,i_k=1 \\ \text{all distinct}}}^N 
         \nu_t^{(i_1)} \cdots \nu_t^{(i_k)} .
 \end{equation*}
 Similarly,
 \begin{align*}
 p_{\xi^\prime\xi^\prime}(t) &= \frac{1}{(N)_{k+1}} 
-        \sum_{\substack{i_1,\dots,i_k, i_{k+1} \\ \text{all distinct}}} 
+        \sum_{\substack{i_1,\dots, i_{k+1} =1 \\ \text{all distinct}}}^N 
         \nu_t^{(i_1)} \cdots \nu_t^{(i_k)} \nu_t^{(i_{k+1})} \\
-&= \frac{1}{(N)_k(N-k)} \sum_{\substack{i_1,\dots,i_k \\ \text{all distinct}}} 
+&= \frac{1}{(N)_k(N-k)} \sum_{\substack{i_1,\dots,i_k =1 \\ \text{all distinct}}}^N 
         \left\{ \nu_t^{(i_1)} \cdots \nu_t^{(i_k)} 
-        \sum_{\substack{i_{k+1}=1 \\ \text{also distinct}}}^N 
+        \sum_{\substack{i_{k+1}=1 \\ \notin \{i_1,\ldots, i_k\} }}^N 
         \nu_t^{(i_{k+1})} \right\} .
 \end{align*}
 Discarding the zero summands,
 \begin{equation*}
 p_{\xi^\prime\xi^\prime}(t) 
-= \frac{1}{(N)_k(N-k)} \sum_{\substack{i_1,\dots,i_k \\ \text{all distinct:} \\
-        \nu_t^{(i_1)},\dots,\nu_t^{(i_k)} > 0 }} 
+    = \frac{1}{(N)_k(N-k)} \sum_{\substack{i_1,\dots,i_k =1 \\ \text{all distinct:} 
+        \\ \nu_t^{(i_1)},\dots,\nu_t^{(i_k)} > 0 }}^N
         \left\{ \nu_t^{(i_1)} \cdots \nu_t^{(i_k)} 
-        \sum_{\substack{i_{k+1}=1 \\ 
-        \text{also distinct}}}^N \nu_t^{(i_{k+1})} \right\} .
+        \sum_{\substack{i_{k+1}=1 \\ \notin \{i_1,\ldots, i_k\} }}^N 
+        \nu_t^{(i_{k+1})} \right\} .
 \end{equation*}
+%For the summands such that $\nu_t^{(i_1)},\dots,\nu_t^{(i_k)}$ are all greater than or equal to $1$, the inner sum is
 The inner sum is
 \begin{equation*}
-\sum_{\substack{i_{k+1}=1 \\ \text{also distinct}}}^N \nu_t^{(i_{k+1})} 
-= \left\{ \sum_{i=1}^N \nu_t^{(i)} -  \sum_{i\in\{i_1,\dots,i_k\} } 
+\sum_{\substack{i_{k+1}=1 \\ \notin \{i_1,\ldots, i_k\} }}^N \nu_t^{(i_{k+1})} 
+    = \left\{ \sum_{i=1}^N \nu_t^{(i)} -  \sum_{i\in\{i_1,\dots,i_k\} } 
         \nu_t^{(i)} \right\}
-\leq N - k
+    \leq N - k ,
 \end{equation*}
 since $\nu_t^{(i_1)},\dots,\nu_t^{(i_k)} $ are all at least 1.
+%while if any of $\nu_t^{(i_1)},\dots,\nu_t^{(i_k)}$ are equal to $0$ then $p_{\xi^\prime\xi^\prime} =0$.
 Hence
 \begin{equation*}
 p_{\xi^\prime\xi^\prime}(t)
-\leq  \frac{N-k}{(N)_k(N-k)} \sum_{\substack{i_1,\dots,i_k \\ \text{all distinct:} \\ \nu_t^{(i_1)},\dots,\nu_t^{(i_k)} > 0 }} \nu_t^{(i_1)} \cdots \nu_t^{(i_k)} 
-= p_{\xi\xi}(t) .
+    \leq  \frac{N-k}{(N)_k(N-k)} \sum_{\substack{i_1,\dots,i_k =1 
+        \\ \text{all distinct:} \\ \nu_t^{(i_1)},\dots,\nu_t^{(i_k)} > 0 }}^N 
+        \nu_t^{(i_1)} \cdots \nu_t^{(i_k)} 
+    = p_{\xi\xi}(t) .
 \end{equation*}
 Thus $p_{\xi\xi}(t)$ is decreasing in the number of blocks of $\xi$, and is therefore minimised by taking $\xi = \Delta$, which uniquely achieves the maximum $n$ blocks. This choice in turn maximises $1-p_{\xi\xi}(t)$, as required.
 \end{proof}
@@ -390,14 +394,16 @@ Fix $t>0$, $l\in\mathbb{N}$.
 \begin{enumerate}[label=(\alph*)]
 \item \label{thm:sumprod1_a} \hspace{1cm}
 $\begin{aligned}
-\sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)} \prod_{j=1}^l c_N(s_j)
-\leq (t+1)^l
+\sum_{\substack{ s_1, \dots, s_l =1 \\ \text{\normalfont{all distinct}} }}^{\tau_N(t)}
+        \prod_{j=1}^l c_N(s_j)
+    \leq (t+1)^l
 \end{aligned}$
 \item \label{thm:sumprod1_b} \hspace{1cm}
 $\begin{aligned}
 t^l - \left( \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right) \binom{l}{2} (t+1)^{l-2} 
-\leq \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)} \prod_{j=1}^l c_N(s_j)
-\leq t^l + c_N(\tau_N(t)) (t+1)^l
+    \leq \sum_{\substack{ s_1, \dots, s_l =1 \\ \text{\normalfont{all distinct}} }}
+        ^{\tau_N(t)} \prod_{j=1}^l c_N(s_j)
+    \leq t^l + c_N(\tau_N(t)) (t+1)^l
 \end{aligned}$
 \end{enumerate}
 \end{lemma}
@@ -405,19 +411,22 @@ t^l - \left( \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right) \binom{l}{2} (t+1)^{l-2}
 \begin{proof} \textbf{\ref{thm:sumprod1_a}}
 Firstly, we have the inequality
 \begin{equation*}
-\sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)} \prod_{j=1}^l c_N(s_j)
+\sum_{\substack{ s_1, \dots, s_l =1 \\ \text{all distinct} }}^{\tau_N(t)}
+        \prod_{j=1}^l c_N(s_j)
 \leq \left( \sum_{s=0}^{\tau_N(t)} c_N(s) \right)^l ,
 \end{equation*}
 as can be seen by considering the multinomial expansion of the RHS.
 Applying Proposition~\ref{thm:cN_properties}\ref{item:cN_property4},
 \begin{equation}\label{eq:039}
-\sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)} \prod_{j=1}^l c_N(s_j)
+\sum_{\substack{ s_1, \dots, s_l =1 \\ \text{all distinct} }}^{\tau_N(t)}
+        \prod_{j=1}^l c_N(s_j)
 \leq (t+1)^l .
 \end{equation}
 \textbf{\ref{thm:sumprod1_b}}
 As pointed out in \textcite[Equation (8)]{koskela2018}, 
 \begin{equation}\label{eq:002}
-\sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)} \prod_{j=1}^l c_N(s_j)
+\sum_{\substack{ s_1, \dots, s_l =1 \\ \text{all distinct} }}^{\tau_N(t)} 
+        \prod_{j=1}^l c_N(s_j)
 \geq \left( \sum_{s=0}^{\tau_N(t)} c_N(s) \right)^l
         - \binom{l}{2} \left( \sum_{s=0}^{\tau_N(t)} c_N(s)^2 \right)
         \left( \sum_{s=0}^{\tau_N(t)} c_N(s) \right)^{l-2} .
@@ -426,7 +435,8 @@ Applying Proposition~\ref{thm:cN_properties}\ref{item:cN_property4} on the RHS o
 
 For the upper bound we have
 \begin{equation*}
-\sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)} \prod_{j=1}^l c_N(s_j)
+\sum_{\substack{ s_1, \dots, s_l =1 \\ \text{all distinct} }}^{\tau_N(t)} 
+        \prod_{j=1}^l c_N(s_j)
 \leq \left( \sum_{s=0}^{\tau_N(t)} c_N(s) \right)^l
 \leq \left( \sum_{s=0}^{\tau_N(t) -1} c_N(s) + c_N(\tau_N(t)) \right)^l
 \leq \left[ t + c_N(\tau_N(t)) \right]^l ,
@@ -452,9 +462,10 @@ Putting this together yields the upper bound.
 Fix $t>0$, $l\in\mathbb{N}$.
 Let $B$ be a positive constant which may depend on $n$.
 \begin{equation*}
-\sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)} \prod_{j=1}^l 
-        \left[ c_N(s_j) + B D_N(s_j) \right]
-\leq \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)} \prod_{j=1}^l c_N(s_j)
+\sum_{\substack{ s_1, \dots, s_l =1 \\ \text{\normalfont{all distinct}} }}^{\tau_N(t)} 
+        \prod_{j=1}^l \left[ c_N(s_j) + B D_N(s_j) \right]
+\leq \sum_{\substack{ s_1, \dots, s_l =1 \\ \text{\normalfont{all distinct}} }}^{\tau_N(t)} 
+        \prod_{j=1}^l c_N(s_j)
         + \left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right) (t+1)^{l-1} (1+B)^l .
 \end{equation*}
 \end{lemma}
@@ -462,45 +473,50 @@ Let $B$ be a positive constant which may depend on $n$.
 \begin{proof}
 We start with a binomial expansion:
 \begin{align}
-\sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)} \prod_{j=1}^l 
-        \left[ c_N(s_j) + B D_N(s_j) \right]
-&= \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)} \sum_{\mathcal{I} \subseteq [l]}
+\sum_{\substack{ s_1, \dots, s_l =1 \\ \text{all distinct} }}^{\tau_N(t)} 
+        \prod_{j=1}^l \left[ c_N(s_j) + B D_N(s_j) \right]
+&= \sum_{\substack{ s_1, \dots, s_l =1 \\ \text{all distinct} }}^{\tau_N(t)} 
+        \sum_{\mathcal{I} \subseteq [l]}
         B^{l-|\mathcal{I}|} \left( \prod_{i\in\mathcal{I}} c_N(s_i) \right)
         \left( \prod_{j\notin\mathcal{I}} D_N(s_j) \right) \notag\\
 &= \sum_{\mathcal{I} \subseteq [l]} B^{l-|\mathcal{I}|}
-        \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)}
+        \sum_{\substack{ s_1, \dots, s_l =1 \\ \text{all distinct} }}^{\tau_N(t)}
         \left( \prod_{i\in\mathcal{I}} c_N(s_i) \right)
         \left( \prod_{j\notin\mathcal{I}} D_N(s_j) \right) \label{eq:010}
 \end{align}
 where $[l] := \{1,\dots,l\}$. Since the sum is over all permutations of $s_1,\dots,s_l$, we may arbitrarily choose an ordering for $\{1,\dots,l\}$ such that $\mathcal{I} = \{ 1,\dots, |\mathcal{I}| \}$:
 \begin{align*}
 \sum_{\mathcal{I} \subseteq [l]} B^{l-|\mathcal{I}|}
-        \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)}
+        \sum_{\substack{ s_1, \dots, s_l =1 \\ \text{all distinct} }}^{\tau_N(t)}
         &\left( \prod_{i\in\mathcal{I}} c_N(s_i) \right)
         \left( \prod_{j\notin\mathcal{I}} D_N(s_j) \right) \\
-&= \sum_{I=0}^l \binom{l}{I} B^{l-I} \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)}
+&= \sum_{I=0}^l \binom{l}{I} B^{l-I} 
+        \sum_{\substack{ s_1, \dots, s_l =1 \\ \text{all distinct} }}^{\tau_N(t)}
         \left( \prod_{i=1}^I c_N(s_i) \right)
         \left( \prod_{j=I+1}^l D_N(s_j) \right) .
 \end{align*}
 Separating the term $I=l$,
 \begin{align}
-\sum_{I=0}^l \binom{l}{I} &B^{l-I} \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)}
+\sum_{I=0}^l \binom{l}{I} &B^{l-I} 
+        \sum_{\substack{ s_1, \dots, s_l =1 \\ \text{all distinct} }}^{\tau_N(t)}
         \left( \prod_{i=1}^I c_N(s_i) \right)
         \left( \prod_{j=I+1}^l D_N(s_j) \right) \notag\\
-&= \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)} \prod_{j=1}^l c_N(s_j)
-+ \sum_{I=0}^{l-1} \binom{l}{I} B^{l-I} 
-        \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)}
+&= \sum_{\substack{ s_1, \dots, s_l =1 \\ \text{all distinct} }}^{\tau_N(t)}
+        \prod_{j=1}^l c_N(s_j)
+    + \sum_{I=0}^{l-1} \binom{l}{I} B^{l-I} 
+        \sum_{\substack{ s_1, \dots, s_l =1 \\ \text{all distinct} }}^{\tau_N(t)}
         \left( \prod_{i=1}^I c_N(s_i) \right) \left( \prod_{j=I+1}^l D_N(s_j) \right). \label{eq:012}
 \end{align}
 In the second term on the RHS, there is always at least one $D_N$ term, so using Proposition~\ref{thm:cN_properties}\ref{item:cN_property2} we can write
 \begin{align}
-\sum_{I=0}^{l-1}\binom{l}{I} B^{l-I} &\sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)}
+\sum_{I=0}^{l-1}\binom{l}{I} B^{l-I} 
+        &\sum_{\substack{ s_1, \dots, s_l =1 \\ \text{all distinct} }}^{\tau_N(t)}
         \left( \prod_{i=1}^I c_N(s_i) \right) \left( \prod_{j=I+1}^l D_N(s_j) \right) \notag\\
 &\leq \sum_{I=0}^{l-1}\binom{l}{I} B^{l-I} 
-        \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)}
+        \sum_{\substack{ s_1, \dots, s_l =1 \\ \text{all distinct} }}^{\tau_N(t)}
         \left( \prod_{i=1}^{l-1} c_N(s_i) \right) D_N(s_l) \notag\\
 &\leq \sum_{I=0}^{l-1}\binom{l}{I} B^{l-I} 
-        \left( \sum_{s_1\neq\dots\neq s_{l-1}}^{\tau_N(t)} 
+        \left( \sum_{\substack{ s_1, \dots, s_l =1 \\ \text{all distinct} }}^{\tau_N(t)}
         \prod_{i=1}^{l-1} c_N(s_i) \right) 
         \sum_{s_l=1}^{\tau_N(t)} D_N(s_l) \notag\\
 &\leq \sum_{I=0}^{l-1}\binom{l}{I} B^{l-I} (t+1)^{l-1}
@@ -521,9 +537,10 @@ which, together with \eqref{eq:012}, concludes the proof.
 Fix $t>0$, $l\in\mathbb{N}$.
 Let $B$ be a positive constant which may depend on $n$.
 \begin{equation*}
-\sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)} \prod_{j=1}^l 
-        \left[ c_N(s_j) - B D_N(s_j) \right]
-\geq \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)} \prod_{j=1}^l c_N(s_j)
+\sum_{\substack{ s_1, \dots, s_l =1 \\ \text{\normalfont{all distinct}} }}^{\tau_N(t)} 
+        \prod_{j=1}^l \left[ c_N(s_j) - B D_N(s_j) \right]
+\geq \sum_{\substack{ s_1, \dots, s_l =1 \\ \text{\normalfont{all distinct}} }}^{\tau_N(t)} 
+        \prod_{j=1}^l c_N(s_j)
         - \left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right) (t+1)^{l-1} (1+B)^l .
 \end{equation*}
 \end{lemma}
@@ -531,31 +548,34 @@ Let $B$ be a positive constant which may depend on $n$.
 \begin{proof}
 A binomial expansion and subsequent manipulation as in \eqref{eq:010}--\eqref{eq:012} gives
 \begin{align*}
-\sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)} \prod_{j=1}^l 
+\sum_{\substack{ s_1, \dots, s_l =1 \\ \text{all distinct} }}^{\tau_N(t)} 
+        \prod_{j=1}^l 
         &\left[ c_N(s_j) - B D_N(s_j) \right] \\
 &= \sum_{\mathcal{I} \subseteq [l]} (-B)^{l-|\mathcal{I}|}
-        \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)}
+        \sum_{\substack{ s_1, \dots, s_l =1 \\ \text{all distinct} }}^{\tau_N(t)}
         \left( \prod_{i\in\mathcal{I}} c_N(s_i) \right)
         \left( \prod_{j\notin\mathcal{I}} D_N(s_j) \right) \\
 &= \sum_{I=0}^l \binom{l}{I} (-B)^{l-I} 
-        \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)}
+        \sum_{\substack{ s_1, \dots, s_l =1 \\ \text{all distinct} }}^{\tau_N(t)}
         \left( \prod_{i=1}^I c_N(s_i) \right)
         \left( \prod_{j=I+1}^l D_N(s_j) \right) \\
-&= \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)} \prod_{j=1}^l c_N(s_j)
+&= \sum_{\substack{ s_1, \dots, s_l =1 \\ \text{all distinct} }}^{\tau_N(t)} 
+        \prod_{j=1}^l c_N(s_j)
         + \sum_{I=0}^{l-1} \binom{l}{I} (-B)^{l-I} 
-        \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)}
+        \sum_{\substack{ s_1, \dots, s_l =1 \\ \text{all distinct} }}^{\tau_N(t)}
         \left( \prod_{i=1}^I c_N(s_i) \right) 
         \left( \prod_{j=I+1}^l D_N(s_j) \right) \\
-&\geq \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)} \prod_{j=1}^l c_N(s_j)
+&\geq \sum_{\substack{ s_1, \dots, s_l =1 \\ \text{all distinct} }}^{\tau_N(t)} 
+        \prod_{j=1}^l c_N(s_j)
         - \sum_{I=0}^{l-1} \binom{l}{I} B^{l-I} 
-        \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)}
+        \sum_{\substack{ s_1, \dots, s_l =1 \\ \text{all distinct} }}^{\tau_N(t)}
         \left( \prod_{i=1}^I c_N(s_i) \right) \left( \prod_{j=I+1}^l D_N(s_j) \right)
 \end{align*}
 where the last inequality just multiplies some positive terms by $-1$.
 Then \eqref{eq:013}--\eqref{eq:014} can be applied directly (noting that an upper bound on negative terms gives a lower bound overall):
 \begin{equation*}
 - \sum_{I=0}^{l-1} \binom{l}{I} B^{l-I} 
-        \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)}
+        \sum_{\substack{ s_1, \dots, s_l =1 \\ \text{all distinct} }}^{\tau_N(t)}
         \left( \prod_{i=1}^I c_N(s_i) \right) \left( \prod_{j=I+1}^l D_N(s_j) \right)
 \geq - \left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right) (t+1)^{l-1} (1+B)^l 
 \end{equation*}
@@ -635,15 +655,18 @@ Applying a multinomial expansion and then separating the positive and negative t
 \begin{align}
 \prod_{r=1}^{\tau_N(t)} (1-p_r)
 &\leq 1 + \sum_{l=1}^{\tau_N(t)} (- \alpha_n)^l \ON 
-        \frac{1}{l!} \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)}\prod_{j=1}^l
+        \frac{1}{l!} \sum_{\substack{ s_1, \dots, s_l =1 \\ \text{all distinct} }}^{\tau_N(t)}
+        \prod_{j=1}^l
         \left[ c_N(s_j) - B_n^\prime D_N(s_j) \right] \1{E_N^1 \cap E_N^2} \notag\\
 &= 1 + \sum_{\substack{l=2 \\ \text{even} }}^{\tau_N(t)} 
         \alpha_n^l \ON \frac{1}{l!} 
-        \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)}\prod_{j=1}^l
+        \sum_{\substack{ s_1, \dots, s_l =1 \\ \text{all distinct} }}^{\tau_N(t)}
+        \prod_{j=1}^l
         \left[ c_N(s_j) - B_n^\prime D_N(s_j) \right] \1{E_N^1 \cap E_N^2} \notag\\
     &\qquad- \sum_{\substack{l=1 \\ \text{odd} }}^{\tau_N(t)} 
         \alpha_n^l \ON \frac{1}{l!} 
-        \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)}\prod_{j=1}^l
+        \sum_{\substack{ s_1, \dots, s_l =1 \\ \text{all distinct} }}^{\tau_N(t)}
+        \prod_{j=1}^l
         \left[ c_N(s_j) - B_n^\prime D_N(s_j) \right] \1{E_N^1 \cap E_N^2} .
         \label{eq:019}
 \end{align}
@@ -653,10 +676,12 @@ This is further bounded by applying Lemma~\ref{thm:sumprod3} and then both bound
 &\leq 1 + \1{E_N^1 \cap E_N^2} \Bigg\{ 
         \sum_{\substack{l=2 \\ \text{even} }}^{\tau_N(t)} 
         \alpha_n^l \ON \frac{1}{l!} 
-        \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)}\prod_{j=1}^l c_N(s_j) \\
+        \sum_{\substack{ s_1, \dots, s_l =1 \\ \text{all distinct} }}^{\tau_N(t)}
+        \prod_{j=1}^l c_N(s_j) \\
     &\qquad- \sum_{\substack{l=1 \\ \text{odd} }}^{\tau_N(t)} 
         \alpha_n^l \ON \frac{1}{l!} 
-        \left[ \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)}\prod_{j=1}^l c_N(s_j)
+        \left[ \sum_{\substack{ s_1, \dots, s_l =1 \\ \text{all distinct} }}^{\tau_N(t)}
+        \prod_{j=1}^l c_N(s_j)
         - \left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right) 
         (t+1)^{l-1} (1+B_n^\prime)^l \right] \Bigg\} \\
 &\leq 1 + \Bigg\{ \sum_{\substack{l=2 \\ \text{even} }}^{\tau_N(t)} 
@@ -731,15 +756,18 @@ We now apply a multinomial expansion to the product, and split into positive and
 \begin{align*}
 \prod_{r=1}^{\tau_N(t)} (1-p_r)
 &\geq \left\{ 1 + \sum_{l=1}^{\tau_N(t)} (-\alpha_n)^l \ON 
-        \frac{1}{l!} \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)}\prod_{j=1}^l
+        \frac{1}{l!} \sum_{\substack{ s_1, \dots, s_l =1 \\ \text{all distinct} }}^{\tau_N(t)}
+        \prod_{j=1}^l
         \left[ c_N(s_j) + B_n D_N(s_j) \right] \right\} \1{E_N^3} \\
 &= \Bigg\{ 1 + \sum_{\substack{l=2 \\ \text{even} }}^{\tau_N(t)} 
         \alpha_n^l \ON \frac{1}{l!} 
-        \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)}\prod_{j=1}^l
+        \sum_{\substack{ s_1, \dots, s_l =1 \\ \text{all distinct} }}^{\tau_N(t)}
+        \prod_{j=1}^l
         \left[ c_N(s_j) + B_n D_N(s_j) \right] \\
     &\qquad- \sum_{\substack{l=1 \\ \text{odd} }}^{\tau_N(t)} 
         \alpha_n^l \ON \frac{1}{l!}
-        \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)}\prod_{j=1}^l
+        \sum_{\substack{ s_1, \dots, s_l =1 \\ \text{all distinct} }}^{\tau_N(t)}
+        \prod_{j=1}^l
         \left[ c_N(s_j) + B_n D_N(s_j) \right] \Bigg\} \1{E_N^3}
 \end{align*}
 This is further bounded by applying Lemma~\ref{thm:sumprod2} and both bounds in Lemma~\ref{thm:sumprod1}\ref{thm:sumprod1_b}:
@@ -748,10 +776,12 @@ This is further bounded by applying Lemma~\ref{thm:sumprod2} and both bounds in 
 &\geq \1{E_N^3} \Bigg\{ 1 + 
         \sum_{\substack{l=2 \\ \text{even} }}^{\tau_N(t)} 
         \alpha_n^l \ON \frac{1}{l!} 
-        \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)}\prod_{j=1}^l c_N(s_j) \\
+        \sum_{\substack{ s_1, \dots, s_l =1 \\ \text{all distinct} }}^{\tau_N(t)}
+        \prod_{j=1}^l c_N(s_j) \\
     &\qquad- \sum_{\substack{l=1 \\ \text{odd} }}^{\tau_N(t)} 
         \alpha_n^l \ON \frac{1}{l!}
-        \left[ \sum_{s_1\neq\dots\neq s_l}^{\tau_N(t)}\prod_{j=1}^l c_N(s_j)
+        \left[ \sum_{\substack{ s_1, \dots, s_l =1 \\ \text{all distinct} }}^{\tau_N(t)}
+        \prod_{j=1}^l c_N(s_j)
         + \left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right)
         (t+1)^{l-1} (1+B_n)^l \right] \Bigg\} \\
 &\geq \1{E_N^3} \Bigg\{ 1 + 
@@ -832,18 +862,18 @@ We use the bound on $(1-p_r)$ from \eqref{eq:018}, which holds for sufficiently 
         \1{E_N^1 \cap E_N^2} \right\} \notag\\
 &= 1 + \sum_{l=1}^{\tau_N(t) -k}
         (-\alpha_n)^l \ON \frac{1}{l!}
-        \sum_{\substack{s_1\neq\dots\neq s_l \\ \notin \{r_1,\dots,r_k\} }}
-        ^{\tau_N(t)}
+        \sum_{\substack{s_1, \dots, s_l =1 \\ \notin \{r_1,\dots,r_k\} 
+        \\ \text{all distinct} }}^{\tau_N(t)}
         \prod_{j=1}^l [ c_N(s_j) - B_n^\prime D_N(s_j) ]
         \1{E_N^1 \cap E_N^2} \notag\\
 &= 1 + \sum_{l=1}^{\tau_N(t) -k}
         (-\alpha_n)^l \ON \frac{1}{l!}
-        \sum_{\substack{s_1\neq\dots\neq s_l }}^{\tau_N(t)}
+        \sum_{\substack{ s_1, \dots, s_l =1 \\ \text{all distinct} }}^{\tau_N(t)}
         \prod_{j=1}^l [ c_N(s_j) - B_n^\prime D_N(s_j) ] \1{E_N^1 \cap E_N^2} \notag\\
     &\qquad- \sum_{l=1}^{\tau_N(t) -k}
         (-\alpha_n)^l \ON \frac{1}{l!}
-        \sum_{\substack{s_1\neq\dots\neq s_l \\ \exists i,i^\prime 
-        : s_i=r_{i^\prime} }}
+        \sum_{\substack{s_1, \dots, s_l =1 \\ \text{all distinct}: 
+        \\ \exists i,i^\prime : s_i=r_{i^\prime} }}^{\tau_N(t)} 
         \prod_{j=1}^l [ c_N(s_j) - B_n^\prime D_N(s_j) ]
         \1{E_N^1 \cap E_N^2} . \label{eq:031}
 \end{align}
@@ -851,7 +881,7 @@ The penultimate line above is exactly the expansion we had in the basis step \eq
 \begin{align*}
 1 + \sum_{l=1}^{\tau_N(t) -k}
         (-\alpha_n)^l \ON \frac{1}{l!}
-        &\sum_{\substack{s_1\neq\dots\neq s_l }}^{\tau_N(t)}
+        &\sum_{\substack{ s_1, \dots, s_l =1 \\ \text{all distinct} }}^{\tau_N(t)}
         \prod_{j=1}^l [ c_N(s_j) - B_n^\prime D_N(s_j) ] \1{E_N^1 \cap E_N^2} \\
 &\leq 1+ \sum_{l=1}^{\tau_N(t) -k} (-\alpha_n)^l \ON \frac{1}{l!} t^l
         \1{E_N^1 \cap E_N^2}
@@ -864,26 +894,26 @@ The penultimate line above is exactly the expansion we had in the basis step \eq
 For the last line of \eqref{eq:031}, recalling that $D_N(t) \leq c_N(t)$ (Proposition~\ref{thm:cN_properties}\ref{item:cN_property2}),
 \begin{align*}
 - \sum_{l=1}^{\tau_N(t) -k} (-\alpha_n)^l \ON \frac{1}{l!}
-        &\sum_{\substack{s_1\neq\dots\neq s_l \\ \exists i,i^\prime 
-        : s_i=r_{i^\prime} }}
+        &\sum_{\substack{s_1, \dots, s_l =1 \\ \text{all distinct}: 
+        \\ \exists i,i^\prime : s_i=r_{i^\prime} }}^{\tau_N(t)} 
         \prod_{j=1}^l \{ c_N(s_j) - B_n^\prime D_N(s_j) \} 
         \1{E_N^1 \cap E_N^2} \\
 &\leq \sum_{l=1}^{\tau_N(t) -k} \alpha_n^l \ON \frac{1}{l!}
-        \sum_{\substack{s_1\neq\dots\neq s_l \\ \exists i,i^\prime 
-        : s_i=r_{i^\prime} }}
+        \sum_{\substack{s_1, \dots, s_l =1 \\ \text{all distinct}: 
+        \\ \exists i,i^\prime : s_i=r_{i^\prime} }}^{\tau_N(t)} 
         \prod_{j=1}^l \{ c_N(s_j) + B_n^\prime D_N(s_j) \} \\
 &\leq \sum_{l=1}^{\tau_N(t) -k} \alpha_n^l \ON \frac{1}{l!}
-        \sum_{\substack{s_1\neq\dots\neq s_l \\ \exists i,i^\prime 
-        : s_i=r_{i^\prime} }}
+        \sum_{\substack{s_1, \dots, s_l =1 \\ \text{all distinct}: 
+        \\ \exists i,i^\prime : s_i=r_{i^\prime} }}^{\tau_N(t)} 
         (1 + B_n^\prime)^l \prod_{j=1}^l c_N(s_j) \\
 &\leq \sum_{l=1}^{\tau_N(t) -k} \alpha_n^l \ON
         \frac{1}{(l-1)!} \sum_{s_1 \in \{r_1,\dots,r_k\} } 
-        \sum_{s_2\neq \dots\neq s_l}^{\tau_N(t)}
+        \sum_{\substack{ s_2, \dots, s_l =1 \\ \text{all distinct} }}^{\tau_N(t)}
         (1 + B_n^\prime)^l \prod_{j=1}^l c_N(s_j) \\
 &= \sum_{s \in \{r_1,\dots,r_k\} } c_N(s)
         \sum_{l=1}^{\tau_N(t) -k} \alpha_n^l \ON
         \frac{1}{(l-1)!}  (1 + B_n^\prime)^l
-        \sum_{s_1\neq \dots\neq s_{l-1}}^{\tau_N(t)} 
+        \sum_{\substack{ s_1, \dots, s_{l-1} =1 \\ \text{all distinct} }}^{\tau_N(t)}
         \prod_{j=1}^{l-1} c_N(s_j) \\
 &\leq \sum_{j=1}^k c_N(r_j)
         \sum_{l=1}^{\tau_N(t) -k} \alpha_n^l \ON
@@ -921,15 +951,15 @@ Meanwhile, using the bound on $p_r$ from \eqref{eq:pDeltaDelta_LB} then applying
         \alpha_n^k \ON (t+1)^{k-1} (1+B_n)^k . \label{eq:035}
 \end{align}
 A more liberal (but simpler) bound can be arrived at thus:
-\begin{align*}
+\begin{align}
 \prod_{i=1}^k p_{r_i}
 &\leq \alpha_n^k \ON 
-        \prod_{i=1}^k \left[ c_N(r_i) + B_n D_N(r_i) \right] \\
+        \prod_{i=1}^k \left[ c_N(r_i) + B_n D_N(r_i) \right] \notag\\
 &\leq \alpha_n^k \ON 
-        \prod_{i=1}^k c_N(r_i) (1 + B_n) \\
+        \prod_{i=1}^k c_N(r_i) (1 + B_n) \notag\\
 &\leq \alpha_n^k \ON (1 + B_n)^k
-        \prod_{i=1}^k c_N(r_i) 
-\end{align*}
+        \prod_{i=1}^k c_N(r_i) \label{eq:036}
+\end{align}
 which, using Lemma~\ref{thm:sumprod1}\ref{thm:sumprod1_a}, also leads to the deterministic bound
 \begin{align}
 \sum_{\substack{r_1 <\dots< r_k :\\ r_i \leq \tau_N(t_i) \forall i}}
@@ -967,7 +997,7 @@ Combining this sum-product with \eqref{eq:034b}, the expression inside the expec
         \sum_{j=1}^k c_N(r_j)
         \prod_{i=1}^k p_{r_i} .
 \end{align*}
-Applying the various bounds \eqref{eq:035}--\eqref{eq:037}, we have
+Applying \eqref{eq:035} to the first term, \eqref{eq:037} to the second term and \eqref{eq:036} to the third term, we have
 \begin{align*}
 \sum_{\substack{r_1 <\dots< r_k :\\ r_i \leq \tau_N(t_i) \forall i}}
         &\left( \prod_{i=1}^k p_{r_i} \right)
@@ -994,7 +1024,7 @@ Applying the various bounds \eqref{eq:035}--\eqref{eq:037}, we have
     &\hspace{6cm}\times \sum_{\substack{r_1 <\dots< r_k 
         :\\ r_i \leq \tau_N(t_i) \forall i}}
         \sum_{j=1}^k c_N(r_j)
-        \prod_{i=1}^k c_N(r_i).
+        \prod_{i=1}^k c_N(r_i) .
 \end{align*}
 Upon taking the expectation and limit, we have
 \begin{align}
@@ -1286,13 +1316,14 @@ As pointed out by \textcite[p.~460]{mohle1999}, the sum-product on the left hand
         \prod_{i=1}^k c_N(r_i)
 = \sum_{\substack{i_1\leq \dots\leq i_{k-1}\\ \in \{0,\dots,k\} :\\ 
         i_j \geq j \forall j}} \, \prod_{j=1}^k \frac{1}{(i_j - i_{j-1})!}
-        \sum_{\substack{ r_{i_{j-1}+1} \neq \dots \neq r_{i_j} \\ = \tau_N(t_{j-1})+1}}        
-        ^{\tau_N(t_j)}  \,\prod_{i=i_{j-1}+1}^{i_j} c_N(r_i) .
+        \sum_{\substack{ r_{i_{j-1}+1}, \ldots, r_{i_j} \\ = \tau_N(t_{j-1})+1 
+        \\ \text{all distinct} }}^{\tau_N(t_j)}  
+        \,\prod_{i=i_{j-1}+1}^{i_j} c_N(r_i) .
 \end{equation*}
 By a modification of the upper bound in Lemma~\ref{thm:sumprod1}\ref{thm:sumprod1_b} where the lower limit of the sum is a general time rather than 1,
 \begin{align*}
-\sum_{\substack{ r_{i_{j-1}+1} \neq \dots \neq r_{i_j} \\ = 
-        \tau_N(t_{j-1})+1 }}^{\tau_N(t_j)}
+\sum_{\substack{ r_{i_{j-1}+1}, \ldots, r_{i_j} \\ = \tau_N(t_{j-1})+1 
+        \\ \text{all distinct} }}^{\tau_N(t_j)}  
         \prod_{i=i_{j-1}+1}^{i_j} c_N(r_i)
 &\leq (t_j - t_{j-1})^{i_j - i_{j-1}} 
         + c_N(\tau_N(t_j)) ( t_j - t_{j-1} +1 )^{i_j - i_{j-1}}
@@ -1300,8 +1331,9 @@ By a modification of the upper bound in Lemma~\ref{thm:sumprod1}\ref{thm:sumprod
 Now, taking the product on the outside,
 \begin{align*}
 \prod_{j=1}^k \frac{1}{(i_j - i_{j-1})!}
-        &\sum_{\substack{ r_{i_{j-1}+1} \neq \dots \neq r_{i_j} \\ = \tau_N(t_{j-1})+1}}        
-        ^{\tau_N(t_j)}  \,\prod_{i=i_{j-1}+1}^{i_j} c_N(r_i) \\
+        &\sum_{\substack{ r_{i_{j-1}+1}, \ldots, r_{i_j} \\ = \tau_N(t_{j-1})+1 
+        \\ \text{all distinct} }}^{\tau_N(t_j)}
+        \,\prod_{i=i_{j-1}+1}^{i_j} c_N(r_i) \\
 &\leq \prod_{j=1}^k \left\{ \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})!}  
         + c_N(\tau_N(t_j)) \frac{( t_j - t_{j-1} +1 )^{i_j - i_{j-1}}}{(i_j - i_{j-1})!} \right\} 
         \\
@@ -1354,8 +1386,8 @@ using \eqref{eq:BJJK_eq3.3}.
 
 For the corresponding lower bound, by a modification of the lower bound in Lemma~\ref{thm:sumprod1}\ref{thm:sumprod1_b} where the lower limit of the sum is a general time rather than 1,
 \begin{align*}
-&\sum_{\substack{ r_{i_{j-1}+1} \neq \dots \neq r_{i_j} 
-        \\ = \tau_N(t_{j-1})+1 }}^{\tau_N(t_j)}
+&\sum_{\substack{ r_{i_{j-1}+1}, \ldots, r_{i_j} \\ = \tau_N(t_{j-1})+1 
+        \\ \text{all distinct} }}^{\tau_N(t_j)}  
         \prod_{i=i_{j-1}+1}^{i_j} c_N(r_i) \\
 &\qquad\geq (t_j - t_{j-1})^{i_j - i_{j-1}}
         - \binom{i_j - i_{j-1}}{2} \left( \sum_{s=\tau_N(t_{j-1})+1}^{\tau_N(t_j)}        
@@ -1378,8 +1410,9 @@ If $t_j = t_{j-1}$ then $E_N^4(j)$ has probability one automatically; otherwise 
 Now, taking a product over $j$, 
 \begin{align*}
 \prod_{j=1}^k &\frac{1}{(i_j - i_{j-1})!}
-        \sum_{\substack{ r_{i_{j-1}+1} \neq \dots \neq r_{i_j} \\ = \tau_N(t_{j-1})+1}}
-        ^{\tau_N(t_j)}  \,\prod_{i=i_{j-1}+1}^{i_j} c_N(r_i) \\
+        \sum_{\substack{ r_{i_{j-1}+1}, \ldots, r_{i_j} \\ = \tau_N(t_{j-1})+1 
+        \\ \text{all distinct} }}^{\tau_N(t_j)} 
+        \,\prod_{i=i_{j-1}+1}^{i_j} c_N(r_i) \\
 &\geq \prod_{j=1}^k \left\{ \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})!}  
         - \left( \sum_{s=\tau_N(t_{j-1})+1}^{\tau_N(t_j)} c_N(s)^2 \right)
         ( t_j - t_{j-1} +1 )^{i_j - i_{j-1} -2} \right\} \1{E_N^4} \\

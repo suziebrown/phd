@@ -302,7 +302,8 @@ Ordering the blocks by their least element, denote by $b_i$ the number of blocks
 Then the transition probability is given by
 \begin{equation}\label{eq:defn_pxieta}
 p_{\xi\eta}(t) 
-:= \frac{1}{(N)_{|\xi|}} \sum_{\substack{i_1 \neq \cdots \neq i_{|\eta|} \\ =1}}^N
+:= \frac{1}{(N)_{|\xi|}} \sum_{\substack{i_1 , \ldots , i_{|\eta|} =1 
+        \\ \text{all distinct} }}^N
         (\nu_t^{(i_1)})_{b_1} \cdots (\nu_t^{(i_{|\eta|})})_{b_{|\eta|}} .
 \end{equation}
 This expression is justified by \ref{standing_assumption}.
@@ -328,14 +329,15 @@ We have the following expression for $p_{\xi\xi}(t)$, by subtracting all possibl
 \begin{equation*}
 p_{ \xi \xi }( t ) 
 = 1 - \frac{ 1 }{ ( N )_{ | \xi | } } \sum_{ k = 1 }^{ | \xi | - 1 } 
-        \sum_{ \substack{ b_1 \geq \ldots \geq b_k = 1 
-        \\ b_1 + \ldots + b_k = | \xi | } }^{ | \xi | } 
+        \sum_{ \substack{ b_1 \geq \ldots \geq b_k \geq 1 
+        \\ b_1 + \ldots + b_k = | \xi | } } 
         \frac{ | \xi |! }{ \prod_{ j = 1 }^{ | \xi | } ( j ! )^{ \kappa_j } \kappa_j ! } 
-        \sum_{ \substack{ i_1 \neq \ldots \neq i_k = 1 \\ \text{all distinct} } }^N 
+        \sum_{ \substack{ i_1, \ldots, i_k = 1 \\ \text{all distinct} } }^N 
         ( \nu_t^{ ( i_1 ) } )_{ b_1 } \ldots ( \nu_t^{ ( i_k ) } )_{ b_k },
 \end{equation*}
 where $\kappa_i = |\{ j : b_j = i \}|$ is the multiplicity of mergers of size $i$ ($\kappa_1$ counts non-merger events, and we have the identity $\kappa_1 + 2 \kappa_2 + \cdots + | \xi | \kappa_{ | \xi | } = | \xi |$).
 The combinatorial factor is the number of partitions of a sequence of length $|\xi|$  having $\kappa_j$ subsequences of length $j$ for each $j$ \parencite[Equation (11)]{fu2006}.
+%Throughout this document, where no lower summation limit is specified, each sum index ranges from 1 to the upper limit, under any specified constraints.
 
 We separate the $k=|\xi|-1$ term (which counts single pair mergers), for which $(b_1, b_2, \dots, b_{|\xi|-1}) = (2,1,\dots,1)$ and
 \begin{equation*}
@@ -351,27 +353,39 @@ Thus
 \begin{align}
 p_{ \xi \xi }( t ) 
 &\geq 1 - \frac{ 1 }{ ( N )_{ | \xi | } } \binom{|\xi|}{2}
-        \sum_{ \substack{ i_1 \neq \ldots \neq i_{|\xi|-1} = 1 \\ \text{all distinct} } }^N 
+        \sum_{ \substack{ i_1, \ldots, i_{|\xi|-1} = 1 \\ \text{all distinct} } }^N 
         ( \nu_t^{ ( i_1 ) } )_2 \nu_t^{(i_2)} \ldots \nu_t^{ ( i_{|\xi|-1} ) } \notag\\
     &\qquad- \frac{ 1 }{ ( N )_{ | \xi | } } \sum_{ k = 1 }^{ | \xi | - 2 } 
-        \sum_{ \substack{ b_1 \geq \ldots \geq b_k = 1 
-        \\ b_1 + \ldots + b_k = | \xi | } }^{ | \xi | } |\xi|!
-        \sum_{ \substack{ i_1 \neq \ldots \neq i_k = 1 \\ \text{all distinct} } }^N 
+        \sum_{ \substack{ b_1 \geq \ldots \geq b_k \geq 1 
+        \\ b_1 + \ldots + b_k = | \xi | } } |\xi|!
+        \sum_{ \substack{ i_1, \ldots, i_k = 1 \\ \text{all distinct} } }^N 
         ( \nu_t^{ ( i_1 ) } )_{ b_1 } \ldots ( \nu_t^{ ( i_k ) } )_{ b_k } \label{eq:pDeltaLB_1}
 \end{align}
 Now, for the $k=|\xi|-1$ term we use the bound
 \begin{equation*}
-\sum_{ i_1 \neq \ldots \neq i_{ | \xi | - 1 } = 1 }^N 
+\sum_{\substack{ i_1, \ldots, i_{ | \xi | - 1 } = 1 \\ \text{all distinct} }}^N 
         ( \nu_t^{ ( i_1 ) } )_2 \nu_t^{ ( i_2 ) } \ldots \nu_t^{ ( i_{ | \xi | - 1 } ) }
 \leq N^{ | \xi | - 2 } \sum_{ i = 1 }^N ( \nu_t^{ ( i ) } )_2
 \end{equation*}
 while for the other terms we have \parencite[similarly to][Lemma 1 Case 3]{koskela2018}
 \begin{align*}
-\sum_{ \substack{ i_1 \neq \ldots \neq i_k = 1 \\ \text{all distinct} } }^N &( \nu_t^{ ( i_1 ) } )_{ b_1 } \ldots ( \nu_t^{ ( i_k ) } )_{ b_k } \leq \sum_{ i = 1 }^N ( \nu_t^{ ( i ) } )_2 \Bigg( N^{ | \xi | - 2 } - \sum_{ \substack{ j_1 \neq \ldots \neq j_{ | \xi | - 2 } = 1 \\ \text{all distinct and } \neq i } }^N \nu_t^{ ( j_1 ) } \ldots \nu_t^{ ( j_{ | \xi | - 2 } ) } \Bigg) \\
-&\leq \sum_{ i = 1 }^N ( \nu_t^{ ( i ) } )_2 \Bigg\{ N^{ | \xi | - 2 } - ( N - \nu_t^{ ( i ) } )^{ | \xi | - 2 } + \binom{ | \xi | - 2 }{ 2 } \sum_{ j \neq i } ( \nu_t^{ ( j ) } )^2 \Bigg( \sum_{ k \neq i } \nu_t^{ ( k ) } \Bigg)^{ | \xi | - 4 } \Bigg\} \\
-&\leq \sum_{ i = 1 }^N ( \nu_t^{ ( i ) } )_2 \Bigg\{ ( | \xi | - 2 ) \nu_t^{ ( i ) } N^{ | \xi | - 3 } + \binom{ | \xi | - 2 }{ 2 } \sum_{ j \neq i } ( \nu_t^{ ( j ) } )^2 N^{ | \xi | - 4 } \Bigg\},
+\sum_{ \substack{ i_1, \ldots, i_k = 1 \\ \text{all distinct} } }^N 
+        &( \nu_t^{ ( i_1 ) } )_{ b_1 } \ldots ( \nu_t^{ ( i_k ) } )_{ b_k } 
+        \leq \sum_{ i = 1 }^N ( \nu_t^{ ( i ) } )_2 \Bigg( N^{ | \xi | - 2 } 
+        - \sum_{ \substack{ j_1, \ldots, j_{ | \xi | - 2 } = 1 
+        \\ \text{all distinct and } \neq i } }^N 
+        \nu_t^{ ( j_1 ) } \ldots \nu_t^{ ( j_{ | \xi | - 2 } ) } \Bigg) \\
+&\leq \sum_{ i = 1 }^N ( \nu_t^{ ( i ) } )_2 
+        \Bigg\{ N^{ | \xi | - 2 } - ( N - \nu_t^{ ( i ) } )^{ | \xi | - 2 } 
+        + \binom{ | \xi | - 2 }{ 2 } \sum_{ j \neq i } ( \nu_t^{ ( j ) } )^2 
+        \Bigg( \sum_{ k \neq i } \nu_t^{ ( k ) } \Bigg)^{ | \xi | - 4 } \Bigg\} \\
+&\leq \sum_{ i = 1 }^N ( \nu_t^{ ( i ) } )_2 
+        \Bigg\{ ( | \xi | - 2 ) \nu_t^{ ( i ) } N^{ | \xi | - 3 } 
+        + \binom{ | \xi | - 2 }{ 2 } \sum_{ j \neq i } ( \nu_t^{ ( j ) } )^2 N^{ | \xi | - 4 } 
+        \Bigg\} ,
 \end{align*}
-where the last step uses $(N - x)^b \geq N^b - b x N^{ b - 1 }$ for $x \leq N$, $b \geq 0$.
+where the last step uses $(N - x)^b \geq N^b - b x N^{ b - 1 }$ 
+for $x \leq N$, $b \geq 0$.
 Hence
 \begin{align*}
 p_{ \xi \xi }( t ) 
@@ -379,8 +393,8 @@ p_{ \xi \xi }( t )
         N^{ | \xi | - 2 } \sum_{ i = 1 }^N ( \nu_t^{ ( i ) } )_2 \\
     &\qquad- \frac{ N^{|\xi|-3} }{ ( N )_{ | \xi | } } |\xi|!
         \sum_{ k = 1 }^{ | \xi | - 2 } 
-        \sum_{ \substack{ b_1 \geq \ldots \geq b_k = 1 
-        \\ b_1 + \ldots + b_k = | \xi | } }^{ | \xi | } 
+        \sum_{ \substack{ b_1 \geq \ldots \geq b_k \geq 1 
+        \\ b_1 + \ldots + b_k = | \xi | } } 
         \sum_{ i = 1 }^N ( \nu_t^{ ( i ) } )_2 
         \Bigg\{ ( | \xi | - 2 ) \nu_t^{ ( i ) } + \binom{ | \xi | - 2 }{ 2 } \frac{1}{N} 
         \sum_{ j \neq i } ( \nu_t^{ ( j ) } )^2 \Bigg\} .
@@ -836,7 +850,7 @@ Instead, we apply Proposition~\ref{thm:pDelta_LB} to obtain, for sufficiently la
         \Bigg( \prod_{ r = 1 }^{ \alpha } \I{ c_N(s_r) > \binom{n-2}{2} D_N(s_r) }
         \Bigg[ c_N( s_r ) - \binom{ n - 2 }{ 2 } \ON D_N( s_r ) \Bigg] \Bigg) \\
     &\hspace{2cm} \times \prod_{ \substack{ r = \tau_N( t_{ d - 1 } ) + 1 
-        \\ r \neq s_1, \ldots, r \neq s_{ \alpha } } }^{ \tau_N( t_d ) } 
+        \\ r \notin \{ s_1, \ldots, s_\alpha \} }}^{ \tau_N( t_d ) } 
         \Bigg[ 1 - \tilde{B}_n \ON D_N( r ) 
         - \binom{ | \eta_{ d - 1 } | - | \{ i : s_i < r \} | }{ 2 } \ON c_N( r ) \Bigg] \\
     &\hspace{10cm}\times \I{ c_N(r) < (\tilde{B}_n + \binom{n}{2})^{-1} } .
