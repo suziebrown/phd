@@ -135,7 +135,9 @@ The construction of the genealogical process from the resampling relationships (
 \end{tikzpicture}
 \label{fig:encoding_b}
 }
-\caption[Encoding the sample genealogy]{Illustration of how the sample genealogy is encoded. For clarity the genealogy of the whole population is shown, but  \subref{fig:encoding_a} Relationships induced by resampling in a sample of $n=6$ particles over four iterations. \subref{fig:encoding_b} The genealogy of these six particles, labelled with the value of the genealogical process $G_t$ at each time.}
+\caption[Encoding the sample genealogy]{Illustration of how the sample genealogy is encoded. 
+\subref{fig:encoding_a} Relationships induced by resampling in a sample of $n=6$ particles over four iterations. For clarity the pictured example has $n=N$, but in general $n \ll N$. 
+\subref{fig:encoding_b} The genealogy of these six particles, labelled with the value of the genealogical process $G_t$ at each time.}
 \label{fig:encoding_genealogy}
 \end{figure}
 
@@ -146,8 +148,8 @@ Under the assumption \ref{standing_assumption} stated below, it is sufficient fo
 \end{enumerate}
 As we saw in Section~\ref{sec:coaltheory}, the $n$-coalescent is \emph{exchangeable}, so for instance the pair of lineages merging at each event is chosen uniformly. 
 \ref{standing_assumption} is a weaker condition than exchangeability of the particles within a generation which is sufficient to admit an exchangeable process in the limit.
-Exchangeability of the particles would imply neutrality, an unreasonable assumption in the setting of SMC. 
-In contrast, \ref{standing_assumption} can easily be enforced upon any SMC algorithm by applying a random permutation to the offspring indices immediately after resampling.
+Although the resampling in SMC is not generally exchangeable, %(conditional on previous iterations/weights, anyway --- if completely unconditioned then I guess the distn is exchangeable, but I don't think that's what's meant in pop gen either.)
+\ref{standing_assumption} can easily be enforced upon any SMC algorithm by applying a random permutation to the offspring indices immediately after resampling.
 %, without qualitatively affecting the dynamics.
 
 
@@ -393,9 +395,13 @@ p_{ \xi \xi }( t )
     &\qquad- \frac{ N^{|\xi|-2} }{ ( N-2 )_{ | \xi | -2} }
         K \exp( 2 \sqrt{2(|\xi|-2)} ) |\xi|!
         \frac{1}{N(N)_2} \\
-    &\hspace{4cm} \sum_{ i = 1 }^N ( \nu_t^{ ( i ) } )_2
+    &\hspace{4cm}\times \sum_{ i = 1 }^N ( \nu_t^{ ( i ) } )_2
         \Bigg\{ ( | \xi | - 2 ) \nu_t^{ ( i ) } + \binom{ | \xi | - 2 }{ 2 } \frac{1}{N} 
-        \sum_{ j \neq i } ( \nu_t^{ ( j ) } )^2 \Bigg\} \\
+        \sum_{ j \neq i } ( \nu_t^{ ( j ) } )^2 \Bigg\} .
+\end{align*}
+Notice that when $|\xi| > 2$, both $(|\xi|-2)$ and $\binom{|\xi|-2}{2}$ are less than or equal to $\binom{|\xi|-1}{2}$. Thus by definition of $D_N(t)$,
+\begin{align*}
+p_{ \xi \xi }( t ) 
 &\geq 1 - \frac{ N^{ | \xi | - 2 } }{ ( N-2 )_{ | \xi | -2} } \binom{|\xi|}{2}
         c_N(t) \\
     &\qquad- \frac{ N^{|\xi|-2} }{ ( N-2 )_{ | \xi | -2} }
@@ -444,7 +450,7 @@ A proof is given in \textcite[Lemma 1 Case 1]{koskela2018}.\seb{refer to the err
 
 \section{An existing limit theorem}
 \textcite{koskela2018} proved the following theorem which gives sufficient conditions under which sampled genealogies of (non-neutral) interacting particle systems converge to the $n$-coalescent as $N\to\infty$.
-Naturally, such a result can only be expected to hold for genealogies of finite samples ($n\ll N$), and not for the entire genealogy of the $N$ particles. 
+Such a result can only be expected to hold for genealogies of finite samples ($n\ll N$), and not for the entire genealogy of the $N$ particles. 
 For instance the genealogies arising in SMC algorithms are not restricted to single pair mergers only, although within a sparse sample we may, under mild conditions, see only single pair mergers. 
 That is to say, there is not an extension of this result whereby the whole-population genealogy converges to the Kingman coalescent as $N\to\infty$, unless very restrictive conditions are imposed.
 

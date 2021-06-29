@@ -16,7 +16,7 @@ The extension from Theorem~\ref{thm:FDDconv} to weak convergence requires an add
 We start by defining a suitable metric space.
 Let $\mathcal{P}_n$ be the space of partitions of $\{1,\dots,n\}$.
 Denote by $\mathcal{D}$ the set of all functions mapping $[0,\infty)$ to $\mathcal{P}_n$ that are right-continuous with left limits.
-(Our rescaled genealogical process $(\mathcal{G}^{(n,N)}_{\tau_N(t)})_{t\geq0}$ and our encoding of the $n$-coalescent are piecewise-constant functions mapping time $t\in[0,\infty)$ to partitions, and thus live in the space $\mathcal{D}$.)
+Our rescaled genealogical process $(\mathcal{G}^{(n,N)}_{\tau_N(t)})_{t\geq0}$ and our encoding of the $n$-coalescent are piecewise-constant functions mapping time $t\in[0,\infty)$ to partitions, and thus live in the space $\mathcal{D}$.
 Finally, equip the space $\mathcal{P}_n$ with the discrete metric,
 \begin{equation*}
 \rho(\xi,\eta) 
@@ -40,7 +40,7 @@ to Kingman's $n$-coalescent as $N \to \infty$.
 \end{theorem}
 
 \begin{proof}[Proof of Theorem~\ref{thm:weakconv}]
-The structure of the proof follows \textcite{mohle1999}, albeit with considerable technical complication due to the dependence between generations\seb{(non-neutrality)} in our model.
+The structure of the proof follows \textcite{mohle1999}, albeit with considerable technical complication due to the dependence between generations (non-neutrality) in our model.
 To make it digestible, the proof is broken down into a number of results which are organised into sections; the relationships between these are shown in Figure~\ref{fig:weakconv_structure}.
 
 Since we already have convergence of the finite-dimensional distributions (Theorem~\ref{thm:FDDconv}), strengthening this to weak convergence requires relative compactness of the sequence of processes $\{ (G_{\tau_N(t)}^{(n,N)})_{t\geq0} \}_{N\in\mathbb{N}}$.
@@ -368,6 +368,7 @@ This completes the induction.
 
 
 \section{Bounds on sum-products}
+We start by proving some upper and lower bounds on sums of products of various quantities, which appear from our bounds on $p_r$ (Propositions~\ref{thm:pDelta_LB} and \ref{thm:pDelta_UB}). These sum-product bounds will be applied multiple times in the lemmata of this chapter.
 
 \begin{lemma}\label{thm:sumprod1}
 Fix $t>0$, $l\in\mathbb{N}$.
@@ -550,6 +551,9 @@ which concludes the proof.
 
 
 \section{Main components of induction argument}
+This section contains the technical aspects of the proof of Lemma~\ref{thm:holdingtimes_distn}, which establishes the limiting distributions of holding times of the coupled process, via an induction argument.
+This section is split into four lemmata: the first (Lemma~\ref{thm:basis}) is used in the basis step and the others in the induction step. The induction step is established by combining upper and lower bounds, proved in Lemmata~\ref{thm:inductionUB} and \ref{thm:inductionLB} respectively. Lemma~\ref{thm:induction_sumprodcN} is a technical result which is common to both the upper and lower bounds, determining the limit as $N\to\infty$ of a certain expectation that arises in both bounds.
+
 Recall that the following conditions are all consequences of \eqref{eq:mainthmcondition2}: for all $t>s>0$,
 \begin{align}
 \E \left[ c_N(\tau_N(t)) \right] &\rightarrow 0 \label{eq:BJJK_eq3.3}\\
@@ -559,14 +563,14 @@ Recall that the following conditions are all consequences of \eqref{eq:mainthmco
         \label{eq:BJJK_eq3.4}
 \end{align}
 as $N\to\infty$. (See Lemmata~\ref{lem:removeass3}, \ref{thm:DNimpliescN} and \ref{lem:removeass2} for proofs.)
-Also recall the following properties from Proposition~\ref{thm:cN_properties}:
-\begin{align}
-& c_N(t) , D_N(t) \in [0,1] \label{eq:cN_property1}\\
-& D_N(t) \leq c_N(t) \label{eq:cN_property2}\\
-& t^\prime
-    \leq \sum_{r=1}^{\tau_N(t^\prime)} c_N(r) 
-    \leq t^\prime +1 .\label{eq:cN_property4}
-\end{align}
+%Also recall the following properties from Proposition~\ref{thm:cN_properties}:
+%\begin{align}
+%& c_N(t) , D_N(t) \in [0,1] \label{eq:cN_property1}\\
+%& D_N(t) \leq c_N(t) \label{eq:cN_property2}\\
+%& t^\prime
+%    \leq \sum_{r=1}^{\tau_N(t^\prime)} c_N(r) 
+%    \leq t^\prime +1 .\label{eq:cN_property4}
+%\end{align}
 
 
 
@@ -584,13 +588,18 @@ where $\alpha_n := n(n-1)/2$.
 We start by showing that
 $\lim_{N\to\infty}\E\left[ \prod_{r=1}^{\tau_N(t)} (1-p_r) \right] 
 \leq e^{-\alpha_n t}$.\\
-Setting $\xi=\Delta$ in Proposition~\ref{thm:pDelta_UB}, we have for each $r$
+Setting $\xi=\Delta$ in Proposition~\ref{thm:pDelta_UB}, we have for each $r$ and for sufficiently large $N$
 \begin{equation} \label{eq:018}
 1-p_r
 = p_{\Delta\Delta}(r) 
 \leq 1 - \alpha_n \ON % \frac{N^{n-2}}{(N-2)_{n-2}}
         \left[ c_N(r) - B_n^\prime D_N(r) \right] .
 \end{equation}
+\seb{Explain why we need the indicators... bounds only valid for large enough $N$... may go negative for some values of $N$... product of negative bounds could be problematic... but don't we only care about the large-$N$ regime in which these bounds are valid (and therefore must be non-negative) and everything is fine...?}\\
+Since we will eventually take $N\to\infty$, it is sufficient to have bounds that hold for large enough $N$. However, some of the manipulations below require that these bounds are non-negative. For this reason we introduce some indicator functions (which will be almost surely equal to $1$ in the limit) to keep the bounds non-negative.
+These indicators will later be dropped from certain terms that are clearly non-negative without them. 
+The indicators introduced at this point are such that if their conditions do not hold then the bound becomes the trivial $1-p_r \leq 1$.
+ 
 When $N \geq 3$, a sufficient condition to ensure the bound in \eqref{eq:018} is non-negative is that the event
 \begin{equation}\label{eq:defn_E1}
 E_N^{1}(r) := \left\{ c_N(r) < \alpha_n^{-1} A_N \right\} 
@@ -696,7 +705,7 @@ Setting $\xi=\Delta$ in Proposition~\ref{thm:pDelta_LB}, we have
     [ c_N(t) + B_n D_N(t) ] 
 \end{equation}
 where $B_n >0$.
-Due to \eqref{eq:cN_property2}, a sufficient condition for this bound to be non-negative is
+Due to Proposition~\ref{thm:cN_properties}\eqref{item:cN_property2}, a sufficient condition for this bound to be non-negative is
 \begin{equation}\label{eq:defn_E3}
 E_N^3(r)
 := \left\{ c_N(r) \leq \frac{(N-2)_{n-2}}{N^{n-2}} 
@@ -800,7 +809,7 @@ $0 = t_0 \leq t_1 \leq \cdots \leq t_k \leq t$,
 \end{lemma}
 
 \begin{proof}
-We use the bound on $(1-p_r)$ from \eqref{eq:018} and apply a multinomial expansion, defining as in \eqref{eq:defn_E1} and \eqref{eq:defn_E2} respectively the sequences of events $E_N^1$ and $E_N^2$ which ensure the bounds are non-negative:
+We use the bound on $(1-p_r)$ from \eqref{eq:018}, which holds for sufficiently large $N$, and apply a multinomial expansion. Define as in \eqref{eq:defn_E1} and \eqref{eq:defn_E2} respectively the sequences of events $E_N^1$ and $E_N^2$ which keep the bounds non-negative for all $N\geq 3$ so that the following manipulations make sense:
 \begin{align}
 \prod_{\substack{r=1 \\ \notin \{r_1,\dots,r_k\} }}^{\tau_N(t)} (1-p_r)
 &\leq \prod_{\substack{r=1 \\ \notin \{r_1,\dots,r_k\} }}^{\tau_N(t)} 
@@ -1286,14 +1295,17 @@ Now, taking the product on the outside,
 &= \sum_{\mathcal{I} \subseteq [k]} \left( \prod_{j\in\mathcal{I}} 
         \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})!} \right)
         \left( \prod_{j\notin\mathcal{I}} c_N(\tau_N(t_j)) 
-        ( t_j - t_{j-1} +1 )^{i_j - i_{j-1}} \right) \\
-&= \prod_{j=1}^k \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})!}  \\
+        ( t_j - t_{j-1} +1 )^{i_j - i_{j-1}} \right) .
+\end{align*}
+Separating the term where $\mathcal{I} = [k]$, this becomes
+\begin{align*}        
+& \prod_{j=1}^k \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})!} \\
     &\qquad+ \sum_{\mathcal{I} \subset [k]} \left( \prod_{j\in\mathcal{I}} 
         \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})!}\right)
         \left( \prod_{j\notin\mathcal{I}} c_N(\tau_N(t_j)) 
         ( t_j - t_{j-1} +1 )^{i_j - i_{j-1}} \right) \\
-&\leq \prod_{j=1}^k \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})!}  \\
-    &\qquad+ \sum_{\mathcal{I} \subset [k]} \left( \prod_{j\in\mathcal{I}} 
+&\leq \prod_{j=1}^k \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})!} 
+    + \sum_{\mathcal{I} \subset [k]} \left( \prod_{j\in\mathcal{I}} 
         t^{i_j - i_{j-1}}\right)
         \left( \prod_{j\notin\mathcal{I}} c_N(\tau_N(t_j)) 
         (t+1)^{i_j - i_{j-1}} \right) \\
@@ -1323,7 +1335,7 @@ Now we are in a position to evaluate the limit in Lemma~\ref{thm:induction_sumpr
         i_j \geq j \forall j}} \prod_{j=1}^k \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}
         {(i_j - i_{j-1})!}
 \end{align*}
-using \eqref{eq:BJJK_eq3.3}
+using \eqref{eq:BJJK_eq3.3}.
 
 For the corresponding lower bound, by a modification of the lower bound in Lemma~\ref{thm:sumprod1}\ref{thm:sumprod1_b} where the lower limit of the sum is a general time rather than 1,
 \begin{align*}
@@ -1347,32 +1359,35 @@ E_N^4(j)
 which is sufficient to ensure the $j^{th}$ term in the following product is non-negative,
 and define 
 $E_N^4 := \bigcap_{j=1}^k E_N^4(j)$.
-(If $t_j = t_{j-1}$ then $E_N^4(j)$ has probability one automatically; otherwise the constant on the right is strictly positive and so satisfies the conditions of Lemma~\ref{thm:indicators_c2}.)
+If $t_j = t_{j-1}$ then $E_N^4(j)$ has probability one automatically; otherwise the constant on the right is strictly positive and so satisfies the conditions of Lemma~\ref{thm:indicators_c2}.
 Now, taking a product over $j$, 
 \begin{align*}
 \prod_{j=1}^k &\frac{1}{(i_j - i_{j-1})!}
         \sum_{\substack{ r_{i_{j-1}+1} \neq \dots \neq r_{i_j} \\ = \tau_N(t_{j-1})+1}}
-        ^{\tau_N(t_j)}  \,\prod_{i=i_{j-1}+1}^{i_j} c_N(r_i) \notag\\
+        ^{\tau_N(t_j)}  \,\prod_{i=i_{j-1}+1}^{i_j} c_N(r_i) \\
 &\geq \prod_{j=1}^k \left\{ \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})!}  
         - \left( \sum_{s=\tau_N(t_{j-1})+1}^{\tau_N(t_j)} c_N(s)^2 \right)
-        ( t_j - t_{j-1} +1 )^{i_j - i_{j-1} -2} \right\} \1{E_N^4} \notag\\
+        ( t_j - t_{j-1} +1 )^{i_j - i_{j-1} -2} \right\} \1{E_N^4} \\
 &= \sum_{\mathcal{I} \subseteq [k]} (-1)^{k-|\mathcal{I}|} 
         \left( \prod_{j\in\mathcal{I}} \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}
         {(i_j - i_{j-1})!} \right) \\
     &\qquad\times \left( \prod_{j\notin\mathcal{I}} \left( 
         \sum_{s=\tau_N(t_{j-1})+1}
         ^{\tau_N(t_j)} c_N(s)^2 \right) ( t_j - t_{j-1} +1 )^{i_j - i_{j-1} -2} \right) 
-        \1{E_N^4} \notag\\
-&= \prod_{j=1}^k \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})!} 
+        \1{E_N^4} .
+\end{align*}
+Separating the term with $\mathcal{I}=[k]$, this becomes
+\begin{align*}
+& \prod_{j=1}^k \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})!} 
         \1{E_N^4} \notag\\
     &\qquad+ \sum_{\mathcal{I} \subset [k]} (-1)^{k-|\mathcal{I}|} 
         \left( \prod_{j\in\mathcal{I}} \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}
         {(i_j - i_{j-1})!} \right) \\
-    &\qquad\times \left( \prod_{j\notin\mathcal{I}} 
+    &\qquad\qquad\times \left( \prod_{j\notin\mathcal{I}} 
         \left( \sum_{s=\tau_N(t_{j-1})+1}^{\tau_N(t_j)} c_N(s)^2 \right) 
-        ( t_j - t_{j-1} +1 )^{i_j - i_{j-1} -2} \right) \1{E_N^4} \notag\\
+        ( t_j - t_{j-1} +1 )^{i_j - i_{j-1} -2} \right) \1{E_N^4} \\
 &\geq \prod_{j=1}^k \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})!} 
-        \1{E_N^4}  \notag\\
+        \1{E_N^4}  \\
     &\qquad- \sum_{\mathcal{I} \subset [k]} \left( \prod_{j\in\mathcal{I}} 
         \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})!} \right)
         \left( \prod_{j\notin\mathcal{I}} \left( \sum_{s=\tau_N(t_{j-1})+1}
@@ -1383,9 +1398,12 @@ Now, taking a product over $j$,
     &\qquad- \sum_{\mathcal{I} \subset [k]} \left( \prod_{j\in\mathcal{I}} 
         t^{i_j - i_{j-1}} \right)
         \left( \prod_{j\notin\mathcal{I}} \left( \sum_{s=\tau_N(t_{j-1})+1}
-        ^{\tau_N(t_j)} c_N(s)^2 \right) ( t+1 )^{i_j - i_{j-1} -2} \right) 
-        \notag \displaybreak\\
-&\geq \prod_{j=1}^k \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})!} 
+        ^{\tau_N(t_j)} c_N(s)^2 \right) ( t+1 )^{i_j - i_{j-1} -2} \right) .
+\end{align*}
+Using parts \ref{item:cN_property1} and \ref{item:cN_property4} of Proposition~\ref{thm:cN_properties} to upper bound all but one of the $\sum c_N(s)^2$ terms, and arbitrarily setting 
+$j^\star(\mathcal{I}) := \min\{j \notin \mathcal{I} \}$, this is further bounded by
+\begin{align*}
+& \prod_{j=1}^k \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})!} 
         \1{E_N^4} \notag\\
     &\qquad- \sum_{\mathcal{I} \subset [k]} 
         \left( \sum_{s=\tau_N(t_{j^\star(\mathcal{I})-1})+1}
@@ -1403,10 +1421,8 @@ Now, taking a product over $j$,
         - \sum_{\mathcal{I} \subset [k]} 
         \left( \sum_{s=\tau_N(t_{j^\star(\mathcal{I})-1})+1}
         ^{\tau_N(t_{j^\star(\mathcal{I})})} c_N(s)^2 \right)
-        ( t+1 )^k ,
+        ( t+1 )^k .
 \end{align*}
-where again we have arbitrarily set 
-$j^\star(\mathcal{I}) := \min\{j \notin \mathcal{I} \}$.
 We can now evaluate the limit:
 \begin{align*}
 \lim_{N\to\infty} \E &\left[ \1{E_N} \sum_{\substack{r_1<\dots<r_k :\\ 
@@ -1448,7 +1464,7 @@ We can now evaluate the limit:
         \prod_{j=1}^k \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})!}
 \end{align*}
 where for the last equality we use \eqref{eq:BJJK_eq3.5} to show that the second sum vanishes and Lemma~\ref{thm:indicators_c2} to show that $\lim_{N\to\infty}\Prob[E_N \cap E_N^4] =1$.
-We have shown that the upper and lower bounds coincide, so the result follows.
+We have shown that the upper and lower bounds coincide, so the proof is complete.
 \end{proof}
 
 
@@ -1457,6 +1473,8 @@ We have shown that the upper and lower bounds coincide, so the result follows.
 
 
 \section{Indicators}
+Many of the preceding results make use of indicator functions in order to control the sign of certain terms. It was claimed that the probabilities of the corresponding events converge to $1$ as $N\to\infty$, so that the indicators do not have any effect in the limit. These claims are proved in this section. The first result (Lemma~\ref{thm:lim_AandB}) shows that it is sufficient to prove the limits separately for each event, even if we are actually taking a product of indicators on two or more events.
+The remainder of this section is split into four more lemmata, each of which deals with events of a certain form, showing that their probabilities converge to $1$ as $N\to\infty$.
  
 \begin{lemma}\label{thm:lim_AandB}
 Let $(A_N) , (B_N)$ be sequences of events. 
@@ -1576,20 +1594,23 @@ where the final inequality is an application of Lemma~\ref{thm:kjjslemma2} with 
 
 Fix $0 < \varepsilon < 1/(2K)$ and assume $N > \max\{ \varepsilon^{-1}, (K^{-1} - 2\varepsilon)^{-1} \}$. For each $r,i$ define the event $A_i(r) := \{ \nu_r^{(i)} \leq N\varepsilon \}$.
 %Conditional on $\mathcal{F}_{r-1}$, we have
-We have
+We have (almost surely)
 \begin{align*}
 D_N(r)
-&= \frac{1}{N(N)_2} \sum_{i=1}^N (\nu_r^{(j)})_2 \left[ \nu_r^{(i)} 
-        + \frac{1}{N} \sum_{j\neq i} (\nu_r^{(i)})^2 \right] \1{A_i^c(r)} \\
+&= \frac{1}{N(N)_2} \sum_{i=1}^N (\nu_r^{(i)})_2 \left[ \nu_r^{(i)} 
+        + \frac{1}{N} \sum_{j\neq i} (\nu_r^{(j)})^2 \right] \1{A_i^c(r)} \\
     &\qquad+ \frac{1}{N(N)_2} \sum_{i=1}^N (\nu_r^{(i)})_2 \left[ \nu_r^{(i)} 
         + \frac{1}{N} \sum_{j\neq i} (\nu_r^{(j)})^2 \right] \1{A_i(r)} .
 \end{align*}
 For the first term, 
-\begin{equation*}
-\frac{1}{N(N)_2} \sum_{i=1}^N (\nu_r^{(i)})_2 \left[ \nu_r^{(i)} 
-        + \frac{1}{N} \sum_{j\neq i} (\nu_r^{(j)})^2 \right] \1{A_i^c(r)}
+\begin{align*}
+\frac{1}{N(N)_2} &\sum_{i=1}^N (\nu_r^{(i)})_2 \left[ \nu_r^{(i)} 
+        + \frac{1}{N} \sum_{j\neq i} (\nu_r^{(j)})^2 \right] \1{A_i^c(r)} \\
+&= \sum_{i=1}^N \1{A_i^c(r)} \left\{ \frac{1}{N(N)_2} (\nu_r^{(i)})_2 \left[ \nu_r^{(i)} 
+        + \frac{1}{N} \sum_{j\neq i} (\nu_r^{(j)})^2 \right] \right\} \\
+&\leq \sum_{i=1}^N \1{A_i^c(r)} D_N(r)
 \leq \sum_{i=1}^N \1{A_i^c(r)} .
-\end{equation*}
+\end{align*}
 For the second term,
 \begin{align*}
 \frac{1}{N(N)_2} \sum_{i=1}^N (\nu_r^{(i)})_2 &\left[ \nu_r^{(i)} 
