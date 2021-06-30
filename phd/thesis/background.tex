@@ -675,11 +675,11 @@ Particularly if we are interested in smoothing over a long time horizon, the var
 \begin{figure}[ht]
 \centering
 \subfloat[Multinomial resampling]{
-\includegraphics[width=0.5\textwidth]{plots/ancdegen_mn.pdf}
+\includegraphics[width=0.47\textwidth]{plots/ancdegen_mn.pdf}
 \label{fig:ancdegen_mn}
 }
 \subfloat[Adaptive minimum-variance resampling]{
-\includegraphics[width=0.5\textwidth]{plots/ancdegen_adaptsyst.pdf}
+\includegraphics[width=0.47\textwidth]{plots/ancdegen_adaptsyst.pdf}
 \label{fig:ancdegen_adaptsyst}
 }
 \caption[Ancestral degeneracy]{Illustration of ancestral degeneracy and the mitigating effect of low-variance and adpative resampling.
@@ -1426,7 +1426,7 @@ As pointed out in \textcite[p.557]{crisan1999}, their MVB process yields offspri
 since the stochastic part of $\nu_t^{(i)}$ is a $\Bern( Nw_t^{(i)} -\flnw )$ random variable (as seen in \eqref{eq:branching_distn}).
 The same marginal variance appears from systematic, residual-systematic and SSP resampling, since these all share the same marginal offspring distributions. We will see in Section~\ref{sec:SRs} that all of these schemes fall within the \emph{stochastic rounding} class, and marginal offspring variance is a property shared by all stochastic roundings.
 
-The marginal variance is harder to calculate for other schemes such as residual-multinomial and stratified resampling because these were not defined in terms of marginal distributions, nor are the offspring counts independent conditional on the weights.
+The marginal variance is harder to calculate for other schemes such as residual-multi\-nomial and stratified resampling because these were not defined in terms of marginal distributions, nor are the offspring counts independent conditional on the weights.
 However, it is possible in some cases to find upper bounds on the variance, and some such bounds are derived below.
 
 In residual-multinomial resampling, $\nu_t^{(i)}$ depends on all of the other weights as well as $w_t^{(i)}$, but only through the statistic $R := \sum (N w_t^{(i)} - \flnw)$.
@@ -2000,9 +2000,9 @@ Figure~\ref{fig:star_discrepancy} illustrates how the star discrepancy is comput
         & $\checkmark$ & $N$ & $\checkmark$ \\
 \texttt{syst} & $\{K, K+1\}$ & $1$ & $1/4$ & $\checkmark$ & $\checkmark$ 
         & $\checkmark$ & $1$ & $\times$ \\
-\texttt{res-multi} & $\{K,\dots,N\}$ & $N$ & $1$ & $\times$ & $\checkmark$ 
+\texttt{res-multi} & $\{K,\dots,N\}$ & $N-1$ & $1$ & $\times$ & $\checkmark$ 
         & $\times$ & $\leq N-1$ & $\checkmark$ \\
-\texttt{res-star} & $\{K, N\}$ & $N$ & $N$ & $\times$ & $\checkmark$ 
+\texttt{res-star} & $\{K, N\}$ & $N-1$ & $N$ & $\times$ & $\checkmark$ 
         & $\times$ & $1$ & $\checkmark$? \\
 \texttt{res-strat} & $\{K, K+1, K+2\}$ & $2$ & $1/2$ & $\times$ & $\checkmark$ 
         & $\checkmark$ & $\leq N-1$ & $\checkmark$ \\
@@ -2227,11 +2227,11 @@ p( X_{t,0:t}^{(i)} \mid \theta, y_{0:t} )
 \end{equation*}
 and %\seb{actually, this explicit trajectory notation is going to make all this much heavier... but perhaps it's worth it for the clarity?}
 \begin{align*}
-p( (X_{t,0:t}^{(i)}, x_{t+1:T}^\star) \mid \theta, y_{0:T} )
-&\propto \mu^\theta( X_{t,0}^{(i)} ) g_0^\theta( y_0 \mid X_{t,0}^{(i)} ) 
+&p( (X_{t,0:t}^{(i)}, x_{t+1:T}^\star) \mid \theta, y_{0:T} ) \\
+&\qquad \propto \mu^\theta( X_{t,0}^{(i)} ) g_0^\theta( y_0 \mid X_{t,0}^{(i)} ) 
         \left\{ \prod_{s=1}^{t} q_s^\theta( X_{t,s}^{(i)} \mid X_{t,s-1}^{(i)} )
         g_s^\theta( y_s \mid X_{t,s}^{(i)} ) \right\} \\
-    &\qquad\times q_{t+1}^\theta( x_{t+1}^\star \mid X_{t,t}^{(i)} ) 
+    &\hspace{2cm}\times q_{t+1}^\theta( x_{t+1}^\star \mid X_{t,t}^{(i)} ) 
         g_{t+1}^\theta( y_{t+1} \mid x_{t+1}^\star )
         \left\{ \prod_{s=t+2}^T q_s^\theta(x_s^\star \mid x_{s-1}^\star)
         g_s^\theta(y_s \mid x_s^\star) \right\} .
@@ -2239,14 +2239,14 @@ p( (X_{t,0:t}^{(i)}, x_{t+1:T}^\star) \mid \theta, y_{0:T} )
 The ratio then becomes
 %\seb{I think the first proportionality hides the likelihood ratio $p(y_{0:T}|\theta)/p(y_{0:t-1}|\theta)$ --- see \eqref{eq:PG_Xposterior} --- it might make things clearer if I keep such constants explicit for longer?}
 \begin{align*}
-\frac{p( ( X_{t,0:t}^{(i)}, x_{t+1:T}^\star ) \mid \theta, y_{0:T} )}
-        {p( X_{t,0:t}^{(i)} \mid \theta, y_{0:t} ) }
-&\propto q_{t+1}^\theta( x_{t+1}^\star \mid X_{t,t}^{(i)} ) 
-        g_{t+1}^\theta( y_{t+1} \mid x_{t+1}^\star ) 
+&\frac{p( ( X_{t,0:t}^{(i)}, x_{t+1:T}^\star ) \mid \theta, y_{0:T} )}
+        {p( X_{t,0:t}^{(i)} \mid \theta, y_{0:t} ) } \\
+&\qquad\qquad\propto q_{t+1}^\theta( x_{t+1}^\star \mid X_{t,t}^{(i)} ) 
+        g_{t+1}^\theta( y_{t+1} \mid x_{t+1}^\star )
         \prod_{s=t+2}^T q_s^\theta( x_s^\star \mid x_{s-1}^\star ) 
         g_s^\theta( y_s \mid x_s^\star ) \\
-&\propto q_{t+1}^\theta( x_{t+1}^\star \mid X_{t,t}^{(i)} ) \\
-&= q_{t+1}^\theta( x_{t+1}^\star \mid X_{t}^{(i)} )  .
+&\qquad\qquad\propto q_{t+1}^\theta( x_{t+1}^\star \mid X_{t,t}^{(i)} )
+        = q_{t+1}^\theta( x_{t+1}^\star \mid X_{t}^{(i)} )  .
 \end{align*}
 The probabilities in \eqref{eq:ancsamp_probs} become
 \begin{equation}\label{eq:ancsamp_probs_simplified}
