@@ -725,6 +725,36 @@
       \field{pages}{438\bibrangedash 447}
       \range{pages}{10}
     \endentry
+    \entry{mohle2002coal}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=b6cd56499245b16ab003cae95de7eae7}{%
+           family={M{ö}hle},
+           familyi={M\bibinitperiod},
+           given={Martin},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{b6cd56499245b16ab003cae95de7eae7}
+      \strng{fullhash}{b6cd56499245b16ab003cae95de7eae7}
+      \strng{bibnamehash}{b6cd56499245b16ab003cae95de7eae7}
+      \strng{authorbibnamehash}{b6cd56499245b16ab003cae95de7eae7}
+      \strng{authornamehash}{b6cd56499245b16ab003cae95de7eae7}
+      \strng{authorfullhash}{b6cd56499245b16ab003cae95de7eae7}
+      \field{sortinit}{M}
+      \field{sortinithash}{cfd219b90152c06204fab207bc6c7cab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Stochastic Processes and Their Applications}
+      \field{number}{2}
+      \field{title}{The Coalescent in Population Models with Time-Inhomogeneous Environment}
+      \field{volume}{97}
+      \field{year}{2002}
+      \field{pages}{199\bibrangedash 227}
+      \range{pages}{29}
+    \endentry
     \entry{mohle2000}{article}{}
       \name{author}{1}{}{%
         {{uniquename=0,uniquepart=base,hash=b6cd56499245b16ab003cae95de7eae7}{%
@@ -1018,6 +1048,36 @@
       \field{year}{1999}
       \field{pages}{1116\bibrangedash 1125}
       \range{pages}{10}
+    \endentry
+    \entry{schweinsberg2003}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=7a1a11ee90b721c35b0f99e4b13185e6}{%
+           family={Schweinsberg},
+           familyi={S\bibinitperiod},
+           given={Jason},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{7a1a11ee90b721c35b0f99e4b13185e6}
+      \strng{fullhash}{7a1a11ee90b721c35b0f99e4b13185e6}
+      \strng{bibnamehash}{7a1a11ee90b721c35b0f99e4b13185e6}
+      \strng{authorbibnamehash}{7a1a11ee90b721c35b0f99e4b13185e6}
+      \strng{authornamehash}{7a1a11ee90b721c35b0f99e4b13185e6}
+      \strng{authorfullhash}{7a1a11ee90b721c35b0f99e4b13185e6}
+      \field{sortinit}{S}
+      \field{sortinithash}{322b1d5276f2f6c1bccdcd15920dbee6}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Stochastic Processes and Their Applications}
+      \field{number}{1}
+      \field{title}{Coalescent Processes Obtained from Supercritical {Galton--Watson} Processes}
+      \field{volume}{106}
+      \field{year}{2003}
+      \field{pages}{107\bibrangedash 139}
+      \range{pages}{33}
     \endentry
     \entry{tavare1984}{article}{}
       \name{author}{1}{}{%
