@@ -237,7 +237,6 @@ Take the basis case $k=1$, for which
 = \Prob[ \varpi_1 \leq t ] = 1 - e^{-\alpha_n t}
 \end{equation*}
 and $T_1^{(N)} >t$ if and only if $Z$ has no jumps up to time $t$:
-\seb{Expectation appears by tower property to remove (implicit) conditioning in transition probabilities}
 \begin{equation*}
 \Prob[T_1^{(N)} >t]
 = \E\left[ \Prob[ T_1^{(N)} >t \mid \mathcal{F}_\infty ] \right]
@@ -378,7 +377,8 @@ This completes the induction.
 \draw[->] (c7r1)--(c7r2);
 \draw[->] (c7r3)--(c7r2);
 \end{tikzpicture}
-\caption[Structure of weak convergence proof]{Graph showing dependencies between the lemmata used to prove weak convergence. Dotted arrows indicate dependence via a slight modification of the preceding lemma. Dependencies preceding Theorem~\ref{thm:FDDconv} are not shown; these are shown in Figure~??\seb{draw a corresponding figure for fdd proof, or delete this sentence?}.}
+\caption[Structure of weak convergence proof]{Graph showing dependencies between the lemmata used to prove weak convergence. Dotted arrows indicate dependence via a slight modification of the preceding lemma.}
+%Dependencies preceding Theorem~\ref{thm:FDDconv} are not shown; these are shown in Figure~??\seb{draw a corresponding figure for fdd proof, or delete this sentence?}.}
 \label{fig:weakconv_structure}
 \end{figure}
 \end{landscape}
@@ -460,7 +460,8 @@ Putting this together yields the upper bound.
 
 \begin{lemma}\label{thm:sumprod2}
 Fix $t>0$, $l\in\mathbb{N}$.
-Let $B$ be a positive constant which may depend on $n$.
+%Let $B$ be a positive constant which may depend on $n$.
+Then, for any constant $B>0$,
 \begin{equation*}
 \sum_{\substack{ s_1, \dots, s_l =1 \\ \text{\normalfont{all distinct}} }}^{\tau_N(t)} 
         \prod_{j=1}^l \left[ c_N(s_j) + B D_N(s_j) \right]
@@ -536,7 +537,8 @@ which, together with \eqref{eq:012}, concludes the proof.
 
 \begin{lemma}\label{thm:sumprod3}
 Fix $t>0$, $l\in\mathbb{N}$.
-Let $B$ be a positive constant which may depend on $n$.
+%Let $B$ be a positive constant which may depend on $n$.
+Then, for any constant $B>0$,
 \begin{equation*}
 \sum_{\substack{ s_1, \dots, s_l =1 \\ \text{\normalfont{all distinct}} }}^{\tau_N(t)} 
         \prod_{j=1}^l \left[ c_N(s_j) - B D_N(s_j) \right]
@@ -631,7 +633,7 @@ Setting $\xi=\Delta$ in Proposition~\ref{thm:pDelta_UB}, we have for each $r$ an
 \leq 1 - \alpha_n \ON % \frac{N^{n-2}}{(N-2)_{n-2}}
         \left[ c_N(r) - B_n^\prime D_N(r) \right] .
 \end{equation}
-\seb{Explain why we need the indicators... bounds only valid for large enough $N$... may go negative for some values of $N$... product of negative bounds could be problematic... but don't we only care about the large-$N$ regime in which these bounds are valid (and therefore must be non-negative) and everything is fine...?}\\
+%\seb{Explain why we need the indicators... bounds only valid for large enough $N$... may go negative for some values of $N$... product of negative bounds could be problematic... but don't we only care about the large-$N$ regime in which these bounds are valid (and therefore must be non-negative) and everything is fine...?}\\
 Since we will eventually take $N\to\infty$, it is sufficient to have bounds that hold for large enough $N$. However, some of the manipulations below require that these bounds are non-negative. For this reason we introduce some indicator functions (which will be almost surely equal to $1$ in the limit) to keep the bounds non-negative.
 These indicators will later be dropped from certain terms that are clearly non-negative without them. 
 The indicators introduced at this point are such that if their conditions do not hold then the bound becomes the trivial $1-p_r \leq 1$.

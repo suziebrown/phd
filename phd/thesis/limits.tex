@@ -325,7 +325,7 @@ for some $K>0$ that does not depend on $|\xi|$.
 %\seb{For weak convergence proof, refer to this proposition but rewrite the inequality using $\xi = \Delta$ and $\alpha_n$, to provide a local target for cross-referencing. Similarly for UB.}
 \begin{proof}
 %The proof follows \textcite[Proof of Lemma 3.6]{brown2021}, but keeping the terms in $N$ explicit. --- I don't need to refer to BJJK as it's part of my work; just reproduce BJJK's workings nice and verbosely here :)
-We have the following expression for $p_{\xi\xi}(t)$, by subtracting all possible non-identity transitions (the omitted $k=|\xi|$ term would count identity transitions):
+We have the following expression for $p_{\xi\xi}(t)$, by subtracting all possible non-identity transitions. The sum over $k$ counts all transitions from $\xi$ to $\eta$ such that $k= |\eta| \leq |\xi|-1$; the omitted $k=|\xi|$ term would count identity transitions.
 \begin{equation*}
 p_{ \xi \xi }( t ) 
 = 1 - \frac{ 1 }{ ( N )_{ | \xi | } } \sum_{ k = 1 }^{ | \xi | - 1 } 
@@ -370,13 +370,26 @@ Now, for the $k=|\xi|-1$ term we use the bound
 while for the other terms we have \parencite[similarly to][Lemma 1 Case 3]{koskela2018}
 \begin{align*}
 \sum_{ \substack{ i_1, \ldots, i_k = 1 \\ \text{all distinct} } }^N 
-        &( \nu_t^{ ( i_1 ) } )_{ b_1 } \ldots ( \nu_t^{ ( i_k ) } )_{ b_k } 
-        \leq \sum_{ i = 1 }^N ( \nu_t^{ ( i ) } )_2 
-        \Bigg\{ \Bigg( \sum_{j=1}^N \nu_t^{(j)} \Bigg)^{|\xi|-2}
+        &( \nu_t^{ ( i_1 ) } )_{ b_1 } \ldots ( \nu_t^{ ( i_k ) } )_{ b_k } \\
+&\leq \sum_{ i = 1 }^N ( \nu_t^{ ( i ) } )_2 
+        \Bigg\{ \sum_{\substack{ j_1, \ldots, j_{ | \xi | - 2 } = 1 }}^N
+        \nu_t^{ ( j_1 ) } \ldots \nu_t^{ ( j_{ | \xi | - 2 } ) }
         - \sum_{ \substack{ j_1, \ldots, j_{ | \xi | - 2 } = 1 
         \\ \text{all distinct and } \neq i } }^N 
         \nu_t^{ ( j_1 ) } \ldots \nu_t^{ ( j_{ | \xi | - 2 } ) } \Bigg\} \\
-&\leq \sum_{ i = 1 }^N ( \nu_t^{ ( i ) } )_2 
+&= \sum_{ i = 1 }^N ( \nu_t^{ ( i ) } )_2 
+        \Bigg\{ \Bigg( \sum_{j=1}^N \nu_t^{(j)} \Bigg)^{|\xi|-2}
+        - \sum_{ \substack{ j_1, \ldots, j_{ | \xi | - 2 } = 1 
+        \\ \text{all distinct and } \neq i } }^N 
+        \nu_t^{ ( j_1 ) } \ldots \nu_t^{ ( j_{ | \xi | - 2 } ) } \Bigg\} 
+\end{align*}
+where we have subtracted all the terms except those which either have one of the indices equal to $i$ (in which case the largest merger consists of more than two lineages) or have two of the indices equal to each other (in which case there is a simultaneous merger).
+This leaves only those terms where $k\leq |\xi|-2$, that is where there are multiple or simultaneous mergers. It is an inequality rather than an equality because some of the cases are double-counted.
+
+The expression is further bounded by a reverse multinomial expansion, of the same form as \textcite[Equation (8)]{koskela2018}, which is then simplified using that $(N - x)^b \geq N^b - b x N^{ b - 1 }$ 
+for $x \leq N$, $b \geq 0$, an application of the Bernoulli inequality:
+\begin{align*}
+& \sum_{ i = 1 }^N ( \nu_t^{ ( i ) } )_2 
         \Bigg\{ N^{ | \xi | - 2 } - ( N - \nu_t^{ ( i ) } )^{ | \xi | - 2 } 
         + \binom{ | \xi | - 2 }{ 2 } \sum_{ j \neq i } ( \nu_t^{ ( j ) } )^2 
         \Bigg( \sum_{ k \neq i } \nu_t^{ ( k ) } \Bigg)^{ | \xi | - 4 } \Bigg\} \\
@@ -385,8 +398,8 @@ while for the other terms we have \parencite[similarly to][Lemma 1 Case 3]{koske
         + \binom{ | \xi | - 2 }{ 2 } \sum_{ j \neq i } ( \nu_t^{ ( j ) } )^2 N^{ | \xi | - 4 } 
         \Bigg\} ,
 \end{align*}
-where the last step uses $(N - x)^b \geq N^b - b x N^{ b - 1 }$ 
-for $x \leq N$, $b \geq 0$.
+%where the last step uses $(N - x)^b \geq N^b - b x N^{ b - 1 }$ 
+%for $x \leq N$, $b \geq 0$, which is an application of the Bernoulli inequality.
 Hence
 \begin{align*}
 p_{ \xi \xi }( t ) 
