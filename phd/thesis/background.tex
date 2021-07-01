@@ -688,17 +688,17 @@ Each line is the lineage of one of the terminal particles, indicating the index 
 \label{fig:ancestral_degeneracy}
 \end{figure}
 On the other hand, ancestral degeneracy actually improves the memory efficiency of SMC. We do not need to store all of the particles generated at each time (at memory cost $O(NT)$), only those that are included in the resulting genealogy. \textcite{jacob2015} provide an algorithm for efficient storage of the genealogy, reducing the asymptotic memory cost to $O(N\log N+T)$.
-However, it is certainly still worth trying to reduce ancestral degeneracy because to achieve a given level of error with a highly degenerate system will require such a large $N$ that these memory gains are cancelled.
+However, it is certainly still worth trying to reduce ancestral degeneracy because to achieve a given level of error with a highly degenerate system will require such a large $N$ that any such memory gains are cancelled out.
 %(a) because computation is often the limiting factor rather than memory, and (b) 
 
 
 \subsubsection{Mitigating ancestral degeneracy}
 There are a few possible approaches to mitigating ancestral degeneracy.
-Firstly, we could try to limit the number of offspring assigned to any one parent during each resampling step. We can only go so far, because we need the resampling procedure to remain unbiased (Section~\ref{sec:SMC_FK}), but we can try to reduce the variance inherent in the resampling procedure. This idea, known as \emph{low-variance resampling}\seb{[citation?]} is discussed in detail in Section~\ref{sec:resampling}.
+Firstly, we could try to limit the number of offspring assigned to any one parent during each resampling step. We can only go so far, because we need the resampling procedure to remain unbiased (as discussed in Section~\ref{sec:SMC_FK}), but we can try to reduce the variance inherent in the resampling procedure. This idea, known as \emph{low-variance resampling}\seb{[citation?]} is explored in detail in Section~\ref{sec:resampling}.
 
 Another idea is to resample less often. Recall that the reason for resampling is to prevent weight degeneracy (that is, one of the weights tending to one while the others tend to zero). Now we see that, while solving one type of degeneracy, resampling creates another. The effect of ancestral degeneracy is essentially the same as that of weight degeneracy: both drastically increase the variance of the resulting SMC estimators. 
 We can therefore consider a trade-off between the two, which is the idea behind \emph{adaptive resampling} \parencite[Section 4]{liu1995}.
-The trick is to apply the resampling step only at iterations in which a certain criterion is met. The most commonly-used criterion, suggested in \textcite[Equation (14)]{liu1995}, is based on the estimated \emph{effective sample size}
+The trick is to apply the resampling step only at iterations in which a certain criterion is met. The most commonly-used criterion, suggested by \textcite[Equation (14)]{liu1995}, is based on the estimated \emph{effective sample size}
 \begin{equation*}
 ESS(t) := \left\{ \sum_{i=1}^N (w_t^{(i)})^2 \right\}^{-1} ,
 \end{equation*}
@@ -708,21 +708,21 @@ The resampling step is then applied only at iterations $t$ such that $ESS(t)$ is
 If adaptive resampling is used, some trivial changes are required to the calculation of the weights in Algorithm~\ref{alg:SMC}, to allow for the importance weights to accumulate sequentially until the particles are resampled. See e.g.\ \textcite[Section 10.2]{chopin2020} for details.
 
 As well as mitigating ancestral degeneracy, adaptive resampling has the virtue of saving some computation (although the overall asymptotic complexity of the SMC algorithm does not change).
-How effective adaptive resampling is depends on the particular application and choice of SMC algorithm. If the proposals (i.e.\ transition kernels) are not very close to their targets then the weights will degenerate rapidly and the effective sample size criterion (or similar) will not reduce the frequency of resampling very much.
+How effective adaptive resampling will be depends on the particular application and choice of SMC algorithm. If the proposals (i.e.\ transition kernels) are not very close to their targets then the weights will degenerate rapidly and the effective sample size criterion (or similar) will not reduce the frequency of resampling very much.
 
 Low-variance resampling is also less effective under poor proposals: the resulting high-variance weights lead to high-variance offspring counts, even under minimum-variance resmapling schemes, because the resampling is required to be unbiased.
 
 Adaptive resampling and low-variance resampling can be combined, and this is widely considered to be the best practice when implementing SMC.
 Figure~\ref{fig:ancestral_degeneracy} compares ancestral degeneration under multinomial resampling (a relatively high variance scheme) to the same under adaptive resampling with a minimum-variance resampling scheme.
-It is easy to see that the degeneration is much more severe in the former case.
+It is clear that the degeneration is much more severe in the former case.
 
 There is one technique that completely solves the problem of ancestral degeneracy, namely \emph{backward simulation}\seb{[citation]}. This involves running an SMC algorithm as usual (the ``forward pass''), and then sampling new ancestors for each particle during an additional ``backward pass''. 
 The backward-simulated parents in each generation are chosen among all $N$ particles, making use of particles that were not included in the forward-sampled trajectories.
-In terms of genealogies, the effect is striking; the lineages are broken into fragments, so there is no longer any such thing as a lineage or a genealogy.
+The effect on genealogies is striking: the lineages are now sampled independently, so the coalescences caused by resampling do not feature at all in the output genealogies.
 
-Since this work concerns genealogies, we will not say much more about backward simulation. There are many situations in which it is impossible to implement and therefore the study of SMC genealogies is still of interest. 
+Since this work concerns genealogies induced by resampling, we will not say much more about backward simulation. There are many situations in which it is impossible to implement and therefore the study of SMC genealogies is still of interest. 
 Firstly, backward simulation inherently requires a forward and backward pass through all of the data, so it cannot be implemented on-line. 
-Secondly, calculating the backward-simulation probabilities requires the Markov kernels $M_t$ of the corresponding Feynman-Kac model to admit densities that can be evaluated pointwise. This is much stronger than the ability to simulate from $M_t$, which is the requirement for applying standard SMC algorithms.
+Secondly, calculating the backward-simulation probabilities requires the Markov kernels $M_t$ of the corresponding Feynman-Kac model to admit densities that can be evaluated pointwise. This is much stronger than the ability to simulate from $M_t$, the requirement for applying standard SMC algorithms.
 
 
 
@@ -746,11 +746,11 @@ But since these are all genealogical questions by nature, it seems sensible to w
 The problem is that the genealogy of particles is a complex object, it is random, and it can depend strongly on the particular choice of Feynman-Kac model and SMC implementation.
 
 It turns out that these problems can be somewhat overcome by considering the genealogies in an asymptotic regime where the number of particles $N$ tends to infinity.
-In this regime, many different particle systems exhibit genealogies of a common form, namely Kingman's $n$-coalescent under suitable time-scales. The differences between various algorithms is then encoded in the time-scale function, which is still random but is a less complicated object than the genealogy itself, namely a c\`adl\`ag function rather than a labelled weighted tree.
-In the context of SMC, these asymptotic genealogies were first analysed by \textcite{koskela2018}. The simulations therein suggest that such asymptotic results also transfer to finite systems, making them practically useful.
+In this regime, many different particle systems exhibit genealogies of a common form, namely Kingman's $n$-coalescent under suitable time-scalings. The genealogical differences between various algorithms is then encoded by their respective time-scale functions. This is still a random object but is less complicated than the genealogy itself; namely a c\`adl\`ag function as opposed to a labelled weighted tree.
 
+In the context of SMC, these asymptotic genealogies were first analysed by \textcite{koskela2018}. The simulations therein suggest that such asymptotic results also transfer to finite systems, making them practically useful.
 One of the contributions of the current work is to demonstrate that Kingman-type genealogies arise from a wide variety of SMC algorithms, including those most commonly used in practice.
-This allows, for instance, genealogies of different SMC algorithms to be compared by examining the corresponding time-scale functions.
+In principle this means, for instance, that genealogies of different SMC algorithms can be compared by examining the corresponding time-scale functions.
 
 
 
@@ -758,7 +758,7 @@ This allows, for instance, genealogies of different SMC algorithms to be compare
 
 \section{Resampling}
 \label{sec:resampling}
-As we have seen\seb{we actually haven't; this should have been made explicit in section~\ref{sec:SMC_FK}}, resampling is necessary within SMC to ``reset'' the weights in order to prevent weight degeneracy\seb{and may also help us make the most of our computational resources, not wasting them on hopeless particles}.
+As we have seen, resampling is necessary within SMC to ``reset'' the weights in order to prevent weight degeneracy.
 Resampling is itself a Monte Carlo procedure: the discrete offspring counts can be viewed as stochastic estimates of the continuous weights.
 In order to obtain a valid SMC algorithm, these Monte Carlo samples must be unbiased; this and other desirable properties are formalised in Definition~\ref{defn:resampling}.
 There is a huge range of resampling procedures satisfying these properties, some of which perform better than others. 

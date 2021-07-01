@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  1 JUL 2021 10:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  1 JUL 2021 11:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1549,12 +1549,12 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 ]
 Overfull \hbox (1.42336pt too wide) detected at line 133
- []\OT1/put/b/n/10.95 106
+ []\OT1/put/b/n/10.95 105
  []
 
 
 Overfull \hbox (1.42336pt too wide) detected at line 151
- []\OT1/put/b/n/10.95 124
+ []\OT1/put/b/n/10.95 123
  []
 
 )
@@ -1692,7 +1692,7 @@ Package refcheck Warning: Unused label `defn:stochround' on input line 2027.
 [40
 
 ] [41] [42]
-<plots/PG_degen.pdf, id=924, 602.25pt x 401.5pt>
+<plots/PG_degen.pdf, id=923, 602.25pt x 401.5pt>
 File: plots/PG_degen.pdf Graphic file (type pdf)
 <use plots/PG_degen.pdf>
 Package pdftex.def Info: plots/PG_degen.pdf  used on input line 2157.
@@ -1972,10 +1972,6 @@ Package rerunfilecheck Info: File `thesis_main.out' has not changed.
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
-
-Package biblatex Warning: Please rerun LaTeX.
-(biblatex)                Page breaks have changed.
-
 Package logreq Info: Writing requests to 'thesis_main.run.xml'.
 \openout1 = `thesis_main.run.xml'.
 
@@ -1983,7 +1979,7 @@ Package logreq Info: Writing requests to 'thesis_main.run.xml'.
 Here is how much of TeX's memory you used:
  40168 strings out of 492649
  776411 string characters out of 6129623
- 1314415 words of memory out of 5000000
+ 1313412 words of memory out of 5000000
  42988 multiletter control sequences out of 15000+600000
  564336 words of font info for 100 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -2019,10 +2015,10 @@ ts/type1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2018/texmf-dist/fonts
 ype1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2018/texmf-dist/fon
 ts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2018/texmf-dist
 /fonts/type1/adobe/utopia/putb8a.pfb>
-Output written on thesis_main.pdf (136 pages, 859708 bytes).
+Output written on thesis_main.pdf (136 pages, 859580 bytes).
 PDF statistics:
- 2153 PDF objects out of 2487 (max. 8388607)
- 1915 compressed objects within 20 object streams
+ 2152 PDF objects out of 2487 (max. 8388607)
+ 1914 compressed objects within 20 object streams
  465 named destinations out of 1000 (max. 500000)
  447 words of extra memory for PDF output out of 10000 (max. 10000000)
 
