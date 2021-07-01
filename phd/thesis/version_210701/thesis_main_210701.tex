@@ -1,0 +1,270 @@
+\documentclass[oneside]{scrbook} %%% remove oneside option for final hard copy
+\usepackage[onehalfspacing]{setspace} %%% remove this option for final copy
+\usepackage{lscape} % for landscape tables
+
+%%% see
+% https://warwick.ac.uk/services/dc/pgrassessments/gtehdr/presentation_th?
+% for guidelines on thesis formatting etc.
+
+%%% EDITING TOOLS
+%%% use this command to load only certain chapters during writing/editing process (cross-referencing with omitted chapters will still work, but it seems to break the ToC):
+%\includeonly{limits,weakconv,applications}
+
+%%% ANNOTATIONS
+\usepackage{color}
+\usepackage{xspace}
+\newcommand{\seb}[1]{\xspace\textcolor{red}{#1}\xspace} %% for comments
+\newcommand{\draft}[1]{\xspace\textcolor{violet}{#1}\xspace} %% for notes about what to write
+
+%%% GENERAL FORMATTING
+%%%Probably best to put formatting commands in a separate file. Consider changing: fonts, margins (must be at least 4cm at left and 1.5cm around edges), header/footer, references/citations, algorithms, captions, paragraph indents, chapter/equation numbering, ..
+\usepackage[a4paper, inner=4cm, outer=2cm, top=3cm, bottom=3cm]{geometry}
+\usepackage{enumitem}
+\usepackage[nobreak]{mdframed} % The nobreak option should probably be set locally in the final document, since breaks may be required in longer theorems.
+\renewcommand{\sfdefault}{put} % this isn't actually a sans font, so might be better to use something like phv (helvetica), but I rather like this font for headings.
+% change big-O notation to use mathcal O?
+\usepackage{booktabs, longtable} % For multi-page tables
+
+%%% TABLES
+\renewcommand{\arraystretch}{1.4}
+\usepackage{makecell}
+
+%%% GRAPHICS
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{shapes.geometric}
+\usepackage{subfig}
+%%% add user-defined colours here: I'm using <gray!20> and <gray> in the weak conv graph e.g.
+\definecolor{violet}{rgb}{0.53, 0.0, 0.69}
+
+%%% EPIGRAPHS
+\usepackage{epigraph}
+\setlength{\epigraphwidth}{0.5\linewidth}
+\setlength{\beforeepigraphskip}{1.5\baselineskip}
+\setlength{\afterepigraphskip}{3.5\baselineskip}
+\renewcommand{\textflush}{flushright} %%% default is flushleft, not sure which looks better
+
+%%% BIBLIOGRAPHY
+\usepackage[style=authoryear, citestyle=authoryear-comp, sorting=nyt, backend=biber]{biblatex} %%% use \cite, \textcite and \parencite commands in text
+\addbibresource{../latex/smc.bib}
+%% fix the bibliography so that it displays initials only for first names?
+
+%%% MATHS PACKAGES
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[mathscr]{euscript}
+\usepackage{bbm}
+\usepackage{bm} %% used only in the proof section dumped from BJJK Sec3.1; try to remove the need for it?
+
+%%%% LIST OF THEOREMS ETC.
+%\usepackage{thmtools}
+%\renewcommand{\listtheoremname}{List of Definitions}
+
+%%% MATHS ENVIRONMENTS
+\newmdtheoremenv[backgroundcolor=gray!20, linewidth=0pt]{theorem}{Theorem}[chapter]
+\newmdtheoremenv[backgroundcolor=gray!20, linewidth=0pt]{corollary}[theorem]{Corollary}
+\newmdtheoremenv[backgroundcolor=gray!20, linewidth=0pt]{prop}[theorem]{Proposition}
+\newmdtheoremenv[backgroundcolor=gray!20, linewidth=0pt]{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newmdtheoremenv[backgroundcolor=gray!20, linewidth=0pt]{defn}[theorem]{Definition}
+\renewcommand{\qedsymbol}{$\blacksquare$}
+%\allowdisplaybreaks
+
+%%% MATHS COMMANDS
+\newcommand{\Prob}{\mathbb{P}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Et}{\mathbb{E}_t}
+\newcommand{\V}{\operatorname{Var}}
+\newcommand{\Cov}{\operatorname{Cov}}
+\newcommand{\ON}{1_N}
+\newcommand{\eqdist}{\overset{d}{=}}
+\newcommand{\simiid}{\sim^{iid}}%{\overset{iid}{\sim}}%
+\newcommand{\I}[1]{\mathbbm{1}_{\{#1\}}}
+\newcommand{\1}[1]{\mathbbm{1}_{#1}} % JK uses mathds{1} for indicators
+\newcommand{\midd}{\,\middle|\,} % for big conditioning bar
+\newcommand{\Mn}{\operatorname{Multinomial}}
+\newcommand{\Bin}{\operatorname{Binomial}}
+\newcommand{\Cat}{\operatorname{Categorical}}
+\newcommand{\Exp}{\operatorname{Exp}}
+\newcommand{\N}{\operatorname{Normal}}
+\newcommand{\Unif}{\operatorname{Uniform}}
+\newcommand{\Bern}{\operatorname{Bernoulli}}
+\newcommand{\flnw}[1][i]{\lfloor N w_t^{(#1)} \rfloor}
+\DeclareMathOperator*{\argmin}{argmin}
+\DeclareMathOperator*{\argmax}{argmax}
+
+%%% ALGORITHMS
+\usepackage[plain]{algorithm2e}
+
+%%% HYPERLINKS (must load last)
+\usepackage{hyperref}
+
+\usepackage{refcheck}
+
+\begin{document}
+
+\begin{titlepage}
+\centering
+\vspace*{5cm}
+\begin{LARGE}\bfseries
+Resampling and genealogies in sequential Monte Carlo algorithms\par \end{LARGE} 
+\vspace{1.5cm} 
+\begin{Large}\bfseries
+Susanna Elizabeth Brown\par
+\end{Large}
+\vspace{3cm}
+\begin{large}
+A thesis submitted for the degree of\\Doctor of Philosophy in Statistics \par
+\vspace{1.5cm}
+University of Warwick, Department of Statistics \par
+\vspace{1.5cm}
+July 2021 %%% update submission date (month year)
+\end{large}
+\end{titlepage}
+
+
+\frontmatter
+
+%%% Comment these out if using "includeonly":
+\tableofcontents
+\listoffigures
+\listoftables
+
+%\listoftheorems[ignoreall,show={defn}]
+%\renewcommand{\listtheoremname}{List of Theorems}
+%\listoftheorems[ignoreall,show={theorem,prop}]
+%%% Also include a list of algorithms/listings somehow
+
+%\chapter{Acknowledgements}
+%\epigraph{
+%It takes a village to raise a thesis.
+%}
+%{\textsc{Anonymous}} 
+%
+%{\parindent0pt
+%Firstly I would like to thank my supervisors, Dr.\ Paul Jenkins, Dr.\ Jere Koskela and Prof.\ Adam Johansen, who for the past three years have guided me through swamps of calculations and done your best to keep my focus on things that are important.
+%Thank you also to those people sitting near me in the office, who have been called upon many times to stupid-check my calculations: Francesca Crucicinio, James Hodgson and Marco Palma.
+%I am also grateful to Dr.\ Dario Span\`o and Prof.\ Martin M\"ohle for agreeing to be my examiners --- perhaps you didn't know what you were getting into!
+%\\
+%
+%I also owe my thanks to the EPSRC for providing funding (under grant EP/L016710/1), without which I would not have been able to embark upon this PhD, and to the organisers of the OxWaSP CDT, which equipped me and gave me the confidence to complete this research.
+%\\
+%
+%Thank you to all of the colleagues who helped to create such a fun and stimulating research environment at Warwick: fellow OxWaSP students, office-mates and the wider young researchers community in the department. Special thanks to Ana Ignatieva and Jaro Sant for providing the bastion of continuity that is the population genetics reading group.
+%\\
+%
+%A very special thank you must go to the bridge club --- Jack Carter, Francesca Crucinio, Giulio Morina, Marco Palma and William Thomas --- for your best efforts in preventing me from finishing my thesis. Perhaps it is for the best that a pandemic put an end to our excessively long lunch breaks.
+%\\
+%
+%I am grateful to James Brixey and Katie Farnes for your prayers and support during the writing-up phase, for keeping me sane during the lockdowns, and for many interesting discussions on unrelated topics!
+%A heartfelt thank you to my church family for your hospitality, friendship and prayers throughout the ``year of plenty'' and beyond, especially to Charissa Brain and the other Sunday Zoom regulars, as well as the Griffithses, Kibbles and Murphies who have made Coventry feel like home. I have learnt at least as much from you lovely people as from my research.
+%\\
+%
+%To the other friends I have found during these four years --- Francesca Panero, Claire Atkins, Ann Cordery, Claire Silvester and Rachel Gering-Hasthorpe --- I am very glad to have met you, and I'm sure that our friendship will continue.
+%And of course, a heartfelt thank you to those friends and family who have been with me since before the start of this chapter and continue to stand by me: Mum, Dad, Nick, Sheriff, Jamie and Rhys, Julia and the Wiggles.
+%\\
+%
+%I am so grateful to have had the opportunity to spend four years doing something I love, surrounded by brilliant people, and to reach the end having accomplished all that I hoped. I have learnt so much and grown in so many ways over this time, and I can't wait for the next chapter!
+%\\
+%
+%S.D.G.
+%\\
+%
+%\begin{flushright}
+%Suzie Brown\\
+%30 June 2021
+%\end{flushright}
+%}
+
+%\vspace*{3cm}
+%
+%%%% Edit the declaration as appropriate:
+%%%% Add a section title above the declaration?
+%
+%This thesis is submitted to the University of Warwick in support of my application for the degree of Doctor of Philosophy. It has been composed by myself and has not been submitted in any previous application for any degree. %%% (if parts previously used add:) apart from the background material in sections XXX which was previously submitted for YYY degree.
+%\\[5pt]
+%The work presented (including data generated and data analysis) was carried out by the author except in the cases outlined below:
+%%%% List of data provided and/or analysis carried out by collaborators.
+%\\[5pt]
+%Parts of this thesis have been published by the author:
+%%%% List of publications including submitted papers.
+%
+%\chapter[Abstract]{Abstract} %%% change the mandatory argument from <Abstract> to <> once done
+
+%%% The abstract must be no more than 300 words and may be single-spaced to ensure it fits on one page.
+
+%%% A list of acronyms must be placed either here or at the end of the thesis, and its location indicated in the ToC.
+
+\chapter{List of Abbreviations}
+\begin{tabular}{p{0.1\textwidth} p{0.8\textwidth}}
+SMC & sequential Monte Carlo \\
+i.i.d. & independent and identically distributed \\
+MRCA & most recent common ancestor \\
+PRNG & pseudo-random number generator \\
+CDF & cumulative distribution function \\
+LHS & left hand side \\
+RHS & right hand side \\
+SSP & Srinivasan sampling process \\
+MVB & minimal variance branching \\
+\end{tabular}
+
+
+\chapter{Notation and Conventions}
+
+\begin{longtable}{p{0.1\textwidth} p{0.8\textwidth}}
+$\mathbb{N}$ & the natural numbers starting from one, $\{1,2,\dots \}$ \\
+$\mathbb{N}_0$ & the natural numbers starting from zero, $\{0,1,2,\dots \}$ \\
+$[a]$ & the set $\{1,2,\dots,a\}$ where $a\in\mathbb{N}$ \seb{also allow $a=0$ in which case $[a] = \emptyset$?} \\
+$\mathcal{S}_k$ & the $k$-dimensional unit simplex $\{ x_{1:k+1} \geq 0 : \sum_{i=1}^{k+1} x_i = 1 \}$ \\
+$(a)_b$ & the falling factorial $a (a-1) \cdots (a-b+1)$ 
+    where $a \in \mathbb{N}_0, b \in \mathbb{N}$, and define $(a)_0 = 1$. \seb{could even allow $a\in\mathbb{R}$ but I don't think I ever use it in that setting} \\
+$\binom{a}{b}$ & binomial coefficient where $a,b \in \mathbb{N}_0$, defined to be $0$ when $a<b$ \\
+$x_A$ & the subvector consisting of the elements of $x$ with index in set $A\subseteq\mathbb{N}$ \\
+$x_{a:b}$ & the subvector $x_A$ where $A = \{a,a+1, \dots,b\}$ for $a<b\in\mathbb{N}$, defined to be the empty vector when $a>b$ \\
+$x_{-a}$ & the subvector $x_A$ where $A = \{1,2, \dots, a-1, a+1, \dots n\}$, $a\in\{1,\dots,n\}$, and $n$ is the length of $x$ which should be clear from context \\
+$\prod_{\emptyset}$ & the empty product is taken to be $1$ \\
+$\sum_{\emptyset}$ & the empty sum is taken to be $0$, while the sum over
+    an index vector of length zero is the identity operator \\
+%$\sum_{x_1,\dots,x_a}^b$ & where no lower limit is specified (usually when summing over multiple indices), each index ranges from 1 to the upper limit (possibly with additional constraints as specified), i.e.\ this is shorthand for $\sum_{x_1=1}^b \dots \sum_{x_a=1}^b$ \\
+$\mathcal{F}_{t}$ & the (backward) filtration generated by offspring counts 
+    up to time $t$ \\
+$\E$ & expectation \\
+$\Et$ & filtered expectation $\E[ \cdot \mid \mathcal{F}_{t-1}]$\\
+$\V$ & variance \\
+$\Cov$ & covariance \\
+$\eqdist$ & equal in distribution \\
+$\simiid$ & sampled i.i.d. from \\
+$A^c$ & the complement of set $A$\\
+$|A|$ & the cardinality of set $A$\\
+$O(\cdot)$ & standard asymptotic notation: $f(x) = O(g(x))$ if there exist $M\in[0,\infty), x_0 \in \mathbb{R}$ such that $f(x) \leq Mg(x)$ for all $x\geq x_0$ \\
+$o(\cdot)$ & standard asymptotic notation: $f(x) = o(g(x))$ if for all $\varepsilon>0$ there exists $x_0$ such that for all $x\geq x_0$, $f(x) \leq \varepsilon g(x)$ \\
+$\Omega(\cdot)$ & standard asymptotic notation: $f(x) = \Omega(g(x))$ if and only if $g(x) = o(f(x))$ \\
+$\ON$ & asymptotic notation for a function that converges to $1$ as $N\to\infty$ \\
+%\seb{Note that $(\ON)^a = \ON$ for any $a\in \mathbb{R}$.} \\
+\end{longtable}
+
+
+\mainmatter
+
+%%% Note: maximum word count is 70,000 excluding equations, tables, appendices etc. This is unlikely to be restrictive.
+
+%%% The main body will be contained in separate tex files for each chapter, which are pulled in using these commands:
+
+\include{introduction}
+\include{background}
+\include{limits}
+\include{weakconv}
+\include{applications}
+\include{discussion}
+
+
+\backmatter
+
+%%% A list of acronyms must be placed either here or after the abstract, and its location indicated in the ToC.
+
+%%% The bibliography/references will go here.
+\printbibliography
+
+\end{document}
