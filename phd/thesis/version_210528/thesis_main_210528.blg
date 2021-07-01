@@ -1,0 +1,17 @@
+[0] Config.pm:302> INFO - This is Biber 2.11
+[0] Config.pm:305> INFO - Logfile is 'thesis_main_210528.blg'
+[53] biber-darwin:313> INFO - === Fri May 28, 2021, 16:18:46
+[83] Biber.pm:371> INFO - Reading 'thesis_main_210528.bcf'
+[261] Biber.pm:857> INFO - Found 16 citekeys in bib section 0
+[277] Biber.pm:3976> INFO - Processing section 0
+[294] Biber.pm:4136> INFO - Looking for bibtex format file '../latex/smc.bib' for section 0
+[299] bibtex.pm:1500> INFO - LaTeX decoding ...
+[489] bibtex.pm:1316> INFO - Found BibTeX data source '../latex/smc.bib'
+[500] Utils.pm:193> WARN - Duplicate entry key: 'lee2019' in file '../latex/smc.bib', skipping ...
+[648] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[648] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[649] Biber.pm:3804> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'en-US'
+[649] Biber.pm:3810> INFO - No sort tailoring available for locale 'en-US'
+[668] bbl.pm:617> INFO - Writing 'thesis_main_210528.bbl' with encoding 'UTF-8'
+[681] bbl.pm:720> INFO - Output to thesis_main_210528.bbl
+[681] Biber.pm:110> INFO - WARNINGS: 1
