@@ -10,7 +10,7 @@
 
 \section{Sequential Monte Carlo}
 The idea of Monte Carlo is to use (pseudo-)random numbers to approximate expectations under an intractable probability distribution of interest.
-Sequential Monte Carlo (SMC) is a class of Monte Carlo algorithms which are implemented sequentially, allowing efficient sampling from \emph{sequences} of distributions.
+Sequential Monte Carlo (SMC) is a class of Monte Carlo algorithms which are implemented sequentially, allowing efficient sampling from sequences of distributions.
 SMC was developed for inference in intractable state space models (details in Section~\ref{sec:SSMs}) and introduced to the statistics community by \textcite{gordon1993}.
 The basic idea behind SMC is that of sequential importance sampling, whereby the posterior importance samples from one target distribution are used to generate proposals for the next. A full derivation of the SMC recursions is beyond the scope of this work, but the reader is referred to e.g.\ \textcite{doucet2009, chopin2020} for more background. Here it suffices to provide a motivation in the context of state space models (Section~\ref{sec:SSMs}) and the formalism of Feynman-Kac models (Section~\ref{sec:FKmodels}).
 
@@ -49,7 +49,7 @@ State space models (sometimes called hidden Markov models) are a flexible class 
 \caption[State space model]{Conditional independence graph for a general state space model. $(X_t)$ is a Markov process with transition kernels $(K_t)$ representing the underlying state of the system. $Y_t$ is a noisy observation of $X_t$ for each $t$.}
 \label{fig:SSM}
 \end{figure}
-The general model has two components: a Markov process $(X_t)_{t\in\mathbb{N}_0}$ representing the (unobservable) underlying state of the system, and a sequence $(Y_t)_{t\in\mathbb{N}_0}$ of noisy observations of the underlying state. The model is characterised by its conditional independence structure (Figure~\ref{fig:SSM}) along with an initial distribution $\mu$, the Markov ``transition'' kernels $(K_t)_{t\in\mathbb{N}}$ and the ``emission'' distributions $(g_t)_{t\in\mathbb{N}_0}$. 
+The general model has two components: a Markov process $(X_t)_{t\in\mathbb{N}_0}$ representing the (unobservable) underlying state of the system, and a sequence $(Y_t)_{t\in\mathbb{N}_0}$ of observations containing information about the underlying state. The model is characterised by its conditional independence structure (Figure~\ref{fig:SSM}) along with an initial distribution $\mu$, the Markov ``transition'' kernels $(K_t)_{t\in\mathbb{N}}$ and the ``emission'' distributions $(g_t)_{t\in\mathbb{N}_0}$. 
 Written as a hierarchical model,
 \begin{align}
 X_0 &\sim \mu(\cdot) & \notag\\
@@ -57,11 +57,11 @@ X_{t+1} \mid X_t &\sim K_{t+1}(\cdot | X_t) & \text{for } t=0, 1, \dots
         \label{eq:SSM_spec}\\
 Y_t \mid X_t &\sim g_t(\cdot | X_t) & \text{for } t=0, 1, \dots \notag
 \end{align}
-The index $t$ will frequently be referred to as ``time'', since in most applications the sequence is indeed a time series, but it need not be.
+The index $t$ will frequently be referred to as ``time'', since in many applications the sequence is indeed a time series, but it need not be.
 
-Here $X$ and/or $Y$ may be multivariate and observation times need not be equally spaced. Straightforward generalisations of the stated model can allow for situations in which observations are not available as often as the state is updated (up to and including the extreme where the state is a continuous-time Markov process but the observations are available only at discrete times) or on the other hand where observations are observed more frequently than the state is updated.
+Here $X$ and/or $Y$ may be multivariate and observation times need not be equally spaced. Straightforward generalisations of the stated model can allow for situations in which observations are not available as often as the state is updated (up to and including the extreme where the state is a continuous-time Markov process but the observations are available only at discrete times) or on the other hand where observations are made more frequently than the state is updated.
 
-Applications include target tracking, where $X$ is the true position of some object and $Y$ encodes some measurements from sensors e.g.\ radar; stochastic volatility models, where $X$ is the volatility and $Y$ is the observed value e.g.\ the price of a stock; change-point detection; and many other applications in which there is an observed time series from which one would like to do inference or prediction.
+Applications include target tracking, where $X$ is the true position of some object and $Y$ encodes some measurements from sensors e.g.\ radar; stochastic volatility models, where $X$ is the volatility and $Y$ is the observed value e.g.\ the price of a stock; change-point detection; and many other situations in which there is an observed time series from which one would like to do inference or prediction.
 
 The principal inferences of interest in state space models are:
 \begin{description}
@@ -70,10 +70,10 @@ The principal inferences of interest in state space models are:
 \item [(complete) smoothing] $p(x_{0:t}\mid y_{0:t})$: inferring the sequence of states up to now $x_{0:t}$ from the observations up to now $y_{0:t}$
 \item [fixed-lag smoothing] $p(x_{t-h:t}\mid y_{0:t})$: inferring the last $h$ states $x_{t-h:t}$ from the observations up to now $y_{0:t}$
 \end{description}
-If the dynamics of the state space model are parametrised by some $\theta$, i.e.\ $g_t$ and/or $K_t$ depend on $\theta$, we may also be interested in parameter inference or computing the likelihood $p(y_{0:t})$ of the observed data for particular values of $\theta$.
+If the dynamics of the state space model are parametrised by some $\theta$, i.e.\ $g_t$ and/or $K_t$ depend on $\theta$, we may also be interested in parameter inference or computing the likelihood $p(y_{0:t})$ of the observed data for particular values of $\theta$. Such a model is considered in Section~\ref{sec:particleGibbs}.
 
 In certain cases, these inference problems may be solved analytically (Section~\ref{sec:SSM_exact_inference}), but this is not typically the case. For intractable models we must resort to Monte Carlo methods. However, state space inference is problematic even with Monte Carlo. 
-The main difficulties are that the dimension of the target distribution increases along the sequence, and that there is strong dependence between consecutive distributions. Markov chain Monte Carlo (MCMC), for instance, is known to struggle with highly correlated targets\seb{[citation]} and its performance drops drastically as dimension increases, despite convergence rates that are supposedly independent of dimension\seb{[citation]}.
+The main difficulties are that the dimension of the target distributions may increase along the sequence, and that there is strong dependence between consecutive distributions. Markov chain Monte Carlo (MCMC), for instance, is known to struggle with highly correlated targets\seb{[citation]} and its performance drops drastically as dimension increases, despite convergence rates that are supposedly independent of dimension\seb{[citation]}.
 
 As we will see in Section~\ref{sec:SMC_FK}, sequential Monte Carlo overcomes these problems, turning the problematic properties of the target distribution to its benefit. Correlation between consecutive targets is exploited for sequential updating, which is able to handle the incrementing dimensionality. The resulting linear-in-$t$ computational complexity also allows inference to be performed on-line, that is, updating the posterior distribution(s) as observations arrive.
 
@@ -84,7 +84,7 @@ As we will see in Section~\ref{sec:SMC_FK}, sequential Monte Carlo overcomes the
 \label{sec:SSM_exact_inference}
 If the state space model has linear dynamics with Gaussian errors, the posterior distributions of interest are also Gaussian. The posterior mean and covariance satisfy certain recursions, implemented by the Kalman filter \parencite{kalman1960} and Rauch-Tung-Striebel smoother \parencite{rauch1965}. 
 Recursions are also available for some other conjugate models: see for example \textcite{vidoni1999}.
-Another analytic case occurs if the state space $\mathcal{X}$ is finite, in which case any integrals become finite sums, and the forward-backward algorithm \parencite{baum1970} yields the exact posteriors. However, if the state space becomes large (albeit finite), exact computation becomes infeasible.
+Another analytic case occurs if the state space $\mathcal{X}$ is finite, in which case any integrals become finite sums, and the forward-backward algorithm \parencite{baum1970} yields the exact posteriors. However, if the state space becomes large, albeit finite, exact computation becomes infeasible.
 
 If the model is Gaussian but non-linear, the posterior filtering distributions can be estimated using the \emph{extended Kalman filter} (see for example \textcite{jazwinski2007}), which applies a first-order approximation in order to make use of the Kalman filter. This method performs well on models that are ``almost linear''. The resulting predictor is only \emph{optimal} when the model is actually linear, in which case the extended Kalman filter coincides with the Kalman filter.
 
@@ -141,13 +141,13 @@ By construction, the complete smoothing distribution is precisely
 \end{align*}
 The filtering, prediction and fixed-lag smoothing distributions are all also marginals of $\mathbb{Q}_t(dx_{0:T})$:
 \begin{align*}
-p(x_t \mid y_{0:t}) &= \mathbb{Q}_t (dx_t) \\
-p(x_{t+h} \mid y_{0:t}) &= \mathbb{Q}_t (dx_{t+h}) \\
-p(x_{t-h:t} \mid y_{0:t}) &= \mathbb{Q}_t (dx_{t-h:t}) ,
+p(dx_t \mid y_{0:t}) &= \mathbb{Q}_t (dx_t) \\
+p(dx_{t+h} \mid y_{0:t}) &= \mathbb{Q}_t (dx_{t+h}) \\
+p(dx_{t-h:t} \mid y_{0:t}) &= \mathbb{Q}_t (dx_{t-h:t}) ,
 \end{align*}
 while the likelihood $p(y_{0:t}) = L_t$.
-The upshot of this is that we have access to a Monte Carlo approximation of $\mathbb{Q}_t(dx_{0:T})$ then we can conduct inference on any of these distributions, since marginalisation of Monte Carlo samples is trivial. The likelihood, on the other hand, is not obtained by marginalisation; nevertheless, we will see that approximations of the likelihood can also be obtained ``for free''. 
-The next section describes how we may obtain samples from $\mathbb{Q}_t(dx_{0:T})$.
+The upshot of this is that if we have access to a Monte Carlo approximation of $\mathbb{Q}_t(dx_{0:T})$ then we can conduct inference on any of these distributions, since marginalisation of Monte Carlo samples is trivial. The likelihood, on the other hand, is not obtained by marginalisation; nevertheless, we will see that approximations of the likelihood can also be obtained ``for free''. 
+The next section describes how we may obtain Monte Carlo samples from $\mathbb{Q}_t(dx_{0:T})$.
 
 
 
@@ -187,19 +187,15 @@ The choice of \textsc{resample} procedure can also have a profound effect on per
 Resampling is not necessary for the algorithm to be valid, but it is important to ensure good performance. Its purpose is to periodically ``reset'' the weights $w_t^{(1:N)}$, preventing \emph{weight degeneracy}. This is the phenomenon that multiplying importance weights over time causes the variance of the weights to increase exponentially, until after some iterations practically all of the weight is concentrated on one particle, with the rest having weights very close to zero. This means that the Monte Carlo sample (of size $N$) essentially consists of just one sample, so that the Monte Carlo approximations have very high variance.
 
 The idea of resampling is to make multiple copies of particles with high weights and eliminate particles with low weights, then reset the weights to $w_t^{(1:N)} = (1,\dots,1)/N$. Done correctly, this procedure does not introduce any bias and, although it increases variance in the short term by adding extra randomness, it improves stability in the long term.
-It also prevents a lot of computational budget being ``wasted'' simulating low-weight particles which do not contribute much to the approximation.
+It also prevents computational budget being ``wasted'' on simulating low-weight particles which do not contribute much to the approximation.
 
 For each $i=1,\dots,N$, the \textsc{resample} procedure selects a \emph{parent}, indexed by $a_{t-1}^{(i)} \in \{1,\dots,N\}$, which copies its state to the $i$th particle in the next iteration. These copies are then mutated independently and so the algorithm goes on.
 We define the \emph{offspring counts} for each $i,t$ as
 \begin{equation*}
 \nu_{t-1}^{(i)} := |\{ j: a_{t-1}^{(j)} = i \}| ,
 \end{equation*}
-the number of copies of particle $i$ of generation $t$ appearing in generation $t+1$ by resampling. Notice that $\nu_t^{(1:N)}$ is expressed as a non-injective function of $a_t^{(1:N)}$, and as such carries less information.
-To ensure Algorithm~\ref{alg:SMC} is valid, we assume that the resampling procedure satisfies the following properties:
-\begin{itemize}
-\item the population size $N$ is conserved;
-\item given $w_{t-1}^{(1:N)}$, the expectation of $\nu_{t-1}^{(i)}$ is proportional to $w_{t-1}^{(i)}$ for each $i$.
-\end{itemize}
+the number of copies in generation $t+1$ of particle $i$ from generation $t$ appearing by resampling. Notice that $\nu_t^{(1:N)}$ is expressed as a non-injective function of $a_t^{(1:N)}$, and as such carries less information.
+To ensure Algorithm~\ref{alg:SMC} is valid, we assume that the resampling procedure satisfies the following properties: that the population size $N$ is conserved; and that, given $w_{t-1}^{(1:N)}$, the expectation of $\nu_{t-1}^{(i)}$ is proportional to $w_{t-1}^{(i)}$ for each $i$.
 The latter property is known as \emph{unbiasedness}.
 These requirements are made rigorous in Definition~\ref{defn:resampling}.
 
@@ -286,11 +282,11 @@ These requirements are made rigorous in Definition~\ref{defn:resampling}.
 %\end{algorithm}
 %\vspace{10pt}
 Figure~\ref{fig:cond_indep_graph} shows a section of the conditional dependence graph implied by Algorithm~\ref{alg:SMC}.
-Because Algorithm~\ref{alg:SMC} proceeds sequentially, with each iteration incorporating a constant amount of data, its computational cost is linear in the time horizon $T$. Furthermore, the bootstrap algorithm, where the Feynman-Kac model is \eqref{eq:bootstrapFK}, processes the data $y_{0:T}$ one observation at a time via $G_t(x_t) = g_t(y_t \mid x_t)$. This means that the bootstrap SMC algorithm can also be run on-line, incorporating each observation as it becomes available.
+Because the algorithm proceeds sequentially, with each iteration incorporating a constant amount of data, its computational cost is linear in the time horizon $T$. Furthermore, the bootstrap algorithm, where the Feynman-Kac model is \eqref{eq:bootstrapFK}, processes the data $y_{0:T}$ one observation at a time via $G_t(x_t) = g_t(y_t \mid x_t)$, which means that it can be run on-line, incorporating each observation as it becomes available.
 This is in stark contrast to a standard MCMC approach, for example, which would have to process all of the data at once up to a fixed time horizon. Adding one more observation would require running the MCMC algorithm from scratch on the extended target, making the computational cost at least linear \emph{per time point} and rendering on-line inference infeasible.
 
 The output of Algorithm~\ref{alg:SMC} is, for $i=1,\dots, N$ and $t=0,\dots,T$, the \emph{states} $X_t^{(i)} \in \mathcal{X}$, the \emph{weights} $w_t^{(i)} \in [0,1]$ and, for $i=1,\dots, N$ and $t=0,\dots,T-1$, the \emph{parental indices} $a_t^{(i)} \in \{1,\dots,N\}$.
-Depending on the application, one may want to retain only a subset of this output, which can reduce the memory cost.
+Depending on the application, one may want to retain only a subset of this output in order to reduce memory usage.
 
 The output can be used to construct discrete approximations of the various distributions of interest, with which one may estimate integrals against test functions, i.e.\ expectations.
 The filtering distribution $p(x_t \mid y_{0:t})$ is approximated by the empirical measure
@@ -303,13 +299,13 @@ That is, expectations of appropriate test functions $\varphi : \mathcal{X} \maps
 \E[ \varphi(x_t) \mid y_{0:t} ]
 \simeq \sum_{i=1}^N w_t^{(i)} \varphi( X_t^{(i)} ) .
 \end{equation*}
-The precise meaning of approximation (or $\simeq$) will be clarified in Section~\ref{sec:SMC_theory}.
-To approximate the smoothing distribution, we first define the \emph{trajectories} of states $X_{t,0:t}^{(i)}$ (for each $i \in \{1,\dots,N\}$) by setting $X_{t,t}^{(i)} := X_t^{(i)}$ and tracing back through the ancestors via the recursion $X_{t,s}{(i)} = X_{t,s+1}^{( a_t^{(i)} )}$ for each $s \in \{0,\dots, t\}$. 
+The precise meaning of approximation (or $\simeq$) is clarified in Section~\ref{sec:SMC_theory}.
+To approximate the smoothing distribution, we first define the state \emph{trajectories} $X_{t,0:t}^{(i)}$ (for each $i \in \{1,\dots,N\}$) by setting $X_{t,t}^{(i)} := X_t^{(i)}$ and tracing back through the ancestors via the recursion $X_{t,s}{(i)} = X_{t,s+1}^{( a_t^{(i)} )}$ for each $s \in \{0,\dots, t\}$. 
 We can then construct the approximation
 \begin{equation*}
 \sum_{i=1}^N w_t^{(i)} \delta_{ X_{t,0:t}^{(i)} } 
 \end{equation*}
-of the smoothing distribution $p(x_{0:t} \mid y_{0:t})$, and we can calculate expectations as above.
+of the smoothing distribution $p(x_{0:t} \mid y_{0:t})$, with which we can calculate expectations as above.
 Similar approximations can be constructed for prediction and fixed-lag smoothing.
 %\seb{...be explicit or no?}.
 We can also approximate the marginal likelihood using the \emph{unnormalised} weights:
@@ -319,7 +315,7 @@ L_t
 \simeq \frac{1}{N} \sum_{i=1}^N G_0(X_0^{(i)}) \prod_{t=1}^T \frac{1}{N}
         \sum_{i=1}^N G_t( X_{t-1}^{ a_{t-1}^{(i)} }, X_t^{(i)} ) .
 \end{equation}
-The unnormalised weights could be output directly from Algorithm~\ref{alg:SMC}, or re-calculated from the states as here.
+The unnormalised weights could be output directly from Algorithm~\ref{alg:SMC}, or re-calculated from the states as shown here.
 
 
 
@@ -340,10 +336,12 @@ Moreover, they satisfy a central limit theorem:
 \sqrt{N} \left( \sum_{i=1}^N w_t^{(i)} \varphi( X_t^{(i)} ) - \mathbb{Q}_t(\varphi) \right)
 \longrightarrow  \N( 0, \sigma_t(\varphi) )
 \end{equation*}
-in distribution, as $N\to\infty$. Under additional conditions, the asymptotic variances $\sigma_t(\varphi)$ are stable over $t$, justifying the use of SMC filtering on-line.
+in distribution, as $N\to\infty$. 
+The $\sqrt{N}$ scaling agrees with the standard convergence rate for Monte Carlo approximations.
+Under additional conditions, the asymptotic variances $\sigma_t(\varphi)$ are stable over $t$, justifying the use of SMC filtering on-line.
 It can also easily be shown that the likelihood estimates \eqref{eq:likelihood_estimate} are unbiased \parencite[see for example][Proposition 16.3]{chopin2020}.
 
-There are many other results concerning convergence, stability and error bounds for SMC algorithms. A full exposition of these results and their conditions is beyond the scope of this work, but the book by \textcite{delmoral2013} provides an exhaustive treatment, and some of the key ideas and results are developed in the more accessible book by \textcite[Chapter 11]{chopin2020}.
+There are many other results concerning convergence, stability and error bounds for SMC algorithms. A full exposition of these results and their conditions is beyond the scope of this work, but the book by \textcite{delmoral2013} provides an exhaustive treatment, and some of the key ideas and results are also developed in \textcite[Chapter 11]{chopin2020}.
 Suffice it to say that SMC algorithms enjoy enough theoretical properties to be useful in practice.
 
 
@@ -352,14 +350,15 @@ Suffice it to say that SMC algorithms enjoy enough theoretical properties to be 
 
 \section{Coalescent theory}
 \label{sec:coaltheory}
-The current work draws on the literature around coalescent theory, primarily from population genetics. This section summarises the relevant parts of that literature. We will see in Section~\ref{sec:SMC_genealogies} how this applies to SMC.
+The current work draws on the literature around coalescent theory, primarily from population genetics. This section summarises the relevant parts of that literature. We will see in Section~\ref{sec:SMC_genealogies} how it applies to SMC.
 
 \subsection{Kingman's coalescent}
-The Kingman coalescent \parencite{kingman1982gene, kingman1982coal, kingman1982exch} is a continuous-time Markov process on the space of partitions of $\mathbb{N}$. For our purposes we need only consider its restriction to $\{1,\dots,n\}$, termed the $n$-coalescent (defined below), since we only ever consider finite samples from a population. 
+The Kingman coalescent \parencite{kingman1982gene, kingman1982coal, kingman1982exch} is a continuous-time Markov process on the space of partitions of $\mathbb{N}$. For our purposes we need only consider its restriction to $\{1,\dots,n\}$, termed the $n$-coalescent (Definition~\ref{def:kingman}), since we only ever consider finite samples from a population. 
 %However, an excellent probabilistic introduction to the Kingman coalescent from the point-of-view of exchangeable random partitions can be found in \textcite[Chapters 1--2]{berestycki2009}. \seb{or \textcite{wakeley2009} ? or \textcite{durrett2008} ?}
 \begin{defn}%[Kingman's $n$-coalescent]
 \label{def:kingman}
-The \emph{$n$-coalescent} is the homogeneous continuous-time Markov process on the set of partitions of $\{1,\dots,n\}$ with infinitesimal generator $Q$ having entries
+Let $\mathcal{P}_n$ denote the set of partitions of $\{1,\dots,n\}$.
+The \emph{$n$-coalescent} is the homogeneous continuous-time Markov process on $\mathcal{P}_n$ with infinitesimal generator $Q$ having entries
 \begin{equation}\label{eq:KCgenerator}
 q_{\xi,\eta} = \begin{cases}
 1 & \xi \prec \eta\\
@@ -367,21 +366,20 @@ q_{\xi,\eta} = \begin{cases}
 0 & \text{otherwise}
 \end{cases}
 \end{equation}
-where $\xi$ and $\eta$ are partitions of $\{1,...,n\}$, $|\xi|$ denotes the number of blocks in $\xi$, and $\xi \prec \eta$ means that $\eta$ is obtained from $\xi$ by merging exactly one pair of blocks.
+for every $\xi, \eta \in \mathcal{P}_n$, where $|\xi|$ denotes the number of blocks in $\xi$, and $\xi \prec \eta$ means that $\eta$ is obtained from $\xi$ by merging exactly one pair of blocks.
 \end{defn}
-
 \begin{figure}
 \centering
 \includegraphics[width=0.6\textwidth, trim={2.8cm 3cm 1.5cm 2cm}, clip]{plots/ncoalescent.pdf}
 \caption[The $n$-coalescent]{A realisation of the $n$-coalescent with $n=50$.}
 \end{figure}
-
 A particularly attractive feature of the $n$-coalescent is its tractability; its distribution and those of many statistics of interest are available in closed form (Section \ref{sec:KCproperties}).
 It turns out also to be extremely useful as a limiting distribution in population genetics, including in its domain of attraction the genealogies of a wide range of population models (Section \ref{sec:popgenmodels}).
 
 
 \subsection{Properties of Kingman's coalescent}\label{sec:KCproperties}
-The simplicity of $Q$ allows various properties of the $n$-coalescent to be studied analytically. \seb{Refer to more exhaustive studies of the properties in the literature, e.g.\ \textcite[Section 1.2]{durrett2008}.}
+\seb{Refer to more exhaustive studies of the properties in the literature, e.g.\ \textcite[Section 1.2]{durrett2008}.}\\
+The simplicity of $Q$ allows various properties of the $n$-coalescent to be studied analytically.
 Starting with $n$ blocks, exactly $n-1$ coalescences are required to reach the absorbing state where all blocks have coalesced, known in population genetics as the \emph{most recent common ancestor} (MRCA).
 
 \begin{figure}[ht]
@@ -431,13 +429,15 @@ Starting with $n$ blocks, exactly $n-1$ coalescences are required to reach the a
 \label{fig:KC_timedefns}
 \end{figure}
 
-Denote by $t_2, t_3 \dots, t_n$ the waiting times between coalescent events, where $t_i$ is the amount of time for which the coalescent has exactly $i$ distinct lineages (see Figure~\ref{fig:KC_timedefns}).
+Denote by $t_2, \dots, t_n$ the waiting times between coalescent events, where $t_i$ is the amount of time for which the coalescent has exactly $i$ distinct lineages (see Figure~\ref{fig:KC_timedefns}).
 A consequence of Definition~\ref{def:kingman} is that these waiting times are independent and have distributions
 \begin{equation*}
 t_i \sim \Exp\left( \binom{i}{2} \right) .
 \end{equation*}
 The partial sum $T_k := \sum_{i=k+1}^n t_i$ gives the total time up to the $(n-k)^{th}$ coalescence event, that is, the first time at which there are only $k$ lineages remaining out of the initial $n$ (see Figure~\ref{fig:KC_timedefns}).
 The partial sums, being sums of independent Exponential random variables, have HyperExponential distributions.
+
+Another important property of the $n$-coalescent is \emph{exchangeability}. That is, its law is invariant under permutations of the branches. This can be seen from \eqref{eq:KCgenerator} since the merge rate is equal for every pair of partitions $\xi \prec \eta$.
 
 \seb{Refer back to the following three properties later on with reference to their relevance in SMC.}
 
@@ -459,7 +459,6 @@ and
 \end{equation*}
 The expected tree height converges to 2 as $n\to\infty$, and the variance converges to $4(\pi^2 - 9)/3 \simeq 1.16$.
 The somewhat surprising fact that the tree height does not diverge with $n$ is a result of the very high rate of coalescence close to the bottom of the tree. This rate is large enough that the full Kingman coalescent (on $\mathbb{N}$) \emph{comes down from infinity}, that is, despite starting with infinitely many blocks, after any positive amount of time these have coalesced into finitely many blocks.
-\seb{Plot?}
 %\seb{Plot mean with sd-ribbon over $n$ for an illustration? SD ribbon isn't the right thing; since we apparently know the actual distribution, plot a high density interval of that. (also for $L$)}
 
 
@@ -482,7 +481,7 @@ and
 = \sum_{i=2}^n \frac{4}{(i-1)^2}
 = \sum_{i=1}^{n-1} \frac{4}{i^2} .
 \end{equation*}
-Note that although the mean total branch length diverges with $n$, the variance converges to a constant, $4\pi /6 \simeq 6.6$.
+Note that although the mean total branch length diverges with $n$, the variance converges to a constant, $4\pi^2 /6 \simeq 6.58$.
 
 
 \subsubsection{Probability that sample MRCA is population MRCA}
@@ -492,8 +491,8 @@ Denote by $S_{k,n}$ the event that these $k$ lineages have the same MRCA as all 
 The probability of this event is calculated in \textcite[Example 1]{saunders1984} and again in \textcite[Equation (3)]{spouge2014}, in both cases arising as a special case of more general results. A direct proof is given below.
 %Denote by $S_k$ the relevant event: that a random sample of size $k$ among $N$ lineages has the same MRCA as the population.
 
-Consider the two subtrees produced by cutting the tree just below the population MRCA. The sample of $k$ lineages coalesces before the full-sample MRCA if and only if all $k$ sampled leaves lie in just one of these two subtrees.
-Let $X$ be the number of leaves in the left subtree. So $X \in \{1,\dots,n-1\} $, and a consequence of the exchangeability of the $n$-coalescent is that $X$ is uniformly distributed on that set.
+Consider the two subtrees produced by cutting the full population tree just below the population MRCA. The $k$ sampled lineages coalesce before the full-sample MRCA if and only if all $k$ sampled leaves lie in just one of these two subtrees.
+Let $X$ be the number of leaves in the left subtree, so $X \in \{1,\dots,n-1\} $, and a consequence of the exchangeability of the $n$-coalescent is that $X$ is uniformly distributed on that set.
 Conditional on $X$ we have
 \begin{equation*}
 \Prob [S_{k,n}^c \mid X=x]
@@ -514,7 +513,7 @@ In particular, when $k=2$ we have
 \Prob[ S_{2,n} ]
 =\frac{n+1}{3(n-1)} 
 \end{equation*}
-as the probability that a randomly chosen pair of lineages does not coalesce until the MRCA.
+as the probability that a randomly chosen pair of lineages does not coalesce until the population MRCA.
 %, in the limit $N\to\infty$, the proportion of leaves in the left subtree is uniformly distributed on $[0,1]$.
 %Calling this proportion $X$, we have
 %\begin{equation*}
@@ -563,7 +562,7 @@ The neutral Cannings model \parencite{cannings1974, cannings1975} is a general c
 
 The Cannings model does not specify a particular distribution for the offspring counts; it just requires that the distribution is exchangeable, i.i.d.\ between generations, and preserves the population size. In particular, the probability of observing offspring counts $(v_1, \dots, v_N)$ must be invariant under permutations of this vector.
 
-Rescaled genealogies of the neutral Cannings model converge to the Kingman coalescent as $N\to\infty$, under some conditions on the moments of the offspring distribution\seb{[citation]}. 
+Rescaled genealogies of the neutral Cannings model converge to the Kingman coalescent as $N\to\infty$, under some conditions on the moments of the offspring distribution. 
 For example, one may apply the sufficient conditions of \textcite{kingman1982gene}:
 if $\V[\nu_1] \to \sigma^2 \in (0,\infty)$ and $\E[\nu_1^k]$ is bounded for all $k\in\mathbb{N}$ then, under the time scaling $N\sigma^{-2}$, the genealogies of the neutral Cannings model converge to the Kingman coalescent.
 %\parencite[see for example][Section 2.2]{etheridge2011}. \seb{original reference for this? is not any Kingman 1982 papers, and certainly not Cannings 1974/5 which predates KC}
@@ -614,7 +613,7 @@ Under a suitable time-scaling, its genealogies converge to the Kingman coalescen
 \end{align*}
 violating the condition that $\sigma^2 >0$. 
 However, that condition turns out not to be necessary \seb{[citation]}, and $\V[\nu_1]$ gives us the correct time scale on which to recover the Kingman coalescent: $N(\V[\nu_1])^{-1} = N^2/2$.
-It makes sense that the time scale is an order bigger than in the Wright-Fisher model, because the Moran model has a reproduction rate $O(N)$ times lower than in the Wright-Fisher model: at each generation $2$ individuals are involved in reproduction, as opposed to $N$ in the Wright-Fisher model.
+It is not surprising that the time scale is an order bigger than in the Wright-Fisher model, because the Moran model has a reproduction rate $O(N)$ times lower than in the Wright-Fisher model: at each generation $2$ individuals are involved in reproduction, as opposed to $N$ in the Wright-Fisher model.
 %\seb{also cite a Moran-specific convergence result: not sure where (it isn't in Kingman 1982* or in Moran 1958 which predates KC)}
 
 
@@ -622,28 +621,28 @@ It makes sense that the time scale is an order bigger than in the Wright-Fisher 
 
 \subsection{Other convergence results}
 \label{sec:previousgeneconv}
-The original work of \textcite{kingman1982gene} provides sufficient conditions for convergence of finite-dimensional distributions in the class of Cannings models.
-\textcite{mohle1998} provides another set of sufficient conditions which apply to the wider class of models in which the population size may vary deterministically, the offspring distributions are independent but not identical across generations, and exchangeability is replaced by the weaker ``random assignment'' condition. 
-For that class of models under the same conditions, \textcite{mohle1999} proved that the genealogical process converges weakly as well as in the sense of finite-dimensional distributions.
+The original work of \textcite{kingman1982gene} provides sufficient conditions for the finite-dimensional distributions of genealogies of Cannings models to converge to those of the Kingman coalescent.
+\textcite{mohle1998} provides another set of sufficient conditions which apply to the wider class of models in which the population size may vary deterministically, the offspring distributions are independent but not identical across generations, and exchangeability is replaced by the weaker \emph{random assignment} condition. 
+For that class of models under the same conditions, \textcite{mohle1999} proved that the genealogies converge weakly as well as in the sense of finite-dimensional distributions.
 \textcite{mohle2000} gives a simpler condition which is necessary and sufficient for convergence of Cannings genealogies to the Kingman coalescent. % that N&S condition is the exchangeable version of our main theorem condition.
 
-Meanwhile many similar results were proved where the limiting process is not necessarily the Kingman coalescent.
-Relaxing the conditions to allow large mergers in the limit admits $\Lambda$-coalescents as limiting processes, with the Kingman coalescent as a special case \parencite{pitman1999, sagitov1999, mohlesagitov1998}.
-If simultaneous mergers are also allowed, the limiting process is a $\Xi$-coalescent \parencite{mohle2001}, and this class encompasses all possible limiting genealogies of Cannings models.
+Meanwhile many similar results were established for models in which the limiting process is not the Kingman coalescent.
+Relaxing the conditions to allow multiple mergers in the limit admits $\Lambda$-coalescents as limiting processes, with the Kingman coalescent as a special case \parencite{pitman1999, sagitov1999, mohlesagitov1998}.
+If simultaneous mergers are also allowed, the limiting process is in the even more general class of $\Xi$-coalescents \parencite{mohle2001}, and this class encompasses all possible limiting genealogies of Cannings models.
 
-The focus of the current work is on systems that admit Kingman genealogies in the limit, among a wider class of models where, like \textcite{mohle1998, mohle1999}, exchangeability is relaxed to random assignment, and we also do not require independence between generations. 
+The focus of the current work is on systems that admit Kingman genealogies in the limit, among a wider class of models where, like \textcite{mohle1998, mohle1999}, exchangeability is relaxed to random assignment, and we also do not require independence between generations, so our models are not neutral. 
 %In particular, this class of models is non-neutral.
-Our main condition, which is introduced in Chapter~\ref{ch:limits}, can be considered a non-exchangeable non-neutral analogue of the condition for convergence to the Kingman coalescent presented in \textcite{mohle2000}.
+Our main condition for convergence to the Kingman coalescent, which is introduced in Chapter~\ref{ch:limits}, can be considered a non-exchangeable non-neutral analogue of the condition presented in \textcite{mohle2000}.
 
 
 
 
 \subsection{Particle populations}
 Much of the population genetics framework transfers readily to the case of SMC. The population is now a population of particles, with each iteration of the SMC algorithm corresponding to a generation, and resampling playing the part of reproduction.
-In fact, SMC ``populations'' are in some ways more suited to these population models than actual populations of organisms.
-The assumptions that the population has constant size $N$ and that reproduction occurs only at discrete generations are satisfied by construction.
+In fact, SMC populations are in some ways more suited to these population models than actual biological populations.
+For example, the assumptions that the population has constant size $N$ and that reproduction occurs only at discrete generations are satisfied by construction.
 
-However, we cannot assume independence between generations: as seen in Figure~\ref{fig:cond_indep_graph}, the offspring counts at subsequent generations are not independent without some conditioning. 
+However, we cannot assume independence between generations: as seen in Figure~\ref{fig:cond_indep_graph}, the offspring counts at subsequent iterations of an SMC algorithm are not independent without some conditioning. 
 This means that SMC populations are not neutral.
 In fact, after marginalising out the information about the positions of the particles, the genealogical process is not even Markovian.
 
@@ -2066,6 +2065,7 @@ In this section, we first introduce the particle Gibbs algorithm and the conditi
 
 
 \subsection{Particle Gibbs}
+\label{sec:particleGibbs}
 To motivate the particle Gibbs algorithm, we introduce a parametrised state space model and explain how combining SMC updates with MCMC sampling allows us to tackle the related inferences effectively.
 The particle Gibbs algorithm can be applied much more broadly, but this application is particularly intuitive and exhibits all the features of interest to our genealogical study.
 
