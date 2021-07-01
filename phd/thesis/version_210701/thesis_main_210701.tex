@@ -47,7 +47,7 @@
 
 %%% BIBLIOGRAPHY
 \usepackage[style=authoryear, citestyle=authoryear-comp, sorting=nyt, backend=biber]{biblatex} %%% use \cite, \textcite and \parencite commands in text
-\addbibresource{../latex/smc.bib}
+\addbibresource{../../latex/smc.bib}
 %% fix the bibliography so that it displays initials only for first names?
 
 %%% MATHS PACKAGES
@@ -101,7 +101,7 @@
 %%% HYPERLINKS (must load last)
 \usepackage{hyperref}
 
-\usepackage{refcheck}
+\usepackage[norefs]{refcheck}
 
 \begin{document}
 
@@ -252,12 +252,16 @@ $\ON$ & asymptotic notation for a function that converges to $1$ as $N\to\infty$
 
 %%% The main body will be contained in separate tex files for each chapter, which are pulled in using these commands:
 
-\include{introduction}
-\include{background}
-\include{limits}
-\include{weakconv}
-\include{applications}
-\include{discussion}
+\chapter{Introduction}
+%\include{introduction}
+
+\include{background_210701}
+\include{limits_210701}
+\include{weakconv_210701}
+\include{applications_210701}
+
+\chapter{Discussion}
+%\include{discussion}
 
 
 \backmatter
