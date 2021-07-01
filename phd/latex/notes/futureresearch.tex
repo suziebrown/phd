@@ -14,7 +14,7 @@
 
 \title{Possible future research topics}
 \author{Suzie Brown}
-\date{15 January 2021}
+\date{1 July 2021}
 
 \begin{document}
 \maketitle
@@ -38,12 +38,10 @@
 \begin{itemize}
 \item Derive expressions for the one-step Monte Carlo variance with SSP resampling and residual-systematic resampling, (and systematic resampling?). Is there another ordering result there?
 \item Compare residual-systematic vs. systematic resampling: are they equivalent? What if the weights are sorted? Maybe start by coding up an exploratory experiment.
-\item Explore more generally the effect of pre-sorting the weights. How does this link with results of Gerber Chopin Whiteley (where they sort by particle position, if I remember rightly)?
+\item Explore more generally the effect of pre-sorting the weights. How does this link with results of Gerber Chopin Whiteley (where they sort by particle position)?
 \item Compare theoretical computation/storage costs and parallelisability between the different resampling schemes.
-\item Is there a nice set of weights that will nicely illustrate all the points I want to make about resampling schemes?
 \item Can the comparison of time-scales for different schemes be wrangled into/ related to a direct comparison of the variances? Is this even useful?
 \item (See marked notebook 3 page circa Jun/Jul 2020 for some more thoughts/ideas.)
-\item Does residual-systematic share the same pathological behaviour as systematic resampling? E.g.\ try plugging it into the pathoglogical example from Douc Cappe Moulines.
 \item The difference $\Delta_i$, as defined in \texttt{phd/latex/randomised\_rounding/randomised\_rounding.pdf}, seems to tend to a quadratic in the weight as $N\to\infty$. Prove it?
 \item (Just for fun:) in stochastic rounding, how many possible ways are there to assign the offspring counts? Consider that each of the N counts takes one of two possible values, but this will overcount a lot because we are also constrained by offspring counts summing to N. It's $\binom{N}{R}$ isn't it? Where $R$ as in residual resampling. Give each parent its minimum number of offspring, and you'll be left with $R$ unassigned offspring that have to be given to $R$ distinct parents among $N$. $\binom{N}{R}$ is maximised if $R\simeq N/2$, in which case $\binom{N}{R}\simeq ??$.
 \item (Conjecture:) pre-sorting of weights reduces resampling variance, but increases the coalescence rate. Intuition: when weights are sorted, small weights that sum to less than 1/N are grouped together so only one of them can have a child. (It may be that this effect is entirely cancelled by the reduction in variance elsewhere.)

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  15 JUN 2021 10:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  1 JUL 2021 17:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -192,11 +192,11 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 Here is how much of TeX's memory you used:
  1541 strings out of 492649
  19659 string characters out of 6129623
- 94414 words of memory out of 5000000
+ 94410 words of memory out of 5000000
  5450 multiletter control sequences out of 15000+600000
  8881 words of font info for 33 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 27i,10n,43p,622b,310s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 28i,10n,43p,622b,308s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2018/texmf-dist/fonts/type1/public/
 amsfonts/cm/cmbx12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/a
 msfonts/cm/cmex10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/am
@@ -208,7 +208,7 @@ cm/cmr17.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm
 /cmss10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/
 cmsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/c
 mtt10.pfb>
-Output written on futureresearch.pdf (2 pages, 110777 bytes).
+Output written on futureresearch.pdf (2 pages, 110279 bytes).
 PDF statistics:
  51 PDF objects out of 1000 (max. 8388607)
  36 compressed objects within 1 object stream
