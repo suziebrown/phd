@@ -48,39 +48,39 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.3.1}Ancestral degeneracy}{16}{subsection.2.3.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Mitigating ancestral degeneracy}{17}{section*.18}
+\contentsline {subsubsection}{\nonumberline Mitigating ancestral degeneracy}{16}{section*.18}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.3.2}Asymptotic genealogies}{19}{subsection.2.3.2}
+\contentsline {subsection}{\numberline {2.3.2}Asymptotic genealogies}{18}{subsection.2.3.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.4}Resampling}{20}{section.2.4}
+\contentsline {section}{\numberline {2.4}Resampling}{19}{section.2.4}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.4.1}Definition}{20}{subsection.2.4.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.4.2}Examples}{21}{subsection.2.4.2}
+\contentsline {subsection}{\numberline {2.4.2}Examples}{20}{subsection.2.4.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Multinomial resampling}{21}{section*.20}
+\contentsline {subsubsection}{\nonumberline Multinomial resampling}{20}{section*.19}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Residual resampling}{22}{section*.21}
+\contentsline {subsubsection}{\nonumberline Residual resampling}{22}{section*.20}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Stratified resampling}{23}{section*.23}
+\contentsline {subsubsection}{\nonumberline Stratified resampling}{23}{section*.22}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Systematic resampling}{25}{section*.26}
+\contentsline {subsubsection}{\nonumberline Systematic resampling}{23}{section*.25}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Star resampling}{26}{section*.27}
+\contentsline {subsubsection}{\nonumberline Star resampling}{25}{section*.26}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Minimal variance branching}{26}{section*.28}
+\contentsline {subsubsection}{\nonumberline Minimal variance branching}{25}{section*.27}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Srinivasan sampling procedure}{26}{section*.29}
+\contentsline {subsubsection}{\nonumberline Srinivasan sampling procedure}{26}{section*.28}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.4.3}Properties}{27}{subsection.2.4.3}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\nonumberline Support of offspring numbers}{27}{section*.30}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Degeneracy under equal weights}{28}{section*.31}
+\contentsline {subsubsection}{\nonumberline Degeneracy under equal weights}{27}{section*.31}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\nonumberline Marginal variance of offspring counts}{28}{section*.32}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Contribution to the Monte Carlo variance}{31}{section*.33}
+\contentsline {subsubsection}{\nonumberline Contribution to the Monte Carlo variance}{30}{section*.33}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\nonumberline Exchangeability of offspring}{33}{section*.34}
 \defcounter {refsection}{0}\relax 
@@ -88,9 +88,9 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\nonumberline Computational complexity}{35}{section*.37}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Negative association}{36}{section*.38}
+\contentsline {subsubsection}{\nonumberline Negative association}{35}{section*.38}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Star discrepancy}{37}{section*.39}
+\contentsline {subsubsection}{\nonumberline Star discrepancy}{36}{section*.39}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.4.4}Stochastic rounding}{40}{subsection.2.4.4}
 \defcounter {refsection}{0}\relax 
@@ -100,7 +100,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.5.2}Ancestral degeneracy in particle Gibbs}{42}{subsection.2.5.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.5.3}Ancestor sampling}{43}{subsection.2.5.3}
+\contentsline {subsection}{\numberline {2.5.3}Ancestor sampling}{44}{subsection.2.5.3}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\nonumberline Why ancestor sampling works}{46}{section*.45}
 \defcounter {refsection}{0}\relax 
