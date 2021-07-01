@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  1 JUL 2021 13:57
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  1 JUL 2021 18:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1534,12 +1534,12 @@ LaTeX Font Info:    Font shape `OT1/put/bx/n' in size <20.74> not available
 (Font)              Font shape `OT1/put/b/n' tried instead on input line 131.
 
 (./thesis_main.toc
-LaTeX Font Info:    Try loading font information for U+msa on input line 11.
+LaTeX Font Info:    Try loading font information for U+msa on input line 17.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 11.
+LaTeX Font Info:    Try loading font information for U+msb on input line 17.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -1548,13 +1548,13 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 
 ]
-Overfull \hbox (1.42336pt too wide) detected at line 133
- []\OT1/put/b/n/10.95 105
+Overfull \hbox (1.42336pt too wide) detected at line 139
+ []\OT1/put/b/n/10.95 107
  []
 
 
-Overfull \hbox (1.42336pt too wide) detected at line 151
- []\OT1/put/b/n/10.95 123
+Overfull \hbox (1.42336pt too wide) detected at line 157
+ []\OT1/put/b/n/10.95 125
  []
 
 )
@@ -1577,15 +1577,70 @@ Overfull \hbox (1.42336pt too wide) detected at line 151
 
 ]
 chapter without number
+
+Underfull \hbox (badness 10000) in paragraph at lines 147--151
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 152--154
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 155--157
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 158--160
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 161--164
+
+ []
+
 [5
 
 
 ]
+Underfull \hbox (badness 10000) in paragraph at lines 165--168
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 169--171
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 172--174
+
+ []
+
+[6]
 chapter without number
-[6
+[7
 
 
-] [7]
+]
+chapter without number
+[8
+
+
+]
+chapter without number
+[9
+
+
+]
+chapter without number
+[10
+
+
+] [11]
 \openout2 = `introduction.aux'.
 
  (./introduction.tex
@@ -1594,7 +1649,7 @@ chapter 1.
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.255 \include{introduction}
+l.261 \include{introduction}
                              [1
 
 
@@ -1621,12 +1676,12 @@ LaTeX Font Info:    Font shape `OT1/put/bx/n' in size <12> not available
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 357.
-<plots/ncoalescent.pdf, id=474, 456.70625pt x 423.5825pt>
+<plots/ncoalescent.pdf, id=507, 456.70625pt x 423.5825pt>
 File: plots/ncoalescent.pdf Graphic file (type pdf)
 <use plots/ncoalescent.pdf>
 Package pdftex.def Info: plots/ncoalescent.pdf  used on input line 372.
 (pdftex.def)             Requested size: 256.07741pt x 215.4614pt.
- [10 <./plots/ncoalescent.pdf>] [11] [12]
+ [10] [11 <./plots/ncoalescent.pdf>] [12]
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 544.
 
 
@@ -1641,13 +1696,13 @@ Overfull \hbox (10.66173pt too wide) in paragraph at lines 622--626
 fi-cient con-di-tions for the finite-dimensional
  []
 
-[15]
-<plots/ancdegen_mn.pdf, id=569, 602.25pt x 401.5pt>
+[15] [16]
+<plots/ancdegen_mn.pdf, id=605, 602.25pt x 401.5pt>
 File: plots/ancdegen_mn.pdf Graphic file (type pdf)
 <use plots/ancdegen_mn.pdf>
 Package pdftex.def Info: plots/ancdegen_mn.pdf  used on input line 678.
 (pdftex.def)             Requested size: 200.59245pt x 133.7268pt.
-<plots/ancdegen_adaptsyst.pdf, id=570, 602.25pt x 401.5pt>
+<plots/ancdegen_adaptsyst.pdf, id=606, 602.25pt x 401.5pt>
 File: plots/ancdegen_adaptsyst.pdf Graphic file (type pdf)
 <use plots/ancdegen_adaptsyst.pdf>
 Package pdftex.def Info: plots/ancdegen_adaptsyst.pdf  used on input line 682.
@@ -1657,24 +1712,24 @@ Package pdftex.def Info: plots/ancdegen_adaptsyst.pdf  used on input line 682.
 Package refcheck Warning: Unused label `fig:ancdegen_adaptsyst' on input line 6
 82.
 
-[16] [17 <./plots/ancdegen_mn.pdf> <./plots/ancdegen_adaptsyst.pdf>] [18]
-[19]
+[17 <./plots/ancdegen_mn.pdf> <./plots/ancdegen_adaptsyst.pdf>] [18] [19]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 771.
- [20] [21] [22]
+
+[20] [21] [22] [23]
 
 Package refcheck Warning: Unused label `fig:strat_case1' on input line 1182.
 
-[23] [24] [25] [26] [27] [28] [29] [30]
+[24] [25] [26] [27] [28] [29] [30] [31]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 1563.
- [31] [32] [33] [34]
+ [32] [33] [34] [35]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 1877.
- [35]
+ [36]
 LaTeX Font Info:    Try loading font information for U+bbm on input line 1889.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/bbm-macros/ubbm.fd
@@ -1685,7 +1740,7 @@ Overfull \hbox (2.1247pt too wide) in paragraph at lines 1886--1890
 also sat-is-fies this prop-erty.  []Check
  []
 
-[36] [37] [38] [39
+[37] [38] [39] [40
 
 ]
 Package mdframed Info: mdframed detected package amsthm 
@@ -1695,65 +1750,66 @@ Package mdframed Info: mdframed detected package amsthm
 
 Package refcheck Warning: Unused label `defn:stochround' on input line 2034.
 
-[40
+[41
 
-] [41] [42]
-<plots/PG_degen.pdf, id=921, 602.25pt x 401.5pt>
+] [42] [43]
+<plots/PG_degen.pdf, id=957, 602.25pt x 401.5pt>
 File: plots/PG_degen.pdf Graphic file (type pdf)
 <use plots/PG_degen.pdf>
 Package pdftex.def Info: plots/PG_degen.pdf  used on input line 2155.
 (pdftex.def)             Requested size: 341.43437pt x 227.6321pt.
- [43 <./plots/PG_degen.pdf>] [44] [45]
+ [44 <./plots/PG_degen.pdf>] [45] [46]
 
 Package refcheck Warning: Unused label `fig:whyASworks_a' on input line 2342.
 
-) [46] [47]
+) [47] [48]
 \openout2 = `limits.aux'.
 
  (./limits.tex
 chapter 3.
-
-Package refcheck Warning: Unused label `fig:encoding_a' on input line 99.
-
-
-Package refcheck Warning: Unused label `fig:encoding_b' on input line 137.
-
-[48
+[49
 
 
 
 
 ]
 
+Package refcheck Warning: Unused label `fig:encoding_a' on input line 99.
+
+
+Package refcheck Warning: Unused label `fig:encoding_b' on input line 137.
+
+
 Package refcheck Warning: Unused label `eq:defn_cN' on input line 161.
 
-[49]
+[50]
 
 Package refcheck Warning: Unused label `eq:defn_DN' on input line 172.
 
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 180.
-[50]
+[51]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 245.
- [51]
+ [52]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 312.
- [52] [53] [54]
+ [53] [54] [55]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 462.
+ [56]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 485.
- [55] [56]
+ [57]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 541.
- [57]
+ [58]
 Overfull \hbox (16.37553pt too wide) in paragraph at lines 600--600
 [][][][][]\OT1/cmr/m/n/9 Brown et al. 2021 
  []
@@ -1761,19 +1817,18 @@ Overfull \hbox (16.37553pt too wide) in paragraph at lines 600--600
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 610.
-[58]
+[59] [60]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 636.
- [59]
+ [61]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 685.
- [60]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 755.
- [61]
+ [62] [63]
 Overfull \hbox (101.82979pt too wide) in paragraph at lines 843--844
 \OT1/cmr/m/n/10.95 proof is sim-i-lar to \OT1/cmtt/m/n/10.95 Dropbox/SMC[]Genea
 logies/Asymptotic[]genealogies[]of[]interacting[]particle[]systems/
@@ -1785,82 +1840,82 @@ Overfull \hbox (20.12596pt too wide) in paragraph at lines 843--844
 s/full[]redraft.pdf\OT1/cmr/m/n/10.95 , from
  []
 
-[62] [63] [64] [65] [66]) [67]
+[64] [65] [66] [67]) [68]
 \openout2 = `weakconv.aux'.
 
  (./weakconv.tex
 chapter 4.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 32.
-[68
+(mdframed)              on input line 33.
+[69
 
 
 
 
-] [69] [70]
+] [70] [71]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 165.
- [71]
+(mdframed)              on input line 166.
+ [72]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 221.
- [72] [73] [74]
+(mdframed)              on input line 222.
+ [73] [74] [75] [76]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 392.
+(mdframed)              on input line 393.
 
-Overfull \hbox (2.27423pt too wide) in paragraph at lines 402--408
+Overfull \hbox (2.27423pt too wide) in paragraph at lines 403--409
 []$[][]$ 
  []
 
-[75
+[77
 
 
 ]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 461.
- [76]
+(mdframed)              on input line 462.
+ [78]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 538.
- [77] [78]
+(mdframed)              on input line 539.
+ [79] [80]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 615.
- [79] [80] [81] [82]
+(mdframed)              on input line 616.
+ [81] [82] [83] [84]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 842.
- [83] [84] [85]
-Overfull \hbox (6.1905pt too wide) in paragraph at lines 978--980
+(mdframed)              on input line 843.
+ [85] [86] [87]
+Overfull \hbox (6.1905pt too wide) in paragraph at lines 979--981
 \OT1/cmr/m/n/10.95 Combining this sum-product with [], the ex-pres-sion in-side
  the ex-pec-ta-tion in Lemma []4.8[][]
  []
 
-[86] [87] [88]
+[88] [89] [90]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1136.
- [89] [90] [91] [92]
+(mdframed)              on input line 1137.
+ [91] [92] [93] [94]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1297.
- [93] [94] [95] [96] [97] [98]
+(mdframed)              on input line 1298.
+ [95] [96] [97] [98] [99] [100]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1529.
+(mdframed)              on input line 1530.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1549.
- [99]
+(mdframed)              on input line 1550.
+ [101]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1592.
+(mdframed)              on input line 1593.
 
-Overfull \hbox (2.84853pt too wide) in paragraph at lines 1598--1599
+Overfull \hbox (2.84853pt too wide) in paragraph at lines 1599--1600
 []\OT1/cmr/m/n/10.95 We can re-place the event $\OMS/cmsy/m/n/10.95 f\OML/cmm/m
 /it/10.95 ^^\[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 t\OT1/cmr/m/n/10.95 ) \O
 MS/cmsy/m/n/10.95 ^^U \OML/cmm/m/it/10.95 l\OMS/cmsy/m/n/10.95 g$ \OT1/cmr/m/n/
@@ -1870,21 +1925,21 @@ MS/cmsy/m/n/10.95 ^^U \OML/cmm/m/it/10.95 l\OMS/cmsy/m/n/10.95 g$ \OT1/cmr/m/n/
 
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1618.
-[100] [101] [102]
+(mdframed)              on input line 1619.
+[102] [103] [104]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1746.
- [103]
+(mdframed)              on input line 1747.
+ [105]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1835.
-) [104]
+(mdframed)              on input line 1836.
+) [106]
 \openout2 = `applications.aux'.
 
  (./applications.tex
 chapter 5.
-[105
+[107
 
 
 
@@ -1893,18 +1948,19 @@ chapter 5.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 117.
- [106] [107]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 280.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 304.
  [108] [109]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
+(mdframed)              on input line 280.
+ [110]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 304.
+ [111]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
 (mdframed)              on input line 361.
- [110] [111] [112]
+ [112] [113] [114]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 615.
@@ -1912,15 +1968,15 @@ Package mdframed Info: mdframed detected package amsthm
 
 Package refcheck Warning: Unused label `thm:stochrounding' on input line 615.
 
-[113]
+[115]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 636.
- [114]
+ [116]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 812.
- [115]
+ [117]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 833.
@@ -1929,11 +1985,11 @@ Package mdframed Info: mdframed detected package amsthm
 Package refcheck Warning: Unused label `thm:resstrat_nontriviality' on input li
 ne 833.
 
-[116] [117] [118]
+[118] [119] [120]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 1072.
- [119] [120]
+ [121] [122]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 1237.
@@ -1942,48 +1998,53 @@ Package mdframed Info: mdframed detected package amsthm
 Package refcheck Warning: Unused label `sec:ancsamp_genealogy' on input line 12
 58.
 
-[121]) [122]
+[123]) [124]
 \openout2 = `discussion.aux'.
 
  (./discussion.tex
 chapter 6.
-) [123
+[125
 
 
 
 
-] [124
+]) [126] [127
 
 
 
 
 
-] [125]
-Overfull \hbox (2.69765pt too wide) in paragraph at lines 269--269
+] [128]
+Overfull \hbox (2.69765pt too wide) in paragraph at lines 275--275
 [][][]\OT1/cmr/m/n/10.95 (1982c). ``The Co-a-les-cent''. In: \OT1/cmr/m/it/10.9
 5 Stochas-tic Pro-cesses and Their Ap-pli-ca-tions \OT1/cmr/m/n/10.95 13.3, pp.
  235{
  []
 
-[126] [127] [128]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 270.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 270.
+[129] [130] [131]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 276.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 276.
  (./thesis_main.aux (./introduction.aux) (./background.aux)
 (./limits.aux) (./weakconv.aux) (./applications.aux) (./discussion.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 270.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 270.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 276.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 276.
 Package rerunfilecheck Info: File `thesis_main.out' has not changed.
-(rerunfilecheck)             Checksum: 941B35724ED313AC0C05982E7761E0EF;3610.
+(rerunfilecheck)             Checksum: 4527645B915343283726E94BBEBAA333;3756.
+
+
+Package biblatex Warning: Please rerun LaTeX.
+(biblatex)                Page breaks have changed.
+
 Package logreq Info: Writing requests to 'thesis_main.run.xml'.
 \openout1 = `thesis_main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 40172 strings out of 492649
- 776465 string characters out of 6129623
- 1314478 words of memory out of 5000000
- 42992 multiletter control sequences out of 15000+600000
- 564336 words of font info for 100 fonts, out of 8000000 for 9000
+ 40205 strings out of 492649
+ 776810 string characters out of 6129623
+ 1314486 words of memory out of 5000000
+ 43011 multiletter control sequences out of 15000+600000
+ 567796 words of font info for 114 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  68i,23n,77p,10565b,1727s stack positions out of 5000i,500n,10000p,200000b,80000s
  </Users/suzie/Library/texlive/2018/texmf-var/fonts/pk/ljfour/public/bbm/bbm1
@@ -2017,10 +2078,10 @@ ts/type1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2018/texmf-dist/fonts
 ype1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2018/texmf-dist/fon
 ts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2018/texmf-dist
 /fonts/type1/adobe/utopia/putb8a.pfb>
-Output written on thesis_main.pdf (136 pages, 859483 bytes).
+Output written on thesis_main.pdf (143 pages, 871738 bytes).
 PDF statistics:
- 2154 PDF objects out of 2487 (max. 8388607)
- 1916 compressed objects within 20 object streams
- 465 named destinations out of 1000 (max. 500000)
- 447 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2201 PDF objects out of 2487 (max. 8388607)
+ 1956 compressed objects within 20 object streams
+ 475 named destinations out of 1000 (max. 500000)
+ 471 words of extra memory for PDF output out of 10000 (max. 10000000)
 
