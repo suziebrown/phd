@@ -178,7 +178,7 @@ However, remember that given a particular state space model there is also a choi
 	}
 }
 \vspace*{10pt}
-\caption{Sequential Monte Carlo for a generic Feynman-Kac model}
+\caption[Sequential Monte Carlo]{Sequential Monte Carlo for a generic Feynman-Kac model}
 \label{alg:SMC}
 \end{algorithm}
 
@@ -1587,7 +1587,8 @@ $\begin{aligned}
 \end{aligned}$
 \end{enumerate}
 \end{prop}
-\seb{Depict this partial ordering with a graph?}
+\seb{Depict this partial ordering with a graph?\\ 
+We also know star$\geq$res-star (with equality only if weights are a permutation of $(1,0,...,0)$ ?), by using the expressions derived below along with $r^{(j)} \leq Nw_t^{(j)}/R$. But it would be nicer if we could prove a general result ``X$\geq$res-X''.}
 
 \begin{proof}
 \textbf{\ref{item:resampling_var1}} See \textcite[Section 3]{douc2005}.\\
@@ -2020,7 +2021,7 @@ Figure~\ref{fig:star_discrepancy} illustrates how the star discrepancy is comput
         & & & \\
 \hline\hline
 \end{tabular}
-\caption[Properties of resampling schemes]{Summary of some of the properties of resampling schemes explored in Section~\ref{sec:resampling_properties}. The abbreviated names for the resampling schemes are explained in Table~\ref{tab:resampling_abbrevs}. Some properties are not specified for \texttt{branching} bacuase they depend on the particular implementation.}
+\caption[Properties of resampling schemes]{Summary of some of the properties of resampling schemes explored in Section~\ref{sec:resampling_properties}. The abbreviated names for the resampling schemes are explained in Table~\ref{tab:resampling_abbrevs}. Some properties are not specified for \texttt{branching} because they depend on the particular implementation.}
 \label{tab:resampling_properties}
 \end{table} 
 \end{landscape}
@@ -2134,7 +2135,7 @@ Set $X_0^{(a_0^\star)} \gets x_0^\star$\;
 	}          
 }
 \vspace*{10pt}
-\caption[Conditional sequential Monte Carlo for a parametrised state space model]{Conditional sequential Monte Carlo for a parametrised state space model. The immortal particle at each generation has its new state and parental index set deterministically according to the values of $x_{0:T}^\star$ and $a_{0:T}^\star$ given as input.}
+\caption[Conditional sequential Monte Carlo]{Conditional sequential Monte Carlo for a parametrised state space model. The immortal particle at each generation has its new state and parental index set deterministically according to the values of $x_{0:T}^\star$ and $a_{0:T}^\star$ given as input.}
 \label{alg:condSMC}
 \end{algorithm}
 The complete particle Gibbs algorithm for this example then consists of alternately sampling from the full conditional distribution of $\theta$ (e.g.\ using a Metropolis-Hastings update) and sampling a trajectory $(x_{0:T}, a_{0:T})$ using conditional SMC. See \textcite[Section 2.4.3]{andrieu2010} for more details.

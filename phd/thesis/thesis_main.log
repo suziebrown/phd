@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  1 JUL 2021 18:11
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  2 JUL 2021 13:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1401,20 +1401,20 @@ File: english.lbx 2018/03/04 v3.11 biblatex localization (PK/MW)
 (./weakconv.aux) (./applications.aux) (./discussion.aux))
 \openout1 = `thesis_main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 106.
-LaTeX Font Info:    ... okay on input line 106.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 106.
-LaTeX Font Info:    ... okay on input line 106.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 106.
-LaTeX Font Info:    ... okay on input line 106.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 106.
-LaTeX Font Info:    ... okay on input line 106.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 106.
-LaTeX Font Info:    ... okay on input line 106.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 106.
-LaTeX Font Info:    ... okay on input line 106.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 106.
-LaTeX Font Info:    ... okay on input line 106.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 107.
+LaTeX Font Info:    ... okay on input line 107.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 107.
+LaTeX Font Info:    ... okay on input line 107.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 107.
+LaTeX Font Info:    ... okay on input line 107.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 107.
+LaTeX Font Info:    ... okay on input line 107.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 107.
+LaTeX Font Info:    ... okay on input line 107.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 107.
+LaTeX Font Info:    ... okay on input line 107.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 107.
+LaTeX Font Info:    ... okay on input line 107.
 
 (/usr/local/texlive/2018/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -1494,9 +1494,9 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'thesis_main.bbl' found.
  (./thesis_main.bbl)
-Package biblatex Info: Reference section=0 on input line 106.
-Package biblatex Info: Reference segment=0 on input line 106.
-Package hyperref Info: Link coloring OFF on input line 106.
+Package biblatex Info: Reference section=0 on input line 107.
+Package biblatex Info: Reference segment=0 on input line 107.
+Package hyperref Info: Link coloring OFF on input line 107.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -1506,9 +1506,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count453
 )
-LaTeX Info: Redefining \ref on input line 106.
-LaTeX Info: Redefining \pageref on input line 106.
-LaTeX Info: Redefining \nameref on input line 106.
+LaTeX Info: Redefining \ref on input line 107.
+LaTeX Info: Redefining \pageref on input line 107.
+LaTeX Info: Redefining \nameref on input line 107.
 
 (./thesis_main.out) (./thesis_main.out)
 \@outlinefile=\write6
@@ -1522,38 +1522,81 @@ options: showrefs, showcites, msgs, chckunlbld
 
 
 {/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    Try loading font information for OT1+put on input line 131.
+LaTeX Font Info:    Try loading font information for OT1+put on input line 132.
 
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/ot1put.fd
 File: ot1put.fd 2001/06/04 font definitions for OT1/put.
 )
 LaTeX Font Info:    Font shape `OT1/put/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/put/b/n' tried instead on input line 131.
+(Font)              Font shape `OT1/put/b/n' tried instead on input line 132.
 LaTeX Font Info:    Font shape `OT1/put/bx/n' in size <20.74> not available
-(Font)              Font shape `OT1/put/b/n' tried instead on input line 131.
-
-(./thesis_main.toc
-LaTeX Font Info:    Try loading font information for U+msa on input line 17.
-
-(/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Try loading font information for U+msb on input line 17.
-
-(/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [1
+(Font)              Font shape `OT1/put/b/n' tried instead on input line 132.
+ [1
 
 
 
 ]
-Overfull \hbox (1.42336pt too wide) detected at line 139
+LaTeX Font Info:    Try loading font information for U+msa on input line 158.
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 158.
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) [2
+
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 172--177
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 178--180
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 181--184
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 185--188
+
+ []
+
+[3
+
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 189--192
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 193--195
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 196--198
+
+ []
+
+[4] (./thesis_main.toc [5
+
+
+]
+Overfull \hbox (1.42336pt too wide) detected at line 133
  []\OT1/put/b/n/10.95 107
  []
 
 
-Overfull \hbox (1.42336pt too wide) detected at line 157
+Overfull \hbox (1.42336pt too wide) detected at line 151
  []\OT1/put/b/n/10.95 125
  []
 
@@ -1561,77 +1604,25 @@ Overfull \hbox (1.42336pt too wide) detected at line 157
 \tf@toc=\write7
 \openout7 = `thesis_main.toc'.
 
- [2] (./thesis_main.lof)
+ [6] (./thesis_main.lof)
 \tf@lof=\write8
 \openout8 = `thesis_main.lof'.
 
- [3
+ [7
 
 
 ] (./thesis_main.lot)
 \tf@lot=\write9
 \openout9 = `thesis_main.lot'.
 
- [4
+ [8
 
 
-]
-chapter without number
-
-Underfull \hbox (badness 10000) in paragraph at lines 147--151
-
- []
+] (./thesis_main.loa)
+\tf@loa=\write10
+\openout10 = `thesis_main.loa'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 152--154
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 155--157
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 158--160
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 161--164
-
- []
-
-[5
-
-
-]
-Underfull \hbox (badness 10000) in paragraph at lines 165--168
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 169--171
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 172--174
-
- []
-
-[6]
-chapter without number
-[7
-
-
-]
-chapter without number
-[8
-
-
-]
-chapter without number
 [9
 
 
@@ -1640,7 +1631,12 @@ chapter without number
 [10
 
 
-] [11]
+]
+chapter without number
+[11
+
+
+] [12]
 \openout2 = `introduction.aux'.
 
  (./introduction.tex
@@ -1649,7 +1645,7 @@ chapter 1.
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.261 \include{introduction}
+l.278 \include{introduction}
                              [1
 
 
@@ -1676,7 +1672,7 @@ LaTeX Font Info:    Font shape `OT1/put/bx/n' in size <12> not available
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 357.
-<plots/ncoalescent.pdf, id=507, 456.70625pt x 423.5825pt>
+<plots/ncoalescent.pdf, id=509, 456.70625pt x 423.5825pt>
 File: plots/ncoalescent.pdf Graphic file (type pdf)
 <use plots/ncoalescent.pdf>
 Package pdftex.def Info: plots/ncoalescent.pdf  used on input line 372.
@@ -1697,12 +1693,12 @@ fi-cient con-di-tions for the finite-dimensional
  []
 
 [15] [16]
-<plots/ancdegen_mn.pdf, id=605, 602.25pt x 401.5pt>
+<plots/ancdegen_mn.pdf, id=607, 602.25pt x 401.5pt>
 File: plots/ancdegen_mn.pdf Graphic file (type pdf)
 <use plots/ancdegen_mn.pdf>
 Package pdftex.def Info: plots/ancdegen_mn.pdf  used on input line 678.
 (pdftex.def)             Requested size: 200.59245pt x 133.7268pt.
-<plots/ancdegen_adaptsyst.pdf, id=606, 602.25pt x 401.5pt>
+<plots/ancdegen_adaptsyst.pdf, id=608, 602.25pt x 401.5pt>
 File: plots/ancdegen_adaptsyst.pdf Graphic file (type pdf)
 <use plots/ancdegen_adaptsyst.pdf>
 Package pdftex.def Info: plots/ancdegen_adaptsyst.pdf  used on input line 682.
@@ -1728,14 +1724,14 @@ Package mdframed Info: mdframed detected package amsthm
  [32] [33] [34] [35]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1877.
+(mdframed)              on input line 1878.
  [36]
-LaTeX Font Info:    Try loading font information for U+bbm on input line 1889.
+LaTeX Font Info:    Try loading font information for U+bbm on input line 1890.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/bbm-macros/ubbm.fd
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
 )
-Overfull \hbox (2.1247pt too wide) in paragraph at lines 1886--1890
+Overfull \hbox (2.1247pt too wide) in paragraph at lines 1887--1891
 \OT1/cmr/m/n/10.95 3.1), which im-plies that residual-multinomial re-sam-pling 
 also sat-is-fies this prop-erty.  []Check
  []
@@ -1745,10 +1741,10 @@ also sat-is-fies this prop-erty.  []Check
 ]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 2034.
+(mdframed)              on input line 2035.
 
 
-Package refcheck Warning: Unused label `defn:stochround' on input line 2034.
+Package refcheck Warning: Unused label `defn:stochround' on input line 2035.
 
 [41
 
@@ -1756,11 +1752,11 @@ Package refcheck Warning: Unused label `defn:stochround' on input line 2034.
 <plots/PG_degen.pdf, id=957, 602.25pt x 401.5pt>
 File: plots/PG_degen.pdf Graphic file (type pdf)
 <use plots/PG_degen.pdf>
-Package pdftex.def Info: plots/PG_degen.pdf  used on input line 2155.
+Package pdftex.def Info: plots/PG_degen.pdf  used on input line 2156.
 (pdftex.def)             Requested size: 341.43437pt x 227.6321pt.
  [44 <./plots/PG_degen.pdf>] [45] [46]
 
-Package refcheck Warning: Unused label `fig:whyASworks_a' on input line 2342.
+Package refcheck Warning: Unused label `fig:whyASworks_a' on input line 2343.
 
 ) [47] [48]
 \openout2 = `limits.aux'.
@@ -2015,36 +2011,31 @@ chapter 6.
 
 
 ] [128]
-Overfull \hbox (2.69765pt too wide) in paragraph at lines 275--275
+Overfull \hbox (2.69765pt too wide) in paragraph at lines 292--292
 [][][]\OT1/cmr/m/n/10.95 (1982c). ``The Co-a-les-cent''. In: \OT1/cmr/m/it/10.9
 5 Stochas-tic Pro-cesses and Their Ap-pli-ca-tions \OT1/cmr/m/n/10.95 13.3, pp.
  235{
  []
 
 [129] [130] [131]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 276.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 276.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 293.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 293.
  (./thesis_main.aux (./introduction.aux) (./background.aux)
 (./limits.aux) (./weakconv.aux) (./applications.aux) (./discussion.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 276.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 276.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 293.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 293.
 Package rerunfilecheck Info: File `thesis_main.out' has not changed.
-(rerunfilecheck)             Checksum: 4527645B915343283726E94BBEBAA333;3756.
-
-
-Package biblatex Warning: Please rerun LaTeX.
-(biblatex)                Page breaks have changed.
-
+(rerunfilecheck)             Checksum: 125C649C8B1AEDD6A216D935369C2F3C;3602.
 Package logreq Info: Writing requests to 'thesis_main.run.xml'.
 \openout1 = `thesis_main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 40205 strings out of 492649
- 776810 string characters out of 6129623
- 1314486 words of memory out of 5000000
+ 40210 strings out of 492649
+ 776867 string characters out of 6129623
+ 1314550 words of memory out of 5000000
  43011 multiletter control sequences out of 15000+600000
- 567796 words of font info for 114 fonts, out of 8000000 for 9000
+ 568142 words of font info for 115 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  68i,23n,77p,10565b,1727s stack positions out of 5000i,500n,10000p,200000b,80000s
  </Users/suzie/Library/texlive/2018/texmf-var/fonts/pk/ljfour/public/bbm/bbm1
@@ -2078,10 +2069,10 @@ ts/type1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2018/texmf-dist/fonts
 ype1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2018/texmf-dist/fon
 ts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2018/texmf-dist
 /fonts/type1/adobe/utopia/putb8a.pfb>
-Output written on thesis_main.pdf (143 pages, 871738 bytes).
+Output written on thesis_main.pdf (144 pages, 873767 bytes).
 PDF statistics:
- 2201 PDF objects out of 2487 (max. 8388607)
- 1956 compressed objects within 20 object streams
- 475 named destinations out of 1000 (max. 500000)
- 471 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2200 PDF objects out of 2487 (max. 8388607)
+ 1954 compressed objects within 20 object streams
+ 477 named destinations out of 1000 (max. 500000)
+ 447 words of extra memory for PDF output out of 10000 (max. 10000000)
 

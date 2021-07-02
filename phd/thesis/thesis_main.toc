@@ -1,14 +1,8 @@
 \boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\nonumberline Acknowledgements}{v}{chapter*.4}
+\contentsline {chapter}{\nonumberline Abbreviations}{x}{chapter*.8}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\nonumberline Declaration}{vii}{chapter*.5}
-\defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\nonumberline Abstract}{viii}{chapter*.6}
-\defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\nonumberline List of Abbreviations}{ix}{chapter*.7}
-\defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\nonumberline Notation and Conventions}{x}{chapter*.8}
+\contentsline {chapter}{\nonumberline Notation and Conventions}{xi}{chapter*.9}
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
 \defcounter {refsection}{0}\relax 
@@ -32,19 +26,19 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.2.2}Properties of Kingman's coalescent}{11}{subsection.2.2.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Time to MRCA}{12}{section*.14}
+\contentsline {subsubsection}{\nonumberline Time to MRCA}{12}{section*.15}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Total branch length}{12}{section*.15}
+\contentsline {subsubsection}{\nonumberline Total branch length}{12}{section*.16}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Probability that sample MRCA is population MRCA}{12}{section*.16}
+\contentsline {subsubsection}{\nonumberline Probability that sample MRCA is population MRCA}{12}{section*.17}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.2.3}Models in population genetics}{13}{subsection.2.2.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Cannings model}{14}{section*.17}
+\contentsline {subsubsection}{\nonumberline Cannings model}{14}{section*.18}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Wright-Fisher model}{14}{section*.18}
+\contentsline {subsubsection}{\nonumberline Wright-Fisher model}{14}{section*.19}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Moran model}{15}{section*.19}
+\contentsline {subsubsection}{\nonumberline Moran model}{15}{section*.20}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.2.4}Other convergence results}{15}{subsection.2.2.4}
 \defcounter {refsection}{0}\relax 
@@ -54,7 +48,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.3.1}Ancestral degeneracy}{16}{subsection.2.3.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Mitigating ancestral degeneracy}{17}{section*.21}
+\contentsline {subsubsection}{\nonumberline Mitigating ancestral degeneracy}{17}{section*.22}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.3.2}Asymptotic genealogies}{19}{subsection.2.3.2}
 \defcounter {refsection}{0}\relax 
@@ -64,39 +58,39 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.4.2}Examples}{21}{subsection.2.4.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Multinomial resampling}{21}{section*.22}
+\contentsline {subsubsection}{\nonumberline Multinomial resampling}{21}{section*.23}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Residual resampling}{22}{section*.23}
+\contentsline {subsubsection}{\nonumberline Residual resampling}{22}{section*.24}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Stratified resampling}{22}{section*.25}
+\contentsline {subsubsection}{\nonumberline Stratified resampling}{22}{section*.26}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Systematic resampling}{25}{section*.28}
+\contentsline {subsubsection}{\nonumberline Systematic resampling}{25}{section*.29}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Star resampling}{26}{section*.29}
+\contentsline {subsubsection}{\nonumberline Star resampling}{26}{section*.30}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Minimal variance branching}{26}{section*.30}
+\contentsline {subsubsection}{\nonumberline Minimal variance branching}{26}{section*.31}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Srinivasan sampling procedure}{27}{section*.31}
+\contentsline {subsubsection}{\nonumberline Srinivasan sampling procedure}{27}{section*.32}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.4.3}Properties}{27}{subsection.2.4.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Support of offspring numbers}{28}{section*.33}
+\contentsline {subsubsection}{\nonumberline Support of offspring numbers}{28}{section*.34}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Degeneracy under equal weights}{28}{section*.34}
+\contentsline {subsubsection}{\nonumberline Degeneracy under equal weights}{28}{section*.35}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Marginal variance of offspring counts}{29}{section*.35}
+\contentsline {subsubsection}{\nonumberline Marginal variance of offspring counts}{29}{section*.36}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Contribution to the Monte Carlo variance}{31}{section*.36}
+\contentsline {subsubsection}{\nonumberline Contribution to the Monte Carlo variance}{31}{section*.37}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Exchangeability of offspring}{34}{section*.37}
+\contentsline {subsubsection}{\nonumberline Exchangeability of offspring}{34}{section*.38}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Permutation sensitivity and sorting}{35}{section*.38}
+\contentsline {subsubsection}{\nonumberline Permutation sensitivity and sorting}{35}{section*.39}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Computational complexity}{36}{section*.40}
+\contentsline {subsubsection}{\nonumberline Computational complexity}{36}{section*.41}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Negative association}{36}{section*.41}
+\contentsline {subsubsection}{\nonumberline Negative association}{36}{section*.42}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Star discrepancy}{37}{section*.42}
+\contentsline {subsubsection}{\nonumberline Star discrepancy}{37}{section*.43}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.4.4}Stochastic rounding}{41}{subsection.2.4.4}
 \defcounter {refsection}{0}\relax 
@@ -108,7 +102,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.5.3}Ancestor sampling}{45}{subsection.2.5.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Why ancestor sampling works}{47}{section*.48}
+\contentsline {subsubsection}{\nonumberline Why ancestor sampling works}{47}{section*.49}
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {3}Convergence of Finite-Dimensional Distributions}{49}{chapter.3}
 \defcounter {refsection}{0}\relax 
