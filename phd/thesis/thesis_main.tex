@@ -43,7 +43,7 @@
 \setlength{\epigraphwidth}{0.45\linewidth}
 \setlength{\beforeepigraphskip}{1.5\baselineskip}
 \setlength{\afterepigraphskip}{3.5\baselineskip}
-\renewcommand{\textflush}{flushright} %%% default is flushleft, not sure which looks better
+%\renewcommand{\textflush}{flushright} %%% default is flushleft, not sure which looks better
 
 %%% BIBLIOGRAPHY
 \usepackage[style=authoryear, citestyle=authoryear-comp, sorting=nyt, backend=biber]{biblatex} %%% use \cite, \textcite and \parencite commands in text
@@ -129,8 +129,13 @@ July 2021 %%% update submission date (month year)
 \frontmatter
 
 
-\chapter*{} %% [Abstract]{}
-Add abstract here...
+\chapter*{Abstract}
+This thesis attempts to quantify the problem of ancestral degeneracy of sequential Monte Carlo samples, which is known to  have a critical effect on the performance of the resulting estimators.
+To facilitate comparisons between different algorithms, the induced genealogical processes are analysed under an asymptotic regime in which the number of particles tends to infinity. 
+Simple conditions are derived under which these genealogical processes converge weakly to Kingman's well-studied $n$-coalescent, with a certain time change.
+These sufficient conditions are verified for the many of the most popular sequential Monte Carlo algorithms, giving a novel insight into the large-sample behaviour of the associated estimators.
+The asymptotic regime serves to unify these different algorithms in one framework, the genealogical differences between the algorithms then being fully captured by variations of the time-change function.
+
 
 %%% The abstract must be no more than 300 words and may be single-spaced to ensure it fits on one page.
 

@@ -352,6 +352,7 @@ Suffice it to say that SMC algorithms enjoy enough theoretical properties to be 
 The current work draws on the literature around coalescent theory, primarily from population genetics. This section summarises the relevant parts of that literature. We will see in Section~\ref{sec:SMC_genealogies} how it applies to SMC.
 
 \subsection{Kingman's coalescent}
+\label{sec:KC}
 The Kingman coalescent \parencite{kingman1982gene, kingman1982coal, kingman1982exch} is a continuous-time Markov process on the space of partitions of $\mathbb{N}$. For our purposes we need only consider its restriction to $\{1,\dots,n\}$, termed the $n$-coalescent (Definition~\ref{def:kingman}), since we only ever consider finite samples from a population. 
 %However, an excellent probabilistic introduction to the Kingman coalescent from the point-of-view of exchangeable random partitions can be found in \textcite[Chapters 1--2]{berestycki2009}. \seb{or \textcite{wakeley2009} ? or \textcite{durrett2008} ?}
 \begin{defn}%[Kingman's $n$-coalescent]
