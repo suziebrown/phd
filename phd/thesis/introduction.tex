@@ -8,15 +8,15 @@ I wonder why I wonder!
 }
 {\textsc{Richard P. Feynman}}
 
-Since their introduction in the 1990s, sequential Monte Carlo (SMC) methods, known in some fields as particle filters, have found applications in virtually every branch of science. 
-This is primarily due to the ubiquity of the types of problems in which SMC is most powerful.
+Since their introduction in the 1990s, sequential Monte Carlo (SMC) methods, sometimes known as particle filters, have found applications in virtually every branch of science. 
+This is due to the ubiquity of the types of problems in which SMC is most powerful.
 As more and more data are collected, and scientific models made ever more complex, practitioners are frequently reaching for numerical methods to solve problems.
 If the aim of their analysis is to extract information from sequentially-observed data then SMC is a likely candidate. And there is no shortage of sequential data; consider any scenario in which observations are recorded through time. 
-On top of this, SMC is also used as a tool to speed up other numerical methods, by artificially introducing some sequential structure: tempering to enable Monte Carlo sampling from multimodal distributions; using nested sequences of events to enable rare event simulation; sequentially decreasing the tolerance level in approximate Bayesian computation.
+On top of this, SMC is also used as a tool to speed up other numerical methods, by artificially introducing some sequential structure: tempering to enable Monte Carlo sampling from multimodal distributions; constructing nested sequences of events to enable rare event simulation; sequentially decreasing the tolerance level in approximate Bayesian computation.
 
 Almost three decades of study have produced a menagerie of variations on the standard ``bootstrap'' SMC algorithm, along with a deeper understanding of their theoretical underpinnings.
 Even so, the problems to which SMC is applied are inherently hard --- after all, Monte Carlo is said to be a last resort for problems too hard to solve in any sensible way --- so it is still found to be lacking in some respects.
-One such unresolved issue, which is the primary concern of the current work, is that of ancestral or path degeneracy, which is described in Section~\ref{sec:anc_degen}. Although this problem was noted in the original article by \textcite{gordon1993} it has still not been adequately solved.
+One such unresolved issue, which is the primary concern of the current work, is that of ancestral or path degeneracy, which is described in Section~\ref{sec:anc_degen}. Although this problem was noted in the original article on SMC by \textcite{gordon1993}, it still has not been adequately solved.
 
 The current work makes no attempt to solve the problem of ancestral degeneracy. The focus is instead on analysing and quantifying it, using a combination of techniques from the SMC and population genetics literatures. 
 The hope is that, equipped with more information about this phenomenon, the practitioner will be able to make better judgements about their choice of algorithm and tuning parameters, and how much trust they should put in the resulting estimates.
