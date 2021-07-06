@@ -1775,6 +1775,8 @@ On the other hand, under stratified or systematic resampling the distribution of
 When the weights are in their natural order, as in the top row of Figure~\ref{fig:permutation_sensitivity}, it is possible under stratified and systematic resampling for both parents $2$ and $6$ to be assigned one offspring.
 Clearly, then, the distribution of offspring counts under these resampling schemes differs between the two orderings of the weight vector pictured. 
 Table~\ref{tab:resampling_properties} includes a summary of which resampling schemes are permutation-sensitive or not.
+
+\seb{I haven't actually proved this (I only explored it with a small example to get some intuition), but I believe SSP resampling is not permutation-sensitive. I think its behaviour is like the ``sorted'' case in the above, in that if two weights sum to less than $1/N$ then at most one of them will be assigned an offspring. This would be the ideal behaviour since it avoids assigning too many offspring to low-weight particles, while also avoiding erratic behaviour caused by sensitivity to the ordering of weights.}
 % For example, in Figures \ref{fig:resampling_stratified} and \ref{fig:resampling_systematic} if the intervals $w_2$ and $w_4$ were swapped, the number of offspring assigned to particles 2 and 4 would be swapped in each case. \seb{Better to use an example where \emph{distribution} of offspring counts (conditional on the weights but not on the Uniform samples) differs depending on order. Such an example is included in my YRM19 presentation on resampling.}
 %We can also see that because $w_1$ has weight $\geq 1/N$ and is placed first, it is guaranteed at least one offspring.
 %
