@@ -1886,7 +1886,7 @@ $Z_{1:n}$ are said to be \emph{negatively associated} if, for every disjoint pai
 \textcite{gerber2017} show that negative association of offspring counts is a desirable property which may be used, along with some other machinery, to establish certain weak convergence results for the resampled measures.
 
 Multinomial counts are negatively associated \parencite[Section 3.1]{joag1983}, which implies that residual-multinomial resampling also satisfies this property.
-\seb{Check that! Idea: deterministic parts have 0 correlation and the random parts are NA. Same goes for the other residual schemes mentioned below.}
+%\seb{Check that! Idea: deterministic parts have 0 correlation and the random parts are NA. Same goes for the other residual schemes mentioned below.}
 \textcite{gerber2017} construct a counter-example to demonstrate that systematic resampling violates the negative association property.
 For residual-systematic resampling, we can cook up a counterexample in the same spirit by taking $\varphi(x)=\psi(x)=\I{x=1}$, $I=\{1\}$, $J=\{3\}$ and considering a weight vector say $w^{(1:4)} = \frac{1}{8}(1,1,1,5)$ for $N=4$. Then the residual weights are $r^{(1:4)} = \frac{1}{4}(1,1,1,1)$ with $R=2$, so
 \begin{align*}
@@ -2003,7 +2003,7 @@ Figure~\ref{fig:star_discrepancy} illustrates how the star discrepancy is comput
 \texttt{multi} & $\{0,\dots,N\}$ & $N$ & $N/4$ & $\times$ & $\times$ 
         & $\times$ & $N$ & $\checkmark$ \\
 \texttt{star} & $\{0, N\}$ & $N$ & $N^2/4$ & $\times$ & $\times$ 
-        & $\times$ & $1$ & $\checkmark$? \\
+        & $\times$ & $1$ & $\checkmark$ \\
 \texttt{strat} & $\{K-1, K, K+1, K+2\}$ & $2$ & $2$ & $\times$ & $\checkmark$ 
         & $\checkmark$ & $N$ & $\checkmark$ \\
 \texttt{syst} & $\{K, K+1\}$ & $1$ & $1/4$ & $\checkmark$ & $\checkmark$ 
@@ -2011,13 +2011,13 @@ Figure~\ref{fig:star_discrepancy} illustrates how the star discrepancy is comput
 \texttt{res-multi} & $\{K,\dots,N\}$ & $N-1$ & $1$ & $\times$ & $\checkmark$ 
         & $\times$ & $\leq N-1$ & $\checkmark$ \\
 \texttt{res-star} & $\{K, N\}$ & $N-1$ & $N$ & $\times$ & $\checkmark$ 
-        & $\times$ & $1$ & $\checkmark$? \\
+        & $\times$ & $1$ & $\checkmark$ \\
 \texttt{res-strat} & $\{K, K+1, K+2\}$ & $2$ & $1/2$ & $\times$ & $\checkmark$ 
         & $\checkmark$ & $\leq N-1$ & $\checkmark$ \\
 \texttt{res-syst} & $\{K, K+1\}$ & $1$ & $1/4$ & $\checkmark$ & $\checkmark$ 
         & $\checkmark$ & $1$ & $\times$ \\
 \texttt{ssp} & $\{K, K+1\}$ & $1$ & $1/4$ & $\checkmark$ & $\checkmark$ 
-        & $\checkmark$? & $\leq N$ & $\checkmark$ \\
+        & $\times$ & $\leq N$ & $\checkmark$ \\
 \texttt{mvb} & $\{K, K+1\}$ & $1$ & $1/4$ & $\checkmark$ & $\checkmark$ 
         & & & \\
 \hline\hline
