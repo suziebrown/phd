@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  7 JUL 2021 16:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  7 JUL 2021 18:54
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1968,40 +1968,40 @@ Package mdframed Info: mdframed detected package amsthm
  [113] [114] [115]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 615.
+(mdframed)              on input line 616.
 
 
-Package refcheck Warning: Unused label `thm:stochrounding' on input line 615.
+Package refcheck Warning: Unused label `thm:stochrounding' on input line 616.
 
 [116]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 636.
+(mdframed)              on input line 637.
  [117]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 812.
+(mdframed)              on input line 813.
  [118]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 833.
+(mdframed)              on input line 834.
 
 
 Package refcheck Warning: Unused label `thm:resstrat_nontriviality' on input li
-ne 833.
+ne 834.
 
 [119] [120] [121]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1072.
+(mdframed)              on input line 1073.
  [122] [123]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1237.
+(mdframed)              on input line 1238.
 
 
 Package refcheck Warning: Unused label `sec:ancsamp_genealogy' on input line 12
-58.
+59.
 
 [124]) [125]
 \openout2 = `discussion.aux'.
@@ -2042,7 +2042,7 @@ Package logreq Info: Writing requests to 'thesis_main.run.xml'.
 Here is how much of TeX's memory you used:
  40224 strings out of 492649
  777050 string characters out of 6129623
- 1314810 words of memory out of 5000000
+ 1314800 words of memory out of 5000000
  43024 multiletter control sequences out of 15000+600000
  568142 words of font info for 115 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -2078,10 +2078,10 @@ ts/type1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2018/texmf-dist/fonts
 ype1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2018/texmf-dist/fon
 ts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2018/texmf-dist
 /fonts/type1/adobe/utopia/putb8a.pfb>
-Output written on thesis_main.pdf (145 pages, 881653 bytes).
+Output written on thesis_main.pdf (145 pages, 881679 bytes).
 PDF statistics:
- 2221 PDF objects out of 2487 (max. 8388607)
- 1974 compressed objects within 20 object streams
+ 2222 PDF objects out of 2487 (max. 8388607)
+ 1975 compressed objects within 20 object streams
  478 named destinations out of 1000 (max. 500000)
  439 words of extra memory for PDF output out of 10000 (max. 10000000)
 

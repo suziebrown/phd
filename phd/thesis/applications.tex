@@ -12,18 +12,18 @@ The rest sit round and pluck blackberries.
 
 Theorem~\ref{thm:weakconv} gives verifiable conditions under which interacting particle systems with dynamics in the form of Algorithm~\ref{alg:SMC} have asymptotically Kingman genealogies. 
 The work was motivated by SMC algorithms, which have the required form. However, certain choices of state space and dynamics within the context of Algorithm~\ref{alg:SMC} yield systems that are not very SMC-like but may have applications in other fields such as population genetics. 
-For instance, we have generally imagined that the resampling scheme is unbiased, but this is by no means necessary for Theorem~\ref{thm:weakconv} (or indeed Theorem~\ref{thm:FDDconv}); it is just that biased resampling schemes are of little use in SMC.
+For instance, we have generally required that the resampling scheme is unbiased, but this is by no means necessary for Theorem~\ref{thm:weakconv} (or indeed Theorem~\ref{thm:FDDconv}); it is just that biased resampling schemes are of little use in SMC.
 
 The applications presented in this chapter are all motivated by SMC, but an interesting area of future research would be to explore the implications of Theorem~\ref{thm:weakconv} in other contexts. From the population genetics point-of-view, Theorem~\ref{thm:weakconv} may be seen as a complement to the convergence criteria for neutral models discussed in Section \ref{sec:previousgeneconv}, so it would be interesting to construct some corollaries for classical non-neutral population models.
 
-For many of the following results it will be necessary to compute filtered expectations $\Et[\cdot]$, which are generally difficult to compute directly. 
+For many of the following results it will be necessary to compute filtered expectations $\Et[\cdot] \equiv \E[\cdot \mid \mathcal{F}_{t-1}]$, which are generally difficult to compute directly. 
 To simplify the computations we introduce a sequence of $\sigma$-algebras $(\mathcal{H}_t)$, defined below, such that filtered expectations can be written in terms of conditional expectations given $\mathcal{H}_t$.
 
 Figure \ref{fig:cond_indep_graph_Ht} shows a section of the conditional dependence graph implied by Algorithm \ref{alg:SMC}, as in Figure~\ref{fig:cond_indep_graph}, except that time is now labelled in reverse. The $\sigma$-algebra
 \begin{equation}\label{eq:defn_Ht}
-\mathcal{H}_t := \sigma(X_{t-1}^{(1:N)}, X_t^{(1:N)}, w_{t-1}^{(1:N)}, w_t^{(1:N)} ) ,
+\mathcal{H}_t := \sigma(X_{t-1}^{(1:N)}, X_t^{(1:N)}, w_{t-1}^{(1:N)}, w_t^{(1:N)} ) 
 \end{equation}
-at each time $t$, forms a separatrix (in the sense of d-separation; see \textcite{verma1988}) between the parental indices $a_t^{(1:N)}$ and the previous $\sigma$-algebra $\mathcal{F}_{t-1}$ in the filtration. 
+at each time $t$ forms a separatrix, in the sense of d-separation \parencite{verma1988}, between the parental indices $a_t^{(1:N)}$ and the previous $\sigma$-algebra $\mathcal{F}_{t-1}$ in the filtration. 
 That is, $a_t^{(1:N)}$ is conditionally independent of $\mathcal{F}_{t-1}$ given $\mathcal{H}_t$.
 The practical upshot of this is that we can use the tower rule along with conditional independence to write filtered expectations as
 \begin{equation}
@@ -120,7 +120,7 @@ Consider an SMC algorithm using multinomial resampling, such that \ref{standing_
 \frac{1}{a} \leq g_t(x, x^\prime) \leq a , \quad
 \varepsilon h(x^\prime) \leq q_t(x, x^\prime) \leq \frac{1}{\varepsilon} h(x^\prime) .
 \end{equation}
-Let $(G_t^{(n,N)})_{t\geq0}$ denote the genealogy of a random sample of $n$ terminal particles from the output of the algorithm among a total of $N$ particles. Then, for any fixed $n$, the time-scaled genealogy $(G_{\tau_N(t)}^{(n,N)})_{t\geq0}$ converges weakly to Kingman's $n$-coalescent as $N\to \infty$.%, in the sense of finite-dimensional distributions.
+Let $(G_t^{(n,N)})_{t\geq0}$ denote the genealogy of a random sample of size $n$ among the $N$ terminal particles in the output of the algorithm. Then, for any fixed $n$, the time-scaled genealogy $(G_{\tau_N(t)}^{(n,N)})_{t\geq0}$ converges weakly to Kingman's $n$-coalescent as $N\to \infty$.%, in the sense of finite-dimensional distributions.
 \end{corollary}
 The bounds on $g_t$ and $q_t$ in \eqref{eq:gq_bounds_mn} are rather strong; they can only reasonably be expected to hold if the state space is compact. 
 However, they are widespread in the literature, where they are known as the \emph{strong mixing conditions} \parencite[Section 3.5.2]{delmoral2004}, because they greatly facilitate the theoretical analysis of SMC algorithms. It is often possible to relax these conditions at the expense of considerable technical complication.
@@ -193,7 +193,7 @@ We therefore have the bounds
 \leq \E[ (\nu_t^{(i)})_k \mid \mathcal{H}_t ]
 \leq \frac{(N)_k}{N^k} \frac{a^{2k}}{\varepsilon^{2k}} . %\label{eq:mn_nuk_bounds}
 \end{equation*}
-for each $k$. Consequently,
+for each $k\in\mathbb{N}$. Consequently,
 \begin{equation}
 \frac{1}{(N)_2} \sum_{i=1}^N \E[ (\nu_t^{(i)})_2 \mid \mathcal{H}_t ]
 \geq \frac{\varepsilon^4}{Na^4} \label{eq:mn_cN_LB}
@@ -270,7 +270,7 @@ Applying \eqref{eq:condexp_HtFt} to \eqref{eq:mn_cN_LB} and \eqref{eq:mn_cN3_UB}
 = \frac{ a^{10} }{ N\varepsilon^{10} }
 =: b_N \underset{N\to\infty}{\longrightarrow} 0.
 \end{align*}
-Thus \eqref{eq:mainthmcond} is satisfied. 
+Thus \eqref{eq:mainthmcondition2} is satisfied. 
 It remains to show that, for $N$ sufficiently large, $\Prob[ \tau_N(t) = \infty ] =0$ for all finite $t$, a technicality which is proved in Lemma \ref{thm:mn_nontriviality}. 
 Applying Theorem~\ref{thm:weakconv} then yields the result.
 \end{proof}
@@ -308,7 +308,7 @@ Assume that there exists a constant $a\in [1,\infty)$ such that for all $x, x^\p
 \frac{1}{a} \leq g_t(x, x^\prime) \leq a .
 \end{equation}
 Assume that $\Prob[ \tau_N(t) = \infty] =0$ for all finite $t$.
-Let $(G_t^{(n,N)})_{t\geq0}$ denote the genealogy of a random sample of $n$ terminal particles from the output of the algorithm among a total of $N$ particles. Then, for any fixed $n$, the time-scaled genealogy $(G_{\tau_N(t)}^{(n,N)})_{t\geq0}$ converges weakly to Kingman's $n$-coalescent as $N\to \infty$.%, in the sense of finite-dimensional distributions.
+Let $(G_t^{(n,N)})_{t\geq0}$ denote the genealogy of a random sample of size $n$ among the $N$ terminal particles in the output of the algorithm. Then, for any fixed $n$, the time-scaled genealogy $(G_{\tau_N(t)}^{(n,N)})_{t\geq0}$ converges weakly to Kingman's $n$-coalescent as $N\to \infty$.%, in the sense of finite-dimensional distributions.
 \end{corollary}
 Stratified resampling is, by design, much more restrictive than multinomial resampling. Once the weights are known there is little freedom in the offspring counts, so it is not surprising that control over the weights such as \eqref{eq:gq_bounds_sr} provides is sufficient without any additional control over the transition densities $q_t$. 
 Indeed the transition kernels need not even admit densities.
@@ -346,13 +346,13 @@ and
 &\leq a^2 \E [(\nu_t^{(i)})_2 \mid \mathcal{H}_t ] . \label{eq:strat_v2_versus_v3}
 \end{align}
 The last line uses the almost sure bound $w_t^{(i)} \leq a^2 /N$ which follows from \eqref{eq:gq_bounds_sr} along with the form of the weights in Algorithm \ref{alg:SMC}.
-Note that some terms in the above expressions may be equal to zero when $w_t^{(i)}$ is small enough, but the bound still holds in these cases.
-Since \eqref{eq:strat_v2_versus_v3} holds for all $i$, applying the tower rule we have
+Some terms in the above expressions may be equal to zero when $w_t^{(i)}$ is small enough, but the bound still holds in these cases.
+Since \eqref{eq:strat_v2_versus_v3} holds for all $i$, applying the tower rule as in \eqref{eq:condexp_HtFt} we have
 \begin{equation*}
 \frac{1}{(N)_3} \sum_{i=1}^{N} \Et [(\nu_t^{(i)})_3 ]
 \leq \frac{a^2}{N-2} \frac{1}{(N)_2} \sum_{i=1}^{N} \Et [(\nu_t^{(i)})_2 ] ,
 \end{equation*}
-satisfying \eqref{eq:mainthmcond} with $b_N := a^2/(N-2) \rightarrow 0$.
+satisfying \eqref{eq:mainthmcondition2} with $b_N := a^2/(N-2) \rightarrow 0$.
 The result follows by applying Theorem~\ref{thm:weakconv}.
 \end{proof}
 
@@ -372,7 +372,7 @@ uniformly in $x,t$, and that there exist $\zeta >0$ and $\delta \in (0,1)$ such 
 \end{prop}
 We now assume $q_t$ is bounded above and away from zero, as in \eqref{eq:gq_bounds_mn}.
 We saw that such a condition was not necessary for Corollary~\ref{thm:stratified}, and we do not believe it to be necessary here either; it is merely a convenient way to control the contributions from the transition density. Indeed, the terms in $\varepsilon$ appearing in the bounds established in the following proof are rather crude.
-In fact, the stated condition is rather stronger than necessary: we only need the bounds on $q_t$ to hold for infinitely many $t$, rather than for all $t$. We use this stronger statement to avoid complicating the proof.
+In fact, the stated condition is stronger than necessary: we only need the bounds on $q_t$ to hold for infinitely many $t$, rather than for all $t$. We use this stronger statement to avoid complicating the proof.
 %The bounds established in the following proof are rather crude, particularly the terms in $\varepsilon$, so it may well be possible to achieve similar bounds under even less restrictive conditions on $q_t$.
 
 The second condition \eqref{eq:strat_minmaxweight} is required to ensure that, at least infinitely often, the weights are not equal to $(1,\dots,1)/N$, since stratified resampling is degenerate under equal weights, which could cause the time scale to explode. 
@@ -408,7 +408,7 @@ p_k^{(i)}
         \prod_{j=1}^N q_{t-1}( X_t^{(a_j)}, X_{t-1}^{(j)} ) 
 \end{align*}
 for each $k\in\{-1,0,1,2\}$.
-We can bound each probability above and below using the almost sure bounds on $q_{t-1}$ from the statement of the Proposition (once the bounds on $q_{t-1}$ are brought outside, the remaining sum of probabilities is equal to one):
+We can bound each probability above and below using the almost sure bounds on $q_{t-1}$ from the statement of the Proposition. Once the bounds on $q_{t-1}$ are brought outside, the remaining sum of probabilities is equal to one:
 \begin{align*}
 p_k^{(i)}
 &\geq C \, \Prob \left[ \nu_t^{(i)} = \flnw + k \midd w_t^{(1:N)} \right] \varepsilon^N
@@ -554,8 +554,9 @@ Overall, under the constraint $\max_i w_t^{(i)} \geq (1+\delta)/N$, we have
         \left\{ \frac{3\gamma }{4} \varepsilon^{2N} \I{\gamma \in [0,1)}
         + \frac{3 }{4} \varepsilon^{2N} \I{\gamma \in [1,2)}
         + \I{\gamma \geq 2} \right\}
-= \frac{3}{4} \delta \varepsilon^{2N} .
+= \frac{3}{4} \delta \varepsilon^{2N} ,
 \end{equation*}
+since $\delta <1$.
 
 We now construct a similar argument for the minimum weight. Let $j^\star := \argmin_i \{ w_t^{(i)} \}$ and write
 $w_t^{(j^\star)} = \frac{1-\gamma}{N}$, for some $\gamma \in [0,1]$.
@@ -619,7 +620,7 @@ Assume that there exists a constant $a\in [1,\infty)$ such that for all $x, x^\p
 \frac{1}{a} \leq g_t(x, x^\prime) \leq a . 
 \end{equation*}
 Assume that $\Prob[ \tau_N(t) = \infty] =0$ for all finite $t$.
-Let $(G_t^{(n,N)})_{t\geq0}$ denote the genealogy of a random sample of $n$ terminal particles from the output of the algorithm among a total of $N$ particles. Then, for any fixed $n$, the time-scaled genealogy $(G_{\tau_N(t)}^{(n,N)})_{t\geq0}$ converges weakly to Kingman's $n$-coalescent as $N\to \infty$.%, in the sense of finite-dimensional distributions.
+Let $(G_t^{(n,N)})_{t\geq0}$ denote the genealogy of a random sample of size $n$ among the $N$ terminal particles in the output of the algorithm. Then, for any fixed $n$, the time-scaled genealogy $(G_{\tau_N(t)}^{(n,N)})_{t\geq0}$ converges weakly to Kingman's $n$-coalescent as $N\to \infty$.%, in the sense of finite-dimensional distributions.
 \end{corollary}
 
 \begin{proof}
@@ -816,7 +817,7 @@ Assume that there exists a constant $a\in [1,\infty)$ such that for all $x, x^\p
 \frac{1}{a} \leq g_t(x, x^\prime) \leq a .
 \end{equation*}
 Assume that $\Prob[ \tau_N(t) = \infty] =0$ for all finite $t$.
-Let $(G_t^{(n,N)})_{t\geq0}$ denote the genealogy of a random sample of $n$ terminal particles from the output of the algorithm among a total of $N$ particles. Then, for any fixed $n$, the time-scaled genealogy $(G_{\tau_N(t)}^{(n,N)})_{t\geq0}$ converges weakly to Kingman's $n$-coalescent as $N\to \infty$.%, in the sense of finite-dimensional distributions.
+Let $(G_t^{(n,N)})_{t\geq0}$ denote the genealogy of a random sample of size $n$ among the $N$ terminal particles in the output of the algorithm. Then, for any fixed $n$, the time-scaled genealogy $(G_{\tau_N(t)}^{(n,N)})_{t\geq0}$ converges weakly to Kingman's $n$-coalescent as $N\to \infty$.%, in the sense of finite-dimensional distributions.
 \end{corollary}
 
 \begin{proof}
@@ -1024,7 +1025,7 @@ One might ask the question: is it possible to construct an SMC algorithm whose g
 The answer is yes, as we now illustrate.
 
 Recall that star resampling assigns all of the offspring to a single parent which is sampled from the Categorical distribution parametrised by $w_t^{(1:N)}$.
-It is easy enough to show that such a resampling scheme does not satisfy \eqref{eq:mainthmcond}.
+It is easy enough to show that such a resampling scheme does not satisfy \eqref{eq:mainthmcondition2}.
 The vector of offspring counts is at every generation some permutation of $(N,0,\dots,0)$, and hence we calculate
 \begin{align*}
 \frac{1}{(N)_2} \sum_{i=1}^N \E[ (\nu_t^{(i)})_2 \mid \mathcal{H}_t ]
@@ -1033,7 +1034,7 @@ The vector of offspring counts is at every generation some permutation of $(N,0,
 &= \frac{1}{(N)_3} (N)_3 = 1 ,
 \end{align*}
 so no suitable sequence $b_N$ can be found.
-Now we know that Theorem~\ref{thm:FDDconv} does not apply, but this is not enough because condition \eqref{eq:mainthmcond} was not proved to be necessary.
+Now we know that Theorem~\ref{thm:FDDconv} does not apply, but this is not enough because condition \eqref{eq:mainthmcondition2} was not proved to be necessary.
 But in fact we know exactly what the genealogy of $n$ particles from this SMC algorithm looks like (Figure~\ref{fig:star_genealogy}).
 \begin{figure}[ht]
 \centering
@@ -1075,7 +1076,7 @@ Consider a conditional SMC algorithm using multinomial resampling, such that \re
 \frac{1}{a} \leq g_t(x, x^\prime) \leq a , \quad
 \varepsilon h(x^\prime) \leq q_t(x, x^\prime) \leq \frac{1}{\varepsilon} h(x^\prime) .
 \end{equation}
-Let $(G_t^{(n,N)})_{t\geq0}$ denote the genealogy of a random sample of $n$ terminal particles from the output of the algorithm among a total of $N$ particles. Then, for any fixed $n$, the time-scaled genealogy $(G_{\tau_N(t)}^{(n,N)})_{t\geq0}$ converges weakly to Kingman's $n$-coalescent as $N\to \infty$.%, in the sense of finite-dimensional distributions.
+Let $(G_t^{(n,N)})_{t\geq0}$ denote the genealogy of a random sample of size $n$ among the $N$ terminal particles in the output of the algorithm. Then, for any fixed $n$, the time-scaled genealogy $(G_{\tau_N(t)}^{(n,N)})_{t\geq0}$ converges weakly to Kingman's $n$-coalescent as $N\to \infty$.%, in the sense of finite-dimensional distributions.
 \end{corollary}
 We restrict here to the case of multinomial resampling, which seems to be the most commonly-used resampling scheme within conditional SMC. Implementing other resampling schemes while maintaining the immortal lineage is more involved, though by no means impossible \parencite[for details see][for example]{lee2019}.
 We conjecture that similar results hold for conditional SMC with other resampling schemes, as in the preceding corollaries.
@@ -1166,7 +1167,7 @@ Hence, applying \eqref{eq:condexp_HtFt}, we can upper bound the ratio
 =: b_N 
 \underset{N\to\infty}{\longrightarrow} 0
 \end{equation*}
-so \eqref{eq:mainthmcond} is satisfied. 
+so \eqref{eq:mainthmcondition2} is satisfied. 
 Proof that the time scale is finite is relegated to Lemma \ref{thm:CSMC_nontriviality}, whence we conclude by applying Theorem~\ref{thm:weakconv}.
 
 %%%%
