@@ -81,22 +81,22 @@ Following \textcite{mohle1999}, we now construct the two-dimensional Markov proc
 \begin{align}
 \Prob[ Z_t = j , S_t = \eta \mid Z_{t-1} = i&, S_{t-1} = \xi, \mathcal{F}_\infty] \notag\\
 &= \begin{cases}
-1 - p_t &\quad \text{if } j=i \text{ and } \xi=\eta \\
-p_{\xi\xi}(t) + p_t - 1  &\quad \text{if } j=i+1 \text{ and } \xi=\eta \\
-p_{\xi\eta}(t) &\quad \text{if } j=i+1 \text{ and } \xi\neq\eta \\
+1 - p_t &\quad \text{if } j=i \text{ and } \eta=\xi \\
+p_{\xi\xi}(t) + p_t - 1  &\quad \text{if } j=i+1 \text{ and } \eta=\xi \\
+p_{\xi\eta}(t) &\quad \text{if } j=i+1 \text{ and } \eta\neq\xi \\
 0 &\quad \text{otherwise} 
 \end{cases}
 \label{eq:constructed_chain}
 \end{align}
 and initial state $Z_0=0$, $S_0 = \Delta$.
-Unlike the corresponding process in \textcite{mohle1999}, in our case the transition probabilities depend on offspring counts, thus the process is only Markovian conditional on $\mathcal{F}_\infty$. It can be thought of as a Markov process in a random environment.
+Unlike the corresponding process in \textcite{mohle1999}, in our case the transition probabilities depend on offspring counts, thus the process is only Markovian conditional on $\mathcal{F}_\infty$. It can be thought of as a time-inhomogeneous Markov process in a random environment.
 
 The construction is such that the marginal $(S_t)$ has the same distribution as the genealogical process of interest, and $(Z_t)$ has jumps at all the times $(S_t)$ does plus some extra jumps. The definition of $p_t$ ensures that the probability in the second case of \eqref{eq:constructed_chain} is non-negative, attaining the value zero when $\xi=\Delta$.
 Furthermore, the transition probabilities (and hence jump times) of $(Z_t)$ do not depend on the current state.
 
 Denote by $0=T_0^{(N)}<T_1^{(N)}<\dots$ the jump times of the rescaled process $(Z_{\tau_N(t)})_{t\geq0}$, and by $\varpi_i^{(N)} := T_i^{(N)} - T_{i-1}^{(N)}$ the corresponding holding times.
 
-Suppose that for some fixed $\varpi_1^{(N)}, \dots, \varpi_m^{(N)}$ and $t>0$, there exists $m \in \mathbb{N}$ and $\delta >0$ such that
+Suppose that for some fixed $\varpi_1^{(N)}, \varpi_2^{(N)}, \dots$ and $t>0$, there exists $m \in \mathbb{N}$ and $\delta >0$ such that
 $\varpi_i^{(N)} > \delta$ for all $i\in \{1,\dots,m\}$, and
 $T_m^{(N)} \geq t$.
 Then
@@ -117,54 +117,110 @@ for any $\epsilon>0$, $t>0$, there exist $m\in\mathbb{N}$, $\delta>0$ such that
         \Prob[ T_m^{(N)} \geq t, \varpi_i^{(N)} > \delta \,\forall i\in \{1,\dots,m\} ]
 \geq 1-\epsilon .
 \end{equation}
-Since $T_m^{(N)} = \varpi_1^{(N)} + \cdots + \varpi_m^{(N)}$, there is a positive correlation between $T_m^{(N)}$ and each of the $\varpi_i^{(N)}$, and conditionally on $\mathcal{F}_\infty$ the $\varpi_i^{(N)}$'s are independent, so
-\begin{align*}
-\Prob[ &T_m^{(N)} \geq t , \varpi_i^{(N)} > \delta \,\forall i\in \{1,\dots,m\} 
-        \mid \mathcal{F}_\infty ] \\
-&= \Prob[ T_m^{(N)} \geq t \mid \varpi_i^{(N)} > \delta \,\forall i\in \{1,\dots,m\} 
-        \mid \mathcal{F}_\infty ]
-        \,\Prob[ \varpi_i^{(N)} > \delta \,\forall i\in \{1,\dots,m\} 
-        \mid \mathcal{F}_\infty ] \\
-&\geq \Prob[ T_m^{(N)} \geq t \mid \mathcal{F}_\infty ]
-        \,\Prob[ \varpi_i^{(N)} > \delta \,\forall i\in \{1,\dots,m\} 
-        \mid \mathcal{F}_\infty ] .
-\end{align*}
 Due to Lemma \ref{thm:holdingtimes_distn}, the limiting distributions of $\varpi_i^{(N)}$ are i.i.d. $\Exp(\alpha_n)$, where $\alpha_n := n(n-1)/2$, so
 \begin{equation*}
-\liminf_{N\to\infty} \Prob[ \varpi_i^{(N)} > \delta \,\forall i\in \{1,\dots,m\} ]
-= (e^{-\alpha_n \delta})^m
+\limsup_{N\to\infty} \Prob[ \varpi_i^{(N)} \leq \delta ] 
+= 1- \liminf_{N\to\infty} \Prob[ \varpi_i^{(N)} > \delta ] 
+= 1- e^{-\alpha_n \delta}
 \end{equation*}
-and
-\begin{equation*}
-\liminf_{N\to\infty} \Prob[ T_m^{(N)} \geq t ]
-= \liminf_{N\to\infty} \Prob[ \varpi_1^{(N)} + \cdots + \varpi_m^{(N)} \geq t ]
-= e^{-\alpha_n t} \sum_{i=0}^{m-1} \frac{(\alpha_n t)^i}{i!} .
-\end{equation*}
+for each $i$, and
+\begin{align*}
+\limsup_{N\to\infty} \Prob[ T_m^{(N)} < t ]
+&= 1- \liminf_{N\to\infty} \Prob[ T_m^{(N)} \geq t ] \\
+&= 1- \liminf_{N\to\infty} \Prob[ \varpi_1^{(N)} + \cdots + \varpi_m^{(N)} \geq t ] \\
+&= 1- e^{-\alpha_n t} \sum_{i=0}^{m-1} \frac{(\alpha_n t)^i}{i!} .
+\end{align*}
 using the series expansion for the Erlang CDF \parencite[see for example][Chapter 15]{forbes2011}.
-Hence 
+Now
 \begin{align*}
 &\liminf_{N\to\infty} 
         \Prob[ T_m^{(N)} \geq t, \varpi_i^{(N)} > \delta \,\forall i\in \{1,\dots,m\} ] \\
-&\hspace{4cm}= \liminf_{N\to\infty} \E\left[ \Prob[ T_m^{(N)} \geq t, 
-        \varpi_i^{(N)} > \delta \,\forall i\in \{1,\dots,m\} \mid \mathcal{F}_\infty ] \right] \\
-&\hspace{4cm}\geq \liminf_{N\to\infty} \E\left[ \Prob[ T_m^{(N)} \geq t 
-        \mid \mathcal{F}_\infty ]
-        \,\Prob[ \varpi_i^{(N)} > \delta \,\forall i\in \{1,\dots,m\} 
-        \mid \mathcal{F}_\infty ] \right] \\
-&\hspace{4cm}= \liminf_{N\to\infty} \left\{ \Prob[ T_m^{(N)} \geq t ]
-        \,\Prob[ \varpi_i^{(N)} > \delta \,\forall i\in \{1,\dots,m\} ] \right\} \\
-&\hspace{4cm}\geq (e^{-\alpha_n \delta})^m e^{-\alpha_n t} \sum_{i=0}^{m-1} 
-        \frac{(\alpha_n t)^i}{i!} ,
+&\hspace{4cm}= 1 - \limsup_{N\to\infty} \Prob\left[ \{ T_m^{(N)} < t \} \cup
+        \bigcup_{i=1}^m \{ \varpi_i^{(N)} \leq \delta \}  \right]\\
+&\hspace{4cm}\geq 1 - \limsup_{N\to\infty} \Prob[ T_m^{(N)} < t ] 
+        - \sum_{i=1}^m \limsup_{N\to\infty} \Prob[ \varpi_i^{(N)} \leq \delta]\\
+&\hspace{4cm}= 1- \left( 1- e^{-\alpha_n t} \sum_{i=0}^{m-1} 
+        \frac{(\alpha_n t)^i}{i!} \right) - m( 1- e^{-\alpha_n \delta} ) ,
 \end{align*}
 which can be made $\geq 1-\epsilon$ by taking $m$ sufficiently large and $\delta$ sufficiently small.
 Since this argument applies for any $\epsilon$ and $t$, \eqref{eq:condition2b} and hence Condition~\ref{item:relcomp2} is satisfied, and the proof is complete.
+%%%%------ ATTEMPT 2, I WASN'T CONVINCED BY THE RIGOUR OF THIS ---------
+%Due to Lemma \ref{thm:holdingtimes_distn}, the limiting distributions of $\varpi_i^{(N)}$ are i.i.d. $\Exp(\alpha_n)$, where $\alpha_n := n(n-1)/2$, so
+%\begin{equation*}
+%\liminf_{N\to\infty} \Prob[ \varpi_i^{(N)} > \delta \,\forall i\in \{1,\dots,m\} ]
+%= (e^{-\alpha_n \delta})^m
+%\end{equation*}
+%and
+%\begin{equation*}
+%\liminf_{N\to\infty} \Prob[ T_m^{(N)} \geq t ]
+%= \liminf_{N\to\infty} \Prob[ \varpi_1^{(N)} + \cdots + \varpi_m^{(N)} \geq t ]
+%= e^{-\alpha_n t} \sum_{i=0}^{m-1} \frac{(\alpha_n t)^i}{i!} .
+%\end{equation*}
+%using the series expansion for the Erlang CDF \parencite[see for example][Chapter 15]{forbes2011}.
+%Since $T_m^{(N)} = \varpi_1^{(N)} + \cdots + \varpi_m^{(N)}$, there is a positive correlation between $T_m^{(N)}$ and each of the $\varpi_i^{(N)}$, and in the limit $N\to\infty$ the $\varpi_i^{(N)}$'s are independent, so
+%\begin{align*}
+%&\liminf_{N\to\infty} 
+%        \Prob[ T_m^{(N)} \geq t, \varpi_i^{(N)} > \delta \,\forall i\in \{1,\dots,m\} ] \\
+%&\hspace{4cm}\geq \liminf_{N\to\infty} \Prob[ T_m^{(N)} \geq t ] 
+%        \Prob[ \varpi_i^{(N)} > \delta \,\forall i\in \{1,\dots,m\} ]\\
+%&\hspace{4cm}\geq \liminf_{N\to\infty} \Prob[ T_m^{(N)} \geq t ] 
+%        \liminf_{N\to\infty} \Prob[ \varpi_i^{(N)} > \delta \,\forall i\in \{1,\dots,m\} ]\\
+%&\hspace{4cm}= (e^{-\alpha_n \delta})^m e^{-\alpha_n t} \sum_{i=0}^{m-1} 
+%        \frac{(\alpha_n t)^i}{i!} ,
+%\end{align*}
+%which can be made $\geq 1-\epsilon$ by taking $m$ sufficiently large and $\delta$ sufficiently small.
+%Since this argument applies for any $\epsilon$ and $t$, \eqref{eq:condition2b} and hence Condition~\ref{item:relcomp2} is satisfied, and the proof is complete.
+%%%%%----------------------------------------------------------
+%%%-------- PREVIOUS ATTEMPT WHERE CONDITIONING DIDN'T WORK ---------
+%Since $T_m^{(N)} = \varpi_1^{(N)} + \cdots + \varpi_m^{(N)}$, there is a positive correlation between $T_m^{(N)}$ and each of the $\varpi_i^{(N)}$, and conditionally on $\mathcal{F}_\infty$ the $\varpi_i^{(N)}$'s are independent, so
+%\begin{align*}
+%\Prob[ &T_m^{(N)} \geq t , \varpi_i^{(N)} > \delta \,\forall i\in \{1,\dots,m\} 
+%        \mid \mathcal{F}_\infty ] \\
+%&= \Prob[ T_m^{(N)} \geq t \mid \varpi_i^{(N)} > \delta \,\forall i\in \{1,\dots,m\} 
+%        \mid \mathcal{F}_\infty ]
+%        \,\Prob[ \varpi_i^{(N)} > \delta \,\forall i\in \{1,\dots,m\} 
+%        \mid \mathcal{F}_\infty ] \\
+%&\geq \Prob[ T_m^{(N)} \geq t \mid \mathcal{F}_\infty ]
+%        \,\Prob[ \varpi_i^{(N)} > \delta \,\forall i\in \{1,\dots,m\} 
+%        \mid \mathcal{F}_\infty ] .
+%\end{align*}
+%Due to Lemma \ref{thm:holdingtimes_distn}, the limiting distributions of $\varpi_i^{(N)}$ are i.i.d. $\Exp(\alpha_n)$, where $\alpha_n := n(n-1)/2$, so
+%\begin{equation*}
+%\liminf_{N\to\infty} \Prob[ \varpi_i^{(N)} > \delta \,\forall i\in \{1,\dots,m\} ]
+%= (e^{-\alpha_n \delta})^m
+%\end{equation*}
+%and
+%\begin{equation*}
+%\liminf_{N\to\infty} \Prob[ T_m^{(N)} \geq t ]
+%= \liminf_{N\to\infty} \Prob[ \varpi_1^{(N)} + \cdots + \varpi_m^{(N)} \geq t ]
+%= e^{-\alpha_n t} \sum_{i=0}^{m-1} \frac{(\alpha_n t)^i}{i!} .
+%\end{equation*}
+%using the series expansion for the Erlang CDF \parencite[see for example][Chapter 15]{forbes2011}.
+%Hence 
+%\begin{align*}
+%&\liminf_{N\to\infty} 
+%        \Prob[ T_m^{(N)} \geq t, \varpi_i^{(N)} > \delta \,\forall i\in \{1,\dots,m\} ] \\
+%&\hspace{4cm}= \liminf_{N\to\infty} \E\left[ \Prob[ T_m^{(N)} \geq t, 
+%        \varpi_i^{(N)} > \delta \,\forall i\in \{1,\dots,m\} \mid \mathcal{F}_\infty ] \right] \\
+%&\hspace{4cm}\geq \liminf_{N\to\infty} \E\left[ \Prob[ T_m^{(N)} \geq t 
+%        \mid \mathcal{F}_\infty ]
+%        \,\Prob[ \varpi_i^{(N)} > \delta \,\forall i\in \{1,\dots,m\} 
+%        \mid \mathcal{F}_\infty ] \right] \\
+%&\hspace{4cm}= \liminf_{N\to\infty} \left\{ \Prob[ T_m^{(N)} \geq t ]
+%        \,\Prob[ \varpi_i^{(N)} > \delta \,\forall i\in \{1,\dots,m\} ] \right\} \\
+%&\hspace{4cm}\geq (e^{-\alpha_n \delta})^m e^{-\alpha_n t} \sum_{i=0}^{m-1} 
+%        \frac{(\alpha_n t)^i}{i!} ,
+%\end{align*}
+%which can be made $\geq 1-\epsilon$ by taking $m$ sufficiently large and $\delta$ sufficiently small.
+%Since this argument applies for any $\epsilon$ and $t$, \eqref{eq:condition2b} and hence Condition~\ref{item:relcomp2} is satisfied, and the proof is complete.
+%%%%%% ----------------------------------------
 \end{proof}
 
 
 
 
 \begin{lemma}\label{thm:maximum_pr}
-$\max_{\xi\in \mathcal{P}_n} (1 - p_{\xi\xi}(t)) = 1 - p_{\Delta\Delta}(t)$.
+$\max_{\xi\in \mathcal{P}_n} \{1 - p_{\xi\xi}(t)\} = 1 - p_{\Delta\Delta}(t)$.
 \end{lemma}
 
 \begin{proof}
@@ -278,7 +334,7 @@ while the probability on the LHS can be written
         (1-p_r) \right) \right] .
 \end{align*}
 That is, there are jumps at some times $r_1, \dots, r_k$ and identity transitions at all other times.
-A similar expression is derived in \textcite{mohle1999}, but here we have an additional outer expectation because the probabilities $p_r$ are random.
+A similar expression is derived in \textcite{mohle1999}, but here we have an additional outer expectation because the probabilities $p_r$ depend on the offspring counts which are random.
 Lemmata \ref{thm:inductionUB} and \ref{thm:inductionLB} show that this probability converges to the correct limit.
 This completes the induction.
 \end{proof}
@@ -486,7 +542,9 @@ We start with a binomial expansion:
         \left( \prod_{i\in\mathcal{I}} c_N(s_i) \right)
         \left( \prod_{j\notin\mathcal{I}} D_N(s_j) \right) \label{eq:010}
 \end{align}
-where $[l] := \{1,\dots,l\}$. Since we are summing over all permutations of $s_1,\dots,s_l$, the particular partition of $\{1,\dots,l\}$ into $(\mathcal{I},\mathcal{I}^c)$ is not important; only the size of $\mathcal{I}$ matters. We may therefore replace the sum over $\mathcal{I}$ with a sum over $I:= |\mathcal{I}|$ and, without loss of generality, set $\mathcal{I} = \{1,\dots,I\}$:
+where $[l] := \{1,\dots,l\}$. 
+%Since we are summing over all permutations of $s_1,\dots,s_l$, the particular partition of $\{1,\dots,l\}$ into $(\mathcal{I},\mathcal{I}^c)$ is not important; only the size of $\mathcal{I}$ matters. We may therefore replace the sum over $\mathcal{I}$ with a sum over $I:= |\mathcal{I}|$ and, without loss of generality, set $\mathcal{I} = \{1,\dots,I\}$. A binomial factor accounts for the number of partitions of a given size:
+Since we are summing over all permutations of $s_1,\dots,s_l$, the inner sum depends on $\mathcal{I}$ only through $I:= |\mathcal{I}|$. We may therefore replace the sum over $\mathcal{I} \subseteq \{1,\dots,l\}$ with a sum over the size $I$ of the subset and a binomial coefficient counting the number of terms in which the subset is of size $I$:
 %we may arbitrarily choose an ordering for $\{1,\dots,l\}$ such that $\mathcal{I} = \{ 1,\dots, |\mathcal{I}| \}$:
 \begin{align*}
 \sum_{\mathcal{I} \subseteq [l]} B^{l-|\mathcal{I}|}
@@ -510,7 +568,7 @@ Separating the term $I=l$,
         \sum_{\substack{ s_1, \dots, s_l =1 \\ \text{all distinct} }}^{\tau_N(t)}
         \left( \prod_{i=1}^I c_N(s_i) \right) \left( \prod_{j=I+1}^l D_N(s_j) \right). \label{eq:012}
 \end{align}
-In the second term on the RHS, there is always at least one $D_N$ term, so using Proposition~\ref{thm:cN_properties}\ref{item:cN_property2} we can write
+In the second term on the RHS, there is always at least one $D_N$ term, so using that $c_N(s) \geq D_N(s)$ (Proposition~\ref{thm:cN_properties}\ref{item:cN_property2}) we can write
 \begin{align}
 \sum_{I=0}^{l-1}\binom{l}{I} B^{l-I} 
         &\sum_{\substack{ s_1, \dots, s_l =1 \\ \text{all distinct} }}^{\tau_N(t)}
@@ -519,13 +577,13 @@ In the second term on the RHS, there is always at least one $D_N$ term, so using
         \sum_{\substack{ s_1, \dots, s_l =1 \\ \text{all distinct} }}^{\tau_N(t)}
         \left( \prod_{i=1}^{l-1} c_N(s_i) \right) D_N(s_l) \notag\\
 &\leq \sum_{I=0}^{l-1}\binom{l}{I} B^{l-I} 
-        \left( \sum_{\substack{ s_1, \dots, s_l =1 \\ \text{all distinct} }}^{\tau_N(t)}
+        \left( \sum_{\substack{ s_1, \dots, s_{l-1} =1 \\ \text{all distinct} }}^{\tau_N(t)}
         \prod_{i=1}^{l-1} c_N(s_i) \right) 
         \sum_{s_l=1}^{\tau_N(t)} D_N(s_l) \notag\\
 &\leq \sum_{I=0}^{l-1}\binom{l}{I} B^{l-I} (t+1)^{l-1}
         \sum_{s=1}^{\tau_N(t)} D_N(s) \label{eq:013}
 \end{align}
-using \eqref{eq:039}.
+using Lemma~\ref{thm:sumprod1}\ref{thm:sumprod1_a}.
 Finally, by the Binomial Theorem,
 \begin{equation}\label{eq:014}
 \sum_{I=0}^{l-1}\binom{l}{I} B^{l-I} (t+1)^{l-1}
@@ -615,7 +673,7 @@ as $N\to\infty$. (See Lemmata~\ref{lem:removeass3}, \ref{thm:DNimpliescN} and \r
 
 \begin{lemma}[Basis step]\label{thm:basis}
 Assume \eqref{eq:mainthmcondition2} holds.
-For any $0 < t < \infty$,
+Then for any $0 < t < \infty$,
 \begin{equation*}
 \lim_{N\to\infty} \E\left[ \prod_{r=1}^{\tau_N(t)} (1-p_r) \right] 
 = e^{-\alpha_n t}
@@ -634,12 +692,13 @@ Setting $\xi=\Delta$ in Proposition~\ref{thm:pDelta_UB}, we have for each $r$ an
 \leq 1 - \alpha_n \ON % \frac{N^{n-2}}{(N-2)_{n-2}}
         \left[ c_N(r) - B_n^\prime D_N(r) \right] .
 \end{equation}
+Recall that $\ON$ is asymptotic notation for a function that converges to $1$ as $N\to\infty$.
 %\seb{Explain why we need the indicators... bounds only valid for large enough $N$... may go negative for some values of $N$... product of negative bounds could be problematic... but don't we only care about the large-$N$ regime in which these bounds are valid (and therefore must be non-negative) and everything is fine...?}\\
-Since we will eventually take $N\to\infty$, it is sufficient to have bounds that hold for large enough $N$. However, some of the manipulations below require that these bounds are non-negative. For this reason we introduce some indicator functions (which will be almost surely equal to $1$ in the limit) to keep the bounds non-negative.
+Since we will eventually take $N\to\infty$, it is sufficient to have bounds that hold for large enough $N$. However, some of the following manipulations require that these bounds are non-negative. For this reason we introduce some indicator functions (which will be almost surely equal to $1$ in the limit) to keep the bounds non-negative.
 These indicators will later be dropped from certain terms that are clearly non-negative without them. 
 The indicators introduced at this point are such that if their conditions do not hold then the bound becomes the trivial $1-p_r \leq 1$.
  
-When $N \geq 3$, a sufficient condition to ensure the bound in \eqref{eq:018} is non-negative is that the event
+When $N \geq 3$, a sufficient condition to ensure that the expression on the RHS of \eqref{eq:018} is non-negative is that the event
 \begin{equation}\label{eq:defn_E1}
 E_N^{1}(r) := \left\{ c_N(r) < \alpha_n^{-1} A_N \right\} 
 \end{equation}
@@ -719,8 +778,8 @@ Collecting some terms,
     &\qquad+ \left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right)
         \exp[ \alpha_n \ON (t+1) (1+B_n^\prime) ] . \label{eq:021}
 \end{align}
-The requirement $\tau_N(t) \geq l$ has been dropped in the second term because the additional terms there are all positive and we only need an upper bound.
-Now, taking the expectation and limit, then applying \eqref{eq:BJJK_eq3.3}--\eqref{eq:BJJK_eq3.4}, and Lemmata \ref{thm:indicators_cN}, \ref{thm:indicators_tau} and \ref{thm:indicators_DN} to deal with the indicators,
+The requirement $\tau_N(t) \geq l$ has been dropped in all but the first term, which constitutes adding some positive terms, giving an upper bound.
+Now, taking the expectation and limit, then applying \eqref{eq:BJJK_eq3.3}--\eqref{eq:BJJK_eq3.4}, and using Lemmata \ref{thm:indicators_cN}, \ref{thm:indicators_tau} and \ref{thm:indicators_DN} to show that $\lim_{N\to\infty} \Prob \left[ \{\tau_N(t) \geq l\} \cap E_N^1 \cap E_N^2 \right] =1$,
 \begin{align}
 \lim_{N\to\infty} \E \left[ \prod_{r=1}^{\tau_N(t)} (1-p_r) \right]
 &\leq 1+ \sum_{l=1}^{\infty} (-\alpha_n)^l \frac{1}{l!} t^l
@@ -755,7 +814,15 @@ E_N^3(r)
 := \left\{ c_N(r) \leq \frac{(N-2)_{n-2}}{N^{n-2}} 
         \alpha_n^{-1} (1+B_n)^{-1} \right\} ,
 \end{equation}
-and we again define $E_N^3 := \bigcap_{r=1}^{\tau_N(t)} E_N^3(r)$.
+and we define $E_N^3 := \bigcap_{r=1}^{\tau_N(t)} E_N^3(r)$. 
+%We obtain another valid lower bound by multiplying the entire RHS of \eqref{eq:pDeltaDelta_LB} by the indicator on this event, so that if $E_N^3$ does not occur we have the trivial lower bound $1-p_t \geq 0$.
+Then
+\begin{equation*}
+1-p_t
+\geq \left\{ 1 - \frac{N^{n-2}}{(N-2)_{n-2}} \alpha_n 
+    [ c_N(t) + B_n D_N(t) ] \right\} \1{E_N^3(t)}
+\end{equation*}
+is also a valid lower bound since if $E_N^3(t)$ does not occur then this collapses to the trivial lower bound $1-p_t \geq 0$.
 We now apply a multinomial expansion to the product, and split into positive and negative terms:
 \begin{align*}
 \prod_{r=1}^{\tau_N(t)} (1-p_r)
@@ -799,7 +866,7 @@ This is further bounded by applying Lemma~\ref{thm:sumprod2} and both bounds in 
         + \left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right)
         (t+1)^{l-1} (1+B_n)^l \right] \Bigg\} .
 \end{align*}
-Collecting terms,
+Collecting terms and dropping indicators from some non-positive terms,
 \begin{align}
 \prod_{r=1}^{\tau_N(t)} (1-p_r)
 &\geq \sum_{l=0}^{\tau_N(t)} (-\alpha_n)^l \ON 
@@ -858,7 +925,9 @@ $0 = t_0 \leq t_1 \leq \cdots \leq t_k \leq t$,
 \end{lemma}
 
 \begin{proof}
-We use the bound on $(1-p_r)$ from \eqref{eq:018}, which holds for sufficiently large $N$, and apply a multinomial expansion. Define as in \eqref{eq:defn_E1} and \eqref{eq:defn_E2} respectively the sequences of events $E_N^1$ and $E_N^2$ which keep the bounds non-negative for all $N\geq 3$ so that the following manipulations make sense:
+We use the bound on $(1-p_r)$ from \eqref{eq:018}, which holds for sufficiently large $N$, and apply a multinomial expansion. Define as in \eqref{eq:defn_E1} and \eqref{eq:defn_E2} respectively the sequences of events $E_N^1$ and $E_N^2$ which 
+%keep the bounds non-negative for all $N\geq 3$ so 
+ensure that the following manipulations make sense:
 \begin{align}
 \prod_{\substack{r=1 \\ \notin \{r_1,\dots,r_k\} }}^{\tau_N(t)} (1-p_r)
 &\leq \prod_{\substack{r=1 \\ \notin \{r_1,\dots,r_k\} }}^{\tau_N(t)} 
@@ -954,7 +1023,7 @@ Meanwhile, using the bound on $p_r$ from \eqref{eq:pDeltaDelta_LB} then applying
         + \left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right)
         \alpha_n^k \ON (t+1)^{k-1} (1+B_n)^k . \label{eq:035}
 \end{align}
-A more liberal (but simpler) bound can be arrived at thus:
+A more liberal but simpler bound can be arrived at thus:
 \begin{align}
 \prod_{i=1}^k p_{r_i}
 &\leq \alpha_n^k \ON 

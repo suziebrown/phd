@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  6 JUL 2021 18:12
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  7 JUL 2021 12:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1854,41 +1854,44 @@ Package mdframed Info: mdframed detected package amsthm
 ] [72] [73]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 166.
+(mdframed)              on input line 222.
  [74]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 222.
- [75] [76] [77] [78]
+(mdframed)              on input line 278.
+ [75] [76] [77]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 393.
+(mdframed)              on input line 449.
 
-Overfull \hbox (2.27423pt too wide) in paragraph at lines 403--409
+Overfull \hbox (2.27423pt too wide) in paragraph at lines 459--465
 []$[][]$ 
  []
 
-[79
+
+Package refcheck Warning: Unused label `eq:039' on input line 477.
+
+[78
 
 
 ]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 462.
- [80]
+(mdframed)              on input line 518.
+ [79]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 539.
- [81] [82]
+(mdframed)              on input line 597.
+ [80] [81]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 616.
- [83] [84] [85] [86]
+(mdframed)              on input line 674.
+ [82] [83] [84] [85] [86]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 843.
+(mdframed)              on input line 910.
  [87] [88] [89]
-Overfull \hbox (6.1905pt too wide) in paragraph at lines 979--981
+Overfull \hbox (6.1905pt too wide) in paragraph at lines 1048--1050
 \OT1/cmr/m/n/10.95 Combining this sum-product with [], the ex-pres-sion in-side
  the ex-pec-ta-tion in Lemma []4.8[][]
  []
@@ -1896,24 +1899,24 @@ Overfull \hbox (6.1905pt too wide) in paragraph at lines 979--981
 [90] [91] [92]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1137.
+(mdframed)              on input line 1206.
  [93] [94] [95] [96]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1298.
+(mdframed)              on input line 1367.
  [97] [98] [99] [100] [101] [102]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1530.
+(mdframed)              on input line 1599.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1550.
+(mdframed)              on input line 1619.
  [103]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1593.
+(mdframed)              on input line 1662.
 
-Overfull \hbox (2.84853pt too wide) in paragraph at lines 1599--1600
+Overfull \hbox (2.84853pt too wide) in paragraph at lines 1668--1669
 []\OT1/cmr/m/n/10.95 We can re-place the event $\OMS/cmsy/m/n/10.95 f\OML/cmm/m
 /it/10.95 ^^\[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 t\OT1/cmr/m/n/10.95 ) \O
 MS/cmsy/m/n/10.95 ^^U \OML/cmm/m/it/10.95 l\OMS/cmsy/m/n/10.95 g$ \OT1/cmr/m/n/
@@ -1923,15 +1926,15 @@ MS/cmsy/m/n/10.95 ^^U \OML/cmm/m/it/10.95 l\OMS/cmsy/m/n/10.95 g$ \OT1/cmr/m/n/
 
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1619.
+(mdframed)              on input line 1688.
 [104] [105] [106]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1747.
+(mdframed)              on input line 1816.
  [107]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1836.
+(mdframed)              on input line 1905.
 ) [108]
 \openout2 = `applications.aux'.
 
@@ -2033,10 +2036,10 @@ Package logreq Info: Writing requests to 'thesis_main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 40229 strings out of 492649
- 777096 string characters out of 6129623
- 1314814 words of memory out of 5000000
- 43028 multiletter control sequences out of 15000+600000
+ 40227 strings out of 492649
+ 777077 string characters out of 6129623
+ 1314812 words of memory out of 5000000
+ 43026 multiletter control sequences out of 15000+600000
  568142 words of font info for 115 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  68i,23n,77p,10565b,1727s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2071,10 +2074,10 @@ ts/type1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2018/texmf-dist/fonts
 ype1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2018/texmf-dist/fon
 ts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2018/texmf-dist
 /fonts/type1/adobe/utopia/putb8a.pfb>
-Output written on thesis_main.pdf (146 pages, 881081 bytes).
+Output written on thesis_main.pdf (146 pages, 882469 bytes).
 PDF statistics:
- 2223 PDF objects out of 2487 (max. 8388607)
- 1975 compressed objects within 20 object streams
+ 2224 PDF objects out of 2487 (max. 8388607)
+ 1976 compressed objects within 20 object streams
  479 named destinations out of 1000 (max. 500000)
  439 words of extra memory for PDF output out of 10000 (max. 10000000)
 
