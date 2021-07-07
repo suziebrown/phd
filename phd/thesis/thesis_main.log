@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  7 JUL 2021 12:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  7 JUL 2021 16:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1591,12 +1591,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 201--203
 
 ]
 Overfull \hbox (1.42336pt too wide) detected at line 131
- []\OT1/put/b/n/10.95 109
+ []\OT1/put/b/n/10.95 108
  []
 
 
 Overfull \hbox (1.42336pt too wide) detected at line 149
- []\OT1/put/b/n/10.95 127
+ []\OT1/put/b/n/10.95 126
  []
 
 )
@@ -1896,7 +1896,11 @@ Overfull \hbox (6.1905pt too wide) in paragraph at lines 1048--1050
  the ex-pec-ta-tion in Lemma []4.8[][]
  []
 
-[90] [91] [92]
+[90]
+
+Package refcheck Warning: Unused label `eq:043' on input line 1131.
+
+[91] [92]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 1206.
@@ -1904,19 +1908,19 @@ Package mdframed Info: mdframed detected package amsthm
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 1367.
- [97] [98] [99] [100] [101] [102]
+ [97] [98] [99] [100] [101]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1599.
+(mdframed)              on input line 1600.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1619.
- [103]
+(mdframed)              on input line 1620.
+ [102]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1662.
+(mdframed)              on input line 1663.
 
-Overfull \hbox (2.84853pt too wide) in paragraph at lines 1668--1669
+Overfull \hbox (2.84853pt too wide) in paragraph at lines 1669--1670
 []\OT1/cmr/m/n/10.95 We can re-place the event $\OMS/cmsy/m/n/10.95 f\OML/cmm/m
 /it/10.95 ^^\[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 t\OT1/cmr/m/n/10.95 ) \O
 MS/cmsy/m/n/10.95 ^^U \OML/cmm/m/it/10.95 l\OMS/cmsy/m/n/10.95 g$ \OT1/cmr/m/n/
@@ -1926,21 +1930,21 @@ MS/cmsy/m/n/10.95 ^^U \OML/cmm/m/it/10.95 l\OMS/cmsy/m/n/10.95 g$ \OT1/cmr/m/n/
 
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1688.
-[104] [105] [106]
+(mdframed)              on input line 1690.
+[103] [104] [105]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1816.
- [107]
+(mdframed)              on input line 1818.
+ [106]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1905.
-) [108]
+(mdframed)              on input line 1907.
+) [107]
 \openout2 = `applications.aux'.
 
  (./applications.tex
 chapter 5.
-[109
+[108
 
 
 
@@ -1949,19 +1953,19 @@ chapter 5.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 117.
- [110] [111]
+ [109] [110]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 280.
- [112]
+ [111]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 304.
- [113]
+ [112]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 361.
- [114] [115] [116]
+ [113] [114] [115]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 615.
@@ -1969,15 +1973,15 @@ Package mdframed Info: mdframed detected package amsthm
 
 Package refcheck Warning: Unused label `thm:stochrounding' on input line 615.
 
-[117]
+[116]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 636.
- [118]
+ [117]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 812.
- [119]
+ [118]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 833.
@@ -1986,11 +1990,11 @@ Package mdframed Info: mdframed detected package amsthm
 Package refcheck Warning: Unused label `thm:resstrat_nontriviality' on input li
 ne 833.
 
-[120] [121] [122]
+[119] [120] [121]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 1072.
- [123] [124]
+ [122] [123]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 1237.
@@ -1999,30 +2003,30 @@ Package mdframed Info: mdframed detected package amsthm
 Package refcheck Warning: Unused label `sec:ancsamp_genealogy' on input line 12
 58.
 
-[125]) [126]
+[124]) [125]
 \openout2 = `discussion.aux'.
 
  (./discussion.tex
 chapter 6.
-[127
+[126
 
 
 
 
-]) [128] [129
+]) [127] [128
 
 
 
 
 
-] [130]
+] [129]
 Overfull \hbox (2.69765pt too wide) in paragraph at lines 298--298
 [][][]\OT1/cmr/m/n/10.95 (1982c). ``The Co-a-les-cent''. In: \OT1/cmr/m/it/10.9
 5 Stochas-tic Pro-cesses and Their Ap-pli-ca-tions \OT1/cmr/m/n/10.95 13.3, pp.
  235{
  []
 
-[131] [132] [133]
+[130] [131] [132]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 299.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 299.
  (./thesis_main.aux (./introduction.aux) (./background.aux)
@@ -2036,10 +2040,10 @@ Package logreq Info: Writing requests to 'thesis_main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 40227 strings out of 492649
- 777077 string characters out of 6129623
- 1314812 words of memory out of 5000000
- 43026 multiletter control sequences out of 15000+600000
+ 40224 strings out of 492649
+ 777050 string characters out of 6129623
+ 1314810 words of memory out of 5000000
+ 43024 multiletter control sequences out of 15000+600000
  568142 words of font info for 115 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  68i,23n,77p,10565b,1727s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2074,10 +2078,10 @@ ts/type1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2018/texmf-dist/fonts
 ype1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2018/texmf-dist/fon
 ts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2018/texmf-dist
 /fonts/type1/adobe/utopia/putb8a.pfb>
-Output written on thesis_main.pdf (146 pages, 882469 bytes).
+Output written on thesis_main.pdf (145 pages, 881653 bytes).
 PDF statistics:
- 2224 PDF objects out of 2487 (max. 8388607)
- 1976 compressed objects within 20 object streams
- 479 named destinations out of 1000 (max. 500000)
+ 2221 PDF objects out of 2487 (max. 8388607)
+ 1974 compressed objects within 20 object streams
+ 478 named destinations out of 1000 (max. 500000)
  439 words of extra memory for PDF output out of 10000 (max. 10000000)
 

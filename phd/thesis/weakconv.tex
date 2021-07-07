@@ -1157,15 +1157,15 @@ To simplify the last line,
 \sum_{\substack{r_1 <\dots< r_k :\\ r_i \leq \tau_N(t_i) \forall i}}
         \sum_{j=1}^k c_N(r_j)
         \prod_{i=1}^k c_N(r_i)
-&\leq \frac{1}{k!} \sum_{r_1 \neq \dots\neq r_k}^{\tau_N(t)}
+&\leq \frac{1}{k!} \sum_{\substack{r_1, \dots, r_k \\ \text{all distinct} }}^{\tau_N(t)}
         \sum_{j=1}^k c_N(r_j)
         \prod_{i=1}^k c_N(r_i) \\
-&= \frac{1}{k!} \sum_{r_1 \neq \dots\neq r_k}^{\tau_N(t)}
+&= \frac{1}{k!} \sum_{\substack{r_1, \dots, r_k \\ \text{all distinct} }}^{\tau_N(t)}
         \sum_{j=1}^k c_N(r_j)^2
         \prod_{i\neq j} c_N(r_i) \\
 &\leq \frac{1}{k!} 
         \sum_{j=1}^k \sum_{s=1}^{\tau_N(t)} c_N(s)^2
-        \sum_{r_1 \neq \dots\neq r_{k-1}}^{\tau_N(t)}
+        \sum_{\substack{r_1, \dots, r_{k-1} \\ \text{all distinct} }}^{\tau_N(t)}
         \prod_{i=1}^{k-1} c_N(r_i) \\
 &\leq \frac{1}{(k-1)!} 
         \sum_{s=1}^{\tau_N(t)} c_N(s)^2
@@ -1272,7 +1272,7 @@ p_r
 \geq \alpha_n \ON 
         \left[ c_N(r) - B_n^\prime D_N(r) \right] 
 \end{equation}
-where the $O(N^{-1})$ term does not depend on $r$.
+where the $\ON$ term does not depend on $r$.
 When $N$ is large enough for the factor of $\ON$ to be non-negative, the condition that the bound in \eqref{eq:050a} is non-negative holds on the event $E_N^2$ that was defined in \eqref{eq:defn_E2}.
 Then
 \begin{equation*}
@@ -1283,7 +1283,7 @@ Then
 Applying a modification of Lemma~\ref{thm:sumprod3} where the sum is over ordered indices rather than distinct indices,
 \begin{align*}
 \sum_{\substack{r_1 <\dots< r_k :\\ r_i \leq \tau_N(t_i) \forall i}}
-        \left( \prod_{i=1}^k p_{r_i} \right)
+        \prod_{i=1}^k p_{r_i}
 &\geq \alpha_n^k \ON \sum_{\substack{r_1 <\dots< r_k 
         :\\ r_i \leq \tau_N(t_i) \forall i}} \prod_{i=1}^k
         \left[ c_N(r_i) - B_n^\prime D_N(r_i) \right] \1{E_N^2} \\
@@ -1436,7 +1436,8 @@ Separating the term where $\mathcal{I} = [k]$, this becomes
         ( t+1 )^k 
 \end{align*}
 where, say, $j^\star(\mathcal{I}) := \min\{ j\notin\mathcal{I}\}$.
-Now we are in a position to evaluate the limit in Lemma~\ref{thm:induction_sumprodcN}:
+Now we are in a position to evaluate the desired limit: 
+%in Lemma~\ref{thm:induction_sumprodcN}:
 \begin{align*}
 \lim_{N\to\infty} \E &\left[ \1{E_N} 
         \sum_{\substack{r_1<\dots<r_k :\\ r_i\leq \tau_N(t_i) \forall i}} 
@@ -1617,7 +1618,7 @@ If $\lim_{N\to\infty}\Prob[A_N] =1$ and $\lim_{N\to\infty}\Prob[B_N]=1$ then $\l
 %The only part of this argument that I find potentially controversial is going from the third to the fourth line, which is an application of the sandwich theorem (since $0 \leq \Prob[A_N^c \cup B_N^c] \leq \Prob[A_N^c] + \Prob[B_N^c]$).
 
 \begin{lemma}\label{thm:indicators_cN}
-Assume \eqref{eq:BJJK_eq3.5} holds.
+Assume \eqref{eq:BJJK_eq3.5} holds. Fix $t>0$.
 Let $K>0$ be a constant which may depend on $n, N$ but not on $r$, such that $K^{-2} = O(1)$ as $N\to\infty$.
 Define the events $E_N(r) := \{ c_N(r) < K \}$ and denote $E_N := \bigcap_{r=1}^{\tau_N(t)} E_N(r)$.
 Then $\lim_{N\to\infty} \Prob[E_N]=1$.
@@ -1671,12 +1672,13 @@ We can replace the event $\{ \tau_N(t) \geq l \}$ with an event of the form of $
 &= \left\{ \min \left\{ s \geq 1 : \sum_{r=1}^{s} c_N(r) \geq t \right\} \geq l \right\}
 = \left\{ \sum_{r=1}^{l-1} c_N(r) < t \right\} \\
 &\supseteq \bigcap_{r=1}^{l-1} \left \{ c_N(r) < \frac{t}{l} \right\}
-\supseteq \bigcap_{r=1}^{\tau_N(t)} \left \{ c_N(r) < \frac{t}{l} \right\} .
+\supseteq \bigcap_{r=1}^{\tau_N(l)} \left \{ c_N(r) < \frac{t}{l} \right\} 
 \end{align*}
+since $\tau_N(l) \geq l$ (Proposition~\ref{thm:cN_properties}\ref{item:cN_property6}).
 Hence
 \begin{equation*}
 \lim_{N\to\infty} \Prob[ \tau_N(t) \geq l ] 
-\geq \lim_{N\to\infty} \Prob\left[ \bigcap_{r=1}^{\tau_N(t)} 
+\geq \lim_{N\to\infty} \Prob\left[ \bigcap_{r=1}^{\tau_N(l)} 
         \left \{ c_N(r) < \frac{t}{l} \right\} \right]
 =1
 \end{equation*}
@@ -1712,7 +1714,7 @@ Let $K$ be a constant not depending on $N, r$, but which may depend on $n$.
 \end{align}
 where the final inequality is an application of Lemma~\ref{thm:kjjslemma2} with $f(r) = \I{ c_N(r) \leq K D_N(r) }$.
 
-Fix $0 < \varepsilon < 1/(2K)$ and assume $N > \max\{ \varepsilon^{-1}, (K^{-1} - 2\varepsilon)^{-1} \}$. For each $r,i$ define the event $A_i(r) := \{ \nu_r^{(i)} \leq N\varepsilon \}$.
+Fix $0 < \epsilon < 1/(2K)$ and assume $N > \max\{ \epsilon^{-1}, (K^{-1} - 2\epsilon)^{-1} \}$. For each $r,i$ define the event $A_i(r) := \{ \nu_r^{(i)} \leq N\epsilon \}$.
 %Conditional on $\mathcal{F}_{r-1}$, we have
 We have (almost surely)
 \begin{align*}
@@ -1738,28 +1740,28 @@ For the second term,
 &\leq \frac{1}{N(N)_2} \sum_{i=1}^N (\nu_r^{(i)})_2 \nu_r^{(i)} \1{A_i(r)} 
         + \frac{1}{N^2(N)_2} \sum_{i=1}^N (\nu_r^{(i)})_2 \sum_{j=1}^N 
         (\nu_r^{(j)})^2 \1{A_i(r)} \\
-&\leq \frac{1}{N} c_N(r) N\varepsilon
+&\leq \frac{1}{N} c_N(r) N\epsilon
         + \frac{1}{N^2(N)_2} \sum_{i=1}^N (\nu_r^{(i)})_2 \sum_{j=1}^N 
         (\nu_r^{(j)})_2 \1{A_i(r)} \\
     &\qquad+ \frac{1}{N^2(N)_2} \sum_{i=1}^N (\nu_r^{(i)})_2 \sum_{j=1}^N 
         (\nu_r^{(j)}) \1{A_i(r)} \\
-&\leq \varepsilon c_N(r) 
-        + \frac{1}{N^2} \sum_{i=1}^N \nu_r^{(i)} N\varepsilon c_N(r) 
+&\leq \epsilon c_N(r) 
+        + \frac{1}{N^2} \sum_{i=1}^N \nu_r^{(i)} N\epsilon c_N(r) 
         + \frac{1}{N^2} c_N(r) N \\
-&= c_N(r) \left( 2\varepsilon + \frac{1}{N} \right).
+&= c_N(r) \left( 2\epsilon + \frac{1}{N} \right).
 \end{align*}
 Altogether we have
 \begin{equation*}
 D_N(r) 
-\leq c_N(r) \left( 2\varepsilon + \frac{1}{N} \right)
+\leq c_N(r) \left( 2\epsilon + \frac{1}{N} \right)
         + \sum_{i=1}^N \1{A_i^c(r)} .
 \end{equation*}
 Hence%, still conditional on $\mathcal{F}_{r-1}$,
 \begin{align*}
 \left\{ c_N(r) \leq K D_N(r) \right\}
-&\subseteq \left\{ c_N(r) \leq K c_N(r) (2\varepsilon + N^{-1}) 
+&\subseteq \left\{ c_N(r) \leq K c_N(r) (2\epsilon + N^{-1}) 
         + K \sum_{i=1}^N \1{A_i^c(r)} \right\} \\
-&=\left\{ K^{-1} - 2\varepsilon- \frac{1}{N} \leq 
+&=\left\{ K^{-1} - 2\epsilon- \frac{1}{N} \leq 
         \sum_{i=1}^N \frac{ \1{A_i^c(r)} }{ c_N(r) } \right\} 
 \end{align*}
 where the ratio $\1{A_i^c(r)} / c_N(r)$ is well-defined because
@@ -1768,43 +1770,43 @@ A_i^c(r)
 \Rightarrow c_N(r) 
 := \frac{1}{(N)_2} \sum_{j=1}^N (\nu_r^{(j)})_2
 \geq \frac{1}{(N)_2} (\nu_r^{(i)})_2
-\geq \frac{\varepsilon (N\varepsilon-1)}{N-1}
-\geq \varepsilon \left( \varepsilon - \frac{1}{N} \right)
+\geq \frac{\epsilon (N\epsilon-1)}{N-1}
+\geq \epsilon \left( \epsilon - \frac{1}{N} \right)
 >0 .
 \end{equation*}
-Hence by Markov's inequality (the conditions on $\varepsilon, N$ ensuring the constant is always strictly positive),
+Hence by Markov's inequality (the conditions on $\epsilon, N$ ensuring the constant is always strictly positive),
 \begin{align*}
 \Prob\left[ c_N(r) \leq K D_N(r) \mid \mathcal{F}_{r-1} \right]
 &\leq \Prob\left[ \sum_{i=1}^N \1{A_i^c(r)} \geq 
-        \left( K^{-1} - 2\varepsilon- \frac{1}{N} \right) \varepsilon 
-        \left( \varepsilon-\frac{1}{N} \right) 
+        \left( K^{-1} - 2\epsilon- \frac{1}{N} \right) \epsilon 
+        \left( \epsilon-\frac{1}{N} \right) 
         \middle| \mathcal{F}_{r-1} \right] \\
-&\leq \frac{1}{\left( K^{-1} - 2\varepsilon- \frac{1}{N} \right) \varepsilon 
-        \left( \varepsilon-\frac{1}{N} \right)} 
+&\leq \frac{1}{\left( K^{-1} - 2\epsilon- \frac{1}{N} \right) \epsilon 
+        \left( \epsilon-\frac{1}{N} \right)} 
         \E\left[ \sum_{i=1}^N \1{A_i^c(r)} 
         \middle| \mathcal{F}_{r-1} \right] \\
-&\leq \frac{1}{\left( K^{-1} - 2\varepsilon- \frac{1}{N} \right) \varepsilon 
-        \left( \varepsilon-\frac{1}{N} \right)} 
-        \E\left[ \sum_{i=1}^N \frac{(\nu_r^{(i)})_3}{(N\varepsilon)_3}
+&\leq \frac{1}{\left( K^{-1} - 2\epsilon- \frac{1}{N} \right) \epsilon 
+        \left( \epsilon-\frac{1}{N} \right)} 
+        \E\left[ \sum_{i=1}^N \frac{(\nu_r^{(i)})_3}{(N\epsilon)_3}
         \middle| \mathcal{F}_{r-1} \right] \\
-&\leq \frac{1}{\left( K^{-1} - 2\varepsilon- \frac{1}{N} \right) \varepsilon 
-        \left( \varepsilon-\frac{1}{N} \right)} 
-        \E\left[ \frac{N(N)_2}{(N\varepsilon)_3} D_N(r)
+&\leq \frac{1}{\left( K^{-1} - 2\epsilon- \frac{1}{N} \right) \epsilon 
+        \left( \epsilon-\frac{1}{N} \right)} 
+        \E\left[ \frac{N(N)_2}{(N\epsilon)_3} D_N(r)
         \middle| \mathcal{F}_{r-1} \right] .
 \end{align*}
 Applying Lemma~\ref{thm:kjjslemma2} once more, with $f(r) = D_N(r)$,
 \begin{align*}
 &\E \left[ \sum_{r=1}^{\tau_N(t)} \Prob[ c_N(r) \leq K D_N(r) 
         \mid \mathcal{F}_{r-1} ] \right] \\
-&\hspace{2cm}\leq \frac{1}{\left( K^{-1} - 2\varepsilon- \frac{1}{N} \right) \varepsilon 
-        \left( \varepsilon-\frac{1}{N} \right)} \frac{N(N)_2}{(N\varepsilon)_3}
+&\hspace{2cm}\leq \frac{1}{\left( K^{-1} - 2\epsilon- \frac{1}{N} \right) \epsilon 
+        \left( \epsilon-\frac{1}{N} \right)} \frac{N(N)_2}{(N\epsilon)_3}
         \E\left[ \sum_{r=1}^{\tau_N(t)} \E[ D_N(r) 
         \mid \mathcal{F}_{r-1} ] \right] \\
-&\hspace{2cm}= \frac{1}{\left( K^{-1} - 2\varepsilon- \frac{1}{N} \right) \varepsilon 
-        \left( \varepsilon-\frac{1}{N} \right)} \frac{N(N)_2}{(N\varepsilon)_3}
+&\hspace{2cm}= \frac{1}{\left( K^{-1} - 2\epsilon- \frac{1}{N} \right) \epsilon 
+        \left( \epsilon-\frac{1}{N} \right)} \frac{N(N)_2}{(N\epsilon)_3}
         \E\left[ \sum_{r=1}^{\tau_N(t)} D_N(r) \right] \\
 &\hspace{2cm}\underset{N\to\infty}{\longrightarrow} 
-        \frac{1}{(K^{-1} - 2\varepsilon)\varepsilon^5} \times0
+        \frac{1}{(K^{-1} - 2\epsilon)\epsilon^5} \times0
 =0
 \end{align*}
 due to \eqref{eq:BJJK_eq3.4}.
@@ -1816,7 +1818,7 @@ Substituting this back into \eqref{eq:050} concludes the proof.
 \begin{lemma}\label{thm:indicators_c2}
 Assume \eqref{eq:BJJK_eq3.5} holds.
 Fix $k\in\mathbb{N}$, a sequence of times $0 = t_0 \leq t_1 \leq \cdots \leq t_k \leq t$, and let $K_1,\dots,K_k$ be strictly positive constants.
-Define the events
+Define the event
 \begin{equation*}
 E_N := \bigcap_{j=1}^k \left\{ \sum_{s=\tau_N(t_{j-1})+1}^{\tau_N(t_j)}
         c_N(s)^2 \leq K_j \right\} .
@@ -1899,11 +1901,11 @@ by \eqref{eq:BJJK_eq3.5}.
 
 
 There are a few instances where Fubini's Theorem and the Dominated Convergence Theorem are needed in order to pass a limit and expectation through an infinite sum.
-Now we verify that the conditions of these theorems indeed hold.
+Now we verify the conditions of these theorems.
 This result, analogous to that in \textcite[Appendix]{koskela2018}, is used once
-in Lemma~\ref{thm:inductionUB} at \eqref{eq:043} and once in Lemma~\ref{thm:inductionLB} at \eqref{eq:056}.
+in Lemma~\ref{thm:inductionUB} at \eqref{eq:040} and once in Lemma~\ref{thm:inductionLB} at \eqref{eq:056}.
 \begin{lemma}\label{thm:DCT_Fubini}
-For any fixed $t>0$,
+For any fixed $t>0$, for $N$ sufficiently large,
 \begin{equation*}
 \E \left[ \sum_{l=0}^\infty \Bigg| (-\alpha_n)^l \ON \frac{1}{l!} t^l 
         \sum_{\substack{r_1 < \cdots < r_k : \\ r_i \leq \tau_N(t_i) \forall i}}
@@ -1929,6 +1931,7 @@ For any fixed $t>0$,
 &= \exp\{ \alpha_n t \ON \} (t+1)^k
 < \infty 
 \end{align*}
+for $N$ sufficiently large,
 where the bound on the sum-product comes from Lemma~\ref{thm:sumprod1}\ref{thm:sumprod1_a}.
 \end{proof}
 
