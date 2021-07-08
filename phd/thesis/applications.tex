@@ -163,28 +163,28 @@ for each $i$, so the joint law is
 Using the bounds \eqref{eq:gq_bounds_mn} and the balls-in-bins coupling of \textcite[Proof of Lemma 3]{koskela2018}, we can obtain bounds on expectations of functions of $a_t^{(1:N)}$.
 For any $k\in\mathbb{N}$ the function $a_t^{(1:N)} \to (\nu_t^{(i)})_k$ is $\{i\}$-increasing in the sense of \textcite{koskela2018}, so we may apply the bounds
 \begin{equation*}
-\E[ (V_1^{(i)})_k ]
+\E[ (V_L^{(i)})_k ]
 \leq \E[ (\nu_t^{(i)})_k \mid \mathcal{H}_t ]
-\leq \E[ (V_2^{(i)})_k ] ,
+\leq \E[ (V_U^{(i)})_k ] ,
 \end{equation*}
 where
 \begin{align*}
-& V_1^{(i)} 
+& V_L^{(i)} 
 \eqdist \Bin\left(N, \frac{\varepsilon/a}{(\varepsilon/a) + (N-1)(a/\varepsilon)} \right),\\
-& V_2^{(i)} 
+& V_U^{(i)} 
 \eqdist \Bin\left( N, \frac{a/\varepsilon}{(a/\varepsilon) + (N-1)(\varepsilon/a)} \right) .
 \end{align*}
 independently for each $i$ and independently of $\mathcal{F}_\infty$.
 Furthermore, using the moments of the Binomial distribution \parencite[see for example][p. 67]{mosimann1962}
 \begin{equation*}
-\E[ (V_1^{(i)})_k ]
+\E[ (V_L^{(i)})_k ]
 = (N)_k \left( \frac{ \varepsilon/a }{ (\varepsilon/a) + (N-1)(a/\varepsilon) } \right)^k
 \geq (N)_k \left( \frac{ \varepsilon/a }{ N(a/\varepsilon) } \right)^k
 = \frac{(N)_k}{N^k} \frac{\varepsilon^{2k}}{a^{2k}} .
 \end{equation*}
 Similarly, 
 \begin{equation*}
-\E[ (V_2^{(i)})_k ]
+\E[ (V_U^{(i)})_k ]
 \leq \frac{(N)_k}{N^k} \frac{a^{2k}}{\varepsilon^{2k}} .
 \end{equation*}
 We therefore have the bounds
@@ -1107,23 +1107,23 @@ resulting in the joint law
 %%%
 As in Corollary~\ref{thm:multinomial}, under \eqref{eq:gq_bounds_csmc} we have bounds
 \begin{equation*}
-\E[ (V_1^{(i)})_k ]
+\E[ (V_L^{(i)})_k ]
 \leq \E[ (\nu_t^{(i)})_k \mid \mathcal{H}_t ]
-\leq \E[ (V_2^{(i)})_k ] ,
+\leq \E[ (V_U^{(i)})_k ] ,
 \end{equation*}
 where now
 \begin{align*}
-& V_1^{(i)} 
+& V_L^{(i)} 
     \eqdist \1{i=1} + \operatorname{Binomial}\left(N-1, 
         \frac{\varepsilon/a}{(\varepsilon/a) + (N-1)(a/\varepsilon)} \right) , \\
-& V_2^{(i)} 
+& V_U^{(i)} 
     \eqdist \1{i=1} + \operatorname{Binomial}\left( N-1, 
         \frac{a/\varepsilon}{(a/\varepsilon) + (N-1)(\varepsilon/a)} \right) .
 \end{align*}
 independently for each $i$ and independently of $\mathcal{F}_\infty$.
 Furthermore, using the Binomial moments and the identity $(X+1)_2 \equiv 2(X)_1 +(X)_2$, one can show that
 \begin{equation*}
-\E[ (V_1^{(i)} )_2 ]
+\E[ (V_L^{(i)} )_2 ]
 \geq \begin{cases}
 \frac{(N-1)_2}{N^2}\frac{\varepsilon^4}{a^4} 
         + \frac{2(N-1)}{N} \frac{\varepsilon^2}{a^2} &\text{if } i=1 \\
@@ -1132,7 +1132,7 @@ Furthermore, using the Binomial moments and the identity $(X+1)_2 \equiv 2(X)_1 
 \end{equation*}
 Using the identity $(X+1)_3 \equiv 3(X)_2 +(X)_3$, we also have
 \begin{equation*}
-\E[ (V_2^{(i)} )_3 ]
+\E[ (V_U^{(i)} )_3 ]
 \leq \begin{cases}
 \frac{(N-1)_3}{N^3}\frac{a^6}{\varepsilon^6} 
         + \frac{3(N-1)_2}{N^2} \frac{a^4}{\varepsilon^4} &\text{if } i=1 \\
@@ -1142,7 +1142,7 @@ Using the identity $(X+1)_3 \equiv 3(X)_2 +(X)_3$, we also have
 We therefore have
 \begin{align}
 \frac{1}{(N)_2} \sum_{i=1}^N \E[ (\nu_t^{(i)})_2 \mid \mathcal{H}_t ]
-&\geq \frac{1}{(N)_2} \sum_{i=1}^N \E[ ( V_1^{(i)} )_2 ]
+&\geq \frac{1}{(N)_2} \sum_{i=1}^N \E[ ( V_L^{(i)} )_2 ]
 \geq \frac{1}{(N)_2} \left[ \frac{2(N-1)}{N} \frac{\varepsilon^2}{a^2}
         + \sum_{i=1}^N \frac{(N-1)_2}{N^2}\frac{\varepsilon^4}{a^4} \right] \notag\\
 &= \frac{1}{N^2} \left[ 2 \frac{\varepsilon^2}{a^2} 
@@ -1152,7 +1152,7 @@ We therefore have
 and
 \begin{align*}
 \frac{1}{(N)_3} \sum_{i=1}^N \E[ (\nu_t^{(i)})_3 \mid \mathcal{H}_t ]
-&\leq \frac{1}{(N)_3} \sum_{i=1}^N \E[ ( V_2^{(i)} )_3 ]
+&\leq \frac{1}{(N)_3} \sum_{i=1}^N \E[ ( V_U^{(i)} )_3 ]
 \leq \frac{1}{(N)_3} \left[ \frac{3(N-1)_2}{N^2} \frac{a^4}{\varepsilon^4}
         + \sum_{i=1}^N \frac{(N-1)_3}{N^3}\frac{a^6}{\varepsilon^6}  \right] \\
 &= \frac{1}{N^3} \left[ 3 \frac{a^4}{\varepsilon^4} 
