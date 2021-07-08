@@ -10,7 +10,7 @@ That there's always lots of cherries on my little cherry tree!
 }
 {\textsc{A. A. Milne}}
 
-We have provided a simple sufficient condition for genealogies of SMC particle systems to converge to Kingman's $n$-coalescent in the large population limit. 
+We have provided a simple sufficient condition for genealogies of SMC particle systems to converge weakly to Kingman's $n$-coalescent in the large population limit. 
 This result complements existing work not only in the SMC literature but also in mathematical population genetics, where it shows that non-neutral population models can produce $n$-coalescents in the limit, under conditions analogous to those required for neutral models.
 
 We have demonstrated that our convergence condition is verifiable in a range of settings, including SMC algorithms using many of the most popular resampling schemes. 
@@ -18,7 +18,7 @@ Convergence to a coalescent limit requires a random rescaling of time, governed 
 Information about this time-scale function could therefore be used to directly compare the ancestral degeneracy of different algorithms, solve tuning problems, or quantify asymptotic behaviour of SMC estimators.
 
 I believe that the main limitation of the work, therefore, is our lack of information about $\tau_N$. An interesting topic of future research would be to characterise this function a priori, say for a particular tractable class of models.
-From there it would be possible to find the limiting distributions of many statistics of interest, such as the time to full coalescence or the probability of maintaining a certain number of distinct lineages over a given time window. It would also allow a comparison between the genealogies arising from different resampling schemes.
+From there it would be possible to find the limiting distributions of many statistics of interest, such as the time to full coalescence or the probability of maintaining a certain number of distinct lineages over a given time window. It would also allow a direct comparison of the genealogies arising from different resampling schemes.
 
 I will finish by describing three more open questions raised by the current work, which I believe to be interesting avenues for future research. These problems are, in my opinion, less critical than that of characterising the time-scale function, but probably easier to tackle. 
 I hope that a future researcher may find these to be interesting diversions.
@@ -26,7 +26,7 @@ I hope that a future researcher may find these to be interesting diversions.
 In neutral models, the neutral version of our main condition has been shown to be necessary and sufficient for convergence to the $n$-coalescent. This raises the question: are our conditions necessary as well as sufficient, or else what alterations are needed to render them necessary and sufficient?
 
 We have shown that our convergence theorems apply to a range of SMC algorithms, encompassing most of the resampling schemes that are routinely used by practitioners. A notable exception is residual resampling with multinomial residuals, which, although not generally recommended by theorists, is frequently used in practice.
-There is no reason to believe that the convergence results should not apply in this case: we have seen that by various metrics residual-multinomial resampling lies between multinomial and, say, residual-systematic resampling, both of which have been shown to satisfy the conditions of the theorems.
+There is no reason to believe that the convergence results should not apply in this case: we have seen that by various metrics residual-multinomial resampling lies between multinomial and, say, residual-stratified resampling, both of which have been shown to satisfy the conditions of the theorems.
 However, we have not yet succeeded in proving a corollary for residual-multinomial resampling.
 
 Adaptive resampling is routinely used to improve the performance of SMC, and it clearly mitigates the problem of ancestral degeneracy. It is not immediately clear, however, what exactly is the effect of adaptive resampling on the resulting genealogies. At first sight one might imagine that it simply slows the coalescent time scale by some factor determined by how often resampling occurs, but this is not the whole picture. Adaptive resampling must also affect the distribution of the weights that are input to the resampling procedure, because when resampling is triggered the weights necessarily have variance above a certain threshold.
