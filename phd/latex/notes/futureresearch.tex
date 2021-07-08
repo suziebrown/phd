@@ -25,8 +25,9 @@
 \item Relax condition that potentials are bounded below (e.g.\ see Capp\'e, Moulines, Ryd\'en ``Inference in HMMs'', Chapter 9)
 \item Show that the condition of BJJK Theorem 1 is necessary as well as sufficient (e.g.\ see M\"ohle \& Sagitov 1998, 2001, 2003?)
 \item What is the effect of adaptive resampling?
-\item Corollaries also for residual-multinomial and residual-star resampling (although it might be a negative result in the case of residual-star).
+\item Corollaries also for residual-multinomial and residual-star resampling (although it might be a negative result in the case of residual-star). For res-star, the finite-time-scale result should be a simple adaptation of the one for stratified resampling.
 \item Rates of convergence (modifying more of M\"ohle's work).
+\item Is it possible to have an SMC system where 3rd moments are non-negligible, leading to a limiting Lambda-coalescent, say?
 \item Could badly-behaved potentials produce a non-Kingman Lambda-coalescent? For example, use for potentials some heavy-tailed fitnesses like in Schweinsberg model. (This is probably not interesting from an SMC point of view.)
 \item A way to estimate coalescent rates / time scale a priori, for some specific tractable class of models, say.
 \item Do our results apply to cloning models, or other continuous-time models?
@@ -36,9 +37,11 @@
 
 \section*{Resampling}
 \begin{itemize}
-\item Derive expressions for the one-step Monte Carlo variance with SSP resampling and residual-systematic resampling, (and systematic resampling?). Is there another ordering result there?
+\item Derive expressions for the one-step Monte Carlo variance with SSP resampling and residual-systematic resampling, (and systematic resampling?). Is there another ordering result there? In the case of SSP, GCW19 stated that this is an interesting open problem!
 \item Compare residual-systematic vs. systematic resampling: are they equivalent? What if the weights are sorted? Maybe start by coding up an exploratory experiment.
-\item Explore more generally the effect of pre-sorting the weights. How does this link with results of Gerber Chopin Whiteley (where they sort by particle position)?
+\item Is Li et al 2020 Equation (1) correct? (It was removed between v1 and v2 on arXiv so possibly they found it was wrong.) If so, it could provide a more elegant proof about conditional variance of strat.
+\item Explore more generally the effect of pre-sorting the weights. How does this link with results of Gerber Chopin Whiteley (where they sort by particle position)? My suspicion is now that sorting the weights only has an effect on the resampling schemes based on inversion-sampling.
+\item Prove that one-step MC variance is always lower under res-X resampling than under X resampling.
 \item Compare theoretical computation/storage costs and parallelisability between the different resampling schemes.
 \item Can the comparison of time-scales for different schemes be wrangled into/ related to a direct comparison of the variances? Is this even useful?
 \item (See marked notebook 3 page circa Jun/Jul 2020 for some more thoughts/ideas.)
