@@ -70,7 +70,21 @@ Implementation of lowvariance resampling within conditional SMC.
 
 
 \subsection*{\cite{li2020}}
+\begin{itemize}
+\item Resampling is not assumed to preserve the number of particles
+\item Resampling schemes where the parental indices are conditionally independent (but not necessarily i.i.d.) --- notably multi, strat, res-multi and res-strat --- can be represented as a matrix conditional on the weights, where each element $P_{ij}$ is the conditional probability of particle $i$ choosing parent $j$ (so the rows sum to $1$, and column $j$ sums to $Nw_j$).
+\item For multinomial resampling, all parental indices are conditionally i.i.d., so the rows of $P_{ij}$ are identical, each containing the vector of weights.
+\item For stratified resampling, $P$ is a ``staircase matrix'': see Figure2(b) in the paper for an illustration. Upon thinking a little it is clear why you end up with a staircase matrix.
+\item Residual resampling sets some rows to have a single $1$ element and the rest $0$ (these correspond to the deterministic assignments) and the remaining rows are constructed according to which scheme is used for the residuals, where the weights are now replaced with residual weights. See Fig2(c)(d) in the paper for an illustration
+\item Equation (1) gives an explicit expression for the conditional variance induced by resampling, the same metric used in DCM05. This expression, in the case of stratified resampling, seems much nicer than the expression used in DCM05, which could provide a more elegant proof that multi dominates strat. (EDIT: this expression no longer appears in arxiv v2, so possibly it wasn't correct)
+\item In Section 2.5 the authors admit that there is generally little to be gained by resampling such that the weights after resampling are unequal, even though I think it was one of the authors (Liu) who was proposing in previous works that this could be a useful strategy. (EDIT: this remark has been removed in v2)
+\item The authors prove that ordered stratified resampling is optimal (in certain senses) among the class of resampling schemes considered. But their class only includes resampling schemes where the parental indices are conditionally independent. This excludes syst, res-syst, SSP,...
+\item Theorem 3 tightens the convergence rate bound for Hilbert-ordered stratified resampling from $O(N^{-1-1/d})$ (in GCW19) to $O(N^{-1-2/d})$.
+\item Proposition 2 verifies the conjecture of GCW19 that the Hilbert curve is an optimal way to order the particles in dimension $d>1$
+\end{itemize}
 
+
+\subsection*{\cite{webber2019}}
 
 \subsection*{\cite{delmoral2012}}
 

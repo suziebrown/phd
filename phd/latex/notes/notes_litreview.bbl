@@ -1109,6 +1109,33 @@
       \field{pages}{119\bibrangedash 164}
       \range{pages}{46}
     \endentry
+    \entry{webber2019}{report}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=2095e3cc1b0ec22620f22a453171e6d8}{%
+           family={Webber},
+           familyi={W\bibinitperiod},
+           given={Robert\bibnamedelima J.},
+           giveni={R\bibinitperiod\bibinitdelim J\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{institution}{1}{%
+        {ArXiv}%
+      }
+      \strng{namehash}{2095e3cc1b0ec22620f22a453171e6d8}
+      \strng{fullhash}{2095e3cc1b0ec22620f22a453171e6d8}
+      \strng{bibnamehash}{2095e3cc1b0ec22620f22a453171e6d8}
+      \strng{authorbibnamehash}{2095e3cc1b0ec22620f22a453171e6d8}
+      \strng{authornamehash}{2095e3cc1b0ec22620f22a453171e6d8}
+      \strng{authorfullhash}{2095e3cc1b0ec22620f22a453171e6d8}
+      \field{sortinit}{W}
+      \field{sortinithash}{ecb89ff85896a47dc313960773ac311d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{number}{1903.12583}
+      \field{title}{Unifying Sequential {Monte} {Carlo} with Resampling Matrices}
+      \field{type}{techreport}
+      \field{year}{2019}
+    \endentry
     \entry{whiteley2010}{article}{}
       \name{author}{1}{}{%
         {{uniquename=0,uniquepart=base,hash=54f298378a05eefa8496fcea832c3d7e}{%
