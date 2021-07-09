@@ -60,6 +60,18 @@ Implementation of lowvariance resampling within conditional SMC.
 \subsection*{\cite{murray2016}}
 
 
+\subsection*{\cite{lee2016}}
+
+
+\subsection*{\cite{whiteley2016}}
+
+
+\subsection*{\cite{fox2003}}
+
+
+\subsection*{\cite{gandy2016}}
+
+
 \subsection*{\cite{whitley1994}}
 
 
@@ -69,7 +81,21 @@ Implementation of lowvariance resampling within conditional SMC.
 \subsection*{\cite{gerber2017}}
 
 
-\subsection*{\cite{li2020}}
+\subsection*{\cite{webber2019}}
+\begin{itemize}
+\item Allows number of particles to vary from one iteration to the next
+\item Allows resampling such that the weights after resampling are unequal
+\item Introduces the class of ``matrix resampling schemes'', and then the extension of this to encompass resampling schemes that cause the population size to vary randomly (but not unboundedly). 
+\item To be representable by a matrix (i.e. in this class) a resampling scheme must satisfy the property that parental indices are conditionally independent given weights.
+\item Includes NO RESAMPLING as an example resampling scheme! The reason being that it actually is included in the class of matrix resampling schemes
+\item Also includes as an example the simple implementation of stochastic rounding, where you don't enforce constant $N$ so everything is just rounded independently (in this paper this is called ``Bernoulli resampling''). This is not in the class of matrix resampling schemes, but it is in the extended class (Defn 2.2).
+\item It is shown that all matrix resampling schemes are unbiased
+\item Under additional assumptions, it is also shown that such resampling schemes have properties: MC estimates converge; and the variance of these estimates is bounded above.
+\item The above results hold even if the resampling scheme to use at each iteration is chosen on-the-fly --- notably including adaptive resampling, parallel resampling, adaptive pruning/enrichment --- but you can imagine some other eccentric mixes of resampling schemes!
+\end{itemize}
+
+
+\subsection*{\cite{li2020} (arXiv v2)}
 \begin{itemize}
 \item Resampling is not assumed to preserve the number of particles
 \item Resampling schemes where the parental indices are conditionally independent (but not necessarily i.i.d.) --- notably multi, strat, res-multi and res-strat --- can be represented as a matrix conditional on the weights, where each element $P_{ij}$ is the conditional probability of particle $i$ choosing parent $j$ (so the rows sum to $1$, and column $j$ sums to $Nw_j$).
@@ -83,8 +109,6 @@ Implementation of lowvariance resampling within conditional SMC.
 \item Proposition 2 verifies the conjecture of GCW19 that the Hilbert curve is an optimal way to order the particles in dimension $d>1$
 \end{itemize}
 
-
-\subsection*{\cite{webber2019}}
 
 \subsection*{\cite{delmoral2012}}
 

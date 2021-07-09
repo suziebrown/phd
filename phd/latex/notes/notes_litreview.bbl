@@ -282,6 +282,72 @@
       \field{pages}{656\bibrangedash 704}
       \range{pages}{49}
     \endentry
+    \entry{fox2003}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=93b0c4a7857a82a8f94e256475887c74}{%
+           family={Fox},
+           familyi={F\bibinitperiod},
+           given={Dieter},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {SAGE Publications}%
+      }
+      \strng{namehash}{93b0c4a7857a82a8f94e256475887c74}
+      \strng{fullhash}{93b0c4a7857a82a8f94e256475887c74}
+      \strng{bibnamehash}{93b0c4a7857a82a8f94e256475887c74}
+      \strng{authorbibnamehash}{93b0c4a7857a82a8f94e256475887c74}
+      \strng{authornamehash}{93b0c4a7857a82a8f94e256475887c74}
+      \strng{authorfullhash}{93b0c4a7857a82a8f94e256475887c74}
+      \field{sortinit}{F}
+      \field{sortinithash}{669c706c6f1fbf3b5a83d26f1d9e9e72}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The International Journal of Robotics Research}
+      \field{number}{12}
+      \field{title}{Adapting the Sample Size in Particle Filters through {KLD}-Sampling}
+      \field{volume}{22}
+      \field{year}{2003}
+      \field{pages}{985\bibrangedash 1003}
+      \range{pages}{19}
+    \endentry
+    \entry{gandy2016}{article}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,uniquepart=base,hash=7849c722c9d519d377dbcb5a9308c276}{%
+           family={Gandy},
+           familyi={G\bibinitperiod},
+           given={Axel},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=f0ae7da81a697d0ca7fbf66f28ca40bb}{%
+           family={Lau},
+           familyi={L\bibinitperiod},
+           given={F.\bibnamedelimi Din-Houn},
+           giveni={F\bibinitperiod\bibinitdelim D\bibinithyphendelim H\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{d1d5437bf9dfda0c4864ec2b2419eae9}
+      \strng{fullhash}{d1d5437bf9dfda0c4864ec2b2419eae9}
+      \strng{bibnamehash}{d1d5437bf9dfda0c4864ec2b2419eae9}
+      \strng{authorbibnamehash}{d1d5437bf9dfda0c4864ec2b2419eae9}
+      \strng{authornamehash}{d1d5437bf9dfda0c4864ec2b2419eae9}
+      \strng{authorfullhash}{d1d5437bf9dfda0c4864ec2b2419eae9}
+      \field{sortinit}{G}
+      \field{sortinithash}{5e8d2bf9d38de41b1528bd307546008f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Transactions on Signal Processing}
+      \field{number}{16}
+      \field{title}{The Chopthin Algorithm for Resampling}
+      \field{volume}{64}
+      \field{year}{2016}
+      \field{pages}{4273\bibrangedash 4281}
+      \range{pages}{9}
+    \endentry
     \entry{gerber2017}{article}{}
       \name{author}{3}{}{%
         {{uniquename=0,uniquepart=base,hash=89d9b932076f570b1be70fbe32180549}{%
@@ -578,6 +644,42 @@
       \field{title}{Resampling in Conditional SMC Algorithms}
       \field{year}{2019}
     \endentry
+    \entry{lee2016}{article}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,uniquepart=base,hash=b03496173658ac066e649b50540c712e}{%
+           family={Lee},
+           familyi={L\bibinitperiod},
+           given={Anthony},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=54f298378a05eefa8496fcea832c3d7e}{%
+           family={Whiteley},
+           familyi={W\bibinitperiod},
+           given={Nick},
+           giveni={N\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley Online Library}%
+      }
+      \strng{namehash}{3c02e015303bb481e92e3a6f718d47a6}
+      \strng{fullhash}{3c02e015303bb481e92e3a6f718d47a6}
+      \strng{bibnamehash}{3c02e015303bb481e92e3a6f718d47a6}
+      \strng{authorbibnamehash}{3c02e015303bb481e92e3a6f718d47a6}
+      \strng{authornamehash}{3c02e015303bb481e92e3a6f718d47a6}
+      \strng{authorfullhash}{3c02e015303bb481e92e3a6f718d47a6}
+      \field{sortinit}{L}
+      \field{sortinithash}{2c7981aaabc885868aba60f0c09ee20f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Statistical Analysis and Data Mining: The ASA Data Science Journal}
+      \field{number}{4}
+      \field{title}{Forest Resampling for Distributed Sequential {Monte} {Carlo}}
+      \field{volume}{9}
+      \field{year}{2016}
+      \field{pages}{230\bibrangedash 248}
+      \range{pages}{19}
+    \endentry
     \entry{lee2018}{article}{}
       \name{author}{2}{}{%
         {{uniquename=0,uniquepart=base,hash=b03496173658ac066e649b50540c712e}{%
@@ -654,7 +756,7 @@
       \field{sortinithash}{2c7981aaabc885868aba60f0c09ee20f}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{number}{2004.01975}
+      \field{number}{2004.01975v2}
       \field{title}{Stratification and Optimal Resampling for Sequential {Monte} {Carlo}}
       \field{type}{techreport}
       \field{year}{2020}
@@ -1165,6 +1267,49 @@
       \field{year}{2010}
       \field{pages}{306\bibrangedash 307}
       \range{pages}{2}
+    \endentry
+    \entry{whiteley2016}{article}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,uniquepart=base,hash=54f298378a05eefa8496fcea832c3d7e}{%
+           family={Whiteley},
+           familyi={W\bibinitperiod},
+           given={Nick},
+           giveni={N\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=b03496173658ac066e649b50540c712e}{%
+           family={Lee},
+           familyi={L\bibinitperiod},
+           given={Anthony},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=1858060b6354ae801e9c00c96c3ca667}{%
+           family={Heine},
+           familyi={H\bibinitperiod},
+           given={Kari},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{2}{%
+        {Bernoulli Society for Mathematical Statistics}%
+        {Probability}%
+      }
+      \strng{namehash}{b618f416e339b9f2bf14fe4c9ea98e7b}
+      \strng{fullhash}{b618f416e339b9f2bf14fe4c9ea98e7b}
+      \strng{bibnamehash}{b618f416e339b9f2bf14fe4c9ea98e7b}
+      \strng{authorbibnamehash}{b618f416e339b9f2bf14fe4c9ea98e7b}
+      \strng{authornamehash}{b618f416e339b9f2bf14fe4c9ea98e7b}
+      \strng{authorfullhash}{b618f416e339b9f2bf14fe4c9ea98e7b}
+      \field{sortinit}{W}
+      \field{sortinithash}{ecb89ff85896a47dc313960773ac311d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Bernoulli}
+      \field{number}{1}
+      \field{title}{On the Role of Interaction in Sequential {Monte} {Carlo} Algorithms}
+      \field{volume}{22}
+      \field{year}{2016}
+      \field{pages}{494\bibrangedash 529}
+      \range{pages}{36}
     \endentry
     \entry{whitley1994}{article}{}
       \name{author}{1}{}{%

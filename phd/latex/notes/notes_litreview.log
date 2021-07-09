@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  8 JUL 2021 16:41
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  9 JUL 2021 10:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -469,34 +469,34 @@ Overfull \hbox (4.36052pt too wide) in paragraph at lines 33--33
 near/Non-Gaussian
  []
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 74.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 86.
 (/usr/local/texlive/2018/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 74.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 86.
  [1
 
-{/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Overfull \hbox (8.84352pt too wide) in paragraph at lines 82--83
+{/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
+Overfull \hbox (8.84352pt too wide) in paragraph at lines 108--109
 []\OT1/cmr/m/n/10 Theorem 3 tight-ens the con-ver-gence rate bound for Hilbert-
 ordered strat-i-fied re-sam-pling from $\OML/cmm/m/it/10 O\OT1/cmr/m/n/10 (\OML
 /cmm/m/it/10 N[]\OT1/cmr/m/n/10 )$
  []
 
-[2] [3] [4] [5] [6] [7] (./notes_litreview.aux)
+[3] [4] [5] [6] [7] (./notes_litreview.aux)
 Package logreq Info: Writing requests to 'notes_litreview.run.xml'.
 \openout1 = `notes_litreview.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 8815 strings out of 492649
- 153337 string characters out of 6129623
- 576102 words of memory out of 5000000
- 12624 multiletter control sequences out of 15000+600000
+ 8819 strings out of 492649
+ 153520 string characters out of 6129623
+ 577180 words of memory out of 5000000
+ 12628 multiletter control sequences out of 15000+600000
  12208 words of font info for 47 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,6n,52p,831b,925s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 42i,6n,52p,831b,925s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb
@@ -512,7 +512,7 @@ live/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texli
 ve/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texliv
 e/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/te
 xlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
-Output written on notes_litreview.pdf (7 pages, 176029 bytes).
+Output written on notes_litreview.pdf (7 pages, 177958 bytes).
 PDF statistics:
  88 PDF objects out of 1000 (max. 8388607)
  63 compressed objects within 1 object stream
