@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  8 JUL 2021 16:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  9 JUL 2021 15:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1672,61 +1672,61 @@ LaTeX Font Info:    Font shape `OT1/put/bx/n' in size <12> not available
 ] [4] [5] [6] [7] [8] [9] [10]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 358.
-<plots/ncoalescent.pdf, id=526, 456.70625pt x 423.5825pt>
+(mdframed)              on input line 362.
+<plots/ncoalescent.pdf, id=534, 456.70625pt x 423.5825pt>
 File: plots/ncoalescent.pdf Graphic file (type pdf)
 <use plots/ncoalescent.pdf>
-Package pdftex.def Info: plots/ncoalescent.pdf  used on input line 373.
+Package pdftex.def Info: plots/ncoalescent.pdf  used on input line 377.
 (pdftex.def)             Requested size: 256.07741pt x 215.4614pt.
  [11] [12 <./plots/ncoalescent.pdf>] [13]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 545.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 549.
 
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 545.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 549.
  [14] [15]
-Overfull \hbox (10.66173pt too wide) in paragraph at lines 623--627
+Overfull \hbox (10.66173pt too wide) in paragraph at lines 627--631
 \OT1/cmr/m/n/10.95 The orig-i-nal work of []King-man ([]1982b[]) pro-vides suf-
 fi-cient con-di-tions for the finite-dimensional
  []
 
-[16] [17]
-<plots/ancdegen_mn.pdf, id=625, 602.25pt x 401.5pt>
+[16]
+<plots/ancdegen_mn.pdf, id=629, 602.25pt x 401.5pt>
 File: plots/ancdegen_mn.pdf Graphic file (type pdf)
 <use plots/ancdegen_mn.pdf>
-Package pdftex.def Info: plots/ancdegen_mn.pdf  used on input line 679.
+Package pdftex.def Info: plots/ancdegen_mn.pdf  used on input line 683.
 (pdftex.def)             Requested size: 200.59245pt x 133.7268pt.
-<plots/ancdegen_adaptsyst.pdf, id=626, 602.25pt x 401.5pt>
+<plots/ancdegen_adaptsyst.pdf, id=630, 602.25pt x 401.5pt>
 File: plots/ancdegen_adaptsyst.pdf Graphic file (type pdf)
 <use plots/ancdegen_adaptsyst.pdf>
-Package pdftex.def Info: plots/ancdegen_adaptsyst.pdf  used on input line 683.
+Package pdftex.def Info: plots/ancdegen_adaptsyst.pdf  used on input line 687.
 (pdftex.def)             Requested size: 200.59245pt x 133.7268pt.
 
 
 Package refcheck Warning: Unused label `fig:ancdegen_adaptsyst' on input line 6
-83.
+87.
 
-[18 <./plots/ancdegen_mn.pdf> <./plots/ancdegen_adaptsyst.pdf>] [19] [20]
+[17] [18 <./plots/ancdegen_mn.pdf> <./plots/ancdegen_adaptsyst.pdf>] [19]
+[20]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 772.
+(mdframed)              on input line 776.
+ [21] [22] [23] [24]
 
-[21] [22] [23] [24]
-
-Package refcheck Warning: Unused label `fig:strat_case1' on input line 1183.
+Package refcheck Warning: Unused label `fig:strat_case1' on input line 1201.
 
 [25] [26] [27] [28] [29] [30] [31] [32]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1564.
+(mdframed)              on input line 1584.
  [33] [34] [35] [36] [37]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1881.
-LaTeX Font Info:    Try loading font information for U+bbm on input line 1893.
+(mdframed)              on input line 1900.
+LaTeX Font Info:    Try loading font information for U+bbm on input line 1912.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/bbm-macros/ubbm.fd
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
@@ -1736,22 +1736,22 @@ File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
 ]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 2038.
+(mdframed)              on input line 2058.
 
 
-Package refcheck Warning: Unused label `defn:stochround' on input line 2038.
+Package refcheck Warning: Unused label `defn:stochround' on input line 2058.
 
 [42
 
 ] [43] [44]
-<plots/PG_degen.pdf, id=975, 602.25pt x 401.5pt>
+<plots/PG_degen.pdf, id=998, 602.25pt x 401.5pt>
 File: plots/PG_degen.pdf Graphic file (type pdf)
 <use plots/PG_degen.pdf>
-Package pdftex.def Info: plots/PG_degen.pdf  used on input line 2159.
+Package pdftex.def Info: plots/PG_degen.pdf  used on input line 2180.
 (pdftex.def)             Requested size: 341.43437pt x 227.6321pt.
  [45 <./plots/PG_degen.pdf>] [46] [47]
 
-Package refcheck Warning: Unused label `fig:whyASworks_a' on input line 2346.
+Package refcheck Warning: Unused label `fig:whyASworks_a' on input line 2367.
 
 ) [48] [49]
 \openout2 = `limits.aux'.
@@ -2020,19 +2020,19 @@ chapter 6.
 
 
 ] [129]
-Overfull \hbox (2.69765pt too wide) in paragraph at lines 298--298
+Overfull \hbox (2.69765pt too wide) in paragraph at lines 299--299
 [][][]\OT1/cmr/m/n/10.95 (1982c). ``The Co-a-les-cent''. In: \OT1/cmr/m/it/10.9
 5 Stochas-tic Pro-cesses and Their Ap-pli-ca-tions \OT1/cmr/m/n/10.95 13.3, pp.
  235{
  []
 
 [130] [131] [132]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 299.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 299.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 300.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 300.
  (./thesis_main.aux (./introduction.aux) (./background.aux)
 (./limits.aux) (./weakconv.aux) (./applications.aux) (./discussion.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 299.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 299.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 300.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 300.
 Package rerunfilecheck Info: File `thesis_main.out' has not changed.
 (rerunfilecheck)             Checksum: 663C82BB6A7BA4959F356DFC380A8BC3;3528.
 Package logreq Info: Writing requests to 'thesis_main.run.xml'.
@@ -2040,10 +2040,10 @@ Package logreq Info: Writing requests to 'thesis_main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 40224 strings out of 492649
- 777050 string characters out of 6129623
- 1314800 words of memory out of 5000000
- 43024 multiletter control sequences out of 15000+600000
+ 40281 strings out of 492649
+ 778438 string characters out of 6129623
+ 1315534 words of memory out of 5000000
+ 43069 multiletter control sequences out of 15000+600000
  568142 words of font info for 115 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  68i,23n,77p,10565b,1727s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2078,10 +2078,10 @@ ts/type1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2018/texmf-dist/fonts
 ype1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2018/texmf-dist/fon
 ts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2018/texmf-dist
 /fonts/type1/adobe/utopia/putb8a.pfb>
-Output written on thesis_main.pdf (145 pages, 881947 bytes).
+Output written on thesis_main.pdf (145 pages, 886217 bytes).
 PDF statistics:
- 2222 PDF objects out of 2487 (max. 8388607)
- 1975 compressed objects within 20 object streams
- 478 named destinations out of 1000 (max. 500000)
+ 2249 PDF objects out of 2487 (max. 8388607)
+ 2001 compressed objects within 21 object streams
+ 490 named destinations out of 1000 (max. 500000)
  439 words of extra memory for PDF output out of 10000 (max. 10000000)
 
