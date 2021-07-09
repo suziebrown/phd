@@ -91,7 +91,9 @@ Implementation of lowvariance resampling within conditional SMC.
 \item Also includes as an example the simple implementation of stochastic rounding, where you don't enforce constant $N$ so everything is just rounded independently (in this paper this is called ``Bernoulli resampling''). This is not in the class of matrix resampling schemes, but it is in the extended class (Defn 2.2).
 \item It is shown that all matrix resampling schemes are unbiased
 \item Under additional assumptions, it is also shown that such resampling schemes have properties: MC estimates converge; and the variance of these estimates is bounded above.
-\item The above results hold even if the resampling scheme to use at each iteration is chosen on-the-fly --- notably including adaptive resampling, parallel resampling, adaptive pruning/enrichment --- but you can imagine some other eccentric mixes of resampling schemes!
+\item The above results hold even if the resampling scheme to use at each iteration is chosen on-the-fly --- notably including adaptive resampling, parallel resampling, adaptive pruning/enrichment, and you can imagine some other eccentric mixes of resampling schemes!
+\item \emph{Complete} resampling schemes are defined as the subclass of matrix resampling schemes for which the weights after resampling are equal.
+\item Three comparisons are made between resampling schemes, in terms of conditional variance: multi $\geq$ strat; multi $\geq$ res-multi; multi $\geq$ res-strat. None of these examples are novel results, but perhaps the proof technique for strat could be useful as (at first glance anyway) it seems more understandable than that of DCM05.
 \end{itemize}
 
 
