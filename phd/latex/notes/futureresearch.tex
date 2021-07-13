@@ -43,6 +43,7 @@
 \item Explore more generally the effect of pre-sorting the weights. How does this link with results of Gerber Chopin Whiteley (where they sort by particle position)? My suspicion is now that sorting the weights only has an effect on the resampling schemes based on inversion-sampling.
 \item Prove that one-step MC variance is always lower under res-X resampling than under X resampling.
 \item Compare theoretical computation/storage costs and parallelisability between the different resampling schemes.
+\item What is the deal with MLJ16's (parallel resampling) rejection-resampler-with-deterministic-first-proposal? Is it biased? We know it reduces the variance compared to multinomial resampling, and less so as the weights' variance increases. Can we be more specific?
 \item Can the comparison of time-scales for different schemes be wrangled into/ related to a direct comparison of the variances? Is this even useful?
 \item (See marked notebook 3 page circa Jun/Jul 2020 for some more thoughts/ideas.)
 \item The difference $\Delta_i$, as defined in \texttt{phd/latex/randomised\_rounding/randomised\_rounding.pdf}, seems to tend to a quadratic in the weight as $N\to\infty$. Prove it?
