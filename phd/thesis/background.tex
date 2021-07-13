@@ -80,7 +80,7 @@ As we will see in Section~\ref{sec:SMC_FK}, sequential Monte Carlo overcomes the
 
 
 
-\subsection{Exact inference in state space models}
+\subsection{Inference methods for state space models}
 \label{sec:SSM_exact_inference}
 If the state space model has linear dynamics with Gaussian errors, the posterior distributions of interest are also Gaussian. The posterior mean and covariance satisfy certain recursions, implemented by the Kalman filter \parencite{kalman1960} and Rauch-Tung-Striebel smoother \parencite{rauch1965}. 
 Recursions are also available for some other conjugate models: see for example \textcite{vidoni1999}.
@@ -92,7 +92,7 @@ For models that are high-dimensional or highly non-linear or for which gradients
 The \emph{ensemble Kalman filter} \parencite{evensen1994} uses a Monte Carlo sample from the current time, propagates these points through the transition dynamics, and uses the sample covariance as an estimator of the updated covariance matrix. The means, which are cheaper to evaluate and more stable than the covariances, are still updated using the Kalman filter recursion, based on the estimated covariance.
 The \emph{unscented Kalman filter} \parencite{wan2000} uses a deterministic sample chosen via the \emph{unscented transformation}, which is then propagated through the non-linear transition kernel to obtain a characterisation of the distribution at the next time step. The sample consists of $2d+1$ points, where $d$ is the dimension of the state space, and defines a Gaussian approximation to the updated distribution. If the model is really linear-Gaussian then the sample points are sufficient to recover the correct distribution.
 
-In complex or high-dimensional models, such techniques may not be feasible, in which case we must resort to Monte Carlo methods.
+In complex or high-dimensional models, exact inference is often infeasible, and we turn instead to Monte Carlo methods.
 Markov chain Monte Carlo performs woefully on state space models due to the high dimension of the parameter space and high correlation between dimensions. 
 But we can exploit the sequential nature of the underlying dynamics to decompose the problem into a sequence of inferences of fixed dimension.
 This is the motivation behind sequential Monte Carlo (SMC).
@@ -108,9 +108,9 @@ every SMC algorithm is a Monte Carlo approximation of some \emph{Feynman-Kac} mo
 Before formally introducing SMC let us therefore define a generic Feynman-Kac model.
 For a more in-depth study, the reader is directed to the exhaustive books by \textcite{delmoral2004, delmoral2013} or the more accessible \textcite[Chapter 5]{chopin2020}.
 
-Define a state space $\mathcal{X}$ and a time horizon $T$. In this presentation we assume that the state space $\mathcal{X}$ is common for all times: this is often not the case in practice, but the generalisation to a sequence of state spaces is straightforward.
-The basic components of the Feynman-Kac model are a Markov law, defined by an initial distribution $\mathbb{M}_0$ on $\mathcal{X}$ and transition kernels $M_t: \mathcal{X} \mapsto \mathcal{X}$ for $t=1,\dots,T$; and a sequence of ``potential'' functions $G_0 : \mathcal{X} \mapsto [0,\infty)$  and $G_t : \mathcal{X}^2 \mapsto [0,\infty)$ for $t=1,\dots,T$.
-From these we construct a sequence of Feynman-Kac measures $(\mathbb{Q}_t)_{t=0:T}$ defined by the changes of measure
+Define a state space $\mathcal{X}$, which in this presentation we assume to be common for all times: this is often not the case in practice, but the generalisation to a sequence of state spaces is straightforward.
+The basic components of the Feynman-Kac model are a Markov law, defined by an initial distribution $\mathbb{M}_0$ on $\mathcal{X}$ and transition kernels $M_t: \mathcal{X} \mapsto \mathcal{X}$ for $t\in\mathbb{N}$; and a sequence of \emph{potential} functions $G_0 : \mathcal{X} \mapsto [0,\infty)$  and $G_t : \mathcal{X}^2 \mapsto [0,\infty)$ for $t\in\mathbb{N}$.
+From these we can construct, for any time horizon $T$, a sequence of Feynman-Kac measures $(\mathbb{Q}_t)_{t=0:T}$ defined by the changes of measure
 \begin{equation}
 \mathbb{Q}_t (dx_{0:T}) = \frac{1}{L_t} G_0(x_0) \mathbb{M}_0(dx_0)
         \left\{ \prod_{s=1}^t G_s(x_{s-1}, x_s) \right\} 
@@ -121,15 +121,15 @@ where $L_t$ is the normalising constant required to make $\mathbb{Q}_t$ a probab
 The generic state space model defined in \eqref{eq:SSM_spec} may be described by a Feynman-Kac model where:
 \begin{align}
 \mathbb{M}_0 &:= \mu \notag\\
-M_t (x_{t-1}, dx_t) &:= K_t (dx_t \mid x_{t-1}) & \text{for } t=1,\dots,T \notag\\
+M_t (x_{t-1}, dx_t) &:= K_t (dx_t \mid x_{t-1}) & \text{for } t=1,2,\dots \notag\\
 G_0 (x_0) &:= g_0 ( y_0 \mid x_0 ) \notag\\
-G_t (x_{t-1}, x_t) &:= g_t( y_t \mid x_t ) & \text{for } t=1,\dots,T . \label{eq:bootstrapFK}
+G_t (x_{t-1}, x_t) &:= g_t( y_t \mid x_t ) & \text{for } t=1,2,\dots . \label{eq:bootstrapFK}
 \end{align}
-This is not the only Feynman-Kac model for \eqref{eq:SSM_spec}; this corresponds to the ``bootstrap'' SMC algorithm, which is the simplest implementation but may be significantly outperformed by more involved algorithms such as
-``auxiliary'' particle filters \parencite{pitt1999, carpenter1999} and those using ``locally optimal'' proposals \parencite[e.g.][]{doucet2000} or ``lookahead'' methods \parencite{lin2013}.
- %``guided''\seb{[citation]} and ``auxiliary'' \parencite{pitt1999, carpenter1999} variants. 
- Feynman-Kac formalisms for some of these variants are presented for example in \textcite[Section 5.1.2]{chopin2020}.
-\seb{Say something about the time horizon, which we have now fixed, but was infinite in SSMs section.}
+This is not the only Feynman-Kac model for \eqref{eq:SSM_spec}; this corresponds to the \emph{bootstrap} SMC algorithm, which is the simplest implementation.
+Abusing notation, $g_t$ now denotes the density of the corresponding emission distribution; state space models in which these densities do not exist can still be expressed as Feynman-Kac models, the but not this bootstrap model.
+In practice the bootstrap SMC algorithm may be significantly outperformed by more involved algorithms such as
+\emph{auxiliary particle filters} \parencite{pitt1999, carpenter1999} and those using \emph{locally optimal proposals} \parencite[e.g.][]{doucet2000} or \emph{lookahead methods} \parencite{lin2013}.
+Feynman-Kac formalisms for some of these variants are presented for example in \textcite[Section 5.1.2]{chopin2020}.
 
 It remains to demonstrate that the measures $\mathbb{Q}_t$ arising from \eqref{eq:bootstrapFK} are sufficient for all the usual inference problems in the corresponding state space model \eqref{eq:SSM_spec}.
 By construction, the complete smoothing distribution is precisely
@@ -141,14 +141,14 @@ By construction, the complete smoothing distribution is precisely
         \prod_{s=1}^t g_s(y_s \mid x_s) K_s(dx_s \mid x_{s-1}) \\
 &= p(dx_{0:t} \mid y_{0:t}) . 
 \end{align*}
-The filtering, prediction and fixed-lag smoothing distributions are all also marginals of $\mathbb{Q}_t(dx_{0:T})$:
+The filtering, prediction and fixed-lag smoothing distributions are all also marginals of some $\mathbb{Q}_t(dx_{0:T})$:
 \begin{align}
 p(dx_t \mid y_{0:t}) &= \mathbb{Q}_t (dx_t) \notag\\
 p(dx_{t+h} \mid y_{0:t}) &= \mathbb{Q}_t (dx_{t+h}) \label{eq:FK_marginals}\\
 p(dx_{t-h:t} \mid y_{0:t}) &= \mathbb{Q}_t (dx_{t-h:t}) , \notag
 \end{align}
 while the likelihood $p(y_{0:t}) = L_t$.
-The upshot of this is that if we have access to a Monte Carlo approximation of $\mathbb{Q}_t(dx_{0:T})$ then we can conduct inference on any of these distributions, since marginalisation of Monte Carlo samples is trivial. The likelihood, on the other hand, is not obtained by marginalisation; nevertheless, we will see that approximations of the likelihood can also be obtained ``for free''. 
+This means that Monte Carlo approximation of $\mathbb{Q}_t(dx_{0:T})$ is sufficient for inference on any of these distributions, since marginalisation of Monte Carlo samples is trivial. The likelihood, on the other hand, is not obtained by marginalisation; nevertheless, we will see that likelihood estimates can also be obtained ``for free''. 
 The next section describes how we may obtain Monte Carlo samples from $\mathbb{Q}_t(dx_{0:T})$.
 
 
@@ -801,6 +801,12 @@ There may be circumstances under which it is beneficial to allow the number of p
 Deterministic resampling schemes (which cannot generally be unbiased, violating condition \ref{item:resampling_property3}) have been used by some authors. These include schemes based on optimal transport \parencite{reich2013, myers2021, corenflos2021} and the importance support points resampling of \textcite{huang2020}.
 
 \seb{Include one more paragraph, about parallel resampling \parencite{lee2016,whiteley2016,murray2016}.}
+\draft{
+The mutation and weighting steps of SMC are embarrassingly parallel, but resampling is not easy to parallelise, presenting a bottleneck to running SMC in parallel. There has therefore been a lot of interest recently in developing parallelisable resampling schemes. 
+\textcite{murray2016} proposes the \emph{Metropolis resampler} which employs a Metropolis algorithm using only pairwise comparisons of weights, but this scheme violates condition \ref{item:resampling_property3}. 
+The authors also propose \emph{rejection resampling}, which uses rejection sampling and is therefore unbiased. It constitutes an alternative method for \emph{multinomial resampling} (see below) which offers speed-ups when computing in parallel but requires that an upper bound on the weights is known.
+A variant that only requires an ``approximate'' upper bound on the weights is also presented, but this does not use the true weights for resampling, and so violates condition \ref{item:resampling_property3}. [Also say something about the variant with deterministic first proposal.]
+}
 
 However, the majority of resampling schemes in the literature fit within Definition~\ref{defn:resampling}, and it is not typically advantageous to violate the properties \ref{item:resampling_property1}--\ref{item:resampling_property3}.
 Within Definition~\ref{defn:resampling} there is still a great deal of flexibility. Many different resampling schemes have been proposed in the literature, some of which perform better than others.
@@ -1790,12 +1796,14 @@ Note that this is different to the permutations of offspring discussed in the pr
 To give a concrete example, consider resampling schemes based on inversion sampling (multinomial, stratified, systematic). Figure~\ref{fig:permutation_sensitivity} shows two partitions of $[0,1]$ each constructed from a permutation of the weight vector $w^{(1:6)} = (0.25,0.05,0.1,0.35,0.2,0.05)$.
 Under multinomial resampling this does not affect the distribution of the offspring counts, although it will affect the distribution of the parental indices if the fast implementation is used.
 
-On the other hand, under stratified or systematic resampling the distribution of offspring counts is different for the two partitions\seb{DCM05 mentions that strat and syst have this property; see the final paragraoh of section 2}. To see this, consider parents $2$ and $6$. When the weights are sorted, the probability that both of these parents are assigned a non-zero number of offspring is zero, because both of their subintervals lie within the same subinterval of length $1/N$, which gets exactly one inversion sampling point.
+On the other hand, under stratified or systematic resampling the distribution of offspring counts is different for the two partitions. 
+To see this, consider parents $2$ and $6$. When the weights are sorted, the probability that both of these parents are assigned a non-zero number of offspring is zero, because both of their subintervals lie within the same subinterval of length $1/N$, which gets exactly one inversion sampling point.
 When the weights are in their natural order, as in the top row of Figure~\ref{fig:permutation_sensitivity}, it is possible under stratified and systematic resampling for both parents $2$ and $6$ to be assigned one offspring.
 Clearly, then, the distribution of offspring counts under these resampling schemes differs between the two orderings of the weight vector pictured. 
+This property is also pointed out in \textcite[p.66]{douc2005}.
 Table~\ref{tab:resampling_properties} includes a summary of which resampling schemes are permutation-sensitive or not.
-
-\seb{I haven't actually proved this (I only explored it with a small example to get some intuition), but I believe SSP resampling is not permutation-sensitive. I think its behaviour is like the ``sorted'' case in the above, in that if two weights sum to less than $1/N$ then at most one of them will be assigned an offspring. This would be the ideal behaviour since it avoids assigning too many offspring to low-weight particles, while also avoiding erratic behaviour caused by sensitivity to the ordering of weights.}
+%\seb{I haven't actually proved this (I only explored it with a small example to get some intuition), but I believe SSP resampling is not permutation-sensitive. I think its behaviour is like the ``sorted'' case in the above, in that if two weights sum to less than $1/N$ then at most one of them will be assigned an offspring. This would be the ideal behaviour since it avoids assigning too many offspring to low-weight particles, while also avoiding erratic behaviour caused by sensitivity to the ordering of weights.}
+%
 % For example, in Figures \ref{fig:resampling_stratified} and \ref{fig:resampling_systematic} if the intervals $w_2$ and $w_4$ were swapped, the number of offspring assigned to particles 2 and 4 would be swapped in each case. \seb{Better to use an example where \emph{distribution} of offspring counts (conditional on the weights but not on the Uniform samples) differs depending on order. Such an example is included in my YRM19 presentation on resampling.}
 %We can also see that because $w_1$ has weight $\geq 1/N$ and is placed first, it is guaranteed at least one offspring.
 %
@@ -1877,10 +1885,11 @@ The variance reduction from sorting the particles diminishes as the dimension in
 Another remarkable result of \textcite{gerber2017} is that, when the particles are sorted by their states, systematic resampling admits some theoretical support that was lacking in the unsorted case.
 Recall that the possibly pathological behaviour of systematic resampling was related to ``bad'' orderings of the weight intervals; sorting the particles evidently prevents this.
 
-The intuition behind these results\seb{(I guess...)} is that sorting particles by their positions ensures that the stratified and systematic resampling schemes select parents from a good range of locations in state space. The sorting step prevents the sampled parents being concentrated in one small part of the state space purely by a chance ordering of the weight intervals.
+The intuition behind these results is that sorting particles by their states ensures that the stratified and systematic resampling schemes select parents from a good range of locations in state space. The sorting step prevents the sampled parents being concentrated in one small part of the state space purely by a chance ordering of the weight intervals.
+Another explanation \parencite{li2020} is based on the observation that, under stratified or systematic resmapling, the possible parents of a given offspring are always consecutive in the order in which the weights are input. Sorting these weights in order of the particle states ensures that these potential parents are ``close'' in state space, so that the state after resampling does not differ drastically depending on which parent is selected.
 
 These results are only relevant to resampling schemes based on inversion sampling with fairly evenly-spaced points. Notably, multinomial resampling is not affected by sorting, since it is invariant under permutations of the weight vector.
-%\seb{I'm not sure about SSP; GCW imply that sorting is unnecessary in SSP because it's so great anyway, but they don't actually claim that SSP is unnaffected by sorting. My intuition is that it probably is affected, in some complex way.}
+
 
 
 
@@ -1914,11 +1923,11 @@ For residual-systematic resampling, we can cook up a counterexample in the same 
 \Cov \left[ \varphi( Z_I) , \psi(Z_J) \right]
 &= \E[ \varphi( Z_I) \psi(Z_J) ] - \E[\varphi( Z_I) ] \E[\psi(Z_J) ] \\
 &=\Prob[\nu^{(1)}=1, \nu^{(3)}=1] - \Prob[\nu^{(1)}=1] \Prob[\nu^{(3)}=1] \\
-&= \frac{1}{2} - \frac{1}{2} \cdot \frac{1}{2} 
+&= \frac{1}{2} - \frac{1}{2} \times \frac{1}{2} 
 = \frac{1}{4}
 >0 ,
 \end{align*}
-since $\nu^{(3)}=1$ if and only if $\nu^{(1)}=1$. 
+since the residual weight intervals corresponding to parents $1$ and $3$ both occupy the first half of a length-$(1/R)$ interval, hence $\{\nu^{(1)}=1\}$ and $\{\nu^{(3)}=1\}$ each have probability $1/2$ and $\nu^{(3)}=1$ if and only if $\nu^{(1)}=1$. 
 So residual-systematic resampling also violates the negative association property.
 
 \textcite{gerber2017} also mention some resampling schemes that do result in negatively associated counts: stratified resampling, and by implication residual-stratified resampling; star resampling (see the remark at the end of \textcite[Section 3.2]{gerber2017}), and by implication residual-star resampling.

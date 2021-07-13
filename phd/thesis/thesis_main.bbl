@@ -1792,6 +1792,53 @@
       \field{pages}{609\bibrangedash 625}
       \range{pages}{17}
     \endentry
+    \entry{li2020}{report}{}
+      \name{author}{4}{}{%
+        {{uniquename=0,uniquepart=base,hash=16eb757fd1f91106a57e4904ee7c845b}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Yichao},
+           giveni={Y\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=afa7f44126ad63c18b8912d5efd8e7bd}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Wenshuo},
+           giveni={W\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=c7968c111a43f205d32685150dcd2259}{%
+           family={Deng},
+           familyi={D\bibinitperiod},
+           given={Ke},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=58b6ab30975eca2201e264d805607d70}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={Jun\bibnamedelima S.},
+           giveni={J\bibinitperiod\bibinitdelim S\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{institution}{1}{%
+        {ArXiv}%
+      }
+      \strng{namehash}{eaf80a46b49f2411c28765648bdd3641}
+      \strng{fullhash}{0397940e1cb35b78e119fa3534b8f3e2}
+      \strng{bibnamehash}{eaf80a46b49f2411c28765648bdd3641}
+      \strng{authorbibnamehash}{eaf80a46b49f2411c28765648bdd3641}
+      \strng{authornamehash}{eaf80a46b49f2411c28765648bdd3641}
+      \strng{authorfullhash}{0397940e1cb35b78e119fa3534b8f3e2}
+      \field{sortinit}{L}
+      \field{sortinithash}{2c7981aaabc885868aba60f0c09ee20f}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{number}{2004.01975v2}
+      \field{title}{Stratification and Optimal Resampling for Sequential {Monte} {Carlo}}
+      \field{type}{techreport}
+      \field{year}{2020}
+    \endentry
     \entry{lin2013}{article}{}
       \name{author}{3}{}{%
         {{uniquename=0,uniquepart=base,hash=8535552829169cf45ea1260a958de448}{%
