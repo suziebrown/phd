@@ -55,15 +55,7 @@ Comparison of multinomial, stratified \& systematic resampling. And the effect o
 Comparison of Monte Carlo variance between mutli, res-multi, strat, syst. CLTs for resampled particles.
 
 \subsection*{\cite{lee2019}}
-Implementation of lowvariance resampling within conditional SMC.
-
-\subsection*{\cite{murray2016}}
-
-
-\subsection*{\cite{lee2016}}
-
-
-\subsection*{\cite{whiteley2016}}
+Implementation of low variance resampling within conditional SMC.
 
 
 \subsection*{\cite{fox2003}}
@@ -81,6 +73,14 @@ Implementation of lowvariance resampling within conditional SMC.
 \subsection*{\cite{gerber2017}}
 
 
+\subsection*{\cite{delmoral2012}}
+
+
+
+
+%
+\section*{MATRIX RESAMPLING}
+
 \subsection*{\cite{webber2019}}
 \begin{itemize}
 \item Allows number of particles to vary from one iteration to the next
@@ -94,6 +94,7 @@ Implementation of lowvariance resampling within conditional SMC.
 \item The above results hold even if the resampling scheme to use at each iteration is chosen on-the-fly --- notably including adaptive resampling, parallel resampling, adaptive pruning/enrichment, and you can imagine some other eccentric mixes of resampling schemes!
 \item \emph{Complete} resampling schemes are defined as the subclass of matrix resampling schemes for which the weights after resampling are equal.
 \item Three comparisons are made between resampling schemes, in terms of conditional variance: multi $\geq$ strat; multi $\geq$ res-multi; multi $\geq$ res-strat. None of these examples are novel results, but perhaps the proof technique for strat could be useful as (at first glance anyway) it seems more understandable than that of DCM05.
+\item
 \end{itemize}
 
 
@@ -112,7 +113,38 @@ Implementation of lowvariance resampling within conditional SMC.
 \end{itemize}
 
 
-\subsection*{\cite{delmoral2012}}
+
+%
+\section*{PARALLEL RESAMPLING}
+See also:
+Verg\'e, Dubarry, Del Moral and Moulines (2013) ``On parallel implementation of sequential Monte Carlo methods: The island particle model''.
+
+\subsection*{\cite{whiteley2016}}
+\begin{itemize}
+\item Introduces the $\alpha$SMC framework, a generalisation encompassing e.g.\ SIS, bootstrap PF, adaptive resampling.
+\item continue reading from Section 3...
+\item
+\end{itemize}
+
+
+\subsection*{\cite{murray2016}}
+\begin{itemize}
+\item Motivates the need for parallelisable resampling schemes
+\item Introduces \emph{Metropolis resampling}, a Metropolis approximation of Multinomial resampling, i.e.\ run a Markov chain targetting the Categorical distribution parametrised by the normalised weights. 
+\item The Metropolis resampler is parallelisable because it doesn't require the weights to be normalised (i.e.\ their sum calculated) and it only compares weights pairwise (for the accept/reject step), so no operations require access to all the particles at once.
+\item The Metropolis resampler is biased, because the Markov chain is only run for a finite number of iterations, so it leads to biased likelihood estimates (so it's no use for pseudo-marginal-type PMCMC).
+\item The complexity of the Metropolis resampler is $O(NB)$ where $B$ is the number of Metropolis steps used per iteration, which may scale as a function of $N$. $B$ is a tuning parameter, trading off speed vs. accuracy; the authors provide some guidelines for choosing its value, which require that an upper bound on weights is available.
+\item Introduces \emph{rejection resampling}, which uses rejection sampling to choose the parents. Only possible when an upper bound on the weights is known. Two variants: the initial proposal is uniform over $[N]$, or is deterministically equal to the offspring index.
+\item Runtime of rejection resampling for each particle is random --- it keeps proposing until it gets an acceptance --- so it's not as parallel as Metropolis resampling; some particles will take longer to resample and leave other processors idling.
+\item Rejection resampling is unbiased.
+\item If the deterministic first proposal is used, rejection sampling has lower variance than Multinomial resampling, although this gain decreases as the variance of weights increases. With the Uniform first proposal, it samples the parents exactly from the Categorical distribution.
+\item \emph{Partial rejection resampling} can be used to reduce the expected runtime of rejection sampling, or in cases where no upper bound on weights is available but some almost-upper-bound $V$ is known. Instead of resampling with the weights $w_i$, resample with $w_i \wedge V$, and remove the bias by setting the weights after resampling to the ratio of the true weight and the resampling weight. This means any particularly high-weight particles for which $w_i > V$ do not have their weights completely reset, just decreased by a factor of $V$ (before normalisation: recall that parallel resampling avoids normalising weights). Taking $V$ small reduces the runtime but also reduces the effectiveness of resampling by resetting fewer weights.
+\item Lots of simulation results showing how performance compares between multinomial, stratified, systematic, Metropolis and rejection resampling, and their dependence on the number of particles and variance of weights. In their example a tight analytic upper bound on weights is available; I don't know how realistic this is in general.
+\end{itemize}
+
+
+\subsection*{\cite{lee2016}}
+
 
 
 %
