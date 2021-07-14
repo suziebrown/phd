@@ -133,6 +133,18 @@ Verg\'e, Dubarry, Del Moral and Moulines (2013) ``On parallel implementation of 
 \end{itemize}
 
 
+\subsection*{\cite{lee2016}}
+\begin{itemize}
+\item This paper extends the work of WLH16 on $\alpha$SMC
+\item The idea is to find practical $\alpha$SMC algorithms, where the on-the-fly choice of resampling type doesn't require too much particle interaction, so it really does work on-the-fly in parallel computing. In WLH16 they only considered removing interaction within the actual resampling step, not while choosing the resampler.
+\item The permissable matrix/graph representations of resampling are limited to B-matrices as in WLH16, corresponding to \emph{disjoint unions of complete graphs}
+\item They find that the partial ordering on such graphs (merging some connected components to create a coarser graph) corresponds to an ordering on the respective ESS's (using an extended defn of ESS that holds on restrictions of $[N]$ and may be weighted by some numbers $c$)
+\item This suggests Algorithm 2, which recursively searches for a graph satisfying the convergence criterion of WLH16, coarsening the graph at each recursion
+\item They then drill down into the implementation detail, managing somehow to be simultaneously nitty-gritty and abstract.
+\item TBH I didn't understand a lot of this paper...
+\end{itemize}
+
+
 \subsection*{\cite{murray2016}}
 \begin{itemize}
 \item Motivates the need for parallelisable resampling schemes
@@ -147,9 +159,6 @@ Verg\'e, Dubarry, Del Moral and Moulines (2013) ``On parallel implementation of 
 \item \emph{Partial rejection resampling} can be used to reduce the expected runtime of rejection sampling, or in cases where no upper bound on weights is available but some almost-upper-bound $V$ is known. Instead of resampling with the weights $w_i$, resample with $w_i \wedge V$, and remove the bias by setting the weights after resampling to the ratio of the true weight and the resampling weight. This means any particularly high-weight particles for which $w_i > V$ do not have their weights completely reset, just decreased by a factor of $V$ (before normalisation: recall that parallel resampling avoids normalising weights). Taking $V$ small reduces the runtime but also reduces the effectiveness of resampling by resetting fewer weights.
 \item Lots of simulation results showing how performance compares between multinomial, stratified, systematic, Metropolis and rejection resampling, and their dependence on the number of particles and variance of weights. In their example a tight analytic upper bound on weights is available; I don't know how realistic this is in general.
 \end{itemize}
-
-
-\subsection*{\cite{lee2016}}
 
 
 
