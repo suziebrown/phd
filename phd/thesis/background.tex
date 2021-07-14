@@ -701,7 +701,7 @@ Firstly, we could try to limit the number of offspring assigned to any one paren
 
 Another idea is to resample less often. Recall that the reason for resampling is to prevent weight degeneracy (that is, one of the weights tending to one while the others tend to zero). Now we see that, while solving one type of degeneracy, resampling creates another. The effect of ancestral degeneracy is essentially the same as that of weight degeneracy: both drastically increase the variance of the resulting SMC estimators. 
 We can therefore consider a trade-off between the two, which is the idea behind \emph{adaptive resampling} \parencite[Section 4]{liu1995}.
-The trick is to apply the resampling step only at iterations in which a certain criterion is met. The most commonly-used criterion, suggested by \textcite[Equation (14)]{liu1995}, is based on the estimated \emph{effective sample size}
+The trick is to apply the resampling step only at iterations in which a certain criterion is met. The most commonly-used criterion, suggested by \textcite[Equation (14)]{liu1995}, is based on the \emph{effective sample size}
 \begin{equation*}
 ESS(t) := \left\{ \sum_{i=1}^N (w_t^{(i)})^2 \right\}^{-1} ,
 \end{equation*}
@@ -799,15 +799,13 @@ There may be circumstances under which it is beneficial to allow the number of p
 
 Deterministic resampling schemes (which cannot generally be unbiased, violating condition \ref{item:resampling_property3}) have been used by some authors. These include schemes based on optimal transport \parencite{reich2013, myers2021, corenflos2021} and the importance support points resampling of \textcite{huang2020}.
 
-\seb{Include one more paragraph, about parallel resampling \parencite{lee2016,whiteley2016,murray2016}.}
-\draft{
-The mutation and weighting steps of SMC are embarrassingly parallel, but resampling is not easy to parallelise, presenting a bottleneck to running SMC in parallel or on distributed computer architectures. There has therefore been a lot of interest recently in developing parallelisable resampling schemes.
-\textcite{whiteley2016} shows that it is possible to construct resampling schemes that perform well whilst only requiring interaction of a few particles at a time, suggesting that parallel resampling is possible.
-The \emph{Metropolis resampler} \parencite{murray2016} resamples in parallel via a Metropolis MCMC algorithm, but this introduces bias and thus violates condition \ref{item:resampling_property3}. 
-\textcite{murray2016} also proposes \emph{rejection resampling}, which uses an unbiased rejection sampling procedure. This constitutes an alternative method for \emph{multinomial resampling} (see below) which offers speed-ups when computing in parallel but requires that an upper bound on the weights is known.
-A variant that only requires an ``approximate'' upper bound on the weights is also presented, but this does not use the true weights for resampling, and so violates condition \ref{item:resampling_property3}. [Also say something about the variant with deterministic first proposal.]
-}
+The mutation and weighting steps of SMC are embarrassingly parallel, but resampling is not easy to parallelise, presenting a bottleneck to running SMC on parallel or distributed computer architectures. %There has therefore been a lot of interest recently in parallelising the resampling step.
+\textcite{whiteley2016} shows that it is possible to construct resampling schemes that perform well whilst only requiring interaction of a few particles at a time, suggesting that parallel resampling is possible, and further details relating to the implementation are provided in \textcite{lee2016}.
+The \emph{Metropolis resampler} of \textcite{murray2016} resamples in parallel via a Metropolis MCMC algorithm, but this introduces bias and thus violates condition \ref{item:resampling_property3}. 
+\textcite{murray2016} also propose \emph{rejection resampling}, which is unbiased. This constitutes an alternative method for \emph{multinomial resampling} (see below) which offers speed-ups when computing in parallel but requires that an upper bound on the weights is known.
+A variant that only requires an ``approximate'' upper bound on the weights is also presented, but this does not use the true weights for resampling, and so violates condition \ref{item:resampling_property3}.
 
+\seb{Redraft the following paragraph!}
 However, the majority of resampling schemes in the literature fit within Definition~\ref{defn:resampling}, and it is not typically advantageous to violate the properties \ref{item:resampling_property1}--\ref{item:resampling_property3}.
 Within Definition~\ref{defn:resampling} there is still a great deal of flexibility. Many different resampling schemes have been proposed in the literature, some of which perform better than others.
  Section~\ref{sec:examples_resamplingschemes} introduces some important resampling schemes. Their properties are discussed in Section~\ref{sec:resampling_properties} and summarised in Table~\ref{tab:resampling_properties}.
@@ -816,8 +814,6 @@ Within Definition~\ref{defn:resampling} there is still a great deal of flexibili
 
 \subsection{Examples}
 \label{sec:examples_resamplingschemes}
-\seb{Argue in each case that the scheme is unbiased?}
-
 
  
 \subsubsection{Multinomial resampling}
@@ -1612,10 +1608,15 @@ $\begin{aligned}
     \geq \sigma_{\texttt{res-multi}}(\varphi) 
     \geq \sigma_{\texttt{res-strat}}(\varphi)
 \end{aligned}$
+\item \label{item:resampling_var5} \hspace{5pt}
+$\begin{aligned}
+    \sigma_{\texttt{star}}(\varphi) 
+    \geq \sigma_{\texttt{res-star}}(\varphi) 
+\end{aligned}$
 \end{enumerate}
 \end{prop}
 \seb{Depict this partial ordering with a graph?\\ 
-We also know star$\geq$res-star (with equality only if weights are a permutation of $(1,0,...,0)$ ?), by using the expressions derived below along with $r^{(j)} \leq Nw_t^{(j)}/R$. But it would be nicer if we could prove a general result ``X$\geq$res-X''.}
+It would be nice if we could prove a general result ``X$\geq$res-X''.}
 
 \begin{proof}
 \textbf{\ref{item:resampling_var1}} See \textcite[Section 3]{douc2005}.\\
@@ -1628,20 +1629,20 @@ The following expression is derived in \textcite[Equation (6)]{douc2005}:
         - \frac{1}{N} \left\{ \sum_{j=1}^N \varphi(X_t^{(j)}) w_t^{(j)} \right\}^2 .
 \end{equation*}
 Under star resampling, all of the resampled indices are equal, say $X_t^{(a_t^{(1)})} = \dots = X_t^{(a_t^{(N)})} = X_t^\star$, so
-\begin{align*}
+\begin{align}
 \sigma_{\texttt{star}}(\varphi)
 &= \V\left[ \frac{1}{N} \sum_{i=1}^N \varphi( X_t^{(a_t^{(i)})} ) \midd \mathcal{G}_t \right]
-= \V\left[ \varphi( X_t^\star) \mid \mathcal{G}_t \right] \\
+= \V\left[ \varphi( X_t^\star) \mid \mathcal{G}_t \right] \notag\\
 &= \E\left[ \varphi^2( X_t^\star) \mid \mathcal{G}_t \right]
-        - \E\left[ \varphi( X_t^\star) \mid \mathcal{G}_t \right]^2 \\
+        - \E\left[ \varphi( X_t^\star) \mid \mathcal{G}_t \right]^2 \notag\\
 &= \sum_{j=1}^N \varphi^2(X_t^{(j)}) 
         \Prob[ X_t^\star = X_t^{(j)} \mid \mathcal{G}_t ]
         - \left\{ \sum_{j=1}^N \varphi(X_t^{(j)}) 
-        \Prob[ X_t^\star = X_t^{(j)} \mid \mathcal{G}_t ] \right\}^2 \\
+        \Prob[ X_t^\star = X_t^{(j)} \mid \mathcal{G}_t ] \right\}^2 \notag\\
 &= \sum_{j=1}^N \varphi^2(X_t^{(j)}) w_t^{(j)}
-        - \left\{ \sum_{j=1}^N \varphi(X_t^{(j)}) w_t^{(j)} \right\}^2 \\
-&= N \sigma_{\texttt{multi}}(\varphi) ,
-\end{align*}
+        - \left\{ \sum_{j=1}^N \varphi(X_t^{(j)}) w_t^{(j)} \right\}^2 \label{eq:condvar_star}\\
+&= N \sigma_{\texttt{multi}}(\varphi) , \notag
+\end{align}
 as required.\\
 \textbf{\ref{item:resampling_var4}} The second inequality follows from \ref{item:resampling_var2} and is stated in \textcite[p.9]{gerber2017}.
 For the first inequality, we use the following expression which is a slight modification of \textcite[Equation (8)]{douc2005}:
@@ -1660,23 +1661,42 @@ First notice that, conditional on $\mathcal{G}_t$, the Monte Carlo estimate in \
 where the terms in the second sum are all equal, say $\hat{X}_t^{(1)} = \dots = \hat{X}_t^{(R)} = X_t^\star$.
 The first sum is conditionally deterministic and hence does not contribute to the Monte Carlo variance \eqref{eq:resamplingMCvariance}.
 We have
-\begin{align*}
+\begin{align}
 \sigma_{\texttt{res-star}}(\varphi)
 &= \V\left[ \frac{1}{N} \sum_{i=1}^R \varphi (\hat{X}_t^{(i)}) \midd \mathcal{G}_t \right] 
-= \frac{R^2}{N^2} \V\left[ \varphi (X_t^\star) \midd \mathcal{G}_t \right] \\
+= \frac{R^2}{N^2} \V\left[ \varphi (X_t^\star) \midd \mathcal{G}_t \right] \notag\\
 &= \frac{R^2}{N^2} \E\left[ \varphi^2( X_t^\star) \mid \mathcal{G}_t \right]
-        - \frac{R^2}{N^2} \E\left[ \varphi( X_t^\star) \mid \mathcal{G}_t \right]^2 \\
+        - \frac{R^2}{N^2} \E\left[ \varphi( X_t^\star) \mid \mathcal{G}_t \right]^2 \notag\\
 &= \frac{R^2}{N^2} \sum_{j=1}^N \varphi^2(X_t^{(j)}) 
         \Prob[ X_t^\star = X_t^{(j)} \mid \mathcal{G}_t ]
         - \frac{R^2}{N^2} \left\{ \sum_{j=1}^N \varphi(X_t^{(j)}) 
-        \Prob[ X_t^\star = X_t^{(j)} \mid \mathcal{G}_t ] \right\}^2 \\
+        \Prob[ X_t^\star = X_t^{(j)} \mid \mathcal{G}_t ] \right\}^2 \notag\\
+&= \frac{R^2}{N^2} \sum_{j=1}^N \varphi^2(X_t^{(j)}) r^{(j)}
+        - \frac{R^2}{N^2} \left\{ \sum_{j=1}^N \varphi(X_t^{(j)}) r^{(j)} \right\}^2 \label{eq:condvar_resstar}\\
+&= R \sigma_{\texttt{res-multi}}(\varphi) \notag\\
+&\geq \sigma_{\texttt{res-multi}}(\varphi) \notag
+\end{align}
+whenever $R\geq 1$. 
+If $R=0$ then all residual schemes have zero variance and \ref{item:resampling_var4} holds trivially.\\
+\textbf{\ref{item:resampling_var5}}
+We have from \eqref{eq:condvar_star}
+\begin{equation*}
+\sigma_{\texttt{star}}(\varphi)
+= \sum_{j=1}^N \varphi^2(X_t^{(j)}) w_t^{(j)}
+        - \left\{ \sum_{j=1}^N \varphi(X_t^{(j)}) w_t^{(j)} \right\}^2
+\end{equation*}
+and from \eqref{eq:condvar_resstar}, noting that $r^{(j)} := (Nw_t^{(j)} - \flnw[j])/R \leq Nw_t^{(j)}/R$,
+\begin{align*}
+\sigma_{\texttt{res-star}}(\varphi)
 &= \frac{R^2}{N^2} \sum_{j=1}^N \varphi^2(X_t^{(j)}) r^{(j)}
         - \frac{R^2}{N^2} \left\{ \sum_{j=1}^N \varphi(X_t^{(j)}) r^{(j)} \right\}^2 \\
-&= R \sigma_{\texttt{res-multi}}(\varphi) \\
-&\geq \sigma_{\texttt{res-multi}}(\varphi) 
+&\leq \frac{R^2}{N^2} \sum_{j=1}^N \varphi^2(X_t^{(j)}) \frac{ N w_t^{(j)} }{R}
+        - \frac{R^2}{N^2} \left\{ \sum_{j=1}^N \varphi(X_t^{(j)}) \frac{ N w_t^{(j)} }{R} \right\}^2 \\
+&= \frac{R}{N} \sum_{j=1}^N \varphi^2(X_t^{(j)}) w_t^{(j)}
+        - \left\{ \sum_{j=1}^N \varphi(X_t^{(j)}) w_t^{(j)} \right\}^2 \\
+&\leq \sigma_{\texttt{star}}(\varphi) ,
 \end{align*}
-whenever $R\geq 1$. 
-If $R=0$ then all residual schemes have zero variance and \ref{item:resampling_var4} holds trivially.
+since $R\leq N-1$.
 \end{proof}
 
 
