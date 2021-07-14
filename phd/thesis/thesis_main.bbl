@@ -1599,6 +1599,50 @@
       \field{pages}{1\bibrangedash 25}
       \range{pages}{25}
     \endentry
+    \entry{king2021}{article}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,uniquepart=base,hash=e8b319667d80dbda885004a7149ce776}{%
+           family={Kon\bibnamedelimb Kam\bibnamedelima King},
+           familyi={K\bibinitperiod\bibinitdelim K\bibinitperiod\bibinitdelim K\bibinitperiod},
+           given={Guillaume},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=50a963e7060e271c091dfda34ee18cc5}{%
+           family={Papaspiliopoulos},
+           familyi={P\bibinitperiod},
+           given={Omiros},
+           giveni={O\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=04acdadf61ac6f83c7d8e8ce96106736}{%
+           family={Ruggiero},
+           familyi={R\bibinitperiod},
+           given={Matteo},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{9d2ce498dbf43244debbc37c64041bba}
+      \strng{fullhash}{9d2ce498dbf43244debbc37c64041bba}
+      \strng{bibnamehash}{9d2ce498dbf43244debbc37c64041bba}
+      \strng{authorbibnamehash}{9d2ce498dbf43244debbc37c64041bba}
+      \strng{authornamehash}{9d2ce498dbf43244debbc37c64041bba}
+      \strng{authorfullhash}{9d2ce498dbf43244debbc37c64041bba}
+      \field{sortinit}{K}
+      \field{sortinithash}{9fd838a31ba64d981e8f44562bd33f89}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Electronic Journal of Statistics}
+      \field{number}{1}
+      \field{title}{Exact inference for a class of hidden Markov models on general state spaces}
+      \field{volume}{5}
+      \field{year}{2021}
+      \field{pages}{2832\bibrangedash 2875}
+      \range{pages}{44}
+      \verb{doi}
+      \verb 10.1214/21-EJS1841
+      \endverb
+    \endentry
     \entry{koskela2018}{report}{}
       \name{author}{4}{}{%
         {{uniquename=0,uniquepart=base,hash=9b74b02c1ef5fc6fd3d8f21b8ce9be68}{%

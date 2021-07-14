@@ -12,7 +12,7 @@ Anyone who considers arithmetical methods of producing random digits is, of cour
 The idea of Monte Carlo is to use (pseudo-)random numbers to approximate expectations under an intractable probability distribution of interest.
 Sequential Monte Carlo (SMC) is a class of Monte Carlo algorithms which are implemented sequentially, allowing efficient sampling from sequences of distributions.
 SMC was developed for inference in intractable state space models (details in Section~\ref{sec:SSMs}) and introduced to the statistics community by \textcite{gordon1993}.
-The basic idea behind SMC is that of sequential importance sampling, whereby the posterior importance samples from one target distribution are used to generate proposals for the next. A full derivation of the SMC recursions is beyond the scope of this work, but the reader is referred to e.g.\ \textcite{doucet2009, chopin2020} for more background. Here it suffices to provide a motivation in the context of state space models (Section~\ref{sec:SSMs}) and the formalism of Feynman-Kac models (Section~\ref{sec:FKmodels}).
+The basic idea behind SMC is that of sequential importance sampling, whereby the importance samples from one target distribution are used to generate proposals for the next. A full derivation of the SMC recursions is beyond the scope of this work, but the reader is referred to e.g.\ \textcite{doucet2009, chopin2020} for more background. Here it suffices to provide a motivation in the context of state space models (Section~\ref{sec:SSMs}) and the formalism of Feynman-Kac models (Section~\ref{sec:FKmodels}).
 
 
 
@@ -72,18 +72,18 @@ The principal inferences of interest in state space models are:
 \end{description}
 If the dynamics of the state space model are parametrised by some $\theta$, i.e.\ $g_t$ and/or $K_t$ depend on $\theta$, we may also be interested in parameter inference or computing the likelihood $p(y_{0:t})$ of the observed data for particular values of $\theta$. Such a model is considered in Section~\ref{sec:particleGibbs}.
 
-In certain cases, these inference problems may be solved analytically (Section~\ref{sec:SSM_exact_inference}), but this is not typically the case. For intractable models we must resort to Monte Carlo methods. However, state space inference is problematic even with Monte Carlo. 
+In certain cases, these inference problems may be solved analytically (Section~\ref{sec:SSM_exact_inference}), but this is not typically the case. For intractable models we must resort to numerical methods such as Monte Carlo. However, state space inference is problematic even with Monte Carlo. 
 The main difficulties are that the dimension of the target distributions may increase along the sequence, and that there is strong dependence between consecutive distributions. Markov chain Monte Carlo (MCMC), for instance, is known to struggle with highly correlated targets\seb{[citation]} and its performance drops drastically as dimension increases, despite convergence rates that are independent of dimension\seb{[citation]}.
 
-As we will see in Section~\ref{sec:SMC_FK}, sequential Monte Carlo overcomes these problems, turning the problematic properties of the target distribution to its benefit. Correlation between consecutive targets is exploited for sequential updating, which is able to handle the incrementing dimensionality. The resulting linear-in-$t$ computational complexity also allows inference to be performed on-line, that is, updating the posterior distribution(s) as observations arrive.
+As we will see in Section~\ref{sec:SMC_FK}, sequential Monte Carlo somewhat overcomes these problems, turning the problematic properties of the target distribution to its benefit. Correlation between consecutive targets is exploited for sequential updating, which is able to handle the incrementing dimensionality. The resulting linear-in-$t$ computational complexity also allows inference to be performed on-line, that is, updating the posterior distribution(s) as observations arrive.
 
 
 
 
-\subsection{Inference methods for state space models}
+\subsection{Inference in state space models}
 \label{sec:SSM_exact_inference}
-If the state space model has linear dynamics with Gaussian errors, the posterior distributions of interest are also Gaussian. The posterior mean and covariance satisfy certain recursions, implemented by the Kalman filter \parencite{kalman1960} and Rauch-Tung-Striebel smoother \parencite{rauch1965}. 
-Recursions are also available for some other conjugate models: see for example \textcite{vidoni1999}.
+If the state space model has linear dynamics with Gaussian noise, the posterior distributions of interest are also Gaussian. The posterior mean and covariance satisfy certain recursions, implemented by the Kalman filter \parencite{kalman1960} and Rauch-Tung-Striebel smoother \parencite{rauch1965}. 
+Recursions are also available for some other conjugate models: see for example \textcite{vidoni1999,king2021}.
 Another analytic case occurs if the state space $\mathcal{X}$ is finite, in which case any integrals become finite sums, and the forward-backward algorithm \parencite{baum1970} yields the exact posteriors. However, if the state space becomes large, albeit finite, exact computation becomes infeasible.
 
 If the model is Gaussian but non-linear, the posterior filtering distributions can be estimated using the \emph{extended Kalman filter} (see for example \textcite{jazwinski2007}), which applies a first-order approximation in order to make use of the Kalman filter. This method performs well on models that are ``almost linear''. The resulting predictor is only \emph{optimal} when the model is actually linear, in which case the extended Kalman filter coincides with the Kalman filter.
@@ -186,7 +186,7 @@ However, remember that given a particular state space model there is also a choi
 \end{algorithm}
 
 The choice of \textsc{resample} procedure can also have a profound effect on performance and is discussed in detail in Section~\ref{sec:resampling}. 
-Resampling is not necessary for the algorithm to be valid, but it is important to ensure good performance. Its purpose is to periodically ``reset'' the weights $w_t^{(1:N)}$, preventing \emph{weight degeneracy}. This is the phenomenon that multiplying importance weights over time causes the variance of the weights to increase exponentially, until after some iterations practically all of the weight is concentrated on one particle, with the rest having weights very close to zero. This means that the Monte Carlo sample (of size $N$) essentially consists of just one sample, so that the Monte Carlo approximations have very high variance.
+Resampling is not necessary for the algorithm to be valid, but it is important to ensure good performance. Its purpose is to periodically ``reset'' the weights $w_t^{(1:N)}$, preventing \emph{weight degeneracy}. This is the phenomenon that multiplying importance weights over time causes the variance of the unnormalised weights to increase exponentially, until after some iterations practically all of the weight is concentrated on one particle, with the rest having weights very close to zero. This means that the Monte Carlo sample (of size $N$) essentially consists of just one sample, so that the Monte Carlo approximations have very high variance.
 
 The idea of resampling is to make multiple copies of particles with high weights and eliminate particles with low weights, then reset the weights to $w_t^{(1:N)} = (1,\dots,1)/N$. Done correctly, this procedure does not introduce any bias and, although it increases variance in the short term by adding extra randomness, it improves stability in the long term.
 It also prevents computational budget being ``wasted'' on simulating low-weight particles which do not contribute much to the approximation.
@@ -196,7 +196,7 @@ We define the \emph{offspring counts} for each $i,t$ as
 \begin{equation*}
 \nu_{t-1}^{(i)} := |\{ j: a_{t-1}^{(j)} = i \}| ,
 \end{equation*}
-the number of copies in generation $t$ of particle $i$ from generation $t-1$ appearing by resampling. Notice that $\nu_t^{(1:N)}$ is expressed as a non-injective function of $a_t^{(1:N)}$, and as such carries less information.
+the number of copies in generation $t$ of particle $i$ from generation $t-1$ appearing by resampling. Notice that $\nu_{t-1}^{(1:N)}$ is expressed as a non-injective function of $a_{t-1}^{(1:N)}$, and as such carries less information.
 To ensure Algorithm~\ref{alg:SMC} is valid, we assume that the resampling procedure
 is \emph{unbiased}, that is, the expectation of $\nu_{t-1}^{(i)}$ is proportional to $w_{t-1}^{(i)}$ for each $i$. This requirement is formalised in Definition~\ref{defn:resampling}.
 % satisfies the following properties: that the population size $N$ is conserved; and that, given $w_{t-1}^{(1:N)}$, the expectation of $\nu_{t-1}^{(i)}$ is proportional to $w_{t-1}^{(i)}$ for each $i$.
@@ -341,7 +341,7 @@ Moreover, they satisfy a central limit theorem:
 \end{equation*}
 in distribution, as $N\to\infty$\seb{[citation]}. 
 The $\sqrt{N}$ scaling agrees with the standard convergence rate for Monte Carlo approximations.
-Under additional conditions, the asymptotic variances $\sigma_t(\varphi)$ are stable over $t$, justifying the use of SMC filtering on-line.
+Under additional conditions, the asymptotic variances $\sigma_t(\varphi)$ are stable over $t$ \parencite[Proposition 11.13]{chopin2020}, justifying the use of SMC filtering on-line.
 It can also easily be shown that the likelihood estimates \eqref{eq:likelihood_estimate} are unbiased \parencite[see for example][Proposition 16.3]{chopin2020}.
 
 There are many other results concerning convergence, stability and error bounds for SMC algorithms. A full exposition of these results and their conditions is beyond the scope of this work, but the book by \textcite{delmoral2013} provides an exhaustive treatment, and some of the key ideas and results are also developed in \textcite[Chapter 11]{chopin2020}.
@@ -382,7 +382,6 @@ It turns out also to be extremely useful as a limiting distribution in populatio
 
 
 \subsection{Properties of Kingman's coalescent}\label{sec:KCproperties}
-\seb{Refer to more exhaustive studies of the properties in the literature, e.g.\ \textcite[Section 1.2]{durrett2008}.}\\
 The simplicity of $Q$ allows various properties of the $n$-coalescent to be studied analytically.
 Starting with $n$ blocks, exactly $n-1$ coalescences are required to reach the absorbing state where all blocks have coalesced, known in population genetics as the \emph{most recent common ancestor} (MRCA).
 
@@ -516,7 +515,7 @@ In particular, when $k=2$ we have
 \Prob[ S_{2,n} ]
 =\frac{n+1}{3(n-1)} 
 \end{equation*}
-as the probability that a randomly chosen pair of lineages does not coalesce until the population MRCA.
+as the probability that a randomly chosen pair of lineages does not coalesce until the MRCA of all $n$ lineages.
 %, in the limit $N\to\infty$, the proportion of leaves in the left subtree is uniformly distributed on $[0,1]$.
 %Calling this proportion $X$, we have
 %\begin{equation*}
@@ -802,9 +801,10 @@ Deterministic resampling schemes (which cannot generally be unbiased, violating 
 
 \seb{Include one more paragraph, about parallel resampling \parencite{lee2016,whiteley2016,murray2016}.}
 \draft{
-The mutation and weighting steps of SMC are embarrassingly parallel, but resampling is not easy to parallelise, presenting a bottleneck to running SMC in parallel. There has therefore been a lot of interest recently in developing parallelisable resampling schemes. 
-\textcite{murray2016} proposes the \emph{Metropolis resampler} which employs a Metropolis algorithm using only pairwise comparisons of weights, but this scheme violates condition \ref{item:resampling_property3}. 
-The authors also propose \emph{rejection resampling}, which uses rejection sampling and is therefore unbiased. It constitutes an alternative method for \emph{multinomial resampling} (see below) which offers speed-ups when computing in parallel but requires that an upper bound on the weights is known.
+The mutation and weighting steps of SMC are embarrassingly parallel, but resampling is not easy to parallelise, presenting a bottleneck to running SMC in parallel or on distributed computer architectures. There has therefore been a lot of interest recently in developing parallelisable resampling schemes.
+\textcite{whiteley2016} shows that it is possible to construct resampling schemes that perform well whilst only requiring interaction of a few particles at a time, suggesting that parallel resampling is possible.
+The \emph{Metropolis resampler} \parencite{murray2016} resamples in parallel via a Metropolis MCMC algorithm, but this introduces bias and thus violates condition \ref{item:resampling_property3}. 
+\textcite{murray2016} also proposes \emph{rejection resampling}, which uses an unbiased rejection sampling procedure. This constitutes an alternative method for \emph{multinomial resampling} (see below) which offers speed-ups when computing in parallel but requires that an upper bound on the weights is known.
 A variant that only requires an ``approximate'' upper bound on the weights is also presented, but this does not use the true weights for resampling, and so violates condition \ref{item:resampling_property3}. [Also say something about the variant with deterministic first proposal.]
 }
 
@@ -1876,7 +1876,7 @@ Under ``permutation-sensitive'' resampling schemes, the distribution of offsprin
 \end{figure}
 
 %\subsubsection{Sorting}
-Related to this phenomenon, \textcite{gerber2017} prove some striking theoretical results concerning the effects of pre-sorting the particles. They show that sorting the particles in order of their states prior to resampling improves the rate of decay of resampling error from the usual $O(N^{-1})$ to $O(N^{1-\frac{1}{d}})$, where $d$ is the dimension of the state space. 
+Related to this phenomenon, \textcite{gerber2017} prove some striking theoretical results concerning the effects of pre-sorting the particles. They show that sorting the particles in order of their states prior to resampling improves the rate of decay of resampling error from the usual $O(N^{-1})$ to $O(N^{-1-\frac{1}{d}})$, where $d$ is the dimension of the state space. 
 In dimension $d=1$, this supports the numerical results of \textcite{kitagawa1996}, who observed empirically that sorting improved the convergence rate from $O(N^{-1})$ to $O(N^{-2})$ when working in one dimension.
 
 In dimension $d\geq2$ things are more complicated because there is no full ordering of the state space. \textcite{gerber2017} get around this by mapping the state space onto $[0,1]^d$ and sorting by the Hilbert curve. 
