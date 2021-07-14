@@ -122,8 +122,14 @@ Verg\'e, Dubarry, Del Moral and Moulines (2013) ``On parallel implementation of 
 \subsection*{\cite{whiteley2016}}
 \begin{itemize}
 \item Introduces the $\alpha$SMC framework, a generalisation encompassing e.g.\ SIS, bootstrap PF, adaptive resampling.
-\item continue reading from Section 3...
-\item
+\item Sections 3--4 present convergence results for generic $\alpha$SMC.
+\item In Section 5.1 they use the $\alpha$SMC framework to demonstrate that running multiple independent PFs and then averaging them is not a good solution to distributed PFing. The multiple independent PFs can be expressed as an instance of $\alpha$SMC.
+\item ``Degree of interaction'' is represented by graph degree: SIS corresponds to the identity matrix or graph with self-loops only (degree$=1$, the minimum possible); Bootstrap PF corresponds to the matrix with $1/N$ in every element, or the complete graph on $N$ vertices with self-loops (degree$=N$, the maximum possible); adaptive resampling chooses either the SIS or bootstrap graph at each iteration.
+\item The structure of these graphs (see definition of "B-matrices" on p.514) is such that (1) each node has the same degree, (2) all self-loops are present, (3) all the connected components are complete subgraphs. These conditions are sufficient to ensure all the convergence properties of Theorem 2.
+\item Algorithm 4 is a procedure for choosing the interaction matrix on-the-fly. By construction the resulting matrix is a B-matrix. The algorithm partitions $[N]$ into interaction blocks, i.e.\ the connected components of the corresponding graph. The sooner the while loop terminates, the smaller the connected components and the less interaction.
+\item Section 5.4 contains simulation results. They demonstrate that the ``random'' and ``greedy'' variants of Algorithm 4 keep the level of interaction very low, the ``simple'' variant less so, but all much lower than the full interaction in the bootstrap PF.
+\item They also compare the MSE of the various techniques (Figure 4), seeming to show that adaptive resampling outperforms the others as long as its threshold is not too high (e.g.\ the usual $N/2$ threshold is good in this example).
+\item The authors' ``random'' and ``greedy'' methods do perform comparably to adaptive resampling though, and they seem to rarely require interaction between more than 2 or 4 particles at a time, so they might be more suitable for distributed settings?
 \end{itemize}
 
 
