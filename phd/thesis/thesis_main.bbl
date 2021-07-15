@@ -325,6 +325,38 @@
       \field{pages}{527\bibrangedash 530}
       \range{pages}{4}
     \endentry
+    \entry{chopin2004}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=23c0c7d947415c68f4949167db1ca938}{%
+           family={Chopin},
+           familyi={C\bibinitperiod},
+           given={Nicolas},
+           giveni={N\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Institute of Mathematical Statistics}%
+      }
+      \strng{namehash}{23c0c7d947415c68f4949167db1ca938}
+      \strng{fullhash}{23c0c7d947415c68f4949167db1ca938}
+      \strng{bibnamehash}{23c0c7d947415c68f4949167db1ca938}
+      \strng{authorbibnamehash}{23c0c7d947415c68f4949167db1ca938}
+      \strng{authornamehash}{23c0c7d947415c68f4949167db1ca938}
+      \strng{authorfullhash}{23c0c7d947415c68f4949167db1ca938}
+      \field{sortinit}{C}
+      \field{sortinithash}{963e9d84a3da2344e8833203de5aed05}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Annals of Statistics}
+      \field{number}{6}
+      \field{title}{Central Limit Theorem for Sequential {Monte} {Carlo} Methods and its Application to {Bayesian} Inference}
+      \field{volume}{32}
+      \field{year}{2004}
+      \field{pages}{2385\bibrangedash 2411}
+      \range{pages}{27}
+    \endentry
     \entry{chopin2020}{book}{}
       \name{author}{2}{}{%
         {{uniquename=0,uniquepart=base,hash=23c0c7d947415c68f4949167db1ca938}{%
@@ -446,6 +478,44 @@
       \field{pages}{293\bibrangedash 318}
       \range{pages}{26}
     \endentry
+    \entry{crisan2002}{article}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,uniquepart=base,hash=11e95b7ffb0671eae4b587fdbd11b74f}{%
+           family={Crisan},
+           familyi={C\bibinitperiod},
+           given={Dan},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=aca5faad8b57b96b59c12fc59d0b6eb4}{%
+           family={Doucet},
+           familyi={D\bibinitperiod},
+           given={Arnaud},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{cd9971a1c9202de6f89da146fda03158}
+      \strng{fullhash}{cd9971a1c9202de6f89da146fda03158}
+      \strng{bibnamehash}{cd9971a1c9202de6f89da146fda03158}
+      \strng{authorbibnamehash}{cd9971a1c9202de6f89da146fda03158}
+      \strng{authornamehash}{cd9971a1c9202de6f89da146fda03158}
+      \strng{authorfullhash}{cd9971a1c9202de6f89da146fda03158}
+      \field{sortinit}{C}
+      \field{sortinithash}{963e9d84a3da2344e8833203de5aed05}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Transactions on Signal Processing}
+      \field{number}{3}
+      \field{title}{A Survey of Convergence Results on Particle Filtering Methods for Practitioners}
+      \field{volume}{50}
+      \field{year}{2002}
+      \field{pages}{736\bibrangedash 746}
+      \range{pages}{11}
+    \endentry
     \entry{crisan1999}{article}{}
       \name{author}{2}{}{%
         {{uniquename=0,uniquepart=base,hash=11e95b7ffb0671eae4b587fdbd11b74f}{%
@@ -538,6 +608,42 @@
       \field{labeltitlesource}{title}
       \field{title}{Mean Field Simulation for {Monte} {Carlo} Integration}
       \field{year}{2013}
+    \endentry
+    \entry{delmoral1999}{article}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,uniquepart=base,hash=d771d04fc13831e7ab9152984eaa0d86}{%
+           family={Del\bibnamedelima Moral},
+           familyi={D\bibinitperiod\bibinitdelim M\bibinitperiod},
+           given={Pierre},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=1762d1c5ac31be0b0d80ee2b261c912f}{%
+           family={Guionnet},
+           familyi={G\bibinitperiod},
+           given={Alice},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {JSTOR}%
+      }
+      \strng{namehash}{2e7b0d4b1773a2f9474cfbc243090a9d}
+      \strng{fullhash}{2e7b0d4b1773a2f9474cfbc243090a9d}
+      \strng{bibnamehash}{2e7b0d4b1773a2f9474cfbc243090a9d}
+      \strng{authorbibnamehash}{2e7b0d4b1773a2f9474cfbc243090a9d}
+      \strng{authornamehash}{2e7b0d4b1773a2f9474cfbc243090a9d}
+      \strng{authorfullhash}{2e7b0d4b1773a2f9474cfbc243090a9d}
+      \field{sortinit}{D}
+      \field{sortinithash}{2ef1bd9a78cc71eb74d7231c635177b8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Annals of Applied Probability}
+      \field{title}{Central Limit Theorem for Nonlinear Filtering and Interacting Particle Systems}
+      \field{year}{1999}
+      \field{pages}{275\bibrangedash 297}
+      \range{pages}{23}
     \endentry
     \entry{devroye1986}{book}{}
       \name{author}{1}{}{%

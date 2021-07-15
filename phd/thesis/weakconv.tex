@@ -474,11 +474,11 @@ Firstly, we have the inequality
 \end{equation*}
 as can be seen by considering the multinomial expansion of the RHS.
 Applying Proposition~\ref{thm:cN_properties}\ref{item:cN_property4},
-\begin{equation}\label{eq:039}
+\begin{equation*}%\label{eq:039}
 \sum_{\substack{ s_1, \dots, s_l =1 \\ \text{all distinct} }}^{\tau_N(t)}
         \prod_{j=1}^l c_N(s_j)
 \leq (t+1)^l .
-\end{equation}
+\end{equation*}
 \textbf{\ref{thm:sumprod1_b}}
 As pointed out in \textcite[Equation (8)]{koskela2018}, 
 \begin{equation}\label{eq:002}
@@ -1100,7 +1100,7 @@ Applying \eqref{eq:035} to the first term, \eqref{eq:037} to the second term and
         \prod_{i=1}^k c_N(r_i) .
 \end{align*}
 Upon taking the expectation and limit, we have
-\begin{align}
+\begin{align*}
 &\lim_{N\to\infty} \E \left[ 
         \sum_{\substack{r_1 <\dots< r_k :\\ r_i \leq \tau_N(t_i) \forall i}}
         \left( \prod_{i=1}^k p_{r_i} \right)
@@ -1127,8 +1127,8 @@ Upon taking the expectation and limit, we have
     &\hspace{2cm}\times \lim_{N\to\infty} \E\left[ \sum_{\substack{r_1 <\dots< r_k 
         :\\ r_i \leq \tau_N(t_i) \forall i}}
         \sum_{j=1}^k c_N(r_j)
-        \prod_{i=1}^k c_N(r_i) \right] . \label{eq:043}
-\end{align}
+        \prod_{i=1}^k c_N(r_i) \right] . %\label{eq:043}
+\end{align*}
 The middle terms vanish due to \eqref{eq:BJJK_eq3.3}--\eqref{eq:BJJK_eq3.4} and the expression becomes
 \begin{align}
 \lim_{N\to\infty} \E &\left[ 
