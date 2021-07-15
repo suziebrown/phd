@@ -1294,7 +1294,36 @@ for $i = 1, \dots, N $.
 The parental indices are again selected according to \eqref{eq:syst_strat_resampling}, as illustrated in Figure \ref{fig:inv_resampling}.
 
 \textcite{kitagawa1996} suggests a deterministic scheme in which the random $u$ is replaced by a fixed $\alpha\in[0,1]$; but, being deterministic, this scheme does not satisfy the unbiasedness condition (Property~\ref{item:resampling_property1} in Definition~\ref{defn:resampling}).
-\textcite{whitley1994} employs a different description of systematic resampling, where the interval $[0,1]$ is joined up into a circle, and the systematic samples are evenly spaced pointers on an outer ring, which is spun around like a roulette wheel. This comprises adding a random phase to each $U_i$, modulo one, and is an exactly equivalent description of systematic resampling.\seb{Diagram?}
+\textcite{whitley1994} employs a different description of systematic resampling, where the interval $[0,1]$ is joined up into a circle, and the systematic samples are evenly spaced pointers on an outer ring, which is spun around like a roulette wheel (Figure~\ref{fig:roulettewheel}). This comprises adding a random phase to each $U_i$, modulo one, and is an exactly equivalent description of systematic resampling.
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[>=stealth]
+\draw (0,0)--(0:2) arc(0:90:2)--cycle;
+\node at (45:1.7) {$w_1$};
+\draw (0,0)--(342:2) arc(342:360:2)--cycle;
+\node at (351:1.7) {$w_2$};
+\draw (0,0)--(306:2) arc(306:342:2)--cycle;
+\node at (324:1.7) {$w_3$};
+\draw (0,0)--(180:2) arc(180:306:2)--cycle;
+\node at (243:1.7) {$w_4$};
+\draw (0,0)--(108:2) arc(108:180:2)--cycle;
+\node at (144:1.7) {$w_5$};
+\draw (0,0)--(90:2) arc(90:108:2)--cycle;
+\node at (99:1.7) {$w_6$};
+%% outer circle
+\draw[thick, violet] (0,0) circle (2.5);
+%% arrows spaced 1/N
+\draw[->, thick, violet] (43.2:2.5)--(43.2:2);
+\draw[->, thick, violet] (103.2:2.5)--(103.2:2);
+\draw[->, thick, violet] (163.2:2.5)--(163.2:2);
+\draw[->, thick, violet] (223.2:2.5)--(223.2:2);
+\draw[->, thick, violet] (283.2:2.5)--(283.2:2);
+\draw[->, thick, violet] (343.2:2.5)--(343.2:2);
+\end{tikzpicture}
+\caption[Whitley's roulette wheel]{Whitley's ``roulette wheel'' description of systematic resampling. The inner circle stays fixed while the outer circle with its equally-spaced pointers is ``spun'' by a random amount. The weights and phase pictured are the same as in Figure~\ref{fig:inv_resampling}. For systematic resampling, the two descriptions are equivalent.}
+\label{fig:roulettewheel}
+\end{figure}
 
 Like stratified resampling, systematic resampling ensures the random numbers are ``well spread out''; the resulting samples are even more constrained than with stratified resampling. 
 Systematic resampling also has the advantage of being extremely easy to implement and computationally efficient, requiring only one sample from a pseudo-random number generator (PRNG) followed by $O(N)$ elementary operations.
@@ -1408,7 +1437,7 @@ Since $\flnw = Nw_t^{(i)}$ for each $i$, residual resampling will have $R=0$, le
 In systematic resampling exactly $\flnw = Nw_t^{(i)}$ samples will fall in the $i^{th}$ interval.
 In particular, if $w_t^{(1:N)} = (1,\dots, 1)/N$ then each parent is assigned exactly one offspring deterministcially, so there is effectively no resampling.
 
-The same phenomenon occurs with stratified resampling, although not if one uses Whitley's roulette wheel description\seb{(Figure ??)}. The random phase shift introduced by ``spinning the wheel'' prevents the inversion sampling intervals from lining up exactly with the weight intervals, so the resampled offspring counts may vary from their means by one either side.
+The same phenomenon occurs with stratified resampling, although not if one uses Whitley's roulette wheel description (Figure~\ref{fig:roulettewheel}). The random phase shift introduced by ``spinning the wheel'' prevents the inversion sampling intervals from lining up exactly with the weight intervals, so the resampled offspring counts may vary from their means by one either side.
 \textcite{whitley1994} does not describe stratified resampling, but we see that unlike with systematic resampling, in the case of startified resampling the roulette wheel description is not equivalent to the standard inversion sampling description. 
 The roulette wheel adds some unnecessary extra randomness, so the straightforward inversion sampler is preferred.
 
@@ -2051,6 +2080,36 @@ This certainly seems to improve on independent uniform points which can have sta
 Figure~\ref{fig:star_discrepancy} illustrates how the star discrepancy is computed, and how it compares between these sampling methods.
 
 
+
+\subsubsection{Matrix resampling}
+Some resampling schemes render the parental indices $a_t^{(1:N)}$ conditionally independent over $i$ given the weights $w_t^{(1:N)}$, and such schemes admit a matrix representation conditional on the weights.
+These resampling matrices have been defined differently by different authors \parencite[cf.][]{webber2019, whiteley2016}, but the general idea is the same. Following most closely to the presentation of \textcite{li2020}, we use the following definition.
+
+\begin{defn}
+A \emph{resampling matrix} for weights $w_t^{(1:N)}$ is a $N\times N$ matrix with entries in $[0,1]$ such that:
+\begin{enumerate}
+\item each row sums to $1$, and
+\item the $i^{th}$ column sums to $Nw_t^{(i)}$, for each $i \in \{1,\dots,N\}$.
+\end{enumerate}
+\end{defn}
+The $ij^{th}$ element of the resampling matrix represents the conditional probability of offspring $i$ being resampled from parent $j$.
+Some resampling schemes that are expressible as matrices are:
+\begin{itemize}
+\item no resampling, for which the resampling matrix is the identity matrix;
+\item multinomial resampling, for which each row of the resampling matrix is the vector of weights;
+\item stratified resampling;
+\item residual-multinomial resampling;
+\item residual-stratified resampling.
+\end{itemize}
+Illustrations of the structure of the resampling matrix resulting from each of these schemes can be found in \textcite[Figure 2]{li2020}, for example, although the residual resampling matrices may differ depending on the implementation.
+All of the other resampling schemes we have encountered have some conditional dependence between the parental indices (as summarised in Table~\ref{tab:resampling_properties}) and thus are not representable by matrices.
+
+Within the matrix resampling class, \textcite{li2020} show that stratified resampling on the particles sorted by state is optimal in terms of the conditional variance \eqref{eq:resamplingMCvariance}, and \textcite{webber2019} uses the matrix representations to construct alternative proofs of several of the results of Proposition~\ref{thm:resampling_var_compare}.
+
+For our purposes this class is too restrictive, as it excludes several resampling schemes that are prevalent in the literature and which perform comparably to, if not better than, conditionally independent resampling schemes.
+
+
+
 %\subsubsection{Optimal resampling}
 %\textcite{crisan1999} introduce another resampling scheme based on a branching process, which they show to be optimal in some sense. However, their algorithm is not widely used in practice because it is much more complicated to implement than alternatives like systematic resampling which perform just as well empirically, and share some of its optimality properties \parencite{bain2008}. 
 %\seb{Possibly add an ``optimality'' column in Table~\ref{tab:resampling_properties} containing in what sense a scheme might be considered optimal.}
@@ -2060,7 +2119,7 @@ Figure~\ref{fig:star_discrepancy} illustrates how the star discrepancy is comput
 \begin{landscape}
 \begin{table}[ht]
 \centering
-\begin{tabular}{ l | c c c c c c c c }
+\begin{tabular}{ l | c c c c c c c c c }
 \hline\hline
 & \thead{support of $\nu_t^{(i)}$ given
             \\ $ \frac{K}{N} \leq w_t^{(i)} < \frac{K+1}{N}$} 
@@ -2070,31 +2129,34 @@ Figure~\ref{fig:star_discrepancy} illustrates how the star discrepancy is comput
         & \thead{degenerate if\\ $w_t^{(1:N)} =$\\ $\frac{1}{N}(1,\dots,1)$?} 
         & \thead{sensitive to\\ permutations\\ of weights?} 
         & \thead{PRNG\\ calls}
-        & \thead{neg.\\ assoc.?} \\
+        & \thead{neg.\\ assoc.?}
+        & \thead{cond.\\ indep.?} \\
 \hline
 \texttt{multi} & $\{0,\dots,N\}$ & $N$ & $N/4$ & $\times$ & $\times$ 
-        & $\times$ & $N$ & $\checkmark$ \\
+        & $\times$ & $N$ & $\checkmark$ & $\checkmark$ \\
 \texttt{star} & $\{0, N\}$ & $N$ & $N^2/4$ & $\times$ & $\times$ 
-        & $\times$ & $1$ & $\checkmark$ \\
+        & $\times$ & $1$ & $\checkmark$ & $\times$ \\
 \texttt{strat} & $\{K-1, K, K+1, K+2\}$ & $2$ & $2$ & $\times$ & $\checkmark$ 
-        & $\checkmark$ & $N$ & $\checkmark$ \\
+        & $\checkmark$ & $N$ & $\checkmark$ & $\checkmark$ \\
 \texttt{syst} & $\{K, K+1\}$ & $1$ & $1/4$ & $\checkmark$ & $\checkmark$ 
-        & $\checkmark$ & $1$ & $\times$ \\
+        & $\checkmark$ & $1$ & $\times$ & $\times$ \\
 \texttt{res-multi} & $\{K,\dots,N\}$ & $N-1$ & $1$ & $\times$ & $\checkmark$ 
-        & $\times$ & $\leq N-1$ & $\checkmark$ \\
+        & $\times$ & $\leq N-1$ & $\checkmark$ & $\checkmark$ \\
 \texttt{res-star} & $\{K, N\}$ & $N-1$ & $N$ & $\times$ & $\checkmark$ 
-        & $\times$ & $1$ & $\checkmark$ \\
+        & $\times$ & $1$ & $\checkmark$ & $\times$ \\
 \texttt{res-strat} & $\{K, K+1, K+2\}$ & $2$ & $1/2$ & $\times$ & $\checkmark$ 
-        & $\checkmark$ & $\leq N-1$ & $\checkmark$ \\
+        & $\checkmark$ & $\leq N-1$ & $\checkmark$ & $\checkmark$ \\
 \texttt{res-syst} & $\{K, K+1\}$ & $1$ & $1/4$ & $\checkmark$ & $\checkmark$ 
-        & $\checkmark$ & $1$ & $\times$ \\
+        & $\checkmark$ & $1$ & $\times$ & $\times$ \\
 \texttt{ssp} & $\{K, K+1\}$ & $1$ & $1/4$ & $\checkmark$ & $\checkmark$ 
-        & $\times$ & $\leq N$ & $\checkmark$ \\
+        & $\times$ & $\leq N$ & $\checkmark$ & $\times$ \\
 %\texttt{mvb} & $\{K, K+1\}$ & $1$ & $1/4$ & $\checkmark$ & $\checkmark$ 
 %        & & & \\
 \hline\hline
 \end{tabular}
-\caption[Properties of resampling schemes]{Summary of some of the properties of resampling schemes explored in Section~\ref{sec:resampling_properties}. The abbreviated names for the resampling schemes are explained in Table~\ref{tab:resampling_abbrevs}.}
+\caption[Properties of resampling schemes]{Summary of some of the properties of resampling schemes explored in Section~\ref{sec:resampling_properties}. 
+Columns appear in order of their explanations in the text.\seb{they will soon anyway!}
+The abbreviated names for the resampling schemes are explained in Table~\ref{tab:resampling_abbrevs}.}
 %Some properties are not specified for \texttt{mvb} because they depend on the particular implementation.
 \label{tab:resampling_properties}
 \end{table} 
