@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  14 JUL 2021 18:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  15 JUL 2021 09:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1673,7 +1673,7 @@ LaTeX Font Info:    Font shape `OT1/put/bx/n' in size <12> not available
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 362.
-<plots/ncoalescent.pdf, id=537, 456.70625pt x 423.5825pt>
+<plots/ncoalescent.pdf, id=539, 456.70625pt x 423.5825pt>
 File: plots/ncoalescent.pdf Graphic file (type pdf)
 <use plots/ncoalescent.pdf>
 Package pdftex.def Info: plots/ncoalescent.pdf  used on input line 377.
@@ -1694,12 +1694,12 @@ fi-cient con-di-tions for the finite-dimensional
  []
 
 [16]
-<plots/ancdegen_mn.pdf, id=631, 602.25pt x 401.5pt>
+<plots/ancdegen_mn.pdf, id=633, 602.25pt x 401.5pt>
 File: plots/ancdegen_mn.pdf Graphic file (type pdf)
 <use plots/ancdegen_mn.pdf>
 Package pdftex.def Info: plots/ancdegen_mn.pdf  used on input line 682.
 (pdftex.def)             Requested size: 200.59245pt x 133.7268pt.
-<plots/ancdegen_adaptsyst.pdf, id=632, 602.25pt x 401.5pt>
+<plots/ancdegen_adaptsyst.pdf, id=634, 602.25pt x 401.5pt>
 File: plots/ancdegen_adaptsyst.pdf Graphic file (type pdf)
 <use plots/ancdegen_adaptsyst.pdf>
 Package pdftex.def Info: plots/ancdegen_adaptsyst.pdf  used on input line 686.
@@ -1725,8 +1725,8 @@ Package mdframed Info: mdframed detected package amsthm
  [33] [34] [35] [36] [37]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1929.
-LaTeX Font Info:    Try loading font information for U+bbm on input line 1941.
+(mdframed)              on input line 1949.
+LaTeX Font Info:    Try loading font information for U+bbm on input line 1961.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/bbm-macros/ubbm.fd
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
@@ -1736,22 +1736,22 @@ File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
 ]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 2087.
+(mdframed)              on input line 2107.
 
 
-Package refcheck Warning: Unused label `defn:stochround' on input line 2087.
+Package refcheck Warning: Unused label `defn:stochround' on input line 2107.
 
 [42
 
 ] [43] [44]
-<plots/PG_degen.pdf, id=1012, 602.25pt x 401.5pt>
+<plots/PG_degen.pdf, id=1020, 602.25pt x 401.5pt>
 File: plots/PG_degen.pdf Graphic file (type pdf)
 <use plots/PG_degen.pdf>
-Package pdftex.def Info: plots/PG_degen.pdf  used on input line 2209.
+Package pdftex.def Info: plots/PG_degen.pdf  used on input line 2229.
 (pdftex.def)             Requested size: 341.43437pt x 227.6321pt.
  [45 <./plots/PG_degen.pdf>] [46] [47]
 
-Package refcheck Warning: Unused label `fig:whyASworks_a' on input line 2396.
+Package refcheck Warning: Unused label `fig:whyASworks_a' on input line 2416.
 
 ) [48] [49]
 \openout2 = `limits.aux'.
@@ -2041,10 +2041,10 @@ Package logreq Info: Writing requests to 'thesis_main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 40306 strings out of 492649
- 778927 string characters out of 6129623
- 1315925 words of memory out of 5000000
- 43088 multiletter control sequences out of 15000+600000
+ 40315 strings out of 492649
+ 779114 string characters out of 6129623
+ 1316023 words of memory out of 5000000
+ 43096 multiletter control sequences out of 15000+600000
  568142 words of font info for 115 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  68i,23n,77p,10565b,1727s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2079,10 +2079,10 @@ ts/type1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2018/texmf-dist/fonts
 ype1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2018/texmf-dist/fon
 ts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2018/texmf-dist
 /fonts/type1/adobe/utopia/putb8a.pfb>
-Output written on thesis_main.pdf (146 pages, 889707 bytes).
+Output written on thesis_main.pdf (146 pages, 890197 bytes).
 PDF statistics:
- 2269 PDF objects out of 2487 (max. 8388607)
- 2020 compressed objects within 21 object streams
- 496 named destinations out of 1000 (max. 500000)
+ 2277 PDF objects out of 2487 (max. 8388607)
+ 2026 compressed objects within 21 object streams
+ 497 named destinations out of 1000 (max. 500000)
  439 words of extra memory for PDF output out of 10000 (max. 10000000)
 

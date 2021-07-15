@@ -1615,8 +1615,28 @@ $\begin{aligned}
 \end{aligned}$
 \end{enumerate}
 \end{prop}
-\seb{Depict this partial ordering with a graph?\\ 
-It would be nice if we could prove a general result ``X$\geq$res-X''.}
+The partial ordering suggested by Proposition~\ref{thm:resampling_var_compare} is depicted graphically in Figure~\ref{fig:condvar_ordering}.
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[>=stealth]
+\node at (0,0) {\texttt{star}};
+\node at (4,0.8) {\texttt{multi}};
+\node at (4,-0.8) {\texttt{res-star}};
+\node at (8,0.8) {\texttt{strat}};
+\node at (8,-0.8) {\texttt{res-multi}};
+\node at (12,0) {\texttt{res-strat}};
+\draw[->, thick] (0.6,0)--(3.3,0.8); %% star -> multi
+\draw[->, thick] (0.6,0)--(3.1,-0.8); %% star -> res-star
+\draw[->, thick] (4.6,0.8)--(7.3,0.8); %% multi -> strat
+\draw[->, thick] (4.9,-0.8)--(6.9,-0.8); %% res-star -> res-multi
+\draw[->, thick] (4.6,0.8)--(6.9,-0.7); %% multi -> res-multi
+\draw[->, thick] (9,-0.8)--(11,0); %% res-multi -> res-strat
+\end{tikzpicture}
+\caption[Conditional variance inequalities between resampling schemes]{Graphical depiction of the conditional variance inequalities stated in Proposition~\ref{thm:resampling_var_compare}.
+Conditional variance \eqref{eq:resamplingMCvariance} is non-increasing along arrows.}
+\label{fig:condvar_ordering}
+\end{figure}
 
 \begin{proof}
 \textbf{\ref{item:resampling_var1}} See \textcite[Section 3]{douc2005}.\\
