@@ -390,7 +390,7 @@
       \field{title}{An Introduction to Sequential {Monte} {Carlo}}
       \field{year}{2020}
     \endentry
-    \entry{corenflos2021}{report}{}
+    \entry{corenflos2021}{online}{}
       \name{author}{4}{}{%
         {{uniquename=0,uniquepart=base,hash=500462c41dd886082f1f8861030c76c6}{%
            family={Corenflos},
@@ -417,9 +417,6 @@
            giveni={G\bibinitperiod},
            givenun=0}}%
       }
-      \list{institution}{1}{%
-        {ArXiv}%
-      }
       \strng{namehash}{347cc8de1df6b6680f2996f2d224fb49}
       \strng{fullhash}{6604db2bca34cbe600652736b831a2c7}
       \strng{bibnamehash}{347cc8de1df6b6680f2996f2d224fb49}
@@ -432,10 +429,12 @@
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{number}{2102.07850}
+      \field{eprinttype}{arxiv}
       \field{title}{Differentiable Particle Filtering via Entropy-Regularized Optimal Transport}
-      \field{type}{techreport}
       \field{year}{2021}
+      \verb{eprint}
+      \verb 2102.07850v3
+      \endverb
     \endentry
     \entry{crisan1998}{article}{}
       \name{author}{3}{}{%
@@ -1398,7 +1397,7 @@
       \field{pages}{79\bibrangedash 82}
       \range{pages}{4}
     \endentry
-    \entry{huang2020}{report}{}
+    \entry{huang2020}{online}{}
       \name{author}{3}{}{%
         {{uniquename=0,uniquepart=base,hash=0ac22444caba16d464b2bddf0056c89f}{%
            family={Huang},
@@ -1419,9 +1418,6 @@
            giveni={S\bibinitperiod},
            givenun=0}}%
       }
-      \list{institution}{1}{%
-        {ArXiv}%
-      }
       \strng{namehash}{894bb33bda0c81abca05dbf6f6120070}
       \strng{fullhash}{894bb33bda0c81abca05dbf6f6120070}
       \strng{bibnamehash}{894bb33bda0c81abca05dbf6f6120070}
@@ -1434,10 +1430,12 @@
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{number}{2012.13769}
+      \field{eprinttype}{arxiv}
       \field{title}{Population Quasi-{Monte} {Carlo}}
-      \field{type}{techreport}
       \field{year}{2020}
+      \verb{eprint}
+      \verb 2012.13769v1
+      \endverb
     \endentry
     \entry{jacob2015}{article}{}
       \name{author}{3}{}{%
@@ -1749,7 +1747,7 @@
       \verb 10.1214/21-EJS1841
       \endverb
     \endentry
-    \entry{koskela2018}{report}{}
+    \entry{koskela2018}{online}{}
       \name{author}{4}{}{%
         {{uniquename=0,uniquepart=base,hash=9b74b02c1ef5fc6fd3d8f21b8ce9be68}{%
            family={Koskela},
@@ -1776,9 +1774,6 @@
            giveni={D\bibinitperiod},
            givenun=0}}%
       }
-      \list{institution}{1}{%
-        {ArXiv}%
-      }
       \strng{namehash}{0c20a152cbf08f66f0c1ef81feba93ac}
       \strng{fullhash}{7afd68e6bc1a63166dd7429d0bdfd696}
       \strng{bibnamehash}{0c20a152cbf08f66f0c1ef81feba93ac}
@@ -1791,10 +1786,12 @@
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{number}{1804.01811}
-      \field{title}{Asymptotic genealogies of interacting particle systems with an application to sequential {M}onte {C}arlo}
-      \field{type}{Mathematics e-print}
+      \field{eprinttype}{arxiv}
+      \field{title}{Asymptotic Genealogies of Interacting Particle Systems with an Application to Sequential {Monte} {Carlo}}
       \field{year}{2018}
+      \verb{eprint}
+      \verb 1804.01811v6
+      \endverb
     \endentry
     \entry{kuipers1974}{book}{}
       \name{author}{2}{}{%
@@ -1942,7 +1939,7 @@
       \field{pages}{609\bibrangedash 625}
       \range{pages}{17}
     \endentry
-    \entry{li2020}{report}{}
+    \entry{li2020}{online}{}
       \name{author}{4}{}{%
         {{uniquename=0,uniquepart=base,hash=16eb757fd1f91106a57e4904ee7c845b}{%
            family={Li},
@@ -1969,9 +1966,6 @@
            giveni={J\bibinitperiod\bibinitdelim S\bibinitperiod},
            givenun=0}}%
       }
-      \list{institution}{1}{%
-        {ArXiv}%
-      }
       \strng{namehash}{eaf80a46b49f2411c28765648bdd3641}
       \strng{fullhash}{0397940e1cb35b78e119fa3534b8f3e2}
       \strng{bibnamehash}{eaf80a46b49f2411c28765648bdd3641}
@@ -1984,10 +1978,12 @@
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{number}{2004.01975v2}
+      \field{eprinttype}{arxiv}
       \field{title}{Stratification and Optimal Resampling for Sequential {Monte} {Carlo}}
-      \field{type}{techreport}
       \field{year}{2020}
+      \verb{eprint}
+      \verb 2004.01975v2
+      \endverb
     \endentry
     \entry{lin2013}{article}{}
       \name{author}{3}{}{%
@@ -2995,7 +2991,7 @@
       \field{pages}{153\bibrangedash 158}
       \range{pages}{6}
     \endentry
-    \entry{webber2019}{report}{}
+    \entry{webber2019}{online}{}
       \name{author}{1}{}{%
         {{uniquename=0,uniquepart=base,hash=2095e3cc1b0ec22620f22a453171e6d8}{%
            family={Webber},
@@ -3003,9 +2999,6 @@
            given={Robert\bibnamedelima J.},
            giveni={R\bibinitperiod\bibinitdelim J\bibinitperiod},
            givenun=0}}%
-      }
-      \list{institution}{1}{%
-        {ArXiv}%
       }
       \strng{namehash}{2095e3cc1b0ec22620f22a453171e6d8}
       \strng{fullhash}{2095e3cc1b0ec22620f22a453171e6d8}
@@ -3019,10 +3012,12 @@
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{number}{1903.12583}
+      \field{eprinttype}{arxiv}
       \field{title}{Unifying Sequential {Monte} {Carlo} with Resampling Matrices}
-      \field{type}{techreport}
       \field{year}{2019}
+      \verb{eprint}
+      \verb 1903.12583v1
+      \endverb
     \endentry
     \entry{whiteley2010}{article}{}
       \name{author}{1}{}{%
