@@ -781,34 +781,34 @@ that satisfies the following conditions:
 \begin{enumerate}
 \item\label{item:resampling_property1} the population size is conserved:
 $ \sum_{i=1}^N \nu_t^{(i)} =N $
-%\item\label{item:resampling_property2} the weights are equal after resampling:
-%$w_{t+}^{(i)} = 1/N$ for all $i$
+\item\label{item:resampling_property2} the weights are equal after resampling:
+$w_{t+}^{(i)} = 1/N$ for all $i$
 \item\label{item:resampling_property3} the resampling is unbiased:
 $ \E[ \nu_t^{(i)} \mid w_t^{(i)} ] = N w_t^{(i)} $ for all $i$.
 \end{enumerate}
 \end{defn}
 It is possible to design resampling schemes that violate these properties.
-For example, a scheme of \textcite{liu1998} uses the square roots of the weights for resampling, then corrects by setting unequal weights after resampling (violating condition \ref{item:resampling_property3}).
-%conditions \ref{item:resampling_property2} and 
-\textcite[Section 3.1]{liu2001} generalises this further, and suggests setting the resampling weights adaptively as a function of the true weights $w_t^{(1:N)}$.
-\textcite{fearnhead2003} presents an optimal resampling scheme in the case that the state space is discrete, which similarly uses weights other than $w_t^{(1:N)}$ for resampling and corrects by giving the particles unequal weights after resampling.
-The chopthin resampling algorithm of \textcite{gandy2016} also leaves the weights unequal after resampling.
-
 Resampling different numbers of particles in different iterations (violating condition \ref{item:resampling_property1}) is of course possible \parencite[see for example][]{crisan1998}, but we typically have a fixed limit on computational resources, so in most cases it makes sense to simulate the maximum feasible number of particles $N$ at every iteration.
 There may be circumstances under which it is beneficial to allow the number of particles to vary adaptively \parencite{fox2003,chau2012,lee2018} or at random, but this is not commonly done in practice.
 
-Deterministic resampling schemes (which cannot generally be unbiased, violating condition \ref{item:resampling_property3}) have been used by some authors. These include schemes based on optimal transport \parencite{reich2013, myers2021, corenflos2021} and the importance support points resampling of \textcite{huang2020}.
+Condition \ref{item:resampling_property2} is sensible because the whole point of resampling is to reset the weights. However, there are several examples in the literature where the weights are only ``partially'' reset, so that the variance of weights after resampling is not zero, but is lower than before resampling.
+For example, a scheme of \textcite{liu1998} uses the square roots of the weights for resampling, then corrects by setting unequal weights after resampling (violating conditions \ref{item:resampling_property2} and \ref{item:resampling_property3}).
+\textcite[Section 3.1]{liu2001} generalise this further, and suggest setting the resampling weights adaptively as a function of the true weights $w_t^{(1:N)}$.
+\textcite{fearnhead2003} present an optimal resampling scheme in the case that the state space is discrete, which similarly uses weights other than $w_t^{(1:N)}$ for resampling and corrects by giving the particles unequal weights after resampling.
+The \emph{chopthin} resampling algorithm of \textcite{gandy2016} also violates condition \ref{item:resampling_property2}.
+
+Deterministic resampling schemes (which cannot generally be unbiased, violating condition \ref{item:resampling_property3}) have been used by some authors. One such scheme was proposed by \textcite{kitagawa1996} but is now generally implemented only in its randomised form (see \emph{systematic resampling} below). More recent examples include schemes based on optimal transport \parencite{reich2013, myers2021, corenflos2021} and the \emph{importance support points} resampling of \textcite{huang2020}.
 
 The mutation and weighting steps of SMC are embarrassingly parallel, but resampling is not easy to parallelise, presenting a bottleneck to running SMC on parallel or distributed computer architectures. %There has therefore been a lot of interest recently in parallelising the resampling step.
-\textcite{whiteley2016} shows that it is possible to construct resampling schemes that perform well whilst only requiring interaction of a few particles at a time, suggesting that parallel resampling is possible, and further details relating to the implementation are provided in \textcite{lee2016}.
+\textcite{whiteley2016} show that it is possible to construct resampling schemes that perform well whilst only requiring interaction of a few particles at a time, suggesting that parallel resampling is possible, and further details concerning implementation are provided in \textcite{lee2016}.
 The \emph{Metropolis resampler} of \textcite{murray2016} resamples in parallel via a Metropolis MCMC algorithm, but this introduces bias and thus violates condition \ref{item:resampling_property3}. 
 \textcite{murray2016} also propose \emph{rejection resampling}, which is unbiased. This constitutes an alternative method for \emph{multinomial resampling} (see below) which offers speed-ups when computing in parallel but requires that an upper bound on the weights is known.
-A variant that only requires an ``approximate'' upper bound on the weights is also presented, but this does not use the true weights for resampling, and so violates condition \ref{item:resampling_property3}.
+A variant that only requires an ``approximate'' upper bound on the weights is also presented, but this does not use the true weights for resampling, and so violates conditions \ref{item:resampling_property2} and \ref{item:resampling_property3}.
 
-\seb{Redraft the following paragraph!}
-However, the majority of resampling schemes in the literature fit within Definition~\ref{defn:resampling}, and it is not typically advantageous to violate the properties \ref{item:resampling_property1}--\ref{item:resampling_property3}.
-Within Definition~\ref{defn:resampling} there is still a great deal of flexibility. Many different resampling schemes have been proposed in the literature, some of which perform better than others.
- Section~\ref{sec:examples_resamplingschemes} introduces some important resampling schemes. Their properties are discussed in Section~\ref{sec:resampling_properties} and summarised in Table~\ref{tab:resampling_properties}.
+The majority of resampling schemes in the literature fit within Definition~\ref{defn:resampling}, and it is not usually advantageous to violate the properties \ref{item:resampling_property1}--\ref{item:resampling_property3}.
+Definition~\ref{defn:resampling} still allows a great deal of flexibility in the choice of resampling scheme, and many such schemes have been proposed, some performing better than others. 
+Some important resampling schemes are reviewed in Section~\ref{sec:examples_resamplingschemes}, and their performance is discussed in detail in Section~\ref{sec:resampling_properties} and summarised in Table~\ref{tab:resampling_properties}.
+
 
 
 
