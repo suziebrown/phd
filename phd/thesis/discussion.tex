@@ -5,8 +5,10 @@
 %}
 %{\textsc{Marie Curie}}
 \epigraph{
-Oh, there's such a lot of things to do and such a lot to be\\
-That there's always lots of cherries on my little cherry tree!
+Oh, there's such a lot of things to do\\
+\hspace{5pt} and such a lot to be\\
+That there's always lots of cherries\\
+\hspace{7pt} on my little cherry tree!
 }
 {\textsc{A. A. Milne}}
 
@@ -29,5 +31,5 @@ We have shown that our convergence theorems apply to a range of SMC algorithms, 
 There is no reason to believe that the convergence results should not apply in this case: we have seen that by various metrics residual-multinomial resampling lies between multinomial and, say, residual-stratified resampling, both of which have been shown to satisfy the conditions of the theorems.
 However, we have not yet succeeded in proving a corollary for residual-multinomial resampling.
 
-Adaptive resampling is routinely used to improve the performance of SMC, and it clearly mitigates the problem of ancestral degeneracy. It is not immediately clear, however, what exactly is the effect of adaptive resampling on the resulting genealogies. At first sight one might imagine that it simply slows the coalescent time scale by some factor determined by how often resampling occurs, but this is not the whole picture. Adaptive resampling must also affect the distribution of the weights that are input to the resampling procedure, because when resampling is triggered the weights necessarily have variance above a certain threshold.
+Adaptive resampling is routinely used to improve the performance of SMC, and  mitigates the problem of ancestral degeneracy. It is not immediately clear, however, what exactly is the effect of adaptive resampling on the resulting genealogies. At first sight one might imagine that it simply slows the coalescent time scale by some factor determined by how often resampling occurs, but this is not the whole picture. Adaptive resampling must also affect the distribution of the weights that are input to the resampling procedure, because when resampling is triggered the weights necessarily have variability above a certain threshold.
 The resulting genealogies may be expected to exhibit long waiting times between coalescence events, and bigger coalescences when they do occur, perhaps even to the point of retaining large or simultaneous mergers in the limit.
