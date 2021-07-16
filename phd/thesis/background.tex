@@ -605,7 +605,9 @@ The neutral Moran model \parencite{moran1958}, while perhaps less biologically r
 At each generation, an ordered pair of individuals is selected uniformly at random. The first individual in this pair dies (i.e.\ leaves no offspring in the next generation), while the other reproduces (leaving two offspring). All of the other individuals leave exactly one offspring.
 This is another special case of the neutral Cannings model, where the offspring distribution is now uniform over all permutations of $(0,2,1,1,\dots,1)$.
 
-Under a suitable time-scaling, its genealogies converge to the Kingman coalescent\seb{[citation]}, although the sufficient conditions of \textcite{kingman1982gene} do not apply:
+Under a suitable time-scaling, its genealogies converge to the Kingman coalescent,
+%\seb{[citation]}
+although the sufficient conditions of \textcite{kingman1982gene} do not apply:
 \begin{align*}
 \V[\nu_1] 
 &= \E[\nu_1^2] - \E[\nu_1]^2
@@ -615,7 +617,7 @@ Under a suitable time-scaling, its genealogies converge to the Kingman coalescen
 \to 0 ,
 \end{align*}
 violating the condition that $\sigma^2 >0$. 
-However, that condition turns out not to be necessary \seb{[citation]}, and $\V[\nu_1]$ gives us the correct time scale on which to recover the Kingman coalescent: $N(\V[\nu_1])^{-1} = N^2/2$.
+That condition turns out not to be necessary, and $\V[\nu_1]$ gives us the correct time scale on which to recover the Kingman coalescent: $N(\V[\nu_1])^{-1} = N^2/2$.
 It is not surprising that the time scale is an order bigger than in the Wright-Fisher model, because the Moran model has a reproduction rate $O(N)$ times lower than in the Wright-Fisher model: at each generation $2$ individuals are involved in reproduction, as opposed to $N$ in the Wright-Fisher model.
 %\seb{also cite a Moran-specific convergence result: not sure where (it isn't in Kingman 1982* or in Moran 1958 which predates KC)}
 
@@ -631,7 +633,7 @@ For that class of models under the same conditions, \textcite{mohle1999} proved 
 
 Meanwhile many similar results were established for models in which the limiting process is not the Kingman coalescent.
 Relaxing the conditions to allow multiple mergers in the limit admits $\Lambda$-coalescents as limiting processes, with the Kingman coalescent as a special case \parencite{pitman1999, sagitov1999, mohlesagitov1998}.
-If simultaneous mergers are also allowed, the limiting process is in the even more general class of $\Xi$-coalescents \parencite{mohle2001}, and this class encompasses all possible limiting genealogies of Cannings models.
+If simultaneous mergers are also allowed, the limiting process belongs to the even more general class of $\Xi$-coalescents \parencite{mohle2001}, and this class encompasses all possible limiting genealogies of Cannings models.
 
 The focus of the current work is on systems that admit Kingman genealogies in the limit, among a wider class of models where, like \textcite{mohle1998, mohle1999}, exchangeability is relaxed to random assignment, and we also do not require independence between generations, so our models are not neutral. 
 %In particular, this class of models is non-neutral.
@@ -720,7 +722,7 @@ Adaptive resampling and low-variance resampling can be combined, and this is wid
 Figure~\ref{fig:ancestral_degeneracy} compares ancestral degeneration under multinomial resampling (a relatively high variance scheme) to the same under adaptive resampling with a minimum-variance resampling scheme.
 It is clear that the degeneration is much more severe in the former case.
 
-There is one technique that completely solves the problem of ancestral degeneracy, namely \emph{backward simulation}\seb{[citation]}. This involves running an SMC algorithm as usual (the \emph{forward pass}), and then sampling new ancestors for each particle during an additional \emph{backward pass}. 
+There is one technique that completely solves the problem of ancestral degeneracy, namely \emph{backward simulation} \parencite{godsill2004}. This involves running an SMC algorithm as usual (the \emph{forward pass}), and then sampling new ancestors for each particle during an additional \emph{backward pass}. 
 The backward-simulated parents in each generation are chosen among all $N$ particles, making use of particles that were not included in the forward-sampled trajectories.
 The effect on genealogies is striking: the lineages are now sampled independently, so the coalescences caused by resampling do not feature at all in the output genealogies.
 

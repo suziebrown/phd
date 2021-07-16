@@ -724,11 +724,11 @@
            given={Arnaud},
            giveni={A\bibinitperiod},
            givenun=0}}%
-        {{uniquename=0,uniquepart=base,hash=bc15f0e86c04b04d51cdd1bff7614bfe}{%
+        {{uniquename=0,uniquepart=base,hash=5a26ee5828e66a41d0386a264c7580ff}{%
            family={Godsill},
            familyi={G\bibinitperiod},
-           given={Simon},
-           giveni={S\bibinitperiod},
+           given={Simon\bibnamedelima J.},
+           giveni={S\bibinitperiod\bibinitdelim J\bibinitperiod},
            givenun=0}}%
         {{uniquename=0,uniquepart=base,hash=ac7a0b060593ea80a10f55d530432a50}{%
            family={Andrieu},
@@ -740,12 +740,12 @@
       \list{publisher}{1}{%
         {Springer}%
       }
-      \strng{namehash}{8b7013fa4ab218e69c33cd205ca4b61c}
-      \strng{fullhash}{8b7013fa4ab218e69c33cd205ca4b61c}
-      \strng{bibnamehash}{8b7013fa4ab218e69c33cd205ca4b61c}
-      \strng{authorbibnamehash}{8b7013fa4ab218e69c33cd205ca4b61c}
-      \strng{authornamehash}{8b7013fa4ab218e69c33cd205ca4b61c}
-      \strng{authorfullhash}{8b7013fa4ab218e69c33cd205ca4b61c}
+      \strng{namehash}{823fc12201d01e9016a9f0a541c27eb6}
+      \strng{fullhash}{823fc12201d01e9016a9f0a541c27eb6}
+      \strng{bibnamehash}{823fc12201d01e9016a9f0a541c27eb6}
+      \strng{authorbibnamehash}{823fc12201d01e9016a9f0a541c27eb6}
+      \strng{authornamehash}{823fc12201d01e9016a9f0a541c27eb6}
+      \strng{authorfullhash}{823fc12201d01e9016a9f0a541c27eb6}
       \field{sortinit}{D}
       \field{sortinithash}{2ef1bd9a78cc71eb74d7231c635177b8}
       \field{extradatescope}{labelyear}
@@ -1237,6 +1237,50 @@
       \field{year}{2019}
       \field{pages}{2236\bibrangedash 2260}
       \range{pages}{25}
+    \endentry
+    \entry{godsill2004}{article}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,uniquepart=base,hash=5a26ee5828e66a41d0386a264c7580ff}{%
+           family={Godsill},
+           familyi={G\bibinitperiod},
+           given={Simon\bibnamedelima J.},
+           giveni={S\bibinitperiod\bibinitdelim J\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=aca5faad8b57b96b59c12fc59d0b6eb4}{%
+           family={Doucet},
+           familyi={D\bibinitperiod},
+           given={Arnaud},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=e63f732a7215ae555cfe12e23cfd2886}{%
+           family={West},
+           familyi={W\bibinitperiod},
+           given={Mike},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Taylor \& Francis}%
+      }
+      \strng{namehash}{494ecea583777877fa815fd571c01c07}
+      \strng{fullhash}{494ecea583777877fa815fd571c01c07}
+      \strng{bibnamehash}{494ecea583777877fa815fd571c01c07}
+      \strng{authorbibnamehash}{494ecea583777877fa815fd571c01c07}
+      \strng{authornamehash}{494ecea583777877fa815fd571c01c07}
+      \strng{authorfullhash}{494ecea583777877fa815fd571c01c07}
+      \field{sortinit}{G}
+      \field{sortinithash}{5e8d2bf9d38de41b1528bd307546008f}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of the American Statistical Association}
+      \field{number}{465}
+      \field{title}{{Monte} {Carlo} Smoothing for Nonlinear Time Series}
+      \field{volume}{99}
+      \field{year}{2004}
+      \field{pages}{156\bibrangedash 168}
+      \range{pages}{13}
     \endentry
     \entry{gordon1993}{inproceedings}{}
       \name{author}{3}{}{%
