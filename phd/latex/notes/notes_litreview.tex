@@ -88,13 +88,16 @@ Implementation of low variance resampling within conditional SMC.
 \item Introduces the class of ``matrix resampling schemes'', and then the extension of this to encompass resampling schemes that cause the population size to vary randomly (but not unboundedly). 
 \item To be representable by a matrix (i.e. in this class) a resampling scheme must satisfy the property that parental indices are conditionally independent given weights.
 \item Includes NO RESAMPLING as an example resampling scheme! The reason being that it actually is included in the class of matrix resampling schemes
-\item Also includes as an example the simple implementation of stochastic rounding, where you don't enforce constant $N$ so everything is just rounded independently (in this paper this is called ``Bernoulli resampling''). This is not in the class of matrix resampling schemes, but it is in the extended class (Defn 2.2).
+\item Also includes as an example the independent implementation of MVB resampling, where you don't enforce constant $N$ so everything is stochastically rounded independently (in this paper this is called ``Bernoulli resampling''). This is not in the class of matrix resampling schemes, but it is in the extended class (Defn 2.2).
 \item It is shown that all matrix resampling schemes are unbiased
 \item Under additional assumptions, it is also shown that such resampling schemes have properties: MC estimates converge; and the variance of these estimates is bounded above.
 \item The above results hold even if the resampling scheme to use at each iteration is chosen on-the-fly --- notably including adaptive resampling, parallel resampling, adaptive pruning/enrichment, and you can imagine some other eccentric mixes of resampling schemes!
-\item \emph{Complete} resampling schemes are defined as the subclass of matrix resampling schemes for which the weights after resampling are equal.
+\item \emph{Complete} resampling schemes are defined as the subclass of matrix resampling schemes for which the weights after resampling are equal. (This is the class used by Li2020, although there they don't consider it a restriction from the more general class; this is just how they define matrix resampling in the first place.)
 \item Three comparisons are made between resampling schemes, in terms of conditional variance: multi $\geq$ strat; multi $\geq$ res-multi; multi $\geq$ res-strat. None of these examples are novel results, but perhaps the proof technique for strat could be useful as (at first glance anyway) it seems more understandable than that of DCM05.
-\item
+\item Theorem 3.1 proves that stratified resampling on particles sorted by a certain functional of the states is optimal within the matrix resampling class, in terms of the conditional variance used e.g.\ in DCM05. This generalises the result of Li2020 to higher dimensions, but proves optimality only in one sense. The functional is tailored to the test function $\varphi$ appearing in the conditional variance, as one might expect, and it also cannot typically be computed. 
+\item The authors suggest alternative sorting rules that give good (but of course not optimal) performance: Hilbert curve sorting as proposed in GCW19; or approximating the intractable functional by binning.
+\item Theorem 3.2: asymptotic error/CLT results for a variety of resampling schemes, with or without sorting by some coordinate.
+\item Recommendations: replace multi with strat wherever possible; and sort before resampling if there exists a suitably influential coordinate by which to sort.
 \end{itemize}
 
 
@@ -107,7 +110,7 @@ Implementation of low variance resampling within conditional SMC.
 \item Residual resampling sets some rows to have a single $1$ element and the rest $0$ (these correspond to the deterministic assignments) and the remaining rows are constructed according to which scheme is used for the residuals, where the weights are now replaced with residual weights. See Fig2(c)(d) in the paper for an illustration
 \item Equation (1) gives an explicit expression for the conditional variance induced by resampling, the same metric used in DCM05. This expression, in the case of stratified resampling, seems much nicer than the expression used in DCM05, which could provide a more elegant proof that multi dominates strat. (EDIT: this expression no longer appears in arxiv v2, so possibly it wasn't correct)
 \item In Section 2.5 the authors admit that there is generally little to be gained by resampling such that the weights after resampling are unequal, even though I think it was one of the authors (Liu) who was proposing in previous works that this could be a useful strategy. (EDIT: this remark has been removed in v2)
-\item The authors prove that ordered stratified resampling is optimal (in certain senses) among the class of resampling schemes considered. But their class only includes resampling schemes where the parental indices are conditionally independent. This excludes syst, res-syst, SSP,...
+\item The authors prove that, in 1D, ordered stratified resampling is optimal (in the senses of conditional variance, expected squared energy distance, and earth-mover distance) among the class of resampling schemes considered. But their class only includes resampling schemes where the parental indices are conditionally independent. This excludes syst, res-syst, SSP,...
 \item Theorem 3 tightens the convergence rate bound for Hilbert-ordered stratified resampling from $O(N^{-1-1/d})$ (in GCW19) to $O(N^{-1-2/d})$.
 \item Proposition 2 verifies the conjecture of GCW19 that the Hilbert curve is an optimal way to order the particles in dimension $d>1$
 \end{itemize}
