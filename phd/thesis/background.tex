@@ -1957,7 +1957,7 @@ Another remarkable result of \textcite{gerber2017} is that, when the particles a
 Recall that the possibly pathological behaviour of systematic resampling was related to ``bad'' orderings of the weight intervals; sorting the particles evidently prevents this.
 
 The intuition behind these results is that sorting particles by their states ensures that the stratified and systematic resampling schemes select parents from a good range of locations in state space. The sorting step prevents the sampled parents being concentrated in one small part of the state space purely by a chance ordering of the weight intervals.
-Another explanation \parencite{li2020} is based on the observation that, under stratified or systematic resmapling, the possible parents of a given offspring are always consecutive in the order in which the weights are input. Sorting these weights in order of the particle states ensures that these potential parents are ``close'' in state space, so that the state after resampling does not differ drastically depending on which parent is selected.
+Another explanation \parencite{webber2019, li2020} is based on the observation that, under stratified or systematic resampling, the possible parents of a given offspring are always consecutive in the order in which the weights are input. Sorting these weights in order of the particle states ensures that these potential parents are ``close'' in state space, so that the state after resampling does not differ drastically depending on which parent is selected.
 
 These results are only relevant to resampling schemes based on inversion sampling with fairly evenly-spaced points. Notably, multinomial resampling is not affected by sorting, since it is invariant under permutations of the weight vector.
 
@@ -2104,9 +2104,13 @@ Some resampling schemes that are expressible as matrices are:
 Illustrations of the structure of the resampling matrix resulting from each of these schemes can be found in \textcite[Figure 2]{li2020}, for example, although the residual resampling matrices may differ depending on the implementation.
 All of the other resampling schemes we have encountered have some conditional dependence between the parental indices (as summarised in Table~\ref{tab:resampling_properties}) and thus are not representable by matrices.
 
-Within the matrix resampling class, \textcite{li2020} show that stratified resampling on the particles sorted by state is optimal in terms of the conditional variance \eqref{eq:resamplingMCvariance}, and \textcite{webber2019} uses the matrix representations to construct alternative proofs of several of the results of Proposition~\ref{thm:resampling_var_compare}.
+Within the matrix resampling class, \textcite{li2020} show that, in one dimension, stratified resampling on the sorted particles is optimal in terms of the conditional variance \eqref{eq:resamplingMCvariance}, where sorting is based on the test function $\varphi$ applied to the states. They also prove that this scheme is optimal in other senses.
+\textcite{webber2019} proves a generalisation to multiple dimensions: stratified resampling with the particles sorted by a certain functional of the states, based on $\varphi$, minimises the corresponding conditional variance.
+The optimal functional by which to sort the particles cannot typically be computed, but the author suggests alternative sorting rules that also significantly improve performance, including the Hilbert curve sorting proposed by \textcite{gerber2017}.
+%proves a similar result in multiple dimensions: stratified resampling on the particles sorted by a certain functional of the states is optimal in terms of conditional variance. As one might expect, the functional used for sorting is tailored to the test function $\phi$ over which the conditional variance is computed. 
+\textcite{webber2019} also uses the matrix representations to construct alternative proofs of several of the results of Proposition~\ref{thm:resampling_var_compare}.
 
-For our purposes this class is too restrictive, as it excludes several resampling schemes that are prevalent in the literature and which perform comparably to, if not better than, conditionally independent resampling schemes.
+For our purposes, however, this class is too restrictive, as it excludes several resampling schemes that are prevalent in the literature and which perform comparably to, if not better than, conditionally independent resampling schemes.
 
 
 
