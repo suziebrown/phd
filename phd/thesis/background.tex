@@ -2124,38 +2124,38 @@ For our purposes this class is too restrictive, as it excludes several resamplin
 & \thead{support of $\nu_t^{(i)}$ given
             \\ $ \frac{K}{N} \leq w_t^{(i)} < \frac{K+1}{N}$} 
         & \thead{worst case\\ $|\nu_t^{(i)} - Nw_t^{(i)}|$}
-        & \thead{upper\\ bound on \\ $\V[\nu_t^{(i)}]$}
-        & \thead{stochastic\\ rounding?}       
         & \thead{degenerate if\\ $w_t^{(1:N)} =$\\ $\frac{1}{N}(1,\dots,1)$?} 
+        & \thead{upper\\ bound on \\ $\V[\nu_t^{(i)}]$}
         & \thead{sensitive to\\ permutations\\ of weights?} 
         & \thead{PRNG\\ calls}
         & \thead{neg.\\ assoc.?}
-        & \thead{cond.\\ indep.?} \\
+        & \thead{cond.\\ indep.?} 
+        & \thead{stochastic\\ rounding?}  \\
 \hline
-\texttt{multi} & $\{0,\dots,N\}$ & $N$ & $N/4$ & $\times$ & $\times$ 
-        & $\times$ & $N$ & $\checkmark$ & $\checkmark$ \\
-\texttt{star} & $\{0, N\}$ & $N$ & $N^2/4$ & $\times$ & $\times$ 
-        & $\times$ & $1$ & $\checkmark$ & $\times$ \\
-\texttt{strat} & $\{K-1, K, K+1, K+2\}$ & $2$ & $2$ & $\times$ & $\checkmark$ 
-        & $\checkmark$ & $N$ & $\checkmark$ & $\checkmark$ \\
-\texttt{syst} & $\{K, K+1\}$ & $1$ & $1/4$ & $\checkmark$ & $\checkmark$ 
-        & $\checkmark$ & $1$ & $\times$ & $\times$ \\
-\texttt{res-multi} & $\{K,\dots,N\}$ & $N-1$ & $1$ & $\times$ & $\checkmark$ 
-        & $\times$ & $\leq N-1$ & $\checkmark$ & $\checkmark$ \\
-\texttt{res-star} & $\{K, N\}$ & $N-1$ & $N$ & $\times$ & $\checkmark$ 
-        & $\times$ & $1$ & $\checkmark$ & $\times$ \\
-\texttt{res-strat} & $\{K, K+1, K+2\}$ & $2$ & $1/2$ & $\times$ & $\checkmark$ 
-        & $\checkmark$ & $\leq N-1$ & $\checkmark$ & $\checkmark$ \\
-\texttt{res-syst} & $\{K, K+1\}$ & $1$ & $1/4$ & $\checkmark$ & $\checkmark$ 
-        & $\checkmark$ & $1$ & $\times$ & $\times$ \\
-\texttt{ssp} & $\{K, K+1\}$ & $1$ & $1/4$ & $\checkmark$ & $\checkmark$ 
-        & $\times$ & $\leq N$ & $\checkmark$ & $\times$ \\
+\texttt{multi} & $\{0,\dots,N\}$ & $N$ & $\times$ & $N/4$ 
+        & $\times$ & $N$ & $\checkmark$ & $\checkmark$ & $\times$ \\
+\texttt{star} & $\{0, N\}$ & $N$ & $\times$ & $N^2/4$ 
+        & $\times$ & $1$ & $\checkmark$ & $\times$ & $\times$ \\
+\texttt{strat} & $\{K-1, K, K+1, K+2\}$ & $2$ & $\checkmark$ & $2$ 
+        & $\checkmark$ & $N$ & $\checkmark$ & $\checkmark$ & $\times$ \\
+\texttt{syst} & $\{K, K+1\}$ & $1$ & $\checkmark$ & $1/4$ 
+        & $\checkmark$ & $1$ & $\times$ & $\times$ & $\checkmark$ \\
+\texttt{res-multi} & $\{K,\dots,N\}$ & $N-1$ & $\checkmark$  & $1$
+        & $\times$ & $\leq N-1$ & $\checkmark$ & $\checkmark$ & $\times$ \\
+\texttt{res-star} & $\{K, N\}$ & $N-1$ & $\checkmark$  & $N$
+        & $\times$ & $1$ & $\checkmark$ & $\times$ & $\times$ \\
+\texttt{res-strat} & $\{K, K+1, K+2\}$ & $2$ & $\checkmark$  & $1/2$
+        & $\checkmark$ & $\leq N-1$ & $\checkmark$ & $\checkmark$ & $\times$ \\
+\texttt{res-syst} & $\{K, K+1\}$ & $1$ & $\checkmark$ & $1/4$ 
+        & $\checkmark$ & $1$ & $\times$ & $\times$ & $\checkmark$ \\
+\texttt{ssp} & $\{K, K+1\}$ & $1$ & $\checkmark$ & $1/4$
+        & $\times$ & $\leq N$ & $\checkmark$ & $\times$ & $\checkmark$ \\
 %\texttt{mvb} & $\{K, K+1\}$ & $1$ & $1/4$ & $\checkmark$ & $\checkmark$ 
 %        & & & \\
 \hline\hline
 \end{tabular}
 \caption[Properties of resampling schemes]{Summary of some of the properties of resampling schemes explored in Section~\ref{sec:resampling_properties}. 
-Columns appear in order of their explanations in the text.\seb{they will soon anyway!}
+Columns appear in order of their explanations in the text.
 The abbreviated names for the resampling schemes are explained in Table~\ref{tab:resampling_abbrevs}.}
 %Some properties are not specified for \texttt{mvb} because they depend on the particular implementation.
 \label{tab:resampling_properties}
