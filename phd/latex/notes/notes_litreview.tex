@@ -197,7 +197,8 @@ Schweinsberg 2003 ``Coalescent processes obtained from supercritical Galton-Wats
 \subsection*{\cite{kingman1982gene}}
 \begin{itemize}
 \item Introduces the $n$-coalescent (in a very nice clear way) with the same notation we still use
-\item \textbf{Theorem:} suppose $\nu_{1:N}$ are exchangeable and independent across generations and $\V[\nu_1]\to\sigma^2 \in (0,\infty)$ and $\E[\nu_1^m] \leq M_m$ for all $m\in\mathbb{N}$. Then the $n$-genealogies scaled by $\lfloor N\sigma^{-2}t \rfloor$ converge to the $n$-coalescent in the sense of FDDs.
+\item \textbf{Theorem:} suppose $\nu_{1:N}$ are exchangeable and independent across generations (i.e.\ neutral Cannings models, including neutral W-F for example) and $\V[\nu_1]\to\sigma^2 \in (0,\infty)$ and $\E[\nu_1^m] \leq M_m$ for all $m\in\mathbb{N}$. Then the $n$-genealogies scaled by $\lfloor N\sigma^{-2}t \rfloor$ converge to the $n$-coalescent in the sense of FDDs.
+\item Condition $\sigma^2 >0$ excludes e.g.\ the neutral Moran model.
 \item $n$-coalescent also applies for models where $\nu_j$ are not exchangeable or independent across generations, as long as the genealogies are Markov at least up to error $O(N^{-1})$ and the transitions satisfy $p_{\xi\eta} = q_{\xi\eta}\sigma^2 N^{-1} + o(N^{-1})$, where $q$'s are transition probs of $n$-coalescent
 \item The $n$-coalescent is a good robust model for \emph{large neutral} populations
 \item Genealogy decouples into a jump chain and a pure death process
@@ -276,6 +277,7 @@ Necessary \& sufficient conditions for convergence of Cannings model to a coales
 \item Offspring counts are exchangeable and i.i.d. across generations
 \item Treats full characterisation of possible limiting coalescents (I think the class is known as $\Xi$-coalescents), where there are possibly simultaneous and/or multiple mergers. The particular limiting coalescent can be characterised by (mixed) factorial moments, here denoted $\Phi_a(b_1,\dots,b_a)$. These quantities are central to the analysis, and results are given in terms of them, so can be applied to any exchangeable model.
 \item It is shown that the Kingman coalescent appears as the limit if and only if $ \lim \frac{\E[(\nu_1)_3]}{N\E[(\nu_1)_2]} =0$. (See equation (14) or (16).) This is the exchangeable version of the main theorem condition I use in my SMC genealogies work. I think this work is the earliest use of this simplified condition.
+\item The above condition also implies that $c_N \to 0$ and $\frac{\E[(\nu_1)_2 (\nu_2)_2]}{N^2 \E[(\nu_1)_2]} =0$.
 \item Total variation bounds are proved in the general case, left in terms of the particular transition probabilities of the model (see Thm 1).
 \item More specific bounds are calculated for the case where the model is in the domain of attraction of Kingman's coalescent (i.e. second moments dominate third moments, as above / in equation (14)). The bounds have a simple form and are left in terms of $c_N$ and some $\Phi$ functions which correspond to $\E[(\nu_1)_3]$ and $\E[(\nu_1)_2(\nu_2)_2]$, which could easily be computed for a given model. It is clear that under the conditions of convergence to KC, the given TV bound converges to zero, as expected.
 \end{itemize}
