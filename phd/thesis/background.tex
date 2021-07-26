@@ -626,14 +626,15 @@ It is not surprising that the time scale is an order bigger than in the Wright-F
 
 \subsection{Other convergence results}
 \label{sec:previousgeneconv}
-The original work of \textcite{kingman1982gene} provides sufficient conditions for the finite-dimensional distributions of genealogies of Cannings models to converge to those of the Kingman coalescent.
+The original work of \textcite{kingman1982gene} provides sufficient conditions for the finite-dim\-ension\-al distributions of genealogies of Cannings models to converge to those of the Kingman coalescent.
 \textcite{mohle1998} provides another set of sufficient conditions which apply to the wider class of models in which the population size may vary deterministically, the offspring distributions are independent but not identical across generations, and exchangeability is replaced by the weaker \emph{random assignment} condition. 
-For that class of models under the same conditions, \textcite{mohle1999} proved that the genealogies converge weakly as well as in the sense of finite-dimensional distributions.
+For that class of models under the same conditions, \textcite{mohle1999} proves that the genealogies converge weakly as well as in the sense of finite-dimensional distributions.
 \textcite{mohle2000} gives a simpler condition which is necessary and sufficient for convergence of Cannings genealogies to the Kingman coalescent. % that N&S condition is the exchangeable version of our main theorem condition.
 
 Meanwhile many similar results were established for models in which the limiting process is not the Kingman coalescent.
 Relaxing the conditions to allow multiple mergers in the limit admits $\Lambda$-coalescents as limiting processes, with the Kingman coalescent as a special case \parencite{pitman1999, sagitov1999, mohlesagitov1998}.
 If simultaneous mergers are also allowed, the limiting process belongs to the even more general class of $\Xi$-coalescents \parencite{mohle2001}, and this class encompasses all possible limiting genealogies of Cannings models.
+On the other hand, \textcite{delmoral2009} do not consider asymptotics in the population size, but instead prove some properties of neutral models with fixed population $N$, particularly concerning the MRCA. 
 
 The focus of the current work is on systems that admit Kingman genealogies in the limit, among a wider class of models where, like \textcite{mohle1998, mohle1999}, exchangeability is relaxed to random assignment, and we also do not require independence between generations, so our models are not neutral. 
 %In particular, this class of models is non-neutral.
@@ -2085,7 +2086,8 @@ Figure~\ref{fig:star_discrepancy} illustrates how the star discrepancy is comput
 
 \subsubsection{Matrix resampling}
 Some resampling schemes render the parental indices $a_t^{(1:N)}$ conditionally independent over $i$ given the weights $w_t^{(1:N)}$, and such schemes admit a matrix representation conditional on the weights.
-These resampling matrices have been defined differently by different authors \parencite[cf.][]{webber2019, whiteley2016}, but the general idea is the same. Following most closely to the presentation of \textcite{li2020}, we use the following definition.
+These resampling matrices are of particular interest in distributed SMC as they can be used to characterise the communication between particles required in the resampling step.
+The matrices have been defined differently by different authors \parencite[cf.][]{webber2019, whiteley2016}, but the general idea is the same. Following most closely to the presentation of \textcite{li2020}, we use the following definition.
 
 \begin{defn}
 A \emph{resampling matrix} for weights $w_t^{(1:N)}$ is a $N\times N$ matrix with entries in $[0,1]$ such that:
