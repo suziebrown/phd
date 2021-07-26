@@ -208,6 +208,51 @@
       \field{pages}{252\bibrangedash 278}
       \range{pages}{27}
     \endentry
+    \entry{delmoral2009}{article}{}
+      \name{author}{4}{uniquelist=2}{%
+        {{uniquename=0,uniquepart=base,hash=d771d04fc13831e7ab9152984eaa0d86}{%
+           family={Del\bibnamedelima Moral},
+           familyi={D\bibinitperiod\bibinitdelim M\bibinitperiod},
+           given={Pierre},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=9190a314cabf5b24a81da0764112fa59}{%
+           family={Miclo},
+           familyi={M\bibinitperiod},
+           given={Laurent},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=dc6008eec5388bc03131baaf6b00421e}{%
+           family={Patras},
+           familyi={P\bibinitperiod},
+           given={Frédéric},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=2951229f7951d6da501aa8ec82d424e8}{%
+           family={Rubenthaler},
+           familyi={R\bibinitperiod},
+           given={Sylvain},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{26c73b72b47f38595aef93ec792cd8e3}
+      \strng{fullhash}{6da7186cb039f12c7010865f7162d5ba}
+      \strng{bibnamehash}{26c73b72b47f38595aef93ec792cd8e3}
+      \strng{authorbibnamehash}{26c73b72b47f38595aef93ec792cd8e3}
+      \strng{authornamehash}{26c73b72b47f38595aef93ec792cd8e3}
+      \strng{authorfullhash}{6da7186cb039f12c7010865f7162d5ba}
+      \field{sortinit}{D}
+      \field{sortinithash}{2ef1bd9a78cc71eb74d7231c635177b8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Stochastic Analysis and Applications}
+      \field{number}{1}
+      \field{title}{The Convergence to Equilibrium of Neutral Genetic Models}
+      \field{volume}{28}
+      \field{year}{2009}
+      \field{pages}{123\bibrangedash 143}
+      \range{pages}{21}
+    \endentry
     \entry{douc2005}{inproceedings}{}
       \name{author}{3}{}{%
         {{uniquename=0,uniquepart=base,hash=8016e20ffe53cd289b6f027afc9eab01}{%
@@ -564,7 +609,7 @@
       \field{pages}{1\bibrangedash 25}
       \range{pages}{25}
     \endentry
-    \entry{koskela2018}{report}{}
+    \entry{koskela2018}{online}{}
       \name{author}{4}{}{%
         {{uniquename=0,uniquepart=base,hash=9b74b02c1ef5fc6fd3d8f21b8ce9be68}{%
            family={Koskela},
@@ -591,9 +636,6 @@
            giveni={D\bibinitperiod},
            givenun=0}}%
       }
-      \list{institution}{1}{%
-        {ArXiv}%
-      }
       \strng{namehash}{0c20a152cbf08f66f0c1ef81feba93ac}
       \strng{fullhash}{7afd68e6bc1a63166dd7429d0bdfd696}
       \strng{bibnamehash}{0c20a152cbf08f66f0c1ef81feba93ac}
@@ -604,10 +646,12 @@
       \field{sortinithash}{9fd838a31ba64d981e8f44562bd33f89}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{number}{1804.01811}
-      \field{title}{Asymptotic genealogies of interacting particle systems with an application to sequential {M}onte {C}arlo}
-      \field{type}{Mathematics e-print}
+      \field{eprinttype}{arxiv}
+      \field{title}{Asymptotic Genealogies of Interacting Particle Systems with an Application to Sequential {Monte} {Carlo}}
       \field{year}{2018}
+      \verb{eprint}
+      \verb 1804.01811v6
+      \endverb
     \endentry
     \entry{lee2019}{unpublished}{}
       \name{author}{3}{}{%
@@ -716,7 +760,7 @@
       \field{pages}{609\bibrangedash 625}
       \range{pages}{17}
     \endentry
-    \entry{li2020}{report}{}
+    \entry{li2020}{online}{}
       \name{author}{4}{}{%
         {{uniquename=0,uniquepart=base,hash=16eb757fd1f91106a57e4904ee7c845b}{%
            family={Li},
@@ -743,9 +787,6 @@
            giveni={J\bibinitperiod\bibinitdelim S\bibinitperiod},
            givenun=0}}%
       }
-      \list{institution}{1}{%
-        {ArXiv}%
-      }
       \strng{namehash}{eaf80a46b49f2411c28765648bdd3641}
       \strng{fullhash}{0397940e1cb35b78e119fa3534b8f3e2}
       \strng{bibnamehash}{eaf80a46b49f2411c28765648bdd3641}
@@ -756,10 +797,12 @@
       \field{sortinithash}{2c7981aaabc885868aba60f0c09ee20f}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{number}{2004.01975v2}
+      \field{eprinttype}{arxiv}
       \field{title}{Stratification and Optimal Resampling for Sequential {Monte} {Carlo}}
-      \field{type}{techreport}
       \field{year}{2020}
+      \verb{eprint}
+      \verb 2004.01975v2
+      \endverb
     \endentry
     \entry{lindsten2013}{article}{}
       \name{author}{2}{}{%
@@ -1211,7 +1254,7 @@
       \field{pages}{119\bibrangedash 164}
       \range{pages}{46}
     \endentry
-    \entry{webber2019}{report}{}
+    \entry{webber2019}{online}{}
       \name{author}{1}{}{%
         {{uniquename=0,uniquepart=base,hash=2095e3cc1b0ec22620f22a453171e6d8}{%
            family={Webber},
@@ -1219,9 +1262,6 @@
            given={Robert\bibnamedelima J.},
            giveni={R\bibinitperiod\bibinitdelim J\bibinitperiod},
            givenun=0}}%
-      }
-      \list{institution}{1}{%
-        {ArXiv}%
       }
       \strng{namehash}{2095e3cc1b0ec22620f22a453171e6d8}
       \strng{fullhash}{2095e3cc1b0ec22620f22a453171e6d8}
@@ -1233,10 +1273,12 @@
       \field{sortinithash}{ecb89ff85896a47dc313960773ac311d}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{number}{1903.12583}
+      \field{eprinttype}{arxiv}
       \field{title}{Unifying Sequential {Monte} {Carlo} with Resampling Matrices}
-      \field{type}{techreport}
       \field{year}{2019}
+      \verb{eprint}
+      \verb 1903.12583v1
+      \endverb
     \endentry
     \entry{whiteley2010}{article}{}
       \name{author}{1}{}{%

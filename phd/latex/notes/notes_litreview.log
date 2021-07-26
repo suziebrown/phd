@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  20 JUL 2021 11:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  26 JUL 2021 16:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -491,8 +491,8 @@ Package logreq Info: Writing requests to 'notes_litreview.run.xml'.
  ) 
 Here is how much of TeX's memory you used:
  8819 strings out of 492649
- 153520 string characters out of 6129623
- 576180 words of memory out of 5000000
+ 153549 string characters out of 6129623
+ 576206 words of memory out of 5000000
  12628 multiletter control sequences out of 15000+600000
  12208 words of font info for 47 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -512,7 +512,7 @@ live/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texli
 ve/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texliv
 e/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/te
 xlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
-Output written on notes_litreview.pdf (10 pages, 190617 bytes).
+Output written on notes_litreview.pdf (10 pages, 192050 bytes).
 PDF statistics:
  97 PDF objects out of 1000 (max. 8388607)
  69 compressed objects within 1 object stream
