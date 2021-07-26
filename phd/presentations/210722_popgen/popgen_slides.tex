@@ -15,14 +15,14 @@
 \setlength{\tabcolsep}{12pt}
 \setbeamercolor{block title}{fg=darkred}
 
-% bibliography
-%\usepackage[backend=biber, style=authortitle]{biblatex}
-\usepackage{natbib}
-\usepackage{har2nat}
-\bibliographystyle{unsrt}
-%\addbibresource{../../smc.bib}
-\usepackage{bibentry}
-\nobibliography*
+%% bibliography
+%%\usepackage[backend=biber, style=authortitle]{biblatex}
+%\usepackage{natbib}
+%\usepackage{har2nat}
+%\bibliographystyle{unsrt}
+%%\addbibresource{../../smc.bib}
+%\usepackage{bibentry}
+%\nobibliography*
 
 % tikz
 \usepackage{tikz}
@@ -295,7 +295,7 @@
 	\item population size $N(t)$ at generation $t$; define $N:=N(0)$
 	\item offspring counts $(\nu_1(t), \dots, \nu_N(t))$ at generation $t$
 	\item define the coalescence rate $c_N(t) := \frac{1}{(N)_2} \sum_{i=1}^N (\nu_i(t))_2 $
-	%\pause
+	\pause
 	\item consider a random sample of $n$ individuals from the terminal generation
 	\item scale time to obtain a non-trivial limiting process
 	\item take $N\to\infty$
@@ -310,16 +310,16 @@
 	\item offspring counts $(\nu_1(t), \dots, \nu_N(t))$ i.i.d. over $t$
 	\item $(\nu_1, \dots, \nu_N)$ exchangeable
 	\end{itemize}
-	%\pause
+	\pause
 	\textbf{Time scale: $N\sigma^{-2}$} \\
-	%\pause
+	\pause
 	\textbf{Conditions:}
 	\begin{itemize}
 	\item $\lim_{N\to\infty} \V[\nu_1] = \sigma^2 \in (0,\infty)$
 	\item $\E[\nu_1^k] \leq M_k$ for each $k\in\mathbb{N}$
 	\end{itemize}
-	%\pause
-	Then the FDDs of the rescaled sample genealogies converge to those of the $n$-coalescent as $N\to\infty$.
+	\pause
+	Then the finite-dimensional distributions of the rescaled sample genealogies converge to those of the $n$-coalescent as $N\to\infty$.
 \end{frame}
 
 
@@ -330,7 +330,7 @@
 	\item offspring counts $(\nu_1(t), \dots, \nu_N(t))$ i.i.d. over $t$
 	\item $(\nu_1, \dots, \nu_N)$ exchangeable
 	\end{itemize}
-	%\pause
+	\pause
 	\textbf{Time scale:} 
 	\begin{equation*}
 	\frac{1}{\E[c_N]} = \frac{N-1}{\V[\nu_1]}
@@ -342,19 +342,20 @@
 	\begin{equation*}
 	\lim_{N\to\infty} \frac{\E[(\nu_1)_3]}{N\E[(\nu_1)_2]} =0 
 	\end{equation*}
-	%\pause
+	\pause
 	if and only if the FDDs of the rescaled sample genealogies converge to those of the $n$-coalescent as $N\to\infty$.
 \end{frame}
 
 
 \begin{frame}{M\"ohle's sufficient conditions for weak convergence\footnote[frame]{M M\"ohle, \textit{Journal of Applied Probability}, 1998, 1999.}}
+    \pause
     \textbf{Population model:}
     \begin{itemize}
 	\item population size $N(t)$ any deterministic function of $t$; $N:=N(0)$
 	\item offspring counts $(\nu_1(t), \dots, \nu_N(t))$ independent over $t$
 	\item \textit{random assignment condition}: given $(\nu_1(t), \dots, \nu_N(t))$, assignment of offspring to parents is uniform over all valid assignments
 	\end{itemize}
-	%\pause
+	\pause
 	\textbf{Time scale:} some function $\tau_N(t)$ such that for all $t$
 	\begin{itemize}
 	\item $\lim_{N\to\infty} \sum_{r=1}^{\tau_N(t)} \E[ c_N(r) ] = t$ 
@@ -367,16 +368,16 @@
     \begin{equation*}
     \limsup \frac{1}{N(t-1)^3 c_N(t)} \sum_{i=1}^{N(t)} \E[ (\nu_i(t))_2 (\nu_i(t))^k ] =0
     \end{equation*}
-    and
     \begin{equation*}
-    \limsup \frac{1}{N(t-1)^4 c_N(t)} \sum_{i=1}^{N(t)} \sum_{j=1}^{N(t)} \E[ (\nu_i(t))_2 (\nu_j(t))^2 ] =0 .
+    \limsup \frac{1}{N(t-1)^4 c_N(t)} \sum_{i=1}^{N(t)} \sum_{j=1}^{N(t)} \E[ (\nu_i(t))_2 (\nu_j(t))^2 ] =0 
     \end{equation*}
-    %\pause
+    \pause
     Then the rescaled sample genealogies converge weakly to the $n$-coalescent as $N\to\infty$.
 \end{frame}
 
 
 \begin{frame}{A non-neutral population model}
+\pause
 \centering
 \begin{tikzpicture}[>=stealth]
 %% left dots
@@ -405,26 +406,26 @@
 \node[anchor=west] at (-4.2,-3.85) {\footnotesize{offspring}};
 \node[anchor=west] at (-4.2,-4.15) {\footnotesize{counts}};
 %
-%\pause
+\pause
 %% vertical arrows
 \draw[->] (-0.5,-0.3)--(-0.5,-1.7);
 \draw[->] (4.1,-0.3)--(4.1,-1.7);
 \draw[->] (8.7,-0.3)--(8.7,-1.7);
 %
-%\pause
+\pause
 %% vertical arrows
 \draw[->] (-0.5,-2.3)--(-0.5,-3.7);
 \draw[->] (4.1,-2.3)--(4.1,-3.7);
 \draw[->] (8.7,-2.3)--(8.7,-3.7);
 %
-%\pause
+\pause
 %% arrows
 \draw[->] (0.5,0)--(3.4,0);
 \draw[->] (4.7,0)--(7.6,0);
 \draw[->] (0.5,-4)--(3.4,-0.1);
 \draw[->] (4.7,-4)--(7.6,-0.1);
 %
-%\pause
+\pause
 %% arrows
 \draw[->] (0.5,0)--(3.4,-2);
 \draw[->] (0.5,-4)--(3.4,-2.1);
@@ -449,6 +450,7 @@
 		\item offspring counts $(\nu_1(t), \dots, \nu_N(t))$ conditionally dependent over $t$ as in previous slide
 		\item random assignment condition
 	\end{itemize}
+	\pause
 	\textbf{Time scale:}
 	\begin{equation*}
 	\tau_N(t) := \min \left\{ s: \sum_{r=1}^s c_N(r) \geq t \right\}
@@ -461,7 +463,7 @@
 	\begin{equation*}
 	\frac{1}{N} \sum_{i=1}^N \Et[ (\nu_i(t))_3 ] \leq b_N  \sum_{i=1}^N \Et[ (\nu_i(t))_2 ]
 	\end{equation*}
-	%\pause
+	\pause
 	Then the rescaled sample genealogies converge weakly to the $n$-coalescent as $N\to\infty$.
 \end{frame}
 
@@ -470,18 +472,18 @@
 	\textbf{Aim:} simulate a particle system that approximates a given sequence of probability distributions.\\
 	\vspace{10pt}
 	
-	%\pause
+	\pause
 	Initialise $N$ particles by sampling their genotypes $X_{1:N}$ from some distribution $\mu(\cdot)$\\[5pt]
 	
 	Then iterate these steps:
 	\begin{enumerate}
 	\item \textbf{(mutation)} update the genotypes via Markov kernel $M_t$
-	\item \textbf{(fitness)} calculate fitness scores by applying function $g_t$ to the genotypes
+	\item \textbf{(fitness)} calculate fitness scores $w_{1:N}$ by applying function $g_t$ to the genotypes
 	\item \textbf{(selection)} resample particles according to their fitnesses
 	\end{enumerate}
 	\vspace{10pt}
 	
-	%\pause
+	\pause
 	\begin{itemize}
 	\item $\mu$, $(M_t)$ and $(g_t)$ are chosen such that the particle system approximates the desired distributions
 	\item The selection step induces a genealogy, which affects performance of the algorithm
@@ -491,8 +493,8 @@
 
 \begin{frame}{Sequential Monte Carlo genealogies}
 	\begin{itemize}
-	\item Most of the popular sequential Monte Carlo algorithms have asymptotically Kingman genealogies\footnote{S Brown, PA Jenkins, AM Johansen, J Koskela, \textit{Electronic Journal of Probability}, 2021.}
-	\item The time scale differs depending on the particular algorithm, and is an indicator of performance 
+	\item Most of the popular sequential Monte Carlo algorithms have asymptotically Kingman genealogies (under standard assumptions)\footnote{S Brown, PA Jenkins, AM Johansen, J Koskela, \textit{Electronic Journal of Probability}, 2021.}
+	\item Behaviour of the time scale differs depending on the particular algorithm, and is an indicator of performance 
 	\item Explicitly characterising the time scale would allow better tuning and comparisons between algorithms
 	\end{itemize}
 \end{frame}
@@ -504,7 +506,7 @@
 \item We add to these a large class of non-neutral models, having a particular conditional independence structure rather than independent generations
 \item For these models, weak convergence to the $n$-coalescent is proved under simple sufficient conditions
 \item This result is applied to several popular sequential Monte Carlo algorithms
-\item The next step is to describe explicitly the time scale function in these cases
+\item Next step: explicitly describe the time scale function in these cases
 \end{itemize}
 \end{frame}
 
