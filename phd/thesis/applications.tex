@@ -27,7 +27,7 @@ at each time $t$ forms a separatrix, in the sense of d-separation \parencite{ver
 That is, $a_t^{(1:N)}$ is conditionally independent of $\mathcal{F}_{t-1}$ given $\mathcal{H}_t$.
 The practical upshot of this is that we can use the tower rule along with conditional independence to write filtered expectations as
 \begin{equation}
-\Et[ f(\nu_t^{(1:N)}) ] 
+\Et\left[ f(\nu_t^{(1:N)}) \right] 
 = \Et\left[ \E[ f(\nu_t^{(1:N)}) \mid \mathcal{H}_t, \mathcal{F}_{t-1} ] \right] 
 = \Et\left[ \E[ f(\nu_t^{(1:N)}) \mid \mathcal{H}_t ] \right] . \label{eq:condexp_HtFt}
 \end{equation}
@@ -137,13 +137,13 @@ The conditions on $g_t$ in \eqref{eq:gq_bounds_mn} ensure that the weights are a
 Define $\mathcal{H}_t$ as in \eqref{eq:defn_Ht}.
 Conditional on $\mathcal{H}_t$ the parental indices are independent, with conditional law
 \begin{equation}\label{eq:parentslaw_mn}
-\Prob \left[ a_t^{(i)} = a_i \mid \mathcal{H}_t \right] 
+\Prob \left[ a_t^{(i)} = a_i \midd \mathcal{H}_t \right] 
 %\propto w_t^{(a_i)} q_{t-1}(X_t^{(a_i)}, X_{t-1}^{(i)})
 \propto g_t( X_{t+1}^{a_{t+1}^{(a_i)}} , X_t^{(a_i)} ) q_{t-1}(X_t^{(a_i)}, X_{t-1}^{(i)})
 \end{equation}
 for each $i$, so the joint law is
 \begin{equation*}
-\Prob \left[ a_t^{(1:N)} = a_{1:N} \mid \mathcal{H}_t \right] 
+\Prob \left[ a_t^{(1:N)} = a_{1:N} \midd \mathcal{H}_t \right] 
 %\propto \prod_{i=1}^N w_t^{(a_i)} q_{t-1}(X_t^{(a_i)}, X_{t-1}^{(i)}).
 \propto \prod_{i=1}^N g_t( X_{t+1}^{a_{t+1}^{(a_i)}} , X_t^{(a_i)} ) 
         q_{t-1}(X_t^{(a_i)}, X_{t-1}^{(i)}).
@@ -163,9 +163,9 @@ for each $i$, so the joint law is
 Using the bounds \eqref{eq:gq_bounds_mn} and the balls-in-bins coupling of \textcite[proof of Lemma 3]{koskela2018}, we can obtain bounds on expectations of functions of $a_t^{(1:N)}$.
 For any $k\in\mathbb{N}$ the function $a_t^{(1:N)} \to (\nu_t^{(i)})_k$ is $\{i\}$-increasing in the sense of \textcite[p.19]{koskela2018}, so we may apply the bounds
 \begin{equation*}
-\E[ (V_L^{(i)})_k ]
-\leq \E[ (\nu_t^{(i)})_k \mid \mathcal{H}_t ]
-\leq \E[ (V_U^{(i)})_k ] ,
+\E\left[ (V_L^{(i)})_k \right]
+\leq \E\left[ (\nu_t^{(i)})_k \midd \mathcal{H}_t \right]
+\leq \E\left[ (V_U^{(i)})_k \right] ,
 \end{equation*}
 where
 \begin{align*}
@@ -177,30 +177,30 @@ where
 independently for each $i$ and independently of $\mathcal{F}_\infty$.
 Furthermore, using the moments of the Binomial distribution \parencite[see for example][p. 67]{mosimann1962}
 \begin{equation*}
-\E[ (V_L^{(i)})_k ]
+\E\left[ (V_L^{(i)})_k \right]
 = (N)_k \left( \frac{ \varepsilon/a }{ (\varepsilon/a) + (N-1)(a/\varepsilon) } \right)^k
 \geq (N)_k \left( \frac{ \varepsilon/a }{ N(a/\varepsilon) } \right)^k
 = \frac{(N)_k}{N^k} \frac{\varepsilon^{2k}}{a^{2k}} .
 \end{equation*}
 Similarly, 
 \begin{equation*}
-\E[ (V_U^{(i)})_k ]
+\E\left[ (V_U^{(i)})_k \right]
 \leq \frac{(N)_k}{N^k} \frac{a^{2k}}{\varepsilon^{2k}} .
 \end{equation*}
 We therefore have the bounds
 \begin{equation*}
 \frac{(N)_k}{N^k} \frac{\varepsilon^{2k}}{a^{2k}}
-\leq \E[ (\nu_t^{(i)})_k \mid \mathcal{H}_t ]
+\leq \E\left[ (\nu_t^{(i)})_k \midd \mathcal{H}_t \right]
 \leq \frac{(N)_k}{N^k} \frac{a^{2k}}{\varepsilon^{2k}} . %\label{eq:mn_nuk_bounds}
 \end{equation*}
 for each $k\in\mathbb{N}$. Consequently,
 \begin{equation}
-\frac{1}{(N)_2} \sum_{i=1}^N \E[ (\nu_t^{(i)})_2 \mid \mathcal{H}_t ]
+\frac{1}{(N)_2} \sum_{i=1}^N \E\left[ (\nu_t^{(i)})_2 \midd \mathcal{H}_t \right]
 \geq \frac{\varepsilon^4}{Na^4} \label{eq:mn_cN_LB}
 \end{equation}
 and
 \begin{equation}
-\frac{1}{(N)_3} \sum_{i=1}^N \E[ (\nu_t^{(i)})_3 \mid \mathcal{H}_t ]
+\frac{1}{(N)_3} \sum_{i=1}^N \E\left[ (\nu_t^{(i)})_3 \midd \mathcal{H}_t \right]
 \leq \frac{a^6}{N^2 \varepsilon^6} . \label{eq:mn_cN3_UB}
 \end{equation}
 %
@@ -327,13 +327,13 @@ Then $p_k^{(i)} \equiv 0$ for $k\notin \{-1,0,1,2\}$.
 %Denote $p_j^{(i)} := \Prob[ \nu_t^{(i)} = \flnw +j \mid \mathcal{H}_t ]$ for $j=-1,0,1,2$.
 Now
 \begin{align*}
-\E [(\nu_t^{(i)})_2 \mid \mathcal{H}_t ]
+\E\left[ (\nu_t^{(i)})_2 \midd \mathcal{H}_t \right]
 &= p_{-1}^{(i)} (\flnw -1)_2 + p_0^{(i)} (\flnw)_2 + p_1^{(i)} (\flnw +1)_2 \\
     &\hspace{3cm} + p_2^{(i)} (\flnw +2)_2
 \end{align*}
 and
 \begin{align}
-\E [(\nu_t^{(i)})_3 \mid \mathcal{H}_t ]
+\E\left[ (\nu_t^{(i)})_3 \midd \mathcal{H}_t \right]
 &= p_{-1}^{(i)} (\flnw -1)_3 + p_0^{(i)} (\flnw)_3 + p_1^{(i)} (\flnw +1)_3 \notag\\
     &\hspace{1cm} + p_2^{(i)} (\flnw +2)_3 \notag\\
 &= p_{-1}^{(i)} (\flnw -3)(\flnw -1)_2 + p_0^{(i)} (\flnw -2)(\flnw)_2 \notag\\
@@ -342,15 +342,15 @@ and
 &\leq \flnw \Big\{ p_{-1}^{(i)} (\flnw -1)_2 + p_0^{(i)} (\flnw)_2 
         + p_1^{(i)} (\flnw +1)_2 \notag\\
     &\hspace{1cm} + p_2^{(i)} (\flnw +2)_2 \Big\} \notag\\
-&= \flnw ]\E [(\nu_t^{(i)})_2 \mid \mathcal{H}_t ] \notag\\
-&\leq a^2 \E [(\nu_t^{(i)})_2 \mid \mathcal{H}_t ] . \label{eq:strat_v2_versus_v3}
+&= \flnw \E\left[ (\nu_t^{(i)})_2 \midd \mathcal{H}_t \right] \notag\\
+&\leq a^2 \E\left[ (\nu_t^{(i)})_2 \midd \mathcal{H}_t \right] . \label{eq:strat_v2_versus_v3}
 \end{align}
 The last line uses the almost sure bound $w_t^{(i)} \leq a^2 /N$ which follows from \eqref{eq:gq_bounds_sr} along with the form of the weights in Algorithm \ref{alg:SMC}.
 Some terms in the above expressions may be equal to zero when $w_t^{(i)}$ is small enough, but the bound still holds in these cases.
 Since \eqref{eq:strat_v2_versus_v3} holds for all $i$, applying the tower rule as in \eqref{eq:condexp_HtFt} we have
 \begin{equation*}
-\frac{1}{(N)_3} \sum_{i=1}^{N} \Et [(\nu_t^{(i)})_3 ]
-\leq \frac{a^2}{N-2} \frac{1}{(N)_2} \sum_{i=1}^{N} \Et [(\nu_t^{(i)})_2 ] ,
+\frac{1}{(N)_3} \sum_{i=1}^{N} \Et\left[ (\nu_t^{(i)})_3 \right]
+\leq \frac{a^2}{N-2} \frac{1}{(N)_2} \sum_{i=1}^{N} \Et\left[ (\nu_t^{(i)})_2 \right] ,
 \end{equation*}
 satisfying \eqref{eq:mainthmcondition2} with $b_N := a^2/(N-2) \rightarrow 0$.
 The result follows by applying Theorem~\ref{thm:weakconv}.
@@ -366,7 +366,7 @@ Suppose that there exists a constant $\varepsilon \in (0,1]$ and a probability d
 \end{equation*}
 uniformly in $x,t$, and that there exist $\zeta >0$ and $\delta \in (0,1)$ such that 
 \begin{equation}
-\Prob[ \max_i w_t^{(i)} - \min_i w_t^{(i)} \geq 2\delta/N \mid \mathcal{F}_{t-1} ] \geq \zeta \label{eq:strat_minmaxweight}
+\Prob\left[ \max_i w_t^{(i)} - \min_i w_t^{(i)} \geq 2\delta/N \midd \mathcal{F}_{t-1} \right] \geq \zeta \label{eq:strat_minmaxweight}
 \end{equation}
  for infinitely many $t$. Then, for all $N>1$, $\Prob[ \tau_N(t) = \infty ] =0$ for all finite $t$.
 \end{prop}
@@ -627,8 +627,8 @@ Let $(G_t^{(n,N)})_{t\geq0}$ denote the genealogy of a random sample of size $n$
 \begin{proof}
 We can apply exactly the proof of Corollary~\ref{thm:stratified}, except that stochastic rounding is more restrictive than stratified resampling, so that conditional on $w_t^{(1:N)}$ the only possible offspring counts (almost surely) are $\nu_t^{(i)} \in \{ \flnw, \flnw +1 \}$. We simply set $p_{-1}^{(i)} = p_{2}^{(i)} = 0$ in the proof of Corollary~\ref{thm:stratified} to see that
 \begin{equation*}
-\frac{1}{(N)_3} \sum_{i=1}^{N} \Et [(\nu_t^{(i)})_3 ]
-\leq \frac{a^2}{N-2} \frac{1}{(N)_2} \sum_{i=1}^{N} \Et [(\nu_t^{(i)})_2 ]
+\frac{1}{(N)_3} \sum_{i=1}^{N} \Et\left[ (\nu_t^{(i)})_3 \right]
+\leq \frac{a^2}{N-2} \frac{1}{(N)_2} \sum_{i=1}^{N} \Et\left[ (\nu_t^{(i)})_2 \right]
 \end{equation*}
 as required.
 The result then follows by applying Theorem~\ref{thm:weakconv}.
@@ -643,7 +643,7 @@ Suppose that there exists a constant $\varepsilon \in (0,1]$ and a probability d
 \end{equation*}
 uniformly in $x,t$, and that there exist $\zeta >0$ and $\delta \in (0,1)$ such that 
 \begin{equation*}
-\Prob[ \max_i w_t^{(i)} - \min_i w_t^{(i)} \geq 2\delta/N \mid \mathcal{F}_{t-1} ] \geq \zeta
+\Prob\left[ \max_i w_t^{(i)} - \min_i w_t^{(i)} \geq 2\delta/N \midd \mathcal{F}_{t-1} \right] \geq \zeta
 \end{equation*}
  for infinitely many $t$. Then, for all $N>1$, $\Prob[ \tau_N(t) = \infty ] =0$ for all finite $t$.
 \end{prop}
@@ -730,9 +730,9 @@ As was the case for Proposition~\ref{thm:strat_nontriviality}, for convenience t
 Define $p_k^{(i)}$ for $k\in\mathbb{Z}$ as in \eqref{eq:pk_defn}. In the case of stochastic rounding,
 $p_{k}^{(i)} \equiv 0$ for all $k\notin\{0,1\}$, and we also have
 \begin{align*}
-&\Prob[ \nu_t^{(i)} = \flnw \mid w_t^{(1:N)} ]
+&\Prob\left[ \nu_t^{(i)} = \flnw \midd w_t^{(1:N)} \right]
 = 1- N w_t^{(i)} + \flnw , \\
-&\Prob[ \nu_t^{(i)} = \flnw +1 \mid w_t^{(1:N)} ]
+&\Prob\left[ \nu_t^{(i)} = \flnw +1 \midd w_t^{(1:N)} \right]
 = N w_t^{(i)} - \flnw .
 \end{align*}
 Combining this with \eqref{eq:strat_pbounds},
@@ -746,8 +746,8 @@ Define $i^\star := \argmax_i \{ w_t^{(i)} \}$ and write
 $w_t^{(i^\star)} = \frac{1+\gamma}{N}$, for some $\gamma \geq 0$.
 Then, using \eqref{eq:cNnonzero}, 
 \begin{equation*}
-\Prob[ c_N(t) > 2/N^2 \mid \mathcal{H}_t ]
-\geq 1- \Prob[ \nu_t^{(i^\star)} =1 \mid \mathcal{H}_t ]
+\Prob\left[ c_N(t) > 2/N^2 \midd \mathcal{H}_t \right]
+\geq 1- \Prob\left[ \nu_t^{(i^\star)} =1 \midd \mathcal{H}_t \right]
 = \begin{cases}
     1 - p_0^{(i^\star)} & \text{if } \gamma \in [0,1) \\
     1 & \text{if } \gamma \geq 1 .
@@ -755,7 +755,7 @@ Then, using \eqref{eq:cNnonzero},
 \end{equation*}
 In the case $\gamma \in [0,1)$ we have $N w_t^{(i^\star)} - \flnw[i^\star] = \gamma$, so
 \begin{equation*}
-\Prob[ c_N(t) > 2/N^2 \mid \mathcal{H}_t ]
+\Prob\left[ c_N(t) > 2/N^2 \midd \mathcal{H}_t \right]
 \geq 1 - p_0^{(i^\star)}
 = p_1^{(i^\star)}
 \geq \gamma \varepsilon^{2N} ,
@@ -763,7 +763,7 @@ In the case $\gamma \in [0,1)$ we have $N w_t^{(i^\star)} - \flnw[i^\star] = \ga
 due to \eqref{eq:SR_pk_LB}.
 Therefore, subject to $\max_i w_t^{(i)} \geq (1+\delta)/N$,
 \begin{equation*}
-\Prob[ c_N(t) > 2/N^2 \mid \mathcal{H}_t ]
+\Prob\left[ c_N(t) > 2/N^2 \midd \mathcal{H}_t \right]
 \geq \min_{\gamma \geq \delta} 
         \left\{ \gamma \varepsilon^{2N} \right\}
 = \delta \varepsilon^{2N} .
@@ -773,8 +773,8 @@ $w_t^{(j^\star)} = \frac{1-\gamma}{N}$, for some
 $\gamma \in [0,1]$.
 Then, again using \eqref{eq:cNnonzero},
 \begin{equation*}
-\Prob[ c_N(t) > 2/N^2 \mid \mathcal{H}_t ]
-\geq 1- \Prob[ \nu_t^{(j^\star)} =1 \mid \mathcal{H}_t ]
+\Prob\left[ c_N(t) > 2/N^2 \midd \mathcal{H}_t \right]
+\geq 1- \Prob\left[ \nu_t^{(j^\star)} =1 \midd \mathcal{H}_t \right]
 = \begin{cases}
     0 & \text{if } \gamma = 0 \\
     1 - p_1^{(j^\star)} & \text{if } \gamma \in (0,1) \\
@@ -791,7 +791,7 @@ $N w_t^{(i^\star)} - \flnw[i^\star] = 1- \gamma$, so
 \end{equation*}
 Therefore, subject to $\min_i w_t^{(i)} \leq (1-\delta)/N$,
 \begin{equation*}
-\Prob[ c_N(t) > 2/N^2 \mid \mathcal{H}_t ]
+\Prob\left[ c_N(t) > 2/N^2 \midd \mathcal{H}_t \right]
 \geq \min_{\gamma \geq \delta} 
         \left\{ \gamma \varepsilon^{2N} %\I{\gamma \neq 0} 
         \right\}
@@ -799,7 +799,7 @@ Therefore, subject to $\min_i w_t^{(i)} \leq (1-\delta)/N$,
 \end{equation*}
 Combining the cases for the maximum and minimum weight we have that
 \begin{equation*}
-\Prob[ c_N(t) > 2/N^2 \mid \mathcal{H}_t ] 
+\Prob\left[ c_N(t) > 2/N^2 \midd \mathcal{H}_t \right] 
 \geq \delta \varepsilon^{2N} \I{ \max_i w_t^{(i)} - \min_i w_t^{(i)} \geq 2\delta/N }
 \end{equation*}
 and we conclude as in Proposition~\ref{thm:strat_nontriviality}.
@@ -824,8 +824,8 @@ Let $(G_t^{(n,N)})_{t\geq0}$ denote the genealogy of a random sample of size $n$
 \begin{proof}
 We can apply exactly the proof of Corollary~\ref{thm:stratified}, except that residual-stratified resampling is more restrictive than stratified resampling, so that conditional on $w_t^{(1:N)}$ the only possible offspring counts (almost surely) are $\nu_t^{(i)} \in \{ \flnw, \flnw +1, \flnw +2 \}$. We simply set $p_{-1}^{(i)} = 0$ in the proof of Corollary~\ref{thm:stratified} to see that
 \begin{equation*}
-\frac{1}{(N)_3} \sum_{i=1}^{N} \Et [(\nu_t^{(i)})_3 ]
-\leq \frac{a^2}{N-2} \frac{1}{(N)_2} \sum_{i=1}^{N} \Et [(\nu_t^{(i)})_2 ]
+\frac{1}{(N)_3} \sum_{i=1}^{N} \Et\left[ (\nu_t^{(i)})_3 \right]
+\leq \frac{a^2}{N-2} \frac{1}{(N)_2} \sum_{i=1}^{N} \Et\left[ (\nu_t^{(i)})_2 \right]
 \end{equation*}
 as required.
 The result then follows by applying Theorem~\ref{thm:weakconv}.
@@ -840,7 +840,7 @@ Suppose that there exists a constant $\varepsilon \in (0,1]$ and a probability d
 \end{equation*}
 uniformly in $x$, and that there exist $\zeta >0$ and $\delta \in (0,1)$ such that 
 \begin{equation*}
-\Prob[ \max_i w_t^{(i)} - \min_i w_t^{(i)} \geq 2\delta/N \mid \mathcal{F}_{t-1} ] \geq \zeta
+\Prob\left[ \max_i w_t^{(i)} - \min_i w_t^{(i)} \geq 2\delta/N \midd \mathcal{F}_{t-1} \right] \geq \zeta
 \end{equation*}
  for infinitely many $t$. Then, for all $N>1$, $\Prob[ \tau_N(t) = \infty ] =0$ for all finite $t$.
 \end{prop}
@@ -865,8 +865,8 @@ Define $i^\star := \argmax_i \{ w_t^{(i)} \}$ and write
 $w_t^{(i^\star)} = \frac{1+\gamma}{N}$, for some $\gamma \geq 0$.
 Then, using \eqref{eq:cNnonzero}, 
 \begin{equation*}
-\Prob[ c_N(t) > 2/N^2 \mid \mathcal{H}_t ]
-\geq 1- \Prob[ \nu_t^{(i^\star)} =1 \mid \mathcal{H}_t ]
+\Prob\left[ c_N(t) > 2/N^2 \midd \mathcal{H}_t \right]
+\geq 1- \Prob\left[ \nu_t^{(i^\star)} =1 \midd \mathcal{H}_t \right]
 = \begin{cases}
     0 & \text{if } \gamma = 0 \\
     1 - p_0^{(i^\star)} & \text{if } \gamma \in (0,1) \\
@@ -880,19 +880,19 @@ In the case $\gamma \in (0,1)$ we have
 1 - p_0^{(i^\star)}
 = p_1^{(i^\star)} + p_2^{(i^\star)} 
 \geq p_1^{(i^\star)} 
-\geq \Prob[ \nu_t^{(i^\star)} = \flnw[i^\star] + 1 \mid w_t^{(1:N)} ] \varepsilon^{2N}
+\geq \Prob\left[ \nu_t^{(i^\star)} = \flnw[i^\star] + 1 \midd w_t^{(1:N)} \right] \varepsilon^{2N}
 \end{equation*}
 by \eqref{eq:strat_pbounds}.
 Also, the residual weight in this case is $r_{i^\star} = \gamma /R$, for some $R\in\{1, \dots, N-1\}$ (since $\gamma > 0$, $R \neq 0$).
 Therefore $\Prob[ \nu_t^{(i^\star)} = \flnw[i^\star] + 1 \mid w_t^{(1:N)} ]$ is the probability that stratified resampling with $R$ individuals assigns exactly 1 offspring to a parent with weight $\gamma /R$. According to Table~\ref{tab:strat_probs} (lower bound on $p_1$), this probability is at least $\gamma /2$.
 Hence
 \begin{equation*}
-\Prob[ c_N(t) > 2/N^2 \mid \mathcal{H}_t ]
+\Prob\left[ c_N(t) > 2/N^2 \midd \mathcal{H}_t \right]
 \geq \frac{\gamma}{2} \varepsilon^{2N} .
 \end{equation*}
 This means that, subject to $\max_i w_t^{(i)} \geq (1+\delta)/N$,
 \begin{equation*}
-\Prob[ c_N(t) > 2/N^2 \mid \mathcal{H}_t ]
+\Prob\left[ c_N(t) > 2/N^2 \midd \mathcal{H}_t \right]
 \geq \min_{\gamma \geq \delta} 
         \left\{ \frac{\gamma }{2} \varepsilon^{2N} \right\}
 = \frac{1}{2} \delta \varepsilon^{2N} .
@@ -903,8 +903,8 @@ $w_t^{(j^\star)} = \frac{1-\gamma}{N}$, for some
 $\gamma \in [0,1]$.
 Using \eqref{eq:cNnonzero},
 \begin{equation*}
-\Prob[ c_N(t) > 2/N^2 \mid \mathcal{H}_t ]
-\geq 1- \Prob[ \nu_t^{(j^\star)} =1 \mid \mathcal{H}_t ]
+\Prob\left[ c_N(t) > 2/N^2 \midd \mathcal{H}_t \right]
+\geq 1- \Prob\left[ \nu_t^{(j^\star)} =1 \midd \mathcal{H}_t \right]
 = \begin{cases}
     0 & \text{if } \gamma = 0 \\
     1 - p_1^{(j^\star)} & \text{if } \gamma \in (0,1) \\
@@ -916,18 +916,18 @@ If $\gamma \in (0,1)$ then $r_{j^\star} = (1- \gamma)/R$, for some $R\in\{1, \do
 1 - p_1^{(j^\star)}
 = p_0^{(j^\star)} + p_2^{(j^\star)}
 \geq p_0^{(j^\star)} 
-\geq \Prob[ \nu_t^{(j^\star)} = \flnw[j^\star] \mid w_t^{(1:N)} ] \varepsilon^{2N} 
+\geq \Prob\left[ \nu_t^{(j^\star)} = \flnw[j^\star] \midd w_t^{(1:N)} \right] \varepsilon^{2N} 
 \end{equation*}
 by \eqref{eq:strat_pbounds}.
 Now $\Prob[ \nu_t^{(j^\star)} = \flnw[j^\star] \mid w_t^{(1:N)} ]$ is the probability that stratified resampling with $R$ individuals assigns exactly 0 offspring to a parent with weight $(1-\gamma) /R$. According to Table~\ref{tab:strat_probs} (lower bound on $p_0$), this probability is at least $\gamma/2$.
 Hence 
 \begin{equation*}
-\Prob[ c_N(t) > 2/N^2 \mid \mathcal{H}_t ]
+\Prob\left[ c_N(t) > 2/N^2 \midd \mathcal{H}_t \right]
 \geq \frac{\gamma}{2} \varepsilon^{2N} .
 \end{equation*}
 Therefore, using \eqref{eq:strat_pbounds}, we have that subject to $\min_i w_t^{(i)} \leq (1-\delta)/N$
 \begin{equation*}
-\Prob[ c_N(t) > 2/N^2 \mid \mathcal{H}_t ]
+\Prob\left[ c_N(t) > 2/N^2 \midd \mathcal{H}_t \right]
 \geq \min_{\gamma \geq \delta} 
         \left\{ \frac{ \gamma }{2}  \varepsilon^{2N}
         %\I{\gamma \neq 0} 
@@ -936,7 +936,7 @@ Therefore, using \eqref{eq:strat_pbounds}, we have that subject to $\min_i w_t^{
 \end{equation*}
 Combining the cases for the maximum and minimum weight we have
 \begin{equation*}
-\Prob[ c_N(t) > 2/N^2 \mid \mathcal{H}_t ] 
+\Prob\left[ c_N(t) > 2/N^2 \midd \mathcal{H}_t \right] 
 \geq \frac{1}{2} \delta \varepsilon^{2N}
         \I{ \max_i w_t^{(i)} - \min_i w_t^{(i)} \geq 2\delta/N }
 \end{equation*}
@@ -1029,9 +1029,9 @@ Recall that star resampling assigns all of the offspring to a single parent whic
 It is easy enough to show that such a resampling scheme does not satisfy \eqref{eq:mainthmcondition2}.
 The vector of offspring counts is at every generation some permutation of $(N,0,\dots,0)$, and hence we calculate
 \begin{align*}
-\frac{1}{(N)_2} \sum_{i=1}^N \E[ (\nu_t^{(i)})_2 \mid \mathcal{H}_t ]
+\frac{1}{(N)_2} \sum_{i=1}^N \E\left[ (\nu_t^{(i)})_2 \midd \mathcal{H}_t \right]
 &= \frac{1}{(N)_2} (N)_2 = 1 , \\
-\frac{1}{(N)_3} \sum_{i=1}^N \E[ (\nu_t^{(i)})_3 \mid \mathcal{H}_t ]
+\frac{1}{(N)_3} \sum_{i=1}^N \E\left[ (\nu_t^{(i)})_3 \midd \mathcal{H}_t \right]
 &= \frac{1}{(N)_3} (N)_3 = 1 ,
 \end{align*}
 so no suitable sequence $b_N$ can be found.
@@ -1091,7 +1091,7 @@ Assume, without loss of generality, that the immortal particle takes index 1 in 
 Define $\mathcal{H}_t$ as in \eqref{eq:defn_Ht}.
 The parental indices are conditionally independent given $\mathcal{H}_t$, as in standard SMC with multinomial resampling, but we have to treat $i=1$ as a special case. The conditional law on the $i^{th}$ parental index is
 \begin{equation*}
-\Prob \left[ a_t^{(i)} = a_i \mid \mathcal{H}_t \right] \propto
+\Prob \left[ a_t^{(i)} = a_i \midd \mathcal{H}_t \right] \propto
 \begin{cases}
 \1{a_i=1} &i=1 \\
 g_t( X_{t+1}^{a_t^{(a_i)}} , X_t^{(a_i)} ) q_{t-1}(X_t^{(a_i)}, X_{t-1}^{(i)}) &i=2,\dots,N ,
@@ -1100,7 +1100,7 @@ g_t( X_{t+1}^{a_t^{(a_i)}} , X_t^{(a_i)} ) q_{t-1}(X_t^{(a_i)}, X_{t-1}^{(i)}) &
 \end{equation*}
 resulting in the joint law
 \begin{equation*}
-\Prob \left[ a_t^{(1:N)} = a_{1:N} \mid \mathcal{H}_t \right] 
+\Prob \left[ a_t^{(1:N)} = a_{1:N} \midd \mathcal{H}_t \right] 
 \propto \1{a_1 = 1} \prod_{i=2}^N g_t( X_{t+1}^{a_t^{(a_i)}} , X_t^{(a_i)} )  
         q_{t-1}(X_t^{(a_i)}, X_{t-1}^{(i)}).
 %\propto \1{a_1 = 1} \prod_{i=2}^N w_t^{(a_i)} q_{t-1}(X_t^{(a_i)}, X_{t-1}^{(i)}).
@@ -1108,9 +1108,9 @@ resulting in the joint law
 %%%
 As in Corollary~\ref{thm:multinomial}, under \eqref{eq:gq_bounds_csmc} we have bounds
 \begin{equation*}
-\E[ (V_L^{(i)})_k ]
-\leq \E[ (\nu_t^{(i)})_k \mid \mathcal{H}_t ]
-\leq \E[ (V_U^{(i)})_k ] ,
+\E\left[ (V_L^{(i)})_k \right]
+\leq \E\left[ (\nu_t^{(i)})_k \midd \mathcal{H}_t \right]
+\leq \E\left[ (V_U^{(i)})_k \right] ,
 \end{equation*}
 where now
 \begin{align*}
@@ -1124,7 +1124,7 @@ where now
 independently for each $i$ and independently of $\mathcal{F}_\infty$.
 Furthermore, using the Binomial moments and the identity $(X+1)_2 \equiv 2(X)_1 +(X)_2$, one can show that
 \begin{equation*}
-\E[ (V_L^{(i)} )_2 ]
+\E\left[ (V_L^{(i)} )_2 \right]
 \geq \begin{cases}
 \frac{(N-1)_2}{N^2}\frac{\varepsilon^4}{a^4} 
         + \frac{2(N-1)}{N} \frac{\varepsilon^2}{a^2} &\text{if } i=1 \\
@@ -1133,7 +1133,7 @@ Furthermore, using the Binomial moments and the identity $(X+1)_2 \equiv 2(X)_1 
 \end{equation*}
 Using the identity $(X+1)_3 \equiv 3(X)_2 +(X)_3$, we also have
 \begin{equation*}
-\E[ (V_U^{(i)} )_3 ]
+\E\left[ (V_U^{(i)} )_3 \right]
 \leq \begin{cases}
 \frac{(N-1)_3}{N^3}\frac{a^6}{\varepsilon^6} 
         + \frac{3(N-1)_2}{N^2} \frac{a^4}{\varepsilon^4} &\text{if } i=1 \\
@@ -1142,8 +1142,8 @@ Using the identity $(X+1)_3 \equiv 3(X)_2 +(X)_3$, we also have
 \end{equation*}
 We therefore have
 \begin{align}
-\frac{1}{(N)_2} \sum_{i=1}^N \E[ (\nu_t^{(i)})_2 \mid \mathcal{H}_t ]
-&\geq \frac{1}{(N)_2} \sum_{i=1}^N \E[ ( V_L^{(i)} )_2 ]
+\frac{1}{(N)_2} \sum_{i=1}^N \E\left[ (\nu_t^{(i)})_2 \midd \mathcal{H}_t \right]
+&\geq \frac{1}{(N)_2} \sum_{i=1}^N \E\left[ ( V_L^{(i)} )_2 \right]
 \geq \frac{1}{(N)_2} \left[ \frac{2(N-1)}{N} \frac{\varepsilon^2}{a^2}
         + \sum_{i=1}^N \frac{(N-1)_2}{N^2}\frac{\varepsilon^4}{a^4} \right] \notag\\
 &= \frac{1}{N^2} \left[ 2 \frac{\varepsilon^2}{a^2} 
@@ -1152,8 +1152,8 @@ We therefore have
 \end{align}
 and
 \begin{align*}
-\frac{1}{(N)_3} \sum_{i=1}^N \E[ (\nu_t^{(i)})_3 \mid \mathcal{H}_t ]
-&\leq \frac{1}{(N)_3} \sum_{i=1}^N \E[ ( V_U^{(i)} )_3 ]
+\frac{1}{(N)_3} \sum_{i=1}^N \E\left[ (\nu_t^{(i)})_3 \midd \mathcal{H}_t \right]
+&\leq \frac{1}{(N)_3} \sum_{i=1}^N \E\left[ ( V_U^{(i)} )_3 \right]
 \leq \frac{1}{(N)_3} \left[ \frac{3(N-1)_2}{N^2} \frac{a^4}{\varepsilon^4}
         + \sum_{i=1}^N \frac{(N-1)_3}{N^3}\frac{a^6}{\varepsilon^6}  \right] \\
 &= \frac{1}{N^3} \left[ 3 \frac{a^4}{\varepsilon^4} 
@@ -1268,7 +1268,7 @@ now with time reversed so future information must be incorporated,
 we obtain
 %\seb{add one more step of working below to make it less ``magic''?}
 \begin{equation*}
-\Prob[a_t^{(i)} = a_i \mid \mathcal{H}_t ] \propto
+\Prob\left[ a_t^{(i)} = a_i \midd \mathcal{H}_t \right] \propto
 \begin{cases}
 w_t^{(a_i)} q_{t-1}(X_t^{(a_i)}, X_{t-1}^{(i)}) &\qquad i\in\text{non-immortal particles}\\
 w_t^{(a_i)} q_{t-1}(X_t^{(a_i)}, x_{t-1}^\star) &\qquad i=\text{immortal particle} .
@@ -1276,7 +1276,7 @@ w_t^{(a_i)} q_{t-1}(X_t^{(a_i)}, x_{t-1}^\star) &\qquad i=\text{immortal particl
 \end{equation*}
 But when $i$ is the index of the immortal particle, $X_{t-1}^{(i)} = x_{t-1}^\star$, so the above simplifies to
 \begin{equation*}
-\Prob[a_t^{(i)} = a_i \mid \mathcal{H}_t ] \propto
+\Prob\left[ a_t^{(i)} = a_i \midd \mathcal{H}_t \right] \propto
 w_t^{(a_i)} q_{t-1}(X_t^{(a_i)}, X_{t-1}^{(i)})
 \end{equation*}
 for each $i$, which is exactly \eqref{eq:parentslaw_mn}, the law on parental indices under standard SMC with multinomial resampling!

@@ -1496,11 +1496,11 @@ We have
 Using the law of total variance,
 \begin{align*}
 \V[ \nu_t^{(i)} \mid w_t^{(i)} ]
-&= \E\left[ \V[ \nu_t^{(i)} \mid w_t^{(i)}, R ] \mid w_t^{(i)} \right]
-        + \V\left[ \E[ \nu_t^{(i)} \mid w_t^{(i)}, R ] \mid w_t^{(i)} \right] \\
+&= \E\left[ \V[ \nu_t^{(i)} \mid w_t^{(i)}, R ] \midd w_t^{(i)} \right]
+        + \V\left[ \E[ \nu_t^{(i)} \mid w_t^{(i)}, R ] \midd w_t^{(i)} \right] \\
 &= \E\left[ (Nw_t^{(i)} - \flnw) \left( 1- \frac{Nw_t^{(i)} - \flnw}{R} \right) 
-        \mid w_t^{(i)} \right] \\
-    &\qquad+ \V\left[ Nw_t^{(i)} \mid w_t^{(i)} \right] \\
+        \midd w_t^{(i)} \right] \\
+    &\qquad+ \V\left[ Nw_t^{(i)} \midd w_t^{(i)} \right] \\
 &= Nw_t^{(i)} - \flnw - (Nw_t^{(i)} - \flnw)^2\, \E[ R^{-1} \mid w_t^{(i)} ] \\
 % &\leq \E\left[ Nw_t^{(i)} - \flnw \mid w_t^{(i)} \right]
 %        + \V\left[ Nw_t^{(i)} \mid w_t^{(i)} \right] \\
@@ -1515,14 +1515,14 @@ Similarly, for residual resampling with star residuals,
 and we find
 \begin{align*}
 \V[ \nu_t^{(i)} \mid w_t^{(i)} ]
-&= \E\left[ \V[ \nu_t^{(i)} \mid w_t^{(i)}, R ] \mid w_t^{(i)} \right]
-        + \V\left[ \E[ \nu_t^{(i)} \mid w_t^{(i)}, R ] \mid w_t^{(i)} \right] \\
+&= \E\left[ \V[ \nu_t^{(i)} \mid w_t^{(i)}, R ] \midd w_t^{(i)} \right]
+        + \V\left[ \E[ \nu_t^{(i)} \mid w_t^{(i)}, R ] \midd w_t^{(i)} \right] \\
 &= \E\left[ R (Nw_t^{(i)} - \flnw) \left( 1- \frac{Nw_t^{(i)} - \flnw}{R} \right) 
-        \mid w_t^{(i)} \right] \\
-    &\qquad+ \V\left[ Nw_t^{(i)} \mid w_t^{(i)} \right] \\
+        \midd w_t^{(i)} \right] \\
+    &\qquad+ \V\left[ Nw_t^{(i)} \midd w_t^{(i)} \right] \\
 &= \E\left[ R (Nw_t^{(i)} - \flnw) \left( 1- \frac{Nw_t^{(i)} - \flnw}{R} \right) 
-        \mid w_t^{(i)} \right] \\
-&= (Nw_t^{(i)} - \flnw) \E\left[ R \mid w_t^{(i)} \right]  - (Nw_t^{(i)} - \flnw)^2 \\
+        \midd w_t^{(i)} \right] \\
+&= (Nw_t^{(i)} - \flnw) \E[ R \mid w_t^{(i)} ]  - (Nw_t^{(i)} - \flnw)^2 \\
 &\leq N (Nw_t^{(i)} - \flnw) .
 \end{align*}
 Again, if $R=0$ then the variance is zero.
@@ -1530,10 +1530,10 @@ Again, if $R=0$ then the variance is zero.
 For stratified resampling, we can use the constraints on the marginal offspring distribution that were derived in Section~\ref{sec:examples_resamplingschemes}. Recall that, conditional on $w_t^{(i)}$, $\nu_t^{(i)} = \flnw + j$ with probability $p_{j}$ for $j=-1,0,1,2$.
 We can use the expressions for $p_{-1},p_0,p_1,p_2$ in the two cases of Figure~\ref{fig:strat_cases}, as summarised in Table~\ref{tab:strat_probs}, to bound the variance. First write
 \begin{align}
-\V\left[ \nu_t^{(i)} \mid w_t^{(i)} \right]
-&= \V\left[ \nu_t^{(i)} - \flnw \mid w_t^{(i)} \right] \notag\\
-&= \E\left[ (\nu_t^{(i)} - \flnw)^2 \mid w_t^{(i)} \right] 
-        - \E\left[ \nu_t^{(i)} -\flnw \mid w_t^{(i)} \right]^2 \notag\\
+\V[ \nu_t^{(i)} \mid w_t^{(i)} ]
+&= \V\left[ \nu_t^{(i)} - \flnw \midd w_t^{(i)} \right] \notag\\
+&= \E\left[ (\nu_t^{(i)} - \flnw)^2 \midd w_t^{(i)} \right] 
+        - \E\left[ \nu_t^{(i)} -\flnw \midd w_t^{(i)} \right]^2 \notag\\
 &= p_{-1} + p_1 + 4p_2 - (-p_{-1} + p_1 + 2p_2)^2 . \label{eq:marg_var_strat}
 %\leq 1/2 .
 \end{align}
@@ -2323,7 +2323,7 @@ An effective solution (where it is possible to implement it) was proposed by \te
 It consists of a simple modification to the resampling step within the conditional SMC algorithm. 
 In the basic algorithm with multinomial resampling, at each time step the non-immortal particles are resampled by multinomial resampling according to their weights, while the immortal offspring is deterministically assigned to the immortal parent. That is, at time $t$, for each $i \in \{1,\dots, N\}$,
 \begin{equation*}
-\Prob[a_t^{(j)} = i \mid X_{0:t}^{(1:N)}, x_{0:T}^\star, a_{0:T}^\star ] 
+\Prob\left[ a_t^{(j)} = i \midd X_{0:t}^{(1:N)}, x_{0:T}^\star, a_{0:T}^\star \right] 
 \propto \begin{cases}
 w_t^{(i)} & j \text{ non-immortal} \\
 \I{i = a_t^\star} & j \text{ immortal} .
@@ -2363,7 +2363,7 @@ Set $X_0^{(a_0^\star)} \gets x_0^\star$\;
 Assume that the smoothing distributions admit densities, that is $\mu^\theta(\cdot)$ and $K_t^\theta(\cdot\mid x)$ admit densities for all $x,t$. Denote the density of $K_t^\theta$ by $q_t^\theta$. Define the trajectories $X_{t, 0:t}^{(i)}$ (for any $t,i$) as in Section~\ref{sec:SMC_FK}, starting from $X_{t,t}^{(i)} := X_t^{(i)}$ and tracing back the states of the parents via $X_{t,s}{(i)} = X_{t,s+1}^{( a_t^{(i)} )}$.
 Then the correct resampling probabilities are, for each $i$,
 \begin{equation}\label{eq:ancsamp_probs}
-\Prob[a_t^{(j)} = i \mid X_{0:t}^{(1:N)}, x_{0:T}^\star, a_{0:T}^\star ] 
+\Prob\left[ a_t^{(j)} = i \midd X_{0:t}^{(1:N)}, x_{0:T}^\star, a_{0:T}^\star \right] 
 \propto \begin{cases}
 w_t^{(i)} & j \text{ non-immortal}\\
 w_t^{(i)} \frac{
@@ -2405,7 +2405,7 @@ The ratio then becomes
 \end{align*}
 The probabilities in \eqref{eq:ancsamp_probs} become
 \begin{equation}\label{eq:ancsamp_probs_simplified}
-\Prob[a_t^{(j)} = i \mid X_{0:t}^{(1:N)}, x_{0:T}^\star, a_{0:T}^\star ] 
+\Prob\left[ a_t^{(j)} = i \midd X_{0:t}^{(1:N)}, x_{0:T}^\star, a_{0:T}^\star \right] 
 \propto \begin{cases}
 w_t^{(i)} & j \text{ non-immortal}\\
 w_t^{(i)} q_{t+1}^\theta( x_{t+1}^\star \mid X_{t}^{(i)} ) & j \text{ immortal} .

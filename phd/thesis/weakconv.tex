@@ -51,17 +51,17 @@ The corollary states that the sequence of processes $\{ (G_{\tau_N(t)}^{(n,N)})_
 \begin{enumerate}
 \item \label{item:relcomp1} For every $\epsilon>0$, $t\geq 0$ there exists a compact set $\Gamma \subseteq \mathcal{P}_n$ such that
 \begin{equation*}
-\liminf_{N\to\infty} \Prob[ G_{\tau_N(t)}^{(n,N)} \in \Gamma ] 
+\liminf_{N\to\infty} \Prob\left[ G_{\tau_N(t)}^{(n,N)} \in \Gamma \right] 
 \geq 1-\epsilon
 \end{equation*}
 \item \label{item:relcomp2} For every $\epsilon>0$, $t>0$ there exists $\delta>0$ such that
 \begin{equation*}
-\liminf_{N\to\infty} \Prob[ \omega(G_{\tau_N(\cdot)}^{(n,N)}, \delta, t) < \epsilon ] 
+\liminf_{N\to\infty} \Prob\left[ \omega\left( G_{\tau_N(\cdot)}^{(n,N)}, \delta, t \right) < \epsilon \right] 
 \geq 1-\epsilon
 \end{equation*}
 where $\omega$ is the modified modulus of continuity:
 \begin{equation*}
-\omega(G_{\tau_N(\cdot)}^{(n,N)}, \delta, t) := \inf \max_{i \in [K]} 
+\omega\left( G_{\tau_N(\cdot)}^{(n,N)}, \delta, t \right) := \inf \max_{i \in [K]} 
         \sup_{u,v \in [T_{i-1}, T_i)} \rho\left( 
         G_{\tau_N(u)}^{(n,N)}, G_{\tau_N(v)}^{(n,N)} \right)
 \end{equation*}
@@ -79,8 +79,8 @@ To do this, we use a coupling with another process that contains all of the jump
 Define $p_t := \max_{\xi\in \mathcal{P}_n} \{1 - p_{\xi\xi}(t)\} = 1 - p_{\Delta\Delta}(t)$, where $\Delta$ denotes the trivial partition of singletons $\{ \{1\},\dots, \{n\} \}$. For a proof that the maximum is attained at $\xi = \Delta$, see Lemma \ref{thm:maximum_pr}. 
 Following \textcite{mohle1999}, we now construct the two-dimensional Markov process $(Z_t, S_t)_{t \in \mathbb{N}_0}$ on $\mathbb{N}_0 \times \mathcal{P}_n$ with transition probabilities
 \begin{align}
-\Prob[ Z_t = j , S_t = \eta \mid Z_{t-1} = i&, S_{t-1} = \xi, \mathcal{F}_\infty] \notag\\
-&= \begin{cases}
+&\Prob\left[ Z_t = j , S_t = \eta \mid Z_{t-1} = i, S_{t-1} = \xi, \mathcal{F}_\infty \right] \notag\\
+&\hspace{5cm}= \begin{cases}
 1 - p_t &\quad \text{if } j=i \text{ and } \eta=\xi \\
 p_{\xi\xi}(t) + p_t - 1  &\quad \text{if } j=i+1 \text{ and } \eta=\xi \\
 p_{\xi\eta}(t) &\quad \text{if } j=i+1 \text{ and } \eta\neq\xi \\
@@ -107,38 +107,38 @@ Indeed $(Z_{\tau_N(\cdot)})$ is constant on every interval $[ T_{i-1}^{(N)} , T_
 We therefore have that
 for each $m \in \mathbb{N}$ and $\delta >0$,
 \begin{equation*}
-\Prob[ \omega( (Z_{\tau_N(\cdot)}) , \delta, t ) < \epsilon ]
-\geq \Prob[ T_m^{(N)} \geq t, \varpi_i^{(N)} > \delta \,\forall i\in \{1,\dots,m\} ] .
+\Prob\left[ \omega\left( (Z_{\tau_N(\cdot)}) , \delta, t \right) < \epsilon \right]
+\geq \Prob\left[ T_m^{(N)} \geq t, \varpi_i^{(N)} > \delta \,\forall i\in \{1,\dots,m\} \right] .
 \end{equation*}
 Thus a sufficient condition for Condition~\ref{item:relcomp2} is: 
 for any $\epsilon>0$, $t>0$, there exist $m\in\mathbb{N}$, $\delta>0$ such that
 \begin{equation}\label{eq:condition2b}
-\liminf_{N\to\infty} 
-        \Prob[ T_m^{(N)} \geq t, \varpi_i^{(N)} > \delta \,\forall i\in \{1,\dots,m\} ]
+\liminf_{N\to\infty} \Prob\left[ T_m^{(N)} \geq t, \varpi_i^{(N)} > \delta \,\forall i\in \{1,\dots,m\} \right]
 \geq 1-\epsilon .
 \end{equation}
 Due to Lemma \ref{thm:holdingtimes_distn}, the limiting distributions of $\varpi_i^{(N)}$ are i.i.d. $\Exp(\alpha_n)$, where $\alpha_n := n(n-1)/2$, so
 \begin{equation*}
-\limsup_{N\to\infty} \Prob[ \varpi_i^{(N)} \leq \delta ] 
-= 1- \liminf_{N\to\infty} \Prob[ \varpi_i^{(N)} > \delta ] 
+\limsup_{N\to\infty} \Prob\left[ \varpi_i^{(N)} \leq \delta \right] 
+= 1- \liminf_{N\to\infty} \Prob\left[ \varpi_i^{(N)} > \delta \right] 
 = 1- e^{-\alpha_n \delta}
 \end{equation*}
 for each $i$, and
 \begin{align*}
-\limsup_{N\to\infty} \Prob[ T_m^{(N)} < t ]
-&= 1- \liminf_{N\to\infty} \Prob[ T_m^{(N)} \geq t ] \\
-&= 1- \liminf_{N\to\infty} \Prob[ \varpi_1^{(N)} + \cdots + \varpi_m^{(N)} \geq t ] \\
+\limsup_{N\to\infty} \Prob\left[ T_m^{(N)} < t \right]
+&= 1- \liminf_{N\to\infty} \Prob\left[ T_m^{(N)} \geq t \right] \\
+&= 1- \liminf_{N\to\infty} \Prob\left[ \varpi_1^{(N)} + \cdots + \varpi_m^{(N)} \geq t \right] \\
 &= 1- e^{-\alpha_n t} \sum_{i=0}^{m-1} \frac{(\alpha_n t)^i}{i!} .
 \end{align*}
 using the series expansion for the Erlang CDF \parencite[see for example][Chapter 15]{forbes2011}.
 Now
 \begin{align*}
 &\liminf_{N\to\infty} 
-        \Prob[ T_m^{(N)} \geq t, \varpi_i^{(N)} > \delta \,\forall i\in \{1,\dots,m\} ] \\
+        \Prob\left[ T_m^{(N)} \geq t, \varpi_i^{(N)} > \delta 
+        \,\forall i\in \{1,\dots,m\} \right] \\
 &\hspace{4cm}= 1 - \limsup_{N\to\infty} \Prob\left[ \{ T_m^{(N)} < t \} \cup
         \bigcup_{i=1}^m \{ \varpi_i^{(N)} \leq \delta \}  \right]\\
-&\hspace{4cm}\geq 1 - \limsup_{N\to\infty} \Prob[ T_m^{(N)} < t ] 
-        - \sum_{i=1}^m \limsup_{N\to\infty} \Prob[ \varpi_i^{(N)} \leq \delta]\\
+&\hspace{4cm}\geq 1 - \limsup_{N\to\infty} \Prob\left[ T_m^{(N)} < t \right] 
+        - \sum_{i=1}^m \limsup_{N\to\infty} \Prob\left[ \varpi_i^{(N)} \leq \delta\right]\\
 &\hspace{4cm}= 1- \left( 1- e^{-\alpha_n t} \sum_{i=0}^{m-1} 
         \frac{(\alpha_n t)^i}{i!} \right) - m( 1- e^{-\alpha_n \delta} ) ,
 \end{align*}
@@ -285,7 +285,7 @@ We will work with the jump times, following the structure of \textcite[Lemma 3.2
 
 The idea is to prove by induction that, for any $k\in\mathbb{N}$ and $t_1,\dots,t_k >0$,
 \begin{equation}\label{eq:518}
-\lim_{N\to\infty} \Prob[ T_1^{(N)} \leq t_1, \dots , T_k^{(N)} \leq t_k ]
+\lim_{N\to\infty} \Prob\left[ T_1^{(N)} \leq t_1, \dots , T_k^{(N)} \leq t_k \right]
 = \Prob[ T_1 \leq t_1, \dots , T_k \leq t_k ] .
 \end{equation}
 Take the basis case $k=1$, for which
@@ -295,7 +295,7 @@ Take the basis case $k=1$, for which
 \end{equation*}
 and $T_1^{(N)} >t$ if and only if $Z$ has no jumps up to time $t$:
 \begin{equation*}
-\Prob[T_1^{(N)} >t]
+\Prob\left[T_1^{(N)} >t \right]
 = \E\left[ \Prob[ T_1^{(N)} >t \mid \mathcal{F}_\infty ] \right]
 = \E\left[ \prod_{r=1}^{\tau_N(t)} (1-p_r) \right] .
 \end{equation*}
@@ -304,14 +304,14 @@ Lemma \ref{thm:basis} shows that this probability converges to $e^{-\alpha_n t}$
 For the induction step, assume that \eqref{eq:518} holds for some $k$. 
 We have the following decomposition:
 \begin{align*}
-\Prob[ T_1^{(N)} \leq t_1, \dots , T_{k+1}^{(N)} \leq t_{k+1} ]
-&= \Prob[ T_1^{(N)} \leq t_1, \dots , T_k^{(N)} \leq t_k ] \\
-        &\qquad- \Prob[ T_1^{(N)} \leq t_1, \dots , T_k^{(N)} \leq t_k, T_{k+1}^{(N)} > t_{k+1} ] .
+\Prob\left[ T_1^{(N)} \leq t_1, \dots , T_{k+1}^{(N)} \leq t_{k+1} \right]
+&= \Prob\left[ T_1^{(N)} \leq t_1, \dots , T_k^{(N)} \leq t_k \right] \\
+        &\qquad- \Prob\left[ T_1^{(N)} \leq t_1, \dots , T_k^{(N)} \leq t_k, T_{k+1}^{(N)} > t_{k+1} \right] .
 \end{align*}
 The first term on the RHS converges to $\Prob[ T_1 \leq t_1, \dots , T_k \leq t_k ]$ by the induction hypothesis, and it remains to show that
 \begin{equation*}
 \lim_{N\to\infty} 
-        \Prob[ T_1^{(N)} \leq t_1, \dots , T_k^{(N)} \leq t_k, T_{k+1}^{(N)} > t_{k+1} ]
+        \Prob\left[ T_1^{(N)} \leq t_1, \dots , T_k^{(N)} \leq t_k, T_{k+1}^{(N)} > t_{k+1} \right]
 = \Prob[ T_1\leq t_1, \dots , T_k \leq t_k, T_{k+1} > t_{k+1} ] .
 \end{equation*}
 As shown in \textcite{mohle1999},
@@ -324,7 +324,7 @@ As shown in \textcite{mohle1999},
 \end{equation*}
 while the probability on the LHS can be written
 \begin{align*}
-&\Prob[ T_1^{(N)} \leq t_1, \dots , T_k^{(N)} \leq t_k, T_{k+1}^{(N)} > t_{k+1} ] \\
+&\Prob\left[ T_1^{(N)} \leq t_1, \dots , T_k^{(N)} \leq t_k, T_{k+1}^{(N)} > t_{k+1} \right] \\
 &\hspace{4cm}= \E\left[ \Prob[ T_1^{(N)} \leq t_1, \dots , T_k^{(N)} \leq t_k, T_{k+1}^{(N)} > t_{k+1} 
         \mid \mathcal{F}_\infty] \right] \\
 &\hspace{4cm}= \E \left[ \sum_{\substack{r_1 <\dots< r_k :
@@ -1563,7 +1563,7 @@ We can now evaluate the limit:
 &\geq \sum_{\substack{i_1\leq \dots\leq i_{k-1}\\ \in \{0,\dots,k\} 
         :\\ i_j \geq j \forall j}}
         \prod_{j=1}^k \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})!}   
-        \lim_{N\to\infty}\E[\1{E_N \cap E_N^4}] \notag\\
+        \lim_{N\to\infty} \E\left[ \1{E_N \cap E_N^4} \right] \notag\\
     &\qquad- \lim_{N\to\infty} \E \left[ 
         \sum_{\substack{i_1\leq \dots\leq i_{k-1}\\ \in \{0,\dots,k\} 
         :\\ i_j \geq j \forall j}}
@@ -1574,7 +1574,7 @@ We can now evaluate the limit:
 &= \sum_{\substack{i_1\leq \dots\leq i_{k-1}\\ \in \{0,\dots,k\} 
         :\\ i_j \geq j \forall j}}
         \prod_{j=1}^k \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})!}   
-        \lim_{N\to\infty}\Prob[E_N \cap E_N^4] \notag\\
+        \lim_{N\to\infty} \Prob\left[ E_N \cap E_N^4 \right] \notag\\
     &\qquad- \sum_{\substack{i_1\leq \dots\leq i_{k-1}\\ \in \{0,\dots,k\} 
         :\\ i_j \geq j \forall j}}
         \sum_{\mathcal{I} \subset [k]}
@@ -1632,9 +1632,9 @@ Then $\lim_{N\to\infty} \Prob[E_N]=1$.
 = 1- \E\left[ \1{\bigcup E_N^c(r)} \right]
 \geq 1 - \E\left[ \sum_{r=1}^{\tau_N(t)} \1{E_N^c(r)} \right] \notag\\
 &= 1- \E\left[  \sum_{r=1}^{\tau_N(t)} \E\left[ \1{E_N^c(r)} 
-        \mid \mathcal{F}_{r-1} \right] \right]
-= 1- \E\left[  \sum_{r=1}^{\tau_N(t)} \Prob\left[ E_N^c(r)
-        \mid \mathcal{F}_{r-1} \right] \right] \label{eq:034}
+        \midd \mathcal{F}_{r-1} \right] \right]
+= 1- \E\left[  \sum_{r=1}^{\tau_N(t)} \Prob[ E_N^c(r)
+        \mid \mathcal{F}_{r-1} ] \right] \label{eq:034}
 \end{align}
 where for the second line we apply Lemma~\ref{thm:kjjslemma2} with $f(r) = \1{E_N^c(r)} $.
 By the generalised Markov inequality,
