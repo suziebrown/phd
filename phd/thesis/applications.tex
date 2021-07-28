@@ -111,7 +111,7 @@ As we will see, this enables us to compute bounds on the filtered expectations o
 \section{Multinomial resampling}
 \label{sec:corol_mn}
 Multinomial resampling is often preferred in theoretical studies of SMC, because it renders the parental indices conditionally i.i.d. given the weights, making it relatively simple to analyse the resulting algorithm.
-The convergence of finite-dimensional distributions for multinomial resampling was proved in \textcite[Corollary 1]{koskela2018}, but we are now able to prove an analogous weak convergence result. The following proof also demonstrates the relative ease with which we can verify Theorem~\ref{thm:FDDconv} as opposed to \textcite[Theorem 1]{koskela2018}.
+The convergence of finite-dimensional distributions for multinomial resampling was proved in \textcite[Corollary 1]{koskela2018}, but we are now able to prove an analogous weak convergence result. The following proof also demonstrates the relative ease with which we can verify the conditions of Theorem~\ref{thm:FDDconv} as opposed to those of \textcite[Theorem 1]{koskela2018}.
 %The result of Corollary~\ref{thm:multinomial} was proved in \textcite[Corollary 1]{koskela2018}. It is also included here, firstly to demonstrate the relative ease with which it is proved under Theorem~\ref{thm:FDDconv} as opposed to \textcite[Theorem 1]{koskela2018}, and secondly to introduce the proof technique before proceeding to more complex resampling schemes.
 
 \begin{corollary}\label{thm:multinomial}
@@ -160,8 +160,8 @@ for each $i$, so the joint law is
 %%\leq \frac{a^2}{N}
 %%\end{equation*}
 %which, along with the bounds on $q_{t-1}$ from \eqref{eq:gq_bounds_mn}, allows us to apply a balls-in-bins coupling presented in \textcite[Proof of Lemma 3]{koskela2018} to obtain bounds on expectations of functions of $a_t^{(1:N)}$.
-Using the bounds \eqref{eq:gq_bounds_mn} and the balls-in-bins coupling of \textcite[Proof of Lemma 3]{koskela2018}, we can obtain bounds on expectations of functions of $a_t^{(1:N)}$.
-For any $k\in\mathbb{N}$ the function $a_t^{(1:N)} \to (\nu_t^{(i)})_k$ is $\{i\}$-increasing in the sense of \textcite{koskela2018}, so we may apply the bounds
+Using the bounds \eqref{eq:gq_bounds_mn} and the balls-in-bins coupling of \textcite[proof of Lemma 3]{koskela2018}, we can obtain bounds on expectations of functions of $a_t^{(1:N)}$.
+For any $k\in\mathbb{N}$ the function $a_t^{(1:N)} \to (\nu_t^{(i)})_k$ is $\{i\}$-increasing in the sense of \textcite[p.19]{koskela2018}, so we may apply the bounds
 \begin{equation*}
 \E[ (V_L^{(i)})_k ]
 \leq \E[ (\nu_t^{(i)})_k \mid \mathcal{H}_t ]

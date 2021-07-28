@@ -221,7 +221,7 @@ For all $t\in\mathbb{N}$, $t^\prime > s^\prime >0$,
 
 \begin{proof}
 \textbf{\ref{item:cN_property1}}  $c_N(t)$ and $D_N(t)$ are clearly non-negative. Both are maximised when one of the offspring counts is equal to $N$ and the rest are zero, in which case $c_N(t) = D_N(t) = 1$.\\
-\textbf{\ref{item:cN_property2}} As outlined in \textcite[p.9]{koskela2018},
+\textbf{\ref{item:cN_property2}} As outlined in \textcite[p.10]{koskela2018},
 \begin{align*}
 D_N(t) &:= \frac{1}{(N)_2} \sum_{i=1}^N (\nu_t^{(i)})_2 \frac{1}{N} \left\{  \nu_t^{(i)} + \frac{1}{N} \sum_{j\neq i}^N (\nu_t^{(j)})^2 \right\} \\
 &\leq \frac{1}{(N)_2} \sum_{i=1}^N (\nu_t^{(i)})_2 \frac{1}{N} \left\{  \nu_t^{(i)} + \frac{1}{N} \sum_{j\neq i}^N N \nu_t^{(j)} \right\} \\
@@ -369,7 +369,7 @@ Now, for the $k=|\xi|-1$ term we use the bound
         ( \nu_t^{ ( i_1 ) } )_2 \nu_t^{ ( i_2 ) } \ldots \nu_t^{ ( i_{ | \xi | - 1 } ) }
 \leq N^{ | \xi | - 2 } \sum_{ i = 1 }^N ( \nu_t^{ ( i ) } )_2
 \end{equation*}
-while for the other terms we have \parencite[similarly to][Lemma 1 Case 3]{koskela2018}
+while for the other terms we have
 \begin{align*}
 \sum_{ \substack{ i_1, \ldots, i_k = 1 \\ \text{all distinct} } }^N 
         &( \nu_t^{ ( i_1 ) } )_{ b_1 } \ldots ( \nu_t^{ ( i_k ) } )_{ b_k } \\
@@ -393,7 +393,7 @@ while for the other terms we have \parencite[similarly to][Lemma 1 Case 3]{koske
 where we have subtracted all the terms except those which either have one of the indices equal to $i$ (in which case the largest merger consists of more than two lineages) or have two of the indices equal to each other (in which case there is a simultaneous merger).
 This leaves only those terms where $k\leq |\xi|-2$, that is where there are multiple or simultaneous mergers. It is an inequality rather than an equality because some of the cases are double-counted.
 
-The expression is further bounded by a reverse multinomial expansion, of the same form as \textcite[Equation (8)]{koskela2018}, which is then simplified using that $(N - x)^b \geq N^b - b x N^{ b - 1 }$ 
+The expression is further bounded by a reverse multinomial expansion, as in the proof of \textcite[Lemma 1 Case 3]{koskela2018}, which is then simplified using that $(N - x)^b \geq N^b - b x N^{ b - 1 }$ 
 for $x \leq N$, $b \geq 0$, an application of the Bernoulli inequality:
 \begin{align*}
 & \sum_{ i = 1 }^N ( \nu_t^{ ( i ) } )_2 
@@ -477,7 +477,8 @@ p_{\xi\xi}(t)
 where $B_{|\xi|}^\prime = \binom{|\xi|-1}{2}$.
 \end{prop}
 
-A proof is given in \textcite[Lemma 1 Case 1]{koskela2018}.\seb{refer to the erratum once available, which is more explicit about this proof.}
+A proof is given in \textcite[Lemma 1 Case 1]{koskela2018}.
+%\seb{refer to the erratum once available, which is more explicit about this proof.}
 
 
 
@@ -859,19 +860,19 @@ and recalling that $\epsilon > 0$ was arbitrary concludes the proof.
 
 
 
-\seb{Update KJJS references in the following to point to relevant places in the erratum. The proof is similar to \texttt{Dropbox/SMC\_Genealogies\slash Asymptotic\_genealogies\_of\_interacting\_particle\_systems\slash Post\_acceptance\_correction\slash Erratum/AOS/Round\_3/Indicators/full\_redraft.pdf}, from page 22. We need to refer to the KJJS erratum (once published), rather than the arXiv version which is not correct (lacking some indicators) and doesn't contain all the required results, then update equation and lemma numbers etc.\ as required.}
+%\seb{Update KJJS references in the following to point to relevant places in the erratum. The proof is similar to \texttt{Dropbox/SMC\_Genealogies\slash Asymptotic\_genealogies\_of\_interacting\_particle\_systems\slash Post\_acceptance\_correction\slash Erratum/AOS/Round\_3/Indicators/full\_redraft.pdf}, from page 22. We need to refer to the KJJS erratum (once published), rather than the arXiv version which is not correct (lacking some indicators) and doesn't contain all the required results, then update equation and lemma numbers etc.\ as required.}
 
 
 To complete the proof of Theorem~\ref{thm:FDDconv} it remains to show that condition \eqref{eq:kjjs_tau_bound} is unnecessary. We will show that Proposition~\ref{thm:pDelta_LB} can be used instead of \eqref{eq:kjjs_tau_bound} to obtain the same result.
-The only part of \textcite[Proof of Theorem 1]{koskela2018} making use of condition \eqref{eq:kjjs_tau_bound} is the lower bound on finite-dimensional distributions of the genealogical process for paths involving single pair mergers only.
+The only part of \textcite[Proof of Theorem 1]{koskela2018} making use of condition \eqref{eq:kjjs_tau_bound} is the lower bound on finite-dimensional distributions of the genealogical process for paths involving single pair mergers only (starting on p.15 therein).
 A slight modification of the argument allows a similar lower bound to be obtained via Proposition~\ref{thm:pDelta_LB} such that as $N\to\infty$ the bound coincides with the corresponding finite-dimensional distributions of the $n$-coalescent, as required.
 The modified section of the proof is presented below, using the notation of \textcite{koskela2018} for ease of comparison.
-\seb{Maybe I should actually write out a full proof of the new theorem?}
+%\seb{Maybe I should actually write out a full proof of the new theorem?}
 
 \begin{proof}
 Let $\chi^\star_d$ be the conditional transition probability of a transition from state $\eta_{d-1}$ to state $\eta_d$ at times $\tau_N(t_{d-1})$ and $\tau_N(t_d)$ respectively, conditional on the offspring counts between those times $\nu^{(1:N)}_{\tau_N(t_{d-1}) +1} , \dots, \nu^{(1:N)}_{\tau_N(t_d)}$. 
 This transition can happen via any valid path of merger events, but we restrict to paths involving binary mergers only, and denote by $\chi_d$ the conditional transition probability subject to this restriction.
-Compared to \textcite[Proof of Theorem 1]{koskela2018}, the derivation of an upper bound on $\chi_d$ holds without modification, while the first step in the derivation of a lower bound \parencite[p.14]{koskela2018} involves the application of \textcite[Lemma 1 Case 1]{koskela2018} to bound $\chi_d$ from below and the subsequent application of \eqref{eq:kjjs_tau_bound}.
+Compared to \textcite[Proof of Theorem 1]{koskela2018}, the derivation of an upper bound on $\chi_d$ holds without modification, while the first step in the derivation of a lower bound \parencite[bottom of p.15]{koskela2018} involves the application of \textcite[Lemma 1 Case 1]{koskela2018} to bound $\chi_d$ from below and the subsequent application of \eqref{eq:kjjs_tau_bound}.
 %The derivation of an upper bound on $\chi_d$ is unchanged from that in \textcite[Proof of Theorem 1]{koskela2018}.
 %The first step in the derivation of a lower bound in \textcite[Proof of Theorem 1, p. 14]{koskela2018} consists of applying \textcite[Lemma 1]{koskela2018} to bound $\chi_d$ from below.
 Instead, we apply Proposition~\ref{thm:pDelta_LB} to obtain, for sufficiently large $N$,
@@ -894,7 +895,7 @@ At the remaining times $r$ the partition is unchanged, and the bound of Proposit
 The constant is $\tilde{B}_n := B_n\binom{n}{2}$ where $B_n$ is the constant defined in Proposition~\ref{thm:pDelta_LB}, and we have replaced $|\eta_d|$ by its upper bound $n$.
 %A sum over an index vector of length zero should be interpreted as the identity operator here and in the following.
 
-The rest of the proof proceeds as in \textcite{koskela2018}, albeit from this modified initial lower bound.
+The rest of the proof proceeds as in \textcite[pp.16--18]{koskela2018}, albeit from this modified initial lower bound.
 A multinomial expansion of the product on the second line, noting that $(\ON)^a = \ON$ for any $a\in\mathbb{R}$, yields
 \begin{align*}
 \chi_d 
@@ -986,8 +987,8 @@ Via a further multinomial expansion, the lower bound for the $k$-step transition
         \Bigg\{ \prod_{ r \in \lambda_d \cup \mu_d } c_N( s_r^{ ( d ) } ) \Bigg\} 
         \prod_{ r \in \pi_d \cup \sigma_d }  D_N( s_r^{ ( d ) } ) \Bigg].
 \end{align*}
-An argument completely analogous to that in \textcite[Appendix]{koskela2018} shows that passing the expectation and the limit through the infinite sums is justified, whereupon the contribution of terms with $ \sum_{ d = 1 }^k ( | \pi_d | + | \sigma_d | ) > 0$ vanishes.
-To see why, follow the argument used to show that the contribution of multiple merger trajectories vanishes in the corresponding upper bound in \textcite{koskela2018}.
+An argument completely analogous to that in \textcite[p.24]{koskela2018} shows that passing the expectation and the limit through the infinite sums is justified, by Fubini's theorem and dominated convergence, whereupon the contribution of terms with $ \sum_{ d = 1 }^k ( | \pi_d | + | \sigma_d | ) > 0$ vanishes.
+To see why, follow the argument used to show that the contribution of multiple merger trajectories vanishes in the corresponding upper bound in \textcite[p.10]{koskela2018}.
 That leaves
 \begin{align}
 \lim_{ N \rightarrow \infty } \E\Bigg[ \prod_{ d = 1 }^k \chi_d \Bigg] 
@@ -1015,7 +1016,7 @@ That leaves
         \Bigg\{ \prod_{ r \in \lambda_d \cup \mu_d } c_N( s_r^{ ( d ) } ) \Bigg\} 
         \Bigg]. \label{eq1}
 \end{align}
-Recall \parencite[Eq (11)]{koskela2018}:
+We have, from \textcite[Equation (11)]{koskela2018},
 \begin{equation*}
 \sum_{\substack{ ( \lambda, \mu ) \in \Pi_2( [ \alpha + \beta ] ) :
         \\ | \mu | = \beta }} ( \tilde{ Q }^{ \alpha } )_{ \eta_{ d - 1 } \eta_d } 
@@ -1061,7 +1062,9 @@ We now apply equations (14) and (15), respectively, of \textcite{koskela2018},  
         \frac{ ( t_d - t_{ d - 1 } )^{ \alpha_d + \beta_d } }{ ( \alpha_d + \beta_d ) ! } 
         \Bigg\} 
 \end{align*}
-where the expectation of the indicators converges to 1 due to \textcite[Equation (16)]{koskela2018} and Lemma~\ref{thm:indicators_cN}\seb{and Lemma~\ref{thm:lim_AandB}}. 
-\seb{Or refer to \textcite[Equation (16)]{koskela2018} and Lemma 4 in the appendix of \texttt{full\_redraft.pdf}.}
+where the expectation of the indicators converges to 1 
+by a trivial modification of \textcite[Lemma 4]{koskela2018}.
+%due to \textcite[Equation (16)]{koskela2018} and Lemma~\ref{thm:indicators_cN}\seb{and Lemma~\ref{thm:lim_AandB}}. 
+%\seb{Or refer to \textcite[Equation (16)]{koskela2018} and Lemma 4 in the appendix of \texttt{full\_redraft.pdf}.}
 \end{proof}
 
