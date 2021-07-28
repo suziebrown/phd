@@ -115,7 +115,7 @@ The convergence of finite-dimensional distributions for multinomial resampling w
 %The result of Corollary~\ref{thm:multinomial} was proved in \textcite[Corollary 1]{koskela2018}. It is also included here, firstly to demonstrate the relative ease with which it is proved under Theorem~\ref{thm:FDDconv} as opposed to \textcite[Theorem 1]{koskela2018}, and secondly to introduce the proof technique before proceeding to more complex resampling schemes.
 
 \begin{corollary}\label{thm:multinomial}
-Consider an SMC algorithm using multinomial resampling, such that \ref{standing_assumption} is satisfied. Assume there exist constants $\varepsilon\in (0,1], a\in [1,\infty)$ and probability density $h$ such that for all $x, x^\prime, t$,
+Consider an SMC algorithm using multinomial resampling, such that \textup{\ref{standing_assumption}} is satisfied. Assume there exist constants $\varepsilon\in (0,1], a\in [1,\infty)$ and probability density $h$ such that for all $x, x^\prime, t$,
 \begin{equation}\label{eq:gq_bounds_mn}
 \frac{1}{a} \leq g_t(x, x^\prime) \leq a , \quad
 \varepsilon h(x^\prime) \leq q_t(x, x^\prime) \leq \frac{1}{\varepsilon} h(x^\prime) .
@@ -278,7 +278,7 @@ Applying Theorem~\ref{thm:weakconv} then yields the result.
 
 
 \begin{lemma}\label{thm:mn_nontriviality}
-Consider an SMC algorithm using multinomial resampling, satisfying \ref{standing_assumption} and \eqref{eq:gq_bounds_mn}. 
+Consider an SMC algorithm using multinomial resampling, satisfying \textup{\ref{standing_assumption}} and \eqref{eq:gq_bounds_mn}. 
 Then, for all $N>2$, $\Prob[ \tau_N(t) = \infty ]=0$ for all finite $t$.
 \end{lemma}
 
@@ -302,7 +302,7 @@ This ensures, for all $t <\infty$, that $\Prob\left[ \exists s<\infty : \sum_{r=
 \section{Stratified resampling}
 
 \begin{corollary}\label{thm:stratified}
-Consider an SMC algorithm using stratified resampling, such that \ref{standing_assumption} is satisfied.
+Consider an SMC algorithm using stratified resampling, such that \textup{\ref{standing_assumption}} is satisfied.
 Assume that there exists a constant $a\in [1,\infty)$ such that for all $x, x^\prime, t$,
 \begin{equation}\label{eq:gq_bounds_sr}
 \frac{1}{a} \leq g_t(x, x^\prime) \leq a .
@@ -615,7 +615,7 @@ as required.
 \label{sec:convergenceSRs}
 
 \begin{corollary}\label{thm:stochrounding}
-Consider an SMC algorithm using any stochastic rounding as its resampling scheme, such that \ref{standing_assumption} is satisfied.
+Consider an SMC algorithm using any stochastic rounding as its resampling scheme, such that \textup{\ref{standing_assumption}} is satisfied.
 Assume that there exists a constant $a\in [1,\infty)$ such that for all $x, x^\prime, t$,
 \begin{equation*}
 \frac{1}{a} \leq g_t(x, x^\prime) \leq a . 
@@ -812,7 +812,7 @@ and we conclude as in Proposition~\ref{thm:strat_nontriviality}.
 \label{sec:corol_resstrat}
 
 \begin{corollary}\label{thm:residual_stratified}
-Consider an SMC algorithm using residual resampling with stratified residuals, such that \ref{standing_assumption} is satisfied.
+Consider an SMC algorithm using residual resampling with stratified residuals, such that \textup{\ref{standing_assumption}} is satisfied.
 Assume that there exists a constant $a\in [1,\infty)$ such that for all $x, x^\prime, t$,
 \begin{equation*}
 \frac{1}{a} \leq g_t(x, x^\prime) \leq a .
@@ -1072,7 +1072,7 @@ As it turns out, we still recover Kingman's $n$-coalescent in the large populati
 The explanation for this is that, as $N\to\infty$, the probability of a given sample of size $n$ interacting with the immortal lineage (before its within-sample MRCA) vanishes, leaving a process that looks very much like the one induced by the corresponding standard SMC algorithm.
 
 \begin{corollary}\label{thm:CSMC}
-Consider a conditional SMC algorithm using multinomial resampling, such that \ref{standing_assumption} is satisfied. Assume there exist constants $\varepsilon\in (0,1]$ and $a\in [1,\infty)$ and probability density $h$ such that for all $x, x^\prime, t$,
+Consider a conditional SMC algorithm using multinomial resampling, such that \textup{\ref{standing_assumption}} is satisfied. Assume there exist constants $\varepsilon\in (0,1]$ and $a\in [1,\infty)$ and probability density $h$ such that for all $x, x^\prime, t$,
 \begin{equation}\label{eq:gq_bounds_csmc}
 \frac{1}{a} \leq g_t(x, x^\prime) \leq a , \quad
 \varepsilon h(x^\prime) \leq q_t(x, x^\prime) \leq \frac{1}{\varepsilon} h(x^\prime) .
@@ -1237,7 +1237,7 @@ Proof that the time scale is finite is relegated to Lemma \ref{thm:CSMC_nontrivi
 
 
 \begin{lemma}\label{thm:CSMC_nontriviality}
-Consider a conditional SMC algorithm using multinomial resampling, satisfying \ref{standing_assumption} and \eqref{eq:gq_bounds_csmc}. 
+Consider a conditional SMC algorithm using multinomial resampling, satisfying \textup{\ref{standing_assumption}} and \eqref{eq:gq_bounds_csmc}. 
 Then, for all $N>2$, $\Prob[ \tau_N(t) = \infty ]=0$ for all finite $t$.
 \end{lemma}
 

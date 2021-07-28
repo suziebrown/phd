@@ -492,7 +492,7 @@ For instance the genealogies arising in SMC algorithms are not restricted to sin
 That is to say, there is not an extension of this result whereby the whole-population genealogy converges to the Kingman coalescent as $N\to\infty$, unless very restrictive conditions are imposed.
 
 \begin{theorem}[\cite{koskela2018}]\label{thm:kjjs_mainthm}
-Fix $n \leq N$ as the observed number of particles from the output of an interacting particle system with $N$ particles which satisfies \ref{standing_assumption}.
+Fix $n \leq N$ as the observed number of particles from the output of an interacting particle system with $N$ particles which satisfies \textup{\ref{standing_assumption}}.
 Suppose that for any $0 \leq s < t < \infty$, we have
 \begin{gather}\label{eq:kjjs_big_merger_bound}
 \lim_{ N \rightarrow \infty } \E\Bigg[ \sum_{ r = \tau_N( s ) + 1 }^{ \tau_N( t ) } D_N( r ) \Bigg] = 0, \\
@@ -548,7 +548,7 @@ We now present a related theorem, having the same conclusion but with conditions
 %While we do not prove that this is a strict generalisation, there are certainly systems which satisfy the conditions of Theorem~\ref{thm:FDDconv} but not of Theorem~\ref{thm:kjjs_mainthm}.
 
 \begin{theorem}\label{thm:FDDconv}
-Let $\nu_t^{(1:N)}$ denote the offspring numbers in an interacting particle system satisfying \ref{standing_assumption} such that, for any $N$ sufficiently large, $\Prob[ \tau_N(t) = \infty ] =0$ for all finite $t$. Suppose that there exists a deterministic sequence $(b_N)_{N\geq1}$ such that ${\lim}_{N\to\infty} b_N =0$ and
+Let $\nu_t^{(1:N)}$ denote the offspring numbers in an interacting particle system satisfying \textup{\ref{standing_assumption}} such that, for any $N$ sufficiently large, $\Prob[ \tau_N(t) = \infty ] =0$ for all finite $t$. Suppose that there exists a deterministic sequence $(b_N)_{N\geq1}$ such that ${\lim}_{N\to\infty} b_N =0$ and
 \begin{equation}\label{eq:mainthmcond}
 \frac{1}{(N)_3} \sum_{i = 1}^N \Et[ (\nu_t^{(i)})_3 ]  \leq b_N \frac{1}{(N)_2} \sum_{i = 1}^N \Et[ (\nu_t^{(i)})_2 ]
 \end{equation}
