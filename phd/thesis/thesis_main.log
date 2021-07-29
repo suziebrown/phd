@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  28 JUL 2021 16:17
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  29 JUL 2021 10:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1549,10 +1549,44 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 
 ]
+Underfull \hbox (badness 10000) in paragraph at lines 179--184
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 185--188
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 189--192
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 193--196
+
+ []
+
 [3
 
 
-] (./thesis_main.toc [4
+]
+Underfull \hbox (badness 10000) in paragraph at lines 197--200
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 201--203
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 204--206
+
+ []
+
+[4] (./thesis_main.toc [5
 
 
 ]
@@ -1569,18 +1603,18 @@ Overfull \hbox (1.42336pt too wide) detected at line 151
 \tf@toc=\write7
 \openout7 = `thesis_main.toc'.
 
- [5] (./thesis_main.lof)
+ [6] (./thesis_main.lof)
 \tf@lof=\write8
 \openout8 = `thesis_main.lof'.
 
- [6
+ [7
 
 
 ] (./thesis_main.lot)
 \tf@lot=\write9
 \openout9 = `thesis_main.lot'.
 
- [7
+ [8
 
 
 ] (./thesis_main.loa)
@@ -1588,11 +1622,6 @@ Overfull \hbox (1.42336pt too wide) detected at line 151
 \openout10 = `thesis_main.loa'.
 
 
-[8
-
-
-]
-chapter without number
 [9
 
 
@@ -1601,7 +1630,12 @@ chapter without number
 [10
 
 
-] [11]
+]
+chapter without number
+[11
+
+
+] [12]
 \openout2 = `introduction.aux'.
 
  (./introduction.tex
@@ -1640,7 +1674,7 @@ LaTeX Font Info:    Font shape `OT1/put/bx/n' in size <12> not available
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 363.
-<plots/ncoalescent.pdf, id=542, 456.70625pt x 423.5825pt>
+<plots/ncoalescent.pdf, id=546, 456.70625pt x 423.5825pt>
 File: plots/ncoalescent.pdf Graphic file (type pdf)
 <use plots/ncoalescent.pdf>
 Package pdftex.def Info: plots/ncoalescent.pdf  used on input line 378.
@@ -1656,12 +1690,12 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 549.
  [14] [15]
 [16] [17]
-<plots/ancdegen_mn.pdf, id=643, 602.25pt x 401.5pt>
+<plots/ancdegen_mn.pdf, id=647, 602.25pt x 401.5pt>
 File: plots/ancdegen_mn.pdf Graphic file (type pdf)
 <use plots/ancdegen_mn.pdf>
 Package pdftex.def Info: plots/ancdegen_mn.pdf  used on input line 686.
 (pdftex.def)             Requested size: 200.59245pt x 133.7268pt.
-<plots/ancdegen_adaptsyst.pdf, id=644, 602.25pt x 401.5pt>
+<plots/ancdegen_adaptsyst.pdf, id=648, 602.25pt x 401.5pt>
 File: plots/ancdegen_adaptsyst.pdf Graphic file (type pdf)
 <use plots/ancdegen_adaptsyst.pdf>
 Package pdftex.def Info: plots/ancdegen_adaptsyst.pdf  used on input line 690.
@@ -1710,7 +1744,7 @@ Package refcheck Warning: Unused label `defn:stochround' on input line 2181.
 [44
 
 ] [45] [46]
-<plots/PG_degen.pdf, id=1065, 602.25pt x 401.5pt>
+<plots/PG_degen.pdf, id=1069, 602.25pt x 401.5pt>
 File: plots/PG_degen.pdf Graphic file (type pdf)
 <use plots/PG_degen.pdf>
 Package pdftex.def Info: plots/PG_degen.pdf  used on input line 2303.
@@ -1767,25 +1801,25 @@ Package mdframed Info: mdframed detected package amsthm
  changed the theorem header of amsthm
 (mdframed)              on input line 550.
  [61] [62]
-Overfull \hbox (16.37553pt too wide) in paragraph at lines 618--618
+Overfull \hbox (16.37553pt too wide) in paragraph at lines 619--619
 [][][][][]\OT1/cmr/m/n/9 Brown et al. 2021 
  []
 
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 628.
+(mdframed)              on input line 629.
 [63]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 654.
+(mdframed)              on input line 655.
  [64]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 703.
+(mdframed)              on input line 704.
  [65]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 773.
+(mdframed)              on input line 774.
  [66] [67] [68] [69] [70]) [71]
 \openout2 = `weakconv.aux'.
 
@@ -1964,19 +1998,19 @@ chapter 6.
 
 
 ] [130] [131]
-Overfull \hbox (2.69765pt too wide) in paragraph at lines 304--304
+Overfull \hbox (2.69765pt too wide) in paragraph at lines 302--302
 [][][]\OT1/cmr/m/n/10.95 (1982c). ``The Co-a-les-cent''. In: \OT1/cmr/m/it/10.9
 5 Stochas-tic Pro-cesses and Their Ap-pli-ca-tions \OT1/cmr/m/n/10.95 13.3, pp.
  235{
  []
 
 [132] [133] [134]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 305.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 305.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 303.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 303.
  (./thesis_main.aux (./introduction.aux) (./background.aux)
 (./limits.aux) (./weakconv.aux) (./applications.aux) (./discussion.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 305.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 305.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 303.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 303.
 Package rerunfilecheck Info: File `thesis_main.out' has not changed.
 (rerunfilecheck)             Checksum: 8FAFC22BBE0CB4754FCC8899DAEA0CC6;3522.
 Package logreq Info: Writing requests to 'thesis_main.run.xml'.
@@ -1984,10 +2018,10 @@ Package logreq Info: Writing requests to 'thesis_main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 40431 strings out of 492649
- 781990 string characters out of 6129623
+ 40419 strings out of 492649
+ 781782 string characters out of 6129623
  1316701 words of memory out of 5000000
- 43205 multiletter control sequences out of 15000+600000
+ 43192 multiletter control sequences out of 15000+600000
  567103 words of font info for 111 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  68i,23n,77p,10565b,1727s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2020,10 +2054,10 @@ onts/type1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2018/texmf-dist/fon
 ts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2018/texmf-dist
 /fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2018/texmf-
 dist/fonts/type1/adobe/utopia/putb8a.pfb>
-Output written on thesis_main.pdf (146 pages, 856448 bytes).
+Output written on thesis_main.pdf (147 pages, 860049 bytes).
 PDF statistics:
- 2316 PDF objects out of 2487 (max. 8388607)
- 2066 compressed objects within 21 object streams
- 507 named destinations out of 1000 (max. 500000)
+ 2320 PDF objects out of 2487 (max. 8388607)
+ 2069 compressed objects within 21 object streams
+ 508 named destinations out of 1000 (max. 500000)
  439 words of extra memory for PDF output out of 10000 (max. 10000000)
 

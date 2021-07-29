@@ -23,7 +23,7 @@ The basic idea behind SMC is that of sequential importance sampling, whereby the
 State space models (sometimes called hidden Markov models) are a flexible class of statistical models which are suitable in all sorts of applications where observations appear sequentially.
 \begin{figure}[ht]
 \centering
-\begin{tikzpicture}
+\begin{tikzpicture}[>=stealth]
 \filldraw[gray!10] (-3,0) circle (0.4);
 \filldraw[gray!10] (-3,2.2) circle (0.4);
 \filldraw[gray!10] (0,0) circle (0.4);
@@ -49,7 +49,7 @@ State space models (sometimes called hidden Markov models) are a flexible class 
 \caption[State space model]{Conditional independence graph for a general state space model. $(X_t)$ is a Markov process with transition kernels $(K_t)$ representing the underlying state of the system. $Y_t$ is a noisy observation of $X_t$ for each $t$.}
 \label{fig:SSM}
 \end{figure}
-The general model has two components: a Markov process $(X_t)_{t\in\mathbb{N}_0}$ representing the (unobservable) underlying state of the system, and a sequence $(Y_t)_{t\in\mathbb{N}_0}$ of observations containing information about the underlying state. The model is characterised by its conditional independence structure (Figure~\ref{fig:SSM}) along with an initial distribution $\mu$, the Markov ``transition'' kernels $(K_t)_{t\in\mathbb{N}}$ and the ``emission'' distributions $(g_t)_{t\in\mathbb{N}_0}$. 
+The general model has two components: a Markov process $(X_t)_{t\in\mathbb{N}_0}$ representing the (unobservable) underlying state of the system, and a sequence $(Y_t)_{t\in\mathbb{N}_0}$ of observations containing information about the underlying state. The model is characterised by its conditional independence structure (Figure~\ref{fig:SSM}) along with an initial distribution $\mu$, the Markov \emph{transition} kernels $(K_t)_{t\in\mathbb{N}}$ and the \emph{emission} distributions $(g_t)_{t\in\mathbb{N}_0}$. 
 Written as a hierarchical model,
 \begin{align}
 X_0 &\sim \mu(\cdot) & \notag\\
@@ -57,7 +57,7 @@ X_{t+1} \mid X_t &\sim K_{t+1}(\cdot | X_t) & \text{for } t=0, 1, \dots
         \label{eq:SSM_spec}\\
 Y_t \mid X_t &\sim g_t(\cdot | X_t) & \text{for } t=0, 1, \dots \notag
 \end{align}
-The index $t$ will frequently be referred to as ``time'', since in many applications the sequence is indeed a time series, but it need not be.
+The index $t$ will frequently be referred to as time, since in many applications the sequence is indeed a time series, but it need not be.
 
 Here $X$ and/or $Y$ may be multivariate and observation times need not be equally spaced. Straightforward generalisations of the stated model can allow for situations in which observations are not available as often as the state is updated (up to and including the extreme where the state is a continuous-time Markov process but the observations are available only at discrete times) or on the other hand where observations are made more frequently than the state is updated.
 
@@ -159,7 +159,7 @@ The next section describes how we may obtain Monte Carlo samples from $\mathbb{Q
 \label{sec:SMC_FK}
 In order to implement the SMC algorithm corresponding to a given Feynman-Kac model, we need to be able to sample from $\mathbb{M}_0$ and from $M_t(x, \cdot)$ for all $x,t$; and evaluate $G_t(x, y)$ pointwise for each $x,y, t$.
 Under these conditions we may implement Algorithm~\ref{alg:SMC}, which describes a generic SMC algorithm. 
-The only free choices are the parameter $N$ which dictates the number of ``particles'' used, and the \textsc{resample} procedure.
+The only free choices are the parameter $N$, which dictates the number of \emph{particles} used, and the \textsc{resample} procedure.
 However, remember that given a particular state space model there is also a choice of possible Feynman-Kac descriptions, and this choice can strongly affect performance.
 
 \begin{algorithm}[ht]
@@ -378,8 +378,8 @@ for every $\xi, \eta \in \mathcal{P}_n$, where $|\xi|$ denotes the number of blo
 \includegraphics[width=0.6\textwidth, trim={2.8cm 3cm 1.5cm 2cm}, clip]{plots/ncoalescent.pdf}
 \caption[The $n$-coalescent]{A realisation of the $n$-coalescent with $n=50$.}
 \end{figure}
-A particularly attractive feature of the $n$-coalescent is its tractability; its distribution and those of many statistics of interest are available in closed form (Section \ref{sec:KCproperties}).
-It turns out also to be extremely useful as a limiting distribution in population genetics, including in its domain of attraction the genealogies of a wide range of population models (Section \ref{sec:popgenmodels}).
+A particularly attractive feature of the $n$-coalescent is its tractability; its distribution and those of many statistics of interest are available in closed form (Section~\ref{sec:KCproperties}).
+It turns out also to be extremely useful as a limiting distribution in population genetics, including in its domain of attraction the genealogies of a wide range of population models (Section~\ref{sec:popgenmodels}).
 
 
 \subsection{Properties of Kingman's coalescent}\label{sec:KCproperties}
@@ -388,7 +388,7 @@ Starting with $n$ blocks, exactly $n-1$ coalescences are required to reach the a
 
 \begin{figure}[ht]
 \centering
-\begin{tikzpicture}
+\begin{tikzpicture}[>=stealth]
 % horizontal lines
 \draw[dotted, gray] (-0.5,-1)--(6,-1);
 \draw[dotted, gray] (-0.5,-0.2)--(6,-0.2);
@@ -438,7 +438,7 @@ A consequence of Definition~\ref{def:kingman} is that these waiting times are in
 \begin{equation*}
 t_i \sim \Exp\left( \binom{i}{2} \right) .
 \end{equation*}
-The partial sum $T_k := \sum_{i=k+1}^n t_i$ gives the total time up to the $(n-k)^{th}$ coalescence event, that is, the first time at which there are only $k$ lineages remaining out of the initial $n$ (see Figure~\ref{fig:KC_timedefns}).
+The partial sum $T_k := \sum_{i=k+1}^n t_i$ gives the total time up to the $(n-k)^\text{th}$ coalescence event, that is, the first time at which there are only $k$ lineages remaining out of the initial $n$ (see Figure~\ref{fig:KC_timedefns}).
 The partial sums, being sums of independent Exponential random variables, have HypoExponential distributions.
 
 Another important property of the $n$-coalescent is \emph{exchangeability}. That is, its law is invariant under permutations of the branches. This can be seen from \eqref{eq:KCgenerator} since the merge rate is equal for every pair of partitions $\xi \prec \eta$.
@@ -543,7 +543,7 @@ as the probability that a randomly chosen pair of lineages does not coalesce unt
 
 
 \subsection{Models in population genetics}\label{sec:popgenmodels}
-The Kingman coalescent is the limiting coalescent process (in the large population limit) for a surprisingly wide range of population models. Some important examples of models in this ``domain of attraction'' are introduced in this section.
+The Kingman coalescent is the limiting coalescent process (in the large population limit) for a surprisingly wide range of population models. Some important examples of models in this domain of attraction are introduced in this section.
 Common to all of these models are the following assumptions:
 \begin{itemize}
 \item The population has constant size $N$
@@ -765,7 +765,7 @@ In principle this means, for instance, that genealogies of different SMC algorit
 
 \section{Resampling}
 \label{sec:resampling}
-As we have seen, resampling is necessary within SMC to ``reset'' the weights in order to prevent weight degeneracy.
+As we have seen, resampling is necessary within SMC to reset the weights in order to prevent weight degeneracy.
 Resampling is itself a Monte Carlo procedure: the discrete offspring counts can be viewed as stochastic estimates of the continuous weights.
 In order to obtain a valid SMC algorithm, these Monte Carlo samples must be unbiased; this and other desirable properties are formalised in Definition~\ref{defn:resampling}.
 There is a huge range of resampling procedures satisfying these properties, some of which perform better than others. 
@@ -792,24 +792,24 @@ $ \E[ \nu_t^{(i)} \mid w_t^{(i)} ] = N w_t^{(i)} $ for all $i$.
 \end{enumerate}
 \end{defn}
 It is possible to design resampling schemes that violate these properties.
-Resampling different numbers of particles in different iterations (violating condition \ref{item:resampling_property1}) is of course possible \parencite[see for example][]{crisan1998}, but we typically have a fixed limit on computational resources, so in most cases it makes sense to simulate the maximum feasible number of particles $N$ at every iteration.
+Resampling different numbers of particles in different iterations (violating condition~\ref{item:resampling_property1}) is of course possible \parencite[see for example][]{crisan1998}, but we typically have a fixed limit on computational resources, so in most cases it makes sense to simulate the maximum feasible number of particles $N$ at every iteration.
 There may be circumstances under which it is beneficial to allow the number of particles to vary adaptively \parencite{fox2003,chau2012,lee2018} or at random, but this is not commonly done in practice.
 
-Condition \ref{item:resampling_property2} is sensible because the whole point of resampling is to reset the weights. However, there are several examples in the literature where the weights are only ``partially'' reset, so that the variance of weights after resampling is not zero, but is lower than before resampling.
+Condition~\ref{item:resampling_property2} is sensible because the whole point of resampling is to reset the weights. However, there are several examples in the literature where the weights are only partially reset, so that the variance of weights after resampling is not zero, but is lower than before resampling.
 For example, a scheme of \textcite{liu1998} uses the square roots of the weights for resampling, then corrects by setting unequal weights after resampling (violating conditions \ref{item:resampling_property2} and \ref{item:resampling_property3}).
 \textcite[Section 3.1]{liu2001} generalise this further, and suggest setting the resampling weights adaptively as a function of the true weights $w_t^{(1:N)}$.
 \textcite{fearnhead2003} present an optimal resampling scheme in the case that the state space is discrete, which similarly uses weights other than $w_t^{(1:N)}$ for resampling and corrects by giving the particles unequal weights after resampling.
-The \emph{chopthin} resampling algorithm of \textcite{gandy2016} also violates condition \ref{item:resampling_property2}.
+The \emph{chopthin} resampling algorithm of \textcite{gandy2016} also violates condition~\ref{item:resampling_property2}.
 
-Deterministic resampling schemes (which cannot generally be unbiased, violating condition \ref{item:resampling_property3}) have been used by some authors. One such scheme was proposed by \textcite{kitagawa1996} but is now generally implemented only in its randomised form (see \emph{systematic resampling} below). More recent examples include schemes based on optimal transport \parencite{reich2013, myers2021, corenflos2021} and the \emph{importance support points} resampling of \textcite{huang2020}.
+Deterministic resampling schemes (which cannot generally be unbiased, violating condition~\ref{item:resampling_property3}) have been used by some authors. One such scheme was proposed by \textcite{kitagawa1996} but is now generally implemented only in its randomised form (see \emph{systematic resampling} below). More recent examples include schemes based on optimal transport \parencite{reich2013, myers2021, corenflos2021} and the \emph{importance support points} resampling of \textcite{huang2020}.
 
 The mutation and weighting steps of SMC are embarrassingly parallel, but resampling is not easy to parallelise, presenting a bottleneck to running SMC on parallel or distributed computer architectures. %There has therefore been a lot of interest recently in parallelising the resampling step.
 \textcite{whiteley2016} show that it is possible to construct resampling schemes that perform well whilst only requiring interaction of a few particles at a time, suggesting that parallel resampling is possible, and further details concerning implementation are provided in \textcite{lee2016}.
-The \emph{Metropolis resampler} of \textcite{murray2016} resamples in parallel via a Metropolis MCMC algorithm, but this introduces bias and thus violates condition \ref{item:resampling_property3}. 
+The \emph{Metropolis resampler} of \textcite{murray2016} resamples in parallel via a Metropolis MCMC algorithm, but this introduces bias and thus violates condition~\ref{item:resampling_property3}. 
 \textcite{murray2016} also propose \emph{rejection resampling}, which is unbiased. This constitutes an alternative method for \emph{multinomial resampling} (see below) which offers speed-ups when computing in parallel but requires that an upper bound on the weights is known.
 A variant that only requires an ``approximate'' upper bound on the weights is also presented, but this does not use the true weights for resampling, and so violates conditions \ref{item:resampling_property2} and \ref{item:resampling_property3}.
 
-The majority of resampling schemes in the literature fit within Definition~\ref{defn:resampling}, and it is not usually advantageous to violate the properties \ref{item:resampling_property1}--\ref{item:resampling_property3}.
+The majority of resampling schemes in the literature fit within Definition~\ref{defn:resampling}, and it is not usually advantageous to violate the properties~\ref{item:resampling_property1}--\ref{item:resampling_property3}.
 Definition~\ref{defn:resampling} still allows a great deal of flexibility in the choice of resampling scheme, and many such schemes have been proposed, some performing better than others. 
 Some important resampling schemes are reviewed in Section~\ref{sec:examples_resamplingschemes}, and their performance is discussed in detail in Section~\ref{sec:resampling_properties} and summarised in Table~\ref{tab:resampling_properties}.
 
@@ -841,7 +841,7 @@ Explicitly, the parental index assigned to child $i$ is the index $a_i$ satisfyi
 \begin{equation}\label{eq:syst_strat_resampling}
 \sum_{j=1}^{a_i -1} w_t^{(j)} \leq U_i \leq \sum_{j=1}^{a_i} w_t^{(j)} .
 \end{equation}
-This is illustrated in Figure \ref{fig:inv_resampling}. 
+This is illustrated in Figure~\ref{fig:inv_resampling}. 
 %Note that there exist more efficient methods to sample from a Multinomial distribution, so the inversion method may not be used in practice.
 
 Fast implementations of multinomial resampling rely on $U_1,\dots,U_N$ being pre-sorted, which speeds up the search step \eqref{eq:syst_strat_resampling}. Sorting $N$ numbers requires $O(N\log N)$ computation, but this is not necessary since we can sample directly the order statistics of a $\Unif[0,1]$ distribution, at $O(N)$ cost.
@@ -873,7 +873,7 @@ A side-effect is that the sampled ancestral indices will be ordered and therefor
 
 \subsubsection{Residual resampling}
 %\label{sec:resampling_residual}
-Residual resampling is described in \textcite{liu1998} and also in \textcite{whitley1994} where it is called ``remainder stochastic sampling''.
+Residual resampling is described in \textcite{liu1998} and also in \textcite{whitley1994} where it is called remainder stochastic sampling.
 
 Each particle $X_{t}^{(i)}$ is deterministically assigned $\flnw$ offspring, and the remaining
 \begin{equation*}
@@ -1118,14 +1118,14 @@ U_i = \frac{u_i + i -1}{N} .
 \end{equation*}
 %to give the stratified samples $U_1,\dots,U_N$.
 
-The parents are then assigned as in \eqref{eq:syst_strat_resampling}, illustrated in Figure \ref{fig:inv_resampling}.
+The parents are then assigned as in \eqref{eq:syst_strat_resampling}, illustrated in Figure~\ref{fig:inv_resampling}.
 The offspring distribution is no longer Multinomial, since parental indices are not identically distributed.
 Stratified resampling ensures that the samples are ``well spread out'', which reduces the probability of randomly losing high-weight particles or duplicating low-weight particles.
 
 It will be useful later on to have a better idea about the marginal distributions of $\nu_t^{(i)}$ that are induced by stratified resampling. There are complex dependencies between the offspring counts, but we can still find some constraints on the distribution of each count conditional on the corresponding weight.
-Write the $i^{th}$ weight in the form $w_t^{(i)} = (K + \delta)/N$, where $\delta \in [0,1)$ and $K\in \{0,\dots,N\}$.
-Considering the illustration Figure~\ref{fig:inv_resampling}, the distribution of $\nu_t^{(i)}$ depends not only on $w_t^{(i)}$ but also on where the $i^{th}$ weight interval falls with respect to the length-$(1/N)$ intervals. 
-Denote the ``left overhang'' by $\delta_L$.
+Write the $i^\text{th}$ weight in the form $w_t^{(i)} = (K + \delta)/N$, where $\delta \in [0,1)$ and $K\in \{0,\dots,N\}$.
+Considering the illustration Figure~\ref{fig:inv_resampling}, the distribution of $\nu_t^{(i)}$ depends not only on $w_t^{(i)}$ but also on where the $i^\text{th}$ weight interval falls with respect to the length-$(1/N)$ intervals. 
+Denote the \emph{left overhang} by $\delta_L$.
 There are two cases to consider, which are illustrated in Figure~\ref{fig:strat_cases}.
 In Case~\subref{fig:strat_case1} the total overhang is less than $1/N$ and $\delta_L \in [0,\delta]$.
 In Case~\subref{fig:strat_case2} the total overhang is greater than $1/N$ and $\delta_L \in (\delta, 1)$.
@@ -1171,7 +1171,7 @@ Note that Case \subref{fig:strat_case2} cannot occur if $K=0$.
 %\end{tikzpicture}
 %}\\
 \subfloat[The overhang is less than $1/N$ and $ \delta_L \in {[0, \delta]} $. The parent under consideration is automatically assigned $K$ offspring, plus up to two more.]{
-\begin{tikzpicture}
+\begin{tikzpicture}[>=stealth]
 % w subinterval
 \draw[thick] (0,0)--(1.9,0);
 \draw[thick,dotted] (1.9,0)--(2.3,0);
@@ -1206,7 +1206,7 @@ Note that Case \subref{fig:strat_case2} cannot occur if $K=0$.
 \label{fig:strat_case1}
 }\\
 \subfloat[The overhang is greater than $1/N$ (this case can only occur when $K\geq1$) and $\delta_L \in (\delta,1)$. The parent under consideration is automatically assigned $K-1$ offspring, plus up to two more.]{
-\begin{tikzpicture}
+\begin{tikzpicture}[>=stealth]
 % w subinterval
 \draw[thick] (-2,0)--(1.9,0);
 \draw[thick,dotted] (1.9,0)--(2.3,0);
@@ -1286,7 +1286,7 @@ $p_2$ & $\delta_L(\delta -\delta_L)$ & 0 & 0 & $1/4$ \\
 
 \subsubsection{Systematic resampling}
 %\label{sec:resampling_systematic}
-Systematic resampling is described in \textcite{carpenter1999} and also in \textcite{whitley1994} where it is called ``stochastic universal sampling''.
+Systematic resampling is described in \textcite{carpenter1999} and also in \textcite{whitley1994} where it is called stochastic universal sampling.
 
 Like stratified resampling, it uses the inversion sampler of multinomial resampling but starts with a more regular set of points in $[0,1]$.
 In this scheme, only one standard Uniform sample is drawn, $u \sim \Unif[0,1]$, from which the $N$ samples are generated by via the transformation
@@ -1294,7 +1294,7 @@ In this scheme, only one standard Uniform sample is drawn, $u \sim \Unif[0,1]$, 
 U_i = \frac{u+ i-1}{N}
 \end{equation*}
 for $i = 1, \dots, N $.
-The parental indices are again selected according to \eqref{eq:syst_strat_resampling}, as illustrated in Figure \ref{fig:inv_resampling}.
+The parental indices are again selected according to \eqref{eq:syst_strat_resampling}, as illustrated in Figure~\ref{fig:inv_resampling}.
 
 \textcite{kitagawa1996} suggests a deterministic scheme in which the random $u$ is replaced by a fixed $\alpha\in[0,1]$; but, being deterministic, this scheme does not satisfy the unbiasedness condition (Property~\ref{item:resampling_property1} in Definition~\ref{defn:resampling}).
 \textcite{whitley1994} employs a different description of systematic resampling, where the interval $[0,1]$ is joined up into a circle, and the systematic samples are evenly spaced pointers on an outer ring, which is spun around like a roulette wheel (Figure~\ref{fig:roulettewheel}). This comprises adding a random phase to each $U_i$, modulo one, and is an exactly equivalent description of systematic resampling.
@@ -1416,7 +1416,7 @@ The findings are summarised in Table~\ref{tab:resampling_properties}, with the e
 
 
 \subsubsection{Support of offspring numbers}
-Recall that the weights give an indication of how ``useful'' each particle is for the approximation. Killing a high-weight particle is likely to increase the variance of the SMC estimates, while duplicating a low-weight particle wastes computational resources on propagating particles that will not contribute much to reducing that variance.
+Recall that the weights give an indication of how useful each particle is for the approximation. Killing a high-weight particle is likely to increase the variance of the SMC estimates, while duplicating a low-weight particle wastes computational resources on propagating particles that will not contribute much to reducing that variance.
 One way to assess the performance of a given resampling scheme, then, is to consider the support of the marginal offspring distributions, conditional on the weights. This tells us how many duplicates it is possible to obtain from a particle with a given weight, and is therefore an indication of performance, albeit a rather crude one.
 
 Suppose that $w_t^{(i)} \in [K/N, (K+1)/N]$. The value of $K$ roughly determines how useful particle $i$ is. Conditional on $K$, we will determine the range of possible values $\nu_t^{(i)}$ can take, under each  of the resampling schemes described in Section~\ref{sec:examples_resamplingschemes}.
@@ -1437,7 +1437,7 @@ Another way to quantify this property is by considering the maximum possible dif
 \subsubsection{Degeneracy under equal weights}
 In the case where all of the weights are multiples of $1/N$, low-variance schemes such as residual and systematic resampling become fully deterministic. 
 Since $\flnw = Nw_t^{(i)}$ for each $i$, residual resampling will have $R=0$, leaving no remainder to be assigned stochastically. 
-In systematic resampling exactly $\flnw = Nw_t^{(i)}$ samples will fall in the $i^{th}$ interval.
+In systematic resampling exactly $\flnw = Nw_t^{(i)}$ samples will fall in the $i^\text{th}$ interval.
 In particular, if $w_t^{(1:N)} = (1,\dots, 1)/N$ then each parent is assigned exactly one offspring deterministcially, so there is effectively no resampling.
 
 The same phenomenon occurs with stratified resampling, although not if one uses Whitley's roulette wheel description (Figure~\ref{fig:roulettewheel}). The random phase shift introduced by ``spinning the wheel'' prevents the inversion sampling intervals from lining up exactly with the weight intervals, so the resampled offspring counts may vary from their means by one either side.
@@ -1855,7 +1855,7 @@ Residual resampling schemes are also typically implemented in such a way that th
 Whichever resampling scheme is used, exchangeability of offspring can easily be reintroduced, at $O(N)$ cost, by applying a random permutation to the vector of parental indices after sampling.
 
 Operations in SMC that depend on the ancestral indices are typically independent of ordering, so sampling ancestral indices from a non-exchangeable distribution is not expected to cause any problem. (A notable exception is conditional SMC, which is why some care is needed when implementing conditional versions of non-exchangeable resampling schemes.)
-However, the results of Chapters~\ref{ch:limits} and \ref{ch:weakconv} rely on the random assignment assumption \ref{standing_assumption} which amounts to exchangeability of offspring, so to be sure that the current genealogical study applies, a permutation should be appended to any non-exchangeable resampling procedure.
+However, the results of Chapters \ref{ch:limits} and \ref{ch:weakconv} rely on the random assignment assumption \ref{standing_assumption} which amounts to exchangeability of offspring, so to be sure that the current genealogical study applies, a permutation should be appended to any non-exchangeable resampling procedure.
 
 
 
@@ -1945,7 +1945,7 @@ As in Figure~\ref{fig:inv_resampling}, $N=6$ and $w^{(1:6)} = (0.25,0.05,0.1,0.3
 The top row shows the weighted subintervals in the natural order, as in Figure~\ref{fig:inv_resampling}. 
 The bottom row shows the partition corresponding to the same weights, but sorted in decreasing order. 
 The dotted lines are spaced $1/N$ apart.
-Under ``permutation-sensitive'' resampling schemes, the distribution of offspring counts differs depending on which partition is used.}
+Under permutation-sensitive resampling schemes, the distribution of offspring counts differs depending on which partition is used.}
 \label{fig:permutation_sensitivity}
 \end{figure}
 
@@ -2028,7 +2028,7 @@ Thus $D^\star$ measures, in a certain sense, how far the points are from being u
 
 \begin{figure}[ht]
 \centering
-\begin{tikzpicture}
+\begin{tikzpicture}[>=stealth]
 %% axes
 \draw[->] (-0.2,0)--(12.5,0);
 \draw[->] (0,-2.2)--(0,3.2);
@@ -2071,7 +2071,7 @@ The star discrepancy of standard multinomial resampling (that is, i.i.d.\ Unifor
 \label{fig:star_discrepancy}
 \end{figure}
 
-Star discrepancy is used in quasi-Monte Carlo, where ``low-discrepancy'' points are used in place of Uniform random numbers to decrease the variance of Monte Carlo estimates.
+Star discrepancy is used in quasi-Monte Carlo, where \emph{low-discrepancy} points are used in place of Uniform random numbers to decrease the variance of Monte Carlo estimates.
 We have noted already that resampling can itself be viewed as a Monte Carlo procedure.
 From this point-of-view, stratified and systematic resampling are quasi-Monte Carlo implementations of multinomial resampling, since they provide ``more regular'' point sets to be used in inversion sampling.
 
@@ -2093,10 +2093,10 @@ The matrices have been defined differently by different authors \parencite[cf.][
 A \emph{resampling matrix} for weights $w_t^{(1:N)}$ is a $N\times N$ matrix with entries in $[0,1]$ such that:
 \begin{enumerate}
 \item each row sums to $1$, and
-\item the $i^{th}$ column sums to $Nw_t^{(i)}$, for each $i \in \{1,\dots,N\}$.
+\item the $i^\text{th}$ column sums to $Nw_t^{(i)}$, for each $i \in \{1,\dots,N\}$.
 \end{enumerate}
 \end{defn}
-The $ij^{th}$ element of the resampling matrix represents the conditional probability of offspring $i$ being resampled from parent $j$.
+The $ij^\text{th}$ element of the resampling matrix represents the conditional probability of offspring $i$ being resampled from parent $j$.
 Some resampling schemes that are expressible as matrices are:
 \begin{itemize}
 \item no resampling, for which the resampling matrix is the identity matrix;
@@ -2176,7 +2176,7 @@ The abbreviated names for the resampling schemes are explained in Table~\ref{tab
 \subsection{Stochastic rounding}
 \label{sec:SRs}
 Some of the resampling schemes we have met can be classified as \emph{stochastic roundings}. This will be useful later on, as we will see (Section~\ref{sec:convergenceSRs}) that all members of this class admit some common convergence results.
-The stochastic roundings class is a subclass of MVB resampling (Section~\ref{sec:examples_resamplingschemes}) additionally constrained to satisfy condition \ref{item:resampling_property1} of Definition~\ref{defn:resampling}.
+The stochastic roundings class is a subclass of MVB resampling (Section~\ref{sec:examples_resamplingschemes}) additionally constrained to satisfy condition~\ref{item:resampling_property1} of Definition~\ref{defn:resampling}.
 
 \begin{defn}\label{defn:stochround}
  Let $X=(X_1,\dots,X_N)$ be a $\mathbb{R}_+^N$-valued random variable. Then $Y=(Y_1,\dots,Y_N) \in \mathbb{N}^N$ is a \emph{stochastic rounding} of $X$ if each element $Y_i$ takes values
@@ -2210,7 +2210,7 @@ All stochastic roundings are also degenerate when the weights are all equal, i.e
 \section{Conditional SMC}
 \label{sec:condSMC}
 %\seb{Be consistent with upper/lower case letters: $X,x$ etc.}\\
-\textcite{andrieu2010} propose a number of ``particle MCMC'' algorithms, which combine SMC with MCMC in order to improve performance in certain situations.
+\textcite{andrieu2010} propose a number of \emph{particle MCMC} algorithms, which combine SMC with MCMC in order to improve performance in certain situations.
 One of their algorithms, the \emph{particle Gibbs} sampler \parencite[Section 2.4.3]{andrieu2010}, is of particular interest in the current work. For one thing, genealogies are particularly critical to its performance, and for another, the particle update uses a variant SMC algorithm which alters the distribution of genealogies.
 
 In this section, we first introduce the particle Gibbs algorithm and the conditional SMC update, then discuss how ancestral degeneracy impacts the performance of particle Gibbs and how ancestor sampling mitigates this.
@@ -2330,8 +2330,8 @@ w_t^{(i)} & j \text{ non-immortal} \\
 \end{cases}
 \end{equation*}
 
-Ancestor sampling combines the resampling step with a backward simulation step for the immortal particle. Instead of deterministically inheriting the ``correct'' parent, the immortal particle samples its parent among all $N$ possible parents.
-This is justified in the same way as backwards simulation in general (Section~\ref{sec:anc_degen}), provided the ancestor sampling probabilities are chosen correctly, although we now apply the backwards sampling step to the immortal trajectory only.
+Ancestor sampling combines the resampling step with a backward simulation step for the immortal particle. Instead of deterministically inheriting the immortal parent, the immortal particle samples its parent among all $N$ possible parents.
+This is justified in the same way as backward simulation in general (Section~\ref{sec:anc_degen}), provided the ancestor sampling probabilities are chosen correctly, although we now apply the backward simulation step to the immortal trajectory only.
 Ancestor sampling can also be implemented for other choices of \textsc{resample}, using the same backward simulation probabilities (but of course the resampling probabilities for non-immortal particles will be different, and there may be some additional dependence between parental indices). For simplicity we here restrict ourselves to multinomial resampling.
 
 \begin{algorithm}[ht]

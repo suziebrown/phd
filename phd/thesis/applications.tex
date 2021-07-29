@@ -14,12 +14,12 @@ Theorem~\ref{thm:weakconv} gives verifiable conditions under which interacting p
 The work was motivated by SMC algorithms, which have the required form. However, certain choices of state space and dynamics within the context of Algorithm~\ref{alg:SMC} yield systems that are not very SMC-like but may have applications in other fields such as population genetics. 
 For instance, we have generally required that the resampling scheme is unbiased, but this is by no means necessary for Theorem~\ref{thm:weakconv} (or indeed Theorem~\ref{thm:FDDconv}); it is just that biased resampling schemes are of little use in SMC.
 
-The applications presented in this chapter are all motivated by SMC, but an interesting area of future research would be to explore the implications of Theorem~\ref{thm:weakconv} in other contexts. From the population genetics point-of-view, Theorem~\ref{thm:weakconv} may be seen as a complement to the convergence criteria for neutral models discussed in Section \ref{sec:previousgeneconv}, so it would be interesting to construct some corollaries for classical non-neutral population models.
+The applications presented in this chapter are all motivated by SMC, but an interesting area of future research would be to explore the implications of Theorem~\ref{thm:weakconv} in other contexts. From the population genetics point-of-view, Theorem~\ref{thm:weakconv} may be seen as a complement to the convergence criteria for neutral models discussed in Section~\ref{sec:previousgeneconv}, so it would be interesting to construct some corollaries for classical non-neutral population models.
 
 For many of the following results it will be necessary to compute filtered expectations $\Et[\cdot] \equiv \E[\cdot \mid \mathcal{F}_{t-1}]$, which are generally difficult to compute directly. 
 To simplify the computations we introduce a sequence of $\sigma$-algebras $(\mathcal{H}_t)$, defined below, such that filtered expectations can be written in terms of conditional expectations given $\mathcal{H}_t$.
 
-Figure \ref{fig:cond_indep_graph_Ht} shows a section of the conditional dependence graph implied by Algorithm \ref{alg:SMC}, as in Figure~\ref{fig:cond_indep_graph}, except that time is now labelled in reverse. The $\sigma$-algebra
+Figure~\ref{fig:cond_indep_graph_Ht} shows a section of the conditional dependence graph implied by Algorithm~\ref{alg:SMC}, as in Figure~\ref{fig:cond_indep_graph}, except that time is now labelled in reverse. The $\sigma$-algebra
 \begin{equation}\label{eq:defn_Ht}
 \mathcal{H}_t := \sigma(X_{t-1}^{(1:N)}, X_t^{(1:N)}, w_{t-1}^{(1:N)}, w_t^{(1:N)} ) 
 \end{equation}
@@ -101,7 +101,7 @@ As we will see, this enables us to compute bounds on the filtered expectations o
 \draw[->] (8.5,0)--(9.5,0);
 \draw[->] (8.5,-4)--(9.5,-4);
 \end{tikzpicture}
-\caption[Construction of separatrix $\mathcal{H}_t$]{Part of the conditional dependence graph implied by Algorithm \ref{alg:SMC} illustrating the construction of $\mathcal{H}_t$. The direction of time is from left to right. The reverse-time filtration is indicated by the dashed areas. The nodes highlighted in grey generate the separatrix $\mathcal{H}_t$ between $a_t^{(1:N)}$ and $\mathcal{F}_{t-1}$.}
+\caption[Construction of separatrix $\mathcal{H}_t$]{Part of the conditional dependence graph implied by Algorithm~\ref{alg:SMC} illustrating the construction of $\mathcal{H}_t$. The direction of time is from left to right. The reverse-time filtration is indicated by the dashed areas. The nodes highlighted in grey generate the separatrix $\mathcal{H}_t$ between $a_t^{(1:N)}$ and $\mathcal{F}_{t-1}$.}
 \label{fig:cond_indep_graph_Ht}
 \end{figure}
 
@@ -160,7 +160,7 @@ for each $i$, so the joint law is
 %%\leq \frac{a^2}{N}
 %%\end{equation*}
 %which, along with the bounds on $q_{t-1}$ from \eqref{eq:gq_bounds_mn}, allows us to apply a balls-in-bins coupling presented in \textcite[Proof of Lemma 3]{koskela2018} to obtain bounds on expectations of functions of $a_t^{(1:N)}$.
-Using the bounds \eqref{eq:gq_bounds_mn} and the balls-in-bins coupling of \textcite[proof of Lemma 3]{koskela2018}, we can obtain bounds on expectations of functions of $a_t^{(1:N)}$.
+Using the bounds \eqref{eq:gq_bounds_mn} and the balls-in-bins coupling of \textcite[Proof of Lemma 3]{koskela2018}, we can obtain bounds on expectations of functions of $a_t^{(1:N)}$.
 For any $k\in\mathbb{N}$ the function $a_t^{(1:N)} \to (\nu_t^{(i)})_k$ is $\{i\}$-increasing in the sense of \textcite[p.19]{koskela2018}, so we may apply the bounds
 \begin{equation*}
 \E\left[ (V_L^{(i)})_k \right]
@@ -175,7 +175,7 @@ where
 \eqdist \Bin\left( N, \frac{a/\varepsilon}{(a/\varepsilon) + (N-1)(\varepsilon/a)} \right) .
 \end{align*}
 independently for each $i$ and independently of $\mathcal{F}_\infty$.
-Furthermore, using the moments of the Binomial distribution \parencite[see for example][p. 67]{mosimann1962}
+Furthermore, using the moments of the Binomial distribution \parencite[see for example][p.67]{mosimann1962}
 \begin{equation*}
 \E\left[ (V_L^{(i)})_k \right]
 = (N)_k \left( \frac{ \varepsilon/a }{ (\varepsilon/a) + (N-1)(a/\varepsilon) } \right)^k
@@ -271,7 +271,7 @@ Applying \eqref{eq:condexp_HtFt} to \eqref{eq:mn_cN_LB} and \eqref{eq:mn_cN3_UB}
 =: b_N \underset{N\to\infty}{\longrightarrow} 0.
 \end{align*}
 Thus \eqref{eq:mainthmcondition2} is satisfied. 
-It remains to show that, for $N$ sufficiently large, $\Prob[ \tau_N(t) = \infty ] =0$ for all finite $t$, a technicality which is proved in Lemma \ref{thm:mn_nontriviality}. 
+It remains to show that, for $N$ sufficiently large, $\Prob[ \tau_N(t) = \infty ] =0$ for all finite $t$, a technicality which is proved in Lemma~\ref{thm:mn_nontriviality}. 
 Applying Theorem~\ref{thm:weakconv} then yields the result.
 \end{proof}
 
@@ -345,7 +345,7 @@ and
 &= \flnw \E\left[ (\nu_t^{(i)})_2 \midd \mathcal{H}_t \right] \notag\\
 &\leq a^2 \E\left[ (\nu_t^{(i)})_2 \midd \mathcal{H}_t \right] . \label{eq:strat_v2_versus_v3}
 \end{align}
-The last line uses the almost sure bound $w_t^{(i)} \leq a^2 /N$ which follows from \eqref{eq:gq_bounds_sr} along with the form of the weights in Algorithm \ref{alg:SMC}.
+The last line uses the almost sure bound $w_t^{(i)} \leq a^2 /N$ which follows from \eqref{eq:gq_bounds_sr} along with the form of the weights in Algorithm~\ref{alg:SMC}.
 Some terms in the above expressions may be equal to zero when $w_t^{(i)}$ is small enough, but the bound still holds in these cases.
 Since \eqref{eq:strat_v2_versus_v3} holds for all $i$, applying the tower rule as in \eqref{eq:condexp_HtFt} we have
 \begin{equation*}
@@ -533,7 +533,7 @@ We can always write the maximum weight as $w_t^{(i^\star)} = \frac{1+\gamma}{N}$
     1 & \text{if } \gamma \geq 2 .
 \end{cases}
 \end{equation*}
-If $\gamma \in (0,1)$ then the ``overhang'' in the sense of Figure~\ref{fig:strat_cases} is $\gamma$, and
+If $\gamma \in (0,1)$ then the overhang in the sense of Figure~\ref{fig:strat_cases} is $\gamma$, and
 \begin{equation*}
 1 - p_0^{(i^\star)}
 %\geq 1 - \left( 1- \frac{3\delta^\prime}{4} \right) \varepsilon^{2N} 
@@ -569,7 +569,7 @@ Then by \eqref{eq:cNnonzero} we have
     0 & \text{if } \gamma =0 .
 \end{cases}
 \end{equation*}
-If $\gamma \in (0,1]$ then the ``overhang'' in the sense of Figure~\ref{fig:strat_cases} is $1-\gamma$, and
+If $\gamma \in (0,1]$ then the overhang in the sense of Figure~\ref{fig:strat_cases} is $1-\gamma$, and
 \begin{equation*}
 1- p_1^{(j^\star)}
 \geq \left( 1- \frac{1+ (1-\gamma)}{2} \right) \varepsilon^{2N}
@@ -947,7 +947,7 @@ and we conclude as in Proposition~\ref{thm:strat_nontriviality}.
 
 
 \section{Residual resampling with multinomial residuals}
-We believe that an analogous result holds when the resampling scheme used is residual resampling with multinomial residuals. Considering the ordering by variance presented in Proposition~\ref{thm:resampling_var_compare}, the residual-multinomial scheme sits between the multinomial scheme and the residual-stratified scheme, both of which admit the desired convergence result (Corollaries~\ref{thm:multinomial} and \ref{thm:residual_stratified}).
+We believe that an analogous result holds when the resampling scheme used is residual resampling with multinomial residuals. Considering the ordering by variance presented in Proposition~\ref{thm:resampling_var_compare}, the residual-multinomial scheme sits between the multinomial scheme and the residual-stratified scheme, both of which admit the desired convergence result (Corollaries \ref{thm:multinomial} and \ref{thm:residual_stratified}).
 
 However, we have so far been unable to prove a similar corollary for the residual-multinomial scheme.
 The techniques used for other residual schemes (see Section~\ref{sec:corol_resstrat}) fail here because the number of offspring assigned to each individual is not upper bounded by $\flnw$ plus a constant; as many as $R = O(N)$ residual offspring may be assigned to a single individual.
@@ -1089,7 +1089,7 @@ These should be interpreted as holding uniformly in the choice of immortal traje
 Assume, without loss of generality, that the immortal particle takes index 1 in each generation. This assumption is valid due to \ref{standing_assumption}, and significantly lightens the notation, but the same argument holds if the immortal indices are taken to be $a_{0:T}^\star$ rather than $(1,\dots,1)$.
 
 Define $\mathcal{H}_t$ as in \eqref{eq:defn_Ht}.
-The parental indices are conditionally independent given $\mathcal{H}_t$, as in standard SMC with multinomial resampling, but we have to treat $i=1$ as a special case. The conditional law on the $i^{th}$ parental index is
+The parental indices are conditionally independent given $\mathcal{H}_t$, as in standard SMC with multinomial resampling, but we have to treat $i=1$ as a special case. The conditional law on the $i^\text{th}$ parental index is
 \begin{equation*}
 \Prob \left[ a_t^{(i)} = a_i \midd \mathcal{H}_t \right] \propto
 \begin{cases}
@@ -1169,7 +1169,7 @@ Hence, applying \eqref{eq:condexp_HtFt}, we can upper bound the ratio
 \underset{N\to\infty}{\longrightarrow} 0
 \end{equation*}
 so \eqref{eq:mainthmcondition2} is satisfied. 
-Proof that the time scale is finite is relegated to Lemma \ref{thm:CSMC_nontriviality}, whence we conclude by applying Theorem~\ref{thm:weakconv}.
+Proof that the time scale is finite is relegated to Lemma~\ref{thm:CSMC_nontriviality}, whence we conclude by applying Theorem~\ref{thm:weakconv}.
 
 %%%%
 
@@ -1281,7 +1281,7 @@ w_t^{(a_i)} q_{t-1}(X_t^{(a_i)}, X_{t-1}^{(i)})
 \end{equation*}
 for each $i$, which is exactly \eqref{eq:parentslaw_mn}, the law on parental indices under standard SMC with multinomial resampling!
 
-In other words, when parental indices are chosen, the immortal particle is treated exactly like all of the other particles; it has completely lost its ``reproductive advantage''.
+In other words, when parental indices are chosen, the immortal particle is treated exactly like all of the other particles; it has completely lost its reproductive advantage.
 This means it is no more likely for lineages to coalesce onto the immortal lineage than onto any other lineage, so we do not see the behaviour of Figure~\ref{fig:PG_ancdegen} which caused the particle Gibbs chain to mix slowly over the sequential component.
 This supports the claim of Section~\ref{sec:ancsamp}: particle Gibbs with ancestor sampling still experiences ancestral degeneracy, but this no longer causes the sequential component to get stuck.
 

@@ -28,12 +28,12 @@ A formulation where $G_t^{(n,N)}$ takes values in the space of equivalence relat
 The initial value of the process is the partition of singletons $G_0^{(n,N)} = \{ \{1\}, \dots, \{n\} \}$, since all of the terminal particles are in separate lineages.
 The only possible non-identity transitions are those that merge some blocks of the partition, encoding the coalescence of the corresponding lineages.
 The trivial partition $\{ \{1,\dots,n\} \}$ is therefore an absorbing state, corresponding to all lineages in the sample having coalesced, that is, the MRCA has been reached.
-The construction of the genealogical process from the resampling relationships, encoded by the vector of parental indices at each generation, is illustrated in Figure \ref{fig:encoding_genealogy}.
+The construction of the genealogical process from the resampling relationships, encoded by the vector of parental indices at each generation, is illustrated in Figure~\ref{fig:encoding_genealogy}.
 
 \begin{figure}[ht]
 \centering
 \subfloat[Resampling relationships]{
-\begin{tikzpicture}
+\begin{tikzpicture}[>=stealth]
 % grid of particles
 \filldraw (0,0) circle (2pt);
 \filldraw (0.75,0) circle (2pt);
@@ -558,7 +558,7 @@ Fix $n\leq N$ and consider a randomly chosen sample of $n$ terminal particles.
 Then the finite-dimensional distributions of the resulting rescaled genealogical process $(G_{\tau_N(t)}^{(n,N)})_{t\geq0}$ converge to those of the $n$-coalescent as $N \to \infty$.
 \end{theorem}
 
-On the RHS of \eqref{eq:mainthmcond} is the filtered expectation of $c_N(t)$, i.e.\ the expected pair merger rate, and the LHS is the corresponding rate of triple mergers. Intuitively, \eqref{eq:mainthmcond} says that pair mergers dominate triple mergers, the expected rate of which vanishes as $N\to\infty$. As we will see, this implies that pair mergers also dominate all other larger mergers, such as simultaneous pair mergers.
+On the right-hand side of \eqref{eq:mainthmcond} is the filtered expectation of $c_N(t)$, i.e.\ the expected pair merger rate, and the left-hand side is the corresponding rate of triple mergers. Intuitively, \eqref{eq:mainthmcond} says that pair mergers dominate triple mergers, the expected rate of which vanishes as $N\to\infty$. As we will see, this implies that pair mergers also dominate all other larger mergers, such as simultaneous pair mergers.
 The condition \eqref{eq:mainthmcond} is a non-exchangeable, non-neutral adaptation of the well-known necessary and sufficient condition for genealogies of Cannings models to converge to the $n$-coalescent, namely
 \begin{equation*}
 \lim_{N\to\infty} \frac{\E[(\nu^{(1)})_3]}{N \E[(\nu^{(1)})_2]} =0 ,
@@ -586,7 +586,7 @@ This would constitute a qualitatively different result and one that is of little
 %The series of Lemmata \ref{lem:removeass3}--\ref{lem:removeass2} below show that the assumptions \eqref{eq:oldass1}--\eqref{eq:oldass3} follow from \eqref{eq:mainthmcond}. Lemma \ref{lem:removeass4} allows us to remove condition \eqref{eq:oldass4} by improving upon some arguments from the proof of \textcite[Theorem 1]{koskela2018}; this argument is presented in detail in Section~\ref{sec:proof}.
 
 First we prove that \eqref{eq:kjjs_binary_bound_corrected} and the assumptions \eqref{eq:kjjs_big_merger_bound}--\eqref{eq:kjjs_binary_bound_2} of Theorem~\ref{thm:kjjs_mainthm} all follow from \eqref{eq:mainthmcond}.
-Figure~\ref{fig:FDD_proof_dependencies} illustrates how the following Lemmata \ref{lem:removeass3}--\ref{lem:removeass2} fit together. 
+Figure~\ref{fig:FDD_proof_dependencies} illustrates how the following Lemmata~\ref{lem:removeass3}--\ref{lem:removeass2} fit together. 
 The argument differs slightly from that presented in \textcite{brown2021} in that we will here show $\eqref{eq:mainthmcond} \Rightarrow \eqref{eq:kjjs_big_merger_bound} \Rightarrow \eqref{eq:kjjs_binary_bound}$ rather than $\eqref{eq:mainthmcond} \Rightarrow \eqref{eq:kjjs_big_merger_bound}$ and $\eqref{eq:mainthmcond} \Rightarrow \eqref{eq:kjjs_binary_bound}$.
 This highlights the redundancy in Theorem~\ref{thm:kjjs_mainthm}, where condition \eqref{eq:kjjs_big_merger_bound} directly implies two of the other stated conditions.
 
@@ -598,6 +598,7 @@ Proposition~\ref{thm:pDelta_LB} is a lower bound on the probability of an identi
 \centering
 \begin{tikzpicture}[
 mynode/.style={rectangle, rounded corners, fill=gray!20, minimum size=5mm},
+>=stealth
 ]
 % nodes
 \node[mynode] at (0,0) {\eqref{eq:mainthmcond}};
@@ -611,7 +612,7 @@ mynode/.style={rectangle, rounded corners, fill=gray!20, minimum size=5mm},
 \draw[->, thick] (4,0.3)-- node[anchor=west] 
         {\footnotesize{Lemma~\ref{lem:removeass3}}} (4,1.7);
 \draw[->, thick] (4.5,0)-- node[anchor=south] 
-        {\footnotesize{Lemma~\ref{thm:DNimpliescN_2}}} (7.5,0);
+        {\footnotesize{Lemma~\ref{thm:DNimpliescN_2}}} (7.4,0);
 \draw[->, thick] (4,-0.3)-- node[anchor=west] 
         {\footnotesize{Lemma~\ref{thm:DNimpliescN}}} (4,-1.7);
 \draw[->, thick, gray] (0.6,0)-- node[sloped, anchor=center, text width=2cm] 
@@ -890,7 +891,7 @@ Instead, we apply Proposition~\ref{thm:pDelta_LB} to obtain, for sufficiently la
         - \binom{ | \eta_{ d - 1 } | - | \{ i : s_i < r \} | }{ 2 } \ON c_N( r ) \Bigg] \\
     &\hspace{10cm}\times \I{ c_N(r) < (\tilde{B}_n + \binom{n}{2})^{-1} } .
 \end{align*}
-Here $\tilde{Q}$ is the matrix obtained from the generator $Q$ of Kingman's $n$-coalescent (see Definition \ref{def:kingman}) by setting the diagonal entries to 0.
+Here $\tilde{Q}$ is the matrix obtained from the generator $Q$ of Kingman's $n$-coalescent (see Definition~\ref{def:kingman}) by setting the diagonal entries to 0.
 The number of pair-merger steps required to transition from $\eta_{d-1}$ to $\eta_d$ is $\alpha = |\eta_{d-1}| - |\eta_d|$. The sequences $s_1,\dots,s_\alpha$ denote the times at which these pair-mergers happen. 
 At the remaining times $r$ the partition is unchanged, and the bound of Proposition~\ref{thm:pDelta_LB} has been applied to the one-step transition probabilities corresponding to these identity transitions. 
 The constant is $\tilde{B}_n := B_n\binom{n}{2}$ where $B_n$ is the constant defined in Proposition~\ref{thm:pDelta_LB}, and we have replaced $|\eta_d|$ by its upper bound $n$.

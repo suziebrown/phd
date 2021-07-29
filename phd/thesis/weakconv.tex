@@ -76,7 +76,7 @@ The infimum over all allowed partitions, then, can only be equal to zero if no t
 The proof is concentrated on proving Condition~\ref{item:relcomp2}.
 To do this, we use a coupling with another process that contains all of the jumps of the genealogical process, with the addition of some extra jumps. This process is constructed in such a way that it can be shown to satisfy Condition 2, and hence so does the genealogical process.
 
-Define $p_t := \max_{\xi\in \mathcal{P}_n} \{1 - p_{\xi\xi}(t)\} = 1 - p_{\Delta\Delta}(t)$, where $\Delta$ denotes the trivial partition of singletons $\{ \{1\},\dots, \{n\} \}$. For a proof that the maximum is attained at $\xi = \Delta$, see Lemma \ref{thm:maximum_pr}. 
+Define $p_t := \max_{\xi\in \mathcal{P}_n} \{1 - p_{\xi\xi}(t)\} = 1 - p_{\Delta\Delta}(t)$, where $\Delta$ denotes the trivial partition of singletons $\{ \{1\},\dots, \{n\} \}$. For a proof that the maximum is attained at $\xi = \Delta$, see Lemma~\ref{thm:maximum_pr}. 
 Following \textcite{mohle1999}, we now construct the two-dimensional Markov process $(Z_t, S_t)_{t \in \mathbb{N}_0}$ on $\mathbb{N}_0 \times \mathcal{P}_n$ with transition probabilities
 \begin{align}
 &\Prob\left[ Z_t = j , S_t = \eta \mid Z_{t-1} = i, S_{t-1} = \xi, \mathcal{F}_\infty \right] \notag\\
@@ -116,7 +116,7 @@ for any $\epsilon>0$, $t>0$, there exist $m\in\mathbb{N}$, $\delta>0$ such that
 \liminf_{N\to\infty} \Prob\left[ T_m^{(N)} \geq t, \varpi_i^{(N)} > \delta \,\forall i\in \{1,\dots,m\} \right]
 \geq 1-\epsilon .
 \end{equation}
-Due to Lemma \ref{thm:holdingtimes_distn}, the limiting distributions of $\varpi_i^{(N)}$ are i.i.d. $\Exp(\alpha_n)$, where $\alpha_n := n(n-1)/2$, so
+Due to Lemma~\ref{thm:holdingtimes_distn}, the limiting distributions of $\varpi_i^{(N)}$ are i.i.d. $\Exp(\alpha_n)$, where $\alpha_n := n(n-1)/2$, so
 \begin{equation*}
 \limsup_{N\to\infty} \Prob\left[ \varpi_i^{(N)} \leq \delta \right] 
 = 1- \liminf_{N\to\infty} \Prob\left[ \varpi_i^{(N)} > \delta \right] 
@@ -299,7 +299,7 @@ and $T_1^{(N)} >t$ if and only if $Z$ has no jumps up to time $t$:
 = \E\left[ \Prob[ T_1^{(N)} >t \mid \mathcal{F}_\infty ] \right]
 = \E\left[ \prod_{r=1}^{\tau_N(t)} (1-p_r) \right] .
 \end{equation*}
-Lemma \ref{thm:basis} shows that this probability converges to $e^{-\alpha_n t}$ as required.
+Lemma~\ref{thm:basis} shows that this probability converges to $e^{-\alpha_n t}$ as required.
 
 For the induction step, assume that \eqref{eq:518} holds for some $k$. 
 We have the following decomposition:
@@ -308,7 +308,7 @@ We have the following decomposition:
 &= \Prob\left[ T_1^{(N)} \leq t_1, \dots , T_k^{(N)} \leq t_k \right] \\
         &\qquad- \Prob\left[ T_1^{(N)} \leq t_1, \dots , T_k^{(N)} \leq t_k, T_{k+1}^{(N)} > t_{k+1} \right] .
 \end{align*}
-The first term on the RHS converges to $\Prob[ T_1 \leq t_1, \dots , T_k \leq t_k ]$ by the induction hypothesis, and it remains to show that
+The first term on the right-hand side converges to $\Prob[ T_1 \leq t_1, \dots , T_k \leq t_k ]$ by the induction hypothesis, and it remains to show that
 \begin{equation*}
 \lim_{N\to\infty} 
         \Prob\left[ T_1^{(N)} \leq t_1, \dots , T_k^{(N)} \leq t_k, T_{k+1}^{(N)} > t_{k+1} \right]
@@ -322,7 +322,7 @@ As shown in \textcite{mohle1999},
         \\ i_j \geq j \forall j}} 
         \prod_{j=1}^k \frac{(t_j - t_{j-1})^{i_j - i_{j-1}}}{(i_j - i_{j-1})! } ,
 \end{equation*}
-while the probability on the LHS can be written
+while the probability on the left-hand side can be written
 \begin{align*}
 &\Prob\left[ T_1^{(N)} \leq t_1, \dots , T_k^{(N)} \leq t_k, T_{k+1}^{(N)} > t_{k+1} \right] \\
 &\hspace{4cm}= \E\left[ \Prob[ T_1^{(N)} \leq t_1, \dots , T_k^{(N)} \leq t_k, T_{k+1}^{(N)} > t_{k+1} 
@@ -444,7 +444,7 @@ This completes the induction.
 
 
 \section{Bounds on sum-products}
-We start by proving some upper and lower bounds on sums of products of various quantities, which appear from our bounds on $p_r$ (Propositions~\ref{thm:pDelta_LB} and \ref{thm:pDelta_UB}). These sum-product bounds will be applied multiple times in the lemmata of this chapter.
+We start by proving some upper and lower bounds on sums of products of various quantities, which appear from our bounds on $p_r$ (Propositions \ref{thm:pDelta_LB} and \ref{thm:pDelta_UB}). These sum-product bounds will be applied multiple times in the lemmata of this chapter.
 
 \begin{lemma}\label{thm:sumprod1}
 Fix $t>0$, $l\in\mathbb{N}$.
@@ -472,7 +472,7 @@ Firstly, we have the inequality
         \prod_{j=1}^l c_N(s_j)
 \leq \left( \sum_{s=0}^{\tau_N(t)} c_N(s) \right)^l ,
 \end{equation*}
-as can be seen by considering the multinomial expansion of the RHS.
+as can be seen by considering the multinomial expansion of the right-hand side.
 Applying Proposition~\ref{thm:cN_properties}\ref{item:cN_property4},
 \begin{equation*}%\label{eq:039}
 \sum_{\substack{ s_1, \dots, s_l =1 \\ \text{all distinct} }}^{\tau_N(t)}
@@ -488,7 +488,7 @@ As pointed out in \textcite[Equation (8)]{koskela2018},
         - \binom{l}{2} \left( \sum_{s=0}^{\tau_N(t)} c_N(s)^2 \right)
         \left( \sum_{s=0}^{\tau_N(t)} c_N(s) \right)^{l-2} .
 \end{equation}
-Applying Proposition~\ref{thm:cN_properties}\ref{item:cN_property4} on the RHS of \eqref{eq:002} yields the lower bound.
+Applying Proposition~\ref{thm:cN_properties}\ref{item:cN_property4} on the right-hand side of \eqref{eq:002} yields the lower bound.
 
 For the upper bound we have
 \begin{equation*}
@@ -568,7 +568,7 @@ Separating the term $I=l$,
         \sum_{\substack{ s_1, \dots, s_l =1 \\ \text{all distinct} }}^{\tau_N(t)}
         \left( \prod_{i=1}^I c_N(s_i) \right) \left( \prod_{j=I+1}^l D_N(s_j) \right). \label{eq:012}
 \end{align}
-In the second term on the RHS, there is always at least one $D_N$ term, so using that $c_N(s) \geq D_N(s)$ (Proposition~\ref{thm:cN_properties}\ref{item:cN_property2}) we can write
+In the second term on the right-hand side, there is always at least one $D_N$ term, so using that $c_N(s) \geq D_N(s)$ (Proposition~\ref{thm:cN_properties}\ref{item:cN_property2}) we can write
 \begin{align}
 \sum_{I=0}^{l-1}\binom{l}{I} B^{l-I} 
         &\sum_{\substack{ s_1, \dots, s_l =1 \\ \text{all distinct} }}^{\tau_N(t)}
@@ -649,7 +649,7 @@ which concludes the proof.
 
 \section{Main components of induction argument}
 This section contains the technical aspects of the proof of Lemma~\ref{thm:holdingtimes_distn}, which establishes the limiting distributions of holding times of the coupled process, via an induction argument.
-This section is split into four lemmata: the first (Lemma~\ref{thm:basis}) is used in the basis step and the others in the induction step. The induction step is established by combining upper and lower bounds, proved in Lemmata~\ref{thm:inductionUB} and \ref{thm:inductionLB} respectively. Lemma~\ref{thm:induction_sumprodcN} is a technical result which is common to both the upper and lower bounds, determining the limit as $N\to\infty$ of a certain expectation that arises in both bounds.
+This section is split into four lemmata: the first (Lemma~\ref{thm:basis}) is used in the basis step and the others in the induction step. The induction step is established by combining upper and lower bounds, proved in Lemmata \ref{thm:inductionUB} and \ref{thm:inductionLB} respectively. Lemma~\ref{thm:induction_sumprodcN} is a technical result which is common to both the upper and lower bounds, determining the limit as $N\to\infty$ of a certain expectation that arises in both bounds.
 
 Recall that the following conditions are all consequences of \eqref{eq:mainthmcondition2}: for all $t>s>0$,
 \begin{align}
@@ -659,7 +659,7 @@ Recall that the following conditions are all consequences of \eqref{eq:mainthmco
 \E\left[ \sum_{r=\tau_N(s)+1}^{\tau_N(t)} D_N(r) \right] &\rightarrow 0
         \label{eq:BJJK_eq3.4}
 \end{align}
-as $N\to\infty$. (See Lemmata~\ref{lem:removeass3}, \ref{thm:DNimpliescN} and \ref{lem:removeass2} for proofs.)
+as $N\to\infty$. (See Lemmata \ref{lem:removeass3}, \ref{thm:DNimpliescN} and \ref{lem:removeass2} for proofs.)
 %Also recall the following properties from Proposition~\ref{thm:cN_properties}:
 %\begin{align}
 %& c_N(t) , D_N(t) \in [0,1] \label{eq:cN_property1}\\
@@ -698,7 +698,7 @@ Since we will eventually take $N\to\infty$, it is sufficient to have bounds that
 These indicators will later be dropped from certain terms that are clearly non-negative without them. 
 The indicators introduced at this point are such that if their conditions do not hold then the bound becomes the trivial $1-p_r \leq 1$.
  
-When $N \geq 3$, a sufficient condition to ensure that the expression on the RHS of \eqref{eq:018} is non-negative is that the event
+When $N \geq 3$, a sufficient condition to ensure that the expression on the right-hand side of \eqref{eq:018} is non-negative is that the event
 \begin{equation}\label{eq:defn_E1}
 E_N^{1}(r) := \left\{ c_N(r) < \alpha_n^{-1} A_N \right\} 
 \end{equation}
@@ -887,7 +887,7 @@ Collecting terms and dropping indicators from some non-positive terms,
     &\qquad- \left( \sum_{s=1}^{\tau_N(t)} D_N(s) \right)
         \exp[ \alpha_n \ON (t+1) (1+B_n) ]. \label{eq:028}
 \end{align}
-Now, taking the expectation and limit, and applying \eqref{eq:BJJK_eq3.3}--\eqref{eq:BJJK_eq3.4} to show that all but the first sum vanish, and Lemmata~\ref{thm:indicators_cN} and \ref{thm:indicators_tau} to show that $\lim_{N\to\infty} \Prob[ \{\tau_N(t) \geq l\} \cap E_N^3 ] =1$,
+Now, taking the expectation and limit, and applying \eqref{eq:BJJK_eq3.3}--\eqref{eq:BJJK_eq3.4} to show that all but the first sum vanish, and Lemmata \ref{thm:indicators_cN} and \ref{thm:indicators_tau} to show that $\lim_{N\to\infty} \Prob[ \{\tau_N(t) \geq l\} \cap E_N^3 ] =1$,
 \begin{align}
 \lim_{N\to\infty} \E \left[ \prod_{r=1}^{\tau_N(t)} (1-p_r) \right]
 &\geq \sum_{l=0}^{\infty} (-\alpha_n)^l \ON \frac{1}{l!} t^l 
@@ -1180,7 +1180,7 @@ Hence
          \lim_{N\to\infty} \E \left[ \sum_{s=1}^{\tau_N(t)} c_N(s)^2 \right]
 \end{equation*}
 which equals $0$ by \eqref{eq:BJJK_eq3.5}.
-By Lemmata~\ref{thm:indicators_cN}, \ref{thm:indicators_tau} and \ref{thm:indicators_DN}, $\lim_{N\to\infty} \Prob[ \{ \tau_N(t)\geq k+l \} \cap E_N^1 \cap E_N^2 ] =1$,  so we can apply Lemma~\ref{thm:induction_sumprodcN} to the remaining expectations in \eqref{eq:040}, yielding
+By Lemmata \ref{thm:indicators_cN}, \ref{thm:indicators_tau} and \ref{thm:indicators_DN}, $\lim_{N\to\infty} \Prob[ \{ \tau_N(t)\geq k+l \} \cap E_N^1 \cap E_N^2 ] =1$,  so we can apply Lemma~\ref{thm:induction_sumprodcN} to the remaining expectations in \eqref{eq:040}, yielding
 \begin{align*}
 &\lim_{N\to\infty} \E \left[ 
         \sum_{\substack{r_1 <\dots< r_k :\\ r_i \leq \tau_N(t_i) \forall i}}
@@ -1264,7 +1264,7 @@ We will also need an upper bound on this product, which is formed from \eqref{eq
         + (t+1) \exp[ \alpha_n \ON (t+1) (1+B_n^\prime) ] .
         \label{eq:034a}
 \end{align}
-Now let us consider the remaining sum-product on the RHS of \eqref{eq:032a}.
+Now let us consider the remaining sum-product on the right-hand side of \eqref{eq:032a}.
 We use the same bound on $p_r$ as in \eqref{eq:018}:
 \begin{equation}\label{eq:050a}
 p_r
@@ -1318,7 +1318,7 @@ Thus
     &\hspace{5cm}+ (t+1) \exp[ \alpha_n \ON (t+1) (1+B_n^\prime) ] 
         \Bigg\} .
 \end{align*}
-Due to \eqref{eq:BJJK_eq3.3}--\eqref{eq:BJJK_eq3.4}, all but the first line on the RHS of the above have vanishing expectation, leaving
+Due to \eqref{eq:BJJK_eq3.3}--\eqref{eq:BJJK_eq3.4}, all but the first line on the right-hand side of the above have vanishing expectation, leaving
 \begin{align}
 \lim_{N\to\infty} \E &\left[ 
         \sum_{\substack{r_1 <\dots< r_k :\\ r_i \leq \tau_N(t_i) \forall i}}
@@ -1338,7 +1338,7 @@ Due to \eqref{eq:BJJK_eq3.3}--\eqref{eq:BJJK_eq3.4}, all but the first line on t
         \prod_{i=1}^k c_N(r_i) \right] . \label{eq:056}
 \end{align}
 Passing the limit and expectation inside the infinite sum is justified by dominated convergence and Fubini; see Lemma~\ref{thm:DCT_Fubini}.
-Lemmata~\ref{thm:indicators_cN} and \ref{thm:indicators_DN} establish that $\lim_{N\to\infty}\Prob[ E_N^2 \cap E_N^3 ] =1$ and Lemma~\ref{thm:indicators_tau} deals with the other indicator.
+Lemmata \ref{thm:indicators_cN} and \ref{thm:indicators_DN} establish that $\lim_{N\to\infty}\Prob[ E_N^2 \cap E_N^3 ] =1$ and Lemma~\ref{thm:indicators_tau} deals with the other indicator.
 We can therefore apply Lemma~\ref{thm:induction_sumprodcN} to conclude that
 \begin{align*}
 &\lim_{N\to\infty} \E \left[ 
@@ -1382,7 +1382,7 @@ $0 = t_0 \leq t_1 \leq \cdots \leq t_k \leq t$,
 \end{lemma}
 
 \begin{proof}
-As pointed out by \textcite[p.~460]{mohle1999}, the sum-product on the left hand side can be expanded as
+As pointed out by \textcite[p.460]{mohle1999}, the sum-product on the left hand side can be expanded as
 \begin{equation*}
 \sum_{\substack{r_1<\dots<r_k :\\ r_i\leq \tau_N(t_i) \forall i}} 
         \prod_{i=1}^k c_N(r_i)
@@ -1475,7 +1475,7 @@ E_N^4(j)
         \leq \frac{1}{(i_j - i_{j-1}) !}  \left( \frac{ t_j - t_{j-1} }{ t_j - t_{j-1} +1 }
         \right)^{i_j - i_{j-1}} \right\} ,
 \end{equation*}
-which is sufficient to ensure the $j^{th}$ term in the following product is non-negative,
+which is sufficient to ensure the $j^\text{th}$ term in the following product is non-negative,
 and define 
 $E_N^4 := \bigcap_{j=1}^k E_N^4(j)$.
 If $t_j = t_{j-1}$ then $E_N^4(j)$ has probability one automatically; otherwise the constant on the right is strictly positive and so satisfies the conditions of Lemma~\ref{thm:indicators_c2}.
