@@ -552,7 +552,7 @@ Common to all of these models are the following assumptions:
 \item The offspring distribution is exchangeable.
 \end{itemize}
 As in Section~\ref{sec:SMC_FK}, we define offspring counts in terms of parental indices as $\nu_j := |\{ i: a_i = j\}|$.
-Since the assignment of offsrping to parents is i.i.d.\ across generations, there is no dependence on $t$.
+Since the assignment of offspring to parents is i.i.d.\ across generations, there is no dependence on $t$.
 Also, under the assumption of exchangeability, it is sufficient to consider only the offspring counts, rather than the parental indices (which generally carry more information).
 %\seb{Crucially, in the neutral case, offspring counts carry all the information about the distribution of the genealogy that is contained in the parental indices.}
 These models are all \emph{neutral}, that is exhibiting no natural selection, because the offspring counts at each generation are independent, so there can be no preferential propagation of certain ``fitter'' lineages.
@@ -688,7 +688,7 @@ Particularly if we are interested in smoothing over a long time horizon, the var
 \includegraphics[width=0.47\textwidth]{plots/ancdegen_adaptsyst.pdf}
 \label{fig:ancdegen_adaptsyst}
 }
-\caption[Ancestral degeneracy]{Illustration of ancestral degeneracy and the mitigating effect of low-variance and adpative resampling.
+\caption[Ancestral degeneracy]{Illustration of ancestral degeneracy and the mitigating effect of low-variance and adaptive resampling.
 Each line is the lineage of one of the terminal particles, indicating the index of its ancestor in each generation:
 \subref{fig:ancdegen_mn} with multinomial resampling;
 \subref{fig:ancdegen_adaptsyst} the same system with adaptive systematic resampling.}
@@ -717,7 +717,7 @@ If adaptive resampling is used, some trivial changes are required to the calcula
 As well as mitigating ancestral degeneracy, adaptive resampling has the virtue of saving some computation (although the overall asymptotic complexity of the SMC algorithm does not change).
 How effective adaptive resampling will be depends on the particular application and choice of SMC algorithm. If the proposals (i.e.\ transition kernels) are not very close to their targets then the weights will degenerate rapidly and the effective sample size criterion (or similar) will not reduce the frequency of resampling very much.
 
-Low-variance resampling is also less effective under poor proposals: the resulting high-variance weights lead to high-variance offspring counts, even under minimum-variance resmapling schemes, because the resampling is required to be unbiased.
+Low-variance resampling is also less effective under poor proposals: the resulting high-variance weights lead to high-variance offspring counts, even under minimum-variance resampling schemes, because the resampling is required to be unbiased.
 
 Adaptive resampling and low-variance resampling can be combined, and this is widely considered to be the best practice when implementing SMC.
 Figure~\ref{fig:ancestral_degeneracy} compares ancestral degeneration under multinomial resampling (a relatively high variance scheme) to the same under adaptive resampling with a minimum-variance resampling scheme.
@@ -1438,10 +1438,10 @@ Another way to quantify this property is by considering the maximum possible dif
 In the case where all of the weights are multiples of $1/N$, low-variance schemes such as residual and systematic resampling become fully deterministic. 
 Since $\flnw = Nw_t^{(i)}$ for each $i$, residual resampling will have $R=0$, leaving no remainder to be assigned stochastically. 
 In systematic resampling exactly $\flnw = Nw_t^{(i)}$ samples will fall in the $i^\text{th}$ interval.
-In particular, if $w_t^{(1:N)} = (1,\dots, 1)/N$ then each parent is assigned exactly one offspring deterministcially, so there is effectively no resampling.
+In particular, if $w_t^{(1:N)} = (1,\dots, 1)/N$ then each parent is assigned exactly one offspring deterministically, so there is effectively no resampling.
 
 The same phenomenon occurs with stratified resampling, although not if one uses Whitley's roulette wheel description (Figure~\ref{fig:roulettewheel}). The random phase shift introduced by ``spinning the wheel'' prevents the inversion sampling intervals from lining up exactly with the weight intervals, so the resampled offspring counts may vary from their means by one either side.
-\textcite{whitley1994} does not describe stratified resampling, but we see that unlike with systematic resampling, in the case of startified resampling the roulette wheel description is not equivalent to the standard inversion sampling description. 
+\textcite{whitley1994} does not describe stratified resampling, but we see that unlike with systematic resampling, in the case of stratified resampling the roulette wheel description is not equivalent to the standard inversion sampling description. 
 The roulette wheel adds some unnecessary extra randomness, so the straightforward inversion sampler is preferred.
 
 When the state space is continuous, it is often the case that the event that all weights are multiples of $1/N$ has zero measure. Even so, with non-zero probability we may get arbitrarily close to this regime in which resampling becomes deterministic.
@@ -2357,7 +2357,7 @@ Set $X_0^{(a_0^\star)} \gets x_0^\star$\;
 	}          
 }
 \vspace*{10pt}
-\caption[Conditional sequential Monte Carlo with ancestor sampling]{Conditional sequential Monte Carlo with ancestor sampling for a parametrised state space model. The parent of the immortal particle is updated at each iteration via an on-line backward simulation step. The transition kernels $K_t^\theta$ are assumed to admit densities $q_t^\theta$. The second parameter of the Categorical variable should be interpreted element-wise, and is given up to a normalisation constant.}
+\caption[Conditional sequential Monte Carlo with ancestor sampling]{Conditional sequential Monte Carlo with ancestor sampling for a parametrised state space model. The parent of the immortal particle is updated at each iteration via an on-line backward simulation step. The transition kernels $K_t^\theta$ are assumed to admit densities $q_t^\theta$. The second parameter of the Categorical variable should be interpreted elementwise, and is given up to a normalisation constant.}
 \label{alg:condSMC_ancsamp}
 \end{algorithm}
 Assume that the smoothing distributions admit densities, that is $\mu^\theta(\cdot)$ and $K_t^\theta(\cdot\mid x)$ admit densities for all $x,t$. Denote the density of $K_t^\theta$ by $q_t^\theta$. Define the trajectories $X_{t, 0:t}^{(i)}$ (for any $t,i$) as in Section~\ref{sec:SMC_FK}, starting from $X_{t,t}^{(i)} := X_t^{(i)}$ and tracing back the states of the parents via $X_{t,s}{(i)} = X_{t,s+1}^{( a_t^{(i)} )}$.
