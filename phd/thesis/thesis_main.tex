@@ -1,5 +1,5 @@
 \documentclass[oneside]{scrbook} %%% remove oneside option for final hard copy
-\usepackage[onehalfspacing]{setspace} %%% remove this option for final copy
+\usepackage[onehalfspacing]{setspace} %%% remove this option for final copy (?)
 \usepackage{lscape} % for landscape tables
 
 %%% see
@@ -132,40 +132,16 @@ August 2021 %%% update submission date (month year)
 \frontmatter
 
 
-\chapter*{Abstract}
-This thesis attempts to quantify the problem of ancestral degeneracy of sequential Monte Carlo samples, which is known to  have a critical effect on the performance of the resulting estimators.
-To facilitate comparisons between different algorithms, the induced genealogical processes are analysed under an asymptotic regime in which the number of particles tends to infinity. 
-Simple conditions are derived under which these genealogical processes converge weakly to Kingman's well-studied $n$-coalescent, with a certain time change.
-These sufficient conditions are verified for the many of the most popular sequential Monte Carlo algorithms, giving a novel insight into the large-sample behaviour of the associated estimators.
-The asymptotic regime serves to unify these different algorithms in one framework, the genealogical differences between the algorithms then being fully captured by the respective time-change functions.
-The results also have implications in theoretical population genetics, where the processes studied may be seen as population models involving selection. Our main theorem then comprises a novel weak convergence result for genealogies arising from non-neutral populations.
+%%% Comment these out if using "includeonly":
+\tableofcontents
+\listoffigures
+\listoftables
+%\listofalgorithms
 
-
-%%% The abstract must be no more than 300 words and may be single-spaced to ensure it fits on one page.
-
-%%% A list of acronyms must be placed either here or at the end of the thesis, and its location indicated in the ToC.
-
-
-
-
-%\vspace*{3cm}
-%
-%%%% Edit the declaration as appropriate:
-%%%% Add a section title above the declaration?
-\chapter*{} %% [Declaration]{}
-
-This thesis is submitted to the University of Warwick in support of my application for the degree of Doctor of Philosophy. It has been composed by myself and has not been submitted in any previous application for any degree.
-\\[5pt]
-Parts of this thesis have been published by the author.
-Some results of Chapters \ref{ch:limits} and \ref{ch:appl} appear in condensed form in the article
-\\
-\fullcite{brown2021}
-%%% List of publications including submitted papers.
-\\[5pt]
-The work presented (including data generated and data analysis) was carried out by the author except in the cases outlined below:
-\\
-The final part of Section~\ref{sec:FDDproof}, comprising the modification to the proof of \textcite{koskela2018}, was lifted from the aforementioned article \parencite{brown2021} where the calculations were primarily carried out by collaborators, and subsequently edited by myself to improve readability and consistency of presentation.
-%%% List of data provided and/or analysis carried out by collaborators.
+%\listoftheorems[ignoreall,show={defn}]
+%\renewcommand{\listtheoremname}{List of Theorems}
+%\listoftheorems[ignoreall,show={theorem,prop}]
+%%% Also include a list of algorithms/listings somehow
 
 
 
@@ -214,16 +190,48 @@ Suzie Brown\\
 
 
 
-%%% Comment these out if using "includeonly":
-\tableofcontents
-\listoffigures
-\listoftables
-\listofalgorithms
+%\vspace*{3cm}
+%
+%%%% Edit the declaration as appropriate:
+%%%% Add a section title above the declaration?
+\chapter*{} %% [Declaration]{}
 
-%\listoftheorems[ignoreall,show={defn}]
-%\renewcommand{\listtheoremname}{List of Theorems}
-%\listoftheorems[ignoreall,show={theorem,prop}]
-%%% Also include a list of algorithms/listings somehow
+This thesis is submitted to the University of Warwick in support of my application for the degree of Doctor of Philosophy. It has been composed by myself and has not been submitted in any previous application for any degree.
+\\[5pt]
+Parts of this thesis have been published by the author.
+Some results of Chapters \ref{ch:limits} and \ref{ch:appl} appear in condensed form in the article
+\\
+\fullcite{brown2021}
+%%% List of publications including submitted papers.
+\\[5pt]
+The work presented (including data generated and data analysis) was carried out by the author except in the cases outlined below:
+\\
+The final part of Section~\ref{sec:FDDproof}, comprising the modification to the proof of \textcite{koskela2018}, was lifted from the aforementioned article \parencite{brown2021} where the calculations were primarily carried out by collaborators, and subsequently edited by myself to improve readability and consistency of presentation.
+%%% List of data provided and/or analysis carried out by collaborators.
+
+
+
+
+
+
+\chapter*{Abstract}
+This thesis attempts to quantify the problem of ancestral degeneracy of sequential Monte Carlo samples, which is known to  have a critical effect on the performance of the resulting estimators.
+To facilitate comparisons between different algorithms, the induced genealogical processes are analysed under an asymptotic regime in which the number of particles tends to infinity. 
+Simple conditions are derived under which these genealogical processes converge weakly to Kingman's well-studied $n$-coalescent, with a certain time change.
+These sufficient conditions are verified for the many of the most popular sequential Monte Carlo algorithms, giving a novel insight into the large-sample behaviour of the associated estimators.
+The asymptotic regime serves to unify these different algorithms in one framework, the genealogical differences between the algorithms then being fully captured by the respective time-change functions.
+The results also have implications in theoretical population genetics, where the processes studied may be seen as population models involving selection. Our main theorem then comprises a novel weak convergence result for genealogies arising from non-neutral populations.
+
+
+%%% The abstract must be no more than 300 words and may be single-spaced to ensure it fits on one page.
+
+%%% A list of acronyms must be placed either here or at the end of the thesis, and its location indicated in the ToC.
+
+
+
+
+
+
 
 
 
