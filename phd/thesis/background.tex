@@ -20,7 +20,7 @@ The basic idea behind SMC is that of sequential importance sampling, whereby the
 
 \subsection{State space models}
 \label{sec:SSMs}
-State space models (sometimes called hidden Markov models) are a flexible class of statistical models which are suitable in all sorts of applications where observations appear sequentially.
+State space models, sometimes called hidden Markov models, are a flexible class of statistical models which are suitable in all sorts of applications where observations appear sequentially.
 \begin{figure}[ht]
 \centering
 \begin{tikzpicture}[>=stealth]
@@ -49,7 +49,7 @@ State space models (sometimes called hidden Markov models) are a flexible class 
 \caption[State space model]{Conditional independence graph for a general state space model. $(X_t)$ is a Markov process with transition kernels $(K_t)$ representing the underlying state of the system. $Y_t$ is a noisy observation of $X_t$ for each $t$.}
 \label{fig:SSM}
 \end{figure}
-The general model has two components: a Markov process $(X_t)_{t\in\mathbb{N}_0}$ representing the (unobservable) underlying state of the system, and a sequence $(Y_t)_{t\in\mathbb{N}_0}$ of observations containing information about the underlying state. The model is characterised by its conditional independence structure (Figure~\ref{fig:SSM}) along with an initial distribution $\mu$, the Markov \emph{transition} kernels $(K_t)_{t\in\mathbb{N}}$ and the \emph{emission} distributions $(g_t)_{t\in\mathbb{N}_0}$. 
+The general model has two components: a Markov process $(X_t)_{t\in\mathbb{N}_0}$ representing the unobservable underlying state of the system, and a sequence $(Y_t)_{t\in\mathbb{N}_0}$ of observations containing information about the underlying state. The model is characterised by its conditional independence structure (Figure~\ref{fig:SSM}) along with an initial distribution $\mu$, the Markov \emph{transition} kernels $(K_t)_{t\in\mathbb{N}}$ and the \emph{emission} distributions $(g_t)_{t\in\mathbb{N}_0}$. 
 Written as a hierarchical model,
 \begin{align}
 X_0 &\sim \mu(\cdot) & \notag\\
@@ -61,7 +61,7 @@ The index $t$ will frequently be referred to as time, since in many applications
 
 Here $X$ and/or $Y$ may be multivariate and observation times need not be equally spaced. Straightforward generalisations of the stated model can allow for situations in which observations are not available as often as the state is updated (up to and including the extreme where the state is a continuous-time Markov process but the observations are available only at discrete times) or on the other hand where observations are made more frequently than the state is updated.
 
-Applications include target tracking, where $X$ is the true position of some object and $Y$ encodes some measurements from sensors e.g.\ radar; stochastic volatility models, where $X$ is the volatility and $Y$ is the observed value e.g.\ the price of a stock; change-point detection; and many other situations in which there is an observed time series from which one would like to do inference or prediction.
+Applications include target tracking, where $X$ is the true position of some object and $Y$ encodes some measurements from sensors e.g.\ radar; stochastic volatility models, where $X$ is the volatility and $Y$ is the observed value e.g.\ the price of a stock; change-point detection; and many other scenarios in which there is an observed time series from which one would like to draw inferences or predictions.
 
 The principal inferences of interest in state space models are:
 \begin{description}
@@ -73,7 +73,7 @@ The principal inferences of interest in state space models are:
 If the dynamics of the state space model are parametrised by some $\theta$, i.e.\ $g_t$ and/or $K_t$ depend on $\theta$, we may also be interested in parameter inference or computing the likelihood $p(y_{0:t})$ of the observed data for particular values of $\theta$. Such a model is considered in Section~\ref{sec:particleGibbs}.
 
 In certain cases, these inference problems may be solved analytically (Section~\ref{sec:SSM_exact_inference}), but this is not typically the case. For intractable models we must resort to numerical methods such as Monte Carlo. However, state space inference is problematic even with Monte Carlo. 
-The main difficulties are that the dimension of the target distributions may increase along the sequence, and that there is strong dependence between consecutive distributions. Markov chain Monte Carlo (MCMC), for instance, is known to struggle with highly correlated targets%\seb{[citation]} 
+The main difficulties are that the dimension of the target distributions may increase along the sequence, and that there is strong dependence between consecutive distributions. Markov chain Monte Carlo (MCMC), for instance, is known to struggle with highly correlated targets %\seb{[citation]} 
 and its performance drops drastically as dimension increases, despite convergence rates that are independent of dimension.%\seb{[citation]}
 
 As we will see in Section~\ref{sec:SMC_FK}, sequential Monte Carlo somewhat overcomes these problems, turning the problematic properties of the target distribution to its benefit. Correlation between consecutive targets is exploited for sequential updating, which is able to handle the incrementing dimensionality. The resulting linear-in-$t$ computational complexity also allows inference to be performed on-line, that is, updating the posterior distribution(s) as observations arrive.
@@ -83,11 +83,11 @@ As we will see in Section~\ref{sec:SMC_FK}, sequential Monte Carlo somewhat over
 
 \subsection{Inference in state space models}
 \label{sec:SSM_exact_inference}
-If the state space model has linear dynamics with Gaussian noise, the posterior distributions of interest are also Gaussian. The posterior mean and covariance satisfy certain recursions, implemented by the Kalman filter \parencite{kalman1960} and Rauch-Tung-Striebel smoother \parencite{rauch1965}. 
+If the state space model has linear dynamics with Gaussian noise, the posterior distributions of interest are also Gaussian. The posterior means and covariances satisfy certain recursions, implemented by the Kalman filter \parencite{kalman1960} and Rauch-Tung-Striebel smoother \parencite{rauch1965}. 
 Recursions are also available for some other conjugate models: see for example \textcite{vidoni1999,king2021}.
 Another analytic case occurs if the state space $\mathcal{X}$ is finite, in which case any integrals become finite sums, and the forward-backward algorithm \parencite{baum1970} yields the exact posteriors. However, if the state space becomes large, albeit finite, exact computation becomes infeasible.
 
-If the model is Gaussian but non-linear, the posterior filtering distributions can be estimated using the \emph{extended Kalman filter} (see for example \textcite{jazwinski2007}), which applies a first-order approximation in order to make use of the Kalman filter. This method performs well on models that are ``almost linear''. The resulting predictor is only \emph{optimal} when the model is actually linear, in which case the extended Kalman filter coincides with the Kalman filter.
+If the model is Gaussian but non-linear, the posterior filtering distributions can be estimated using the \emph{extended Kalman filter} \parencite[see for example][]{jazwinski2007}, which applies a first-order approximation in order to make use of the Kalman filter. This method performs well on models that are ``almost linear''. The resulting predictor is only \emph{optimal} when the model is actually linear, in which case the extended Kalman filter coincides with the Kalman filter.
 
 For models that are high-dimensional or highly non-linear or for which gradients are not readily available, the exact Kalman filter updates can be replaced by sample approximations.
 The \emph{ensemble Kalman filter} \parencite{evensen1994} uses a Monte Carlo sample from the current time, propagates these points through the transition dynamics, and uses the sample covariance as an estimator of the updated covariance matrix. The means, which are cheaper to evaluate and more stable than the covariances, are still updated using the Kalman filter recursion, based on the estimated covariance.
@@ -127,7 +127,7 @@ G_0 (x_0) &:= g_0 ( y_0 \mid x_0 ) \notag\\
 G_t (x_{t-1}, x_t) &:= g_t( y_t \mid x_t ) & \text{for } t=1,2,\dots . \label{eq:bootstrapFK}
 \end{align}
 This is not the only Feynman-Kac model for \eqref{eq:SSM_spec}; this corresponds to the \emph{bootstrap} SMC algorithm, which is the simplest implementation.
-Abusing notation, $g_t$ now denotes the density of the corresponding emission distribution; state space models in which these densities do not exist can still be expressed as Feynman-Kac models, the but not this bootstrap model.
+Abusing notation, $g_t$ now denotes the density of the corresponding emission distribution; state space models in which these densities do not exist can still be expressed as Feynman-Kac models, the but not by this bootstrap model.
 In practice the bootstrap SMC algorithm may be significantly outperformed by more involved algorithms such as
 \emph{auxiliary particle filters} \parencite{pitt1999, carpenter1999} and those using \emph{locally optimal proposals} \parencite[e.g.][]{doucet2000} or \emph{lookahead methods} \parencite{lin2013}.
 Feynman-Kac formalisms for some of these variants are presented for example in \textcite[Section 5.1.2]{chopin2020}.
@@ -292,7 +292,7 @@ Furthermore, the bootstrap algorithm, where the Feynman-Kac model is \eqref{eq:b
 This is in stark contrast to a standard MCMC approach, for example, which would have to process all of the data at once up to a fixed time horizon. Adding one more observation would require running the MCMC algorithm from scratch on the extended target, making the computational cost at least linear \emph{per time point} and rendering on-line inference infeasible.
 
 The output of Algorithm~\ref{alg:SMC} is, for $i=1,\dots, N$ and $t=0,\dots,T$, the \emph{states} $X_t^{(i)} \in \mathcal{X}$, the \emph{weights} $w_t^{(i)} \in [0,1]$ and, for $i=1,\dots, N$ and $t=0,\dots,T-1$, the \emph{parental indices} $a_t^{(i)} \in \{1,\dots,N\}$.
-Depending on the application, one may want to retain only a subset of this output in order to reduce memory usage.
+Depending on the application, one may wish to retain only a subset of this output in order to reduce memory usage.
 
 The output can be used to construct discrete approximations of the various probability measures of interest, with which one may estimate integrals against test functions, i.e.\ expectations.
 The measure $\mathbb{Q}_t(dx_t)$, corresponding to a filtering distribution in the state space model example, is approximated by the empirical measure
@@ -378,7 +378,7 @@ for every $\xi, \eta \in \mathcal{P}_n$, where $|\xi|$ denotes the number of blo
 \includegraphics[width=0.6\textwidth, trim={2.8cm 3cm 1.5cm 2cm}, clip]{plots/ncoalescent.pdf}
 \caption[The $n$-coalescent]{A realisation of the $n$-coalescent with $n=50$.}
 \end{figure}
-A particularly attractive feature of the $n$-coalescent is its tractability; its distribution and those of many statistics of interest are available in closed form (Section~\ref{sec:KCproperties}).
+A particularly attractive feature of the $n$-coalescent is its tractability: its distribution and those of many statistics of interest are available in closed form (Section~\ref{sec:KCproperties}).
 It turns out also to be extremely useful as a limiting distribution in population genetics, including in its domain of attraction the genealogies of a wide range of population models (Section~\ref{sec:popgenmodels}).
 
 
@@ -586,7 +586,7 @@ The joint distribution of the offspring counts is therefore
 Since the Multinomial distribution is exchangeable, the Wright-Fisher model is a special case of the Cannings model.
 %There are several non-neutral variants of the Wright-Fisher model \seb{citations?}, but they are typically much less tractable than the neutral one.
 
-\textcite{kingman1982gene} showed that the Wright-Fisher model satisfies his sufficient conditions, and thus the resulting genealogies, appropriately rescaled, converge to the Kingman coalescent as $N\to\infty$.
+\textcite{kingman1982gene} shows that the Wright-Fisher model satisfies his sufficient conditions, and thus the resulting genealogies, appropriately rescaled, converge to the Kingman coalescent as $N\to\infty$.
 The correct time scale in this instance is $N$, since
 \begin{equation*}
 \V[\nu_1] = N\frac{1}{N} \left
@@ -617,7 +617,7 @@ although the sufficient conditions of \textcite{kingman1982gene} do not apply:
 \to 0 ,
 \end{align*}
 violating the condition that $\sigma^2 >0$. 
-That condition turns out not to be necessary, and $\V[\nu_1]$ gives us the correct time scale on which to recover the Kingman coalescent: $N(\V[\nu_1])^{-1} = N^2/2$.
+That condition turns out not to be necessary, and the non-asymptotic variance gives us the correct time scale on which to recover the Kingman coalescent: $N(\V[\nu_1])^{-1} = N^2/2$.
 It is not surprising that the time scale is an order bigger than in the Wright-Fisher model, because the Moran model has a reproduction rate $O(N)$ times lower than in the Wright-Fisher model: at each generation $2$ individuals are involved in reproduction, as opposed to $N$ in the Wright-Fisher model.
 %\seb{also cite a Moran-specific convergence result: not sure where (it isn't in Kingman 1982* or in Moran 1958 which predates KC)}
 
@@ -631,13 +631,13 @@ The original work of \textcite{kingman1982gene} provides sufficient conditions f
 For that class of models under the same conditions, \textcite{mohle1999} proves that the genealogies converge weakly as well as in the sense of finite-dimensional distributions.
 \textcite{mohle2000} gives a simpler condition which is necessary and sufficient for convergence of Cannings genealogies to the Kingman coalescent. % that N&S condition is the exchangeable version of our main theorem condition.
 
-Meanwhile many similar results were established for models in which the limiting process is not the Kingman coalescent.
+Meanwhile many similar results have been established for models in which the limiting process is not the Kingman coalescent.
 Relaxing the conditions to allow multiple mergers in the limit admits $\Lambda$-coalescents as limiting processes, with the Kingman coalescent as a special case \parencite{pitman1999, sagitov1999, mohlesagitov1998}.
 If simultaneous mergers are also allowed, the limiting process belongs to the even more general class of $\Xi$-coalescents \parencite{mohle2001}, and this class encompasses all possible limiting genealogies of Cannings models.
 On the other hand, \textcite{delmoral2009} do not consider asymptotics in the population size, but instead prove some properties of neutral models with fixed population $N$, particularly concerning the MRCA. 
 
 The focus of the current work is on systems that admit Kingman genealogies in the limit, among a wider class of models where, like \textcite{mohle1998, mohle1999}, exchangeability is relaxed to random assignment, and we also do not require independence between generations, so our models are not neutral. 
-%In particular, this class of models is non-neutral.
+We instead impose a particular conditional independence structure which is based on the inherent structure of SMC algorithms (Figure~\ref{fig:cond_indep_graph}) but also serves as a natural description of the dependencies present in populations under selection.
 Our main condition for convergence to the Kingman coalescent, which is introduced in Chapter~\ref{ch:limits}, can be considered a non-exchangeable non-neutral analogue of the condition presented in \textcite{mohle2000}.
 
 
@@ -694,7 +694,7 @@ Each line is the lineage of one of the terminal particles, indicating the index 
 \subref{fig:ancdegen_adaptsyst} the same system with adaptive systematic resampling.}
 \label{fig:ancestral_degeneracy}
 \end{figure}
-On the other hand, ancestral degeneracy actually improves the memory efficiency of SMC. We do not need to store all of the particles generated at each time (at memory cost $O(NT)$), only those that are included in the resulting genealogy. \textcite{jacob2015} provide an algorithm for efficient storage of the genealogy, reducing the asymptotic memory cost to $O(N\log N+T)$.
+On the other hand, ancestral degeneracy actually improves the memory efficiency of SMC. We do not need to store all of the particles generated at each time, at memory cost $O(NT)$, but only those that are included in the resulting genealogy. \textcite{jacob2015} provide an algorithm for efficient storage of the genealogy, reducing the asymptotic memory cost to $O(N\log N+T)$.
 However, it is certainly still worth trying to reduce ancestral degeneracy because to achieve a given level of error with a highly degenerate system will require such a large $N$ that any such memory gains are cancelled out.
 %(a) because computation is often the limiting factor rather than memory, and (b) 
 
@@ -703,7 +703,7 @@ However, it is certainly still worth trying to reduce ancestral degeneracy becau
 There are a few possible approaches to mitigating ancestral degeneracy.
 Firstly, we could try to limit the number of offspring assigned to any one parent during each resampling step. We can only go so far, because we need the resampling procedure to remain unbiased (as discussed in Section~\ref{sec:SMC_FK}), but we can try to reduce the variance inherent in the resampling procedure. This idea, known as \emph{low-variance resampling} is explored in detail in Section~\ref{sec:resampling}.
 
-Another idea is to resample less often. Recall that the reason for resampling is to prevent weight degeneracy (that is, one of the weights tending to one while the others tend to zero). Now we see that, while solving one type of degeneracy, resampling creates another. The effect of ancestral degeneracy is essentially the same as that of weight degeneracy: both drastically increase the variance of the resulting SMC estimators. 
+Another idea is to resample less often. Recall that the reason for resampling is to prevent weight degeneracy (that is, one of the weights tending to one while the others tend to zero). Now we see that, while removing one type of degeneracy, resampling creates another. The effect of ancestral degeneracy is essentially the same as that of weight degeneracy: both drastically increase the variance of the resulting SMC estimators. 
 We can therefore consider a trade-off between the two, which is the idea behind \emph{adaptive resampling} \parencite[Section 4]{liu1995}.
 The trick is to apply the resampling step only at iterations in which a certain criterion is met. The most commonly-used criterion, suggested by \textcite[Equation (14)]{liu1995}, is based on the \emph{effective sample size}
 \begin{equation*}
@@ -711,8 +711,7 @@ ESS(t) := \left\{ \sum_{i=1}^N (w_t^{(i)})^2 \right\}^{-1} ,
 \end{equation*}
 which decreases as the weights degenerate.
 The resampling step is then applied only at iterations $t$ such that $ESS(t)$ is less than some pre-specified threshold, typically $N/2$. %\seb{[citation?]}
-
-If adaptive resampling is used, some trivial changes are required to the calculation of the weights in Algorithm~\ref{alg:SMC}, to allow for the importance weights to accumulate sequentially until the particles are resampled. See e.g.\ \textcite[Section 10.2]{chopin2020} for details.
+If adaptive resampling is used, some trivial changes must be made to the calculation of the weights in Algorithm~\ref{alg:SMC} to allow the importance weights to accumulate sequentially until resampling is triggered; see for example \textcite[Section 10.2]{chopin2020} for details.
 
 As well as mitigating ancestral degeneracy, adaptive resampling has the virtue of saving some computation (although the overall asymptotic complexity of the SMC algorithm does not change).
 How effective adaptive resampling will be depends on the particular application and choice of SMC algorithm. If the proposals (i.e.\ transition kernels) are not very close to their targets then the weights will degenerate rapidly and the effective sample size criterion (or similar) will not reduce the frequency of resampling very much.
@@ -720,8 +719,8 @@ How effective adaptive resampling will be depends on the particular application 
 Low-variance resampling is also less effective under poor proposals: the resulting high-variance weights lead to high-variance offspring counts, even under minimum-variance resampling schemes, because the resampling is required to be unbiased.
 
 Adaptive resampling and low-variance resampling can be combined, and this is widely considered to be the best practice when implementing SMC.
-Figure~\ref{fig:ancestral_degeneracy} compares ancestral degeneration under multinomial resampling (a relatively high variance scheme) to the same under adaptive resampling with a minimum-variance resampling scheme.
-It is clear that the degeneration is much more severe in the former case.
+Figure~\ref{fig:ancestral_degeneracy} compares a realisation of ancestral degeneration under multinomial resampling (a relatively high variance scheme) to the same under adaptive resampling with a minimum-variance resampling scheme.
+The degeneration is much more severe in the former case.
 
 There is one technique that completely solves the problem of ancestral degeneracy, namely \emph{backward simulation} \parencite{godsill2004}. This involves running an SMC algorithm as usual (the \emph{forward pass}), and then sampling new ancestors for each particle during an additional \emph{backward pass}. 
 The backward-simulated parents in each generation are chosen among all $N$ particles, making use of particles that were not included in the forward-sampled trajectories.
@@ -735,7 +734,7 @@ Secondly, calculating the backward-simulation probabilities requires the Markov 
 
 
 \subsection{Asymptotic genealogies}
-If we had access to information about the behaviour of SMC genealogies a priori (i.e.\ without having run the algorithm), we would be in a position to answer many questions of interest. These include practical questions about tuning, for example:
+If we had access to information about the behaviour of SMC genealogies a priori, i.e.\ without having run the algorithm, we would be in a position to answer many questions of interest. These include practical questions about tuning, for example:
 \begin{itemize}
 \item How many particles should I use in order to maintain (with high enough probability) a given level of error over a time horizon $T$?
 \item With $N$ particles, what is the largest lag over which fixed-lag smoothing produces reasonable estimates?
@@ -757,7 +756,7 @@ In this regime, many different particle systems exhibit genealogies of a common 
 
 In the context of SMC, these asymptotic genealogies were first analysed by \textcite{koskela2018}. The simulations therein suggest that such asymptotic results also transfer to finite systems, making them practically useful.
 One of the contributions of the current work is to demonstrate that Kingman-type genealogies arise from a wide variety of SMC algorithms, including those most commonly used in practice.
-In principle this means, for instance, that genealogies of different SMC algorithms can be compared by examining the corresponding time-scale functions.
+In principle this means, for instance, that genealogies of different SMC algorithms could be compared by examining the corresponding time-scale functions.
 
 
 
@@ -781,7 +780,7 @@ For our purposes, a valid resampling scheme is a stochastic function mapping wei
 $w_t^{(1:N)} \in \mathcal{S}_{N-1}$ 
 to offspring counts 
 $\nu_t^{(1:N)} \in \{0,\dots,N\}^N $
-that satisfies the following conditions:
+and satisfying the following conditions:
 \begin{enumerate}
 \item\label{item:resampling_property1} the population size is conserved:
 $ \sum_{i=1}^N \nu_t^{(i)} =N $
@@ -792,7 +791,7 @@ $ \E[ \nu_t^{(i)} \mid w_t^{(i)} ] = N w_t^{(i)} $ for all $i$.
 \end{enumerate}
 \end{defn}
 It is possible to design resampling schemes that violate these properties.
-Resampling different numbers of particles in different iterations (violating condition~\ref{item:resampling_property1}) is of course possible \parencite[see for example][]{crisan1998}, but we typically have a fixed limit on computational resources, so in most cases it makes sense to simulate the maximum feasible number of particles $N$ at every iteration.
+Resampling different numbers of particles in different iterations (violating condition~\ref{item:resampling_property1}) is of course possible \parencite[see for example][]{crisan1998}, but we typically have a fixed limit on computational resources, in which case it makes sense to simulate the maximum feasible number of particles $N$ at every iteration.
 There may be circumstances under which it is beneficial to allow the number of particles to vary adaptively \parencite{fox2003,chau2012,lee2018} or at random, but this is not commonly done in practice.
 
 Condition~\ref{item:resampling_property2} is sensible because the whole point of resampling is to reset the weights. However, there are several examples in the literature where the weights are only partially reset, so that the variance of weights after resampling is not zero, but is lower than before resampling.
@@ -1108,7 +1107,7 @@ Bottom row (squares): in systematic resampling, only $u_1$ is used, being transf
 \subsubsection{Stratified resampling}
 %\label{sec:resampling_stratified}
 Stratified resampling was introduced by \textcite{kitagawa1996}.
-As in multinomial resampling, inversion sampling is used sample the parental indices. However, the samples used for inversion sampling are no longer i.i.d. $\Unif[0,1]$ samples. Instead, one number is sampled independently from each subinterval of length $1/N$; that is, 
+As in multinomial resampling, inversion sampling is used sample the parental indices. However, the samples used for inversion sampling are no longer i.i.d.\ $\Unif[0,1]$ samples. Instead, one number is sampled independently from each subinterval of length $1/N$; that is, 
 \begin{equation*}
 U_i \sim \Unif \left[\frac{i-1}{N}, \frac{i}{N} \right] .
 \end{equation*}
@@ -1289,7 +1288,7 @@ $p_2$ & $\delta_L(\delta -\delta_L)$ & 0 & 0 & $1/4$ \\
 Systematic resampling is described in \textcite{carpenter1999} and also in \textcite{whitley1994} where it is called stochastic universal sampling.
 
 Like stratified resampling, it uses the inversion sampler of multinomial resampling but starts with a more regular set of points in $[0,1]$.
-In this scheme, only one standard Uniform sample is drawn, $u \sim \Unif[0,1]$, from which the $N$ samples are generated by via the transformation
+In this scheme, only one standard Uniform sample is drawn, $u \sim \Unif[0,1]$, from which the $N$ samples are generated via the transformation
 \begin{equation*}
 U_i = \frac{u+ i-1}{N}
 \end{equation*}
@@ -1347,15 +1346,16 @@ and set $a_t^{(i)} = a$ for all $i$.
 The resulting offspring counts are all equal to zero except for $\nu_t^{(a)}$, which is equal to $N$.
 This resampling scheme is indeed unbiased, since each offspring count has marginal distribution
 \begin{equation*}
-\nu_t^{(i)}  \mid w_t^{(1:N)} 
+\nu_t^{(i)}
 = \begin{cases}
 0 & \text{w.p. } 1-w_t^{(i)} \\
-N & \text{w.p. } w_t^{(i)} .
+N & \text{w.p. } w_t^{(i)} 
 \end{cases}
 \end{equation*}
+conditional on $w_t^{(1:N)}$.
 These offspring counts have the highest possible marginal variance subject to $\E[ \nu_t^{(i)}  \mid w_t^{(i)} ] = Nw_t^{(i)}$ and $\nu_t^{(i)} \in \{0,\dots,N\}$.
 
-I call this scheme \emph{star resampling} because the parent-offspring relationships at each iteration form a star graph.
+We call this scheme \emph{star resampling} because the parent-offspring relationships at each iteration form a star graph.
 
 
 \subsubsection{Minimal variance branching}
@@ -1367,7 +1367,7 @@ It requires that each offspring count $\nu_t^{(i)}$, conditionally on $w_t^{(i)}
 We will see later on that this is exactly the framework of \emph{stochastic rounding}.
 
 The set-up of \textcite{crisan1999} does not require the number of particles to remain constant from one generation to the next (Property~\ref{item:resampling_property1} in Definition~\ref{defn:resampling}), so the MVB algorithm could be implemented for instance by sampling each $\nu_t^{(i)}$ independently from \eqref{eq:branching_distn}. The authors remark that enforcing strictly negative correlation between the offspring counts can improve the rate of convergence, but they do not specify how this might be achieved.
-Since we are not given a specific implementation, MVB is not discussed much in the remainder of the chapter, and is for instance omitted from Table~\ref{tab:resampling_properties} since many of the properties included there are not well-defined for MVB.
+Since we are not given a specific implementation, MVB resampling is not discussed much in the remainder of the chapter, and is for instance omitted from Table~\ref{tab:resampling_properties} since many of the properties included there are not well-defined for MVB resampling.
 
 
 
@@ -1375,7 +1375,7 @@ Since we are not given a specific implementation, MVB is not discussed much in t
 \textcite{gerber2017} build on the work of \textcite{crisan1999} in that they construct a resampling scheme for which the marginal offspring counts are distributed as \eqref{eq:branching_distn}, but the number of particles is held constant and non-negative correlation of offspring counts is enforced. The resulting scheme is termed \emph{Srinivasan sampling procedure (SSP) resampling} after \textcite{srinivasan2001}.
 
 The implementation is somewhat complicated compared to the other schemes we have seen \parencite[for full details see][Algorithm~1]{gerber2017} but a brief description is given here.
-The offspring counts are initialised at $Nw_t^{(i)}$, then we iterate through pairs of counts, rounding one of the pair up and the other down by an amount such that at least one of the pair ends up an integer. After at most $N$ such adjustments, all of the counts are integers and can be returned. Each iteration adds and subtracts the same amount so that the sum of the counts is preserved, ensuring that the number of particles remains constant. Which of the selected pair is increased/decreased in each iteration is chosen at random with probabilities that guarantee the resampling is unbiased.
+The offspring counts are initialised at $Nw_t^{(1:N)}$, then the algorithm iterates through pairs of counts, rounding one of the pair up and the other down by an amount such that at least one of the pair ends up an integer. After at most $N$ such adjustments, all of the counts are integers and can be returned. Each iteration adds and subtracts the same amount so that the sum of the counts is preserved, ensuring that the number of particles remains constant. Which of the selected pair is increased/decreased in each iteration is chosen at random with probabilities that guarantee the resampling is unbiased.
 
 As well as proposing this resampling scheme, \textcite{gerber2017} make several other contributions to the SMC resampling literature, some of which will be discussed later.
 

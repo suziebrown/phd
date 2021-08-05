@@ -37,6 +37,7 @@
 \usepackage{subfig}
 %%% add user-defined colours here: I'm using <gray!20> and <gray> in the weak conv graph e.g.
 \definecolor{violet}{rgb}{0.53, 0.0, 0.69}
+\usepackage[font=small]{caption}
 
 %%% EPIGRAPHS
 \usepackage{epigraph}
@@ -137,7 +138,7 @@ To facilitate comparisons between different algorithms, the induced genealogical
 Simple conditions are derived under which these genealogical processes converge weakly to Kingman's well-studied $n$-coalescent, with a certain time change.
 These sufficient conditions are verified for the many of the most popular sequential Monte Carlo algorithms, giving a novel insight into the large-sample behaviour of the associated estimators.
 The asymptotic regime serves to unify these different algorithms in one framework, the genealogical differences between the algorithms then being fully captured by the respective time-change functions.
-The results also have implications in theoretical population genetics, where the processes studied may be seen as population models incorporating selection. Our main result then comprises a novel weak convergence theorem for genealogies arising from non-neutral populations.
+The results also have implications in theoretical population genetics, where the processes studied may be seen as population models involving selection. Our main theorem then comprises a novel weak convergence result for genealogies arising from non-neutral populations.
 
 
 %%% The abstract must be no more than 300 words and may be single-spaced to ensure it fits on one page.
@@ -177,17 +178,17 @@ The final part of Section~\ref{sec:FDDproof}, comprising the modification to the
 %%%
 {\parindent0pt
 Firstly I would like to thank my supervisors, Dr.\ Paul Jenkins, Dr.\ Jere Koskela and Prof.\ Adam Johansen, who for the past three years have guided me through swamps of calculations and done your best to keep my focus on things that are important.
-Your combined expertise in all things Monte Carlo and population genetics have been invaluable, and your humour and general cynicism have enlightened many a dreary week.
+Your combined expertise in all things Monte Carlo and population genetics have been invaluable, and your humour and general cynicism have illuminated many a week.
 Thank you also to those people sitting near me in the office, who have been called upon many times to stupid-check my calculations --- Francesca Crucinio, James Hodgson and Marco Palma --- your enduring patience is gratefully received.
-I am also very grateful to Dr.\ Dario Span\`o and Prof.\ Martin M\"ohle for agreeing to examine this thesis --- perhaps you didn't know what you were getting into!
+I am also very grateful to Dr.\ Dario Span\`o and Prof.\ Martin M\"ohle for agreeing to examine this thesis.
 \\
 
-I also owe my thanks to the EPSRC for providing funding (under grant EP/L016710/1), without which I would not have been able to embark upon this PhD, and to the organisers of the OxWaSP CDT, which equipped me with a broad knowledge of modern statistics and gave me the confidence to complete this research.
-Thanks also to Prof.\ Oliver Johnson and Prof.\ Jonty Rougier for encouraging me to continue my academic studies and to apply for this PhD programme.
+Funding was provided by the EPSRC, under grant EP/L016710/1, without which I would not have been able to embark upon this PhD. I also thank the organisers of the OxWaSP CDT, which equipped me with a broad knowledge of modern statistics and gave me the confidence to complete this research.
+Thanks to Prof.\ Oliver Johnson and Prof.\ Jonty Rougier for encouraging me to continue my academic studies and to apply for this PhD programme.
 \\
 
 Thank you to all of the colleagues who helped to create such a fun and stimulating research environment at Warwick: fellow OxWaSP students, office-mates and the wider young researchers community in the department. Special thanks to Ana Ignatieva and Jaro Sant for providing the bastion of continuity that is the population genetics reading group.
-A very special thank you must go to the bridge club --- Jack Carter, Francesca Crucinio, Giulio Morina, Marco Palma and William Thomas --- for your best efforts in preventing me from finishing my thesis. Perhaps it is for the best that a pandemic put an end to our excessively long lunch breaks.
+A very special thank you goes to the bridge club --- Jack Carter, Francesca Crucinio, Giulio Morina, Marco Palma and William Thomas --- for your best efforts in preventing me from finishing my thesis. Perhaps it is for the best that a pandemic put an end to our excessively long lunch breaks.
 \\
 
 I am grateful to James Brixey and Katie Farnes for your prayers and support during the writing-up phase, for keeping me sane during the lockdowns, and for many interesting discussions on unrelated topics!
@@ -206,7 +207,7 @@ S.D.G.
 
 \begin{flushright}
 Suzie Brown\\
-29 July 2021
+5 August 2021
 \end{flushright}
 }
 
