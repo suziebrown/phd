@@ -110,7 +110,7 @@ As we will see, this enables us to compute bounds on the filtered expectations o
 
 \section{Multinomial resampling}
 \label{sec:corol_mn}
-Multinomial resampling is often preferred in theoretical studies of SMC, because it renders the parental indices conditionally i.i.d. given the weights, making it relatively simple to analyse the resulting algorithm.
+Multinomial resampling is often preferred in theoretical studies of SMC because it renders the parental indices conditionally i.i.d.\ given the weights, making it relatively simple to analyse the resulting algorithm.
 The convergence of finite-dimensional distributions for multinomial resampling was proved in \textcite[Corollary 1]{koskela2018}, but we are now able to prove an analogous weak convergence result. The following proof also demonstrates the relative ease with which we can verify the conditions of Theorem~\ref{thm:FDDconv} as opposed to those of \textcite[Theorem 1]{koskela2018}.
 %The result of Corollary~\ref{thm:multinomial} was proved in \textcite[Corollary 1]{koskela2018}. It is also included here, firstly to demonstrate the relative ease with which it is proved under Theorem~\ref{thm:FDDconv} as opposed to \textcite[Theorem 1]{koskela2018}, and secondly to introduce the proof technique before proceeding to more complex resampling schemes.
 
@@ -1022,7 +1022,7 @@ The technique used for multinomial resampling (Section~\ref{sec:corol_mn}) also 
 
 
 \section{Star resampling}
-One might ask the question: is it possible to construct an SMC algorithm whose genealogies converge to some non-trivial limit other than the $n$-coalescent?
+One might ask the question: is it possible to construct an SMC algorithm whose genealogies converge to some object other than the $n$-coalescent?
 The answer is yes, as we now illustrate.
 
 Recall that star resampling assigns all of the offspring to a single parent which is sampled from the Categorical distribution parametrised by $w_t^{(1:N)}$.

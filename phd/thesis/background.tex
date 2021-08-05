@@ -1419,9 +1419,9 @@ The findings are summarised in Table~\ref{tab:resampling_properties}, with the e
 Recall that the weights give an indication of how useful each particle is for the approximation. Killing a high-weight particle is likely to increase the variance of the SMC estimates, while duplicating a low-weight particle wastes computational resources on propagating particles that will not contribute much to reducing that variance.
 One way to assess the performance of a given resampling scheme, then, is to consider the support of the marginal offspring distributions, conditional on the weights. This tells us how many duplicates it is possible to obtain from a particle with a given weight, and is therefore an indication of performance, albeit a rather crude one.
 
-Suppose that $w_t^{(i)} \in [K/N, (K+1)/N]$. The value of $K$ roughly determines how useful particle $i$ is. Conditional on $K$, we will determine the range of possible values $\nu_t^{(i)}$ can take, under each  of the resampling schemes described in Section~\ref{sec:examples_resamplingschemes}.
+Suppose that $w_t^{(i)} \in [ \frac{K}{N}, \frac{K+1}{N} )$. The value of $K$ roughly determines how useful particle $i$ is. Conditional on $K$, we will determine the range of possible values $\nu_t^{(i)}$ can take, under each  of the resampling schemes described in Section~\ref{sec:examples_resamplingschemes}.
 
-Under multinomial resampling, it is possible for $\nu_t^{(i)}$ to take any value from $0$ to $N$ (although some values are of course more likely than others).
+Under multinomial resampling, it is possible for $\nu_t^{(i)}$ to take any value from $0$ to $N$, although some values are of course more likely than others.
 Thus it is possible for a high-weight particle to have zero offspring, or a low-weight particle to have many offspring, simply by chance.
 
 Residual resampling ensures that every particle with above-average (i.e.\ $>1/N$) weight has at least one offspring, avoiding the loss of high-weight particles. If the residuals are sampled using multinomial resampling then the duplication of low-weight particles is not avoided, $\nu_t^{(i)} \in \{K, \dots, K+R\} \subseteq \{K,\dots, N\}$, but this can be addressed by using a lower-variance scheme for the residual offspring. Various choices are included in Table~\ref{tab:resampling_properties}.
@@ -1429,7 +1429,7 @@ Residual resampling ensures that every particle with above-average (i.e.\ $>1/N$
 Stratified resampling is more restrictive, $\nu_t^{(i)} \in \{ K-1, K, K+1, K+2 \}$, but allows the possibility of a particle with above-average weight having no offspring. This is not quite as good as the erroneous claim of \textcite{douc2005} that $| \nu_t^{(i)} - Nw_t^{(i)} | \leq 1$ for stratified resampling.
 Systematic resampling has the smallest support, $\nu_t^{(i)} \in \{K, K+1\}$, that is possible whilst maintaining unbiasedness, as do SSP and MVB resampling.
 
-Another way to quantify this property is by considering the maximum possible difference between the offspring count $\nu_t^{(i)}$ and its expected value $N w_t^{(i)}$. This is also presented in Table~\ref{tab:resampling_properties}.
+Another way to quantify this property is by considering the maximum amount by which the offspring count $\nu_t^{(i)}$ can differ from its expected value $N w_t^{(i)}$. This is also presented in Table~\ref{tab:resampling_properties}.
 
 
 
@@ -1458,7 +1458,7 @@ In multinomial resampling, the marginal distributions are
 \nu_t^{(i)} \mid w_t^{(i)} 
 \eqdist \Bin(N, w_t^{(i)})
 \end{equation*}
-so the variance is
+so the variance in question is
 \begin{equation*}
 \V[ \nu_t^{(i)} \mid w_t^{(i)} ]
 = N w_t^{(i)} ( 1- w_t^{(i)} ) .
@@ -1468,7 +1468,7 @@ Compare this to star resampling, where the marginal offspring counts
 \nu_t^{(i)} \mid w_t^{(i)} 
 \eqdist N \Bern( w_t^{(i)} )
 \end{equation*}
-having variance
+have variance
 \begin{equation*}
 \V[ \nu_t^{(i)} \mid w_t^{(i)} ]
 = N^2 w_t^{(i)} ( 1- w_t^{(i)} ) ,
@@ -1610,12 +1610,12 @@ Define the one-step Monte Carlo variance induced by resampling as
 \end{equation}
 where $\varphi$ is an arbitrary test function.
 
-Some results comparing this variance across different resampling schemes are presented in \textcite{douc2005}. 
+Some results comparing this variance across different resampling schemes are proved in \textcite{douc2005}. 
 Their results, plus some additional ones, are presented in Proposition~\ref{thm:resampling_var_compare}.
 It may be possible to derive similar results regarding residual-stratified and SSP resampling, but such results are hard to obtain due to the strong dependence between parental indices induced by these resampling schemes. 
 This remains an interesting open problem.
 
-In the case of systematic (but not necessarily residual-systematic) resampling, no such variance comparison can be made. Systematic resampling generally yields low variance in practice, but it is possible to construct pathological cases in which it yields higher variance than multinomial resampling \parencite[Section 3.4]{douc2005} and it lacks theoretical support more generally \parencite[e.g.][Section 3.3]{gerber2017}.
+In the case of systematic %(but not necessarily residual-systematic) resampling, no such variance comparison can be made. Systematic resampling generally yields low variance in practice, but it is possible to construct pathological cases in which it yields higher variance than multinomial resampling \parencite[Section 3.4]{douc2005} and it lacks theoretical support more generally \parencite[e.g.][Section 3.3]{gerber2017}.
 
 \begin{prop}[Variance of resampling schemes]\label{thm:resampling_var_compare}
 Let $\sigma_{\texttt{multi}}$ etc.\ denote the variance \eqref{eq:resamplingMCvariance} under the various resampling schemes, as abbreviated in Table~\ref{tab:resampling_abbrevs}.
@@ -1695,7 +1695,7 @@ Under star resampling, all of the resampled indices are equal, say $X_t^{(a_t^{(
         \Prob[ X_t^\star = X_t^{(j)} \mid \mathcal{G}_t ] \right\}^2 \notag\\
 &= \sum_{j=1}^N \varphi^2(X_t^{(j)}) w_t^{(j)}
         - \left\{ \sum_{j=1}^N \varphi(X_t^{(j)}) w_t^{(j)} \right\}^2 \label{eq:condvar_star}\\
-&= N \sigma_{\texttt{multi}}(\varphi) , \notag
+&= N \sigma_{\texttt{multi}}(\varphi) \notag
 \end{align}
 as required.\\
 \textbf{\ref{item:resampling_var4}} The second inequality follows from \ref{item:resampling_var2} and is stated in \textcite[p.9]{gerber2017}.
@@ -2004,11 +2004,10 @@ For residual-systematic resampling, we can cook up a counterexample in the same 
 since the residual weight intervals corresponding to parents $1$ and $3$ both occupy the first half of a length-$(1/R)$ interval, hence $\{\nu^{(1)}=1\}$ and $\{\nu^{(3)}=1\}$ each have probability $1/2$ and $\nu^{(3)}=1$ if and only if $\nu^{(1)}=1$. 
 So residual-systematic resampling also violates the negative association property.
 
-\textcite{gerber2017} also mention some resampling schemes that do result in negatively associated counts: stratified resampling, and by implication residual-stratified resampling; star resampling (see the remark at the end of \textcite[Section 3.2]{gerber2017}), and by implication residual-star resampling.
+\textcite{gerber2017} also mention some resampling schemes that do result in negatively associated counts: stratified resampling, and by implication residual-stratified resampling; star resampling \parencite[see the remark at the end of][Section 3.2]{gerber2017}, and by implication residual-star resampling.
 The authors go on to introduce the SSP resampling scheme, which yields negatively associated offspring counts by construction.
-
 These results are summarised in Table~\ref{tab:resampling_properties}.
-The MVB algorithm does not enforce negative association, so this property depends on the particular implementation, and as such is left blank in Table~\ref{tab:resampling_properties}.
+%The MVB algorithm does not enforce negative association, so this property depends on the particular implementation, and as such is left blank in Table~\ref{tab:resampling_properties}.
 
 
 
@@ -2189,7 +2188,7 @@ Y_i \mid X_i =
 \end{equation*}
 \end{defn}
 
-By construction, $\E(Y_i) = X_i$ for each $i$. Taking $X$ to be $N$ times the vector of particle weights, we can therefore use stochastic rounding to construct a valid resampling scheme, under the further constraint that $Y_1 + \dots + Y_N = N$.
+By construction, $\E[Y_i] = X_i$ for each $i$. Taking $X$ to be $N$ times the vector of particle weights, we can therefore use stochastic rounding to construct a valid resampling scheme, under the further constraint that $Y_1 + \dots + Y_N = N$.
 Several ways to enforce this constraint on the joint distribution have been proposed, including systematic resampling, residual resampling with systematic residuals, and SSP resampling.
 
 Explicitly, the offspring counts are marginally distributed according to 
@@ -2200,7 +2199,7 @@ Explicitly, the offspring counts are marginally distributed according to
 
 Some of the properties discussed earlier are common to every stochastic rounding scheme. 
 Since all such schemes give offspring counts with the same marginal distributions, properties such as the marginal offspring variance are common to all stochastic roundings. Indeed it is easy to see that the marginal variance of the offspring counts, $\V[ \nu_t^{(i)} \mid w_t^{(i)} ]$ is as small as possible under the constraint of unbiasedness, and as such this is sometimes referred to as minimal-variance resampling.
-By definition, the support of an offspring count $\nu_t^{(i)}$ given that the associated weight lies in the interval $K/N \leq w_t^{(i)} < (K+1)/N$ is $\{ K, K+1\}$. 
+By definition, the support of an offspring count $\nu_t^{(i)}$ given that the associated weight $w_t^{(i)}$ lies in the interval $[ \frac{K}{N}, \frac{K+1}{N} )$ is $\{ K, K+1\}$. 
 All stochastic roundings are also degenerate when the weights are all equal, i.e.\ $w_t^{(1:N)} = (1,\dots, 1)/N$ implies $\nu_t^{(1:N)}=(1,\dots,1)$ almost surely.
 
 
@@ -2213,7 +2212,7 @@ All stochastic roundings are also degenerate when the weights are all equal, i.e
 \textcite{andrieu2010} propose a number of \emph{particle MCMC} algorithms, which combine SMC with MCMC in order to improve performance in certain situations.
 One of their algorithms, the \emph{particle Gibbs} sampler \parencite[Section 2.4.3]{andrieu2010}, is of particular interest in the current work. For one thing, genealogies are particularly critical to its performance, and for another, the particle update uses a variant SMC algorithm which alters the distribution of genealogies.
 
-In this section, we first introduce the particle Gibbs algorithm and the conditional SMC update, then discuss how ancestral degeneracy impacts the performance of particle Gibbs and how ancestor sampling mitigates this.
+In this section, we first introduce the particle Gibbs algorithm and the conditional SMC update, then discuss how ancestral degeneracy impacts the performance of particle Gibbs and how \emph{ancestor sampling} mitigates this.
 
 
 
@@ -2255,7 +2254,7 @@ However, the Markov chain associated to the procedure just described does not ad
 A Gibbs sampler targeting $p(x_{0:T},\theta \mid y_{0:T})$ exactly can be constructed by replacing the SMC step with a \emph{conditional SMC} step, which takes into account the value of $x_{0:T}$ sampled at the previous iteration, as well as the observations and the current value of $\theta$.
 
 A conditional SMC algorithm for this scenario is presented in Algorithm~\ref{alg:condSMC}.
-In contrast to Algorithm~\ref{alg:SMC}, the input now includes $x_{0:T}^\star$ and $a_{0:T}^\star$, which encode the states and parental indices, respectively, of the \emph{immortal trajectory} (so called because it ``survives'' the SMC run with probability one). Within a particle Gibbs algorithm, the immortal trajectory is set to the trajectory sampled at the previous iteration.
+In contrast to Algorithm~\ref{alg:SMC}, the input now includes $x_{0:T}^\star$ and $a_{0:T}^\star$, which encode the states and parental indices, respectively, of the \emph{immortal trajectory} (so called because it survives the SMC run with probability one). Within a particle Gibbs algorithm, the immortal trajectory is set to the trajectory sampled at the previous iteration.
 The resampling step now assigns the immortal offspring to the immortal parent deterministically, and the state of the immortal particle is also updated deterministically rather than via the Markov kernel.
 As in standard SMC, there is a choice of \textsc{resample} procedures, but some care is needed to ensure the correct treatment of the immortal particle \parencite[for details see e.g.][]{lee2019}.
 In the case of multinomial resampling, exchangeability of the offspring means that conditioning on $a_{t-1}^\star$ has no effect on the resampling of the non-immortal particles.
@@ -2285,7 +2284,7 @@ Set $X_0^{(a_0^\star)} \gets x_0^\star$\;
 \caption[Conditional sequential Monte Carlo]{Conditional sequential Monte Carlo for a parametrised state space model. The immortal particle at each generation has its new state and parental index set deterministically according to the values of $x_{0:T}^\star$ and $a_{0:T}^\star$ given as input.}
 \label{alg:condSMC}
 \end{algorithm}
-The complete particle Gibbs algorithm for this example then consists of alternately sampling from the full conditional distribution of $\theta$ (e.g.\ using a Metropolis-Hastings update) and sampling a trajectory $(x_{0:T}, a_{0:T})$ using conditional SMC. See \textcite[Section 2.4.3]{andrieu2010} for more details.
+The complete particle Gibbs algorithm for this example then consists of alternately sampling from the full conditional distribution of $\theta$ (perhaps using a Metropolis-Hastings update) and sampling a trajectory $(x_{0:T}, a_{0:T})$ from the output of a conditional SMC update. See \textcite[Section 2.4.3]{andrieu2010} for more details.
 
 
 
@@ -2306,7 +2305,7 @@ A new trajectory (highlighted in purple) is then sampled among the $N$ generated
 \end{figure}
 
 At the next iteration the newly sampled trajectories will again coalesce onto the immortal trajectory, and this behaviour is repeated. 
-If $T$ is too large with respect to $N$, the early part of the trajectory will very rarely be updated, so the corresponding states will mix very slowly.
+If $T$ is too large with respect to $N$, the early part of the trajectory is rarely updated, so the corresponding states mix very slowly.
 For further intuition on this phenomenon the reader is directed to \textcite[Section 5.4]{lindsten2013}.
 %\seb{Also include a plot showing sticky realisations from a sequence of consecutive draws?}
 %\seb{If the immortal trajectory is not ``typical'' of the target smoothing distribution, then the new lineages tend not to degenerate very quickly onto the immortal lineage, which would solve this problem. However, since the immortal trajectory is supposed to be (approaching) a sample from the target, this is not much comfort. Perhaps if perturbing $\theta$ profoundly changes the model? But I don't think that kind of instability is desirable either.}
@@ -2319,8 +2318,8 @@ It is therefore worth investing some effort to find an alternative solution to t
 
 
 \subsection{Ancestor sampling}\label{sec:ancsamp}
-An effective solution (where it is possible to implement it) was proposed by \textcite{whiteley2010} and is known as \emph{ancestor sampling}.
-It consists of a simple modification to the resampling step within the conditional SMC algorithm. 
+An effective solution, where it is possible to implement it, is \emph{ancestor sampling}, proposed by \textcite{whiteley2010}.
+This consists of a simple modification to the resampling step within the conditional SMC algorithm. 
 In the basic algorithm with multinomial resampling, at each time step the non-immortal particles are resampled by multinomial resampling according to their weights, while the immortal offspring is deterministically assigned to the immortal parent. That is, at time $t$, for each $i \in \{1,\dots, N\}$,
 \begin{equation*}
 \Prob\left[ a_t^{(j)} = i \midd X_{0:t}^{(1:N)}, x_{0:T}^\star, a_{0:T}^\star \right] 
@@ -2332,7 +2331,7 @@ w_t^{(i)} & j \text{ non-immortal} \\
 
 Ancestor sampling combines the resampling step with a backward simulation step for the immortal particle. Instead of deterministically inheriting the immortal parent, the immortal particle samples its parent among all $N$ possible parents.
 This is justified in the same way as backward simulation in general (Section~\ref{sec:anc_degen}), provided the ancestor sampling probabilities are chosen correctly, although we now apply the backward simulation step to the immortal trajectory only.
-Ancestor sampling can also be implemented for other choices of \textsc{resample}, using the same backward simulation probabilities (but of course the resampling probabilities for non-immortal particles will be different, and there may be some additional dependence between parental indices). For simplicity we here restrict ourselves to multinomial resampling.
+Ancestor sampling can also be implemented with other choices of resampling scheme, using the same backward simulation probabilities (but different resampling probabilities for the non-immortal particles, possibly with additional dependence between parental indices). For simplicity we here restrict ourselves to multinomial resampling.
 
 \begin{algorithm}[ht]
 \vspace*{10pt}
@@ -2360,7 +2359,7 @@ Set $X_0^{(a_0^\star)} \gets x_0^\star$\;
 \caption[Conditional sequential Monte Carlo with ancestor sampling]{Conditional sequential Monte Carlo with ancestor sampling for a parametrised state space model. The parent of the immortal particle is updated at each iteration via an on-line backward simulation step. The transition kernels $K_t^\theta$ are assumed to admit densities $q_t^\theta$. The second parameter of the Categorical variable should be interpreted elementwise, and is given up to a normalisation constant.}
 \label{alg:condSMC_ancsamp}
 \end{algorithm}
-Assume that the smoothing distributions admit densities, that is $\mu^\theta(\cdot)$ and $K_t^\theta(\cdot\mid x)$ admit densities for all $x,t$. Denote the density of $K_t^\theta$ by $q_t^\theta$. Define the trajectories $X_{t, 0:t}^{(i)}$ (for any $t,i$) as in Section~\ref{sec:SMC_FK}, starting from $X_{t,t}^{(i)} := X_t^{(i)}$ and tracing back the states of the parents via $X_{t,s}{(i)} = X_{t,s+1}^{( a_t^{(i)} )}$.
+Assume that the smoothing distributions admit densities, that is $\mu^\theta(\cdot)$ and $K_t^\theta(\cdot\mid x)$ admit densities for all $x,t$. Denote the density of $K_t^\theta$ by $q_t^\theta$, and let $\mu^\theta$ also denote the density of $\mu^\theta$. Define the trajectories $X_{t, 0:t}^{(i)}$ (for any $t,i$) as in Section~\ref{sec:SMC_FK}, starting from $X_{t,t}^{(i)} := X_t^{(i)}$ and tracing back the states of the parents via $X_{t,s}{(i)} = X_{t,s+1}^{( a_t^{(i)} )}$.
 Then the correct resampling probabilities are, for each $i$,
 \begin{equation}\label{eq:ancsamp_probs}
 \Prob\left[ a_t^{(j)} = i \midd X_{0:t}^{(1:N)}, x_{0:T}^\star, a_{0:T}^\star \right] 
@@ -2414,7 +2413,7 @@ w_t^{(i)} q_{t+1}^\theta( x_{t+1}^\star \mid X_{t}^{(i)} ) & j \text{ immortal} 
 The conditional SMC algorithm with this adaptation is presented in Algorithm~\ref{alg:condSMC_ancsamp}.
 
 We see that, in order to do ancestor sampling, we need a stronger assumption on the Markov kernels than was required to simply run the conditional SMC algorithm: we now require that, for each $t$, $K_t^\theta$ admits a density $q_t^\theta$ and that $q_t^\theta(\cdot \mid x)$ can be evaluated pointwise for any $x$, whereas previously we only needed to draw samples from $K_t^\theta(\cdot\mid x)$ for any $x$.
-This additional requirement rules out ancestor sampling in some applications, for instance when the transitions are discretisations of some stochastic differential equation.
+This additional requirement rules out ancestor sampling in some applications, for instance when the transitions are discretisations of a stochastic differential equation.
 
 Recall that the usual backward simulation procedure requires a full forward pass to calculate the future states before the backward simulation probabilities can be computed. Ancestor sampling, on the other hand, does not require a forward pass because it only computes backward simulation probabilities for the immortal trajectory, for which all the future states are known in advance. This means that the additional computational cost of implementing ancestor sampling is negligible.
 
