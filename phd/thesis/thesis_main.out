@@ -1,50 +1,53 @@
-\BOOKMARK [0][-]{chapter*.7}{Abbreviations}{}% 1
-\BOOKMARK [0][-]{chapter*.8}{Notation and Conventions}{}% 2
-\BOOKMARK [0][-]{chapter.1}{Introduction}{}% 3
-\BOOKMARK [0][-]{chapter.2}{Background}{}% 4
-\BOOKMARK [1][-]{section.2.1}{Sequential Monte Carlo}{chapter.2}% 5
-\BOOKMARK [2][-]{subsection.2.1.1}{State space models}{section.2.1}% 6
-\BOOKMARK [2][-]{subsection.2.1.2}{Inference in state space models}{section.2.1}% 7
-\BOOKMARK [2][-]{subsection.2.1.3}{Feynman-Kac models}{section.2.1}% 8
-\BOOKMARK [2][-]{subsection.2.1.4}{Sequential Monte Carlo for Feynman-Kac models}{section.2.1}% 9
-\BOOKMARK [2][-]{subsection.2.1.5}{Theoretical justification}{section.2.1}% 10
-\BOOKMARK [1][-]{section.2.2}{Coalescent theory}{chapter.2}% 11
-\BOOKMARK [2][-]{subsection.2.2.1}{Kingman's coalescent}{section.2.2}% 12
-\BOOKMARK [2][-]{subsection.2.2.2}{Properties of Kingman's coalescent}{section.2.2}% 13
-\BOOKMARK [2][-]{subsection.2.2.3}{Models in population genetics}{section.2.2}% 14
-\BOOKMARK [2][-]{subsection.2.2.4}{Other convergence results}{section.2.2}% 15
-\BOOKMARK [2][-]{subsection.2.2.5}{Particle populations}{section.2.2}% 16
-\BOOKMARK [1][-]{section.2.3}{Sequential Monte Carlo genealogies}{chapter.2}% 17
-\BOOKMARK [2][-]{subsection.2.3.1}{Ancestral degeneracy}{section.2.3}% 18
-\BOOKMARK [2][-]{subsection.2.3.2}{Asymptotic genealogies}{section.2.3}% 19
-\BOOKMARK [1][-]{section.2.4}{Resampling}{chapter.2}% 20
-\BOOKMARK [2][-]{subsection.2.4.1}{Definition}{section.2.4}% 21
-\BOOKMARK [2][-]{subsection.2.4.2}{Examples}{section.2.4}% 22
-\BOOKMARK [2][-]{subsection.2.4.3}{Properties}{section.2.4}% 23
-\BOOKMARK [2][-]{subsection.2.4.4}{Stochastic rounding}{section.2.4}% 24
-\BOOKMARK [1][-]{section.2.5}{Conditional SMC}{chapter.2}% 25
-\BOOKMARK [2][-]{subsection.2.5.1}{Particle Gibbs}{section.2.5}% 26
-\BOOKMARK [2][-]{subsection.2.5.2}{Ancestral degeneracy in particle Gibbs}{section.2.5}% 27
-\BOOKMARK [2][-]{subsection.2.5.3}{Ancestor sampling}{section.2.5}% 28
-\BOOKMARK [0][-]{chapter.3}{Convergence of Finite-Dimensional Distributions}{}% 29
-\BOOKMARK [1][-]{section.3.1}{The genealogical process}{chapter.3}% 30
-\BOOKMARK [2][-]{subsection.3.1.1}{Time scale}{section.3.1}% 31
-\BOOKMARK [2][-]{subsection.3.1.2}{Transition probabilities}{section.3.1}% 32
-\BOOKMARK [1][-]{section.3.2}{An existing limit theorem}{chapter.3}% 33
-\BOOKMARK [1][-]{section.3.3}{A new limit theorem}{chapter.3}% 34
-\BOOKMARK [2][-]{subsection.3.3.1}{Proof of theorem}{section.3.3}% 35
-\BOOKMARK [0][-]{chapter.4}{Weak Convergence}{}% 36
-\BOOKMARK [1][-]{section.4.1}{Bounds on sum-products}{chapter.4}% 37
-\BOOKMARK [1][-]{section.4.2}{Main components of induction argument}{chapter.4}% 38
-\BOOKMARK [1][-]{section.4.3}{Indicators}{chapter.4}% 39
-\BOOKMARK [1][-]{section.4.4}{Fubini \046 dominated convergence conditions}{chapter.4}% 40
-\BOOKMARK [0][-]{chapter.5}{Applications}{}% 41
-\BOOKMARK [1][-]{section.5.1}{Multinomial resampling}{chapter.5}% 42
-\BOOKMARK [1][-]{section.5.2}{Stratified resampling}{chapter.5}% 43
-\BOOKMARK [1][-]{section.5.3}{Stochastic rounding}{chapter.5}% 44
-\BOOKMARK [1][-]{section.5.4}{Residual resampling with stratified residuals}{chapter.5}% 45
-\BOOKMARK [1][-]{section.5.5}{Residual resampling with multinomial residuals}{chapter.5}% 46
-\BOOKMARK [1][-]{section.5.6}{Star resampling}{chapter.5}% 47
-\BOOKMARK [1][-]{section.5.7}{Conditional SMC}{chapter.5}% 48
-\BOOKMARK [2][-]{subsection.5.7.1}{Effect of ancestor sampling}{section.5.7}% 49
-\BOOKMARK [0][-]{chapter.6}{Discussion}{}% 50
+\BOOKMARK [0][-]{chapter*.5}{Acknowledgements}{}% 1
+\BOOKMARK [0][-]{chapter*.6}{Declaration}{}% 2
+\BOOKMARK [0][-]{chapter*.7}{Abstract}{}% 3
+\BOOKMARK [0][-]{chapter*.8}{Abbreviations}{}% 4
+\BOOKMARK [0][-]{chapter*.9}{Notation and Conventions}{}% 5
+\BOOKMARK [0][-]{chapter.1}{Introduction}{}% 6
+\BOOKMARK [0][-]{chapter.2}{Background}{}% 7
+\BOOKMARK [1][-]{section.2.1}{Sequential Monte Carlo}{chapter.2}% 8
+\BOOKMARK [2][-]{subsection.2.1.1}{State space models}{section.2.1}% 9
+\BOOKMARK [2][-]{subsection.2.1.2}{Inference in state space models}{section.2.1}% 10
+\BOOKMARK [2][-]{subsection.2.1.3}{Feynman-Kac models}{section.2.1}% 11
+\BOOKMARK [2][-]{subsection.2.1.4}{Sequential Monte Carlo for Feynman-Kac models}{section.2.1}% 12
+\BOOKMARK [2][-]{subsection.2.1.5}{Theoretical justification}{section.2.1}% 13
+\BOOKMARK [1][-]{section.2.2}{Coalescent theory}{chapter.2}% 14
+\BOOKMARK [2][-]{subsection.2.2.1}{Kingman's coalescent}{section.2.2}% 15
+\BOOKMARK [2][-]{subsection.2.2.2}{Properties of Kingman's coalescent}{section.2.2}% 16
+\BOOKMARK [2][-]{subsection.2.2.3}{Models in population genetics}{section.2.2}% 17
+\BOOKMARK [2][-]{subsection.2.2.4}{Other convergence results}{section.2.2}% 18
+\BOOKMARK [2][-]{subsection.2.2.5}{Particle populations}{section.2.2}% 19
+\BOOKMARK [1][-]{section.2.3}{Sequential Monte Carlo genealogies}{chapter.2}% 20
+\BOOKMARK [2][-]{subsection.2.3.1}{Ancestral degeneracy}{section.2.3}% 21
+\BOOKMARK [2][-]{subsection.2.3.2}{Asymptotic genealogies}{section.2.3}% 22
+\BOOKMARK [1][-]{section.2.4}{Resampling}{chapter.2}% 23
+\BOOKMARK [2][-]{subsection.2.4.1}{Definition}{section.2.4}% 24
+\BOOKMARK [2][-]{subsection.2.4.2}{Examples}{section.2.4}% 25
+\BOOKMARK [2][-]{subsection.2.4.3}{Properties}{section.2.4}% 26
+\BOOKMARK [2][-]{subsection.2.4.4}{Stochastic rounding}{section.2.4}% 27
+\BOOKMARK [1][-]{section.2.5}{Conditional SMC}{chapter.2}% 28
+\BOOKMARK [2][-]{subsection.2.5.1}{Particle Gibbs}{section.2.5}% 29
+\BOOKMARK [2][-]{subsection.2.5.2}{Ancestral degeneracy in particle Gibbs}{section.2.5}% 30
+\BOOKMARK [2][-]{subsection.2.5.3}{Ancestor sampling}{section.2.5}% 31
+\BOOKMARK [0][-]{chapter.3}{Convergence of Finite-Dimensional Distributions}{}% 32
+\BOOKMARK [1][-]{section.3.1}{The genealogical process}{chapter.3}% 33
+\BOOKMARK [2][-]{subsection.3.1.1}{Time scale}{section.3.1}% 34
+\BOOKMARK [2][-]{subsection.3.1.2}{Transition probabilities}{section.3.1}% 35
+\BOOKMARK [1][-]{section.3.2}{An existing limit theorem}{chapter.3}% 36
+\BOOKMARK [1][-]{section.3.3}{A new limit theorem}{chapter.3}% 37
+\BOOKMARK [2][-]{subsection.3.3.1}{Proof of theorem}{section.3.3}% 38
+\BOOKMARK [0][-]{chapter.4}{Weak Convergence}{}% 39
+\BOOKMARK [1][-]{section.4.1}{Bounds on sum-products}{chapter.4}% 40
+\BOOKMARK [1][-]{section.4.2}{Main components of induction argument}{chapter.4}% 41
+\BOOKMARK [1][-]{section.4.3}{Indicators}{chapter.4}% 42
+\BOOKMARK [1][-]{section.4.4}{Fubini \046 dominated convergence conditions}{chapter.4}% 43
+\BOOKMARK [0][-]{chapter.5}{Applications}{}% 44
+\BOOKMARK [1][-]{section.5.1}{Multinomial resampling}{chapter.5}% 45
+\BOOKMARK [1][-]{section.5.2}{Stratified resampling}{chapter.5}% 46
+\BOOKMARK [1][-]{section.5.3}{Stochastic rounding}{chapter.5}% 47
+\BOOKMARK [1][-]{section.5.4}{Residual resampling with stratified residuals}{chapter.5}% 48
+\BOOKMARK [1][-]{section.5.5}{Residual resampling with multinomial residuals}{chapter.5}% 49
+\BOOKMARK [1][-]{section.5.6}{Star resampling}{chapter.5}% 50
+\BOOKMARK [1][-]{section.5.7}{Conditional SMC}{chapter.5}% 51
+\BOOKMARK [2][-]{subsection.5.7.1}{Effect of ancestor sampling}{section.5.7}% 52
+\BOOKMARK [0][-]{chapter.6}{Discussion}{}% 53

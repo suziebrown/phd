@@ -8,39 +8,45 @@
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 2.1}{\ignorespaces State space model}}{4}{figure.caption.9}
+\addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 2.2}{\ignorespaces Conditional dependence structure of SMC algorithm}}{9}{figure.caption.11}
+\addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 2.3}{\ignorespaces The $n$-coalescent}}{12}{figure.caption.12}
+\addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 2.4}{\ignorespaces Definitions of $t_i$, $T_i$ in the $n$-coalescent.\relax }}{12}{figure.caption.13}
+\contentsline {figure}{\numberline {\relax 2.1}{\ignorespaces State space model}}{4}{figure.caption.10}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 2.5}{\ignorespaces Ancestral degeneracy}}{18}{figure.caption.20}
+\contentsline {figure}{\numberline {\relax 2.2}{\ignorespaces Conditional dependence structure of SMC algorithm}}{9}{figure.caption.12}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {\relax 2.3}{\ignorespaces The $n$-coalescent}}{12}{figure.caption.13}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {\relax 2.4}{\ignorespaces Definitions of $t_i$, $T_i$ in the $n$-coalescent.\relax }}{12}{figure.caption.14}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {\relax 2.5}{\ignorespaces Ancestral degeneracy}}{18}{figure.caption.21}
 \defcounter {refsection}{0}\relax 
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Multinomial resampling}}}{18}{subfigure.5.1}
 \defcounter {refsection}{0}\relax 
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Adaptive minimum-variance resampling}}}{18}{subfigure.5.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 2.6}{\ignorespaces Inversion sampling for multinomial, stratified and systematic resampling}}{24}{figure.caption.24}
+\contentsline {figure}{\numberline {\relax 2.6}{\ignorespaces Inversion sampling for multinomial, stratified and systematic resampling}}{24}{figure.caption.25}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 2.7}{\ignorespaces Cases for stratified resampling with a fixed weight}}{25}{figure.caption.26}
+\contentsline {figure}{\numberline {\relax 2.7}{\ignorespaces Cases for stratified resampling with a fixed weight}}{25}{figure.caption.27}
 \defcounter {refsection}{0}\relax 
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {The overhang is less than $1/N$ and $ \delta _L \in {[0, \delta ]} $. The parent under consideration is automatically assigned $K$ offspring, plus up to two more.}}}{25}{subfigure.7.1}
 \defcounter {refsection}{0}\relax 
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {The overhang is greater than $1/N$ (this case can only occur when $K\geq 1$) and $\delta _L \in (\delta ,1)$. The parent under consideration is automatically assigned $K-1$ offspring, plus up to two more.}}}{25}{subfigure.7.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 2.8}{\ignorespaces Whitley's roulette wheel}}{27}{figure.caption.29}
+\contentsline {figure}{\numberline {\relax 2.8}{\ignorespaces Whitley's roulette wheel}}{27}{figure.caption.30}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 2.9}{\ignorespaces Conditional variance inequalities between resampling schemes}}{34}{figure.caption.38}
+\contentsline {figure}{\numberline {\relax 2.9}{\ignorespaces Conditional variance inequalities between resampling schemes}}{34}{figure.caption.39}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 2.10}{\ignorespaces Example where permuting weights can affect offspring counts}}{37}{figure.caption.41}
+\contentsline {figure}{\numberline {\relax 2.10}{\ignorespaces Example where permuting weights can affect offspring counts}}{37}{figure.caption.42}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 2.11}{\ignorespaces Star discrepancy for multinomial, stratified and systematic resampling}}{40}{figure.caption.45}
+\contentsline {figure}{\numberline {\relax 2.11}{\ignorespaces Star discrepancy for multinomial, stratified and systematic resampling}}{40}{figure.caption.46}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 2.12}{\ignorespaces Ancestral degeneracy in particle Gibbs}}{46}{figure.caption.49}
+\contentsline {figure}{\numberline {\relax 2.12}{\ignorespaces Ancestral degeneracy in particle Gibbs}}{46}{figure.caption.50}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 2.13}{\ignorespaces Why ancestor sampling works}}{50}{figure.caption.52}
+\contentsline {figure}{\numberline {\relax 2.13}{\ignorespaces Why ancestor sampling works}}{50}{figure.caption.53}
 \defcounter {refsection}{0}\relax 
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {without ancestor sampling}}}{50}{subfigure.13.1}
 \defcounter {refsection}{0}\relax 
@@ -48,22 +54,22 @@
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 3.1}{\ignorespaces Encoding the sample genealogy}}{52}{figure.caption.53}
+\contentsline {figure}{\numberline {\relax 3.1}{\ignorespaces Encoding the sample genealogy}}{52}{figure.caption.54}
 \defcounter {refsection}{0}\relax 
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Resampling relationships}}}{52}{subfigure.1.1}
 \defcounter {refsection}{0}\relax 
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Genealogy of terminal particles}}}{52}{subfigure.1.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 3.2}{\ignorespaces Dependencies between conditions of Theorems \relax \ref {thm:kjjs_mainthm} and \relax \ref {thm:FDDconv}}}{62}{figure.caption.54}
+\contentsline {figure}{\numberline {\relax 3.2}{\ignorespaces Dependencies between conditions of Theorems \relax \ref {thm:kjjs_mainthm} and \relax \ref {thm:FDDconv}}}{62}{figure.caption.55}
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 4.1}{\ignorespaces Structure of weak convergence proof}}{77}{figure.caption.55}
+\contentsline {figure}{\numberline {\relax 4.1}{\ignorespaces Structure of weak convergence proof}}{77}{figure.caption.56}
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 5.1}{\ignorespaces Construction of separatrix $\mathcal {H}_t$}}{109}{figure.caption.57}
+\contentsline {figure}{\numberline {\relax 5.1}{\ignorespaces Construction of separatrix $\mathcal {H}_t$}}{109}{figure.caption.58}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 5.2}{\ignorespaces Sample genealogy induced by star resampling\relax }}{121}{figure.caption.58}
+\contentsline {figure}{\numberline {\relax 5.2}{\ignorespaces Sample genealogy induced by star resampling\relax }}{121}{figure.caption.59}
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
