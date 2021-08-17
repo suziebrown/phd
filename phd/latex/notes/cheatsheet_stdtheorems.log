@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  9 AUG 2021 18:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.4)  9 AUG 2021 18:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -584,12 +584,8 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 123.
-
-Underfull \hbox (badness 10000) in paragraph at lines 145--146
-
- []
-
-[2] [3] (./cheatsheet_stdtheorems.aux)
+ [2] [3]
+(./cheatsheet_stdtheorems.aux)
 Package logreq Info: Writing requests to 'cheatsheet_stdtheorems.run.xml'.
 \openout1 = `cheatsheet_stdtheorems.run.xml'.
 
@@ -597,7 +593,7 @@ Package logreq Info: Writing requests to 'cheatsheet_stdtheorems.run.xml'.
 Here is how much of TeX's memory you used:
  10152 strings out of 492649
  172142 string characters out of 6129623
- 601169 words of memory out of 5000000
+ 600169 words of memory out of 5000000
  13901 multiletter control sequences out of 15000+600000
  12623 words of font info for 49 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -621,7 +617,7 @@ e/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive
 8/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2018
 /texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/
 2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
-Output written on cheatsheet_stdtheorems.pdf (3 pages, 192563 bytes).
+Output written on cheatsheet_stdtheorems.pdf (3 pages, 192514 bytes).
 PDF statistics:
  90 PDF objects out of 1000 (max. 8388607)
  65 compressed objects within 1 object stream
