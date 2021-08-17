@@ -1,0 +1,68 @@
+\documentclass[fleqn]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=2cm]{geometry}
+
+\usepackage{graphicx}
+\usepackage{enumitem}
+
+% custom header/footer
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+\fancyhf{}
+\rfoot{\textsf{\thepage}}
+\lfoot{\textsf{Suzie Brown}}
+
+%annotations
+\usepackage{color}
+\usepackage{xspace}
+\newcommand{\seb}[1]{\xspace\textcolor{red}{#1}\xspace}
+
+%bibliography
+\usepackage[style=authoryear, citestyle=authoryear-comp, sorting=nyt, backend=biber]{biblatex}
+\addbibresource{../smc.bib}
+
+% maths
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newcommand{\Prob}{\mathbb{P}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Et}{\mathbb{E}_t}
+\newcommand{\V}{\operatorname{Var}}
+\newcommand{\I}[1]{\mathbb{I}_{\{#1\}}}
+\newcommand{\1}[1]{\mathbb{I}_{#1}}
+\newcommand{\Mn}{\operatorname{Multinomial}}
+
+\title{Open problems in SMC, according to AMJ}
+\author{Suzie Brown}
+\date{16 June 2021}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+
+Adam's take on the current cutting edge of the field, as shared with us in the last episode of the SMC reading group on 16/6/21.
+
+\begin{itemize}
+\item High-dimensional filtering
+\item How to specify the sequence of distributions for an SMC sampler where you only care about the final distribution: e.g.\ large steps with multiple MCMC steps between vs.\ small SMC steps with few MCMC steps between; should be possible to do a systematic analysis...
+\item Genealogies of multi-level splitting algorithms: easier problem than SMC genealogies; but probably no one cares
+\item How to do exact simulation using SMC: rejection sampling + upper bound on $g$; regeneration + conditional SMC
+\item Unbiased estimation of arbitrary integrals, rather than just normalising constants
+\item Look-ahead methods: in theory they could give perfect samples from the posterior; how to construct good approximations to that?
+\item Smooth particle filters in dimension $>1$: Mike Pitt did it in dimension 1; Anthony Lee's PhD thesis had a go
+\item Online Bayesian parameter estimation, i.e.\ without the cost growing in time: might be impossible since the problem gets harder over time.
+\end{itemize}
+
+
+
+
+
+
+
+
+
+\end{document}
